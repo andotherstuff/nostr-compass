@@ -1,0 +1,106 @@
+---
+id: https://nostrcompass.org/schema/topics
+description: The topic object
+type: object
+required:
+  - title
+  - topic-categories
+  - excerpt
+  - compass_mentions
+additionalProperties: false
+properties:
+  title:
+    description: Title of the topic
+    type: string
+
+  shortname:
+    description: Short alternative name to use for creating Markdown reference links
+    type: string
+
+  topic-categories:
+    description: Which categories should list this topic?
+    type: array
+    additionalItems: false
+    items:
+      type: string
+      enum:  ## Please keep in alphabetical order.
+        - Clients
+        - Content Types
+        - Cryptography
+        - Data Storage
+        - Developer Tools
+        - Identity
+        - Key Management
+        - Messaging
+        - Moderation
+        - NIPs
+        - Privacy
+        - Protocol
+        - Relay Software
+        - Security
+        - Social Features
+
+  title-aliases:
+    description: Other names for the topic?
+    type: array
+    items:
+      type: string
+
+  excerpt:
+    description: A short description of the topic
+    type: string
+    minLength: 1   ## Anything not empty
+    maxLength: 500 ## Arbitrary but suggest keeping it short in case we add the excerpts to an index at some point
+    pattern: "\\*\\*"  ## Excerpt must include topic name in bold
+
+  primary_sources: &sources
+    description: Links about the topic the reader may find interesting
+    type: list
+    items:
+      type: object
+      required:
+        - title
+      additionalProperties: false
+      properties:
+        title:
+          description: Title to use for the link
+          type: string
+        link:
+          description: The link URL or reference name
+          type: string
+
+  compass_mentions:
+    description: Mentions of the topic on the Nostr Compass website
+    type: list
+    items:
+      type: object
+      required:
+        - title
+        - url
+      additionalProperties: false
+      properties:
+        title:
+          description: Title to use for the mention
+          type: string
+          minLength: 1
+          maxLength: 100  ## Arbitrary but important to keep short for topic index
+        url:
+          description: Internal URL for the mention
+          type: string
+          pattern: "^/"
+        date:
+          description: Date of the mention
+          type: any  ## YAML auto converts things that look like dates so we can't validate type here
+          format: date-time  ## But we can validate the format here.  Weird
+        feature:
+          description: Whether or not to bold the mention as especially noteworthy
+          type: boolean
+
+  see_also: *sources
+
+  redirect_from:
+    description: Redirect urls per https://github.com/jekyll/jekyll-redirect-from
+    type: array
+
+  extra:
+    description: Extra fields (not validated)
