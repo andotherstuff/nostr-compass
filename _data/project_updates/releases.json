@@ -665,15 +665,708 @@
     }
   ],
   "ArcadeCity/zapstore": [],
-  "fiatjaf/nak": [],
-  "greenart7c3/amber": [],
-  "getAlby/lightning-browser-extension": [],
+  "fiatjaf/nak": [
+    {
+      "id": 266560981,
+      "tag_name": "v0.17.2",
+      "name": "v0.17.2",
+      "published_at": "2025-12-02T00:16:30Z",
+      "html_url": "https://github.com/fiatjaf/nak/releases/tag/v0.17.2",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "id": 265399840,
+      "tag_name": "v0.17.1",
+      "name": "v0.17.1",
+      "published_at": "2025-11-26T10:10:17Z",
+      "html_url": "https://github.com/fiatjaf/nak/releases/tag/v0.17.1",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "id": 265303430,
+      "tag_name": "v0.17.0",
+      "name": "v0.17.0",
+      "published_at": "2025-11-25T23:54:02Z",
+      "html_url": "https://github.com/fiatjaf/nak/releases/tag/v0.17.0",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "id": 245541112,
+      "tag_name": "v0.16.2",
+      "name": "v0.16.2",
+      "published_at": "2025-09-08T14:11:50Z",
+      "html_url": "https://github.com/fiatjaf/nak/releases/tag/v0.16.2",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "id": 245261912,
+      "tag_name": "v0.16.1",
+      "name": "v0.16.1",
+      "published_at": "2025-09-06T10:39:42Z",
+      "html_url": "https://github.com/fiatjaf/nak/releases/tag/v0.16.1",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "id": 245172746,
+      "tag_name": "v0.16.0",
+      "name": "v0.16.0",
+      "published_at": "2025-09-05T20:14:04Z",
+      "html_url": "https://github.com/fiatjaf/nak/releases/tag/v0.16.0",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "id": 243576388,
+      "tag_name": "v0.15.4",
+      "name": "v0.15.4",
+      "published_at": "2025-08-29T19:26:27Z",
+      "html_url": "https://github.com/fiatjaf/nak/releases/tag/v0.15.4",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "id": 240743560,
+      "tag_name": "v0.15.3",
+      "name": "v0.15.3",
+      "published_at": "2025-08-19T00:02:12Z",
+      "html_url": "https://github.com/fiatjaf/nak/releases/tag/v0.15.3",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "id": 233341835,
+      "tag_name": "v0.15.2",
+      "name": "v0.15.2",
+      "published_at": "2025-07-17T23:01:07Z",
+      "html_url": "https://github.com/fiatjaf/nak/releases/tag/v0.15.2",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "id": 229208617,
+      "tag_name": "v0.15.1",
+      "name": "v0.15.1",
+      "published_at": "2025-07-01T18:53:11Z",
+      "html_url": "https://github.com/fiatjaf/nak/releases/tag/v0.15.1",
+      "prerelease": false,
+      "draft": false
+    }
+  ],
+  "nostrability/schemata": [
+    {
+      "id": 253517953,
+      "tag_name": "v0.2.2",
+      "name": "v0.2.2 - git, reactions, nutzaps, mip-00, nip-78",
+      "published_at": "2025-10-10T02:42:28Z",
+      "html_url": "https://github.com/nostrability/schemata/releases/tag/v0.2.2",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "id": 253420414,
+      "tag_name": "v0.2.1",
+      "name": "v0.2.1",
+      "published_at": "2025-10-09T17:22:04Z",
+      "html_url": "https://github.com/nostrability/schemata/releases/tag/v0.2.1",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "id": 252910899,
+      "tag_name": "v0.2",
+      "name": "v0.2",
+      "published_at": "2025-10-08T05:29:47Z",
+      "html_url": "https://github.com/nostrability/schemata/releases/tag/v0.2",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "id": 251214223,
+      "tag_name": "v0.1.7",
+      "name": "v0.1.7",
+      "published_at": "2025-09-30T18:32:24Z",
+      "html_url": "https://github.com/nostrability/schemata/releases/tag/v0.1.7",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "id": 246577880,
+      "tag_name": "v0.1.6",
+      "name": "v0.1.6",
+      "published_at": "2025-09-11T18:18:12Z",
+      "html_url": "https://github.com/nostrability/schemata/releases/tag/v0.1.6",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "id": 245856932,
+      "tag_name": "v0.1.5",
+      "name": "v0.1.5",
+      "published_at": "2025-09-09T14:01:57Z",
+      "html_url": "https://github.com/nostrability/schemata/releases/tag/v0.1.5",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "id": 245845246,
+      "tag_name": "v0.1.4",
+      "name": "v0.1.4",
+      "published_at": "2025-09-09T13:27:44Z",
+      "html_url": "https://github.com/nostrability/schemata/releases/tag/v0.1.4",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "id": 245809943,
+      "tag_name": "v0.1.3",
+      "name": "v0.1.3",
+      "published_at": "2025-09-09T11:33:46Z",
+      "html_url": "https://github.com/nostrability/schemata/releases/tag/v0.1.3",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "id": 245790080,
+      "tag_name": "v0.1.2",
+      "name": "v0.1.2",
+      "published_at": "2025-09-09T10:18:58Z",
+      "html_url": "https://github.com/nostrability/schemata/releases/tag/v0.1.2",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "id": 229567022,
+      "tag_name": "v0.1.1",
+      "name": "v0.1.1",
+      "published_at": "2025-07-02T23:43:13Z",
+      "html_url": "https://github.com/nostrability/schemata/releases/tag/v0.1.1",
+      "prerelease": false,
+      "draft": false
+    }
+  ],
+  "greenart7c3/amber": [
+    {
+      "id": 268302613,
+      "tag_name": "v4.0.3",
+      "name": "Release v4.0.3",
+      "published_at": "2025-12-08T11:52:04Z",
+      "html_url": "https://github.com/greenart7c3/Amber/releases/tag/v4.0.3",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "id": 267697133,
+      "tag_name": "v4.0.3-pre2",
+      "name": "Release v4.0.3-pre2",
+      "published_at": "2025-12-05T09:22:35Z",
+      "html_url": "https://github.com/greenart7c3/Amber/releases/tag/v4.0.3-pre2",
+      "prerelease": true,
+      "draft": false
+    },
+    {
+      "id": 265579966,
+      "tag_name": "v4.0.3-pre1",
+      "name": "Release v4.0.3-pre1",
+      "published_at": "2025-11-26T20:30:46Z",
+      "html_url": "https://github.com/greenart7c3/Amber/releases/tag/v4.0.3-pre1",
+      "prerelease": true,
+      "draft": false
+    },
+    {
+      "id": 248639067,
+      "tag_name": "v4.0.2",
+      "name": "Release v4.0.2",
+      "published_at": "2025-09-19T14:59:49Z",
+      "html_url": "https://github.com/greenart7c3/Amber/releases/tag/v4.0.2",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "id": 247921953,
+      "tag_name": "v4.0.2-pre1",
+      "name": "Release v4.0.2-pre1",
+      "published_at": "2025-09-17T10:41:50Z",
+      "html_url": "https://github.com/greenart7c3/Amber/releases/tag/v4.0.2-pre1",
+      "prerelease": true,
+      "draft": false
+    },
+    {
+      "id": 246134314,
+      "tag_name": "v4.0.1",
+      "name": "Release v4.0.1",
+      "published_at": "2025-09-10T11:01:26Z",
+      "html_url": "https://github.com/greenart7c3/Amber/releases/tag/v4.0.1",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "id": 245488936,
+      "tag_name": "v4.0.1-pre1",
+      "name": "Release v4.0.1-pre1",
+      "published_at": "2025-09-08T11:13:35Z",
+      "html_url": "https://github.com/greenart7c3/Amber/releases/tag/v4.0.1-pre1",
+      "prerelease": true,
+      "draft": false
+    },
+    {
+      "id": 243491851,
+      "tag_name": "v4.0.0",
+      "name": "Release v4.0.0",
+      "published_at": "2025-08-29T14:11:22Z",
+      "html_url": "https://github.com/greenart7c3/Amber/releases/tag/v4.0.0",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "id": 242850582,
+      "tag_name": "v4.0.0-pre2",
+      "name": "Release v4.0.0-pre2",
+      "published_at": "2025-08-27T12:15:18Z",
+      "html_url": "https://github.com/greenart7c3/Amber/releases/tag/v4.0.0-pre2",
+      "prerelease": true,
+      "draft": false
+    },
+    {
+      "id": 241783493,
+      "tag_name": "v4.0.0-pre1",
+      "name": "Release v4.0.0-pre1",
+      "published_at": "2025-08-22T10:23:09Z",
+      "html_url": "https://github.com/greenart7c3/Amber/releases/tag/v4.0.0-pre1",
+      "prerelease": true,
+      "draft": false
+    }
+  ],
+  "getAlby/lightning-browser-extension": [
+    {
+      "id": 260567681,
+      "tag_name": "v3.14.0",
+      "name": "\ud83e\uddf9\u2728\ud83c\udf0c The Witch\u2019s Broom Nebula",
+      "published_at": "2025-11-07T10:03:11Z",
+      "html_url": "https://github.com/getAlby/lightning-browser-extension/releases/tag/v3.14.0",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "id": 250550691,
+      "tag_name": "v3.13.0",
+      "name": "\ud83e\ude90\ud83d\udc06 Leopard Spots on Martian Rocks \ud83e\udea8\ud83d\udd2d",
+      "published_at": "2025-09-28T06:13:33Z",
+      "html_url": "https://github.com/getAlby/lightning-browser-extension/releases/tag/v3.13.0",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "id": 221494554,
+      "tag_name": "v3.12.0",
+      "name": "v3.12.0 \ud83e\ude90 Herbig-Haro 24",
+      "published_at": "2025-05-28T09:47:15Z",
+      "html_url": "https://github.com/getAlby/lightning-browser-extension/releases/tag/v3.12.0",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "id": 196896732,
+      "tag_name": "v3.11.0",
+      "name": "v3.11.0 Pleiades over Half Dome",
+      "published_at": "2025-01-27T09:58:48Z",
+      "html_url": "https://github.com/getAlby/lightning-browser-extension/releases/tag/v3.11.0",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "id": 188939920,
+      "tag_name": "v3.10.0",
+      "name": "v3.10.0 Ice Clouds over a Red Planet",
+      "published_at": "2024-12-04T13:14:20Z",
+      "html_url": "https://github.com/getAlby/lightning-browser-extension/releases/tag/v3.10.0",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "id": 180629844,
+      "tag_name": "v3.9.2",
+      "name": "v3.9.2 Messier 24: Sagittarius Star Cloud",
+      "published_at": "2024-10-18T09:32:26Z",
+      "html_url": "https://github.com/getAlby/lightning-browser-extension/releases/tag/v3.9.2",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "id": 174011654,
+      "tag_name": "v3.9.1",
+      "name": "v3.9.1 Messier 24: Sagittarius Star Cloud",
+      "published_at": "2024-09-08T12:29:40Z",
+      "html_url": "https://github.com/getAlby/lightning-browser-extension/releases/tag/v3.9.1",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "id": 166089459,
+      "tag_name": "v3.9.0",
+      "name": "v3.9.0 Messier 24: Sagittarius Star Cloud",
+      "published_at": "2024-07-18T16:18:22Z",
+      "html_url": "https://github.com/getAlby/lightning-browser-extension/releases/tag/v3.9.0",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "id": 157349460,
+      "tag_name": "v3.8.1",
+      "name": "v3.8.1 \ud83d\udca5 M78 from the Euclid Space Telescope",
+      "published_at": "2024-05-24T13:19:22Z",
+      "html_url": "https://github.com/getAlby/lightning-browser-extension/releases/tag/v3.8.1",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "id": 148635701,
+      "tag_name": "v3.7.1",
+      "name": "v3.7.1 \ud83e\udebc The Jellyfish Nebula Supernova Remnant - Patch 1",
+      "published_at": "2024-03-27T09:58:45Z",
+      "html_url": "https://github.com/getAlby/lightning-browser-extension/releases/tag/v3.7.1",
+      "prerelease": false,
+      "draft": false
+    }
+  ],
   "fiatjaf/nos2x": [],
-  "haorendashu/nowser": [],
-  "susumuota/nostr-keyx": [],
+  "haorendashu/nowser": [
+    {
+      "id": 266670761,
+      "tag_name": "1.4.0",
+      "name": "1.4.0",
+      "published_at": "2025-12-02T10:32:56Z",
+      "html_url": "https://github.com/haorendashu/nowser/releases/tag/1.4.0",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "id": 244503613,
+      "tag_name": "1.3.0",
+      "name": "1.3.0",
+      "published_at": "2025-09-04T06:10:20Z",
+      "html_url": "https://github.com/haorendashu/nowser/releases/tag/1.3.0",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "id": 235544780,
+      "tag_name": "1.2.0",
+      "name": "1.2.0",
+      "published_at": "2025-07-28T15:55:53Z",
+      "html_url": "https://github.com/haorendashu/nowser/releases/tag/1.2.0",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "id": 217759480,
+      "tag_name": "1.1.0",
+      "name": "1.1.0",
+      "published_at": "2025-05-10T04:05:29Z",
+      "html_url": "https://github.com/haorendashu/nowser/releases/tag/1.1.0",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "id": 199995851,
+      "tag_name": "1.0.0",
+      "name": "1.0.0",
+      "published_at": "2025-02-13T01:49:18Z",
+      "html_url": "https://github.com/haorendashu/nowser/releases/tag/1.0.0",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "id": 191583376,
+      "tag_name": "0.0.4",
+      "name": "0.0.4",
+      "published_at": "2024-12-19T04:59:36Z",
+      "html_url": "https://github.com/haorendashu/nowser/releases/tag/0.0.4",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "id": 189888939,
+      "tag_name": "0.0.3",
+      "name": "0.0.3",
+      "published_at": "2024-12-10T18:15:31Z",
+      "html_url": "https://github.com/haorendashu/nowser/releases/tag/0.0.3",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "id": 181978662,
+      "tag_name": "0.0.2",
+      "name": "0.0.2",
+      "published_at": "2024-10-25T17:20:42Z",
+      "html_url": "https://github.com/haorendashu/nowser/releases/tag/0.0.2",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "id": 176051263,
+      "tag_name": "0.0.1",
+      "name": "0.0.1",
+      "published_at": "2024-09-21T01:25:33Z",
+      "html_url": "https://github.com/haorendashu/nowser/releases/tag/0.0.1",
+      "prerelease": false,
+      "draft": false
+    }
+  ],
+  "susumuota/nostr-keyx": [
+    {
+      "id": 96911064,
+      "tag_name": "v1.5.0",
+      "name": "v1.5.0",
+      "published_at": "2023-03-26T04:02:03Z",
+      "html_url": "https://github.com/susumuota/nostr-keyx/releases/tag/v1.5.0",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "id": 95055562,
+      "tag_name": "v1.4.0",
+      "name": "v1.4.0",
+      "published_at": "2023-03-09T13:13:29Z",
+      "html_url": "https://github.com/susumuota/nostr-keyx/releases/tag/v1.4.0",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "id": 93812511,
+      "tag_name": "v1.3.0",
+      "name": "v1.3.0",
+      "published_at": "2023-02-27T16:07:55Z",
+      "html_url": "https://github.com/susumuota/nostr-keyx/releases/tag/v1.3.0",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "id": 93668248,
+      "tag_name": "v1.2.0",
+      "name": "v1.2.0",
+      "published_at": "2023-02-25T05:51:58Z",
+      "html_url": "https://github.com/susumuota/nostr-keyx/releases/tag/v1.2.0",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "id": 92919254,
+      "tag_name": "v1.1.0",
+      "name": "v1.1.0",
+      "published_at": "2023-02-18T16:35:58Z",
+      "html_url": "https://github.com/susumuota/nostr-keyx/releases/tag/v1.1.0",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "id": 92244704,
+      "tag_name": "v1.0.0",
+      "name": "v1.0.0",
+      "published_at": "2023-02-13T17:02:48Z",
+      "html_url": "https://github.com/susumuota/nostr-keyx/releases/tag/v1.0.0",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "id": 92116686,
+      "tag_name": "v0.9.0",
+      "name": "v0.9.0",
+      "published_at": "2023-02-11T17:19:27Z",
+      "html_url": "https://github.com/susumuota/nostr-keyx/releases/tag/v0.9.0",
+      "prerelease": false,
+      "draft": false
+    }
+  ],
   "hoytech/strfry": [],
-  "Cameri/nostream": [],
-  "0ceanslim/grain": [],
+  "Cameri/nostream": [
+    {
+      "id": 181344273,
+      "tag_name": "v2.1.0",
+      "name": "v2.1.0",
+      "published_at": "2024-10-23T01:52:23Z",
+      "html_url": "https://github.com/cameri/nostream/releases/tag/v2.1.0",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "id": 136907501,
+      "tag_name": "v2.0.0",
+      "name": "v2.0.0",
+      "published_at": "2024-01-12T23:12:37Z",
+      "html_url": "https://github.com/cameri/nostream/releases/tag/v2.0.0",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "id": 136773653,
+      "tag_name": "v1.26.0",
+      "name": "v1.26.0",
+      "published_at": "2024-01-12T06:00:38Z",
+      "html_url": "https://github.com/cameri/nostream/releases/tag/v1.26.0",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "id": 104263702,
+      "tag_name": "v1.25.2",
+      "name": "v1.25.2",
+      "published_at": "2023-05-25T13:34:36Z",
+      "html_url": "https://github.com/cameri/nostream/releases/tag/v1.25.2",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "id": 104192558,
+      "tag_name": "v1.25.1",
+      "name": "v1.25.1",
+      "published_at": "2023-05-25T01:18:19Z",
+      "html_url": "https://github.com/cameri/nostream/releases/tag/v1.25.1",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "id": 103970814,
+      "tag_name": "v1.25.0",
+      "name": "v1.25.0",
+      "published_at": "2023-05-23T15:15:21Z",
+      "html_url": "https://github.com/cameri/nostream/releases/tag/v1.25.0",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "id": 103644365,
+      "tag_name": "v1.24.1",
+      "name": "v1.24.1",
+      "published_at": "2023-05-19T18:01:38Z",
+      "html_url": "https://github.com/cameri/nostream/releases/tag/v1.24.1",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "id": 103025734,
+      "tag_name": "v1.24.0",
+      "name": "v1.24.0",
+      "published_at": "2023-05-15T15:17:47Z",
+      "html_url": "https://github.com/cameri/nostream/releases/tag/v1.24.0",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "id": 102850969,
+      "tag_name": "v1.23.0",
+      "name": "v1.23.0",
+      "published_at": "2023-05-12T23:58:28Z",
+      "html_url": "https://github.com/cameri/nostream/releases/tag/v1.23.0",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "id": 93115023,
+      "tag_name": "v1.22.6",
+      "name": "v1.22.6",
+      "published_at": "2023-02-21T05:50:18Z",
+      "html_url": "https://github.com/cameri/nostream/releases/tag/v1.22.6",
+      "prerelease": false,
+      "draft": false
+    }
+  ],
+  "0ceanslim/grain": [
+    {
+      "id": 239992135,
+      "tag_name": "v0.4.12",
+      "name": "GRAIN\ud83c\udf3e v0.4.12",
+      "published_at": "2025-08-14T14:49:44Z",
+      "html_url": "https://github.com/0ceanSlim/grain/releases/tag/v0.4.12",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "id": 235456907,
+      "tag_name": "v0.4.11",
+      "name": "GRAIN\ud83c\udf3e v0.4.11",
+      "published_at": "2025-07-27T15:54:26Z",
+      "html_url": "https://github.com/0ceanSlim/grain/releases/tag/v0.4.11",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "id": 232651078,
+      "tag_name": "v0.4.1",
+      "name": "GRAIN\ud83c\udf3e v0.4.1",
+      "published_at": "2025-07-19T14:00:02Z",
+      "html_url": "https://github.com/0ceanSlim/grain/releases/tag/v0.4.1",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "id": 232006279,
+      "tag_name": "v0.4.1-pre-release",
+      "name": "GRAIN\ud83c\udf3e v0.4.1-pre-release",
+      "published_at": "2025-07-12T23:01:18Z",
+      "html_url": "https://github.com/0ceanSlim/grain/releases/tag/v0.4.1-pre-release",
+      "prerelease": true,
+      "draft": false
+    },
+    {
+      "id": 222291724,
+      "tag_name": "v0.4.0",
+      "name": "GRAIN\ud83c\udf3e v0.4.0",
+      "published_at": "2025-06-01T18:16:35Z",
+      "html_url": "https://github.com/0ceanSlim/grain/releases/tag/v0.4.0",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "id": 203920179,
+      "tag_name": "v0.3.1",
+      "name": "GRAIN\ud83c\udf3e v0.3.1",
+      "published_at": "2025-03-05T17:34:10Z",
+      "html_url": "https://github.com/0ceanSlim/grain/releases/tag/v0.3.1",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "id": 201718064,
+      "tag_name": "v0.3.0",
+      "name": "GRAIN\ud83c\udf3e v0.3.0",
+      "published_at": "2025-02-21T16:02:39Z",
+      "html_url": "https://github.com/0ceanSlim/grain/releases/tag/v0.3.0",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "id": 185841303,
+      "tag_name": "v0.2.1",
+      "name": "v0.2.1",
+      "published_at": "2024-11-17T22:20:34Z",
+      "html_url": "https://github.com/0ceanSlim/grain/releases/tag/v0.2.1",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "id": 184524795,
+      "tag_name": "v0.2.0",
+      "name": "GRAIN\ud83c\udf3e v0.2.0",
+      "published_at": "2024-11-09T19:44:59Z",
+      "html_url": "https://github.com/0ceanSlim/grain/releases/tag/v0.2.0",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "id": 177133279,
+      "tag_name": "v0.1.2",
+      "name": "GRAIN\ud83c\udf3e v0.1.2",
+      "published_at": "2024-09-26T17:18:03Z",
+      "html_url": "https://github.com/0ceanSlim/grain/releases/tag/v0.1.2",
+      "prerelease": false,
+      "draft": false
+    }
+  ],
   "fiatjaf/khatru": [],
   "bitvora/haven": [],
   "greenart7c3/Citrine": [],
@@ -686,11 +1379,495 @@
   "mikedilger/nostr-types": [],
   "nbd-wtf/go-nostr": [],
   "jeffthibault/python-nostr": [],
-  "holgern/pynostr": [],
-  "cnixbtc/NostrKit": [],
-  "tcheeric/nostr-java": [],
-  "ethicnology/dart-nostr": [],
-  "getAlby/hub": [],
-  "ZeusLN/zeus": [],
-  "hzrd149/blossom": []
+  "holgern/pynostr": [
+    {
+      "id": 238179284,
+      "tag_name": "v0.7.0",
+      "name": "v0.7.0",
+      "published_at": "2025-08-07T05:56:41Z",
+      "html_url": "https://github.com/holgern/pynostr/releases/tag/v0.7.0",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "id": 95909824,
+      "tag_name": "v0.6.2",
+      "name": "Version 0.6.2",
+      "published_at": "2023-03-16T20:53:00Z",
+      "html_url": "https://github.com/holgern/pynostr/releases/tag/v0.6.2",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "id": 95627684,
+      "tag_name": "v0.6.1",
+      "name": "Version 0.6.1",
+      "published_at": "2023-03-14T22:16:22Z",
+      "html_url": "https://github.com/holgern/pynostr/releases/tag/v0.6.1",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "id": 95584333,
+      "tag_name": "v0.6.0",
+      "name": "Version 0.6.0",
+      "published_at": "2023-03-14T16:18:48Z",
+      "html_url": "https://github.com/holgern/pynostr/releases/tag/v0.6.0",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "id": 94141569,
+      "tag_name": "v0.5.2",
+      "name": "Version 0.5.2",
+      "published_at": "2023-03-01T20:22:30Z",
+      "html_url": "https://github.com/holgern/pynostr/releases/tag/v0.5.2",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "id": 93999884,
+      "tag_name": "v0.5.1",
+      "name": "Version 0.5.1",
+      "published_at": "2023-02-28T21:11:42Z",
+      "html_url": "https://github.com/holgern/pynostr/releases/tag/v0.5.1",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "id": 93784988,
+      "tag_name": "v0.5.0",
+      "name": "Version 0.5.0",
+      "published_at": "2023-02-27T13:12:46Z",
+      "html_url": "https://github.com/holgern/pynostr/releases/tag/v0.5.0",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "id": 93685576,
+      "tag_name": "v0.4.0",
+      "name": "Version 0.4.0",
+      "published_at": "2023-02-25T16:41:22Z",
+      "html_url": "https://github.com/holgern/pynostr/releases/tag/v0.4.0",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "id": 93626623,
+      "tag_name": "v0.3.0",
+      "name": "Version 0.3.0",
+      "published_at": "2023-02-24T20:10:27Z",
+      "html_url": "https://github.com/holgern/pynostr/releases/tag/v0.3.0",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "id": 92158508,
+      "tag_name": "v0.2.1",
+      "name": "Version 0.2.1",
+      "published_at": "2023-02-12T22:30:36Z",
+      "html_url": "https://github.com/holgern/pynostr/releases/tag/v0.2.1",
+      "prerelease": false,
+      "draft": false
+    }
+  ],
+  "cnixbtc/NostrKit": [
+    {
+      "id": 81850958,
+      "tag_name": "v1.0.0",
+      "name": "v1.0.0",
+      "published_at": "2022-11-02T17:34:56Z",
+      "html_url": "https://github.com/cnixbtc/NostrKit/releases/tag/v1.0.0",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "id": 81488696,
+      "tag_name": "v0.1.1",
+      "name": "v0.1.1",
+      "published_at": "2022-10-30T13:33:05Z",
+      "html_url": "https://github.com/cnixbtc/NostrKit/releases/tag/v0.1.1",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "id": 78133135,
+      "tag_name": "v0.1.0",
+      "name": "v0.1.0 \u2014 Let's go!",
+      "published_at": "2022-09-26T12:23:36Z",
+      "html_url": "https://github.com/cnixbtc/NostrKit/releases/tag/v0.1.0",
+      "prerelease": false,
+      "draft": false
+    }
+  ],
+  "tcheeric/nostr-java": [
+    {
+      "id": 254227736,
+      "tag_name": "v1.0.1",
+      "name": "1.0.1",
+      "published_at": "2025-10-14T02:06:11Z",
+      "html_url": "https://github.com/tcheeric/nostr-java/releases/tag/v1.0.1",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "id": 254217226,
+      "tag_name": "v1.0.0",
+      "name": "v1.0.0",
+      "published_at": "2025-10-14T00:54:17Z",
+      "html_url": "https://github.com/tcheeric/nostr-java/releases/tag/v1.0.0",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "id": 252289062,
+      "tag_name": "v0.5.1",
+      "name": "v0.5.1",
+      "published_at": "2025-10-05T23:55:08Z",
+      "html_url": "https://github.com/tcheeric/nostr-java/releases/tag/v0.5.1",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "id": 240468812,
+      "tag_name": "v0.2.2",
+      "name": "v0.2.2",
+      "published_at": "2025-08-17T21:27:27Z",
+      "html_url": "https://github.com/tcheeric/nostr-java/releases/tag/v0.2.2",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "id": 239214947,
+      "tag_name": "v0.2.0",
+      "name": "v0.2.0",
+      "published_at": "2025-08-12T00:31:35Z",
+      "html_url": "https://github.com/tcheeric/nostr-java/releases/tag/v0.2.0",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "id": 239504585,
+      "tag_name": "v.0.2.1.1",
+      "name": "v.0.2.1.1",
+      "published_at": "2025-08-12T22:07:19Z",
+      "html_url": "https://github.com/tcheeric/nostr-java/releases/tag/v.0.2.1.1",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "id": 239500495,
+      "tag_name": "v.0.2.1",
+      "name": "v.0.2.1",
+      "published_at": "2025-08-12T21:38:30Z",
+      "html_url": "https://github.com/tcheeric/nostr-java/releases/tag/v.0.2.1",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "id": 239508180,
+      "tag_name": "v.0.2.1.2",
+      "name": "v.0.2.1.2",
+      "published_at": "2025-08-12T22:25:27Z",
+      "html_url": "https://github.com/tcheeric/nostr-java/releases/tag/v.0.2.1.2",
+      "prerelease": true,
+      "draft": false
+    },
+    {
+      "id": 236786993,
+      "tag_name": "v0.1.0",
+      "name": "v0.1.0",
+      "published_at": "2025-08-01T06:37:16Z",
+      "html_url": "https://github.com/tcheeric/nostr-java/releases/tag/v0.1.0",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "id": 182097558,
+      "tag_name": "v0.007.1-alpha",
+      "name": "v0.007.1-alpha",
+      "published_at": "2024-10-26T22:12:30Z",
+      "html_url": "https://github.com/tcheeric/nostr-java/releases/tag/v0.007.1-alpha",
+      "prerelease": false,
+      "draft": false
+    }
+  ],
+  "ethicnology/dart-nostr": [
+    {
+      "id": 133491176,
+      "tag_name": "v1.5.0",
+      "name": "dart-nostr v1.5.0",
+      "published_at": "2023-12-11T23:13:30Z",
+      "html_url": "https://github.com/ethicnology/dart-nostr/releases/tag/v1.5.0",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "id": 130756700,
+      "tag_name": "v1.4.3",
+      "name": "dart-nostr v1.4.3",
+      "published_at": "2023-11-21T19:45:04Z",
+      "html_url": "https://github.com/ethicnology/dart-nostr/releases/tag/v1.4.3",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "id": 125179719,
+      "tag_name": "v1.4.2",
+      "name": "dart-nostr v1.4.2",
+      "published_at": "2023-10-16T07:47:08Z",
+      "html_url": "https://github.com/ethicnology/dart-nostr/releases/tag/v1.4.2",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "id": 119655577,
+      "tag_name": "v1.4.1",
+      "name": "dart-nostr v1.4.1",
+      "published_at": "2023-09-01T22:38:49Z",
+      "html_url": "https://github.com/ethicnology/dart-nostr/releases/tag/v1.4.1",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "id": 104315684,
+      "tag_name": "v1.4.0",
+      "name": "dart-nostr v1.4.0",
+      "published_at": "2023-05-25T20:17:17Z",
+      "html_url": "https://github.com/ethicnology/dart-nostr/releases/tag/v1.4.0",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "id": 92307726,
+      "tag_name": "v1.3.4",
+      "name": "dart-nostr v1.3.4",
+      "published_at": "2023-02-14T07:07:56Z",
+      "html_url": "https://github.com/ethicnology/dart-nostr/releases/tag/v1.3.4",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "id": 92073154,
+      "tag_name": "v1.3.3",
+      "name": "dart-nostr v1.3.3",
+      "published_at": "2023-02-10T20:52:36Z",
+      "html_url": "https://github.com/ethicnology/dart-nostr/releases/tag/v1.3.3",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "id": 90610527,
+      "tag_name": "v1.3.2",
+      "name": "dart-nostr v1.3.2",
+      "published_at": "2023-01-29T20:23:03Z",
+      "html_url": "https://github.com/ethicnology/dart-nostr/releases/tag/v1.3.2",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "id": 90483046,
+      "tag_name": "v1.3.1",
+      "name": "dart-nostr v1.3.1",
+      "published_at": "2023-01-27T22:05:03Z",
+      "html_url": "https://github.com/ethicnology/dart-nostr/releases/tag/v1.3.1",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "id": 89964695,
+      "tag_name": "v1.3.0",
+      "name": "nostr 1.3.0",
+      "published_at": "2023-01-23T20:26:32Z",
+      "html_url": "https://github.com/ethicnology/dart-nostr/releases/tag/v1.3.0",
+      "prerelease": false,
+      "draft": false
+    }
+  ],
+  "getAlby/hub": [
+    {
+      "id": 264223371,
+      "tag_name": "v1.21.0",
+      "name": "v1.21.0 Satoshi Nakamoto",
+      "published_at": "2025-11-21T16:22:12Z",
+      "html_url": "https://github.com/getAlby/hub/releases/tag/v1.21.0",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "id": 249735528,
+      "tag_name": "v1.20.0",
+      "name": "v1.20.0 Robert Hettinga",
+      "published_at": "2025-09-25T05:52:51Z",
+      "html_url": "https://github.com/getAlby/hub/releases/tag/v1.20.0",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "id": 243630215,
+      "tag_name": "v1.19.3",
+      "name": "v1.19.3 Nadia Heninger",
+      "published_at": "2025-08-30T06:04:36Z",
+      "html_url": "https://github.com/getAlby/hub/releases/tag/v1.19.3",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "id": 243433602,
+      "tag_name": "v1.19.2",
+      "name": "v1.19.2 Nadia Heninger",
+      "published_at": "2025-08-29T11:29:12Z",
+      "html_url": "https://github.com/getAlby/hub/releases/tag/v1.19.2",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "id": 243370210,
+      "tag_name": "v1.19.1",
+      "name": "v1.19.1 Nadia Heninger",
+      "published_at": "2025-08-29T05:25:40Z",
+      "html_url": "https://github.com/getAlby/hub/releases/tag/v1.19.1",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "id": 236487309,
+      "tag_name": "v1.18.5",
+      "name": "v1.18.5 Johan Helsingius",
+      "published_at": "2025-07-31T08:20:47Z",
+      "html_url": "https://github.com/getAlby/hub/releases/tag/v1.18.5",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "id": 235533919,
+      "tag_name": "v1.18.4",
+      "name": "v1.18.4 Johan Helsingius",
+      "published_at": "2025-07-28T13:41:33Z",
+      "html_url": "https://github.com/getAlby/hub/releases/tag/v1.18.4",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "id": 233981022,
+      "tag_name": "v1.18.3",
+      "name": "v1.18.3  Johan Helsingius",
+      "published_at": "2025-07-21T17:57:48Z",
+      "html_url": "https://github.com/getAlby/hub/releases/tag/v1.18.3",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "id": 232415974,
+      "tag_name": "v1.18.2",
+      "name": "v1.18.2 Johan Helsingius",
+      "published_at": "2025-07-15T07:14:31Z",
+      "html_url": "https://github.com/getAlby/hub/releases/tag/v1.18.2",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "id": 220838692,
+      "tag_name": "v1.17.2",
+      "name": "v1.17.2 Sean Hastings",
+      "published_at": "2025-05-25T09:14:57Z",
+      "html_url": "https://github.com/getAlby/hub/releases/tag/v1.17.2",
+      "prerelease": false,
+      "draft": false
+    }
+  ],
+  "ZeusLN/zeus": [
+    {
+      "id": 266059644,
+      "tag_name": "v0.12.0-alpha4",
+      "name": "v0.12.0-alpha4",
+      "published_at": "2025-11-28T19:32:58Z",
+      "html_url": "https://github.com/ZeusLN/zeus/releases/tag/v0.12.0-alpha4",
+      "prerelease": true,
+      "draft": false
+    },
+    {
+      "id": 262516390,
+      "tag_name": "v0.12.0-alpha3",
+      "name": "v0.12.0-alpha3",
+      "published_at": "2025-11-14T18:45:16Z",
+      "html_url": "https://github.com/ZeusLN/zeus/releases/tag/v0.12.0-alpha3",
+      "prerelease": true,
+      "draft": false
+    },
+    {
+      "id": 261156456,
+      "tag_name": "v0.12.0-alpha2",
+      "name": "v0.12.0-alpha2",
+      "published_at": "2025-11-10T17:27:03Z",
+      "html_url": "https://github.com/ZeusLN/zeus/releases/tag/v0.12.0-alpha2",
+      "prerelease": true,
+      "draft": false
+    },
+    {
+      "id": 257112443,
+      "tag_name": "v0.12.0-alpha1",
+      "name": "v0.12.0-alpha1",
+      "published_at": "2025-10-24T20:07:02Z",
+      "html_url": "https://github.com/ZeusLN/zeus/releases/tag/v0.12.0-alpha1",
+      "prerelease": true,
+      "draft": false
+    },
+    {
+      "id": 254561158,
+      "tag_name": "v0.11.6",
+      "name": "v0.11.6",
+      "published_at": "2025-10-15T12:45:31Z",
+      "html_url": "https://github.com/ZeusLN/zeus/releases/tag/v0.11.6",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "id": 254102243,
+      "tag_name": "v0.11.6-rc1",
+      "name": "v0.11.6-rc1",
+      "published_at": "2025-10-13T15:01:22Z",
+      "html_url": "https://github.com/ZeusLN/zeus/releases/tag/v0.11.6-rc1",
+      "prerelease": true,
+      "draft": false
+    },
+    {
+      "id": 253765804,
+      "tag_name": "v0.11.6-beta1",
+      "name": "v0.11.6-beta1",
+      "published_at": "2025-10-11T13:31:34Z",
+      "html_url": "https://github.com/ZeusLN/zeus/releases/tag/v0.11.6-beta1",
+      "prerelease": true,
+      "draft": false
+    },
+    {
+      "id": 252379031,
+      "tag_name": "v0.11.6-alpha1",
+      "name": "v0.11.6-alpha1",
+      "published_at": "2025-10-06T11:26:12Z",
+      "html_url": "https://github.com/ZeusLN/zeus/releases/tag/v0.11.6-alpha1",
+      "prerelease": true,
+      "draft": false
+    },
+    {
+      "id": 251531093,
+      "tag_name": "v0.11.5",
+      "name": "v0.11.5",
+      "published_at": "2025-10-02T09:12:24Z",
+      "html_url": "https://github.com/ZeusLN/zeus/releases/tag/v0.11.5",
+      "prerelease": false,
+      "draft": false
+    },
+    {
+      "id": 250497980,
+      "tag_name": "v0.11.5-rc1",
+      "name": "v0.11.5-rc1",
+      "published_at": "2025-09-27T13:37:48Z",
+      "html_url": "https://github.com/ZeusLN/zeus/releases/tag/v0.11.5-rc1",
+      "prerelease": true,
+      "draft": false
+    }
+  ],
+  "hzrd149/blossom": [],
+  "nostr-protocol/nips": []
 }

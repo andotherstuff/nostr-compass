@@ -1,78 +1,294 @@
 {
-  "generated_at": "2025-12-10T08:29:57.331584+00:00",
-  "previous_run": "2025-12-10T08:24:27.690956+00:00",
+  "generated_at": "2025-12-10T09:41:33.672714+00:00",
+  "previous_run": "2025-12-10T08:29:57.335566+00:00",
   "releases": {
-    "marmot-protocol/whitenoise": {
+    "fiatjaf/nak": {
       "added": [
         {
-          "id": 238764913,
-          "tag_name": "v0.1.3",
-          "name": "v0.1.3",
-          "published_at": "2025-08-09T15:24:38Z",
-          "html_url": "https://github.com/marmot-protocol/whitenoise/releases/tag/v0.1.3",
+          "id": 265399840,
+          "tag_name": "v0.17.1",
+          "name": "v0.17.1",
+          "published_at": "2025-11-26T10:10:17Z",
+          "html_url": "https://github.com/fiatjaf/nak/releases/tag/v0.17.1",
           "prerelease": false,
           "draft": false
         },
         {
-          "id": 260306677,
-          "tag_name": "v0.2.0+7",
-          "name": "v0.2.0",
-          "published_at": "2025-11-10T09:43:39Z",
-          "html_url": "https://github.com/marmot-protocol/whitenoise/releases/tag/v0.2.0%2B7",
+          "id": 245541112,
+          "tag_name": "v0.16.2",
+          "name": "v0.16.2",
+          "published_at": "2025-09-08T14:11:50Z",
+          "html_url": "https://github.com/fiatjaf/nak/releases/tag/v0.16.2",
           "prerelease": false,
           "draft": false
         },
         {
-          "id": 232408038,
-          "tag_name": "v0.1.2",
-          "name": "v0.1.2",
-          "published_at": "2025-07-15T05:58:50Z",
-          "html_url": "https://github.com/marmot-protocol/whitenoise/releases/tag/v0.1.2",
+          "id": 243576388,
+          "tag_name": "v0.15.4",
+          "name": "v0.15.4",
+          "published_at": "2025-08-29T19:26:27Z",
+          "html_url": "https://github.com/fiatjaf/nak/releases/tag/v0.15.4",
           "prerelease": false,
           "draft": false
         },
         {
-          "id": 264636870,
-          "tag_name": "v0.2.1+14",
-          "name": "v0.2.1",
-          "published_at": "2025-11-23T18:52:14Z",
-          "html_url": "https://github.com/marmot-protocol/whitenoise/releases/tag/v0.2.1%2B14",
+          "id": 265303430,
+          "tag_name": "v0.17.0",
+          "name": "v0.17.0",
+          "published_at": "2025-11-25T23:54:02Z",
+          "html_url": "https://github.com/fiatjaf/nak/releases/tag/v0.17.0",
           "prerelease": false,
           "draft": false
         },
         {
-          "id": 231244536,
-          "tag_name": "v0.1.0",
-          "name": "v0.1.0",
-          "published_at": "2025-07-09T18:47:44Z",
-          "html_url": "https://github.com/marmot-protocol/whitenoise/releases/tag/v0.1.0",
+          "id": 240743560,
+          "tag_name": "v0.15.3",
+          "name": "v0.15.3",
+          "published_at": "2025-08-19T00:02:12Z",
+          "html_url": "https://github.com/fiatjaf/nak/releases/tag/v0.15.3",
           "prerelease": false,
           "draft": false
         },
         {
-          "id": 231614729,
-          "tag_name": "v0.1.1",
-          "name": "v0.1.1",
-          "published_at": "2025-07-10T21:52:28Z",
-          "html_url": "https://github.com/marmot-protocol/whitenoise/releases/tag/v0.1.1",
+          "id": 229208617,
+          "tag_name": "v0.15.1",
+          "name": "v0.15.1",
+          "published_at": "2025-07-01T18:53:11Z",
+          "html_url": "https://github.com/fiatjaf/nak/releases/tag/v0.15.1",
           "prerelease": false,
           "draft": false
         },
         {
-          "id": 249283983,
-          "tag_name": "v0.1.4",
-          "name": "v0.1.4",
-          "published_at": "2025-09-23T14:02:46Z",
-          "html_url": "https://github.com/marmot-protocol/whitenoise/releases/tag/v0.1.4",
+          "id": 245172746,
+          "tag_name": "v0.16.0",
+          "name": "v0.16.0",
+          "published_at": "2025-09-05T20:14:04Z",
+          "html_url": "https://github.com/fiatjaf/nak/releases/tag/v0.16.0",
+          "prerelease": false,
+          "draft": false
+        },
+        {
+          "id": 233341835,
+          "tag_name": "v0.15.2",
+          "name": "v0.15.2",
+          "published_at": "2025-07-17T23:01:07Z",
+          "html_url": "https://github.com/fiatjaf/nak/releases/tag/v0.15.2",
+          "prerelease": false,
+          "draft": false
+        },
+        {
+          "id": 266560981,
+          "tag_name": "v0.17.2",
+          "name": "v0.17.2",
+          "published_at": "2025-12-02T00:16:30Z",
+          "html_url": "https://github.com/fiatjaf/nak/releases/tag/v0.17.2",
+          "prerelease": false,
+          "draft": false
+        },
+        {
+          "id": 245261912,
+          "tag_name": "v0.16.1",
+          "name": "v0.16.1",
+          "published_at": "2025-09-06T10:39:42Z",
+          "html_url": "https://github.com/fiatjaf/nak/releases/tag/v0.16.1",
           "prerelease": false,
           "draft": false
         }
       ],
       "removed": []
     },
+    "nostrability/schemata": {
+      "added": [
+        {
+          "id": 245790080,
+          "tag_name": "v0.1.2",
+          "name": "v0.1.2",
+          "published_at": "2025-09-09T10:18:58Z",
+          "html_url": "https://github.com/nostrability/schemata/releases/tag/v0.1.2",
+          "prerelease": false,
+          "draft": false
+        },
+        {
+          "id": 253517953,
+          "tag_name": "v0.2.2",
+          "name": "v0.2.2 - git, reactions, nutzaps, mip-00, nip-78",
+          "published_at": "2025-10-10T02:42:28Z",
+          "html_url": "https://github.com/nostrability/schemata/releases/tag/v0.2.2",
+          "prerelease": false,
+          "draft": false
+        },
+        {
+          "id": 245856932,
+          "tag_name": "v0.1.5",
+          "name": "v0.1.5",
+          "published_at": "2025-09-09T14:01:57Z",
+          "html_url": "https://github.com/nostrability/schemata/releases/tag/v0.1.5",
+          "prerelease": false,
+          "draft": false
+        },
+        {
+          "id": 245845246,
+          "tag_name": "v0.1.4",
+          "name": "v0.1.4",
+          "published_at": "2025-09-09T13:27:44Z",
+          "html_url": "https://github.com/nostrability/schemata/releases/tag/v0.1.4",
+          "prerelease": false,
+          "draft": false
+        },
+        {
+          "id": 229567022,
+          "tag_name": "v0.1.1",
+          "name": "v0.1.1",
+          "published_at": "2025-07-02T23:43:13Z",
+          "html_url": "https://github.com/nostrability/schemata/releases/tag/v0.1.1",
+          "prerelease": false,
+          "draft": false
+        },
+        {
+          "id": 251214223,
+          "tag_name": "v0.1.7",
+          "name": "v0.1.7",
+          "published_at": "2025-09-30T18:32:24Z",
+          "html_url": "https://github.com/nostrability/schemata/releases/tag/v0.1.7",
+          "prerelease": false,
+          "draft": false
+        },
+        {
+          "id": 252910899,
+          "tag_name": "v0.2",
+          "name": "v0.2",
+          "published_at": "2025-10-08T05:29:47Z",
+          "html_url": "https://github.com/nostrability/schemata/releases/tag/v0.2",
+          "prerelease": false,
+          "draft": false
+        },
+        {
+          "id": 245809943,
+          "tag_name": "v0.1.3",
+          "name": "v0.1.3",
+          "published_at": "2025-09-09T11:33:46Z",
+          "html_url": "https://github.com/nostrability/schemata/releases/tag/v0.1.3",
+          "prerelease": false,
+          "draft": false
+        },
+        {
+          "id": 246577880,
+          "tag_name": "v0.1.6",
+          "name": "v0.1.6",
+          "published_at": "2025-09-11T18:18:12Z",
+          "html_url": "https://github.com/nostrability/schemata/releases/tag/v0.1.6",
+          "prerelease": false,
+          "draft": false
+        },
+        {
+          "id": 253420414,
+          "tag_name": "v0.2.1",
+          "name": "v0.2.1",
+          "published_at": "2025-10-09T17:22:04Z",
+          "html_url": "https://github.com/nostrability/schemata/releases/tag/v0.2.1",
+          "prerelease": false,
+          "draft": false
+        }
+      ],
+      "removed": []
+    },
+    "greenart7c3/amber": {
+      "added": [
+        {
+          "id": 247921953,
+          "tag_name": "v4.0.2-pre1",
+          "name": "Release v4.0.2-pre1",
+          "published_at": "2025-09-17T10:41:50Z",
+          "html_url": "https://github.com/greenart7c3/Amber/releases/tag/v4.0.2-pre1",
+          "prerelease": true,
+          "draft": false
+        },
+        {
+          "id": 241783493,
+          "tag_name": "v4.0.0-pre1",
+          "name": "Release v4.0.0-pre1",
+          "published_at": "2025-08-22T10:23:09Z",
+          "html_url": "https://github.com/greenart7c3/Amber/releases/tag/v4.0.0-pre1",
+          "prerelease": true,
+          "draft": false
+        },
+        {
+          "id": 245488936,
+          "tag_name": "v4.0.1-pre1",
+          "name": "Release v4.0.1-pre1",
+          "published_at": "2025-09-08T11:13:35Z",
+          "html_url": "https://github.com/greenart7c3/Amber/releases/tag/v4.0.1-pre1",
+          "prerelease": true,
+          "draft": false
+        },
+        {
+          "id": 246134314,
+          "tag_name": "v4.0.1",
+          "name": "Release v4.0.1",
+          "published_at": "2025-09-10T11:01:26Z",
+          "html_url": "https://github.com/greenart7c3/Amber/releases/tag/v4.0.1",
+          "prerelease": false,
+          "draft": false
+        },
+        {
+          "id": 243491851,
+          "tag_name": "v4.0.0",
+          "name": "Release v4.0.0",
+          "published_at": "2025-08-29T14:11:22Z",
+          "html_url": "https://github.com/greenart7c3/Amber/releases/tag/v4.0.0",
+          "prerelease": false,
+          "draft": false
+        },
+        {
+          "id": 267697133,
+          "tag_name": "v4.0.3-pre2",
+          "name": "Release v4.0.3-pre2",
+          "published_at": "2025-12-05T09:22:35Z",
+          "html_url": "https://github.com/greenart7c3/Amber/releases/tag/v4.0.3-pre2",
+          "prerelease": true,
+          "draft": false
+        },
+        {
+          "id": 268302613,
+          "tag_name": "v4.0.3",
+          "name": "Release v4.0.3",
+          "published_at": "2025-12-08T11:52:04Z",
+          "html_url": "https://github.com/greenart7c3/Amber/releases/tag/v4.0.3",
+          "prerelease": false,
+          "draft": false
+        },
+        {
+          "id": 242850582,
+          "tag_name": "v4.0.0-pre2",
+          "name": "Release v4.0.0-pre2",
+          "published_at": "2025-08-27T12:15:18Z",
+          "html_url": "https://github.com/greenart7c3/Amber/releases/tag/v4.0.0-pre2",
+          "prerelease": true,
+          "draft": false
+        },
+        {
+          "id": 248639067,
+          "tag_name": "v4.0.2",
+          "name": "Release v4.0.2",
+          "published_at": "2025-09-19T14:59:49Z",
+          "html_url": "https://github.com/greenart7c3/Amber/releases/tag/v4.0.2",
+          "prerelease": false,
+          "draft": false
+        },
+        {
+          "id": 265579966,
+          "tag_name": "v4.0.3-pre1",
+          "name": "Release v4.0.3-pre1",
+          "published_at": "2025-11-26T20:30:46Z",
+          "html_url": "https://github.com/greenart7c3/Amber/releases/tag/v4.0.3-pre1",
+          "prerelease": true,
+          "draft": false
+        }
+      ],
+      "removed": []
+    },
     "getAlby/lightning-browser-extension": {
-      "added": [],
-      "removed": [
+      "added": [
         {
           "id": 260567681,
           "tag_name": "v3.14.0",
@@ -163,11 +379,11 @@
           "prerelease": false,
           "draft": false
         }
-      ]
+      ],
+      "removed": []
     },
     "haorendashu/nowser": {
-      "added": [],
-      "removed": [
+      "added": [
         {
           "id": 181978662,
           "tag_name": "0.0.2",
@@ -249,11 +465,11 @@
           "prerelease": false,
           "draft": false
         }
-      ]
+      ],
+      "removed": []
     },
     "susumuota/nostr-keyx": {
-      "added": [],
-      "removed": [
+      "added": [
         {
           "id": 92244704,
           "tag_name": "v1.0.0",
@@ -317,11 +533,11 @@
           "prerelease": false,
           "draft": false
         }
-      ]
+      ],
+      "removed": []
     },
     "Cameri/nostream": {
-      "added": [],
-      "removed": [
+      "added": [
         {
           "id": 103025734,
           "tag_name": "v1.24.0",
@@ -412,11 +628,11 @@
           "prerelease": false,
           "draft": false
         }
-      ]
+      ],
+      "removed": []
     },
     "0ceanslim/grain": {
-      "added": [],
-      "removed": [
+      "added": [
         {
           "id": 232651078,
           "tag_name": "v0.4.1",
@@ -507,500 +723,11 @@
           "prerelease": false,
           "draft": false
         }
-      ]
-    },
-    "bitvora/haven": {
-      "added": [],
-      "removed": [
-        {
-          "id": 197246594,
-          "tag_name": "v1.0.4",
-          "name": "v1.0.4",
-          "published_at": "2025-01-28T21:34:13Z",
-          "html_url": "https://github.com/bitvora/haven/releases/tag/v1.0.4",
-          "prerelease": false,
-          "draft": false
-        },
-        {
-          "id": 199222629,
-          "tag_name": "v1.0.5",
-          "name": "v1.0.5",
-          "published_at": "2025-02-09T02:22:23Z",
-          "html_url": "https://github.com/bitvora/haven/releases/tag/v1.0.5",
-          "prerelease": false,
-          "draft": false
-        },
-        {
-          "id": 177191782,
-          "tag_name": "v0.2.2",
-          "name": "v0.2.2",
-          "published_at": "2024-09-27T01:22:50Z",
-          "html_url": "https://github.com/bitvora/haven/releases/tag/v0.2.2",
-          "prerelease": false,
-          "draft": false
-        },
-        {
-          "id": 235033675,
-          "tag_name": "v1.0.6",
-          "name": "v1.0.6",
-          "published_at": "2025-07-24T23:02:51Z",
-          "html_url": "https://github.com/bitvora/haven/releases/tag/v1.0.6",
-          "prerelease": false,
-          "draft": false
-        },
-        {
-          "id": 240724300,
-          "tag_name": "v1.1.0",
-          "name": "v1.1.0",
-          "published_at": "2025-08-18T21:11:54Z",
-          "html_url": "https://github.com/bitvora/haven/releases/tag/v1.1.0",
-          "prerelease": false,
-          "draft": false
-        },
-        {
-          "id": 182577007,
-          "tag_name": "v1.0.0",
-          "name": "v1.0.0",
-          "published_at": "2024-10-29T23:08:48Z",
-          "html_url": "https://github.com/bitvora/haven/releases/tag/v1.0.0",
-          "prerelease": false,
-          "draft": false
-        },
-        {
-          "id": 192109330,
-          "tag_name": "v1.0.3",
-          "name": "v1.0.3",
-          "published_at": "2024-12-23T13:49:59Z",
-          "html_url": "https://github.com/bitvora/haven/releases/tag/v1.0.3",
-          "prerelease": false,
-          "draft": false
-        },
-        {
-          "id": 178929688,
-          "tag_name": "v0.2.3",
-          "name": "v0.2.3",
-          "published_at": "2024-10-08T15:19:02Z",
-          "html_url": "https://github.com/bitvora/haven/releases/tag/v0.2.3",
-          "prerelease": false,
-          "draft": false
-        },
-        {
-          "id": 176908443,
-          "tag_name": "v0.2.1",
-          "name": "v0.2.1",
-          "published_at": "2024-09-25T17:58:58Z",
-          "html_url": "https://github.com/bitvora/haven/releases/tag/v0.2.1",
-          "prerelease": false,
-          "draft": false
-        },
-        {
-          "id": 179146141,
-          "tag_name": "v0.4.1",
-          "name": "v0.4.1",
-          "published_at": "2024-10-09T15:50:44Z",
-          "html_url": "https://github.com/bitvora/haven/releases/tag/v0.4.1",
-          "prerelease": false,
-          "draft": false
-        }
-      ]
-    },
-    "greenart7c3/Citrine": {
-      "added": [],
-      "removed": [
-        {
-          "id": 196130339,
-          "tag_name": "v0.7.1",
-          "name": "Release v0.7.1",
-          "published_at": "2025-01-22T16:20:33Z",
-          "html_url": "https://github.com/greenart7c3/Citrine/releases/tag/v0.7.1",
-          "prerelease": false,
-          "draft": false
-        },
-        {
-          "id": 259912967,
-          "tag_name": "v0.9.0-pre1",
-          "name": "Release v0.9.0-pre1",
-          "published_at": "2025-11-05T13:30:16Z",
-          "html_url": "https://github.com/greenart7c3/Citrine/releases/tag/v0.9.0-pre1",
-          "prerelease": true,
-          "draft": false
-        },
-        {
-          "id": 240688872,
-          "tag_name": "v0.8.2",
-          "name": "Release v0.8.2",
-          "published_at": "2025-08-18T18:25:26Z",
-          "html_url": "https://github.com/greenart7c3/Citrine/releases/tag/v0.8.2",
-          "prerelease": false,
-          "draft": false
-        },
-        {
-          "id": 206354587,
-          "tag_name": "v0.7.2",
-          "name": "Release v0.7.2",
-          "published_at": "2025-03-17T20:36:29Z",
-          "html_url": "https://github.com/greenart7c3/Citrine/releases/tag/v0.7.2",
-          "prerelease": false,
-          "draft": false
-        },
-        {
-          "id": 214189486,
-          "tag_name": "v0.7.4",
-          "name": "Release v0.7.4",
-          "published_at": "2025-04-23T11:14:52Z",
-          "html_url": "https://github.com/greenart7c3/Citrine/releases/tag/v0.7.4",
-          "prerelease": false,
-          "draft": false
-        },
-        {
-          "id": 263048272,
-          "tag_name": "v0.9.0",
-          "name": "Release v0.9.0",
-          "published_at": "2025-11-17T17:37:58Z",
-          "html_url": "https://github.com/greenart7c3/Citrine/releases/tag/v0.9.0",
-          "prerelease": false,
-          "draft": false
-        },
-        {
-          "id": 225645235,
-          "tag_name": "v0.8.1",
-          "name": "Release v0.8.1",
-          "published_at": "2025-06-16T17:57:57Z",
-          "html_url": "https://github.com/greenart7c3/Citrine/releases/tag/v0.8.1",
-          "prerelease": false,
-          "draft": false
-        },
-        {
-          "id": 209938008,
-          "tag_name": "v0.7.3",
-          "name": "Release v0.7.3",
-          "published_at": "2025-04-02T19:23:04Z",
-          "html_url": "https://github.com/greenart7c3/Citrine/releases/tag/v0.7.3",
-          "prerelease": false,
-          "draft": false
-        },
-        {
-          "id": 218079003,
-          "tag_name": "v0.8.0",
-          "name": "Release v0.8.0",
-          "published_at": "2025-05-12T19:04:36Z",
-          "html_url": "https://github.com/greenart7c3/Citrine/releases/tag/v0.8.0",
-          "prerelease": false,
-          "draft": false
-        },
-        {
-          "id": 193369949,
-          "tag_name": "v0.7.0",
-          "name": "Release v0.7.0",
-          "published_at": "2025-01-06T19:43:38Z",
-          "html_url": "https://github.com/greenart7c3/Citrine/releases/tag/v0.7.0",
-          "prerelease": false,
-          "draft": false
-        }
-      ]
-    },
-    "bitvora/wot-relay": {
-      "added": [],
-      "removed": [
-        {
-          "id": 225651168,
-          "tag_name": "v0.1.18",
-          "name": "v0.1.18",
-          "published_at": "2025-06-16T18:26:53Z",
-          "html_url": "https://github.com/bitvora/wot-relay/releases/tag/v0.1.18",
-          "prerelease": false,
-          "draft": false
-        },
-        {
-          "id": 175922822,
-          "tag_name": "v0.1.11",
-          "name": "v0.1.11",
-          "published_at": "2024-09-19T15:21:03Z",
-          "html_url": "https://github.com/bitvora/wot-relay/releases/tag/v0.1.11",
-          "prerelease": false,
-          "draft": false
-        },
-        {
-          "id": 187432199,
-          "tag_name": "v0.1.14",
-          "name": "v0.1.14",
-          "published_at": "2024-11-26T01:08:04Z",
-          "html_url": "https://github.com/bitvora/wot-relay/releases/tag/v0.1.14",
-          "prerelease": false,
-          "draft": false
-        },
-        {
-          "id": 175347080,
-          "tag_name": "v0.1.10",
-          "name": "v0.1.10",
-          "published_at": "2024-09-17T01:55:11Z",
-          "html_url": "https://github.com/bitvora/wot-relay/releases/tag/v0.1.10",
-          "prerelease": false,
-          "draft": false
-        },
-        {
-          "id": 193176685,
-          "tag_name": "v0.1.16",
-          "name": "v0.1.16",
-          "published_at": "2025-01-04T21:09:42Z",
-          "html_url": "https://github.com/bitvora/wot-relay/releases/tag/v0.1.16",
-          "prerelease": false,
-          "draft": false
-        },
-        {
-          "id": 192109805,
-          "tag_name": "v0.1.15",
-          "name": "v0.1.15",
-          "published_at": "2024-12-23T13:53:27Z",
-          "html_url": "https://github.com/bitvora/wot-relay/releases/tag/v0.1.15",
-          "prerelease": false,
-          "draft": false
-        },
-        {
-          "id": 178924687,
-          "tag_name": "v0.1.13",
-          "name": "v0.1.13",
-          "published_at": "2024-10-08T14:57:24Z",
-          "html_url": "https://github.com/bitvora/wot-relay/releases/tag/v0.1.13",
-          "prerelease": false,
-          "draft": false
-        },
-        {
-          "id": 225436337,
-          "tag_name": "v0.1.17",
-          "name": "v0.1.17",
-          "published_at": "2025-06-16T02:01:51Z",
-          "html_url": "https://github.com/bitvora/wot-relay/releases/tag/v0.1.17",
-          "prerelease": false,
-          "draft": false
-        },
-        {
-          "id": 174949747,
-          "tag_name": "v0.1.9",
-          "name": "v0.1.9",
-          "published_at": "2024-09-13T12:27:42Z",
-          "html_url": "https://github.com/bitvora/wot-relay/releases/tag/v0.1.9",
-          "prerelease": false,
-          "draft": false
-        },
-        {
-          "id": 176289053,
-          "tag_name": "v0.1.12",
-          "name": "v0.1.12",
-          "published_at": "2024-09-22T18:25:41Z",
-          "html_url": "https://github.com/bitvora/wot-relay/releases/tag/v0.1.12",
-          "prerelease": false,
-          "draft": false
-        }
-      ]
-    },
-    "nbd-wtf/nostr-tools": {
-      "added": [],
-      "removed": [
-        {
-          "id": 134513726,
-          "tag_name": "v2.0.0",
-          "name": "v2.0.0",
-          "published_at": "2023-12-19T17:33:31Z",
-          "html_url": "https://github.com/nbd-wtf/nostr-tools/releases/tag/v2.0.0",
-          "prerelease": false,
-          "draft": false
-        }
-      ]
-    },
-    "hzrd149/applesauce": {
-      "added": [],
-      "removed": [
-        {
-          "id": 254954435,
-          "tag_name": "applesauce-relay@4.1.0",
-          "name": "applesauce-relay@4.1.0",
-          "published_at": "2025-10-16T10:11:10Z",
-          "html_url": "https://github.com/hzrd149/applesauce/releases/tag/applesauce-relay%404.1.0",
-          "prerelease": false,
-          "draft": false
-        },
-        {
-          "id": 254954407,
-          "tag_name": "applesauce-extra@4.1.0",
-          "name": "applesauce-extra@4.1.0",
-          "published_at": "2025-10-16T10:11:04Z",
-          "html_url": "https://github.com/hzrd149/applesauce/releases/tag/applesauce-extra%404.1.0",
-          "prerelease": false,
-          "draft": false
-        },
-        {
-          "id": 263044937,
-          "tag_name": "applesauce-relay@4.4.2",
-          "name": "applesauce-relay@4.4.2",
-          "published_at": "2025-11-17T17:25:57Z",
-          "html_url": "https://github.com/hzrd149/applesauce/releases/tag/applesauce-relay%404.4.2",
-          "prerelease": false,
-          "draft": false
-        },
-        {
-          "id": 254954446,
-          "tag_name": "applesauce-signers@4.1.0",
-          "name": "applesauce-signers@4.1.0",
-          "published_at": "2025-10-16T10:11:13Z",
-          "html_url": "https://github.com/hzrd149/applesauce/releases/tag/applesauce-signers%404.1.0",
-          "prerelease": false,
-          "draft": false
-        },
-        {
-          "id": 263018033,
-          "tag_name": "applesauce-core@4.4.1",
-          "name": "applesauce-core@4.4.1",
-          "published_at": "2025-11-17T15:58:08Z",
-          "html_url": "https://github.com/hzrd149/applesauce/releases/tag/applesauce-core%404.4.1",
-          "prerelease": false,
-          "draft": false
-        },
-        {
-          "id": 254954322,
-          "tag_name": "applesauce-wallet-connect@4.1.0",
-          "name": "applesauce-wallet-connect@4.1.0",
-          "published_at": "2025-10-16T10:10:55Z",
-          "html_url": "https://github.com/hzrd149/applesauce/releases/tag/applesauce-wallet-connect%404.1.0",
-          "prerelease": false,
-          "draft": false
-        },
-        {
-          "id": 254954354,
-          "tag_name": "applesauce-accounts@4.1.0",
-          "name": "applesauce-accounts@4.1.0",
-          "published_at": "2025-10-16T10:11:01Z",
-          "html_url": "https://github.com/hzrd149/applesauce/releases/tag/applesauce-accounts%404.1.0",
-          "prerelease": false,
-          "draft": false
-        },
-        {
-          "id": 254954423,
-          "tag_name": "applesauce-sqlite@4.1.0",
-          "name": "applesauce-sqlite@4.1.0",
-          "published_at": "2025-10-16T10:11:07Z",
-          "html_url": "https://github.com/hzrd149/applesauce/releases/tag/applesauce-sqlite%404.1.0",
-          "prerelease": false,
-          "draft": false
-        },
-        {
-          "id": 263044954,
-          "tag_name": "applesauce-core@4.4.2",
-          "name": "applesauce-core@4.4.2",
-          "published_at": "2025-11-17T17:25:59Z",
-          "html_url": "https://github.com/hzrd149/applesauce/releases/tag/applesauce-core%404.4.2",
-          "prerelease": false,
-          "draft": false
-        },
-        {
-          "id": 254954335,
-          "tag_name": "applesauce-core@4.1.0",
-          "name": "applesauce-core@4.1.0",
-          "published_at": "2025-10-16T10:10:58Z",
-          "html_url": "https://github.com/hzrd149/applesauce/releases/tag/applesauce-core%404.1.0",
-          "prerelease": false,
-          "draft": false
-        }
-      ]
-    },
-    "penpenpng/rx-nostr": {
-      "added": [],
-      "removed": [
-        {
-          "id": 211324577,
-          "tag_name": "rx-nostr@3.6.0",
-          "name": "rx-nostr@3.6.0",
-          "published_at": "2025-04-09T15:39:31Z",
-          "html_url": "https://github.com/penpenpng/rx-nostr/releases/tag/rx-nostr%403.6.0",
-          "prerelease": false,
-          "draft": false
-        },
-        {
-          "id": 194695203,
-          "tag_name": "core@3.5.0",
-          "name": "core@3.5.0",
-          "published_at": "2025-01-15T08:35:12Z",
-          "html_url": "https://github.com/penpenpng/rx-nostr/releases/tag/core%403.5.0",
-          "prerelease": false,
-          "draft": false
-        },
-        {
-          "id": 191694374,
-          "tag_name": "core@3.4.2",
-          "name": "core@3.4.2",
-          "published_at": "2024-12-19T16:01:42Z",
-          "html_url": "https://github.com/penpenpng/rx-nostr/releases/tag/core%403.4.2",
-          "prerelease": false,
-          "draft": false
-        },
-        {
-          "id": 267942343,
-          "tag_name": "rx-nostr@3.6.2",
-          "name": "rx-nostr@3.6.2",
-          "published_at": "2025-12-07T12:50:26Z",
-          "html_url": "https://github.com/penpenpng/rx-nostr/releases/tag/rx-nostr%403.6.2",
-          "prerelease": false,
-          "draft": false
-        },
-        {
-          "id": 168973161,
-          "tag_name": "crypto@3.1.2",
-          "name": "crypto@3.1.2",
-          "published_at": "2024-08-22T19:11:40Z",
-          "html_url": "https://github.com/penpenpng/rx-nostr/releases/tag/crypto%403.1.2",
-          "prerelease": false,
-          "draft": false
-        },
-        {
-          "id": 171529676,
-          "tag_name": "core@3.3.4",
-          "name": "core@3.3.4",
-          "published_at": "2024-08-22T18:03:50Z",
-          "html_url": "https://github.com/penpenpng/rx-nostr/releases/tag/core%403.3.4",
-          "prerelease": false,
-          "draft": false
-        },
-        {
-          "id": 172889773,
-          "tag_name": "core@3.4.1",
-          "name": "core@3.4.1",
-          "published_at": "2024-11-22T09:34:03Z",
-          "html_url": "https://github.com/penpenpng/rx-nostr/releases/tag/core%403.4.1",
-          "prerelease": false,
-          "draft": false
-        },
-        {
-          "id": 172889775,
-          "tag_name": "crypto@3.1.3",
-          "name": "crypto@3.1.3",
-          "published_at": "2024-12-19T16:00:37Z",
-          "html_url": "https://github.com/penpenpng/rx-nostr/releases/tag/crypto%403.1.3",
-          "prerelease": false,
-          "draft": false
-        },
-        {
-          "id": 211337264,
-          "tag_name": "rx-nostr@3.6.1",
-          "name": "rx-nostr@3.6.1",
-          "published_at": "2025-04-10T11:08:34Z",
-          "html_url": "https://github.com/penpenpng/rx-nostr/releases/tag/rx-nostr%403.6.1",
-          "prerelease": false,
-          "draft": false
-        },
-        {
-          "id": 171541973,
-          "tag_name": "core@3.4.0",
-          "name": "core@3.4.0",
-          "published_at": "2024-08-22T19:12:55Z",
-          "html_url": "https://github.com/penpenpng/rx-nostr/releases/tag/core%403.4.0",
-          "prerelease": false,
-          "draft": false
-        }
-      ]
+      ],
+      "removed": []
     },
     "holgern/pynostr": {
-      "added": [],
-      "removed": [
+      "added": [
         {
           "id": 95909824,
           "tag_name": "v0.6.2",
@@ -1091,11 +818,11 @@
           "prerelease": false,
           "draft": false
         }
-      ]
+      ],
+      "removed": []
     },
     "cnixbtc/NostrKit": {
-      "added": [],
-      "removed": [
+      "added": [
         {
           "id": 81488696,
           "tag_name": "v0.1.1",
@@ -1123,11 +850,11 @@
           "prerelease": false,
           "draft": false
         }
-      ]
+      ],
+      "removed": []
     },
     "tcheeric/nostr-java": {
-      "added": [],
-      "removed": [
+      "added": [
         {
           "id": 239214947,
           "tag_name": "v0.2.0",
@@ -1218,11 +945,11 @@
           "prerelease": false,
           "draft": false
         }
-      ]
+      ],
+      "removed": []
     },
     "ethicnology/dart-nostr": {
-      "added": [],
-      "removed": [
+      "added": [
         {
           "id": 92073154,
           "tag_name": "v1.3.3",
@@ -1313,11 +1040,11 @@
           "prerelease": false,
           "draft": false
         }
-      ]
+      ],
+      "removed": []
     },
     "getAlby/hub": {
-      "added": [],
-      "removed": [
+      "added": [
         {
           "id": 243433602,
           "tag_name": "v1.19.2",
@@ -1408,11 +1135,11 @@
           "prerelease": false,
           "draft": false
         }
-      ]
+      ],
+      "removed": []
     },
     "ZeusLN/zeus": {
-      "added": [],
-      "removed": [
+      "added": [
         {
           "id": 254102243,
           "tag_name": "v0.11.6-rc1",
@@ -1503,374 +1230,13 @@
           "prerelease": true,
           "draft": false
         }
-      ]
+      ],
+      "removed": []
     }
   },
   "pull_requests": {
-    "marmot-protocol/whitenoise": {
-      "added": [
-        {
-          "id": 3037646659,
-          "number": 876,
-          "title": "Fix/images blurhash",
-          "body": "<!--\r\n  Thanks for contributing!\r\n\r\n  Provide a description of your changes below and a general summary in the title\r\n\r\n  Please look at the following checklist to ensure that your PR can be accepted quickly:\r\n-->\r\n\r\n## Description\r\nWhen upgrading the app, previously downloaded images were no longer displayed. It was strange because the messages still had a file path, but opening that path failed. This PR fixes the issue by ignoring the \u201cdownloaded\u201d state in this scenario, allowing the app to re",
-          "merged_at": "2025-11-23T18:00:41Z",
-          "html_url": "https://github.com/marmot-protocol/whitenoise/pull/876",
-          "user": "josefinalliende"
-        },
-        {
-          "id": 3030127814,
-          "number": 859,
-          "title": "Reduce chat screen bottom padding",
-          "body": "## Description\r\n\r\nFixes #797 \r\n\r\nBefore:\r\n<img width=\"502\" height=\"956\" alt=\"Screenshot 2025-11-20 at 15 29 37\" src=\"https://github.com/user-attachments/assets/883432a3-4948-430e-b57e-c258ab46d419\" />\r\n\r\nAfter:\r\n<img width=\"502\" height=\"956\" alt=\"Screenshot 2025-11-20 at 15 24 43\" src=\"https://github.com/user-attachments/assets/dd8b4d53-4a92-454e-98a3-ac6255fb6a1b\" />\r\n\r\n## Type of Change\r\n\r\n- [ ] \u2728 New feature (non-breaking change which adds functionality)\r\n- [x] \ud83d\udee0\ufe0f Bug fix (non-breaking change",
-          "merged_at": "2025-11-20T15:43:36Z",
-          "html_url": "https://github.com/marmot-protocol/whitenoise/pull/859",
-          "user": "Quwaysim"
-        },
-        {
-          "id": 2994418059,
-          "number": 815,
-          "title": "Clear notifications for viewed chat",
-          "body": "<!--\r\n  Thanks for contributing!\r\n\r\n  Provide a description of your changes below and a general summary in the title\r\n\r\n  Please look at the following checklist to ensure that your PR can be accepted quickly:\r\n-->\r\n\r\n## Description\r\n- Added automatic notification clearing when entering a chat\r\n- Only clears notifications for the specific chat being opened\r\n- Other chat notifications remain unaffected\r\n\r\n### How It works\r\n- User opens a chat\r\n- System finds all notifications for that chat\r\n- Thos",
-          "merged_at": "2025-11-11T15:55:06Z",
-          "html_url": "https://github.com/marmot-protocol/whitenoise/pull/815",
-          "user": "untreu2"
-        },
-        {
-          "id": 3032487755,
-          "number": 872,
-          "title": "feat: integrate permission handler for camera access and add permissi\u2026",
-          "body": "\u2026on denied UI\r\n\r\n<!--\r\n  Thanks for contributing!\r\n\r\n  Provide a description of your changes below and a general summary in the title\r\n\r\n  Please look at the following checklist to ensure that your PR can be accepted quickly:\r\n-->\r\n\r\n## Description\r\n\r\n<!--- Describe your changes in detail -->\r\n## Summary\r\nImproves QR scanner functionality with graceful camera permission handling and optimized scanner initialization. Users can now easily enable camera permissions through a direct settings link wh",
-          "merged_at": "2025-11-30T11:26:30Z",
-          "html_url": "https://github.com/marmot-protocol/whitenoise/pull/872",
-          "user": "codeswot"
-        },
-        {
-          "id": 3030388241,
-          "number": 861,
-          "title": "Fix chat screen scroll behavior to prevent auto-scrolling on new mess\u2026",
-          "body": "<!--\r\n  Thanks for contributing!\r\n\r\n  Provide a description of your changes below and a general summary in the title\r\n\r\n  Please look at the following checklist to ensure that your PR can be accepted quickly:\r\n-->\r\n\r\n## Description\r\n\r\n<!--- Describe your changes in detail -->\r\n## Summary\r\n\r\nImprove chat screen scroll behavior for better user experience. The chat now jumps instantly to the bottom when opened (no animation), doesn't auto-scroll when receiving messages, and only scrolls when the us",
-          "merged_at": "2025-11-20T15:57:48Z",
-          "html_url": "https://github.com/marmot-protocol/whitenoise/pull/861",
-          "user": "codeswot"
-        },
-        {
-          "id": 3027927698,
-          "number": 858,
-          "title": "Refactor avatar color handling to use AvatarColorToken model",
-          "body": "<!--\r\n  Thanks for contributing!\r\n\r\n  Provide a description of your changes below and a general summary in the title\r\n\r\n  Please look at the following checklist to ensure that your PR can be accepted quickly:\r\n-->\r\n\r\n## Description\r\n\r\n<!--- Describe your changes in detail -->\r\n## Summary\r\n\r\nFixed avatar visibility on black navbar (issue #853) by implementing theme-aware avatar color tokens with full light/dark mode support. Avatars now render with proper contrast and unique colors per user.\r\n\r\n#",
-          "merged_at": "2025-11-20T11:07:41Z",
-          "html_url": "https://github.com/marmot-protocol/whitenoise/pull/858",
-          "user": "codeswot"
-        },
-        {
-          "id": 3030329425,
-          "number": 860,
-          "title": "Fix chat bubble hit-box to improve interaction area",
-          "body": "<!--\r\n  Thanks for contributing!\r\n\r\n  Provide a description of your changes below and a general summary in the title\r\n\r\n  Please look at the following checklist to ensure that your PR can be accepted quickly:\r\n-->\r\n\r\n## Description\r\n\r\n<!--- Describe your changes in detail -->\r\n## Summary\r\n\r\nExpand chat bubble hit-box to span the entire width of the message list for improved touch target and interaction area.\r\n\r\n## Changes\r\n\r\n- Modified `MessageWidget` to make the GestureDetector wrap a full-widt",
-          "merged_at": "2025-11-20T16:19:33Z",
-          "html_url": "https://github.com/marmot-protocol/whitenoise/pull/860",
-          "user": "codeswot"
-        },
-        {
-          "id": 3037118741,
-          "number": 875,
-          "title": "docs: update Docker Compose commands for local Nostr/Blossom setup",
-          "body": "Clarifies how to start the Nostr and Blossom services locally using Docker. The docs now prioritise `docker compose up -d` while still noting support for older `docker-compose` versions. This helps ensure smoother setup across different environments.\r\n\r\n<!--\r\n  Thanks for contributing!\r\n\r\n  Provide a description of your changes below and a general summary in the title\r\n\r\n  Please look at the following checklist to ensure that your PR can be accepted quickly:\r\n-->\r\n\r\n## Description\r\n\r\n<!--- Descr",
-          "merged_at": "2025-12-01T08:31:18Z",
-          "html_url": "https://github.com/marmot-protocol/whitenoise/pull/875",
-          "user": "AbdulbasitSaid"
-        },
-        {
-          "id": 3054003030,
-          "number": 881,
-          "title": "Remove IntrinsicWidth from MessageWidget",
-          "body": "<!--\r\n  Thanks for contributing!\r\n\r\n  Provide a description of your changes below and a general summary in the title\r\n\r\n  Please look at the following checklist to ensure that your PR can be accepted quickly:\r\n-->\r\n\r\n## Description\r\n- Fixed message bubble width issue where bubbles could become too wide and cause layout problems.\r\n- Fixed timestamp alignment for received messages to align to the right side instead of left.\r\n\r\n<!--- Describe your changes in detail -->\r\n\r\n## Type of Change\r\n\r\n<!---",
-          "merged_at": "2025-11-30T05:24:36Z",
-          "html_url": "https://github.com/marmot-protocol/whitenoise/pull/881",
-          "user": "untreu2"
-        },
-        {
-          "id": 3017236950,
-          "number": 839,
-          "title": "Ignore notifications for currently displayed chat",
-          "body": "<!--\r\n  Thanks for contributing!\r\n\r\n  Provide a description of your changes below and a general summary in the title\r\n\r\n  Please look at the following checklist to ensure that your PR can be accepted quickly:\r\n-->\r\n\r\n## Description\r\nPrevents notification creation for chats that are currently being displayed on screen. The system tracks the displayed chat independently of navigation state, ensuring notifications are suppressed when the chat is actually visible.\r\n\r\n## Changes\r\n- **DisplayedChatSer",
-          "merged_at": "2025-11-17T15:09:57Z",
-          "html_url": "https://github.com/marmot-protocol/whitenoise/pull/839",
-          "user": "untreu2"
-        },
-        {
-          "id": 3027146904,
-          "number": 855,
-          "title": "patch: unread count issue while in UI",
-          "body": "## Description\r\n\r\nFixes #849 \r\n\r\n## Type of Change\r\n\r\n- [ ] \u2728 New feature (non-breaking change which adds functionality)\r\n- [x] \ud83d\udee0\ufe0f Bug fix (non-breaking change which fixes an issue)\r\n- [ ] \u274c Breaking change (fix or feature that would cause existing functionality to change)\r\n- [ ] \ud83e\uddf9 Code refactor\r\n- [ ] \u2705 Build configuration change\r\n- [ ] \ud83d\udcdd Documentation\r\n- [ ] \ud83d\uddd1\ufe0f Chore\r\n- [ ] \ud83e\uddea Tests\r\n\r\n## Checklist\r\n\r\n<!-- Please make sure you've done the following before submitting your PR: -->\r\n\r\n- [x] Run `j",
-          "merged_at": "2025-11-19T21:37:50Z",
-          "html_url": "https://github.com/marmot-protocol/whitenoise/pull/855",
-          "user": "Quwaysim"
-        },
-        {
-          "id": 3077711514,
-          "number": 890,
-          "title": "Data retained after app uninstall",
-          "body": "## Description\r\n\r\nFixes #889 \r\nUpdated the app manifest to make sure app deletes all app data during uninstall.\r\n\r\n## Type of Change\r\n\r\n- [ ] \u2728 New feature (non-breaking change which adds functionality)\r\n- [x] \ud83d\udee0\ufe0f Bug fix (non-breaking change which fixes an issue)\r\n- [ ] \u274c Breaking change (fix or feature that would cause existing functionality to change)\r\n- [ ] \ud83e\uddf9 Code refactor\r\n- [ ] \u2705 Build configuration change\r\n- [ ] \ud83d\udcdd Documentation\r\n- [ ] \ud83d\uddd1\ufe0f Chore\r\n- [ ] \ud83e\uddea Tests\r\n\r\n## Checklist\r\n\r\n<!-- Please ",
-          "merged_at": "2025-12-07T03:28:43Z",
-          "html_url": "https://github.com/marmot-protocol/whitenoise/pull/890",
-          "user": "Quwaysim"
-        },
-        {
-          "id": 3020909087,
-          "number": 844,
-          "title": "Avoid fetching all groups for notification details",
-          "body": "<!--\r\n  Thanks for contributing!\r\n\r\n  Provide a description of your changes below and a general summary in the title\r\n\r\n  Please look at the following checklist to ensure that your PR can be accepted quickly:\r\n-->\r\n\r\n## Description\r\nPreviously, when processing notifications, the code would:\r\n1. Fetch all groups using `activeGroups()`\r\n2. Filter the list to find the matching group by ID\r\n\r\nThis PR replaces that pattern with a direct call to `getGroup()` which fetches only the specific group neede",
-          "merged_at": "2025-11-19T10:22:42Z",
-          "html_url": "https://github.com/marmot-protocol/whitenoise/pull/844",
-          "user": "untreu2"
-        },
-        {
-          "id": 3030796455,
-          "number": 862,
-          "title": "Better error messages",
-          "body": "This expands the types of error messages we parse and show. Hopefully this gives us more info about why some group creation fails.\n\n<!-- CURSOR_SUMMARY -->\n---\n\n> [!NOTE]\n> Introduce localized, detailed API error parsing/handling and wire it into group creation; add new error i18n strings across locales.\n> \n> - **Errors/Utils**:\n>   - **`ErrorHandlingUtils`**: Add localized conversion of `ApiError` variants and wrapped exceptions into user-friendly messages with pattern detection and helpful gui",
-          "merged_at": "2025-11-20T20:29:22Z",
-          "html_url": "https://github.com/marmot-protocol/whitenoise/pull/862",
-          "user": "erskingardner"
-        },
-        {
-          "id": 3027794346,
-          "number": 857,
-          "title": "Use last message timestamp for sync checkpoint to prevent missed notifications",
-          "body": "<!--\r\n  Thanks for contributing!\r\n\r\n  Provide a description of your changes below and a general summary in the title\r\n\r\n  Please look at the following checklist to ensure that your PR can be accepted quickly:\r\n-->\r\n\r\n## Problem\r\nWhen multiple messages arrived in the same polling window, some notifications were being missed.\r\nThe issue was caused by `setLastMessageSyncTime` using `DateTime.now()`, which created a gap\r\nwhere messages created between the notification time and the sync time update w",
-          "merged_at": "2025-11-20T10:45:43Z",
-          "html_url": "https://github.com/marmot-protocol/whitenoise/pull/857",
-          "user": "untreu2"
-        },
-        {
-          "id": 3064187636,
-          "number": 886,
-          "title": "817 language setting UI issue",
-          "body": "<!--\r\n  Thanks for contributing!\r\n\r\n  Provide a description of your changes below and a general summary in the title\r\n\r\n  Please look at the following checklist to ensure that your PR can be accepted quickly:\r\n-->\r\n\r\n## Description\r\n\r\n<!--- Describe your changes in detail -->\r\n\r\n## Type of Change\r\n\r\n<!--- Put an `x` in all the boxes that apply: -->\r\n\r\n- [ ] \u2728 New feature (non-breaking change which adds functionality)\r\n- [x] \ud83d\udee0\ufe0f Bug fix (non-breaking change which fixes an issue)\r\n- [ ] \u274c Breaking ",
-          "merged_at": "2025-12-05T15:57:03Z",
-          "html_url": "https://github.com/marmot-protocol/whitenoise/pull/886",
-          "user": "AbdulbasitSaid"
-        },
-        {
-          "id": 3020949558,
-          "number": 845,
-          "title": "Add missing translations",
-          "body": "<!--\r\n  Thanks for contributing!\r\n\r\n  Provide a description of your changes below and a general summary in the title\r\n\r\n  Please look at the following checklist to ensure that your PR can be accepted quickly:\r\n-->\r\n\r\n## Description\r\nFixes #752\r\n\r\n<!--- Describe your changes in detail -->\r\n\r\n## Type of Change\r\n\r\n<!--- Put an `x` in all the boxes that apply: -->\r\n\r\n- [ ] \u2728 New feature (non-breaking change which adds functionality)\r\n- [x] \ud83d\udee0\ufe0f Bug fix (non-breaking change which fixes an issue)\r\n- [ ]",
-          "merged_at": "2025-11-18T12:26:29Z",
-          "html_url": "https://github.com/marmot-protocol/whitenoise/pull/845",
-          "user": "untreu2"
-        },
-        {
-          "id": 3067482747,
-          "number": 887,
-          "title": "Simplify Android battery and alarm settings checks",
-          "body": "<!--\r\n  Thanks for contributing!\r\n\r\n  Provide a description of your changes below and a general summary in the title\r\n\r\n  Please look at the following checklist to ensure that your PR can be accepted quickly:\r\n-->\r\n\r\n## Description\r\n\r\n<!--- Describe your changes in detail -->\r\nRemoved conditional checks before requesting battery optimization and opening alarm settings in NotificationService. Now, requests are made directly to ensure settings are applied regardless of current state (avoid stuck a",
-          "merged_at": "2025-12-04T16:50:09Z",
-          "html_url": "https://github.com/marmot-protocol/whitenoise/pull/887",
-          "user": "codeswot"
-        },
-        {
-          "id": 3032366973,
-          "number": 868,
-          "title": "V0.2.1 release",
-          "body": "\n\n<!-- This is an auto-generated comment: release notes by coderabbit.ai -->\n## Summary by CodeRabbit\n\n* **New Features**\n  * Automatic notification clearing when entering a chat\n  * Unread counts for DMs and groups\n  * Deep linking from notifications to the correct chat or invite screen\n  * Unsaved changes confirmation on the Edit Profile screen\n  * Notifications translated to the user\u2019s language\n  * Automatic download of images for messages\n\n* **Chores**\n  * Version bumped to 0.2.1 and changel",
-          "merged_at": "2025-11-23T19:02:41Z",
-          "html_url": "https://github.com/marmot-protocol/whitenoise/pull/868",
-          "user": "erskingardner"
-        },
-        {
-          "id": 3030927870,
-          "number": 863,
-          "title": "Fix/notification redirect",
-          "body": "<!--\r\n  Thanks for contributing!\r\n\r\n  Provide a description of your changes below and a general summary in the title\r\n\r\n  Please look at the following checklist to ensure that your PR can be accepted quickly:\r\n-->\r\n\r\n## Description\r\nWhen a notification arrived for an inactive account (logged in but not the active one), tapping it would redirect the user to a \u201cgroup not found\u201d screen with no way to recover.\r\n\r\nThis PR adds logic to switch accounts when necessary before navigating, and also adds a",
-          "merged_at": "2025-11-21T02:50:06Z",
-          "html_url": "https://github.com/marmot-protocol/whitenoise/pull/863",
-          "user": "josefinalliende"
-        }
-      ],
-      "removed": []
-    },
-    "MostroP2P/mostro": {
-      "added": [
-        {
-          "id": 2882615623,
-          "number": 529,
-          "title": "Currency filter",
-          "body": "@Catrya @grunch ,\r\n\r\ntested and seems ok.\r\n\r\nAdded this in `settings.toml` in mostro section:\r\n\r\n```Toml\r\n# Fiat currencies accepted for orders - leave empty ['] to accept all fiat currencies\r\nfiat_currencies_accepted = ['USD', 'EUR', 'ARS','CUP']\r\n```\r\nIf empty all currencies are accepted when order is created. The filter works on new order incoming and creates a new tag in the info message.\r\n\r\nUntil we have the new version of mostro core it's usually testable using local version of mostro core",
-          "merged_at": "2025-10-06T19:15:44Z",
-          "html_url": "https://github.com/MostroP2P/mostro/pull/529",
-          "user": "arkanoider"
-        },
-        {
-          "id": 2854517007,
-          "number": 523,
-          "title": "feat: fixed changelod in release page - now is aligned to cli and core",
-          "body": "@grunch ,\r\n\r\nthis is the alignment for mostro daemon to new actions that are working nicely on mostro-cli and mostro-core\n\n<!-- This is an auto-generated comment: release notes by coderabbit.ai -->\n\n## Summary by CodeRabbit\n\n- Documentation\n  - Updated release verification guidance to use GPG signatures instead of SHA256 checksums, with clear steps to import the signer\u2019s key and verify manifest and archives.\n  - Improved changelog relevance by recognizing semantic version tags.\n\n- Chores\n  - Enh",
-          "merged_at": "2025-09-24T13:09:25Z",
-          "html_url": "https://github.com/MostroP2P/mostro/pull/523",
-          "user": "arkanoider"
-        },
-        {
-          "id": 2919750099,
-          "number": 538,
-          "title": "feat: removed openssl dep in favour of rust tls in reqwest",
-          "body": "@grunch,\n\nduring my test on windows i noticed that we could remove openssl just using the supported featrure of reqwest crate rustls-tls, like this:\n\n```Toml\nreqwest = { version = \"0.12.1\", default-features = false, features = [\"json\", \"rustls-tls\"] }\n```\n\nI think it's a good move that will remove another dep using a stable rust lib like rusttls.\n\nTell me your opinion!\n\n\n<!-- This is an auto-generated comment: release notes by coderabbit.ai -->\n## Summary by CodeRabbit\n\n* **Chores**\n  * Updated ",
-          "merged_at": "2025-10-16T15:19:28Z",
-          "html_url": "https://github.com/MostroP2P/mostro/pull/538",
-          "user": "arkanoider"
-        },
-        {
-          "id": 2996655190,
-          "number": 546,
-          "title": "New github actions stuff",
-          "body": "Hi @grunch ,\r\n\r\nthis PR should :\r\n\r\n- add two commands \r\n  - cargo fmt --all\r\n  - cargo clippy --all-targets --all-features -- -D warnings\r\n\r\nin pre release hook of cargo release, so we should be ok when commands are also called from gh actions.\r\nThen a new step is added to rust.yml in order to publish to `crates.io` only if gh actions completed successfully tests and artifacts creation, in case of error no crate is published.\r\n\r\nSome improvements also on local changelog creation.\n\n<!-- This is ",
-          "merged_at": "2025-11-13T16:19:15Z",
-          "html_url": "https://github.com/MostroP2P/mostro/pull/546",
-          "user": "arkanoider"
-        },
-        {
-          "id": 2921672407,
-          "number": 539,
-          "title": "Fix for docker build",
-          "body": "@grunch ,\r\n\r\nthis fixes the issue on build in gh actions for docker, I used feature `ureq` in lnurl-rs crate to remove use of  openssl.\r\nMusl target has static linking and pulled in Openssl in gh actions creating the error.\r\n\r\n`ureq` feature is blocking, but luckily we always use `reqwest` for http request, we use lnurl-rs just for url validation so\r\nwe can use it with blocking feature while using rust-tls feature on reqwest crate.\n\n<!-- This is an auto-generated comment: release notes by codera",
-          "merged_at": "2025-10-16T18:24:19Z",
-          "html_url": "https://github.com/MostroP2P/mostro/pull/539",
-          "user": "arkanoider"
-        },
-        {
-          "id": 2918857052,
-          "number": 537,
-          "title": "feat: mostro notifies maker of the order with the correct state",
-          "body": "@grunch , @Catrya ,\r\n\r\nquick pr for fix of #536.\r\n\r\n\n\n<!-- This is an auto-generated comment: release notes by coderabbit.ai -->\n## Summary by CodeRabbit\n\n* **Improvements**\n  * Added a cooperative two\u2011step cancellation flow with explicit routing for active vs non\u2011active orders.\n  * Orders now republish updated snapshots, clear public keys when appropriate, and emit new events to reflect state transitions.\n  * Order reset now persists buyer invoice info so republished snapshots are complete.\n  *",
-          "merged_at": "2025-10-16T21:50:12Z",
-          "html_url": "https://github.com/MostroP2P/mostro/pull/537",
-          "user": "arkanoider"
-        },
-        {
-          "id": 2942025953,
-          "number": 540,
-          "title": "Restore session message is sent to trade key",
-          "body": "@grunch ,\r\n\r\nhere is the fix for the restore session message, now is sent correctly to the trade key!\n\n<!-- This is an auto-generated comment: release notes by coderabbit.ai -->\n\n## Summary by CodeRabbit\n\n* **Refactor**\n  * Internal session restoration workflow optimizations and parameter alignment\n  * Background communication channel efficiency improvements\n\n<!-- end of auto-generated comment: release notes by coderabbit.ai -->",
-          "merged_at": "2025-10-24T12:03:30Z",
-          "html_url": "https://github.com/MostroP2P/mostro/pull/540",
-          "user": "arkanoider"
-        },
-        {
-          "id": 3007873445,
-          "number": 547,
-          "title": "Added protobuf to rust.yml in publish stage",
-          "body": "Fix for gh actions\n\n<!-- This is an auto-generated comment: release notes by coderabbit.ai -->\n\n## Summary by CodeRabbit\n\n* **Chores**\n  * Updated build workflow to ensure required compiler tools are available during the publish stage.\n\n<!-- end of auto-generated comment: release notes by coderabbit.ai -->",
-          "merged_at": "2025-11-13T18:37:08Z",
-          "html_url": "https://github.com/MostroP2P/mostro/pull/547",
-          "user": "arkanoider"
-        },
-        {
-          "id": 2888300972,
-          "number": 531,
-          "title": "Added last trade index Action",
-          "body": "@grunch ,\r\n\r\nadded a simple function to have last trade index  of a user triggerable from a client.\r\n\r\nWe will use a new Action called `LastTradeIndex`, clients can request it and they receive the user last trade index stored in `user` table of mostro database, the format is:\r\n```Json\r\n{\r\n  \"restore\": {\r\n    \"version\": 1,\r\n    \"action\": \"last-trade-index\",\r\n    \"trade_index\": 42,\r\n    \"payload\": null\r\n  }\r\n}\r\n```\r\n\r\nSo client can synch with last trade index value and prepare next message for:\r\n\r",
-          "merged_at": "2025-10-09T13:34:01Z",
-          "html_url": "https://github.com/MostroP2P/mostro/pull/531",
-          "user": "arkanoider"
-        },
-        {
-          "id": 2865039150,
-          "number": 525,
-          "title": "Ci build",
-          "body": "@grunch ,\r\n\r\nthis is the new `ci.yml` to build without tag creation when a commit is pushed. No artifacts will be done.\n\n<!-- This is an auto-generated comment: release notes by coderabbit.ai -->\n## Summary by CodeRabbit\n\n* **Chores**\n  * Added a multi-job CI pipeline running formatting, linting, tests, release builds, and MSRV checks on push, with caching and required toolchain support.\n  * Ensured workflows fetch and refresh all Git tags during runs.\n  * Switched release verification to GPG si",
-          "merged_at": "2025-10-03T13:14:53Z",
-          "html_url": "https://github.com/MostroP2P/mostro/pull/525",
-          "user": "arkanoider"
-        },
-        {
-          "id": 2968476914,
-          "number": 544,
-          "title": "add order_expires_at to order event",
-          "body": "\n\n<!-- This is an auto-generated comment: release notes by coderabbit.ai -->\n## Summary by CodeRabbit\n\n* **New Features**\n  * Orders now include explicit expiration date information in their event metadata, enabling clients and services to display, filter, and act on order expiration timelines more reliably.\n  * Improves visibility of impending expirations and helps automate expiration-related workflows (notifications, cleanup, or hide-expired behaviors).\n<!-- end of auto-generated comment: rele",
-          "merged_at": "2025-11-01T17:08:20Z",
-          "html_url": "https://github.com/MostroP2P/mostro/pull/544",
-          "user": "Catrya"
-        },
-        {
-          "id": 2946062324,
-          "number": 541,
-          "title": "Restored previous changelog.md local file creation",
-          "body": "@grunch ,\r\n\r\nafter some research on web and AI i think that readding old local pre hook release in `cargo.toml` is a good way to do it.\r\n\r\nDifference are only in cargo.toml, and you will see the relative changelog. Unluclily from the branch is not so easy to understand if all is correct. So if you want to merge I will try a release tomorrow.\r\nI did a shit on crates.io because for a typo I i pushed a v0.15.4 , but ok if you merge this I will create a v0.15.5 tomorrow to see if release changelog w",
-          "merged_at": "2025-11-07T12:47:29Z",
-          "html_url": "https://github.com/MostroP2P/mostro/pull/541",
-          "user": "arkanoider"
-        },
-        {
-          "id": 2854639158,
-          "number": 524,
-          "title": "fix: correct AddInvoice amount calculation on payment failure",
-          "body": "Now mostrod sends the correct amount when payment fails and requests a new invoice\n\n<!-- This is an auto-generated comment: release notes by coderabbit.ai -->\n## Summary by CodeRabbit\n\n* **Bug Fixes**\n  * Corrected final buyer amount calculation after fees to prevent negative/underflow values.\n  * Improved handling of invalid order types with clearer error feedback.\n  * Increased reliability when retrieving order status to prevent unexpected failures.\n  * Stabilized invoice creation and payload ",
-          "merged_at": "2025-10-03T21:11:09Z",
-          "html_url": "https://github.com/MostroP2P/mostro/pull/524",
-          "user": "Catrya"
-        },
-        {
-          "id": 2885354551,
-          "number": 530,
-          "title": "Fix 528",
-          "body": "Hi @grunch , @Catrya ,\r\n\r\nthis is the PR for #528 , i tested the cases and seems working, but it was a bit tricky and I also reorganize the code in the scheduler to make it work correctly.\r\n\r\nI will check conflicts and rabbit suggestion, @Catrya double check when you can if it's all ok also on your side!\n\n<!-- This is an auto-generated comment: release notes by coderabbit.ai -->\n## Summary by CodeRabbit\n\n- New Features\n  - Improved notifications to both maker and taker when an order is canceled.",
-          "merged_at": "2025-10-09T14:37:06Z",
-          "html_url": "https://github.com/MostroP2P/mostro/pull/530",
-          "user": "arkanoider"
-        },
-        {
-          "id": 2901731896,
-          "number": 534,
-          "title": "Add request orders detail",
-          "body": "\n\n<!-- This is an auto-generated comment: release notes by coderabbit.ai -->\n## Summary by CodeRabbit\n\n* **New Features**\n  * Added an \u201corders\u201d action to fetch multiple orders in a single request, scoped to the requesting user.\n  * Enforces a configurable per-response limit on returned orders; returns clear errors for invalid, excessive, or not-found requests.\n  * Publishes the current orders-per-response limit in the app\u2019s public info.\n\n* **Documentation**\n  * Added a comprehensive guidelines d",
-          "merged_at": "2025-10-14T14:30:21Z",
-          "html_url": "https://github.com/MostroP2P/mostro/pull/534",
-          "user": "grunch"
-        },
-        {
-          "id": 2901700470,
-          "number": 533,
-          "title": "fix: small fix on message creation for last trade index",
-          "body": "@grunch,\r\n\r\nwith this small fix now is working, we can improve the message construction with a helper in mostro-core in the next commits.\n\n<!-- This is an auto-generated comment: release notes by coderabbit.ai -->\n## Summary by CodeRabbit\n\n- **Bug Fixes**\n  - Returns a clear \"user not found\" outcome instead of a database error when a recipient is missing.\n  - Reports JSON serialization errors from the final payload path, reducing silent failures when sending updates.\n\n- **Refactor**\n  - Standard",
-          "merged_at": "2025-10-13T13:39:03Z",
-          "html_url": "https://github.com/MostroP2P/mostro/pull/533",
-          "user": "arkanoider"
-        },
-        {
-          "id": 2904623418,
-          "number": 535,
-          "title": "Added arkanoider key for manifest signature",
-          "body": "@grunch \r\n\r\nadded my key inside mostrod folder to sign manifest. I updated a bit the preamble in the release changelog, take a look.\r\n\r\nWe can also sign both the same file, but it's ok also with two files!\n\n<!-- This is an auto-generated comment: release notes by coderabbit.ai -->\n\n## Summary by CodeRabbit\n\n* **Chores**\n  * Added a second GPG public key to support multi-signature release verification.\n  * Updated verification flow to validate releases against two separate signatures.\n  * Adjuste",
-          "merged_at": "2025-10-10T16:29:14Z",
-          "html_url": "https://github.com/MostroP2P/mostro/pull/535",
-          "user": "arkanoider"
-        },
-        {
-          "id": 2879476982,
-          "number": 527,
-          "title": "Fix for #526",
-          "body": "@grunch @Catrya ,\r\n\r\nthis is the fix for #526 , now initiator of dispute is correctly sent to admin( solver ) when the dispute is taken, previously, my bad, I was sending the pubkey of order creator.\r\n\r\n<!-- This is an auto-generated comment: release notes by coderabbit.ai -->\r\n\r\n## Summary by CodeRabbit\r\n\r\n* **Bug Fixes**\r\n  * Correctly attributes dispute initiator and counterpart based on buyer/seller dispute state.\r\n  * Adds early validation to block unsupported dispute state combinations wit",
-          "merged_at": "2025-10-02T17:26:58Z",
-          "html_url": "https://github.com/MostroP2P/mostro/pull/527",
-          "user": "arkanoider"
-        },
-        {
-          "id": 2984974396,
-          "number": 545,
-          "title": "Improved last trade index response",
-          "body": "@grunch ,\r\n\r\na quick pr to :\r\n\r\n- add `request_id` to mostro answer for last trade index request\r\n- in case ( should never be! ) index is 0 return an error\r\n\r\nNot tested! \n\n<!-- This is an auto-generated comment: release notes by coderabbit.ai -->\n## Summary by CodeRabbit\n\n* **Bug Fixes**\n  * Rejects trade-index requests of zero when a user's last trade index is unset, preventing invalid processing.\n  * Trade-index responses now include request identifiers for improved tracking and correlation.\n",
-          "merged_at": "2025-11-07T12:42:14Z",
-          "html_url": "https://github.com/MostroP2P/mostro/pull/545",
-          "user": "arkanoider"
-        }
-      ],
-      "removed": []
-    },
     "fiatjaf/nak": {
-      "added": [],
-      "removed": [
+      "added": [
         {
           "id": 1941650689,
           "number": 21,
@@ -2024,11 +1390,169 @@
           "html_url": "https://github.com/fiatjaf/nak/pull/81",
           "user": "lez"
         }
-      ]
+      ],
+      "removed": []
+    },
+    "nostrability/schemata": {
+      "added": [
+        {
+          "id": 2866581760,
+          "number": 42,
+          "title": "feat: add NIP-61 nutzap schemas",
+          "body": "## Summary\n- add NIP-61 kind-10019 schema to require nutzap relay/mint/pubkey tags\n- define kind 9321 nutzap issuance and kind 7376 redemption event shapes\n- add supporting tag schemas and aliases for relay, mint, pubkey, proof, u, redeemed e\n\n## Testing\n- pnpm build",
+          "merged_at": "2025-10-10T00:11:52Z",
+          "html_url": "https://github.com/nostrability/schemata/pull/42",
+          "user": "alltheseas"
+        },
+        {
+          "id": 2851045767,
+          "number": 31,
+          "title": "Add NIP-68 picture event schema",
+          "body": "# Add NIP-68 picture event schema\n\n## Summary\n- harden base note schemas so each tag entry validates correctly, with clearer messaging and typo fix\n- enforce kind constants on the existing NIP-01 kind0/kind1 schemas\n- fix numeric/boolean keywords in subscription filter to satisfy Ajv\n- add NIP-68 picture event schema requiring title and imeta tags, plus the imeta tag definition/alias\n\n## Testing\n- pnpm build\n- pnpm test *(fails: `vitest` binary not installed in environment; rerun after `pnpm ins",
+          "merged_at": "2025-10-08T06:14:51Z",
+          "html_url": "https://github.com/nostrability/schemata/pull/31",
+          "user": "alltheseas"
+        },
+        {
+          "id": 2878939401,
+          "number": 48,
+          "title": "chore: enforce draft-07 schema usage",
+          "body": "## Summary\n- replace the stray draft-2020-12 meta-schema reference with draft-07\n- document that all schemata must stay on JSON Schema draft-07\n\n## Testing\n- pnpm build",
+          "merged_at": "2025-10-10T02:22:29Z",
+          "html_url": "https://github.com/nostrability/schemata/pull/48",
+          "user": "alltheseas"
+        },
+        {
+          "id": 2857983114,
+          "number": 35,
+          "title": "Add NIP-B7 Blossom media schemas",
+          "body": "- define the kind 10063 server list event around the tag alias\r\n  - wire the new tag through the existing alias system\r\n\r\n  ## Testing\r\n  - pnpm build\r\n",
+          "merged_at": "2025-10-09T17:03:27Z",
+          "html_url": "https://github.com/nostrability/schemata/pull/35",
+          "user": "alltheseas"
+        },
+        {
+          "id": 2901337999,
+          "number": 54,
+          "title": "add NIP-42 kind 22242 validation errors, valid and invalid samples, clarify challenge tag error message ",
+          "body": "## Summary\n- enforce kind 22242 to use empty content with clear validation errors\n- add valid and invalid samples for the NIP-42 auth event\n- clarify the challenge tag length error message\n\n## Testing\n- pnpm test\n",
+          "merged_at": "2025-10-09T16:31:17Z",
+          "html_url": "https://github.com/nostrability/schemata/pull/54",
+          "user": "alltheseas"
+        },
+        {
+          "id": 2861081489,
+          "number": 39,
+          "title": "Add NIP-34 schemas for git collaboration",
+          "body": "## Summary\n- add schemas for NIP-34 event kinds and status updates\n- add reusable tag aliases for repository metadata and git state\n- enforce optional metadata structure for NIP-34 status, patch, and issue events\n\n## Testing\n- pnpm build\n- pnpm test *(fails: vitest not found on runner)*",
+          "merged_at": "2025-10-09T20:24:00Z",
+          "html_url": "https://github.com/nostrability/schemata/pull/39",
+          "user": "alltheseas"
+        },
+        {
+          "id": 2841270996,
+          "number": 28,
+          "title": "NIP-32 labeling (kind 1985, L/l tags) + NIP-36 content-warning",
+          "body": "Summary\n- Add NIP-32 labeling support:\n  - New event kind 1985 schema requiring at least one label and one target tag.\n  - New tag schemas for L (namespace) and l (label), with aliases.\n- Add NIP-36 content-warning tag schema and alias.\n- Fix NIP-01 e-tag schema (const should be \"e\", not \"p\").\n- Ensure alias dereferences are always fresh by cleaning dist before builds.\n\nChanges\n- NIP-32\n  - Add `nips/nip-32/kind-1985/schema.yaml` (extends `@/note.yaml`, `kind: 1985`).\n  - Add `nips/nip-32/tag/L/",
+          "merged_at": "2025-10-01T19:26:59Z",
+          "html_url": "https://github.com/nostrability/schemata/pull/28",
+          "user": "alltheseas"
+        },
+        {
+          "id": 2850676447,
+          "number": 30,
+          "title": "Add NIP-38 user status schema and supporting tags",
+          "body": "## Summary\n     - Introduced `nips/nip-38/kind-30315/schema.yaml` extending the base note\n  schema for User Status events, enforcing `kind:30315`, requiring a status-\n  identifying d tag, and validating any expiration tag is numeric.\n     - Added reusable aliases `@/tag/status-type.yaml` and `@/tag/\n  expiration.yaml` that reference the new tag schemas under `nips/nip-38/\n  tag/`.\n     - Fixed the `` typo in `nips/nip-01/kind-0/schema.content.yaml`.\n\n     ## Testing\n     - pnpm build",
+          "merged_at": "2025-10-07T22:46:11Z",
+          "html_url": "https://github.com/nostrability/schemata/pull/30",
+          "user": "alltheseas"
+        },
+        {
+          "id": 2859125794,
+          "number": 38,
+          "title": "Add NIP-04 encrypted direct message schema",
+          "body": " - add NIP-04 kind-4 encrypted direct message schema enforcing base note structure, base64\r\n  content?...iv=... pattern, and required p tag (with optional validated e references) in nips/nip-04/kind-\r\n  4/schema.yaml\r\n  - supply validating and failing examples for schema checks in nips/nip-04/kind-4/samples/\r\n",
+          "merged_at": "2025-10-09T17:16:57Z",
+          "html_url": "https://github.com/nostrability/schemata/pull/38",
+          "user": "alltheseas"
+        },
+        {
+          "id": 2865694565,
+          "number": 41,
+          "title": "feat(nip-25): add reaction schemas",
+          "body": "## Summary\n- add kind 7 and kind 17 reaction schemas for NIP-25\n- add custom emoji, external content k/i tags and aliases\n- wire up aliases for reuse across schemas\n\n## Testing\n- pnpm build",
+          "merged_at": "2025-10-09T21:06:35Z",
+          "html_url": "https://github.com/nostrability/schemata/pull/41",
+          "user": "alltheseas"
+        },
+        {
+          "id": 2854569384,
+          "number": 32,
+          "title": "Add NIP-17 schemas",
+          "body": "## Summary\n- add unsigned note alias to reuse NIP-01 structure without signatures\n- add NIP-17 event schemas for kinds 14, 15, and 10050\n- add NIP-17 tag schemas plus aliases for DM metadata\n\n## Testing\n- pnpm build",
+          "merged_at": "2025-10-09T14:24:02Z",
+          "html_url": "https://github.com/nostrability/schemata/pull/32",
+          "user": "alltheseas"
+        },
+        {
+          "id": 2864640681,
+          "number": 40,
+          "title": "feat: add NIP-78 kind 30078 schema",
+          "body": "add schema for NIP-78 Arbitrary custom app data (kind 30078) events",
+          "merged_at": "2025-10-09T20:43:31Z",
+          "html_url": "https://github.com/nostrability/schemata/pull/40",
+          "user": "alltheseas"
+        },
+        {
+          "id": 2902491691,
+          "number": 56,
+          "title": "Refactor relay tag schemas to use shared alias",
+          "body": "## Summary\n- point the NIP-17 and NIP-42 relay tag schemas at the shared alias to keep validation in one place\n- retain NIP-17\u2019s tighter DM relay pattern as an overlay on the shared schema\n- drop the unused NIP-88 relay tag schema to prevent future drift\n\n## Testing\n- pnpm build",
+          "merged_at": "2025-10-10T03:08:51Z",
+          "html_url": "https://github.com/nostrability/schemata/pull/56",
+          "user": "alltheseas"
+        },
+        {
+          "id": 2854680043,
+          "number": 33,
+          "title": "Add NIP-42 authentication event and tag schemas",
+          "body": "## Summary\n- add a schema for the NIP-42 authentication event (kind 22242)\n- define a reusable challenge tag schema and alias\n- tighten AUTH message schemas to point at the new resources and document their behavior\n\n## Testing\n- pnpm build\n- Manual (relay validation): not run \u2014 NIP-42 events/kinds are not widely available on relays for end-to-end verification\n",
+          "merged_at": "2025-10-09T15:59:22Z",
+          "html_url": "https://github.com/nostrability/schemata/pull/33",
+          "user": "alltheseas"
+        },
+        {
+          "id": 2882312698,
+          "number": 50,
+          "title": "Add MIP-00 schemas",
+          "body": "## Summary\n- add schemas for Marmot KeyPackage events (kind 443) and relay lists (kind 10051)\n- add MLS-specific tag tuples for protocol version, ciphersuite, extensions, client metadata, and relay info\n- wire new aliases through @/tag for reuse across schemata\n\n## Testing\n- pnpm build\n",
+          "merged_at": "2025-10-10T02:32:56Z",
+          "html_url": "https://github.com/nostrability/schemata/pull/50",
+          "user": "alltheseas"
+        },
+        {
+          "id": 2845745085,
+          "number": 29,
+          "title": "feat(nip-10): e/q tags schemas, event shape enforcement, and tests",
+          "body": "This PR updates schemas per NIP-10 and tightens validation.\n\nChanges\n- NIP-10 e-tags\n  - Marked: [\"e\", <id>, <relay| \"\">, <\"reply\"|\"root\">, <pubkey>?]\n  - Positional (deprecated): [\"e\", <id>, <relay>?]\n- NIP-18 q-tags\n  - [\"q\", <64hex | kind:pubkey:identifier>, <relay| \"\">?, <pubkey>]\n- Event shape and kinds\n  - additionalProperties: false in notes\n  - sig pattern: ^[a-f0-9]{128}$\n  - tags.items: $ref \"@/tag.yaml\"\n  - kind-0=0, kind-1=1\n- Messages filter\n  - numeric minimums as numbers; addition",
+          "merged_at": "2025-10-07T22:36:32Z",
+          "html_url": "https://github.com/nostrability/schemata/pull/29",
+          "user": "alltheseas"
+        },
+        {
+          "id": 2902558910,
+          "number": 57,
+          "title": "chore: dedupe tag schemas",
+          "body": "## Summary\n- remove redundant NIP-34 description/subject tag sources\n- ensure shared aliases cover these tags to avoid drift\n\n## Testing\n- pnpm build",
+          "merged_at": "2025-10-10T14:24:21Z",
+          "html_url": "https://github.com/nostrability/schemata/pull/57",
+          "user": "alltheseas"
+        }
+      ],
+      "removed": []
     },
     "greenart7c3/amber": {
-      "added": [],
-      "removed": [
+      "added": [
         {
           "id": 3047776963,
           "number": 271,
@@ -2191,11 +1715,11 @@
           "html_url": "https://github.com/greenart7c3/Amber/pull/263",
           "user": "github-actions[bot]"
         }
-      ]
+      ],
+      "removed": []
     },
     "getAlby/lightning-browser-extension": {
-      "added": [],
-      "removed": [
+      "added": [
         {
           "id": 2864877892,
           "number": 3442,
@@ -2295,11 +1819,11 @@
           "html_url": "https://github.com/getAlby/lightning-browser-extension/pull/3454",
           "user": "rolznz"
         }
-      ]
+      ],
+      "removed": []
     },
     "fiatjaf/nos2x": {
-      "added": [],
-      "removed": [
+      "added": [
         {
           "id": 1968301924,
           "number": 62,
@@ -2426,11 +1950,11 @@
           "html_url": "https://github.com/fiatjaf/nos2x/pull/72",
           "user": "oren-z0"
         }
-      ]
+      ],
+      "removed": []
     },
     "haorendashu/nowser": {
-      "added": [],
-      "removed": [
+      "added": [
         {
           "id": 2173392432,
           "number": 1,
@@ -2440,11 +1964,11 @@
           "html_url": "https://github.com/haorendashu/nowser/pull/1",
           "user": "rabble"
         }
-      ]
+      ],
+      "removed": []
     },
     "susumuota/nostr-keyx": {
-      "added": [],
-      "removed": [
+      "added": [
         {
           "id": 1290071489,
           "number": 62,
@@ -2625,11 +2149,11 @@
           "html_url": "https://github.com/susumuota/nostr-keyx/pull/64",
           "user": "susumuota"
         }
-      ]
+      ],
+      "removed": []
     },
     "hoytech/strfry": {
-      "added": [],
-      "removed": [
+      "added": [
         {
           "id": 1593011172,
           "number": 80,
@@ -2738,11 +2262,11 @@
           "html_url": "https://github.com/hoytech/strfry/pull/131",
           "user": "kroese"
         }
-      ]
+      ],
+      "removed": []
     },
     "Cameri/nostream": {
-      "added": [],
-      "removed": [
+      "added": [
         {
           "id": 1193141317,
           "number": 131,
@@ -2869,11 +2393,11 @@
           "html_url": "https://github.com/cameri/nostream/pull/188",
           "user": "kiwiidb"
         }
-      ]
+      ],
+      "removed": []
     },
     "0ceanslim/grain": {
-      "added": [],
-      "removed": [
+      "added": [
         {
           "id": 2294859168,
           "number": 34,
@@ -2901,11 +2425,11 @@
           "html_url": "https://github.com/0ceanSlim/grain/pull/29",
           "user": "UTXOnly"
         }
-      ]
+      ],
+      "removed": []
     },
     "fiatjaf/khatru": {
-      "added": [],
-      "removed": [
+      "added": [
         {
           "id": 2464524448,
           "number": 40,
@@ -3032,1230 +2556,11 @@
           "html_url": "https://github.com/fiatjaf/khatru/pull/39",
           "user": "kehiy"
         }
-      ]
-    },
-    "bitvora/haven": {
-      "added": [],
-      "removed": [
-        {
-          "id": 2401602884,
-          "number": 71,
-          "title": "build(deps): bump khatru version to v0.17.3",
-          "body": "",
-          "merged_at": "2025-03-18T17:24:52Z",
-          "html_url": "https://github.com/bitvora/haven/pull/71",
-          "user": "aaccioly"
-        },
-        {
-          "id": 2307282437,
-          "number": 63,
-          "title": "Support for DB backup with Digital Ocean Spaces",
-          "body": "I currently run my personal relay on Digital Ocean and I would like support for database backups via Digital Ocean Spaces, accomplished through `github.com/minio/minio-go`. \r\n\r\nSomething to think about, `github.com/minio/minio-go` could replace the dependency on `https://github.com/aws/aws-sdk-go` (and the installation of the `aws-cli` on the host machine) since `https://aws/aws-sdk-go` is only used for S3 bucket uploads and no other AWS specific logic. So this leads to the question, is it worth",
-          "merged_at": "2025-02-05T21:05:49Z",
-          "html_url": "https://github.com/bitvora/haven/pull/63",
-          "user": "charlieroth"
-        },
-        {
-          "id": 2303321156,
-          "number": 62,
-          "title": "chore(release): bump haven version to 1.0.4",
-          "body": "",
-          "merged_at": "2025-01-29T22:51:03Z",
-          "html_url": "https://github.com/bitvora/haven/pull/62",
-          "user": "aaccioly"
-        },
-        {
-          "id": 2579528714,
-          "number": 82,
-          "title": "build(dependencies): bump eventstore to v0.17.1",
-          "body": "Fixes: #80",
-          "merged_at": "2025-06-11T00:04:22Z",
-          "html_url": "https://github.com/bitvora/haven/pull/82",
-          "user": "aaccioly"
-        },
-        {
-          "id": 2507812685,
-          "number": 77,
-          "title": "feat(blossom): add support for Blossom blob mirroring - BUD-04",
-          "body": "- bump khatru version to v.0.18.0\r\n- add support for Blossom BUD-04. Currently working with Primal (other than iOS) added to Khatru.\r\n- Change `/HEAD {SHA256}` to return content length and type to play well with blossom.band\r\n\r\nAuthor: @sudocarlos\r\nFixes: #75",
-          "merged_at": "2025-05-08T18:34:36Z",
-          "html_url": "https://github.com/bitvora/haven/pull/77",
-          "user": "aaccioly"
-        },
-        {
-          "id": 2298362445,
-          "number": 61,
-          "title": "NIP-40 and ReplaceableEvents",
-          "body": "Implements NIP-40 and ReplaceableEvents\r\n\r\nAlso fixes #60 (blossom media upload on noStrudel)",
-          "merged_at": "2025-01-28T21:32:57Z",
-          "html_url": "https://github.com/bitvora/haven/pull/61",
-          "user": "aaccioly"
-        },
-        {
-          "id": 2324275666,
-          "number": 68,
-          "title": "Release/1.0.5",
-          "body": "Fix #64 ",
-          "merged_at": "2025-02-09T02:19:38Z",
-          "html_url": "https://github.com/bitvora/haven/pull/68",
-          "user": "aaccioly"
-        },
-        {
-          "id": 2380240402,
-          "number": 69,
-          "title": "Add docu for caddy web server ",
-          "body": "Great project! \ud83d\ude4f\r\nI only missed the installation for caddy web server.\r\nIt would be an honor to be able to contribute. \ud83e\udde1",
-          "merged_at": "2025-03-16T17:17:45Z",
-          "html_url": "https://github.com/bitvora/haven/pull/69",
-          "user": "AxelHamburch"
-        },
-        {
-          "id": 2802606550,
-          "number": 96,
-          "title": "Update README.md",
-          "body": "I added the steps for running Haven on MacOS system boot",
-          "merged_at": "2025-09-06T00:36:20Z",
-          "html_url": "https://github.com/bitvora/haven/pull/96",
-          "user": "btcforplebs"
-        },
-        {
-          "id": 2455808151,
-          "number": 73,
-          "title": "chore: cleanup pre v2",
-          "body": "- **refactor(main): remove unused relay variables**\n- **fix: fix timeouts on import and wot**\n- **feat(import): import gift-wrapped messages to chat relay**\n- **feat(config): add timeout settings for importing notes and WOT fetching**\n- **refactor(import): remove git-wrapped import logging**\n- **refactor(import): remove sleep in import loop**\n- **refactor(import): reduce request frequency by adding sleep in import loop**\n- **fix(error-handling): improve error logging for backup and relay operati",
-          "merged_at": "2025-04-13T04:40:00Z",
-          "html_url": "https://github.com/bitvora/haven/pull/73",
-          "user": "aaccioly"
-        },
-        {
-          "id": 2455402966,
-          "number": 72,
-          "title": "build(deps): bump khatru version to v0.17.7",
-          "body": "",
-          "merged_at": "2025-04-12T12:34:27Z",
-          "html_url": "https://github.com/bitvora/haven/pull/72",
-          "user": "aaccioly"
-        },
-        {
-          "id": 2948965080,
-          "number": 103,
-          "title": "Updated Readme with Apache Config",
-          "body": "",
-          "merged_at": "2025-10-26T22:42:39Z",
-          "html_url": "https://github.com/bitvora/haven/pull/103",
-          "user": "thechitowncubs"
-        },
-        {
-          "id": 2320795039,
-          "number": 66,
-          "title": "Clean up `config.go` to align with changes in PR 65",
-          "body": "This PR creates separate structures for different DB backup methods (AWS, GCP, Generic S3), renames references to DigitalOcean Spaces backup method to S3 (indicating compatibility with any S3-compatible storage) and updates `README.md`, `.env.example` to reflect code changes",
-          "merged_at": "2025-02-09T02:12:27Z",
-          "html_url": "https://github.com/bitvora/haven/pull/66",
-          "user": "charlieroth"
-        },
-        {
-          "id": 2583596383,
-          "number": 83,
-          "title": "feat: Add Haven's public PGP key",
-          "body": "",
-          "merged_at": "2025-06-11T09:18:20Z",
-          "html_url": "https://github.com/bitvora/haven/pull/83",
-          "user": "aaccioly"
-        },
-        {
-          "id": 2778519537,
-          "number": 93,
-          "title": "Multiple owners",
-          "body": "- Allows adding multiple comma separated owners to `OWNER_NPUB` to allow multiple npubs use the relay.\r\n- Some functionality, e.g. the NIP-17 DM import only uses the first npub.\r\n- Fixes #67 ",
-          "merged_at": "2025-09-12T10:35:39Z",
-          "html_url": "https://github.com/bitvora/haven/pull/93",
-          "user": "flox1an"
-        },
-        {
-          "id": 2694615933,
-          "number": 86,
-          "title": "chore: remove docker compose documentation from main repository",
-          "body": "You missed something :grimacing: in 9813579fccb1cc82f38a8897eeba9053cd818faf",
-          "merged_at": "2025-07-27T09:37:46Z",
-          "html_url": "https://github.com/bitvora/haven/pull/86",
-          "user": "sudocarlos"
-        }
-      ]
-    },
-    "greenart7c3/Citrine": {
-      "added": [],
-      "removed": [
-        {
-          "id": 2398968706,
-          "number": 59,
-          "title": "Add some spacing between the delete button",
-          "body": "",
-          "merged_at": "2025-03-17T20:27:02Z",
-          "html_url": "https://github.com/greenart7c3/Citrine/pull/59",
-          "user": "greenart7c3"
-        },
-        {
-          "id": 2325882563,
-          "number": 50,
-          "title": "New Crowdin Translations",
-          "body": "New Crowdin translations by [Crowdin GH Action](https://github.com/crowdin/github-action)",
-          "merged_at": "2025-02-10T12:08:19Z",
-          "html_url": "https://github.com/greenart7c3/Citrine/pull/50",
-          "user": "github-actions[bot]"
-        },
-        {
-          "id": 2398755780,
-          "number": 55,
-          "title": "New Crowdin Translations",
-          "body": "New Crowdin translations by [Crowdin GH Action](https://github.com/crowdin/github-action)",
-          "merged_at": "2025-03-17T18:44:18Z",
-          "html_url": "https://github.com/greenart7c3/Citrine/pull/55",
-          "user": "github-actions[bot]"
-        },
-        {
-          "id": 2897122886,
-          "number": 78,
-          "title": "New Crowdin Translations",
-          "body": "New Crowdin translations by [Crowdin GH Action](https://github.com/crowdin/github-action)",
-          "merged_at": "2025-10-08T11:37:55Z",
-          "html_url": "https://github.com/greenart7c3/Citrine/pull/78",
-          "user": "github-actions[bot]"
-        },
-        {
-          "id": 2398952199,
-          "number": 58,
-          "title": "New Crowdin Translations",
-          "body": "New Crowdin translations by [Crowdin GH Action](https://github.com/crowdin/github-action)",
-          "merged_at": "2025-03-17T20:21:56Z",
-          "html_url": "https://github.com/greenart7c3/Citrine/pull/58",
-          "user": "github-actions[bot]"
-        },
-        {
-          "id": 2821923083,
-          "number": 75,
-          "title": "New Crowdin Translations",
-          "body": "New Crowdin translations by [Crowdin GH Action](https://github.com/crowdin/github-action)",
-          "merged_at": "2025-09-12T09:16:12Z",
-          "html_url": "https://github.com/greenart7c3/Citrine/pull/75",
-          "user": "github-actions[bot]"
-        },
-        {
-          "id": 2404076502,
-          "number": 60,
-          "title": "Auth",
-          "body": "",
-          "merged_at": "2025-04-30T14:31:01Z",
-          "html_url": "https://github.com/greenart7c3/Citrine/pull/60",
-          "user": "greenart7c3"
-        },
-        {
-          "id": 2716116636,
-          "number": 71,
-          "title": "dispatch events to subscriptions from the same connection it came from",
-          "body": "Many apps assume they will receive in open subscriptions the same event they just published.\r\nJumble is the one I was testing in right now, but I'm pretty sure I've seen code like that many other times.",
-          "merged_at": "2025-08-03T16:42:32Z",
-          "html_url": "https://github.com/greenart7c3/Citrine/pull/71",
-          "user": "fiatjaf"
-        },
-        {
-          "id": 2398929372,
-          "number": 57,
-          "title": "Add a button to delete by kind",
-          "body": "",
-          "merged_at": "2025-03-17T20:15:46Z",
-          "html_url": "https://github.com/greenart7c3/Citrine/pull/57",
-          "user": "greenart7c3"
-        },
-        {
-          "id": 2715959388,
-          "number": 70,
-          "title": "send EOSE after stored events have been sent",
-          "body": "",
-          "merged_at": "2025-08-03T16:34:33Z",
-          "html_url": "https://github.com/greenart7c3/Citrine/pull/70",
-          "user": "fiatjaf"
-        },
-        {
-          "id": 2380699228,
-          "number": 54,
-          "title": "Update README.md",
-          "body": "Hi,\r\n\r\nThis small PR adds a button to get your app on F-Droid. You can later add a button for Google Play the same way :\r\n`[<img src=\"https://play.google.com/intl/en_us/badges/images/generic/en-play-badge.png\"\r\n      alt=\"Get it on Google Play\"\r\n      height=\"80\">]()`\r\n\r\nIt also adds a link to get the latest APK from the Releases Section.\r\n\r\nYou can now eventually add the [fdroid](https://github.com/topics/fdroid) and/or [f-droid](https://github.com/topics/f-droid) tags that will appear on the r",
-          "merged_at": "2025-03-09T19:03:11Z",
-          "html_url": "https://github.com/greenart7c3/Citrine/pull/54",
-          "user": "Poussinou"
-        },
-        {
-          "id": 2491664803,
-          "number": 62,
-          "title": "New Crowdin Translations",
-          "body": "New Crowdin translations by [Crowdin GH Action](https://github.com/crowdin/github-action)",
-          "merged_at": "2025-04-30T16:30:11Z",
-          "html_url": "https://github.com/greenart7c3/Citrine/pull/62",
-          "user": "github-actions[bot]"
-        },
-        {
-          "id": 2754062763,
-          "number": 73,
-          "title": "New Crowdin Translations",
-          "body": "New Crowdin translations by [Crowdin GH Action](https://github.com/crowdin/github-action)",
-          "merged_at": "2025-08-18T17:49:51Z",
-          "html_url": "https://github.com/greenart7c3/Citrine/pull/73",
-          "user": "github-actions[bot]"
-        },
-        {
-          "id": 2498795563,
-          "number": 64,
-          "title": "New Crowdin Translations",
-          "body": "New Crowdin translations by [Crowdin GH Action](https://github.com/crowdin/github-action)",
-          "merged_at": "2025-05-05T13:39:04Z",
-          "html_url": "https://github.com/greenart7c3/Citrine/pull/64",
-          "user": "github-actions[bot]"
-        },
-        {
-          "id": 2771476333,
-          "number": 74,
-          "title": "migrate quartz",
-          "body": "",
-          "merged_at": "2025-09-12T09:13:59Z",
-          "html_url": "https://github.com/greenart7c3/Citrine/pull/74",
-          "user": "greenart7c3"
-        },
-        {
-          "id": 2717517870,
-          "number": 72,
-          "title": "allow localhost access to bypass nip70 checks",
-          "body": "This is necessary for syncing between different Citrine relays shared via Samiz while still preventing these local events from leaking to other relays through other clients.\r\n\r\nNot ideal, but probably good enough so far.\r\n\r\nI'm not sure, but I think specifically distinguishing Samiz (or similar apps) would be better in the future if possible: https://github.com/KoalaSat/samiz/issues/17",
-          "merged_at": "2025-08-04T15:51:25Z",
-          "html_url": "https://github.com/greenart7c3/Citrine/pull/72",
-          "user": "fiatjaf"
-        },
-        {
-          "id": 2374063086,
-          "number": 53,
-          "title": "New flow for the download your events button",
-          "body": "",
-          "merged_at": "2025-03-17T18:32:11Z",
-          "html_url": "https://github.com/greenart7c3/Citrine/pull/53",
-          "user": "greenart7c3"
-        },
-        {
-          "id": 2871918768,
-          "number": 77,
-          "title": "New Crowdin Translations",
-          "body": "New Crowdin translations by [Crowdin GH Action](https://github.com/crowdin/github-action)",
-          "merged_at": "2025-09-29T20:10:45Z",
-          "html_url": "https://github.com/greenart7c3/Citrine/pull/77",
-          "user": "github-actions[bot]"
-        },
-        {
-          "id": 2715958321,
-          "number": 69,
-          "title": "fix NIP-70 things",
-          "body": "- fix message prefix when sending an OK with \"auth-required\" (it was sending an \"invalid\" prefix)\r\n- automatically send AUTH when getting a NIP-70 protected event even if AUTH is disabled on menu (because that menu option is about reading private things, not about accepting events, right?)\r\n- allow reading NIP-70 protected events normally (they should not be treated differently with regards to reading)",
-          "merged_at": "2025-08-04T10:10:27Z",
-          "html_url": "https://github.com/greenart7c3/Citrine/pull/69",
-          "user": "fiatjaf"
-        },
-        {
-          "id": 2528306102,
-          "number": 65,
-          "title": "New Crowdin Translations",
-          "body": "New Crowdin translations by [Crowdin GH Action](https://github.com/crowdin/github-action)",
-          "merged_at": "2025-05-19T11:19:24Z",
-          "html_url": "https://github.com/greenart7c3/Citrine/pull/65",
-          "user": "github-actions[bot]"
-        }
-      ]
-    },
-    "bitvora/wot-relay": {
-      "added": [],
-      "removed": [
-        {
-          "id": 2069805577,
-          "number": 39,
-          "title": "Publish directly to db",
-          "body": "",
-          "merged_at": "2024-09-13T00:51:49Z",
-          "html_url": "https://github.com/bitvora/wot-relay/pull/39",
-          "user": "barrydeen"
-        },
-        {
-          "id": 2075211533,
-          "number": 48,
-          "title": "update .env.example",
-          "body": "",
-          "merged_at": "2024-09-17T01:59:05Z",
-          "html_url": "https://github.com/bitvora/wot-relay/pull/48",
-          "user": "barrydeen"
-        },
-        {
-          "id": 2100059859,
-          "number": 73,
-          "title": "update to latest fiatjaf eventstore",
-          "body": "",
-          "merged_at": "2024-09-30T21:42:20Z",
-          "html_url": "https://github.com/bitvora/wot-relay/pull/73",
-          "user": "barrydeen"
-        },
-        {
-          "id": 2082122836,
-          "number": 57,
-          "title": "add new WoT relays to README.md",
-          "body": "add wss://wot.swarmstr.com, wss://zap.watch",
-          "merged_at": "2024-09-20T15:28:35Z",
-          "html_url": "https://github.com/bitvora/wot-relay/pull/57",
-          "user": "derekross"
-        },
-        {
-          "id": 2091758937,
-          "number": 69,
-          "title": "Update README.md",
-          "body": "Added new wot relay to the list wot.zacoos.com. \r\n\r\nI appreciate your consideration.",
-          "merged_at": "2024-09-25T16:44:09Z",
-          "html_url": "https://github.com/bitvora/wot-relay/pull/69",
-          "user": "zmpeters"
-        },
-        {
-          "id": 2085284507,
-          "number": 64,
-          "title": "disable reaction archiving, use map to allow posting",
-          "body": "",
-          "merged_at": "2024-09-22T18:09:01Z",
-          "html_url": "https://github.com/bitvora/wot-relay/pull/64",
-          "user": "barrydeen"
-        },
-        {
-          "id": 2097721948,
-          "number": 72,
-          "title": "adding wot.nostr.net",
-          "body": "",
-          "merged_at": "2024-09-30T19:08:11Z",
-          "html_url": "https://github.com/bitvora/wot-relay/pull/72",
-          "user": "aljazceru"
-        },
-        {
-          "id": 2260525792,
-          "number": 82,
-          "title": "ignore follow list for people who follow spammers",
-          "body": "",
-          "merged_at": "2025-01-04T21:09:18Z",
-          "html_url": "https://github.com/bitvora/wot-relay/pull/82",
-          "user": "barrydeen"
-        },
-        {
-          "id": 2091981730,
-          "number": 70,
-          "title": "Add wot.tealeaf.dev relay to README",
-          "body": "",
-          "merged_at": "2024-09-25T23:12:07Z",
-          "html_url": "https://github.com/bitvora/wot-relay/pull/70",
-          "user": "tealeaf-dot-dev"
-        },
-        {
-          "id": 2129009636,
-          "number": 77,
-          "title": "remove kind 4 support",
-          "body": "",
-          "merged_at": "2024-10-16T23:57:21Z",
-          "html_url": "https://github.com/bitvora/wot-relay/pull/77",
-          "user": "barrydeen"
-        },
-        {
-          "id": 2594318503,
-          "number": 89,
-          "title": "Dev memory leak",
-          "body": "",
-          "merged_at": "2025-06-16T03:22:24Z",
-          "html_url": "https://github.com/bitvora/wot-relay/pull/89",
-          "user": "barrydeen"
-        },
-        {
-          "id": 2108740073,
-          "number": 75,
-          "title": "Removed relays from list",
-          "body": "I'm no longer running these relays",
-          "merged_at": "2024-10-08T14:54:40Z",
-          "html_url": "https://github.com/bitvora/wot-relay/pull/75",
-          "user": "sudocarlos"
-        },
-        {
-          "id": 2483508907,
-          "number": 87,
-          "title": "Add wot.sudocarlos.com",
-          "body": "Now running on capable hardware",
-          "merged_at": "2025-05-28T00:17:48Z",
-          "html_url": "https://github.com/bitvora/wot-relay/pull/87",
-          "user": "sudocarlos"
-        },
-        {
-          "id": 2103279404,
-          "number": 74,
-          "title": "Add relay.GoodMorningBitcoin.com",
-          "body": "",
-          "merged_at": "2024-10-03T13:24:09Z",
-          "html_url": "https://github.com/bitvora/wot-relay/pull/74",
-          "user": "goodmorningbitcoin"
-        },
-        {
-          "id": 2070762671,
-          "number": 43,
-          "title": "add context to goroutine",
-          "body": "",
-          "merged_at": "2024-09-13T12:12:25Z",
-          "html_url": "https://github.com/bitvora/wot-relay/pull/43",
-          "user": "barrydeen"
-        },
-        {
-          "id": 2594233017,
-          "number": 88,
-          "title": "batching, goroutine limits",
-          "body": "",
-          "merged_at": "2025-06-16T02:01:12Z",
-          "html_url": "https://github.com/bitvora/wot-relay/pull/88",
-          "user": "barrydeen"
-        },
-        {
-          "id": 2113320634,
-          "number": 76,
-          "title": "update event store, badger fix",
-          "body": "",
-          "merged_at": "2024-10-08T14:57:02Z",
-          "html_url": "https://github.com/bitvora/wot-relay/pull/76",
-          "user": "barrydeen"
-        },
-        {
-          "id": 2249569918,
-          "number": 81,
-          "title": "update khatru, evenstore, badger",
-          "body": "",
-          "merged_at": "2024-12-23T13:53:05Z",
-          "html_url": "https://github.com/bitvora/wot-relay/pull/81",
-          "user": "barrydeen"
-        },
-        {
-          "id": 2596525503,
-          "number": 90,
-          "title": "filter ip rate limiter",
-          "body": "",
-          "merged_at": "2025-06-16T18:24:42Z",
-          "html_url": "https://github.com/bitvora/wot-relay/pull/90",
-          "user": "barrydeen"
-        }
-      ]
-    },
-    "nbd-wtf/nostr-tools": {
-      "added": [],
-      "removed": [
-        {
-          "id": 2661097539,
-          "number": 493,
-          "title": "enhance parseConnectionString to support double slash URL format",
-          "body": "Closes #492",
-          "merged_at": "2025-07-13T14:59:04Z",
-          "html_url": "https://github.com/nbd-wtf/nostr-tools/pull/493",
-          "user": "sondreb"
-        },
-        {
-          "id": 2718224009,
-          "number": 501,
-          "title": "relay: ensure onclose callback is triggered",
-          "body": "1. When `ws.onerror` or `ws.onclose` events are triggered before a successful connection (while `this._connected` is still `false`), the `this.onclose?.()` callback was not being called. This prevented the relay from being removed from the pool, making it impossible to reconnect via `ensureRelay`.\r\n\r\n2. Potential error in close sequence: The `this.onclose?.()` callback was called after `this.ws?.close()`, which could potentially throw an error and prevent the `this.onclose?.()` callback from exe",
-          "merged_at": "2025-08-25T01:22:38Z",
-          "html_url": "https://github.com/nbd-wtf/nostr-tools/pull/501",
-          "user": "CodyTseng"
-        },
-        {
-          "id": 2691120906,
-          "number": 499,
-          "title": "Get pingpong working in the browser with dummy REQ",
-          "body": "- Add `enablePing` option - nothing happens without it.\r\n- Add fake `REQ` to ping relays in the browser.\r\n- Set default ping and timeout to 45s.\r\n\r\nSee comments on #495 #498 for history.",
-          "merged_at": "2025-07-24T14:22:15Z",
-          "html_url": "https://github.com/nbd-wtf/nostr-tools/pull/499",
-          "user": "chr15m"
-        },
-        {
-          "id": 2771779340,
-          "number": 503,
-          "title": "chore: Bump version and document NIP-46 usage",
-          "body": "Bumps the package version to prepare for a new release.\r\n\r\nAlso updates the README.md to include a  guide for reusing NIP-46 connections, clarifying the intended workflow between the `fromURI` and `fromBunker` factory methods.\r\n",
-          "merged_at": "2025-08-25T14:00:06Z",
-          "html_url": "https://github.com/nbd-wtf/nostr-tools/pull/503",
-          "user": "tajava2006"
-        },
-        {
-          "id": 2867053389,
-          "number": 506,
-          "title": "Improvements to enablePing() & tests",
-          "body": "- Fix to allow `enablePing` to be passed to direct `Relay` instantiation.\r\n- Flag to make `MockRelay` behave like an unresponsive relay.\r\n- Added relay and pool tests for `enablePing`.",
-          "merged_at": "2025-09-29T13:41:40Z",
-          "html_url": "https://github.com/nbd-wtf/nostr-tools/pull/506",
-          "user": "chr15m"
-        },
-        {
-          "id": 2778302093,
-          "number": 504,
-          "title": "ensures consistency for .jpg/.JPG, .mp4/.MP4, etc",
-          "body": "",
-          "merged_at": "2025-08-27T13:32:45Z",
-          "html_url": "https://github.com/nbd-wtf/nostr-tools/pull/504",
-          "user": "Anderson-Juhasc"
-        },
-        {
-          "id": 2717641425,
-          "number": 500,
-          "title": "nip57: fix missing e-tag",
-          "body": "",
-          "merged_at": "2025-08-04T18:23:30Z",
-          "html_url": "https://github.com/nbd-wtf/nostr-tools/pull/500",
-          "user": "nikolat"
-        },
-        {
-          "id": 2946666453,
-          "number": 512,
-          "title": "Ping pong memory leak fix for #511",
-          "body": "Fixes #511. Adds a new test which checks for memory leaks.",
-          "merged_at": "2025-10-27T02:14:33Z",
-          "html_url": "https://github.com/nbd-wtf/nostr-tools/pull/512",
-          "user": "chr15m"
-        },
-        {
-          "id": 2867563547,
-          "number": 507,
-          "title": "Reconnect with exponential backoff flag: `enableReconnect`",
-          "body": "This PR adds a new flag `enableReconnect` which turns on an exponential-backoff reconnection sequence for relay subscriptions. When a relay disconnects, reconnection will be attempted with a delay that gets longer with each attempt.\r\n\r\nIf `enableReconnect` is set to a callback function it will be called when reconnection occurs and passed the current subscription. This can be used to modify the subscription filters or e.g. the `since` parameter to fetch only newer events. The updated subscriptio",
-          "merged_at": "2025-09-30T13:01:07Z",
-          "html_url": "https://github.com/nbd-wtf/nostr-tools/pull/507",
-          "user": "chr15m"
-        },
-        {
-          "id": 2683877411,
-          "number": 498,
-          "title": "Add a ping/pong mechanism to detect socket timeout on  #495",
-          "body": "Implements a ping/pong heartbeat on platforms where the WebSocket implementation supports `.ping()`. Fixes #495.\r\n\r\nTODO:\r\n- [ ] Remove the debug logging.\r\n- [ ] Make the timeouts configurable.\r\n- [ ] Make the heartbeat opt-in with an option. (maybe?)\r\n- [ ] Write a proper test that simulates network disconnection.\r\n\r\nHere's a simple test script for trying it out (build nostr-tools first):\r\n\r\n```javascript\r\n#!/usr/bin/env node\r\nimport { fileURLToPath } from 'url';\r\nimport path from 'path';\r\nimpo",
-          "merged_at": "2025-07-23T19:16:12Z",
-          "html_url": "https://github.com/nbd-wtf/nostr-tools/pull/498",
-          "user": "chr15m"
-        },
-        {
-          "id": 2769832304,
-          "number": 502,
-          "title": "feat(nip46): Add support for client-initiated connections in BunkerSigner",
-          "body": "\r\nThis PR implements the client-initiated connection flow for NIP-46, as proposed in issue #490 .\r\n\r\nIt introduces a new static factory method, `BunkerSigner.fromURI()`, to handle `nostrconnect://` URIs. This allows for a much smoother user experience, especially for web clients connecting to a mobile bunker via QR code.\r\n\r\nThere hasn't been any feedback on the issue yet, so I wanted to present a concrete implementation for review. If you feel this isn't the right direction for the library, I'd ",
-          "merged_at": "2025-08-24T18:53:02Z",
-          "html_url": "https://github.com/nbd-wtf/nostr-tools/pull/502",
-          "user": "tajava2006"
-        },
-        {
-          "id": 2980779507,
-          "number": 516,
-          "title": "nip77: adds wrapper for negentropy and fallback for yieldThread",
-          "body": "- adds non mandatory flag to relay.subscribe -> \"fireImmediately\" since auto firing is only useful for non-nip77 (negentropy) communications\r\n- adds basic nip77 wrapper\r\n- adds fallback for typeof MessageChannel !== 'undefined' in yieldThread(). For example, in react-native this context is not available.\r\n",
-          "merged_at": "2025-11-18T11:06:26Z",
-          "html_url": "https://github.com/nbd-wtf/nostr-tools/pull/516",
-          "user": "max-gy"
-        },
-        {
-          "id": 2678864756,
-          "number": 496,
-          "title": "Fix JSON syntax of jsr.json",
-          "body": "This PR fixes the syntax error in `jsr.json`.",
-          "merged_at": "2025-07-19T11:58:06Z",
-          "html_url": "https://github.com/nbd-wtf/nostr-tools/pull/496",
-          "user": "vornis101"
-        },
-        {
-          "id": 2536875513,
-          "number": 489,
-          "title": "Typescript type inference for 'decode' function in nip19 is not working fully",
-          "body": "'Decode' function is not returning specific type for specific parameters signature.\r\nIn this request I'm including alternative specific signatures if the first generic signature fails, this will solve complexity of extra validation after decoding or forcing cast using 'as' keyword.\r\n\r\nTo validate this implementation I have remove the keyword 'as' for cast into unit tests, so the unit tests validates the returning type also. 'As' keyword will force the return to the type dev wish, but if the para",
-          "merged_at": "2025-06-01T14:08:57Z",
-          "html_url": "https://github.com/nbd-wtf/nostr-tools/pull/489",
-          "user": "antonioconselheiro"
-        },
-        {
-          "id": 2907318460,
-          "number": 510,
-          "title": "nip57: lud16 must take precedence over lud06",
-          "body": "`lud06` was [removed](https://github.com/nostr-protocol/nips/pull/2065).\r\nI kept it for compatibility reasons.",
-          "merged_at": "2025-10-12T14:01:25Z",
-          "html_url": "https://github.com/nbd-wtf/nostr-tools/pull/510",
-          "user": "SnowCait"
-        },
-        {
-          "id": 2957764415,
-          "number": 515,
-          "title": "Fix subscribeMap EOSE grouping. Fixes #514",
-          "body": "See #514 for a description of the cause of this bug. After applying this the test reports \"EOSE received! If you see this, the bug is fixed.\"",
-          "merged_at": "2025-10-29T11:16:06Z",
-          "html_url": "https://github.com/nbd-wtf/nostr-tools/pull/515",
-          "user": "chr15m"
-        }
-      ]
-    },
-    "nostr-dev-kit/ndk": {
-      "added": [],
-      "removed": [
-        {
-          "id": 3030900135,
-          "number": 355,
-          "title": "Prevent caching of ephemeral events",
-          "body": "This change prevents ephemeral events (kind 20000-29999) from being saved to the cache by adding a check in the subscription logic. A test case has been added to verify the new behavior.\n\n---\n*PR created automatically by Jules for task [11667678571727954285](https://jules.google.com/task/11667678571727954285) started by @pablof7z*",
-          "merged_at": "2025-11-20T19:04:42Z",
-          "html_url": "https://github.com/nostr-dev-kit/ndk/pull/355",
-          "user": "google-labs-jules[bot]"
-        },
-        {
-          "id": 2915910472,
-          "number": 342,
-          "title": "feat(messages): add high-level messaging package",
-          "body": "## Summary\nAdds a new high-level messaging package (`@nostr-dev-kit/messages`) that provides a unified API for private messaging protocols on Nostr, starting with NIP-17 support.\n\n## Dependencies\nThis PR depends on #341 (cache module system) being merged first, as it uses cache modules for persistent storage.\n\n## Features\n- **Simple API** - One-line message sending with automatic protocol handling\n- **NIP-17 Support** - Gift-wrapped private messages with proper relay management\n- **Conversation ",
-          "merged_at": "2025-10-15T06:09:36Z",
-          "html_url": "https://github.com/nostr-dev-kit/ndk/pull/342",
-          "user": "pablof7z"
-        },
-        {
-          "id": 3010085481,
-          "number": 351,
-          "title": "perf(core): skip JSON.parse for duplicate events",
-          "body": "Extract event ID from raw WebSocket message string before parsing. Check seenEvents LRU cache and early exit if already processed.\r\n\r\nMeasured improvement: 38% faster message processing, 45% faster per-message average.\r\nTest case: 9k messages, saved 3.5s total processing time.\r\n\r\nOptimization details:\r\n- charCodeAt check for EVENT message type (O(1))\r\n- indexOf to locate event ID field (O(n) on message length)\r\n- substring extraction of 64-char hex ID\r\n- LRU cache lookup before expensive JSON.pa",
-          "merged_at": "2025-11-14T12:14:57Z",
-          "html_url": "https://github.com/nostr-dev-kit/ndk/pull/351",
-          "user": "mmalmi"
-        },
-        {
-          "id": 2909986058,
-          "number": 340,
-          "title": "Fix `makeZapRequest` on latest nostr-tools",
-          "body": "Fixed by pinning the `nostr-tools` version to < `2.16.1`",
-          "merged_at": "2025-10-14T09:20:09Z",
-          "html_url": "https://github.com/nostr-dev-kit/ndk/pull/340",
-          "user": "digitalbase"
-        },
-        {
-          "id": 2919558194,
-          "number": 345,
-          "title": "Hotfix Docs",
-          "body": "",
-          "merged_at": "2025-10-17T09:50:48Z",
-          "html_url": "https://github.com/nostr-dev-kit/ndk/pull/345",
-          "user": "digitalbase"
-        },
-        {
-          "id": 2948785558,
-          "number": 349,
-          "title": "docs(readme): update outdated example links",
-          "body": "",
-          "merged_at": "2025-11-17T06:42:48Z",
-          "html_url": "https://github.com/nostr-dev-kit/ndk/pull/349",
-          "user": "leon-wbr"
-        },
-        {
-          "id": 3022601368,
-          "number": 354,
-          "title": "NDK v3.0: Major Architecture Overhaul & Performance Improvements",
-          "body": "# NDK v3.0 - Major Release\n\nThis PR introduces NDK v3.0, a major architectural overhaul focused on performance, developer experience, and modern Svelte 5 support.\n\n## \ud83d\udcca Overview\n\n- **1,505 files changed** (+119,141 insertions, -57,596 deletions)\n- **Core package:** v3.0.0-beta.52\n- **Svelte package:** v4.0.0-beta.52\n- **Migration complexity:** High (significant breaking changes)\n\n---\n\n## \ud83c\udfaf Major Changes by Package\n\n### @nostr-dev-kit/ndk (Core)\n\n#### Performance Improvements\n- **10x faster subsc",
-          "merged_at": "2025-11-20T18:07:36Z",
-          "html_url": "https://github.com/nostr-dev-kit/ndk/pull/354",
-          "user": "pablof7z"
-        },
-        {
-          "id": 2917758747,
-          "number": 343,
-          "title": "Feature/docs route rewrites",
-          "body": "",
-          "merged_at": "2025-10-15T15:24:30Z",
-          "html_url": "https://github.com/nostr-dev-kit/ndk/pull/343",
-          "user": "digitalbase"
-        },
-        {
-          "id": 2915907004,
-          "number": 341,
-          "title": "feat(cache): add extensible cache module system",
-          "body": "## Summary\nAdds an extensible cache module system that allows cache adapters to support custom functionality beyond the standard NDK cache interface.\n\n## Changes\n- Added `NDKCacheModule` base class for creating cache modules\n- Implemented module discovery and registration system\n- Added comprehensive test suite for cache modules\n- Created extensive documentation with examples\n\n## Documentation\n- `docs/cache-modules.md` - Guide for using and creating cache modules\n- `docs/example-cache-module.md`",
-          "merged_at": "2025-10-15T06:09:48Z",
-          "html_url": "https://github.com/nostr-dev-kit/ndk/pull/341",
-          "user": "pablof7z"
-        },
-        {
-          "id": 2906219069,
-          "number": 337,
-          "title": "Fix bun install",
-          "body": "",
-          "merged_at": "2025-10-14T09:21:06Z",
-          "html_url": "https://github.com/nostr-dev-kit/ndk/pull/337",
-          "user": "digitalbase"
-        },
-        {
-          "id": 3031699615,
-          "number": 356,
-          "title": "perf(cache-sqlite-wasm): optimize binary encoder/decoder performance",
-          "body": "## Summary\n\nMajor performance improvements to the binary encoding/decoding pipeline in cache-sqlite-wasm, reducing encoding time by **69%** (3040ms \u2192 955ms for 9379 events).\n\n## Changes\n\n### 1. Reuse TextEncoder/TextDecoder instances\n- **Before**: Created new instances on every `encodeString()` / `decodeString()` call\n- **After**: Reuse single instances at module level\n- **Impact**: Called tens of thousands of times per query (once per content, once per tag item, once per relay URL)\n\n### 2. Elim",
-          "merged_at": "2025-11-20T22:21:00Z",
-          "html_url": "https://github.com/nostr-dev-kit/ndk/pull/356",
-          "user": "pablof7z"
-        }
-      ]
-    },
-    "hzrd149/applesauce": {
-      "added": [],
-      "removed": [
-        {
-          "id": 3018314885,
-          "number": 34,
-          "title": "Version Packages",
-          "body": "This PR was opened by the [Changesets release](https://github.com/changesets/action) GitHub action. When you're ready to do a release, you can merge this and the packages will be published to npm automatically. If you're not ready to do a release yet, that's fine, whenever you add more changesets to master, this PR will be updated.\n\n\n# Releases\n## applesauce-core@4.4.2\n\n### Patch Changes\n\n-   ccd87cc: Fix performance issue with verifying zap request events\n\n## applesauce-relay@4.4.2\n\n### Patch C",
-          "merged_at": "2025-11-17T17:24:37Z",
-          "html_url": "https://github.com/hzrd149/applesauce/pull/34",
-          "user": "github-actions[bot]"
-        },
-        {
-          "id": 2926708488,
-          "number": 30,
-          "title": "Version Packages",
-          "body": "This PR was opened by the [Changesets release](https://github.com/changesets/action) GitHub action. When you're ready to do a release, you can merge this and the packages will be published to npm automatically. If you're not ready to do a release yet, that's fine, whenever you add more changesets to master, this PR will be updated.\n\n\n# Releases\n## applesauce-core@4.2.0\n\n### Minor Changes\n\n-   363804d: Add `createFilterMap` helper for creating filter maps from outbox maps\n-   4f978f6: Add `filter",
-          "merged_at": "2025-11-03T17:48:51Z",
-          "html_url": "https://github.com/hzrd149/applesauce/pull/30",
-          "user": "github-actions[bot]"
-        },
-        {
-          "id": 2977622411,
-          "number": 31,
-          "title": "Version Packages",
-          "body": "This PR was opened by the [Changesets release](https://github.com/changesets/action) GitHub action. When you're ready to do a release, you can merge this and the packages will be published to npm automatically. If you're not ready to do a release yet, that's fine, whenever you add more changesets to master, this PR will be updated.\n\n\n# Releases\n## applesauce-factory@4.3.0\n\n### Minor Changes\n\n-   2e7331e: Add profile blueprint\n\n### Patch Changes\n\n-   Updated dependencies\n    -   applesauce-core@4",
-          "merged_at": "2025-11-12T20:41:15Z",
-          "html_url": "https://github.com/hzrd149/applesauce/pull/31",
-          "user": "github-actions[bot]"
-        },
-        {
-          "id": 2496887053,
-          "number": 17,
-          "title": "Version Packages",
-          "body": "This PR was opened by the [Changesets release](https://github.com/changesets/action) GitHub action. When you're ready to do a release, you can merge this and the packages will be published to npm automatically. If you're not ready to do a release yet, that's fine, whenever you add more changesets to master, this PR will be updated.\n\n\n# Releases\n## applesauce-content@1.2.0\n\n### Minor Changes\n\n-   b611352: Add `Token` regular expressions that match things surrounded by whitespace to avoid matching",
-          "merged_at": "2025-05-10T16:22:52Z",
-          "html_url": "https://github.com/hzrd149/applesauce/pull/17",
-          "user": "github-actions[bot]"
-        },
-        {
-          "id": 2786577358,
-          "number": 27,
-          "title": "Version Packages",
-          "body": "This PR was opened by the [Changesets release](https://github.com/changesets/action) GitHub action. When you're ready to do a release, you can merge this and the packages will be published to npm automatically. If you're not ready to do a release yet, that's fine, whenever you add more changesets to master, this PR will be updated.\n\n\n# Releases\n## applesauce-core@4.0.0\n\n### Major Changes\n\n-   fba497a: Rename `EventSet` to `EventMemory`\n-   fba497a: Add support for custom databases to `EventStore",
-          "merged_at": "2025-09-30T18:13:45Z",
-          "html_url": "https://github.com/hzrd149/applesauce/pull/27",
-          "user": "github-actions[bot]"
-        },
-        {
-          "id": 3064789906,
-          "number": 38,
-          "title": "Enable default signature verification of profiles (and other events)",
-          "body": "## summary\r\n\r\n - Set EventStore.verifyEvent to nostr-tools verification by default so inbound events (including profiles) are signature-checked out of the box.\r\n  - Add a warning when a consumer explicitly leaves verifyEvent undefined, making opt-out an intentional choice.\r\n\r\nCloses: https://github.com/hzrd149/applesauce/issues/37\r\nContext: review triggered by findings in https://github.com/nostrability/nostrability/issues/262",
-          "merged_at": "2025-12-03T16:28:41Z",
-          "html_url": "https://github.com/hzrd149/applesauce/pull/38",
-          "user": "alltheseas"
-        },
-        {
-          "id": 3017916698,
-          "number": 33,
-          "title": "Version Packages",
-          "body": "This PR was opened by the [Changesets release](https://github.com/changesets/action) GitHub action. When you're ready to do a release, you can merge this and the packages will be published to npm automatically. If you're not ready to do a release yet, that's fine, whenever you add more changesets to master, this PR will be updated.\n\n\n# Releases\n## applesauce-core@4.4.1\n\n### Patch Changes\n\n-   46910ef: Fix `getAddressPointerForEvent` throwing for replaceable events\n",
-          "merged_at": "2025-11-17T15:44:13Z",
-          "html_url": "https://github.com/hzrd149/applesauce/pull/33",
-          "user": "github-actions[bot]"
-        },
-        {
-          "id": 2608272030,
-          "number": 21,
-          "title": "Version Packages",
-          "body": "This PR was opened by the [Changesets release](https://github.com/changesets/action) GitHub action. When you're ready to do a release, you can merge this and the packages will be published to npm automatically. If you're not ready to do a release yet, that's fine, whenever you add more changesets to master, this PR will be updated.\n\n\n# Releases\n## applesauce-core@2.1.1\n\n### Patch Changes\n\n-   39dce6c: Add m4a file extension to `AUDIO_EXT`\n\n## applesauce-relay@2.1.1\n\n### Patch Changes\n\n-   b446dd",
-          "merged_at": "2025-06-23T22:49:29Z",
-          "html_url": "https://github.com/hzrd149/applesauce/pull/21",
-          "user": "github-actions[bot]"
-        },
-        {
-          "id": 2512169439,
-          "number": 18,
-          "title": "Version Packages",
-          "body": "This PR was opened by the [Changesets release](https://github.com/changesets/action) GitHub action. When you're ready to do a release, you can merge this and the packages will be published to npm automatically. If you're not ready to do a release yet, that's fine, whenever you add more changesets to master, this PR will be updated.\n\n\n# Releases\n## applesauce-core@2.0.0\n\n### Major Changes\n\n-   1d28426: Rename \"Queries\" to \"Models\"\n-   1d28426: Rename `inserts`, `updates`, and `removes` streams on",
-          "merged_at": "2025-06-10T20:35:06Z",
-          "html_url": "https://github.com/hzrd149/applesauce/pull/18",
-          "user": "github-actions[bot]"
-        },
-        {
-          "id": 2761158881,
-          "number": 25,
-          "title": "Version Packages",
-          "body": "This PR was opened by the [Changesets release](https://github.com/changesets/action) GitHub action. When you're ready to do a release, you can merge this and the packages will be published to npm automatically. If you're not ready to do a release yet, that's fine, whenever you add more changesets to master, this PR will be updated.\n\n\n# Releases\n## applesauce-core@3.0.1\n\n### Patch Changes\n\n-   7e72533: Return \"\" when event missing \"d\" tag\n",
-          "merged_at": "2025-08-20T21:53:51Z",
-          "html_url": "https://github.com/hzrd149/applesauce/pull/25",
-          "user": "github-actions[bot]"
-        },
-        {
-          "id": 2626265209,
-          "number": 22,
-          "title": "Version Packages",
-          "body": "This PR was opened by the [Changesets release](https://github.com/changesets/action) GitHub action. When you're ready to do a release, you can merge this and the packages will be published to npm automatically. If you're not ready to do a release yet, that's fine, whenever you add more changesets to master, this PR will be updated.\n\n\n# Releases\n## applesauce-core@2.2.0\n\n### Minor Changes\n\n-   5183c3a: Make `getEncryptedContentEncryptionMethods` throw more describe error when event kind does not ",
-          "merged_at": "2025-07-01T17:37:53Z",
-          "html_url": "https://github.com/hzrd149/applesauce/pull/22",
-          "user": "github-actions[bot]"
-        },
-        {
-          "id": 2896673456,
-          "number": 29,
-          "title": "Version Packages",
-          "body": "This PR was opened by the [Changesets release](https://github.com/changesets/action) GitHub action. When you're ready to do a release, you can merge this and the packages will be published to npm automatically. If you're not ready to do a release yet, that's fine, whenever you add more changesets to master, this PR will be updated.\n\n\n# Releases\n## applesauce-accounts@4.1.0\n\n### Minor Changes\n\n-   686176d: Add `AccountManager.deserialize` for creating accounts without `AccountManager` instance\n- ",
-          "merged_at": "2025-10-16T10:09:31Z",
-          "html_url": "https://github.com/hzrd149/applesauce/pull/29",
-          "user": "github-actions[bot]"
-        },
-        {
-          "id": 2584957104,
-          "number": 20,
-          "title": "Version Packages",
-          "body": "This PR was opened by the [Changesets release](https://github.com/changesets/action) GitHub action. When you're ready to do a release, you can merge this and the packages will be published to npm automatically. If you're not ready to do a release yet, that's fine, whenever you add more changesets to master, this PR will be updated.\n\n\n# Releases\n## applesauce-core@2.1.0\n\n### Minor Changes\n\n-   c58facb: Fix `EventSet.getReplaceable` using wrong replaceable address\n-   b1841ee: Add `isEventInList` ",
-          "merged_at": "2025-06-19T17:16:40Z",
-          "html_url": "https://github.com/hzrd149/applesauce/pull/20",
-          "user": "github-actions[bot]"
-        },
-        {
-          "id": 2668325488,
-          "number": 24,
-          "title": "Version Packages",
-          "body": "This PR was opened by the [Changesets release](https://github.com/changesets/action) GitHub action. When you're ready to do a release, you can merge this and the packages will be published to npm automatically. If you're not ready to do a release yet, that's fine, whenever you add more changesets to master, this PR will be updated.\n\n\n# Releases\n## applesauce-accounts@3.0.0\n\n### Major Changes\n\n-   7b469b5: Remove `getRelays` method since its not longer listed in NIP-07\n-   7b469b5: Remove syncron",
-          "merged_at": "2025-08-15T16:50:31Z",
-          "html_url": "https://github.com/hzrd149/applesauce/pull/24",
-          "user": "github-actions[bot]"
-        },
-        {
-          "id": 3075967860,
-          "number": 39,
-          "title": "Validate kind-0/1 against nostrability JSON blob verification schemas",
-          "body": "## Summary\n- add Ajv/ajv-formats/YAML-backed schema validation for kind-0 and kind-1 event outputs\n- vendor minimal nostrability nip-01 schemas and normalize refs for in-repo tests\n- fix event-store timer typing under strict TS and ignore bd artifacts\n\n## Testing\n- corepack pnpm --filter applesauce-core build\n- corepack pnpm --filter applesauce-common test -- --runInBand\n",
-          "merged_at": "2025-12-06T15:29:12Z",
-          "html_url": "https://github.com/hzrd149/applesauce/pull/39",
-          "user": "alltheseas"
-        },
-        {
-          "id": 3036730998,
-          "number": 36,
-          "title": "feat: add wordcloud",
-          "body": "<img width=\"1365\" height=\"812\" alt=\"Screenshot 2025-11-22 at 3 03 47\u202fPM\" src=\"https://github.com/user-attachments/assets/2cdfec12-9b0e-4537-8e01-05e0343b1ba0\" />\r\n",
-          "merged_at": "2025-11-25T15:37:13Z",
-          "html_url": "https://github.com/hzrd149/applesauce/pull/36",
-          "user": "dskvr"
-        },
-        {
-          "id": 2635990520,
-          "number": 23,
-          "title": "Version Packages",
-          "body": "This PR was opened by the [Changesets release](https://github.com/changesets/action) GitHub action. When you're ready to do a release, you can merge this and the packages will be published to npm automatically. If you're not ready to do a release yet, that's fine, whenever you add more changesets to master, this PR will be updated.\n\n\n# Releases\n## applesauce-actions@2.3.0\n\n### Minor Changes\n\n-   5e38452: Update contacts actions not to throw when event missing\n-   5e38452: Update blossom actions ",
-          "merged_at": "2025-07-07T17:03:39Z",
-          "html_url": "https://github.com/hzrd149/applesauce/pull/23",
-          "user": "github-actions[bot]"
-        },
-        {
-          "id": 2768931641,
-          "number": 26,
-          "title": "Version Packages",
-          "body": "This PR was opened by the [Changesets release](https://github.com/changesets/action) GitHub action. When you're ready to do a release, you can merge this and the packages will be published to npm automatically. If you're not ready to do a release yet, that's fine, whenever you add more changesets to master, this PR will be updated.\n\n\n# Releases\n## applesauce-accounts@3.1.0\n\n### Minor Changes\n\n-   3ede999: Bump `nostr-tools` to `2.15`\n\n### Patch Changes\n\n-   Updated dependencies\n    -   applesauc",
-          "merged_at": "2025-08-28T15:11:41Z",
-          "html_url": "https://github.com/hzrd149/applesauce/pull/26",
-          "user": "github-actions[bot]"
-        },
-        {
-          "id": 3004292987,
-          "number": 32,
-          "title": "Version Packages",
-          "body": "This PR was opened by the [Changesets release](https://github.com/changesets/action) GitHub action. When you're ready to do a release, you can merge this and the packages will be published to npm automatically. If you're not ready to do a release yet, that's fine, whenever you add more changesets to master, this PR will be updated.\n\n\n# Releases\n## applesauce-core@4.4.0\n\n### Minor Changes\n\n-   eb8b7df: Add `ShareEvent` type and `isValidShare` method\n-   20a4d57: Add support for NIP-ND, AND filter",
-          "merged_at": "2025-11-17T14:37:14Z",
-          "html_url": "https://github.com/hzrd149/applesauce/pull/32",
-          "user": "github-actions[bot]"
-        }
-      ]
-    },
-    "penpenpng/rx-nostr": {
-      "added": [],
-      "removed": [
-        {
-          "id": 2450823941,
-          "number": 171,
-          "title": "fix: polite option",
-          "body": "",
-          "merged_at": "2025-04-10T11:08:02Z",
-          "html_url": "https://github.com/penpenpng/rx-nostr/pull/171",
-          "user": "penpenpng"
-        },
-        {
-          "id": 3077201031,
-          "number": 180,
-          "title": "fix: minor bugs",
-          "body": "",
-          "merged_at": "2025-12-07T12:44:40Z",
-          "html_url": "https://github.com/penpenpng/rx-nostr/pull/180",
-          "user": "penpenpng"
-        },
-        {
-          "id": 2448955721,
-          "number": 168,
-          "title": "feat: add polite option for retrying feature",
-          "body": "",
-          "merged_at": "2025-04-09T15:39:00Z",
-          "html_url": "https://github.com/penpenpng/rx-nostr/pull/168",
-          "user": "penpenpng"
-        },
-        {
-          "id": 2032798863,
-          "number": 151,
-          "title": "feat: more flexible method scope temporary relays",
-          "body": "",
-          "merged_at": "2024-08-22T19:11:02Z",
-          "html_url": "https://github.com/penpenpng/rx-nostr/pull/151",
-          "user": "penpenpng"
-        },
-        {
-          "id": 2243473743,
-          "number": 162,
-          "title": "fix: ERR_REQUIRE_ESM error under CommonJS module system",
-          "body": "This PR removes the explicit `.js` file extension set in `vite.config.ts`. This was causing issues when using the package with node because node will treat any `.js` file in a package as an ES module if the `\"type\": \"module\"` is set\r\n\r\nThis was only an issue when importing the package from a CJS context. for example\r\n```js\r\nconst {createRxNostr} = require(\"rx-nostr\")\r\n```\r\n\r\nWould throw\r\n\r\n```\r\n/tmp/tmp.sesywPGnIr/test.cjs:1\r\nconst {createRxNostr} = require('rx-nostr')\r\n                        ^",
-          "merged_at": "2024-12-19T15:58:00Z",
-          "html_url": "https://github.com/penpenpng/rx-nostr/pull/162",
-          "user": "hzrd149"
-        },
-        {
-          "id": 2032662678,
-          "number": 148,
-          "title": "fix: prevent multiple NIP-11 fetch",
-          "body": "",
-          "merged_at": "2024-08-22T17:44:09Z",
-          "html_url": "https://github.com/penpenpng/rx-nostr/pull/148",
-          "user": "penpenpng"
-        },
-        {
-          "id": 2032690810,
-          "number": 149,
-          "title": "fix: handle cases that unexpected relay URL is given to `fetchRelayInfo()`",
-          "body": "",
-          "merged_at": "2024-08-22T18:02:15Z",
-          "html_url": "https://github.com/penpenpng/rx-nostr/pull/149",
-          "user": "penpenpng"
-        },
-        {
-          "id": 2449048792,
-          "number": 170,
-          "title": "chore: update old github action module",
-          "body": "",
-          "merged_at": "2025-04-09T16:22:57Z",
-          "html_url": "https://github.com/penpenpng/rx-nostr/pull/170",
-          "user": "penpenpng"
-        },
-        {
-          "id": 2274523358,
-          "number": 165,
-          "title": "feat!: add `disconnectTimeout` option to rx-nostr config",
-          "body": "This is my best attempt at adding a disconnect timeout option to rx-nostr to address #164\r\n\r\nLet me know if you think there is a better way to implement this but I think I made it pretty simple :)",
-          "merged_at": "2025-01-15T08:29:39Z",
-          "html_url": "https://github.com/penpenpng/rx-nostr/pull/165",
-          "user": "hzrd149"
-        },
-        {
-          "id": 2276897441,
-          "number": 166,
-          "title": "feat: replay option for RxReq",
-          "body": "resolve #161.\r\n\r\nAdded `replay` option to allow `emit()` before `use()`. This option will be enabled by default in the future.\r\n\r\n```ts\r\nconst rxReq = createRxBackwardReq({ replay: true });\r\n\r\nrxReq.emit({ ids: [ID_1] });\r\nrxReq.emit({ ids: [ID_2] });\r\nrxReq.emit({ ids: [ID_3] });\r\n\r\nrxNostr.use(rxReq).subscribe(() => { /* ... */ });\r\n\r\n// Note that it can be reused.\r\n// rxNostr.use(rxReq).subscribe(() => { /* ... */ });\r\n```",
-          "merged_at": "2025-01-14T15:06:53Z",
-          "html_url": "https://github.com/penpenpng/rx-nostr/pull/166",
-          "user": "penpenpng"
-        },
-        {
-          "id": 2194180257,
-          "number": 159,
-          "title": "fix: Set default value to first() (resolve #158)",
-          "body": "",
-          "merged_at": "2024-11-22T09:00:44Z",
-          "html_url": "https://github.com/penpenpng/rx-nostr/pull/159",
-          "user": "penpenpng"
-        },
-        {
-          "id": 2037706018,
-          "number": 152,
-          "title": "documentation for v3.x and English translation",
-          "body": "resolve #75, #121",
-          "merged_at": "2024-08-31T11:19:58Z",
-          "html_url": "https://github.com/penpenpng/rx-nostr/pull/152",
-          "user": "penpenpng"
-        },
-        {
-          "id": 2194279717,
-          "number": 160,
-          "title": "fix: catch invalid URL error for Deno runtime (resolve #157)",
-          "body": "",
-          "merged_at": "2024-11-22T09:31:38Z",
-          "html_url": "https://github.com/penpenpng/rx-nostr/pull/160",
-          "user": "penpenpng"
-        },
-        {
-          "id": 2277126266,
-          "number": 167,
-          "title": "Revert \"feat: replay option for RxReq\"",
-          "body": "This function cannot be used in conjunction with `share()`. Although it is possible to use `shareReplay()` instead, library users may not notice it, and `shareReplay()` makes another concern about memory management.\r\n\r\n I have decided that the risk of this function causing a bug is greater than the convenience it provides, so I revert it.\r\n\r\n---\r\n\r\nReverts penpenpng/rx-nostr#166\r\n\r\n",
-          "merged_at": "2025-01-14T15:50:30Z",
-          "html_url": "https://github.com/penpenpng/rx-nostr/pull/167",
-          "user": "penpenpng"
-        },
-        {
-          "id": 2032692840,
-          "number": 150,
-          "title": "fix: handle cases that unexpected relay URL is given to `normalizeRelayUrl()`",
-          "body": "",
-          "merged_at": "2024-08-22T18:03:00Z",
-          "html_url": "https://github.com/penpenpng/rx-nostr/pull/150",
-          "user": "penpenpng"
-        },
-        {
-          "id": 2449037490,
-          "number": 169,
-          "title": "chore: rename package",
-          "body": "",
-          "merged_at": "2025-04-09T16:19:11Z",
-          "html_url": "https://github.com/penpenpng/rx-nostr/pull/169",
-          "user": "penpenpng"
-        },
-        {
-          "id": 2006701046,
-          "number": 146,
-          "title": "chore: bump nostr-typedef",
-          "body": "",
-          "merged_at": "2024-08-22T18:03:20Z",
-          "html_url": "https://github.com/penpenpng/rx-nostr/pull/146",
-          "user": "penpenpng"
-        },
-        {
-          "id": 2006666298,
-          "number": 145,
-          "title": "fix: check socket readyState before closing it",
-          "body": "",
-          "merged_at": "2024-08-06T19:19:26Z",
-          "html_url": "https://github.com/penpenpng/rx-nostr/pull/145",
-          "user": "penpenpng"
-        },
-        {
-          "id": 2048074364,
-          "number": 155,
-          "title": "Fix docs",
-          "body": "Summary of errors in the docs:\r\n- `nsecSigner` doesn't exist. You mean `seckeySigner`?\r\n- `seckeySigner` should be imported from `rx-nostr-crypto` in v3\r\n- Duplicated sections for `createAllMessageObservable()`. The description in the latter section seems like for `createAllEventObservable()`\r\n- \u300c\u3002\u300din a English doc",
-          "merged_at": "2024-09-01T07:33:47Z",
-          "html_url": "https://github.com/penpenpng/rx-nostr/pull/155",
-          "user": "jiftechnify"
-        }
-      ]
-    },
-    "rust-nostr/nostr": {
-      "added": [],
-      "removed": [
-        {
-          "id": 3062712993,
-          "number": 1155,
-          "title": "relay-builder: move write policy between mode and ephemeral kind checks",
-          "body": "Check the write policies only after checking the status of the event in the database and the relay mode.\r\n\r\nRef https://github.com/rust-nostr/nostr/pull/1149#discussion_r2572214452",
-          "merged_at": "2025-12-02T09:27:03Z",
-          "html_url": "https://github.com/rust-nostr/nostr/pull/1155",
-          "user": "yukibtc"
-        },
-        {
-          "id": 3037509507,
-          "number": 1143,
-          "title": "lmdb: add `NostrLmdb::reindex`",
-          "body": "",
-          "merged_at": "2025-11-23T13:44:32Z",
-          "html_url": "https://github.com/rust-nostr/nostr/pull/1143",
-          "user": "yukibtc"
-        },
-        {
-          "id": 3033510788,
-          "number": 1141,
-          "title": "lmdb: make inner APIs async",
-          "body": "",
-          "merged_at": "2025-11-21T12:02:18Z",
-          "html_url": "https://github.com/rust-nostr/nostr/pull/1141",
-          "user": "yukibtc"
-        },
-        {
-          "id": 3081150566,
-          "number": 1164,
-          "title": "nostr: refinements for `wasm32-wasip2` target",
-          "body": "Closes https://github.com/rust-nostr/nostr/issues/1161\r\nCloses https://github.com/rust-nostr/nostr/issues/1163",
-          "merged_at": "2025-12-08T11:36:10Z",
-          "html_url": "https://github.com/rust-nostr/nostr/pull/1164",
-          "user": "yukibtc"
-        },
-        {
-          "id": 3042763689,
-          "number": 1145,
-          "title": "relay-builder: rename `RelayBuilder` to `LocalRelayBuilder`",
-          "body": "Rename all structs and enums from `RelayBuilder*` to `LocalRelayBuilder*`. Deprecate all previous names.",
-          "merged_at": "2025-11-25T08:34:01Z",
-          "html_url": "https://github.com/rust-nostr/nostr/pull/1145",
-          "user": "yukibtc"
-        },
-        {
-          "id": 3080723850,
-          "number": 1162,
-          "title": "nostr(nip47): add `Method::Unknown` variant",
-          "body": "Fixes https://github.com/rust-nostr/nostr/issues/1160",
-          "merged_at": "2025-12-08T09:12:08Z",
-          "html_url": "https://github.com/rust-nostr/nostr/pull/1162",
-          "user": "yukibtc"
-        },
-        {
-          "id": 3070369619,
-          "number": 1159,
-          "title": "nostr: fix parsing of e tag with blank values",
-          "body": "Fixes https://gitworkshop.dev/yukikishimoto.com/nostr/issues/note15xl8ae8dnmt26adfw6ec8gshxxs242vrvsa3v36ctwq2x9gglkustlxlwa",
-          "merged_at": "2025-12-04T08:54:48Z",
-          "html_url": "https://github.com/rust-nostr/nostr/pull/1159",
-          "user": "yukibtc"
-        },
-        {
-          "id": 3042935092,
-          "number": 1147,
-          "title": "relay-builder: align LocalRelay building APIs with other libraries",
-          "body": "- Add `LocalRelay::builder` constructor\r\n- Add `LocalRelayBuilder::build` method\r\n- Change `LocalRelay::new` constructor signature\r\n- Impl `Default` for `LocalRelay`\r\n\r\nRef https://github.com/rust-nostr/nostr/issues/1000",
-          "merged_at": "2025-11-25T09:34:22Z",
-          "html_url": "https://github.com/rust-nostr/nostr/pull/1147",
-          "user": "yukibtc"
-        },
-        {
-          "id": 3021462612,
-          "number": 1137,
-          "title": "Add nostr-sqlite",
-          "body": "",
-          "merged_at": "2025-11-24T09:04:32Z",
-          "html_url": "https://github.com/rust-nostr/nostr/pull/1137",
-          "user": "yukibtc"
-        },
-        {
-          "id": 3084834139,
-          "number": 1165,
-          "title": "relay-builder: allow only a single `write` and `query` policy",
-          "body": "Use `Option<T>` instead of `Vec<T>` for the `write` and `query` policies, allowing to set just one per type.",
-          "merged_at": "2025-12-09T09:33:00Z",
-          "html_url": "https://github.com/rust-nostr/nostr/pull/1165",
-          "user": "yukibtc"
-        },
-        {
-          "id": 3042849982,
-          "number": 1146,
-          "title": "relay-builder: add `LocalRelay::sync_with` method",
-          "body": "Closes https://github.com/rust-nostr/nostr/issues/1144",
-          "merged_at": "2025-11-25T09:01:54Z",
-          "html_url": "https://github.com/rust-nostr/nostr/pull/1146",
-          "user": "yukibtc"
-        }
-      ]
+      ],
+      "removed": []
     },
     "mikedilger/nostr-types": {
-      "added": [],
-      "removed": [
+      "added": [
         {
           "id": 1298725170,
           "number": 8,
@@ -4310,11 +2615,11 @@
           "html_url": "https://github.com/mikedilger/nostr-types/pull/12",
           "user": "optout21"
         }
-      ]
+      ],
+      "removed": []
     },
     "nbd-wtf/go-nostr": {
-      "added": [],
-      "removed": [
+      "added": [
         {
           "id": 2416875010,
           "number": 181,
@@ -4468,11 +2773,11 @@
           "html_url": "https://github.com/nbd-wtf/go-nostr/pull/189",
           "user": "DanConwayDev"
         }
-      ]
+      ],
+      "removed": []
     },
     "jeffthibault/python-nostr": {
-      "added": [],
-      "removed": [
+      "added": [
         {
           "id": 1229308864,
           "number": 49,
@@ -4545,11 +2850,11 @@
           "html_url": "https://github.com/jeffthibault/python-nostr/pull/62",
           "user": "kdmukai"
         }
-      ]
+      ],
+      "removed": []
     },
     "holgern/pynostr": {
-      "added": [],
-      "removed": [
+      "added": [
         {
           "id": 1362598752,
           "number": 11,
@@ -4595,11 +2900,11 @@
           "html_url": "https://github.com/holgern/pynostr/pull/22",
           "user": "santyr"
         }
-      ]
+      ],
+      "removed": []
     },
     "cnixbtc/NostrKit": {
-      "added": [],
-      "removed": [
+      "added": [
         {
           "id": 1106892453,
           "number": 3,
@@ -4609,11 +2914,11 @@
           "html_url": "https://github.com/cnixbtc/NostrKit/pull/3",
           "user": "ismyhc"
         }
-      ]
+      ],
+      "removed": []
     },
     "tcheeric/nostr-java": {
-      "added": [],
-      "removed": [
+      "added": [
         {
           "id": 2911869314,
           "number": 487,
@@ -4785,11 +3090,11 @@
           "html_url": "https://github.com/tcheeric/nostr-java/pull/477",
           "user": "tcheeric"
         }
-      ]
+      ],
+      "removed": []
     },
     "ethicnology/dart-nostr": {
-      "added": [],
-      "removed": [
+      "added": [
         {
           "id": 1358316035,
           "number": 28,
@@ -4934,11 +3239,11 @@
           "html_url": "https://github.com/ethicnology/dart-nostr/pull/33",
           "user": "bigOconstant"
         }
-      ]
+      ],
+      "removed": []
     },
     "getAlby/hub": {
-      "added": [],
-      "removed": [
+      "added": [
         {
           "id": 2918841345,
           "number": 1838,
@@ -5092,11 +3397,11 @@
           "html_url": "https://github.com/getAlby/hub/pull/1639",
           "user": "NodeDiver"
         }
-      ]
+      ],
+      "removed": []
     },
     "ZeusLN/zeus": {
-      "added": [],
-      "removed": [
+      "added": [
         {
           "id": 3048348867,
           "number": 3394,
@@ -5268,11 +3573,11 @@
           "html_url": "https://github.com/ZeusLN/zeus/pull/3371",
           "user": "kaloudis"
         }
-      ]
+      ],
+      "removed": []
     },
     "hzrd149/blossom": {
-      "added": [],
-      "removed": [
+      "added": [
         {
           "id": 2399136640,
           "number": 62,
@@ -5426,15 +3731,131 @@
           "html_url": "https://github.com/hzrd149/blossom/pull/29",
           "user": "quentintaranpino"
         }
-      ]
+      ],
+      "removed": []
+    },
+    "nostr-protocol/nips": {
+      "added": [
+        {
+          "id": 3030095936,
+          "number": 2131,
+          "title": "NIP-59: Adds GiftWrap deletion requests",
+          "body": "",
+          "merged_at": "2025-11-21T10:11:35Z",
+          "html_url": "https://github.com/nostr-protocol/nips/pull/2131",
+          "user": "vitorpamplona"
+        },
+        {
+          "id": 3052390374,
+          "number": 2141,
+          "title": "Complete removal of hashtag and url tags from bookmarks.",
+          "body": "This goes in the same line as #2133 , with the same rationale, but extending to kind 10,003 bookmarks as well.",
+          "merged_at": "2025-12-02T01:12:23Z",
+          "html_url": "https://github.com/nostr-protocol/nips/pull/2141",
+          "user": "KotlinGeekDev"
+        },
+        {
+          "id": 3067924074,
+          "number": 2144,
+          "title": "update NIP-18 headings",
+          "body": "Like other NIPs, this helps with parsing for NIP viewers\r\n\r\nThe head was good before a4dadca077645dcb3ceddc11dbe4982ce52196bc",
+          "merged_at": "2025-12-03T15:59:58Z",
+          "html_url": "https://github.com/nostr-protocol/nips/pull/2144",
+          "user": "TheAwiteb"
+        },
+        {
+          "id": 3035079803,
+          "number": 2133,
+          "title": "NIP-51: Removes hashtags and `r` tags from bookmarks",
+          "body": "1. Removes `t` from the generic Bookmark list because we have an exclusive kind for hashtag bookmarks: 30015 \r\n\r\n2. Removes `r` from the generic Bookmark list because it should be its own kind, potentially with more appropriate NIP-73 labels instead of just `r` tags.  ",
+          "merged_at": "2025-11-21T23:04:55Z",
+          "html_url": "https://github.com/nostr-protocol/nips/pull/2133",
+          "user": "vitorpamplona"
+        },
+        {
+          "id": 2323322667,
+          "number": 1764,
+          "title": "Add self to NIP 11",
+          "body": "We already use `pubkey` in several places (at least NIP 29 groups) to verify events that are published by a relay. This breaks those use cases, but maintains compatibility with the user administrator use case.",
+          "merged_at": "2025-11-17T18:50:04Z",
+          "html_url": "https://github.com/nostr-protocol/nips/pull/1764",
+          "user": "staab"
+        },
+        {
+          "id": 1169271794,
+          "number": 94,
+          "title": "o",
+          "body": "o",
+          "merged_at": "2022-12-18T01:34:29Z",
+          "html_url": "https://github.com/nostr-protocol/nips/pull/94",
+          "user": "git-sgmoore"
+        },
+        {
+          "id": 3045562452,
+          "number": 2138,
+          "title": "Improve NIP-C0",
+          "body": "Fixes #2134 and #2135.\r\n\r\nThe description of the `license` tag is updated in reference to the  SPDX Specification, to allow for multiple licensing, to optionally include a reference to the full license tag and to specify that the license applies to other data too (such as the description, when provided).\r\n\r\nThe description of the `repo` tag is updated to allow for references to NIP-34 `kind:30617` relay announcements.",
+          "merged_at": "2025-11-26T12:05:46Z",
+          "html_url": "https://github.com/nostr-protocol/nips/pull/2138",
+          "user": "Aspie96"
+        },
+        {
+          "id": 3068084763,
+          "number": 2145,
+          "title": "Update NIP-EE header formatting",
+          "body": "Like other NIPs, this helps with parsing for NIPs viewers",
+          "merged_at": "2025-12-03T16:35:23Z",
+          "html_url": "https://github.com/nostr-protocol/nips/pull/2145",
+          "user": "TheAwiteb"
+        },
+        {
+          "id": 3030185948,
+          "number": 2132,
+          "title": "Improve generic reposts for replaceable events",
+          "body": "",
+          "merged_at": "2025-12-02T01:07:37Z",
+          "html_url": "https://github.com/nostr-protocol/nips/pull/2132",
+          "user": "CodyTseng"
+        },
+        {
+          "id": 3080146207,
+          "number": 2152,
+          "title": "fix typos",
+          "body": "",
+          "merged_at": "2025-12-08T10:59:59Z",
+          "html_url": "https://github.com/nostr-protocol/nips/pull/2152",
+          "user": "mattn"
+        }
+      ],
+      "removed": []
     }
   },
   "summary": {
-    "new_releases": 7,
-    "new_prs": 39,
+    "new_releases": 129,
+    "new_prs": 276,
     "repos_with_updates": [
-      "marmot-protocol/whitenoise",
-      "MostroP2P/mostro"
+      "susumuota/nostr-keyx",
+      "fiatjaf/nos2x",
+      "nbd-wtf/go-nostr",
+      "haorendashu/nowser",
+      "ethicnology/dart-nostr",
+      "jeffthibault/python-nostr",
+      "0ceanslim/grain",
+      "mikedilger/nostr-types",
+      "hzrd149/blossom",
+      "getAlby/lightning-browser-extension",
+      "holgern/pynostr",
+      "fiatjaf/khatru",
+      "Cameri/nostream",
+      "cnixbtc/NostrKit",
+      "greenart7c3/amber",
+      "fiatjaf/nak",
+      "ZeusLN/zeus",
+      "tcheeric/nostr-java",
+      "getAlby/hub",
+      "nostr-protocol/nips",
+      "nostrability/schemata",
+      "hoytech/strfry"
     ]
   }
 }

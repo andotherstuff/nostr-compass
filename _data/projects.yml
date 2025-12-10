@@ -48,15 +48,35 @@ social_clients:
     priority: high
     notes: Most feature-complete Android client
 
-  - name: Primal
-    description: Cross-platform client with built-in Lightning wallet
-    platforms: [ios, android, web]
-    repo: https://github.com/PrimalHQ
+  - name: Primal Android
+    description: Android client with built-in Lightning wallet
+    platforms: [android]
+    repo: https://github.com/PrimalHQ/primal-android-app
     website: https://primal.net
     maintainer: miljan
     status: active
     priority: high
     notes: Strong focus on UX, integrated wallet, caching service
+
+  - name: Primal iOS
+    description: iOS client with built-in Lightning wallet
+    platforms: [ios]
+    repo: https://github.com/PrimalHQ/primal-ios-app
+    website: https://primal.net
+    maintainer: miljan
+    status: active
+    priority: high
+    notes: Strong focus on UX, integrated wallet
+
+  - name: Primal Web
+    description: Web client with built-in Lightning wallet
+    platforms: [web]
+    repo: https://github.com/PrimalHQ/primal-web-app
+    website: https://primal.net
+    maintainer: miljan
+    status: active
+    priority: high
+    notes: Strong focus on UX, integrated wallet
 
   - name: Nostur
     description: Native iOS/macOS client with extensive feature set
@@ -722,6 +742,15 @@ other:
 # Protocols that build on or complement Nostr
 
 protocols:
+  - name: NIPs
+    description: Nostr Implementation Possibilities - the protocol specification
+    repo: https://github.com/nostr-protocol/nips
+    website: https://github.com/nostr-protocol/nips
+    maintainer: fiatjaf
+    status: active
+    priority: high
+    notes: Core protocol specifications, essential for tracking protocol changes
+
   - name: Blossom
     description: Blobs Stored Simply on Mediaservers - decentralized media hosting
     repo: https://github.com/hzrd149/blossom
