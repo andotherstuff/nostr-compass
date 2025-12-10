@@ -26,7 +26,7 @@ Keep developers, relay operators, and builders informed about important Nostr ec
 
 5. **NIP Deep Dive** - 1-2 NIPs explained per issue. Covers: problem solved, how it works, client/relay support, links to spec and implementations. No code examples unless essential.
 
-6. **This Month in Nostr History** (monthly) - Events from this month in previous years. Key moments: early experiments (2020), NIP-01 and first relays (2021), Damus launch and Jack's first note (2022), zaps and client explosion (2023), protocol debates, milestones. Sources: Wayback Machine, old GitHub issues, Twitter/X archives, fiatjaf's blog, repo archaeology.
+6. **This Month in Nostr History** (last newsletter of each month) - Events from this month in previous years. Key moments: early experiments (2020), NIP-01 and first relays (2021), Damus launch and Jack's first note (2022), zaps and client explosion (2023), protocol debates, milestones. Sources: Wayback Machine, old GitHub issues, Twitter/X archives, fiatjaf's blog, repo archaeology.
 
 7. **Other** (as needed) - Relay economics, spam prevention approaches, notable discussions.
 
@@ -74,24 +74,11 @@ Shows which clients support which NIPs to encourage interoperability.
 
 **Inclusion**: FOSS, identifiable maintainer, active contributions.
 
-**Entry format**: Name, category, description, maintainer(s), repo link, npub, website.
+**Entry format**: Name, category, description, maintainer(s), repo link, npub, website, priority, status.
 
-**Categories & Initial List**:
+**Data**: See `_data/projects.yml` for the full categorized project list.
 
-| Category | Projects |
-|----------|----------|
-| Social Clients | Damus, Primal, Amethyst, Coracle, Snort, Nostrudel, Iris |
-| Long-form / Blogging | Habla, Yakihonne |
-| Messaging | 0xchat, White Noise |
-| Media / Streaming | Zap.stream, Wavlake |
-| Marketplaces | Shopstr, Plebeian Market, Mostro |
-| Developer Tools | ngit, Gitworkshop, Zapstore |
-| Signing / Key Management | Amber, Alby, Nowser, Aegis |
-| Relay Implementations | strfry, nostr-rs-relay, nostream |
-| Libraries / SDKs | nostr-tools, rust-nostr, nostr-sdk, Applesauce |
-| Other | DVMs / AI agents |
-
-*List requires research and expansion.*
+**Categories**: social_clients, longform_clients, messaging_clients, media_clients, marketplaces, devtools, signers, relays, libraries, wallets, other.
 
 ## Podcast
 
@@ -119,57 +106,48 @@ Reading PR descriptions is sufficient; deep code review optional. Explore transl
 
 ## Research Checklist
 
-Weekly tracking:
+Full project list maintained in `_data/projects.yml`.
 
-**NIPs**
+### Update Fetcher Script
+
+`scripts/fetch_project_updates.py` fetches recent releases and merged PRs from all GitHub repos in `_data/projects.yml`. It tracks state between runs and generates a diff showing what's new.
+
+**Setup:**
+```bash
+pip install -r scripts/requirements.txt
+export GITHUB_TOKEN=your_token  # Optional but recommended (5000 req/hr vs 60)
+```
+
+**Usage:**
+```bash
+# Fetch updates and show diff since last run
+python scripts/fetch_project_updates.py
+
+# Preview which repos would be fetched
+python scripts/fetch_project_updates.py --dry-run
+
+# Verbose output
+python scripts/fetch_project_updates.py -v
+```
+
+**Output files** (in `_data/project_updates/`):
+- `state.json` - Full state from last run (used to compute diffs)
+- `diff.json` - Changes since last run (new releases, new PRs)
+- `releases.json` - All fetched releases
+- `pull_requests.json` - All fetched PRs
+
+### Weekly tracking:
+
+**NIPs** (https://github.com/nostr-protocol/nips)
 - [ ] New proposals
-- [ ] Status changes
-- [ ] Revisions and discussions
+- [ ] Status changes (draft → proposed → final)
+- [ ] Significant revisions and discussions
+- [ ] Rejected/closed PRs worth noting
 
-**Clients**
-- [ ] Damus
-- [ ] Primal
-- [ ] Amethyst
-- [ ] Coracle
-- [ ] Snort
-- [ ] Nostrudel
-- [ ] Iris
-- [ ] Habla
-- [ ] Yakihonne
-- [ ] 0xchat
-- [ ] White Noise
-- [ ] Zap.stream
-- [ ] Wavlake
-
-**Relay Software**
-- [ ] strfry
-- [ ] nostr-rs-relay
-- [ ] nostream
-
-**Libraries / SDKs**
-- [ ] nostr-tools
-- [ ] rust-nostr
-- [ ] nostr-sdk
-- [ ] Applesauce
-
-**Signing / Key Management**
-- [ ] Amber
-- [ ] Alby
-- [ ] Nowser
-- [ ] Aegis
-
-**Developer Tools**
-- [ ] Zapstore
-- [ ] ngit
-- [ ] Gitworkshop
-
-**Marketplaces**
-- [ ] Shopstr
-- [ ] Plebeian Market
-- [ ] Mostro
-
-**Other**
-- [ ] Notable discussions
+**Projects** (see `_data/projects.yml` for full list)
+- [ ] Check high-priority projects for releases and notable PRs
+- [ ] Review medium-priority projects for significant changes
+- [ ] Notable protocol discussions
 - [ ] Developer announcements
 - [ ] Security disclosures
 

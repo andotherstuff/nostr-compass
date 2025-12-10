@@ -1,0 +1,2887 @@
+{
+  "last_run": "2025-12-10T08:29:57.335566+00:00",
+  "releases": {
+    "damus-io/damus": [],
+    "vitorpamplona/amethyst": [
+      {
+        "id": 262709368,
+        "tag_name": "v1.04.2",
+        "name": "Release v1.04.2: Fix for Google Play",
+        "published_at": "2025-11-15T22:44:11Z",
+        "html_url": "https://github.com/vitorpamplona/amethyst/releases/tag/v1.04.2",
+        "prerelease": false,
+        "draft": false
+      },
+      {
+        "id": 262706731,
+        "tag_name": "v1.04.1",
+        "name": "Release v1.04.1 BugFixes",
+        "published_at": "2025-11-15T22:06:09Z",
+        "html_url": "https://github.com/vitorpamplona/amethyst/releases/tag/v1.04.1",
+        "prerelease": false,
+        "draft": false
+      },
+      {
+        "id": 262685934,
+        "tag_name": "v1.04.0",
+        "name": "Release v1.04.0: Lists for all",
+        "published_at": "2025-11-15T17:17:04Z",
+        "html_url": "https://github.com/vitorpamplona/amethyst/releases/tag/v1.04.0",
+        "prerelease": false,
+        "draft": false
+      },
+      {
+        "id": 244216853,
+        "tag_name": "v1.03.0",
+        "name": "Release v1.03.0: Built-in video recording",
+        "published_at": "2025-09-02T18:29:21Z",
+        "html_url": "https://github.com/vitorpamplona/amethyst/releases/tag/v1.03.0",
+        "prerelease": false,
+        "draft": false
+      },
+      {
+        "id": 243455612,
+        "tag_name": "v1.02.1",
+        "name": "Release v1.02.1",
+        "published_at": "2025-08-29T11:52:51Z",
+        "html_url": "https://github.com/vitorpamplona/amethyst/releases/tag/v1.02.1",
+        "prerelease": false,
+        "draft": false
+      },
+      {
+        "id": 243316281,
+        "tag_name": "v1.02.0",
+        "name": "Release v1.02.0 NIP-17 Crash report DMs",
+        "published_at": "2025-08-28T21:20:41Z",
+        "html_url": "https://github.com/vitorpamplona/amethyst/releases/tag/v1.02.0",
+        "prerelease": false,
+        "draft": false
+      },
+      {
+        "id": 242872085,
+        "tag_name": "v1.01.0",
+        "name": "Release v1.01.0: New Community Implementation",
+        "published_at": "2025-08-27T13:27:42Z",
+        "html_url": "https://github.com/vitorpamplona/amethyst/releases/tag/v1.01.0",
+        "prerelease": false,
+        "draft": false
+      },
+      {
+        "id": 242037836,
+        "tag_name": "v1.00.5",
+        "name": "Release v1.00.5",
+        "published_at": "2025-08-23T15:21:12Z",
+        "html_url": "https://github.com/vitorpamplona/amethyst/releases/tag/v1.00.5",
+        "prerelease": false,
+        "draft": false
+      },
+      {
+        "id": 241950683,
+        "tag_name": "v1.00.4",
+        "name": "Release v1.00.4",
+        "published_at": "2025-08-22T20:45:00Z",
+        "html_url": "https://github.com/vitorpamplona/amethyst/releases/tag/v1.00.4",
+        "prerelease": false,
+        "draft": false
+      },
+      {
+        "id": 241678796,
+        "tag_name": "v1.00.3",
+        "name": "Release v1.00.3: More fixes",
+        "published_at": "2025-08-22T00:27:21Z",
+        "html_url": "https://github.com/vitorpamplona/amethyst/releases/tag/v1.00.3",
+        "prerelease": false,
+        "draft": false
+      }
+    ],
+    "nickytonline/nostur": [],
+    "planetary-social/nos": [],
+    "v0l/snort": [],
+    "coracle-social/coracle": [
+      {
+        "id": 267580532,
+        "tag_name": "0.6.28",
+        "name": "0.6.28",
+        "published_at": "2025-12-04T20:53:00Z",
+        "html_url": "https://github.com/coracle-social/coracle/releases/tag/0.6.28",
+        "prerelease": false,
+        "draft": false
+      },
+      {
+        "id": 265251185,
+        "tag_name": "0.6.27",
+        "name": "0.6.27",
+        "published_at": "2025-11-25T19:56:44Z",
+        "html_url": "https://github.com/coracle-social/coracle/releases/tag/0.6.27",
+        "prerelease": false,
+        "draft": false
+      },
+      {
+        "id": 260386528,
+        "tag_name": "0.6.26",
+        "name": "0.6.26",
+        "published_at": "2025-11-06T19:22:49Z",
+        "html_url": "https://github.com/coracle-social/coracle/releases/tag/0.6.26",
+        "prerelease": false,
+        "draft": false
+      },
+      {
+        "id": 254147620,
+        "tag_name": "0.6.25",
+        "name": "0.6.25",
+        "published_at": "2025-10-13T18:02:17Z",
+        "html_url": "https://github.com/coracle-social/coracle/releases/tag/0.6.25",
+        "prerelease": false,
+        "draft": false
+      },
+      {
+        "id": 252505318,
+        "tag_name": "0.6.24",
+        "name": "0.6.24",
+        "published_at": "2025-10-06T18:32:57Z",
+        "html_url": "https://github.com/coracle-social/coracle/releases/tag/0.6.24",
+        "prerelease": false,
+        "draft": false
+      },
+      {
+        "id": 249111075,
+        "tag_name": "0.6.23",
+        "name": "0.6.23",
+        "published_at": "2025-09-22T17:27:10Z",
+        "html_url": "https://github.com/coracle-social/coracle/releases/tag/0.6.23",
+        "prerelease": false,
+        "draft": false
+      },
+      {
+        "id": 245127854,
+        "tag_name": "0.6.20",
+        "name": "0.6.20",
+        "published_at": "2025-09-05T16:40:48Z",
+        "html_url": "https://github.com/coracle-social/coracle/releases/tag/0.6.20",
+        "prerelease": false,
+        "draft": false
+      },
+      {
+        "id": 238122418,
+        "tag_name": "0.6.19",
+        "name": "0.6.19",
+        "published_at": "2025-08-06T22:26:19Z",
+        "html_url": "https://github.com/coracle-social/coracle/releases/tag/0.6.19",
+        "prerelease": false,
+        "draft": false
+      },
+      {
+        "id": 229808489,
+        "tag_name": "0.6.18",
+        "name": "0.6.18",
+        "published_at": "2025-07-03T17:45:00Z",
+        "html_url": "https://github.com/coracle-social/coracle/releases/tag/0.6.18",
+        "prerelease": false,
+        "draft": false
+      },
+      {
+        "id": 218668761,
+        "tag_name": "0.6.17",
+        "name": "0.6.17",
+        "published_at": "2025-05-14T20:35:40Z",
+        "html_url": "https://github.com/coracle-social/coracle/releases/tag/0.6.17",
+        "prerelease": false,
+        "draft": false
+      }
+    ],
+    "hzrd149/nostrudel": [],
+    "irislib/iris-messenger": [
+      {
+        "id": 117863935,
+        "tag_name": "app-v0.2.2",
+        "name": "App v0.2.2",
+        "published_at": "2023-08-19T11:57:51Z",
+        "html_url": "https://github.com/irislib/iris-messenger/releases/tag/app-v0.2.2",
+        "prerelease": false,
+        "draft": false
+      },
+      {
+        "id": 113814320,
+        "tag_name": "app-v0.2.1",
+        "name": "App v0.2.1",
+        "published_at": "2023-07-27T12:25:07Z",
+        "html_url": "https://github.com/irislib/iris-messenger/releases/tag/app-v0.2.1",
+        "prerelease": false,
+        "draft": false
+      },
+      {
+        "id": 112872146,
+        "tag_name": "app-v0.2.0",
+        "name": "App v0.2.0",
+        "published_at": "2023-07-20T04:03:10Z",
+        "html_url": "https://github.com/irislib/iris-messenger/releases/tag/app-v0.2.0",
+        "prerelease": false,
+        "draft": false
+      },
+      {
+        "id": 95459223,
+        "tag_name": "app-v0.1.0",
+        "name": "App v0.1.0",
+        "published_at": "2023-03-13T21:03:16Z",
+        "html_url": "https://github.com/irislib/iris-messenger/releases/tag/app-v0.1.0",
+        "prerelease": false,
+        "draft": false
+      },
+      {
+        "id": 90796100,
+        "tag_name": "jan2023",
+        "name": "January 31",
+        "published_at": "2023-01-31T08:47:00Z",
+        "html_url": "https://github.com/irislib/iris-messenger/releases/tag/jan2023",
+        "prerelease": false,
+        "draft": false
+      }
+    ],
+    "mikedilger/gossip": [
+      {
+        "id": 206113415,
+        "tag_name": "v0.14.0",
+        "name": "0.14.0",
+        "published_at": "2025-03-16T21:51:13Z",
+        "html_url": "https://github.com/mikedilger/gossip/releases/tag/v0.14.0",
+        "prerelease": false,
+        "draft": false
+      },
+      {
+        "id": 191918291,
+        "tag_name": "v0.13.0",
+        "name": "0.13.0",
+        "published_at": "2024-12-20T21:51:22Z",
+        "html_url": "https://github.com/mikedilger/gossip/releases/tag/v0.13.0",
+        "prerelease": false,
+        "draft": false
+      },
+      {
+        "id": 177697751,
+        "tag_name": "v0.12.0",
+        "name": "0.12.0",
+        "published_at": "2024-09-30T23:42:50Z",
+        "html_url": "https://github.com/mikedilger/gossip/releases/tag/v0.12.0",
+        "prerelease": false,
+        "draft": false
+      },
+      {
+        "id": 169213653,
+        "tag_name": "v0.11.3",
+        "name": "0.11.3",
+        "published_at": "2024-08-07T22:26:06Z",
+        "html_url": "https://github.com/mikedilger/gossip/releases/tag/v0.11.3",
+        "prerelease": false,
+        "draft": false
+      },
+      {
+        "id": 167492386,
+        "tag_name": "v0.11.2",
+        "name": "0.11.2",
+        "published_at": "2024-07-27T22:34:52Z",
+        "html_url": "https://github.com/mikedilger/gossip/releases/tag/v0.11.2",
+        "prerelease": false,
+        "draft": false
+      },
+      {
+        "id": 166421700,
+        "tag_name": "v0.11.1",
+        "name": "v0.11.1",
+        "published_at": "2024-07-21T23:13:39Z",
+        "html_url": "https://github.com/mikedilger/gossip/releases/tag/v0.11.1",
+        "prerelease": false,
+        "draft": false
+      },
+      {
+        "id": 165950356,
+        "tag_name": "v0.11",
+        "name": "v0.11.0",
+        "published_at": "2024-07-18T00:26:44Z",
+        "html_url": "https://github.com/mikedilger/gossip/releases/tag/v0.11",
+        "prerelease": false,
+        "draft": false
+      },
+      {
+        "id": 152315297,
+        "tag_name": "v0.10.1",
+        "name": "v0.10.1",
+        "published_at": "2024-04-23T02:13:09Z",
+        "html_url": "https://github.com/mikedilger/gossip/releases/tag/v0.10.1",
+        "prerelease": false,
+        "draft": false
+      },
+      {
+        "id": 151645889,
+        "tag_name": "v0.10.0",
+        "name": "v0.10.0",
+        "published_at": "2024-04-17T23:10:37Z",
+        "html_url": "https://github.com/mikedilger/gossip/releases/tag/v0.10.0",
+        "prerelease": false,
+        "draft": false
+      },
+      {
+        "id": 134837096,
+        "tag_name": "v0.9.0",
+        "name": "0.9",
+        "published_at": "2024-01-01T19:44:54Z",
+        "html_url": "https://github.com/mikedilger/gossip/releases/tag/v0.9.0",
+        "prerelease": false,
+        "draft": false
+      }
+    ],
+    "damus-io/notedeck": [
+      {
+        "id": 216604571,
+        "tag_name": "v0.4.0",
+        "name": "Notedeck Beta - v0.4.0",
+        "published_at": "2025-05-05T21:03:00Z",
+        "html_url": "https://github.com/damus-io/notedeck/releases/tag/v0.4.0",
+        "prerelease": false,
+        "draft": false
+      },
+      {
+        "id": 197856171,
+        "tag_name": "v0.3.0",
+        "name": "Notedeck v0.3 - Alpha 2 Release",
+        "published_at": "2025-01-31T19:57:54Z",
+        "html_url": "https://github.com/damus-io/notedeck/releases/tag/v0.3.0",
+        "prerelease": false,
+        "draft": false
+      },
+      {
+        "id": 188307664,
+        "tag_name": "v0.2.0",
+        "name": "Notedeck Alpha",
+        "published_at": "2024-11-30T19:17:14Z",
+        "html_url": "https://github.com/damus-io/notedeck/releases/tag/v0.2.0",
+        "prerelease": false,
+        "draft": false
+      }
+    ],
+    "verbiricha/habla.news": [],
+    "marmot-protocol/whitenoise": [
+      {
+        "id": 264636870,
+        "tag_name": "v0.2.1+14",
+        "name": "v0.2.1",
+        "published_at": "2025-11-23T18:52:14Z",
+        "html_url": "https://github.com/marmot-protocol/whitenoise/releases/tag/v0.2.1%2B14",
+        "prerelease": false,
+        "draft": false
+      },
+      {
+        "id": 260306677,
+        "tag_name": "v0.2.0+7",
+        "name": "v0.2.0",
+        "published_at": "2025-11-10T09:43:39Z",
+        "html_url": "https://github.com/marmot-protocol/whitenoise/releases/tag/v0.2.0%2B7",
+        "prerelease": false,
+        "draft": false
+      },
+      {
+        "id": 249283983,
+        "tag_name": "v0.1.4",
+        "name": "v0.1.4",
+        "published_at": "2025-09-23T14:02:46Z",
+        "html_url": "https://github.com/marmot-protocol/whitenoise/releases/tag/v0.1.4",
+        "prerelease": false,
+        "draft": false
+      },
+      {
+        "id": 238764913,
+        "tag_name": "v0.1.3",
+        "name": "v0.1.3",
+        "published_at": "2025-08-09T15:24:38Z",
+        "html_url": "https://github.com/marmot-protocol/whitenoise/releases/tag/v0.1.3",
+        "prerelease": false,
+        "draft": false
+      },
+      {
+        "id": 232408038,
+        "tag_name": "v0.1.2",
+        "name": "v0.1.2",
+        "published_at": "2025-07-15T05:58:50Z",
+        "html_url": "https://github.com/marmot-protocol/whitenoise/releases/tag/v0.1.2",
+        "prerelease": false,
+        "draft": false
+      },
+      {
+        "id": 231614729,
+        "tag_name": "v0.1.1",
+        "name": "v0.1.1",
+        "published_at": "2025-07-10T21:52:28Z",
+        "html_url": "https://github.com/marmot-protocol/whitenoise/releases/tag/v0.1.1",
+        "prerelease": false,
+        "draft": false
+      },
+      {
+        "id": 231244536,
+        "tag_name": "v0.1.0",
+        "name": "v0.1.0",
+        "published_at": "2025-07-09T18:47:44Z",
+        "html_url": "https://github.com/marmot-protocol/whitenoise/releases/tag/v0.1.0",
+        "prerelease": false,
+        "draft": false
+      }
+    ],
+    "v0l/zap.stream": [],
+    "pablof7z/olas": [
+      {
+        "id": 197925613,
+        "tag_name": "0.2.0",
+        "name": "0.2.0",
+        "published_at": "2025-02-01T14:13:23Z",
+        "html_url": "https://github.com/pablof7z/olas/releases/tag/0.2.0",
+        "prerelease": false,
+        "draft": false
+      },
+      {
+        "id": 195509945,
+        "tag_name": "0.1.9",
+        "name": "0.1.9",
+        "published_at": "2025-01-19T11:56:05Z",
+        "html_url": "https://github.com/pablof7z/olas/releases/tag/0.1.9",
+        "prerelease": false,
+        "draft": false
+      },
+      {
+        "id": 192987254,
+        "tag_name": "0.1.7",
+        "name": "0.1.7",
+        "published_at": "2025-01-02T20:57:48Z",
+        "html_url": "https://github.com/pablof7z/olas/releases/tag/0.1.7",
+        "prerelease": false,
+        "draft": false
+      },
+      {
+        "id": 189621914,
+        "tag_name": "0.1.5-1",
+        "name": "0.1.5-1",
+        "published_at": "2024-12-09T01:11:31Z",
+        "html_url": "https://github.com/pablof7z/olas/releases/tag/0.1.5-1",
+        "prerelease": false,
+        "draft": false
+      },
+      {
+        "id": 189170046,
+        "tag_name": "0.1.5",
+        "name": "0.1.5",
+        "published_at": "2024-12-05T12:44:01Z",
+        "html_url": "https://github.com/pablof7z/olas/releases/tag/0.1.5",
+        "prerelease": false,
+        "draft": false
+      },
+      {
+        "id": 188510174,
+        "tag_name": "0.1.4-1",
+        "name": "0.1.4-1",
+        "published_at": "2024-12-02T15:37:28Z",
+        "html_url": "https://github.com/pablof7z/olas/releases/tag/0.1.4-1",
+        "prerelease": false,
+        "draft": false
+      },
+      {
+        "id": 187610581,
+        "tag_name": "0.1.4",
+        "name": "0.1.4",
+        "published_at": "2024-11-26T19:12:16Z",
+        "html_url": "https://github.com/pablof7z/olas/releases/tag/0.1.4",
+        "prerelease": false,
+        "draft": false
+      }
+    ],
+    "shopstr-eng/shopstr": [],
+    "PlebeianTech/plebeian-market": [
+      {
+        "id": 144170675,
+        "tag_name": "v0.0.15",
+        "name": "v0.0.15",
+        "published_at": "2024-02-29T11:08:08Z",
+        "html_url": "https://github.com/PlebeianApp/plebeian-market-old/releases/tag/v0.0.15",
+        "prerelease": false,
+        "draft": false
+      },
+      {
+        "id": 143969991,
+        "tag_name": "v0.0.14",
+        "name": "v0.0.14",
+        "published_at": "2024-02-28T10:20:31Z",
+        "html_url": "https://github.com/PlebeianApp/plebeian-market-old/releases/tag/v0.0.14",
+        "prerelease": false,
+        "draft": false
+      },
+      {
+        "id": 143357204,
+        "tag_name": "v0.0.13",
+        "name": "v0.0.13",
+        "published_at": "2024-02-23T14:02:58Z",
+        "html_url": "https://github.com/PlebeianApp/plebeian-market-old/releases/tag/v0.0.13",
+        "prerelease": false,
+        "draft": false
+      },
+      {
+        "id": 143326761,
+        "tag_name": "v0.0.12",
+        "name": "v0.0.12",
+        "published_at": "2024-02-23T10:22:45Z",
+        "html_url": "https://github.com/PlebeianApp/plebeian-market-old/releases/tag/v0.0.12",
+        "prerelease": false,
+        "draft": false
+      },
+      {
+        "id": 143163182,
+        "tag_name": "v0.0.11",
+        "name": "v0.0.11",
+        "published_at": "2024-02-22T11:54:45Z",
+        "html_url": "https://github.com/PlebeianApp/plebeian-market-old/releases/tag/v0.0.11",
+        "prerelease": false,
+        "draft": false
+      },
+      {
+        "id": 143158924,
+        "tag_name": "v0.0.10",
+        "name": "v0.0.10",
+        "published_at": "2024-02-22T11:23:16Z",
+        "html_url": "https://github.com/PlebeianApp/plebeian-market-old/releases/tag/v0.0.10",
+        "prerelease": false,
+        "draft": false
+      },
+      {
+        "id": 143139560,
+        "tag_name": "v0.0.9",
+        "name": "v0.0.9",
+        "published_at": "2024-02-22T09:30:26Z",
+        "html_url": "https://github.com/PlebeianApp/plebeian-market-old/releases/tag/v0.0.9",
+        "prerelease": false,
+        "draft": false
+      },
+      {
+        "id": 143008315,
+        "tag_name": "v0.0.8",
+        "name": "v0.0.8",
+        "published_at": "2024-02-21T15:37:39Z",
+        "html_url": "https://github.com/PlebeianApp/plebeian-market-old/releases/tag/v0.0.8",
+        "prerelease": false,
+        "draft": false
+      },
+      {
+        "id": 142299740,
+        "tag_name": "v0.0.7",
+        "name": "v0.0.7 - CMS improvements + bug fixes",
+        "published_at": "2024-02-16T10:12:24Z",
+        "html_url": "https://github.com/PlebeianApp/plebeian-market-old/releases/tag/v0.0.7",
+        "prerelease": false,
+        "draft": false
+      },
+      {
+        "id": 141972939,
+        "tag_name": "v0.0.6",
+        "name": "v0.0.6",
+        "published_at": "2024-02-14T12:54:29Z",
+        "html_url": "https://github.com/PlebeianApp/plebeian-market-old/releases/tag/v0.0.6",
+        "prerelease": false,
+        "draft": false
+      }
+    ],
+    "MostroP2P/mostro": [
+      {
+        "id": 262216254,
+        "tag_name": "v0.15.5",
+        "name": "Release v0.15.5",
+        "published_at": "2025-11-13T18:57:48Z",
+        "html_url": "https://github.com/MostroP2P/mostro/releases/tag/v0.15.5",
+        "prerelease": false,
+        "draft": false
+      },
+      {
+        "id": 257006264,
+        "tag_name": "v0.15.3",
+        "name": "Release v0.15.3",
+        "published_at": "2025-10-24T13:34:45Z",
+        "html_url": "https://github.com/MostroP2P/mostro/releases/tag/v0.15.3",
+        "prerelease": false,
+        "draft": false
+      },
+      {
+        "id": 255108317,
+        "tag_name": "v0.15.1",
+        "name": "Release v0.15.1",
+        "published_at": "2025-10-16T18:39:21Z",
+        "html_url": "https://github.com/MostroP2P/mostro/releases/tag/v0.15.1",
+        "prerelease": false,
+        "draft": false
+      },
+      {
+        "id": 255230501,
+        "tag_name": "v0.15.0",
+        "name": "v0.15.0",
+        "published_at": "2025-10-17T07:16:46Z",
+        "html_url": "https://github.com/MostroP2P/mostro/releases/tag/v0.15.0",
+        "prerelease": false,
+        "draft": false
+      },
+      {
+        "id": 249167730,
+        "tag_name": "v0.14.5",
+        "name": "Release v0.14.5",
+        "published_at": "2025-09-22T21:34:26Z",
+        "html_url": "https://github.com/MostroP2P/mostro/releases/tag/v0.14.5",
+        "prerelease": false,
+        "draft": false
+      },
+      {
+        "id": 237467051,
+        "tag_name": "v0.14.2",
+        "name": "v0.14.2",
+        "published_at": "2025-08-04T19:30:13Z",
+        "html_url": "https://github.com/MostroP2P/mostro/releases/tag/v0.14.2",
+        "prerelease": false,
+        "draft": false
+      },
+      {
+        "id": 234965795,
+        "tag_name": "v0.14.1",
+        "name": "v0.14.1",
+        "published_at": "2025-07-24T17:47:51Z",
+        "html_url": "https://github.com/MostroP2P/mostro/releases/tag/v0.14.1",
+        "prerelease": false,
+        "draft": false
+      },
+      {
+        "id": 224704199,
+        "tag_name": "v0.14.0",
+        "name": "v0.14.0",
+        "published_at": "2025-06-11T19:33:03Z",
+        "html_url": "https://github.com/MostroP2P/mostro/releases/tag/v0.14.0",
+        "prerelease": false,
+        "draft": false
+      },
+      {
+        "id": 203098773,
+        "tag_name": "0.13.2",
+        "name": "0.13.2",
+        "published_at": "2025-02-28T19:53:38Z",
+        "html_url": "https://github.com/MostroP2P/mostro/releases/tag/0.13.2",
+        "prerelease": false,
+        "draft": false
+      }
+    ],
+    "ArcadeCity/zapstore": [],
+    "fiatjaf/nak": [],
+    "greenart7c3/amber": [],
+    "getAlby/lightning-browser-extension": [],
+    "fiatjaf/nos2x": [],
+    "haorendashu/nowser": [],
+    "susumuota/nostr-keyx": [],
+    "hoytech/strfry": [],
+    "Cameri/nostream": [],
+    "0ceanslim/grain": [],
+    "fiatjaf/khatru": [],
+    "bitvora/haven": [],
+    "greenart7c3/Citrine": [],
+    "bitvora/wot-relay": [],
+    "nbd-wtf/nostr-tools": [],
+    "nostr-dev-kit/ndk": [],
+    "hzrd149/applesauce": [],
+    "penpenpng/rx-nostr": [],
+    "rust-nostr/nostr": [],
+    "mikedilger/nostr-types": [],
+    "nbd-wtf/go-nostr": [],
+    "jeffthibault/python-nostr": [],
+    "holgern/pynostr": [],
+    "cnixbtc/NostrKit": [],
+    "tcheeric/nostr-java": [],
+    "ethicnology/dart-nostr": [],
+    "getAlby/hub": [],
+    "ZeusLN/zeus": [],
+    "hzrd149/blossom": []
+  },
+  "pull_requests": {
+    "damus-io/damus": [
+      {
+        "id": 3072935932,
+        "number": 3377,
+        "title": "Fix shifty/jumpy cursor bug",
+        "body": "## Summary\r\n\r\nFixes the jumpy cursor bug https://github.com/damus-io/damus/issues/747\r\n\r\n### Standard PR Checklist\r\n\r\n- [x] I have read (or I am familiar with) the [Contribution Guidelines](../docs/CONTRIBUTING.md)\r\n- [x] I have tested the changes in this PR\r\n- [ ] I have profiled the changes to ensure there are no performance regressions, or I do not need to profile the changes.\r\n    - Utilize Xcode profiler to measure performance impact of code changes. See https://developer.apple.com/videos/p",
+        "merged_at": "2025-12-09T00:32:38Z",
+        "html_url": "https://github.com/damus-io/damus/pull/3377",
+        "user": "alltheseas"
+      },
+      {
+        "id": 2999256223,
+        "number": 3324,
+        "title": "Expand hit test area for timeline switcher",
+        "body": "## Summary\r\n\r\nFixes alignment of Timeline switcher and SignalView in Action bar. \r\nFixes larger hit test area for Timeline switcher\r\n\r\n## Checklist\r\n\r\n### Experimental Feature Checklist\r\n\r\n- [x] I have read (or I am familiar with) the [Contribution Guidelines](../docs/CONTRIBUTING.md).\r\n- [x] I have done some testing on the changes in this PR to ensure it is at least functional.\r\n- [x] I made sure that this new feature is only available when the user opts-in from the Damus Labs screen, and does ",
+        "merged_at": "2025-12-08T20:43:34Z",
+        "html_url": "https://github.com/damus-io/damus/pull/3324",
+        "user": "askeew"
+      },
+      {
+        "id": 3069261365,
+        "number": 3366,
+        "title": "Redesign Ndb.swift interface with better build and crash safety",
+        "body": "## Summary\r\n\r\nThis commit redesigns the Ndb.swift interface with a focus on build-time safety against crashes.\r\n\r\nIt restricts usages of `NdbTxn`, `SafeNdbTxn`, and unsafe unowned values to be used only in NostrDB internal code. Interfaces that used those were replaced with synchronous borrow closure interfaces that borrow `~Copyable` objects to enforce lifetime rules and prevent spread of unsafe unowned values or LMDB transactions in the rest of the code-base.\r\n\r\nThis prevents dangerous and cra",
+        "merged_at": "2025-12-07T19:02:45Z",
+        "html_url": "https://github.com/damus-io/damus/pull/3366",
+        "user": "danieldaquino"
+      },
+      {
+        "id": 3070065171,
+        "number": 3373,
+        "title": "Hide empty chat action bar overlays",
+        "body": "Signed-off-by: alltheseas\r\n\r\nCloses https://github.com/damus-io/damus/issues/3368\r\n\r\n## Summary\r\n\r\nremoves zap icon/circle artefacts from bottom left corner of own replies.\r\n\r\n## Checklist\r\n\r\n### Standard PR Checklist\r\n\r\n\r\n- [x] I have read (or I am familiar with) the [Contribution Guidelines](../docs/CONTRIBUTING.md)\r\n- [x] I have tested the changes in this PR\r\n- [ ] I have profiled the changes to ensure there are no performance regressions, or I do not need to profile the changes.\r\n    - Utili",
+        "merged_at": "2025-12-06T02:35:55Z",
+        "html_url": "https://github.com/damus-io/damus/pull/3373",
+        "user": "alltheseas"
+      },
+      {
+        "id": 3048906058,
+        "number": 3345,
+        "title": "Fix mention profile fetch for mention_index blocks",
+        "body": " ## Summary\r\n\r\n  - Move the mention pubkey helper into an `NdbBlock` extension and call it from the mention profile prefetch loop, matching the requested\r\n  cleanup on the mention_index profile fetch fix.\r\n\r\n  ## Checklist\r\n\r\n  ### Standard PR Checklist\r\n\r\n  - [x] I have read (or I am familiar with) the Contribution Guidelines\r\n  - [x] I have tested the changes in this PR \r\n  - [x] I have profiled the changes to ensure there are no performance regressions, or I do not need to profile the changes",
+        "merged_at": "2025-12-03T18:56:13Z",
+        "html_url": "https://github.com/damus-io/damus/pull/3345",
+        "user": "alltheseas"
+      },
+      {
+        "id": 3049224770,
+        "number": 3346,
+        "title": "Fix AttributeGraph cycle",
+        "body": "## Summary\n\nThis fixes an AttributeGraph cycle on the mute list view that lead to freezes when accessing the view.\n\n## Checklist\n\n### Standard PR Checklist\n\n<!-- DELETE THIS SECTION if this is an experimental Damus Labs feature -->\n\n- [x] I have read (or I am familiar with) the [Contribution Guidelines](../docs/CONTRIBUTING.md)\n- [x] I have tested the changes in this PR\n- [x] I have profiled the changes to ensure there are no performance regressions, or I do not need to profile the changes.\n    ",
+        "merged_at": "2025-11-27T00:06:35Z",
+        "html_url": "https://github.com/damus-io/damus/pull/3346",
+        "user": "danieldaquino"
+      },
+      {
+        "id": 3019961782,
+        "number": 3333,
+        "title": "Ensure mention profiles render with display names",
+        "body": "## Summary\r\n\r\nfixes user mentions not resolving to human readable profile names\r\n\r\n## Checklist\r\n\r\n### Standard PR Checklist\r\n\r\n<!-- DELETE THIS SECTION if this is an experimental Damus Labs feature -->\r\n\r\n- [x] I have read (or I am familiar with) the [Contribution Guidelines](../docs/CONTRIBUTING.md)\r\n- [x] I have tested the changes in this PR\r\n- [ ] I have profiled the changes to ensure there are no performance regressions, or I do not need to profile the changes.\r\n    - Utilize Xcode profiler",
+        "merged_at": "2025-11-26T19:05:42Z",
+        "html_url": "https://github.com/damus-io/damus/pull/3333",
+        "user": "alltheseas"
+      },
+      {
+        "id": 3042116534,
+        "number": 3341,
+        "title": "Fix thread UI jumpiness",
+        "body": "## Summary\r\n\r\nSince 991a4a8, the `make_actionbar_model` function introduced an async call to populate the action bar data.\r\n\r\nThis surfaced a pre-existing problem where the action bar model would reinstantiate in any SwiftUI render pass for the chat bubbles in `ChatroomThreadView`. This issue was not visible before because the whole computation happened directly on the main actor during the render, maintaining the illusion of a stable entity. Since the computation was moved to an async task (for",
+        "merged_at": "2025-11-26T18:10:08Z",
+        "html_url": "https://github.com/damus-io/damus/pull/3341",
+        "user": "danieldaquino"
+      },
+      {
+        "id": 3028339602,
+        "number": 3334,
+        "title": "Fix profile crash",
+        "body": "## Summary\r\n\r\nThis fixes a crash that would occasionally occur when visiting profiles.\r\n\r\nNdbTxn objects were being deinitialized on different threads from their initialization, causing incorrect reference count decrements in thread-local transaction dictionaries. This led to premature destruction of shared ndb_txn C objects still in use by other tasks, resulting in use-after-free crashes.\r\n\r\nThe root cause is that Swift does not guarantee tasks resume on the same thread after await suspension p",
+        "merged_at": "2025-11-21T22:59:00Z",
+        "html_url": "https://github.com/damus-io/damus/pull/3334",
+        "user": "danieldaquino"
+      },
+      {
+        "id": 2953600022,
+        "number": 3293,
+        "title": "Add AGENTS.md",
+        "body": "## Summary\n\n- Add `AGENTS.md` documenting expectations for automation agents contributing to Damus.\n\n## Checklist\n\n- [x] I have read (or I am familiar with) the [Contribution Guidelines](../docs/CONTRIBUTING.md)\n- [ ] I have tested the changes in this PR\n- [ ] I have opened or referred to an existing github issue related to this change.\n- [x] My PR is either small, or I have split it into smaller logical commits that are easier to review\n- [ ] I have added the signoff line to all my commits. See",
+        "merged_at": "2025-11-21T20:48:42Z",
+        "html_url": "https://github.com/damus-io/damus/pull/3293",
+        "user": "alltheseas"
+      },
+      {
+        "id": 2925969089,
+        "number": 3268,
+        "title": "ui: Improve Damus Purple presentation in side view",
+        "body": "## Summary\r\n\r\nThis PR simply replaces the purple ostrich in the side view with the Damus Logo. \r\nAs well as adding a gradient to the Purple text.\r\nI think this better represents Damus Purple.\r\n\r\nChangelog-Changed: Changed Damus Purple Side View logo and text\r\n\r\n## Checklist\r\n\r\n- [x] I have read (or I am familiar with) the [Contribution Guidelines](../docs/CONTRIBUTING.md)\r\n- [x] I have tested the changes in this PR\r\n- [x] I have profiled the changes to ensure there are no performance regressions",
+        "merged_at": "2025-11-19T19:30:35Z",
+        "html_url": "https://github.com/damus-io/damus/pull/3268",
+        "user": "ericholguin"
+      },
+      {
+        "id": 3012686910,
+        "number": 3328,
+        "title": "Temporarily disable note-zaps and add more toggles on Labs",
+        "body": "## Summary\r\n\r\nThis:\r\n- Improves accessibility and localization support on the Damus Labs screen\r\n- Temporarily disables zaps by default\r\n- Adds more toggles on Damus Labs\r\n\r\n## Checklist\r\n\r\n<!-- \r\nCHOOSE YOUR CHECKLIST: \r\n- If this is an EXPERIMENTAL DAMUS LABS FEATURE, follow the \"Experimental Feature Checklist\" below and DELETE the \"Standard PR Checklist\"\r\n- If this is a STANDARD PR, follow the \"Standard PR Checklist\" below and DELETE the \"Experimental Feature Checklist\"\r\n-->\r\n\r\n### Standard P",
+        "merged_at": "2025-11-18T01:42:06Z",
+        "html_url": "https://github.com/damus-io/damus/pull/3328",
+        "user": "danieldaquino"
+      },
+      {
+        "id": 3004196021,
+        "number": 3325,
+        "title": "(Rebased) Damus Live",
+        "body": "## Summary\r\n\r\nRebased version of https://github.com/damus-io/damus/pull/3322\r\n\r\nManually modified to work with the new APIs and changes since the Local Relay Model branch was merged.\r\n\r\n## Checklist\r\n\r\n<!-- \r\nCHOOSE YOUR CHECKLIST: \r\n- If this is an EXPERIMENTAL DAMUS LABS FEATURE, follow the \"Experimental Feature Checklist\" below and DELETE the \"Standard PR Checklist\"\r\n- If this is a STANDARD PR, follow the \"Standard PR Checklist\" below and DELETE the \"Experimental Feature Checklist\"\r\n-->\r\n\r\n##",
+        "merged_at": "2025-11-14T23:36:43Z",
+        "html_url": "https://github.com/damus-io/damus/pull/3325",
+        "user": "danieldaquino"
+      }
+    ],
+    "vitorpamplona/amethyst": [
+      {
+        "id": 3085953287,
+        "number": 1599,
+        "title": "New Crowdin Translations",
+        "body": "New Crowdin translations by [Crowdin GH Action](https://github.com/crowdin/github-action)",
+        "merged_at": "2025-12-09T15:38:41Z",
+        "html_url": "https://github.com/vitorpamplona/amethyst/pull/1599",
+        "user": "github-actions[bot]"
+      },
+      {
+        "id": 3072793651,
+        "number": 1597,
+        "title": "New Crowdin Translations",
+        "body": "New Crowdin translations by [Crowdin GH Action](https://github.com/crowdin/github-action)",
+        "merged_at": "2025-12-04T21:47:58Z",
+        "html_url": "https://github.com/vitorpamplona/amethyst/pull/1597",
+        "user": "github-actions[bot]"
+      },
+      {
+        "id": 3052838524,
+        "number": 1591,
+        "title": "Bookmark groups improvements.",
+        "body": "- Adds support for moving bookmarks from private to public and vice versa\r\n- Adds per category stats on the bookmark list component",
+        "merged_at": "2025-12-01T22:46:08Z",
+        "html_url": "https://github.com/vitorpamplona/amethyst/pull/1591",
+        "user": "KotlinGeekDev"
+      },
+      {
+        "id": 3063315653,
+        "number": 1596,
+        "title": "Bugfix: unexpected json token",
+        "body": "workaround for https://github.com/hoytech/strfry/issues/164\r\n\r\nSome relay implementation (strfry) returns a primitive instead of a \"list of one\" when relay supports only a single NIP. This causes an error on amethyst side and a broken UI.\r\n\r\nSample json:\r\n`\"software\":\"git+https://github.com/hoytech/strfry.git\",\"supported_nips\":1,\"version\":\"1.0.4\"`\r\n\r\nThis workaround is a flexible serialiser that accepts both primitive or a list of one.\r\n\r\nBefore:\r\n<img width=\"350\" height=\"265\" alt=\"Screenshot_20",
+        "merged_at": "2025-12-02T13:55:00Z",
+        "html_url": "https://github.com/vitorpamplona/amethyst/pull/1596",
+        "user": "davotoula"
+      },
+      {
+        "id": 3062758742,
+        "number": 1595,
+        "title": "New Crowdin Translations",
+        "body": "New Crowdin translations by [Crowdin GH Action](https://github.com/crowdin/github-action)",
+        "merged_at": "2025-12-02T11:28:52Z",
+        "html_url": "https://github.com/vitorpamplona/amethyst/pull/1595",
+        "user": "github-actions[bot]"
+      },
+      {
+        "id": 3062732428,
+        "number": 1594,
+        "title": "updated cz, de, pt, sv",
+        "body": "updated cz, de, pt, sv",
+        "merged_at": "2025-12-02T09:26:32Z",
+        "html_url": "https://github.com/vitorpamplona/amethyst/pull/1594",
+        "user": "davotoula"
+      },
+      {
+        "id": 3061204204,
+        "number": 1593,
+        "title": "New Crowdin Translations",
+        "body": "New Crowdin translations by [Crowdin GH Action](https://github.com/crowdin/github-action)",
+        "merged_at": "2025-12-01T22:52:49Z",
+        "html_url": "https://github.com/vitorpamplona/amethyst/pull/1593",
+        "user": "github-actions[bot]"
+      },
+      {
+        "id": 3053338049,
+        "number": 1592,
+        "title": "Fix duplicated default permissions",
+        "body": "",
+        "merged_at": "2025-11-28T12:16:22Z",
+        "html_url": "https://github.com/vitorpamplona/amethyst/pull/1592",
+        "user": "greenart7c3"
+      },
+      {
+        "id": 3034990980,
+        "number": 1586,
+        "title": "Bookmark Lists.",
+        "body": "This PR introduces support for bookmark lists, also known as bookmark groups.\r\n\r\n",
+        "merged_at": "2025-11-27T13:17:45Z",
+        "html_url": "https://github.com/vitorpamplona/amethyst/pull/1586",
+        "user": "KotlinGeekDev"
+      },
+      {
+        "id": 3036579936,
+        "number": 1589,
+        "title": "New Crowdin Translations",
+        "body": "New Crowdin translations by [Crowdin GH Action](https://github.com/crowdin/github-action)",
+        "merged_at": "2025-11-22T17:18:52Z",
+        "html_url": "https://github.com/vitorpamplona/amethyst/pull/1589",
+        "user": "github-actions[bot]"
+      },
+      {
+        "id": 3035173258,
+        "number": 1587,
+        "title": "New Crowdin Translations",
+        "body": "New Crowdin translations by [Crowdin GH Action](https://github.com/crowdin/github-action)",
+        "merged_at": "2025-11-22T17:15:14Z",
+        "html_url": "https://github.com/vitorpamplona/amethyst/pull/1587",
+        "user": "github-actions[bot]"
+      },
+      {
+        "id": 2996275332,
+        "number": 1555,
+        "title": "Support for nip 46",
+        "body": "",
+        "merged_at": "2025-11-20T19:53:17Z",
+        "html_url": "https://github.com/vitorpamplona/amethyst/pull/1555",
+        "user": "greenart7c3"
+      },
+      {
+        "id": 3023608052,
+        "number": 1583,
+        "title": "New Crowdin Translations",
+        "body": "New Crowdin translations by [Crowdin GH Action](https://github.com/crowdin/github-action)",
+        "merged_at": "2025-11-18T22:26:42Z",
+        "html_url": "https://github.com/vitorpamplona/amethyst/pull/1583",
+        "user": "github-actions[bot]"
+      },
+      {
+        "id": 3023603921,
+        "number": 1582,
+        "title": "New Crowdin Translations",
+        "body": "New Crowdin translations by [Crowdin GH Action](https://github.com/crowdin/github-action)",
+        "merged_at": "2025-11-18T22:19:45Z",
+        "html_url": "https://github.com/vitorpamplona/amethyst/pull/1582",
+        "user": "github-actions[bot]"
+      },
+      {
+        "id": 3021913464,
+        "number": 1581,
+        "title": "ui: center QR dialog content and reduce excessive top spacing",
+        "body": "_Tested and styled with Pixel 4a_\r\n\r\n\r\n**Previous UI**\r\n------------------\r\n\r\n<img width=\"531\" height=\"1151\" alt=\"Screenshot_20251117-174240\" src=\"https://github.com/user-attachments/assets/9905d77e-7635-4a78-94be-d0de6fa0395e\" />\r\n\r\n**Corrected UI**\r\n------------------\r\n\r\n<img width=\"531\" height=\"1151\" alt=\"Screenshot_20251118-142442\" src=\"https://github.com/user-attachments/assets/0a4e3dcd-2f6c-4491-94f9-5a8ff70f641f\" />\r\n",
+        "merged_at": "2025-11-18T22:19:36Z",
+        "html_url": "https://github.com/vitorpamplona/amethyst/pull/1581",
+        "user": "StellarStoic"
+      },
+      {
+        "id": 3019173260,
+        "number": 1580,
+        "title": "New Crowdin Translations",
+        "body": "New Crowdin translations by [Crowdin GH Action](https://github.com/crowdin/github-action)",
+        "merged_at": "2025-11-17T21:55:12Z",
+        "html_url": "https://github.com/vitorpamplona/amethyst/pull/1580",
+        "user": "github-actions[bot]"
+      }
+    ],
+    "nickytonline/nostur": [],
+    "planetary-social/nos": [
+      {
+        "id": 2529676902,
+        "number": 1777,
+        "title": "Add nostr: prefix to event links following NIP-01 standard",
+        "body": "This PR implements the requirements outlined in the nostr_prefix_for_events PRD.\n\n## Changes:\n- Updated NoteParser to ensure all event links have the \\nostr:\\ prefix\n- Improved documentation of the NoteParser methods\n- Consolidated PRD documentation for the feature\n- Added the change to the changelog\n\n## Testing:\n- Manually tested that event links now appear with the \\nostr:\\ prefix\n- Verified clicking on links works properly",
+        "merged_at": "2025-05-19T20:13:24Z",
+        "html_url": "https://github.com/planetary-social/nos/pull/1777",
+        "user": "rabble"
+      },
+      {
+        "id": 2317443769,
+        "number": 1755,
+        "title": "New Crowdin Translations",
+        "body": "New Crowdin translations by [Crowdin GH Action](https://github.com/crowdin/github-action)",
+        "merged_at": "2025-03-12T15:49:12Z",
+        "html_url": "https://github.com/planetary-social/nos/pull/1755",
+        "user": "github-actions[bot]"
+      },
+      {
+        "id": 2351367094,
+        "number": 1771,
+        "title": "fixed: crash in Event.trackDelete(on:context:) #222",
+        "body": "## Issues covered\r\nhttps://github.com/verse-pbc/issues/issues/222\r\n\r\n## Description\r\nFixes a crash that happens while deleting a replaceable event, which for Nos right now means only lists. When the a tag is malformed, meaning the value of the tag doesn't have the right number of components (looks like \"<kind>:<pubkey>:<d-identifier>\"), the app will crash.\r\n\r\nSince this doesn't happen with lists that you have created within Nos, I can only assume that some other client is creating these malforme",
+        "merged_at": "2025-03-11T21:34:28Z",
+        "html_url": "https://github.com/planetary-social/nos/pull/1771",
+        "user": "bryanmontz"
+      },
+      {
+        "id": 2351327055,
+        "number": 1770,
+        "title": "fixed: Contact Support event fires too often #193",
+        "body": "## Issues covered\r\nhttps://github.com/verse-pbc/issues/issues/193\r\n\r\n## Description\r\nFixes the issue where the \"Contact Support Tapped\" analytics event fires too often. What actually happened was that the function called \"showedSideMenu()\" actually fired an event called \"Contact Support Tapped\" in addition to the \"showedSupport()\" function.\r\n\r\n## How to test\r\n1. Run the app observing analytics events (either in Xcode's console or in Posthog.\r\n2. Open the side menu.\r\nSee what event fired.\r\n\r\n## S",
+        "merged_at": "2025-02-25T12:54:18Z",
+        "html_url": "https://github.com/planetary-social/nos/pull/1770",
+        "user": "bryanmontz"
+      },
+      {
+        "id": 2349720799,
+        "number": 1769,
+        "title": "perf: RepliesLabel, AuthorLabel, NoteCardHeader, Date+Elapsed #215",
+        "body": "## Issues covered\r\nhttps://github.com/verse-pbc/issues/issues/215\r\n\r\n## Description\r\nWhile this does not alleviate all the performance issues, performance needs to be improved a little bit at a time to mitigate the risk of big changes all at once.\r\n\r\n## How to test\r\n1. Build and run the app from Xcode\r\n2. Open Xcode -> Open Developer Tool -> Instruments\r\n3. Select SwiftUI instrument\r\n4. Run app on device through Instruments with this instrument active\r\n\r\nMy strategy was to run the app prior to a",
+        "merged_at": "2025-02-24T13:30:21Z",
+        "html_url": "https://github.com/planetary-social/nos/pull/1769",
+        "user": "bryanmontz"
+      },
+      {
+        "id": 2345495589,
+        "number": 1768,
+        "title": "bump version to 1.2.2",
+        "body": "## Issues covered\r\nhttps://github.com/verse-pbc/issues/issues/219\r\n\r\n## Description\r\nBump the version to 1.2.2\r\n",
+        "merged_at": "2025-02-19T20:41:01Z",
+        "html_url": "https://github.com/planetary-social/nos/pull/1768",
+        "user": "pelumy"
+      },
+      {
+        "id": 2345464554,
+        "number": 1767,
+        "title": "Stamping 1.2.1 beta deployment",
+        "body": "## Issues covered\r\nhttps://github.com/verse-pbc/issues/issues/219\r\n\r\n## Description\r\nThis PR stamps 1.2.1 in the changelog.\r\n",
+        "merged_at": "2025-02-19T20:23:42Z",
+        "html_url": "https://github.com/planetary-social/nos/pull/1767",
+        "user": "pelumy"
+      },
+      {
+        "id": 2319680305,
+        "number": 1758,
+        "title": "Strip markdown from release notes",
+        "body": "I found myself not reading the release notes when I open Nos because they aren't formatted nicely with all the markdown links. I'm not sure if this will totally solve my issue of having glanceable release notes, but it feels like a step in the right direction. Let me know what you think.\r\n\r\n## How to test\r\n1. Run a fastlane build or check out Nos Dev 1.1.1 (10) which was built with this branch.\r\n2. Check the release notes in App Store Connect or after downloading the app. The Github issue links ",
+        "merged_at": "2025-02-18T23:04:50Z",
+        "html_url": "https://github.com/planetary-social/nos/pull/1758",
+        "user": "mplorentz"
+      },
+      {
+        "id": 2323134332,
+        "number": 1761,
+        "title": "request UI review from Sebastian in PR template if there are UI changes",
+        "body": "## Issues covered\r\nNone\r\n\r\n## Description\r\nWe've discussed getting Sebastian more involved in the review process when there are UI changes. This is a super simple way to do that without requiring anything new from the developers. Obviously if you don't have UI changes in a PR, you'll delete that section anyway and Sebastian won't be notified. Maybe that's the part you, as a developer, will need to be a little more careful about -- let's try not to notify Sebastian when his review isn't needed.\r\n",
+        "merged_at": "2025-02-13T16:06:20Z",
+        "html_url": "https://github.com/planetary-social/nos/pull/1761",
+        "user": "joshuatbrown"
+      },
+      {
+        "id": 2331655154,
+        "number": 1766,
+        "title": "bump version number to 1.2",
+        "body": "## Issues covered\r\n[#202](https://github.com/verse-pbc/issues/issues/202)\r\n\r\n## Description\r\nThis PR bumps the version number from `1.1.1` to `1.2`\r\n",
+        "merged_at": "2025-02-12T16:11:55Z",
+        "html_url": "https://github.com/planetary-social/nos/pull/1766",
+        "user": "pelumy"
+      },
+      {
+        "id": 2331389662,
+        "number": 1765,
+        "title": "reverted notifications merge commit 5d0ca91053464d70d35ea4eaac6484e65146befd",
+        "body": "## Issues covered\r\nhttps://github.com/verse-pbc/issues/issues/201\r\n\r\n## Description\r\nReverts changes to notifications to prepare for Nos 1.2 release. The changes will be revisited in the future.\r\n\r\n## How to test\r\n1. Navigate to Notifications tab.\r\n\r\n## Screenshots/Video\r\n| Before | After |\r\n|--------|--------|\r\n|<img width=\"340\" alt=\"iPhone_16_Pro\" src=\"https://github.com/user-attachments/assets/76e5670f-e2b1-43bd-a738-449e6b2fdece\" />|<img width=\"340\" alt=\"iPhone_16_Pro\" src=\"https://github.co",
+        "merged_at": "2025-02-12T14:29:50Z",
+        "html_url": "https://github.com/planetary-social/nos/pull/1765",
+        "user": "bryanmontz"
+      },
+      {
+        "id": 2326270622,
+        "number": 1764,
+        "title": "fixed: restarting app reverts to Following rather than selected list or relay #114",
+        "body": "## Issues covered\r\nhttps://github.com/verse-pbc/issues/issues/114\r\n\r\n## Description\r\nFixes an issue where the app does not effectively remember your selected feed, instead always reverting to Following.\r\n\r\nThe root of the problem was that NSFetchRequest doesn't fully support equality checking, and the code assumed that it did.\r\n\r\n## How to test\r\n1. Navigate to the Home feed.\r\n2. Select a list or relay and observe the changed contents of the feed.\r\n3. Home out of the app, and then force-quit\r\n4. ",
+        "merged_at": "2025-02-12T13:06:42Z",
+        "html_url": "https://github.com/planetary-social/nos/pull/1764",
+        "user": "bryanmontz"
+      },
+      {
+        "id": 2324029425,
+        "number": 1762,
+        "title": "audited codebase for strict access control and mutability annotations #185",
+        "body": "## Issues covered\r\nhttps://github.com/verse-pbc/issues/issues/185\r\n\r\n## Description\r\nAudits the entire codebase (minus previews and unit tests) for strictest possible access control and mutability annotations. See the issue above for justification.\r\n\r\nBasically it boils down to:\r\nIf it could be private, it should be private.\r\nIf it could be immutable, it should be immutable.\r\n\r\nNo intended visible or functional changes.",
+        "merged_at": "2025-02-11T01:24:37Z",
+        "html_url": "https://github.com/planetary-social/nos/pull/1762",
+        "user": "bryanmontz"
+      },
+      {
+        "id": 2326015829,
+        "number": 1763,
+        "title": "fixed: on your lists view, the entire cell is not tappable #179",
+        "body": "## Issues covered\r\nhttps://github.com/verse-pbc/issues/issues/179\r\n\r\n## Description\r\nFixes the issue where the whole cell is not tappable, but only the text of the title and description itself.\r\n\r\n## How to test\r\n1. Navigate to Your Lists view.\r\n2. Tap in the empty space to the right of the title and description of one of your lists.\r\n\r\n## Screenshots/Video\r\n\r\n| Before | After |\r\n|--------|--------|\r\n|![before](https://github.com/user-attachments/assets/ea85a08b-16e0-444a-a38b-f74d3162c1a6)|![af",
+        "merged_at": "2025-02-10T14:37:50Z",
+        "html_url": "https://github.com/planetary-social/nos/pull/1763",
+        "user": "bryanmontz"
+      },
+      {
+        "id": 2320443807,
+        "number": 1760,
+        "title": "Fix main action button is not visible on iPad on \"Build Your Network\" onboarding screen in release/1.1.1",
+        "body": "Fix main action button is not visible on iPad on \"Build Your Network\" onboarding screen\r\n\r\nAlready merged to main: #1757 ",
+        "merged_at": "2025-02-06T17:56:02Z",
+        "html_url": "https://github.com/planetary-social/nos/pull/1760",
+        "user": "joshuatbrown"
+      },
+      {
+        "id": 2320438445,
+        "number": 1759,
+        "title": "fixed: lists change positions randomly #183 in release/1.1.1",
+        "body": "fixed: lists change positions randomly #183\r\n\r\nAlready merged to main in #1756 ",
+        "merged_at": "2025-02-06T17:45:36Z",
+        "html_url": "https://github.com/planetary-social/nos/pull/1759",
+        "user": "joshuatbrown"
+      },
+      {
+        "id": 2317780046,
+        "number": 1756,
+        "title": "fixed: lists change positions randomly #183",
+        "body": "## Issues covered\r\nhttps://github.com/verse-pbc/issues/issues/183\r\n\r\n## Description\r\nFixes the issue where lists change order randomly.\r\n\r\n## Steps to Reproduce\r\n1. Navigate to the Feed tab\r\n2. Tap the feed customizer button at top-right\r\n3. Note the order of the lists\r\n4. Quit and relaunch the app\r\n5. Repeat steps 1-4 to see if the order changed\r\n\r\n## Videos\r\n\r\nIn the before video, you can see that the order of lists is different each time I launch the app. In the after video, the order is alwa",
+        "merged_at": "2025-02-06T15:17:16Z",
+        "html_url": "https://github.com/planetary-social/nos/pull/1756",
+        "user": "bryanmontz"
+      },
+      {
+        "id": 2318529319,
+        "number": 1757,
+        "title": "Fix main action button is not visible on iPad on \"Build Your Network\" onboarding screen",
+        "body": "## Issues covered\r\n[#184](https://github.com/verse-pbc/issues/issues/184)\r\n\r\n## Description\r\nThis PR fixes an issue where the main action button is not visible on iPad on \"Build Your Network\" onboarding screen.\r\n\r\nI removed the scrollview and rearranged the view, making the spacing between the stacked text above, the image and the bottom to be dynamic using a Spacer. I also added a maxWidth to the image to make it expand accordingly with different screen sizes.\r\n\r\n## How to test\r\n1. Build the ap",
+        "merged_at": "2025-02-06T13:45:35Z",
+        "html_url": "https://github.com/planetary-social/nos/pull/1757",
+        "user": "pelumy"
+      }
+    ],
+    "v0l/snort": [
+      {
+        "id": 2944944108,
+        "number": 604,
+        "title": "Bun migrate",
+        "body": "Large refactor:\r\n\r\n1. Migrate from `yarn` to `bun`\r\n2. Remove all or most legacy css files and use `tailwind`\r\n3. Reduce complexity for query system\r\n4. Split index into more smaller chunks for loading performance\r\n5. Remove `system-web` dexie tables, rely on `worker-relay` for cache layer",
+        "merged_at": "2025-10-30T16:25:31Z",
+        "html_url": "https://github.com/v0l/snort/pull/604",
+        "user": "v0l"
+      },
+      {
+        "id": 2583516406,
+        "number": 603,
+        "title": "Add new build config for phoenix.social with app name \"Phoenix\"",
+        "body": "This PR adds a new build configuration for phoenix.social that sets the app name to \"Phoenix\", following the same pattern as existing configurations (iris, nostr, meku, etc.).\n\n## Changes Made\n\n- **Added `packages/app/config/phoenix.json`** - New configuration file with Phoenix branding\n- **Created `packages/app/public/phoenix/` directory** - Public assets directory with manifest.json, icons, and other required files\n- **Updated configuration README** - Added phoenix to the list of available con",
+        "merged_at": "2025-06-11T09:54:24Z",
+        "html_url": "https://github.com/v0l/snort/pull/603",
+        "user": "Copilot"
+      },
+      {
+        "id": 2186296759,
+        "number": 595,
+        "title": "[worker-relay] Add PRE and fix RE support.",
+        "body": "Was treating everything between 10000 and 40000 as a Replacable Event, this effectively broke PRE's because any given d tag couldn't exist more than once in the worker relay, regardless of which pubkey it was from.\r\n\r\nThere wasn't any noticeable performance loss on a database with 20k events (other than the whole 20k events thing)\r\n\r\nTodo:\r\n- [ ] Don't store ephemeral events?",
+        "merged_at": "2025-01-07T10:07:35Z",
+        "html_url": "https://github.com/v0l/snort/pull/595",
+        "user": "dskvr"
+      },
+      {
+        "id": 2276538283,
+        "number": 598,
+        "title": "Update README.md",
+        "body": "",
+        "merged_at": "2025-01-14T11:32:09Z",
+        "html_url": "https://github.com/v0l/snort/pull/598",
+        "user": "v0l"
+      },
+      {
+        "id": 2177235457,
+        "number": 591,
+        "title": "[worker-relay] Add AND filter compatability",
+        "body": "Adds AND filter capability re: https://github.com/nostr-protocol/nips/pull/1365\r\n\r\n```\r\n{ \"&t\": [ \"4k\", \"movie\" ] }\r\n```\r\n",
+        "merged_at": "2024-12-12T10:21:47Z",
+        "html_url": "https://github.com/v0l/snort/pull/591",
+        "user": "dskvr"
+      },
+      {
+        "id": 2221048317,
+        "number": 596,
+        "title": "feat: Add config for soloco.nl",
+        "body": "Add config for soloco.nl ",
+        "merged_at": "2024-12-08T19:10:28Z",
+        "html_url": "https://github.com/v0l/snort/pull/596",
+        "user": "kroese"
+      },
+      {
+        "id": 1900214789,
+        "number": 585,
+        "title": "[TIDAL Embeds] Add allow and sandbox attributes",
+        "body": "Playback won't work correctly without the `allow=\"encrypted-media\"` attribute. Also added the sandbox attribute to improve security.",
+        "merged_at": "2024-06-03T07:59:36Z",
+        "html_url": "https://github.com/v0l/snort/pull/585",
+        "user": "enjikaka"
+      },
+      {
+        "id": 1762350088,
+        "number": 583,
+        "title": "Add oauth event handler everywhere, dedup auth_url handling, add requ\u2026",
+        "body": "\u2026ested perms, add since to reply filter",
+        "merged_at": "2024-04-04T10:20:58Z",
+        "html_url": "https://github.com/v0l/snort/pull/583",
+        "user": "brugeman"
+      },
+      {
+        "id": 1210546658,
+        "number": 93,
+        "title": "first pass at nip42 authentication",
+        "body": "This is a first pass at implementing Nip42 Authentication.\r\n\r\nI wasn't really sure where to put the auth function so I put it into the publisher since it has all of that type of logic there.\r\nBut I didn't really know how to get the publisher (or the event signing) into where the connection and AUTH message is handled.\r\n\r\nThere is probably a much cleaner way, maybe creating an event listener?\r\n\r\nI figured I'd put down some code and test things out against my NIP42 relay and get some feedback on h",
+        "merged_at": "2023-01-25T14:45:00Z",
+        "html_url": "https://github.com/v0l/snort/pull/93",
+        "user": "LiranCohen"
+      },
+      {
+        "id": 1201352468,
+        "number": 80,
+        "title": "feat: send zaps",
+        "body": "",
+        "merged_at": "2023-01-19T10:13:49Z",
+        "html_url": "https://github.com/v0l/snort/pull/80",
+        "user": "verbiricha"
+      }
+    ],
+    "coracle-social/coracle": [
+      {
+        "id": 2854965896,
+        "number": 647,
+        "title": "Change /help view nosrapps url to lowercase",
+        "body": "When going through the login flow using a remote signer, I noticed that the \"Browse Signer Apps\" link on the `/help` page was linking to the nostrapps site but wasn't loading any signer options. However, the same link does work on the `/login` page. Changing the `/help` page nostrapps url to all lowercase (same as on the `login` page) fixes the issue. So just a one character change for a small inconvenience...\r\n\r\nI tested locally with chromium and firefox and it now works as expected. ",
+        "merged_at": "2025-09-24T02:03:28Z",
+        "html_url": "https://github.com/coracle-social/coracle/pull/647",
+        "user": "zmjohnso"
+      },
+      {
+        "id": 2619577319,
+        "number": 626,
+        "title": "add tooltip in qrcode of login bunker",
+        "body": "I was learning about the app and nostr\r\n\r\nAnd when i tried to connect the coracle with nsec i was a little bit lost\r\ncoracle was showing a qr code and nsec was showing a input field, at the time i didnt saw the cursor changing to copy when i hovered the qr code\r\n\r\nI think adding a tooltip in the qr code will help in the UX",
+        "merged_at": "2025-06-25T23:27:21Z",
+        "html_url": "https://github.com/coracle-social/coracle/pull/626",
+        "user": "lucaskbr"
+      },
+      {
+        "id": 2167920551,
+        "number": 465,
+        "title": "Fix feeds",
+        "body": "Feeds were getting pretty slow, this release speeds them up again, and simplifies a bunch of stuff. It includes some upgrades to welshman related to feeds.",
+        "merged_at": "2024-11-08T17:47:28Z",
+        "html_url": "https://github.com/coracle-social/coracle/pull/465",
+        "user": "staab"
+      },
+      {
+        "id": 2479060402,
+        "number": 606,
+        "title": "Fix Dockerfile",
+        "body": "",
+        "merged_at": "2025-04-24T17:04:47Z",
+        "html_url": "https://github.com/coracle-social/coracle/pull/606",
+        "user": "hellodword"
+      },
+      {
+        "id": 2302800858,
+        "number": 553,
+        "title": "Improve mute",
+        "body": "#498 \r\n\r\n> Allow users to hide the \"show x hidden replies\" bit for muted notes\r\n\r\nThere is a new settings called \"load_muted_replies\", on by default, if turned off, it will hide the button\r\n\r\n> Don't mute notes by the user's own pubkey\r\n\r\nThe only way to mute a note of your own is either to mute your own npub or that specific event id. If a word is muted and your note contain this word, it won't be hidden.\r\n\r\n> Hide muted parents in feeds (sometimes a reply to a muted note will show up, just rem",
+        "merged_at": "2025-01-30T20:15:55Z",
+        "html_url": "https://github.com/coracle-social/coracle/pull/553",
+        "user": "ticruz38"
+      },
+      {
+        "id": 2294897812,
+        "number": 551,
+        "title": "Get rid of Hurdak",
+        "body": "Work in progress\r\n\r\nSome hurdak (minor) functions do not yet have a equivalent in welshman, here is the list:\r\n\r\n- ToTitle\r\n- pluralize\r\n- commaFormat (number to text formatting)\r\n- quantify (commaFormat + pluralize)\r\n- bytes (text to int formatting)\r\n- round (Math.round, but support floating numbers too)\r\n- filterVals (remove undefined keys in a map)\r\n\r\nLet me know if I should add them to welshman or to a util folder in Coracle",
+        "merged_at": "2025-01-24T17:02:22Z",
+        "html_url": "https://github.com/coracle-social/coracle/pull/551",
+        "user": "ticruz38"
+      },
+      {
+        "id": 2281482190,
+        "number": 538,
+        "title": "Stop Republishing",
+        "body": "Removing the rebroadcast in the reply and like action",
+        "merged_at": "2025-01-16T23:38:03Z",
+        "html_url": "https://github.com/coracle-social/coracle/pull/538",
+        "user": "ticruz38"
+      },
+      {
+        "id": 2279623749,
+        "number": 537,
+        "title": "Show the liked note rather than the reaction",
+        "body": "it's all in the title\r\n\r\n#526 ",
+        "merged_at": "2025-01-15T17:18:09Z",
+        "html_url": "https://github.com/coracle-social/coracle/pull/537",
+        "user": "ticruz38"
+      }
+    ],
+    "hzrd149/nostrudel": [
+      {
+        "id": 3055736259,
+        "number": 341,
+        "title": "Version Packages",
+        "body": "This PR was opened by the [Changesets release](https://github.com/changesets/action) GitHub action. When you're ready to do a release, you can merge this and publish to npm yourself or [setup this action to publish automatically](https://github.com/changesets/action#with-publishing). If you're not ready to do a release yet, that's fine, whenever you add more changesets to master, this PR will be updated.\n\n\n# Releases\n## nostrudel@1.1.0\n\n### Minor Changes\n\n-   e5bb226: Split direct replies and th",
+        "merged_at": "2025-12-06T16:10:00Z",
+        "html_url": "https://github.com/hzrd149/nostrudel/pull/341",
+        "user": "github-actions[bot]"
+      },
+      {
+        "id": 3055702893,
+        "number": 340,
+        "title": "Version Packages",
+        "body": "This PR was opened by the [Changesets release](https://github.com/changesets/action) GitHub action. When you're ready to do a release, you can merge this and publish to npm yourself or [setup this action to publish automatically](https://github.com/changesets/action#with-publishing). If you're not ready to do a release yet, that's fine, whenever you add more changesets to master, this PR will be updated.\n\n\n# Releases\n## nostrudel@1.0.2\n\n### Patch Changes\n\n-   2d8bb9d: Use random default pubkeys ",
+        "merged_at": "2025-11-29T16:14:39Z",
+        "html_url": "https://github.com/hzrd149/nostrudel/pull/340",
+        "user": "github-actions[bot]"
+      },
+      {
+        "id": 3043643518,
+        "number": 338,
+        "title": "Version Packages",
+        "body": "This PR was opened by the [Changesets release](https://github.com/changesets/action) GitHub action. When you're ready to do a release, you can merge this and publish to npm yourself or [setup this action to publish automatically](https://github.com/changesets/action#with-publishing). If you're not ready to do a release yet, that's fine, whenever you add more changesets to master, this PR will be updated.\n\n\n# Releases\n## nostrudel@1.0.1\n\n### Patch Changes\n\n-   96958b2: Remove unused paywall\n-   c",
+        "merged_at": "2025-11-25T15:31:51Z",
+        "html_url": "https://github.com/hzrd149/nostrudel/pull/338",
+        "user": "github-actions[bot]"
+      },
+      {
+        "id": 2768960400,
+        "number": 323,
+        "title": "Version Packages",
+        "body": "This PR was opened by the [Changesets release](https://github.com/changesets/action) GitHub action. When you're ready to do a release, you can merge this and publish to npm yourself or [setup this action to publish automatically](https://github.com/changesets/action#with-publishing). If you're not ready to do a release yet, that's fine, whenever you add more changesets to master, this PR will be updated.\n\n\n# Releases\n## nostrudel@1.0.0\n\n### Major Changes\n\n-   056b0f6: Subscribe to users outbox r",
+        "merged_at": "2025-11-21T14:39:05Z",
+        "html_url": "https://github.com/hzrd149/nostrudel/pull/323",
+        "user": "github-actions[bot]"
+      },
+      {
+        "id": 2890138881,
+        "number": 334,
+        "title": "Replace api.nostr.watch with NIP-66 implementation",
+        "body": "This is not a full implementation. Full implementation would first discover monitors and then get the `frequency` value from monitors' `10166` to use as since values for `30166` subscription. \r\n\r\n**Changes**\r\n- DRY with service so that map + autocomplete use same unit\r\n- Normalize urls\r\n- Cache with expiry\r\n\r\n**Discovery Relays:**\r\n- wss://relay.nostr.watch\r\n- wss://relaypag.es\r\n- wss://monitorlizard.nostr1.com\r\n\r\n**Testing**\r\n- [x] Build passes without TypeScript errors\r\n- [x] Dev server runs s",
+        "merged_at": "2025-10-12T14:58:04Z",
+        "html_url": "https://github.com/hzrd149/nostrudel/pull/334",
+        "user": "dskvr"
+      },
+      {
+        "id": 2083346583,
+        "number": 236,
+        "title": "Version Packages",
+        "body": "This PR was opened by the [Changesets release](https://github.com/changesets/action) GitHub action. When you're ready to do a release, you can merge this and publish to npm yourself or [setup this action to publish automatically](https://github.com/changesets/action#with-publishing). If you're not ready to do a release yet, that's fine, whenever you add more changesets to master, this PR will be updated.\n\n\n# Releases\n## nostrudel@0.43.0\n\n### Minor Changes\n\n-   697d4c6: Add \"Migrate to signing de",
+        "merged_at": "2025-05-02T22:15:06Z",
+        "html_url": "https://github.com/hzrd149/nostrudel/pull/236",
+        "user": "github-actions[bot]"
+      },
+      {
+        "id": 2763441961,
+        "number": 322,
+        "title": "Version Packages",
+        "body": "This PR was opened by the [Changesets release](https://github.com/changesets/action) GitHub action. When you're ready to do a release, you can merge this and publish to npm yourself or [setup this action to publish automatically](https://github.com/changesets/action#with-publishing). If you're not ready to do a release yet, that's fine, whenever you add more changesets to master, this PR will be updated.\n\n\n# Releases\n## nostrudel@0.46.1\n\n### Patch Changes\n\n-   2e02dce: Fix issue with application",
+        "merged_at": "2025-08-21T15:43:17Z",
+        "html_url": "https://github.com/hzrd149/nostrudel/pull/322",
+        "user": "github-actions[bot]"
+      },
+      {
+        "id": 2671545266,
+        "number": 316,
+        "title": "Version Packages",
+        "body": "This PR was opened by the [Changesets release](https://github.com/changesets/action) GitHub action. When you're ready to do a release, you can merge this and publish to npm yourself or [setup this action to publish automatically](https://github.com/changesets/action#with-publishing). If you're not ready to do a release yet, that's fine, whenever you add more changesets to master, this PR will be updated.\n\n\n# Releases\n## nostrudel@0.46.0\n\n### Minor Changes\n\n-   61ec618: Add option for custom shar",
+        "merged_at": "2025-08-20T22:06:39Z",
+        "html_url": "https://github.com/hzrd149/nostrudel/pull/316",
+        "user": "github-actions[bot]"
+      },
+      {
+        "id": 2668004991,
+        "number": 315,
+        "title": "Version Packages",
+        "body": "This PR was opened by the [Changesets release](https://github.com/changesets/action) GitHub action. When you're ready to do a release, you can merge this and publish to npm yourself or [setup this action to publish automatically](https://github.com/changesets/action#with-publishing). If you're not ready to do a release yet, that's fine, whenever you add more changesets to master, this PR will be updated.\n\n\n# Releases\n## nostrudel@0.45.1\n\n### Patch Changes\n\n-   50d7153: Fix recalculating the soci",
+        "merged_at": "2025-07-15T17:00:18Z",
+        "html_url": "https://github.com/hzrd149/nostrudel/pull/315",
+        "user": "github-actions[bot]"
+      },
+      {
+        "id": 2615610992,
+        "number": 311,
+        "title": "Version Packages",
+        "body": "This PR was opened by the [Changesets release](https://github.com/changesets/action) GitHub action. When you're ready to do a release, you can merge this and publish to npm yourself or [setup this action to publish automatically](https://github.com/changesets/action#with-publishing). If you're not ready to do a release yet, that's fine, whenever you add more changesets to master, this PR will be updated.\n\n\n# Releases\n## nostrudel@0.45.0\n\n### Minor Changes\n\n-   da4935f: Add setting for NIP-17 DM ",
+        "merged_at": "2025-07-07T17:22:44Z",
+        "html_url": "https://github.com/hzrd149/nostrudel/pull/311",
+        "user": "github-actions[bot]"
+      },
+      {
+        "id": 2612977182,
+        "number": 310,
+        "title": "Version Packages",
+        "body": "This PR was opened by the [Changesets release](https://github.com/changesets/action) GitHub action. When you're ready to do a release, you can merge this and publish to npm yourself or [setup this action to publish automatically](https://github.com/changesets/action#with-publishing). If you're not ready to do a release yet, that's fine, whenever you add more changesets to master, this PR will be updated.\n\n\n# Releases\n## nostrudel@0.44.1\n\n### Patch Changes\n\n-   9a714ab: Correct `applesauce` and `",
+        "merged_at": "2025-06-23T22:56:35Z",
+        "html_url": "https://github.com/hzrd149/nostrudel/pull/310",
+        "user": "github-actions[bot]"
+      },
+      {
+        "id": 2496900628,
+        "number": 302,
+        "title": "Version Packages",
+        "body": "This PR was opened by the [Changesets release](https://github.com/changesets/action) GitHub action. When you're ready to do a release, you can merge this and publish to npm yourself or [setup this action to publish automatically](https://github.com/changesets/action#with-publishing). If you're not ready to do a release yet, that's fine, whenever you add more changesets to master, this PR will be updated.\n\n\n# Releases\n## nostrudel@0.44.0\n\n### Minor Changes\n\n-   605905f: Detect `naddr1` and `neven",
+        "merged_at": "2025-06-23T20:24:27Z",
+        "html_url": "https://github.com/hzrd149/nostrudel/pull/302",
+        "user": "github-actions[bot]"
+      },
+      {
+        "id": 2332459225,
+        "number": 281,
+        "title": "Profile and banner images upload implementation",
+        "body": "There's a PR for #242 opened issue.\r\n\r\nIt's a first implementation, so, feel free to suggest anything.\r\n\r\nChanges overview:\r\n- Created new hooks isolating the upload process to simplify the development and DRY(don't repeat yourself)\r\n- Created a new hook to handle inputs text image uploading\r\n- Implemented the upload process into `/profile` page form\r\n\r\nFeatures:\r\n- The upload is enabled by clicking in the \"upload\" button\r\n- Copy and paste files also works here\r\n\r\nI also added a `.tool-versions`",
+        "merged_at": "2025-02-13T22:46:02Z",
+        "html_url": "https://github.com/hzrd149/nostrudel/pull/281",
+        "user": "kiuusai"
+      },
+      {
+        "id": 2148997918,
+        "number": 256,
+        "title": "rxjs",
+        "body": " - Use rxjs for observables \r\n - Update applesauce",
+        "merged_at": "2024-10-28T12:00:09Z",
+        "html_url": "https://github.com/hzrd149/nostrudel/pull/256",
+        "user": "hzrd149"
+      }
+    ],
+    "irislib/iris-messenger": [
+      {
+        "id": 1593228203,
+        "number": 446,
+        "title": "Trim Zap comment",
+        "body": "We had a bug when trying to parse the json of a comment. It had a `\\n` at the end of it and our browser's json parser couldn't handle it. This should fix",
+        "merged_at": "2023-11-15T09:24:27Z",
+        "html_url": "https://github.com/irislib/iris-messenger/pull/446",
+        "user": "benthecarman"
+      },
+      {
+        "id": 1554201083,
+        "number": 442,
+        "title": "Network graph",
+        "body": "",
+        "merged_at": "2023-10-12T13:56:44Z",
+        "html_url": "https://github.com/irislib/iris-messenger/pull/442",
+        "user": "mmalmi"
+      },
+      {
+        "id": 1537605221,
+        "number": 437,
+        "title": "fix: notification count is overlap",
+        "body": "# Fixed notification count is overlap.\r\n\r\n<img width=\"1355\" alt=\"image\" src=\"https://github.com/irislib/iris-messenger/assets/7018802/5acab029-7714-4611-a97a-257cd6c5e605\">\r\n\r\n\r\n# After fixed:\r\n\r\n<img width=\"1312\" alt=\"image\" src=\"https://github.com/irislib/iris-messenger/assets/7018802/d98ea4d4-6e99-4d6b-a375-e68e316bd155\">\r\n\r\n",
+        "merged_at": "2023-10-05T15:23:09Z",
+        "html_url": "https://github.com/irislib/iris-messenger/pull/437",
+        "user": "mrthiti"
+      },
+      {
+        "id": 1538257806,
+        "number": 438,
+        "title": "fix: move close button to top right of modal",
+        "body": "Move close button to top right of zap modal.\r\n\r\n<img width=\"778\" alt=\"image\" src=\"https://github.com/irislib/iris-messenger/assets/7018802/978e7d22-2d48-4a5d-a9ce-505adcf2a2d6\">\r\n\r\nAfter fixed:\r\n\r\n<img width=\"709\" alt=\"image\" src=\"https://github.com/irislib/iris-messenger/assets/7018802/fba0d4d5-e51e-4c42-88dd-894f1bf886ec\">\r\n",
+        "merged_at": "2023-10-05T15:22:25Z",
+        "html_url": "https://github.com/irislib/iris-messenger/pull/438",
+        "user": "mrthiti"
+      },
+      {
+        "id": 1538260691,
+        "number": 439,
+        "title": "fix: unable to close zap modal",
+        "body": "Fix unable to close zap modal.",
+        "merged_at": "2023-10-05T15:21:31Z",
+        "html_url": "https://github.com/irislib/iris-messenger/pull/439",
+        "user": "mrthiti"
+      },
+      {
+        "id": 1469675118,
+        "number": 421,
+        "title": "Fix: make network relay usable on mobile",
+        "body": "This was just bugging me a bit. Happy for any feedback.\r\n\r\n## Current issue\r\n- because of one long relay-url the buttons are being pushed out of the visible screen on small screens\r\n- \"network\"-list entries are now being truncated (\"popular\"-list entries are being truncated)\r\n<img width=\"374\" alt=\"image\" src=\"https://github.com/irislib/iris-messenger/assets/1016218/28a36138-533b-4bf7-81d2-e09ac35ca209\">\r\n<img width=\"375\" alt=\"image\" src=\"https://github.com/irislib/iris-messenger/assets/1016218/e",
+        "merged_at": "2023-08-11T06:43:41Z",
+        "html_url": "https://github.com/irislib/iris-messenger/pull/421",
+        "user": "escapedcat"
+      },
+      {
+        "id": 534418851,
+        "number": 40,
+        "title": "Change git clone URL to https",
+        "body": "The current URL doesn't work if you don't have an SSH key uploaded to Github (as I just discovered cloning this onto a new machine). The https URL should work for more people.",
+        "merged_at": "2020-12-11T07:57:11Z",
+        "html_url": "https://github.com/irislib/iris-messenger/pull/40",
+        "user": "timjrobinson"
+      },
+      {
+        "id": 1454184413,
+        "number": 418,
+        "title": "Add relay",
+        "body": "",
+        "merged_at": "2023-08-06T08:06:19Z",
+        "html_url": "https://github.com/irislib/iris-messenger/pull/418",
+        "user": "kroese"
+      },
+      {
+        "id": 494217602,
+        "number": 31,
+        "title": "Layout",
+        "body": "",
+        "merged_at": "2020-09-29T11:01:25Z",
+        "html_url": "https://github.com/irislib/iris-messenger/pull/31",
+        "user": "mmalmi"
+      },
+      {
+        "id": 1419720004,
+        "number": 411,
+        "title": "Added ability to scroll feed with J and K keys",
+        "body": "HJKL keys can be used for scrolling on certain social networks like Facebook, Twitter, or 9GAG, providing a quick way to navigate through feeds or timelines. Over time, the HJKL keys found their way into other applications and environments, particularly those that aimed to provide Vim-like keybindings or cater to Vim users. This includes various text editors, command-line interfaces, and even certain web-based applications.\r\n\r\nI implemented simple scrolling with J and K keys for iris",
+        "merged_at": "2023-07-05T12:20:24Z",
+        "html_url": "https://github.com/irislib/iris-messenger/pull/411",
+        "user": "MichalPem"
+      },
+      {
+        "id": 1416707932,
+        "number": 408,
+        "title": "Slightly improvement of the Name.tsx component",
+        "body": "Hi Martti\r\n\r\nI planning to implement a Decentralized Web of Trust Reputation system on your Iris implementation.\r\nThis requires some small changes and improvements to your exiting code, but the changes should not affect the exiting rendering per say. Also the code changes will not contain any of my DWoTR code.\r\nI will submit the changes to you, so you can implement them into your own version if you like.\r\nIf you want hear more about my little project I will happily share everything with you. \r\nA",
+        "merged_at": "2023-07-03T16:56:57Z",
+        "html_url": "https://github.com/irislib/iris-messenger/pull/408",
+        "user": "keutmann"
+      },
+      {
+        "id": 1359736112,
+        "number": 395,
+        "title": "Support international hashtags",
+        "body": "## Problem:\r\nNot all international hashtags are rendering properly on Iris today (Both in profile description and also in note content).\r\n\r\n## Screenshots with problem:\r\nVisit the profile with NIP-05 ID - vivganes@vivekganesan.com\r\n![image](https://github.com/irislib/iris-messenger/assets/2035886/af3784d3-0173-42be-86ba-a76c76e5e72f)\r\n\r\nVisit the note at URL - https://iris.to/note1lzeujaaaqlqju6vdg7su3w73h5uv2v4zw65rxlgjccwdm6wq9qusfh8czp \r\n![image](https://github.com/irislib/iris-messenger/asse",
+        "merged_at": "2023-07-03T09:33:54Z",
+        "html_url": "https://github.com/irislib/iris-messenger/pull/395",
+        "user": "vivganes"
+      },
+      {
+        "id": 396031330,
+        "number": 6,
+        "title": "Move Switch Account to Main Login Screen",
+        "body": "- Added functionality to create new account **and** login with existing account on the home screen.\r\n- Removed Switch Account from the settings page because it is now not necessary (after logging out, you can log in with another account from the home screen).",
+        "merged_at": "2020-04-02T11:19:00Z",
+        "html_url": "https://github.com/irislib/iris-messenger/pull/6",
+        "user": "stateandbehavior"
+      }
+    ],
+    "mikedilger/gossip": [
+      {
+        "id": 2806170039,
+        "number": 1005,
+        "title": "Add filesystem and GPU access permissions to Flatpak manifest",
+        "body": "## Description\r\nThis PR enhances the Flatpak packaging configuration by adding essential permissions for better user experience and performance.\r\n\r\n### Changes Made\r\n- **Added `--filesystem=home` permission**: Allows users to easily browse and upload files from anywhere in their home directory\r\n- **Added `--device=dri` permission**: Enables GPU hardware acceleration for improved graphics performance and smoother UI rendering\r\n\r\n### Why These Changes?\r\n1. **File Access**: Without filesystem permi",
+        "merged_at": "2025-09-07T20:08:04Z",
+        "html_url": "https://github.com/mikedilger/gossip/pull/1005",
+        "user": "besoeasy"
+      },
+      {
+        "id": 2437734249,
+        "number": 990,
+        "title": "Add feature: right-click to copy link",
+        "body": "Related issue: #878\r\n\r\nWhile doing this I discovered that the \"Retry loading\" button on media links was not working.",
+        "merged_at": "2025-04-04T00:31:44Z",
+        "html_url": "https://github.com/mikedilger/gossip/pull/990",
+        "user": "ioseph-silva"
+      },
+      {
+        "id": 2418226518,
+        "number": 981,
+        "title": "Prevent clearing search results when search box loses focus",
+        "body": "This addresses issue #975.\r\n\r\nThe tradeoff is that the contact tooltip will not disappear when the user clicks outside of the text box. However, this is what already happens in the post area.",
+        "merged_at": "2025-03-28T03:38:23Z",
+        "html_url": "https://github.com/mikedilger/gossip/pull/981",
+        "user": "ioseph-silva"
+      },
+      {
+        "id": 2392211699,
+        "number": 979,
+        "title": "Fix scroll area that doesn't expand after shrinking.",
+        "body": "A fix for #977",
+        "merged_at": "2025-03-14T02:13:32Z",
+        "html_url": "https://github.com/mikedilger/gossip/pull/979",
+        "user": "ioseph-silva"
+      },
+      {
+        "id": 2329463006,
+        "number": 963,
+        "title": "Create README.appimage.txt",
+        "body": "Adding the readme for the AppImage",
+        "merged_at": "2025-02-11T21:52:31Z",
+        "html_url": "https://github.com/mikedilger/gossip/pull/963",
+        "user": "AttaInsularis"
+      },
+      {
+        "id": 2329521940,
+        "number": 964,
+        "title": "Update README.flatpak.txt",
+        "body": "A 'Common issues' section added.",
+        "merged_at": "2025-02-11T22:14:42Z",
+        "html_url": "https://github.com/mikedilger/gossip/pull/964",
+        "user": "AttaInsularis"
+      },
+      {
+        "id": 2297179693,
+        "number": 944,
+        "title": "Fix clippy warnings",
+        "body": "",
+        "merged_at": "2025-01-25T09:01:20Z",
+        "html_url": "https://github.com/mikedilger/gossip/pull/944",
+        "user": "rex4539"
+      },
+      {
+        "id": 2149143123,
+        "number": 900,
+        "title": "UI - Adding the number of relays to the configure relay pages",
+        "body": "Its done by replacing\r\n\r\n`widgets::page_header(ui, Page::RelaysActivityMonitor.name(), |ui|`\r\n\r\nwith\r\n\r\n`widgets::page_header(ui, &format!(\"{} ({} relays)\", Page::RelaysMine.name(), get_relays(app).len()), |ui| {`\r\n\r\non relay pages but diff is longer because of linting.\r\n\r\ncloses #306",
+        "merged_at": "2024-10-28T19:43:42Z",
+        "html_url": "https://github.com/mikedilger/gossip/pull/900",
+        "user": "jadijadi"
+      },
+      {
+        "id": 2130794674,
+        "number": 894,
+        "title": "chore: nix flake update",
+        "body": "Tried to build from source and ran into a small issue. Updating the nix flake fixed it.",
+        "merged_at": "2024-10-17T21:37:15Z",
+        "html_url": "https://github.com/mikedilger/gossip/pull/894",
+        "user": "m1sterc001guy"
+      },
+      {
+        "id": 2081654222,
+        "number": 868,
+        "title": "Feature/review relays issue 834",
+        "body": "",
+        "merged_at": "2024-09-25T13:16:42Z",
+        "html_url": "https://github.com/mikedilger/gossip/pull/868",
+        "user": "bu5hm4nn"
+      },
+      {
+        "id": 2072359587,
+        "number": 857,
+        "title": "Shows full path in case of a File Exists error",
+        "body": "When the system tries to create the configuration directories, it crashes if it fails (say because of regular file there or a broken symlink). The out put is \"File Exists\" which makes troubleshooting difficult.\r\n\r\nWith this change, gossip prints the full path of the problematic file so the user khows where to look.\r\n\r\nfixes #856",
+        "merged_at": "2024-09-14T18:00:10Z",
+        "html_url": "https://github.com/mikedilger/gossip/pull/857",
+        "user": "jadijadi"
+      },
+      {
+        "id": 2069658296,
+        "number": 855,
+        "title": "UI Review Relays section",
+        "body": "Addresses issue #834 ",
+        "merged_at": "2024-09-13T00:12:08Z",
+        "html_url": "https://github.com/mikedilger/gossip/pull/855",
+        "user": "bu5hm4nn"
+      },
+      {
+        "id": 2042488128,
+        "number": 843,
+        "title": "Move the web sharing outside the \"copy ID\" menu",
+        "body": "Web sharing is a fairly common action to promote a note outside Nostr, and hiding it within a generic \u201cCopy ID\u201d menu is a shame.",
+        "merged_at": "2024-09-10T20:46:41Z",
+        "html_url": "https://github.com/mikedilger/gossip/pull/843",
+        "user": "dtonon"
+      },
+      {
+        "id": 2001020447,
+        "number": 824,
+        "title": "Textedit styles",
+        "body": "Just a fine-tuning of textedit styles",
+        "merged_at": "2024-08-04T20:41:20Z",
+        "html_url": "https://github.com/mikedilger/gossip/pull/824",
+        "user": "dtonon"
+      },
+      {
+        "id": 1982793608,
+        "number": 817,
+        "title": "egui upgrade to 0.28.2",
+        "body": "I think it's good enough to go into unstable",
+        "merged_at": "2024-07-23T09:53:58Z",
+        "html_url": "https://github.com/mikedilger/gossip/pull/817",
+        "user": "bu5hm4nn"
+      },
+      {
+        "id": 1961039660,
+        "number": 807,
+        "title": "DM Note Rendering",
+        "body": "Re-Style DM note rendering by carefully refactoring note-rendering functions",
+        "merged_at": "2024-07-18T10:38:41Z",
+        "html_url": "https://github.com/mikedilger/gossip/pull/807",
+        "user": "bu5hm4nn"
+      },
+      {
+        "id": 1861929006,
+        "number": 755,
+        "title": "Nicer data migration page",
+        "body": "fixes #747; The message on the data migartion page is horizontaly and vertically centered.",
+        "merged_at": "2024-05-10T22:02:48Z",
+        "html_url": "https://github.com/mikedilger/gossip/pull/755",
+        "user": "jadijadi"
+      }
+    ],
+    "damus-io/notedeck": [
+      {
+        "id": 2997428007,
+        "number": 1201,
+        "title": "Filter out future-dated notes",
+        "body": "### Problem\r\nNotes spoofed from tens of years in the future \r\n<img width=\"311\" height=\"457\" alt=\"image\" src=\"https://github.com/user-attachments/assets/1d88f562-c517-4998-a316-e67161dd88f3\" />\r\n\r\n### Summary\r\n- add shared helpers for ignoring notes more than 24h in the future and cover them with unit tests\r\n- drop spoofed future notes when building timelines or ingesting thread replies so they never render\r\n\r\n### Testing\r\n- cargo test time::tests::test_future_skew_helper\r\n",
+        "merged_at": "2025-12-04T09:28:17Z",
+        "html_url": "https://github.com/damus-io/notedeck/pull/1201",
+        "user": "alltheseas"
+      },
+      {
+        "id": 3031658552,
+        "number": 1209,
+        "title": "Fix spacing issue",
+        "body": "",
+        "merged_at": "2025-12-04T09:18:58Z",
+        "html_url": "https://github.com/damus-io/notedeck/pull/1209",
+        "user": "kernelkind"
+      },
+      {
+        "id": 2959274443,
+        "number": 1183,
+        "title": "Switch Copy Note ID to nevent",
+        "body": "## Summary\r\n\r\n  - rename the note context menu action to \u201cCopy nevent ID\u201d so the tooltip matches\r\n  - switch the copy handler to emit a NIP-19 nevent\u2026 string via nostr::nips::nip19::Nip19Event\r\n\r\n",
+        "merged_at": "2025-12-04T09:16:49Z",
+        "html_url": "https://github.com/damus-io/notedeck/pull/1183",
+        "user": "alltheseas"
+      },
+      {
+        "id": 3059466989,
+        "number": 1212,
+        "title": "feat(profile_view): add profile column from context options",
+        "body": "Adds an option to quickly insert the profile column, but only if it isn\u2019t already in the deck.\r\n\r\n<img width=\"337\" height=\"187\" alt=\"imagen\" src=\"https://github.com/user-attachments/assets/6a130465-9784-4821-b2b9-c3333df2fd19\" />\r\n",
+        "merged_at": "2025-12-04T09:10:48Z",
+        "html_url": "https://github.com/damus-io/notedeck/pull/1212",
+        "user": "fernandolguevara"
+      },
+      {
+        "id": 2987048032,
+        "number": 1191,
+        "title": "Use OS Secure Store for nsec",
+        "body": "Tested with MacOS & android. Need to test with linux & windows still\r\n\r\nRun `adb shell 'run-as com.damus.notedeck ls -la /data/user/0/com.damus.notedeck/files/storage/accounts'` and observe nsec getting turned into pubkey, but you remain logged in as nsec. \r\n\r\nThis implementation migrates nsec values from plain files into the secure store while keeping the user logged in.",
+        "merged_at": "2025-12-04T09:03:09Z",
+        "html_url": "https://github.com/damus-io/notedeck/pull/1191",
+        "user": "kernelkind"
+      },
+      {
+        "id": 3037774258,
+        "number": 1210,
+        "title": "Use JobPool for media loading",
+        "body": "Previously, for each media loading request (for both on disk and from net) needed a separate `std::sync::thread`. With many requests, this can cause alot of overhead. This PR makes it so all media loading requests go through the `JobPool`, and it is made easy to run combinations of synchronous and async jobs chained together for a single request. \r\nAdditionally, apps can make their own job types which aren't tied to the media loading types by making a new `JobCache<K,T>` and passing the type as ",
+        "merged_at": "2025-12-04T08:57:13Z",
+        "html_url": "https://github.com/damus-io/notedeck/pull/1210",
+        "user": "kernelkind"
+      },
+      {
+        "id": 3027961564,
+        "number": 1208,
+        "title": "back & fwd nav with ctrl/cmd + arrows",
+        "body": "",
+        "merged_at": "2025-11-20T14:41:16Z",
+        "html_url": "https://github.com/damus-io/notedeck/pull/1208",
+        "user": "mmalmi"
+      },
+      {
+        "id": 2989777570,
+        "number": 1193,
+        "title": "Feature/search improvements",
+        "body": "",
+        "merged_at": "2025-11-15T01:39:31Z",
+        "html_url": "https://github.com/damus-io/notedeck/pull/1193",
+        "user": "mmalmi"
+      },
+      {
+        "id": 2989750317,
+        "number": 1192,
+        "title": "Feature/navigation improvements",
+        "body": "",
+        "merged_at": "2025-11-15T01:33:44Z",
+        "html_url": "https://github.com/damus-io/notedeck/pull/1192",
+        "user": "mmalmi"
+      },
+      {
+        "id": 2997555713,
+        "number": 1202,
+        "title": "Add configurable hashtag limit filter",
+        "body": "## Summary\r\n\r\nThis PR adds a user-configurable filter to hide posts with excessive hashtags, helping reduce spam in the timeline. The default limit is 3 hashtags per note, with full UI control in the Settings panel.\r\n\r\n<img width=\"585\" height=\"169\" alt=\"image\" src=\"https://github.com/user-attachments/assets/e3dbdaf1-5f67-477a-b501-1eaeee9c165f\" />\r\n\r\n\r\n## Changes\r\n\r\n### Commit 1: Add configurable max hashtags per note setting\r\n- Added `max_hashtags_per_note` field to Settings struct with default",
+        "merged_at": "2025-11-15T01:33:44Z",
+        "html_url": "https://github.com/damus-io/notedeck/pull/1202",
+        "user": "alltheseas"
+      },
+      {
+        "id": 2978172708,
+        "number": 1188,
+        "title": "Note metadata stats",
+        "body": "![](https://jb55.com/s/90c2482356286244.png)",
+        "merged_at": "2025-11-07T05:41:11Z",
+        "html_url": "https://github.com/damus-io/notedeck/pull/1188",
+        "user": "jb55"
+      },
+      {
+        "id": 2938470308,
+        "number": 1177,
+        "title": "Fix soft keyboard",
+        "body": "df5cf8a1fc28a78bcb58b892717a85835da01591 caused a regression\r\n    making the soft keyboard auto close. This PR extends the shadow\r\n    all the way vertically without triggering the regression.",
+        "merged_at": "2025-10-27T20:02:05Z",
+        "html_url": "https://github.com/damus-io/notedeck/pull/1177",
+        "user": "kernelkind"
+      },
+      {
+        "id": 2945519088,
+        "number": 1178,
+        "title": "Improve Reactions & reposts performance",
+        "body": "Rough performance analysis, rendering a reaction cluster with ~150 reactions. Each flame graph is showing a specific frame and bounded within the `render_reaction_cluster` function\r\n\r\n# master\r\n`vec profile entries`: ~800 us\r\n`render_reaction_cluster`: ~4.6 ms\r\n`actual rendering individual pfp`: ~2.8 ms\r\n`supported_mime_hosted_at_url`: ~1 ms\r\n<img width=\"1788\" height=\"967\" alt=\"Pasted image 20251024115151\" src=\"https://github.com/user-attachments/assets/4a930e4e-d6be-4587-861e-503d04c69d2d\" />\r\n",
+        "merged_at": "2025-10-27T20:02:05Z",
+        "html_url": "https://github.com/damus-io/notedeck/pull/1178",
+        "user": "kernelkind"
+      }
+    ],
+    "verbiricha/habla.news": [
+      {
+        "id": 2259383551,
+        "number": 179,
+        "title": "New Crowdin updates",
+        "body": "",
+        "merged_at": "2025-03-26T09:40:04Z",
+        "html_url": "https://github.com/verbiricha/habla.news/pull/179",
+        "user": "verbiricha"
+      },
+      {
+        "id": 2418821129,
+        "number": 181,
+        "title": "Add mavenleo",
+        "body": "",
+        "merged_at": "2025-03-26T09:40:11Z",
+        "html_url": "https://github.com/verbiricha/habla.news/pull/181",
+        "user": "purrgrammer"
+      },
+      {
+        "id": 1826553678,
+        "number": 166,
+        "title": "New Crowdin updates",
+        "body": "",
+        "merged_at": "2025-01-03T14:17:33Z",
+        "html_url": "https://github.com/verbiricha/habla.news/pull/166",
+        "user": "verbiricha"
+      },
+      {
+        "id": 2259265382,
+        "number": 178,
+        "title": "fix: update NDK and fix NIP-46 login",
+        "body": "",
+        "merged_at": "2025-01-03T14:17:45Z",
+        "html_url": "https://github.com/verbiricha/habla.news/pull/178",
+        "user": "purrgrammer"
+      },
+      {
+        "id": 1788295360,
+        "number": 162,
+        "title": "New Crowdin updates",
+        "body": "",
+        "merged_at": "2024-03-27T17:44:01Z",
+        "html_url": "https://github.com/verbiricha/habla.news/pull/162",
+        "user": "verbiricha"
+      },
+      {
+        "id": 1756530876,
+        "number": 156,
+        "title": "New Crowdin updates",
+        "body": "",
+        "merged_at": "2024-03-21T09:21:43Z",
+        "html_url": "https://github.com/verbiricha/habla.news/pull/156",
+        "user": "verbiricha"
+      },
+      {
+        "id": 1783961420,
+        "number": 161,
+        "title": "Add support for nip46 'secret'",
+        "body": "",
+        "merged_at": "2024-03-21T09:21:33Z",
+        "html_url": "https://github.com/verbiricha/habla.news/pull/161",
+        "user": "brugeman"
+      },
+      {
+        "id": 1758518990,
+        "number": 157,
+        "title": "Fix bunker parsing on iOS and non-Chrome browsers",
+        "body": "Some browsers put pubkey part of bunker url into hostname, not pathname.",
+        "merged_at": "2024-03-06T12:11:52Z",
+        "html_url": "https://github.com/verbiricha/habla.news/pull/157",
+        "user": "brugeman"
+      },
+      {
+        "id": 1714258416,
+        "number": 151,
+        "title": "New Crowdin updates",
+        "body": "",
+        "merged_at": "2024-03-05T10:21:43Z",
+        "html_url": "https://github.com/verbiricha/habla.news/pull/151",
+        "user": "verbiricha"
+      },
+      {
+        "id": 1713546646,
+        "number": 149,
+        "title": "New Crowdin updates",
+        "body": "",
+        "merged_at": "2024-02-06T18:01:37Z",
+        "html_url": "https://github.com/verbiricha/habla.news/pull/149",
+        "user": "verbiricha"
+      },
+      {
+        "id": 1712431224,
+        "number": 148,
+        "title": "New Crowdin updates",
+        "body": "",
+        "merged_at": "2024-02-06T11:39:29Z",
+        "html_url": "https://github.com/verbiricha/habla.news/pull/148",
+        "user": "verbiricha"
+      },
+      {
+        "id": 1712277403,
+        "number": 147,
+        "title": "New Crowdin updates",
+        "body": "",
+        "merged_at": "2024-02-05T18:38:16Z",
+        "html_url": "https://github.com/verbiricha/habla.news/pull/147",
+        "user": "verbiricha"
+      },
+      {
+        "id": 1683855644,
+        "number": 144,
+        "title": "New Crowdin updates",
+        "body": "",
+        "merged_at": "2024-01-19T10:13:16Z",
+        "html_url": "https://github.com/verbiricha/habla.news/pull/144",
+        "user": "verbiricha"
+      },
+      {
+        "id": 1682861496,
+        "number": 143,
+        "title": "New Crowdin updates",
+        "body": "",
+        "merged_at": "2024-01-17T22:10:41Z",
+        "html_url": "https://github.com/verbiricha/habla.news/pull/143",
+        "user": "verbiricha"
+      },
+      {
+        "id": 1671153992,
+        "number": 142,
+        "title": "New Crowdin updates",
+        "body": "",
+        "merged_at": "2024-01-16T11:24:20Z",
+        "html_url": "https://github.com/verbiricha/habla.news/pull/142",
+        "user": "verbiricha"
+      },
+      {
+        "id": 1656591732,
+        "number": 141,
+        "title": "New Crowdin updates",
+        "body": "",
+        "merged_at": "2024-01-03T09:50:45Z",
+        "html_url": "https://github.com/verbiricha/habla.news/pull/141",
+        "user": "verbiricha"
+      },
+      {
+        "id": 1653539264,
+        "number": 140,
+        "title": "New Crowdin updates",
+        "body": "",
+        "merged_at": "2023-12-25T11:11:45Z",
+        "html_url": "https://github.com/verbiricha/habla.news/pull/140",
+        "user": "verbiricha"
+      },
+      {
+        "id": 1606263263,
+        "number": 137,
+        "title": "New Crowdin updates",
+        "body": "",
+        "merged_at": "2023-11-22T11:55:38Z",
+        "html_url": "https://github.com/verbiricha/habla.news/pull/137",
+        "user": "verbiricha"
+      }
+    ],
+    "marmot-protocol/whitenoise": [
+      {
+        "id": 3077711514,
+        "number": 890,
+        "title": "Data retained after app uninstall",
+        "body": "## Description\r\n\r\nFixes #889 \r\nUpdated the app manifest to make sure app deletes all app data during uninstall.\r\n\r\n## Type of Change\r\n\r\n- [ ] \u2728 New feature (non-breaking change which adds functionality)\r\n- [x] \ud83d\udee0\ufe0f Bug fix (non-breaking change which fixes an issue)\r\n- [ ] \u274c Breaking change (fix or feature that would cause existing functionality to change)\r\n- [ ] \ud83e\uddf9 Code refactor\r\n- [ ] \u2705 Build configuration change\r\n- [ ] \ud83d\udcdd Documentation\r\n- [ ] \ud83d\uddd1\ufe0f Chore\r\n- [ ] \ud83e\uddea Tests\r\n\r\n## Checklist\r\n\r\n<!-- Please ",
+        "merged_at": "2025-12-07T03:28:43Z",
+        "html_url": "https://github.com/marmot-protocol/whitenoise/pull/890",
+        "user": "Quwaysim"
+      },
+      {
+        "id": 3064187636,
+        "number": 886,
+        "title": "817 language setting UI issue",
+        "body": "<!--\r\n  Thanks for contributing!\r\n\r\n  Provide a description of your changes below and a general summary in the title\r\n\r\n  Please look at the following checklist to ensure that your PR can be accepted quickly:\r\n-->\r\n\r\n## Description\r\n\r\n<!--- Describe your changes in detail -->\r\n\r\n## Type of Change\r\n\r\n<!--- Put an `x` in all the boxes that apply: -->\r\n\r\n- [ ] \u2728 New feature (non-breaking change which adds functionality)\r\n- [x] \ud83d\udee0\ufe0f Bug fix (non-breaking change which fixes an issue)\r\n- [ ] \u274c Breaking ",
+        "merged_at": "2025-12-05T15:57:03Z",
+        "html_url": "https://github.com/marmot-protocol/whitenoise/pull/886",
+        "user": "AbdulbasitSaid"
+      },
+      {
+        "id": 3067482747,
+        "number": 887,
+        "title": "Simplify Android battery and alarm settings checks",
+        "body": "<!--\r\n  Thanks for contributing!\r\n\r\n  Provide a description of your changes below and a general summary in the title\r\n\r\n  Please look at the following checklist to ensure that your PR can be accepted quickly:\r\n-->\r\n\r\n## Description\r\n\r\n<!--- Describe your changes in detail -->\r\nRemoved conditional checks before requesting battery optimization and opening alarm settings in NotificationService. Now, requests are made directly to ensure settings are applied regardless of current state (avoid stuck a",
+        "merged_at": "2025-12-04T16:50:09Z",
+        "html_url": "https://github.com/marmot-protocol/whitenoise/pull/887",
+        "user": "codeswot"
+      },
+      {
+        "id": 3037118741,
+        "number": 875,
+        "title": "docs: update Docker Compose commands for local Nostr/Blossom setup",
+        "body": "Clarifies how to start the Nostr and Blossom services locally using Docker. The docs now prioritise `docker compose up -d` while still noting support for older `docker-compose` versions. This helps ensure smoother setup across different environments.\r\n\r\n<!--\r\n  Thanks for contributing!\r\n\r\n  Provide a description of your changes below and a general summary in the title\r\n\r\n  Please look at the following checklist to ensure that your PR can be accepted quickly:\r\n-->\r\n\r\n## Description\r\n\r\n<!--- Descr",
+        "merged_at": "2025-12-01T08:31:18Z",
+        "html_url": "https://github.com/marmot-protocol/whitenoise/pull/875",
+        "user": "AbdulbasitSaid"
+      },
+      {
+        "id": 3032487755,
+        "number": 872,
+        "title": "feat: integrate permission handler for camera access and add permissi\u2026",
+        "body": "\u2026on denied UI\r\n\r\n<!--\r\n  Thanks for contributing!\r\n\r\n  Provide a description of your changes below and a general summary in the title\r\n\r\n  Please look at the following checklist to ensure that your PR can be accepted quickly:\r\n-->\r\n\r\n## Description\r\n\r\n<!--- Describe your changes in detail -->\r\n## Summary\r\nImproves QR scanner functionality with graceful camera permission handling and optimized scanner initialization. Users can now easily enable camera permissions through a direct settings link wh",
+        "merged_at": "2025-11-30T11:26:30Z",
+        "html_url": "https://github.com/marmot-protocol/whitenoise/pull/872",
+        "user": "codeswot"
+      },
+      {
+        "id": 3054003030,
+        "number": 881,
+        "title": "Remove IntrinsicWidth from MessageWidget",
+        "body": "<!--\r\n  Thanks for contributing!\r\n\r\n  Provide a description of your changes below and a general summary in the title\r\n\r\n  Please look at the following checklist to ensure that your PR can be accepted quickly:\r\n-->\r\n\r\n## Description\r\n- Fixed message bubble width issue where bubbles could become too wide and cause layout problems.\r\n- Fixed timestamp alignment for received messages to align to the right side instead of left.\r\n\r\n<!--- Describe your changes in detail -->\r\n\r\n## Type of Change\r\n\r\n<!---",
+        "merged_at": "2025-11-30T05:24:36Z",
+        "html_url": "https://github.com/marmot-protocol/whitenoise/pull/881",
+        "user": "untreu2"
+      },
+      {
+        "id": 3032366973,
+        "number": 868,
+        "title": "V0.2.1 release",
+        "body": "\n\n<!-- This is an auto-generated comment: release notes by coderabbit.ai -->\n## Summary by CodeRabbit\n\n* **New Features**\n  * Automatic notification clearing when entering a chat\n  * Unread counts for DMs and groups\n  * Deep linking from notifications to the correct chat or invite screen\n  * Unsaved changes confirmation on the Edit Profile screen\n  * Notifications translated to the user\u2019s language\n  * Automatic download of images for messages\n\n* **Chores**\n  * Version bumped to 0.2.1 and changel",
+        "merged_at": "2025-11-23T19:02:41Z",
+        "html_url": "https://github.com/marmot-protocol/whitenoise/pull/868",
+        "user": "erskingardner"
+      },
+      {
+        "id": 3037646659,
+        "number": 876,
+        "title": "Fix/images blurhash",
+        "body": "<!--\r\n  Thanks for contributing!\r\n\r\n  Provide a description of your changes below and a general summary in the title\r\n\r\n  Please look at the following checklist to ensure that your PR can be accepted quickly:\r\n-->\r\n\r\n## Description\r\nWhen upgrading the app, previously downloaded images were no longer displayed. It was strange because the messages still had a file path, but opening that path failed. This PR fixes the issue by ignoring the \u201cdownloaded\u201d state in this scenario, allowing the app to re",
+        "merged_at": "2025-11-23T18:00:41Z",
+        "html_url": "https://github.com/marmot-protocol/whitenoise/pull/876",
+        "user": "josefinalliende"
+      },
+      {
+        "id": 3020909087,
+        "number": 844,
+        "title": "Avoid fetching all groups for notification details",
+        "body": "<!--\r\n  Thanks for contributing!\r\n\r\n  Provide a description of your changes below and a general summary in the title\r\n\r\n  Please look at the following checklist to ensure that your PR can be accepted quickly:\r\n-->\r\n\r\n## Description\r\nPreviously, when processing notifications, the code would:\r\n1. Fetch all groups using `activeGroups()`\r\n2. Filter the list to find the matching group by ID\r\n\r\nThis PR replaces that pattern with a direct call to `getGroup()` which fetches only the specific group neede",
+        "merged_at": "2025-11-19T10:22:42Z",
+        "html_url": "https://github.com/marmot-protocol/whitenoise/pull/844",
+        "user": "untreu2"
+      },
+      {
+        "id": 2994418059,
+        "number": 815,
+        "title": "Clear notifications for viewed chat",
+        "body": "<!--\r\n  Thanks for contributing!\r\n\r\n  Provide a description of your changes below and a general summary in the title\r\n\r\n  Please look at the following checklist to ensure that your PR can be accepted quickly:\r\n-->\r\n\r\n## Description\r\n- Added automatic notification clearing when entering a chat\r\n- Only clears notifications for the specific chat being opened\r\n- Other chat notifications remain unaffected\r\n\r\n### How It works\r\n- User opens a chat\r\n- System finds all notifications for that chat\r\n- Thos",
+        "merged_at": "2025-11-11T15:55:06Z",
+        "html_url": "https://github.com/marmot-protocol/whitenoise/pull/815",
+        "user": "untreu2"
+      },
+      {
+        "id": 3017236950,
+        "number": 839,
+        "title": "Ignore notifications for currently displayed chat",
+        "body": "<!--\r\n  Thanks for contributing!\r\n\r\n  Provide a description of your changes below and a general summary in the title\r\n\r\n  Please look at the following checklist to ensure that your PR can be accepted quickly:\r\n-->\r\n\r\n## Description\r\nPrevents notification creation for chats that are currently being displayed on screen. The system tracks the displayed chat independently of navigation state, ensuring notifications are suppressed when the chat is actually visible.\r\n\r\n## Changes\r\n- **DisplayedChatSer",
+        "merged_at": "2025-11-17T15:09:57Z",
+        "html_url": "https://github.com/marmot-protocol/whitenoise/pull/839",
+        "user": "untreu2"
+      },
+      {
+        "id": 3027794346,
+        "number": 857,
+        "title": "Use last message timestamp for sync checkpoint to prevent missed notifications",
+        "body": "<!--\r\n  Thanks for contributing!\r\n\r\n  Provide a description of your changes below and a general summary in the title\r\n\r\n  Please look at the following checklist to ensure that your PR can be accepted quickly:\r\n-->\r\n\r\n## Problem\r\nWhen multiple messages arrived in the same polling window, some notifications were being missed.\r\nThe issue was caused by `setLastMessageSyncTime` using `DateTime.now()`, which created a gap\r\nwhere messages created between the notification time and the sync time update w",
+        "merged_at": "2025-11-20T10:45:43Z",
+        "html_url": "https://github.com/marmot-protocol/whitenoise/pull/857",
+        "user": "untreu2"
+      },
+      {
+        "id": 3030927870,
+        "number": 863,
+        "title": "Fix/notification redirect",
+        "body": "<!--\r\n  Thanks for contributing!\r\n\r\n  Provide a description of your changes below and a general summary in the title\r\n\r\n  Please look at the following checklist to ensure that your PR can be accepted quickly:\r\n-->\r\n\r\n## Description\r\nWhen a notification arrived for an inactive account (logged in but not the active one), tapping it would redirect the user to a \u201cgroup not found\u201d screen with no way to recover.\r\n\r\nThis PR adds logic to switch accounts when necessary before navigating, and also adds a",
+        "merged_at": "2025-11-21T02:50:06Z",
+        "html_url": "https://github.com/marmot-protocol/whitenoise/pull/863",
+        "user": "josefinalliende"
+      },
+      {
+        "id": 3030796455,
+        "number": 862,
+        "title": "Better error messages",
+        "body": "This expands the types of error messages we parse and show. Hopefully this gives us more info about why some group creation fails.\n\n<!-- CURSOR_SUMMARY -->\n---\n\n> [!NOTE]\n> Introduce localized, detailed API error parsing/handling and wire it into group creation; add new error i18n strings across locales.\n> \n> - **Errors/Utils**:\n>   - **`ErrorHandlingUtils`**: Add localized conversion of `ApiError` variants and wrapped exceptions into user-friendly messages with pattern detection and helpful gui",
+        "merged_at": "2025-11-20T20:29:22Z",
+        "html_url": "https://github.com/marmot-protocol/whitenoise/pull/862",
+        "user": "erskingardner"
+      },
+      {
+        "id": 3030329425,
+        "number": 860,
+        "title": "Fix chat bubble hit-box to improve interaction area",
+        "body": "<!--\r\n  Thanks for contributing!\r\n\r\n  Provide a description of your changes below and a general summary in the title\r\n\r\n  Please look at the following checklist to ensure that your PR can be accepted quickly:\r\n-->\r\n\r\n## Description\r\n\r\n<!--- Describe your changes in detail -->\r\n## Summary\r\n\r\nExpand chat bubble hit-box to span the entire width of the message list for improved touch target and interaction area.\r\n\r\n## Changes\r\n\r\n- Modified `MessageWidget` to make the GestureDetector wrap a full-widt",
+        "merged_at": "2025-11-20T16:19:33Z",
+        "html_url": "https://github.com/marmot-protocol/whitenoise/pull/860",
+        "user": "codeswot"
+      },
+      {
+        "id": 3030388241,
+        "number": 861,
+        "title": "Fix chat screen scroll behavior to prevent auto-scrolling on new mess\u2026",
+        "body": "<!--\r\n  Thanks for contributing!\r\n\r\n  Provide a description of your changes below and a general summary in the title\r\n\r\n  Please look at the following checklist to ensure that your PR can be accepted quickly:\r\n-->\r\n\r\n## Description\r\n\r\n<!--- Describe your changes in detail -->\r\n## Summary\r\n\r\nImprove chat screen scroll behavior for better user experience. The chat now jumps instantly to the bottom when opened (no animation), doesn't auto-scroll when receiving messages, and only scrolls when the us",
+        "merged_at": "2025-11-20T15:57:48Z",
+        "html_url": "https://github.com/marmot-protocol/whitenoise/pull/861",
+        "user": "codeswot"
+      },
+      {
+        "id": 3030127814,
+        "number": 859,
+        "title": "Reduce chat screen bottom padding",
+        "body": "## Description\r\n\r\nFixes #797 \r\n\r\nBefore:\r\n<img width=\"502\" height=\"956\" alt=\"Screenshot 2025-11-20 at 15 29 37\" src=\"https://github.com/user-attachments/assets/883432a3-4948-430e-b57e-c258ab46d419\" />\r\n\r\nAfter:\r\n<img width=\"502\" height=\"956\" alt=\"Screenshot 2025-11-20 at 15 24 43\" src=\"https://github.com/user-attachments/assets/dd8b4d53-4a92-454e-98a3-ac6255fb6a1b\" />\r\n\r\n## Type of Change\r\n\r\n- [ ] \u2728 New feature (non-breaking change which adds functionality)\r\n- [x] \ud83d\udee0\ufe0f Bug fix (non-breaking change",
+        "merged_at": "2025-11-20T15:43:36Z",
+        "html_url": "https://github.com/marmot-protocol/whitenoise/pull/859",
+        "user": "Quwaysim"
+      },
+      {
+        "id": 3027927698,
+        "number": 858,
+        "title": "Refactor avatar color handling to use AvatarColorToken model",
+        "body": "<!--\r\n  Thanks for contributing!\r\n\r\n  Provide a description of your changes below and a general summary in the title\r\n\r\n  Please look at the following checklist to ensure that your PR can be accepted quickly:\r\n-->\r\n\r\n## Description\r\n\r\n<!--- Describe your changes in detail -->\r\n## Summary\r\n\r\nFixed avatar visibility on black navbar (issue #853) by implementing theme-aware avatar color tokens with full light/dark mode support. Avatars now render with proper contrast and unique colors per user.\r\n\r\n#",
+        "merged_at": "2025-11-20T11:07:41Z",
+        "html_url": "https://github.com/marmot-protocol/whitenoise/pull/858",
+        "user": "codeswot"
+      },
+      {
+        "id": 3027146904,
+        "number": 855,
+        "title": "patch: unread count issue while in UI",
+        "body": "## Description\r\n\r\nFixes #849 \r\n\r\n## Type of Change\r\n\r\n- [ ] \u2728 New feature (non-breaking change which adds functionality)\r\n- [x] \ud83d\udee0\ufe0f Bug fix (non-breaking change which fixes an issue)\r\n- [ ] \u274c Breaking change (fix or feature that would cause existing functionality to change)\r\n- [ ] \ud83e\uddf9 Code refactor\r\n- [ ] \u2705 Build configuration change\r\n- [ ] \ud83d\udcdd Documentation\r\n- [ ] \ud83d\uddd1\ufe0f Chore\r\n- [ ] \ud83e\uddea Tests\r\n\r\n## Checklist\r\n\r\n<!-- Please make sure you've done the following before submitting your PR: -->\r\n\r\n- [x] Run `j",
+        "merged_at": "2025-11-19T21:37:50Z",
+        "html_url": "https://github.com/marmot-protocol/whitenoise/pull/855",
+        "user": "Quwaysim"
+      },
+      {
+        "id": 3020949558,
+        "number": 845,
+        "title": "Add missing translations",
+        "body": "<!--\r\n  Thanks for contributing!\r\n\r\n  Provide a description of your changes below and a general summary in the title\r\n\r\n  Please look at the following checklist to ensure that your PR can be accepted quickly:\r\n-->\r\n\r\n## Description\r\nFixes #752\r\n\r\n<!--- Describe your changes in detail -->\r\n\r\n## Type of Change\r\n\r\n<!--- Put an `x` in all the boxes that apply: -->\r\n\r\n- [ ] \u2728 New feature (non-breaking change which adds functionality)\r\n- [x] \ud83d\udee0\ufe0f Bug fix (non-breaking change which fixes an issue)\r\n- [ ]",
+        "merged_at": "2025-11-18T12:26:29Z",
+        "html_url": "https://github.com/marmot-protocol/whitenoise/pull/845",
+        "user": "untreu2"
+      }
+    ],
+    "v0l/zap.stream": [
+      {
+        "id": 2697137479,
+        "number": 40,
+        "title": "Document that videos are already displayed on profile pages",
+        "body": "After investigating the reported issue about showing videos on profile pages, I discovered that this functionality is **already implemented and working correctly**.\n\n## Current State\n\nThe profile pages in zap.stream already display videos from creators in a dedicated \"Videos\" section. When users navigate from the video tab \u2192 click a video \u2192 view the creator's profile, they can see:\n\n1. **Videos Section**: Displays video thumbnails from the creator that are clickable\n2. **Past Streams Section**: ",
+        "merged_at": "2025-07-26T17:03:21Z",
+        "html_url": "https://github.com/v0l/zap.stream/pull/40",
+        "user": "Copilot"
+      },
+      {
+        "id": 2697136155,
+        "number": 37,
+        "title": "Fix stream cards content overflow and bleeding issues",
+        "body": "This PR fixes the broken styling of cards below streams where content would bleed into other cards, particularly when adding NIP-30 emotes or NIP-23 long-form content.\n\n## Issues Fixed\n\n1. **Logic Bug**: The `isEmpty()` function in `preview.tsx` was incorrectly checking `s.trim().length > 0` instead of `=== 0`, causing it to return the wrong boolean value for empty strings.\n\n2. **Content Overflow**: Cards lacked proper width constraints and overflow handling, allowing wide content (emotes, image",
+        "merged_at": "2025-07-26T16:05:02Z",
+        "html_url": "https://github.com/v0l/zap.stream/pull/37",
+        "user": "Copilot"
+      },
+      {
+        "id": 2697136650,
+        "number": 38,
+        "title": "Allow full sats amount in zap messages, only shorten amounts with zeros",
+        "body": "Previously, zap amounts were automatically shortened using K/M/G notation for all numbers above 2000 sats, which made it difficult to see exact amounts in chat messages. For example, 2500 sats would display as \"2.5K\" instead of the full amount.\n\nThis change introduces a new `formatZapAmount()` function that only shortens numbers when they would result in clean divisions (no decimal places), while preserving the exact amount for all other cases.\n\n## Changes Made\n\n- **Added `formatZapAmount()` fun",
+        "merged_at": "2025-07-26T16:00:31Z",
+        "html_url": "https://github.com/v0l/zap.stream/pull/38",
+        "user": "Copilot"
+      },
+      {
+        "id": 2590697192,
+        "number": 34,
+        "title": "Add USD display to stream earnings dashboard",
+        "body": "This PR adds fiat currency (USD) display to the stream earnings section on the dashboard, similar to how other components in the app show both sats and USD values.\n\n## Changes Made\n\n- Added `useRates(\"BTCUSD\")` hook to fetch current Bitcoin exchange rate\n- Calculate USD equivalent using the conversion: `sats * 1e-8 * rate.ask`\n- Display USD amount below the sats amount when rate data is available\n- Used `FormattedNumber` with currency formatting for proper USD display\n- Added conditional renderi",
+        "merged_at": "2025-06-13T16:23:50Z",
+        "html_url": "https://github.com/v0l/zap.stream/pull/34",
+        "user": "Copilot"
+      },
+      {
+        "id": 2410084010,
+        "number": 29,
+        "title": "Added FAQ menu item",
+        "body": "Added missing FAQ menu item\r\n\r\n![imagen](https://github.com/user-attachments/assets/fa6ec7de-42bf-4f16-a9a0-3fc8ec545020)\r\n\r\nI'm not a dev, so I didn't know how to put a dedicated icon",
+        "merged_at": "2025-04-30T09:14:45Z",
+        "html_url": "https://github.com/v0l/zap.stream/pull/29",
+        "user": "twofaktor"
+      },
+      {
+        "id": 2402137813,
+        "number": 28,
+        "title": "[bug] Fix little typos",
+        "body": "Fix typos \"steaming\" to \"streaming\" & \"ale\" to \"able\"\r\n",
+        "merged_at": "2025-03-19T12:47:23Z",
+        "html_url": "https://github.com/v0l/zap.stream/pull/28",
+        "user": "twofaktor"
+      },
+      {
+        "id": 2379992167,
+        "number": 26,
+        "title": "fix: check if publisher starts with npub rather than using isHex",
+        "body": "loadWhitelist seems to use `isHex` from Snort to determine whether each publisher string is a hex string or an npub string. \r\n\r\nThe `isHex` function seems to check if a string is alphanumeric rather than if it's hexadecimal: https://github.com/v0l/snort/blob/aaa4b0de975986f083a469514feb194635139da5/packages/shared/src/utils.ts#L241-L248\r\n\r\nSince npubs are all alphanumeric strings, the code misinterprets them as hex strings rather than as npubs.\r\n\r\nThis PR replaces the check with a simple check f",
+        "merged_at": "2025-03-19T12:47:23Z",
+        "html_url": "https://github.com/v0l/zap.stream/pull/26",
+        "user": "ericpp"
+      },
+      {
+        "id": 2379919494,
+        "number": 25,
+        "title": "feat: link names to profiles",
+        "body": "Adds links for all user names in the videos, streams, comments, and top streamers pages that link to the user's profile",
+        "merged_at": "2025-03-19T12:47:23Z",
+        "html_url": "https://github.com/v0l/zap.stream/pull/25",
+        "user": "ericpp"
+      },
+      {
+        "id": 2379906219,
+        "number": 24,
+        "title": "fix: don't show viewer count if there isn't one",
+        "body": "The viewer count code seems to default to zero even if no viewer count exists. This PR only shows the viewer count if it exists in the event.",
+        "merged_at": "2025-03-19T12:47:23Z",
+        "html_url": "https://github.com/v0l/zap.stream/pull/24",
+        "user": "ericpp"
+      },
+      {
+        "id": 2379904588,
+        "number": 23,
+        "title": "feat: support for non-HLS recorded streams",
+        "body": "The current code seems to assume that all recordings are HLS videos. This adds the ability for non-HLS recordings (e.g. mp4) to be used instead.",
+        "merged_at": "2025-03-19T12:43:17Z",
+        "html_url": "https://github.com/v0l/zap.stream/pull/23",
+        "user": "ericpp"
+      },
+      {
+        "id": 2262921747,
+        "number": 17,
+        "title": "Fix various date issues in Planned stream interface",
+        "body": "This PR fixes the following issues when attempting to create a Planned stream:\r\n\r\n* Adds 1 to the getMonth() call since that function starts at zero rather than one:\r\n![image](https://github.com/user-attachments/assets/0bd6a848-cab5-449c-8607-4b92a09752b6)\r\n\r\n* Default to the current date rather than a zero date if no date is selected:\r\n![image](https://github.com/user-attachments/assets/eba5a3b2-d5de-48f0-ac60-c45661c26b58)\r\n\r\n* Fix issue with valueAsNumber calculating the date in UTC versus th",
+        "merged_at": "2025-01-07T09:34:18Z",
+        "html_url": "https://github.com/v0l/zap.stream/pull/17",
+        "user": "ericpp"
+      }
+    ],
+    "pablof7z/olas": [
+      {
+        "id": 2336840254,
+        "number": 47,
+        "title": "Issue #22 - Handle login by opening a modal when no extension is installed",
+        "body": "Issue fixed: https://github.com/pablof7z/olas/issues/22\r\n\r\nI added a simple modal to indicate to the user that they must have a Nostr extension installed:\r\n![modal](https://github.com/user-attachments/assets/d390091e-72e5-47c5-88d7-16a2f5ea3db9)\r\n",
+        "merged_at": "2025-02-14T18:42:23Z",
+        "html_url": "https://github.com/pablof7z/olas/pull/47",
+        "user": "pzbl0"
+      },
+      {
+        "id": 2330194862,
+        "number": 43,
+        "title": "Initialize empty array when follow list is undefined",
+        "body": "Without this, app was crashing first time I tried running it locally because `publicFollows` was `undefined`",
+        "merged_at": "2025-02-13T14:05:58Z",
+        "html_url": "https://github.com/pablof7z/olas/pull/43",
+        "user": "justinmoon"
+      },
+      {
+        "id": 2333555405,
+        "number": 45,
+        "title": "issue-15-web-improve-navigation",
+        "body": "More details here: https://github.com/pablof7z/olas/issues/15\r\n\r\n\r\n### Deleted duplicated login button.\r\nBefore:\r\n![1a](https://github.com/user-attachments/assets/459b1d2e-28c5-47f5-85ef-6346a2da5124)\r\nAfter:\r\n![1b](https://github.com/user-attachments/assets/729bb9ba-11d2-4845-81c7-6947aab0ffe2)\r\n\r\n\r\n### Fixed button styles to indicate current page.\r\nBefore:\r\n![2a](https://github.com/user-attachments/assets/444699e7-e747-4eed-9122-589320fd1aa2)\r\nAfter:\r\n![2b](https://github.com/user-attachments/",
+        "merged_at": "2025-02-13T14:05:10Z",
+        "html_url": "https://github.com/pablof7z/olas/pull/45",
+        "user": "pzbl0"
+      },
+      {
+        "id": 2311513342,
+        "number": 41,
+        "title": "Add Remove Relay / Blossom Server + Bug Report Template YML",
+        "body": "* Updates the `relays` view with the ability to remove a relay. This also syncs your relays using NIP 65. I think this feature is not quite right, but just about there. The part that's weird is when you reboot the app the relays are still there even though I updated the NIP 65 state and the local storage state, so not really sure what's up. \r\n* Updates the `Blossom` view allowing you to remove Blossom servers. The UX in this might need to be adjusted, but seems to work. \r\n* Fixes a bug with the ",
+        "merged_at": "2025-02-04T13:50:06Z",
+        "html_url": "https://github.com/pablof7z/olas/pull/41",
+        "user": "alexwhb"
+      },
+      {
+        "id": 2262092646,
+        "number": 19,
+        "title": "Fix README installation instructions and upgrade react-native-ios-utilities to 4.5.3 to fix compilation error",
+        "body": "I was getting the following errors when running `pnpm ios`, which were fixed after upgrading `react-native-ios-utilities`.\r\n\r\n```\r\n\u203a Packaging react-native Pods/React-RCTAppDelegate \u00bb libReact-RCTAppDelegate.a\r\n\r\n\u274c  (../../node_modules/react-native-ios-utilities/ios/Sources/Extensions+CaseIterable/CAGradientLayerType+CaseIterable.swift:10:32)\r\n\r\n   8 | import Foundation\r\n   9 | \r\n> 10 | extension CAGradientLayerType: CaseIterable {\r\n     |                                ^ redundant conformance o",
+        "merged_at": "2025-01-09T14:06:19Z",
+        "html_url": "https://github.com/pablof7z/olas/pull/19",
+        "user": "tyiu"
+      },
+      {
+        "id": 2257333384,
+        "number": 17,
+        "title": "Search screen text color",
+        "body": "Dev process check since there doesn't seem to be a lot of activity except pablo7z :-)\r\n\r\n- In the Search screen, fix the text color so that when the device switches to dark mode the search term is visible.\r\n",
+        "merged_at": "2025-01-02T15:20:53Z",
+        "html_url": "https://github.com/pablof7z/olas/pull/17",
+        "user": "jbm"
+      },
+      {
+        "id": 2201568407,
+        "number": 8,
+        "title": "Bookmarks",
+        "body": "",
+        "merged_at": "2024-11-26T17:26:11Z",
+        "html_url": "https://github.com/pablof7z/olas/pull/8",
+        "user": "pablof7z"
+      },
+      {
+        "id": 2200627219,
+        "number": 7,
+        "title": "Fix image issues",
+        "body": "",
+        "merged_at": "2024-11-26T10:49:47Z",
+        "html_url": "https://github.com/pablof7z/olas/pull/7",
+        "user": "pablof7z"
+      },
+      {
+        "id": 2191807401,
+        "number": 6,
+        "title": "Extract ndk-expo to use ndk-mobile",
+        "body": "",
+        "merged_at": "2024-11-21T10:07:35Z",
+        "html_url": "https://github.com/pablof7z/olas/pull/6",
+        "user": "pablof7z"
+      }
+    ],
+    "shopstr-eng/shopstr": [
+      {
+        "id": 3056032822,
+        "number": 210,
+        "title": "Discount codes",
+        "body": "- Added discount code management under 'my-listings'\r\n- Added discount input at product review for individual and cart checkouts",
+        "merged_at": "2025-11-30T02:40:04Z",
+        "html_url": "https://github.com/shopstr-eng/shopstr/pull/210",
+        "user": "calvadev"
+      },
+      {
+        "id": 3037618436,
+        "number": 203,
+        "title": "Implement \"Stale Listing\" Support [NIP-40]",
+        "body": "This PR implements listing expiration logic inspired by NIP-40 but modified to meet specific business requirements. Instead of having Relays delete expired events (standard NIP-40 behavior), we use a custom valid_until tag. This allows the frontend to flag listings as \"Outdated\" while keeping the historical record visible for both merchants and buyers.\r\n\r\n**Key Changes**\r\n\r\n- Data Persistence: Switched from using the expiration tag (which triggers relay deletion) to valid_until. Relays persist t",
+        "merged_at": "2025-11-29T04:19:56Z",
+        "html_url": "https://github.com/shopstr-eng/shopstr/pull/203",
+        "user": "GautamBytes"
+      },
+      {
+        "id": 2995880304,
+        "number": 202,
+        "title": "Implement NIP-47 (Nostr Wallet Connect) Support",
+        "body": "",
+        "merged_at": "2025-11-29T04:05:39Z",
+        "html_url": "https://github.com/shopstr-eng/shopstr/pull/202",
+        "user": "GautamBytes"
+      },
+      {
+        "id": 3047981932,
+        "number": 209,
+        "title": "Potential fix for code scanning alert no. 24: Workflow does not contain permissions",
+        "body": "Potential fix for [https://github.com/shopstr-eng/shopstr/security/code-scanning/24](https://github.com/shopstr-eng/shopstr/security/code-scanning/24)\n\nTo fix this problem, we need to add a `permissions` block to the `test` job in the workflow file. We should set it to the least privilege necessary\u2014since none of the commands require write access, the safest minimum is `contents: read`. We should insert this block immediately under the `test:` job definition (after line 34 / just above or below `",
+        "merged_at": "2025-11-26T15:18:31Z",
+        "html_url": "https://github.com/shopstr-eng/shopstr/pull/209",
+        "user": "calvadev"
+      },
+      {
+        "id": 3047974932,
+        "number": 208,
+        "title": "Potential fix for code scanning alert no. 25: Workflow does not contain permissions",
+        "body": "Potential fix for [https://github.com/shopstr-eng/shopstr/security/code-scanning/25](https://github.com/shopstr-eng/shopstr/security/code-scanning/25)\n\nTo address the problem, an explicit `permissions` block must be added to the `version-and-changelog` job in `.github/workflows/release.yml`. Since the job performs git pushes and creates tags, it requires `contents: write` permission. No other scopes are needed, so the permission block should follow the principle of least privilege: only grant `c",
+        "merged_at": "2025-11-26T15:16:21Z",
+        "html_url": "https://github.com/shopstr-eng/shopstr/pull/208",
+        "user": "calvadev"
+      },
+      {
+        "id": 3047957954,
+        "number": 207,
+        "title": "Potential fix for code scanning alert no. 26: Workflow does not contain permissions",
+        "body": "Potential fix for [https://github.com/shopstr-eng/shopstr/security/code-scanning/26](https://github.com/shopstr-eng/shopstr/security/code-scanning/26)\n\nTo fix the problem, you should add a `permissions` block to the `create-release` job in `.github/workflows/release.yml`. This block should grant the minimal set of permissions necessary for the job to successfully create a GitHub release and upload assets. For GitHub releases and asset uploads, the job requires `contents: write`. You should inser",
+        "merged_at": "2025-11-26T15:11:32Z",
+        "html_url": "https://github.com/shopstr-eng/shopstr/pull/207",
+        "user": "calvadev"
+      },
+      {
+        "id": 3047952547,
+        "number": 206,
+        "title": "Potential fix for code scanning alert no. 27: Workflow does not contain permissions",
+        "body": "Potential fix for [https://github.com/shopstr-eng/shopstr/security/code-scanning/27](https://github.com/shopstr-eng/shopstr/security/code-scanning/27)\n\nTo fix the problem, we will add a `permissions` block to the `publish-npm` job in `.github/workflows/release.yml`. This block should grant the minimal necessary permissions\u2015for npm publishing via GitHub Actions, typically `contents: read` is sufficient because no repository write operations are needed. We will insert this near the top of the `pub",
+        "merged_at": "2025-11-26T15:09:58Z",
+        "html_url": "https://github.com/shopstr-eng/shopstr/pull/206",
+        "user": "calvadev"
+      },
+      {
+        "id": 3047941953,
+        "number": 205,
+        "title": "Potential fix for code scanning alert no. 28: Workflow does not contain permissions",
+        "body": "Potential fix for [https://github.com/shopstr-eng/shopstr/security/code-scanning/28](https://github.com/shopstr-eng/shopstr/security/code-scanning/28)\n\nTo fix this problem, add a `permissions` block to the `notify` job in `.github/workflows/release.yml`. Since the `notify` job does not require any repository write operations, assigning it the minimal `permissions` \u2014 ideally `permissions: {} (no access)` \u2014 is recommended. This can be done by setting `permissions: {}` at the job level (inside `not",
+        "merged_at": "2025-11-26T15:06:59Z",
+        "html_url": "https://github.com/shopstr-eng/shopstr/pull/205",
+        "user": "calvadev"
+      },
+      {
+        "id": 3042318192,
+        "number": 204,
+        "title": "Caching server",
+        "body": "- Added caching server functionality for additional data redundancy and reliability\r\n- Improved payment message delivery at checkout",
+        "merged_at": "2025-11-26T01:30:26Z",
+        "html_url": "https://github.com/shopstr-eng/shopstr/pull/204",
+        "user": "calvadev"
+      },
+      {
+        "id": 2888015088,
+        "number": 194,
+        "title": "feat: release.yml workflow added",
+        "body": "Fixes: #189\r\n\r\nThis pull request introduces a comprehensive GitHub Actions workflow for automated release management, including testing, versioning, changelog generation, artifact creation, release publishing, npm publishing, and notification steps. The workflow supports both tag-based and manual releases, with options for prerelease types and multi-version Node.js testing.\r\n\r\nRelease automation and workflow orchestration:\r\n\r\n* Added `.github/workflows/release.yml` to automate the release proces",
+        "merged_at": "2025-11-12T21:26:40Z",
+        "html_url": "https://github.com/shopstr-eng/shopstr/pull/194",
+        "user": "naman9271"
+      },
+      {
+        "id": 2888014671,
+        "number": 193,
+        "title": "feat: security.yml workflow added",
+        "body": "Resolves: #189 \r\n\r\n\r\nThis pull request introduces a comprehensive security and compliance automation framework for the project. It adds new configuration files and a GitHub Actions workflow to automate code analysis, vulnerability scanning, secret detection, license compliance, and policy checks. These changes greatly improve the project's security posture by ensuring continuous monitoring and reporting of security issues.\r\n\r\n**Security Automation and Analysis**\r\n\r\n* Added `.github/workflows/sec",
+        "merged_at": "2025-11-12T21:26:05Z",
+        "html_url": "https://github.com/shopstr-eng/shopstr/pull/193",
+        "user": "naman9271"
+      },
+      {
+        "id": 2888014216,
+        "number": 192,
+        "title": "feat: labeler.yml workflow added",
+        "body": "Resolves: #189 \r\n\r\nThis pull request introduces automated GitHub labeling for pull requests and issues, making it easier to categorize and prioritize contributions based on file changes, PR size, semantic meaning, and issue urgency. The changes add a comprehensive label configuration and a workflow to apply labels automatically.\r\n\r\nLabel configuration and automation:\r\n\r\n* Added `.github/labeler.yml` to define label patterns for file paths, extensions, core areas, feature domains, priority levels",
+        "merged_at": "2025-11-12T21:25:25Z",
+        "html_url": "https://github.com/shopstr-eng/shopstr/pull/192",
+        "user": "naman9271"
+      },
+      {
+        "id": 2888013764,
+        "number": 191,
+        "title": "feat: greeting.yml workflow added",
+        "body": "Resolves #189 \r\n\r\nThis pull request introduces a new GitHub Actions workflow to welcome and guide first-time contributors when they open issues or pull requests. The workflow aims to improve contributor experience by automatically posting helpful messages and resources.\r\n\r\n**Contributor onboarding improvements:**\r\n\r\n* Added `.github/workflows/greeting.yml` to set up an automated greeting workflow for first-time issue and pull request authors, providing a warm welcome, next steps, and links to es",
+        "merged_at": "2025-11-12T21:24:39Z",
+        "html_url": "https://github.com/shopstr-eng/shopstr/pull/191",
+        "user": "naman9271"
+      },
+      {
+        "id": 2887971855,
+        "number": 186,
+        "title": "feat: migrate security from .md to .yml",
+        "body": "Resolves: #182 \r\n\r\n## Summary\r\nThis PR migrates `security_vulnerability.yml` issue templates from Markdown (.md) format to structured YAML (.yml) format to improve contributor experience, enable better automation, and provide more structured issue submissions.\r\n\r\n##  Changes Made\r\n\r\n- **`security_vulnerability.yml`** - Enhanced security reporting template with:\r\n   - Impact level dropdown (Critical, High, Medium, Low, Informational)\r\n   - Affected components checklist\r\n   - Structured device/OS/",
+        "merged_at": "2025-11-12T21:23:32Z",
+        "html_url": "https://github.com/shopstr-eng/shopstr/pull/186",
+        "user": "naman9271"
+      },
+      {
+        "id": 2887971379,
+        "number": 185,
+        "title": "feat: migrate documentation from .md to .yml",
+        "body": "Resolves: #182 \r\n\r\n## Summary\r\nThis PR migrates `documentation_improvement.yml` issue templates from Markdown (.md) format to structured YAML (.yml) format to improve contributor experience, enable better automation, and provide more structured issue submissions.\r\n\r\n##  Changes Made\r\n\r\n**`documentation_improvement.yml`** - Comprehensive documentation template with:\r\n   - Dropdown for documentation area selection\r\n   - Required fields for current issues and suggested improvements\r\n   - User exper",
+        "merged_at": "2025-11-12T21:22:42Z",
+        "html_url": "https://github.com/shopstr-eng/shopstr/pull/185",
+        "user": "naman9271"
+      },
+      {
+        "id": 2887971017,
+        "number": 184,
+        "title": "feat: migrate bug_report from .md to .yml",
+        "body": "Resolves: #182 \r\n\r\n## Summary\r\nThis PR migrates `bug_report.yml` issue templates from Markdown (.md) format to structured YAML (.yml) format to improve contributor experience, enable better automation, and provide more structured issue submissions.\r\n\r\n##  Changes Made\r\n\r\n**`bug_report.yml`** - Structured bug report template with:\r\n   - Required fields for description, current/expected behavior, and reproduction steps\r\n   - Dropdown menus for OS, browser, and environment details\r\n   - Input field",
+        "merged_at": "2025-11-12T21:21:29Z",
+        "html_url": "https://github.com/shopstr-eng/shopstr/pull/184",
+        "user": "naman9271"
+      },
+      {
+        "id": 2887970041,
+        "number": 183,
+        "title": " Migrate  `feature_request` Issue Templates from .md to .yml Format",
+        "body": "Resolves: #182 \r\n\r\n## Summary\r\nThis PR migrates `feature_request` issue templates from Markdown (.md) format to structured YAML (.yml) format to improve contributor experience, enable better automation, and provide more structured issue submissions.\r\n\r\n##  Changes Made\r\n\r\n**`feature_request.yml`** - Enhanced feature request template with:\r\n   - Required fields for feature description and problem solved\r\n   - Structured sections for proposed solutions and alternatives\r\n   - User impact assessment",
+        "merged_at": "2025-11-12T21:20:05Z",
+        "html_url": "https://github.com/shopstr-eng/shopstr/pull/183",
+        "user": "naman9271"
+      },
+      {
+        "id": 2863503943,
+        "number": 180,
+        "title": "Added Community Faqs",
+        "body": "cc @calvadev ",
+        "merged_at": "2025-09-26T19:13:24Z",
+        "html_url": "https://github.com/shopstr-eng/shopstr/pull/180",
+        "user": "GautamBytes"
+      }
+    ],
+    "PlebeianTech/plebeian-market": [
+      {
+        "id": 1774100476,
+        "number": 407,
+        "title": "Ability to configure product sections in the CMS ",
+        "body": "",
+        "merged_at": "2024-03-15T13:11:21Z",
+        "html_url": "https://github.com/PlebeianApp/plebeian-market-old/pull/407",
+        "user": "ktecho"
+      },
+      {
+        "id": 1767676610,
+        "number": 406,
+        "title": "DMs: Refactor, and Bug fixes",
+        "body": "",
+        "merged_at": "2024-03-15T10:41:32Z",
+        "html_url": "https://github.com/PlebeianApp/plebeian-market-old/pull/406",
+        "user": "gzuuus"
+      },
+      {
+        "id": 1761600954,
+        "number": 405,
+        "title": "Improved Dev docs",
+        "body": "- More detailed development environment start-up process\r\n- Prerequisites and useful links\r\n- Steps that were missing are now present\r\n- Tips",
+        "merged_at": "2024-03-15T10:01:04Z",
+        "html_url": "https://github.com/PlebeianApp/plebeian-market-old/pull/405",
+        "user": "gzuuus"
+      },
+      {
+        "id": 1757884607,
+        "number": 404,
+        "title": "Show \"my stalls\" on the \"Me\" page",
+        "body": "",
+        "merged_at": "2024-03-05T23:43:34Z",
+        "html_url": "https://github.com/PlebeianApp/plebeian-market-old/pull/404",
+        "user": "ktecho"
+      },
+      {
+        "id": 1749729258,
+        "number": 403,
+        "title": "Don't expire orders with ongoing payments",
+        "body": "",
+        "merged_at": "2024-02-29T13:06:22Z",
+        "html_url": "https://github.com/PlebeianApp/plebeian-market-old/pull/403",
+        "user": "ktecho"
+      },
+      {
+        "id": 1747632801,
+        "number": 402,
+        "title": "Hide unaccepted bids",
+        "body": "We'll show unaccepted bids only to admins and to the bidder himself, so he knows what's happening.",
+        "merged_at": "2024-02-28T12:37:18Z",
+        "html_url": "https://github.com/PlebeianApp/plebeian-market-old/pull/402",
+        "user": "ktecho"
+      },
+      {
+        "id": 1745756610,
+        "number": 401,
+        "title": "Buyer Settings is now different menu entries",
+        "body": "",
+        "merged_at": "2024-02-27T14:45:29Z",
+        "html_url": "https://github.com/PlebeianApp/plebeian-market-old/pull/401",
+        "user": "ktecho"
+      },
+      {
+        "id": 1739081911,
+        "number": 400,
+        "title": "Fix external identities",
+        "body": "- Fixed 2 problems with the External Identities verification:\r\n     * when you added a new identity, it appeared as \"verified error\" by default, before checking\r\n     * when users clicked \"save and verify\", it was not being verified",
+        "merged_at": "2024-02-22T14:52:21Z",
+        "html_url": "https://github.com/PlebeianApp/plebeian-market-old/pull/400",
+        "user": "ktecho"
+      },
+      {
+        "id": 1732651247,
+        "number": 399,
+        "title": "Show CMS actions also in the Stall Manager",
+        "body": "",
+        "merged_at": "2024-02-19T11:02:35Z",
+        "html_url": "https://github.com/PlebeianApp/plebeian-market-old/pull/399",
+        "user": "ktecho"
+      },
+      {
+        "id": 1729180851,
+        "number": 398,
+        "title": "Global config to backstore",
+        "body": "",
+        "merged_at": "2024-02-16T09:49:33Z",
+        "html_url": "https://github.com/PlebeianApp/plebeian-market-old/pull/398",
+        "user": "ktecho"
+      },
+      {
+        "id": 1727527161,
+        "number": 397,
+        "title": "New Image Banner section type",
+        "body": "",
+        "merged_at": "2024-02-15T12:17:25Z",
+        "html_url": "https://github.com/PlebeianApp/plebeian-market-old/pull/397",
+        "user": "ktecho"
+      },
+      {
+        "id": 1722046417,
+        "number": 396,
+        "title": "Order details in My Sales screen",
+        "body": "",
+        "merged_at": "2024-02-12T14:26:16Z",
+        "html_url": "https://github.com/PlebeianApp/plebeian-market-old/pull/396",
+        "user": "ktecho"
+      },
+      {
+        "id": 1715505669,
+        "number": 395,
+        "title": "CMS fixes / improvements",
+        "body": "",
+        "merged_at": "2024-02-07T11:44:16Z",
+        "html_url": "https://github.com/PlebeianApp/plebeian-market-old/pull/395",
+        "user": "ktecho"
+      },
+      {
+        "id": 1713252628,
+        "number": 394,
+        "title": "Cms editor fixes",
+        "body": "",
+        "merged_at": "2024-02-06T09:17:17Z",
+        "html_url": "https://github.com/PlebeianApp/plebeian-market-old/pull/394",
+        "user": "ktecho"
+      },
+      {
+        "id": 1708667758,
+        "number": 393,
+        "title": "CMS UI/UX improvements",
+        "body": "",
+        "merged_at": "2024-02-02T15:20:09Z",
+        "html_url": "https://github.com/PlebeianApp/plebeian-market-old/pull/393",
+        "user": "ktecho"
+      },
+      {
+        "id": 1707283576,
+        "number": 392,
+        "title": "CMs menu/UI improvements + Updated icons",
+        "body": "",
+        "merged_at": "2024-02-01T22:34:45Z",
+        "html_url": "https://github.com/PlebeianApp/plebeian-market-old/pull/392",
+        "user": "ktecho"
+      },
+      {
+        "id": 1705959296,
+        "number": 391,
+        "title": "Remove markdown and put Lexical or Prose instead",
+        "body": "",
+        "merged_at": "2024-02-01T10:48:25Z",
+        "html_url": "https://github.com/PlebeianApp/plebeian-market-old/pull/391",
+        "user": "ktecho"
+      },
+      {
+        "id": 1703917239,
+        "number": 390,
+        "title": "Move CMS to shared + update npm packages",
+        "body": "",
+        "merged_at": "2024-01-31T11:50:37Z",
+        "html_url": "https://github.com/PlebeianApp/plebeian-market-old/pull/390",
+        "user": "ktecho"
+      },
+      {
+        "id": 1696028801,
+        "number": 389,
+        "title": "CMS",
+        "body": "",
+        "merged_at": "2024-01-25T17:41:31Z",
+        "html_url": "https://github.com/PlebeianApp/plebeian-market-old/pull/389",
+        "user": "ktecho"
+      }
+    ],
+    "MostroP2P/mostro": [
+      {
+        "id": 3007873445,
+        "number": 547,
+        "title": "Added protobuf to rust.yml in publish stage",
+        "body": "Fix for gh actions\n\n<!-- This is an auto-generated comment: release notes by coderabbit.ai -->\n\n## Summary by CodeRabbit\n\n* **Chores**\n  * Updated build workflow to ensure required compiler tools are available during the publish stage.\n\n<!-- end of auto-generated comment: release notes by coderabbit.ai -->",
+        "merged_at": "2025-11-13T18:37:08Z",
+        "html_url": "https://github.com/MostroP2P/mostro/pull/547",
+        "user": "arkanoider"
+      },
+      {
+        "id": 2996655190,
+        "number": 546,
+        "title": "New github actions stuff",
+        "body": "Hi @grunch ,\r\n\r\nthis PR should :\r\n\r\n- add two commands \r\n  - cargo fmt --all\r\n  - cargo clippy --all-targets --all-features -- -D warnings\r\n\r\nin pre release hook of cargo release, so we should be ok when commands are also called from gh actions.\r\nThen a new step is added to rust.yml in order to publish to `crates.io` only if gh actions completed successfully tests and artifacts creation, in case of error no crate is published.\r\n\r\nSome improvements also on local changelog creation.\n\n<!-- This is ",
+        "merged_at": "2025-11-13T16:19:15Z",
+        "html_url": "https://github.com/MostroP2P/mostro/pull/546",
+        "user": "arkanoider"
+      },
+      {
+        "id": 2946062324,
+        "number": 541,
+        "title": "Restored previous changelog.md local file creation",
+        "body": "@grunch ,\r\n\r\nafter some research on web and AI i think that readding old local pre hook release in `cargo.toml` is a good way to do it.\r\n\r\nDifference are only in cargo.toml, and you will see the relative changelog. Unluclily from the branch is not so easy to understand if all is correct. So if you want to merge I will try a release tomorrow.\r\nI did a shit on crates.io because for a typo I i pushed a v0.15.4 , but ok if you merge this I will create a v0.15.5 tomorrow to see if release changelog w",
+        "merged_at": "2025-11-07T12:47:29Z",
+        "html_url": "https://github.com/MostroP2P/mostro/pull/541",
+        "user": "arkanoider"
+      },
+      {
+        "id": 2984974396,
+        "number": 545,
+        "title": "Improved last trade index response",
+        "body": "@grunch ,\r\n\r\na quick pr to :\r\n\r\n- add `request_id` to mostro answer for last trade index request\r\n- in case ( should never be! ) index is 0 return an error\r\n\r\nNot tested! \n\n<!-- This is an auto-generated comment: release notes by coderabbit.ai -->\n## Summary by CodeRabbit\n\n* **Bug Fixes**\n  * Rejects trade-index requests of zero when a user's last trade index is unset, preventing invalid processing.\n  * Trade-index responses now include request identifiers for improved tracking and correlation.\n",
+        "merged_at": "2025-11-07T12:42:14Z",
+        "html_url": "https://github.com/MostroP2P/mostro/pull/545",
+        "user": "arkanoider"
+      },
+      {
+        "id": 2968476914,
+        "number": 544,
+        "title": "add order_expires_at to order event",
+        "body": "\n\n<!-- This is an auto-generated comment: release notes by coderabbit.ai -->\n## Summary by CodeRabbit\n\n* **New Features**\n  * Orders now include explicit expiration date information in their event metadata, enabling clients and services to display, filter, and act on order expiration timelines more reliably.\n  * Improves visibility of impending expirations and helps automate expiration-related workflows (notifications, cleanup, or hide-expired behaviors).\n<!-- end of auto-generated comment: rele",
+        "merged_at": "2025-11-01T17:08:20Z",
+        "html_url": "https://github.com/MostroP2P/mostro/pull/544",
+        "user": "Catrya"
+      },
+      {
+        "id": 2942025953,
+        "number": 540,
+        "title": "Restore session message is sent to trade key",
+        "body": "@grunch ,\r\n\r\nhere is the fix for the restore session message, now is sent correctly to the trade key!\n\n<!-- This is an auto-generated comment: release notes by coderabbit.ai -->\n\n## Summary by CodeRabbit\n\n* **Refactor**\n  * Internal session restoration workflow optimizations and parameter alignment\n  * Background communication channel efficiency improvements\n\n<!-- end of auto-generated comment: release notes by coderabbit.ai -->",
+        "merged_at": "2025-10-24T12:03:30Z",
+        "html_url": "https://github.com/MostroP2P/mostro/pull/540",
+        "user": "arkanoider"
+      },
+      {
+        "id": 2918857052,
+        "number": 537,
+        "title": "feat: mostro notifies maker of the order with the correct state",
+        "body": "@grunch , @Catrya ,\r\n\r\nquick pr for fix of #536.\r\n\r\n\n\n<!-- This is an auto-generated comment: release notes by coderabbit.ai -->\n## Summary by CodeRabbit\n\n* **Improvements**\n  * Added a cooperative two\u2011step cancellation flow with explicit routing for active vs non\u2011active orders.\n  * Orders now republish updated snapshots, clear public keys when appropriate, and emit new events to reflect state transitions.\n  * Order reset now persists buyer invoice info so republished snapshots are complete.\n  *",
+        "merged_at": "2025-10-16T21:50:12Z",
+        "html_url": "https://github.com/MostroP2P/mostro/pull/537",
+        "user": "arkanoider"
+      },
+      {
+        "id": 2921672407,
+        "number": 539,
+        "title": "Fix for docker build",
+        "body": "@grunch ,\r\n\r\nthis fixes the issue on build in gh actions for docker, I used feature `ureq` in lnurl-rs crate to remove use of  openssl.\r\nMusl target has static linking and pulled in Openssl in gh actions creating the error.\r\n\r\n`ureq` feature is blocking, but luckily we always use `reqwest` for http request, we use lnurl-rs just for url validation so\r\nwe can use it with blocking feature while using rust-tls feature on reqwest crate.\n\n<!-- This is an auto-generated comment: release notes by codera",
+        "merged_at": "2025-10-16T18:24:19Z",
+        "html_url": "https://github.com/MostroP2P/mostro/pull/539",
+        "user": "arkanoider"
+      },
+      {
+        "id": 2919750099,
+        "number": 538,
+        "title": "feat: removed openssl dep in favour of rust tls in reqwest",
+        "body": "@grunch,\n\nduring my test on windows i noticed that we could remove openssl just using the supported featrure of reqwest crate rustls-tls, like this:\n\n```Toml\nreqwest = { version = \"0.12.1\", default-features = false, features = [\"json\", \"rustls-tls\"] }\n```\n\nI think it's a good move that will remove another dep using a stable rust lib like rusttls.\n\nTell me your opinion!\n\n\n<!-- This is an auto-generated comment: release notes by coderabbit.ai -->\n## Summary by CodeRabbit\n\n* **Chores**\n  * Updated ",
+        "merged_at": "2025-10-16T15:19:28Z",
+        "html_url": "https://github.com/MostroP2P/mostro/pull/538",
+        "user": "arkanoider"
+      },
+      {
+        "id": 2901731896,
+        "number": 534,
+        "title": "Add request orders detail",
+        "body": "\n\n<!-- This is an auto-generated comment: release notes by coderabbit.ai -->\n## Summary by CodeRabbit\n\n* **New Features**\n  * Added an \u201corders\u201d action to fetch multiple orders in a single request, scoped to the requesting user.\n  * Enforces a configurable per-response limit on returned orders; returns clear errors for invalid, excessive, or not-found requests.\n  * Publishes the current orders-per-response limit in the app\u2019s public info.\n\n* **Documentation**\n  * Added a comprehensive guidelines d",
+        "merged_at": "2025-10-14T14:30:21Z",
+        "html_url": "https://github.com/MostroP2P/mostro/pull/534",
+        "user": "grunch"
+      },
+      {
+        "id": 2901700470,
+        "number": 533,
+        "title": "fix: small fix on message creation for last trade index",
+        "body": "@grunch,\r\n\r\nwith this small fix now is working, we can improve the message construction with a helper in mostro-core in the next commits.\n\n<!-- This is an auto-generated comment: release notes by coderabbit.ai -->\n## Summary by CodeRabbit\n\n- **Bug Fixes**\n  - Returns a clear \"user not found\" outcome instead of a database error when a recipient is missing.\n  - Reports JSON serialization errors from the final payload path, reducing silent failures when sending updates.\n\n- **Refactor**\n  - Standard",
+        "merged_at": "2025-10-13T13:39:03Z",
+        "html_url": "https://github.com/MostroP2P/mostro/pull/533",
+        "user": "arkanoider"
+      },
+      {
+        "id": 2904623418,
+        "number": 535,
+        "title": "Added arkanoider key for manifest signature",
+        "body": "@grunch \r\n\r\nadded my key inside mostrod folder to sign manifest. I updated a bit the preamble in the release changelog, take a look.\r\n\r\nWe can also sign both the same file, but it's ok also with two files!\n\n<!-- This is an auto-generated comment: release notes by coderabbit.ai -->\n\n## Summary by CodeRabbit\n\n* **Chores**\n  * Added a second GPG public key to support multi-signature release verification.\n  * Updated verification flow to validate releases against two separate signatures.\n  * Adjuste",
+        "merged_at": "2025-10-10T16:29:14Z",
+        "html_url": "https://github.com/MostroP2P/mostro/pull/535",
+        "user": "arkanoider"
+      },
+      {
+        "id": 2885354551,
+        "number": 530,
+        "title": "Fix 528",
+        "body": "Hi @grunch , @Catrya ,\r\n\r\nthis is the PR for #528 , i tested the cases and seems working, but it was a bit tricky and I also reorganize the code in the scheduler to make it work correctly.\r\n\r\nI will check conflicts and rabbit suggestion, @Catrya double check when you can if it's all ok also on your side!\n\n<!-- This is an auto-generated comment: release notes by coderabbit.ai -->\n## Summary by CodeRabbit\n\n- New Features\n  - Improved notifications to both maker and taker when an order is canceled.",
+        "merged_at": "2025-10-09T14:37:06Z",
+        "html_url": "https://github.com/MostroP2P/mostro/pull/530",
+        "user": "arkanoider"
+      },
+      {
+        "id": 2888300972,
+        "number": 531,
+        "title": "Added last trade index Action",
+        "body": "@grunch ,\r\n\r\nadded a simple function to have last trade index  of a user triggerable from a client.\r\n\r\nWe will use a new Action called `LastTradeIndex`, clients can request it and they receive the user last trade index stored in `user` table of mostro database, the format is:\r\n```Json\r\n{\r\n  \"restore\": {\r\n    \"version\": 1,\r\n    \"action\": \"last-trade-index\",\r\n    \"trade_index\": 42,\r\n    \"payload\": null\r\n  }\r\n}\r\n```\r\n\r\nSo client can synch with last trade index value and prepare next message for:\r\n\r",
+        "merged_at": "2025-10-09T13:34:01Z",
+        "html_url": "https://github.com/MostroP2P/mostro/pull/531",
+        "user": "arkanoider"
+      },
+      {
+        "id": 2882615623,
+        "number": 529,
+        "title": "Currency filter",
+        "body": "@Catrya @grunch ,\r\n\r\ntested and seems ok.\r\n\r\nAdded this in `settings.toml` in mostro section:\r\n\r\n```Toml\r\n# Fiat currencies accepted for orders - leave empty ['] to accept all fiat currencies\r\nfiat_currencies_accepted = ['USD', 'EUR', 'ARS','CUP']\r\n```\r\nIf empty all currencies are accepted when order is created. The filter works on new order incoming and creates a new tag in the info message.\r\n\r\nUntil we have the new version of mostro core it's usually testable using local version of mostro core",
+        "merged_at": "2025-10-06T19:15:44Z",
+        "html_url": "https://github.com/MostroP2P/mostro/pull/529",
+        "user": "arkanoider"
+      },
+      {
+        "id": 2854639158,
+        "number": 524,
+        "title": "fix: correct AddInvoice amount calculation on payment failure",
+        "body": "Now mostrod sends the correct amount when payment fails and requests a new invoice\n\n<!-- This is an auto-generated comment: release notes by coderabbit.ai -->\n## Summary by CodeRabbit\n\n* **Bug Fixes**\n  * Corrected final buyer amount calculation after fees to prevent negative/underflow values.\n  * Improved handling of invalid order types with clearer error feedback.\n  * Increased reliability when retrieving order status to prevent unexpected failures.\n  * Stabilized invoice creation and payload ",
+        "merged_at": "2025-10-03T21:11:09Z",
+        "html_url": "https://github.com/MostroP2P/mostro/pull/524",
+        "user": "Catrya"
+      },
+      {
+        "id": 2865039150,
+        "number": 525,
+        "title": "Ci build",
+        "body": "@grunch ,\r\n\r\nthis is the new `ci.yml` to build without tag creation when a commit is pushed. No artifacts will be done.\n\n<!-- This is an auto-generated comment: release notes by coderabbit.ai -->\n## Summary by CodeRabbit\n\n* **Chores**\n  * Added a multi-job CI pipeline running formatting, linting, tests, release builds, and MSRV checks on push, with caching and required toolchain support.\n  * Ensured workflows fetch and refresh all Git tags during runs.\n  * Switched release verification to GPG si",
+        "merged_at": "2025-10-03T13:14:53Z",
+        "html_url": "https://github.com/MostroP2P/mostro/pull/525",
+        "user": "arkanoider"
+      },
+      {
+        "id": 2879476982,
+        "number": 527,
+        "title": "Fix for #526",
+        "body": "@grunch @Catrya ,\r\n\r\nthis is the fix for #526 , now initiator of dispute is correctly sent to admin( solver ) when the dispute is taken, previously, my bad, I was sending the pubkey of order creator.\r\n\r\n<!-- This is an auto-generated comment: release notes by coderabbit.ai -->\r\n\r\n## Summary by CodeRabbit\r\n\r\n* **Bug Fixes**\r\n  * Correctly attributes dispute initiator and counterpart based on buyer/seller dispute state.\r\n  * Adds early validation to block unsupported dispute state combinations wit",
+        "merged_at": "2025-10-02T17:26:58Z",
+        "html_url": "https://github.com/MostroP2P/mostro/pull/527",
+        "user": "arkanoider"
+      },
+      {
+        "id": 2854517007,
+        "number": 523,
+        "title": "feat: fixed changelod in release page - now is aligned to cli and core",
+        "body": "@grunch ,\r\n\r\nthis is the alignment for mostro daemon to new actions that are working nicely on mostro-cli and mostro-core\n\n<!-- This is an auto-generated comment: release notes by coderabbit.ai -->\n\n## Summary by CodeRabbit\n\n- Documentation\n  - Updated release verification guidance to use GPG signatures instead of SHA256 checksums, with clear steps to import the signer\u2019s key and verify manifest and archives.\n  - Improved changelog relevance by recognizing semantic version tags.\n\n- Chores\n  - Enh",
+        "merged_at": "2025-09-24T13:09:25Z",
+        "html_url": "https://github.com/MostroP2P/mostro/pull/523",
+        "user": "arkanoider"
+      }
+    ],
+    "ArcadeCity/zapstore": [],
+    "fiatjaf/nak": [],
+    "greenart7c3/amber": [],
+    "getAlby/lightning-browser-extension": [],
+    "fiatjaf/nos2x": [],
+    "haorendashu/nowser": [],
+    "susumuota/nostr-keyx": [],
+    "hoytech/strfry": [],
+    "Cameri/nostream": [],
+    "0ceanslim/grain": [],
+    "fiatjaf/khatru": [],
+    "bitvora/haven": [],
+    "greenart7c3/Citrine": [],
+    "bitvora/wot-relay": [],
+    "nbd-wtf/nostr-tools": [],
+    "nostr-dev-kit/ndk": [],
+    "hzrd149/applesauce": [],
+    "penpenpng/rx-nostr": [],
+    "rust-nostr/nostr": [],
+    "mikedilger/nostr-types": [],
+    "nbd-wtf/go-nostr": [],
+    "jeffthibault/python-nostr": [],
+    "holgern/pynostr": [],
+    "cnixbtc/NostrKit": [],
+    "tcheeric/nostr-java": [],
+    "ethicnology/dart-nostr": [],
+    "getAlby/hub": [],
+    "ZeusLN/zeus": [],
+    "hzrd149/blossom": []
+  }
+}
