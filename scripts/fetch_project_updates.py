@@ -348,15 +348,15 @@ def main():
 
     for i, project in enumerate(projects, 1):
         repo_key = f"{project['owner']}/{project['repo']}"
-        print(f"[{i}/{len(projects)}] Fetching {repo_key}...", end=" ", flush=True)
-
         releases = fetch_releases(project["owner"], project["repo"], headers, since_timestamp)
         prs = fetch_pull_requests(project["owner"], project["repo"], headers, since_timestamp)
 
         all_releases[repo_key] = releases
         all_prs[repo_key] = prs
 
-        print(f"{len(releases)} releases, {len(prs)} merged PRs")
+        # Only print if there are updates
+        if releases or prs:
+            print(f"[{i}/{len(projects)}] {repo_key}: {len(releases)} releases, {len(prs)} merged PRs")
 
         if args.verbose:
             for r in releases[:3]:
