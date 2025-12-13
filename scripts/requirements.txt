@@ -1,2 +1,4 @@
+# Requires Python 3.9+
 requests>=2.28.0
 PyYAML>=6.0
+python-dotenv>=1.0.0
