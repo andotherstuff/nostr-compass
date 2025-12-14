@@ -2,20 +2,18 @@
 """
 Fetch recent releases and PRs from all projects in _data/projects.yml.
 
-Tracks changes between runs and generates a diff showing "what's new since last run".
+Filters by date range using GitHub API.
 
 Usage:
     pip install -r scripts/requirements.txt
-    python scripts/fetch_project_updates.py [--output-dir DIR] [--github-token TOKEN]
+    python3 scripts/fetch_project_updates.py --since-days N [--output-dir DIR] [--github-token TOKEN]
 
 Environment variables:
     GITHUB_TOKEN: GitHub personal access token (optional, but recommended for rate limits)
 
 Output files (in _data/project_updates/):
-    - state.json: Full state from last run (used to compute diffs)
-    - diff.json: Changes since last run
-    - releases.json: All fetched releases
-    - pull_requests.json: All fetched PRs
+    - releases.json: All fetched releases from the date range
+    - pull_requests.json: All fetched PRs from the date range
 """
 
 import argparse
@@ -23,22 +21,27 @@ import json
 import os
 import re
 import sys
-from datetime import datetime, timezone
+from datetime import datetime, timezone, timedelta
 from pathlib import Path
-from typing import Any
+from typing import Any, Optional
 
 try:
     import requests
     import yaml
+    from dotenv import load_dotenv
 except ImportError:
     print("Missing dependencies. Install them with:")
     print("  pip install -r scripts/requirements.txt")
     sys.exit(1)
 
+# Load environment variables from .env file if it exists
+# Check both project root (standard) and scripts/ directory
+project_root = Path(__file__).parent.parent
+load_dotenv(project_root / ".env")  # Try project root first
+load_dotenv(Path(__file__).parent / ".env")  # Fallback to scripts/.env
+
 # Configuration
 DEFAULT_OUTPUT_DIR = Path(__file__).parent.parent / "_data" / "project_updates"
-STATE_FILE = "state.json"
-DIFF_FILE = "diff.json"
 RELEASES_FILE = "releases.json"
 PRS_FILE = "pull_requests.json"
 
@@ -48,7 +51,7 @@ MAX_RELEASES_PER_REPO = 10
 MAX_PRS_PER_REPO = 20
 
 
-def parse_github_repo(repo_url: str) -> tuple[str, str] | None:
+def parse_github_repo(repo_url: str) -> Optional[tuple[str, str]]:
     """
     Parse a GitHub repo URL and return (owner, repo) tuple.
 
@@ -78,7 +81,7 @@ def parse_github_repo(repo_url: str) -> tuple[str, str] | None:
     return None
 
 
-def get_github_headers(token: str | None) -> dict[str, str]:
+def get_github_headers(token: Optional[str]) -> dict[str, str]:
     """Get headers for GitHub API requests."""
     headers = {
         "Accept": "application/vnd.github.v3+json",
@@ -89,8 +92,15 @@ def get_github_headers(token: str | None) -> dict[str, str]:
     return headers
 
 
-def fetch_releases(owner: str, repo: str, headers: dict) -> list[dict]:
-    """Fetch recent releases for a repository."""
+def fetch_releases(owner: str, repo: str, headers: dict, since: Optional[str] = None) -> list[dict]:
+    """Fetch recent releases for a repository.
+    
+    Args:
+        owner: Repository owner
+        repo: Repository name
+        headers: HTTP headers for API request
+        since: ISO 8601 timestamp to filter releases published after this time (client-side filter)
+    """
     url = f"{GITHUB_API_BASE}/repos/{owner}/{repo}/releases"
     params = {"per_page": MAX_RELEASES_PER_REPO}
 
@@ -99,7 +109,7 @@ def fetch_releases(owner: str, repo: str, headers: dict) -> list[dict]:
         response.raise_for_status()
         releases = response.json()
 
-        return [
+        result = [
             {
                 "id": r["id"],
                 "tag_name": r["tag_name"],
@@ -112,6 +122,16 @@ def fetch_releases(owner: str, repo: str, headers: dict) -> list[dict]:
             for r in releases
             if not r["draft"]  # Skip drafts
         ]
+        
+        # Filter by date if since parameter provided
+        if since:
+            since_dt = datetime.fromisoformat(since.replace('Z', '+00:00'))
+            result = [
+                r for r in result
+                if r["published_at"] and datetime.fromisoformat(r["published_at"].replace('Z', '+00:00')) >= since_dt
+            ]
+        
+        return result
     except requests.exceptions.HTTPError as e:
         if e.response.status_code == 404:
             return []  # Repo might not have releases
@@ -122,8 +142,15 @@ def fetch_releases(owner: str, repo: str, headers: dict) -> list[dict]:
         return []
 
 
-def fetch_pull_requests(owner: str, repo: str, headers: dict) -> list[dict]:
-    """Fetch recent merged PRs for a repository."""
+def fetch_pull_requests(owner: str, repo: str, headers: dict, since: Optional[str] = None) -> list[dict]:
+    """Fetch recent merged PRs for a repository.
+    
+    Args:
+        owner: Repository owner
+        repo: Repository name
+        headers: HTTP headers for API request
+        since: ISO 8601 timestamp to filter PRs updated after this time (GitHub API since parameter)
+    """
     url = f"{GITHUB_API_BASE}/repos/{owner}/{repo}/pulls"
     params = {
         "state": "closed",
@@ -131,13 +158,15 @@ def fetch_pull_requests(owner: str, repo: str, headers: dict) -> list[dict]:
         "direction": "desc",
         "per_page": MAX_PRS_PER_REPO,
     }
+    if since:
+        params["since"] = since
 
     try:
         response = requests.get(url, headers=headers, params=params, timeout=30)
         response.raise_for_status()
         prs = response.json()
 
-        return [
+        result = [
             {
                 "id": pr["id"],
                 "number": pr["number"],
@@ -150,6 +179,17 @@ def fetch_pull_requests(owner: str, repo: str, headers: dict) -> list[dict]:
             for pr in prs
             if pr["merged_at"]  # Only include merged PRs
         ]
+        
+        # Filter by merged_at date if since parameter provided
+        # (GitHub API since filters by updated_at, but we want merged_at)
+        if since:
+            since_dt = datetime.fromisoformat(since.replace('Z', '+00:00'))
+            result = [
+                pr for pr in result
+                if pr["merged_at"] and datetime.fromisoformat(pr["merged_at"].replace('Z', '+00:00')) >= since_dt
+            ]
+        
+        return result
     except requests.exceptions.HTTPError as e:
         if e.response.status_code == 404:
             return []
@@ -193,137 +233,44 @@ def load_projects(projects_file: Path) -> list[dict]:
     return projects
 
 
-def load_state(output_dir: Path) -> dict:
-    """Load the previous state from disk."""
-    state_file = output_dir / STATE_FILE
-    if state_file.exists():
-        with open(state_file) as f:
-            return json.load(f)
-    return {"last_run": None, "releases": {}, "pull_requests": {}}
-
-
-def save_state(output_dir: Path, state: dict) -> None:
-    """Save the current state to disk."""
-    state_file = output_dir / STATE_FILE
-    with open(state_file, "w") as f:
-        json.dump(state, f, indent=2)
-
-
-def compute_diff(old_data: dict, new_data: dict, key_field: str) -> dict:
-    """
-    Compute the diff between old and new data.
-
-    Returns:
-        {
-            "added": [...],      # New items
-            "removed": [...],    # Items no longer present
-        }
-    """
-    old_keys = {item[key_field] for item in old_data} if old_data else set()
-    new_keys = {item[key_field] for item in new_data} if new_data else set()
-
-    new_items_map = {item[key_field]: item for item in new_data} if new_data else {}
-    old_items_map = {item[key_field]: item for item in old_data} if old_data else {}
-
-    added_keys = new_keys - old_keys
-    removed_keys = old_keys - new_keys
-
-    return {
-        "added": [new_items_map[k] for k in added_keys],
-        "removed": [old_items_map[k] for k in removed_keys],
-    }
-
-
-def generate_diff_report(
-    old_state: dict,
-    new_releases: dict[str, list],
-    new_prs: dict[str, list],
-) -> dict:
-    """Generate a comprehensive diff report."""
-    diff = {
-        "generated_at": datetime.now(timezone.utc).isoformat(),
-        "previous_run": old_state.get("last_run"),
-        "releases": {},
-        "pull_requests": {},
-        "summary": {
-            "new_releases": 0,
-            "new_prs": 0,
-            "repos_with_updates": set(),
-        },
-    }
-
-    # Compare releases
-    old_releases = old_state.get("releases", {})
-    for repo_key, releases in new_releases.items():
-        old_repo_releases = old_releases.get(repo_key, [])
-        repo_diff = compute_diff(old_repo_releases, releases, "id")
-
-        if repo_diff["added"] or repo_diff["removed"]:
-            diff["releases"][repo_key] = repo_diff
-            diff["summary"]["new_releases"] += len(repo_diff["added"])
-            if repo_diff["added"]:
-                diff["summary"]["repos_with_updates"].add(repo_key)
-
-    # Compare PRs
-    old_prs = old_state.get("pull_requests", {})
-    for repo_key, prs in new_prs.items():
-        old_repo_prs = old_prs.get(repo_key, [])
-        repo_diff = compute_diff(old_repo_prs, prs, "id")
-
-        if repo_diff["added"] or repo_diff["removed"]:
-            diff["pull_requests"][repo_key] = repo_diff
-            diff["summary"]["new_prs"] += len(repo_diff["added"])
-            if repo_diff["added"]:
-                diff["summary"]["repos_with_updates"].add(repo_key)
-
-    # Convert set to list for JSON serialization
-    diff["summary"]["repos_with_updates"] = list(diff["summary"]["repos_with_updates"])
-
-    return diff
-
-
-def print_diff_summary(diff: dict) -> None:
-    """Print a human-readable summary of the diff."""
-    summary = diff["summary"]
+def print_summary(releases: dict[str, list], prs: dict[str, list], since_days: int) -> None:
+    """Print a human-readable summary."""
+    total_releases = sum(len(r) for r in releases.values())
+    total_prs = sum(len(p) for p in prs.values())
+    repos_with_updates = set(list(releases.keys()) + list(prs.keys()))
 
     print("\n" + "=" * 60)
-    print("WHAT'S NEW SINCE LAST RUN")
+    print(f"UPDATES FROM LAST {since_days} DAYS")
     print("=" * 60)
-
-    if diff["previous_run"]:
-        print(f"Previous run: {diff['previous_run']}")
-    else:
-        print("Previous run: (first run)")
-    print(f"Current run:  {diff['generated_at']}")
     print()
 
-    if summary["new_releases"] == 0 and summary["new_prs"] == 0:
-        print("No new updates found.")
+    if total_releases == 0 and total_prs == 0:
+        print("No updates found.")
         return
 
-    print(f"Total new releases: {summary['new_releases']}")
-    print(f"Total new merged PRs: {summary['new_prs']}")
-    print(f"Repos with updates: {len(summary['repos_with_updates'])}")
+    print(f"Total releases: {total_releases}")
+    print(f"Total merged PRs: {total_prs}")
+    print(f"Repos with updates: {len(repos_with_updates)}")
     print()
 
-    # Print new releases
-    if diff["releases"]:
+    # Print releases
+    if releases:
         print("-" * 40)
-        print("NEW RELEASES:")
+        print("RELEASES:")
         print("-" * 40)
-        for repo_key, repo_diff in diff["releases"].items():
-            for release in repo_diff["added"]:
+        for repo_key, repo_releases in releases.items():
+            for release in repo_releases:
                 print(f"  [{repo_key}] {release['tag_name']}: {release['name']}")
                 print(f"    {release['html_url']}")
         print()
 
-    # Print new PRs
-    if diff["pull_requests"]:
+    # Print PRs
+    if prs:
         print("-" * 40)
-        print("NEW MERGED PRs:")
+        print("MERGED PRs:")
         print("-" * 40)
-        for repo_key, repo_diff in diff["pull_requests"].items():
-            for pr in repo_diff["added"]:
+        for repo_key, repo_prs in prs.items():
+            for pr in repo_prs:
                 print(f"  [{repo_key}] #{pr['number']}: {pr['title']}")
                 print(f"    by {pr['user']} | {pr['html_url']}")
         print()
@@ -353,13 +300,19 @@ def main():
     parser.add_argument(
         "--dry-run",
         action="store_true",
-        help="Don't save state, just show what would be fetched",
+        help="Don't fetch data, just show which repos would be queried",
     )
     parser.add_argument(
         "--verbose",
         "-v",
         action="store_true",
         help="Verbose output",
+    )
+    parser.add_argument(
+        "--since-days",
+        type=int,
+        required=True,
+        help="Filter to items from last N days (required)",
     )
 
     args = parser.parse_args()
@@ -378,14 +331,16 @@ def main():
             print(f"  - {p['name']} ({p['owner']}/{p['repo']})")
         return
 
-    # Load previous state
-    old_state = load_state(args.output_dir)
-
     # Prepare headers
     headers = get_github_headers(args.github_token)
     if not args.github_token:
         print("\nWarning: No GitHub token provided. Rate limits may apply.")
         print("Set GITHUB_TOKEN environment variable or use --github-token\n")
+
+    # Calculate since timestamp
+    since_dt = datetime.now(timezone.utc) - timedelta(days=args.since_days)
+    since_timestamp = since_dt.isoformat()
+    print(f"\nFiltering to items from last {args.since_days} days (since {since_timestamp})\n")
 
     # Fetch data for each project
     all_releases: dict[str, list] = {}
@@ -393,15 +348,15 @@ def main():
 
     for i, project in enumerate(projects, 1):
         repo_key = f"{project['owner']}/{project['repo']}"
-        print(f"[{i}/{len(projects)}] Fetching {repo_key}...", end=" ", flush=True)
-
-        releases = fetch_releases(project["owner"], project["repo"], headers)
-        prs = fetch_pull_requests(project["owner"], project["repo"], headers)
+        releases = fetch_releases(project["owner"], project["repo"], headers, since_timestamp)
+        prs = fetch_pull_requests(project["owner"], project["repo"], headers, since_timestamp)
 
         all_releases[repo_key] = releases
         all_prs[repo_key] = prs
 
-        print(f"{len(releases)} releases, {len(prs)} merged PRs")
+        # Only print if there are updates
+        if releases or prs:
+            print(f"[{i}/{len(projects)}] {repo_key}: {len(releases)} releases, {len(prs)} merged PRs")
 
         if args.verbose:
             for r in releases[:3]:
@@ -409,29 +364,10 @@ def main():
             for pr in prs[:3]:
                 print(f"    PR #{pr['number']}: {pr['title']}")
 
-    # Generate diff
-    diff = generate_diff_report(old_state, all_releases, all_prs)
-
     # Print summary
-    print_diff_summary(diff)
+    print_summary(all_releases, all_prs, args.since_days)
 
-    # Save new state
-    new_state = {
-        "last_run": datetime.now(timezone.utc).isoformat(),
-        "releases": all_releases,
-        "pull_requests": all_prs,
-    }
-
-    save_state(args.output_dir, new_state)
-    print(f"\nState saved to {args.output_dir / STATE_FILE}")
-
-    # Save diff
-    diff_file = args.output_dir / DIFF_FILE
-    with open(diff_file, "w") as f:
-        json.dump(diff, f, indent=2)
-    print(f"Diff saved to {diff_file}")
-
-    # Save full data files for reference
+    # Save data files
     releases_file = args.output_dir / RELEASES_FILE
     with open(releases_file, "w") as f:
         json.dump(all_releases, f, indent=2)

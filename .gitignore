@@ -21,3 +21,9 @@ vendor
 
 # Avoid pushing .gz files created during rsync
 *.gz
+
+# Environment variables (secrets)
+scripts/.env
+
+# Generated project update files
+_data/project_updates/*.json
