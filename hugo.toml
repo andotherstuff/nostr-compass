@@ -1,0 +1,47 @@
+baseURL = "https://nostrcompass.org"
+languageCode = "en-us"
+title = "Nostr Compass"
+theme = ""
+
+# From Jekyll _config.yml
+enableRobotsTXT = true
+enableGitInfo = true
+
+[params]
+  description = "Technical resource for the Nostr protocol. Weekly newsletter covering NIP proposals, client updates, relay developments, and notable code changes."
+  email = "info@nostrcompass.org"
+  github_username = "nostrcompass"
+  repository_name = "nostr-compass"
+  author = "Nostr Compass"
+  bold = "**"
+  
+[taxonomies]
+  tag = "tags"
+  category = "categories"
+  topic = "topics"
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+
+[permalinks]
+  posts = "/:year/:month/:title/"
+
+[outputs]
+  home = ["HTML", "RSS"]
+
+[[menu.main]]
+  name = "About"
+  url = "/en/about/"
+  weight = 1
+
+[[menu.main]]
+  name = "Publications"
+  url = "/en/publications/"
+  weight = 2
+
+[[menu.main]]
+  name = "Topics"
+  url = "/en/topics/"
+  weight = 3

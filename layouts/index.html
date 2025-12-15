@@ -1,0 +1,42 @@
+{{ define "main" }}
+<div class="home">
+  <div class="content">
+    <div class="logo">
+      <img src="/img/logos/compass-notext.svg" alt="Nostr Compass Logo">
+    </div>
+    
+    <p>Nostr Compass is a technical resource for the Nostr protocol, helping developers, relay operators, and builders stay current on protocol evolution.</p>
+
+    <p>We publish <a href="/en/newsletters/">weekly newsletters</a> covering NIP proposals, client updates, relay developments, and notable code changes. Our <a href="/en/podcast/">podcast</a> features conversations with the developers building Nostr. The <a href="/en/topics/">topic index</a> documents key concepts with links to primary sources.</p>
+
+    <p><a href="/en/about">Learn more about us</a>.</p>
+
+    {{ $posts := where .Site.RegularPages "Type" "posts" }}
+    {{ if gt (len $posts) 0 }}
+    <h2>Recent newsletters and podcasts</h2>
+    <ul class="post-list">
+      {{ range first 5 $posts }}
+      <li>
+        <span class="post-meta">{{ .Date.Format "Jan 2, 2006" }}</span>
+        <h3>
+          <a class="post-link" href="{{ .RelPermalink }}">{{ .Title }}</a>
+        </h3>
+        {{ if .Summary }}
+          <p>{{ .Summary }}</p>
+        {{ end }}
+      </li>
+      {{ end }}
+    </ul>
+    <p class="rss-subscribe">View more <a href="/en/newsletters/">newsletters</a>. Subscribe via <a href="/index.xml">RSS</a>.</p>
+    {{ else }}
+    <h2>Coming Soon</h2>
+    <p>Our first newsletter is in progress. Subscribe to be notified when we launch.</p>
+    {{ end }}
+
+    {{ partial "newsletter-signup.html" . }}
+  </div>
+</div>
+{{ end }}
+
+
+
