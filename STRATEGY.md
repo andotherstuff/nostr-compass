@@ -138,7 +138,7 @@ python3 scripts/fetch_project_updates.py --since-days 7 --dry-run
 python3 scripts/fetch_project_updates.py --since-days 7 -v
 ```
 
-**Output files** (in `_data/project_updates/`, gitignored):
+**Output files** (in `data/project_updates/`, gitignored):
 - `releases.json` - All fetched releases from the date range
 - `pull_requests.json` - All fetched PRs from the date range
 
