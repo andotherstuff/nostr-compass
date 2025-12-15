@@ -1,0 +1,19 @@
+# Nostr projects to track for newsletter updates
+# Add projects here in the format:
+# category_name:
+#   - name: Project Name
+#     repo: https://github.com/owner/repo
+#     description: Brief description
+#     priority: high|medium|low
+
+clients:
+  - name: Example Client
+    repo: https://github.com/example/nostr-client
+    description: Example Nostr client
+    priority: medium
+
+relays:
+  - name: Example Relay
+    repo: https://github.com/example/nostr-relay
+    description: Example Nostr relay
+    priority: medium
