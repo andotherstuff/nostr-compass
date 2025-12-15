@@ -3,8 +3,11 @@ name: Deploy Hugo site to Pages
 on:
   push:
     branches:
-      - main  # Change to your default branch name if different
-  workflow_dispatch:
+      - '**'  # Run on pushes to any branch
+  pull_request:
+    branches:
+      - main  # Also test builds on PRs
+  workflow_dispatch:  # Allow manual trigger from any branch
 
 permissions:
   contents: read
@@ -56,6 +59,8 @@ jobs:
           path: ./public
 
   deploy:
+    # Only deploy to Pages from main branch (not on PRs or other branches)
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
