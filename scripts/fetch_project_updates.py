@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Fetch recent releases and PRs from all projects in _data/projects.yml.
+Fetch recent releases and PRs from all projects in data/projects.yml.
 
 Filters by date range using GitHub API.
 
@@ -11,7 +11,7 @@ Usage:
 Environment variables:
     GITHUB_TOKEN: GitHub personal access token (optional, but recommended for rate limits)
 
-Output files (in _data/project_updates/):
+Output files (in data/project_updates/):
     - releases.json: All fetched releases from the date range
     - pull_requests.json: All fetched PRs from the date range
 """
@@ -41,7 +41,7 @@ load_dotenv(project_root / ".env")  # Try project root first
 load_dotenv(Path(__file__).parent / ".env")  # Fallback to scripts/.env
 
 # Configuration
-DEFAULT_OUTPUT_DIR = Path(__file__).parent.parent / "_data" / "project_updates"
+DEFAULT_OUTPUT_DIR = Path(__file__).parent.parent / "data" / "project_updates"
 RELEASES_FILE = "releases.json"
 PRS_FILE = "pull_requests.json"
 
@@ -278,7 +278,7 @@ def print_summary(releases: dict[str, list], prs: dict[str, list], since_days: i
 
 def main():
     parser = argparse.ArgumentParser(
-        description="Fetch releases and PRs from projects in _data/projects.yml"
+        description="Fetch releases and PRs from projects in data/projects.yml"
     )
     parser.add_argument(
         "--output-dir",
@@ -294,7 +294,7 @@ def main():
     parser.add_argument(
         "--projects-file",
         type=Path,
-        default=Path(__file__).parent.parent / "_data" / "projects.yml",
+        default=Path(__file__).parent.parent / "data" / "projects.yml",
         help="Path to projects.yml file",
     )
     parser.add_argument(

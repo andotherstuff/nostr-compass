@@ -1,0 +1,80 @@
+@import "minima";
+
+.center {
+    text-align: center;
+}
+.right {
+    text-align: right;
+}
+.float-right {
+    float: right;
+}
+.float-left {
+    float: left;
+}
+
+.post-meta {
+    text-align: center;
+}
+
+hr {
+    margin-bottom: 20px;
+}
+
+h1 {
+    text-align: center;
+}
+
+h2 {
+    margin-top: 1em;
+    clear: both;
+    width: 100%;
+}
+
+br.clear {
+    clear: left;
+}
+
+ul.n-column-list {
+    margin-top: 2em;
+}
+
+.n-column-list li {
+    list-style: none;
+    float: left;
+    width: 12em;
+    text-align: left;
+    margin-bottom: 20px;
+    margin-left: 2em;
+}
+
+a.site-title {
+    width: 8em;
+}
+
+.home .content {
+    margin-top: 2em;
+    
+    > .logo {
+        width: 20%;
+        min-width: 8em;
+        float: right;
+        display: inline-block;
+        margin-left: 1.3em;
+        margin-bottom: 1.3em;
+        margin-right: 1.3em;
+    }
+}
+
+#mc_embed_signup {
+    clear:left;
+    font:14px Helvetica,Arial,sans-serif;
+}
+
+.wrapper{
+    overflow-wrap: break-word;
+}
+
+.site-nav .page-link:not(:last-child) {
+  margin-right: 10px;
+}

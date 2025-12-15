@@ -1,0 +1,8 @@
+# Contributors list for About page
+contributors:
+  - name: Your Name
+    role: Editor
+    bio: Brief bio
+    # photo: /img/contributors/name.jpg
+    # github: username
+    # nostr: npub...

@@ -26,4 +26,4 @@ vendor
 scripts/.env
 
 # Generated project update files
-_data/project_updates/*.json
+data/project_updates/*.json

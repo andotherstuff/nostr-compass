@@ -29,57 +29,45 @@ non-promotional publication that helps developers stay informed, helps
 businesses evaluate Nostr for their use cases, and creates a durable archive
 of protocol evolution.
 
-## Building The Site Locally
+## Development Workflow
 
-### Using Docker (Recommended)
+**Local development (with live reload):**
+```bash
+hugo server
+# Visit http://localhost:1313
+```
 
-Ensure Docker and Docker Compose are installed, then run:
+**Using Docker:**
+```bash
+docker-compose up
+# Visit http://localhost:1313
+```
 
-    docker compose up
+**Build static site:**
+```bash
+hugo
+# Output in /public/
+```
 
-The site preview will be available at http://localhost:4000.
+## Adding Content
 
-To rebuild and restart:
+**Newsletter edition:**
+```bash
+hugo new content/en/newsletters/2024-01-15-edition-1.md
+```
 
-    docker compose down && docker compose up --build
+**Blog post:**
+```bash
+hugo new content/en/blog/my-post.md
+```
 
-### Manual Setup
+**Edit content:** Files in `/content/en/` - Markdown with front matter
 
-#### Install Dependencies
-
-**Install RVM**
-
-Install RVM using either the [easy instructions](https://rvm.io/) or the
-[more secure instructions](https://rvm.io/rvm/security).
-
-    source ~/.rvm/scripts/rvm
-
-**Install Ruby**
-
-    rvm install 2.6.4
-    rvm alias create default ruby-2.6.4
-    rvm use default
-
-**Install Bundle**
-
-    gem install bundle
-
-**Install Ruby dependencies**
-
-    cd nostr-compass
-    bundle install
-
-#### Preview The Site
-
-    make preview
-
-Visit http://localhost:4000 in your browser.
-
-#### Build The Site
-
-    make
-
-The resulting HTML will be placed in the `_site` directory.
+**Fetch project updates:**
+```bash
+python3 scripts/fetch_project_updates.py --since-days 7
+# Outputs to data/project_updates/*.json
+```
 
 ## Contributing
 
