@@ -1,7 +1,6 @@
 baseURL = "https://nostrcompass.samt.st"
 languageCode = "en-us"
 title = "Nostr Compass"
-theme = ""
 
 # From Jekyll _config.yml
 enableRobotsTXT = true
