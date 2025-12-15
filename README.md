@@ -49,6 +49,18 @@ hugo
 # Output in /public/
 ```
 
+## Deployment
+
+Deploys automatically to GitHub Pages via GitHub Actions on every push to any branch.
+
+**Setup:**
+1. Repository Settings → Pages → Source: "GitHub Actions"
+2. Repository Settings → Environments → github-pages → Deployment branches: "All branches"
+3. Pages → Custom domain: `nostrcompass.org`
+4. Configure DNS A records at your registrar pointing to GitHub Pages IPs (185.199.108-111.153)
+
+Site live at: https://nostrcompass.org
+
 ## Adding Content
 
 **Newsletter edition:**

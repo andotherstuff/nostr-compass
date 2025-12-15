@@ -27,3 +27,7 @@ scripts/.env
 
 # Generated project update files
 data/project_updates/*.json
+
+# Hugo generated files
+/public/
+/resources/_gen/
