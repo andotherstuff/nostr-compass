@@ -114,27 +114,35 @@ Full project list maintained in `_data/projects.yml`.
 
 **Setup:**
 ```bash
-pip install -r scripts/requirements.txt
-export GITHUB_TOKEN=your_token  # Optional but recommended (5000 req/hr vs 60)
+# Install dependencies (requires Python 3.9+)
+pip3 install -r scripts/requirements.txt
+
+# Set up GitHub token (optional but recommended - 5000 req/hr vs 60)
+# Option 1: Use .env file (recommended)
+cp scripts/.env.sample scripts/.env
+# Edit scripts/.env and add your token
+
+# Option 2: Use environment variable
+export GITHUB_TOKEN=your_token
 ```
 
 **Usage:**
 ```bash
-# Fetch updates and show diff since last run
-python scripts/fetch_project_updates.py
+# Fetch updates from last 7 days (required: --since-days)
+python3 scripts/fetch_project_updates.py --since-days 7
 
 # Preview which repos would be fetched
-python scripts/fetch_project_updates.py --dry-run
+python3 scripts/fetch_project_updates.py --since-days 7 --dry-run
 
 # Verbose output
-python scripts/fetch_project_updates.py -v
+python3 scripts/fetch_project_updates.py --since-days 7 -v
 ```
 
-**Output files** (in `_data/project_updates/`):
-- `state.json` - Full state from last run (used to compute diffs)
-- `diff.json` - Changes since last run (new releases, new PRs)
-- `releases.json` - All fetched releases
-- `pull_requests.json` - All fetched PRs
+**Output files** (in `data/project_updates/`, gitignored):
+- `releases.json` - All fetched releases from the date range
+- `pull_requests.json` - All fetched PRs from the date range
+
+**Note:** JSON files are regenerated each run. Console output is the primary output.
 
 ### Weekly tracking:
 

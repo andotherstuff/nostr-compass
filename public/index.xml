@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Nostr Compass</title>
+    <link>http://localhost:1313/</link>
+    <description>Recent content on Nostr Compass</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>About</title>
+      <link>http://localhost:1313/en/about/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/en/about/</guid>
+      <description>&lt;p&gt;Nostr Compass is a technical resource for the Nostr protocol, providing&#xA;developers, relay operators, and builders with the information they need&#xA;to stay current on protocol evolution.&lt;/p&gt;&#xA;&lt;p&gt;We publish &lt;a href=&#34;http://localhost:1313/en/newsletters/&#34;&gt;weekly newsletters&lt;/a&gt; covering NIP proposals, client updates,&#xA;relay developments, and notable code changes. Our &lt;a href=&#34;http://localhost:1313/en/podcast/&#34;&gt;podcast&lt;/a&gt; features&#xA;conversations with the developers whose work is covered in each newsletter.&#xA;The &lt;a href=&#34;http://localhost:1313/en/topics/&#34;&gt;topic index&lt;/a&gt; documents key Nostr concepts with links to primary&#xA;sources and our coverage.&lt;/p&gt;&#xA;&lt;p&gt;If you&amp;rsquo;re building on Nostr and would like to contribute or appear on the&#xA;podcast, contact us at &lt;a href=&#34;mailto:info@nostrcompass.org&#34;&gt;info@nostrcompass.org&lt;/a&gt;.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Blog</title>
+      <link>http://localhost:1313/en/blog/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/en/blog/</guid>
+      <description>&lt;p&gt;&lt;em&gt;Blog posts coming soon.&lt;/em&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Newsletters</title>
+      <link>http://localhost:1313/en/newsletters/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/en/newsletters/</guid>
+      <description>&lt;p&gt;&lt;em&gt;Newsletter listing coming soon. Weekly coverage of NIP proposals, client updates, relay developments, and notable code changes across the Nostr ecosystem.&lt;/em&gt;&#xA;���������������&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Podcast</title>
+      <link>http://localhost:1313/en/podcast/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/en/podcast/</guid>
+      <description>&lt;p&gt;&lt;em&gt;Podcast episodes coming soon. Conversations with the developers building Nostr.&lt;/em&gt;&#xA;�����������&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Publications</title>
+      <link>http://localhost:1313/en/publications/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/en/publications/</guid>
+      <description>&lt;ul&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;&lt;a href=&#34;http://localhost:1313/en/newsletters/&#34;&gt;Newsletters&lt;/a&gt;: Weekly coverage of NIP proposals, client updates, relay&#xA;developments, and notable code changes across the Nostr ecosystem.&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;&lt;a href=&#34;http://localhost:1313/en/blog/&#34;&gt;Blog posts&lt;/a&gt;: Occasional deep-dives and reference material&#xA;from the Nostr Compass team.&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;&lt;a href=&#34;http://localhost:1313/en/podcast/&#34;&gt;Podcast Episodes&lt;/a&gt;: Conversations with the developers building Nostr.&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Topics</title>
+      <link>http://localhost:1313/en/topics/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/en/topics/</guid>
+      <description>&lt;p&gt;The Nostr Compass topic index documents key protocol concepts, NIPs, client&#xA;implementations, and relay software. Each topic includes links to primary&#xA;sources (NIPs, code repositories) and our newsletter coverage.&lt;/p&gt;&#xA;&lt;p&gt;&lt;em&gt;Topic index coming soon. We&amp;rsquo;re building out documentation of key Nostr concepts, NIPs, and implementations.&lt;/em&gt;&lt;/p&gt;&#xA;&lt;p&gt;Want to suggest a topic? Open an issue on our &lt;a href=&#34;https://github.com/nostrcompass/nostr-compass&#34;&gt;GitHub repository&lt;/a&gt;.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
