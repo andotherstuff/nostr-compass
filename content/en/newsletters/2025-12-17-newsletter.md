@@ -1,11 +1,9 @@
 ---
 title: 'Nostr Compass #1'
-permalink: /en/newsletters/2025/12/17/
-name: 2025-12-17-newsletter
-slug: 2025-12-17-newsletter
-type: newsletter
-layout: newsletter
-lang: en
+date: 2025-12-17
+publishDate: 2025-12-15
+draft: false
+type: newsletters
 ---
 
 Welcome to Nostr Compass, a weekly newsletter dedicated to the Nostr protocol ecosystem. Our mission is to keep developers, relay operators, and builders informed about important developments across the network. We document protocol evolution with technical accuracy, neutrality, and depth, covering everything from NIP proposals to client releases to implementation best practices.
@@ -192,4 +190,3 @@ Stability focus with crash and UI fixes: [cursor jumping fix](https://github.com
 
 That's it for this week. Building something? Have news to share? Want us to cover your project? Reach out at [info@nostrcompass.org](mailto:info@nostrcompass.org) or find us on Nostr.
 
-{% include references.md %}

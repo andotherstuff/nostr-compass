@@ -1,7 +1,7 @@
 ---
 title: NIP Reference
-permalink: /en/nip-reference/
-layout: page
+date: 2025-12-17
+draft: false
 ---
 
 Nostr Implementation Possibilities (NIPs) are the protocol specifications that define how Nostr works. This reference lists all NIPs with their current status.
@@ -107,3 +107,4 @@ For in-depth explanations of specific NIPs, see our [topic pages](/en/topics/) a
 *Last updated: December 2025*
 
 See the [NIPs repository](https://github.com/nostr-protocol/nips) for the authoritative source.
+

@@ -1,32 +1,22 @@
 ---
 title: "NIP-01: Basic Protocol"
-shortname: nip-01
-title-aliases:
-  - Basic Protocol
-  - Nostr Protocol
-  - Events
-  - Kinds
-
+date: 2025-12-17
+draft: false
 categories:
   - Protocol
-
-primary_sources:
-  - title: NIP-01 Specification
-    link: https://github.com/nostr-protocol/nips/blob/master/01.md
-
-compass_mentions:
-  - title: "Newsletter #1: NIP Deep Dive"
-    url: /en/newsletters/2025/12/17/#nip-deep-dive-nip-01-and-nip-19
-    feature: true
-
-see_also:
-  - title: NIP-19 (bech32 encoding)
-    link: /en/topics/nip-19/
-  - title: Kind Registry
-    link: /en/kind-registry/
 ---
 
 NIP-01 defines the foundational protocol for Nostr, establishing the data structures and communication patterns that all other NIPs build upon.
+
+**Primary sources:**
+- [NIP-01 Specification](https://github.com/nostr-protocol/nips/blob/master/01.md)
+
+**Mentioned in:**
+- [Newsletter #1: NIP Deep Dive](/en/newsletters/2025-12-17-newsletter/#nip-deep-dive-nip-01-and-nip-19)
+
+**See also:**
+- [NIP-19 (bech32 encoding)](/en/topics/nip-19/)
+- [Kind Registry](/en/kind-registry/)
 
 ## Events
 
@@ -69,3 +59,4 @@ Clients communicate with relays over WebSocket connections using JSON arrays:
 ## Filters
 
 Filters specify which events to retrieve, with fields including: `ids`, `authors`, `kinds`, `#e`/`#p`/`#t` (tag values), `since`/`until`, and `limit`. Conditions within a filter use AND logic; multiple filters in a `REQ` combine with OR logic.
+

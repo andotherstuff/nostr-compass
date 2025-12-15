@@ -1,36 +1,23 @@
 ---
 title: "NIP-19: Bech32-Encoded Entities"
-shortname: nip-19
-title-aliases:
-  - Bech32 Encoding
-  - npub
-  - nsec
-  - note
-  - nevent
-  - nprofile
-  - naddr
-
+date: 2025-12-17
+draft: false
 categories:
   - Protocol
   - Identity
-
-primary_sources:
-  - title: NIP-19 Specification
-    link: https://github.com/nostr-protocol/nips/blob/master/19.md
-
-compass_mentions:
-  - title: "Newsletter #1: NIP Deep Dive"
-    url: /en/newsletters/2025/12/17/#nip-19-bech32-encoded-identifiers
-    feature: true
-
-see_also:
-  - title: NIP-01 (Basic Protocol)
-    link: /en/topics/nip-01/
-  - title: NIP-21 (nostr: URI scheme)
-    link: https://github.com/nostr-protocol/nips/blob/master/21.md
 ---
 
 NIP-19 defines human-friendly formats for sharing Nostr identifiers. These bech32-encoded strings are used for display and sharing but are never used in the protocol itself (which uses hex).
+
+**Primary sources:**
+- [NIP-19 Specification](https://github.com/nostr-protocol/nips/blob/master/19.md)
+
+**Mentioned in:**
+- [Newsletter #1: NIP Deep Dive](/en/newsletters/2025-12-17-newsletter/#nip-19-bech32-encoded-identifiers)
+
+**See also:**
+- [NIP-01 (Basic Protocol)](/en/topics/nip-01/)
+- [NIP-21 (nostr: URI scheme)](https://github.com/nostr-protocol/nips/blob/master/21.md)
 
 ## Why Bech32?
 
@@ -62,3 +49,4 @@ These solve the discovery problem: when someone shares a note ID, how do clients
 - Never use bech32 formats in protocol messages, events, or NIP-05 responses
 - All protocol communication must use hex encoding
 - When generating nevent/nprofile/naddr, include relay hints for better discoverability
+

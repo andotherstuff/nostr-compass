@@ -1,7 +1,7 @@
 ---
 title: Kind Registry
-permalink: /en/kind-registry/
-layout: page
+date: 2025-12-17
+draft: false
 ---
 
 Event kinds are integers that categorize Nostr events. This registry lists all standardized kinds with their descriptions and defining NIPs.
@@ -194,3 +194,4 @@ Event kinds are integers that categorize Nostr events. This registry lists all s
 *Last updated: December 2025*
 
 See the [NIPs repository](https://github.com/nostr-protocol/nips) for the authoritative source.
+

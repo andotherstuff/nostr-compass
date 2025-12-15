@@ -11,26 +11,29 @@
 
     <p><a href="/en/about">Learn more about us</a>.</p>
 
-    {{ $posts := where .Site.RegularPages "Type" "posts" }}
-    {{ if gt (len $posts) 0 }}
-    <h2>Recent newsletters and podcasts</h2>
+    <h2>Recent Newsletters</h2>
+    <!-- debug total pages: {{ len .Site.RegularPages }} -->
     <ul class="post-list">
-      {{ range first 5 $posts }}
-      <li>
-        <span class="post-meta">{{ .Date.Format "Jan 2, 2006" }}</span>
-        <h3>
-          <a class="post-link" href="{{ .RelPermalink }}">{{ .Title }}</a>
-        </h3>
-        {{ if .Summary }}
-          <p>{{ .Summary }}</p>
+      {{ $count := 0 }}
+      {{ range .Site.RegularPages.ByDate.Reverse }}
+        {{ if and (hasPrefix .RelPermalink "/en/newsletters/") (lt $count 5) }}
+          {{ $count = add $count 1 }}
+          <li>
+            <span class="post-meta">{{ .Date.Format "Jan 2, 2006" }}</span>
+            <h3>
+              <a class="post-link" href="{{ .RelPermalink }}">{{ .Title }}</a>
+            </h3>
+            {{ if .Summary }}
+              <p>{{ .Summary }}</p>
+            {{ end }}
+          </li>
         {{ end }}
-      </li>
       {{ end }}
     </ul>
-    <p class="rss-subscribe">View more <a href="/en/newsletters/">newsletters</a>. Subscribe via <a href="/index.xml">RSS</a>.</p>
+    {{ if eq $count 0 }}
+      <p>No newsletters found yet.</p>
     {{ else }}
-    <h2>Coming Soon</h2>
-    <p>Our first newsletter is in progress. Subscribe to be notified when we launch.</p>
+      <p class="rss-subscribe">View more <a href="/en/newsletters/">newsletters</a>. Subscribe via <a href="/index.xml">RSS</a>.</p>
     {{ end }}
 
     {{ partial "newsletter-signup.html" . }}
