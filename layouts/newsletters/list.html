@@ -7,6 +7,8 @@
   <div class="post-content">
     {{ .Content }}
     
+    <p class="rss-subscribe">Subscribe via <a href="/en/newsletters/feed.xml">RSS</a></p>
+    
     <h2>All Newsletters</h2>
     
     {{ $newsletters := where .Site.RegularPages "Section" "newsletters" }}
