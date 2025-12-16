@@ -1,7 +1,8 @@
 <header class="site-header" role="banner">
   <div class="wrapper">
     <a class="site-title" rel="author" href="/">
-      <img src="/img/logos/compass-horiz.svg" alt="Nostr Compass">
+      <img src="/img/logos/compass-notext.svg" alt="Nostr Compass">
+      <span>Nostr Compass</span>
     </a>
 
     <nav class="site-nav">
@@ -18,10 +19,41 @@
         {{ range .Site.Menus.main }}
           <a class="page-link" href="{{ .URL }}">{{ .Name }}</a>
         {{ end }}
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+          <span class="theme-icon-dark">☀ Light</span>
+          <span class="theme-icon-light">☾ Dark</span>
+        </button>
       </div>
     </nav>
   </div>
 </header>
+
+<script>
+(function() {
+  const toggle = document.getElementById('theme-toggle');
+  const html = document.documentElement;
+  
+  // Check saved preference or default to dark
+  const saved = localStorage.getItem('theme');
+  if (saved) {
+    html.setAttribute('data-theme', saved);
+  }
+  // Default is dark (no data-theme attribute needed)
+  
+  toggle.addEventListener('click', function() {
+    const current = html.getAttribute('data-theme');
+    const next = current === 'light' ? null : 'light';
+    
+    if (next) {
+      html.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
+    } else {
+      html.removeAttribute('data-theme');
+      localStorage.setItem('theme', 'dark');
+    }
+  });
+})();
+</script>
 
 
 

@@ -12,19 +12,18 @@
     <p><a href="/en/about">Learn more about us</a>.</p>
 
     <h2>Recent Newsletters</h2>
-    <!-- debug total pages: {{ len .Site.RegularPages }} -->
     <ul class="post-list">
       {{ $count := 0 }}
       {{ range .Site.RegularPages.ByDate.Reverse }}
         {{ if and (hasPrefix .RelPermalink "/en/newsletters/") (lt $count 5) }}
           {{ $count = add $count 1 }}
           <li>
-            <span class="post-meta">{{ .Date.Format "Jan 2, 2006" }}</span>
             <h3>
               <a class="post-link" href="{{ .RelPermalink }}">{{ .Title }}</a>
             </h3>
+            <span class="post-meta">{{ .Date.Format "Jan 2, 2006" }}</span>
             {{ if .Summary }}
-              <p>{{ .Summary }}</p>
+              <p class="post-summary">{{ .Summary | truncate 600 }}</p>
             {{ end }}
           </li>
         {{ end }}

@@ -5,6 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ if not .IsHome }}{{ .Title }} | {{ end }}{{ .Site.Title }}</title>
     <meta name="description" content="{{ if .Description }}{{ .Description }}{{ else }}{{ .Site.Params.description }}{{ end }}">
+    <script>
+      // Prevent flash of wrong theme
+      (function() {
+        var theme = localStorage.getItem('theme');
+        if (theme === 'light') {
+          document.documentElement.setAttribute('data-theme', 'light');
+        }
+      })();
+    </script>
     {{ $style := resources.Get "sass/main.scss" | css.Sass | resources.Minify }}
     <link rel="stylesheet" href="{{ $style.RelPermalink }}">
     <link rel="icon" href="/favicon.ico">

@@ -1,5 +1,29 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
-  <circle cx="50" cy="50" r="45" fill="none" stroke="#6B21A8" stroke-width="3"/>
-  <polygon points="50,10 60,50 50,90 40,50" fill="#6B21A8"/>
-  <circle cx="50" cy="50" r="8" fill="#6B21A8"/>
+  <!-- Outer circle -->
+  <circle cx="50" cy="50" r="40" stroke="#888" stroke-width="1.5" fill="none"/>
+  
+  <!-- Middle circle -->
+  <circle cx="50" cy="50" r="27.5" stroke="#888" stroke-width="1.5" fill="none"/>
+  
+  <!-- Inner circle -->
+  <circle cx="50" cy="50" r="15" stroke="#888" stroke-width="1.5" fill="none"/>
+  
+  <!-- Vertical lines -->
+  <line x1="43.75" y1="3" x2="43.75" y2="97" stroke="#888" stroke-width="1.5"/>
+  <line x1="56.25" y1="3" x2="56.25" y2="97" stroke="#888" stroke-width="1.5"/>
+  
+  <!-- Horizontal lines -->
+  <line x1="3" y1="43.75" x2="97" y2="43.75" stroke="#888" stroke-width="1.5"/>
+  <line x1="3" y1="56.25" x2="97" y2="56.25" stroke="#888" stroke-width="1.5"/>
+  
+  <!-- Cardinal point circles -->
+  <circle cx="50" cy="10" r="7" stroke="#888" stroke-width="1.5" fill="none"/>
+  <circle cx="50" cy="90" r="7" stroke="#888" stroke-width="1.5" fill="none"/>
+  <circle cx="10" cy="50" r="7" stroke="#888" stroke-width="1.5" fill="none"/>
+  <circle cx="90" cy="50" r="7" stroke="#888" stroke-width="1.5" fill="none"/>
+  
+  <!-- N letter -->
+  <rect x="40" y="35" width="5" height="30" fill="#bbb"/>
+  <rect x="55" y="35" width="5" height="30" fill="#bbb"/>
+  <polygon points="41.25,35 46.25,35 58.75,65 53.75,65" fill="#bbb"/>
 </svg>

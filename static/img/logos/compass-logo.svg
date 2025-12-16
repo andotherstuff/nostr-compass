@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" fill="none">
+  <!-- Outer circle -->
+  <circle cx="200" cy="200" r="160" stroke="#4a4a4f" stroke-width="1.5" fill="none"/>
+  
+  <!-- Middle circle -->
+  <circle cx="200" cy="200" r="110" stroke="#4a4a4f" stroke-width="1.5" fill="none"/>
+  
+  <!-- Inner circle -->
+  <circle cx="200" cy="200" r="60" stroke="#4a4a4f" stroke-width="1.5" fill="none"/>
+  
+  <!-- Vertical lines -->
+  <line x1="175" y1="12" x2="175" y2="388" stroke="#4a4a4f" stroke-width="1.5"/>
+  <line x1="225" y1="12" x2="225" y2="388" stroke="#4a4a4f" stroke-width="1.5"/>
+  
+  <!-- Horizontal lines -->
+  <line x1="12" y1="175" x2="388" y2="175" stroke="#4a4a4f" stroke-width="1.5"/>
+  <line x1="12" y1="225" x2="388" y2="225" stroke="#4a4a4f" stroke-width="1.5"/>
+  
+  <!-- Cardinal point circles -->
+  <circle cx="200" cy="40" r="28" stroke="#4a4a4f" stroke-width="1.5" fill="none"/>
+  <circle cx="200" cy="360" r="28" stroke="#4a4a4f" stroke-width="1.5" fill="none"/>
+  <circle cx="40" cy="200" r="28" stroke="#4a4a4f" stroke-width="1.5" fill="none"/>
+  <circle cx="360" cy="200" r="28" stroke="#4a4a4f" stroke-width="1.5" fill="none"/>
+  
+  <!-- N letter - built from separate shapes -->
+  <!-- Left vertical bar -->
+  <rect x="160" y="140" width="20" height="120" fill="#8a8a90"/>
+  <!-- Right vertical bar -->
+  <rect x="220" y="140" width="20" height="120" fill="#8a8a90"/>
+  <!-- Diagonal from top-left to bottom-right -->
+  <polygon points="165,140 185,140 235,260 215,260" fill="#8a8a90"/>
+</svg>

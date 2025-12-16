@@ -5,12 +5,6 @@
   </header>
 
   <div class="post-content">
-    {{ .Content }}
-    
-    <p class="rss-subscribe">Subscribe via <a href="/en/newsletters/feed.xml">RSS</a></p>
-    
-    <h2>All Newsletters</h2>
-    
     {{ $newsletters := where .Site.RegularPages "Section" "newsletters" }}
     {{ $newsletters = sort $newsletters "Date" "desc" }}
     
@@ -18,16 +12,18 @@
     <ul class="post-list">
       {{ range first 10 $newsletters }}
       <li>
-        <span class="post-meta">{{ .Date.Format "Jan 2, 2006" }}</span>
         <h3>
           <a class="post-link" href="{{ .RelPermalink }}">{{ .Title }}</a>
         </h3>
+        <span class="post-meta">{{ .Date.Format "Jan 2, 2006" }}</span>
         {{ if .Summary }}
-          <p>{{ .Summary }}</p>
+          <p class="post-summary">{{ .Summary | truncate 600 }}</p>
         {{ end }}
       </li>
       {{ end }}
     </ul>
+    
+    <p class="rss-subscribe">Subscribe via <a href="/en/newsletters/feed.xml">RSS</a>.</p>
     {{ else }}
     <p>No newsletters published yet.</p>
     {{ end }}
