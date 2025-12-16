@@ -29,5 +29,6 @@ scripts/.env
 data/project_updates/*.json
 
 # Hugo generated files
-/public/
+public/
+public/**
 /resources/_gen/
