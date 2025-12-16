@@ -1,8 +1,20 @@
-# Contributors list for About page
-contributors:
-  - name: Your Name
-    role: Editor
-    bio: Brief bio
-    # photo: /img/contributors/name.jpg
-    # github: username
-    # nostr: npub...
+# Nostr Compass Contributors
+# Add contributors in this format:
+# contributors:
+#   -
+#     name: Your Name
+#     github: github_username
+#     avatar: filename.png  # place in img/team/
+#     quote: >-
+#       "Your quote about why you contribute to Nostr Compass."
+#   -
+#     name: Another Contributor
+#     other_affiliation: Role, <a href="https://example.com">Organization</a>
+#     github: username
+#     avatar: filename.jpg
+#     quote: >-
+#       "Their quote."
+
+contributors: []
+
+contributors_alum: []
