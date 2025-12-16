@@ -82,7 +82,67 @@ hr {
     border-top: 1px solid var(--border-color);
 }
 
-/* MailChimp Form Styles */
+/* Newsletter Signup (Buttondown) */
+.newsletter-signup {
+    margin: 1.5em 0;
+    
+    label {
+        display: block;
+        font-size: 0.95em;
+        font-weight: 600;
+        margin-bottom: 0.4em;
+        color: var(--text-color);
+    }
+    
+    .newsletter-form-row {
+        display: flex;
+        gap: 0.4em;
+        max-width: 400px;
+        
+        @media (max-width: 480px) {
+            flex-direction: column;
+        }
+    }
+    
+    input[type="email"] {
+        flex: 1;
+        padding: 0.4em 0.7em;
+        font-size: 0.95em;
+        border: 1px solid var(--border-color);
+        border-radius: 4px;
+        background: var(--background-color);
+        color: var(--text-color);
+        min-width: 0;
+        
+        &::placeholder {
+            color: var(--text-muted, #888);
+        }
+        
+        &:focus {
+            outline: none;
+            border-color: var(--brand-color);
+        }
+    }
+    
+    button[type="submit"] {
+        padding: 0.4em 1em;
+        font-size: 0.95em;
+        font-weight: 600;
+        background: var(--brand-color);
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.2s ease;
+        white-space: nowrap;
+        
+        &:hover {
+            background: var(--brand-color-dim);
+        }
+    }
+}
+
+/* MailChimp Form Styles (legacy) */
 #mc_embed_signup {
     clear: left;
     font: 14px Helvetica, Arial, sans-serif;
