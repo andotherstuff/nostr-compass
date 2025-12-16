@@ -4,9 +4,6 @@ on:
   push:
     branches:
       - '**'  # Run on pushes to any branch
-  pull_request:
-    branches:
-      - main  # Also test builds on PRs
   workflow_dispatch:  # Allow manual trigger from any branch
 
 permissions:
@@ -15,8 +12,7 @@ permissions:
   id-token: write
 
 concurrency:
-  # Group by commit SHA so push and pull_request for same commit cancel each other
-  group: ${{ github.workflow }}-${{ github.event.pull_request.head.sha || github.sha }}
+  group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
 defaults:
@@ -66,8 +62,8 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     needs: build
-    # Only deploy on pushes to main, not on pull requests
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    # Only deploy main to production. For branch previews, you'd need separate environments.
+    if: github.ref == 'refs/heads/main'
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
