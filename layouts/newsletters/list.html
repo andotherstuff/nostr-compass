@@ -7,10 +7,6 @@
   <div class="post-content">
     {{ .Content }}
     
-    <p class="rss-subscribe">Subscribe via <a href="/en/newsletters/feed.xml">RSS</a></p>
-    
-    <h2>All Newsletters</h2>
-    
     {{ $newsletters := where .Site.RegularPages "Section" "newsletters" }}
     {{ $newsletters = sort $newsletters "Date" "desc" }}
     
@@ -23,11 +19,13 @@
           <a class="post-link" href="{{ .RelPermalink }}">{{ .Title }}</a>
         </h3>
         {{ if .Summary }}
-          <p>{{ .Summary }}</p>
+          <p class="post-summary">{{ .Summary | truncate 200 }}</p>
         {{ end }}
       </li>
       {{ end }}
     </ul>
+    
+    <p class="rss-subscribe">Subscribe via <a href="/en/newsletters/feed.xml">RSS</a>.</p>
     {{ else }}
     <p>No newsletters published yet.</p>
     {{ end }}
