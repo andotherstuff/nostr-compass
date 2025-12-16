@@ -45,6 +45,11 @@ enableGitInfo = true
 
 [outputs]
   home = ["HTML", "RSS"]
+  section = ["HTML", "RSS"]
+
+[outputFormats]
+  [outputFormats.RSS]
+    baseName = "feed"
 
 [[menu.main]]
   name = "About"
