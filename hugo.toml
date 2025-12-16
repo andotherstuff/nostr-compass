@@ -15,14 +15,8 @@ enableGitInfo = true
   repository_name = "nostr-compass"
   author = "Nostr Compass"
   bold = "**"
-  # Mailchimp newsletter signup - get form_action URL from Mailchimp: Audience > Signup forms > Embedded forms
-  # You need ALL THREE values:
-  # 1. mailchimp_form_action = the full URL (e.g., "https://yourusername.usXX.list-manage.com/subscribe/post?u=abc123&id=xyz789")
-  # 2. mailchimp_user_id = the value after "u=" in the URL (e.g., "abc123")
-  # 3. mailchimp_list_id = the value after "id=" in the URL (e.g., "xyz789")
-  # mailchimp_form_action = "https://yourusername.usXX.list-manage.com/subscribe/post?u=USER_ID&id=LIST_ID"
-  # mailchimp_user_id = "USER_ID"
-  # mailchimp_list_id = "LIST_ID"
+  # Buttondown newsletter signup - just add your username from buttondown.email/YOUR_USERNAME
+  buttondown_username = "nostrcompass"
   
 [taxonomies]
   tag = "tags"
