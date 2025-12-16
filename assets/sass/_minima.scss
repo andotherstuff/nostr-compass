@@ -279,8 +279,26 @@ pre {
     margin-bottom: $spacing-unit;
   }
 
+  .post-meta {
+    display: block;
+    margin-bottom: 0.25em;
+  }
+
   .post-summary {
+    position: relative;
+    max-height: 4.5em;
+    overflow: hidden;
     color: $grey-color-dark;
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      left: 0;
+      height: 1.5em;
+      background: linear-gradient(transparent, $background-color);
+    }
   }
 }
 

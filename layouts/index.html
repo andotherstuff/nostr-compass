@@ -18,12 +18,12 @@
         {{ if and (hasPrefix .RelPermalink "/en/newsletters/") (lt $count 5) }}
           {{ $count = add $count 1 }}
           <li>
-            <span class="post-meta">{{ .Date.Format "Jan 2, 2006" }}</span>
             <h3>
               <a class="post-link" href="{{ .RelPermalink }}">{{ .Title }}</a>
             </h3>
+            <span class="post-meta">{{ .Date.Format "Jan 2, 2006" }}</span>
             {{ if .Summary }}
-              <p class="post-summary">{{ .Summary | truncate 200 }}</p>
+              <p class="post-summary">{{ .Summary | truncate 600 }}</p>
             {{ end }}
           </li>
         {{ end }}
