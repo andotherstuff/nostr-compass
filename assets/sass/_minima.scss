@@ -277,6 +277,10 @@ pre {
 
   > li {
     margin-bottom: $spacing-unit;
+
+    h3 {
+      margin-bottom: 0.25em;
+    }
   }
 
   .post-meta {
@@ -289,6 +293,8 @@ pre {
     max-height: 4.5em;
     overflow: hidden;
     color: $grey-color-dark;
+    margin-top: 0;
+    margin-bottom: 0;
 
     &::after {
       content: "";
