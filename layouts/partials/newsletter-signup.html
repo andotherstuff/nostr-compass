@@ -8,9 +8,13 @@
     onsubmit="window.open('https://buttondown.com/{{ .Site.Params.buttondown_username }}', 'popupwindow')"
     class="embeddable-buttondown-form"
   >
-    <label for="bd-email">Subscribe to our newsletter</label>
-    <input type="email" name="email" id="bd-email" placeholder="email address" required />
-    <input type="submit" value="Subscribe" class="button" />
+    <div class="newsletter-signup-inner">
+      <label for="bd-email">Subscribe to our newsletter</label>
+      <div class="newsletter-form-row">
+        <input type="email" name="email" id="bd-email" placeholder="Enter your email" required />
+        <button type="submit">Subscribe</button>
+      </div>
+    </div>
   </form>
 </div>
 {{ else }}
