@@ -30,5 +30,4 @@ data/project_updates/*.json
 
 # Hugo generated files
 public/
-public/**
-/resources/_gen/
+resources/_gen/

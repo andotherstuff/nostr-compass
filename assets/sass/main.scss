@@ -66,9 +66,146 @@ a.site-title {
     }
 }
 
+/* MailChimp Form Styles */
 #mc_embed_signup {
-    clear:left;
-    font:14px Helvetica,Arial,sans-serif;
+    clear: left;
+    font: 14px Helvetica, Arial, sans-serif;
+    
+    form {
+        display: block;
+        position: relative;
+        text-align: left;
+        padding: 10px 0 10px 3%;
+    }
+    
+    h2 {
+        font-weight: bold;
+        padding: 0;
+        margin: 15px 0;
+        font-size: 1.4em;
+    }
+    
+    input {
+        border: 1px solid #999;
+        -webkit-appearance: none;
+        
+        &[type=checkbox] {
+            -webkit-appearance: checkbox;
+        }
+        
+        &[type=radio] {
+            -webkit-appearance: radio;
+        }
+        
+        &:focus {
+            border-color: #333;
+        }
+    }
+    
+    .button {
+        clear: both;
+        background-color: #aaa;
+        border: 0 none;
+        border-radius: 4px;
+        letter-spacing: 0.03em;
+        color: #FFFFFF;
+        cursor: pointer;
+        display: inline-block;
+        font-size: 15px;
+        height: 32px;
+        line-height: 32px;
+        margin: 0 5px 10px 0;
+        padding: 0;
+        text-align: center;
+        text-decoration: none;
+        vertical-align: top;
+        white-space: nowrap;
+        width: auto;
+        transition: all 0.23s ease-in-out 0s;
+        
+        &:hover {
+            background-color: #777;
+        }
+    }
+    
+    .small-meta {
+        font-size: 11px;
+    }
+    
+    .nowrap {
+        white-space: nowrap;
+    }
+    
+    .clear {
+        clear: none;
+        display: inline;
+    }
+    
+    label {
+        display: block;
+        font-size: 16px;
+        padding-bottom: 10px;
+        font-weight: bold;
+        
+        &.error {
+            display: block;
+            float: none;
+            width: auto;
+            margin-left: 1.05em;
+            text-align: left;
+            padding: 0.5em 0;
+        }
+    }
+    
+    input.email {
+        font-family: "Open Sans", "Helvetica Neue", Arial, Helvetica, Verdana, sans-serif;
+        font-size: 15px;
+        display: block;
+        padding: 0 0.4em;
+        margin: 0 4% 10px 0;
+        min-height: 32px;
+        width: 58%;
+        min-width: 130px;
+        -webkit-border-radius: 3px;
+        -moz-border-radius: 3px;
+        border-radius: 3px;
+    }
+    
+    input.button {
+        display: block;
+        width: 35%;
+        margin: 0 0 10px 0;
+        min-width: 90px;
+    }
+    
+    div#mce-responses {
+        float: left;
+        top: -1.4em;
+        padding: 0em 0.5em 0em 0.5em;
+        overflow: hidden;
+        width: 90%;
+        margin: 0 5%;
+        clear: both;
+    }
+    
+    div.response {
+        margin: 1em 0;
+        padding: 1em 0.5em 0.5em 0;
+        font-weight: bold;
+        float: left;
+        top: -1.5em;
+        z-index: 1;
+        width: 80%;
+    }
+    
+    #mce-error-response {
+        display: none;
+    }
+    
+    #mce-success-response {
+        color: #529214;
+        display: none;
+    }
 }
 
 .wrapper{
