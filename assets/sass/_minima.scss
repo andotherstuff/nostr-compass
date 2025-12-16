@@ -9,7 +9,7 @@ $spacing-unit:     30px;
 
 $table-text-align: left;
 
-$content-width:    800px;
+$content-width:    900px;
 
 $on-palm:          600px;
 $on-laptop:        800px;
@@ -153,8 +153,7 @@ pre {
 }
 
 .wrapper {
-  max-width: -webkit-calc(#{$content-width} - (#{$spacing-unit} * 2));
-  max-width:         calc(#{$content-width} - (#{$spacing-unit} * 2));
+  max-width: $content-width;
   margin-right: auto;
   margin-left: auto;
   padding-right: $spacing-unit;
@@ -233,13 +232,14 @@ pre {
   }
 
   .theme-toggle {
-    background: none;
+    background: var(--background-secondary);
     border: 1px solid var(--border-color);
     border-radius: 6px;
-    padding: 0.4em 0.6em;
+    padding: 0.4em 0.8em;
     cursor: pointer;
-    color: var(--text-muted);
-    font-size: 14px;
+    color: var(--text-color);
+    font-size: 13px;
+    font-weight: 500;
     transition: all 0.2s ease;
 
     &:hover {
@@ -401,5 +401,11 @@ pre {
 
   h4 {
     font-size: 20px;
+  }
+
+  ul,
+  ol {
+    margin-left: 0;
+    padding-left: 1.5em;
   }
 }
