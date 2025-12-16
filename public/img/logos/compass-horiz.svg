@@ -1,6 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 60" width="300" height="60">
-  <circle cx="30" cy="30" r="25" fill="none" stroke="#6B21A8" stroke-width="2"/>
-  <polygon points="30,8 37,30 30,52 23,30" fill="#6B21A8"/>
-  <circle cx="30" cy="30" r="5" fill="#6B21A8"/>
-  <text x="70" y="38" font-family="system-ui, -apple-system, sans-serif" font-size="24" font-weight="600" fill="#1F2937">Nostr Compass</text>
-</svg>

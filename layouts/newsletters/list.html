@@ -1,0 +1,35 @@
+{{ define "main" }}
+<article class="post">
+  <header class="post-header">
+    <h1 class="post-title">{{ .Title }}</h1>
+  </header>
+
+  <div class="post-content">
+    {{ .Content }}
+    
+    <h2>All Newsletters</h2>
+    
+    {{ $newsletters := where .Site.RegularPages "Section" "newsletters" }}
+    {{ $newsletters = sort $newsletters "Date" "desc" }}
+    
+    {{ if gt (len $newsletters) 0 }}
+    <ul class="post-list">
+      {{ range first 10 $newsletters }}
+      <li>
+        <span class="post-meta">{{ .Date.Format "Jan 2, 2006" }}</span>
+        <h3>
+          <a class="post-link" href="{{ .RelPermalink }}">{{ .Title }}</a>
+        </h3>
+        {{ if .Summary }}
+          <p>{{ .Summary }}</p>
+        {{ end }}
+      </li>
+      {{ end }}
+    </ul>
+    {{ else }}
+    <p>No newsletters published yet.</p>
+    {{ end }}
+  </div>
+</article>
+{{ end }}
+

@@ -1,6 +1,8 @@
 baseURL = "https://nostrcompass.org"
 languageCode = "en-us"
 title = "Nostr Compass"
+defaultContentLanguage = "en"
+defaultContentLanguageInSubdir = true
 
 # From Jekyll _config.yml
 enableRobotsTXT = true
@@ -26,6 +28,12 @@ enableGitInfo = true
 
 [permalinks]
   posts = "/:year/:month/:title/"
+
+[languages]
+  [languages.en]
+    languageName = "English"
+    weight = 1
+    contentDir = "content/en"
 
 [outputs]
   home = ["HTML", "RSS"]
