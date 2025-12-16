@@ -40,8 +40,10 @@ Recent changes to the [NIPs repository](https://github.com/nostr-protocol/nips):
 
 **New NIPs:**
 - **NIP-BE** - Bluetooth Low Energy messaging and device synchronization ([#1979](https://github.com/nostr-protocol/nips/pull/1979))
+- **NIP-63** - Paywall/Premium Content standard for handling gated content within the protocol ([#2156](https://github.com/nostr-protocol/nips/pull/2156))
 
 **Significant Changes:**
+- **NIP-24** - Added optional `languages` array to Kind 0 user metadata, allowing users to specify multiple preferred languages using IETF BCP 47 tags for improved content discovery and relay matching ([#2159](https://github.com/nostr-protocol/nips/pull/2159))
 - **NIP-69** - Added order expiration support for P2P trading with `expires_at` and `expiration` tags ([#2118](https://github.com/nostr-protocol/nips/pull/2118))
 - **NIP-59** - Gift wrap events can now be deleted via NIP-09/NIP-62 requests ([#2131](https://github.com/nostr-protocol/nips/pull/2131))
 - **NIP-51** - Removed hashtag and URL tags from generic bookmarks; hashtags now use kind 30015 ([#2133](https://github.com/nostr-protocol/nips/pull/2133))
@@ -136,11 +138,11 @@ These solve a key problem: if someone shares a note ID, how do you know which re
 
 ## Releases
 
-**Amber v4.0.3** - The Android signer app received a significant update with revamped encryption/decryption UI that better distinguishes between plain text, events, and tag arrays. Also added account export/import, per-account relay handling, bunker ping support, and crash reporting. [Release](https://github.com/greenart7c3/amber/releases/tag/v4.0.3)
+**Amber v4.0.4** - The Android signer app fixes a NullPointerException, improves performance on the activity screen, and adds translations for some event kinds. The previous v4.0.3 release added revamped encryption/decryption UI, account export/import, per-account relay handling, bunker ping support, and crash reporting. [Release](https://github.com/greenart7c3/Amber/releases/tag/v4.0.4)
 
 **Coracle 0.6.28** - Bug fix release for the web client. Fixed topic feeds, image handling when imgproxy is disabled, and linkification of non-link highlight sources. [Release](https://github.com/coracle-social/coracle/releases/tag/0.6.28)
 
-**Flotilla v1.3.0** - The Discord-like communities client added optional badges and sounds for notifications, improved link rendering, QR code scanning for invite links, and streamlined wallet setup. Also restored Blossom feature detection for spaces, enhanced light theme, and fixed duplicate DMs. [Release](https://github.com/coracle-social/flotilla/releases/tag/1.3.0)
+**Flotilla v1.6.2** - The Discord-like communities client fixes modal scrolling and style issues. Earlier releases in this cycle added optional badges and sounds for notifications, improved link rendering, QR code scanning for invite links, and streamlined wallet setup. [Release](https://github.com/coracle-social/flotilla/releases/tag/1.6.2)
 
 **nak v0.17.2** - The command-line Nostr tool added a new `nip` command for quick NIP reference lookup, plus fixes for git repository handling and stdin event processing. [Release](https://github.com/fiatjaf/nak/releases/tag/v0.17.2)
 
@@ -149,6 +151,12 @@ These solve a key problem: if someone shares a note ID, how do you know which re
 **Amethyst v1.04.2** - Feature release introducing follow lists/packs, new timeline filters, image gallery, and H.265 video compression (50% smaller files). Completed Kotlin Multiplatform migration. [Release](https://github.com/vitorpamplona/amethyst/releases/tag/v1.04.2)
 
 **Mostro v0.15.5** - P2P trading bot update with NIP-69 order expiration support and improved trade history responses. [Release](https://github.com/MostroP2P/mostro/releases/tag/v0.15.5)
+
+**Nosflare v8.9.26** - Serverless Nostr relay built on Cloudflare infrastructure. This release delivers a critical hotfix addressing a bug that could cause websocket failures, ensuring more stable connections for users and applications relying on the relay. [Release](https://github.com/Spl0itable/nosflare/releases/tag/v8.9.26)
+
+**Noscall v0.4.1** - Nostr-based secure audio and video calling app. This release improves the pop-up UI on the Me page and fixes several known issues, resulting in better stability and call reliability. [Release](https://github.com/sanah9/noscall/releases/tag/v0.4.1-release)
+
+**Gitplaza v0.25.0** - Desktop Nostr client focused on Git-related activity. This release introduces an advanced kind filter for the inbox feed, includes regular zaps in filters, and simplifies tab text formatting. Performance improvements optimize comment tree loading, reduce unnecessary database queries, and use cached comment branches for faster display. [Release](https://codeberg.org/dluvian/gitplaza/releases/tag/v0.25.0)
 
 ## Client Development
 
