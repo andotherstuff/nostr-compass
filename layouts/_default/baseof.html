@@ -6,7 +6,7 @@
     <title>{{ if not .IsHome }}{{ .Title }} | {{ end }}{{ .Site.Title }}</title>
     <meta name="description" content="{{ if .Description }}{{ .Description }}{{ else }}{{ .Site.Params.description }}{{ end }}">
     {{ $style := resources.Get "sass/main.scss" | css.Sass | resources.Minify }}
-    <link rel="stylesheet" href="{{ $style.Permalink }}">
+    <link rel="stylesheet" href="{{ $style.RelPermalink }}">
     <link rel="icon" href="/favicon.ico">
     {{ block "head" . }}{{ end }}
 </head>
