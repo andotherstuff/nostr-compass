@@ -9,4 +9,4 @@ sources (NIPs, code repositories) and our newsletter coverage.
 
 _Topic index coming soon. We're building out documentation of key Nostr concepts, NIPs, and implementations._
 
-Want to suggest a topic? Open an issue on our [GitHub repository](https://github.com/nostrcompass/nostr-compass).
+Want to suggest a topic? Open an issue on our [GitHub repository](https://github.com/andotherstuff/nostr-compass).
