@@ -294,3 +294,17 @@ hr {
 .site-nav .page-link:not(:last-child) {
   margin-right: 10px;
 }
+
+/* Logo theme support - SVG is optimized for dark mode, darken for light mode */
+.site-title img,
+.home .content > .logo img {
+  transition: filter 0.2s ease;
+}
+
+// Light mode: darken the logo for better visibility
+[data-theme="light"] {
+  .site-title img,
+  .home .content > .logo img {
+    filter: brightness(0.2) contrast(1.2);
+  }
+}
