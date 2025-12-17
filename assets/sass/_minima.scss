@@ -25,6 +25,7 @@ $on-laptop:        800px;
   --brand-color: #a890e0;
   --brand-color-bright: #c0aef0;
   --brand-color-dim: #8a72c8;
+  --logo-color: #ffffff;
 }
 
 [data-theme="light"] {
@@ -37,6 +38,7 @@ $on-laptop:        800px;
   --brand-color: #7c3aed;
   --brand-color-bright: #8b5cf6;
   --brand-color-dim: #6d28d9;
+  --logo-color: #111111;
 }
 
 // Legacy SCSS variables (for calc compatibility)
@@ -196,10 +198,6 @@ pre {
     color: var(--brand-color-bright);
   }
 
-  img {
-    height: 36px;
-    width: 36px;
-  }
 }
 
 .site-nav {

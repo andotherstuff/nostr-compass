@@ -16,7 +16,8 @@
     </script>
     {{ $style := resources.Get "sass/main.scss" | css.Sass | resources.Minify }}
     <link rel="stylesheet" href="{{ $style.RelPermalink }}">
-    <link rel="icon" href="/favicon.ico">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="icon" type="image/png" href="/favicon.ico">
     {{ block "head" . }}{{ end }}
 </head>
 <body>
