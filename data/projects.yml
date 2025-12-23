@@ -976,7 +976,7 @@ other:
 
   - name: TENEX
     description: Autonomous learning through distributed Nostr cognition
-    repo: https://github.com/pablof7z/tenex
+    repo: https://github.com/tenex-chat/tenex
     status: beta
     priority: low
     notes: SEC-04 project, AI learning on Nostr
