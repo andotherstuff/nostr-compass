@@ -130,13 +130,15 @@ Sort results by `created_at` and use `reply` markers to build the tree structure
 
 ## Notable code and documentation changes
 
+*These are open pull requests and early-stage work, perfect for getting feedback before they merge. If something catches your eye, consider reviewing or commenting!*
+
 ### Damus (iOS)
 
 [Mute list persistence](https://github.com/damus-io/damus/pull/3469) fixes an issue where mute lists were wiped on cold start. The fix adds guards to prevent accidental overwrites during app initialization. [Profile stream timing](https://github.com/damus-io/damus/pull/3457) eliminates a ~1 second delay before cached profiles appeared. Previously, views waited for subscription tasks to restart; now `streamProfile()` immediately yields cached data from NostrDB, removing the window where abbreviated pubkeys and placeholder images showed.
 
 ### White Noise (Encrypted Messaging)
 
-[Real-time message streaming](https://github.com/marmot-protocol/whitenoise/pull/919) replaces the previous polling mechanism with a stream-based architecture. The new `ChatStreamNotifier` consumes the Rust SDK's message stream directly, maintaining chronological order and handling incremental updates efficiently. Testing showed "100% improvement" in responsiveness. A [chat list API](https://github.com/marmot-protocol/whitenoise/pull/921) adds `get_chat_list` for retrieving conversation summaries, and a [stable sort fix](https://github.com/marmot-protocol/whitenoise/pull/905) prevents message reordering loops by using `createdAt` with message ID as tiebreaker.
+[Real-time message streaming](https://github.com/marmot-protocol/whitenoise/pull/919) replaces the previous polling mechanism with a stream-based architecture. The new `ChatStreamNotifier` consumes the Rust SDK's message stream directly, maintaining chronological order and handling incremental updates efficiently. Testing showed significant improvement in responsiveness. A [chat list API](https://github.com/marmot-protocol/whitenoise/pull/921) adds `get_chat_list` for retrieving conversation summaries, and a [stable sort fix](https://github.com/marmot-protocol/whitenoise/pull/905) prevents message reordering loops by using `createdAt` with message ID as tiebreaker.
 
 ### NDK (Library)
 
@@ -152,7 +154,7 @@ The TypeScript library powering [noStrudel](https://github.com/hzrd149/nostrudel
 
 ### Tenex (AI Agents)
 
-The [multi-agent coordination system](https://github.com/pablof7z/tenex) built on Nostr introduced RAL (Request-Action-Lifecycle) architecture in [five merged PRs](https://github.com/pablof7z/tenex/pull/38). RAL enables agents to pause when delegating tasks and resume when results arrive, with conversation-scoped state persistence. Delegation tools (`delegate`, `ask`, `delegate_followup`, `delegate_external`) now publish Nostr events and return stop signals instead of blocking. The refactor includes AI SDK v6 migration, VCR testing infrastructure for deterministic LLM interaction recording, and multimodal image support.
+The [multi-agent coordination system](https://github.com/tenex-chat/tenex) built on Nostr introduced RAL (Request-Action-Lifecycle) architecture in [five merged PRs](https://github.com/pablof7z/tenex/pull/38). RAL enables agents to pause when delegating tasks and resume when results arrive, with conversation-scoped state persistence. Delegation tools (`delegate`, `ask`, `delegate_followup`, `delegate_external`) now publish Nostr events and return stop signals instead of blocking. The refactor includes AI SDK v6 migration, VCR testing infrastructure for deterministic LLM interaction recording, and multimodal image support.
 
 ---
 
