@@ -24,7 +24,7 @@ Nostr (Notes and Other Stuff Transmitted by Relays) is a decentralized protocol 
 
 **The ecosystem today:** Nostr supports microblogging (like Twitter/X), long-form content (like Medium), direct messages, marketplaces, livestreaming, and more. Clients include Damus (iOS), Amethyst (Android), Primal, Coracle, and dozens of others. Lightning Network integration enables instant payments through "zaps." The protocol continues to evolve through NIPs (Nostr Implementation Possibilities), community-driven specifications that extend functionality.
 
-## News & Updates
+## News
 
 **NIP-BE Merged: Bluetooth Low Energy Support** - A significant new capability landed in the protocol. [NIP-BE](https://github.com/nostr-protocol/nips/blob/master/BE.md) specifies how Nostr applications can communicate and synchronize over Bluetooth Low Energy. This enables offline-capable apps to sync data across nearby devices without internet connectivity. The spec adapts WebSocket relay patterns to BLE's constraints, using DEFLATE compression and chunked messaging to handle BLE's small MTU sizes (20-256 bytes). Devices negotiate roles based on UUID comparison, with the higher UUID becoming the GATT server.
 
@@ -80,12 +80,16 @@ Kind 0 is user metadata (profile), kind 1 is a text note (the basic post), kind 
 
 ```json
 {
+  "id": "<32-byte-hex>",
+  "pubkey": "<32-byte-hex>",
+  "created_at": 1734480000,
   "kind": 1,
   "content": "Hello Nostr! Check out @jb55's work on Damus.",
   "tags": [
     ["e", "<replied-to-event-id>", "wss://relay.example.com", "reply"],
     ["p", "<jb55-pubkey>"]
-  ]
+  ],
+  "sig": "<64-byte-hex>"
 }
 ```
 
@@ -146,7 +150,7 @@ These solve a key problem: if someone shares a note ID, how do you know which re
 
 **nak v0.17.2** - The command-line Nostr tool added a new `nip` command for quick NIP reference lookup, plus fixes for git repository handling and stdin event processing. [Release](https://github.com/fiatjaf/nak/releases/tag/v0.17.2)
 
-**WhiteNoise v0.2.1** - Major release for the MLS-based encrypted messaging app adding image sharing via Blossom, background sync, push notifications, 8-language localization, and group member management. [Release](https://github.com/marmot-protocol/whitenoise/releases/tag/v0.2.1%2B14)
+**White Noise v0.2.1** - Major release for the MLS-based encrypted messaging app adding image sharing via Blossom, background sync, push notifications, 8-language localization, and group member management. [Release](https://github.com/marmot-protocol/whitenoise/releases/tag/v0.2.1%2B14)
 
 **Amethyst v1.04.2** - Feature release introducing follow lists/packs, new timeline filters, image gallery, and H.265 video compression (50% smaller files). Completed Kotlin Multiplatform migration. [Release](https://github.com/vitorpamplona/amethyst/releases/tag/v1.04.2)
 
@@ -158,7 +162,7 @@ These solve a key problem: if someone shares a note ID, how do you know which re
 
 **Gitplaza v0.25.0** - Desktop Nostr client focused on Git-related activity. This release introduces an advanced kind filter for the inbox feed, includes regular zaps in filters, and simplifies tab text formatting. Performance improvements optimize comment tree loading, reduce unnecessary database queries, and use cached comment branches for faster display. [Release](https://codeberg.org/dluvian/gitplaza/releases/tag/v0.25.0)
 
-## Client Development
+## Notable code and documentation changes
 
 ### Damus (iOS)
 
@@ -176,7 +180,7 @@ Stability focus with crash and UI fixes: [cursor jumping fix](https://github.com
 
 [Nostr Connect deep links](https://github.com/PrimalHQ/primal-android-app/pull/788) for `nostrconnect://` URLs. [Remote login](https://github.com/PrimalHQ/primal-android-app/pull/787) via QR scan for bunker connections. [Connection race condition fix](https://github.com/PrimalHQ/primal-android-app/pull/783).
 
-### WhiteNoise (Encrypted Messaging)
+### White Noise (Encrypted Messaging)
 
 [App data retention fix](https://github.com/marmot-protocol/whitenoise/pull/890) disables Android auto-backup for privacy. [Chat scroll behavior](https://github.com/marmot-protocol/whitenoise/pull/861) preserves position when reading history.
 
