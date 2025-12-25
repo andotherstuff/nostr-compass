@@ -305,3 +305,31 @@ hr {
   height: 44px;
   width: 44px;
 }
+
+/* Topics index */
+.topics-nav {
+  margin: 1em 0;
+  font-size: 0.95em;
+
+  a {
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.topic-list {
+  list-style: none;
+  margin-left: 0;
+  padding-left: 0;
+
+  li {
+    margin-bottom: 0.3em;
+
+    em {
+      color: var(--text-muted, #666);
+    }
+  }
+}

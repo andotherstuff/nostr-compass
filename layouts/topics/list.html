@@ -1,0 +1,57 @@
+{{ define "main" }}
+<article class="post">
+  <header class="post-header">
+    <h1 class="post-title">{{ .Title }}</h1>
+  </header>
+
+  <div class="post-content">
+    {{ .Content }}
+
+    {{ $topics := where .Site.RegularPages "Section" "topics" }}
+    {{ $topics = sort $topics "Title" "asc" }}
+
+    {{ if gt (len $topics) 0 }}
+
+    <!-- Alphabetical quick navigation -->
+    <p class="topics-nav">
+      {{ $letters := slice }}
+      {{ range $topics }}
+        {{ $firstLetter := upper (substr .Title 0 1) }}
+        {{ if not (in $letters $firstLetter) }}
+          {{ $letters = $letters | append $firstLetter }}
+        {{ end }}
+      {{ end }}
+      {{ range $letters }}
+        <a href="#{{ . }}">{{ . }}</a>{{ if ne . (index $letters (sub (len $letters) 1)) }} | {{ end }}
+      {{ end }}
+    </p>
+
+    <p><em>{{ len $topics }} topics documented.</em></p>
+
+    <!-- Group topics by first letter -->
+    {{ $currentLetter := "" }}
+    {{ range $topics }}
+      {{ $firstLetter := upper (substr .Title 0 1) }}
+      {{ if ne $firstLetter $currentLetter }}
+        {{ if ne $currentLetter "" }}</ul>{{ end }}
+        <h2 id="{{ $firstLetter }}">{{ $firstLetter }}</h2>
+        <ul class="topic-list">
+        {{ $currentLetter = $firstLetter }}
+      {{ end }}
+      <li>
+        <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+        {{ with .Params.aliases }}
+          {{ range . }}
+            — <em><a href="{{ $.RelPermalink }}">{{ . }}</a></em>
+          {{ end }}
+        {{ end }}
+      </li>
+    {{ end }}
+    {{ if gt (len $topics) 0 }}</ul>{{ end }}
+
+    {{ else }}
+    <p>No topics documented yet.</p>
+    {{ end }}
+  </div>
+</article>
+{{ end }}

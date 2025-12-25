@@ -9,16 +9,6 @@ categories:
 
 NIP-19 defines human-friendly formats for sharing Nostr identifiers. These bech32-encoded strings are used for display and sharing but are never used in the protocol itself (which uses hex).
 
-**Primary sources:**
-- [NIP-19 Specification](https://github.com/nostr-protocol/nips/blob/master/19.md)
-
-**Mentioned in:**
-- [Newsletter #1: NIP Deep Dive](/en/newsletters/2025-12-17-newsletter/#nip-19-bech32-encoded-identifiers)
-
-**See also:**
-- [NIP-01 (Basic Protocol)](/en/topics/nip-01/)
-- [NIP-21 (nostr: URI scheme)](https://github.com/nostr-protocol/nips/blob/master/21.md)
-
 ## Why Bech32?
 
 Raw hex keys are error-prone to copy and visually indistinguishable. Bech32 encoding adds a human-readable prefix and checksum, making it immediately clear what type of data you're looking at.
@@ -50,3 +40,14 @@ These solve the discovery problem: when someone shares a note ID, how do clients
 - All protocol communication must use hex encoding
 - When generating nevent/nprofile/naddr, include relay hints for better discoverability
 
+---
+
+**Primary sources:**
+- [NIP-19 Specification](https://github.com/nostr-protocol/nips/blob/master/19.md)
+
+**Mentioned in:**
+- [Newsletter #1: NIP Deep Dive](/en/newsletters/2025-12-17-newsletter/#nip-19-bech32-encoded-identifiers)
+
+**See also:**
+- [NIP-01: Basic Protocol](/en/topics/nip-01/)
+- [NIP-21: nostr: URI Scheme](https://github.com/nostr-protocol/nips/blob/master/21.md)

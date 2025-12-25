@@ -56,5 +56,5 @@ in contributing translations:
 
 ## Questions
 
-For questions about contributing, contact us at
-[info@nostrcompass.org](mailto:info@nostrcompass.org).
+For questions about contributing, reach out via NIP-17 DM to
+`npub1wav4fae3gyfy3xj298kxj2mj8phavz7vavps34przq02j7w902qq902923`.

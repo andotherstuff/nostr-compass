@@ -26,38 +26,38 @@ Nostr (Notes and Other Stuff Transmitted by Relays) is a decentralized protocol 
 
 ## News
 
-**NIP-BE Merged: Bluetooth Low Energy Support** - A significant new capability landed in the protocol. [NIP-BE](https://github.com/nostr-protocol/nips/blob/master/BE.md) specifies how Nostr applications can communicate and synchronize over Bluetooth Low Energy. This enables offline-capable apps to sync data across nearby devices without internet connectivity. The spec adapts WebSocket relay patterns to BLE's constraints, using DEFLATE compression and chunked messaging to handle BLE's small MTU sizes (20-256 bytes). Devices negotiate roles based on UUID comparison, with the higher UUID becoming the GATT server.
+**NIP-BE Merged: Bluetooth Low Energy Support** - A significant new capability [landed in the protocol](https://github.com/nostr-protocol/nips/pull/1979). [NIP-BE](/en/topics/nip-be/) specifies how Nostr applications can communicate and synchronize over Bluetooth Low Energy. This enables offline-capable apps to sync data across nearby devices without internet connectivity. The spec adapts WebSocket relay patterns to BLE's constraints, using DEFLATE compression and chunked messaging to handle BLE's small MTU sizes (20-256 bytes). Devices negotiate roles based on UUID comparison, with the higher UUID becoming the GATT server.
 
-**MIP-05: Privacy-Preserving Push Notifications** - The Marmot Protocol published [MIP-05](https://github.com/marmot-protocol/marmot/pull/18), a specification for push notifications that maintain privacy. Traditional push systems require servers to know device tokens and user identities; MIP-05 solves this by encrypting device tokens with ECDH+HKDF and ChaCha20-Poly1305, using ephemeral keys to prevent correlation. A three-event gossip protocol (kinds 447-449) synchronizes encrypted tokens across group members, and notifications use NIP-59 gift wrapping with decoy tokens to hide group sizes. This enables WhiteNoise and other Marmot clients to deliver timely notifications without compromising user privacy.
+**MIP-05: Privacy-Preserving Push Notifications** - The [Marmot Protocol](/en/topics/marmot/) published [MIP-05](/en/topics/mip-05/) ([spec](https://github.com/marmot-protocol/mips/blob/main/mip-05.md)), a specification for push notifications that maintain privacy. Traditional push systems require servers to know device tokens and user identities; MIP-05 solves this by encrypting device tokens with ECDH+HKDF and ChaCha20-Poly1305, using ephemeral keys to prevent correlation. A three-event gossip protocol (kinds 447-449) synchronizes encrypted tokens across group members, and notifications use [NIP-59](/en/topics/nip-59/) gift wrapping with decoy tokens to hide group sizes. This enables WhiteNoise and other Marmot clients to deliver timely notifications without compromising user privacy.
 
-**Blossom BUD-10: New URI Scheme** - The Blossom media protocol is getting a custom URI scheme via [PR #84](https://github.com/hzrd149/blossom/pull/84). The new `blossom:<sha256>.ext` format embeds file hash, extension, size, multiple server hints, and author pubkeys for BUD-03 server discovery. This makes blob links more resilient than static HTTP URLs by enabling automatic fallback across servers.
+**Blossom BUD-10: New URI Scheme** - The [Blossom](/en/topics/blossom/) media protocol is getting a custom URI scheme via [BUD-10](/en/topics/bud-10/) ([spec](https://github.com/hzrd149/blossom/blob/master/buds/10.md)). The new `blossom:<sha256>.ext` format embeds file hash, extension, size, multiple server hints, and author pubkeys for [BUD-03](/en/topics/bud-03/) server discovery. This makes blob links more resilient than static HTTP URLs by enabling automatic fallback across servers.
 
-**Shopstr Marketplace Updates** - The Nostr-native marketplace [implemented Nostr Wallet Connect](https://github.com/shopstr-eng/shopstr/pull/202) (NIP-47) for payments, [added listing expiration](https://github.com/shopstr-eng/shopstr/pull/203) using NIP-40, and introduced [discount codes](https://github.com/shopstr-eng/shopstr/pull/210) for sellers.
+**Shopstr Marketplace Updates** - The Nostr-native marketplace [implemented Nostr Wallet Connect](https://github.com/shopstr-eng/shopstr/pull/202) ([NIP-47](/en/topics/nip-47/)) for payments, [added listing expiration](https://github.com/shopstr-eng/shopstr/pull/203) using [NIP-40](/en/topics/nip-40/), and introduced [discount codes](https://github.com/shopstr-eng/shopstr/pull/210) for sellers.
 
 ## NIP Updates
 
 Recent changes to the [NIPs repository](https://github.com/nostr-protocol/nips):
 
 **New NIPs:**
-- **NIP-BE** - Bluetooth Low Energy messaging and device synchronization ([#1979](https://github.com/nostr-protocol/nips/pull/1979))
-- **NIP-63** - Paywall/Premium Content standard for handling gated content within the protocol ([#2156](https://github.com/nostr-protocol/nips/pull/2156))
+- **[NIP-BE](/en/topics/nip-be/)** - Bluetooth Low Energy messaging and device synchronization ([#1979](https://github.com/nostr-protocol/nips/pull/1979))
+- **[NIP-63](/en/topics/nip-63/)** - Paywall/Premium Content standard for handling gated content within the protocol ([#2156](https://github.com/nostr-protocol/nips/pull/2156))
 
 **Significant Changes:**
-- **NIP-24** - Added optional `languages` array to Kind 0 user metadata, allowing users to specify multiple preferred languages using IETF BCP 47 tags for improved content discovery and relay matching ([#2159](https://github.com/nostr-protocol/nips/pull/2159))
-- **NIP-69** - Added order expiration support for P2P trading with `expires_at` and `expiration` tags ([#2118](https://github.com/nostr-protocol/nips/pull/2118))
-- **NIP-59** - Gift wrap events can now be deleted via NIP-09/NIP-62 requests ([#2131](https://github.com/nostr-protocol/nips/pull/2131))
-- **NIP-51** - Removed hashtag and URL tags from generic bookmarks; hashtags now use kind 30015 ([#2133](https://github.com/nostr-protocol/nips/pull/2133))
-- **NIP-18** - Improved generic reposts for replaceable events with `a` tag support ([#2132](https://github.com/nostr-protocol/nips/pull/2132))
-- **NIP-17** - Refined wording and added kind 7 reaction support to DMs ([#2098](https://github.com/nostr-protocol/nips/pull/2098))
-- **NIP-11** - Added `self` field for relay public key identification ([#1764](https://github.com/nostr-protocol/nips/pull/1764))
+- **[NIP-24](/en/topics/nip-24/)** - Added optional `languages` array to Kind 0 user metadata, allowing users to specify multiple preferred languages using IETF BCP 47 tags for improved content discovery and relay matching ([#2159](https://github.com/nostr-protocol/nips/pull/2159))
+- **[NIP-69](/en/topics/nip-69/)** - Added order expiration support for P2P trading with `expires_at` and `expiration` tags ([#2118](https://github.com/nostr-protocol/nips/pull/2118))
+- **[NIP-59](/en/topics/nip-59/)** - Gift wrap events can now be deleted via NIP-09/NIP-62 requests ([#2131](https://github.com/nostr-protocol/nips/pull/2131))
+- **[NIP-51](/en/topics/nip-51/)** - Removed hashtag and URL tags from generic bookmarks; hashtags now use kind 30015 ([#2133](https://github.com/nostr-protocol/nips/pull/2133))
+- **[NIP-18](/en/topics/nip-18/)** - Improved generic reposts for replaceable events with `a` tag support ([#2132](https://github.com/nostr-protocol/nips/pull/2132))
+- **[NIP-17](/en/topics/nip-17/)** - Refined wording and added kind 7 reaction support to DMs ([#2098](https://github.com/nostr-protocol/nips/pull/2098))
+- **[NIP-11](/en/topics/nip-11/)** - Added `self` field for relay public key identification ([#1764](https://github.com/nostr-protocol/nips/pull/1764))
 
 ## NIP Deep Dive: NIP-01 and NIP-19
 
-For this inaugural issue, we cover two foundational NIPs that every Nostr developer should understand.
+For this inaugural issue, we cover two foundational NIPs that every Nostr developer should understand. See our topic pages for [NIP-01](/en/topics/nip-01/) and [NIP-19](/en/topics/nip-19/).
 
 ### NIP-01: Basic Protocol
 
-[NIP-01](https://github.com/nostr-protocol/nips/blob/master/01.md) defines the core protocol. Everything in Nostr builds on this specification.
+[NIP-01](/en/topics/nip-01/) defines the core protocol. Everything in Nostr builds on this specification.
 
 **Events** are the only object type. Each event contains:
 - `id`: SHA256 hash of the serialized event (the event's unique identifier)
@@ -93,7 +93,7 @@ Kind 0 is user metadata (profile), kind 1 is a text note (the basic post), kind 
 }
 ```
 
-The `e` tag with "reply" marker indicates this is a reply (see NIP-10 for threading conventions). The `p` tag mentions a user, enabling clients to notify them and render their name instead of the raw pubkey. Clients fetch the mentioned user's kind 0 event to get their display name and picture.
+The `e` tag with "reply" marker indicates this is a reply (see [NIP-10](/en/topics/nip-10/) for threading conventions). The `p` tag mentions a user, enabling clients to notify them and render their name instead of the raw pubkey. Clients fetch the mentioned user's kind 0 event to get their display name and picture.
 
 To build a timeline, a client subscribes to kind 1 events from followed pubkeys: `["REQ", "feed", {"kinds": [1], "authors": ["<pubkey1>", "<pubkey2>", ...], "limit": 50}]`. The relay returns matching notes, and the client renders them chronologically.
 
@@ -120,7 +120,7 @@ The subscription flow: client sends `REQ` with a subscription ID and filter, rel
 
 ### NIP-19: Bech32-Encoded Identifiers
 
-[NIP-19](https://github.com/nostr-protocol/nips/blob/master/19.md) defines the human-friendly formats you see everywhere in Nostr: npub, nsec, note, and more. These aren't used in the protocol itself (which uses hex), but they're essential for sharing and display.
+[NIP-19](/en/topics/nip-19/) defines the human-friendly formats you see everywhere in Nostr: npub, nsec, note, and more. These aren't used in the protocol itself (which uses hex), but they're essential for sharing and display.
 
 **Why bech32?** Raw hex keys are error-prone to copy and hard to distinguish visually. Bech32 encoding adds a human-readable prefix and checksum. You can immediately tell an `npub` (public key) from an `nsec` (private key) or `note` (event ID).
 
@@ -174,7 +174,7 @@ Stability focus with crash and UI fixes: [cursor jumping fix](https://github.com
 
 ### Amethyst (Android)
 
-[NIP-46 remote signing](https://github.com/vitorpamplona/amethyst/pull/1555) support for Nostr Connect. [Bookmark organization](https://github.com/vitorpamplona/amethyst/pull/1586) with public/private list management. [strfry compatibility](https://github.com/vitorpamplona/amethyst/pull/1596) fix for relay info parsing edge cases.
+[[NIP-46](/en/topics/nip-46/) remote signing](https://github.com/vitorpamplona/amethyst/pull/1555) support for Nostr Connect. [Bookmark organization](https://github.com/vitorpamplona/amethyst/pull/1586) with public/private list management. [strfry compatibility](https://github.com/vitorpamplona/amethyst/pull/1596) fix for relay info parsing edge cases.
 
 ### Primal (Android)
 
@@ -186,7 +186,7 @@ Stability focus with crash and UI fixes: [cursor jumping fix](https://github.com
 
 ### Zeus (Lightning Wallet)
 
-[NWC parallel payments](https://github.com/ZeusLN/zeus/pull/3407) for improved batch zap throughput.
+[[NIP-47](/en/topics/nip-47/) parallel payments](https://github.com/ZeusLN/zeus/pull/3407) for improved batch zap throughput.
 
 ## Developer Best Practices
 
@@ -200,5 +200,5 @@ Stability focus with crash and UI fixes: [cursor jumping fix](https://github.com
 
 ---
 
-That's it for this week. Building something? Have news to share? Want us to cover your project? Reach out at [info@nostrcompass.org](mailto:info@nostrcompass.org) or find us on Nostr.
+That's it for this week. Building something? Have news to share? Want us to cover your project? <a href="nostr:npub1wav4fae3gyfy3xj298kxj2mj8phavz7vavps34przq02j7w902qq902923">Reach out via NIP-17 DM</a> or find us on Nostr.
 

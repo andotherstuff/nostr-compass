@@ -18,7 +18,7 @@ sources and our coverage.
 [topics]: /en/topics/
 
 If you're building on Nostr and would like to contribute or appear on the
-podcast, contact us at [info@nostrcompass.org](mailto:info@nostrcompass.org).
+podcast, <a href="nostr:npub1wav4fae3gyfy3xj298kxj2mj8phavz7vavps34przq02j7w902qq902923">reach out via NIP-17 DM</a>.
 
 ## Funding
 
@@ -26,7 +26,9 @@ Nostr Compass does not exist to make a profit, and all materials and
 documentation produced are released under the MIT license.
 
 We appreciate donations and support in any form. If you'd like to help
-sustain this project, please get in touch.
+sustain this project, you can donate via Lightning:
+
+<a href="lightning:nostrcompass@npub.cash">Donate via Lightning</a>
 
 ## Contributors
 
