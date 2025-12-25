@@ -10,7 +10,7 @@ enableGitInfo = true
 
 [params]
   description = "Technical resource for the Nostr protocol. Weekly newsletter covering NIP proposals, client updates, relay developments, and notable code changes."
-  email = "info@nostrcompass.org"
+  npub = "npub1wav4fae3gyfy3xj298kxj2mj8phavz7vavps34przq02j7w902qq902923"
   github_username = "nostrcompass"
   repository_name = "nostr-compass"
   author = "Nostr Compass"
@@ -51,11 +51,16 @@ enableGitInfo = true
   weight = 1
 
 [[menu.main]]
-  name = "Publications"
-  url = "/en/publications/"
+  name = "Newsletters"
+  url = "/en/newsletters/"
   weight = 2
 
 [[menu.main]]
   name = "Topics"
   url = "/en/topics/"
   weight = 3
+
+[[menu.main]]
+  name = "Podcast"
+  url = "/en/podcast/"
+  weight = 4

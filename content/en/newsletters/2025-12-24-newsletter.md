@@ -8,33 +8,33 @@ type: newsletters
 
 Welcome back to Nostr Compass, your weekly guide to the Nostr protocol ecosystem.
 
-**This week:** Three NIP-55 signer implementations see updates: Amber adds performance caching, Aegis gains `nostrsigner:` URI support, and Primal Android joins them as a full local signer. Shopstr introduces "Zapsnags" for flash sales via zaps. Mostro adds a development fund. Four NIP updates land including Public Messages (kind 24) and group privacy improvements. NDK cache queries speed up 162x, Applesauce adds reactions and NIP-60 wallet support, and Tenex introduces RAL architecture for AI agent delegation. In our deep dive, we explain NIP-02 (follow lists) and NIP-10 (reply threading), foundational specs for building social timelines and conversations.
+**This week:** Three [NIP-55](/en/topics/nip-55/) signer implementations see updates: Amber adds performance caching, Aegis gains `nostrsigner:` URI support, and Primal Android joins them as a full local signer. Shopstr introduces "Zapsnags" for flash sales via zaps. Mostro adds a development fund. Four NIP updates land including Public Messages (kind 24) and group privacy improvements. NDK cache queries speed up 162x, Applesauce adds reactions and NIP-60 wallet support, and Tenex introduces RAL architecture for AI agent delegation. In our deep dive, we explain [NIP-02](/en/topics/nip-02/) (follow lists) and [NIP-10](/en/topics/nip-10/) (reply threading), foundational specs for building social timelines and conversations.
 
 ## News
 
-**Primal Android Becomes a NIP-55 Signer** - Building on last week's [Nostr Connect support](/en/newsletters/2025-12-17-newsletter/#primal-android), Primal has implemented full local signing capabilities through eight merged pull requests. The implementation includes a complete `LocalSignerContentProvider` that exposes signing operations to other Android apps via Android's content provider interface, following the [NIP-55](https://github.com/nostr-protocol/nips/blob/master/55.md) specification. The architecture separates concerns cleanly: `SignerActivity` handles user-facing approval flows, `LocalSignerService` manages background operations, and a new permissions system lets users control which apps can request signatures. This makes Primal a viable alternative to Amber for Android users who want to keep their keys in one app while using others for different Nostr experiences.
+**Primal Android Becomes a NIP-55 Signer** - Building on last week's [Nostr Connect support](/en/newsletters/2025-12-17-newsletter/#primal-android), Primal has implemented full local signing capabilities through eight merged pull requests. The implementation includes a complete `LocalSignerContentProvider` that exposes signing operations to other Android apps via Android's content provider interface, following the [NIP-55](/en/topics/nip-55/) specification. The architecture separates concerns cleanly: `SignerActivity` handles user-facing approval flows, `LocalSignerService` manages background operations, and a new permissions system lets users control which apps can request signatures. This makes Primal a viable alternative to Amber for Android users who want to keep their keys in one app while using others for different Nostr experiences.
 
-**Shopstr Zapsnags: Flash Sales via Lightning** - The Nostr-native marketplace introduced ["Zapsnags"](https://github.com/shopstr-eng/shopstr/pull/211), a flash sale feature that lets buyers purchase items directly from their social feed with a single zap. The implementation filters kind 1 notes tagged with `#shopstr-zapsnag` and renders them as product cards with a "Zap to Buy" button instead of the standard cart flow. When a buyer zaps, the system generates a payment request using NIP-57, polls for the kind 9735 zap receipt to confirm payment, then encrypts shipping information using NIP-17 gift wrapping before sending it privately to the seller. The feature stores buyer details locally for repeat purchases and includes a merchant dashboard for creating flash sale listings. It's a clever combination of social, payment, and privacy primitives that demonstrates how Nostr's composable design enables novel commerce patterns.
+**Shopstr Zapsnags: Flash Sales via Lightning** - The Nostr-native marketplace introduced ["Zapsnags"](https://github.com/shopstr-eng/shopstr/pull/211), a flash sale feature that lets buyers purchase items directly from their social feed with a single zap. The implementation filters kind 1 notes tagged with `#shopstr-zapsnag` and renders them as product cards with a "Zap to Buy" button instead of the standard cart flow. When a buyer zaps, the system generates a payment request using [NIP-57](/en/topics/nip-57/), polls for the kind 9735 zap receipt to confirm payment, then encrypts shipping information using [NIP-17](/en/topics/nip-17/) gift wrapping before sending it privately to the seller. The feature stores buyer details locally for repeat purchases and includes a merchant dashboard for creating flash sale listings. It's a clever combination of social, payment, and privacy primitives that demonstrates how Nostr's composable design enables novel commerce patterns.
 
-**Mostro Introduces Development Fund** - The P2P Bitcoin trading bot [implemented configurable development fees](https://github.com/MostroP2P/mostro/pull/555) to support sustainable maintenance. Operators can set `dev_fee_percentage` between 10-100% of the Mostro trading fee (defaulting to 30%), which automatically routes to a development fund on each successful trade. The implementation adds three database columns (`dev_fee`, `dev_fee_paid`, `dev_fee_payment_hash`) to track contributions and validates the percentage at daemon startup. Technical documentation in [`docs/DEV_FEE.md`](https://github.com/MostroP2P/mostro/blob/main/docs/DEV_FEE.md) explains the system. This opt-in model lets operators support ongoing development while maintaining full transparency about fee allocation.
+**Mostro Introduces Development Fund** - The [NIP-69](/en/topics/nip-69/) P2P Bitcoin trading bot [implemented configurable development fees](https://github.com/MostroP2P/mostro/pull/555) to support sustainable maintenance. Operators can set `dev_fee_percentage` between 10-100% of the Mostro trading fee (defaulting to 30%), which automatically routes to a development fund on each successful trade. The implementation adds three database columns (`dev_fee`, `dev_fee_paid`, `dev_fee_payment_hash`) to track contributions and validates the percentage at daemon startup. Technical documentation in [`docs/DEV_FEE.md`](https://github.com/MostroP2P/mostro/blob/main/docs/DEV_FEE.md) explains the system. This opt-in model lets operators support ongoing development while maintaining full transparency about fee allocation.
 
 ## NIP Updates
 
 Recent changes to the [NIPs repository](https://github.com/nostr-protocol/nips):
 
 **New NIPs:**
-- **Public Messages (kind 24)** - A new kind for notification-screen messages designed for broad client support ([#1988](https://github.com/nostr-protocol/nips/pull/1988)). Unlike threaded conversations, these messages have no concept of chat history or message chains. They use `q` tags (quotations) rather than `e` tags to avoid threading complications, making them ideal for simple public notifications that appear in a recipient's notification feed without creating conversation state.
+- **[NIP-A4](/en/topics/nip-a4/) (Public Messages, kind 24)** - A new kind for notification-screen messages designed for broad client support ([#1988](https://github.com/nostr-protocol/nips/pull/1988)). Unlike threaded conversations, these messages have no concept of chat history or message chains. They use `q` tags (quotations) rather than `e` tags to avoid threading complications, making them ideal for simple public notifications that appear in a recipient's notification feed without creating conversation state.
 
 **Significant Changes:**
-- **NIP-29** - Major clarification of group semantics ([#2106](https://github.com/nostr-protocol/nips/pull/2106)). The `closed` tag now means "unable to write" (read-only for non-members), decoupled from join mechanics. A new `hidden` tag prevents relays from serving metadata or member events to non-members, enabling truly private groups that are undiscoverable without out-of-band invitation. The `private` tag controls message visibility while still allowing public metadata for discovery.
-- **NIP-51** - Added kind 30006 for curated picture sets ([#2170](https://github.com/nostr-protocol/nips/pull/2170)), following the pattern of 30004 (articles) and 30005 (videos). Already implemented in Nostria.
-- **NIP-55** - Clarified connection initiation for Android signers ([#2166](https://github.com/nostr-protocol/nips/pull/2166)). Developers implementing multi-user sessions were misusing `get_public_key` by calling it from background processes. The updated spec recommends calling it only once during initial connection, preventing a common implementation footgun.
+- **[NIP-29](/en/topics/nip-29/)** - Major clarification of group semantics ([#2106](https://github.com/nostr-protocol/nips/pull/2106)). The `closed` tag now means "unable to write" (read-only for non-members), decoupled from join mechanics. A new `hidden` tag prevents relays from serving metadata or member events to non-members, enabling truly private groups that are undiscoverable without out-of-band invitation. The `private` tag controls message visibility while still allowing public metadata for discovery.
+- **[NIP-51](/en/topics/nip-51/)** - Added kind 30006 for curated picture sets ([#2170](https://github.com/nostr-protocol/nips/pull/2170)), following the pattern of 30004 (articles) and 30005 (videos). Already implemented in Nostria.
+- **[NIP-55](/en/topics/nip-55/)** - Clarified connection initiation for Android signers ([#2166](https://github.com/nostr-protocol/nips/pull/2166)). Developers implementing multi-user sessions were misusing `get_public_key` by calling it from background processes. The updated spec recommends calling it only once during initial connection, preventing a common implementation footgun.
 
 ## NIP Deep Dive: NIP-02 and NIP-10
 
 This week we cover two NIPs essential for social functionality: how clients know who you follow and how conversations are threaded.
 
-### NIP-02: Follow List
+### [NIP-02](/en/topics/nip-02/): Follow List
 
 [NIP-02](https://github.com/nostr-protocol/nips/blob/master/02.md) defines kind 3 events, which store your follow list. This simple mechanism powers the social graph that makes timelines possible.
 
@@ -46,12 +46,12 @@ This week we cover two NIPs essential for social functionality: how clients know
   "pubkey": "a3b9c...",
   "created_at": 1734912000,
   "kind": 3,
-  "content": "",
   "tags": [
     ["p", "91cf9..af5f", "wss://alicerelay.example.com", "alice"],
     ["p", "14aeb..8dad", "wss://bobrelay.example.com", "bob"],
     ["p", "612ae..982b", "", ""]
   ],
+  "content": "",
   "sig": "e4f8a..."
 }
 ```
@@ -72,7 +72,7 @@ The relay returns matching notes, and the client renders them. The relay hints i
 
 **Practical considerations:** Because kind 3 events are replaceable and must be complete, clients should preserve unknown tags when updating. If another client added tags your client doesn't understand, blindly overwriting would lose that data. Append new follows rather than rebuilding from scratch.
 
-### NIP-10: Text Note Threading
+### [NIP-10](/en/topics/nip-10/): Text Note Threading
 
 [NIP-10](https://github.com/nostr-protocol/nips/blob/master/10.md) specifies how kind 1 notes reference each other to form reply threads. Understanding this is essential for building conversation views.
 
@@ -86,13 +86,13 @@ The relay returns matching notes, and the client renders them. The relay hints i
   "pubkey": "a3b9c...",
   "created_at": 1734912345,
   "kind": 1,
-  "content": "Great point! I agree.",
   "tags": [
     ["e", "abc123...", "wss://relay.example.com", "root"],
     ["e", "def456...", "wss://relay.example.com", "reply"],
     ["p", "91cf9..."],
     ["p", "14aeb..."]
   ],
+  "content": "Great point! I agree.",
   "sig": "b7d3f..."
 }
 ```
@@ -120,13 +120,13 @@ Sort results by `created_at` and use `reply` markers to build the tree structure
 
 ## Releases
 
-**Zeus v0.12.0** - Building on last week's [NWC parallel payments support](/en/newsletters/2025-12-17-newsletter/#zeus), the Lightning wallet's [major release](https://github.com/ZeusLN/zeus/releases/tag/v0.12.0) ships a complete Nostr Wallet Connect service with custom relay support and budget tracking. A [budget reload fix](https://github.com/ZeusLN/zeus/pull/3455) ensures connections use current limits. [Lightning address copying](https://github.com/ZeusLN/zeus/pull/3460) no longer includes the `lightning:` prefix, fixing paste issues in Nostr profile fields.
+**Zeus v0.12.0** - Building on last week's [NWC parallel payments support](/en/newsletters/2025-12-17-newsletter/#zeus), the Lightning wallet's [major release](https://github.com/ZeusLN/zeus/releases/tag/v0.12.0) ships a complete [NIP-47](/en/topics/nip-47/) Nostr Wallet Connect service with custom relay support and budget tracking. A [budget reload fix](https://github.com/ZeusLN/zeus/pull/3455) ensures connections use current limits. [Lightning address copying](https://github.com/ZeusLN/zeus/pull/3460) no longer includes the `lightning:` prefix, fixing paste issues in Nostr profile fields.
 
-**Amber v4.0.6** - The Android signer [adds performance caching](https://github.com/greenart7c3/Amber/releases/tag/v4.0.6) to signing operations and improves error handling when decrypting malformed content. Connection reliability improved with retry logic for relay connect events, and several crash fixes address edge cases around invalid `nostrconnect://` URIs and permission screen interactions.
+**Amber v4.0.6** - The Android [NIP-55](/en/topics/nip-55/) signer [adds performance caching](https://github.com/greenart7c3/Amber/releases/tag/v4.0.6) to signing operations and improves error handling when decrypting malformed content. Connection reliability improved with retry logic for relay connect events, and several crash fixes address edge cases around invalid `nostrconnect://` URIs and permission screen interactions.
 
 **nak v0.17.3** - The command-line Nostr tool's [latest release](https://github.com/fiatjaf/nak/releases/tag/v0.17.3) restricts LMDB builds to Linux, fixing cross-platform compilation issues.
 
-**Aegis v0.3.4** - The cross-platform Nostr signer [adds support](https://github.com/ZharlieW/Aegis/releases/tag/v0.3.4) for the `nostrsigner:` URI scheme defined in NIP-55, matching Amber's connection flow. Local relay data can now be imported and exported for backup, and the release includes bug fixes for relay socket errors and UI improvements to the local relay interface.
+**Aegis v0.3.4** - The cross-platform Nostr signer [adds support](https://github.com/ZharlieW/Aegis/releases/tag/v0.3.4) for the `nostrsigner:` URI scheme defined in [NIP-55](/en/topics/nip-55/), matching Amber's connection flow. Local relay data can now be imported and exported for backup, and the release includes bug fixes for relay socket errors and UI improvements to the local relay interface.
 
 ## Notable code and documentation changes
 
@@ -158,4 +158,4 @@ The [multi-agent coordination system](https://github.com/tenex-chat/tenex) built
 
 ---
 
-That's it for this week. Building something? Have news to share? Want us to cover your project? [Reach out via NIP-17 DM](nostr:npub1wav4fae3gyfy3xj298kxj2mj8phavz7vavps34przq02j7w902qq902923) or find us on Nostr.
+That's it for this week. Building something? Have news to share? Want us to cover your project? <a href="nostr:npub1wav4fae3gyfy3xj298kxj2mj8phavz7vavps34przq02j7w902qq902923">Reach out via NIP-17 DM</a> or find us on Nostr.

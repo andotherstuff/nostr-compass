@@ -8,16 +8,6 @@ categories:
 
 NIP-01 defines the foundational protocol for Nostr, establishing the data structures and communication patterns that all other NIPs build upon.
 
-**Primary sources:**
-- [NIP-01 Specification](https://github.com/nostr-protocol/nips/blob/master/01.md)
-
-**Mentioned in:**
-- [Newsletter #1: NIP Deep Dive](/en/newsletters/2025-12-17-newsletter/#nip-deep-dive-nip-01-and-nip-19)
-
-**See also:**
-- [NIP-19 (bech32 encoding)](/en/topics/nip-19/)
-- [Kind Registry](/en/kind-registry/)
-
 ## Events
 
 Events are the only object type in Nostr. Every piece of data, from a profile update to a text post to a reaction, is represented as an event with this structure:
@@ -60,3 +50,14 @@ Clients communicate with relays over WebSocket connections using JSON arrays:
 
 Filters specify which events to retrieve, with fields including: `ids`, `authors`, `kinds`, `#e`/`#p`/`#t` (tag values), `since`/`until`, and `limit`. Conditions within a filter use AND logic; multiple filters in a `REQ` combine with OR logic.
 
+---
+
+**Primary sources:**
+- [NIP-01 Specification](https://github.com/nostr-protocol/nips/blob/master/01.md)
+
+**Mentioned in:**
+- [Newsletter #1: NIP Deep Dive](/en/newsletters/2025-12-17-newsletter/#nip-deep-dive-nip-01-and-nip-19)
+
+**See also:**
+- [NIP-19: Bech32-Encoded Entities](/en/topics/nip-19/)
+- [Kind Registry](/en/kind-registry/)

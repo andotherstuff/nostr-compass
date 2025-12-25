@@ -86,7 +86,7 @@ python3 scripts/fetch_project_updates.py --since-days 7
 We welcome contributions. Please review the [contributing guidelines](CONTRIBUTING.md).
 
 If you're building on Nostr and would like to contribute or appear on the
-podcast, contact us at [info@nostrcompass.org](mailto:info@nostrcompass.org).
+podcast, reach out via NIP-17 DM to `npub1wav4fae3gyfy3xj298kxj2mj8phavz7vavps34przq02j7w902qq902923`.
 
 ## License
 

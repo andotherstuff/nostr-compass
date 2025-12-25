@@ -194,4 +194,4 @@ English primary. Translations based on contributor availability: Spanish, Japane
 4. Submit PR
 5. Iterate on feedback
 
-Contact: info@nostrcompass.org
+Contact: NIP-17 DM to npub1wav4fae3gyfy3xj298kxj2mj8phavz7vavps34przq02j7w902qq902923
