@@ -36,6 +36,42 @@ enableGitInfo = true
     languageName = "English"
     weight = 1
     contentDir = "content/en"
+  [languages.es]
+    languageName = "Español"
+    weight = 2
+    contentDir = "content/es"
+  [languages.pt]
+    languageName = "Português"
+    weight = 3
+    contentDir = "content/pt"
+  [languages.de]
+    languageName = "Deutsch"
+    weight = 4
+    contentDir = "content/de"
+  [languages.fr]
+    languageName = "Français"
+    weight = 5
+    contentDir = "content/fr"
+  [languages.it]
+    languageName = "Italiano"
+    weight = 6
+    contentDir = "content/it"
+  [languages.ja]
+    languageName = "日本語"
+    weight = 7
+    contentDir = "content/ja"
+  [languages.ko]
+    languageName = "한국어"
+    weight = 8
+    contentDir = "content/ko"
+  [languages.zh]
+    languageName = "中文"
+    weight = 9
+    contentDir = "content/zh"
+  [languages.nl]
+    languageName = "Nederlands"
+    weight = 10
+    contentDir = "content/nl"
 
 [outputs]
   home = ["HTML", "RSS"]
@@ -45,22 +81,27 @@ enableGitInfo = true
   [outputFormats.RSS]
     baseName = "feed"
 
+# Menu items use relative paths - templates will make them language-aware
 [[menu.main]]
+  identifier = "about"
   name = "About"
-  url = "/en/about/"
+  url = "/about/"
   weight = 1
 
 [[menu.main]]
+  identifier = "newsletters"
   name = "Newsletters"
-  url = "/en/newsletters/"
+  url = "/newsletters/"
   weight = 2
 
 [[menu.main]]
+  identifier = "topics"
   name = "Topics"
-  url = "/en/topics/"
+  url = "/topics/"
   weight = 3
 
 [[menu.main]]
+  identifier = "podcast"
   name = "Podcast"
-  url = "/en/podcast/"
+  url = "/podcast/"
   weight = 4

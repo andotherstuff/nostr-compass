@@ -1,0 +1,31 @@
+home_intro: "Nostr Compass is een technische bron voor het Nostr-protocol, die ontwikkelaars, relay-operators en bouwers helpt om op de hoogte te blijven van de protocolontwikkeling."
+home_description: "We publiceren <a href=\"{{.newslettersURL}}\">wekelijkse nieuwsbrieven</a> over NIP-voorstellen, client-updates, relay-ontwikkelingen en opmerkelijke codewijzigingen. Onze <a href=\"{{.podcastURL}}\">podcast</a> biedt gesprekken met de ontwikkelaars die Nostr bouwen. De <a href=\"{{.topicsURL}}\">onderwerpenindex</a> documenteert belangrijke concepten met links naar primaire bronnen."
+home_learn_more: "Meer over ons"
+recent_newsletters: "Recente Nieuwsbrieven"
+no_newsletters: "Nog geen nieuwsbrieven gevonden."
+view_more_newsletters: "Bekijk meer <a href=\"{{.newslettersURL}}\">nieuwsbrieven</a>. Abonneer via <a href=\"{{.rssURL}}\">RSS</a>. Volg ons <a href=\"{{.nostrURL}}\">op Nostr</a>."
+
+# Newsletter list page
+subscribe_via_rss: "Abonneer via <a href=\"{{.rssURL}}\">RSS</a>."
+no_newsletters_published: "Nog geen nieuwsbrieven gepubliceerd."
+
+# Topics list page
+topics_documented:
+  one: "{{.Count}} onderwerp gedocumenteerd."
+  other: "{{.Count}} onderwerpen gedocumenteerd."
+no_topics_documented: "Nog geen onderwerpen gedocumenteerd."
+
+# Newsletter signup form
+newsletter_subscribe_label: "Abonneer op onze nieuwsbrief"
+newsletter_email_placeholder: "Voer je e-mail in"
+newsletter_subscribe_button: "Abonneren"
+
+# Theme toggle
+theme_light: "☀ Licht"
+theme_dark: "☾ Donker"
+
+# Menu items
+menu_about: "Over ons"
+menu_newsletters: "Nieuwsbrieven"
+menu_topics: "Onderwerpen"
+menu_podcast: "Podcast"

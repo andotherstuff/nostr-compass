@@ -1,0 +1,31 @@
+home_intro: "Nostr Compassは、Nostrプロトコルの技術リソースであり、開発者、リレー運営者、ビルダーがプロトコルの進化について最新情報を得られるよう支援します。"
+home_description: "<a href=\"{{.newslettersURL}}\">週刊ニュースレター</a>では、NIP提案、クライアントのアップデート、リレーの開発、注目すべきコード変更を取り上げています。<a href=\"{{.podcastURL}}\">ポッドキャスト</a>では、Nostrを構築している開発者との対話を配信しています。<a href=\"{{.topicsURL}}\">トピックインデックス</a>では、主要な概念を一次情報源へのリンクとともに文書化しています。"
+home_learn_more: "私たちについてもっと知る"
+recent_newsletters: "最新のニュースレター"
+no_newsletters: "ニュースレターはまだありません。"
+view_more_newsletters: "<a href=\"{{.newslettersURL}}\">ニュースレター</a>をもっと見る。<a href=\"{{.rssURL}}\">RSS</a>で購読。<a href=\"{{.nostrURL}}\">Nostr</a>でフォロー。"
+
+# Newsletter list page
+subscribe_via_rss: "<a href=\"{{.rssURL}}\">RSS</a>で購読する。"
+no_newsletters_published: "ニュースレターはまだ公開されていません。"
+
+# Topics list page
+topics_documented:
+  one: "{{.Count}}件のトピックを文書化。"
+  other: "{{.Count}}件のトピックを文書化。"
+no_topics_documented: "トピックはまだ文書化されていません。"
+
+# Newsletter signup form
+newsletter_subscribe_label: "ニュースレターを購読する"
+newsletter_email_placeholder: "メールアドレスを入力"
+newsletter_subscribe_button: "購読"
+
+# Theme toggle
+theme_light: "☀ ライト"
+theme_dark: "☾ ダーク"
+
+# Menu items
+menu_about: "概要"
+menu_newsletters: "ニュースレター"
+menu_topics: "トピック"
+menu_podcast: "ポッドキャスト"

@@ -1,0 +1,31 @@
+home_intro: "Nostr Compass 是 Nostr 协议的技术资源，帮助开发者、中继运营者和构建者了解协议的最新发展。"
+home_description: "我们发布<a href=\"{{.newslettersURL}}\">每周通讯</a>，涵盖 NIP 提案、客户端更新、中继发展和值得注意的代码更改。我们的<a href=\"{{.podcastURL}}\">播客</a>提供与构建 Nostr 的开发者的对话。<a href=\"{{.topicsURL}}\">主题索引</a>记录关键概念并提供原始资料链接。"
+home_learn_more: "了解更多关于我们"
+recent_newsletters: "最新通讯"
+no_newsletters: "暂无通讯。"
+view_more_newsletters: "查看更多<a href=\"{{.newslettersURL}}\">通讯</a>。通过 <a href=\"{{.rssURL}}\">RSS</a> 订阅。在 <a href=\"{{.nostrURL}}\">Nostr</a> 上关注我们。"
+
+# Newsletter list page
+subscribe_via_rss: "通过 <a href=\"{{.rssURL}}\">RSS</a> 订阅。"
+no_newsletters_published: "暂无已发布的通讯。"
+
+# Topics list page
+topics_documented:
+  one: "已记录 {{.Count}} 个主题。"
+  other: "已记录 {{.Count}} 个主题。"
+no_topics_documented: "暂无已记录的主题。"
+
+# Newsletter signup form
+newsletter_subscribe_label: "订阅我们的通讯"
+newsletter_email_placeholder: "输入您的邮箱"
+newsletter_subscribe_button: "订阅"
+
+# Theme toggle
+theme_light: "☀ 浅色"
+theme_dark: "☾ 深色"
+
+# Menu items
+menu_about: "关于"
+menu_newsletters: "通讯"
+menu_topics: "主题"
+menu_podcast: "播客"

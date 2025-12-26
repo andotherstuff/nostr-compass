@@ -1,0 +1,28 @@
+<div class="language-switcher">
+  <button class="language-toggle" aria-label="Select language" aria-expanded="false">
+    <span class="current-lang">{{ .Site.Language.LanguageName }}</span>
+    <svg class="dropdown-arrow" width="12" height="12" viewBox="0 0 12 12">
+      <path d="M2 4l4 4 4-4" fill="none" stroke="currentColor" stroke-width="2"/>
+    </svg>
+  </button>
+  <ul class="language-list">
+    {{- range .Site.Languages -}}
+      {{- $targetLang := .Lang -}}
+      {{- $href := printf "/%s/" .Lang -}}
+      {{/* For current language, use current page URL */}}
+      {{- if eq .Lang $.Site.Language.Lang -}}
+        {{- $href = $.RelPermalink -}}
+      {{- else -}}
+        {{/* Search through page translations to find matching language */}}
+        {{- range $.Translations -}}
+          {{- if eq .Lang $targetLang -}}
+            {{- $href = .RelPermalink -}}
+          {{- end -}}
+        {{- end -}}
+      {{- end -}}
+      <li{{ if eq .Lang $.Site.Language.Lang }} class="active"{{ end }}>
+        <a href="{{ $href }}" lang="{{ .Lang }}" hreflang="{{ .Lang }}">{{ .LanguageName }}</a>
+      </li>
+    {{- end -}}
+  </ul>
+</div>

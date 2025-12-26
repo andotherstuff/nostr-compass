@@ -1,0 +1,31 @@
+home_intro: "Nostr Compass는 Nostr 프로토콜을 위한 기술 리소스로, 개발자, 릴레이 운영자, 빌더들이 프로토콜 발전에 대해 최신 정보를 얻을 수 있도록 돕습니다."
+home_description: "<a href=\"{{.newslettersURL}}\">주간 뉴스레터</a>에서 NIP 제안, 클라이언트 업데이트, 릴레이 개발, 주목할 만한 코드 변경 사항을 다룹니다. <a href=\"{{.podcastURL}}\">팟캐스트</a>에서는 Nostr를 구축하는 개발자들과의 대화를 제공합니다. <a href=\"{{.topicsURL}}\">주제 색인</a>은 주요 개념을 원본 자료 링크와 함께 문서화합니다."
+home_learn_more: "우리에 대해 더 알아보기"
+recent_newsletters: "최신 뉴스레터"
+no_newsletters: "아직 뉴스레터가 없습니다."
+view_more_newsletters: "더 많은 <a href=\"{{.newslettersURL}}\">뉴스레터</a> 보기. <a href=\"{{.rssURL}}\">RSS</a>로 구독. <a href=\"{{.nostrURL}}\">Nostr</a>에서 팔로우."
+
+# Newsletter list page
+subscribe_via_rss: "<a href=\"{{.rssURL}}\">RSS</a>로 구독하세요."
+no_newsletters_published: "아직 발행된 뉴스레터가 없습니다."
+
+# Topics list page
+topics_documented:
+  one: "{{.Count}}개의 주제가 문서화되었습니다."
+  other: "{{.Count}}개의 주제가 문서화되었습니다."
+no_topics_documented: "아직 문서화된 주제가 없습니다."
+
+# Newsletter signup form
+newsletter_subscribe_label: "뉴스레터 구독하기"
+newsletter_email_placeholder: "이메일을 입력하세요"
+newsletter_subscribe_button: "구독"
+
+# Theme toggle
+theme_light: "☀ 라이트"
+theme_dark: "☾ 다크"
+
+# Menu items
+menu_about: "소개"
+menu_newsletters: "뉴스레터"
+menu_topics: "주제"
+menu_podcast: "팟캐스트"

@@ -1,6 +1,6 @@
 <header class="site-header" role="banner">
   <div class="wrapper">
-    <a class="site-title" rel="author" href="/">
+    <a class="site-title" rel="author" href="{{ "/" | relLangURL }}">
       {{ partial "logo.html" . }}
       <span>Nostr Compass</span>
     </a>
@@ -17,11 +17,13 @@
 
       <div class="trigger">
         {{ range .Site.Menus.main }}
-          <a class="page-link" href="{{ .URL }}">{{ .Name }}</a>
+          {{- $menuKey := printf "menu_%s" .Identifier -}}
+          <a class="page-link" href="{{ .URL | relLangURL }}">{{ i18n $menuKey | default .Name }}</a>
         {{ end }}
+        {{ partial "language-switcher.html" . }}
         <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
-          <span class="theme-icon-dark">☀ Light</span>
-          <span class="theme-icon-light">☾ Dark</span>
+          <span class="theme-icon-dark">{{ i18n "theme_light" }}</span>
+          <span class="theme-icon-light">{{ i18n "theme_dark" }}</span>
         </button>
       </div>
     </nav>

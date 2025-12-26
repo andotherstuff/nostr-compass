@@ -4,18 +4,19 @@
     <div class="logo">
       {{ partial "logo.html" . }}
     </div>
-    
-    <p>Nostr Compass is a technical resource for the Nostr protocol, helping developers, relay operators, and builders stay current on protocol evolution.</p>
 
-    <p>We publish <a href="/en/newsletters/">weekly newsletters</a> covering NIP proposals, client updates, relay developments, and notable code changes. Our <a href="/en/podcast/">podcast</a> features conversations with the developers building Nostr. The <a href="/en/topics/">topic index</a> documents key concepts with links to primary sources.</p>
+    <p>{{ i18n "home_intro" }}</p>
 
-    <p><a href="/en/about">Learn more about us</a>.</p>
+    <p>{{ i18n "home_description" (dict "newslettersURL" ("/newsletters/" | relLangURL) "podcastURL" ("/podcast/" | relLangURL) "topicsURL" ("/topics/" | relLangURL)) | safeHTML }}</p>
 
-    <h2>Recent Newsletters</h2>
+    <p><a href="{{ "/about/" | relLangURL }}">{{ i18n "home_learn_more" }}</a>.</p>
+
+    <h2>{{ i18n "recent_newsletters" }}</h2>
+    {{- $langPrefix := printf "/%s/newsletters/" .Site.Language.Lang -}}
     <ul class="post-list">
       {{ $count := 0 }}
       {{ range .Site.RegularPages.ByDate.Reverse }}
-        {{ if and (hasPrefix .RelPermalink "/en/newsletters/") (lt $count 5) }}
+        {{ if and (hasPrefix .RelPermalink $langPrefix) (lt $count 5) }}
           {{ $count = add $count 1 }}
           <li>
             <h3>
@@ -30,9 +31,9 @@
       {{ end }}
     </ul>
     {{ if eq $count 0 }}
-      <p>No newsletters found yet.</p>
+      <p>{{ i18n "no_newsletters" }}</p>
     {{ else }}
-      <p class="rss-subscribe">View more <a href="/en/newsletters/">newsletters</a>. Subscribe via <a href="/en/newsletters/feed.xml">RSS</a>. Follow us <a href="nostr:npub1wav4fae3gyfy3xj298kxj2mj8phavz7vavps34przq02j7w902qq902923">on Nostr</a>.</p>
+      <p class="rss-subscribe">{{ i18n "view_more_newsletters" (dict "newslettersURL" ("/newsletters/" | relLangURL) "rssURL" ("/newsletters/feed.xml" | relLangURL) "nostrURL" "nostr:npub1wav4fae3gyfy3xj298kxj2mj8phavz7vavps34przq02j7w902qq902923") | safeHTML }}</p>
     {{ end }}
 
     {{ partial "newsletter-signup.html" . }}
