@@ -31,3 +31,6 @@ data/project_updates/*.json
 # Hugo generated files
 public/
 resources/_gen/
+
+# Local skills files (Claude Code)
+skills/

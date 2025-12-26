@@ -26,7 +26,7 @@
       {{ end }}
     </p>
 
-    <p><em>{{ len $topics }} topics documented.</em></p>
+    <p><em>{{ i18n "topics_documented" (len $topics) }}</em></p>
 
     <!-- Group topics by first letter -->
     {{ $currentLetter := "" }}
@@ -50,7 +50,7 @@
     {{ if gt (len $topics) 0 }}</ul>{{ end }}
 
     {{ else }}
-    <p>No topics documented yet.</p>
+    <p>{{ i18n "no_topics_documented" }}</p>
     {{ end }}
   </div>
 </article>

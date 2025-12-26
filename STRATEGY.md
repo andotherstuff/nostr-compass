@@ -94,9 +94,9 @@ Regular hosts for continuity; guests rotate based on content.
 
 **Coordination**: Signal group for contributors.
 
-**Roles**: Technical writers, researchers (track repos/releases), translators (Spanish, Japanese, German, Portuguese), podcast hosts, reviewers (optional but encouraged).
+**Roles**: Technical writers, researchers (track repos/releases), translators (all 10 supported languages), podcast hosts, reviewers (optional but encouraged).
 
-Reading PR descriptions is sufficient; deep code review optional. Explore translation automation with human review.
+Reading PR descriptions is sufficient; deep code review optional. AI-assisted translation with human review is available via `/translate`.
 
 **Recruitment**: Nostr outreach, manual outreach to known contributors.
 
@@ -171,7 +171,26 @@ python3 scripts/fetch_project_updates.py --since-days 7 -v
 
 ## Languages
 
-English primary. Translations based on contributor availability: Spanish, Japanese, German, Portuguese.
+English is the primary language. All newsletters and topics are translated into 9 additional languages:
+
+| Code | Language | Directory |
+|------|----------|-----------|
+| `en` | English | `content/en/` (primary) |
+| `es` | Spanish | `content/es/` |
+| `pt` | Portuguese | `content/pt/` |
+| `de` | German | `content/de/` |
+| `fr` | French | `content/fr/` |
+| `it` | Italian | `content/it/` |
+| `ja` | Japanese | `content/ja/` |
+| `ko` | Korean | `content/ko/` |
+| `zh` | Chinese (Simplified) | `content/zh/` |
+| `nl` | Dutch | `content/nl/` |
+
+**Translation workflow**: After publishing English content, run `/translate` to generate translations. See `skills/translate/SKILL.md` for details.
+
+**UI strings**: Localized in `i18n/<lang>.yaml` files for menu items, labels, and page elements.
+
+**Language switcher**: Users can switch languages via the dropdown in the site header. Links automatically point to translated versions when available.
 
 ## Success Metrics
 
@@ -184,7 +203,6 @@ English primary. Translations based on contributor availability: Spanish, Japane
 
 - Compatibility matrix columns: NIPs vs features vs kinds
 - Priority order for historical topic backfill
-- Translation automation opportunities
 
 ## Getting Started
 

@@ -1,0 +1,31 @@
+home_intro: "Nostr Compass es un recurso técnico para el protocolo Nostr, ayudando a desarrolladores, operadores de relays y constructores a mantenerse al día con la evolución del protocolo."
+home_description: "Publicamos <a href=\"{{.newslettersURL}}\">boletines semanales</a> que cubren propuestas de NIP, actualizaciones de clientes, desarrollos de relays y cambios de código notables. Nuestro <a href=\"{{.podcastURL}}\">podcast</a> presenta conversaciones con los desarrolladores que construyen Nostr. El <a href=\"{{.topicsURL}}\">índice de temas</a> documenta conceptos clave con enlaces a fuentes primarias."
+home_learn_more: "Conoce más sobre nosotros"
+recent_newsletters: "Boletines Recientes"
+no_newsletters: "Aún no hay boletines publicados."
+view_more_newsletters: "Ver más <a href=\"{{.newslettersURL}}\">boletines</a>. Suscríbete via <a href=\"{{.rssURL}}\">RSS</a>. Síguenos <a href=\"{{.nostrURL}}\">en Nostr</a>."
+
+# Newsletter list page
+subscribe_via_rss: "Suscríbete via <a href=\"{{.rssURL}}\">RSS</a>."
+no_newsletters_published: "Aún no hay boletines publicados."
+
+# Topics list page
+topics_documented:
+  one: "{{.Count}} tema documentado."
+  other: "{{.Count}} temas documentados."
+no_topics_documented: "Aún no hay temas documentados."
+
+# Newsletter signup form
+newsletter_subscribe_label: "Suscríbete a nuestro boletín"
+newsletter_email_placeholder: "Ingresa tu email"
+newsletter_subscribe_button: "Suscribirse"
+
+# Theme toggle
+theme_light: "☀ Claro"
+theme_dark: "☾ Oscuro"
+
+# Menu items
+menu_about: "Acerca de"
+menu_newsletters: "Boletines"
+menu_topics: "Temas"
+menu_podcast: "Podcast"

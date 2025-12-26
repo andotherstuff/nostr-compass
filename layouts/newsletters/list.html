@@ -23,9 +23,9 @@
       {{ end }}
     </ul>
     
-    <p class="rss-subscribe">Subscribe via <a href="/en/newsletters/feed.xml">RSS</a>.</p>
+    <p class="rss-subscribe">{{ i18n "subscribe_via_rss" (dict "rssURL" ("/newsletters/feed.xml" | relLangURL)) | safeHTML }}</p>
     {{ else }}
-    <p>No newsletters published yet.</p>
+    <p>{{ i18n "no_newsletters_published" }}</p>
     {{ end }}
   </div>
 </article>

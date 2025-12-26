@@ -9,10 +9,10 @@
     class="embeddable-buttondown-form"
   >
     <div class="newsletter-signup-inner">
-      <label for="bd-email">Subscribe to our newsletter</label>
+      <label for="bd-email">{{ i18n "newsletter_subscribe_label" }}</label>
       <div class="newsletter-form-row">
-        <input type="email" name="email" id="bd-email" placeholder="Enter your email" required />
-        <button type="submit">Subscribe</button>
+        <input type="email" name="email" id="bd-email" placeholder="{{ i18n "newsletter_email_placeholder" }}" required />
+        <button type="submit">{{ i18n "newsletter_subscribe_button" }}</button>
       </div>
     </div>
   </form>
