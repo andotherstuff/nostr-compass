@@ -5,6 +5,10 @@ on:
     branches:
       - '**'  # Run on pushes to any branch
   workflow_dispatch:  # Allow manual trigger from any branch
+  schedule:
+    # Rebuild every Wednesday at 16:05 UTC for scheduled newsletter publishing
+    # (5 min buffer to ensure publishDate has passed)
+    - cron: '5 16 * * 3'
 
 permissions:
   contents: read
