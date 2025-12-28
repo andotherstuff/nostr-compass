@@ -20,8 +20,20 @@ jobs:
             exit 1
           fi
           
+          # Extract the date from frontmatter and verify it's within the last 7 days
+          FILE_DATE=$(grep -m1 "^date:" "$NEWSLETTER_PATH" | sed 's/date:[[:space:]]*//' | tr -d "'" | tr -d '"')
+          FILE_TIMESTAMP=$(date -d "$FILE_DATE" +%s 2>/dev/null || date -j -f "%Y-%m-%d" "$FILE_DATE" +%s 2>/dev/null)
+          SEVEN_DAYS_AGO=$(date -d "7 days ago" +%s 2>/dev/null || date -v-7d +%s 2>/dev/null)
+          
+          if [ "$FILE_TIMESTAMP" -lt "$SEVEN_DAYS_AGO" ]; then
+            echo "❌ Error: Latest newsletter ($NEWSLETTER_PATH) is more than 7 days old"
+            echo "   Date in file: $FILE_DATE"
+            echo "   This likely means the new newsletter hasn't been created yet."
+            exit 1
+          fi
+          
           echo "newsletter_path=$NEWSLETTER_PATH" >> $GITHUB_OUTPUT
-          echo "Found newsletter: $NEWSLETTER_PATH"
+          echo "Found newsletter: $NEWSLETTER_PATH (dated $FILE_DATE)"
       
       - name: Extract newsletter content
         id: extract-content
