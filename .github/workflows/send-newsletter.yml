@@ -12,8 +12,8 @@ jobs:
       - name: Find newsletter file
         id: find-newsletter
         run: |
-          # Find the most recently modified newsletter (excluding _index.md)
-          NEWSLETTER_PATH=$(ls -t content/en/newsletters/*.md | grep -v "_index.md" | head -1)
+          # Find the latest newsletter by filename (YYYY-MM-DD format, excluding _index.md)
+          NEWSLETTER_PATH=$(ls content/en/newsletters/*.md | grep -v "_index.md" | sort -r | head -1)
           
           if [ ! -f "$NEWSLETTER_PATH" ]; then
             echo "Error: No newsletter found"
