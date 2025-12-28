@@ -61,6 +61,9 @@ jobs:
           TITLE=$(cat /tmp/newsletter_title.txt)
           BODY=$(cat /tmp/newsletter_body.md)
           
+          # Convert relative links to absolute URLs
+          BODY=$(echo "$BODY" | sed 's|](/|](https://nostrcompass.org/|g')
+          
           # Create JSON payload (using jq for proper escaping)
           PAYLOAD=$(jq -n \
             --arg subject "$TITLE" \
