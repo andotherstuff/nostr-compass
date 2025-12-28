@@ -1,0 +1,75 @@
+name: Send Newsletter via Buttondown
+
+on:
+  workflow_dispatch:
+
+jobs:
+  send-newsletter:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Find newsletter file
+        id: find-newsletter
+        run: |
+          # Find the most recently modified newsletter (excluding _index.md)
+          NEWSLETTER_PATH=$(ls -t content/en/newsletters/*.md | grep -v "_index.md" | head -1)
+          
+          if [ ! -f "$NEWSLETTER_PATH" ]; then
+            echo "Error: No newsletter found"
+            exit 1
+          fi
+          
+          echo "newsletter_path=$NEWSLETTER_PATH" >> $GITHUB_OUTPUT
+          echo "Found newsletter: $NEWSLETTER_PATH"
+      
+      - name: Extract newsletter content
+        id: extract-content
+        run: |
+          FILE="${{ steps.find-newsletter.outputs.newsletter_path }}"
+          
+          # Extract title from frontmatter
+          TITLE=$(grep -m1 "^title:" "$FILE" | sed "s/title:[[:space:]]*['\"]*//" | sed "s/['\"].*//")
+          echo "Title: $TITLE"
+          
+          # Extract body (everything after the closing ---)
+          # Skip frontmatter (between first and second ---) and get the rest
+          BODY=$(awk '/^---$/{p++; next} p>=2' "$FILE")
+          
+          # Save to files to preserve formatting
+          echo "$TITLE" > /tmp/newsletter_title.txt
+          echo "$BODY" > /tmp/newsletter_body.md
+          
+          echo "Extracted $(wc -l < /tmp/newsletter_body.md) lines of content"
+      
+      - name: Send via Buttondown API
+        env:
+          BUTTONDOWN_API_KEY: ${{ secrets.BUTTONDOWN_API_KEY }}
+        run: |
+          TITLE=$(cat /tmp/newsletter_title.txt)
+          BODY=$(cat /tmp/newsletter_body.md)
+          
+          # Create JSON payload (using jq for proper escaping)
+          PAYLOAD=$(jq -n \
+            --arg subject "$TITLE" \
+            --arg body "$BODY" \
+            '{subject: $subject, body: $body, status: "draft"}')
+          
+          # Send to Buttondown
+          RESPONSE=$(curl -s -w "\n%{http_code}" -X POST https://api.buttondown.com/v1/emails \
+            -H "Authorization: Token $BUTTONDOWN_API_KEY" \
+            -H "Content-Type: application/json" \
+            -d "$PAYLOAD")
+          
+          HTTP_CODE=$(echo "$RESPONSE" | tail -1)
+          RESPONSE_BODY=$(echo "$RESPONSE" | head -n -1)
+          
+          if [ "$HTTP_CODE" -ge 200 ] && [ "$HTTP_CODE" -lt 300 ]; then
+            echo "✅ Draft created successfully!"
+            echo "👉 Review and send at: https://buttondown.com/emails"
+          else
+            echo "❌ Failed to create draft (HTTP $HTTP_CODE)"
+            echo "$RESPONSE_BODY"
+            exit 1
+          fi
+
