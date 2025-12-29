@@ -495,6 +495,9 @@ def load_projects(
             repo_url = item.get("repo")
             parsed = parse_github_repo(repo_url)
 
+            # Track which repo URLs we've added to avoid duplicates
+            added_urls = set()
+
             if parsed:
                 owner, repo = parsed
                 projects.append({
@@ -511,6 +514,34 @@ def load_projects(
                     "maintainer": item.get("maintainer", ""),
                     "status": item.get("status", ""),
                 })
+                added_urls.add(repo_url)
+
+            # Also process the 'repos' dictionary if present
+            repos_dict = item.get("repos", {})
+            if isinstance(repos_dict, dict):
+                for repo_key, sub_repo_url in repos_dict.items():
+                    # Skip if we already added this repo URL
+                    if sub_repo_url in added_urls:
+                        continue
+
+                    sub_parsed = parse_github_repo(sub_repo_url)
+                    if sub_parsed:
+                        sub_owner, sub_repo = sub_parsed
+                        projects.append({
+                            # GitHub identifiers
+                            "owner": sub_owner,
+                            "repo": sub_repo,
+                            "repo_url": sub_repo_url,
+                            # Project metadata for newsletter context
+                            "name": f"{project_name} ({repo_key})" if project_name else sub_repo,
+                            "description": item.get("description", ""),
+                            "category": category,
+                            "priority": item.get("priority", "low"),
+                            "website": item.get("website", ""),
+                            "maintainer": item.get("maintainer", ""),
+                            "status": item.get("status", ""),
+                        })
+                        added_urls.add(sub_repo_url)
 
     return projects
 
