@@ -29,3 +29,11 @@ menu_about: "Over ons"
 menu_newsletters: "Nieuwsbrieven"
 menu_topics: "Onderwerpen"
 menu_podcast: "Podcast"
+
+# Podcast
+podcast_available_in_english: "Podcast-afleveringen zijn beschikbaar in het Engels."
+podcast_view_episodes: "Bekijk podcast-afleveringen"
+podcast_intro: "Gesprekken met de ontwikkelaars die Nostr bouwen."
+
+# Footer
+footer_description: "Technische bron voor het Nostr-protocol. Wekelijkse nieuwsbrief en podcast over NIP-voorstellen, client-updates, relay-ontwikkelingen en opmerkelijke codewijzigingen."

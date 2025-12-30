@@ -29,3 +29,11 @@ menu_about: "Acerca de"
 menu_newsletters: "Boletines"
 menu_topics: "Temas"
 menu_podcast: "Podcast"
+
+# Podcast
+podcast_available_in_english: "Los episodios del podcast están disponibles en inglés."
+podcast_view_episodes: "Ver episodios del podcast"
+podcast_intro: "Conversaciones con los desarrolladores que construyen Nostr."
+
+# Footer
+footer_description: "Recurso técnico para el protocolo Nostr. Boletín semanal y podcast que cubren propuestas de NIP, actualizaciones de clientes, desarrollos de relays y cambios de código notables."

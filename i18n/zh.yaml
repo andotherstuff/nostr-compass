@@ -29,3 +29,11 @@ menu_about: "关于"
 menu_newsletters: "通讯"
 menu_topics: "主题"
 menu_podcast: "播客"
+
+# Podcast
+podcast_available_in_english: "播客节目以英语提供。"
+podcast_view_episodes: "查看播客节目"
+podcast_intro: "与构建 Nostr 的开发者对话。"
+
+# Footer
+footer_description: "Nostr 协议的技术资源。每周通讯和播客涵盖 NIP 提案、客户端更新、中继发展和值得注意的代码更改。"
