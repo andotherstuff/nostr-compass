@@ -177,7 +177,7 @@ pre {
 }
 
 .site-title {
-  font-size: 18px;
+  font-size: 24px;
   font-weight: 500;
   line-height: 54px;
   letter-spacing: -0.3px;
@@ -185,7 +185,7 @@ pre {
   float: left;
   display: flex;
   align-items: center;
-  gap: 0.6em;
+  gap: 0;
   white-space: nowrap;
 
   &,
@@ -324,7 +324,7 @@ pre {
 
 // Page content
 .page-content {
-  padding: $spacing-unit 0;
+  padding: ($spacing-unit / 2) 0 $spacing-unit 0;
   flex: 1;
 }
 
