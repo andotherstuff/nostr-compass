@@ -1,0 +1,46 @@
+{{ define "main" }}
+<article class="post">
+  <header class="post-header">
+    <h1 class="post-title">{{ .Title }}</h1>
+  </header>
+
+  <div class="post-content">
+    <p class="podcast-intro">{{ i18n "podcast_intro" }}</p>
+
+    {{ if ne .Lang "en" }}
+    <p>{{ i18n "podcast_available_in_english" }} <a href="/en/podcast/">{{ i18n "podcast_view_episodes" }}</a></p>
+    {{ else }}
+    {{ $episodes := where .Site.RegularPages "Section" "podcast" }}
+    {{ $episodes = sort $episodes "Date" "desc" }}
+
+    {{ if gt (len $episodes) 0 }}
+    <ul class="post-list podcast-list">
+      {{ range $episodes }}
+      <li class="podcast-episode-item">
+        <h3>
+          <a class="post-link" href="{{ .RelPermalink }}">{{ .Title }}</a>
+        </h3>
+        <span class="post-meta">{{ .Date.Format "Jan 2, 2006" }}{{ with .Params.duration }} &middot; {{ . }}{{ end }}</span>
+        {{ with .Params.guests }}
+        <p class="podcast-guests"><strong>Guests:</strong>
+          {{ range $i, $guest := . }}{{ if $i }}, {{ end }}<a href="https://njump.me/{{ $guest.npub }}" target="_blank" rel="noopener">{{ $guest.name }}</a>{{ end }}
+        </p>
+        {{ end }}
+        {{ with .Params.guest }}
+        <p class="podcast-guest"><strong>Guest:</strong> {{ . }}</p>
+        {{ end }}
+        {{ if .Summary }}
+          <p class="post-summary">{{ .Summary | truncate 300 }}</p>
+        {{ end }}
+      </li>
+      {{ end }}
+    </ul>
+
+    <p class="rss-subscribe">{{ i18n "subscribe_via_rss" (dict "rssURL" ("/podcast/feed.xml" | relLangURL)) | safeHTML }}</p>
+    {{ else }}
+    <p>No episodes published yet. Check back soon!</p>
+    {{ end }}
+    {{ end }}
+  </div>
+</article>
+{{ end }}

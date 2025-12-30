@@ -29,3 +29,11 @@ menu_about: "概要"
 menu_newsletters: "ニュースレター"
 menu_topics: "トピック"
 menu_podcast: "ポッドキャスト"
+
+# Podcast
+podcast_available_in_english: "ポッドキャストのエピソードは英語で提供されています。"
+podcast_view_episodes: "ポッドキャストのエピソードを見る"
+podcast_intro: "Nostrを構築している開発者との対話。"
+
+# Footer
+footer_description: "Nostrプロトコルの技術リソース。NIP提案、クライアントのアップデート、リレーの開発、注目すべきコード変更を取り上げる週刊ニュースレターとポッドキャスト。"

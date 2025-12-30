@@ -1,0 +1,84 @@
+{{ define "main" }}
+<article class="post podcast-episode">
+  <header class="post-header">
+    <h1 class="post-title">{{ .Title }}</h1>
+    <p class="post-meta">
+      {{ .Date.Format "January 2, 2006" }}
+      {{ with .Params.duration }} &middot; {{ . }}{{ end }}
+    </p>
+    {{ with .Params.guests }}
+    <p class="podcast-guests"><strong>Guests:</strong>
+      {{ range $i, $guest := . }}{{ if $i }}, {{ end }}<a href="https://njump.me/{{ $guest.npub }}" target="_blank" rel="noopener">{{ $guest.name }}</a>{{ end }}
+    </p>
+    {{ end }}
+    {{ with .Params.guest }}
+    <p class="podcast-guest"><strong>Guest:</strong> {{ . }}</p>
+    {{ end }}
+  </header>
+
+  <div class="post-content">
+    {{ with .Params.audio_url }}
+    <div class="podcast-player">
+      <audio id="podcast-audio" controls preload="metadata">
+        <source src="{{ . }}" type="audio/ogg">
+        Your browser does not support the audio element.
+      </audio>
+    </div>
+    {{ end }}
+
+    <div class="podcast-shownotes">
+      {{ .Content }}
+    </div>
+
+    {{ with .Params.links }}
+    <div class="podcast-links">
+      <h2>Links</h2>
+      <ul>
+        {{ range . }}
+        <li><a href="{{ .url }}" target="_blank" rel="noopener">{{ .title }}</a></li>
+        {{ end }}
+      </ul>
+    </div>
+    {{ end }}
+
+    {{ with .Params.timestamps }}
+    <div class="podcast-timestamps">
+      <h2>Timestamps</h2>
+      <ul class="timestamp-list">
+        {{ range . }}
+        <li>
+          <a href="#" class="timestamp-link" data-time="{{ .time }}">{{ .time }}</a>
+          <span class="timestamp-label">{{ .label }}</span>
+        </li>
+        {{ end }}
+      </ul>
+    </div>
+    {{ end }}
+  </div>
+</article>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const audio = document.getElementById('podcast-audio');
+  const timestampLinks = document.querySelectorAll('.timestamp-link');
+
+  timestampLinks.forEach(function(link) {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      const timeStr = this.getAttribute('data-time');
+      const parts = timeStr.split(':').map(Number);
+      let seconds = 0;
+      if (parts.length === 3) {
+        seconds = parts[0] * 3600 + parts[1] * 60 + parts[2];
+      } else if (parts.length === 2) {
+        seconds = parts[0] * 60 + parts[1];
+      }
+      if (audio) {
+        audio.currentTime = seconds;
+        audio.play();
+      }
+    });
+  });
+});
+</script>
+{{ end }}

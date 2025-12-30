@@ -29,3 +29,11 @@ menu_about: "소개"
 menu_newsletters: "뉴스레터"
 menu_topics: "주제"
 menu_podcast: "팟캐스트"
+
+# Podcast
+podcast_available_in_english: "팟캐스트 에피소드는 영어로 제공됩니다."
+podcast_view_episodes: "팟캐스트 에피소드 보기"
+podcast_intro: "Nostr를 구축하는 개발자들과의 대화."
+
+# Footer
+footer_description: "Nostr 프로토콜을 위한 기술 리소스. NIP 제안, 클라이언트 업데이트, 릴레이 개발, 주목할 만한 코드 변경 사항을 다루는 주간 뉴스레터와 팟캐스트."
