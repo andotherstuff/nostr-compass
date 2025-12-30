@@ -64,16 +64,14 @@ ul.n-column-list {
 }
 
 .home .content {
-    margin-top: 2em;
+    margin-top: 1em;
     
     > .logo {
-        width: 20%;
-        min-width: 8em;
+        width: 35%;
+        min-width: 14em;
         float: right;
-        display: inline-block;
-        margin-left: 1.3em;
-        margin-bottom: 1.3em;
-        margin-right: 1.3em;
+        overflow: hidden;
+        margin: 0 0 0 0.5em;
     }
 }
 
@@ -295,15 +293,21 @@ hr {
   margin-right: 10px;
 }
 
-/* Logo sizing */
-.logo-svg {
-  width: 100%;
-  height: 100%;
+/* Logo sizing - PNG has built-in padding, so we scale and clip */
+.logo-img {
+  vertical-align: middle;
 }
 
-.site-title .logo-svg {
-  height: 44px;
-  width: 44px;
+.site-title .logo-img {
+  height: 70px;
+  width: 70px;
+  margin: -10px -12px -10px -10px;
+}
+
+.home .logo .logo-img {
+  width: 140%;
+  height: auto;
+  margin: -20% -20%;
 }
 
 /* Topics index */
