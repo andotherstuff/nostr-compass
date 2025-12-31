@@ -43,6 +43,7 @@ Gift wrap events can now be deleted via NIP-09/NIP-62 deletion requests. This wa
 **Mentioned in:**
 - [Newsletter #1: News](/en/newsletters/2025-12-17-newsletter/#news)
 - [Newsletter #1: NIP Updates](/en/newsletters/2025-12-17-newsletter/#nip-updates)
+- [Newsletter #3: December Recap](/en/newsletters/2025-12-31-newsletter/#december-recap-five-years-of-nostr-decembers)
 
 **See also:**
 - [NIP-17: Private Direct Messages](/en/topics/nip-17/)

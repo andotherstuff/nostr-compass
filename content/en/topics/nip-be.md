@@ -46,3 +46,4 @@ Uses half-duplex communication with standard Nostr message types (`EVENT`, `EOSE
 
 **Mentioned in:**
 - [Newsletter #1: News](/en/newsletters/2025-12-17-newsletter/#news)
+- [Newsletter #3: December Recap](/en/newsletters/2025-12-31-newsletter/#december-recap-five-years-of-nostr-decembers)

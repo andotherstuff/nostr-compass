@@ -47,6 +47,8 @@ These solve the discovery problem: when someone shares a note ID, how do clients
 
 **Mentioned in:**
 - [Newsletter #1: NIP Deep Dive](/en/newsletters/2025-12-17-newsletter/#nip-19-bech32-encoded-identifiers)
+- [Newsletter #3: December Recap](/en/newsletters/2025-12-31-newsletter/#december-recap-five-years-of-nostr-decembers)
+- [Newsletter #3: Notable Code Changes](/en/newsletters/2025-12-31-newsletter/#damus-ios)
 
 **See also:**
 - [NIP-01: Basic Protocol](/en/topics/nip-01/)

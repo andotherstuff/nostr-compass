@@ -35,6 +35,7 @@ NIP-46 defines remote signing, allowing a signer application to hold keys while 
 
 **Mentioned in:**
 - [Newsletter #1: Notable Code Changes](/en/newsletters/2025-12-17-newsletter/#amethyst-android)
+- [Newsletter #3: December Recap](/en/newsletters/2025-12-31-newsletter/#december-recap-five-years-of-nostr-decembers)
 
 **See also:**
 - [NIP-55: Android Signer](/en/topics/nip-55/)

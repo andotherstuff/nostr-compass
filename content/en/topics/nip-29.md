@@ -41,3 +41,4 @@ Clients send group messages to the relay, which validates membership before acce
 
 **Mentioned in:**
 - [Newsletter #2: NIP Updates](/en/newsletters/2025-12-24-newsletter/#nip-updates)
+- [Newsletter #3: December Recap](/en/newsletters/2025-12-31-newsletter/#december-recap-five-years-of-nostr-decembers)
