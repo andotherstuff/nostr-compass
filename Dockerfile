@@ -1,4 +1,4 @@
-FROM klakegg/hugo:0.152.2-ext-alpine
+FROM hugomods/hugo:dart-sass-git
 
 WORKDIR /src
 
