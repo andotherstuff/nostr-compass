@@ -41,6 +41,7 @@ Published by the LNURL server after payment confirmation. Contains:
 **Mentioned in:**
 - [Newsletter #1: News](/en/newsletters/2025-12-17-newsletter/#news)
 - [Newsletter #2: News](/en/newsletters/2025-12-24-newsletter/#news)
+- [Newsletter #3: Notable Code Changes](/en/newsletters/2025-12-31-newsletter/#amethyst-android)
 
 **See also:**
 - [NIP-47: Nostr Wallet Connect](/en/topics/nip-47/)

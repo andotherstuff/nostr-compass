@@ -36,6 +36,7 @@ MIP-05 defines a protocol for push notifications that maintain user privacy, sol
 
 **Mentioned in:**
 - [Newsletter #1: News](/en/newsletters/2025-12-17-newsletter/#news)
+- [Newsletter #3: December Recap](/en/newsletters/2025-12-31-newsletter/#december-recap-five-years-of-nostr-decembers)
 
 **See also:**
 - [Marmot Protocol](/en/topics/marmot/)

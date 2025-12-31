@@ -32,6 +32,7 @@ Unlike threaded conversations, these messages have no concept of chat history or
 
 **Mentioned in:**
 - [Newsletter #2: NIP Updates](/en/newsletters/2025-12-24-newsletter/#nip-updates)
+- [Newsletter #3: December Recap](/en/newsletters/2025-12-31-newsletter/#december-recap-five-years-of-nostr-decembers)
 
 **See also:**
 - [NIP-01: Basic Protocol](/en/topics/nip-01/)

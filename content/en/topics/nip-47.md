@@ -33,6 +33,7 @@ A wallet (like Zeus) runs an NWC service that listens for payment requests on sp
 **Mentioned in:**
 - [Newsletter #1: News](/en/newsletters/2025-12-17-newsletter/#news)
 - [Newsletter #2: Releases](/en/newsletters/2025-12-24-newsletter/#releases)
+- [Newsletter #3: December Recap](/en/newsletters/2025-12-31-newsletter/#december-recap-five-years-of-nostr-decembers)
 
 **See also:**
 - [NIP-57: Zaps](/en/topics/nip-57/)

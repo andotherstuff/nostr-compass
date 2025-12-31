@@ -48,6 +48,8 @@ NIP-17 hides the sender at the cost of more complex implementation.
 **Mentioned in:**
 - [Newsletter #1: NIP Updates](/en/newsletters/2025-12-17-newsletter/#nip-updates)
 - [Newsletter #2: News](/en/newsletters/2025-12-24-newsletter/#news)
+- [Newsletter #3: December Recap](/en/newsletters/2025-12-31-newsletter/#december-recap-five-years-of-nostr-decembers)
+- [Newsletter #3: Notable Code Changes](/en/newsletters/2025-12-31-newsletter/#shopstr-marketplace)
 
 **See also:**
 - [NIP-59: Gift Wrap](/en/topics/nip-59/)
