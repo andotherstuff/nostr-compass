@@ -68,7 +68,7 @@ jobs:
           PAYLOAD=$(jq -n \
             --arg subject "$TITLE" \
             --arg body "$BODY" \
-            '{subject: $subject, body: $body, status: "draft"}')
+            '{subject: $subject, body: $body, status: "published"}')
           
           # Send to Buttondown
           RESPONSE=$(curl -s -w "\n%{http_code}" -X POST https://api.buttondown.com/v1/emails \
@@ -80,10 +80,9 @@ jobs:
           RESPONSE_BODY=$(echo "$RESPONSE" | head -n -1)
           
           if [ "$HTTP_CODE" -ge 200 ] && [ "$HTTP_CODE" -lt 300 ]; then
-            echo "✅ Draft created successfully!"
-            echo "👉 Review and send at: https://buttondown.com/emails"
+            echo "✅ Newsletter sent successfully!"
           else
-            echo "❌ Failed to create draft (HTTP $HTTP_CODE)"
+            echo "❌ Failed to send newsletter (HTTP $HTTP_CODE)"
             echo "$RESPONSE_BODY"
             exit 1
           fi
