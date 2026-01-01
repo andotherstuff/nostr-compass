@@ -68,7 +68,7 @@ jobs:
           PAYLOAD=$(jq -n \
             --arg subject "$TITLE" \
             --arg body "$BODY" \
-            '{subject: $subject, body: $body, status: "published"}')
+            '{subject: $subject, body: $body, status: "about_to_send"}')
           
           # Send to Buttondown
           RESPONSE=$(curl -s -w "\n%{http_code}" -X POST https://api.buttondown.com/v1/emails \
