@@ -32,5 +32,9 @@ data/project_updates/*.json
 public/
 resources/_gen/
 
-# Local skills files (Claude Code)
+# Local Claude Code files
+.claude/
 skills/
+
+# Python virtual environment
+.venv/
