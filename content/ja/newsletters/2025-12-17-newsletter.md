@@ -154,7 +154,7 @@ Kind 0はユーザーメタデータ（プロフィール）、kind 1はテキ�
 
 **Amethyst v1.04.2** - フォローリスト/パック、新しいタイムラインフィルター、画像ギャラリー、H.265動画圧縮（50%小さいファイル）を導入した機能リリース。Kotlin Multiplatformマイグレーションを完了。[リリース](https://github.com/vitorpamplona/amethyst/releases/tag/v1.04.2)
 
-**Mostro v0.15.5** - NIP-69注文有効期限サポートと改善された取引履歴レスポンスを含むP2P取引ボットの更新。[リリース](https://github.com/MostroP2P/mostro/releases/tag/v0.15.5)
+**Mostro v0.15.5** - NIP-69注文有効期限サポートと改善された取引履歴レスポンスを含むP2P取引プラットフォームの更新。[リリース](https://github.com/MostroP2P/mostro/releases/tag/v0.15.5)
 
 **Nosflare v8.9.26** - Cloudflareインフラストラクチャ上に構築されたサーバーレスNostrリレー。このリリースはwebsocketの障害を引き起こす可能性のあるバグに対処する重要なホットフィックスを提供し、リレーに依存するユーザーとアプリケーションにより安定した接続を保証します。[リリース](https://github.com/Spl0itable/nosflare/releases/tag/v8.9.26)
 

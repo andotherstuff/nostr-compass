@@ -129,7 +129,7 @@ Von Relay zu Client:
 
 **Amethyst v1.04.2** - Feature-Release mit Follow-Listen/Packs, neuen Timeline-Filtern, Bildergalerie und H.265-Videokompression. [Release](https://github.com/vitorpamplona/amethyst/releases/tag/v1.04.2)
 
-**Mostro v0.15.5** - P2P-Trading-Bot-Update mit NIP-69 Order-Ablauf-Support. [Release](https://github.com/MostroP2P/mostro/releases/tag/v0.15.5)
+**Mostro v0.15.5** - P2P-Trading-Plattform-Update mit NIP-69 Order-Ablauf-Support. [Release](https://github.com/MostroP2P/mostro/releases/tag/v0.15.5)
 
 ## Entwickler Best Practices {#developer-best-practices}
 

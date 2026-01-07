@@ -16,7 +16,7 @@ type: newsletters
 
 **Shopstr Zapsnags：通过闪电网络进行闪购** - Nostr 原生市场推出了 ["Zapsnags"](https://github.com/shopstr-eng/shopstr/pull/211)，这是一个闪购功能，让买家可以直接从社交信息流中通过单次 zap 购买商品。该实现过滤带有 `#shopstr-zapsnag` 标签的 kind 1 笔记，并将其渲染为带有 "Zap to Buy" 按钮的产品卡片，而不是标准的购物车流程。当买家发送 zap 时，系统使用 [NIP-57](/zh/topics/nip-57/) 生成支付请求，轮询 kind 9735 zap 收据以确认支付，然后使用 [NIP-17](/zh/topics/nip-17/) gift wrapping 加密收货信息后私密发送给卖家。该功能在本地存储买家详细信息以便重复购买，并包含一个用于创建闪购列表的商家仪表板。这是社交、支付和隐私原语的巧妙组合，展示了 Nostr 的可组合设计如何实现新颖的商业模式。
 
-**Mostro 推出开发基金** - [NIP-69](/zh/topics/nip-69/) P2P 比特币交易机器人[实现了可配置的开发费用](https://github.com/MostroP2P/mostro/pull/555)以支持可持续维护。运营商可以将 `dev_fee_percentage` 设置在 Mostro 交易费的 10-100% 之间（默认为 30%），在每次成功交易时自动路由到开发基金。该实现添加了三个数据库列（`dev_fee`、`dev_fee_paid`、`dev_fee_payment_hash`）来跟踪贡献，并在守护进程启动时验证百分比。技术文档位于 [`docs/DEV_FEE.md`](https://github.com/MostroP2P/mostro/blob/main/docs/DEV_FEE.md)。这种选择加入模式让运营商支持持续开发，同时保持费用分配的完全透明。
+**Mostro 推出开发基金** - [NIP-69](/zh/topics/nip-69/) P2P 比特币交易平台[实现了可配置的开发费用](https://github.com/MostroP2P/mostro/pull/555)以支持可持续维护。运营商可以将 `dev_fee_percentage` 设置在 Mostro 交易费的 10-100% 之间（默认为 30%），在每次成功交易时自动路由到开发基金。该实现添加了三个数据库列（`dev_fee`、`dev_fee_paid`、`dev_fee_payment_hash`）来跟踪贡献，并在守护进程启动时验证百分比。技术文档位于 [`docs/DEV_FEE.md`](https://github.com/MostroP2P/mostro/blob/main/docs/DEV_FEE.md)。这种选择加入模式让运营商支持持续开发，同时保持费用分配的完全透明。
 
 ## NIP 更新 {#nip-updates}
 

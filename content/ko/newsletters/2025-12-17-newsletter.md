@@ -154,7 +154,7 @@ Kind 0은 사용자 메타데이터(프로필), kind 1은 텍스트 노트(기�
 
 **Amethyst v1.04.2** - 팔로우 리스트/팩, 새로운 타임라인 필터, 이미지 갤러리, H.265 비디오 압축(50% 더 작은 파일)을 도입한 기능 릴리스. Kotlin Multiplatform 마이그레이션 완료. [릴리스](https://github.com/vitorpamplona/amethyst/releases/tag/v1.04.2)
 
-**Mostro v0.15.5** - NIP-69 주문 만료 지원 및 개선된 거래 내역 응답이 포함된 P2P 거래 봇 업데이트. [릴리스](https://github.com/MostroP2P/mostro/releases/tag/v0.15.5)
+**Mostro v0.15.5** - NIP-69 주문 만료 지원 및 개선된 거래 내역 응답이 포함된 P2P 거래 플랫폼 업데이트. [릴리스](https://github.com/MostroP2P/mostro/releases/tag/v0.15.5)
 
 **Nosflare v8.9.26** - Cloudflare 인프라에 구축된 서버리스 Nostr 릴레이. 이 릴리스는 websocket 실패를 일으킬 수 있는 버그를 해결하는 중요한 핫픽스를 제공하여 릴레이에 의존하는 사용자와 애플리케이션에 더 안정적인 연결을 보장합니다. [릴리스](https://github.com/Spl0itable/nosflare/releases/tag/v8.9.26)
 

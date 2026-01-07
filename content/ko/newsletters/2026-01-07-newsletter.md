@@ -156,7 +156,7 @@ Nostr 프로토콜 생태계에 대한 주간 가이드, Nostr Compass에 다시
 
 **Primal Android v2.6.18** - [전체 릴리스](https://github.com/PrimalHQ/primal-android-app/releases/tag/2.6.18)는 [NIP-46](/ko/topics/nip-46/) 원격 서명과 [NIP-55](/ko/topics/nip-55/) 로컬 서명을 추가하여 Primal을 다른 Android 앱을 위한 서명 허브로 만듭니다. 성능 개선에는 미디어 사전 캐싱, 아바타 사전 캐싱, 더 빠른 스레드 로딩이 포함됩니다. 버그 수정은 바이오의 자기 언급, 미디어 갤러리 크래시, 스트림 제목 폴백을 해결합니다. iOS에서 Primal은 NIP-46 서명 요청 수신을 위해 앱을 활성 상태로 유지하기 위해 백그라운드 오디오 재생을 사용합니다; 사용자는 설정에서 소리를 변경하거나 완전히 음소거할 수 있습니다.
 
-**Mostro v0.15.6** - [NIP-69](/ko/topics/nip-69/) P2P 비트코인 거래 봇의 [최신 릴리스](https://github.com/MostroP2P/mostro/releases/tag/v0.15.6)는 Phase 4 감사 이벤트로 개발 펀드 구현을 완료합니다. 개발 수수료 지불은 이제 각 성공적인 지불 후 게시되는 kind 38383 Nostr 이벤트를 통해 추적되어 제3자 검증 및 분석이 가능합니다. 구매자/판매자 메시지에 대한 금액 계산이 수정되었고, 프리미엄 로직이 lnp2pbot 참조 구현과 일치하도록 조정되었습니다.
+**Mostro v0.15.6** - [NIP-69](/ko/topics/nip-69/) P2P 비트코인 거래 플랫폼의 [최신 릴리스](https://github.com/MostroP2P/mostro/releases/tag/v0.15.6)는 Phase 4 감사 이벤트로 개발 펀드 구현을 완료합니다. 개발 수수료 지불은 이제 각 성공적인 지불 후 게시되는 kind 38383 Nostr 이벤트를 통해 추적되어 제3자 검증 및 분석이 가능합니다. 구매자/판매자 메시지에 대한 금액 계산이 수정되었고, 프리미엄 로직이 lnp2pbot 참조 구현과 일치하도록 조정되었습니다.
 
 **Aegis v0.3.5** - 크로스 플랫폼 서명자가 [다크 모드를 추가](https://github.com/ZharlieW/Aegis/releases/tag/v0.3.5)하고, 앱 아이콘 표시를 개선하고, 더 깔끔한 UI 레이아웃을 제공합니다. 버그 수정은 iOS iCloud Private Relay 충돌 및 이벤트 파싱 문제를 해결합니다. 이번 릴리스는 이벤트 JSON이 Rust 서명 함수에 전달되는 방식도 개선합니다.
 

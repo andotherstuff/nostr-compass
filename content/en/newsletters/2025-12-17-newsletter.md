@@ -154,7 +154,7 @@ These solve a key problem: if someone shares a note ID, how do you know which re
 
 **Amethyst v1.04.2** - Feature release introducing follow lists/packs, new timeline filters, image gallery, and H.265 video compression (50% smaller files). Completed Kotlin Multiplatform migration. [Release](https://github.com/vitorpamplona/amethyst/releases/tag/v1.04.2)
 
-**Mostro v0.15.5** - P2P trading bot update with NIP-69 order expiration support and improved trade history responses. [Release](https://github.com/MostroP2P/mostro/releases/tag/v0.15.5)
+**Mostro v0.15.5** - P2P trading platform update with NIP-69 order expiration support and improved trade history responses. [Release](https://github.com/MostroP2P/mostro/releases/tag/v0.15.5)
 
 **Nosflare v8.9.26** - Serverless Nostr relay built on Cloudflare infrastructure. This release delivers a critical hotfix addressing a bug that could cause websocket failures, ensuring more stable connections for users and applications relying on the relay. [Release](https://github.com/Spl0itable/nosflare/releases/tag/v8.9.26)
 

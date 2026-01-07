@@ -154,7 +154,7 @@ Deze lossen een belangrijk probleem op: als iemand een note-ID deelt, hoe weet j
 
 **Amethyst v1.04.2** - Feature-release met introductie van volglijsten/pakketten, nieuwe tijdlijnfilters, afbeeldingsgalerij en H.265 videocompressie (50% kleinere bestanden). Voltooide Kotlin Multiplatform-migratie. [Release](https://github.com/vitorpamplona/amethyst/releases/tag/v1.04.2)
 
-**Mostro v0.15.5** - P2P-handelsbot update met NIP-69 orderverloopdatum-ondersteuning en verbeterde handelsgeschiedenis-antwoorden. [Release](https://github.com/MostroP2P/mostro/releases/tag/v0.15.5)
+**Mostro v0.15.5** - P2P-handelsplatform update met NIP-69 orderverloopdatum-ondersteuning en verbeterde handelsgeschiedenis-antwoorden. [Release](https://github.com/MostroP2P/mostro/releases/tag/v0.15.5)
 
 **Nosflare v8.9.26** - Serverless Nostr-relay gebouwd op Cloudflare-infrastructuur. Deze release levert een kritieke hotfix die een bug aanpakt die websocket-fouten kon veroorzaken, wat zorgt voor stabielere verbindingen voor gebruikers en applicaties die afhankelijk zijn van de relay. [Release](https://github.com/Spl0itable/nosflare/releases/tag/v8.9.26)
 

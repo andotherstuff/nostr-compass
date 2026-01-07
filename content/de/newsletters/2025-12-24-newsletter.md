@@ -18,7 +18,7 @@ Willkommen zurück bei Nostr Compass, deinem wöchentlichen Guide zum Nostr-Prot
 
 **Shopstr Zapsnags: Flash Sales via Lightning** - Der Nostr-native Marktplatz führte ["Zapsnags"](https://github.com/shopstr-eng/shopstr/pull/211) ein, eine Flash-Sale-Funktion, mit der Käufer Artikel direkt aus ihrem sozialen Feed mit einem einzigen Zap kaufen können. Die Implementierung filtert Kind 1 Notizen, die mit `#shopstr-zapsnag` getaggt sind, und rendert sie als Produktkarten mit einem "Zap to Buy"-Button anstelle des Standard-Warenkorb-Flows.
 
-**Mostro führt Entwicklungsfonds ein** - Der [NIP-69](/de/topics/nip-69/) P2P Bitcoin Trading Bot [implementierte konfigurierbare Entwicklungsgebühren](https://github.com/MostroP2P/mostro/pull/555) zur Unterstützung nachhaltiger Wartung. Betreiber können `dev_fee_percentage` zwischen 10-100% der Mostro-Handelsgebühr festlegen (Standard 30%), die bei jedem erfolgreichen Trade automatisch an einen Entwicklungsfonds weitergeleitet wird.
+**Mostro führt Entwicklungsfonds ein** - Die [NIP-69](/de/topics/nip-69/) P2P Bitcoin Trading Plattform [implementierte konfigurierbare Entwicklungsgebühren](https://github.com/MostroP2P/mostro/pull/555) zur Unterstützung nachhaltiger Wartung. Betreiber können `dev_fee_percentage` zwischen 10-100% der Mostro-Handelsgebühr festlegen (Standard 30%), die bei jedem erfolgreichen Trade automatisch an einen Entwicklungsfonds weitergeleitet wird.
 
 ## NIP Updates {#nip-updates}
 

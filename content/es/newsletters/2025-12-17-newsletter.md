@@ -156,7 +156,7 @@ Estos resuelven un problema clave: si alguien comparte un ID de nota, ¿cómo sa
 
 **Amethyst v1.04.2** - Lanzamiento con nuevas características introduciendo listas/packs de seguidos, nuevos filtros de línea de tiempo, galería de imágenes, y compresión de video H.265 (archivos 50% más pequeños). Migración completa a Kotlin Multiplatform. [Lanzamiento](https://github.com/vitorpamplona/amethyst/releases/tag/v1.04.2)
 
-**Mostro v0.15.5** - Actualización del bot de trading P2P con soporte de expiración de órdenes NIP-69 y respuestas mejoradas de historial de operaciones. [Lanzamiento](https://github.com/MostroP2P/mostro/releases/tag/v0.15.5)
+**Mostro v0.15.5** - Actualización de la plataforma de trading P2P con soporte de expiración de órdenes NIP-69 y respuestas mejoradas de historial de operaciones. [Lanzamiento](https://github.com/MostroP2P/mostro/releases/tag/v0.15.5)
 
 **Nosflare v8.9.26** - Relay Nostr serverless construido en infraestructura Cloudflare. Este lanzamiento entrega un hotfix crítico que aborda un error que podía causar fallos de websocket, asegurando conexiones más estables para usuarios y aplicaciones que dependen del relay. [Lanzamiento](https://github.com/Spl0itable/nosflare/releases/tag/v8.9.26)
 
