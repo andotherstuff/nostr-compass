@@ -81,7 +81,7 @@ social_clients:
   - name: Nostur
     description: Native iOS/macOS client with extensive feature set
     platforms: [ios, macos]
-    repo: https://github.com/nickytonline/nostur
+    repo: https://github.com/nostur-com/nostur-ios-public
     website: https://nostur.com
     maintainer: fabian
     status: active
@@ -255,7 +255,7 @@ messaging_clients:
   - name: 0xchat
     description: Telegram-style DMs and group chat with Cashu support
     platforms: [ios, android]
-    repo: https://github.com/0xchat-app
+    repo: https://github.com/0xchat-app/0xchat-app-main
     maintainer: pextar
     status: active
     priority: high

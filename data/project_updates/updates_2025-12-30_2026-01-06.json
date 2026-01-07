@@ -1,0 +1,1618 @@
+{
+  "generated_at": "2026-01-06T20:18:43.401902+00:00",
+  "period": {
+    "start": "2025-12-30",
+    "end": "2026-01-06",
+    "days": 7
+  },
+  "summary": {
+    "total_releases": 20,
+    "total_merged_prs": 110,
+    "total_open_prs": 0,
+    "total_commits": 0,
+    "active_repos": 22
+  },
+  "projects": {
+    "damus-io/damus": {
+      "name": "Damus",
+      "description": "The OG Nostr client for iOS",
+      "category": "social_clients",
+      "priority": "high",
+      "website": "https://damus.io",
+      "maintainer": "jb55",
+      "releases": [],
+      "merged_prs": [
+        {
+          "id": 3147829256,
+          "number": 3503,
+          "title": "Fix thread-safety crashes during onboarding",
+          "body": "## Summary\r\n\r\nThis commit fixes a crash that occurred when clicking \"follow all\" during onboarding.\r\n\r\nThis fix works by making `Contacts` and `PostBox` isolated into a specific Swift Actor, and updating direct and indirect usages accordingly.\r\n\r\nChangelog-Fixed: Fixed a crash that occurred when clicking \"follow all\" during onboarding.\r\nCloses: https://github.com/damus-io/damus/issues/3422\r\n\r\nThis is a rewrite of https://github.com/damus-io/damus/pull/3471\r\n\r\n## Checklist\r\n\r\n<!-- \r\nCHOOSE YOUR CHECKLIST: \r\n- If this is an EXPERIMENTAL DAMUS LABS FEATURE, follow the \"Experimental Feature Checklist\" below and DELETE the \"Standard PR Checklist\"\r\n- If this is a STANDARD PR, follow the \"Standard PR Checklist\" below and DELETE the \"Experimental Feature Checklist\"\r\n-->\r\n\r\n### Standard PR Checklist\r\n\r\n<!-- DELETE THIS SECTION if this is an experimental Damus Labs feature -->\r\n\r\n- [x] I have read (or I am familiar with) the [Contribution Guidelines](../docs/CONTRIBUTING.md)\r\n- [x] I have tested the changes in this PR\r\n- [x] I have profiled the changes to ensure there are no performance regressions, or I do not need to profile the changes.\r\n    - Utilize Xcode profiler to measure performance impact of code changes. See https://developer.apple.com/videos/play/wwdc2025/306\r\n- [x] I have opened or referred to an existing github issue related to this change.\r\n- [x] My PR is either small, or I have split it into smaller logical commits that are easier to review\r\n- [x] I have added the signoff line to all my commits. See [Signing off your work](../docs/CONTRIBUTING.md#sign-your-work---the-developers-certificate-of-origin)\r\n- [x] I have added appropriate changelog entries for the changes in this PR. See [Adding changelog entries](../docs/CONTRIBUTING.md#add-changelog-changed-changelog-fixed-etc)\r\n- [x] I have added appropriate `Closes:` or `Fixes:` tags in the commit messages wherever applicable, or made sure those are not needed. See [Submitting patches](https://github.com/damus-io/damus/blob/master/docs/CONTRIBUTING.md#submitting-patches)\r\n\r\n## Test report\r\n\r\n### Test Procedure\r\n\r\n**Setup:**\r\n- Fresh install, new account creation\r\n\r\n**Steps:**\r\n\r\n1. Launch app and create new account\r\n2. Complete onboarding interest selection\r\n3. On the suggested follows screen, tap \"Follow All\" button\r\n4. Continue through onboarding to completion\r\n5. Repeat steps 1-4 multiple times\r\n\r\n### Issue recreation\r\n\r\n**Device:** iPhone 16e\r\n\r\n**iOS:** 26.0\r\n\r\n**Damus:** v1.16-rc5\r\n\r\n**Results:**\r\n- [x] RECREATED 3/3 tries\r\n\r\n### Fix verification\r\n\r\n**Device:** iPhone 16e\r\n\r\n**iOS:** 26.0\r\n\r\n**Damus:** 2e6dcf3faf57821993ba38e11262529cfbc26f16\r\n\r\n**Results:**\r\n- [x] PASS 5/5 times\r\n\r\n### Regression checks\r\n\r\n**Device:** iPhone 16e\r\n\r\n**iOS:** 26.0\r\n\r\n**Damus:** 2e6dcf3faf57821993ba38e11262529cfbc26f16\r\n\r\n**Steps:**\r\n1. Follow and unfollow users from different screens\r\n2. View own contact list on the user's own profile page\r\n3. Navigate to some of the main screens in the app, making sure they do not crash\r\n4. Run automated tests and check for regressions\r\n\r\n**Results:**\r\n- [x] No regressions detected\r\n\r\n### Performance check\r\n\r\nNo regression found\r\n\r\nDevice: iPhone 13 mini\r\niOS: 26.2\r\nDamus: 2e6dcf3faf57821993ba38e11262529cfbc26f16\r\n\r\nBefore:\r\n<img width=\"1583\" height=\"1033\" alt=\"Screenshot 2026-01-05 at 16 54 36\" src=\"https://github.com/user-attachments/assets/02e9b3d3-b402-44b5-a7b8-69d2f1907637\" />\r\n\r\nAfter:\r\n<img width=\"1583\" height=\"1033\" alt=\"Screenshot 2026-01-05 at 16 54 52\" src=\"https://github.com/user-attachments/assets/7b07709a-c426-47f1-859c-ec258efa29f1\" />\r\n\r\n\r\n\n\n<!-- This is an auto-generated comment: release notes by coderabbit.ai -->\n\n## Summary by CodeRabbit\n\n* **New Features**\n  * Added smart image blur logic considering friend relationships.\n  * Enhanced notification and DM filtering with new friend-of-friends detection.\n\n* **Refactor**\n  * Improved app threading and concurrency safety across core features including posts, notifications, profiles, and contact management.\n  * Converted async operations to use async/await patterns for better responsiveness.\n\n<sub>\u270f\ufe0f Tip: You can customize this high-level summary in your review settings.</sub>\n\n<!-- end of auto-generated comment: release notes by coderabbit.ai -->",
+          "author": "danieldaquino",
+          "merged_at": "2026-01-06T01:28:06Z",
+          "url": "https://github.com/damus-io/damus/pull/3503",
+          "labels": []
+        },
+        {
+          "id": 3124251548,
+          "number": 3468,
+          "title": "0xdead10cc crash fix",
+          "body": "## Summary\r\n\r\nThis commit fixes the background crashes with termination code\r\n0xdead10cc.\r\n\r\nThose crashes were caused by the fact that NostrDB was being stored on\r\nthe shared app container (Because our app extensions need NostrDB\r\ndata), and iOS kills any process that holds a file lock after the\r\nprocess is backgrounded.\r\n\r\nOther developers in the field have run into similar problems in the past\r\n(with shared SQLite databases or shared SwiftData), and they generally\r\nrecommend not to place those database in shared containers at all,\r\nmentioning that 0xdead10cc crashes are almost inevitable otherwise:\r\n\r\n- https://ryanashcraft.com/sqlite-databases-in-app-group-containers/\r\n- https://inessential.com/2020/02/13/how_we_fixed_the_dreaded_0xdead10cc_cras.html\r\n\r\nSince iOS aggressively backgrounds and terminates processes with tight\r\ntiming constraints that are mostly outside our control (despite using\r\nApple's recommended mechanisms, such as requesting more time to perform\r\nclosing operations), this fix aims to address the issue by a different\r\nstorage architecture.\r\n\r\nInstead of keeping NostrDB data on the shared app container and handling\r\nthe closure/opening of the database with the app lifecycle signals, keep\r\nthe main NostrDB database file in the app's private container, and instead\r\ntake periodic read-only snapshots of NostrDB in the shared container, so as\r\nto allow extensions to have recent NostrDB data without all the\r\ncomplexities of keeping the main file in the shared container.\r\n\r\nThis does have the tradeoff that more storage will be used by NostrDB\r\ndue to file duplication, but that can be mitigated via other techniques\r\nif necessary.\r\n\r\nCloses: https://github.com/damus-io/damus/issues/2638\r\nCloses: https://github.com/damus-io/damus/issues/3463\r\nChangelog-Fixed: Fixed background crashes with error code 0xdead10cc\r\nSigned-off-by: Daniel D\u2019Aquino <daniel@daquino.me>\r\n\r\n## Checklist\r\n\r\n<!-- \r\nCHOOSE YOUR CHECKLIST: \r\n- If this is an EXPERIMENTAL DAMUS LABS FEATURE, follow the \"Experimental Feature Checklist\" below and DELETE the \"Standard PR Checklist\"\r\n- If this is a STANDARD PR, follow the \"Standard PR Checklist\" below and DELETE the \"Experimental Feature Checklist\"\r\n-->\r\n\r\n### Standard PR Checklist\r\n\r\n<!-- DELETE THIS SECTION if this is an experimental Damus Labs feature -->\r\n\r\n- [x] I have read (or I am familiar with) the [Contribution Guidelines](../docs/CONTRIBUTING.md)\r\n- [x] I have tested the changes in this PR\r\n- [x] I have profiled the changes to ensure there are no performance regressions, or I do not need to profile the changes.\r\n    - Utilize Xcode profiler to measure performance impact of code changes. See https://developer.apple.com/videos/play/wwdc2025/306\r\n    - If not needed, provide reason:\r\n- [x] I have opened or referred to an existing github issue related to this change.\r\n- [x] My PR is either small, or I have split it into smaller logical commits that are easier to review\r\n- [x] I have added the signoff line to all my commits. See [Signing off your work](../docs/CONTRIBUTING.md#sign-your-work---the-developers-certificate-of-origin)\r\n- [x] I have added appropriate changelog entries for the changes in this PR. See [Adding changelog entries](../docs/CONTRIBUTING.md#add-changelog-changed-changelog-fixed-etc)\r\n- [x] I have added appropriate `Closes:` or `Fixes:` tags in the commit messages wherever applicable, or made sure those are not needed. See [Submitting patches](https://github.com/damus-io/damus/blob/master/docs/CONTRIBUTING.md#submitting-patches)\r\n\r\n## Test report\r\n\r\n### Crash fix test\r\n\r\n**Device:** Various\r\n\r\n**iOS:** Various\r\n\r\n**Damus:** Early experimental version with the essential change that addresses the root cause https://github.com/damus-io/damus/commit/580f9e7b8accb211f745e724f0c31e948e33a582\r\n\r\n**Setup:** TestFlight build\r\n\r\n**Steps:**\r\n1. Got team to use an experimental TestFlight build with the main change, and report crashes\r\n\r\n**Results:**\r\n- [x] PASS, no 0xdead10cc crash reports seen after several days of use.\r\n\r\n### Snapshot mechanism\r\n\r\n**Device:** iPhone 13 mini\r\n\r\n**iOS:** 26.2\r\n\r\n**Damus:** [b311c5d](https://github.com/damus-io/damus/commit/b311c5d770a0bcd83ba1054f6b7418113ab32125)\r\n\r\n**Setup:** \r\n1. Debugger attached\r\n2. Snapshot timings reduced for testing\r\n\r\n**Steps:**\r\n1. Filter logs with the keyword \"snapshot\"\r\n2. Make sure that it periodically backs up the database as per logs\r\n3. Try to share something using the highlighter extension\r\n4. On the extension post composer, try to tag another known user, ensure that user profile image and name appears.\r\n\r\n**Results:**\r\n- [x] PASS\r\n\r\n### Snapshot mechanism (second test)\r\n\r\n**Device:** iPhone 16e simulator\r\n\r\n**iOS:** 26.0\r\n\r\n**Damus:** [b311c5d](https://github.com/damus-io/damus/commit/b311c5d770a0bcd83ba1054f6b7418113ab32125)\r\n\r\n**Setup:** \r\n1. Debugger attached\r\n2. Snapshot timings reduced for testing\r\n3. Fresh install (IMPORTANT)\r\n\r\n**Steps:**\r\n1. Filter logs with the keyword \"snapshot\"\r\n2. Make sure that it periodically backs up the database as per logs\r\n3. Try to share something using the highlighter extension\r\n4. On the extension post composer, try to tag another known user, ensure that user profile image and name appears.\r\n\r\n**Results:**\r\n- [x] PASS\r\n\r\n### Snapshot mechanism in relation to app lifecycle\r\n\r\n**Device:** iPhone 13 mini\r\n\r\n**iOS:** 26.2\r\n\r\n**Damus:** [b311c5d](https://github.com/damus-io/damus/commit/b311c5d770a0bcd83ba1054f6b7418113ab32125)\r\n\r\n**Setup:** \r\n1. Debugger attached\r\n2. Snapshot timings reduced for testing\r\n\r\n**Steps:**\r\n1. Filter logs with the keyword \"snapshot\"\r\n2. Make sure that it periodically backs up the database as per logs\r\n3. Leave the app and come back several times, quickly, with different timings\r\n4. Ensure there are no crashes or unusual behaviour/logs\r\n\r\n**Results:**\r\n- [x] PASS\r\n\r\n### Automated tests\r\n\r\n**Device:** iPhone 16e simulator\r\n\r\n**iOS:** 26.0\r\n\r\n**Damus:** [b311c5d](https://github.com/damus-io/damus/commit/b311c5d770a0bcd83ba1054f6b7418113ab32125)\r\n\r\n**Setup:** None\r\n\r\n**Steps:**\r\n1. Run new automated tests, ensure they are passing\r\n\r\n**Results:**\r\n- [x] PASS\r\n\r\n## Performance check\r\n\r\n**Device:** iPhone 13 mini\r\n\r\n**iOS:** 26.2\r\n\r\n**Damus:** [b311c5d](https://github.com/damus-io/damus/commit/b311c5d770a0bcd83ba1054f6b7418113ab32125)\r\n\r\n**Setup:** Snapshot timings locally reduced for testing\r\n\r\n**Steps:**\r\n1. Scroll down timeline\r\n\r\n**Results:**\r\n- [x] PASS, no performance regressions detected\r\n\r\n<img width=\"1643\" height=\"1033\" alt=\"Screenshot 2026-01-02 at 20 17 24\" src=\"https://github.com/user-attachments/assets/2fe98138-4516-4b0f-b749-ee3de9bb9528\" />\r\n\r\n## Other notes\r\n\r\n_[Please provide any other information that you think is relevant to this PR.]_",
+          "author": "danieldaquino",
+          "merged_at": "2026-01-03T04:49:13Z",
+          "url": "https://github.com/damus-io/damus/pull/3468",
+          "labels": [
+            "pr-active-review"
+          ]
+        }
+      ],
+      "open_prs": [],
+      "commits": []
+    },
+    "vitorpamplona/amethyst": {
+      "name": "Amethyst",
+      "description": "Feature-rich Android client",
+      "category": "social_clients",
+      "priority": "high",
+      "website": "https://amethyst.social",
+      "maintainer": "vitorpamplona",
+      "releases": [],
+      "merged_prs": [
+        {
+          "id": 3150086113,
+          "number": 1639,
+          "title": "remove unused imports",
+          "body": "",
+          "author": "davotoula",
+          "merged_at": "2026-01-06T17:48:02Z",
+          "url": "https://github.com/vitorpamplona/amethyst/pull/1639",
+          "labels": []
+        },
+        {
+          "id": 3144594784,
+          "number": 1636,
+          "title": "Reduce sonarcube warnings",
+          "body": "- optimise imports\r\n- refactor VoiceMessagePreview.kt",
+          "author": "davotoula",
+          "merged_at": "2026-01-04T18:37:26Z",
+          "url": "https://github.com/vitorpamplona/amethyst/pull/1636",
+          "labels": []
+        }
+      ],
+      "open_prs": [],
+      "commits": []
+    },
+    "PrimalHQ/primal-android-app": {
+      "name": "Primal Android",
+      "description": "Android client with built-in Lightning wallet",
+      "category": "social_clients",
+      "priority": "high",
+      "website": "https://primal.net",
+      "maintainer": "miljan",
+      "releases": [
+        {
+          "id": 273588940,
+          "tag": "2.6.18",
+          "name": "Primal 2.6.18",
+          "published_at": "2026-01-05T14:42:31Z",
+          "url": "https://github.com/PrimalHQ/primal-android-app/releases/tag/2.6.18",
+          "body": "## Features\r\n- Remote Signer (NIP-46)\r\n- Android Signer (NIP-55)\r\n\r\n## Fixes\r\n- Improved notifications auto-scroll behaviour (#766)\r\n- Improved thread screen load time (#764)\r\n- Improved article cover image rendering with variant images from cache\r\n- Implemented pre-caching user avatars (#770)\r\n- Implemented media pre-caching for smoother scrolling (#801)\r\n- Implemented `primal.net/profile` deep link handling\r\n- Fixed media gallery crash on app background\r\n- Fixed self-mentions in bio not rendering correctly (#797)\r\n- Added fallback stream title for stream pills\r\n- Added Repost Again option to repost bottom sheet (#793)\r\n- Add video/audio metadata extraction for uploaded files",
+          "prerelease": false,
+          "author": "github-actions[bot]"
+        }
+      ],
+      "merged_prs": [
+        {
+          "id": 3149062382,
+          "number": 838,
+          "title": "Fix race condition while loading article that is not cached",
+          "body": "Closes: https://github.com/PrimalHQ/primal-android-app/issues/831",
+          "author": "markocic",
+          "merged_at": "2026-01-06T15:10:46Z",
+          "url": "https://github.com/PrimalHQ/primal-android-app/pull/838",
+          "labels": []
+        },
+        {
+          "id": 3149094976,
+          "number": 839,
+          "title": "Assure valid pubkey hex is returned instead of npub",
+          "body": "We were made aware of the recent changes to nip-55 requiring signers to return hex pubkey instead of npub for `get_public_key` method",
+          "author": "markocic",
+          "merged_at": "2026-01-06T15:09:58Z",
+          "url": "https://github.com/PrimalHQ/primal-android-app/pull/839",
+          "labels": []
+        },
+        {
+          "id": 3145821172,
+          "number": 832,
+          "title": "Allow external signer login with hex pubkey",
+          "body": "This fixes one of the incompatibility with the nip 55 spec. It was changed some months ago to return hex key like the nip 46 and 7",
+          "author": "greenart7c3",
+          "merged_at": "2026-01-05T18:48:25Z",
+          "url": "https://github.com/PrimalHQ/primal-android-app/pull/832",
+          "labels": []
+        },
+        {
+          "id": 3146326028,
+          "number": 836,
+          "title": "Fix parsing of malformed nostrconnect relay parameters",
+          "body": "",
+          "author": "mehmedalijaK",
+          "merged_at": "2026-01-05T18:47:12Z",
+          "url": "https://github.com/PrimalHQ/primal-android-app/pull/836",
+          "labels": []
+        },
+        {
+          "id": 3146050373,
+          "number": 835,
+          "title": "Implement `name` field in `LocalApp`",
+          "body": "",
+          "author": "markocic",
+          "merged_at": "2026-01-05T14:24:47Z",
+          "url": "https://github.com/PrimalHQ/primal-android-app/pull/835",
+          "labels": []
+        },
+        {
+          "id": 3146048776,
+          "number": 834,
+          "title": "Add `userLegendaryCustomization` to `AppConnectionUi`",
+          "body": "",
+          "author": "markocic",
+          "merged_at": "2026-01-05T12:44:04Z",
+          "url": "https://github.com/PrimalHQ/primal-android-app/pull/834",
+          "labels": []
+        },
+        {
+          "id": 3145918439,
+          "number": 833,
+          "title": "Fix rows order in event details",
+          "body": "",
+          "author": "mehmedalijaK",
+          "merged_at": "2026-01-05T11:58:35Z",
+          "url": "https://github.com/PrimalHQ/primal-android-app/pull/833",
+          "labels": []
+        },
+        {
+          "id": 3138964898,
+          "number": 829,
+          "title": "Do not call `handleDeepLink` for stream internal notification intent",
+          "body": "",
+          "author": "markocic",
+          "merged_at": "2025-12-31T11:58:39Z",
+          "url": "https://github.com/PrimalHQ/primal-android-app/pull/829",
+          "labels": []
+        },
+        {
+          "id": 3137305235,
+          "number": 828,
+          "title": "Feature/signer approvals bottom sheet logic",
+          "body": "",
+          "author": "markocic",
+          "merged_at": "2025-12-30T22:22:08Z",
+          "url": "https://github.com/PrimalHQ/primal-android-app/pull/828",
+          "labels": []
+        }
+      ],
+      "open_prs": [],
+      "commits": []
+    },
+    "damus-io/notedeck": {
+      "name": "Notedeck",
+      "description": "Fast native desktop client by Damus team",
+      "category": "social_clients",
+      "priority": "medium",
+      "website": "https://notedeck.io",
+      "maintainer": "jb55",
+      "releases": [],
+      "merged_prs": [
+        {
+          "id": 2996705365,
+          "number": 1200,
+          "title": "Onboarding: Add collapsible follow pack members",
+          "body": "<img width=\"900\" height=\"795\" alt=\"image\" src=\"https://github.com/user-attachments/assets/b0ca6890-c830-47d4-99f9-b0ccbe3b8d9b\" />\r\n\r\ncloses: https://github.com/damus-io/notedeck/issues/1199\r\n\r\n## Summary\r\n  - hide individual follow-pack accounts during onboarding by default and add a\r\n  show/hide toggle per pack\r\n  - keep the existing \u201cSelect All\u201d workflow, ensuring selections stay in sync\r\n  even when the list is collapsed\r\n  - store the per-pack visibility flag in `Nip51SetUiCache` so the UI remembers\r\n  which packs are expanded\r\n\r\n  ## Testing\r\n  - cargo fmt\r\n  - cargo check -p notedeck_ui\r\n  - cargo run --release \r\n\n\n<!-- This is an auto-generated comment: release notes by coderabbit.ai -->\n## Summary by CodeRabbit\n\n* **New Features**\n  * Pack-level collapsible sections with improved visibility tracking so the UI updates when sections expand/collapse.\n\n* **Improvements**\n  * Horizontal separators between onboarding items for better readability.\n  * Safer list refreshes after visibility changes to keep selection states accurate.\n  * Enhanced \"Select All\" controls and per-item selection behavior for more consistent selection management.\n\n<sub>\u270f\ufe0f Tip: You can customize this high-level summary in your review settings.</sub>\n<!-- end of auto-generated comment: release notes by coderabbit.ai -->",
+          "author": "alltheseas",
+          "merged_at": "2026-01-05T22:51:46Z",
+          "url": "https://github.com/damus-io/notedeck/pull/1200",
+          "labels": [
+            "onboarding"
+          ]
+        },
+        {
+          "id": 3133042880,
+          "number": 1226,
+          "title": "fix: rebuild timeline filter when contact list changes",
+          "body": "## Summary\r\n\r\nFixes #1225 - unfollowed accounts still showing up in feed.\r\n\r\nThe root cause was that timeline filters were built once from the contact list and never updated when users followed/unfollowed accounts. The profile page correctly showed the updated follow state because it queries the live `ContactState`, but the timeline kept using the stale filter.\r\n\r\n## Changes\r\n\r\n**Commit 1: filter: add contact_list_timestamp tracking to FilterStates**\r\n- Add `contact_list_timestamp` field to track when filter was built\r\n- Add `invalidate()` method to reset filter states for rebuild\r\n\r\n**Commit 2: timeline: add reset methods for subscription and view cleanup**\r\n- `TimelineSub::reset()`: Properly unsubscribes from ndb/relay pool before resetting\r\n- `TimelineTab::reset()`: Clears cached notes and resets virtual list\r\n- `Timeline::reset_views()`: Resets all view tabs\r\n\r\n**Commit 3: timeline: rebuild filter when contact list changes**\r\n- Add `contact_list_needs_rebuild()` helper to detect stale filters\r\n- Modify `is_timeline_ready()` to check for contact list changes\r\n- Store timestamp when filter is built\r\n- Add `#[profiling::function]` for performance monitoring\r\n\r\n## Test plan\r\n\r\n- [x] Follow a new account, verify their notes appear in feed\r\n- [x] Unfollow an account, verify their notes are removed from feed\r\n- [ ] Verify no subscription leaks (check logs for proper unsubscribe messages)\r\n- [ ] Profile with puffin to verify no performance regression\r\n\r\n\ud83e\udd16 Generated with [Claude Code](https://claude.com/claude-code)",
+          "author": "alltheseas",
+          "merged_at": "2026-01-05T20:48:12Z",
+          "url": "https://github.com/damus-io/notedeck/pull/1226",
+          "labels": []
+        },
+        {
+          "id": 2921290168,
+          "number": 1166,
+          "title": "Add AGENTS.md agent overview",
+          "body": "- Overview: outlines how Notedeck\u2019s agent-style apps fit into the repo, emphasizing architecture, coding patterns, and shared services.\r\n  - Repo map: describes key crates (core host, chrome shell, columns client, shared UI, Dave agent, token utilities) and their responsibilities.\r\n  - Core abstractions: details the App trait, Notedeck host, AppContext, and AppResponse flow that power app integration.\r\n  - UI/navigation: explains chrome container behavior, app registration via NotedeckApp, preview/theming support, and shared egui components.\r\n  - Data/networking: covers NostrDB usage, caching layers, relay pool subscriptions, and debounced persistence utilities.\r\n  - Async patterns: highlights job pool usage, streaming updates (from Dave), and relay event handling.\r\n  - Conventions: stresses strict linting, modular structure, tracing/profiling, localization workflow, and testing practices.\r\n  - Agent integration checklist: step-by-step guidance for building, registering, theming, localizing, and wiring new agents.\r\n  - Reference links: points to developer docs across crates for deeper dives into architecture, UI components, and agent tooling.\r\n",
+          "author": "alltheseas",
+          "merged_at": "2026-01-05T20:25:03Z",
+          "url": "https://github.com/damus-io/notedeck/pull/1166",
+          "labels": []
+        }
+      ],
+      "open_prs": [],
+      "commits": []
+    },
+    "marmot-protocol/whitenoise": {
+      "name": "Marmot Protocol (whitenoise-frontend)",
+      "description": "MLS-based end-to-end encrypted messaging for Nostr (NIP-104)",
+      "category": "protocols",
+      "priority": "high",
+      "website": "",
+      "maintainer": "erskingardner",
+      "releases": [],
+      "merged_prs": [
+        {
+          "id": 3137899075,
+          "number": 939,
+          "title": "fix: Replace \"Account\" with \"Profile\"",
+          "body": "<!--\r\n  Thanks for contributing!\r\n\r\n  Provide a description of your changes below and a general summary in the title\r\n\r\n  Please look at the following checklist to ensure that your PR can be accepted quickly:\r\n-->\r\n\r\n## Description\r\n\r\nThis PR addresses #825 \r\n\r\nReplaces \"Account\" with \"Profile\" in all user-facing text to maintain consistency throughout the app. The PR changes the \"Switch Account\" button to \"Switch Profile\", which now correctly matches the \"Profiles\" window it opens.\r\n\r\n## Type of Change\r\n\r\n<!--- Put an `x` in all the boxes that apply: -->\r\n\r\n- [ ] \u2728 New feature (non-breaking change which adds functionality)\r\n- [x] \ud83d\udee0\ufe0f Bug fix (non-breaking change which fixes an issue)\r\n- [ ] \u274c Breaking change (fix or feature that would cause existing functionality to change)\r\n- [ ] \ud83e\uddf9 Code refactor\r\n- [ ] \u2705 Build configuration change\r\n- [ ] \ud83d\udcdd Documentation\r\n- [ ] \ud83d\uddd1\ufe0f Chore\r\n- [ ] \ud83e\uddea Tests\r\n\r\n## Checklist\r\n\r\n<!-- Please make sure you've done the following before submitting your PR: -->\r\n\r\n- [x] Run `just precommit` to ensure that formatting and linting are correct\r\n- [x] Run `just check-flutter-coverage` to ensure that flutter coverage rules are passing\r\n- [x] Updated the `CHANGELOG.md` file with your changes (if they affect the user experience)\r\n\n\n<!-- This is an auto-generated comment: release notes by coderabbit.ai -->\n## Summary by CodeRabbit\n\n* **Documentation**\n  * Replaced \"Account\" with \"Profile\" across all user-facing messages, labels, help text, and error messages.\n  * Updated localized strings for all supported languages (EN, DE, ES, FR, IT, PT, RU, TR) to reflect the terminology change.\n  * Changelog entry added documenting the terminology update.\n\n<sub>\u270f\ufe0f Tip: You can customize this high-level summary in your review settings.</sub>\n<!-- end of auto-generated comment: release notes by coderabbit.ai -->",
+          "author": "ayushsaksena30",
+          "merged_at": "2025-12-31T17:38:03Z",
+          "url": "https://github.com/marmot-protocol/whitenoise/pull/939",
+          "labels": []
+        },
+        {
+          "id": 3121126483,
+          "number": 924,
+          "title": "Standardize media layout and dimensions",
+          "body": "<!--\r\n  Thanks for contributing!\r\n\r\n  Provide a description of your changes below and a general summary in the title\r\n\r\n  Please look at the following checklist to ensure that your PR can be accepted quickly:\r\n-->\r\n\r\n## Description\r\nFixes media grid layout to dynamically respect the 74% screen width rule and adds test for MessageWidget.\r\n\r\nMentioned in https://github.com/marmot-protocol/whitenoise/pull/884 \r\n\r\n## Changes\r\n- **Dynamic media grid sizing**: Media grids now calculate sizes dynamically based on 74% of screen width instead of using fixed sizes\r\n- **Fixed grid layout**: Replaced `Wrap` widget with `Row`/`Column` structure to ensure proper side-by-side arrangement of media tiles\r\n- **Updated tests**: Refactored media grid tests to use dynamic width calculations instead of hardcoded values\r\n\r\n## Technical Details\r\n- `MediaLayoutCalculator` now accepts `maxWidth` parameter for dynamic sizing\r\n- `MessageMediaGrid` calculates available width as `screenWidth * 0.74 - padding`\r\n- Media tiles are arranged in proper grid layout using `Row` and `Column` widgets\r\n\r\n<!--- Describe your changes in detail -->\r\n\r\n## Type of Change\r\n\r\n<!--- Put an `x` in all the boxes that apply: -->\r\n\r\n- [ ] \u2728 New feature (non-breaking change which adds functionality)\r\n- [x] \ud83d\udee0\ufe0f Bug fix (non-breaking change which fixes an issue)\r\n- [ ] \u274c Breaking change (fix or feature that would cause existing functionality to change)\r\n- [x] \ud83e\uddf9 Code refactor\r\n- [ ] \u2705 Build configuration change\r\n- [ ] \ud83d\udcdd Documentation\r\n- [ ] \ud83d\uddd1\ufe0f Chore\r\n- [x] \ud83e\uddea Tests\r\n\r\n## Checklist\r\n\r\n<!-- Please make sure you've done the following before submitting your PR: -->\r\n\r\n- [x] Run `just precommit` to ensure that formatting and linting are correct\r\n- [x] Run `just check-flutter-coverage` to ensure that flutter coverage rules are passing\r\n- [x] Updated the `CHANGELOG.md` file with your changes (if they affect the user experience)\r\n\r\n\r\n<!-- This is an auto-generated comment: release notes by coderabbit.ai -->\n## Summary by CodeRabbit\n\n* **New Features**\n  * Responsive multi-row/multi-column media grid with dynamic sizing per available bubble width.\n\n* **Bug Fixes / UI**\n  * More consistent media/item sizing, per-item overlay counts, stabilized bubble widths for combined text+media, improved spacing, alignment, avatar/name/tail behaviors, and simplified media tile placeholder handling.\n\n* **Tests**\n  * Comprehensive UI test suite covering message rendering, media layouts, reactions, replies, interactions, search highlighting, statuses, and responsive behavior.\n\n* **Chores**\n  * Changelog entry documenting media grid standardization.\n\n<sub>\u270f\ufe0f Tip: You can customize this high-level summary in your review settings.</sub>\n<!-- end of auto-generated comment: release notes by coderabbit.ai -->\r\n\r\nFixes #902 ",
+          "author": "untreu2",
+          "merged_at": "2025-12-31T16:11:22Z",
+          "url": "https://github.com/marmot-protocol/whitenoise/pull/924",
+          "labels": []
+        }
+      ],
+      "open_prs": [],
+      "commits": []
+    },
+    "permissionlesstech/bitchat": {
+      "name": "Bitchat",
+      "description": "Censorship-resistant messaging with Nostr and Cashu, offline via Bluetooth",
+      "category": "messaging_clients",
+      "priority": "medium",
+      "website": "",
+      "maintainer": "",
+      "releases": [],
+      "merged_prs": [
+        {
+          "id": 3144826134,
+          "number": 928,
+          "title": "fix: clear DH shared secrets after Noise handshake operations",
+          "body": "## Summary\n- Fixed 6 locations in `NoiseProtocol.swift` where `secureClear()` was missing after DH key agreement operations\n- Added `TrackingMockKeychain` to verify secureClear calls in tests\n- Added 3 new tests to verify proper secret clearing\n\n## Problem\n4 of 8 DH operations in the Noise protocol weren't clearing shared secrets from memory after use. This breaks forward secrecy guarantees - if memory is later compromised, past session keys could be recovered.\n\n## Solution\nAdded `secureClear()` calls for all DH operations:\n- `writeMessage()`: .es (initiator/responder), .se (initiator/responder)\n- `performDHOperation()`: .ee and .ss operations\n\nPattern applied:\n```swift\nlet shared = try localEphemeral.sharedSecretFromKeyAgreement(with: remoteStatic)\nvar sharedData = shared.withUnsafeBytes { Data($0) }\nsymmetricState.mixKey(sharedData)\nkeychain.secureClear(&sharedData)\n```\n\n## Test plan\n- [x] All existing NoiseProtocolTests pass\n- [x] New `secureClearCalledDuringHandshake` test verifies secureClear is called at least 6 times\n- [x] New `encryptionWorksAfterSecureClear` test verifies encryption still works\n- [x] New `secureClearCalledInBothWriteAndReadPaths` test verifies both paths clear secrets\n\n\ud83e\udd16 Generated with [Claude Code](https://claude.com/claude-code)",
+          "author": "jackjackbits",
+          "merged_at": "2026-01-04T23:52:15Z",
+          "url": "https://github.com/permissionlesstech/bitchat/pull/928",
+          "labels": []
+        },
+        {
+          "id": 3144856004,
+          "number": 931,
+          "title": "fix: eliminate flaky FragmentationTests with proper async synchronization",
+          "body": "## Summary\n- Fix intermittent failures in `reassemblyFromFragmentsDeliversPublicMessage` and `duplicateFragmentDoesNotBreakReassembly` tests\n- Replace fire-and-forget Task blocks with sequential fragment sending\n- Add thread-safe `CaptureDelegate` with continuation-based waiting instead of `sleep(0.5)`\n\n## Root Cause\nTests used fire-and-forget `Task { sleep; handlePacket }` blocks followed by `sleep(0.5)` to wait for results. However, delegate callbacks go through `notifyUI()` which spawns another MainActor Task - the sleep didn't guarantee callback completion.\n\n## Solution\n- Thread-safe `CaptureDelegate` with `NSLock` for array access\n- `waitForPublicMessages(count:timeout:)` using `CheckedContinuation` with timeout\n- Sequential fragment sending with `try await Task.sleep()` between fragments\n\n## Test plan\n- [x] Run FragmentationTests 3+ times to verify no flakiness\n- [x] Verify all 4 tests pass consistently\n\n\ud83e\udd16 Generated with [Claude Code](https://claude.com/claude-code)",
+          "author": "jackjackbits",
+          "merged_at": "2026-01-05T00:25:07Z",
+          "url": "https://github.com/permissionlesstech/bitchat/pull/931",
+          "labels": []
+        },
+        {
+          "id": 3144826328,
+          "number": 929,
+          "title": "fix: add thread safety to NostrTransport read receipt queue",
+          "body": "## Summary\n- Added barrier synchronization for `readQueue` and `isSendingReadAcks` in NostrTransport\n- Created new test file with 3 thread safety tests\n\n## Problem\nThe `readQueue` array and `isSendingReadAcks` boolean had no synchronization, causing race conditions when:\n- Multiple callers enqueue read receipts concurrently\n- Check-then-act patterns on `isSendingReadAcks`\n- Queue modifications during processing\n\n## Solution\nExtended the existing concurrent `DispatchQueue` (already used for `reachablePeers`) to protect read receipt state:\n\n```swift\n// sendReadReceipt() - wrap in barrier\nqueue.async(flags: .barrier) { [weak self] in\n    self?.readQueue.append(QueuedRead(receipt: receipt, peerID: peerID))\n    self?.processReadQueueIfNeeded()\n}\n\n// scheduleNextReadAck() - wrap callback in barrier\nDispatchQueue.main.asyncAfter(deadline: .now() + readAckInterval) { [weak self] in\n    self?.queue.async(flags: .barrier) { [weak self] in\n        self?.isSendingReadAcks = false\n        self?.processReadQueueIfNeeded()\n    }\n}\n```\n\n## Test plan\n- [x] `concurrentReadReceiptEnqueue` - 100 concurrent enqueue operations\n- [x] `readQueueProcessingUnderLoad` - concurrent enqueue during processing  \n- [x] `isPeerReachableThreadSafety` - concurrent read access verification\n\n\ud83e\udd16 Generated with [Claude Code](https://claude.com/claude-code)",
+          "author": "jackjackbits",
+          "merged_at": "2026-01-04T23:56:17Z",
+          "url": "https://github.com/permissionlesstech/bitchat/pull/929",
+          "labels": []
+        },
+        {
+          "id": 3098981174,
+          "number": 920,
+          "title": "perf: optimize MessageDeduplicator performance",
+          "body": "## Summary\n\nFixes #472\n\nOptimize MessageDeduplicator for better performance with large message volumes.\n\n## Test plan\n\n- [ ] Verify deduplication still works correctly\n- [ ] Test with high message volumes\n- [ ] Check memory usage improvements\n\n\ud83e\udd16 Generated with [Claude Code](https://claude.com/claude-code)",
+          "author": "malkovitc",
+          "merged_at": "2026-01-04T22:41:48Z",
+          "url": "https://github.com/permissionlesstech/bitchat/pull/920",
+          "labels": []
+        },
+        {
+          "id": 3098981149,
+          "number": 919,
+          "title": "fix: harden hex string parsing",
+          "body": "## Summary\n\nFixes #646\n\nHarden hex string parsing to prevent crashes from malformed input.\n\n## Test plan\n\n- [ ] Test with valid hex strings\n- [ ] Test with invalid/malformed hex strings\n- [ ] Verify no crashes on edge cases\n\n\ud83e\udd16 Generated with [Claude Code](https://claude.com/claude-code)",
+          "author": "malkovitc",
+          "merged_at": "2026-01-04T22:33:16Z",
+          "url": "https://github.com/permissionlesstech/bitchat/pull/919",
+          "labels": []
+        },
+        {
+          "id": 3098981130,
+          "number": 918,
+          "title": "fix(build): exclude allowBluetoothHFP on iOS Simulator",
+          "body": "## Summary\n\n`allowBluetoothHFP` is not available on iOS Simulator, causing build failures. Use conditional compilation to exclude this option when building for simulator while keeping it for device builds.\n\n## Test plan\n\n- [ ] Build succeeds on iOS Simulator\n- [ ] Build succeeds on iOS Device\n- [ ] Voice recording works on device with Bluetooth HFP\n\n\ud83e\udd16 Generated with [Claude Code](https://claude.com/claude-code)",
+          "author": "malkovitc",
+          "merged_at": "2026-01-04T22:25:11Z",
+          "url": "https://github.com/permissionlesstech/bitchat/pull/918",
+          "labels": []
+        },
+        {
+          "id": 3098981074,
+          "number": 916,
+          "title": "refactor: consolidate KeychainHelper into KeychainManager",
+          "body": "## Summary\n\nFixes #797\n\n- Remove `KeychainHelper.swift` and `KeychainHelperProtocol`\n- Add generic `save/load/delete` methods to `KeychainManagerProtocol`\n- Update `NostrIdentityBridge` to use `KeychainManagerProtocol`\n- Update `FavoritesPersistenceService` to use `KeychainManagerProtocol`\n- Update `PreviewKeychainManager` and `MockKeychain` with new methods\n\n## Test plan\n\n- [ ] Verify keychain operations work correctly (save/load/delete identity keys)\n- [ ] Verify favorites persistence works correctly\n- [ ] Verify Nostr identity bridge functions properly\n- [ ] Run existing unit tests\n\n\ud83e\udd16 Generated with [Claude Code](https://claude.com/claude-code)",
+          "author": "malkovitc",
+          "merged_at": "2026-01-04T22:13:15Z",
+          "url": "https://github.com/permissionlesstech/bitchat/pull/916",
+          "labels": []
+        }
+      ],
+      "open_prs": [],
+      "commits": []
+    },
+    "nostrnests/nests": {
+      "name": "Nostr Nests",
+      "description": "Audio spaces (Clubhouse-like)",
+      "category": "media_clients",
+      "priority": "low",
+      "website": "https://nostrnests.com",
+      "maintainer": "",
+      "releases": [],
+      "merged_prs": [
+        {
+          "id": 3139560760,
+          "number": 62,
+          "title": "Feat/marketing home page",
+          "body": "",
+          "author": "derekross",
+          "merged_at": "2025-12-31T18:32:54Z",
+          "url": "https://github.com/nostrnests/nests/pull/62",
+          "labels": []
+        },
+        {
+          "id": 3138684075,
+          "number": 61,
+          "title": "fix: use window.location.href for restart navigation",
+          "body": "React Router ignores navigation to the same URL. Using window.location.href forces a full page load which will fetch the updated event.\r\n\r\n\ud83e\udd16 Generated with [Claude Code](https://claude.com/claude-code)",
+          "author": "derekross",
+          "merged_at": "2025-12-31T08:45:02Z",
+          "url": "https://github.com/nostrnests/nests/pull/61",
+          "labels": []
+        },
+        {
+          "id": 3138679282,
+          "number": 60,
+          "title": "fix: use React Router navigation for restart to preserve state",
+          "body": "window.location.reload() loses state, causing the old event to be fetched from network. Using navigate with the new event in state ensures room.tsx uses the updated event with status \"live\".\r\n\r\n\ud83e\udd16 Generated with [Claude Code](https://claude.com/claude-code)",
+          "author": "derekross",
+          "merged_at": "2025-12-31T08:41:10Z",
+          "url": "https://github.com/nostrnests/nests/pull/60",
+          "labels": []
+        },
+        {
+          "id": 3138672478,
+          "number": 59,
+          "title": "fix: wait for event update before navigating",
+          "body": "Need to wait for modifier.update() to broadcast the event change before navigating away, otherwise the update never completes.\r\n\r\n\ud83e\udd16 Generated with [Claude Code](https://claude.com/claude-code)",
+          "author": "derekross",
+          "merged_at": "2025-12-31T08:35:24Z",
+          "url": "https://github.com/nostrnests/nests/pull/59",
+          "labels": []
+        },
+        {
+          "id": 3138666423,
+          "number": 58,
+          "title": "fix: make navigation synchronous to prevent button blocking",
+          "body": "The Button component awaits onClick handlers, which was blocking navigation when awaiting disconnect/update. Now we fire-and-forget the async operations and navigate immediately.\r\n\r\n\ud83e\udd16 Generated with [Claude Code](https://claude.com/claude-code)",
+          "author": "derekross",
+          "merged_at": "2025-12-31T08:30:56Z",
+          "url": "https://github.com/nostrnests/nests/pull/58",
+          "labels": []
+        },
+        {
+          "id": 3138658151,
+          "number": 57,
+          "title": "fix: use window.location for navigation to force full state reset",
+          "body": "React Router navigation wasn't properly resetting component state. Using window.location forces a full page reload/navigation which ensures all state is reset properly.\r\n\r\n\ud83e\udd16 Generated with [Claude Code](https://claude.com/claude-code)",
+          "author": "derekross",
+          "merged_at": "2025-12-31T08:24:27Z",
+          "url": "https://github.com/nostrnests/nests/pull/57",
+          "labels": []
+        },
+        {
+          "id": 3138649827,
+          "number": 56,
+          "title": "fix: properly close modals and disconnect when leaving room",
+          "body": "- Add leaveRoom to NostrRoomContext so edit-room.tsx can use it\r\n- Close Room button now uses leaveRoom (disconnects LiveKit first)\r\n- Restart Room now navigates to actual room URL instead of \"#\"\r\n- Close flyout before restarting to ensure modal disappears\r\n\r\n\ud83e\udd16 Generated with [Claude Code](https://claude.com/claude-code)",
+          "author": "derekross",
+          "merged_at": "2025-12-31T08:17:49Z",
+          "url": "https://github.com/nostrnests/nests/pull/56",
+          "labels": []
+        },
+        {
+          "id": 3138637463,
+          "number": 55,
+          "title": "fix: disconnect from LiveKit before navigating to lobby",
+          "body": "The modal wasn't disappearing because the LiveKit room connection was blocking proper component cleanup. Now we disconnect first.\r\n\r\n\ud83e\udd16 Generated with [Claude Code](https://claude.com/claude-code)",
+          "author": "derekross",
+          "merged_at": "2025-12-31T08:08:06Z",
+          "url": "https://github.com/nostrnests/nests/pull/55",
+          "labels": []
+        },
+        {
+          "id": 3138621481,
+          "number": 53,
+          "title": "fix: Room Ended modal buttons not working",
+          "body": "- Fix Back to Lobby button by using onClick with navigate instead of wrapping button in Link (button click handlers interfere with Link)\r\n- Fix Restart Room not closing modal by preferring event with latest created_at timestamp, so restarted event is used immediately\r\n\r\n\ud83e\udd16 Generated with [Claude Code](https://claude.com/claude-code)",
+          "author": "derekross",
+          "merged_at": "2025-12-31T07:54:37Z",
+          "url": "https://github.com/nostrnests/nests/pull/53",
+          "labels": []
+        },
+        {
+          "id": 3138587024,
+          "number": 52,
+          "title": "fix: allow host to exit stage then exit room",
+          "body": "Fixed race condition where room hosts couldn't exit the room after leaving the stage. The issue was that after calling updatePermissions, the LiveKit permissions hadn't updated yet, so clicking the button again would try to leave the stage again instead of going to the lobby.\r\n\r\nSolution: Track a local \"leavingStage\" state that immediately marks the user as not on stage after requesting to leave. This state resets when the server confirms the permission change.\r\n\r\n\ud83e\udd16 Generated with [Claude Code](https://claude.com/claude-code)",
+          "author": "derekross",
+          "merged_at": "2025-12-31T07:26:02Z",
+          "url": "https://github.com/nostrnests/nests/pull/52",
+          "labels": []
+        },
+        {
+          "id": 3138575776,
+          "number": 51,
+          "title": "fix: improve presence reliability",
+          "body": "Address issues where users would disappear or get locked out of rooms due to presence events not being published reliably.\r\n\r\nChanges:\r\n- Add isReady flag to usePresence to track when signer is available\r\n- Send initial presence immediately when room is joined and signer ready\r\n- Add error handling with catch() for all presence sends\r\n- Retry initial presence if it fails\r\n- Only start presence interval when signer is ready\r\n- Add debug logging for presence events\r\n- Handle guests gracefully (they don't publish presence but can still view)\r\n\r\nPreviously, presence could fail silently if:\r\n- Signer wasn't ready when useEffect first ran\r\n- Network errors occurred during broadcast\r\n- Users switched rooms before signer initialized\r\n\r\n\ud83e\udd16 Generated with [Claude Code](https://claude.com/claude-code)",
+          "author": "derekross",
+          "merged_at": "2025-12-31T07:16:43Z",
+          "url": "https://github.com/nostrnests/nests/pull/51",
+          "labels": []
+        },
+        {
+          "id": 3138566017,
+          "number": 50,
+          "title": "feat: update favicon and app icons with new logo",
+          "body": "- Add favicon.svg for modern browsers\r\n- Update favicon.png with new logo (32x32)\r\n- Update apple-touch-icon.png with new logo (180x180)\r\n- Update logo_256.png and logo_512.png with new logo\r\n- Keep PNG fallback for older browsers\r\n\r\n\ud83e\udd16 Generated with [Claude Code](https://claude.com/claude-code)",
+          "author": "derekross",
+          "merged_at": "2025-12-31T07:08:33Z",
+          "url": "https://github.com/nostrnests/nests/pull/50",
+          "labels": []
+        },
+        {
+          "id": 3138563427,
+          "number": 49,
+          "title": "feat: exit button leaves stage before leaving room",
+          "body": "The exit button in the navigation bar now has two behaviors:\r\n- If the user is on stage (canPublish), clicking exit leaves the stage and moves them to the audience\r\n- If the user is in the audience, clicking exit takes them to the lobby\r\n\r\nVisual feedback:\r\n- On stage: normal background color, tooltip \"Leave Stage\"\r\n- In audience: red background (bg-delete), tooltip \"Leave Room\"\r\n\r\nThis allows users on stage to step down without leaving the room entirely.\r\n\r\n\ud83e\udd16 Generated with [Claude Code](https://claude.com/claude-code)",
+          "author": "derekross",
+          "merged_at": "2025-12-31T07:06:28Z",
+          "url": "https://github.com/nostrnests/nests/pull/49",
+          "labels": []
+        },
+        {
+          "id": 3138562843,
+          "number": 48,
+          "title": "feat: add nests logo",
+          "body": "Replace the placeholder \"N\" logo with the proper Nests logo SVG.\r\n\r\n\ud83e\udd16 Generated with [Claude Code](https://claude.com/claude-code)",
+          "author": "derekross",
+          "merged_at": "2025-12-31T07:06:01Z",
+          "url": "https://github.com/nostrnests/nests/pull/48",
+          "labels": []
+        },
+        {
+          "id": 3138549599,
+          "number": 47,
+          "title": "fix: query presence from room-specific relays",
+          "body": "On the room list page, presence events are now queried from the relays listed in each room's \"relays\" tag instead of only the default relays.\r\n\r\nThis ensures presence is correctly fetched for rooms hosted on different relay sets.\r\n\r\n\ud83e\udd16 Generated with [Claude Code](https://claude.com/claude-code)",
+          "author": "derekross",
+          "merged_at": "2025-12-31T06:55:24Z",
+          "url": "https://github.com/nostrnests/nests/pull/47",
+          "labels": []
+        },
+        {
+          "id": 3138542859,
+          "number": 46,
+          "title": "fix: hide block button on own profile",
+          "body": "Don't show the block button when viewing your own profile in the flyout or profile page.\r\n\r\n\ud83e\udd16 Generated with [Claude Code](https://claude.com/claude-code)",
+          "author": "derekross",
+          "merged_at": "2025-12-31T06:49:46Z",
+          "url": "https://github.com/nostrnests/nests/pull/46",
+          "labels": []
+        },
+        {
+          "id": 3138535829,
+          "number": 45,
+          "title": "feat: add chat moderation with mute functionality",
+          "body": "Add the ability to mute users in chat:\r\n- Create useMuteList hook to fetch and manage mute lists (NIP-51 kind 10000)\r\n- Add mute button to chat message hover actions (user-x icon)\r\n- Show confirmation modal before muting a user\r\n- Filter chat messages from muted users\r\n- Also filter messages from users muted by the room host\r\n\r\nThe mute functionality:\r\n- Fetches user's public mute list from relays\r\n- Also fetches room host's mute list to hide their muted users\r\n- Provides optimistic updates for immediate UI feedback\r\n- Prevents users from muting themselves\r\n- Unmute action doesn't require confirmation\r\n\r\n\ud83e\udd16 Generated with [Claude Code](https://claude.com/claude-code)",
+          "author": "derekross",
+          "merged_at": "2025-12-31T06:43:49Z",
+          "url": "https://github.com/nostrnests/nests/pull/45",
+          "labels": []
+        },
+        {
+          "id": 3138518855,
+          "number": 44,
+          "title": "fix: refresh room token on page reload",
+          "body": "When the page is reloaded while in a room, the existing token may be expired. This adds automatic token refresh on component mount to ensure a valid token is always used.\r\n\r\nChanges:\r\n- Add refreshToken callback that fetches a new token via api.joinRoom()\r\n- Track refresh state with tokenRefreshedRef to prevent duplicate refreshes\r\n- Use freshToken state to store refreshed token\r\n- Update roomKey to include token for proper LiveKitRoom remount\r\n- Update location.state with fresh token for consistency\r\n\r\n\ud83e\udd16 Generated with [Claude Code](https://claude.com/claude-code)",
+          "author": "derekross",
+          "merged_at": "2025-12-31T06:29:44Z",
+          "url": "https://github.com/nostrnests/nests/pull/44",
+          "labels": []
+        },
+        {
+          "id": 3138511988,
+          "number": 43,
+          "title": "fix: force LiveKitRoom remount when switching rooms from flyout",
+          "body": "When joining a new room from the lobby flyout, the LiveKitRoom component was not remounting, causing the audio to stay connected to the old room and the flyout to remain open.\r\n\r\nAdding a key prop based on event.id forces React to unmount and remount the entire LiveKitRoom and NostrRoomContextProvider tree when switching rooms. This ensures:\r\n- Audio properly disconnects from old room and connects to new room\r\n- Flyout state is reset (closes automatically)\r\n- All room-specific state is properly reinitialized\r\n\r\n\ud83e\udd16 Generated with [Claude Code](https://claude.com/claude-code)",
+          "author": "derekross",
+          "merged_at": "2025-12-31T06:23:29Z",
+          "url": "https://github.com/nostrnests/nests/pull/43",
+          "labels": []
+        },
+        {
+          "id": 3138509975,
+          "number": 42,
+          "title": "fix: automatically lower hand when user is moved to stage",
+          "body": "When a user with their hand raised is moved to the stage (granted canPublish permission), their hand is now automatically lowered.\r\n\r\nThis prevents the confusing situation where a speaker still has their hand raised after being invited to speak.\r\n\r\n\ud83e\udd16 Generated with [Claude Code](https://claude.com/claude-code)",
+          "author": "derekross",
+          "merged_at": "2025-12-31T06:21:31Z",
+          "url": "https://github.com/nostrnests/nests/pull/42",
+          "labels": []
+        },
+        {
+          "id": 3138506539,
+          "number": 41,
+          "title": "feat: add lobby flyout for browsing rooms without leaving current room",
+          "body": "Adds a left-side flyout panel that displays other available rooms, allowing users to browse and join other rooms without being kicked out of their current room.\r\n\r\nChanges:\r\n- Add LobbyFlyoutContent component that displays active and scheduled rooms\r\n- Add lobbyOpen state to NostrRoomContext\r\n- Add left-side Flyout in NostrRoomContextProvider\r\n- Add \"Browse Rooms\" button in room header that opens the lobby flyout\r\n- Add compact mode and onJoin callback to RoomCard for flyout usage\r\n\r\n\ud83e\udd16 Generated with [Claude Code](https://claude.com/claude-code)",
+          "author": "derekross",
+          "merged_at": "2025-12-31T06:18:31Z",
+          "url": "https://github.com/nostrnests/nests/pull/41",
+          "labels": []
+        },
+        {
+          "id": 3138497316,
+          "number": 40,
+          "title": "fix: prevent follow list overwrites by fetching latest before updates",
+          "body": "Key fixes to prevent follow lists from being overwritten:\r\n\r\n1. useFollowing hook now:\r\n   - Connects to indexer relays (purplepag.es, user.kindpag.es, relay.nos.social) to fetch the latest contact list before making any changes\r\n   - Uses user's write relays (from kind 10002) for broadcasting\r\n   - Falls back to default relays if no write relays configured\r\n   - Note: Indexers only accept NIP-65 events, not contact lists\r\n\r\n2. loginHook now:\r\n   - Connects to indexer relays first to find user's NIP-65 relay list\r\n   - Connects to common profile relays for redundancy\r\n   - Fetches relay list (kind 10002) to discover user's preferred relays\r\n   - Connects to user's own relays before fetching contact list\r\n   - Ensures we get the most up-to-date follow list on login\r\n\r\nThis prevents the issue where follows made in other clients were being overwritten because Nests was using a stale local copy of the contact list and only broadcasting to room relays.\r\n\r\n\ud83e\udd16 Generated with [Claude Code](https://claude.com/claude-code)",
+          "author": "derekross",
+          "merged_at": "2025-12-31T06:10:33Z",
+          "url": "https://github.com/nostrnests/nests/pull/40",
+          "labels": []
+        },
+        {
+          "id": 3138485505,
+          "number": 39,
+          "title": "fix: add global spacebar handler for mute toggle",
+          "body": "Adds a global keydown event listener that captures spacebar presses and toggles the microphone mute state. This prevents spacebar from triggering the last clicked button and provides a consistent keyboard shortcut for mute/unmute.\r\n\r\nThe handler:\r\n- Only activates when user has a microphone track\r\n- Ignores spacebar when typing in inputs/textareas\r\n- Prevents default to stop button triggering\r\n\r\n\ud83e\udd16 Generated with [Claude Code](https://claude.com/claude-code)",
+          "author": "derekross",
+          "merged_at": "2025-12-31T06:00:13Z",
+          "url": "https://github.com/nostrnests/nests/pull/39",
+          "labels": []
+        },
+        {
+          "id": 3138483790,
+          "number": 38,
+          "title": "fix: open profile overlay instead of navigating away from room",
+          "body": "- Change chat avatar and display name to open profile flyout\r\n- Use same behavior as participant list (stay in room)\r\n- Add hover effect on display name for better UX\r\n\r\n\ud83e\udd16 Generated with [Claude Code](https://claude.com/claude-code)",
+          "author": "derekross",
+          "merged_at": "2025-12-31T05:59:06Z",
+          "url": "https://github.com/nostrnests/nests/pull/38",
+          "labels": []
+        },
+        {
+          "id": 3138474685,
+          "number": 37,
+          "title": "feat: add chat activity indicator on mobile swipe bar",
+          "body": "- Add useChatActivity hook to track new chat messages\r\n- Swipe bar pulses with primary color when new messages arrive\r\n- Indicator clears when chat panel is expanded\r\n\r\n\ud83e\udd16 Generated with [Claude Code](https://claude.com/claude-code)",
+          "author": "derekross",
+          "merged_at": "2025-12-31T05:49:35Z",
+          "url": "https://github.com/nostrnests/nests/pull/37",
+          "labels": []
+        },
+        {
+          "id": 3138464277,
+          "number": 36,
+          "title": "fix: auto-reconnect on mobile wake from sleep",
+          "body": "- Add usePageVisibility hook to detect page visibility changes\r\n- Send presence immediately when page becomes visible after being hidden\r\n- Reconnect LiveKit room if disconnected when page becomes visible\r\n- Fixes issue where mobile users had to refresh after screen sleep\r\n\r\n\ud83e\udd16 Generated with [Claude Code](https://claude.com/claude-code)",
+          "author": "derekross",
+          "merged_at": "2025-12-31T05:41:05Z",
+          "url": "https://github.com/nostrnests/nests/pull/36",
+          "labels": []
+        },
+        {
+          "id": 3138453909,
+          "number": 35,
+          "title": "fix: redirect old naddr links to new event kind",
+          "body": "- Add backwards compatibility for old room kind (30311) naddr links\r\n- Query for rooms with new kind (30312) when old kind not found\r\n- Automatically redirect to canonical naddr URL\r\n- Update address bar URL when entering a room to match event's naddr\r\n\r\n\ud83e\udd16 Generated with [Claude Code](https://claude.com/claude-code)",
+          "author": "derekross",
+          "merged_at": "2025-12-31T05:31:38Z",
+          "url": "https://github.com/nostrnests/nests/pull/35",
+          "labels": []
+        },
+        {
+          "id": 3138440762,
+          "number": 34,
+          "title": "feat: chat enhancements - reactions, zaps, and improved UX",
+          "body": "- Add reaction and zap support for chat messages\r\n- Show reactions/zaps on individual messages with counts\r\n- Only show zap button if user has lightning address\r\n- Improve emoji picker spacing for mobile\r\n- Replace star-struck emoji with hugging emoji\r\n- Fix text wrapping in chat messages\r\n- Redesign zap modal with preset amounts (21, 100, 500, 1k, 5k, 10k)\r\n\r\n\ud83e\udd16 Generated with [Claude Code](https://claude.com/claude-code)",
+          "author": "derekross",
+          "merged_at": "2025-12-31T05:19:57Z",
+          "url": "https://github.com/nostrnests/nests/pull/34",
+          "labels": []
+        },
+        {
+          "id": 3138419150,
+          "number": 33,
+          "title": "fix: add missing supports property and remove unused import",
+          "body": "- Add supports getter to Nip46SignerWrapper to satisfy EventSigner interface\r\n- Remove unused isMobileDevice import\r\n\r\n\ud83e\udd16 Generated with [Claude Code](https://claude.com/claude-code)",
+          "author": "derekross",
+          "merged_at": "2025-12-31T04:56:39Z",
+          "url": "https://github.com/nostrnests/nests/pull/33",
+          "labels": []
+        },
+        {
+          "id": 3138416354,
+          "number": 32,
+          "title": "Fix/nip46 callback and permissions",
+          "body": "",
+          "author": "derekross",
+          "merged_at": "2025-12-31T04:53:33Z",
+          "url": "https://github.com/nostrnests/nests/pull/32",
+          "labels": []
+        },
+        {
+          "id": 3138388144,
+          "number": 31,
+          "title": "feat: add mobile signer app support for NIP-46 login",
+          "body": "- Add useIsMobile hook for mobile device detection\r\n- Show \"Open Signer App\" button on mobile instead of QR code\r\n- Add callback URL to nostrconnect:// URI on mobile\r\n- Add /login/callback page for signer app redirect\r\n\r\n\ud83e\udd16 Generated with [Claude Code](https://claude.com/claude-code)",
+          "author": "derekross",
+          "merged_at": "2025-12-31T04:22:39Z",
+          "url": "https://github.com/nostrnests/nests/pull/31",
+          "labels": []
+        },
+        {
+          "id": 3138377032,
+          "number": 30,
+          "title": "feat: add NIP-46 nostrconnect:// login support",
+          "body": "Add client-initiated NIP-46 authentication with QR code login flow:\r\n- Refactor login to tabbed interface (Extension/Connect/Nsec)\r\n- Add nostrconnect:// URI generation and QR code display\r\n- Implement WebSocket-based NIP-46 handshake with get_public_key RPC\r\n- Update default relays (add relay.ditto.pub, remove nostr.land)\r\n\r\n\ud83e\udd16 Generated with [Claude Code](https://claude.com/claude-code)",
+          "author": "derekross",
+          "merged_at": "2025-12-31T04:12:04Z",
+          "url": "https://github.com/nostrnests/nests/pull/30",
+          "labels": []
+        }
+      ],
+      "open_prs": [],
+      "commits": []
+    },
+    "MostroP2P/mostro": {
+      "name": "Mostro",
+      "description": "P2P Bitcoin exchange over Nostr",
+      "category": "marketplaces",
+      "priority": "medium",
+      "website": "",
+      "maintainer": "",
+      "releases": [
+        {
+          "id": 273868279,
+          "tag": "v0.15.6",
+          "name": "Release v0.15.6",
+          "published_at": "2026-01-02T18:58:05Z",
+          "url": "https://github.com/MostroP2P/mostro/releases/tag/v0.15.6",
+          "body": "## Verifying the Release\r\nIn order to verify the release, you'll need to have gpg or gpg2 installed on your system. Once you've obtained a copy (and hopefully verified that as well), you'll first need to import the keys that have signed this release if you haven't done so already:\r\n```bash\r\ncurl https://raw.githubusercontent.com/MostroP2P/mostro/main/keys/negrunch.asc | gpg --import\r\ncurl https://raw.githubusercontent.com/MostroP2P/mostro/main/keys/arkanoider.asc | gpg --import\r\n```\r\nOnce you have the required PGP keys, you can verify the release (assuming manifest.txt.sig.negrunch, manifest.txt.sig.arkanoider and manifest.txt are in the current directory) with:\r\n```bash\r\ngpg --verify manifest.txt.sig.negrunch manifest.txt\r\ngpg --verify manifest.txt.sig.arkanoider manifest.txt\r\n\r\ngpg: Signature made fri 10 oct 2025 11:28:03 -03\r\ngpg:                using RSA key 1E41631D137BA2ADE55344F73852B843679AD6F0\r\ngpg: Good signature from \"Francisco Calder\u00f3n <fjcalderon@gmail.com>\" [ultimate]\r\n\r\ngpg: Signature made fri 10 oct 2025 11:28:03 -03\r\ngpg:                using RSA key 2E986CA1C5E7EA1635CD059C4989CC7415A43AEC\r\ngpg: Good signature from \"Arkanoider <github.913zc@simplelogin.com>\" [ultimate]\r\n\r\n```\r\nThat will verify the signature of the manifest file, which ensures integrity and authenticity of the archive you've downloaded locally containing the binaries. Next, depending on your operating system, you should then re-compute the sha256 hash of the archive with `shasum -a 256 <filename>`, compare it with the corresponding one in the manifest file, and ensure they match exactly.\r\n\r\n\r\n## What's Changed in v0.15.6\r\n\r\n### \ud83d\ude80 Features\r\n\r\n\r\n* feat: implement Phase 4 dev fee audit events via Nostr by [@grunch](https://github.com/grunch) in [#559](https://github.com/MostroP2P/mostro/pull/559)\r\n* feat: add development fund configuration infrastructure by [@grunch](https://github.com/grunch) in [#555](https://github.com/MostroP2P/mostro/pull/555)\r\n\r\n### \ud83d\udc1b Bug Fixes\r\n\r\n\r\n* fix: correct amount calculations in seller/buyer messages by [@Catrya](https://github.com/Catrya) in [#552](https://github.com/MostroP2P/mostro/pull/552)\r\n\r\n### \ud83d\udcbc Other\r\n\r\n\r\n* Update CHANGELOG for version 0.15.6 by [@grunch](https://github.com/grunch)\r\n* Change development fund to be paid by mostrod by [@grunch](https://github.com/grunch) in [#561](https://github.com/MostroP2P/mostro/pull/561)\r\n* Development fund implementation third phase by [@grunch](https://github.com/grunch) in [#558](https://github.com/MostroP2P/mostro/pull/558)\r\n* Document development fund payment phases and architecture by [@grunch](https://github.com/grunch) in [#556](https://github.com/MostroP2P/mostro/pull/556)\r\n* Aligned premium logic to lnp2p bot by [@arkanoider](https://github.com/arkanoider) in [#550](https://github.com/MostroP2P/mostro/pull/550)\r\n\r\n### \ud83d\udcda Documentation\r\n\r\n\r\n* docs: add comprehensive technical documentation by [@grunch](https://github.com/grunch) in [#553](https://github.com/MostroP2P/mostro/pull/553)\r\n\r\n### \u2699\ufe0f Miscellaneous Tasks\r\n\r\n\r\n* Release mostro version 0.15.6 by [@grunch](https://github.com/grunch)\r\n\r\n## Contributors\r\n* [@grunch](https://github.com/grunch) made their contribution\r\n* [@Catrya](https://github.com/Catrya) made their contribution in [#552](https://github.com/MostroP2P/mostro/pull/552)\r\n* [@arkanoider](https://github.com/arkanoider) made their contribution in [#550](https://github.com/MostroP2P/mostro/pull/550)\r\n\r\n**Full Changelog**: https://github.com/MostroP2P/mostro/compare/v0.15.5...v0.15.6\r\n\r\n<!-- generated by git-cliff -->",
+          "prerelease": false,
+          "author": "github-actions[bot]"
+        }
+      ],
+      "merged_prs": [
+        {
+          "id": 3142576187,
+          "number": 561,
+          "title": "Change development fund to be paid by mostrod",
+          "body": "Fix #560 \r\n<!-- This is an auto-generated comment: release notes by coderabbit.ai -->\r\n\r\n## Summary by CodeRabbit\r\n\r\n* **New Features**\r\n  * Added asynchronous development fee payment system with automatic scheduling and retry capability.\r\n  * Simplified fee structure where development fees are tracked and paid separately, not deducted from buyer or seller transactions.\r\n\r\n* **Changes**\r\n  * Development fee calculations now unified at order acceptance time; buyers and sellers no longer bear direct development fee costs.\r\n\r\n<sub>\u270f\ufe0f Tip: You can customize this high-level summary in your review settings.</sub>\r\n\r\n<!-- end of auto-generated comment: release notes by coderabbit.ai -->",
+          "author": "grunch",
+          "merged_at": "2026-01-02T18:44:58Z",
+          "url": "https://github.com/MostroP2P/mostro/pull/561",
+          "labels": []
+        },
+        {
+          "id": 3137237191,
+          "number": 559,
+          "title": "feat: implement Phase 4 dev fee audit events via Nostr",
+          "body": "Add transparent audit trail for dev fee payments through Nostr events, enabling third-party verification and analytics while maintaining user privacy.\r\n\r\nChanges:\r\n- Add DEV_FEE_AUDIT_EVENT_KIND constant (38383) for audit events\r\n- Implement publish_dev_fee_audit_event() function with complete event creation\r\n- Integrate audit event publishing in scheduler after successful payments\r\n- Non-blocking implementation ensures payment reliability over audit completeness\r\n- Event includes order details, amounts, payment hash for transparency\r\n- Excludes buyer/seller pubkeys for privacy protection\r\n- Update documentation to mark Phase 4 as complete\r\n\r\nEvent structure uses standard Nostr tags (y, z, order, amount, hash, t, currency, network) for queryability via any Nostr client. Events are published to configured relays after database verification.\n\n<!-- This is an auto-generated comment: release notes by coderabbit.ai -->\n## Summary by CodeRabbit\n\n* **Documentation**\n  * Phase 4 marked COMPLETE; docs updated with end-to-end examples, discovery/query guidance, and operational/verification notes.\n\n* **New Features**\n  * Dev-fee audit events published to Nostr relays to provide an observable, queryable audit trail.\n  * Publication is non-blocking\u2014payment success is unaffected by audit publish failures.\n  * Audit events include order metadata, payment hash, timestamp, and payment/amount details for traceability.\n\n<sub>\u270f\ufe0f Tip: You can customize this high-level summary in your review settings.</sub>\n<!-- end of auto-generated comment: release notes by coderabbit.ai -->",
+          "author": "grunch",
+          "merged_at": "2026-01-02T14:15:10Z",
+          "url": "https://github.com/MostroP2P/mostro/pull/559",
+          "labels": []
+        }
+      ],
+      "open_prs": [],
+      "commits": []
+    },
+    "ZharlieW/Aegis": {
+      "name": "Aegis",
+      "description": "Cross-platform signer with multiple connection methods",
+      "category": "signers",
+      "priority": "medium",
+      "website": "",
+      "maintainer": "",
+      "releases": [
+        {
+          "id": 274028672,
+          "tag": "v0.3.5",
+          "name": "v0.3.5 release",
+          "published_at": "2026-01-04T06:00:58Z",
+          "url": "https://github.com/ZharlieW/Aegis/releases/tag/v0.3.5",
+          "body": "* Added Dark Mode\r\n* Improved application icon display\r\n* Optimized various UI elements and layouts\r\n* Fixed potential conflicts with iOS iCloud Private Relay\r\n* Fixed event parsing issues",
+          "prerelease": false,
+          "author": "ZharlieW"
+        }
+      ],
+      "merged_prs": [],
+      "open_prs": [],
+      "commits": []
+    },
+    "FROSTR-ORG/igloo-desktop": {
+      "name": "Frostr",
+      "description": "Threshold signing protocol for Nostr - splits keys across devices",
+      "category": "signers",
+      "priority": "high",
+      "website": "https://frostr.org",
+      "maintainer": "",
+      "releases": [],
+      "merged_prs": [
+        {
+          "id": 3143048825,
+          "number": 62,
+          "title": "group qr shown in onboarding also group and share qr codes shown in decode dropdown on signer",
+          "body": "\n\n<!-- This is an auto-generated comment: release notes by coderabbit.ai -->\n## Summary by CodeRabbit\n\n* **New Features**\n  * Import existing shares from another device to access your account.\n  * View Group Credential and Share Credential as QR codes for easy scanning and sharing.\n  * Improved connection persistence and auto-reconnect for signing sessions.\n\n* **Documentation**\n  * Added relay configuration guidance and notes on component behavior.\n\n* **Style**\n  * Enhanced spacing throughout the interface for improved visual clarity.\n\n<sub>\u270f\ufe0f Tip: You can customize this high-level summary in your review settings.</sub>\n<!-- end of auto-generated comment: release notes by coderabbit.ai -->",
+          "author": "AustinKelsay",
+          "merged_at": "2026-01-02T23:49:48Z",
+          "url": "https://github.com/FROSTR-ORG/igloo-desktop/pull/62",
+          "labels": []
+        }
+      ],
+      "open_prs": [],
+      "commits": []
+    },
+    "greenart7c3/Citrine": {
+      "name": "Citrine",
+      "description": "Nostr relay for Android devices",
+      "category": "relays",
+      "priority": "low",
+      "website": "",
+      "maintainer": "greenart7c3",
+      "releases": [
+        {
+          "id": 274467587,
+          "tag": "v1.0.0",
+          "name": "Release v1.0.0",
+          "published_at": "2026-01-06T09:56:04Z",
+          "url": "https://github.com/greenart7c3/Citrine/releases/tag/v1.0.0",
+          "body": "## Citrine 1.0.0\r\n\r\n- Added crash report handler\r\n- Support for content resolver by @npub1kpv7arjpaa3f37x9m9cu6sk9weeykt84kcrkd070m4amcmuk0r8sk74mkw\r\n- Broadcast events to relays when back online by @npub1kpv7arjpaa3f37x9m9cu6sk9weeykt84kcrkd070m4amcmuk0r8sk74mkw\r\n- Added some missing string resources from settings screen\r\n- Host web apps\r\n- Better performance when loading the kind field\r\n\r\nDownload it with [zap.store](https://zap.store/download), [Obtainium](https://github.com/ImranR98/Obtainium), [f-droid](https://f-droid.org/packages/com.greenart7c3.citrine)  or download it directly in the [releases page \r\n](https://github.com/greenart7c3/Citrine/releases/tag/v1.0.0)\r\n\r\nIf you like my work consider making a [donation](https://greenart7c3.com)\r\n\r\n## Verifying the release\r\n\r\nIn order to verify the release, you'll need to have `gpg` or `gpg2` installed on your system. Once you've obtained a copy (and hopefully verified that as well), you'll first need to import the keys that have signed this release if you haven't done so already:\r\n\r\n``` bash\r\ngpg --keyserver hkps://keys.openpgp.org --recv-keys 44F0AAEB77F373747E3D5444885822EED3A26A6D\r\n```\r\n\r\nOnce you have his PGP key you can verify the release (assuming `manifest-v1.0.0.txt` and `manifest-v1.0.0.txt.sig` are in the current directory) with:\r\n\r\n``` bash\r\ngpg --verify manifest-v1.0.0.txt.sig manifest-v1.0.0.txt\r\n```\r\n\r\nYou should see the following if the verification was successful:\r\n\r\n``` bash\r\ngpg: Signature made Fri 13 Sep 2024 08:06:52 AM -03\r\ngpg:                using RSA key 44F0AAEB77F373747E3D5444885822EED3A26A6D\r\ngpg: Good signature from \"greenart7c3 <greenart7c3@proton.me>\"\r\n```\r\n\r\nThat will verify the signature on the main manifest page which ensures integrity and authenticity of the binaries you've downloaded locally. Next, depending on your operating system you should then re-calculate the sha256 sum of the binary, and compare that with the following hashes:\r\n\r\n``` bash\r\ncat manifest-v1.0.0.txt\r\n```\r\n\r\nOne can use the `shasum -a 256 <file name here>` tool in order to re-compute the `sha256` hash of the target binary for your operating system. The produced hash should be compared with the hashes listed above and they should match exactly.",
+          "prerelease": false,
+          "author": "github-actions[bot]"
+        }
+      ],
+      "merged_prs": [
+        {
+          "id": 3137261288,
+          "number": 86,
+          "title": "feat: Add ContentProvider to expose Nostr events to other apps",
+          "body": "Implement ContentProvider API to allow external Android applications to query Citrine's Nostr relay data using ContentResolver.\r\n\r\nChanges:\r\n- Add CitrineContract.kt: Defines content URIs, column names, and query parameters for events and tags\r\n- Add CitrineContentProvider.kt: Full ContentProvider implementation with support for:\r\n  * Query events by ID, pubkey, kind, or date range\r\n  * Query tags associated with events\r\n  * Insert new events (with validation)\r\n  * Delete events by ID\r\n  * Proper sorting and pagination support\r\n- Update AndroidManifest.xml: Register ContentProvider and add permissions (READ_EVENTS and WRITE_EVENTS)\r\n\r\nSupported URI patterns:\r\n- content://com.greenart7c3.citrine.provider/events\r\n- content://com.greenart7c3.citrine.provider/events/{id}\r\n- content://com.greenart7c3.citrine.provider/events/by_pubkey\r\n- content://com.greenart7c3.citrine.provider/events/by_kind\r\n- content://com.greenart7c3.citrine.provider/tags/by_event\r\n\r\nThis addresses the TODO item 'Add content resolvers' from README.md and enables other Nostr clients to access Citrine's relay data.",
+          "author": "percy-g2",
+          "merged_at": "2026-01-02T09:19:45Z",
+          "url": "https://github.com/greenart7c3/Citrine/pull/86",
+          "labels": []
+        }
+      ],
+      "open_prs": [],
+      "commits": []
+    },
+    "nostr-dev-kit/ndk": {
+      "name": "NDK (Nostr Dev Kit)",
+      "description": "High-level JavaScript SDK",
+      "category": "libraries",
+      "priority": "high",
+      "website": "",
+      "maintainer": "pablof7z",
+      "releases": [],
+      "merged_prs": [
+        {
+          "id": 3141347476,
+          "number": 374,
+          "title": "fix(nip46): use getPublicKey() in nostrconnect flow to get actual user pubkey",
+          "body": "## Summary\n- Fixes nostrconnect:// flow using bunker pubkey instead of user pubkey\n- Aligns nostrconnect flow with bunker:// flow by calling getPublicKey() after connect\n\n## Problem\nThe `blockUntilReadyNostrConnect()` method was incorrectly setting `userPubkey` to `response.event.pubkey`, which is the bunker's pubkey (the one signing the NIP-46 response event), not the actual user's pubkey.\n\nThis caused users logging in via nostrconnect:// to have their session associated with the wrong pubkey, leading to:\n- Follows not loading (querying for wrong user's contacts)\n- Profile data not loading correctly\n\n## Solution\nCall `getPublicKey()` to retrieve the actual user's pubkey from the bunker, just like the `bunker://` flow does.\n\nFixes #373",
+          "author": "pablof7z",
+          "merged_at": "2026-01-02T01:13:18Z",
+          "url": "https://github.com/nostr-dev-kit/ndk/pull/374",
+          "labels": []
+        }
+      ],
+      "open_prs": [],
+      "commits": []
+    },
+    "hzrd149/applesauce": {
+      "name": "Applesauce",
+      "description": "Collection of JS utilities and tools",
+      "category": "libraries",
+      "priority": "medium",
+      "website": "",
+      "maintainer": "hzrd149",
+      "releases": [
+        {
+          "id": 274085501,
+          "tag": "applesauce-react@5.0.1",
+          "name": "applesauce-react@5.0.1",
+          "published_at": "2026-01-04T21:01:27Z",
+          "url": "https://github.com/hzrd149/applesauce/releases/tag/applesauce-react%405.0.1",
+          "body": "### Patch Changes\n\n-   d243cf8: Fix react dependency being locked to v18\n",
+          "prerelease": false,
+          "author": "github-actions[bot]"
+        },
+        {
+          "id": 273864976,
+          "tag": "applesauce-wallet@5.0.0",
+          "name": "applesauce-wallet@5.0.0",
+          "published_at": "2026-01-02T18:31:58Z",
+          "url": "https://github.com/hzrd149/applesauce/releases/tag/applesauce-wallet%405.0.0",
+          "body": "### Minor Changes\n\n-   36e021a: Remove unused `@noble/hashes` dependency\n-   b698156: Add wallet and token event casts\n-   6596b3d: Remove direct `nostr-tools` dependency\n-   14a2201: Add support for NIP-87 cashu mint discovery\n\n### Patch Changes\n\n-   Updated dependencies\n    -   applesauce-actions@5.0.0\n    -   applesauce-common@5.0.0\n    -   applesauce-core@5.0.0\n",
+          "prerelease": false,
+          "author": "github-actions[bot]"
+        },
+        {
+          "id": 273864916,
+          "tag": "applesauce-wallet-connect@5.0.0",
+          "name": "applesauce-wallet-connect@5.0.0",
+          "published_at": "2026-01-02T18:31:34Z",
+          "url": "https://github.com/hzrd149/applesauce/releases/tag/applesauce-wallet-connect%405.0.0",
+          "body": "### Minor Changes\n\n-   6596b3d: Remove direct `nostr-tools` dependency\n\n### Patch Changes\n\n-   Updated dependencies\n    -   applesauce-common@5.0.0\n    -   applesauce-core@5.0.0\n",
+          "prerelease": false,
+          "author": "github-actions[bot]"
+        },
+        {
+          "id": 273864903,
+          "tag": "applesauce-sqlite@5.0.0",
+          "name": "applesauce-sqlite@5.0.0",
+          "published_at": "2026-01-02T18:31:31Z",
+          "url": "https://github.com/hzrd149/applesauce/releases/tag/applesauce-sqlite%405.0.0",
+          "body": "### Patch Changes\n\n-   Updated dependencies\n    -   applesauce-core@5.0.0\n",
+          "prerelease": false,
+          "author": "github-actions[bot]"
+        },
+        {
+          "id": 273864971,
+          "tag": "applesauce-signers@5.0.0",
+          "name": "applesauce-signers@5.0.0",
+          "published_at": "2026-01-02T18:31:55Z",
+          "url": "https://github.com/hzrd149/applesauce/releases/tag/applesauce-signers%405.0.0",
+          "body": "### Minor Changes\n\n-   d788f94: Remove `@noble/hashes` and `@scure/base` dependency\n-   6596b3d: Remove direct `nostr-tools` dependency\n\n### Patch Changes\n\n-   Updated dependencies\n    -   applesauce-core@5.0.0\n",
+          "prerelease": false,
+          "author": "github-actions[bot]"
+        },
+        {
+          "id": 273864936,
+          "tag": "applesauce-relay@5.0.0",
+          "name": "applesauce-relay@5.0.0",
+          "published_at": "2026-01-02T18:31:40Z",
+          "url": "https://github.com/hzrd149/applesauce/releases/tag/applesauce-relay%405.0.0",
+          "body": "### Major Changes\n\n-   1ff4283: Remove `retries` option in request, subscription, and publish methods. use `reconnect` instead\n-   c2bd9a2: Lower default retry count from 10 to 3\n-   c2bd9a2: Ignore unreacheable (ready=false) relays by default in `request`, `subscription`, `publish` and `sync` in `RelayPool`\n\n### Minor Changes\n\n-   41499f9: Add `createEventLoaderForStore` method for easily creating the `EventStore.eventLoader` method using a relay pool or relay request method\n-   1ff4283: Added `subscriptionReconnect`, `requestReconnect`, and `publishRetry` options to Relay and RelayPool class for default retry limits\n-   41499f9: Add `createUnifiedEventLoader` for both event pointers and address pointers\n-   eb68078: Bump `nostr-tools` to `2.19`\n\n### Patch Changes\n\n-   cc794a3: Fix `Relay.sync` and `RelayPool.sync` not adding events to event store\n-   d788f94: Remove direct imports from nostr-tools\n-   Updated dependencies\n    -   applesauce-core@5.0.0\n",
+          "prerelease": false,
+          "author": "github-actions[bot]"
+        },
+        {
+          "id": 273864995,
+          "tag": "applesauce-react@5.0.0",
+          "name": "applesauce-react@5.0.0",
+          "published_at": "2026-01-02T18:32:04Z",
+          "url": "https://github.com/hzrd149/applesauce/releases/tag/applesauce-react%405.0.0",
+          "body": "### Minor Changes\n\n-   5d7d423: Add new `use$` hook that replaces `useObservableState` and `useObservableMemo`\n-   6596b3d: Remove direct `nostr-tools` dependency\n\n### Patch Changes\n\n-   Updated dependencies\n    -   applesauce-actions@5.0.0\n    -   applesauce-content@5.0.0\n    -   applesauce-core@5.0.0\n    -   applesauce-accounts@5.0.0\n",
+          "prerelease": false,
+          "author": "github-actions[bot]"
+        },
+        {
+          "id": 273864953,
+          "tag": "applesauce-loaders@5.0.0",
+          "name": "applesauce-loaders@5.0.0",
+          "published_at": "2026-01-02T18:31:49Z",
+          "url": "https://github.com/hzrd149/applesauce/releases/tag/applesauce-loaders%405.0.0",
+          "body": "### Minor Changes\n\n-   6596b3d: Remove unused `nostr-tools` dependency\n\n### Patch Changes\n\n-   Updated dependencies\n    -   applesauce-core@5.0.0\n",
+          "prerelease": false,
+          "author": "github-actions[bot]"
+        },
+        {
+          "id": 273864986,
+          "tag": "applesauce-extra@5.0.0",
+          "name": "applesauce-extra@5.0.0",
+          "published_at": "2026-01-02T18:32:01Z",
+          "url": "https://github.com/hzrd149/applesauce/releases/tag/applesauce-extra%405.0.0",
+          "body": "### Patch Changes\n\n-   Updated dependencies\n    -   applesauce-core@5.0.0\n",
+          "prerelease": false,
+          "author": "github-actions[bot]"
+        },
+        {
+          "id": 273864927,
+          "tag": "applesauce-core@5.0.0",
+          "name": "applesauce-core@5.0.0",
+          "published_at": "2026-01-02T18:31:37Z",
+          "url": "https://github.com/hzrd149/applesauce/releases/tag/applesauce-core%405.0.0",
+          "body": "### Major Changes\n\n-   e6a85d5: Remove `addCoordinateTag` tag operation, use `addAddressTag` instead\n-   e824b26: Remove unused `EventStore.deleted` and `EventStore.updated` methods\n-   e824b26: Rename `getCoordinateFromAddressPointer` to `getReplaceableAddressFromPointer`\n-   ba7dfed: Remove `IEventStoreSubscriptions` interface\n-   e6a85d5: Removed `removeCoordinateTag` tag operation, use `removeAddressTag` instead\n-   c5ad95c: Verify event signatures by default\n-   e824b26: Rename `parseCoordinate` to `parseReplaceableAddress`\n-   e824b26: Update `EventStore` to take options in constructor\n-   ba7dfed: Remove `events` and `replaceableSet` methods on event stores\n-   41499f9: Replace experimental `eventLoader`, `replaceableLoader`, and `addressableLoader` with a single `eventLoader` method\n-   e6a85d5: Move event factory to core\n-   ba7dfed: Remove `IEventStoreModels` interface\n\n### Minor Changes\n\n-   82bc46f: Add helper methods for NIP-66 relay discovery\n-   fc21438: Add support for NIP-35 torrents\n-   eb68078: Bump `nostr-tools` to `2.19`\n-   c147899: Support `AddressPointers` in `EventStore.event` and `EventStore.getEvent`\n-   4f749e1: Add `encryptSecretKey` and `decryptSecretKey` methods\n-   e824b26: Add `DeleteManager` and `SyncDeleteManager` classes to correctly handle delete events\n\n### Patch Changes\n\n-   acc6e6c: Fix URL helpers throwing on invalid URLs\n",
+          "prerelease": false,
+          "author": "github-actions[bot]"
+        },
+        {
+          "id": 273864961,
+          "tag": "applesauce-content@5.0.0",
+          "name": "applesauce-content@5.0.0",
+          "published_at": "2026-01-02T18:31:52Z",
+          "url": "https://github.com/hzrd149/applesauce/releases/tag/applesauce-content%405.0.0",
+          "body": "### Major Changes\n\n-   8861435: Move regular expressions to applesauce-core\n\n### Minor Changes\n\n-   b698156: Bump `@cashu/cashu-ts` to `3.1.1`\n-   d788f94: Remove nostr-tools dependency\n\n### Patch Changes\n\n-   Updated dependencies\n    -   applesauce-common@5.0.0\n    -   applesauce-core@5.0.0\n",
+          "prerelease": false,
+          "author": "github-actions[bot]"
+        },
+        {
+          "id": 273864948,
+          "tag": "applesauce-common@5.0.0",
+          "name": "applesauce-common@5.0.0",
+          "published_at": "2026-01-02T18:31:46Z",
+          "url": "https://github.com/hzrd149/applesauce/releases/tag/applesauce-common%405.0.0",
+          "body": "### Major Changes\n\n-   6431c21: Remove \"hashtags\" and \"urls\" from bookmark lists and sets\n-   b5519f5: Update `getListTags` to only read public tags by default\n\n### Minor Changes\n\n-   1d24f17: Add NIP-29 group management helpers and blueprints\n-   aa40cf6: Add cast system with `User`, `Note`, `Profile`, `Zap`, and `Comment` for casting events to classes\n-   eb68078: Bump `nostr-tools` to `2.19`\n-   d788f94: Remove dependency on nostr-tools\n\n### Patch Changes\n\n-   Updated dependencies\n    -   applesauce-core@5.0.0\n",
+          "prerelease": false,
+          "author": "github-actions[bot]"
+        },
+        {
+          "id": 273864897,
+          "tag": "applesauce-actions@5.0.0",
+          "name": "applesauce-actions@5.0.0",
+          "published_at": "2026-01-02T18:31:29Z",
+          "url": "https://github.com/hzrd149/applesauce/releases/tag/applesauce-actions%405.0.0",
+          "body": "### Major Changes\n\n-   5d7d423: Changed `Action` from an async generator of events to an async method that calls a `publish` method\n-   08f8aa4: Rename `ActionHub` to `ActionRunner`\n\n### Minor Changes\n\n-   0cd0f1c: Extend action context to allow sub actions and casting\n-   6596b3d: Remove unused `nostr-tools` dependency\n\n### Patch Changes\n\n-   Updated dependencies\n    -   applesauce-common@5.0.0\n    -   applesauce-core@5.0.0\n",
+          "prerelease": false,
+          "author": "github-actions[bot]"
+        },
+        {
+          "id": 273864943,
+          "tag": "applesauce-accounts@5.0.0",
+          "name": "applesauce-accounts@5.0.0",
+          "published_at": "2026-01-02T18:31:43Z",
+          "url": "https://github.com/hzrd149/applesauce/releases/tag/applesauce-accounts%405.0.0",
+          "body": "### Minor Changes\n\n-   4f749e1: Remove `@noble/hashes` dependency\n-   6596b3d: Remove direct `nostr-tools` dependency\n\n### Patch Changes\n\n-   Updated dependencies\n    -   applesauce-signers@5.0.0\n    -   applesauce-core@5.0.0\n",
+          "prerelease": false,
+          "author": "github-actions[bot]"
+        }
+      ],
+      "merged_prs": [],
+      "open_prs": [],
+      "commits": []
+    },
+    "rust-nostr/nostr": {
+      "name": "rust-nostr",
+      "description": "Rust implementation with multi-language bindings",
+      "category": "libraries",
+      "priority": "high",
+      "website": "https://rust-nostr.org",
+      "maintainer": "yukibtc",
+      "releases": [],
+      "merged_prs": [
+        {
+          "id": 3143426648,
+          "number": 1203,
+          "title": "browser-signer-proxy: custom HTML page",
+          "body": "\r\n\r\nCloses: https://github.com/rust-nostr/nostr/issues/1049\r\nSuggested-by: @kehiy\r\n\r\n### Description\r\n\r\n- remove the css file, css can be embedded in the HTML\r\n- change the ID of the status to `nip07-proxy-status`\r\n- set the status color using `.style` instead of the class name\r\n- rename `HTML` constant to `DEFAULT_HTML`\r\n- example with a custom page\r\n\r\n### Notes to the reviewers\r\n\r\nN/A\r\n\r\n### Checklist\r\n\r\n- [X] I followed the [contribution guidelines](https://github.com/rust-nostr/nostr/blob/master/CONTRIBUTING.md)\r\n- [X] I updated the [CHANGELOG](https://github.com/rust-nostr/nostr/blob/master/CHANGELOG.md) (if applicable)\r\n- [X] I personally wrote and understood all code in this PR\r\n",
+          "author": "TheAwiteb",
+          "merged_at": "2026-01-04T11:13:09Z",
+          "url": "https://github.com/rust-nostr/nostr/pull/1203",
+          "labels": []
+        },
+        {
+          "id": 3142232135,
+          "number": 1200,
+          "title": "ndb: respect the filter limit",
+          "body": "### Description\r\n\r\nUse the filter limit if it's exist otherwice fallback to the `MAX_RESULTS` constant\r\n\r\n### Notes to the reviewers\r\n\r\nN/A\r\n\r\n### Checklist\r\n\r\n- [X] I followed the [contribution guidelines](https://github.com/rust-nostr/nostr/blob/master/CONTRIBUTING.md)\r\n- [X] I updated the [CHANGELOG](https://github.com/rust-nostr/nostr/blob/master/CHANGELOG.md) (if applicable)\r\n- [X] I personally wrote and understood all code in this PR\r\n",
+          "author": "TheAwiteb",
+          "merged_at": "2026-01-04T11:07:37Z",
+          "url": "https://github.com/rust-nostr/nostr/pull/1200",
+          "labels": []
+        },
+        {
+          "id": 3141156031,
+          "number": 1195,
+          "title": "nostr: add `Kind::BlossomServerList` and `EventBuilder::blossom_server_list",
+          "body": "Fixes: [nevent1qqsdqufwxleav920e48smaq5ne8fql063uvpd755a0s2n500nfmnh5cpp4mhxue69uhkummn9ekx7mqlk38nt](https://gitworkshop.dev/npub1drvpzev3syqt0kjrls50050uzf25gehpz9vgdw08hvex7e0vgfeq0eseet/nostr/issues/note16pcjudln6c25ln20ph6pf8jwjp7l4rcczmaff6lq48g7lxnh80fsnz5v94)\r\nSuggested-by: @dluvian\r\n\r\n### Notes to the reviewers\r\n\r\nI moved `Kind::RelayList` (10002) under `Kind::PinList` (10001), because it looks better there :)\r\n\r\n### Checklist\r\n\r\n- [X] I followed the [contribution guidelines](https://github.com/rust-nostr/nostr/blob/master/CONTRIBUTING.md)\r\n- [X] I updated the [CHANGELOG](https://github.com/rust-nostr/nostr/blob/master/CHANGELOG.md) (if applicable)\r\n- [X] I personally wrote and understood all code in this PR\r\n",
+          "author": "TheAwiteb",
+          "merged_at": "2026-01-04T10:58:02Z",
+          "url": "https://github.com/rust-nostr/nostr/pull/1195",
+          "labels": []
+        },
+        {
+          "id": 3141136324,
+          "number": 1194,
+          "title": "nostr: implement `fmt::Display` for `CoordinateBorrow`",
+          "body": "### Description\r\nimplement `fmt::Display` for `CoordinateBorrow`\r\n\r\nFixes: [nevent1qqsqzm905cw775qlp8t4t4khhq4gjy96sx668r0ed0grxe93kfvv5dqpp4mhxue69uhkummn9ekx7mqgm9kum](https://gitworkshop.dev/npub1drvpzev3syqt0kjrls50050uzf25gehpz9vgdw08hvex7e0vgfeq0eseet/nostr/issues/note1q9k2lfsaaagp7zwh2htd0wp23ygt4qd45wxlj67sxdjtrvjceg6qc44g5y)\r\nSuggested-by: @dluvian\r\n\r\n\r\n\r\n<!-- Describe the purpose of this PR, what's being adding and/or fixed -->\r\n\r\n### Notes to the reviewers\r\n\r\nN/A\r\n\r\n### Checklist\r\n\r\n- [X] I followed the [contribution guidelines](https://github.com/rust-nostr/nostr/blob/master/CONTRIBUTING.md)\r\n- [X] I updated the [CHANGELOG](https://github.com/rust-nostr/nostr/blob/master/CHANGELOG.md) (if applicable)\r\n- [X] I personally wrote and understood all code in this PR\r\n",
+          "author": "TheAwiteb",
+          "merged_at": "2026-01-04T10:53:22Z",
+          "url": "https://github.com/rust-nostr/nostr/pull/1194",
+          "labels": []
+        },
+        {
+          "id": 3140840450,
+          "number": 1192,
+          "title": "doc: remove trailing whitespace from zap kinds",
+          "body": "\r\n### Description\r\n\r\nThe kinds is `ZapPrivateMessage`, `ZapRequest` and `ZapReceipt`\r\n\r\n<!-- Describe the purpose of this PR, what's being adding and/or fixed -->\r\n\r\n### Notes to the reviewers\r\n\r\nN/A\r\n\r\n### Checklist\r\n\r\n- [X] I followed the [contribution guidelines](https://github.com/rust-nostr/nostr/blob/master/CONTRIBUTING.md)\r\n- [ ] I updated the [CHANGELOG](https://github.com/rust-nostr/nostr/blob/master/CHANGELOG.md) (if applicable)\r\n- [X] I personally wrote and understood all code in this PR\r\n",
+          "author": "TheAwiteb",
+          "merged_at": "2026-01-04T10:47:05Z",
+          "url": "https://github.com/rust-nostr/nostr/pull/1192",
+          "labels": []
+        },
+        {
+          "id": 3142309351,
+          "number": 1201,
+          "title": "gossip: refactor allowed relay filter logic",
+          "body": "Follow-up of a0b8dc139a8de15b726ec2648f6597afd9c7e795\r\n\r\nRef https://github.com/rust-nostr/nostr/pull/1128#discussion_r2657863101\r\n\r\n@TheAwiteb ",
+          "author": "yukibtc",
+          "merged_at": "2026-01-02T15:36:43Z",
+          "url": "https://github.com/rust-nostr/nostr/pull/1201",
+          "labels": []
+        },
+        {
+          "id": 3140835803,
+          "number": 1191,
+          "title": "nostr: add `Kind::Highlight`",
+          "body": "Fixes: [nevent1qqsvrkg6quvp4vrzh45z5ske8ex70zr2n9ay5wfetfm53e08h8cqg2cpz3mhxue69uhhyetvv9ujuerpd46hxtnfduqs6amnwvaz7tmwdaejumr0ds78956y](https://gitworkshop.dev/npub1drvpzev3syqt0kjrls50050uzf25gehpz9vgdw08hvex7e0vgfeq0eseet/nostr/issues/note1c8v35pccr2cx90tg9fpdj0jdu7yx4xt6fgunjknhfrj70w0sqs4sgaaxmu)\r\nSuggested-by: @dluvian (npub1useke4f9maul5nf67dj0m9sq6jcsmnjzzk4ycvldwl4qss35fvgqjdk5ks)\r\n\r\n### Description\r\n\r\nadd `Kind::Highlight`, the kind is 9802\r\n\r\n### Notes to the reviewers\r\n\r\nN/A\r\n\r\n### Checklist\r\n\r\n- [X] I followed the [contribution guidelines](https://github.com/rust-nostr/nostr/blob/master/CONTRIBUTING.md)\r\n- [X] I updated the [CHANGELOG](https://github.com/rust-nostr/nostr/blob/master/CHANGELOG.md) (if applicable)\r\n- [X] I personally wrote and understood all code in this PR\r\n",
+          "author": "TheAwiteb",
+          "merged_at": "2026-01-04T10:44:07Z",
+          "url": "https://github.com/rust-nostr/nostr/pull/1191",
+          "labels": []
+        },
+        {
+          "id": 3140818942,
+          "number": 1190,
+          "title": "doc: fix `Tag::head` function doc",
+          "body": "### Description\r\n\r\nThe documentation were saying the JSON will be `[\"HEAD\", \"<branch-name>\"]` but the branch name will be prefixed with `ref: refs/heads/`.\r\n\r\nhttps://github.com/rust-nostr/nostr/blob/8d031ef927ac353c6d636def663912fab8cb0726/crates/nostr/src/event/tag/standard.rs#L843-L845\r\n\r\n### Notes to the reviewers\r\n\r\n- Should I update the changelog?\r\n\r\n### Checklist\r\n\r\n- [X] I followed the [contribution guidelines](https://github.com/rust-nostr/nostr/blob/master/CONTRIBUTING.md)\r\n- [ ] I updated the [CHANGELOG](https://github.com/rust-nostr/nostr/blob/master/CHANGELOG.md) (if applicable)\r\n- [X] I personally wrote and understood all code in this PR\r\n",
+          "author": "TheAwiteb",
+          "merged_at": "2026-01-04T10:40:13Z",
+          "url": "https://github.com/rust-nostr/nostr/pull/1190",
+          "labels": []
+        },
+        {
+          "id": 2994393955,
+          "number": 1128,
+          "title": "gossip: add `GossipAllowedRelays` to filter relays during selection",
+          "body": "Closes https://gitworkshop.dev/nevent1qvzqqqqx25pzpepndn2jthmelfxn4umylktqp493ph8yy9d2fse76al2ppprgjcsqqsxjcxdfc5vt8hhqfqfgcynk32ls3fgduxzx4xlevldceuj4sk9kvsgx4h5j\r\n\r\n",
+          "author": "yukibtc",
+          "merged_at": "2026-01-02T14:55:38Z",
+          "url": "https://github.com/rust-nostr/nostr/pull/1128",
+          "labels": []
+        },
+        {
+          "id": 3139963203,
+          "number": 1184,
+          "title": "nostr: add `a` tag of replaceable and addressable events in `EventBuilder::repost`",
+          "body": "\r\n\r\n\r\n### Descriptio\r\n\r\nadd `a` tag of replaceable and addressable events in `EventBuilder::repost`\r\n\r\nFixes: [nevent1qqs99u9tfwzuxesuwqcspe6ltmau6m7xu4cax3n6t45hk94rwzlcucqzyrjrxmx4yh0hn7jd8tekflvkqr2tzrwwgg265npna4m75zzzx393qqgkwaehxw309aex2mrp0yhxummnw3ezucnpdejqzrthwden5te0dehhxtnvdakqxpqqqqr92825789](https://gitworkshop.dev/yukikishimoto.com/nostr/issues/note12tc2kju9cdnpcup3qrn47hhme4hudet36dr85htf0vt2xu9l3esqeauhn5)\r\nReported-by: @dluvian\r\n\r\n\r\n### Notes to the reviewers\r\n\r\n- Should it be an option?\r\n\r\n\r\n### Checklist\r\n\r\n- [X] I followed the [contribution guidelines](https://github.com/rust-nostr/nostr/blob/master/CONTRIBUTING.md)\r\n- [X] I updated the [CHANGELOG](https://github.com/rust-nostr/nostr/blob/master/CHANGELOG.md) (if applicable)\r\n- [X] I personally wrote and understood all code in this PR\r\n",
+          "author": "TheAwiteb",
+          "merged_at": "2026-01-01T11:00:09Z",
+          "url": "https://github.com/rust-nostr/nostr/pull/1184",
+          "labels": []
+        },
+        {
+          "id": 3129312699,
+          "number": 1183,
+          "title": "relay-builder: NIP-40 support at the relay level",
+          "body": "### Description\r\n\r\nAdded support for NIP-40 by rejecting expired events at the relay level. Expired events are now filtered out and not sent to clients.\r\n\r\nWhy? I don't think that we have to write `if event.is_expired() {return ...}` on each database implementation to reject expired events, we can just handle it like we handle PoW.\r\n\r\nFor not sending expired event, yes it makes senses to let the database handle it, **but** we already map the events to JSON, so why not make it `filter_map` to reject expired events? IDK, it makes sense to me to reject them :)\r\n\r\n### Notes to the reviewers\r\n\r\n- The database still have to delete the expired events\r\n\r\n### Checklist\r\n\r\n- [X] I followed the [contribution guidelines](https://github.com/rust-nostr/nostr/blob/master/CONTRIBUTING.md)\r\n- [X] I updated the [CHANGELOG](https://github.com/rust-nostr/nostr/blob/master/CHANGELOG.md) (if applicable)\r\n- [X] I personally wrote and understood all code in this PR\r\n",
+          "author": "TheAwiteb",
+          "merged_at": "2026-01-01T10:57:17Z",
+          "url": "https://github.com/rust-nostr/nostr/pull/1183",
+          "labels": []
+        },
+        {
+          "id": 3126518782,
+          "number": 1181,
+          "title": "nostr: remove `EventBuilder::request_vanish` unused generic",
+          "body": "### Description\r\n\r\nI forgot to remove it here #777\r\n\r\n### Notes to the reviewers\r\n\r\nN/A\r\n\r\n### Checklist\r\n\r\n- [X] I followed the [contribution guidelines](https://github.com/rust-nostr/nostr/blob/master/CONTRIBUTING.md)\r\n- [X] I updated the [CHANGELOG](https://github.com/rust-nostr/nostr/blob/master/CHANGELOG.md) (if applicable)\r\n- [X] I personally wrote and understood all code in this PR\r\n",
+          "author": "TheAwiteb",
+          "merged_at": "2025-12-31T14:34:00Z",
+          "url": "https://github.com/rust-nostr/nostr/pull/1181",
+          "labels": []
+        },
+        {
+          "id": 3125616894,
+          "number": 1180,
+          "title": "sqlite: support NIP-62",
+          "body": "\r\n### Description\r\n\r\nSupport for NIP-62 (Request to Vanish) is implemented. Currently, the database doesn't know the relay URL, so it only handles `ALL_RELAYS`.\r\n\r\nREFS: https://github.com/nostr-protocol/nips/blob/619e3be/62.md\r\n\r\n### Notes to the reviewers\r\n\r\n- I'm not that good at writing SQL, but I did my best :).\r\n~- Where can I write the tests?~ Done, there is a test now\r\n~- Should we add `RejectedReason::Vanished` to `nostr-database`?~ I did\r\n\r\n### Checklist\r\n\r\n- [X] I followed the [contribution guidelines](https://github.com/rust-nostr/nostr/blob/master/CONTRIBUTING.md)\r\n- [X] I updated the [CHANGELOG](https://github.com/rust-nostr/nostr/blob/master/CHANGELOG.md) (if applicable)\r\n- [X] I personally wrote and understood all code in this PR\r\n",
+          "author": "TheAwiteb",
+          "merged_at": "2025-12-31T14:31:57Z",
+          "url": "https://github.com/rust-nostr/nostr/pull/1180",
+          "labels": []
+        },
+        {
+          "id": 3126530681,
+          "number": 1182,
+          "title": "relay-builder: NIP-62 depends on the database implementation",
+          "body": "### Description\r\n\r\nUpdate the readme of nostr-relay-builder and make the NIP-62 depends on the database implementation\r\n\r\n### Notes to the reviewers\r\n\r\nN/A\r\n\r\n### Checklist\r\n\r\n- [X] I followed the [contribution guidelines](https://github.com/rust-nostr/nostr/blob/master/CONTRIBUTING.md)\r\n- [X] I updated the [CHANGELOG](https://github.com/rust-nostr/nostr/blob/master/CHANGELOG.md) (if applicable)\r\n- [X] I personally wrote and understood all code in this PR\r\n",
+          "author": "TheAwiteb",
+          "merged_at": "2025-12-31T14:22:06Z",
+          "url": "https://github.com/rust-nostr/nostr/pull/1182",
+          "labels": []
+        }
+      ],
+      "open_prs": [],
+      "commits": []
+    },
+    "getAlby/hub": {
+      "name": "Alby Hub",
+      "description": "Self-custodial Lightning node with NWC",
+      "category": "wallets",
+      "priority": "high",
+      "website": "https://albyhub.com",
+      "maintainer": "getalby",
+      "releases": [],
+      "merged_prs": [
+        {
+          "id": 3146257427,
+          "number": 2002,
+          "title": "fix: increase vss client timeout",
+          "body": "fix: increase LDK VSS client request timeouts from 10 to 60 seconds (see https://github.com/getAlby/ldk-node/commit/ca5fc378d129caad63c22d894064d6c8e1276d8c)",
+          "author": "rolznz",
+          "merged_at": "2026-01-06T06:33:48Z",
+          "url": "https://github.com/getAlby/hub/pull/2002",
+          "labels": []
+        },
+        {
+          "id": 3148334373,
+          "number": 2004,
+          "title": "fix: max amount when swapping in from external wallet",
+          "body": "There is a bug right now that you cannot swap in from an external wallet more than your current internal on-chain wallet balance (which doesn't make sense)",
+          "author": "rolznz",
+          "merged_at": "2026-01-06T06:12:45Z",
+          "url": "https://github.com/getAlby/hub/pull/2004",
+          "labels": []
+        },
+        {
+          "id": 3143343062,
+          "number": 2000,
+          "title": "fix: only clear ldk VSS migration config value after successfully starting node",
+          "body": "Fixes https://github.com/getAlby/hub/issues/1999",
+          "author": "rolznz",
+          "merged_at": "2026-01-05T11:11:14Z",
+          "url": "https://github.com/getAlby/hub/pull/2000",
+          "labels": []
+        }
+      ],
+      "open_prs": [],
+      "commits": []
+    },
+    "ZeusLN/zeus": {
+      "name": "Zeus",
+      "description": "Mobile Bitcoin/Lightning wallet",
+      "category": "wallets",
+      "priority": "medium",
+      "website": "",
+      "maintainer": "",
+      "releases": [
+        {
+          "id": 274016057,
+          "tag": "v0.12.1-rc1",
+          "name": "v0.12.1-rc1",
+          "published_at": "2026-01-04T01:42:34Z",
+          "url": "https://github.com/ZeusLN/zeus/releases/tag/v0.12.1-rc1",
+          "body": "<img width=\"1000\" height=\"600\" alt=\"ZEUS v0.12.1-rc1\" src=\"https://github.com/user-attachments/assets/555a464d-ebd0-41d0-941a-a0c55a9e44fa\" />\r\n\r\n# v0.12.1 Highlights\r\n\r\n- feat: Cashu: Legacy seed restore tool\r\n- feat: Support for nested URI schemes (LIGHTNING:lnurlp://..)\r\n- ui: updated Ecash balance row\r\n- fix: payment amount for partial HTLC success and add regression tests\r\n- fix: don't allow user to add mint multiple times\r\n- fix: Cashu Migration for multiple nodes\r\n- fix: incoming channel alias resolution\r\n\r\n## What's Changed\r\n* [Transifex] Updates for project ZEUS by @transifex-integration[bot] in https://github.com/ZeusLN/zeus/pull/3494\r\n\r\n\r\n**Full Changelog**: https://github.com/ZeusLN/zeus/compare/v0.12.1-beta1...v0.12.1-rc1\r\n\r\n# Verifying the Release\r\nIn order to verify the release, you'll need to have `gpg` or `gpg2` installed on your system. Once you've obtained a copy (and hopefully verified that as well), you'll first need to import the keys that have signed this release if you haven't done so already:\r\n\r\n```\r\ngpg --keyserver hkps://keys.openpgp.org --recv-keys 96C225207F2137E278C31CF7AAC48DE8AB8DEE84\r\n```\r\n\r\nOnce you have his PGP key you can verify the release (assuming `manifest-v0.12.1-rc1.txt` and `manifest-v0.12.1-rc1.txt.sig` are in the  current directory) with:\r\n```\r\ngpg --verify manifest-v0.12.1-rc1.txt.sig manifest-v0.12.1-rc1.txt\r\n```\r\n\r\nYou should see the following if the verification was successful:\r\n```\r\ngpg: Signature made Sat Jan  3 20:34:16 2026 EST\r\ngpg:                using RSA key 96C225207F2137E278C31CF7AAC48DE8AB8DEE84\r\ngpg:                issuer \"zeusln@tutanota.com\"\r\ngpg: Good signature from \"Zeus LN <zeusln@tutanota.com>\r\n```\r\n\r\nThat will verify the signature on the main manifest page which ensures integrity and authenticity of the binaries you've downloaded locally. Next, depending on your operating system you should then re-calculate the sha256 sum of the binary, and compare that with the following hashes:\r\n\r\n```\r\ncat manifest-v0.12.1-rc1.txt\r\n```\r\n\r\nOne can use the `shasum -a 256 <file name here>` tool in order to re-compute the `sha256` hash of the target binary for your operating system. The produced hash should be compared with the hashes listed above and they should match *exactly*.\r\n\r\n## Android fingerprint\r\n\r\nUsers verifying the release on an Android device can check against the key fingerprint below using [AppVerifier](https://github.com/soupslurpr/AppVerifier). This fingerprint can also be found on our website [here](https://zeusln.com/AndroidFingerprint.txt).\r\n\r\n```\r\nSHA1: 32:06:3C:97:96:38:0D:99:EE:4A:CB:B8:1E:2A:6F:27:FD:66:8E:C1\r\n  SHA256: 2A:F8:E2:0A:C9:44:57:67:CB:D4:4E:D8:4D:BB:FC:33:C6:C9:82:48:89:7C:4F:84:3C:42:C2:76:5C:4A:D3:BA\r\nSignature algorithm name: SHA256withRSA\r\nSubject Public Key Algorithm: 2048-bit RSA key\r\nVersion: 3\r\n```\r\n\r\n## External links\r\n\r\n[ZEUS documentation](https://docs.zeusln.app/)\r\n[PGP Key](https://zeusln.app/PGP.txt)\r\n\r\n### Android\r\n[Universal APK](https://zeusln.com/zeus-v0.12.1-rc1-universal.apk)\r\n[arm64-v8a APK](https://zeusln.com/zeus-v0.12.1-rc1-arm64-v8a.apk)\r\n[Manifest](https://zeusln.com/manifest-v0.12.1-rc1.txt)\r\n[Manifest Signature](https://zeusln.com/manifest-v0.12.1-rc1.txt.sig)\r\n\r\n### iOS\r\n[Apple TestFlight](https://testflight.apple.com/join/vVnODWoi)\r\n[IPA](https://zeusln.app/zeus-v0.12.1-rc1.ipa)",
+          "prerelease": true,
+          "author": "kaloudis"
+        },
+        {
+          "id": 273623641,
+          "tag": "v0.12.1-beta1",
+          "name": "v0.12.1-beta1",
+          "published_at": "2026-01-01T15:44:21Z",
+          "url": "https://github.com/ZeusLN/zeus/releases/tag/v0.12.1-beta1",
+          "body": "<img width=\"1000\" height=\"600\" alt=\"ZEUS v0.12.1-beta1\" src=\"https://github.com/user-attachments/assets/65bed3da-2232-4bf4-a027-73b1b87c2a35\" />\r\n\r\n# In this build\r\n\r\n- ui: updated Ecash balance row\r\n- fix: payment amount for partial HTLC success and add regression tests\r\n- fix: don't allow user to add mint multiple times\r\n- fix: Cashu Migration for multiple nodes\r\n- fix: incoming channel alias resolution\r\n\r\n## v0.12.1 Highlights\r\n\r\n- feat: Cashu: Legacy seed restore tool\r\n- feat: Support for nested URI schemes (LIGHTNING:lnurlp://..)\r\n- ui: misc enhancements\r\n\r\n## What's Changed\r\n* [Transifex] Updates for project ZEUS by @transifex-integration[bot] in https://github.com/ZeusLN/zeus/pull/3471\r\n* [Transifex] Updates for project ZEUS by @transifex-integration[bot] in https://github.com/ZeusLN/zeus/pull/3483\r\n* fix(cashu): don't allow user to add mint multiple times  by @ajaysehwal in https://github.com/ZeusLN/zeus/pull/3482\r\n* [Transifex] Updates for project ZEUS by @transifex-integration[bot] in https://github.com/ZeusLN/zeus/pull/3487\r\n* [Transifex] Updates for project ZEUS by @transifex-integration[bot] in https://github.com/ZeusLN/zeus/pull/3489\r\n* fix: payment amount for partial HTLC success by @giovantenne in https://github.com/ZeusLN/zeus/pull/3431\r\n* fix: incoming channel alias display by @a-khushal in https://github.com/ZeusLN/zeus/pull/3486\r\n* fix: Cashu Migration for multiple nodes by @shubhamkmr04 in https://github.com/ZeusLN/zeus/pull/3485\r\n* ui: new Ecash balance layer style by @kaloudis in https://github.com/ZeusLN/zeus/pull/3490\r\n\r\n## New Contributors\r\n* @giovantenne made their first contribution in https://github.com/ZeusLN/zeus/pull/3431\r\n\r\n**Full Changelog**: https://github.com/ZeusLN/zeus/compare/v0.12.1-alpha1...v0.12.1-beta1\r\n\r\n# Verifying the Release\r\nIn order to verify the release, you'll need to have `gpg` or `gpg2` installed on your system. Once you've obtained a copy (and hopefully verified that as well), you'll first need to import the keys that have signed this release if you haven't done so already:\r\n\r\n```\r\ngpg --keyserver hkps://keys.openpgp.org --recv-keys 96C225207F2137E278C31CF7AAC48DE8AB8DEE84\r\n```\r\n\r\nOnce you have his PGP key you can verify the release (assuming `manifest-v0.12.1-beta1.txt` and `manifest-v0.12.1-beta1.txt.sig` are in the  current directory) with:\r\n```\r\ngpg --verify manifest-v0.12.1-beta1.txt.sig manifest-v0.12.1-beta1.txt\r\n```\r\n\r\nYou should see the following if the verification was successful:\r\n```\r\ngpg: Signature made Wed Dec 31 12:08:31 2025 EST\r\ngpg:                using RSA key 96C225207F2137E278C31CF7AAC48DE8AB8DEE84\r\ngpg:                issuer \"zeusln@tutanota.com\"\r\ngpg: Good signature from \"Zeus LN <zeusln@tutanota.com>\r\n```\r\n\r\nThat will verify the signature on the main manifest page which ensures integrity and authenticity of the binaries you've downloaded locally. Next, depending on your operating system you should then re-calculate the sha256 sum of the binary, and compare that with the following hashes:\r\n\r\n```\r\ncat manifest-v0.12.1-beta1.txt\r\n```\r\n\r\nOne can use the `shasum -a 256 <file name here>` tool in order to re-compute the `sha256` hash of the target binary for your operating system. The produced hash should be compared with the hashes listed above and they should match *exactly*.\r\n\r\n## Android fingerprint\r\n\r\nUsers verifying the release on an Android device can check against the key fingerprint below using [AppVerifier](https://github.com/soupslurpr/AppVerifier). This fingerprint can also be found on our website [here](https://zeusln.com/AndroidFingerprint.txt).\r\n\r\n```\r\nSHA1: 32:06:3C:97:96:38:0D:99:EE:4A:CB:B8:1E:2A:6F:27:FD:66:8E:C1\r\n  SHA256: 2A:F8:E2:0A:C9:44:57:67:CB:D4:4E:D8:4D:BB:FC:33:C6:C9:82:48:89:7C:4F:84:3C:42:C2:76:5C:4A:D3:BA\r\nSignature algorithm name: SHA256withRSA\r\nSubject Public Key Algorithm: 2048-bit RSA key\r\nVersion: 3\r\n```\r\n\r\n## External links\r\n\r\n[ZEUS documentation](https://docs.zeusln.app/)\r\n[PGP Key](https://zeusln.app/PGP.txt)\r\n\r\n### Android\r\n[Universal APK](https://zeusln.com/zeus-v0.12.1-beta1-universal.apk)\r\n[arm64-v8a APK](https://zeusln.com/zeus-v0.12.1-beta1-arm64-v8a.apk)\r\n[Manifest](https://zeusln.com/manifest-v0.12.1-beta1.txt)\r\n[Manifest Signature](https://zeusln.com/manifest-v0.12.1-beta1.txt.sig)\r\n\r\n### iOS\r\n[Apple TestFlight](https://testflight.apple.com/join/vVnODWoi)\r\n[IPA](https://zeusln.app/zeus-v0.12.1-beta1.ipa)",
+          "prerelease": true,
+          "author": "kaloudis"
+        }
+      ],
+      "merged_prs": [
+        {
+          "id": 3137276004,
+          "number": 3490,
+          "title": "ui: new Ecash balance layer style",
+          "body": "# Description\r\n\r\n<img width=\"1206\" height=\"2622\" alt=\"Simulator Screenshot - iPhone 17 Pro - 2025-12-30 at 11 27 19\" src=\"https://github.com/user-attachments/assets/d945384d-1430-461a-b66f-23461c5913b8\" />\r\n\r\nThe Ecash balance row now displays up to three of your mint icons plus a count of other mints beyond that.\r\n\r\nThis pull request is categorized as a:\r\n\r\n- [ ] New feature\r\n- [ ] Bug fix\r\n- [ ] Code refactor\r\n- [ ] Configuration change\r\n- [ ] Locales update\r\n- [ ] Quality assurance\r\n- [x] Other\r\n\r\n## Checklist\r\n- [x] I\u2019ve run `yarn run tsc` and made sure my code compiles correctly\r\n- [x] I\u2019ve run `yarn run lint` and made sure my code didn\u2019t contain any problematic patterns\r\n- [x] I\u2019ve run `yarn run prettier` and made sure my code is formatted correctly\r\n- [x] I\u2019ve run `yarn run test` and made sure all of the tests pass\r\n\r\n## Testing\r\n\r\nIf you modified or added a utility file, did you add new unit tests?\r\n\r\n- [ ] No, I\u2019m a fool\r\n- [ ] Yes\r\n- [x] N/A\r\n\r\nI have tested this PR on the following platforms (please specify OS version and phone model/VM):\r\n\r\n- [ ] Android\r\n- [x] iOS\r\n\r\nI have tested this PR with the following types of nodes (please specify node version and API version where appropriate):\r\n\r\n- [x] Embedded LND\r\n- [ ] LND (REST)\r\n- [ ] LND (Lightning Node Connect)\r\n- [ ] Core Lightning (CLNRest)\r\n- [ ] Nostr Wallet Connect\r\n- [ ] LndHub\r\n\r\n### Locales\r\n- [ ] I\u2019ve added new locale text that requires translations\r\n- [ ] I\u2019m aware that new translations should be made on the ZEUS [Transfix page](https://app.transifex.com/ZeusLN/zeus/) and not directly to this repo\r\n\r\n### Third Party Dependencies and Packages\r\n\r\n- [ ] Contributors will need to run `yarn` after this PR is merged in\r\n- [ ] 3rd party dependencies have been modified:\r\n    * verify that `package.json` and `yarn.lock` have been properly updated\r\n    * verify that dependencies are installed for both iOS and Android platforms\r\n\r\n### Other:\r\n\r\n- [ ] Changes were made that require an update to the README\r\n- [ ] Changes were made that require an update to onboarding\r\n",
+          "author": "kaloudis",
+          "merged_at": "2025-12-31T05:00:24Z",
+          "url": "https://github.com/ZeusLN/zeus/pull/3490",
+          "labels": [
+            "Design",
+            "Ecash",
+            "Cashu",
+            "UI"
+          ]
+        }
+      ],
+      "open_prs": [],
+      "commits": []
+    },
+    "contextvm/ts-sdk": {
+      "name": "ContextVM SDK",
+      "description": "SDK bridging Nostr and Model Context Protocol for AI",
+      "category": "other",
+      "priority": "low",
+      "website": "https://contextvm.org",
+      "maintainer": "",
+      "releases": [],
+      "merged_prs": [
+        {
+          "id": 3137480286,
+          "number": 22,
+          "title": "Fix package importing missing `@noble/hashes` dependency",
+          "body": "",
+          "author": "hzrd149",
+          "merged_at": "2025-12-31T10:53:28Z",
+          "url": "https://github.com/ContextVM/sdk/pull/22",
+          "labels": []
+        }
+      ],
+      "open_prs": [],
+      "commits": []
+    },
+    "tenex-chat/tenex": {
+      "name": "TENEX",
+      "description": "Autonomous learning through distributed Nostr cognition",
+      "category": "other",
+      "priority": "low",
+      "website": "",
+      "maintainer": "",
+      "releases": [],
+      "merged_prs": [
+        {
+          "id": 3143445387,
+          "number": 47,
+          "title": "refactor(llm): Modularize LLM Provider Registry Architecture",
+          "body": "## Summary\n\nThis PR introduces a modular, plugin-based architecture for LLM providers, replacing the monolithic switch statement in `LLMServiceFactory` with a scalable provider registry pattern that leverages AI SDK v6's `createProviderRegistry`.\n\n### Key Changes\n\n- **ProviderRegistry**: Central singleton managing provider lifecycle (registration, initialization, model creation)\n- **Base Classes**: `BaseProvider`, `StandardProvider`, `AgentProvider` for different provider types\n- **Individual Providers**: Each provider (OpenRouter, Anthropic, OpenAI, Ollama, Gemini CLI, Claude Code, Codex CLI) in its own file\n- **Type Safety**: Strong typing with `ILLMProvider`, `ProviderMetadata`, and capability flags\n\n### Architecture Overview\n\n```\nsrc/llm/providers/\n\u251c\u2500\u2500 types.ts                    # Provider interfaces and types\n\u251c\u2500\u2500 index.ts                    # Module exports and auto-registration\n\u251c\u2500\u2500 base/\n\u2502   \u251c\u2500\u2500 BaseProvider.ts         # Abstract base class\n\u2502   \u251c\u2500\u2500 StandardProvider.ts     # For AI SDK providers\n\u2502   \u2514\u2500\u2500 AgentProvider.ts        # For agent-based providers\n\u251c\u2500\u2500 registry/\n\u2502   \u2514\u2500\u2500 ProviderRegistry.ts     # Central registry singleton\n\u251c\u2500\u2500 standard/                   # Standard AI SDK providers\n\u2502   \u251c\u2500\u2500 OpenRouterProvider.ts\n\u2502   \u251c\u2500\u2500 AnthropicProvider.ts\n\u2502   \u251c\u2500\u2500 OpenAIProvider.ts\n\u2502   \u251c\u2500\u2500 OllamaProvider.ts\n\u2502   \u2514\u2500\u2500 GeminiCliProvider.ts\n\u2514\u2500\u2500 agent/                      # Agent-based providers\n    \u251c\u2500\u2500 ClaudeCodeProvider.ts\n    \u2514\u2500\u2500 CodexCliProvider.ts\n```\n\n### Benefits\n\n1. **Scalability**: Add new providers by implementing `ILLMProvider` interface and adding to `ALL_PROVIDER_REGISTRATIONS`\n2. **Separation of Concerns**: Each provider is self-contained with its own initialization logic\n3. **Type Safety**: `ProviderMetadata` defines capabilities (streaming, tool calling, MCP support, etc.)\n4. **Testability**: Providers can be tested in isolation\n5. **AI SDK v6**: Properly leverages `createProviderRegistry` pattern\n\n### Backward Compatibility\n\n- `LLMServiceFactory` public API remains unchanged\n- Existing code continues to work without modifications\n\n## Test Plan\n\n- [x] TypeScript compilation passes\n- [x] All existing LLM tests pass (same as master: 706 pass, 111 fail)\n- [x] No new test failures introduced\n- [ ] Manual testing with each provider type\n- [ ] Integration test with agent execution\n\n\ud83e\udd16 Generated with [Claude Code](https://claude.com/claude-code)",
+          "author": "pablof7z",
+          "merged_at": "2026-01-03T15:52:00Z",
+          "url": "https://github.com/tenex-chat/tenex/pull/47",
+          "labels": []
+        },
+        {
+          "id": 3143451694,
+          "number": 48,
+          "title": "feat: implement agent supervision system with behavioral heuristics",
+          "body": "## Summary\n\nImplements a modular Agent Supervision system that detects suspicious agent behaviors using heuristics, verifies them with an LLM supervisor, and re-engages agents with correction messages when issues are confirmed.\n\n### Key Changes\n\n- **New `src/agents/supervision/` module** with clean architecture:\n  - `types.ts` - Core interfaces and types for the supervision system\n  - `HeuristicRegistry.ts` - Pluggable registry for behavioral heuristics\n  - `SupervisorLLMService.ts` - LLM-based verification service\n  - `SupervisorOrchestrator.ts` - Main coordinator for checks\n\n- **Three behavioral heuristics implemented**:\n  1. **SilentAgentHeuristic** - Detects agents that complete without generating any output\n  2. **DelegationClaimHeuristic** - Catches when agent says \"I'll delegate to @agent\" but doesn't call the delegate tool\n  3. **PhaseAgentTodoHeuristic** - Ensures phase-managing agents set up a todo list before delegating\n\n- **AgentExecutor integration** - Post-completion supervision check before publishing finalization events\n\n- **LLM configuration** - Added `supervision` field to TenexLLMs with menu option in `tenex setup llm`\n\n### Architecture\n\n```\nsrc/agents/supervision/\n\u251c\u2500\u2500 types.ts                    # Core interfaces\n\u251c\u2500\u2500 index.ts                    # Public exports\n\u251c\u2500\u2500 registerHeuristics.ts       # Default heuristic registration\n\u251c\u2500\u2500 SupervisorLLMService.ts     # LLM verification service\n\u251c\u2500\u2500 SupervisorOrchestrator.ts   # Main coordinator\n\u2514\u2500\u2500 heuristics/\n    \u251c\u2500\u2500 index.ts\n    \u251c\u2500\u2500 HeuristicRegistry.ts    # Pluggable registry\n    \u251c\u2500\u2500 SilentAgentHeuristic.ts\n    \u251c\u2500\u2500 DelegationClaimHeuristic.ts\n    \u2514\u2500\u2500 PhaseAgentTodoHeuristic.ts\n```\n\n### How It Works\n\n1. When an agent completes, post-completion heuristics check the output\n2. If a heuristic triggers (e.g., empty message), it builds evidence\n3. The SupervisorLLM verifies if this is a real violation or false positive\n4. If confirmed violation, a correction message is injected and the agent re-engages\n5. Max 3 retries before allowing publication to prevent infinite loops\n\n### Configuration\n\n```bash\ntenex setup llm\n# Select \"Supervision model\" to configure which LLM verifies heuristics\n```\n\n## Test plan\n\n- [x] Unit tests for all three heuristics (detection, correction messages, actions)\n- [x] Unit tests for HeuristicRegistry\n- [x] Unit tests for SupervisorOrchestrator (state management, retry logic)\n- [x] TypeScript compilation passes\n- [x] All 42 tests pass\n\n\ud83e\udd16 Generated with [Claude Code](https://claude.com/claude-code)",
+          "author": "pablof7z",
+          "merged_at": "2026-01-03T14:27:44Z",
+          "url": "https://github.com/tenex-chat/tenex/pull/48",
+          "labels": []
+        },
+        {
+          "id": 3137919864,
+          "number": 46,
+          "title": "refactor: unify conversation stores into single ConversationStore",
+          "body": "## Summary\n\n- **Problem:** Two conversation stores (in-memory and disk-based) were getting out of sync, causing assistant messages to be missing from LLM context on follow-up messages\n- **Solution:** Unified to a single disk-based `ConversationStore` as the source of truth\n- **Fixed critical bug:** New conversations were being incorrectly skipped as \"duplicate events\"\n\n## Changes\n\n### Core Refactor\n- `ConversationStore` now handles all state: messages, RALs, todos, blocked agents\n- `ConversationCoordinator` delegates to `ConversationStore` instances\n- All consumers updated to use unified store\n\n### Bug Fix\n- Fixed `reply.ts` where new conversations were filtered out by duplicate detection\n- The `isNew` flag from `ConversationResolver` now properly skips dedup check\n\n### Dead Code Removed\n- `ConversationStore` (services/) - redundant in-memory store\n- `ConversationPersistenceService` - unnecessary adapter pattern\n- `ConversationEventProcessor` - inlined into coordinator\n- `ParticipationIndex` - unused\n- `ThreadService` - unused  \n- `SummarizationTimerManager` - unused\n- `persistence/types.ts`, `persistence/schemas.ts` - dead types\n- `AgentEventDecoder` methods: `isThreadEvent`, `isGenericReply`, `isConversationRoot`\n\n### Other\n- Updated `classifyForDaemon()` to use `NDKKind.Text` for conversations\n- Fixed Zod type variance issue in `TenexToolsAdapter`\n\n## Test plan\n\n- [ ] New conversation: Send fresh message to agent \u2192 agent responds\n- [ ] Follow-up: After response, ask \"what did I just say?\" \u2192 agent recalls correctly\n- [ ] Multi-turn: 3-4 exchanges, then ask for summary \u2192 full history preserved\n- [ ] Delegation: Trigger delegation \u2192 original agent resumes with result\n- [ ] Daemon restart: Start conversation \u2192 restart \u2192 follow-up \u2192 history intact",
+          "author": "pablof7z",
+          "merged_at": "2025-12-30T22:44:01Z",
+          "url": "https://github.com/tenex-chat/tenex/pull/46",
+          "labels": []
+        }
+      ],
+      "open_prs": [],
+      "commits": []
+    },
+    "nostr-protocol/nips": {
+      "name": "NIP-90",
+      "description": "Data Vending Machines - on-demand computation over Nostr",
+      "category": "protocols",
+      "priority": "high",
+      "website": "",
+      "maintainer": "",
+      "releases": [],
+      "merged_prs": [
+        {
+          "id": 3145676503,
+          "number": 2184,
+          "title": "NIP-55: Fix return field from nip44_encrypt",
+          "body": "",
+          "author": "greenart7c3",
+          "merged_at": "2026-01-05T13:57:35Z",
+          "url": "https://github.com/nostr-protocol/nips/pull/2184",
+          "labels": []
+        }
+      ],
+      "open_prs": [],
+      "commits": []
+    },
+    "marmot-protocol/marmot": {
+      "name": "Marmot Protocol",
+      "description": "MLS-based end-to-end encrypted messaging for Nostr (NIP-104)",
+      "category": "protocols",
+      "priority": "high",
+      "website": "",
+      "maintainer": "erskingardner",
+      "releases": [],
+      "merged_prs": [
+        {
+          "id": 3143346246,
+          "number": 20,
+          "title": "Update specification for mip04-v2 versioning and security",
+          "body": "\n\n<!-- This is an auto-generated comment: release notes by coderabbit.ai -->\n## Summary by CodeRabbit\n\n* **Documentation**\n  * Released Version 2 spec: uses cryptographically secure random nonces stored in metadata (n), updated AAD/domain separation with scheme labels (mip04-v2), and ChaCha20-Poly1305 guidance.\n  * Marked Version 1 (mip04-v1) deprecated; added migration, rejection guidance, and MUST/SHOULD verification rules.\n  * Clarified MIME canonicalization, field semantics, sending/receiving processing steps, and cross-version separation.\n\n<sub>\u270f\ufe0f Tip: You can customize this high-level summary in your review settings.</sub>\n<!-- end of auto-generated comment: release notes by coderabbit.ai -->",
+          "author": "dannym-arx",
+          "merged_at": "2026-01-03T10:18:59Z",
+          "url": "https://github.com/marmot-protocol/marmot/pull/20",
+          "labels": []
+        }
+      ],
+      "open_prs": [],
+      "commits": []
+    },
+    "marmot-protocol/mdk": {
+      "name": "Marmot Protocol (mdk)",
+      "description": "MLS-based end-to-end encrypted messaging for Nostr (NIP-104)",
+      "category": "protocols",
+      "priority": "high",
+      "website": "",
+      "maintainer": "erskingardner",
+      "releases": [],
+      "merged_prs": [
+        {
+          "id": 3150069902,
+          "number": 120,
+          "title": "fix(mdk-core/groups): remove the correct member on remove_members when the tree has holes",
+          "body": "Fixes https://github.com/marmot-protocol/mdk/issues/60\n\n<!-- This is an auto-generated comment: release notes by coderabbit.ai -->\n## Summary by CodeRabbit\n\n* **Bug Fixes**\n  * Fixed incorrect member removal when group trees contain gaps by using correct leaf indices.\n\n* **Tests**\n  * Added a regression test ensuring member removal works correctly with tree gaps.\n\n* **Documentation**\n  * Reformatted a builder example in the docs to a single chained call.\n\n* **Changelog**\n  * Recorded the fix under Unreleased -> Fixed.\n\n<sub>\u270f\ufe0f Tip: You can customize this high-level summary in your review settings.</sub>\n<!-- end of auto-generated comment: release notes by coderabbit.ai -->",
+          "author": "jgmontoya",
+          "merged_at": "2026-01-06T19:47:06Z",
+          "url": "https://github.com/marmot-protocol/mdk/pull/120",
+          "labels": []
+        },
+        {
+          "id": 3149537248,
+          "number": 119,
+          "title": "FIX: Unify UniFFI welcomes pagination API",
+          "body": "\n\n<!-- This is an auto-generated comment: release notes by coderabbit.ai -->\n## Summary by CodeRabbit\n\n* **Refactor**\n  * Consolidated the pending-welcomes API into a single call that accepts optional pagination (limit and offset); the separate paginated endpoint was removed and call sites/tests updated accordingly.\n\n* **Breaking Changes**\n  * Public API now requires callers to provide pagination parameters (or None/empty values) when pagination is needed; changelogs updated to reflect this change.\n\n<sub>\u270f\ufe0f Tip: You can customize this high-level summary in your review settings.</sub>\n<!-- end of auto-generated comment: release notes by coderabbit.ai -->",
+          "author": "mubarakcoded",
+          "merged_at": "2026-01-06T17:10:57Z",
+          "url": "https://github.com/marmot-protocol/mdk/pull/119",
+          "labels": []
+        },
+        {
+          "id": 3140702512,
+          "number": 98,
+          "title": "(fixes #61) Issue R: Refactor encoding handling to enforce base64 usage for key packages and welcomes",
+          "body": "\n\n<!-- This is an auto-generated comment: release notes by coderabbit.ai -->\n## Summary by CodeRabbit\n\n* **Refactor**\n  * Content encoding unified to Base64 with a required explicit encoding tag; hex support and dual-format paths removed. Configuration simplified to a minimal config object for builders.\n\n* **Security**\n  * Events lacking a valid encoding tag are rejected to prevent downgrade or parsing ambiguity.\n\n* **Tests**\n  * Tests updated to use Base64-only key packages and welcome events.\n\n* **Bug Fixes**\n  * Failed welcome processing is recorded and errors are logged on encoding/tag issues.\n\n<sub>\u270f\ufe0f Tip: You can customize this high-level summary in your review settings.</sub>\n<!-- end of auto-generated comment: release notes by coderabbit.ai -->",
+          "author": "dannym-arx",
+          "merged_at": "2026-01-06T14:40:47Z",
+          "url": "https://github.com/marmot-protocol/mdk/pull/98",
+          "labels": []
+        },
+        {
+          "id": 3142468550,
+          "number": 110,
+          "title": "fix: add pagination to prevent memory exhaustion in pending_welcomes",
+          "body": "\n\n<!-- This is an auto-generated comment: release notes by coderabbit.ai -->\n## Summary by CodeRabbit\n\n* **Breaking Changes**\n  * Public pending_welcomes/get_pending_welcomes APIs now accept an optional Pagination parameter; callers should pass None for default behavior. A previous offset limit was removed.\n\n* **New Features**\n  * Paginated retrieval of pending welcomes with a public Pagination type and configurable limit/offset.\n  * New paginated binding for foreign-language clients.\n\n* **Bug Fixes**\n  * Pagination added to prevent memory exhaustion and ensure deterministic ordering.\n\n* **Tests**\n  * Expanded pagination tests covering ordering, boundaries, overlaps, and invalid limits.\n\n<sub>\u270f\ufe0f Tip: You can customize this high-level summary in your review settings.</sub>\n<!-- end of auto-generated comment: release notes by coderabbit.ai -->",
+          "author": "mubarakcoded",
+          "merged_at": "2026-01-05T19:48:59Z",
+          "url": "https://github.com/marmot-protocol/mdk/pull/110",
+          "labels": []
+        },
+        {
+          "id": 3146440496,
+          "number": 115,
+          "title": "(Fixes #76) Issue AG: Function all_groups Aborts on First Deserialization Error",
+          "body": "\n\n<!-- This is an auto-generated comment: release notes by coderabbit.ai -->\n## Summary by CodeRabbit\n\n* **Bug Fixes**\n  * Improved reliability of group retrieval: the system now skips corrupted database rows and continues processing instead of failing the entire query.\n* **Security**\n  * Increased resilience to malformed data to reduce availability impact from corrupted entries.\n* **Documentation**\n  * Release notes/CHANGELOG formatting updated for clarity.\n\n<sub>\u270f\ufe0f Tip: You can customize this high-level summary in your review settings.</sub>\n<!-- end of auto-generated comment: release notes by coderabbit.ai -->",
+          "author": "dannym-arx",
+          "merged_at": "2026-01-05T18:08:42Z",
+          "url": "https://github.com/marmot-protocol/mdk/pull/115",
+          "labels": []
+        },
+        {
+          "id": 3140640547,
+          "number": 96,
+          "title": "51 issue h missing mip 02 validation for welcome events",
+          "body": "\n\n<!-- This is an auto-generated comment: release notes by coderabbit.ai -->\n## Summary by CodeRabbit\n\n* **Bug Fixes**\n  * Stricter MIP-02 welcome validation: must be the welcome kind, include the four required tags (relays, event ref, client, encoding), have non-empty values, require encoding \"hex\" or \"base64\", and enforce relay URLs start with ws:// or wss://. Invalid welcomes are rejected earlier to prevent malformed messages, storage pollution, and resource exhaustion.\n\n* **Tests**\n  * Expanded tests covering many invalid welcome scenarios to ensure robust rejection and safer processing.\n\n<sub>\u270f\ufe0f Tip: You can customize this high-level summary in your review settings.</sub>\n<!-- end of auto-generated comment: release notes by coderabbit.ai -->",
+          "author": "mubarakcoded",
+          "merged_at": "2026-01-05T13:58:58Z",
+          "url": "https://github.com/marmot-protocol/mdk/pull/96",
+          "labels": []
+        },
+        {
+          "id": 3143325888,
+          "number": 112,
+          "title": "(Fixes #84) Issue AO: MLS Group ID Leakage in Error Messages",
+          "body": "\n\n<!-- This is an auto-generated comment: release notes by coderabbit.ai -->\n## Summary by CodeRabbit\n\n* **Bug Fixes**\n  * Standardized error messages to show a generic \"Group not found\" when groups are missing, providing consistent behavior across storage backends.\n\n* **Security**\n  * Removed exposure of MLS group identifiers from error output and added input size limits to mitigate metadata leakage and resource-exhaustion risks.\n\n<sub>\u270f\ufe0f Tip: You can customize this high-level summary in your review settings.</sub>\n<!-- end of auto-generated comment: release notes by coderabbit.ai -->",
+          "author": "dannym-arx",
+          "merged_at": "2026-01-03T10:20:52Z",
+          "url": "https://github.com/marmot-protocol/mdk/pull/112",
+          "labels": []
+        },
+        {
+          "id": 3141793988,
+          "number": 108,
+          "title": "Enhance admin authorization logic in group management",
+          "body": "Fixes #50 \r\n\r\n- Added audit-related files to .gitignore to prevent unnecessary tracking.\r\n- Updated admin authorization checks in `groups.rs` to read from the current MLS group state, ensuring accurate admin status verification and preventing issues with stale metadata.\r\n- Added a test to validate that admin checks utilize the current MLS state instead of outdated stored data, addressing issue #50 in the changelog.\n\n<!-- This is an auto-generated comment: release notes by coderabbit.ai -->\n## Summary by CodeRabbit\n\n* **Bug Fixes**\n  * Updated admin authorization checks to read from the current group state instead of potentially outdated cached data, ensuring accurate permission verification in real-time.\n\n<sub>\u270f\ufe0f Tip: You can customize this high-level summary in your review settings.</sub>\n<!-- end of auto-generated comment: release notes by coderabbit.ai -->",
+          "author": "erskingardner",
+          "merged_at": "2026-01-03T08:42:38Z",
+          "url": "https://github.com/marmot-protocol/mdk/pull/108",
+          "labels": []
+        },
+        {
+          "id": 3141704630,
+          "number": 107,
+          "title": "Mdk issue 91 fix",
+          "body": "Fixes #91 \r\n\r\nPrevent panic in `process_welcome` when a rumor event ID is missing to fix a potential denial-of-service vulnerability.\r\n\r\nThe `process_welcome` function previously used `unwrap()` on `rumor_event.id`, which could cause a panic if the ID was `None` due to a malformed or non-NIP-59-compliant rumor. This fix replaces `unwrap()` with `ok_or()` to return a `MissingRumorEventId` error, preventing a crash from untrusted input.\r\n\r\n---\r\n<a href=\"https://cursor.com/background-agent?bcId=bc-a26976e9-a26c-45f2-9b8e-c2eff92b8711\"><picture><source media=\"(prefers-color-scheme: dark)\" srcset=\"https://cursor.com/open-in-cursor-dark.svg\"><source media=\"(prefers-color-scheme: light)\" srcset=\"https://cursor.com/open-in-cursor-light.svg\"><img alt=\"Open in Cursor\" src=\"https://cursor.com/open-in-cursor.svg\"></picture></a>&nbsp;<a href=\"https://cursor.com/agents?id=bc-a26976e9-a26c-45f2-9b8e-c2eff92b8711\"><picture><source media=\"(prefers-color-scheme: dark)\" srcset=\"https://cursor.com/open-in-web-dark.svg\"><source media=\"(prefers-color-scheme: light)\" srcset=\"https://cursor.com/open-in-web-light.svg\"><img alt=\"Open in Web\" src=\"https://cursor.com/open-in-web.svg\"></picture></a>\r\n\r\n\r\n\r\n<!-- This is an auto-generated comment: release notes by coderabbit.ai -->\r\n\r\n## Summary by CodeRabbit\r\n\r\n* **Bug Fixes**\r\n  * Improved error handling for missing rumor event IDs. The system now returns a proper error instead of crashing when a rumor event ID is missing during welcome processing.\r\n\r\n<sub>\u270f\ufe0f Tip: You can customize this high-level summary in your review settings.</sub>\r\n\r\n<!-- end of auto-generated comment: release notes by coderabbit.ai -->",
+          "author": "erskingardner",
+          "merged_at": "2026-01-03T08:39:15Z",
+          "url": "https://github.com/marmot-protocol/mdk/pull/107",
+          "labels": []
+        },
+        {
+          "id": 3141669610,
+          "number": 105,
+          "title": "fix(sqlite): propagate last_message_id parse errors in row_to_group",
+          "body": "## Summary\n\nFixes #88\n\nPreviously, parsing failures for `last_message_id` in `row_to_group` were silently converted to `None` using `.ok()`. This masked invalid database state where a non-null blob failed `EventId::from_slice`.\n\nThis change aligns the handling with other optional `EventId` fields in the codebase (like `message_event_id` in `row_to_processed_message`) which use explicit error propagation via `map_err`.\n\n## Changes\n\n- Modified `row_to_group` in `crates/mdk-sqlite-storage/src/db.rs` to use explicit pattern matching and `map_err` for `last_message_id` parsing, matching the pattern used elsewhere in the codebase\n- Added tests to verify the behavior:\n  - Valid 32-byte `last_message_id` blob parses successfully\n  - Null `last_message_id` returns `None` (no error)\n  - Invalid length blobs (16 bytes, empty) now return an error instead of silently converting to `None`\n\n## Testing\n\nAll new tests pass:\n- `test_row_to_group_with_valid_last_message_id`\n- `test_row_to_group_with_null_last_message_id`\n- `test_row_to_group_with_invalid_last_message_id_length`\n- `test_row_to_group_with_empty_last_message_id_blob`\n\n`just precommit` passes all checks.\n\n<!-- This is an auto-generated comment: release notes by coderabbit.ai -->\n\n## Summary by CodeRabbit\n\n* **Bug Fixes**\n  * Enhanced error handling to properly report invalid message IDs instead of silently ignoring them, improving data integrity and error visibility.\n\n* **Tests**\n  * Added comprehensive test coverage for message ID validation scenarios across various data conditions.\n\n<sub>\u270f\ufe0f Tip: You can customize this high-level summary in your review settings.</sub>\n\n<!-- end of auto-generated comment: release notes by coderabbit.ai -->",
+          "author": "erskingardner",
+          "merged_at": "2026-01-03T08:38:09Z",
+          "url": "https://github.com/marmot-protocol/mdk/pull/105",
+          "labels": []
+        },
+        {
+          "id": 3141660398,
+          "number": 104,
+          "title": "fix: correct error type in admins() when group not found",
+          "body": "## Summary\n\nFixes #87\n\nThe `admins()` function in `mdk-memory-storage` was incorrectly returning `InvalidGroupState::NoAdmins` when the requested group didn't exist. This error type semantically indicates that the group exists but has no admins, which is misleading.\n\n## Changes\n\n- Updated `admins()` in `crates/mdk-memory-storage/src/groups.rs` to return `GroupError::InvalidParameters` with a descriptive message (\"Group with MLS ID {:?} not found\") when the group is not found\n- This now matches the behavior of `mdk-sqlite-storage` and is consistent with how other methods in the same file handle missing groups (e.g., `messages()`, `group_relays()`, etc.)\n- Removed unused `InvalidGroupState` import\n\n## Testing\n\n- All existing tests pass\n- `just precommit` passes\n\n<!-- This is an auto-generated comment: release notes by coderabbit.ai -->\n## Summary by CodeRabbit\n\n* **Bug Fixes**\n  * Corrected error returned when querying admins for a non-existent group to return a proper \"group not found\" error.\n\n* **Tests**\n  * Added and enabled tests covering admins, messages, and group-relays error handling for non-existent groups across storage backends; previously-suppressed tests are now active.\n\n* **Documentation**\n  * Added changelog entries and updated contributor guidance to emphasize CI test-coverage requirements.\n\n<sub>\u270f\ufe0f Tip: You can customize this high-level summary in your review settings.</sub>\n<!-- end of auto-generated comment: release notes by coderabbit.ai -->",
+          "author": "erskingardner",
+          "merged_at": "2026-01-03T08:37:39Z",
+          "url": "https://github.com/marmot-protocol/mdk/pull/104",
+          "labels": []
+        },
+        {
+          "id": 3140654037,
+          "number": 97,
+          "title": "(Fixes #58) Issue O: Missing Hash Verification in decrypt_group_image Allows Storage-Level Blob Substitution",
+          "body": "\n\n<!-- This is an auto-generated comment: release notes by coderabbit.ai -->\n## Summary by CodeRabbit\n\n* **New Features**\n  * Optional hash verification for group image decryption to validate integrity before decrypting\n  * Group image migration (v1\u2192v2) now accepts an optional hash for verified migration\n  * Public API surfaces updated to accept an optional expected-hash for decryption\n\n* **Documentation**\n  * Example usage updated to demonstrate supplying the optional hash\n\n* **Tests**\n  * Added tests covering hash verification success, failure, tampering, and legacy (no-hash) paths\n\n* **Chores**\n  * CHANGELOG updated with a fixed entry about the added hash verification\n\n<sub>\u270f\ufe0f Tip: You can customize this high-level summary in your review settings.</sub>\n<!-- end of auto-generated comment: release notes by coderabbit.ai -->",
+          "author": "dannym-arx",
+          "merged_at": "2026-01-02T12:02:02Z",
+          "url": "https://github.com/marmot-protocol/mdk/pull/97",
+          "labels": []
+        },
+        {
+          "id": 3113429555,
+          "number": 38,
+          "title": "minor kotlin binding cleanup",
+          "body": "- fix minification not working (`-keepresourcexmlelements` is invalid and `-keepresources string/**` is not needed)\r\n- fix jitpack being incorrectly overwritten (git lfs pull was missing)\n\n<!-- This is an auto-generated comment: release notes by coderabbit.ai -->\n\n## Summary by CodeRabbit\n\n* **Chores**\n  * Refined ProGuard obfuscation rules for Kotlin bindings to enable more efficient minification of library dependencies and native resources.\n  * Integrated Git Large File Storage support into the build infrastructure for improved handling of dependencies during the build process.\n\n<sub>\u270f\ufe0f Tip: You can customize this high-level summary in your review settings.</sub>\n\n<!-- end of auto-generated comment: release notes by coderabbit.ai -->",
+          "author": "dannym-arx",
+          "merged_at": "2026-01-02T10:32:49Z",
+          "url": "https://github.com/marmot-protocol/mdk/pull/38",
+          "labels": []
+        },
+        {
+          "id": 3140891930,
+          "number": 100,
+          "title": "bindings should also have a changelog",
+          "body": "\n\n<!-- This is an auto-generated comment: release notes by coderabbit.ai -->\n\n## Summary by CodeRabbit\n\n* **Documentation**\n  * Added a structured changelog documenting project updates and release history.\n\n<sub>\u270f\ufe0f Tip: You can customize this high-level summary in your review settings.</sub>\n\n<!-- end of auto-generated comment: release notes by coderabbit.ai -->",
+          "author": "dannym-arx",
+          "merged_at": "2026-01-02T10:31:25Z",
+          "url": "https://github.com/marmot-protocol/mdk/pull/100",
+          "labels": []
+        },
+        {
+          "id": 3141702210,
+          "number": 106,
+          "title": "Test coverage and documentation",
+          "body": "Improve test coverage by adding error handling tests for group-related storage methods and document CI test coverage requirements.\n\n---\n<a href=\"https://cursor.com/background-agent?bcId=bc-5db3cf07-92b6-490d-920f-724e48ff85d9\"><picture><source media=\"(prefers-color-scheme: dark)\" srcset=\"https://cursor.com/open-in-cursor-dark.svg\"><source media=\"(prefers-color-scheme: light)\" srcset=\"https://cursor.com/open-in-cursor-light.svg\"><img alt=\"Open in Cursor\" src=\"https://cursor.com/open-in-cursor.svg\"></picture></a>&nbsp;<a href=\"https://cursor.com/agents?id=bc-5db3cf07-92b6-490d-920f-724e48ff85d9\"><picture><source media=\"(prefers-color-scheme: dark)\" srcset=\"https://cursor.com/open-in-web-dark.svg\"><source media=\"(prefers-color-scheme: light)\" srcset=\"https://cursor.com/open-in-web-light.svg\"><img alt=\"Open in Web\" src=\"https://cursor.com/open-in-web.svg\"></picture></a>\n\n",
+          "author": "erskingardner",
+          "merged_at": "2026-01-02T09:06:44Z",
+          "url": "https://github.com/marmot-protocol/mdk/pull/106",
+          "labels": []
+        },
+        {
+          "id": 3141565745,
+          "number": 103,
+          "title": "add changelog entry for issue #71",
+          "body": "\n\n<!-- This is an auto-generated comment: release notes by coderabbit.ai -->\n\n## Summary by CodeRabbit\n\n* **Bug Fixes**\n  * Storage operations now enforce size limits: message content (1MB), group names (255 bytes), group descriptions (2000 bytes), and JSON fields (50-100KB).\n* **Error Handling**\n  * Added validation error type for improved error reporting.\n* **Documentation**\n  * Added security documentation detailing storage size limits.\n\n<sub>\u270f\ufe0f Tip: You can customize this high-level summary in your review settings.</sub>\n\n<!-- end of auto-generated comment: release notes by coderabbit.ai -->",
+          "author": "mubarakcoded",
+          "merged_at": "2026-01-02T09:06:07Z",
+          "url": "https://github.com/marmot-protocol/mdk/pull/103",
+          "labels": []
+        },
+        {
+          "id": 3140893178,
+          "number": 101,
+          "title": "Add AGENTS.md and update changelog for previous PRs",
+          "body": "\n\n<!-- This is an auto-generated comment: release notes by coderabbit.ai -->\n## Summary by CodeRabbit\n\n* **Documentation**\n  * Added a comprehensive developer guide covering project structure, setup, testing, code quality, changelog and PR practices.\n  * Updated docs by removing/cleaning external resource links and reformatting changelog references.\n\n* **Bug Fixes**\n  * Introduced additional error types for stronger validation.\n  * Strengthened security validations for message author checks, admin update rules, and identity binding verification.\n\n<sub>\u270f\ufe0f Tip: You can customize this high-level summary in your review settings.</sub>\n<!-- end of auto-generated comment: release notes by coderabbit.ai -->",
+          "author": "erskingardner",
+          "merged_at": "2026-01-01T16:27:45Z",
+          "url": "https://github.com/marmot-protocol/mdk/pull/101",
+          "labels": []
+        },
+        {
+          "id": 3140878523,
+          "number": 99,
+          "title": "check for changelog.md in PRs",
+          "body": "",
+          "author": "dannym-arx",
+          "merged_at": "2026-01-01T16:11:28Z",
+          "url": "https://github.com/marmot-protocol/mdk/pull/99",
+          "labels": [
+            "no-changelog"
+          ]
+        },
+        {
+          "id": 3140082295,
+          "number": 94,
+          "title": "fix: add input validation to prevent unbounded storage writes",
+          "body": "\n\n<!-- This is an auto-generated comment: release notes by coderabbit.ai -->\n## Summary by CodeRabbit\n\n* **New Features**\n  * Early input validation to reject oversized or invalid group, welcome, and message data (names, descriptions, content, tags, events, admin keys, relays) before saving.\n\n* **Bug Fixes**\n  * Clearer validation error reporting when inputs exceed enforced limits.\n\n* **Tests**\n  * Added and adjusted tests to cover validation failures and boundary cases.\n\n<sub>\u270f\ufe0f Tip: You can customize this high-level summary in your review settings.</sub>\n<!-- end of auto-generated comment: release notes by coderabbit.ai -->",
+          "author": "mubarakcoded",
+          "merged_at": "2026-01-01T11:39:40Z",
+          "url": "https://github.com/marmot-protocol/mdk/pull/94",
+          "labels": []
+        },
+        {
+          "id": 3136836706,
+          "number": 40,
+          "title": "Enhance message processing with author verification",
+          "body": "Fixes Issue B from MDK audit.\r\n\r\n- Added `AuthorMismatch` error to enforce that the rumor pubkey matches the MLS sender's credential, preventing impersonation.\r\n- Updated `process_application_message_for_group` to include sender credential verification.\r\n- Refactored message processing logic to handle author verification and updated related tests to ensure functionality.\r\n- Improved documentation for clarity on message processing and author verification mechanisms.\n\n<!-- This is an auto-generated comment: release notes by coderabbit.ai -->\n## Summary by CodeRabbit\n\n* **Bug Fixes**\n  * Implemented message author verification to validate message authenticity and prevent processing of unauthorized messages with mismatched author and credential information.\n  * Improved error handling with better diagnostics when message author validation fails.\n\n* **Refactor**  \n  * Enhanced message processing pipeline to return and propagate complete message context through all validation steps for improved traceability and message handling consistency.\n\n<sub>\u270f\ufe0f Tip: You can customize this high-level summary in your review settings.</sub>\n<!-- end of auto-generated comment: release notes by coderabbit.ai -->",
+          "author": "erskingardner",
+          "merged_at": "2025-12-30T21:49:35Z",
+          "url": "https://github.com/marmot-protocol/mdk/pull/40",
+          "labels": []
+        },
+        {
+          "id": 3136887963,
+          "number": 41,
+          "title": "Add identity binding verification for KeyPackage events",
+          "body": "Fixes Issue D in audit\r\n\r\n- Introduced a new error type `KeyPackageIdentityMismatch` to handle cases where the credential identity does not match the event signer.\r\n- Updated the `parse_key_package` function to include a security check that prevents impersonation attacks by verifying the identity binding.\r\n- Added tests to ensure that key packages with mismatched identities are rejected and that valid key packages are accepted.\r\n- Refactored existing tests to use generated keys for consistency in identity verification.\n\n<!-- This is an auto-generated comment: release notes by coderabbit.ai -->\n## Summary by CodeRabbit\n\n* **Bug Fixes**\n  * Key package parsing now enforces credential identity matches the event signer, rejecting mismatches.\n\n* **New Features**\n  * Introduced a specific error for key package identity validation failures with detailed identity information.\n\n* **Chores**\n  * Adjusted internal import paths in message and test utilities for cleaner organization.\n\n<sub>\u270f\ufe0f Tip: You can customize this high-level summary in your review settings.</sub>\n<!-- end of auto-generated comment: release notes by coderabbit.ai -->",
+          "author": "erskingardner",
+          "merged_at": "2025-12-30T21:41:16Z",
+          "url": "https://github.com/marmot-protocol/mdk/pull/41",
+          "labels": []
+        },
+        {
+          "id": 3137238446,
+          "number": 42,
+          "title": "Implement admin update validation in group management",
+          "body": "Fixes Issue C in MDK audit\r\n\r\n- Added validation to ensure admin updates do not include empty sets or non-member public keys.\r\n- Introduced `validate_admin_update` function to enforce these rules.\r\n- Enhanced existing tests to cover scenarios for empty admin sets, non-member admins, and valid admin updates.\r\n- Updated group data handling to incorporate validation before applying changes.\n\n<!-- This is an auto-generated comment: release notes by coderabbit.ai -->\n\n## Summary by CodeRabbit\n\n* **Bug Fixes**\n  * Improved validation for group admin management to prevent invalid configurations such as empty admin sets and non-member designations.\n\n* **Tests**\n  * Extended test coverage for admin update validation scenarios.\n\n<sub>\u270f\ufe0f Tip: You can customize this high-level summary in your review settings.</sub>\n\n<!-- end of auto-generated comment: release notes by coderabbit.ai -->",
+          "author": "erskingardner",
+          "merged_at": "2025-12-30T21:40:57Z",
+          "url": "https://github.com/marmot-protocol/mdk/pull/42",
+          "labels": []
+        }
+      ],
+      "open_prs": [],
+      "commits": []
+    },
+    "marmot-protocol/whitenoise-rs": {
+      "name": "Marmot Protocol (whitenoise-backend)",
+      "description": "MLS-based end-to-end encrypted messaging for Nostr (NIP-104)",
+      "category": "protocols",
+      "priority": "high",
+      "website": "",
+      "maintainer": "erskingardner",
+      "releases": [],
+      "merged_prs": [
+        {
+          "id": 3143889338,
+          "number": 428,
+          "title": "Feat/add welcomer to account group",
+          "body": "Closes https://github.com/marmot-protocol/whitenoise-rs/issues/423\n\n<!-- This is an auto-generated comment: release notes by coderabbit.ai -->\n## Summary by CodeRabbit\n\n* **New Features**\n  * Chat list now surface the inviter (\u201cwelcomer\u201d) for group invites and displays pending confirmation state.\n\n* **Improvements**\n  * More reliable welcome finalization and contact-list processing, with background user sync for newly followed users.\n\n* **Tests**\n  * New integration and unit tests validating inviter visibility, pending state, persistence, and contact-list idempotency/staleness handling.\n\n* **Chores**\n  * Database schema extended to store inviter (welcomer) information for UI display.\n\n<sub>\u270f\ufe0f Tip: You can customize this high-level summary in your review settings.</sub>\n<!-- end of auto-generated comment: release notes by coderabbit.ai -->",
+          "author": "jgmontoya",
+          "merged_at": "2026-01-05T13:37:36Z",
+          "url": "https://github.com/marmot-protocol/whitenoise-rs/pull/428",
+          "labels": []
+        },
+        {
+          "id": 3139344495,
+          "number": 424,
+          "title": "Feat/chat list stream",
+          "body": "\n\n<!-- This is an auto-generated comment: release notes by coderabbit.ai -->\n## Summary by CodeRabbit\n\n* **New Features**\n  * Chat list streaming: subscribe to an initial snapshot plus continuous real-time updates (NewGroup, NewLastMessage, LastMessageDeleted).\n  * Public subscription API for per-account chat list streams.\n\n* **Improvements**\n  * Chat message summaries now include stable message identifiers for reliable last-message tracking.\n\n* **Tests**\n  * New end-to-end scenario and focused tests validating subscription initial items, update delivery, ordering, and stream manager behavior.\n\n* **Chores**\n  * Removed legacy welcome lookup APIs.\n\n<sub>\u270f\ufe0f Tip: You can customize this high-level summary in your review settings.</sub>\n<!-- end of auto-generated comment: release notes by coderabbit.ai -->",
+          "author": "jgmontoya",
+          "merged_at": "2026-01-01T15:12:48Z",
+          "url": "https://github.com/marmot-protocol/whitenoise-rs/pull/424",
+          "labels": []
+        }
+      ],
+      "open_prs": [],
+      "commits": []
+    }
+  }
+}

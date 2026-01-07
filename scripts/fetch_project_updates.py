@@ -34,14 +34,19 @@ Environment variables:
 """
 
 import argparse
-import copy
 import json
 import os
 import re
+import signal
 import sys
+import time
 from datetime import datetime, timezone, timedelta
 from pathlib import Path
 from typing import Optional
+
+# Default max length for body text (PR descriptions, release notes)
+# Set to 0 for unlimited (default - preserves full context for agent analysis)
+DEFAULT_BODY_MAX_LENGTH = 0
 
 try:
     import requests
@@ -67,9 +72,6 @@ DEFAULT_OUTPUT_DIR = PROJECT_ROOT / "data" / "project_updates"
 
 # GitHub API configuration
 GITHUB_API_BASE = "https://api.github.com"
-MAX_RELEASES_PER_REPO = 20
-MAX_PRS_PER_REPO = 50
-MAX_COMMITS_PER_REPO = 100
 
 # Bot accounts to filter out from PR results
 # These patterns are matched against the username (case-insensitive)
@@ -138,9 +140,41 @@ def is_bot_user(username: str) -> bool:
     return False
 
 
+def truncate_body(text: str, max_length: int = DEFAULT_BODY_MAX_LENGTH) -> str:
+    """
+    Truncate body text to reduce output size for agent consumption.
+
+    Args:
+        text: The text to truncate
+        max_length: Maximum length (0 = unlimited)
+
+    Returns:
+        Truncated text with "..." if it was cut off
+    """
+    if not text or max_length == 0:
+        return text or ""
+
+    if len(text) <= max_length:
+        return text
+
+    # Try to cut at a word boundary
+    truncated = text[:max_length].rsplit(' ', 1)[0]
+    return truncated + "..."
+
+
 # =============================================================================
 # GitHub API Helpers
 # =============================================================================
+
+# Rate limit configuration
+RATE_LIMIT_BUFFER = 50  # Start slowing down when this many requests remain
+RATE_LIMIT_SLEEP = 60   # Seconds to sleep when rate limited
+
+# Request configuration
+REQUEST_TIMEOUT = 60    # Seconds to wait for API response
+MAX_RETRIES = 3         # Number of retries for transient failures
+RETRY_DELAY = 5         # Seconds to wait between retries
+
 
 def get_github_headers(token: Optional[str]) -> dict[str, str]:
     """Build headers for GitHub API requests."""
@@ -153,6 +187,99 @@ def get_github_headers(token: Optional[str]) -> dict[str, str]:
     return headers
 
 
+def request_with_retry(
+    url: str,
+    headers: dict,
+    params: Optional[dict] = None,
+    verbose: bool = False
+) -> Optional[requests.Response]:
+    """
+    Make a GET request with retry logic for transient failures.
+
+    Retries on timeouts and connection errors.
+    Returns None if all retries fail.
+    """
+    last_error = None
+
+    for attempt in range(MAX_RETRIES):
+        try:
+            response = requests.get(url, headers=headers, params=params, timeout=REQUEST_TIMEOUT)
+            return response
+        except (requests.exceptions.Timeout, requests.exceptions.ConnectionError) as e:
+            last_error = e
+            if attempt < MAX_RETRIES - 1:
+                if verbose:
+                    print(f"  Retry {attempt + 1}/{MAX_RETRIES} after error: {e}", file=sys.stderr)
+                time.sleep(RETRY_DELAY * (attempt + 1))  # Exponential backoff
+            continue
+
+    if last_error:
+        print(f"  Failed after {MAX_RETRIES} retries: {last_error}", file=sys.stderr)
+    return None
+
+
+def check_rate_limit(response: requests.Response, verbose: bool = False) -> None:
+    """
+    Check rate limit headers and sleep if necessary.
+
+    GitHub returns these headers:
+        X-RateLimit-Limit: Total requests allowed per hour
+        X-RateLimit-Remaining: Requests remaining in current window
+        X-RateLimit-Reset: Unix timestamp when the limit resets
+    """
+    remaining = response.headers.get("X-RateLimit-Remaining")
+    reset_time = response.headers.get("X-RateLimit-Reset")
+
+    if remaining is None:
+        return
+
+    remaining = int(remaining)
+
+    if remaining <= 0 and reset_time:
+        # We're rate limited - wait until reset
+        reset_ts = int(reset_time)
+        wait_seconds = max(0, reset_ts - int(time.time())) + 5  # Add 5s buffer
+        print(f"  Rate limited! Waiting {wait_seconds}s until reset...", file=sys.stderr)
+        time.sleep(wait_seconds)
+    elif remaining < RATE_LIMIT_BUFFER:
+        # Getting low - add a small delay
+        if verbose:
+            print(f"  Rate limit low ({remaining} remaining), adding delay...", file=sys.stderr)
+        time.sleep(1)
+
+
+def parse_link_header(link_header: str) -> dict[str, str]:
+    """
+    Parse the GitHub Link header for pagination.
+
+    The Link header looks like:
+        <https://api.github.com/repos/owner/repo/pulls?page=2>; rel="next",
+        <https://api.github.com/repos/owner/repo/pulls?page=5>; rel="last"
+
+    Returns:
+        Dict mapping rel values to URLs, e.g., {"next": "...", "last": "..."}
+    """
+    links = {}
+    if not link_header:
+        return links
+
+    for part in link_header.split(","):
+        part = part.strip()
+        if not part:
+            continue
+
+        # Split into URL and rel parts
+        try:
+            url_part, rel_part = part.split(";")
+            url = url_part.strip().strip("<>")
+            rel = rel_part.strip().split("=")[1].strip('"')
+            links[rel] = url
+        except (ValueError, IndexError):
+            continue
+
+    return links
+
+
 def get_default_branch(owner: str, repo: str, headers: dict) -> Optional[str]:
     """
     Fetch the default branch name for a repository.
@@ -161,8 +288,10 @@ def get_default_branch(owner: str, repo: str, headers: dict) -> Optional[str]:
     default to ensure we get commits from the right branch.
     """
     url = f"{GITHUB_API_BASE}/repos/{owner}/{repo}"
+    response = request_with_retry(url, headers)
+    if response is None:
+        return "main"  # Fallback to common default
     try:
-        response = requests.get(url, headers=headers, timeout=30)
         response.raise_for_status()
         return response.json().get("default_branch", "main")
     except requests.exceptions.RequestException:
@@ -177,10 +306,11 @@ def fetch_releases(
     owner: str,
     repo: str,
     headers: dict,
-    since: Optional[str] = None
+    since: Optional[str] = None,
+    verbose: bool = False
 ) -> list[dict]:
     """
-    Fetch releases for a repository.
+    Fetch releases for a repository with pagination support.
 
     Includes full release notes (body) for newsletter content.
     Filters to releases published after the 'since' timestamp.
@@ -190,61 +320,87 @@ def fetch_releases(
         repo: Repository name
         headers: HTTP headers for API request
         since: ISO 8601 timestamp - only include releases after this time
+        verbose: Whether to print detailed progress
     """
     url = f"{GITHUB_API_BASE}/repos/{owner}/{repo}/releases"
-    params = {"per_page": MAX_RELEASES_PER_REPO}
+    params = {"per_page": 100}  # Max allowed by GitHub API
+    result = []
+    since_dt = None
+    if since:
+        since_dt = datetime.fromisoformat(since.replace("Z", "+00:00"))
 
-    try:
-        response = requests.get(url, headers=headers, params=params, timeout=30)
-        response.raise_for_status()
+    while url:
+        response = request_with_retry(url, headers, params, verbose)
+        if response is None:
+            print(f"  Warning: Failed to fetch releases for {owner}/{repo}", file=sys.stderr)
+            break
+
+        try:
+            response.raise_for_status()
+        except requests.exceptions.HTTPError as e:
+            if e.response.status_code == 404:
+                break  # Repo might not use releases
+            print(f"  Warning: Failed to fetch releases for {owner}/{repo}: {e}", file=sys.stderr)
+            break
+
+        check_rate_limit(response, verbose)
+
         releases = response.json()
+        if not releases:
+            break
 
-        result = []
         for r in releases:
             # Skip draft releases
             if r.get("draft"):
                 continue
 
+            published_at = r.get("published_at")
+
+            # Early termination: if we've gone past our time range, stop paginating
+            if since_dt and published_at:
+                pub_dt = datetime.fromisoformat(published_at.replace("Z", "+00:00"))
+                if pub_dt < since_dt:
+                    # Releases are sorted by date desc, so we can stop
+                    url = None
+                    break
+
             result.append({
                 "id": r["id"],
                 "tag": r["tag_name"],
                 "name": r["name"] if r["name"] else r["tag_name"],
-                "published_at": r["published_at"],
+                "published_at": published_at,
                 "url": r["html_url"],
-                "body": r.get("body") or "",  # Full release notes
+                "body": truncate_body(r.get("body") or ""),
                 "prerelease": r["prerelease"],
                 "author": r.get("author", {}).get("login", "unknown"),
             })
 
-        # Filter by publication date
-        if since:
-            since_dt = datetime.fromisoformat(since.replace("Z", "+00:00"))
-            result = [
-                r for r in result
-                if r["published_at"] and
-                datetime.fromisoformat(r["published_at"].replace("Z", "+00:00")) >= since_dt
-            ]
+        # Check for next page
+        if url:
+            links = parse_link_header(response.headers.get("Link", ""))
+            url = links.get("next")
+            params = {}  # URL already contains params
 
-        return result
+    # Final filter by publication date (in case of any edge cases)
+    if since_dt:
+        result = [
+            r for r in result
+            if r["published_at"] and
+            datetime.fromisoformat(r["published_at"].replace("Z", "+00:00")) >= since_dt
+        ]
 
-    except requests.exceptions.HTTPError as e:
-        if e.response.status_code == 404:
-            return []  # Repo might not use releases
-        print(f"  Warning: Failed to fetch releases for {owner}/{repo}: {e}", file=sys.stderr)
-        return []
-    except requests.exceptions.RequestException as e:
-        print(f"  Warning: Failed to fetch releases for {owner}/{repo}: {e}", file=sys.stderr)
-        return []
+    return result
 
 
 def fetch_merged_prs(
     owner: str,
     repo: str,
     headers: dict,
-    since: Optional[str] = None
+    since: Optional[str] = None,
+    verbose: bool = False
 ) -> list[dict]:
     """
-    Fetch merged pull requests for a repository.
+    Fetch merged pull requests for a repository with pagination support.
 
     Includes full PR descriptions and labels. Filters out bot-authored PRs.
 
@@ -253,21 +409,43 @@ def fetch_merged_prs(
         repo: Repository name
         headers: HTTP headers for API request
         since: ISO 8601 timestamp - only include PRs merged after this time
+        verbose: Whether to print detailed progress
     """
     url = f"{GITHUB_API_BASE}/repos/{owner}/{repo}/pulls"
     params = {
         "state": "closed",
         "sort": "updated",
         "direction": "desc",
-        "per_page": MAX_PRS_PER_REPO,
+        "per_page": 100,  # Max allowed by GitHub API
     }
+    result = []
+    since_dt = None
+    if since:
+        since_dt = datetime.fromisoformat(since.replace("Z", "+00:00"))
 
-    try:
-        response = requests.get(url, headers=headers, params=params, timeout=30)
-        response.raise_for_status()
+    while url:
+        response = request_with_retry(url, headers, params, verbose)
+        if response is None:
+            print(f"  Warning: Failed to fetch PRs for {owner}/{repo}", file=sys.stderr)
+            break
+
+        try:
+            response.raise_for_status()
+        except requests.exceptions.HTTPError as e:
+            if e.response.status_code == 404:
+                break
+            print(f"  Warning: Failed to fetch PRs for {owner}/{repo}: {e}", file=sys.stderr)
+            break
+
+        check_rate_limit(response, verbose)
+
         prs = response.json()
+        if not prs:
+            break
 
-        result = []
+        # Track if we've gone past our time range
+        past_time_range = False
+
         for pr in prs:
             # Only include merged PRs
             if not pr.get("merged_at"):
@@ -279,10 +457,18 @@ def fetch_merged_prs(
                 continue
 
             # Check if merged within time range
-            if since:
-                since_dt = datetime.fromisoformat(since.replace("Z", "+00:00"))
-                merged_dt = datetime.fromisoformat(pr["merged_at"].replace("Z", "+00:00"))
+            merged_at = pr["merged_at"]
+            if since_dt:
+                merged_dt = datetime.fromisoformat(merged_at.replace("Z", "+00:00"))
                 if merged_dt < since_dt:
+                    # Since we're sorting by updated desc, we might still find
+                    # PRs merged in our range that were updated earlier.
+                    # But if the updated_at is also before our range, we can stop.
+                    updated_at = pr.get("updated_at", merged_at)
+                    updated_dt = datetime.fromisoformat(updated_at.replace("Z", "+00:00"))
+                    if updated_dt < since_dt:
+                        past_time_range = True
+                        break
                     continue
 
             # Extract labels
@@ -292,30 +478,31 @@ def fetch_merged_prs(
                 "id": pr["id"],
                 "number": pr["number"],
                 "title": pr["title"],
-                "body": pr.get("body") or "",  # Full description, no truncation
+                "body": truncate_body(pr.get("body") or ""),
                 "author": author,
-                "merged_at": pr["merged_at"],
+                "merged_at": merged_at,
                 "url": pr["html_url"],
                 "labels": labels,
             })
 
-        return result
+        # Stop if we've gone past our time range
+        if past_time_range:
+            break
 
-    except requests.exceptions.HTTPError as e:
-        if e.response.status_code == 404:
-            return []
-        print(f"  Warning: Failed to fetch PRs for {owner}/{repo}: {e}", file=sys.stderr)
-        return []
-    except requests.exceptions.RequestException as e:
-        print(f"  Warning: Failed to fetch PRs for {owner}/{repo}: {e}", file=sys.stderr)
-        return []
+        # Check for next page
+        links = parse_link_header(response.headers.get("Link", ""))
+        url = links.get("next")
+        params = {}  # URL already contains params
+
+    return result
 
 
 def fetch_open_prs(
     owner: str,
     repo: str,
     headers: dict,
-    since: Optional[str] = None
+    since: Optional[str] = None,
+    verbose: bool = False
 ) -> list[dict]:
     """
     Fetch open pull requests that were opened within the time range.
@@ -328,21 +515,43 @@ def fetch_open_prs(
         repo: Repository name
         headers: HTTP headers for API request
         since: ISO 8601 timestamp - only include PRs opened after this time
+        verbose: Whether to print detailed progress
     """
     url = f"{GITHUB_API_BASE}/repos/{owner}/{repo}/pulls"
     params = {
         "state": "open",
         "sort": "created",
         "direction": "desc",
-        "per_page": MAX_PRS_PER_REPO,
+        "per_page": 100,  # Max allowed by GitHub API
     }
+    result = []
+    since_dt = None
+    if since:
+        since_dt = datetime.fromisoformat(since.replace("Z", "+00:00"))
 
-    try:
-        response = requests.get(url, headers=headers, params=params, timeout=30)
-        response.raise_for_status()
+    while url:
+        response = request_with_retry(url, headers, params, verbose)
+        if response is None:
+            print(f"  Warning: Failed to fetch open PRs for {owner}/{repo}", file=sys.stderr)
+            break
+
+        try:
+            response.raise_for_status()
+        except requests.exceptions.HTTPError as e:
+            if e.response.status_code == 404:
+                break
+            print(f"  Warning: Failed to fetch open PRs for {owner}/{repo}: {e}", file=sys.stderr)
+            break
+
+        check_rate_limit(response, verbose)
+
         prs = response.json()
+        if not prs:
+            break
 
-        result = []
+        # Track if we've gone past our time range
+        past_time_range = False
+
         for pr in prs:
             # Filter out bot-authored PRs
             author = pr.get("user", {}).get("login", "")
@@ -351,11 +560,12 @@ def fetch_open_prs(
 
             # Check if opened within time range
             created_at = pr.get("created_at")
-            if since and created_at:
-                since_dt = datetime.fromisoformat(since.replace("Z", "+00:00"))
+            if since_dt and created_at:
                 created_dt = datetime.fromisoformat(created_at.replace("Z", "+00:00"))
                 if created_dt < since_dt:
-                    continue
+                    # Sorted by created desc, so we can stop
+                    past_time_range = True
+                    break
 
             # Extract labels
             labels = [label["name"] for label in pr.get("labels", [])]
@@ -364,7 +574,7 @@ def fetch_open_prs(
                 "id": pr["id"],
                 "number": pr["number"],
                 "title": pr["title"],
-                "body": pr.get("body") or "",
+                "body": truncate_body(pr.get("body") or ""),
                 "author": author,
                 "opened_at": created_at,
                 "url": pr["html_url"],
@@ -372,16 +582,16 @@ def fetch_open_prs(
                 "draft": pr.get("draft", False),
             })
 
-        return result
+        # Stop if we've gone past our time range
+        if past_time_range:
+            break
 
-    except requests.exceptions.HTTPError as e:
-        if e.response.status_code == 404:
-            return []
-        print(f"  Warning: Failed to fetch open PRs for {owner}/{repo}: {e}", file=sys.stderr)
-        return []
-    except requests.exceptions.RequestException as e:
-        print(f"  Warning: Failed to fetch open PRs for {owner}/{repo}: {e}", file=sys.stderr)
-        return []
+        # Check for next page
+        links = parse_link_header(response.headers.get("Link", ""))
+        url = links.get("next")
+        params = {}  # URL already contains params
+
+    return result
 
 
 def fetch_commits(
@@ -389,7 +599,8 @@ def fetch_commits(
     repo: str,
     headers: dict,
     since: Optional[str] = None,
-    branch: Optional[str] = None
+    branch: Optional[str] = None,
+    verbose: bool = False
 ) -> list[dict]:
     """
     Fetch commits from the default branch within the time range.
@@ -404,6 +615,7 @@ def fetch_commits(
         headers: HTTP headers for API request
         since: ISO 8601 timestamp - only include commits after this time
         branch: Branch to fetch from (defaults to repo's default branch)
+        verbose: Whether to print detailed progress
     """
     # Get default branch if not specified
     if not branch:
@@ -412,42 +624,55 @@ def fetch_commits(
     url = f"{GITHUB_API_BASE}/repos/{owner}/{repo}/commits"
     params = {
         "sha": branch,
-        "per_page": MAX_COMMITS_PER_REPO,
+        "per_page": 100,  # Max allowed by GitHub API
     }
     if since:
         params["since"] = since
 
-    try:
-        response = requests.get(url, headers=headers, params=params, timeout=30)
-        response.raise_for_status()
-        commits = response.json()
+    result = []
 
-        result = []
+    while url:
+        response = request_with_retry(url, headers, params, verbose)
+        if response is None:
+            print(f"  Warning: Failed to fetch commits for {owner}/{repo}", file=sys.stderr)
+            break
+
+        try:
+            response.raise_for_status()
+        except requests.exceptions.HTTPError as e:
+            if e.response.status_code == 404:
+                break
+            print(f"  Warning: Failed to fetch commits for {owner}/{repo}: {e}", file=sys.stderr)
+            break
+
+        check_rate_limit(response, verbose)
+
+        commits = response.json()
+        if not commits:
+            break
+
         for c in commits:
             commit_data = c.get("commit", {})
             author_data = commit_data.get("author", {})
 
-            # Get the full commit message (includes body after first line)
+            # Get just the first line of commit message (summary)
             message = commit_data.get("message", "")
+            message_summary = message.split("\n")[0] if message else ""
 
             result.append({
                 "sha": c.get("sha", "")[:12],  # Short SHA for readability
-                "message": message,
+                "message": message_summary,
                 "author": author_data.get("name", "unknown"),
                 "date": author_data.get("date"),
                 "url": c.get("html_url", ""),
             })
 
-        return result
+        # Check for next page
+        links = parse_link_header(response.headers.get("Link", ""))
+        url = links.get("next")
+        params = {}  # URL already contains params
 
-    except requests.exceptions.HTTPError as e:
-        if e.response.status_code == 404:
-            return []
-        print(f"  Warning: Failed to fetch commits for {owner}/{repo}: {e}", file=sys.stderr)
-        return []
-    except requests.exceptions.RequestException as e:
-        print(f"  Warning: Failed to fetch commits for {owner}/{repo}: {e}", file=sys.stderr)
-        return []
+    return result
 
 
 # =============================================================================
@@ -550,37 +775,6 @@ def load_projects(
 # Output File Management
 # =============================================================================
 
-def get_filter_suffix(
-    filter_projects: Optional[list[str]] = None,
-    filter_categories: Optional[list[str]] = None
-) -> str:
-    """
-    Generate a filename suffix based on active filters.
-
-    This keeps filtered runs separate from full runs to avoid confusion.
-
-    Examples:
-        No filters: "" (empty)
-        --projects "Damus,Amethyst": "_Damus_Amethyst"
-        --categories "wallets": "_wallets"
-        Both: "_wallets_Damus_Amethyst"
-    """
-    parts = []
-
-    if filter_categories:
-        parts.extend(sorted(filter_categories))
-
-    if filter_projects:
-        parts.extend(sorted(filter_projects))
-
-    if parts:
-        # Sanitize names: replace spaces/special chars with dashes
-        sanitized = [re.sub(r'[^a-zA-Z0-9-]', '-', p) for p in parts]
-        return "_" + "_".join(sanitized)
-
-    return ""
-
-
 def get_output_filename(
     since_date: datetime,
     until_date: datetime,
@@ -588,18 +782,17 @@ def get_output_filename(
     filter_categories: Optional[list[str]] = None
 ) -> str:
     """
-    Generate filename based on the time period and filters.
+    Generate filename based on the time period.
 
-    Format: updates_YYYY-MM-DD_YYYY-MM-DD[_filter_suffix].json
+    Format: updates_YYYY-MM-DD_YYYY-MM-DD.json
 
-    Examples:
-        Full run: updates_2024-12-18_2024-12-25.json
-        Filtered: updates_2024-12-18_2024-12-25_Damus_Amethyst.json
+    All runs for the same date range go to the same file, regardless of
+    filters. This allows incremental fetching with different filters
+    that all contribute to one output file.
     """
     start_str = since_date.strftime("%Y-%m-%d")
     end_str = until_date.strftime("%Y-%m-%d")
-    suffix = get_filter_suffix(filter_projects, filter_categories)
-    return f"updates_{start_str}_{end_str}{suffix}.json"
+    return f"updates_{start_str}_{end_str}.json"
 
 
 def get_last_run_date(
@@ -608,27 +801,15 @@ def get_last_run_date(
     filter_categories: Optional[list[str]] = None
 ) -> Optional[datetime]:
     """
-    Find the most recent update file matching the same filter pattern.
-
-    Only considers files with the same filter suffix to avoid confusion
-    between full runs and filtered runs.
+    Find the most recent update file.
 
     We use the START date (not end date) to ensure overlap and avoid gaps.
     This means some entries may appear in multiple files, but that's
     preferable to missing data between runs.
 
-    Returns None if no previous matching files exist.
+    Returns None if no previous files exist.
     """
-    suffix = get_filter_suffix(filter_projects, filter_categories)
-
-    # Build pattern to match files with this specific suffix
-    if suffix:
-        # Escape the suffix for regex (in case of special chars)
-        escaped_suffix = re.escape(suffix)
-        pattern = re.compile(rf"updates_(\d{{4}}-\d{{2}}-\d{{2}})_(\d{{4}}-\d{{2}}-\d{{2}}){escaped_suffix}\.json")
-    else:
-        # Full run: match files WITHOUT any suffix after the date
-        pattern = re.compile(r"updates_(\d{4}-\d{2}-\d{2})_(\d{4}-\d{2}-\d{2})\.json$")
+    pattern = re.compile(r"updates_(\d{4}-\d{2}-\d{2})_(\d{4}-\d{2}-\d{2})\.json$")
 
     latest_start = None
 
@@ -648,7 +829,7 @@ def get_last_run_date(
 
 
 def load_existing_data(filepath: Path) -> Optional[dict]:
-    """Load existing update file for deduplication."""
+    """Load existing update file for resume support."""
     if not filepath.exists():
         return None
 
@@ -658,58 +839,6 @@ def load_existing_data(filepath: Path) -> Optional[dict]:
     except (json.JSONDecodeError, IOError) as e:
         print(f"Warning: Could not load existing file {filepath}: {e}", file=sys.stderr)
         return None
-
-
-def merge_and_deduplicate(existing: dict, new: dict) -> dict:
-    """
-    Merge new data into existing data, removing duplicates.
-
-    Deduplication is based on item IDs within each category
-    (releases, merged_prs, open_prs, commits).
-    """
-    if not existing:
-        return new
-
-    # Deep copy to avoid modifying the original data
-    merged = copy.deepcopy(existing)
-
-    # Update metadata
-    merged["generated_at"] = new["generated_at"]
-
-    # Merge project data
-    for repo_key, new_project in new.get("projects", {}).items():
-        if repo_key not in merged.get("projects", {}):
-            merged.setdefault("projects", {})[repo_key] = new_project
-            continue
-
-        existing_project = merged["projects"][repo_key]
-
-        # Update project metadata from new data (in case it changed)
-        for key in ["name", "description", "category", "priority", "website", "maintainer"]:
-            if key in new_project:
-                existing_project[key] = new_project[key]
-
-        # Merge each data type, deduplicating by ID
-        for data_type in ["releases", "merged_prs", "open_prs", "commits"]:
-            existing_items = existing_project.get(data_type, [])
-            new_items = new_project.get(data_type, [])
-
-            # Build set of existing IDs for fast lookup
-            # Use 'id' for PRs/releases, 'sha' for commits
-            id_key = "sha" if data_type == "commits" else "id"
-            existing_ids = {item.get(id_key) for item in existing_items}
-
-            # Add new items that don't already exist
-            for item in new_items:
-                if item.get(id_key) not in existing_ids:
-                    existing_items.append(item)
-
-            existing_project[data_type] = existing_items
-
-    # Recalculate summary
-    merged["summary"] = calculate_summary(merged.get("projects", {}))
-
-    return merged
 
 
 def calculate_summary(projects: dict) -> dict:
@@ -857,6 +986,16 @@ Examples:
         action="store_true",
         help="Show detailed progress",
     )
+    parser.add_argument(
+        "--fresh",
+        action="store_true",
+        help="Start fresh, ignoring any previous partial runs",
+    )
+    parser.add_argument(
+        "--compact",
+        action="store_true",
+        help="Compact output: skip commits and open PRs (reduces size for agent consumption)",
+    )
 
     args = parser.parse_args()
 
@@ -918,22 +1057,83 @@ Examples:
     since_dt = now - timedelta(days=args.since_days)
     since_timestamp = since_dt.isoformat()
 
+    # Determine output file path upfront (for incremental saves)
+    output_filename = get_output_filename(since_dt, now, filter_projects, filter_categories)
+    output_path = args.output_dir / output_filename
+
+    # Load existing data for resume support (unless --fresh)
+    existing_data = None
+    already_fetched = set()
+    if not args.fresh:
+        existing_data = load_existing_data(output_path)
+        if existing_data:
+            already_fetched = set(existing_data.get("projects", {}).keys())
+            if already_fetched:
+                print(f"Resuming: {len(already_fetched)} repos already fetched, skipping them")
+                print(f"  (use --fresh to start over)")
+
     print(f"\nFetching updates since {since_dt.strftime('%Y-%m-%d')}...\n")
 
-    # Fetch data for each project
+    # Initialize output structure (will be updated incrementally)
     all_projects: dict[str, dict] = {}
+    if existing_data:
+        all_projects = existing_data.get("projects", {})
 
+    # Track if we were interrupted
+    interrupted = False
+
+    def save_progress():
+        """Save current progress to file."""
+        output_data = {
+            "generated_at": datetime.now(timezone.utc).isoformat(),
+            "period": {
+                "start": since_dt.strftime("%Y-%m-%d"),
+                "end": now.strftime("%Y-%m-%d"),
+                "days": args.since_days,
+            },
+            "summary": calculate_summary(all_projects),
+            "projects": all_projects,
+        }
+        with open(output_path, "w") as f:
+            json.dump(output_data, f, indent=2)
+
+    def handle_interrupt(signum, frame):
+        """Handle Ctrl+C gracefully."""
+        nonlocal interrupted
+        interrupted = True
+        print("\n\nInterrupted! Saving progress...", file=sys.stderr)
+        save_progress()
+        print(f"Progress saved to {output_path}", file=sys.stderr)
+        print(f"Run the same command again to resume.", file=sys.stderr)
+        sys.exit(130)  # Standard exit code for Ctrl+C
+
+    # Register signal handler for graceful interruption
+    signal.signal(signal.SIGINT, handle_interrupt)
+
+    # Fetch data for each project
     for i, project in enumerate(projects, 1):
         repo_key = f"{project['owner']}/{project['repo']}"
+
+        # Skip already fetched repos (resume support)
+        if repo_key in already_fetched:
+            if args.verbose:
+                print(f"[{i}/{len(projects)}] Skipping {repo_key} (already fetched)")
+            continue
 
         if args.verbose:
             print(f"[{i}/{len(projects)}] Fetching {repo_key}...")
 
-        # Fetch all data types
-        releases = fetch_releases(project["owner"], project["repo"], headers, since_timestamp)
-        merged_prs = fetch_merged_prs(project["owner"], project["repo"], headers, since_timestamp)
-        open_prs = fetch_open_prs(project["owner"], project["repo"], headers, since_timestamp)
-        commits = fetch_commits(project["owner"], project["repo"], headers, since_timestamp)
+        # Fetch all data types (skip some in compact mode)
+        releases = fetch_releases(project["owner"], project["repo"], headers, since_timestamp, args.verbose)
+        merged_prs = fetch_merged_prs(project["owner"], project["repo"], headers, since_timestamp, args.verbose)
+
+        # In compact mode, skip open PRs and commits to reduce output size
+        if args.compact:
+            open_prs = []
+            commits = []
+        else:
+            open_prs = fetch_open_prs(project["owner"], project["repo"], headers, since_timestamp, args.verbose)
+            commits = fetch_commits(project["owner"], project["repo"], headers, since_timestamp, verbose=args.verbose)
 
         # Only include projects with some activity
         if releases or merged_prs or open_prs or commits:
@@ -957,35 +1157,13 @@ Examples:
                       f"{len(releases)} releases, {len(merged_prs)} merged PRs, "
                       f"{len(open_prs)} open PRs, {len(commits)} commits")
 
-    # Build output data structure
-    output_data = {
-        "generated_at": now.isoformat(),
-        "period": {
-            "start": since_dt.strftime("%Y-%m-%d"),
-            "end": now.strftime("%Y-%m-%d"),
-            "days": args.since_days,
-        },
-        "summary": calculate_summary(all_projects),
-        "projects": all_projects,
-    }
-
-    # Determine output file and handle deduplication
-    output_filename = get_output_filename(since_dt, now, filter_projects, filter_categories)
-    output_path = args.output_dir / output_filename
-
-    existing_data = load_existing_data(output_path)
-    if existing_data:
-        print(f"\nMerging with existing data in {output_filename}...")
-        output_data = merge_and_deduplicate(existing_data, output_data)
-
-    # Write output file
-    with open(output_path, "w") as f:
-        json.dump(output_data, f, indent=2)
+    # Final save
+    save_progress()
 
     print(f"\nOutput saved to {output_path}")
 
     # Print summary
-    print_summary(output_data, args.since_days)
+    print_summary({"projects": all_projects, "summary": calculate_summary(all_projects)}, args.since_days)
 
     print("Done!")
 
