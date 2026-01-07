@@ -156,7 +156,7 @@ type: newsletters
 
 **Primal Android v2.6.18** - [完整版本](https://github.com/PrimalHQ/primal-android-app/releases/tag/2.6.18)添加了 [NIP-46](/zh/topics/nip-46/) 远程签名和 [NIP-55](/zh/topics/nip-55/) 本地签名，将 Primal 转变为其他 Android 应用的签名中心。性能改进包括媒体预缓存、头像预缓存和更快的帖子线程加载。错误修复解决了个人简介中的自我提及、媒体画廊崩溃和直播标题回退问题。在 iOS 上，Primal 使用后台音频播放来保持应用活跃以接收 NIP-46 签名请求；用户可以在设置中更改声音或完全静音。
 
-**Mostro v0.15.6** - [NIP-69](/zh/topics/nip-69/) P2P 比特币交易机器人的[最新版本](https://github.com/MostroP2P/mostro/releases/tag/v0.15.6)完成了第 4 阶段审计事件的开发基金实现。开发费用支付现在通过每次成功支付后发布的 kind 38383 Nostr 事件进行跟踪，使第三方验证和分析成为可能。买家/卖家消息的金额计算已修复，溢价逻辑已与 lnp2pbot 参考实现对齐。
+**Mostro v0.15.6** - [NIP-69](/zh/topics/nip-69/) P2P 比特币交易平台的[最新版本](https://github.com/MostroP2P/mostro/releases/tag/v0.15.6)完成了第 4 阶段审计事件的开发基金实现。开发费用支付现在通过每次成功支付后发布的 kind 38383 Nostr 事件进行跟踪，使第三方验证和分析成为可能。买家/卖家消息的金额计算已修复，溢价逻辑已与 lnp2pbot 参考实现对齐。
 
 **Aegis v0.3.5** - 跨平台签名器[添加了深色模式](https://github.com/ZharlieW/Aegis/releases/tag/v0.3.5)、改进的应用图标显示和更简洁的 UI 布局。错误修复解决了 iOS iCloud Private Relay 冲突和事件解析问题。此版本还改进了事件 JSON 传递给 Rust 签名函数的方式。
 

@@ -16,7 +16,7 @@ Nostr Compassへおかえりなさい。Nostrプロトコルエコシステム�
 
 **Shopstr Zapsnags: Lightningを介したフラッシュセール** - Nostrネイティブマーケットプレイスは[「Zapsnags」](https://github.com/shopstr-eng/shopstr/pull/211)を導入しました。これはソーシャルフィードから単一のzapで商品を購入できるフラッシュセール機能です。実装は`#shopstr-zapsnag`タグ付きのkind 1ノートをフィルタリングし、標準的なカートフローの代わりに「Zap to Buy」ボタン付きの商品カードとしてレンダリングします。購入者がzapすると、システムは[NIP-57](/ja/topics/nip-57/)を使用して支払いリクエストを生成し、kind 9735 zapレシートをポーリングして支払いを確認し、[NIP-17](/ja/topics/nip-17/)のgift wrappingを使用して配送情報を暗号化してから販売者にプライベートに送信します。この機能はリピート購入のために購入者の詳細をローカルに保存し、フラッシュセールリストを作成するためのマーチャントダッシュボードも含まれています。ソーシャル、決済、プライバシープリミティブの巧みな組み合わせであり、Nostrの組み合わせ可能な設計が新しい商取引パターンを可能にすることを示しています。
 
-**Mostroが開発基金を導入** - [NIP-69](/ja/topics/nip-69/) P2P Bitcoin取引ボットは、持続可能なメンテナンスをサポートするために[設定可能な開発手数料を実装](https://github.com/MostroP2P/mostro/pull/555)しました。運営者はMostro取引手数料の10〜100%の`dev_fee_percentage`を設定でき（デフォルトは30%）、成功した各取引で自動的に開発基金にルーティングされます。実装は3つのデータベースカラム（`dev_fee`、`dev_fee_paid`、`dev_fee_payment_hash`）を追加して貢献を追跡し、デーモン起動時にパーセンテージを検証します。[`docs/DEV_FEE.md`](https://github.com/MostroP2P/mostro/blob/main/docs/DEV_FEE.md)の技術ドキュメントでシステムを説明しています。このオプトインモデルにより、運営者は手数料配分の完全な透明性を維持しながら継続的な開発をサポートできます。
+**Mostroが開発基金を導入** - [NIP-69](/ja/topics/nip-69/) P2P Bitcoin取引プラットフォームは、持続可能なメンテナンスをサポートするために[設定可能な開発手数料を実装](https://github.com/MostroP2P/mostro/pull/555)しました。運営者はMostro取引手数料の10〜100%の`dev_fee_percentage`を設定でき（デフォルトは30%）、成功した各取引で自動的に開発基金にルーティングされます。実装は3つのデータベースカラム（`dev_fee`、`dev_fee_paid`、`dev_fee_payment_hash`）を追加して貢献を追跡し、デーモン起動時にパーセンテージを検証します。[`docs/DEV_FEE.md`](https://github.com/MostroP2P/mostro/blob/main/docs/DEV_FEE.md)の技術ドキュメントでシステムを説明しています。このオプトインモデルにより、運営者は手数料配分の完全な透明性を維持しながら継続的な開発をサポートできます。
 
 ## NIP更新 {#nip-updates}
 

@@ -154,7 +154,7 @@ Kind 0 是用户元数据（个人资料），kind 1 是文本笔记（基本帖
 
 **Amethyst v1.04.2** - 功能版本，引入了关注列表/包、新的时间线过滤器、图片库和 H.265 视频压缩（文件小 50%）。完成了 Kotlin 多平台迁移。[发布说明](https://github.com/vitorpamplona/amethyst/releases/tag/v1.04.2)
 
-**Mostro v0.15.5** - P2P 交易机器人更新，支持 NIP-69 订单过期和改进的交易历史响应。[发布说明](https://github.com/MostroP2P/mostro/releases/tag/v0.15.5)
+**Mostro v0.15.5** - P2P 交易平台更新，支持 NIP-69 订单过期和改进的交易历史响应。[发布说明](https://github.com/MostroP2P/mostro/releases/tag/v0.15.5)
 
 **Nosflare v8.9.26** - 构建在 Cloudflare 基础设施上的无服务器 Nostr 中继。此版本提供了关键热修复，解决了可能导致 websocket 故障的错误，确保依赖该中继的用户和应用程序获得更稳定的连接。[发布说明](https://github.com/Spl0itable/nosflare/releases/tag/v8.9.26)
 
