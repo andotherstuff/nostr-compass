@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ if not .IsHome }}{{ .Title }} | {{ end }}{{ .Site.Title }}</title>
     <meta name="description" content="{{ if .Description }}{{ .Description }}{{ else }}{{ .Site.Params.description }}{{ end }}">
+    <link rel="alternate" type="application/rss+xml" href={{("/newsletters/feed.xml" | relLangURL)}} title="Newsletter RSS feed">
+    <link rel="alternate" type="application/rss+xml" href={{("/podcast/feed.xml" | relLangURL)}} title="Podcast RSS feed">
     <script>
       // Prevent flash of wrong theme
       (function() {
@@ -22,13 +24,13 @@
 </head>
 <body>
     {{ partial "header.html" . }}
-    
+
     <main class="page-content" aria-label="Content">
         <div class="wrapper">
             {{ block "main" . }}{{ end }}
         </div>
     </main>
-    
+
     {{ partial "footer.html" . }}
     {{ if .Site.Params.mailchimp_form_action }}
     <!-- Mailchimp AJAX form handler - requires jQuery -->
@@ -38,6 +40,3 @@
     {{ end }}
 </body>
 </html>
-
-
-
