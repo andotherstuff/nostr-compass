@@ -32,9 +32,22 @@ data/project_updates/*.json
 public/
 resources/_gen/
 
-# Local Claude Code files
+# AI tool files
 .claude/
+.opencode/
 skills/
+AGENTS.md
+PAI_UPGRADE_SUMMARY.md
+*.pai
+*_pai.md
+research/
+.env
+
+# Podcast generated materials
+podcastnotes/
+publicationnotes/
 
 # Python virtual environment
 .venv/
+__pycache__/
+scripts/__pycache__/
