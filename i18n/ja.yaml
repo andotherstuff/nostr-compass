@@ -3,7 +3,7 @@ home_description: "<a href=\"{{.newslettersURL}}\">週刊ニュースレター</
 home_learn_more: "私たちについてもっと知る"
 recent_newsletters: "最新のニュースレター"
 no_newsletters: "ニュースレターはまだありません。"
-view_more_newsletters: "<a href=\"{{.newslettersURL}}\">ニュースレター</a>をもっと見る。<a href=\"{{.rssURL}}\">RSS</a>で購読。<a href=\"{{.nostrURL}}\">Nostr</a>でフォロー。"
+view_more_newsletters: "<a href=\"{{.newslettersURL}}\">ニュースレター</a>をもっと見る。<a href=\"{{.rssURL}}\">RSS</a> | <a href=\"{{.podcastRSSURL}}\" target=\"_blank\" rel=\"noopener\">ポッドキャストRSS</a>で購読。<a href=\"{{.nostrURL}}\">Nostr</a>でフォロー。"
 
 # Newsletter list page
 subscribe_via_rss: "<a href=\"{{.rssURL}}\">RSS</a>で購読する。"
