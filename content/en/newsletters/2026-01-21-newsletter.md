@@ -8,7 +8,7 @@ type: newsletters
 
 Welcome back to Nostr Compass, your weekly guide to Nostr.
 
-**This week:** Bitchat replaces C Tor with the Rust Arti implementation for better reliability and performance. nostrdb-rs gains streaming fold queries that enable zero-allocation database operations. Listr receives a major refactor with NDK 3 beta migration and AI-assisted maintenance after a year of dormancy. Zeus ships 17 merged PRs focused on [NIP-47](/en/topics/nip-47/) (Nostr Wallet Connect for remote Lightning control) fixes and Cashu improvements, while Primal Android adds wallet backup flows and [NIP-92](/en/topics/nip-92/) (media dimensions for proper aspect ratios) support. A new draft NIP proposes [Trusted Relay Assertions](/en/topics/trusted-relay-assertions/) for standardized relay trust scoring.
+**This week:** Bitchat replaces C Tor with the Rust Arti implementation for better reliability and performance. nostrdb-rs gains streaming fold queries that enable zero-allocation database operations. Listr receives a major refactor with NDK 3 beta migration and AI-assisted maintenance after a year of dormancy. Zeus ships 17 merged PRs focused on [NIP-47](/en/topics/nip-47/) (Nostr Wallet Connect for remote Lightning control) fixes and [Cashu](/en/topics/cashu/) improvements, while Primal Android adds wallet backup flows and [NIP-92](/en/topics/nip-92/) (media dimensions for proper aspect ratios) support. A new draft NIP proposes [Trusted Relay Assertions](/en/topics/trusted-relay-assertions/) for standardized relay trust scoring.
 
 ## News
 
@@ -146,7 +146,7 @@ Monitor data powers relay selectors in clients, explorer websites, and the Trust
 
 The update integrates both FileDropServer and BlossomServer as default media storage options, giving users redundancy for file uploads. [Blossom](https://github.com/hzrd149/blossom) provides content-addressed storage where files are referenced by their SHA-256 hashes, ensuring integrity and enabling deduplication across the network. Automatic draft saving for Moments prevents data loss when composing long-form content, addressing user complaints about lost posts during app switches or connectivity interruptions.
 
-Cashu wallet integration receives polish with automatic proof filtering that removes spent tokens from the wallet view. This solves the confusing UX where users saw invalid proofs alongside valid ecash, making balance calculations unreliable. The filtering happens client-side, maintaining privacy while improving the payment experience for peer-to-peer transactions within chats.
+[Cashu](/en/topics/cashu/) wallet integration receives polish with automatic proof filtering that removes spent tokens from the wallet view. This solves the confusing UX where users saw invalid proofs alongside valid ecash, making balance calculations unreliable. The filtering happens client-side, maintaining privacy while improving the payment experience for peer-to-peer transactions within chats.
 
 ### Amber v4.1.0 Pre-releases - UI Overhaul
 
@@ -168,7 +168,7 @@ Zeus merged 17 pull requests this week, strengthening its position as a leading 
 
 **Connection Resilience** - [PR #3543](https://github.com/ZeusLN/zeus/pull/3543) implements timeout notifications for stalled Nostr connections. Previously, users waited indefinitely when relay connections dropped silently. Now Zeus displays clear timeout messages after 30 seconds of inactivity, letting users retry or switch relays. [PR #3541](https://github.com/ZeusLN/zeus/pull/3541) adds backend validation to prevent NWC activation on incompatible Lightning implementations, catching configuration errors before they cause runtime crashes.
 
-**Cashu Race Condition** - [PR #3531](https://github.com/ZeusLN/zeus/pull/3531) fixes a concurrency bug in Cashu token management where simultaneous mint operations could corrupt the token database. The race condition occurred when multiple threads updated token counts without proper locking, occasionally resulting in incorrect balances. The fix adds mutex protection around critical sections, ensuring atomic updates to token state.
+**[Cashu](/en/topics/cashu/) Race Condition** - [PR #3531](https://github.com/ZeusLN/zeus/pull/3531) fixes a concurrency bug in [Cashu](/en/topics/cashu/) token management where simultaneous mint operations could corrupt the token database. The race condition occurred when multiple threads updated token counts without proper locking, occasionally resulting in incorrect balances. The fix adds mutex protection around critical sections, ensuring atomic updates to token state.
 
 ### Primal Android (Client)
 

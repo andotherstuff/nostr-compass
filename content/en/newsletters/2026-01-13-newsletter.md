@@ -14,7 +14,7 @@ Welcome back to Nostr Compass, your weekly guide to Nostr.
 
 ### Bitchat Completes Cure53 Security Audit
 
-Bitchat, the iOS encrypted messenger combining Nostr with Cashu, has undergone a professional security audit by Cure53, one of the most respected security firms in the industry. Cure53 previously audited Signal, Mullvad VPN, and notably the [NIP-44](/en/topics/nip-44/) encryption specification that underpins modern Nostr private messaging.
+Bitchat, the iOS encrypted messenger combining Nostr with [Cashu](/en/topics/cashu/), has undergone a professional security audit by Cure53, one of the most respected security firms in the industry. Cure53 previously audited Signal, Mullvad VPN, and notably the [NIP-44](/en/topics/nip-44/) encryption specification that underpins modern Nostr private messaging.
 
 The audit found 12+ security issues (BCH-01-002 through BCH-01-013). The Bitchat team responded with 17+ pull requests. Key fixes include:
 
@@ -28,7 +28,7 @@ The audit found 12+ security issues (BCH-01-002 through BCH-01-013). The Bitchat
 
 **Input Validation** - [PR #919](https://github.com/permissionlesstech/bitchat/pull/919) hardens hex string parsing to prevent crashes from malformed input, a common attack vector for denial-of-service.
 
-Bitchat handles Cashu ecash, making professional security review essential. The audit follows last year's [Marmot](/en/topics/marmot/) Protocol audit and the NIP-44 audit that verified the encryption layer.
+Bitchat handles [Cashu](/en/topics/cashu/) ecash, making professional security review essential. The audit follows last year's [Marmot](/en/topics/marmot/) Protocol audit and the NIP-44 audit that verified the encryption layer.
 
 ## NIP Updates
 
@@ -43,7 +43,7 @@ Recent changes to the [NIPs repository](https://github.com/nostr-protocol/nips):
 - **Post-Quantum Cryptography** - [PR #2185](https://github.com/nostr-protocol/nips/pull/2185) proposes adding quantum-resistant cryptographic algorithms to Nostr. The spec introduces ML-DSA-44 and Falcon-512 for digital signatures, targeting "super-high value events" like applications and authorities rather than individual users. While [NIP-44](/en/topics/nip-44/)'s symmetric encryption (ChaCha20) is quantum-resistant, its key exchange uses secp256k1 ECDH which is vulnerable to Shor's algorithm. The proposal includes ML-KEM for key agreement to address this gap. This is an early-stage proposal opening discussion on crypto-agility for Nostr's long-term security.
 - **BOLT12 for NIP-47** - After 137 comments and extensive discussion, the community decided that BOLT12 offers deserve their own specification rather than extending [NIP-47](/en/topics/nip-47/). BOLT12 offers provide significant upgrades over BOLT11 invoices including reusability, better privacy through blinded paths, and optional payer information. The new NIP will define methods like `make_offer`, `pay_offer`, and `list_offers` for Nostr Wallet Connect implementations.
 - **Audio Track NIP** - [PR #1043](https://github.com/nostr-protocol/nips/pull/1043) proposes kinds 32100 for music tracks and 32101 for podcast episodes, giving audio content the same first-class treatment that NIP-71 provides for video. Currently, audio platforms like Wavlake, Zapstr, and Stemstr each use proprietary event formats, fragmenting the ecosystem. A common standard would enable interoperability so users could discover and play audio from any compatible client.
-- **NIP-A3 Universal Payment Targets** - [PR #2119](https://github.com/nostr-protocol/nips/pull/2119) proposes kind 10133 events using RFC-8905 `payto:` URIs to expose payment options across multiple networks. Rather than creating separate event kinds for Bitcoin, Lightning, Cashu, or traditional payment rails, this abstraction lets clients parse standardized tags and invoke native payment handlers. The approach is future-proof since new payment methods just need a `payto:` URI scheme.
+- **NIP-A3 Universal Payment Targets** - [PR #2119](https://github.com/nostr-protocol/nips/pull/2119) proposes kind 10133 events using RFC-8905 `payto:` URIs to expose payment options across multiple networks. Rather than creating separate event kinds for Bitcoin, Lightning, [Cashu](/en/topics/cashu/), or traditional payment rails, this abstraction lets clients parse standardized tags and invoke native payment handlers. The approach is future-proof since new payment methods just need a `payto:` URI scheme.
 
 ## NIP Deep Dive: NIP-51 and NIP-65
 
