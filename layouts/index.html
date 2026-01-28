@@ -33,7 +33,7 @@
     {{ if eq $count 0 }}
       <p>{{ i18n "no_newsletters" }}</p>
     {{ else }}
-      <p class="rss-subscribe">{{ i18n "view_more_newsletters" (dict "newslettersURL" ("/newsletters/" | relLangURL) "rssURL" ("/newsletters/feed.xml" | relLangURL) "nostrURL" "nostr:npub1wav4fae3gyfy3xj298kxj2mj8phavz7vavps34przq02j7w902qq902923") | safeHTML }}</p>
+      <p class="rss-subscribe">{{ i18n "view_more_newsletters" (dict "newslettersURL" ("/newsletters/" | relLangURL) "rssURL" ("/newsletters/feed.xml" | relLangURL) "podcastRSSURL" "https://podcast.nostrcompass.org/rss.xml" "nostrURL" "nostr:npub1wav4fae3gyfy3xj298kxj2mj8phavz7vavps34przq02j7w902qq902923") | safeHTML }}</p>
     {{ end }}
 
     {{ partial "newsletter-signup.html" . }}

@@ -18,7 +18,12 @@
       <div class="trigger">
         {{ range .Site.Menus.main }}
           {{- $menuKey := printf "menu_%s" .Identifier -}}
+          {{- $isExternal := hasPrefix .URL "http" -}}
+          {{- if $isExternal -}}
+          <a class="page-link" href="{{ .URL }}" target="_blank" rel="noopener">{{ i18n $menuKey | default .Name }}</a>
+          {{- else -}}
           <a class="page-link" href="{{ .URL | relLangURL }}">{{ i18n $menuKey | default .Name }}</a>
+          {{- end -}}
         {{ end }}
         {{ partial "language-switcher.html" . }}
         <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">

@@ -103,5 +103,5 @@ enableGitInfo = true
 [[menu.main]]
   identifier = "podcast"
   name = "Podcast"
-  url = "/podcast/"
+  url = "https://podcast.nostrcompass.org"
   weight = 4

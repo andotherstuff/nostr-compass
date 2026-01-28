@@ -3,7 +3,7 @@ home_description: "我们发布<a href=\"{{.newslettersURL}}\">每周通讯</a>�
 home_learn_more: "了解更多关于我们"
 recent_newsletters: "最新通讯"
 no_newsletters: "暂无通讯。"
-view_more_newsletters: "查看更多<a href=\"{{.newslettersURL}}\">通讯</a>。通过 <a href=\"{{.rssURL}}\">RSS</a> 订阅。在 <a href=\"{{.nostrURL}}\">Nostr</a> 上关注我们。"
+view_more_newsletters: "查看更多<a href=\"{{.newslettersURL}}\">通讯</a>。通过 <a href=\"{{.rssURL}}\">RSS</a> | <a href=\"{{.podcastRSSURL}}\" target=\"_blank\" rel=\"noopener\">播客 RSS</a> 订阅。在 <a href=\"{{.nostrURL}}\">Nostr</a> 上关注我们。"
 
 # Newsletter list page
 subscribe_via_rss: "通过 <a href=\"{{.rssURL}}\">RSS</a> 订阅。"

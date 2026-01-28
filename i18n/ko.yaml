@@ -3,7 +3,7 @@ home_description: "<a href=\"{{.newslettersURL}}\">주간 뉴스레터</a>에서
 home_learn_more: "우리에 대해 더 알아보기"
 recent_newsletters: "최신 뉴스레터"
 no_newsletters: "아직 뉴스레터가 없습니다."
-view_more_newsletters: "더 많은 <a href=\"{{.newslettersURL}}\">뉴스레터</a> 보기. <a href=\"{{.rssURL}}\">RSS</a>로 구독. <a href=\"{{.nostrURL}}\">Nostr</a>에서 팔로우."
+view_more_newsletters: "더 많은 <a href=\"{{.newslettersURL}}\">뉴스레터</a> 보기. <a href=\"{{.rssURL}}\">RSS</a> | <a href=\"{{.podcastRSSURL}}\" target=\"_blank\" rel=\"noopener\">팟캐스트 RSS</a>로 구독. <a href=\"{{.nostrURL}}\">Nostr</a>에서 팔로우."
 
 # Newsletter list page
 subscribe_via_rss: "<a href=\"{{.rssURL}}\">RSS</a>로 구독하세요."

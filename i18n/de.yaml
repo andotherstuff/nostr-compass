@@ -3,7 +3,7 @@ home_description: "Wir veröffentlichen <a href=\"{{.newslettersURL}}\">wöchent
 home_learn_more: "Erfahre mehr über uns"
 recent_newsletters: "Aktuelle Newsletter"
 no_newsletters: "Noch keine Newsletter gefunden."
-view_more_newsletters: "Mehr <a href=\"{{.newslettersURL}}\">Newsletter</a> ansehen. Abonnieren via <a href=\"{{.rssURL}}\">RSS</a>. Folge uns <a href=\"{{.nostrURL}}\">auf Nostr</a>."
+view_more_newsletters: "Mehr <a href=\"{{.newslettersURL}}\">Newsletter</a> ansehen. Abonnieren via <a href=\"{{.rssURL}}\">RSS</a> | <a href=\"{{.podcastRSSURL}}\" target=\"_blank\" rel=\"noopener\">Podcast RSS</a>. Folge uns <a href=\"{{.nostrURL}}\">auf Nostr</a>."
 
 # Newsletter list page
 subscribe_via_rss: "Abonnieren via <a href=\"{{.rssURL}}\">RSS</a>."
