@@ -342,6 +342,16 @@ media_clients:
     priority: low
     notes: Built on Jam, Nostr + Lightning integration
 
+  - name: diVine
+    description: Short-form looping video client with restored Vine archives
+    platforms: [ios, android, web]
+    repo: https://github.com/divinevideo/divine-mobile
+    website: https://divine.video
+    maintainer: rabble
+    status: active
+    priority: high
+    notes: NIP-71 video events, AI content detection, Nostr-native
+
 # =============================================================================
 # MARKETPLACES
 # =============================================================================
