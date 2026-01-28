@@ -8,7 +8,7 @@ type: newsletters
 
 Welcome back to Nostr Compass, your weekly guide to Nostr.
 
-**This week:** Ridestr brings decentralized ridesharing to Nostr with [Cashu](/en/topics/cashu/) payments and encrypted location sharing. Pomade introduces email-based recovery for multisig signers. Damus ships [negentropy](/en/topics/negentropy/) for reliable DM syncing. Amethyst's desktop app adds search, bookmarks, and zaps. Amber v4.1.1 displays relay trust scores. New NIP proposals address community management, sequence-based sync, and encrypted file storage. We also take a look back at five years of Nostr Januaries, tracing the protocol's evolution from a handful of early adopters in 2021 through Damus's explosive App Store launch in 2023 to the maturing client ecosystem of 2025.
+**This week:** Ridestr brings decentralized ridesharing to Nostr with [Cashu](/en/topics/cashu/) payments and encrypted location sharing. Pomade introduces email-based recovery for multisig signers. Damus ships [negentropy](/en/topics/negentropy/) for reliable DM syncing. Amethyst's desktop app adds search, bookmarks, and zaps. Amber v4.1.1 displays relay trust scores. Marmot merges MIP-03 and builds a TypeScript reference chat app. diVine adds [NIP-46](/en/topics/nip-46/) QR authentication and mentions support. New NIP proposals address community management, sequence-based sync, and encrypted file storage. We also take a look back at five years of Nostr Januaries, tracing the protocol's evolution from a handful of early adopters in 2021 through Damus's explosive App Store launch in 2023 to the maturing client ecosystem of 2025.
 
 ## News
 
@@ -85,6 +85,20 @@ The Damus team's [Notedeck](https://github.com/damus-io/notedeck) desktop client
 ### Camelus Ships Full DM Support
 
 [Camelus](https://github.com/camelus-hq/camelus), a Flutter-based Android client built with Dart NDK for battery-efficient mobile performance, added comprehensive direct messaging with 20+ commits this week. The update includes chat categories, message dates, optimistic send UI, note-to-self functionality, and proper DM relay handling.
+
+### Marmot Protocol Updates
+
+The MIP-03 deterministic commit resolution [we covered as an open PR last week](/en/newsletters/2026-01-21-newsletter/#marmot-protocol-white-noise-encrypted-group-chat-library) has now merged. [MDK PR #152](https://github.com/marmot-protocol/mdk/pull/152) ensures all [MLS](/en/topics/mls/)-based group chats converge on the same state when multiple valid commits arrive for the same epoch.
+
+A companion [spec PR #28](https://github.com/marmot-protocol/marmot/pull/28) adds init_key lifecycle requirements addressing gaps from implementation audits: private key material from Welcome messages must be securely deleted after processing (zeroization, storage cleanup), and new members must perform self-updates within 24 hours for forward secrecy.
+
+The TypeScript SDK ([marmot-ts](https://github.com/marmot-protocol/marmot-ts)) is building a reference chat application. [PR #37](https://github.com/marmot-protocol/marmot-ts/pull/37) adds group creation/listing, key package management with publish/broadcast/delete flows, and QR code invitations. An [open PR #38](https://github.com/marmot-protocol/marmot-ts/pull/38) by hzrd149 implements message history persistence with pagination. The whitenoise-rs backend merged 15 PRs this week including multi-language support ([PR #455](https://github.com/marmot-protocol/whitenoise-rs/pull/455)) and MIP-04 v2 media references ([PR #450](https://github.com/marmot-protocol/whitenoise-rs/pull/450)).
+
+### diVine Adds Nostr Integration Features
+
+[diVine](https://github.com/divinevideo/divine-mobile), the short-form video app, continues rapid Nostr integration.
+
+Recent merges include [NIP-46](/en/topics/nip-46/) QR code authentication ([PR #1019](https://github.com/divinevideo/divine-mobile/pull/1019)) and [NIP-17](/en/topics/nip-17/) encrypted direct messaging ([PR #834](https://github.com/divinevideo/divine-mobile/pull/834)). This week's activity focused on [mentions support](https://github.com/divinevideo/divine-mobile/pull/1098) converting `nostr:` URIs and @mentions to clickable profile links, [Classic Viners avatar fallbacks](https://github.com/divinevideo/divine-mobile/pull/1097) using Nostr profiles, and video editing tools including [drawing](https://github.com/divinevideo/divine-mobile/pull/1056), [filters](https://github.com/divinevideo/divine-mobile/pull/1053), and [stickers](https://github.com/divinevideo/divine-mobile/pull/1050).
 
 ## NIP Updates
 
