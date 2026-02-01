@@ -6,7 +6,7 @@
     <title>{{ if not .IsHome }}{{ .Title }} | {{ end }}{{ .Site.Title }}</title>
     <meta name="description" content="{{ if .Description }}{{ .Description }}{{ else }}{{ .Site.Params.description }}{{ end }}">
     <link rel="alternate" type="application/rss+xml" href={{("/newsletters/feed.xml" | relLangURL)}} title="Newsletter RSS feed">
-    <link rel="alternate" type="application/rss+xml" href={{("/podcast/feed.xml" | relLangURL)}} title="Podcast RSS feed">
+    <link rel="alternate" type="application/rss+xml" href="https://podcast.nostrcompass.org/rss.xml" title="Podcast RSS feed">
     <script>
       // Prevent flash of wrong theme
       (function() {
