@@ -11,13 +11,13 @@ enableGitInfo = true
 [params]
   description = "Technical resource for the Nostr protocol. Weekly newsletter covering NIP proposals, client updates, relay developments, and notable code changes."
   npub = "npub1wav4fae3gyfy3xj298kxj2mj8phavz7vavps34przq02j7w902qq902923"
-  github_username = "nostrcompass"
+  github_username = "andotherstuff"
   repository_name = "nostr-compass"
   author = "Nostr Compass"
   bold = "**"
   # Buttondown newsletter signup - just add your username from buttondown.email/YOUR_USERNAME
   buttondown_username = "nostrcompass"
-  
+
 [taxonomies]
   tag = "tags"
   category = "categories"
