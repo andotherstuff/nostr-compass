@@ -205,6 +205,80 @@ social_clients:
     priority: low
     notes: SEC-01 project
 
+  - name: Openvibe
+    description: Multi-network app combining Mastodon, Bluesky, Nostr, and Threads
+    platforms: [ios, android]
+    repo: https://github.com/plebstr/plebstr
+    website: https://openvibe.social
+    status: active
+    priority: medium
+    notes: Cross-network aggregator, evolved from Plebstr
+
+  - name: Voyage
+    description: Lightweight Reddit-style Android client with offline-first design
+    platforms: [android]
+    repo: https://github.com/dluvian/voyage
+    status: active
+    priority: medium
+    notes: Outbox model (NIP-65), bandwidth efficient, Amber compatible
+
+  - name: Yana
+    description: Cross-platform Flutter client with gossip model relay discovery
+    platforms: [android, ios, macos, windows, linux, web]
+    repo: https://github.com/frnandu/yana
+    status: active
+    priority: low
+    notes: True cross-platform from single Flutter codebase
+
+  - name: Coop
+    description: Fast Rust desktop client for secure direct messaging
+    platforms: [windows, macos, linux]
+    repo: https://github.com/lumehq/coop
+    status: beta
+    priority: medium
+    notes: By Lume team, uses GPUI framework
+
+  - name: Seer
+    description: Swift-native NIP-29 group client for Apple platforms
+    platforms: [ios, macos]
+    repo: https://github.com/Galaxoid-Labs/Seer
+    status: active
+    priority: medium
+    notes: Slack/Telegram-style group management, native Swift
+
+  - name: Nostter
+    description: Clean Twitter-like web client
+    platforms: [web]
+    repo: https://github.com/SnowCait/nostter
+    website: https://nostter.app
+    status: active
+    priority: low
+
+  - name: Lumilumi
+    description: Lightweight web client with low-data modes for accessibility
+    platforms: [web]
+    repo: https://github.com/TsukemonoGit/lumilumi
+    website: https://lumilumi.app
+    status: active
+    priority: medium
+    notes: OpenSats grant recipient, bandwidth-constrained focus
+
+  - name: Zapddit
+    description: Reddit-style client with hashtag feeds and Upzap voting
+    platforms: [web]
+    repo: https://github.com/vivganes/zapddit
+    status: active
+    priority: low
+    notes: Upzaps send sats to authors, Downzaps to charity
+
+  - name: Spring
+    description: Android Nostr browser for micro-app ecosystem
+    platforms: [android]
+    repo: https://github.com/nostrband/nostr-universe
+    status: active
+    priority: medium
+    notes: NIP-89 app discovery, injects NIP-07 for signing
+
 # =============================================================================
 # LONG-FORM CONTENT
 # =============================================================================
@@ -302,6 +376,14 @@ messaging_clients:
     priority: low
     notes: End-to-end encrypted messaging with ecash support
 
+  - name: nospeak
+    description: Decentralized chat with NIP-17 E2E encryption and no metadata leakage
+    platforms: [android]
+    repo: https://github.com/psic4t/nospeak
+    status: active
+    priority: medium
+    notes: GPL-3.0 licensed, Blossom integration
+
 # =============================================================================
 # MEDIA & STREAMING
 # =============================================================================
@@ -352,6 +434,15 @@ media_clients:
     priority: high
     notes: NIP-71 video events, AI content detection, Nostr-native
 
+  - name: Wavlake
+    description: Music streaming platform with Lightning zaps and NOM spec
+    platforms: [web, android]
+    repo: https://github.com/wavlake/wavman
+    website: https://wavlake.com
+    status: active
+    priority: high
+    notes: Defines Nostr Open Media (NOM) specification
+
 # =============================================================================
 # MARKETPLACES
 # =============================================================================
@@ -380,6 +471,22 @@ marketplaces:
     status: active
     priority: medium
     notes: Non-custodial exchange
+
+  - name: SatShoot
+    description: Freelancing platform on Nostr with Bitcoin payments
+    platforms: [web]
+    repo: https://github.com/Pleb5/satshoot
+    status: active
+    priority: medium
+    notes: SEC-02 project
+
+  - name: Kartapio
+    description: Restaurant menu and ordering with Bitcoin payments
+    platforms: [web]
+    repo: https://github.com/vstabile/kartapio
+    status: active
+    priority: low
+    notes: SEC-02 project
 
 # =============================================================================
 # DEVELOPER TOOLS
@@ -472,6 +579,118 @@ devtools:
     priority: medium
     notes: JSON Schema Draft-07, useful for integration testing and fuzz testing
 
+  - name: relay-tester
+    description: Test suite for verifying Nostr relay implementations
+    platforms: [cli]
+    repo: https://github.com/mikedilger/relay-tester
+    maintainer: mikedilger
+    status: active
+    priority: medium
+    notes: By Gossip creator, comprehensive relay testing
+
+  - name: algia
+    description: Full-featured CLI client with timeline, posting, zaps, and DMs
+    platforms: [cli]
+    repo: https://github.com/mattn/algia
+    status: active
+    priority: medium
+    notes: Most complete CLI client, Go
+
+  - name: DVMDash
+    description: Monitoring and debugging dashboard for DVM/AI activity on Nostr
+    platforms: [web]
+    repo: https://github.com/dtdannen/dvmdash
+    status: active
+    priority: medium
+    notes: NIP-90 ecosystem visibility
+
+  - name: nostr-webhook
+    description: Webhook bot with event matching and cron scheduling
+    platforms: [cli]
+    repo: https://github.com/mattn/nostr-webhook
+    status: active
+    priority: low
+    notes: Automation for Nostr events
+
+  - name: matrix-nostr-bridge
+    description: Bridge between Matrix and Nostr protocols
+    platforms: [cli]
+    repo: https://github.com/nicfab/matrix-nostr-bridge
+    status: active
+    priority: medium
+    notes: Federation bridge
+
+  - name: DVMCP
+    description: Bridge connecting MCP servers to Nostr DVM ecosystem
+    platforms: [cli]
+    repo: https://github.com/gzuuus/dvmcp
+    status: active
+    priority: medium
+    notes: SEC-04 project, AI/MCP integration
+
+  - name: SyncStr
+    description: Web app for synchronizing Nostr profile data across relays
+    platforms: [web]
+    repo: https://github.com/derekross/syncstr
+    status: active
+    priority: low
+
+  - name: rana
+    description: Rust vanity key miner with difficulty customization
+    platforms: [cli]
+    repo: https://github.com/grunch/rana
+    status: active
+    priority: low
+    notes: Vanity npub generation
+
+  - name: Bucket
+    description: Simple in-memory relay for testing (<100 LOC)
+    platforms: [cli]
+    repo: https://github.com/coracle-social/bucket
+    status: active
+    priority: low
+    notes: By Coracle team, for development/testing
+
+  - name: nostr-idb
+    description: Helper methods for storing Nostr events in IndexedDB
+    platforms: [browser]
+    repo: https://github.com/hzrd149/nostr-idb
+    status: active
+    priority: low
+    notes: SEC-01 project
+
+  - name: go-dvm
+    description: Go implementation of Data Vending Machine
+    platforms: [cli]
+    repo: https://github.com/sebdeveloper6952/godvm
+    status: active
+    priority: low
+    notes: SEC-01 project
+
+  - name: spryte
+    description: Lightweight Nostr client library
+    platforms: [browser]
+    repo: https://github.com/sandwichfarm/spryte
+    status: active
+    priority: low
+    notes: SEC-04 project
+
+  - name: nsite-manager
+    description: Management interface for nsite hosting
+    platforms: [web]
+    repo: https://github.com/hzrd149/nsite-manager
+    status: active
+    priority: low
+    notes: SEC-04 project
+
+  - name: Backyard Explorer
+    description: Example search app for window.nostrdb
+    platforms: [web]
+    repo: https://github.com/hzrd149/backyard-explorer
+    status: active
+    priority: low
+    notes: SEC-05 project
+
 # =============================================================================
 # SIGNING & KEY MANAGEMENT
 # =============================================================================
@@ -545,6 +764,22 @@ signers:
     status: beta
     priority: high
     notes: OpenSats grant recipient, multi-device identity management via FROST
+
+  - name: Pokey
+    description: Real-time notification tool for Nostr events with Amber integration
+    platforms: [android]
+    repo: https://github.com/greenart7c3/pokey
+    status: active
+    priority: low
+    notes: Granular notification settings
+
+  - name: keyNest
+    description: Secure key management for Nostr and Bitcoin
+    platforms: [cli]
+    repo: https://github.com/gzuuus/keynest
+    status: active
+    priority: low
+    notes: SEC-01 project
 
 # =============================================================================
 # RELAY IMPLEMENTATIONS
@@ -623,6 +858,93 @@ relays:
     status: active
     priority: low
     notes: SEC-04 project, WebAssembly relay implementation
+
+  - name: Nosflare
+    description: Serverless relay on Cloudflare Workers with global edge distribution
+    repo: https://github.com/Spl0itable/nosflare
+    status: active
+    priority: high
+    notes: Zero-ops, pay-to-relay feature, one-click deployment
+
+  - name: nostr-relay-tray
+    description: Desktop GUI relay for non-technical users
+    platforms: [windows, macos, linux]
+    repo: https://github.com/CodyTseng/nostr-relay-tray
+    status: active
+    priority: medium
+    notes: Zero-config, WoT filtering, instant public access via tunneling
+
+  - name: nostr-relay-nestjs
+    description: High-performance NestJS relay with WoT and MeiliSearch
+    repo: https://github.com/CodyTseng/nostr-relay-nestjs
+    status: active
+    priority: medium
+    notes: PostgreSQL backend, configurable trust depth
+
+  - name: HORNET Storage
+    description: All-in-one relay with Blossom blob storage and Scionic Merkle Trees
+    repo: https://github.com/HORNET-Storage/HORNETS-Nostr-Relay
+    status: active
+    priority: medium
+    notes: Large file/codebase storage, NIP-888 payments, Umbrel available
+
+  - name: Immortal
+    description: Enterprise-grade Go relay designed for scale and high-load
+    repo: https://github.com/dezh-tech/immortal
+    status: active
+    priority: medium
+    notes: Runs JellyFish relay (jellyfish.land)
+
+  - name: Shugur
+    description: Enterprise relay with CockroachDB supporting 50k+ connections
+    repo: https://github.com/Shugur-Network/relay
+    status: active
+    priority: medium
+    notes: 37+ NIPs, Cashu/Nutzaps support, Nostr Web Pages hosting
+
+  - name: Chorus Relay
+    description: Personal/community relay with Blossom server by Gossip creator
+    repo: https://github.com/mikedilger/chorus
+    maintainer: mikedilger
+    status: active
+    priority: medium
+    notes: OpenSats LTS grant, NIP-42 AUTH, NIP-59 GiftWrap
+
+  - name: nostr-filter-relay
+    description: AI content filtering relay (NSFW, toxicity, language detection)
+    repo: https://github.com/atrifat/nostr-filter-relay
+    status: active
+    priority: medium
+    notes: NIP-32 labeling output, microservices architecture
+
+  - name: Servus
+    description: CMS/blogging engine that doubles as a personal Nostr relay
+    repo: https://github.com/servus-social/servus
+    status: active
+    priority: medium
+    notes: Jekyll-like, imports from Twitter/Instagram, WordPress alternative
+
+  - name: Nostrify
+    description: TypeScript framework for building Nostr apps and relays
+    repo: https://github.com/soapbox-pub/nostrify
+    website: https://nostrify.dev
+    status: active
+    priority: high
+    notes: By Soapbox team, composable policies, works in all JS runtimes
+
+  - name: mimoty
+    description: Personal relay and remote signing service
+    repo: https://github.com/gzuuus/mimoty
+    status: active
+    priority: low
+    notes: SEC-03 project
+
+  - name: note-mixer-relay
+    description: Relay for mixing and anonymizing events using Khatru
+    repo: https://github.com/gzuuus/note-mixer-relay
+    status: active
+    priority: low
+    notes: SEC-03 project
 
 # =============================================================================
 # LIBRARIES & SDKs
@@ -791,6 +1113,101 @@ wallets:
     priority: medium
     notes: OpenSats grant recipient, NIP-60/61 implementation
 
+  - name: CDK
+    description: Cashu Development Kit - Rust library for building wallets and mints
+    platforms: [cli]
+    repo: https://github.com/cashubtc/cdk
+    website: https://cashudevkit.org
+    status: active
+    priority: high
+    notes: Multi-database backends, FFI for mobile apps
+
+  - name: Nutshell
+    description: Reference Cashu wallet and mint implementation in Python
+    platforms: [cli]
+    repo: https://github.com/cashubtc/nutshell
+    website: https://cashu.space
+    status: active
+    priority: high
+    notes: Full protocol implementation, reference for NUTs
+
+  - name: Cashu.me
+    description: Progressive web app Cashu wallet with NWC and Nostr mint discovery
+    platforms: [web]
+    repo: https://github.com/cashubtc/cashu.me
+    website: https://cashu.me
+    status: active
+    priority: high
+    notes: Multi-currency (BTC/USD), primary web ecash wallet
+
+  - name: eNuts
+    description: Mobile Cashu wallet for Android and iOS
+    platforms: [ios, android]
+    repo: https://github.com/cashubtc/eNuts
+    website: https://enuts.cash
+    status: active
+    priority: high
+    notes: Multi-mint, multi-language support
+
+  - name: Nutstash
+    description: Feature-rich web Cashu wallet with send-to-Nostr-key
+    platforms: [web]
+    repo: https://github.com/gandlafbtc/nutstash-wallet
+    website: https://wallet.nutstash.app
+    status: active
+    priority: medium
+    notes: Send/receive via Nostr DMs, NIP-87 mint discovery
+
+  - name: Bitcoin Connect
+    description: Web components library enabling WebLN without extensions
+    platforms: [browser]
+    repo: https://github.com/getAlby/bitcoin-connect
+    status: active
+    priority: high
+    notes: Framework agnostic, mobile/desktop support
+
+  - name: mcp-money
+    description: MCP server giving AI agents Cashu wallets with zap support
+    platforms: [cli]
+    repo: https://github.com/pablof7z/mcp-money
+    status: active
+    priority: medium
+    notes: Claude/Goose integration, AI agent payments
+
+  - name: Geyser
+    description: Bitcoin/Nostr-native crowdfunding platform
+    platforms: [web]
+    repo: https://github.com/geyserfund/geyser-app
+    website: https://geyser.fund
+    status: active
+    priority: high
+    notes: NWC integration, $10K NWC grant program, $10M+ funded
+
+  - name: Coinos
+    description: Bitcoin web wallet supporting Lightning, Liquid, and on-chain
+    platforms: [web]
+    repo: https://github.com/coinos/coinos-ui
+    website: https://coinos.io
+    status: active
+    priority: medium
+    notes: NWC server, Cashu Nutshell integration
+
+  - name: Wally
+    description: Desktop native wallet with NWC support
+    platforms: [windows, macos, linux]
+    repo: https://github.com/ArcadeCity/wally
+    status: active
+    priority: low
+    notes: SEC-05 project
+
+  - name: Nutoff
+    description: Cashu wallet using ContextVM
+    platforms: [web]
+    repo: https://github.com/gzuuus/nutoff-wallet
+    status: active
+    priority: low
+    notes: SEC-05 project
+
 # =============================================================================
 # OTHER NOTABLE PROJECTS
 # =============================================================================
@@ -943,6 +1360,16 @@ other:
     priority: medium
     notes: SEC-01 project, DAO-like coordination on Nostr
 
+  - name: Angor
+    description: Decentralized P2P crowdfunding with time-locked Bitcoin and Nostr
+    platforms: [web]
+    repo: https://github.com/block-core/angor
+    website: https://angor.io
+    maintainer: block-core
+    status: active
+    priority: high
+    notes: Milestone-based funding with investor recovery, no backend
+
   - name: Wikifreedia
     description: Wikipedia-style wiki embracing viewpoint diversity via Nostr
     platforms: [web]
@@ -1030,6 +1457,78 @@ other:
     status: active
     priority: low
     notes: SEC-05 project, NIP-46 bunker implementation
+
+  - name: Nostr Secrets Vault
+    description: E2E encrypted password manager synced via Nostr relays
+    platforms: [android]
+    repo: https://github.com/nicfab/nostr-secrets
+    status: active
+    priority: medium
+    notes: AES-256-GCM + NIP-44 encryption
+
+  - name: Holy Fit
+    description: Step tracker anchoring fitness data to Nostr (Kind 30078)
+    platforms: [android]
+    repo: https://git.vanderwarker.family/wellbeing/holyfit-android
+    status: active
+    priority: low
+    notes: Unique fitness use case on Nostr
+
+  - name: featurestr-bountiestr
+    description: Feature request and bounty system on Nostr
+    platforms: [web]
+    repo: https://github.com/sebdeveloper6952/featurestr-bountiestr
+    status: active
+    priority: low
+    notes: SEC-01 project
+
+  - name: Blob Box
+    description: Simple Blossom server for UmbrelOS
+    platforms: [self-hosted]
+    repo: https://github.com/hzrd149/umbrel-blob-box
+    status: active
+    priority: low
+    notes: SEC-05 project, easy Blossom deployment
+
+  - name: hashpool
+    description: Mining pools with eHash and Cashu
+    platforms: [cli]
+    repo: https://github.com/vnprc/hashpool
+    status: beta
+    priority: low
+    notes: SEC-05 project
+
+  - name: Innpub
+    description: Location-sensitive voice meetup app using MoQ
+    platforms: [web]
+    repo: https://github.com/futurepaul/innpub
+    status: beta
+    priority: low
+    notes: SEC-05 project
+
+  - name: NEET
+    description: P2P calls via Nostr using Iroh
+    platforms: [desktop]
+    repo: https://github.com/justinmoon/neet-native
+    status: beta
+    priority: low
+    notes: SEC-05 project
+
+  - name: Paygress
+    description: VM provisioning and VPN purchasing over Nostr
+    platforms: [web]
+    repo: https://github.com/DhananjayPurohit/paygress
+    status: beta
+    priority: low
+    notes: SEC-05 project
+
+  - name: Local++
+    description: Mobile app for local LLM with dynamic model switching
+    platforms: [android]
+    repo: https://github.com/Routstr/local-plus-plus
+    status: beta
+    priority: low
+    notes: SEC-05 project
 
 # =============================================================================
 # RELATED PROTOCOLS

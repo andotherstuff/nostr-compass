@@ -13,6 +13,11 @@
 # Usage:
 #   ./fetch_nostr_nip_discussions.sh [--since-days N]
 #
+# Examples:
+#   ./fetch_nostr_nip_discussions.sh              # Default: last 7 days
+#   ./fetch_nostr_nip_discussions.sh --since-days 14
+#   ./fetch_nostr_nip_discussions.sh 7            # Positional arg also works
+#
 # Output:
 #   JSON file in data/nostr_nip_discussions/ with NIP-related discussions
 #
@@ -23,8 +28,14 @@ set -euo pipefail
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PROJECT_ROOT="$(dirname "$SCRIPT_DIR")"
 
+# Source common functions
+source "$SCRIPT_DIR/nostr_common.sh"
+
+# Configuration
+DEFAULT_DAYS=7
+
 # Parse arguments
-SINCE_DAYS=7
+SINCE_DAYS="$DEFAULT_DAYS"
 while [[ $# -gt 0 ]]; do
     case $1 in
         --since-days)
@@ -33,64 +44,38 @@ while [[ $# -gt 0 ]]; do
             ;;
         -h|--help)
             echo "Usage: $0 [--since-days N]"
-            echo "  --since-days N  Number of days to look back (default: 7)"
+            echo ""
+            echo "Fetch NIP-related discussions from Nostr relays."
+            echo ""
+            echo "Options:"
+            print_since_days_help "$DEFAULT_DAYS"
+            echo "  -h, --help        Show this help message"
             exit 0
             ;;
         *)
-            # Support positional argument for backwards compatibility
             if [[ "$1" =~ ^[0-9]+$ ]]; then
                 SINCE_DAYS="$1"
                 shift
             else
-                echo "Unknown option: $1"
+                echo "Unknown option: $1" >&2
                 exit 1
             fi
             ;;
     esac
 done
+
+# Setup paths and dates
 OUTPUT_DIR="$PROJECT_ROOT/data/nostr_nip_discussions"
-RELAYS=(
-    "wss://relay.damus.io"
-    "wss://nos.lol"
-    "wss://relay.nostr.band"
-    "wss://relay.snort.social"
-    "wss://nostr.wine"
-)
-
-# Calculate dates for filename
-START_DATE=$(date -d "-${SINCE_DAYS} days" +%Y-%m-%d 2>/dev/null || date -v-${SINCE_DAYS}d +%Y-%m-%d)
-END_DATE=$(date +%Y-%m-%d)
+START_DATE=$(calc_start_date "$SINCE_DAYS")
+END_DATE=$(get_today)
 OUTPUT_FILE="$OUTPUT_DIR/discussions_${START_DATE}_${END_DATE}.json"
+SINCE_TIMESTAMP=$(calc_since_timestamp "$SINCE_DAYS")
 
-# Calculate since timestamp (Unix epoch)
-SINCE_TIMESTAMP=$(($(date +%s) - (SINCE_DAYS * 86400)))
-
-# Temp files for storing results (avoids argument list too long errors)
-TEMP_DIR=$(mktemp -d)
-LONGFORM_FILE="$TEMP_DIR/longform.json"
-NOTES_FILE="$TEMP_DIR/notes.json"
-COMMUNITY_FILE="$TEMP_DIR/community.json"
-
-# Cleanup temp files on exit
-cleanup() {
-    rm -rf "$TEMP_DIR"
-}
-trap cleanup EXIT
-
-# Check for required tools
-check_requirements() {
-    if ! command -v nak &> /dev/null; then
-        echo "Error: nak is not installed"
-        echo "Install with: go install github.com/fiatjaf/nak@latest"
-        exit 1
-    fi
-
-    if ! command -v jq &> /dev/null; then
-        echo "Error: jq is not installed"
-        echo "Install with your package manager (apt install jq, brew install jq, etc.)"
-        exit 1
-    fi
-}
+# Setup temp directory (auto-cleanup on exit)
+setup_temp_dir
+LONGFORM_FILE="$NOSTR_TEMP_DIR/longform.json"
+NOTES_FILE="$NOSTR_TEMP_DIR/notes.json"
+COMMUNITY_FILE="$NOSTR_TEMP_DIR/community.json"
 
 # Initialize output file with basic structure
 init_output() {
@@ -118,7 +103,6 @@ EOF
 
 # Save current progress to output file
 save_progress() {
-    # Use jq with file inputs instead of command-line arguments
     jq -n \
         --arg generated_at "$(date -Iseconds)" \
         --arg start "$START_DATE" \
@@ -151,10 +135,9 @@ save_progress() {
 fetch_custom_nips() {
     echo "Fetching custom NIP documents (kind 30817)..." >&2
 
-    # Initialize empty array
     echo "[]" > "$LONGFORM_FILE"
 
-    for relay in "${RELAYS[@]}"; do
+    for relay in "${NOSTR_RELAYS[@]}"; do
         echo "  Querying $relay..." >&2
         nak req -k 30817 --since "$SINCE_TIMESTAMP" --limit 50 "$relay" 2>/dev/null || true
     done | jq -s 'unique_by(.id)' > "$LONGFORM_FILE"
@@ -162,36 +145,30 @@ fetch_custom_nips() {
     local count=$(jq 'length' "$LONGFORM_FILE")
     echo "  Found $count custom NIP documents" >&2
 
-    # Save progress after each fetch type
     save_progress
 }
 
 # Fetch long-form articles specifically discussing NIPs (kind 30023)
 fetch_nip_articles() {
-    local ARTICLES_FILE="$TEMP_DIR/articles.json"
+    local ARTICLES_FILE="$NOSTR_TEMP_DIR/articles.json"
     echo "Fetching long-form NIP articles (kind 30023)..." >&2
 
-    # Initialize empty array
     echo "[]" > "$ARTICLES_FILE"
 
-    for relay in "${RELAYS[@]}"; do
+    for relay in "${NOSTR_RELAYS[@]}"; do
         echo "  Querying $relay..." >&2
-        # Search for articles tagged with "nip" or "nips"
         nak req -k 30023 --since "$SINCE_TIMESTAMP" --limit 50 -t t=nip "$relay" 2>/dev/null || true
         nak req -k 30023 --since "$SINCE_TIMESTAMP" --limit 50 -t t=nips "$relay" 2>/dev/null || true
     done | jq -s 'unique_by(.id) | map(select(
-        # Must contain actual NIP references like NIP-01, NIP-29, etc.
         .content | test("NIP-[0-9]+"; "i")
     ))' > "$ARTICLES_FILE"
 
-    # Merge with LONGFORM_FILE (which has custom NIPs)
-    jq -s 'flatten | unique_by(.id)' "$LONGFORM_FILE" "$ARTICLES_FILE" > "$TEMP_DIR/merged.json"
-    mv "$TEMP_DIR/merged.json" "$LONGFORM_FILE"
+    jq -s 'flatten | unique_by(.id)' "$LONGFORM_FILE" "$ARTICLES_FILE" > "$NOSTR_TEMP_DIR/merged.json"
+    mv "$NOSTR_TEMP_DIR/merged.json" "$LONGFORM_FILE"
 
     local count=$(jq 'length' "$LONGFORM_FILE")
     echo "  Total NIP-related long-form content: $count" >&2
 
-    # Save progress after each fetch type
     save_progress
 }
 
@@ -199,24 +176,20 @@ fetch_nip_articles() {
 fetch_nip_notes() {
     echo "Fetching notes mentioning NIPs (kind 1)..." >&2
 
-    # Initialize empty array
     echo "[]" > "$NOTES_FILE"
 
-    for relay in "${RELAYS[@]}"; do
+    for relay in "${NOSTR_RELAYS[@]}"; do
         echo "  Querying $relay..." >&2
-        # Search for notes tagged with nip/nips
         nak req -k 1 --since "$SINCE_TIMESTAMP" --limit 100 -t t=nip "$relay" 2>/dev/null || true
         nak req -k 1 --since "$SINCE_TIMESTAMP" --limit 100 -t t=nips "$relay" 2>/dev/null || true
         nak req -k 1 --since "$SINCE_TIMESTAMP" --limit 100 -t t=nostrhub "$relay" 2>/dev/null || true
     done | jq -s 'unique_by(.id) | map(select(
-        # Must contain actual NIP references like NIP-01, NIP-29, etc. OR mention nostrhub
         .content | test("NIP-[0-9]+|nostrhub"; "i")
     ))' > "$NOTES_FILE"
 
     local count=$(jq 'length' "$NOTES_FILE")
     echo "  Found $count notes" >&2
 
-    # Save progress after each fetch type
     save_progress
 }
 
@@ -224,15 +197,12 @@ fetch_nip_notes() {
 fetch_community_posts() {
     echo "Fetching community posts (NIP-72)..." >&2
 
-    # Initialize empty array
     echo "[]" > "$COMMUNITY_FILE"
 
-    for relay in "${RELAYS[@]}"; do
+    for relay in "${NOSTR_RELAYS[@]}"; do
         echo "  Querying $relay..." >&2
-        # Kind 34550 = community definition
         nak req -k 34550 --since "$SINCE_TIMESTAMP" --limit 20 "$relay" 2>/dev/null || true
     done | jq -s 'unique_by(.id) | map(select(
-        # Only include communities specifically about NIPs
         (.content | test("NIP-[0-9]+"; "i")) or
         (.tags | map(select(.[0] == "d")) | flatten | any(test("^nip"; "i")))
     ))' > "$COMMUNITY_FILE"
@@ -240,16 +210,15 @@ fetch_community_posts() {
     local count=$(jq 'length' "$COMMUNITY_FILE")
     echo "  Found $count community posts" >&2
 
-    # Save progress after each fetch type
     save_progress
 }
 
 # Main execution
 main() {
-    check_requirements
+    check_nostr_requirements || exit 1
 
     echo "Fetching NIP discussions from Nostr relays (last $SINCE_DAYS days)..." >&2
-    echo "Since timestamp: $SINCE_TIMESTAMP ($(date -d "@$SINCE_TIMESTAMP" 2>/dev/null || date -r "$SINCE_TIMESTAMP"))" >&2
+    echo "Since timestamp: $SINCE_TIMESTAMP ($(format_timestamp "$SINCE_TIMESTAMP"))" >&2
     echo "" >&2
 
     # Initialize temp files with empty arrays
@@ -261,13 +230,9 @@ main() {
     init_output
 
     # Fetch each type (saves progress after each)
-    # 1. Custom NIP documents (kind 30817)
     fetch_custom_nips
-    # 2. Long-form articles discussing NIPs (kind 30023 with NIP-XX references)
     fetch_nip_articles
-    # 3. Notes mentioning NIPs (kind 1)
     fetch_nip_notes
-    # 4. Community posts about NIPs
     fetch_community_posts
 
     echo "" >&2
