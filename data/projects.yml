@@ -433,6 +433,15 @@ media_clients:
     status: active
     priority: medium
 
+  - name: Unfiltered
+    description: Instagram-like photo sharing without algorithms or ads
+    platforms: [android]
+    repo: https://github.com/dmcarrington/unfiltered
+    maintainer: dmcarrington
+    status: active
+    priority: medium
+    notes: NIP-68 picture events, Blossom hosting, Lightning zaps, Amber signer support
+
   - name: Nostr Nests
     description: Audio spaces (Clubhouse-like)
     platforms: [web]
@@ -578,6 +587,15 @@ devtools:
     status: active
     priority: medium
     notes: OpenSats grant recipient
+
+  - name: Pollerama
+    description: Polling app built on nostr-polls library
+    platforms: [web]
+    repo: https://github.com/abh3po/nostr-polls
+    website: https://pollerama.fun
+    status: active
+    priority: low
+    notes: NIP-17 DM sharing for polls
 
   - name: Wikistr
     description: Wikipedia-like wiki client
@@ -834,6 +852,14 @@ signers:
     status: active
     priority: low
     notes: Granular notification settings
+
+  - name: Signet
+    description: Self-hosted NIP-46 remote signer with web dashboard
+    platforms: [web, android]
+    repo: https://github.com/Letdown2491/signet
+    status: active
+    priority: medium
+    notes: Multiple key management, bunker:// and nostrconnect://, Docker deployment
 
   - name: keyNest
     description: Secure key management for Nostr and Bitcoin
@@ -1520,13 +1546,29 @@ other:
     priority: low
     notes: SEC-05 project, NIP-46 bunker implementation
 
-  - name: Nostr Secrets Vault
+  - name: Nostr Secrets Vault (nicfab)
     description: E2E encrypted password manager synced via Nostr relays
     platforms: [android]
     repo: https://github.com/nicfab/nostr-secrets
     status: active
     priority: medium
     notes: AES-256-GCM + NIP-44 encryption
+
+  - name: Nostr Secrets Vault (tzongocu)
+    description: Zero-knowledge password manager with Nostr sync
+    platforms: [web, android]
+    repo: https://github.com/tzongocu/nostr-secrets
+    status: active
+    priority: medium
+    notes: PWA, AES-256-GCM vault, NIP-44 secrets, biometric unlock, cyberpunk UI
+
+  - name: Zap Cooking
+    description: Decentralized recipe platform with Lightning zaps
+    platforms: [web]
+    repo: https://github.com/zapcooking/frontend
+    status: active
+    priority: medium
+    notes: Nostr-native recipes, creator support via zaps, NWC wallet integration
 
   - name: Holy Fit
     description: Step tracker anchoring fitness data to Nostr (Kind 30078)
