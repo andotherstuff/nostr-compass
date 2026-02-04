@@ -72,7 +72,7 @@ The Damus team's [Notedeck](https://github.com/damus-io/notedeck) desktop client
 
 ### Formstr Adds Grid Questions
 
-[Formstr](https://github.com/abh3po/nostr-forms), the Nostr-native forms app, added [grid questions](https://github.com/abh3po/nostr-forms/pull/419) and [rewrote its SDK](https://github.com/abh3po/nostr-forms/pull/410) with embed support. A [fix for non-[NIP-07](/en/topics/nip-07/) signers](https://github.com/abh3po/nostr-forms/pull/418) resolved issues for users with bunker or local signers trying to submit forms with their identity.
+[Formstr](https://github.com/abh3po/nostr-forms), the Nostr-native forms app, added [grid questions](https://github.com/abh3po/nostr-forms/pull/419) and [rewrote its SDK](https://github.com/abh3po/nostr-forms/pull/410) with embed support. A [fix for non-NIP-07 signers](https://github.com/abh3po/nostr-forms/pull/418) resolved issues for users with bunker or local signers trying to submit forms with their identity. [NIP-07](/en/topics/nip-07/) defines the browser extension signer interface.
 
 ### nostr-tools Upgrades Crypto Dependencies
 
@@ -80,7 +80,7 @@ The Damus team's [Notedeck](https://github.com/damus-io/notedeck) desktop client
 
 ### Zeus Working on NIP-87 Mint Reviews
 
-[Zeus](https://github.com/ZeusLN/zeus) has an [open PR for [NIP-87](/en/topics/nip-87/) mint reviews](https://github.com/ZeusLN/zeus/pull/3576), allowing users to discover and review [Cashu](/en/topics/cashu/) mints filtered by Nostr follows. Reviews include star ratings and can be submitted anonymously or with a user's nsec.
+[Zeus](https://github.com/ZeusLN/zeus) has an [open PR for NIP-87 mint reviews](https://github.com/ZeusLN/zeus/pull/3576), allowing users to discover and review [Cashu](/en/topics/cashu/) mints filtered by Nostr follows. [NIP-87](/en/topics/nip-87/) defines the standard for mint discovery and reviews. Reviews include star ratings and can be submitted anonymously or with a user's nsec.
 
 ### Camelus Ships Full DM Support
 

@@ -197,6 +197,16 @@ social_clients:
     priority: low
     notes: Relay pool implementation, proof-of-work support
 
+  - name: Nostria
+    description: Modern cross-platform Nostr client built for global scale
+    platforms: [android, ios, windows, web]
+    repo: https://github.com/nostria-app/nostria
+    website: https://www.nostria.app
+    maintainer: sondreb
+    status: active
+    priority: medium
+    notes: Premium cloud infrastructure, dedicated relays, media hosting, automated backups
+
   - name: Alphaama
     description: Nostr client implementation
     platforms: [web]
@@ -279,6 +289,14 @@ social_clients:
     priority: medium
     notes: NIP-89 app discovery, injects NIP-07 for signing
 
+  - name: Clawstr
+    description: Reddit-inspired platform where AI agents create and manage communities
+    platforms: [web]
+    repo: https://github.com/clawstr/clawstr
+    status: active
+    priority: medium
+    notes: AI-powered community creation on Nostr
+
 # =============================================================================
 # LONG-FORM CONTENT
 # =============================================================================
@@ -343,6 +361,14 @@ messaging_clients:
     status: beta
     priority: high
     notes: First client implementing Marmot protocol, alpha stage
+
+  - name: Vector
+    description: Privacy-focused desktop messenger with NIP-17/44/59 encryption
+    platforms: [windows, macos, linux, android]
+    repo: https://github.com/VectorPrivacy/Vector
+    status: active
+    priority: medium
+    notes: Zero metadata leakage, Mini Apps platform, PIVX wallet, WebXDC games
 
   - name: Flotilla
     description: NIP-29 relay-based group chat
@@ -443,6 +469,22 @@ media_clients:
     priority: high
     notes: Defines Nostr Open Media (NOM) specification
 
+  - name: Shosho
+    description: Live streaming app with recording/VOD, room presence, and threaded chats
+    platforms: [ios, android]
+    repo: https://github.com/r0d8lsh0p/shosho-releases
+    status: active
+    priority: medium
+    notes: Nostr Connect on iOS, Flutter-based
+
+  - name: NosCall
+    description: Audio and video calling app with contact groups and relay management
+    platforms: [android, ios]
+    repo: https://github.com/sanah9/noscall
+    status: active
+    priority: medium
+    notes: ICE server configuration, dark mode, Flutter-based
+
 # =============================================================================
 # MARKETPLACES
 # =============================================================================
@@ -487,6 +529,14 @@ marketplaces:
     status: active
     priority: low
     notes: SEC-02 project
+
+  - name: Pod21
+    description: Decentralized 3D printing marketplace with NIP-17 DM bot
+    platforms: [web]
+    repo: ""
+    status: beta
+    priority: medium
+    notes: Connects 3D printer operators with buyers via Nostr relay coordination. No public repo yet.
 
 # =============================================================================
 # DEVELOPER TOOLS
@@ -691,6 +741,14 @@ devtools:
     priority: low
     notes: SEC-05 project
 
+  - name: Instagram to Nostr v2
+    description: Content migration tool from Instagram, TikTok, Twitter, Substack to Nostr
+    platforms: [cli]
+    repo: https://github.com/primalpaul1/instagram-to-nostr-v2
+    status: active
+    priority: low
+    notes: Onboarding tool, supports gifting accounts to new users
+
 # =============================================================================
 # SIGNING & KEY MANAGEMENT
 # =============================================================================
@@ -758,12 +816,16 @@ signers:
 
   - name: Frostr
     description: Threshold signing protocol for Nostr - splits keys across devices
-    platforms: [cli, browser, desktop]
+    platforms: [ios, android, desktop, browser]
     repo: https://github.com/FROSTR-ORG/igloo-desktop
+    repos:
+      ios: https://github.com/FROSTR-ORG/igloo-ios-prototype
+      android: https://github.com/FROSTR-ORG/igloo-android
+      browser: https://github.com/FROSTR-ORG/frost2x
     website: https://frostr.org
-    status: beta
+    status: active
     priority: high
-    notes: OpenSats grant recipient, multi-device identity management via FROST
+    notes: OpenSats grant recipient, FROST threshold signatures, NIP-55 Android signer
 
   - name: Pokey
     description: Real-time notification tool for Nostr events with Amber integration
@@ -1529,6 +1591,13 @@ other:
     status: beta
     priority: low
     notes: SEC-05 project
+
+  - name: Ridestr
+    description: Decentralized rideshare coordination on Nostr
+    repo: https://github.com/variablefate/ridestr
+    status: beta
+    priority: medium
+    notes: P2P ridesharing without centralized platforms
 
 # =============================================================================
 # RELATED PROTOCOLS
