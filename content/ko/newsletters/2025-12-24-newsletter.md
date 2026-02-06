@@ -120,7 +120,7 @@ Nostr Compass에 다시 오신 것을 환영합니다. Nostr 프로토콜 생태
 
 ## 릴리스 {#releases}
 
-**Zeus v0.12.0** - 지난주의 [NWC 병렬 결제 지원](/ko/newsletters/2025-12-17-newsletter/#zeus)을 바탕으로, Lightning 지갑의 [주요 릴리스](https://github.com/ZeusLN/zeus/releases/tag/v0.12.0)가 커스텀 릴레이 지원과 예산 추적이 포함된 완전한 [NIP-47](/ko/topics/nip-47/) Nostr Wallet Connect 서비스를 제공합니다. [예산 리로드 수정](https://github.com/ZeusLN/zeus/pull/3455)으로 연결이 현재 제한을 사용하도록 보장합니다. [Lightning 주소 복사](https://github.com/ZeusLN/zeus/pull/3460)가 더 이상 `lightning:` 접두사를 포함하지 않아 Nostr 프로필 필드에 붙여넣기 문제를 수정합니다.
+**Zeus v0.12.0** - 지난주의 [NWC 병렬 결제 지원](/ko/newsletters/2025-12-17-newsletter/#zeus-lightning-wallet)을 바탕으로, Lightning 지갑의 [주요 릴리스](https://github.com/ZeusLN/zeus/releases/tag/v0.12.0)가 커스텀 릴레이 지원과 예산 추적이 포함된 완전한 [NIP-47](/ko/topics/nip-47/) Nostr Wallet Connect 서비스를 제공합니다. [예산 리로드 수정](https://github.com/ZeusLN/zeus/pull/3455)으로 연결이 현재 제한을 사용하도록 보장합니다. [Lightning 주소 복사](https://github.com/ZeusLN/zeus/pull/3460)가 더 이상 `lightning:` 접두사를 포함하지 않아 Nostr 프로필 필드에 붙여넣기 문제를 수정합니다.
 
 **Amber v4.0.6** - Android [NIP-55](/ko/topics/nip-55/) 서명자가 서명 작업에 [성능 캐싱을 추가](https://github.com/greenart7c3/Amber/releases/tag/v4.0.6)하고 잘못된 콘텐츠 복호화 시 오류 처리를 개선했습니다. 릴레이 연결 이벤트에 대한 재시도 로직으로 연결 신뢰성이 향상되었고, 여러 충돌 수정이 잘못된 `nostrconnect://` URI와 권한 화면 상호작용에 관한 엣지 케이스를 해결합니다.
 

@@ -94,7 +94,7 @@ Der `root` Marker zeigt auf die ursprüngliche Notiz, die den Thread gestartet h
 
 ## Releases {#releases}
 
-**Zeus v0.12.0** - Aufbauend auf der [NWC parallelen Zahlungsunterstützung der letzten Woche](/de/newsletters/2025-12-17-newsletter/#zeus) liefert das [Major Release](https://github.com/ZeusLN/zeus/releases/tag/v0.12.0) der Lightning-Wallet einen vollständigen [NIP-47](/de/topics/nip-47/) Nostr Wallet Connect Service mit benutzerdefinierter Relay-Unterstützung und Budget-Tracking.
+**Zeus v0.12.0** - Aufbauend auf der [NWC parallelen Zahlungsunterstützung der letzten Woche](/de/newsletters/2025-12-17-newsletter/#zeus-lightning-wallet) liefert das [Major Release](https://github.com/ZeusLN/zeus/releases/tag/v0.12.0) der Lightning-Wallet einen vollständigen [NIP-47](/de/topics/nip-47/) Nostr Wallet Connect Service mit benutzerdefinierter Relay-Unterstützung und Budget-Tracking.
 
 **Amber v4.0.6** - Der Android [NIP-55](/de/topics/nip-55/) Signer [fügt Performance-Caching](https://github.com/greenart7c3/Amber/releases/tag/v4.0.6) zu Signing-Operationen hinzu.
 

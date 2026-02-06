@@ -37,7 +37,7 @@ hodlbodが開発した[Pomade](https://github.com/coracle-social/pomade)は、�
 
 ### Damusが信頼性の高いDM同期のためにNegentropyを実装
 
-[Damus v1.13](https://github.com/damus-io/damus/releases/tag/v1.13-6)は、[先週オープンPRとしてプレビューした](/ja/newsletters/2026-01-21-newsletter/#damus-ios-client---open-prs)negentropy実装を出荷しました。[PR #3536](https://github.com/damus-io/damus/pull/3536)はネットワーキングレイヤーに基本的な[negentropy](/ja/topics/negentropy/)サポートを追加し、プロトコルをサポートするリレーとの集合調整を可能にします。コンパニオン[PR #3547](https://github.com/damus-io/damus/pull/3547)は、標準的なREQサブスクリプションが失敗したときにnegentropyを使用して欠落メッセージを回復するプルトゥリフレッシュDM同期を追加します。
+[Damus v1.13](https://github.com/damus-io/damus/tree/v1.13)は、[先週オープンPRとしてプレビューした](/ja/newsletters/2026-01-21-newsletter/#damus-ios-client---open-prs)negentropy実装を出荷しました。[PR #3536](https://github.com/damus-io/damus/pull/3536)はネットワーキングレイヤーに基本的な[negentropy](/ja/topics/negentropy/)サポートを追加し、プロトコルをサポートするリレーとの集合調整を可能にします。コンパニオン[PR #3547](https://github.com/damus-io/damus/pull/3547)は、標準的なREQサブスクリプションが失敗したときにnegentropyを使用して欠落メッセージを回復するプルトゥリフレッシュDM同期を追加します。
 
 実装は保守的なアプローチに従います：通常のDM読み込みは変更されず、ユーザーが手動でリフレッシュしたときにリカバリーメカニズムとして[negentropy](/ja/topics/negentropy/)が利用可能になります。自動テストは、標準クエリでは見逃される古いタイムスタンプを持つDMを生成し、[negentropy](/ja/topics/negentropy/)同期を使用して正常に取得することで修正を実証します。[negentropy](/ja/topics/negentropy/)サポートには互換性のあるリレーが必要ですが、実装は利用可能な場所でプロトコルを使用することで、混合リレー環境を適切に処理します。
 
@@ -99,21 +99,23 @@ TypeScript SDK（[marmot-ts](https://github.com/marmot-protocol/marmot-ts)）は
 
 ショートフォームビデオアプリ[diVine](https://github.com/divinevideo/divine-mobile)は、急速なNostr統合を継続しています。
 
-最近のマージには[NIP-46](/ja/topics/nip-46/) QRコード認証（[PR #1019](https://github.com/divinevideo/divine-mobile/pull/1019)）と[NIP-17](/ja/topics/nip-17/)暗号化ダイレクトメッセージング（[PR #834](https://github.com/divinevideo/divine-mobile/pull/834)）が含まれます。今週の活動は、`nostr:` URIと@メンションをクリック可能なプロファイルリンクに変換する[メンションサポート](https://github.com/divinevideo/divine-mobile/pull/1098)、Nostrプロファイルを使用した[Classic Vinersアバターフォールバック](https://github.com/divinevideo/divine-mobile/pull/1097)、[描画](https://github.com/divinevideo/divine-mobile/pull/1056)、[フィルター](https://github.com/divinevideo/divine-mobile/pull/1053)、[ステッカー](https://github.com/divinevideo/divine-mobile/pull/1050)を含むビデオ編集ツールに焦点を当てました。
+オープンPRには[NIP-46](/ja/topics/nip-46/) QRコード認証（[PR #1019](https://github.com/divinevideo/divine-mobile/pull/1019)）と[NIP-17](/ja/topics/nip-17/)暗号化ダイレクトメッセージング（[PR #834](https://github.com/divinevideo/divine-mobile/pull/834)）が含まれます。今週の活動は、`nostr:` URIと@メンションをクリック可能なプロファイルリンクに変換する[メンションサポート](https://github.com/divinevideo/divine-mobile/pull/1098)、Nostrプロファイルを使用した[Classic Vinersアバターフォールバック](https://github.com/divinevideo/divine-mobile/pull/1097)、[描画](https://github.com/divinevideo/divine-mobile/pull/1056)、[フィルター](https://github.com/divinevideo/divine-mobile/pull/1053)、[ステッカー](https://github.com/divinevideo/divine-mobile/pull/1050)を含むビデオ編集ツールに焦点を当てました。
 
 ## NIPアップデート
 
 [NIPsリポジトリ](https://github.com/nostr-protocol/nips)への最近の変更：
 
-**オープンPRとディスカッション：**
+**マージ済み：**
 
-- **[Trusted Relay Assertions](https://github.com/nostr-protocol/nips/pull/1534)** - [先週カバーした](/ja/newsletters/2026-01-21-newsletter/#nip-updates)リレー信頼スコアリングを標準化するドラフト提案は議論が続いています。核心的な議論は、信頼スコアが「グローバル」（すべてのユーザーに対して一度計算される）であるべきか「パーソナライズ」（各観察者のソーシャルグラフに相対的）であるべきかに集中しています。[nostr.bandのTrust Rank](https://trust.nostr.band/)や[GrapeRank](https://github.com/Pretty-Good-Freedom-Tech/graperank-nodejs)のようなPageRankスタイルのアルゴリズムは、偽アカウントを通じて渡されるランクをボットファームのサイズで割ることでシビル攻撃に抵抗します。批評家は、真にパーソナライズされたスコアはより正確だが、ユーザーごとに高価な計算が必要だと主張します。議論では、オンデマンドスコアリング用のDVMを使用するか、クライアントがキャッシュできる事前計算されたkind 30382アテステーションイベントを使用するかについても探求しています。
+- **[Trusted Relay Assertions](https://github.com/nostr-protocol/nips/pull/1534)** - [先週カバーした](/ja/newsletters/2026-01-21-newsletter/#nip-updates)リレー信頼スコアリングを標準化する提案がマージされました。仕様は、信頼性、品質、アクセシビリティにわたるスコアリングを持つリレー信頼アサーション用のkind 30385イベントを定義します。マージに至る議論は、信頼スコアが「グローバル」（すべてのユーザーに対して一度計算される）であるべきか「パーソナライズ」（各観察者のソーシャルグラフに相対的）であるべきかに集中しました。[nostr.bandのTrust Rank](https://trust.nostr.band/)や[GrapeRank](https://github.com/Pretty-Good-Freedom-Tech/graperank-nodejs)のようなPageRankスタイルのアルゴリズムは、偽アカウントを通じて渡されるランクをボットファームのサイズで割ることでシビル攻撃に抵抗します。
+
+**オープンPRとディスカッション：**
 
 - **Communikeys** - リレーベースのアプローチの代わりに、既存のnpubをコミュニティ識別子として使用するコミュニティ管理のための[包括的な提案](https://nostrhub.io)。任意のnpubがkind 10222イベントを公開することでコミュニティになることができ、出版物はkind 30222イベントを介してコミュニティをターゲットにします。アクセス制御は[NIP-58](/ja/topics/nip-58/)バッジを使用し、コミュニティキーのコールドストレージによる委任されたメンバーシップ管理を可能にします。
 
-- **[NIP-CF: Changes Feed](https://njump.me/nevent1qqsyxrrdu09yktr7x5cqqrcj9v2hrqqqefem6f3stkrzwf8anr236sgcpzfmhxue69uhkummnw3ezu7nzvshxwec4wa0qn)** - タイムスタンプベースの`since`フィルターの代替として、シーケンスベースのイベント同期を提案するドラフト。問題：`since`タイムスタンプを使用した標準的なNostr同期は、複数のイベントが同じ秒精度のタイムスタンプを共有する場合、クライアントとリレーのクロックがずれる場合、またはチェックポイントが不正確な場合にイベントを見逃す可能性があります。NIP-CFは、リレーが保存されたイベントに単調増加するシーケンス番号を割り当てることでこれを解決し、厳密な全順序を提供します。クライアントは特定のシーケンス番号以降の変更をリクエストし、保証された順序でイベントを受信し、イベントを見逃さない正確なチェックポイントを提供します。この提案は、初期同期後にサブスクリプションがリアルタイム更新のためにオープンのままになるライブ/継続モードもサポートします。
+- **[NIP-CF: Changes Feed](https://github.com/nostr-protocol/nips/pull/2196)** - タイムスタンプベースの`since`フィルターの代替として、シーケンスベースのイベント同期を提案するドラフト。問題：`since`タイムスタンプを使用した標準的なNostr同期は、複数のイベントが同じ秒精度のタイムスタンプを共有する場合、クライアントとリレーのクロックがずれる場合、またはチェックポイントが不正確な場合にイベントを見逃す可能性があります。NIP-CFは、リレーが保存されたイベントに単調増加するシーケンス番号を割り当てることでこれを解決し、厳密な全順序を提供します。クライアントは特定のシーケンス番号以降の変更をリクエストし、保証された順序でイベントを受信し、イベントを見逃さない正確なチェックポイントを提供します。この提案は、初期同期後にサブスクリプションがリアルタイム更新のためにオープンのままになるライブ/継続モードもサポートします。
 
-- **[NIP-XX: Encrypted File Sync](https://njump.me/nevent1qqsr98tvcy7c4y5w03rd6cdujq9dpdt75uzv4kmkgpdlq7ggdmzptrqcpzfmhxue69uhkummnw3ezu7nzvshxwec4wa0qn)** - Nostrリレーを使用してデバイス間で暗号化コンテンツを同期するためのkind 30800（暗号化ファイル）、30801（ボールトインデックス）、30802（共有ドキュメント）を定義するプロトコル。このプロトコルにより、ローカルファーストのノートテイキングアプリは、集中サーバーなしでエンドツーエンド暗号化同期を提供できます。ファイルの内容、パス、名前、フォルダ構造はすべて[NIP-44](/ja/topics/nip-44/)セルフ暗号化を使用して暗号化されるため、リレーは読み取れないブロブを保存します。画像のようなバイナリ添付ファイルは、クライアントサイド暗号化を使用して[Blossom](/ja/topics/blossom/)サーバーを使用します。Kind 30802は、受信者の公開鍵に暗号化することで、ユーザー間のドキュメント共有を可能にします。
+- **[NIP-XX: Encrypted File Sync](https://github.com/nostr-protocol/nips/pull/1947)** - Nostrリレーを使用してデバイス間で暗号化コンテンツを同期するためのkind 30800（暗号化ファイル）、30801（ボールトインデックス）、30802（共有ドキュメント）を定義するプロトコル。このプロトコルにより、ローカルファーストのノートテイキングアプリは、集中サーバーなしでエンドツーエンド暗号化同期を提供できます。ファイルの内容、パス、名前、フォルダ構造はすべて[NIP-44](/ja/topics/nip-44/)セルフ暗号化を使用して暗号化されるため、リレーは読み取れないブロブを保存します。画像のようなバイナリ添付ファイルは、クライアントサイド暗号化を使用して[Blossom](/ja/topics/blossom/)サーバーを使用します。Kind 30802は、受信者の公開鍵に暗号化することで、ユーザー間のドキュメント共有を可能にします。
 
 ## Nostrの5年間の1月の歴史
 
@@ -133,7 +135,7 @@ HNの投稿は新しい実装の波を引き起こしました。Uncle Bob自身
 
 ### 2023年1月：ブレイクアウト
 
-2023年1月はNostrを実験から運動へと変貌させました。William Casarin（jb55）によるiOSクライアントDamusは、AppleのApp Store承認プロセスと戦いました。1月1日に拒否され、1月26日に再度拒否され、[1月31日についに承認されました](https://www.coindesk.com/tech/2023/02/01/decentralized-social-media-project-nostrs-damus-gets-listed-on-apple-app-store)。その承認は連鎖反応を引き起こしました：Damusはすぐに米国のソーシャルネットワーキングで#10に達しました。Jack Dorseyはそれを「オープンプロトコルのマイルストーン」と[呼びました](https://www.theblock.co/post/207448/nostr-based-decentralized-twitter-alternative-damus-goes-live-on-apple-app-store)。
+2023年1月はNostrを実験から運動へと変貌させました。William Casarin（jb55）によるiOSクライアントDamusは、AppleのApp Store承認プロセスと戦いました。1月1日に拒否され、1月26日に再度拒否され、[1月31日についに承認されました](https://www.coindesk.com/tech/2023/02/01/decentralized-social-media-project-nostrs-damus-gets-listed-on-apple-app-store)。その承認は連鎖反応を引き起こしました：Damusはすぐに米国のソーシャルネットワーキングで#10に達しました。Jack Dorseyはそれを「オープンプロトコルのマイルストーン」と[呼びました](https://web.archive.org/web/20240304043638/https://www.theblock.co/post/207448/nostr-based-decentralized-twitter-alternative-damus-goes-live-on-apple-app-store)。
 
 その8日前の1月23日、[Edward SnowdenがNostr上での存在を発表しました](https://x.com/Snowden/status/1617623779626352640)：「Nostrのクールなことの一つは...検閲耐性を超えて、280文字に制限されないことです。」NSA内部告発者からの彼の支持はプライバシー意識の高いサークルで重みを持ち、ユーザーはすぐにLightningを通じて彼にsatsをzapし始めました。
 

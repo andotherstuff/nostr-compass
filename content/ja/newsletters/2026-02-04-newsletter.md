@@ -31,7 +31,7 @@ Nostr Compassへようこそ。Nostrの週刊ガイドです。
 
 ### Pod21：分散型3Dプリントネットワーク
 
-[Pod21](https://pod21.com)はNostrをマーケットプレイス調整に使用して、3Dプリンターオペレーターとバイヤーを接続します。プラットフォームには[NIP-17 (プライベートダイレクトメッセージ)](/ja/topics/nip-17/)互換のDMボットが含まれており、マーケットプレイスのやり取りを処理し、バイヤーがプリントをリクエストし、暗号化されたダイレクトメッセージを通じてメーカーと交渉できます。
+[Pod21](https://github.com/gobrrrme/Pod21) ([pod21.com](https://pod21.com))はNostrをマーケットプレイス調整に使用して、3Dプリンターオペレーターとバイヤーを接続します。プラットフォームには[NIP-17 (プライベートダイレクトメッセージ)](/ja/topics/nip-17/)互換のDMボットが含まれており、マーケットプレイスのやり取りを処理し、バイヤーがプリントをリクエストし、暗号化されたダイレクトメッセージを通じてメーカーと交渉できます。
 
 メーカーはプリント容量と機能をリストし、バイヤーはリストを閲覧してボットを通じて注文を開始します。アーキテクチャは他のNostrコマースアプリケーションと同様のパターンに従います：リレーベースの発見、注文調整のための暗号化メッセージング、決済のためのLightning。Pod21はRidestrやShopstrと共に、プロトコルを通じて現実世界の取引を調整するNostrアプリケーションに加わります。
 
@@ -101,7 +101,7 @@ rabbleのショートフォームループビデオクライアント[diVine](ht
 
 ### Frostr Igloo iOS TestFlight
 
-[Frostr](https://frostr.org/)は[Igloo for iOS](https://github.com/FROSTR-ORG/igloo-ios-prototype)を[TestFlight](https://testflight.apple.com/join/72hjQe3J)でローンチし、閾値署名をAppleデバイスに拡張。FrostrはFROST（Flexible Round-Optimized Schnorr Threshold）署名を使用してnsec鍵をデバイス間に分散されたシェアに分割し、フォールトトレランスを持つk-of-n署名を可能にします。「デモモード」で参加するユーザーはライブ2-of-2閾値署名実験に参加し、プロトコルのリアルタイム調整機能を実演します。iOSリリースは12月に[NIP-55 (Android署名者)](/ja/topics/nip-55/)サポート付きでクロスアプリ署名リクエスト向けに出荷された[Igloo for Android](https://github.com/FROSTR-ORG/igloo-android)（v0.1.2）に加わります。両モバイルクライアントは[Iglooデスクトップ](https://github.com/FROSTR-ORG/igloo-desktop)と[Frost2x](https://github.com/FROSTR-ORG/frost2x)ブラウザ拡張を補完します。
+[Frostr](https://github.com/FROSTR-ORG) ([frostr.org](https://frostr.org/))は[Igloo for iOS](https://github.com/FROSTR-ORG/igloo-ios)を[TestFlight](https://testflight.apple.com/join/72hjQe3J)でローンチし、閾値署名をAppleデバイスに拡張。FrostrはFROST（Flexible Round-Optimized Schnorr Threshold）署名を使用してnsec鍵をデバイス間に分散されたシェアに分割し、フォールトトレランスを持つk-of-n署名を可能にします。「デモモード」で参加するユーザーはライブ2-of-2閾値署名実験に参加し、プロトコルのリアルタイム調整機能を実演します。iOSリリースは12月に[NIP-55 (Android署名者)](/ja/topics/nip-55/)サポート付きでクロスアプリ署名リクエスト向けに出荷された[Igloo for Android](https://github.com/FROSTR-ORG/igloo-android)（v0.1.2）に加わります。両モバイルクライアントは[Iglooデスクトップ](https://github.com/FROSTR-ORG/igloo-desktop)と[Frost2x](https://github.com/FROSTR-ORG/frost2x)ブラウザ拡張を補完します。
 
 ## プロジェクトアップデート
 
@@ -157,11 +157,11 @@ hodlbodの[NIP-29 (リレーベースグループ)](/ja/topics/nip-29/)コミュ
 
 ### Formstr
 
-Nostrネイティブフォームアプリケーション[Formstr](https://github.com/abh3po/nostr-forms)は[PR #422](https://github.com/abh3po/nostr-forms/pull/422)でフォームインポートと暗号化フォームサポートを追加。ユーザーはJSONまたは他のFormstrインスタンスから既存のフォームをインポートできるようになりました。暗号化機能により、フォーム作成者は指定された受信者のみが提出を読めるように応答を制限でき、機密情報を収集するアンケートに便利。
+Nostrネイティブフォームアプリケーション[Formstr](https://github.com/abh3po/nostr-forms)は[PR #422](https://github.com/abh3po/nostr-forms/pull/422)でフォームインポートと暗号化フォームサポートを追加。ユーザーはレスポンスリンクを通じてまたは他のFormstrインスタンスから既存のフォームをインポートできるようになりました。暗号化機能により、フォーム作成者は指定された受信者のみが提出を読めるように応答を制限でき、機密情報を収集するアンケートに便利。
 
 ### Pollerama
 
-[nostr-polls](https://github.com/abh3po/nostr-polls)ライブラリ上に構築された[Pollerama](https://pollerama.fun)は[PR #141](https://github.com/abh3po/nostr-polls/pull/141)と[PR #142](https://github.com/abh3po/nostr-polls/pull/142)を通じて投票用の[NIP-17](/ja/topics/nip-17/) DM共有を追加。ユーザーは暗号化ダイレクトメッセージを通じて連絡先に投票を直接共有できるようになりました。
+[nostr-tools](https://github.com/nbd-wtf/nostr-tools)上に構築された[Pollerama](https://github.com/abh3po/nostr-polls) ([pollerama.fun](https://pollerama.fun))は[PR #141](https://github.com/abh3po/nostr-polls/pull/141)と[PR #142](https://github.com/abh3po/nostr-polls/pull/142)を通じて投票用の[NIP-17](/ja/topics/nip-17/) DM共有を追加。ユーザーは暗号化ダイレクトメッセージを通じて連絡先に投票を直接共有できるようになりました。
 
 ### Nostrability Schemata
 
@@ -171,7 +171,7 @@ Nostrイベント用のJSON検証スキーマコレクション[Nostrability sch
 
 [NIP-17](/ja/topics/nip-17/)、[NIP-44](/ja/topics/nip-44/)、[NIP-59](/ja/topics/nip-59/)をゼロメタデータ暗号化に使用するプライバシー重視のデスクトップメッセンジャー[Vector](https://github.com/VectorPrivacy/Vector)は、SIMDアクセラレーションパフォーマンス最適化を導入する[PR #39](https://github.com/VectorPrivacy/Vector/pull/39)をマージ。16進数エンコードは65倍高速化、画像プレビュー生成は最大38倍高速化、バイナリサーチインデックスによるメッセージルックアップは184倍高速化。PRはApple Silicon向けARM64 NEONイントリンシクスとWindowsおよびLinux向けランタイム検出付きx86_64 AVX2/SSE2を追加。メッセージ構造体を472から128バイトに削減し、インターニングによりnpubストレージを99.6%削減してメモリ使用量が低下。
 
-Vector v0.3.0（2025年12月）はMLSプロトコルベースのグループメッセージング用に[MDK (Marmot Development Kit)](https://github.com/marmot-protocol/mdk)を統合し、前方秘匿性を持つエンドツーエンド暗号化グループをクライアントにもたらしました。MIP-04ファイル共有はMLSグループ向けのimeta添付ファイルを処理し、[White Noise](/ja/newsletters/2026-01-28-newsletter/#marmot-typescript-sdk-adds-message-history)との相互運用性を考慮して設計。このリリースはWebXDCベースのP2Pマルチプレイヤーゲームを持つMini Appsプラットフォーム、The Nexusという分散型アプリストア、アプリ内支払い用PIVX ウォレット統合、完全な履歴追跡付きメッセージ編集、画像アップロード中の4倍メモリ削減も導入。
+Vector v0.3.0（2025年12月）はMLSプロトコルベースのグループメッセージング用に[MDK (Marmot Development Kit)](https://github.com/marmot-protocol/mdk)を統合し、前方秘匿性を持つエンドツーエンド暗号化グループをクライアントにもたらしました。MIP-04ファイル共有はMLSグループ向けのimeta添付ファイルを処理し、[White Noise](/ja/newsletters/2026-01-28-newsletter/#marmot-protocol-updates)との相互運用性を考慮して設計。このリリースはWebXDCベースのP2Pマルチプレイヤーゲームを持つMini Appsプラットフォーム、The Nexusという分散型アプリストア、アプリ内支払い用PIVX ウォレット統合、完全な履歴追跡付きメッセージ編集、画像アップロード中の4倍メモリ削減も導入。
 
 ## NIPアップデート
 
@@ -191,11 +191,11 @@ Vector v0.3.0（2025年12月）はMLSプロトコルベースのグループメ�
 
 - **[NIP-74：ポッドキャスト](https://github.com/nostr-protocol/nips/pull/2211)** - ポッドキャスト番組（kind 30074）とエピソード（kind 30075）用のアドレス可能イベントを定義。番組にはタイトル、説明、カテゴリ、カバー画像などのメタデータが含まれます。エピソードは親番組を参照し、エンクロージャURL、再生時間、チャプターマーカーを含みます。仕様はPodcasting 2.0メタデータ標準と統合し、Lightning経由のV4V（value-for-value）マネタイゼーション用のvalueタグを含みます。NostrネイティブポッドキャストパブリッシングプラットフォームのTRUSTed[transmit.fm](https://transmit.fm)のようなプラットフォームは、このフォーマットを使用してリレーに直接公開でき、ポッドキャスターが仲介者なしでコンテンツを配信可能に。
 
-- **[NIP-FR：フレンズオンリーノート](https://github.com/nostr-protocol/nips/pull/2207)** - 相互フォローにのみ表示されるノートを公開するメカニズムを提案。実装は[NIP-59 (Gift Wrap)](/ja/topics/nip-59/)を使用してコンテンツを暗号化：作成者は通常のノートを作成し、各相互フォローにgift-wrapしたコピーを作成。各受信者のコピーはNIP-44を使用して彼らのpubkeyに暗号化され、gift wrapメカニズムを通じて送信。受信者はノートが自分がフォローしている人から来たことを確認でき、非相互はコンテンツにアクセスできません。このアプローチは既存の暗号インフラストラクチャを再利用しながら、頻繁にリクエストされるプライバシー機能を実現。
+- **[NIP-FR：フレンズオンリーノート](https://github.com/nostr-protocol/nips/pull/2207)** - ViewKeyと呼ばれる共有対称鍵を使用して、ユーザー定義のフレンドリストにのみ表示されるノートを公開するメカニズムを提案。作成者はViewKeyを使用してNIP-44でノート（kind 2044）を暗号化します。ViewKey自体は[NIP-59 (Gift Wrap)](/ja/topics/nip-59/)を通じて各友人に一度だけ配布されます。ViewKeyを持つ友人はノートを復号して読むことができ、それ以外の全員は暗号文しか見えません。作成者が友人を削除すると、ViewKeyがローテーションされます：新しい鍵が生成され、gift wrapを通じて残りの全友人に再配布され、削除された友人が将来の投稿にアクセスできないことが保証されます。このアプローチはコンテンツ暗号化（対称、効率的）と鍵配布（非対称、友人ごと）を分離し、頻繁にリクエストされるプライバシー機能を実現しながらプロトコルを軽量に保ちます。
 
-- **[NIP-DB：ブラウザNostrイベントデータベースインターフェース](https://github.com/hzrd149/nostr-bucket)** - ローカルNostrイベントストレージを提供するブラウザ拡張用の標準`window.nostrdb`インターフェースを提案。APIにはイベント追加、IDまたはフィルタによるクエリ、マッチカウント、更新サブスクリプション用のメソッドが含まれます。Webアプリケーションはこのインターフェースを使用して、リレーリクエストなしでローカルキャッシュされたイベントから読み取り、帯域幅とレイテンシーを削減できます。hzrd149の[nostr-bucket](https://github.com/hzrd149/nostr-bucket)ブラウザ拡張がリファレンス実装を提供し、すべてのブラウザタブにインターフェースを注入。コンパニオン[ポリフィルライブラリ](https://github.com/hzrd149/window.nostrdb.js)は拡張なしの環境向けにIndexedDBを使用して同じAPIを実装。
+- **[NIP-DB：ブラウザNostrイベントデータベースインターフェース](https://nostrhub.io/e/1a451c1581888215ae5c311d36c8a7c7d9e5e81f1f4010de4afaf7fcbd553e90)** ([spec](https://github.com/hzrd149/nostr-bucket/blob/master/nip.md)) - ローカルNostrイベントストレージを提供するブラウザ拡張用の標準`window.nostrdb`インターフェースを提案。APIにはイベント追加、IDまたはフィルタによるクエリ、マッチカウント、更新サブスクリプション用のメソッドが含まれます。Webアプリケーションはこのインターフェースを使用して、リレーリクエストなしでローカルキャッシュされたイベントから読み取り、帯域幅とレイテンシーを削減できます。hzrd149の[nostr-bucket](https://github.com/hzrd149/nostr-bucket)ブラウザ拡張がリファレンス実装を提供し、すべてのブラウザタブにインターフェースを注入。コンパニオン[ポリフィルライブラリ](https://github.com/hzrd149/window.nostrdb.js)は拡張なしの環境向けにIndexedDBを使用して同じAPIを実装。
 
-- **[TRUSTed Filters](https://github.com/nostr-protocol/nips/pull/1534)** - vitorpamonaの[Trusted Assertions PR #1534](https://github.com/nostr-protocol/nips/pull/1534)を基に構築された、分散型コンテンツキュレーション用の5つの関連提案のスイート。コア仕様はTrust Provider Preferencesを宣言するためのkind 17570イベントを導入し、ユーザーはイベントフィルタリングとランキングでどのサービスを信頼するかを指定できます。信頼プロバイダーはクライアントがサブスクライブできるアサーション（kind 37571）、統計（kind 37572）、ランキング（kind 37573）を公開。システムはフィルタータイプと変換を指定するW/wタグ付きのプラグインアーキテクチャを使用。これにより、スパム検出、レピュテーションスコアリング、コンテンツランキングのような計算コストの高い操作を専用インフラストラクチャで実行しながら、ユーザーはどのプロバイダーを信頼するかの制御を維持できます。スイートにはフィルタープリセット、ユーザーランキング、信頼されたイベント、プラグイン定義用の個別仕様が含まれます。
+- **[TRUSTed Filters](https://nostrhub.io/e/237667820943d1c8bbe7ab7732623ae51b337f177776ece439d4a8be84708eb7)** - vitorpamonaの[マージされたTrusted Assertions PR #1534](https://github.com/nostr-protocol/nips/pull/1534)を基に構築された、分散型コンテンツキュレーション用の5つの関連提案のスイート。コア仕様はTrust Provider Preferencesを宣言するためのkind 17570イベントを導入し、ユーザーはイベントフィルタリングとランキングでどのサービスを信頼するかを指定できます。信頼プロバイダーはクライアントがサブスクライブできるアサーション（kind 37571）、統計（kind 37572）、ランキング（kind 37573）を公開。システムはフィルタータイプと変換を指定するW/wタグ付きのプラグインアーキテクチャを使用。これにより、スパム検出、レピュテーションスコアリング、コンテンツランキングのような計算コストの高い操作を専用インフラストラクチャで実行しながら、ユーザーはどのプロバイダーを信頼するかの制御を維持できます。スイートにはフィルタープリセット、ユーザーランキング、信頼されたイベント、プラグイン定義用の個別仕様が含まれます。
 
 - **[NIP-9a：プッシュ通知](https://github.com/nostr-protocol/nips/pull/2194)** - hodlbodがkind 30390登録イベントを使用するリレーベースのプッシュ通知の標準を提案。ユーザーは受信したいイベントのフィルターとwebhookコールバックURLを含む登録を作成。登録はリレーのpubkey（NIP-11の`self`フィールドから）に暗号化。一致するイベントが発生すると、リレーはイベントID（重複排除用のプレーンテキスト）とイベント自体（ユーザーにNIP-44暗号化）を含むコールバックにPOST。このアーキテクチャにより、リレーは通知をプッシュしながら、仲介プッシュサーバーからイベントコンテンツを保護できます。Flotillaの[PR #270](https://github.com/coracle-social/flotilla/pull/270)がこの標準を実装。
 
@@ -352,7 +352,7 @@ rumorは未署名であり、リレーに直接公開できません。sealは�
 
 **現在のアプリケーション：**
 
-[NIP-17 (プライベートダイレクトメッセージ)](/ja/topics/nip-17/)は暗号化DMにgift wrapを使用し、古いNIP-04スキームを置き換えます。提案されたNIP-FR（フレンズオンリーノート）は各相互フォローにノートをgift-wrap。NIP-9a（プッシュ通知）はgift wrap原則を使用して通知ペイロードを暗号化。
+[NIP-17 (プライベートダイレクトメッセージ)](/ja/topics/nip-17/)は暗号化DMにgift wrapを使用し、古いNIP-04スキームを置き換えます。提案されたNIP-FR（フレンド限定ノート）は、Gift Wrappingを使用してViewKeyを友人に配布し、友人はそれらの鍵で暗号化されたノートを復号します。NIP-9a（プッシュ通知）はgift wrap原則を使用して通知ペイロードを暗号化。
 
 **メタデータ保護：**
 
