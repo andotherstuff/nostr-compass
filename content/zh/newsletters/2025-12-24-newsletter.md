@@ -120,7 +120,7 @@ type: newsletters
 
 ## 版本发布 {#releases}
 
-**Zeus v0.12.0** - 在上周 [NWC 并行支付支持](/zh/newsletters/2025-12-17-newsletter/#zeus) 的基础上，闪电钱包的[重大版本](https://github.com/ZeusLN/zeus/releases/tag/v0.12.0)发布了完整的 [NIP-47](/zh/topics/nip-47/) Nostr Wallet Connect 服务，支持自定义中继和预算跟踪。[预算重新加载修复](https://github.com/ZeusLN/zeus/pull/3455)确保连接使用当前限制。[闪电地址复制](https://github.com/ZeusLN/zeus/pull/3460)不再包含 `lightning:` 前缀，修复了在 Nostr 个人资料字段中的粘贴问题。
+**Zeus v0.12.0** - 在上周 [NWC 并行支付支持](/zh/newsletters/2025-12-17-newsletter/#zeus-lightning-wallet) 的基础上，闪电钱包的[重大版本](https://github.com/ZeusLN/zeus/releases/tag/v0.12.0)发布了完整的 [NIP-47](/zh/topics/nip-47/) Nostr Wallet Connect 服务，支持自定义中继和预算跟踪。[预算重新加载修复](https://github.com/ZeusLN/zeus/pull/3455)确保连接使用当前限制。[闪电地址复制](https://github.com/ZeusLN/zeus/pull/3460)不再包含 `lightning:` 前缀，修复了在 Nostr 个人资料字段中的粘贴问题。
 
 **Amber v4.0.6** - Android [NIP-55](/zh/topics/nip-55/) 签名器[添加了签名操作的性能缓存](https://github.com/greenart7c3/Amber/releases/tag/v4.0.6)并改进了解密格式错误内容时的错误处理。连接可靠性通过中继连接事件的重试逻辑得到改善，多个崩溃修复解决了无效 `nostrconnect://` URI 和权限屏幕交互的边缘情况。
 

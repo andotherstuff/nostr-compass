@@ -31,7 +31,7 @@ type: newsletters
 
 ### Pod21：去中心化 3D 打印网络
 
-[Pod21](https://pod21.com) 使用 Nostr 进行市场协调，连接 3D 打印机运营商和买家。该平台包括一个兼容 [NIP-17 (私密直接消息)](/zh/topics/nip-17/) 的 DM 机器人来处理市场交互，允许买家通过加密直接消息请求打印和与制造商协商。
+[Pod21](https://github.com/gobrrrme/Pod21) ([pod21.com](https://pod21.com)) 使用 Nostr 进行市场协调，连接 3D 打印机运营商和买家。该平台包括一个兼容 [NIP-17 (私密直接消息)](/zh/topics/nip-17/) 的 DM 机器人来处理市场交互，允许买家通过加密直接消息请求打印和与制造商协商。
 
 制造商列出他们的打印能力和规格；买家浏览列表并通过机器人发起订单。该架构遵循与其他 Nostr 商务应用类似的模式：基于中继的发现、用于订单协调的加密消息，以及 Lightning 结算。Pod21 与 Ridestr 和 Shopstr 一起成为通过该协议协调现实世界交易的 Nostr 应用。
 
@@ -101,7 +101,7 @@ fiatjaf 的 [nak](https://github.com/fiatjaf/nak)（Nostr Army Knife）发布了
 
 ### Frostr Igloo iOS TestFlight
 
-[Frostr](https://frostr.org/) 在 [TestFlight](https://testflight.apple.com/join/72hjQe3J) 上推出了 [Igloo for iOS](https://github.com/FROSTR-ORG/igloo-ios-prototype)，将门限签名扩展到 Apple 设备。Frostr 使用 FROST（灵活的轮次优化 Schnorr 门限）签名将 nsec 密钥分割成分布在多个设备上的份额，实现具有容错能力的 k-of-n 签名。以「演示模式」加入的用户参与实时 2-of-2 门限签名实验，展示协议的实时协调能力。iOS 版本加入了 [Igloo for Android](https://github.com/FROSTR-ORG/igloo-android)（v0.1.2），后者于 12 月发布，支持 [NIP-55 (Android 签名器)](/zh/topics/nip-55/) 用于跨应用签名请求。两个移动客户端补充了 [Igloo desktop](https://github.com/FROSTR-ORG/igloo-desktop) 和 [Frost2x](https://github.com/FROSTR-ORG/frost2x) 浏览器扩展。
+[Frostr](https://github.com/FROSTR-ORG) ([frostr.org](https://frostr.org/)) 在 [TestFlight](https://testflight.apple.com/join/72hjQe3J) 上推出了 [Igloo for iOS](https://github.com/FROSTR-ORG/igloo-ios)，将门限签名扩展到 Apple 设备。Frostr 使用 FROST（灵活的轮次优化 Schnorr 门限）签名将 nsec 密钥分割成分布在多个设备上的份额，实现具有容错能力的 k-of-n 签名。以「演示模式」加入的用户参与实时 2-of-2 门限签名实验，展示协议的实时协调能力。iOS 版本加入了 [Igloo for Android](https://github.com/FROSTR-ORG/igloo-android)（v0.1.2），后者于 12 月发布，支持 [NIP-55 (Android 签名器)](/zh/topics/nip-55/) 用于跨应用签名请求。两个移动客户端补充了 [Igloo desktop](https://github.com/FROSTR-ORG/igloo-desktop) 和 [Frost2x](https://github.com/FROSTR-ORG/frost2x) 浏览器扩展。
 
 ## 项目更新
 
@@ -157,11 +157,11 @@ fiatjaf 的 [nak](https://github.com/fiatjaf/nak)（Nostr Army Knife）发布了
 
 ### Formstr
 
-[Formstr](https://github.com/abh3po/nostr-forms)，Nostr 原生表单应用，在 [PR #422](https://github.com/abh3po/nostr-forms/pull/422) 中添加了表单导入和加密表单支持。用户现在可以从 JSON 或其他 Formstr 实例导入现有表单。加密功能允许表单创建者限制响应，只有指定的接收者才能阅读提交内容，对收集敏感信息的调查很有用。
+[Formstr](https://github.com/abh3po/nostr-forms)，Nostr 原生表单应用，在 [PR #422](https://github.com/abh3po/nostr-forms/pull/422) 中添加了表单导入和加密表单支持。用户现在可以通过响应链接或其他 Formstr 实例导入现有表单。加密功能允许表单创建者限制响应，只有指定的接收者才能阅读提交内容，对收集敏感信息的调查很有用。
 
 ### Pollerama
 
-[Pollerama](https://pollerama.fun)，基于 [nostr-polls](https://github.com/abh3po/nostr-polls) 库构建，通过 [PR #141](https://github.com/abh3po/nostr-polls/pull/141) 和 [PR #142](https://github.com/abh3po/nostr-polls/pull/142) 添加了 [NIP-17](/zh/topics/nip-17/) DM 分享投票功能。用户现在可以通过加密直接消息直接向联系人分享投票。
+[Pollerama](https://github.com/abh3po/nostr-polls) ([pollerama.fun](https://pollerama.fun))，基于 [nostr-tools](https://github.com/nbd-wtf/nostr-tools) 构建，通过 [PR #141](https://github.com/abh3po/nostr-polls/pull/141) 和 [PR #142](https://github.com/abh3po/nostr-polls/pull/142) 添加了 [NIP-17](/zh/topics/nip-17/) DM 分享投票功能。用户现在可以通过加密直接消息直接向联系人分享投票。
 
 ### Nostrability Schemata
 
@@ -171,7 +171,7 @@ fiatjaf 的 [nak](https://github.com/fiatjaf/nak)（Nostr Army Knife）发布了
 
 [Vector](https://github.com/VectorPrivacy/Vector)，使用 [NIP-17](/zh/topics/nip-17/)、[NIP-44](/zh/topics/nip-44/) 和 [NIP-59](/zh/topics/nip-59/) 实现零元数据加密的隐私专注桌面消息应用，合并了 [PR #39](https://github.com/VectorPrivacy/Vector/pull/39)，引入了 SIMD 加速性能优化。十六进制编码快 65 倍，图像预览生成快达 38 倍，通过二进制搜索索引消息查找快 184 倍。该 PR 为 Apple Silicon 添加了 ARM64 NEON 内联函数，为 Windows 和 Linux 添加了带运行时检测的 x86_64 AVX2/SSE2。内存使用下降，消息结构从 472 字节减少到 128 字节，npub 存储通过驻留减少 99.6%。
 
-Vector v0.3.0（2025 年 12 月）集成了 [MDK (Marmot Development Kit)](https://github.com/marmot-protocol/mdk) 用于基于 MLS 协议的群组消息，为客户端带来了具有前向保密性的端到端加密群组。MIP-04 文件共享现在处理 MLS 群组的 imeta 附件，为与 [White Noise](/zh/newsletters/2026-01-28-newsletter/#marmot-typescript-sdk-adds-message-history) 的互操作性而设计。该版本还引入了带有基于 WebXDC 的 P2P 多人游戏的 Mini Apps 平台、名为 The Nexus 的去中心化应用商店、用于应用内支付的 PIVX 钱包集成、带完整历史跟踪的消息编辑，以及图像上传期间 4 倍内存减少。
+Vector v0.3.0（2025 年 12 月）集成了 [MDK (Marmot Development Kit)](https://github.com/marmot-protocol/mdk) 用于基于 MLS 协议的群组消息，为客户端带来了具有前向保密性的端到端加密群组。MIP-04 文件共享现在处理 MLS 群组的 imeta 附件，为与 [White Noise](/zh/newsletters/2026-01-28-newsletter/#marmot-protocol-updates) 的互操作性而设计。该版本还引入了带有基于 WebXDC 的 P2P 多人游戏的 Mini Apps 平台、名为 The Nexus 的去中心化应用商店、用于应用内支付的 PIVX 钱包集成、带完整历史跟踪的消息编辑，以及图像上传期间 4 倍内存减少。
 
 ## NIP 更新
 
@@ -191,11 +191,11 @@ Vector v0.3.0（2025 年 12 月）集成了 [MDK (Marmot Development Kit)](https
 
 - **[NIP-74：播客](https://github.com/nostr-protocol/nips/pull/2211)** - 定义播客节目（kind 30074）和剧集（kind 30075）的可寻址事件。节目包括标题、描述、类别和封面图像等元数据。剧集引用其父节目并包括封装 URL、时长和章节标记。该规范与 Podcasting 2.0 元数据标准集成，并包含用于通过 Lightning 实现 V4V（价值换价值）货币化的价值标签。像 [transmit.fm](https://transmit.fm) 这样的 Nostr 原生播客发布平台可以使用此格式直接发布到中继，使播客作者能够在没有中介的情况下分发内容。
 
-- **[NIP-FR：仅朋友可见笔记](https://github.com/nostr-protocol/nips/pull/2207)** - 提议一种发布仅对相互关注者可见的笔记的机制。实现使用 [NIP-59 (Gift Wrap)](/zh/topics/nip-59/) 加密内容：作者创建普通笔记，然后为每个相互关注者 gift-wrap 副本。每个接收者的副本使用 NIP-44 加密到其 pubkey 并通过 gift wrap 机制发送。接收者可以验证笔记来自他们关注的人，而非相互关注者无法访问内容。这种方法重用现有的加密基础设施，同时实现了频繁请求的隐私功能。
+- **[NIP-FR：仅朋友可见笔记](https://github.com/nostr-protocol/nips/pull/2207)** - 提议一种使用名为 ViewKey 的共享对称密钥发布仅对用户定义的朋友列表可见的笔记的机制。作者使用 NIP-44 用 ViewKey 加密笔记（kind 2044）。ViewKey 本身通过 [NIP-59 (Gift Wrap)](/zh/topics/nip-59/) 一次性分发给每个朋友。拥有 ViewKey 的朋友可以解密和阅读笔记；其他人只能看到密文。当作者移除一个朋友时，ViewKey 会进行轮换：生成新密钥并通过 gift wrap 重新分发给所有剩余朋友，确保被移除的朋友无法访问未来的帖子。这种方法将内容加密（对称，高效）与密钥分发（非对称，逐友）分离，保持协议轻量级的同时实现了频繁请求的隐私功能。
 
-- **[NIP-DB：浏览器 Nostr 事件数据库接口](https://github.com/hzrd149/nostr-bucket)** - 提议为提供本地 Nostr 事件存储的浏览器扩展提供标准的 `window.nostrdb` 接口。API 包括添加事件、按 ID 或过滤器查询、计数匹配和订阅更新的方法。Web 应用程序可以使用此接口从本地缓存的事件读取而无需发起中继请求，减少带宽和延迟。hzrd149 的 [nostr-bucket](https://github.com/hzrd149/nostr-bucket) 浏览器扩展提供了参考实现，将接口注入所有浏览器标签。配套的 [polyfill 库](https://github.com/hzrd149/window.nostrdb.js) 使用 IndexedDB 为没有扩展的环境实现相同的 API。
+- **[NIP-DB：浏览器 Nostr 事件数据库接口](https://nostrhub.io/e/1a451c1581888215ae5c311d36c8a7c7d9e5e81f1f4010de4afaf7fcbd553e90)** ([spec](https://github.com/hzrd149/nostr-bucket/blob/master/nip.md)) - 提议为提供本地 Nostr 事件存储的浏览器扩展提供标准的 `window.nostrdb` 接口。API 包括添加事件、按 ID 或过滤器查询、计数匹配和订阅更新的方法。Web 应用程序可以使用此接口从本地缓存的事件读取而无需发起中继请求，减少带宽和延迟。hzrd149 的 [nostr-bucket](https://github.com/hzrd149/nostr-bucket) 浏览器扩展提供了参考实现，将接口注入所有浏览器标签。配套的 [polyfill 库](https://github.com/hzrd149/window.nostrdb.js) 使用 IndexedDB 为没有扩展的环境实现相同的 API。
 
-- **[TRUSTed Filters](https://github.com/nostr-protocol/nips/pull/1534)** - 用于去中心化内容审核的五个相关提案套件，基于 vitorpamplona 的 [Trusted Assertions PR #1534](https://github.com/nostr-protocol/nips/pull/1534)。核心规范引入 kind 17570 事件用于声明信任提供者偏好，允许用户指定他们信任哪些服务进行事件过滤和排名。信任提供者发布断言（kind 37571）、统计（kind 37572）和排名（kind 37573），客户端可以订阅。该系统使用插件架构，通过 W/w 标签指定过滤器类型和转换。这使得垃圾检测、信誉评分和内容排名等计算密集型操作能够在专用基础设施上运行，同时用户保持对信任哪些提供者的控制。该套件包括过滤器预设、用户排名、可信事件和插件定义的单独规范。
+- **[TRUSTed Filters](https://nostrhub.io/e/237667820943d1c8bbe7ab7732623ae51b337f177776ece439d4a8be84708eb7)** - 用于去中心化内容审核的五个相关提案套件，基于 vitorpamplona 的已合并的 [Trusted Assertions PR #1534](https://github.com/nostr-protocol/nips/pull/1534)。核心规范引入 kind 17570 事件用于声明信任提供者偏好，允许用户指定他们信任哪些服务进行事件过滤和排名。信任提供者发布断言（kind 37571）、统计（kind 37572）和排名（kind 37573），客户端可以订阅。该系统使用插件架构，通过 W/w 标签指定过滤器类型和转换。这使得垃圾检测、信誉评分和内容排名等计算密集型操作能够在专用基础设施上运行，同时用户保持对信任哪些提供者的控制。该套件包括过滤器预设、用户排名、可信事件和插件定义的单独规范。
 
 - **[NIP-9a：推送通知](https://github.com/nostr-protocol/nips/pull/2194)** - hodlbod 提议使用 kind 30390 注册事件的基于中继的推送通知标准。用户创建一个包含他们想接收事件过滤器和 webhook 回调 URL 的注册。注册加密到中继的 pubkey（来自其 NIP-11 `self` 字段）。当匹配事件发生时，中继 POST 到回调，包含事件 ID（明文用于去重）和事件本身（NIP-44 加密到用户）。这种架构让中继推送通知同时保护事件内容免受中间推送服务器的影响。Flotilla 的 [PR #270](https://github.com/coracle-social/flotilla/pull/270) 实现了此标准。
 
@@ -352,7 +352,7 @@ Rumor 未签名，不能直接发布到中继。Seal 由真实作者签名，向
 
 **当前应用：**
 
-[NIP-17 (私密直接消息)](/zh/topics/nip-17/) 使用 gift wrap 进行加密 DM，取代了旧的 NIP-04 方案。提议的 NIP-FR（仅朋友可见笔记）将笔记 gift-wrap 给每个相互关注者。NIP-9a（推送通知）使用 gift wrap 原理加密通知负载。
+[NIP-17 (私密直接消息)](/zh/topics/nip-17/) 使用 gift wrap 进行加密 DM，取代了旧的 NIP-04 方案。提议的NIP-FR（仅朋友可见笔记）使用Gift Wrapping向朋友分发ViewKey，朋友随后使用这些密钥解密加密的笔记。NIP-9a（推送通知）使用 gift wrap 原理加密通知负载。
 
 **元数据保护：**
 

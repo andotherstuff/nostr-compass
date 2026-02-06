@@ -120,7 +120,7 @@ Sort results by `created_at` and use `reply` markers to build the tree structure
 
 ## Releases
 
-**Zeus v0.12.0** - Building on last week's [NWC parallel payments support](/en/newsletters/2025-12-17-newsletter/#zeus), the Lightning wallet's [major release](https://github.com/ZeusLN/zeus/releases/tag/v0.12.0) ships a complete [NIP-47](/en/topics/nip-47/) Nostr Wallet Connect service with custom relay support and budget tracking. A [budget reload fix](https://github.com/ZeusLN/zeus/pull/3455) ensures connections use current limits. [Lightning address copying](https://github.com/ZeusLN/zeus/pull/3460) no longer includes the `lightning:` prefix, fixing paste issues in Nostr profile fields.
+**Zeus v0.12.0** - Building on last week's [NWC parallel payments support](/en/newsletters/2025-12-17-newsletter/#zeus-lightning-wallet), the Lightning wallet's [major release](https://github.com/ZeusLN/zeus/releases/tag/v0.12.0) ships a complete [NIP-47](/en/topics/nip-47/) Nostr Wallet Connect service with custom relay support and budget tracking. A [budget reload fix](https://github.com/ZeusLN/zeus/pull/3455) ensures connections use current limits. [Lightning address copying](https://github.com/ZeusLN/zeus/pull/3460) no longer includes the `lightning:` prefix, fixing paste issues in Nostr profile fields.
 
 **Amber v4.0.6** - The Android [NIP-55](/en/topics/nip-55/) signer [adds performance caching](https://github.com/greenart7c3/Amber/releases/tag/v4.0.6) to signing operations and improves error handling when decrypting malformed content. Connection reliability improved with retry logic for relay connect events, and several crash fixes address edge cases around invalid `nostrconnect://` URIs and permission screen interactions.
 

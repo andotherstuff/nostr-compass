@@ -37,7 +37,7 @@ Ridestr 解决了大多数 Nostr 应用所回避的挑战：实时位置协调�
 
 ### Damus 发布 Negentropy 实现可靠的私信同步
 
-[Damus v1.13](https://github.com/damus-io/damus/releases/tag/v1.13-6) 发布了我们[上周作为开放 PR 预览](/zh/newsletters/2026-01-21-newsletter/#damus-ios-client---open-prs)的 negentropy 实现。[PR #3536](https://github.com/damus-io/damus/pull/3536) 向网络层添加了基础 [negentropy](/zh/topics/negentropy/) 支持，支持与支持该协议的中继进行集合协调。配套的 [PR #3547](https://github.com/damus-io/damus/pull/3547) 添加了下拉刷新私信同步功能，当标准 REQ 订阅失败时使用 negentropy 恢复丢失的消息。
+[Damus v1.13](https://github.com/damus-io/damus/tree/v1.13) 发布了我们[上周作为开放 PR 预览](/zh/newsletters/2026-01-21-newsletter/#damus-ios-client---open-prs)的 negentropy 实现。[PR #3536](https://github.com/damus-io/damus/pull/3536) 向网络层添加了基础 [negentropy](/zh/topics/negentropy/) 支持，支持与支持该协议的中继进行集合协调。配套的 [PR #3547](https://github.com/damus-io/damus/pull/3547) 添加了下拉刷新私信同步功能，当标准 REQ 订阅失败时使用 negentropy 恢复丢失的消息。
 
 该实现采用保守的方式：正常的私信加载保持不变，[negentropy](/zh/topics/negentropy/) 作为用户手动刷新时的恢复机制可用。自动化测试通过生成一条带有旧时间戳的私信来演示修复效果，标准查询会错过这条消息，然后使用 [negentropy](/zh/topics/negentropy/) 同步成功检索它。虽然 [negentropy](/zh/topics/negentropy/) 支持需要兼容的中继，但该实现能够优雅地处理混合中继环境，在可用时使用该协议。
 
@@ -99,21 +99,23 @@ TypeScript SDK（[marmot-ts](https://github.com/marmot-protocol/marmot-ts)）正
 
 [diVine](https://github.com/divinevideo/divine-mobile)，短视频应用，持续快速进行 Nostr 集成。
 
-最近的合并包括 [NIP-46](/zh/topics/nip-46/) 二维码身份验证（[PR #1019](https://github.com/divinevideo/divine-mobile/pull/1019)）和 [NIP-17](/zh/topics/nip-17/) 加密私信（[PR #834](https://github.com/divinevideo/divine-mobile/pull/834)）。本周的活动集中在[提及功能支持](https://github.com/divinevideo/divine-mobile/pull/1098)上，将 `nostr:` URI 和 @提及转换为可点击的个人资料链接，[Classic Viners 头像回退](https://github.com/divinevideo/divine-mobile/pull/1097)使用 Nostr 个人资料，以及视频编辑工具，包括[绘图](https://github.com/divinevideo/divine-mobile/pull/1056)、[滤镜](https://github.com/divinevideo/divine-mobile/pull/1053)和[贴纸](https://github.com/divinevideo/divine-mobile/pull/1050)。
+开放PR包括 [NIP-46](/zh/topics/nip-46/) 二维码身份验证（[PR #1019](https://github.com/divinevideo/divine-mobile/pull/1019)）和 [NIP-17](/zh/topics/nip-17/) 加密私信（[PR #834](https://github.com/divinevideo/divine-mobile/pull/834)）。本周的活动集中在[提及功能支持](https://github.com/divinevideo/divine-mobile/pull/1098)上，将 `nostr:` URI 和 @提及转换为可点击的个人资料链接，[Classic Viners 头像回退](https://github.com/divinevideo/divine-mobile/pull/1097)使用 Nostr 个人资料，以及视频编辑工具，包括[绘图](https://github.com/divinevideo/divine-mobile/pull/1056)、[滤镜](https://github.com/divinevideo/divine-mobile/pull/1053)和[贴纸](https://github.com/divinevideo/divine-mobile/pull/1050)。
 
 ## NIP 更新
 
 [NIPs 仓库](https://github.com/nostr-protocol/nips)的最新变更：
 
-**开放 PR 和讨论：**
+**已合并：**
 
-- **[可信中继声明](https://github.com/nostr-protocol/nips/pull/1534)** - 我们[上周报道](/zh/newsletters/2026-01-21-newsletter/#nip-updates)的中继信任评分标准化草案提案继续讨论。核心争论集中在信任评分应该是"全局的"（为所有用户计算一次）还是"个性化的"（相对于每个观察者的社交图谱）。像 [nostr.band 的 Trust Rank](https://trust.nostr.band/) 和 [GrapeRank](https://github.com/Pretty-Good-Freedom-Tech/graperank-nodejs) 这样的 PageRank 风格算法通过将通过假账户传递的任何排名除以机器人农场的规模来抵抗女巫攻击。批评者认为真正个性化的评分更准确，但需要昂贵的每用户计算。讨论还探讨了是使用 DVM 进行按需评分，还是使用客户端可以缓存的预计算 kind 30382 声明事件。
+- **[可信中继声明](https://github.com/nostr-protocol/nips/pull/1534)** - 我们[上周报道](/zh/newsletters/2026-01-21-newsletter/#nip-updates)的中继信任评分标准化提案已合并。规范定义了 kind 30385 事件用于中继信任声明，涵盖可靠性、质量和可访问性的评分。合并前的讨论集中在信任评分应该是"全局的"（为所有用户计算一次）还是"个性化的"（相对于每个观察者的社交图谱）。像 [nostr.band 的 Trust Rank](https://trust.nostr.band/) 和 [GrapeRank](https://github.com/Pretty-Good-Freedom-Tech/graperank-nodejs) 这样的 PageRank 风格算法通过将通过假账户传递的任何排名除以机器人农场的规模来抵抗女巫攻击。
+
+**开放 PR 和讨论：**
 
 - **Communikeys** - 一个[全面的社区管理提案](https://nostrhub.io)，使用现有的 npub 作为社区标识符，而不是基于中继的方法。任何 npub 都可以通过发布 kind 10222 事件成为社区；出版物通过 kind 30222 事件指向社区。访问控制使用 [NIP-58](/zh/topics/nip-58/) 徽章，支持委托成员管理和社区密钥的冷存储。
 
-- **[NIP-CF: Changes Feed](https://njump.me/nevent1qqsyxrrdu09yktr7x5cqqrcj9v2hrqqqefem6f3stkrzwf8anr236sgcpzfmhxue69uhkummnw3ezu7nzvshxwec4wa0qn)** - 一个草案，提出基于序列的事件同步作为基于时间戳的 `since` 过滤器的替代方案。问题在于：使用 `since` 时间戳的标准 Nostr 同步可能会错过事件，原因包括多个事件共享相同的秒级精度时间戳、客户端和中继时钟漂移，或检查点不精确。NIP-CF 通过让中继为存储的事件分配单调递增的序列号来解决这个问题，提供严格的全序。客户端请求自特定序列号以来的变更，并按保证的顺序接收事件，具有永不错过事件的精确检查点。该提案还支持实时/连续模式，订阅在初始同步后保持打开以进行实时更新。
+- **[NIP-CF: Changes Feed](https://github.com/nostr-protocol/nips/pull/2196)** - 一个草案，提出基于序列的事件同步作为基于时间戳的 `since` 过滤器的替代方案。问题在于：使用 `since` 时间戳的标准 Nostr 同步可能会错过事件，原因包括多个事件共享相同的秒级精度时间戳、客户端和中继时钟漂移，或检查点不精确。NIP-CF 通过让中继为存储的事件分配单调递增的序列号来解决这个问题，提供严格的全序。客户端请求自特定序列号以来的变更，并按保证的顺序接收事件，具有永不错过事件的精确检查点。该提案还支持实时/连续模式，订阅在初始同步后保持打开以进行实时更新。
 
-- **[NIP-XX: 加密文件同步](https://njump.me/nevent1qqsr98tvcy7c4y5w03rd6cdujq9dpdt75uzv4kmkgpdlq7ggdmzptrqcpzfmhxue69uhkummnw3ezu7nzvshxwec4wa0qn)** - 一个协议，定义了 kind 30800（加密文件）、30801（保险库索引）和 30802（共享文档），用于使用 Nostr 中继跨设备同步加密内容。该协议使本地优先的笔记应用能够提供端到端加密同步，而无需中心化服务器。文件内容、路径、名称和文件夹结构都使用 [NIP-44](/zh/topics/nip-44/) 自加密进行加密，因此中继存储的是它们无法读取的数据块。图像等二进制附件使用 [Blossom](/zh/topics/blossom/) 服务器进行客户端加密。Kind 30802 通过加密到接收者的公钥来实现用户之间的文档共享。
+- **[NIP-XX: 加密文件同步](https://github.com/nostr-protocol/nips/pull/1947)** - 一个协议，定义了 kind 30800（加密文件）、30801（保险库索引）和 30802（共享文档），用于使用 Nostr 中继跨设备同步加密内容。该协议使本地优先的笔记应用能够提供端到端加密同步，而无需中心化服务器。文件内容、路径、名称和文件夹结构都使用 [NIP-44](/zh/topics/nip-44/) 自加密进行加密，因此中继存储的是它们无法读取的数据块。图像等二进制附件使用 [Blossom](/zh/topics/blossom/) 服务器进行客户端加密。Kind 30802 通过加密到接收者的公钥来实现用户之间的文档共享。
 
 ## Nostr 五年来的一月
 
@@ -133,7 +135,7 @@ HN 帖子引发了一波新的实现。Uncle Bob 本人于 1 月 18 日开始开
 
 ### 2023 年 1 月：爆发
 
-2023 年 1 月将 Nostr 从实验变成了运动。Damus，William Casarin（jb55）开发的 iOS 客户端，经历了与苹果 App Store 审批流程的斗争。1 月 1 日被拒，1 月 26 日再次被拒，最终于 [1 月 31 日获批](https://www.coindesk.com/tech/2023/02/01/decentralized-social-media-project-nostrs-damus-gets-listed-on-apple-app-store)。该批准引发了连锁反应：Damus 立即登上美国社交网络排行榜第 10 名。Jack Dorsey [称其为](https://www.theblock.co/post/207448/nostr-based-decentralized-twitter-alternative-damus-goes-live-on-apple-app-store)"开放协议的里程碑。"
+2023 年 1 月将 Nostr 从实验变成了运动。Damus，William Casarin（jb55）开发的 iOS 客户端，经历了与苹果 App Store 审批流程的斗争。1 月 1 日被拒，1 月 26 日再次被拒，最终于 [1 月 31 日获批](https://www.coindesk.com/tech/2023/02/01/decentralized-social-media-project-nostrs-damus-gets-listed-on-apple-app-store)。该批准引发了连锁反应：Damus 立即登上美国社交网络排行榜第 10 名。Jack Dorsey [称其为](https://web.archive.org/web/20240304043638/https://www.theblock.co/post/207448/nostr-based-decentralized-twitter-alternative-damus-goes-live-on-apple-app-store)"开放协议的里程碑。"
 
 八天前的 1 月 23 日，[Edward Snowden 宣布](https://x.com/Snowden/status/1617623779626352640)他加入了 Nostr："Nostr 的酷炫之处之一……除了抗审查，就是你不受 280 字符的限制。"作为 NSA 揭发者的背书在注重隐私的圈子里颇具分量，用户们立即开始通过 Lightning 向他发送 zaps。
 
