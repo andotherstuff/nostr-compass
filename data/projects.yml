@@ -117,7 +117,7 @@ social_clients:
   - name: Coracle
     description: Flexible web client with custom feeds and relay management
     platforms: [web]
-    repo: https://github.com/coracle-social/coracle
+    repo: https://gitea.coracle.social/coracle/coracle
     website: https://coracle.social
     maintainer: staab
     status: active
@@ -373,7 +373,7 @@ messaging_clients:
   - name: Flotilla
     description: NIP-29 relay-based group chat
     platforms: [web]
-    repo: https://github.com/coracle-social/flotilla
+    repo: https://gitea.coracle.social/coracle/flotilla
     website: https://flotilla.social
     status: active
     priority: medium
@@ -401,6 +401,14 @@ messaging_clients:
     status: active
     priority: low
     notes: End-to-end encrypted messaging with ecash support
+
+  - name: Pika
+    description: E2E encrypted messaging using MLS protocol layered over Nostr relays
+    platforms: [ios, android]
+    repo: https://github.com/sledtools/pika
+    status: active
+    priority: medium
+    notes: Uses Marmot protocol for MLS group encryption on Nostr relays
 
   - name: nospeak
     description: Decentralized chat with NIP-17 E2E encryption and no metadata leakage
@@ -522,6 +530,14 @@ marketplaces:
     status: active
     priority: medium
     notes: Non-custodial exchange
+
+  - name: Mostro Mobile
+    description: Mobile client for Mostro P2P Bitcoin exchange
+    platforms: [android, ios]
+    repo: https://github.com/MostroP2P/mobile
+    status: active
+    priority: medium
+    notes: Flutter/Dart, NWC integration, multi-node support
 
   - name: SatShoot
     description: Freelancing platform on Nostr with Bitcoin payments
@@ -696,12 +712,38 @@ devtools:
     priority: medium
     notes: SEC-04 project, AI/MCP integration
 
+  - name: Nostr MCP Server
+    description: MCP server enabling AI agents to interact with the Nostr network
+    platforms: [cli]
+    repo: https://github.com/AustinKelsay/nostr-mcp-server
+    maintainer: AustinKelsay
+    status: active
+    priority: medium
+    notes: Social actions, relay management, NIP-17 DMs, NIP-65 relay lists
+
+  - name: Mostro Skill
+    description: MCP skill for trading on Mostro P2P exchange via Nostr
+    platforms: [cli]
+    repo: https://github.com/MostroP2P/mostro-skill
+    status: active
+    priority: low
+    notes: TypeScript, enables agents to interact with Mostro
+
   - name: SyncStr
     description: Web app for synchronizing Nostr profile data across relays
     platforms: [web]
     repo: https://github.com/derekross/syncstr
     status: active
     priority: low
+
+  - name: cuda_vanity
+    description: GPU-accelerated vanity npub generator using NVIDIA CUDA
+    platforms: [cli]
+    repo: https://github.com/v0l/cuda_vanity
+    maintainer: v0l
+    status: active
+    priority: low
+    notes: Generates vanity Nostr keypairs on GPU, secp256k1
 
   - name: rana
     description: Rust vanity key miner with difficulty customization
@@ -714,7 +756,7 @@ devtools:
   - name: Bucket
     description: Simple in-memory relay for testing (<100 LOC)
     platforms: [cli]
-    repo: https://github.com/coracle-social/bucket
+    repo: https://gitea.coracle.social/coracle/bucket
     status: active
     priority: low
     notes: By Coracle team, for development/testing
@@ -860,6 +902,14 @@ signers:
     status: active
     priority: medium
     notes: Multiple key management, bunker:// and nostrconnect://, Docker deployment
+
+  - name: Keep
+    description: FROST threshold signer for Android with NIP-55 and NIP-46 support
+    platforms: [android]
+    repo: https://github.com/privkeyio/keep-android
+    status: active
+    priority: medium
+    notes: No single device holds the complete private key, FROST threshold signing
 
   - name: keyNest
     description: Secure key management for Nostr and Bitcoin
@@ -1066,6 +1116,15 @@ libraries:
     status: active
     priority: medium
 
+  - name: SNSTR
+    description: TypeScript library for the Nostr protocol
+    language: javascript
+    repo: https://github.com/AustinKelsay/snstr
+    maintainer: AustinKelsay
+    status: active
+    priority: medium
+    notes: Secure Nostr Software Toolkit for Renegades
+
   - name: rx-nostr
     description: RxJS-based relay communication
     language: javascript
@@ -1122,6 +1181,15 @@ libraries:
     repo: https://github.com/holgern/pynostr
     status: active
     priority: low
+
+  - name: Granary
+    description: Social web translation library converting between Nostr, Bluesky, ActivityPub, and other formats
+    language: python
+    repo: https://github.com/snarfed/granary
+    maintainer: snarfed
+    status: active
+    priority: medium
+    notes: Multi-protocol bridging, NIP-27 mention parsing
 
   # --- Other ---
   - name: NostrKit
@@ -1633,6 +1701,39 @@ other:
     status: beta
     priority: low
     notes: SEC-05 project
+
+  - name: Mapnolia
+    description: Geospatial data server announcing map tile chunks over Nostr relays
+    platforms: [cli]
+    repo: https://github.com/zeSchlausKwab/mapnolia
+    status: active
+    priority: medium
+    notes: Kind 34444 events for decentralized map tile discovery via Blossom servers
+
+  - name: Morganite
+    description: Local Blossom cache application for Android
+    platforms: [android]
+    repo: https://github.com/greenart7c3/Morganite
+    maintainer: greenart7c3
+    status: active
+    priority: medium
+    notes: Offline access to Blossom media, client-side caching
+
+  - name: Aerith
+    description: Blossom image manager with labels, bulk operations, and local cache
+    platforms: [web]
+    repo: https://github.com/hardran3/Aerith
+    status: active
+    priority: medium
+    notes: Image labeling, bulk mirror/tag/delete, filter by label/type/server
+
+  - name: Prism
+    description: Android share target for publishing media and links to Nostr
+    platforms: [android]
+    repo: https://github.com/hardran3/Prism
+    status: active
+    priority: medium
+    notes: Scheduled posting, OpenGraph previews, Blossom integration, NIP-55 signer support
 
   - name: Ridestr
     description: Decentralized rideshare coordination on Nostr
