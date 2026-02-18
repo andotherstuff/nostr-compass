@@ -1,9 +1,11 @@
 ---
 title: "Trusted Relay Assertions"
 date: 2026-01-21
+translationOf: /en/topics/trusted-relay-assertions.md
+translationDate: 2026-02-18
 draft: false
 categories:
-  - Protokoll
+  - Protocol
   - Relays
 ---
 
@@ -33,6 +35,8 @@ Die Spezifikation ergänzt bestehende Relay-Entdeckungsmechanismen. [NIP-66](/de
 **Erwähnt in:**
 - [Newsletter #6: Nachrichten](/de/newsletters/2026-01-21-newsletter/#trusted-relay-assertions-a-new-approach-to-relay-trust)
 - [Newsletter #6: NIP-Updates](/de/newsletters/2026-01-21-newsletter/#nip-updates)
+- [Newsletter #10: NIP-Updates](/de/newsletters/2026-02-18-newsletter/#nip-updates)
+- [Newsletter #10: NIP Deep Dive](/de/newsletters/2026-02-18-newsletter/#nip-deep-dive-nip-85-trusted-assertions)
 
 **Siehe auch:**
 - [NIP-11: Relay-Informationsdokument](/de/topics/nip-11/)
