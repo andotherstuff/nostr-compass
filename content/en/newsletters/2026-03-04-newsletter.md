@@ -2,7 +2,7 @@
 title: 'Nostr Compass #12'
 date: 2026-03-04
 publishDate: 2026-03-04
-draft: true
+draft: false
 type: newsletters
 ---
 
