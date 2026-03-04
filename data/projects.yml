@@ -410,6 +410,22 @@ messaging_clients:
     priority: medium
     notes: Uses Marmot protocol for MLS group encryption on Nostr relays
 
+  - name: Wisp
+    description: Minimal messaging app using Marmot protocol for MLS-encrypted chat
+    platforms: [web]
+    repo: https://github.com/barrydeen/wisp
+    status: beta
+    priority: low
+    notes: Uses MDK for MLS over Nostr relays
+
+  - name: White Noise TUI
+    description: Terminal-based client for White Noise MLS-encrypted messaging
+    platforms: [cli]
+    repo: https://github.com/marmot-protocol/wn-tui
+    status: beta
+    priority: medium
+    notes: CLI client in whitenoise-rs repo ecosystem
+
   - name: nospeak
     description: Decentralized chat with NIP-17 E2E encryption and no metadata leakage
     platforms: [android]
@@ -612,6 +628,22 @@ devtools:
     status: active
     priority: low
     notes: NIP-17 DM sharing for polls
+
+  - name: Nostrability Outbox
+    description: Outbox model benchmark suite and test results across clients
+    platforms: [web]
+    repo: https://github.com/nostrability/outbox
+    status: active
+    priority: medium
+    notes: Benchmarks outbox model (NIP-65) implementation quality across clients
+
+  - name: NoorNote
+    description: Nostr-based note-taking application
+    platforms: [web]
+    repo: https://github.com/77elements/noornote
+    status: beta
+    priority: low
+    notes: New note-taking project on Nostr
 
   - name: Wikistr
     description: Wikipedia-like wiki client
@@ -1378,6 +1410,13 @@ other:
     priority: high
     notes: Stats, trending, spam filtering
 
+  - name: Pensieve
+    description: Archive-first Nostr indexer with ClickHouse analytics
+    repo: https://github.com/andotherstuff/pensieve
+    status: active
+    priority: medium
+    notes: Rust, notepack segments, NIP-65 relay discovery, relay quality tracking
+
   - name: Nostr.watch
     description: Relay monitoring and status
     platforms: [web]
@@ -1775,10 +1814,39 @@ protocols:
       typescript: https://github.com/marmot-protocol/marmot-ts
       whitenoise-backend: https://github.com/marmot-protocol/whitenoise-rs
       whitenoise-frontend: https://github.com/marmot-protocol/whitenoise
+      wn-tui: https://github.com/marmot-protocol/wn-tui
     maintainer: erskingardner
     status: beta
     priority: high
     notes: MLS (Messaging Layer Security) for Nostr, enables secure group messaging
+
+  - name: dotnet-mls
+    description: .NET implementation of the MLS protocol for Marmot
+    repo: https://github.com/DavidGershony/dotnet-mls
+    status: beta
+    priority: low
+    notes: C# MLS implementation, enables .NET ecosystem integration
+
+  - name: marmot-cs
+    description: C# implementation of the Marmot protocol
+    repo: https://github.com/DavidGershony/marmot-cs
+    status: beta
+    priority: low
+    notes: Marmot protocol port to .NET/C#
+
+  - name: OpenChat
+    description: Chat application built on dotnet-mls and marmot-cs
+    repo: https://github.com/DavidGershony/openChat
+    status: beta
+    priority: low
+    notes: .NET chat client using Marmot protocol over Nostr
+
+  - name: MDK PWA Reference
+    description: Progressive web app reference implementation for Marmot Development Kit
+    repo: https://github.com/zerosats/mdk-pwa-reference
+    status: beta
+    priority: medium
+    notes: Reference PWA for building MLS-encrypted apps with MDK
 
   - name: NIP-60/NIP-61
     description: Nostr ecash wallet protocol - store Cashu tokens on Nostr
