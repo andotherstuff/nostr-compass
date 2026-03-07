@@ -336,6 +336,37 @@ hr {
   --pagefind-ui-border-width: 1px;
   --pagefind-ui-border-radius: 8px;
   --pagefind-ui-font: inherit;
+
+  .pagefind-ui__search-input {
+    color: var(--text-color);
+    background: var(--background-color);
+    caret-color: var(--text-color);
+  }
+
+  .pagefind-ui__search-input::placeholder {
+    color: var(--text-muted);
+  }
+
+  .pagefind-ui__results,
+  ol,
+  ul {
+    margin-left: 0;
+    padding-left: 0;
+    list-style: none;
+  }
+
+  .pagefind-ui__result-link,
+  .pagefind-ui__result-title,
+  .pagefind-ui__result-excerpt,
+  .pagefind-ui__message,
+  .pagefind-ui__button {
+    color: var(--text-color);
+  }
+
+  .pagefind-ui__result-link:hover,
+  .pagefind-ui__result-link:focus-visible {
+    color: var(--brand-color-bright);
+  }
 }
 
 /* Logo sizing - PNG has built-in padding, so we scale and clip */
