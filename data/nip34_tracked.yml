@@ -49,24 +49,13 @@ tracked_repos:
     pubkey: 40d8f6d79c105f34a426aa91c2bf1826ed77970a84e69702eb1e86138ed6e4c6
     relays: [wss://relay.ngit.dev]
     in_projects_yml: false
-    notes: Another nostr-git related repo
+    notes: Test/dev repo from Pleb5 (pubkey is in noise list but tracked explicitly)
 
-# Noise filters - pubkeys and patterns to exclude from discovery
-# These are populated as we identify noise sources
-noise_pubkeys: []
-  # Add hex pubkeys here that consistently publish noise
-
-noise_d_tag_patterns:
-  # d_tag patterns that indicate noise (regex)
-  - "^grasp-?\\d+$"           # grasp-1, grasp-2, ..., grasp-9
-  - "^tmp\\."                  # tmp.* test repos
-  - "^test-"                   # test-* repos
-  - "^pr-test-"               # pr-test-* repos
-  - "^[0-9a-f]{8,}$"          # hex-only identifiers (agent profiles)
-  - "-fork$"                   # forks of other repos
-  - "-fork\\d*$"               # numbered forks
-
-noise_clone_patterns:
-  # Clone URL patterns that indicate noise
-  - "git.shakespeare.diy"     # Shakespeare website builder output
-  - "melvin.me"               # melvincarvalho daily backups
+# Noise filtering is handled in scripts/fetch_nip34_repos.sh:
+#   - NOISE_PUBKEYS array: known noise pubkeys (hardcoded, with comments)
+#   - filter_noise() function: d_tag patterns, clone URL patterns
+#
+# To add a noise pubkey or pattern, edit the script directly.
+# To identify new noise sources, run:
+#   ./scripts/fetch_nip34_repos.sh --discover-only --since-days 30
+# and look for pubkeys with many unrelated repos.

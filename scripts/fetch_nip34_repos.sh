@@ -44,10 +44,19 @@ NIP34_RELAYS=(
     "wss://relay.nostr.band"
 )
 
+# Build space-separated relay args for nak (which accepts multiple relay URLs)
+RELAY_ARGS=""
+for relay in "${NIP34_RELAYS[@]}"; do
+    RELAY_ARGS="$RELAY_ARGS $relay"
+done
+
 # NIP-34 event kinds
 KIND_REPO=30617       # Repository announcement
 KIND_PATCH=1617       # Patches (PRs)
 KIND_ISSUE=1621       # Issues
+
+# Timeout for nak commands (seconds) - prevents hung relays from blocking the script
+NAK_TIMEOUT=30
 
 # Parse arguments
 MODE="both"  # both, track, discover
@@ -260,7 +269,7 @@ fetch_tracked_repos() {
 
     # Extract tracked d_tags from YAML (simple grep, no YAML parser needed)
     local d_tags
-    d_tags=$(grep '^\s*d_tag:' "$TRACKED_FILE" | sed 's/.*d_tag:\s*//' | tr -d '"' | tr -d "'" | xargs)
+    d_tags=$(grep '^[[:space:]]*d_tag:' "$TRACKED_FILE" | sed 's/.*d_tag:[[:space:]]*//' | tr -d '"' | tr -d "'" | xargs)
 
     if [ -z "$d_tags" ]; then
         echo "  No tracked repos found in $TRACKED_FILE" >&2
@@ -280,11 +289,12 @@ fetch_tracked_repos() {
         local issue_count=0
 
         # Fetch the repo announcement (kind 30617) - get latest version
+        # nak accepts multiple relay URLs as positional args and queries them in parallel
         local repo_event
         repo_event=$(
-            for relay in "${NIP34_RELAYS[@]}"; do
-                nak req -k "$KIND_REPO" -t d="$d_tag" --limit 5 "$relay" 2>/dev/null || true
-            done | jq -s 'sort_by(-.created_at) | .[0] // empty' 2>/dev/null
+            timeout "$NAK_TIMEOUT" nak req -k "$KIND_REPO" -t d="$d_tag" --limit 5 \
+                $RELAY_ARGS 2>/dev/null \
+            | jq -s 'sort_by(-.created_at) | .[0] // empty' 2>/dev/null || true
         )
 
         if [ -n "$repo_event" ] && [ "$repo_event" != "null" ]; then
@@ -299,21 +309,23 @@ fetch_tracked_repos() {
             # Fetch patches (kind 1617) referencing this repo
             local patches
             patches=$(
-                for relay in "${NIP34_RELAYS[@]}"; do
-                    nak req -k "$KIND_PATCH" -t a="$a_tag" --since "$SINCE_TIMESTAMP" --limit 50 "$relay" 2>/dev/null || true
-                done | jq -s 'unique_by(.id)' 2>/dev/null
+                timeout "$NAK_TIMEOUT" nak req -k "$KIND_PATCH" -t a="$a_tag" \
+                    --since "$SINCE_TIMESTAMP" --limit 50 \
+                    $RELAY_ARGS 2>/dev/null \
+                | jq -s 'unique_by(.id)' 2>/dev/null || true
             )
-            patch_count=$(echo "$patches" | jq 'length' 2>/dev/null || echo 0)
+            patch_count=$(echo "${patches:-[]}" | jq 'length' 2>/dev/null || echo 0)
             echo "    Patches in period: $patch_count" >&2
 
             # Fetch issues (kind 1621) referencing this repo
             local issues
             issues=$(
-                for relay in "${NIP34_RELAYS[@]}"; do
-                    nak req -k "$KIND_ISSUE" -t a="$a_tag" --since "$SINCE_TIMESTAMP" --limit 50 "$relay" 2>/dev/null || true
-                done | jq -s 'unique_by(.id)' 2>/dev/null
+                timeout "$NAK_TIMEOUT" nak req -k "$KIND_ISSUE" -t a="$a_tag" \
+                    --since "$SINCE_TIMESTAMP" --limit 50 \
+                    $RELAY_ARGS 2>/dev/null \
+                | jq -s 'unique_by(.id)' 2>/dev/null || true
             )
-            issue_count=$(echo "$issues" | jq 'length' 2>/dev/null || echo 0)
+            issue_count=$(echo "${issues:-[]}" | jq 'length' 2>/dev/null || echo 0)
             echo "    Issues in period: $issue_count" >&2
 
             # Build patch summaries
@@ -380,14 +392,15 @@ fetch_discovered_repos() {
     echo "=== Discovering new NIP-34 repos ===" >&2
 
     # Fetch ALL kind 30617 events from the time window
+    # nak queries all relays in parallel when given multiple relay URLs
     echo "  Querying relays for repo announcements..." >&2
+    echo "    Relays: ${NIP34_RELAYS[*]}" >&2
 
-    local raw_count=0
-    for relay in "${NIP34_RELAYS[@]}"; do
-        echo "    Querying $relay..." >&2
-        nak req -k "$KIND_REPO" --since "$SINCE_TIMESTAMP" --limit 200 "$relay" 2>/dev/null || true
-    done | jq -c '.' >> "$REPOS_RAW"
+    timeout "$NAK_TIMEOUT" nak req -k "$KIND_REPO" --since "$SINCE_TIMESTAMP" --limit 200 \
+        $RELAY_ARGS 2>/dev/null \
+    | jq -c '.' >> "$REPOS_RAW" 2>/dev/null || true
 
+    local raw_count
     raw_count=$(wc -l < "$REPOS_RAW")
     echo "  Raw events fetched: $raw_count" >&2
 
@@ -396,7 +409,7 @@ fetch_discovered_repos() {
         return
     fi
 
-    # Deduplicate by event ID
+    # Deduplicate by event ID (same event seen from multiple relays)
     local deduped_file="$NOSTR_TEMP_DIR/repos_deduped.json"
     jq -s 'unique_by(.id)' "$REPOS_RAW" > "$deduped_file"
     local deduped_count
@@ -411,9 +424,10 @@ fetch_discovered_repos() {
     echo "  After noise filter: $filtered_count (removed $((deduped_count - filtered_count)) noise events)" >&2
 
     # Remove repos that are already tracked (by d_tag)
+    local source_file="$filtered_file"
     if [ -f "$TRACKED_FILE" ]; then
         local tracked_d_tags
-        tracked_d_tags=$(grep '^\s*d_tag:' "$TRACKED_FILE" | sed 's/.*d_tag:\s*//' | tr -d '"' | tr -d "'" | jq -R -s 'split("\n") | map(select(. != "") | ltrimstr(" ") | rtrimstr(" "))')
+        tracked_d_tags=$(grep '^[[:space:]]*d_tag:' "$TRACKED_FILE" | sed 's/.*d_tag:[[:space:]]*//' | tr -d '"' | tr -d "'" | jq -R -s 'split("\n") | map(select(. != "") | gsub("^\\s+|\\s+$"; ""))')
 
         local new_only_file="$NOSTR_TEMP_DIR/repos_new.json"
         jq --argjson tracked "$tracked_d_tags" '
@@ -425,16 +439,16 @@ fetch_discovered_repos() {
         local new_count
         new_count=$(jq 'length' "$new_only_file")
         echo "  After removing tracked: $new_count new repos" >&2
-
-        # Deduplicate by d_tag (keep most recent event per repo)
-        local final_file="$NOSTR_TEMP_DIR/repos_final.json"
-        jq '
-            group_by([.tags[] | select(.[0]=="d")][0][1]) |
-            map(sort_by(-.created_at) | .[0])
-        ' "$new_only_file" > "$final_file"
-    else
-        cp "$filtered_file" "$NOSTR_TEMP_DIR/repos_final.json"
+        source_file="$new_only_file"
     fi
+
+    # Deduplicate by d_tag (keep most recent event per repo)
+    # This always runs, regardless of whether tracked file exists
+    local final_file="$NOSTR_TEMP_DIR/repos_final.json"
+    jq '
+        group_by([.tags[] | select(.[0]=="d")][0][1]) |
+        map(sort_by(-.created_at) | .[0])
+    ' "$source_file" > "$final_file"
 
     # Extract structured data
     jq '[.[] | {
