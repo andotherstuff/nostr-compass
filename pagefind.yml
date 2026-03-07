@@ -1,0 +1,9 @@
+site: public
+exclude_selectors:
+  - "nav"
+  - "footer"
+  - ".site-header"
+  - ".search-page"
+  - ".newsletter-signup"
+  - ".language-switcher"
+  - ".post-meta"

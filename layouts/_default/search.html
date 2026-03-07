@@ -41,6 +41,31 @@
       showImages: false,
       excerptLength: 18,
       resetStyles: false,
+      highlightParam: "highlight",
+      processTerm: function (term) {
+        // Normalize compound terms so "whitenoise" matches "white noise" etc.
+        var compounds = [
+          [/whitenoise/gi, "white noise"],
+          [/nostr\s*compass/gi, "nostr compass"],
+          [/nostrudel/gi, "nostrudel"],
+          [/nostr[\s-]*tools/gi, "nostr-tools"],
+          [/lnbits/gi, "ln bits"],
+          [/cashu[\s-]*ts/gi, "cashu-ts"],
+          [/nip[\s-]*(\d+)/gi, "nip-$1"],
+          [/weboftrust/gi, "web of trust"],
+          [/gossipprotocol/gi, "gossip protocol"]
+        ];
+        for (var i = 0; i < compounds.length; i++) {
+          term = term.replace(compounds[i][0], compounds[i][1]);
+        }
+        return term;
+      },
+      ranking: {
+        termFrequency: 0.8,
+        pageLength: 0.5,
+        termSaturation: 1.4,
+        termSimilarity: 1.0
+      },
       translations: {
         placeholder: placeholder
       }

@@ -32,6 +32,13 @@
     </main>
 
     {{ partial "footer.html" . }}
+    <script type="module">
+      if (window.location.search.includes("highlight=")) {
+        import("/pagefind/pagefind-highlight.js").then(function (mod) {
+          new PagefindHighlight({ highlightParam: "highlight" });
+        }).catch(function () {});
+      }
+    </script>
     {{ if .Site.Params.mailchimp_form_action }}
     <!-- Mailchimp AJAX form handler - requires jQuery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
