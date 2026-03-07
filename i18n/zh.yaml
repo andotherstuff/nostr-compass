@@ -29,6 +29,13 @@ menu_about: "关于"
 menu_newsletters: "通讯"
 menu_topics: "主题"
 menu_podcast: "播客"
+menu_search: "搜索"
+
+# Search
+search_intro: "从生成的网站索引中搜索通讯、主题和播客页面。"
+search_placeholder: "搜索网站"
+search_javascript_required: "搜索需要在浏览器中启用 JavaScript。"
+search_assets_missing: "缺少搜索资源。请运行完整的网站构建以生成 Pagefind 索引。"
 
 # Podcast
 podcast_available_in_english: "播客节目以英语提供。"

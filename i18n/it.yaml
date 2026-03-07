@@ -29,6 +29,13 @@ menu_about: "Chi siamo"
 menu_newsletters: "Newsletter"
 menu_topics: "Argomenti"
 menu_podcast: "Podcast"
+menu_search: "Ricerca"
+
+# Search
+search_intro: "Cerca tra newsletter, argomenti e pagine del podcast usando l'indice generato del sito."
+search_placeholder: "Cerca nel sito"
+search_javascript_required: "La ricerca richiede JavaScript abilitato nel browser."
+search_assets_missing: "Le risorse di ricerca mancano. Esegui la build completa del sito per generare l'indice Pagefind."
 
 # Podcast
 podcast_available_in_english: "Gli episodi del podcast sono disponibili in inglese."

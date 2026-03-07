@@ -1,0 +1,49 @@
+{{ define "head" }}
+  <link rel="stylesheet" href="{{ "/pagefind/pagefind-ui.css" | relURL }}">
+{{ end }}
+
+{{ define "main" }}
+<article class="post search-page">
+  <header class="post-header">
+    <h1 class="post-title">{{ .Title }}</h1>
+  </header>
+
+  <div class="post-content">
+    <p class="search-intro">{{ i18n "search_intro" }}</p>
+    <noscript>
+      <p>{{ i18n "search_javascript_required" }}</p>
+    </noscript>
+    <div class="search-shell">
+      <div id="search"></div>
+    </div>
+  </div>
+</article>
+
+<script src="{{ "/pagefind/pagefind-ui.js" | relURL }}" defer></script>
+<script>
+  window.addEventListener("DOMContentLoaded", function () {
+    var container = document.getElementById("search");
+    var placeholder = {{ i18n "search_placeholder" | jsonify | safeJS }};
+    var missingMessage = {{ i18n "search_assets_missing" | jsonify | safeJS }};
+
+    if (!container) {
+      return;
+    }
+
+    if (!window.PagefindUI) {
+      container.innerHTML = "<p>" + missingMessage + "</p>";
+      return;
+    }
+
+    new window.PagefindUI({
+      element: "#search",
+      showSubResults: true,
+      excerptLength: 18,
+      resetStyles: false,
+      translations: {
+        placeholder: placeholder
+      }
+    });
+  });
+</script>
+{{ end }}

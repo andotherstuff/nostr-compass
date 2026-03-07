@@ -25,7 +25,7 @@
 <body>
     {{ partial "header.html" . }}
 
-    <main class="page-content" aria-label="Content">
+    <main class="page-content" aria-label="Content" {{ if .Params.pagefind_ignore }}data-pagefind-ignore="all"{{ else }}data-pagefind-body{{ end }}>
         <div class="wrapper">
             {{ block "main" . }}{{ end }}
         </div>

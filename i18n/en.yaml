@@ -29,6 +29,13 @@ menu_about: "About"
 menu_newsletters: "Newsletters"
 menu_topics: "Topics"
 menu_podcast: "Podcast"
+menu_search: "Search"
+
+# Search
+search_intro: "Search newsletters, topics, and podcast pages from the built site index."
+search_placeholder: "Search the site"
+search_javascript_required: "Search needs JavaScript enabled in your browser."
+search_assets_missing: "Search assets are missing. Run the full site build to generate the Pagefind index."
 
 # Podcast
 podcast_available_in_english: "Podcast episodes are available in English."
