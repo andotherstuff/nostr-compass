@@ -1,0 +1,72 @@
+# NIP-34 Repository Tracking
+# Projects with known NIP-34 (git-over-nostr) repositories
+#
+# These repos are actively monitored for patches (kind 1617),
+# issues (kind 1621), and repo updates (kind 30617).
+#
+# Fields:
+#   name:       Project name (should match projects.yml where applicable)
+#   d_tag:      The NIP-34 "d" tag identifier for the repo
+#   pubkey:     Hex pubkey of the repo maintainer (for filtering)
+#   relays:     Preferred relays for this repo
+#   in_projects_yml: Whether this project is also tracked in projects.yml
+#   notes:      Optional context
+#
+# To find a project's d_tag and pubkey, query:
+#   nak req -k 30617 --limit 100 wss://relay.ngit.dev | jq 'select(.tags[][] == "PROJECT_NAME")'
+
+tracked_repos:
+  - name: nostr-git
+    d_tag: nostr-git
+    pubkey: cdee943cbb19c51ab847a66d5d774373aa9f63d287246bb59b0827fa5e637400
+    relays: [wss://relay.ngit.dev]
+    in_projects_yml: true
+    notes: chebizarro's NIP-34 implementation
+
+  - name: GitCitadel
+    d_tag: gitcitadel
+    pubkey: fd208ee8c8f283780a9552896e4823cc9dc6bfd442063889577106940fd927c1
+    relays: [wss://relay.ngit.dev]
+    in_projects_yml: true
+    notes: Git hosting on Nostr
+
+  - name: teapot
+    d_tag: teapot
+    pubkey: 657c9f566a2627ad76196695361e1d814bdb49e87b90f4db818fb91c59dc142a
+    relays: [wss://relay.ngit.dev]
+    in_projects_yml: false
+    notes: NIP-34 relay/tool
+
+  - name: nostr-dm-agent
+    d_tag: nostr-dm-agent
+    pubkey: 6e64b83c1f674fb00a5f19816c297b6414bf67f015894e04dd4c657e94102ee8
+    relays: [wss://relay.ngit.dev]
+    in_projects_yml: false
+    notes: DM automation agent
+
+  - name: nostr-git-repo
+    d_tag: nostr-git-repo
+    pubkey: 40d8f6d79c105f34a426aa91c2bf1826ed77970a84e69702eb1e86138ed6e4c6
+    relays: [wss://relay.ngit.dev]
+    in_projects_yml: false
+    notes: Another nostr-git related repo
+
+# Noise filters - pubkeys and patterns to exclude from discovery
+# These are populated as we identify noise sources
+noise_pubkeys: []
+  # Add hex pubkeys here that consistently publish noise
+
+noise_d_tag_patterns:
+  # d_tag patterns that indicate noise (regex)
+  - "^grasp-?\\d+$"           # grasp-1, grasp-2, ..., grasp-9
+  - "^tmp\\."                  # tmp.* test repos
+  - "^test-"                   # test-* repos
+  - "^pr-test-"               # pr-test-* repos
+  - "^[0-9a-f]{8,}$"          # hex-only identifiers (agent profiles)
+  - "-fork$"                   # forks of other repos
+  - "-fork\\d*$"               # numbered forks
+
+noise_clone_patterns:
+  # Clone URL patterns that indicate noise
+  - "git.shakespeare.diy"     # Shakespeare website builder output
+  - "melvin.me"               # melvincarvalho daily backups

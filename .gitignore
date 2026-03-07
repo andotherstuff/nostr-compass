@@ -25,8 +25,9 @@ vendor
 # Environment variables (secrets)
 scripts/.env
 
-# Generated project update files
+# Generated data files (fetcher output)
 data/project_updates/*.json
+data/nip34_repos/*.json
 
 # Hugo generated files
 public/
