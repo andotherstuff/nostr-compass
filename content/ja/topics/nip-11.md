@@ -1,5 +1,7 @@
 ---
-title: "NIP-11: リレー情報"
+title: "NIP-11: リレー情報ドキュメント"
+translationOf: /en/topics/nip-11.md
+translationDate: 2026-03-07
 date: 2025-12-17
 draft: false
 categories:
@@ -7,31 +9,47 @@ categories:
   - Protocol
 ---
 
-NIP-11はリレーが自身に関するメタデータを公開する方法を定義します。サポートしているNIP、制限、連絡先情報などが含まれます。
+NIP-11は、relayが自分自身についてのmachine-readableな説明を公開する方法を定義します。そこには、対応していると主張する機能、制限、operator metadataが含まれます。
 
 ## 仕組み
 
-クライアントは`Accept: application/nostr+json`ヘッダーを付けてリレーのWebSocket URLにHTTP GETリクエストを行うことでリレー情報を取得します。リレーは機能を記述したJSONドキュメントを返します。
+clientは、relayのWebSocket URLへ`Accept: application/nostr+json` header付きのHTTP GET requestを送ってrelay情報を取得します。relayは、自分のcapabilityを説明するJSON documentを返します。
 
-## 主要フィールド
+## Useful Fields
 
-- **name** - 人間が読めるリレー名
-- **description** - リレーの目的
-- **supported_nips** - 実装されているNIPのリスト
-- **limitation** - 最大メッセージサイズ、必要な認証などの制限
-- **self** - リレー自身の公開鍵（リレーアイデンティティ用の新しいフィールド）
+- **name** - 人間が読めるrelay名
+- **description** - relayの用途
+- **supported_nips** - 対応していると主張するNIPの一覧
+- **limitation** - 最大メッセージサイズや必要なauthなどの制限
+- **pubkey** - 提供されていればrelay operatorの公開鍵
+- **contact** - operatorの連絡先
 
-## ユースケース
+## Trust Model
 
-- クライアントは接続前にリレーが必要な機能をサポートしているかチェックできる
-- ディスカバリサービスがリレーの機能をインデックス化できる
-- ユーザーが公開前にリレーのポリシーを確認できる
+NIP-11は自己申告metadataです。relayがライブの通信で実際に証明したことではなく、relay自身が何を名乗っているかを示します。それでもdiscoveryやUXには役立ちますが、clientは`supported_nips`を挙動テストなしのground truthとして扱うべきではありません。
+
+この区別はrelay選択で重要です。relayがNIP-50 search、認証要件、大きなメッセージ上限を広告していても、本当の答えはclientが実際に接続し、そのcode pathを試して初めて分かります。
+
+## なぜ重要か
+
+- clientは接続前に必要機能の有無を確認できる
+- discovery serviceはrelay capabilityをindexできる
+- userは公開前にrelay policyを確認できる
+
+## Recent Spec Direction
+
+仕様は時間とともに削ぎ落とされてきました。`software`、`version`、privacy policyの詳細、retention metadataのような古い任意fieldは、長年ほとんど使われなかったため削除されました。その結果、現在のNIP-11 documentは小さく現実的になりましたが、relayから豊富なpolicy metadataが返る前提でclientを作るべきではありません。
 
 ---
 
 **主要ソース:**
-- [NIP-11仕様](https://github.com/nostr-protocol/nips/blob/master/11.md)
+- [NIP-11 Specification](https://github.com/nostr-protocol/nips/blob/master/11.md)
+- [PR #1764](https://github.com/nostr-protocol/nips/pull/1764) - relay identity field update
+- [PR #1946](https://github.com/nostr-protocol/nips/pull/1946) - cleanup of rarely used fields
+- [PR #2231](https://github.com/nostr-protocol/nips/pull/2231) - removal of deprecated fields
 
 **言及箇所:**
-- [ニュースレター #1: NIP更新](/ja/newsletters/2025-12-17-newsletter/#nip-updates)
+- [Newsletter #1: NIP Updates](/en/newsletters/2025-12-17-newsletter/#nip-updates)
 
+**関連項目:**
+- [NIP-66: Relay Discovery and Liveness Monitoring](/ja/topics/nip-66/)

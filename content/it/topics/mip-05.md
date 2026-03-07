@@ -1,43 +1,54 @@
 ---
-title: "MIP-05: Notifiche Push che Preservano la Privacy"
+title: "MIP-05: Privacy-Preserving Push Notifications"
 date: 2025-12-17
+translationOf: /en/topics/mip-05/
+translationDate: 2026-03-07
 draft: false
 categories:
   - Privacy
   - Messaging
   - Protocol
 ---
+MIP-05 definisce un protocollo di push notification per i client Marmot che prova a preservare la privacy in un contesto in cui i normali sistemi push mobile di solito espongono token del dispositivo e relazioni tra account.
 
-MIP-05 definisce un protocollo per notifiche push che mantengono la privacy degli utenti, risolvendo il problema che i sistemi push tradizionali richiedono che i server conoscano i token dei dispositivi e le identita' degli utenti.
+## Come funziona
 
-## Come Funziona
-
-- I token dei dispositivi sono cifrati con ECDH+HKDF e ChaCha20-Poly1305
-- Le chiavi effimere prevengono la correlazione tra notifiche
+- I token del dispositivo sono cifrati con ECDH+HKDF e ChaCha20-Poly1305
+- Le chiavi effimere impediscono la correlazione tra notifiche
 - Un protocollo gossip a tre eventi (kind 447-449) sincronizza i token cifrati tra i membri del gruppo
-- Token esca tramite gift wrapping NIP-59 nascondono le dimensioni dei gruppi
+- I token esca tramite gift wrapping NIP-59 nascondono la dimensione dei gruppi
 
-## Garanzie di Privacy
+## Modello di privacy
 
-- I server di notifiche push non possono identificare gli utenti
-- L'appartenenza al gruppo non viene rivelata dai pattern di notifica
-- I token dei dispositivi non possono essere correlati tra messaggi
+- I server di push notification non possono identificare gli utenti
+- L'appartenenza ai gruppi non viene rivelata dai pattern di notifica
+- I token del dispositivo non possono essere correlati tra i messaggi
 
-## Kind degli Eventi
+Il miglioramento concreto è che il provider push vede token di consegna opachi, non una mappa diretta tra membro del gruppo e dispositivo. Questo non rende le notifiche anonime in senso assoluto, ma riduce quanto il livello push apprende per impostazione predefinita.
 
-- **Kind 447**: Pubblicazione token dispositivo cifrato
-- **Kind 448**: Richiesta sincronizzazione token
-- **Kind 449**: Risposta sincronizzazione token
+## Kind degli eventi
+
+- **Kind 447**: pubblicazione cifrata del token del dispositivo
+- **Kind 448**: richiesta di sincronizzazione del token
+- **Kind 449**: risposta di sincronizzazione del token
+
+## Compromessi
+
+MIP-05 aggiunge privacy aggiungendo lavoro di coordinamento. I client devono sincronizzare lo stato dei token cifrati tra i membri del gruppo, e i token esca aumentano volutamente l'overhead dei messaggi.
+
+Questo significa che chi implementa il protocollo deve bilanciare affidabilità della consegna e protezione dei metadati. Il protocollo è utile proprio perché tratta il push come un problema di privacy, non solo come una comodità di trasporto.
 
 ---
 
 **Fonti primarie:**
-- [PR MIP-05](https://github.com/marmot-protocol/marmot/pull/18)
+- [MIP-05 Specification](https://github.com/marmot-protocol/marmot/blob/master/05.md)
+- [MIP-05 PR](https://github.com/marmot-protocol/marmot/pull/18)
+- [White Noise v0.2.1 release](https://github.com/marmot-protocol/whitenoise/releases/tag/v0.2.1%2B14)
 
-**Menzionato in:**
-- [Newsletter #1: Notizie](/it/newsletters/2025-12-17-newsletter/#news)
+**Citato in:**
+- [Newsletter #1: News](/en/newsletters/2025-12-17-newsletter/#news)
+- [Newsletter #3: December Recap](/en/newsletters/2025-12-31-newsletter/#december-recap-five-years-of-nostr-decembers)
 
 **Vedi anche:**
-- [Protocollo Marmot](/it/topics/marmot/)
+- [Marmot Protocol](/it/topics/marmot/)
 - [NIP-59: Gift Wrap](/it/topics/nip-59/)
-

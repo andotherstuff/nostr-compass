@@ -1,21 +1,22 @@
 ---
-title: "NIP-10: Threading Note di Testo"
+title: "NIP-10: Threading delle text note"
 date: 2025-12-24
+translationOf: /en/topics/nip-10/
+translationDate: 2026-03-07
 draft: false
 categories:
   - Protocol
   - Social
 ---
+NIP-10 specifica come le note kind 1 si riferiscono tra loro per formare thread di risposta. Capirlo è essenziale per costruire viste delle conversazioni.
 
-NIP-10 specifica come le note kind 1 si referenziano a vicenda per formare thread di risposte. Capire questo e' essenziale per costruire viste di conversazione.
+## Come funziona
 
-## Il Problema
+Quando qualcuno risponde a una nota, i client devono sapere: a cosa sta rispondendo? Qual è la radice della conversazione? Chi dovrebbe essere notificato? NIP-10 risponde a queste domande tramite tag `e` (riferimenti a eventi) e tag `p` (menzioni di pubkey).
 
-Quando qualcuno risponde a una nota, i client devono sapere: A cosa e' una risposta? Qual e' la radice della conversazione? Chi dovrebbe essere notificato? NIP-10 risponde a queste domande attraverso tag `e` (riferimenti eventi) e tag `p` (menzioni pubkey).
+## Tag marcati (preferiti)
 
-## Tag Marcati (Preferiti)
-
-I client moderni usano marcatori espliciti nei tag `e`:
+I client moderni usano marker espliciti nei tag `e`:
 
 ```json
 {
@@ -29,49 +30,51 @@ I client moderni usano marcatori espliciti nei tag `e`:
     ["p", "91cf9..."],
     ["p", "14aeb..."]
   ],
-  "content": "Ottimo punto! Sono d'accordo.",
+  "content": "Great point! I agree.",
   "sig": "b7d3f..."
 }
 ```
 
-Il marcatore `root` punta alla nota originale che ha iniziato il thread. Il marcatore `reply` punta alla nota specifica a cui si sta rispondendo. Se rispondete direttamente alla root, usate solo `root` (nessun tag `reply` necessario). La distinzione conta per il rendering: il `reply` determina l'indentazione in una vista thread, mentre `root` raggruppa tutte le risposte insieme.
+Il marker `root` punta alla nota originale che ha avviato il thread. Il marker `reply` punta alla nota specifica a cui si sta rispondendo. Se si risponde direttamente alla root, si usa solo `root` e non serve alcun tag `reply`. La distinzione conta per il rendering: `reply` determina il livello di rientro in una vista a thread, mentre `root` raggruppa insieme tutte le risposte.
 
-## Regole di Threading
+## Regole del threading
 
-- **Risposta diretta alla root:** Un tag `e` con marcatore `root`
+- **Risposta diretta alla root:** Un tag `e` con marker `root`
 - **Risposta a una risposta:** Due tag `e`, uno `root` e uno `reply`
-- Il `root` rimane costante in tutto il thread; `reply` cambia in base a cosa state rispondendo
+- `root` resta costante per tutto il thread; `reply` cambia in base a ciò a cui si sta rispondendo
 
-## Tag Pubkey per Notifiche
+## Notifiche e menzioni
 
-Includete tag `p` per tutti quelli che dovrebbero essere notificati. Come minimo, taggate l'autore della nota a cui state rispondendo. La convenzione e' anche includere tutti i tag `p` dall'evento parent (cosi' tutti nella conversazione rimangono nel loop), piu' qualsiasi utente che @menzionate nel vostro contenuto.
+Includi tag `p` per chiunque debba ricevere una notifica. Come minimo, tagga l'autore della nota a cui stai rispondendo. La convenzione è includere anche tutti i tag `p` dell'evento genitore, così tutte le persone nella conversazione restano aggiornate, oltre a tutti gli utenti che @menzioni nel contenuto.
 
-## Suggerimenti Relay
+## Relay hint
 
-La terza posizione nei tag `e` e `p` puo' contenere un URL relay dove quell'evento o contenuto utente potrebbe essere trovato. Questo aiuta i client a recuperare il contenuto referenziato anche se non sono connessi al relay originale.
+La terza posizione nei tag `e` e `p` può contenere un URL di relay dove quell'evento o il contenuto di quell'utente potrebbero essere trovati. Questo aiuta i client a recuperare il contenuto referenziato anche se non sono connessi al relay originale.
 
-## Tag Posizionali Deprecati
+## Note sull'interoperabilità
 
-Le prime implementazioni Nostr inferivano il significato dalla posizione del tag invece che dai marcatori: il primo tag `e` era root, l'ultimo era reply, quelli in mezzo erano menzioni. Questo approccio e' deprecato perche' crea ambiguita'. Se vedete tag `e` senza marcatori, sono probabilmente da client piu' vecchi. Le implementazioni moderne dovrebbero sempre usare marcatori espliciti.
+Le prime implementazioni di Nostr deducevano il significato dalla posizione del tag invece che dai marker: il primo tag `e` era la root, l'ultimo era la reply, quelli in mezzo erano menzioni. Questo approccio è deprecato perché crea ambiguità. Se vedi tag `e` senza marker, probabilmente provengono da client più vecchi. Le implementazioni moderne dovrebbero usare sempre marker espliciti.
 
-## Costruire Viste Thread
+I client devono comunque analizzare entrambi i formati se vogliono renderizzare correttamente i thread più vecchi. In pratica, l'interoperabilità di NIP-10 è in parte un problema di migrazione: i producer dovrebbero emettere tag marcati, ma i reader dovrebbero restare tolleranti verso le forme posizionali più vecchie.
 
-Per visualizzare un thread, recuperate l'evento root, poi interrogate tutti gli eventi con un tag `e` che referenzia quella root:
+## Costruire viste a thread
+
+Per visualizzare un thread, recupera l'evento root e poi interroga tutti gli eventi con un tag `e` che fa riferimento a quella root:
 
 ```json
 ["REQ", "thread", {"kinds": [1], "#e": ["<root-event-id>"]}]
 ```
 
-Ordinate i risultati per `created_at` e usate i marcatori `reply` per costruire la struttura ad albero. Gli eventi il cui `reply` punta alla root sono risposte di primo livello; gli eventi il cui `reply` punta a un'altra risposta sono risposte annidate.
+Ordina i risultati per `created_at` e usa i marker `reply` per costruire la struttura ad albero. Gli eventi il cui `reply` punta alla root sono risposte di primo livello; gli eventi il cui `reply` punta a un'altra reply sono risposte annidate.
 
 ---
 
 **Fonti primarie:**
-- [Specifica NIP-10](https://github.com/nostr-protocol/nips/blob/master/10.md)
+- [NIP-10 Specification](https://github.com/nostr-protocol/nips/blob/master/10.md)
 
-**Menzionato in:**
-- [Newsletter #2: Approfondimento NIP](/it/newsletters/2025-12-24-newsletter/#nip-10-threading-note-di-testo)
+**Citato in:**
+- [Newsletter #2: NIP Deep Dive](/en/newsletters/2025-12-24-newsletter/#nip-10-text-note-threading)
 
 **Vedi anche:**
-- [NIP-01: Protocollo Base](/it/topics/nip-01/)
-
+- [NIP-01: Protocollo di base](/it/topics/nip-01/)
+- [NIP-18: Repost](/it/topics/nip-18/)

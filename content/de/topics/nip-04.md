@@ -2,46 +2,57 @@
 title: "NIP-04: Verschlüsselte Direktnachrichten (Veraltet)"
 date: 2025-12-31
 translationOf: /en/topics/nip-04.md
-translationDate: 2025-12-31
+translationDate: 2026-03-07
 draft: false
 categories:
   - Datenschutz
   - Messaging
 ---
 
-NIP-04 definiert verschlüsselte Direktnachrichten mit AES-256-CBC-Verschlüsselung. Es war die ursprüngliche Methode für private Nachrichten auf Nostr, wurde aber aufgrund erheblicher Datenschutzbeschränkungen zugunsten von NIP-17 veraltet.
+NIP-04 definiert verschlüsselte Direktnachrichten mit Kind-4-Events und einem per ECDH abgeleiteten gemeinsamen Geheimnis. Es war Nostrs erstes DM-Schema, ist heute aber Legacy-Technik, und neue Arbeit an privaten Nachrichten ist zu NIP-17 weitergezogen.
 
-## Funktionsweise
+## Wie es funktioniert
 
-Nachrichten verwenden kind-4-Events mit folgendem Verschlüsselungsschema:
-1. Ein gemeinsames Geheimnis wird mittels ECDH mit dem öffentlichen Schlüssel des Empfängers und dem privaten Schlüssel des Absenders generiert
-2. Die Nachricht wird mit AES-256-CBC verschlüsselt
-3. Der Chiffretext wird base64-kodiert mit angehängtem Initialisierungsvektor
-4. Ein `p`-Tag identifiziert den öffentlichen Schlüssel des Empfängers
+Nachrichten verwenden Kind-4-Events mit diesem grundlegenden Ablauf:
 
-## Sicherheitsbeschränkungen
+1. Der Sender leitet mit secp256k1 ECDH ein gemeinsames Geheimnis ab.
+2. Der Klartext wird mit AES-256-CBC verschlüsselt.
+3. Das Event enthält ein `p`-Tag, das den Empfänger benennt.
+4. Der Chiffretext wird als base64 kodiert und zusammen mit dem IV in `content` gespeichert.
 
-NIP-04 hat erhebliche Datenschutzmängel:
+Das Event selbst bleibt ein normales signiertes Nostr-Event, daher können Relays die äußeren Metadaten sehen, obwohl sie den Klartext nicht lesen können.
 
-- **Metadaten-Leck** - Die pubkey des Absenders ist bei jeder Nachricht öffentlich sichtbar
-- **Keine Absender-Privatsphäre** - Jeder kann sehen, wer mit wem kommuniziert
-- **Exakte Zeitstempel** - Nachrichtenzeitpunkte werden nicht randomisiert
-- **Nicht-standardmäßige Implementierung** - Verwendet nur die X-Koordinate des ECDH-Punktes anstelle des Standard-SHA256-Hashs
+## Sicherheits- und Datenschutzgrenzen
 
-Die Spezifikation warnt ausdrücklich, dass sie "nicht annähernd dem Stand der Technik in verschlüsselter Kommunikation entspricht".
+NIP-04 hat deutliche Schwachen beim Datenschutz:
 
-## Veraltungsstatus
+- **Metadatenleck** - Der Pubkey des Senders ist bei jeder Nachricht öffentlich sichtbar
+- **Keine Absender-Privatsphäre** - Jeder kann sehen, wer mit wem Nachrichten austauscht
+- **Exakte Zeitstempel** - Der Nachrichtenzeitpunkt wird nicht randomisiert
+- **Nicht standardisierte Schlüsselverarbeitung** - Das Schema verwendet nur die X-Koordinate des ECDH-Punkts, was korrekte Implementierungen über Bibliotheken hinweg erschwert und wenig Spielraum für die Weiterentwicklung des Protokolls lässt
 
-NIP-04 ist zugunsten von NIP-17 veraltet, das NIP-59 Gift Wrapping verwendet, um die Identität des Absenders zu verbergen. Neue Implementierungen sollten NIP-17 für private Nachrichten verwenden.
+Die Spezifikation warnt ausdrücklich davor, dass sie "nicht einmal annähernd dem Stand der Technik in verschlüsselter Kommunikation" entspricht.
+
+## Warum es ersetzt wurde
+
+NIP-04 verschlüsselt den Nachrichteninhalt, verbirgt aber den sozialen Graphen nicht. Relay-Betreiber können weiterhin sehen, wer das Event gesendet hat, wer es empfängt und wann es veröffentlicht wurde. Diese Metadaten reichen aus, um Gespräche abzubilden, auch ohne die Payload zu entschlüsseln.
+
+NIP-17 begegnet dem, indem es NIP-44-Payload-Verschlüsselung mit NIP-59 gift wrapping kombiniert. Dadurch wird der Sender vor Relays und zufälligen Beobachtern verborgen. Neue Implementierungen sollten NIP-04 nur noch als Kompatibilitätsschicht behandeln.
+
+## Implementierungsstatus
+
+Legacy-Clients und Signer bieten weiterhin NIP-04-Methoden zum Ver- und Entschlüsseln an, weil alte Unterhaltungen und ältere Apps noch im Umlauf sind. Diese Kompatibilität ist für Migrationen wichtig, aber neue Funktionen auf Kind-4-Events aufzubauen, bedeutet meist, die alten Datenschutzgrenzen weiterzutragen.
 
 ---
 
 **Primärquellen:**
-- [NIP-04-Spezifikation](https://github.com/nostr-protocol/nips/blob/master/04.md)
+- [NIP-04 Specification](https://github.com/nostr-protocol/nips/blob/master/04.md)
 
 **Erwähnt in:**
-- [Newsletter #3: Dezember-Rückblick](/de/newsletters/2025-12-31-newsletter/#december-recap-five-years-of-nostr-decembers)
+- [Newsletter #4: NIP Deep Dive](/en/newsletters/2026-01-07-newsletter/#nip-04-encrypted-direct-messages-legacy)
+- [Newsletter #3: December Recap](/en/newsletters/2025-12-31-newsletter/#december-recap-five-years-of-nostr-decembers)
 
 **Siehe auch:**
-- [NIP-17: Private Direktnachrichten](/de/topics/nip-17/)
+- [NIP-44: Encrypted Payloads](/de/topics/nip-44/)
+- [NIP-17: Private Direct Messages](/de/topics/nip-17/)
 - [NIP-59: Gift Wrap](/de/topics/nip-59/)

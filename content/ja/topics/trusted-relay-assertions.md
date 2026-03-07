@@ -1,40 +1,49 @@
 ---
 title: "Trusted Relay Assertions"
 date: 2026-01-21
+translationOf: /en/topics/trusted-relay-assertions.md
+translationDate: 2026-03-07
 draft: false
 categories:
   - Protocol
   - Relays
 ---
 
-Trusted Relay Assertionsは、リレーの信頼スコアリングと評判管理を標準化するためのドラフトNIP提案です。この仕様は、アサーションプロバイダーが観測されたメトリクス、オペレーターの評判、ユーザーレポートから計算された信頼スコアを公開するkind 30385イベントを導入します。
+Trusted Relay Assertionsは、relayについて署名付きの第三者評価をNostr上で公開し、clientがself-reported metadataだけではない文脈をもとにrelayを選べるようにする考え方です。現時点で標準化されているbuilding blockは[NIP-85: Trusted Assertions](/ja/topics/nip-85/)で、userがproviderをどう信頼し、providerが署名済み計算結果をどう公開するかを定義しています。
 
 ## 仕組み
 
-この提案は、リレーエコシステムのギャップを埋めます。[NIP-11](/ja/topics/nip-11/)はリレーが自分自身について主張することを定義し、[NIP-66](/ja/topics/nip-66/)は私たちが観察するものを測定しますが、Trusted Relay Assertionsはリレーの信頼性について私たちが結論付けるものを標準化します。
+relay選定には3つの層があります。[NIP-11: Relay Information Document](/ja/topics/nip-11/)はrelayが自分について何を言うかを扱います。[NIP-66: Relay Discovery and Liveness Monitoring](/ja/topics/nip-66/)は可用性やlatencyのように観測できる値を扱います。Trusted Relay Assertionsは、その先にある「第三者がそのdataから何を結論づけるか」と「clientがその結論を信頼するか」を埋めようとするものです。
 
-アサーションプロバイダーは、3つの次元でスコアを計算します。信頼性は、可用性、復旧速度、一貫性、レイテンシを測定します。品質は、ポリシードキュメント、TLSセキュリティ、オペレーターの説明責任を評価します。アクセシビリティは、アクセス障壁、管轄区域の自由、監視リスクを評価します。全体的な信頼スコア(0-100)は、これらのコンポーネントを重み付けして組み合わせます:信頼性40%、品質35%、アクセシビリティ25%。
+より広いNIP-85モデルでは、userがkind `10040` eventでtrusted providerを指定し、providerが署名済みのaddressable assertion eventを公開します。relay-scoring appを作るには、さらに2つの合意が必要です。relayをsubjectとしてどう識別するか、そしてscoreと裏付けをどのresult tagで表すかです。
 
-各アサーションには、観測回数に基づいた信頼度レベル(低、中、高)が含まれます。オペレーター検証には複数の方法を使用します:署名されたNIP-11ドキュメントを介した暗号的証明、DNS TXTレコード、または.well-knownファイル。この仕様は、オペレーターの信頼スコアを通じてWeb of Trustを統合します。ポリシー分類は、ユーザーが適切なリレーを見つけるのに役立ちます:オープン、モデレート、キュレート、または専門。
+ここで大事なのは、transportとtrust delegationは標準化されていても、relay固有のscoring modelはまだapplication patternだという点です。何をもってtrustworthy relayとみなすかについて、providerごとに正当な不一致があり得ます。
 
-ユーザーは、kind 10385イベントを介して信頼されたアサーションプロバイダーを宣言します。クライアントは複数のプロバイダーに問い合わせ、スコアを比較します。この提案には、リレーオペレーターが[NIP-32](/ja/topics/nip-32/)ラベリングイベントを使用してスコアに異議を唱えることができる異議申し立てプロセスが含まれています。
+## 信頼モデル
 
-## ユースケース
+relay trust scoreは客観的事実ではありません。あるproviderはuptimeとwrite throughputを重視し、別のproviderは法域、moderation policy、operator identityを重視し、さらに別のproviderは監視耐性を最優先するかもしれません。役に立つclientは、scoreそのものだけでなく、誰がそのscoreを出したかを示す必要があります。
 
-[NIP-46](/ja/topics/nip-46/)リモート署名者の場合、信頼アサーションは、接続を受け入れる前に接続URIに埋め込まれた未知のリレーをユーザーが評価するのに役立ちます。[NIP-65](/ja/topics/nip-65/)リレーリストと組み合わせることで、クライアントはユーザーの好みとサードパーティの信頼評価の両方に基づいて情報に基づいたリレー選択の決定を下すことができます。
+ここで[Web of Trust](/ja/topics/web-of-trust/)も関わってきます。clientがすでに特定の人やserviceを信頼しているなら、そのsocial neighborhoodから来たrelay評価を優先できます。単一のglobal rankingがあるふりをしなくて済みます。
 
-この仕様は、既存のリレー発見メカニズムを補完します。[NIP-66](/ja/topics/nip-66/)は発見(何が存在するか)を提供し、この提案は評価(何が良いか)を追加します。これらを組み合わせることで、ハードコードされたデフォルトや口コミの推奨に頼るのではなく、情報に基づいたリレー選択が可能になります。
+## なぜ重要か
+
+[NIP-46](/ja/topics/nip-46/) remote signer、wallet connection、未知のrelayを提示するappでは、第三者によるrelay評価がdefaultへの盲信を減らせます。[NIP-65](/ja/topics/nip-65/) relay listと組み合わせれば、clientは「どのrelayを使うか」と「どのrelayをこの用途で信頼するか」を分けて考えられます。
+
+ただし正確さに関する注意点もあります。2026-01のnewsletterではrelay trust scoringが専用proposalのように扱われましたが、NIPs repositoryでmerge済みなのは、より広い[NIP-85: Trusted Assertions](/ja/topics/nip-85/) formatです。relay scoringはその上に載るuse caseであり、独立した完成済みwire formatではありません。
 
 ---
 
-**主要なソース:**
-- [ドラフトNIPドキュメント](https://nostr.com/nevent1qqsqjymvcp6ch3ps3fqsxljf6j8u3adz64ucw8npnzuj3cn6dekn0gspz9mhxue69uhkummnw3ezumrpdejz7qg3waehxw309ahx7um5wgh8w6twv5hsyga3qg) - 仕様を提案するKind 30817イベント
+**主要ソース:**
+- [NIP-85 Specification](https://github.com/nostr-protocol/nips/blob/master/85.md)
+- [PR #1534: Trusted Assertions](https://github.com/nostr-protocol/nips/pull/1534)
 
-**言及されている場所:**
-- [Newsletter #6: ニュース](/ja/newsletters/2026-01-21-newsletter/#trusted-relay-assertions-a-new-approach-to-relay-trust)
-- [Newsletter #6: NIP更新](/ja/newsletters/2026-01-21-newsletter/#nip-updates)
+**言及箇所:**
+- [Newsletter #6: News](/en/newsletters/2026-01-21-newsletter/#trusted-relay-assertions-a-new-approach-to-relay-trust)
+- [Newsletter #6: NIP Updates](/en/newsletters/2026-01-21-newsletter/#nip-updates)
+- [Newsletter #7: NIP Updates](/en/newsletters/2026-01-28-newsletter/#nip-updates)
 
 **関連項目:**
-- [NIP-11: リレー情報ドキュメント](/ja/topics/nip-11/)
-- [NIP-66: リレー発見と稼働監視](/ja/topics/nip-66/)
-- [NIP-32: ラベリング](/ja/topics/nip-32/)
+- [NIP-11: Relay Information Document](/ja/topics/nip-11/)
+- [NIP-66: Relay Discovery and Liveness Monitoring](/ja/topics/nip-66/)
+- [NIP-85: Trusted Assertions](/ja/topics/nip-85/)
+- [Web of Trust](/ja/topics/web-of-trust/)

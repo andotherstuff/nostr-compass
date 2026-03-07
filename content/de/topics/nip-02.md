@@ -1,17 +1,18 @@
 ---
 title: "NIP-02: Folgeliste"
 date: 2025-12-24
+translationDate: 2026-03-07
 draft: false
 categories:
   - Protocol
   - Social
 ---
 
-NIP-02 definiert Kind-3-Events, die Ihre Folgeliste speichern. Dieser einfache Mechanismus bildet das soziale Netzwerk, das Zeitleisten ermöglicht.
+NIP-02 definiert Kind-3-Events, die die Folgeliste eines Nutzers speichern. Dieses Event ist die grundlegende Eingabe für Home-Feeds, Antwortbenachrichtigungen und viele Strategien zur Relay-Auswahl.
 
-## Struktur
+## Wie es funktioniert
 
-Ein Kind-3-Event enthält `p`-Tags, die gefolgten Pubkeys auflisten:
+Ein Kind-3-Event enthält `p`-Tags, die den gefolgten Pubkeys auflisten:
 
 ```json
 {
@@ -29,37 +30,43 @@ Ein Kind-3-Event enthält `p`-Tags, die gefolgten Pubkeys auflisten:
 }
 ```
 
-Jedes `p`-Tag hat vier Positionen: den Tag-Namen, den gefolgten Pubkey (Hex), einen optionalen Relay-URL-Hinweis und einen optionalen "Petname" (ein lokaler Spitzname). Der Relay-Hinweis teilt anderen Clients mit, wo sie Events dieses Benutzers finden können. Der Petname ermöglicht es Ihnen, Kontakten einprägsame Namen zuzuweisen, ohne sich auf deren selbstdeklarierte Anzeigenamen zu verlassen.
+Jedes `p`-Tag hat vier Positionen: den Tag-Namen, den gefolgten Pubkey (Hex), einen optionalen Relay-URL-Hinweis und einen optionalen "petname" (einen lokalen Spitznamen). Der Relay-Hinweis sagt anderen Clients, wo sie die Events dieses Nutzers finden können. Der petname erlaubt es, Kontakten merkbare Namen zu geben, ohne sich auf deren selbst deklarierte Anzeigenamen zu verlassen.
 
 ## Ersetzbares Verhalten
 
-Kind 3 fällt in den ersetzbaren Bereich (0, 3, 10000-19999), sodass Relays nur die neueste Version pro Pubkey behalten. Wenn Sie jemandem neu folgen, veröffentlicht Ihr Client ein komplett neues Kind 3 mit allen Ihren Follows plus dem neuen. Das bedeutet, Folgelisten müssen jedes Mal vollständig sein; Sie können keine inkrementellen Updates veröffentlichen.
+Kind 3 liegt im ersetzbaren Bereich (0, 3, 10000-19999), daher behalten Relays nur die neueste Version pro Pubkey. Wenn du jemandem neu folgst, veröffentlicht dein Client ein vollständiges neues Kind 3 mit allen bisherigen Follows plus dem neuen Eintrag. Folgelisten müssen also jedes Mal vollständig sein, inkrementelle Updates funktionieren nicht.
 
-## Zeitleisten erstellen
+## Warum es wichtig ist
 
-Um einen Home-Feed zu erstellen, rufen Clients das Kind 3 des Benutzers ab, extrahieren alle `p`-Tag-Pubkeys und abonnieren dann Kind-1-Events von diesen Autoren:
+Um einen Home-Feed zu erzeugen, laden Clients das Kind 3 des Nutzers, extrahieren alle Pubkeys aus den `p`-Tags und abonnieren dann Kind-1-Events dieser Autoren:
 
 ```json
 ["REQ", "home", {"kinds": [1], "authors": ["91cf9...", "14aeb...", "612ae..."], "limit": 50}]
 ```
 
-Das Relay gibt passende Notizen zurück, und der Client rendert sie. Die Relay-Hinweise in Kind 3 helfen Clients zu wissen, welche Relays für jeden gefolgten Benutzer abzufragen sind.
+Das Relay liefert passende Notes zurück, und der Client rendert sie. Die Relay-Hinweise in Kind 3 helfen Clients zu erkennen, welche Relays sie für jeden gefolgten Nutzer abfragen sollten.
 
-## Petnames und Identität
+Hier zeigt sich auch schnell veralteter sozialer Zustand. Wenn das neueste Kind 3 eines Nutzers auf den abgefragten Relays fehlt, kann sein Feed leer wirken, obwohl die Follows anderswo noch vorhanden sind. Clients, die Ergebnisse aus mehreren Relays zusammenführen, erholen sich meist besser als Clients, die nur einem Relay vertrauen.
 
-Das Petname-Feld ermöglicht ein dezentrales Benennungsschema. Anstatt dem Namen zu vertrauen, den ein Benutzer in seinem Profil angibt, können Sie Ihr eigenes Label vergeben. Ein Client könnte "alice (Meine Schwester)" anzeigen, wobei "alice" aus ihrem Kind-0-Profil stammt und "Meine Schwester" Ihr Petname ist. Dies bietet Kontext, den globale Benutzernamen nicht liefern können.
+## Petnames und Identitat
 
-## Praktische Überlegungen
+Das petname-Feld ermöglicht ein dezentrales Benennungsschema. Statt einfach dem Namen zu vertrauen, den ein Nutzer in seinem Profil angibt, kannst du selbst ein Label vergeben. Ein Client könnte etwa "alice (Meine Schwester)" anzeigen, wobei "alice" aus ihrem Kind-0-Profil stammt und "Meine Schwester" dein petname ist. Das liefert Kontext, den globale Benutzernamen nicht bieten können.
 
-Da Kind-3-Events ersetzbar und vollständig sein müssen, sollten Clients unbekannte Tags beim Aktualisieren beibehalten. Wenn ein anderer Client Tags hinzugefügt hat, die Ihr Client nicht versteht, würden Sie diese Daten durch blindes Überschreiben verlieren. Hängen Sie neue Follows an, anstatt von Grund auf neu aufzubauen.
+## Interop-Hinweise
+
+Weil Kind-3-Events ersetzbar sind und vollständig bleiben müssen, sollten Clients unbekannte Tags beim Aktualisieren erhalten. Wenn ein anderer Client Tags hinzugefügt hat, die dein Client nicht versteht, würde blindes Überschreiben diese Daten verlieren.
+
+Das gilt genauso für Relay-Hinweise und petnames. Sie sind optional, aber wenn sie beim Schreiben verloren gehen, verschlechtert sich die Erfahrung in anderen Clients stillschweigend. Ein sicherer Update-Pfad ist: das neueste bekannte Kind 3 laden, nur die verstandenen Tags ändern, den Rest beibehalten und dann das vollständige Event erneut veröffentlichen.
 
 ---
 
 **Primärquellen:**
-- [NIP-02 Spezifikation](https://github.com/nostr-protocol/nips/blob/master/02.md)
+- [NIP-02 Specification](https://github.com/nostr-protocol/nips/blob/master/02.md)
 
 **Erwähnt in:**
-- [Newsletter #2: NIP Deep Dive](/de/newsletters/2025-12-24-newsletter/#nip-02-follow-list)
+- [Newsletter #2: NIP Deep Dive](/en/newsletters/2025-12-24-newsletter/#nip-02-follow-list)
 
 **Siehe auch:**
 - [NIP-01: Basisprotokoll](/de/topics/nip-01/)
+- [NIP-10: Textnotiz-Threading](/de/topics/nip-10/)
+- [NIP-65: Relay List Metadata](/de/topics/nip-65/)

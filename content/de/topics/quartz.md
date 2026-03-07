@@ -2,55 +2,55 @@
 title: "Quartz"
 date: 2025-12-31
 translationOf: /en/topics/quartz.md
-translationDate: 2025-12-31
+translationDate: 2026-03-07
 draft: false
 categories:
   - Bibliothek
   - Entwicklung
 ---
 
-Quartz ist eine Kotlin Multiplatform Bibliothek für Nostr, entwickelt von Vitor Pamplona. Ursprünglich aus dem Amethyst Android-Client extrahiert, bietet Quartz wiederverwendbare Nostr-Protokoll-Implementierungen für JVM-, Android-, iOS- und Linux-Plattformen.
+Quartz ist eine Kotlin-Multiplatform-Bibliothek für Nostr, entwickelt von Vitor Pamplona. Sie ist die gemeinsame Protokoll- und Datenschicht hinter Amethysts Weg zu Android, Desktop und später iOS aus einer einzigen Codebasis.
 
-## So Funktioniert Es
+## Funktionsweise
 
-Quartz stellt Nostr-Kernfunktionalität als gemeinsam genutzte Bibliothek bereit:
+Quartz stellt zentrale Nostr-Funktionalität als gemeinsam genutzte Bibliothek bereit:
 
-- **Event-Verarbeitung**: Parsing, Validierung und Erstellung von Nostr-Events
-- **Kryptographie**: Secp256k1-Signierung, NIP-44-Verschlüsselung, Schlüsselverwaltung
-- **Relay-Kommunikation**: Verbindungsverwaltung, Nachrichtenordnung, Abonnement-Handling
-- **NIP-Unterstützung**: Implementierung gängiger NIPs einschließlich NIP-06, NIP-19, NIP-44 und mehr
+- **Event Handling**: Parsing, Validierung und Erstellung von Nostr-Events
+- **Cryptography**: Secp256k1-Signierung, NIP-44-Verschlüsselung und Schlüsselverwaltung
+- **Relay Communication**: Verbindungsverwaltung, Nachrichtenreihenfolge und Subscription-Handling
+- **NIP Support**: Implementierung gängiger NIPs, darunter NIP-06, NIP-19, NIP-44 und weitere
 
-## Hauptmerkmale
+## Warum das wichtig ist
 
-- **Kotlin Multiplatform**: Eine einzige Codebasis kompiliert für mehrere Ziele
-- **Zielplattformen**: Android, JVM, iOS (ARM64, Simulator), Linux
-- **Performance-Optimiert**: Effiziente Event-Verarbeitung und kryptographische Operationen
-- **Blossom-Integration**: Unterstützung für Medien-Uploads über das Blossom-Protokoll
-- **OpenTimestamp**: Vollständiger Kotlin-Port für Zeitstempelverifizierung
+Quartz verschiebt protokollschwere Logik aus einer einzelnen App in eine wiederverwendbare Bibliothek. Das ist wichtig, weil Relay-Handling, Event-Parsing, Verschlüsselung und Speicherregeln so leichter zwischen Clients geteilt werden können, statt auf jeder Plattform neu implementiert zu werden.
+
+Das konkrete Ergebnis war bereits in Amethysts Desktop-Arbeit sichtbar. Der durch Grants finanzierte Refactor verlagerte gemeinsamen Code in Kotlin-Multiplatform-Module wie `commonMain`, `jvmAndroid` und `jvmMain`, sodass Desktop-Unterstützung eher ein Bibliotheks- und Modulproblem als ein kompletter Rewrite wurde.
 
 ## Architektur
 
-Die Bibliothek verwendet eine modulare Source-Set-Struktur:
+Die Bibliothek nutzt eine modulare Source-Set-Struktur:
 - `commonMain`: Gemeinsamer Code für alle Plattformen
-- `jvmAndroid`: Code, der zwischen JVM und Android geteilt wird
+- `jvmAndroid`: Code, der von JVM und Android geteilt wird
 - `androidMain`: Android-spezifische Implementierungen
-- `jvmMain`: Desktop-JVM-Implementierungen
+- `jvmMain`: JVM-Implementierungen für Desktop
 - `iosMain`: iOS-spezifische Implementierungen
 
-## OpenSats-Förderung
+## Aktueller Stand
 
-Im Dezember 2025 kündigte OpenSats die Finanzierung von Quartz als Teil ihrer vierzehnten Welle von Nostr-Förderungen an. Die Förderung unterstützt die fortlaufende Entwicklung zur Ermöglichung von Amethyst auf iOS durch denselben Kotlin Multiplatform-Ansatz, der bereits die Android- und Desktop-Versionen antreibt.
+Im Dezember 2025 kündigte OpenSats die Finanzierung von Quartz in der vierzehnten Welle seiner Nostr-Grants an. Das Repo existiert als eigenständige Bibliothek, aber ein großer Teil des sichtbaren Fortschritts landete bisher über Amethyst-PRs, die App-Module in Multiplatform-Code umwandeln und Feature-Parität über mehrere Ziele hinweg verfolgen.
 
 ---
 
-**Primäre Quellen:**
-- [Quartz auf Maven Central](https://central.sonatype.com/artifact/com.vitorpamplona.quartz/quartz)
+**Primärquellen:**
+- [Quartz Repository](https://github.com/vitorpamplona/quartz)
+- [Quartz on Maven Central](https://central.sonatype.com/artifact/com.vitorpamplona.quartz/quartz)
 - [Amethyst Repository](https://github.com/vitorpamplona/amethyst)
+- [OpenSats Fourteenth Wave of Nostr Grants](https://opensats.org/blog/fourteenth-wave-of-nostr-grants)
 
 **Erwähnt in:**
-- [Newsletter #3: Dezember-Rückblick](/de/newsletters/2025-12-31-newsletter/#december-2025-ecosystem-expansion)
-- [Newsletter #3: Neuigkeiten](/de/newsletters/2025-12-31-newsletter/#news)
-- [Newsletter #3: Wichtige Amethyst-Änderungen](/de/newsletters/2025-12-31-newsletter/#amethyst-android)
+- [Newsletter #3: December Recap](/de/newsletters/2025-12-31-newsletter/#december-2025-ecosystem-expansion)
+- [Newsletter #3: News](/de/newsletters/2025-12-31-newsletter/#news)
+- [Newsletter #3: Amethyst Notable Changes](/de/newsletters/2025-12-31-newsletter/#amethyst-android)
 
 **Siehe auch:**
-- [Blossom-Protokoll](/de/topics/blossom/)
+- [Blossom Protocol](/de/topics/blossom/)

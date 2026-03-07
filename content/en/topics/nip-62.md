@@ -38,6 +38,12 @@ When a vanish request omits all `e` tags, relays interpret this as a request to 
 
 Relays are not required to support NIP-62. The Nostr network is decentralized, and each relay operator decides their own data retention policies. Users should not assume their content will be deleted everywhere simply because they published a vanish request.
 
+## Why It Matters
+
+NIP-62 gives clients and relay operators a shared deletion signal that goes beyond ad hoc moderation APIs or relay-specific dashboards. A user can publish one signed request and let each relay decide how to process it.
+
+The practical limit is scope. A vanish request only affects relays that see it, support it, and choose to honor it. It does not retract screenshots, local databases, third-party archives, or reposted copies already outside the relay's control.
+
 ## Privacy Considerations
 
 Vanish requests are a best-effort deletion mechanism, not a guarantee of privacy. Even after publishing a vanish request, copies of the content may exist elsewhere in the network including on other relays that don't support NIP-62, in local caches on client devices, in third-party archives or search engines, and in backups.
@@ -46,6 +52,10 @@ The request itself is also a signed Nostr event, meaning it becomes part of your
 
 For content that must remain private, consider using encrypted messaging like [NIP-17](/en/topics/nip-17/) rather than relying on deletion after the fact.
 
+## Interop Notes
+
+NIP-62 complements [NIP-09](/en/topics/nip-09/). NIP-09 is the general deletion request event used throughout Nostr, while NIP-62 gives relays a stronger vanish-oriented signal that can cover specific events or an entire pubkey's content set. Implementations may support both, and rust-nostr's database backends now expose configuration around that enforcement boundary.
+
 ---
 
 **Primary sources:**
@@ -53,3 +63,8 @@ For content that must remain private, consider using encrypted messaging like [N
 
 **Mentioned in:**
 - [Newsletter #5: Notable Code Changes](/en/newsletters/2026-01-13-newsletter/#rust-nostr-library)
+- [Newsletter #12: rust-nostr](/en/newsletters/2026-03-04-newsletter/#rust-nostr-nip-62-request-to-vanish)
+
+**See also:**
+- [NIP-09: Event Deletion Request](/en/topics/nip-09/)
+- [NIP-17: Private Direct Messages](/en/topics/nip-17/)

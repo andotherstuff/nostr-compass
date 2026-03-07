@@ -2,7 +2,7 @@
 title: "NIP-44: Versleutelde Payloads"
 date: 2025-12-31
 translationOf: /en/topics/nip-44.md
-translationDate: 2025-12-31
+translationDate: 2026-03-07
 draft: false
 categories:
   - NIP
@@ -10,61 +10,71 @@ categories:
   - Privacy
 ---
 
-NIP-44 definieert een versiebeheerde encryptiestandaard voor Nostr payloads, die het gebrekkige NIP-04 encryptieschema vervangt door moderne cryptografische primitieven.
+NIP-44 definieert een versiegebonden encryptiestandaard voor Nostr-payloads, die het gebrekkige NIP-04-encryptieschema vervangt door moderne cryptografische primitiven.
 
 ## Hoe Het Werkt
 
 NIP-44 versie 2 gebruikt een meerstaps encryptieproces:
 
-1. **Sleutelovereenkomst**: ECDH (secp256k1) tussen de publieke sleutels van zender en ontvanger produceert een gedeeld geheim
-2. **Sleutelafleiding**: HKDF-extract met SHA256 en salt `nip44-v2` creert een gespreksleutel
-3. **Per-bericht Sleutels**: HKDF-expand leidt ChaCha-sleutel, nonce en HMAC-sleutel af van een willekeurige nonce
-4. **Padding**: Inhoud wordt opgevuld om berichtlengte te verbergen
-5. **Encryptie**: ChaCha20 versleutelt de opgevulde inhoud
-6. **Authenticatie**: HMAC-SHA256 biedt berichtintegriteit
+1. **Sleuteluitwisseling**: ECDH (secp256k1) tussen de publieke sleutels van afzender en ontvanger produceert een gedeeld geheim
+2. **Sleutelafleiding**: HKDF-extract met SHA256 en salt `nip44-v2` creëert een gesprekssleutel
+3. **Per-bericht Sleutels**: HKDF-expand leidt een ChaCha-sleutel, nonce en HMAC-sleutel af uit een willekeurige nonce
+4. **Padding**: Inhoud krijgt padding om de berichtlengte te verbergen
+5. **Encryptie**: ChaCha20 versleutelt de gepadde inhoud
+6. **Authenticatie**: HMAC-SHA256 zorgt voor berichtintegriteit
+
+De uitvoer is een versiegebonden base64-payload die in een normaal ondertekend Nostr-event gaat. De specificatie vereist dat clients eerst de buitenste NIP-01-eventhandtekening valideren voordat ze de binnenste NIP-44-payload ontsleutelen.
 
 ## Cryptografische Keuzes
 
-- **ChaCha20** boven AES: Sneller, betere multi-key aanvalsweerstand
-- **HMAC-SHA256** boven Poly1305: Polynomiale MACs zijn makkelijker te vervalsen
-- **SHA256**: Consistent met bestaande Nostr-primitieven
-- **Versiebeheerd Formaat**: Maakt toekomstige algoritme-upgrades mogelijk
+- **ChaCha20** boven AES: sneller, met betere weerstand tegen multi-key-aanvallen
+- **HMAC-SHA256** boven Poly1305: polynomiale MACs zijn makkelijker te vervalsen
+- **SHA256**: consistent met bestaande Nostr-primitieven
+- **Versiegebonden Formaat**: maakt toekomstige algoritme-upgrades mogelijk
 
 ## Beveiligingseigenschappen
 
-- **Geauthenticeerde Encryptie**: Berichten kunnen niet worden gemanipuleerd
-- **Lengtemaskering**: Padding verbergt berichtgrootte
-- **Gespreksleutels**: Dezelfde sleutel voor doorlopende gesprekken vermindert berekening
-- **Geauditeerd**: Cure53 beveiligingsaudit vond geen exploiteerbare kwetsbaarheden
+- **Authenticated Encryption**: berichten kunnen niet ongemerkt worden aangepast
+- **Lengteverhulling**: padding verbergt de berichtgrootte
+- **Gesprekssleutels**: dezelfde sleutel voor doorlopende gesprekken vermindert rekenwerk
+- **Geaudit**: de Cure53-beveiligingsaudit vond geen exploiteerbare kwetsbaarheden
+
+## Implementatienotities
+
+NIP-44 is geen drop-in vervanging voor NIP-04-payloads. Het definieert een encryptieformaat, geen direct-message-event kind. Protocollen zoals [NIP-17](/nl/topics/nip-17/) en [NIP-59](/nl/topics/nip-59/) definiëren hoe versleutelde payloads in echte berichtstromen worden gebruikt.
+
+De plaintext-invoer is UTF-8-tekst met een lengte van 1 tot 65535 bytes. Dat is een echte beperking voor implementers: als je applicatie willekeurige binaire blobs moet versleutelen, heb je extra encoding of een ander containerformaat nodig.
 
 ## Beperkingen
 
-NIP-44 biedt niet:
-- **Forward Secrecy**: Gecompromitteerde sleutels stellen eerdere berichten bloot
-- **Post-Compromise Security**: Herstel na sleutelcompromittering
-- **Ontkenbaarheid**: Berichten zijn aantoonbaar ondertekend door specifieke sleutels
-- **Metadata Verberging**: Relay-architectuur beperkt privacy
+NIP-44 biedt geen:
+- **Forward Secrecy**: gecompromitteerde sleutels leggen eerdere berichten bloot
+- **Post-Compromise Security**: herstel na sleutelcompromittering
+- **Ontkenbaarheid**: berichten zijn aantoonbaar ondertekend door specifieke sleutels
+- **Metadata-verhulling**: relay-architectuur beperkt privacy
 
-Voor hoge beveiligingsbehoeften bieden NIP-104 (Double Ratchet) of MLS-gebaseerde protocollen zoals Marmot sterkere garanties.
+Voor hoge beveiligingseisen bieden NIP-104 (double ratchet) of MLS-gebaseerde protocollen zoals Marmot sterkere garanties.
 
 ## Geschiedenis
 
-NIP-44 revisie 3 werd samengevoegd in december 2023 na een onafhankelijke Cure53 beveiligingsaudit. Het vormt de cryptografische basis voor NIP-17 prive-DMs en NIP-59 gift wrapping.
+NIP-44 revisie 3 werd in december 2023 gemerged na een onafhankelijke Cure53-beveiligingsaudit. Het vormt de cryptografische basis voor NIP-17 private DMs en NIP-59 gift wrapping.
 
 ---
 
 **Primaire bronnen:**
-- [NIP-44 Specificatie](https://github.com/nostr-protocol/nips/blob/master/44.md)
-- [NIP-44 Referentie-implementaties](https://github.com/paulmillr/nip44)
-- [Cure53 Auditrapport](https://cure53.de/audit-report_nip44-implementations.pdf)
+- [NIP-44-specificatie](https://github.com/nostr-protocol/nips/blob/master/44.md)
+- [NIP-44-reference implementations](https://github.com/paulmillr/nip44)
+- [Cure53-auditrapport](https://cure53.de/audit-report_nip44-implementations.pdf)
 
 **Vermeld in:**
-- [Nieuwsbrief #3: December 2023](/nl/newsletters/2025-12-31-newsletter/#december-2023-ecosystem-maturation)
-- [Nieuwsbrief #3: December 2024](/nl/newsletters/2025-12-31-newsletter/#december-2024-protocol-advancement)
+- [Nieuwsbrief #4: NIP Deep Dive](/en/newsletters/2026-01-07-newsletter/#nip-44-versioned-encryption)
+- [Nieuwsbrief #3: December 2023](/en/newsletters/2025-12-31-newsletter/#december-2023-ecosystem-maturation)
+- [Nieuwsbrief #3: December 2024](/en/newsletters/2025-12-31-newsletter/#december-2024-protocol-advancement)
+- [Nieuwsbrief #12: Marmot](/en/newsletters/2026-03-04-newsletter/#marmot-development-kit-ships-first-public-release)
 
 **Zie ook:**
-- [NIP-04: Versleutelde Directe Berichten (verouderd)](/nl/topics/nip-04/)
-- [NIP-17: Privé Directe Berichten](/nl/topics/nip-17/)
+- [NIP-04: Encrypted Direct Messages (verouderd)](/nl/topics/nip-04/)
+- [NIP-17: Private Direct Messages](/nl/topics/nip-17/)
 - [NIP-59: Gift Wrap](/nl/topics/nip-59/)
-- [NIP-104: Double Ratchet Encryptie](/nl/topics/nip-104/)
+- [NIP-104: Double Ratchet Encryption](/nl/topics/nip-104/)
 - [MLS: Message Layer Security](/nl/topics/mls/)

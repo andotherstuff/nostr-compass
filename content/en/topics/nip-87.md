@@ -43,6 +43,8 @@ NIP-87 defines how ecash mints (Cashu and Fedimint) can announce themselves on N
 
 The `nuts` tag lists supported NUTs (Notation, Usage, and Terminology specs for Cashu).
 
+The `d` tag should be the mint's Cashu pubkey, which gives clients one stable identifier for discovery even if the mint later changes metadata or republishes its announcement.
+
 ## User Recommendations
 
 ```json
@@ -63,6 +65,18 @@ The `nuts` tag lists supported NUTs (Notation, Usage, and Terminology specs for 
 
 Users can include reviews in the `content` field and point to specific mint announcement events.
 
+Recommendation events are parameterized replaceable events. That is useful because a user can revise a recommendation, update their review text, or stop endorsing a mint without leaving several stale recommendation events behind.
+
+## Trust Model
+
+NIP-87 does not tell clients which mint is safe. It gives them a way to combine operator-published metadata with social recommendations from accounts the user already trusts.
+
+That distinction matters because direct queries for mint announcement events can be noisy or malicious. The spec explicitly warns clients to use spam-prevention measures or high-quality relays when bypassing social recommendations and querying announcements directly.
+
+## Interop Notes
+
+Cashu and Fedimint use different announcement kinds because they expose different connection details. Cashu announcements publish mint URLs and supported NUTs, while Fedimint announcements publish invite codes and supported federation modules. A wallet that supports both needs to parse both formats.
+
 ---
 
 **Primary sources:**
@@ -70,6 +84,8 @@ Users can include reviews in the `content` field and point to specific mint anno
 
 **Mentioned in:**
 - [Newsletter #4: Releases](/en/newsletters/2026-01-07-newsletter/#releases)
+- [Newsletter #7: Zeus](/en/newsletters/2026-01-28-newsletter/)
 
 **See also:**
+- [Cashu](/en/topics/cashu/)
 - [NIP-60: Cashu Wallet](/en/topics/nip-60/)

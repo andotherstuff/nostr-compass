@@ -2,41 +2,50 @@
 title: "NIP-39: Identidades Externas en Perfiles"
 date: 2026-02-11
 translationOf: /en/topics/nip-39.md
-translationDate: 2026-02-12
+translationDate: 2026-03-07
 draft: false
 categories:
   - NIPs
   - Identity
 ---
 
-NIP-39 define cómo adjuntar claims de identidad externa a perfiles Nostr usando etiquetas `i`. Estas etiquetas vinculan una pubkey Nostr a cuentas en plataformas externas como GitHub, Twitter o dominios DNS.
+NIP-39 define cómo los usuarios adjuntan claims de identidad externa a sus perfiles de Nostr usando tags `i`. Estos tags vinculan una pubkey de Nostr a cuentas en plataformas externas como GitHub, Twitter, Mastodon o Telegram.
 
 ## Cómo Funciona
 
-Se publican claims de identidad como etiquetas `i`. Cada etiqueta contiene un identificador de plataforma y una URL de prueba donde la cuenta externa enlaza de vuelta a la pubkey Nostr, estableciendo verificación bidireccional:
+Los usuarios publican claims de identidad en eventos kind 10011 como tags `i`. Cada tag contiene un valor `plataforma:identidad` más un puntero de prueba que permite al cliente verificar el claim:
 
 ```json
 {
+  "kind": 10011,
   "tags": [
-    ["i", "github:username", "https://gist.github.com/username/proof"],
-    ["i", "twitter:handle", "https://twitter.com/handle/status/proof_tweet_id"]
+    ["i", "github:username", "gist-id"],
+    ["i", "twitter:handle", "tweet-id"]
   ]
 }
 ```
 
-Al obtener la URL de prueba, el cliente verifica que contiene la pubkey Nostr del usuario. Esto crea una red de conexiones de identidad sin requerir servicios de verificación centralizados.
+Los clientes reconstruyen la URL de prueba a partir de la plataforma y el valor de prueba, luego verifican que la publicación externa contiene el `npub` del usuario. Eso mantiene el claim portable entre clientes sin requerir un verificador central.
 
-## Cambios Recientes
+## Modelo de Prueba
 
-A febrero de 2026, [PR #2216](https://github.com/nostr-protocol/nips/pull/2216) extrajo las etiquetas de identidad de eventos kind 0 (metadatos de usuario) a un kind dedicado 10011. El cambio fue parte de la campaña de reducción del kind 0 de vitorpamplona, motivada por la baja adopción. Casi ningún cliente implementó la verificación de etiquetas `i`, pero cada consulta de kind 0 cargaba con ese overhead. El nuevo kind 10011 permite a clientes interesados obtener claims de identidad por separado.
+El detalle importante es que NIP-39 demuestra control de dos identidades a la vez: la clave Nostr y la cuenta externa. Si cualquier lado de esa prueba desaparece, la verificación se debilita. Un gist o tweet eliminado no invalida el evento histórico, pero sí elimina la prueba en vivo de la que dependen la mayoría de los clientes.
+
+Otro punto útil de implementación es la estrategia de obtención. Como los claims ahora viven fuera del kind 0, los clientes pueden decidir si solicitarlos solo en vistas de detalle de perfil, solo para usuarios seguidos, o no hacerlo en absoluto. Eso evita añadir más peso al ya concurrido path del kind 0.
+
+## Estado Actual
+
+Según la especificación actual, los claims de identidad viven en eventos kind 10011 dedicados en lugar de metadatos kind 0. Esa separación surgió del esfuerzo más amplio por reducir las consultas de perfil del kind 0.
 
 ---
 
-**Fuentes principales:**
+**Fuentes primarias:**
 - [NIP-39: External Identities in Profiles](https://github.com/nostr-protocol/nips/blob/master/39.md)
+- [PR #2216](https://github.com/nostr-protocol/nips/pull/2216) - Movió claims de identidad fuera del kind 0
 
 **Mencionado en:**
-- [Newsletter #9: Actualizaciones de NIPs](/es/newsletters/2026-02-11-newsletter/#actualizaciones-de-nips)
+- [Newsletter #9: Actualizaciones de NIPs](/en/newsletters/2026-02-11-newsletter/#nip-updates)
+- [Newsletter #12: Amethyst](/en/newsletters/2026-03-04-newsletter/#amethyst-nip-39-nip-c0-nip-66)
 
 **Ver también:**
 - [NIP-05: Verificación Basada en DNS](/es/topics/nip-05/)

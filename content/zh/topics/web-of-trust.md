@@ -1,57 +1,58 @@
 ---
-title: "Web of Trust"
+title: "信任网络"
 date: 2025-12-31
-translationOf: /en/topics/web-of-trust.md
-translationDate: 2025-12-31
 draft: false
+translationOf: /en/topics/web-of-trust.md
+translationDate: 2026-03-07
 categories:
-  - 信任
-  - 社交图谱
+  - Trust
+  - Social Graph
 ---
 
-Web of Trust（WoT）是一种去中心化信任模型，其中声誉和可信度来源于社交图谱关系，而非中央机构。
+信任网络（WoT）是一种去中心化信任模型，其中声誉和可信度来源于社交图谱关系而非中心化权威机构。
 
 ## 工作原理
 
-在Nostr中，Web of Trust利用关注图谱（NIP-02联系人列表）和举报事件来计算信任分数：
+在 Nostr 中，信任网络通常从 [NIP-02：关注列表](/zh/topics/nip-02/) 中的关注图谱开始，有时还会加入屏蔽、举报或经验证的身份信号。客户端或服务选择一个或多个已信任的种子公钥，然后通过图谱向外传播信任。
 
-1. **图谱构建**：从pubkey、事件及其关系（关注、静音、举报）构建有向图
-2. **权重分配**：为已知可信的pubkey（例如具有已验证NIP-05标识符的）分配初始权重
-3. **迭代传播**：使用类似PageRank的算法，信任分数在网络中流动
-4. **Sybil抵抗**：如果攻击者创建许多虚假账户，传递给它们的信任会被虚假数量除以
+1. **图谱构建**：构建关注和可选负面信号的有向图
+2. **种子选择**：从观察者已信任的公钥开始
+3. **评分传播**：通过 PageRank 或其变体等算法在图谱中推送排名
+4. **截断与归一化**：限制图谱深度，衰减低信号账户，归一化最终分数用于显示或过滤
 
-## 关键特性
+具体算法未被标准化。两个 WoT 系统可以同时有效但产生不同排名，因为它们使用不同的种子、图谱深度、衰减规则或对屏蔽和举报的处理方式。
 
-- **去中心化**：没有中央机构决定声誉
-- **个性化**：可以根据每个用户关注的人从其角度计算信任
-- **Sybil抵抗**：由于信任稀释，机器人农场无法轻易操纵系统
-- **可组合**：可应用于垃圾邮件过滤、内容审核、relay准入和支付目录
+## 重要意义
 
-## Nostr中的应用
+WoT 为 Nostr 提供了一种无需中心化审核服务即可排名和过滤的方式。个性化的信任图谱比原始粉丝数更难被操纵，因为虚假账户仍然需要从观察者的现有网络中获得信任流入。
 
-- **垃圾邮件过滤**：relay可以使用WoT过滤低信任内容
-- **内容发现**：展示来自您网络信任的账户的内容
-- **支付目录**：带有冒充防护的Lightning地址查询
-- **Relay策略**：WoT relay仅接受来自受信任pubkey的笔记
-- **去中心化审核**：社区可以根据信任分数进行策展
+另一面是冷启动问题。如果你不关注任何人，个性化的 WoT 几乎没有排名依据。许多产品通过提供初始关注列表、可信提供者默认值或来自外部服务的预计算分数来解决这个问题。
 
-## 实现
+## Nostr 中的应用
 
-多个项目为Nostr实现了Web of Trust：
-- **Nostr.Band Trust Rank**：网络的PageRank风格评分
-- **WoT Relays**：按社交距离过滤的relay
-- **DCoSL**：去中心化声誉系统协议
-- **Noswot**：基于关注和举报的信任评分
+- **垃圾过滤**：中继可以使用 WoT 过滤低信任度内容
+- **内容发现**：展示来自你的网络信任的账户的内容
+- **支付目录**：带有防冒充功能的闪电网络地址查询
+- **中继策略**：WoT 中继仅接受来自受信公钥的笔记
+- **去中心化审核**：社区可以基于信任分数进行内容管理
+
+## 实现说明
+
+由于 WoT 计算需要爬取网络的大量部分，许多客户端不在本地计算。[NIP-85：可信断言](/zh/topics/nip-85/) 的存在部分就是出于这个原因：它为客户端提供了一种在本地计算成本过高时消费经签名的第三方 WoT 计算结果的方式。
+
+现有实现也回答不同的问题。全局信任排名对于整个网络的发现和垃圾过滤很有用。个性化的本地评分更适合"显示我的图谱会信任的账户"。在不知道是哪个模型产生的情况下解读 WoT 数值是常见的困惑来源。
 
 ---
 
 **主要来源：**
-- [Nostr.Band Trust Rank](https://trust.nostr.band/)
-- [DCoSL协议](https://github.com/wds4/DCoSL)
+- [NIP-02：关注列表](https://github.com/nostr-protocol/nips/blob/master/02.md)
+- [NIP-85：可信断言](https://github.com/nostr-protocol/nips/blob/master/85.md)
+- [Nostr.Band 信任排名](https://trust.nostr.band/)
+- [DCoSL 协议](https://github.com/wds4/DCoSL)
 - [Noswot](https://codeberg.org/weex/noswot)
 
 **提及于：**
-- [Newsletter #3: 十二月回顾](/zh/newsletters/2025-12-31-newsletter/#december-recap-five-years-of-nostr-decembers)
+- [Newsletter #3：十二月回顾](/zh/newsletters/2025-12-31-newsletter/#december-recap-five-years-of-nostr-decembers)
 
 **另请参阅：**
-- [NIP-02: 关注列表](/zh/topics/nip-02/)
+- [NIP-02：关注列表](/zh/topics/nip-02/)

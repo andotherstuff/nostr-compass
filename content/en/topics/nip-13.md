@@ -33,19 +33,31 @@ Proof of work is demonstrated by finding an event ID (SHA256 hash) with a specif
 | 20 | 1,048,576 | Moderate protection |
 | 24 | 16,777,216 | Strong spam resistance |
 
-## Use Cases
+## Why It Matters
 
 - **Relay Admission**: Relays can require minimum PoW for event acceptance
 - **Rate Limiting**: Higher difficulty for actions like account registration
 - **Spam Filtering**: Clients can prioritize high-PoW events in feeds
 - **Reputation Bootstrap**: New accounts can demonstrate commitment via PoW
 
-## Limitations
+The useful property is asymmetric cost. Creating many acceptable events becomes expensive for the sender, while checking the proof remains cheap for relays and clients.
+
+## Tradeoffs
 
 - Favors users with powerful hardware
 - Energy consumption concerns
 - Doesn't prevent all spam, just raises the cost
 
-## Related
+PoW also shifts spam resistance from account identity to compute availability. That can help in permissionless environments, but it does not distinguish between a legitimate new user and a well-funded spammer.
 
-- [NIP-01](/en/topics/nip-01/) - Basic Protocol
+---
+
+**Primary sources:**
+- [NIP-13 Specification](https://github.com/nostr-protocol/nips/blob/master/13.md)
+
+**Mentioned in:**
+- [Newsletter #7: News](/en/newsletters/2026-01-28-newsletter/#news)
+- [Newsletter #12: News](/en/newsletters/2026-03-04-newsletter/#news)
+
+**See also:**
+- [NIP-01: Basic Protocol](/en/topics/nip-01/)

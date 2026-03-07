@@ -1,9 +1,9 @@
 ---
 title: "NIP-A4: パブリックメッセージ"
 url: /ja/topics/nip-a4/
-translationOf: /en/topics/nip-a4.md
-translationDate: 2025-12-26
 date: 2025-12-24
+translationOf: /en/topics/nip-a4.md
+translationDate: 2026-03-07
 draft: false
 categories:
   - Protocol

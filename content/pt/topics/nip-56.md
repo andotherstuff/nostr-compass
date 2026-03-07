@@ -1,33 +1,37 @@
 ---
-title: "NIP-56: Denúncias"
+title: 'NIP-56: Relatórios'
 date: 2026-02-18
-translationOf: /en/topics/nip-56.md
-translationDate: 2026-02-18
 draft: false
 categories:
-  - Moderation
-  - Protocol
+- Moderation
+- Protocol
+translationOf: /en/topics/nip-56.md
+translationDate: '2026-03-07'
 ---
 
-O NIP-56 define um mecanismo de denúncia usando eventos kind 1984, permitindo que usuários e aplicações sinalem conteúdo indesejável em toda a rede Nostr.
+NIP-56 define eventos de relatório kind `1984`. Eles permitem que usuários e aplicativos publiquem sinais de moderação sobre contas, notas e blobs sem exigir uma única autoridade de moderação compartilhada.
 
-## Como Funciona
+## Como funciona
 
-Um usuário publica um evento kind 1984 com uma tag `p` referenciando o pubkey sendo denunciado. Ao denunciar uma nota específica, uma tag `e` referencia o ID da nota. Ambas as tags aceitam um terceiro parâmetro especificando a categoria de violação.
+Um relatório deve incluir um `p` tag para o pubkey relatado. Se o relatório for sobre um evento específico, deverá incluir também um `e` tag para esse evento. O tipo de relatório aparece como o terceiro valor no `p`, `e` ou `x` tag relevante.
 
-## Categorias de Denúncia
+## Categorias de relatório
 
-- **nudity**: conteúdo adulto
-- **malware**: vírus, trojans, ransomware
-- **profanity**: linguagem ofensiva e discurso de ódio
-- **illegal**: conteúdo potencialmente violando leis
+- **nudez**: conteúdo adulto
+- **malware**: vírus, trojans, ransomware e similares payloads
+- **palavrões**: linguagem ofensiva e discurso de ódio
+- **ilegal**: conteúdo que pode violar leis
 - **spam**: mensagens repetitivas indesejadas
-- **impersonation**: reivindicações fraudulentas de identidade
-- **other**: violações que não se enquadram nas categorias acima
+- **falsificação de identidade**: reivindicações de identidade fraudulentas
+- **outros**: violações que não se enquadram nas categorias acima
 
-## Comportamento de Clientes e Relays
+Os relatórios de blob usam `x` tags com o hash de blob e podem incluir um `server` tag apontando para o endpoint de hospedagem. Isso torna o NIP-56 utilizável para moderação de mídia, não apenas para notas e perfis.
 
-Clientes podem usar denúncias de usuários seguidos para decisões de moderação, como desfocar conteúdo quando múltiplos contatos confiáveis o sinalizam. Relays devem evitar moderação automática via denúncias devido a riscos de manipulação; denúncias de moderadores confiáveis podem informar a aplicação manual em vez disso. Classificação adicional é suportada por meio das tags `l` e `L` do NIP-32.
+## Modelo de segurança e confiança
+
+Os relatórios são sinais, não veredictos. Os clientes podem avaliá-los usando confiança social, listas de moderação ou funções explícitas de moderador. Os relays também podem lê-los, mas as especificações alertam contra a moderação totalmente automática porque os relatórios são fáceis de manipular.
+
+Classificação adicional pode ser adicionada com NIP-32 `l` e `L` tags, o que é útil quando um cliente deseja um vocabulário de moderação mais refinado do que os tipos de relatório de base sete.
 
 ---
 
@@ -35,7 +39,7 @@ Clientes podem usar denúncias de usuários seguidos para decisões de moderaç�
 - [Especificação NIP-56](https://github.com/nostr-protocol/nips/blob/master/56.md)
 
 **Mencionado em:**
-- [Compass #10: Atualizações de Projetos](/pt/newsletters/2026-02-18-newsletter/#notedeck-preparação-para-android-app-store)
+- [Boletim Informativo nº 10: Atualizações do Projeto](/pt/newsletters/2026-02-18-newsletter/#notedeck-android-app-store-prep)
 
 **Veja também:**
 - [NIP-22: Comentário](/pt/topics/nip-22/)

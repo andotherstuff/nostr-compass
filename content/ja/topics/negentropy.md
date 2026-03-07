@@ -2,42 +2,56 @@
 title: "Negentropy: 集合調整プロトコル"
 date: 2026-01-28
 translationOf: /en/topics/negentropy.md
-translationDate: 2026-01-28
+translationDate: 2026-03-07
 draft: false
 categories:
   - Protocol
   - Sync
 ---
 
-Negentropyは、完全なデータセットを転送することなく欠落イベントを特定することで、NostrクライアントとリレーNの効率的な同期を可能にする集合調整プロトコルです。
+Negentropyは、片方が持ち、もう片方が持たないeventを見つけるためのset-reconciliation protocolです。完全なデータセットを再送せずに差分を特定できます。
 
 ## 仕組み
 
-フィルターに一致するすべてのイベントをリクエストする代わりに、negentropyはクライアントがローカルのイベント集合をリレーの集合と比較し、差分のみを特定することを可能にします。これは複数ラウンドのプロトコルで達成されます：
+filterに一致するすべてのeventを要求する代わりに、negentropyは2つのソート済み集合を比較し、差分がある範囲だけに絞り込みます。このプロトコルは、コンパクトな範囲要約を交換し、必要な箇所でだけ明示的なID一覧にフォールバックします。
 
-1. **フィンガープリンティング**：クライアントとリレーはそれぞれイベント集合のフィンガープリントを計算します
-2. **比較**：フィンガープリントが交換され比較されます
-3. **調整**：欠落しているイベントIDのみが特定され転送されます
+1. **Ordering**: 両者がrecordをtimestamp、次にIDでソートする
+2. **Range comparison**: record範囲ごとのfingerprintを交換する
+3. **Refinement**: 一致しない範囲を分割し、欠けている実際のIDを特定する
 
-## 重要な理由
+## 重要性
 
-従来のNostr同期はタイムスタンプベースの`since`フィルターを使用しますが、以下の理由でイベントを見逃す可能性があります：
-- クライアントとリレー間のクロックドリフト
-- 同一タイムスタンプを持つ複数のイベント
-- 順序が入れ替わって到着するイベント
+従来のNostr同期はtimestampベースの`since` filterを使いますが、次の理由でeventを取りこぼすことがあります。
+- クライアントとrelayのclock drift
+- 同じtimestampを持つ複数event
+- 順不同で到着するevent
 
-Negentropyはタイムスタンプに依存するのではなく、実際のイベント集合を比較することでこれらの問題を解決します。
+Negentropyは、timestampへの依存ではなく、実際のevent集合を比較することでこの問題を解決します。
 
-## ユースケース
+## 実運用
 
-- **DMリカバリー**：古いタイムスタンプを持つ欠落したダイレクトメッセージを検出して取得できます
-- **フィード同期**：リレー間で完全なタイムライン同期を保証します
-- **オフライン同期**：切断期間後に効率的にキャッチアップします
+- **DM Recovery**: 古いtimestampを持つ欠落direct messageでも検出して取得できる
+- **Feed Sync**: relay間でtimelineを完全に同期できる
+- **Offline Sync**: 切断期間の後でも効率よく追いつける
 
-## 実装
+実装上の有用な点は、多くのクライアントが通常のsubscriptionをnegentropyで置き換えていないことです。修復経路として使っています。たとえばDamusは通常のDM読み込みを維持しつつ、手動refresh時にnegentropyを追加し、通常フローでは取り逃がすメッセージを回収しました。
 
-Negentropyにはリレーサポートが必要です。クライアントは通常、標準的なREQサブスクリプションを置き換えるのではなく、フォールバックリカバリーメカニズムとして実装し、リレーがプロトコルをサポートしていない場合は適切に処理します。
+## トレードオフ
 
-## 関連
+Negentropyは両端でのサポートが必要で、標準的な`REQ`の利用よりもプロトコル複雑性が増します。実装コストの最小化より正確性を優先する場面で特に有用です。
 
-- [NIP-01](/ja/topics/nip-01/) - 基本プロトコル
+混在環境では、すべてのrelayがこのプロトコルをサポートするわけではないため、クライアントは穏当なフォールバック動作を持つ必要があります。
+
+---
+
+**主要ソース:**
+- [Negentropy Protocol Repository](https://github.com/hoytech/negentropy)
+- [Damus PR #3536](https://github.com/damus-io/damus/pull/3536)
+- [Damus PR #3547](https://github.com/damus-io/damus/pull/3547)
+
+**言及箇所:**
+- [Newsletter #6: Damus ships negentropy for reliable DM syncing](/en/newsletters/2026-01-28-newsletter/#damus-ships-negentropy-for-reliable-dm-syncing)
+- [Newsletter #12](/en/newsletters/2026-03-04-newsletter/)
+
+**関連項目:**
+- [NIP-01: Basic Protocol Flow](/ja/topics/nip-01/)

@@ -1,6 +1,7 @@
 ---
 title: "NIP-57: Zaps"
 date: 2025-12-17
+translationDate: 2026-03-07
 draft: false
 categories:
   - Wallet
@@ -8,39 +9,51 @@ categories:
   - Social
 ---
 
-NIP-57 definiert Zaps, eine Möglichkeit, Lightning-Zahlungen an Nostr-Benutzer und Inhalte mit kryptografischem Nachweis zu senden, dass die Zahlung erfolgt ist.
+NIP-57 definiert Zaps, also eine Moglichkeit, Lightning-Zahlungen an Nostr-Identitaten und Inhalte zu hangen. Standardisiert werden sowohl die Anfrage nach einer zap-fahigen Rechnung als auch das Quittungs-Event, das Wallets nach der Zahlung veroffentlichen.
 
-## Funktionsweise
+## Wie es funktioniert
 
-1. Client ruft die Lightning-Adresse des Empfängers aus seinem Kind-0-Profil ab
-2. Client fordert eine Rechnung vom LNURL-Server des Empfängers an, einschließlich eines Zap-Request-Events
-3. Benutzer bezahlt die Rechnung
-4. LNURL-Server veröffentlicht eine Kind-9735-Zap-Quittung an Nostr-Relays
-5. Clients zeigen den Zap beim Inhalt des Empfängers an
+1. Der Client entdeckt den LNURL-Endpunkt des Empfangers in den Profil-Metadaten oder in einem `zap`-Tag auf dem Zielevent.
+2. Der Client sendet eine signierte Zap-Anfrage vom Kind `9734` an den LNURL-Callback des Empfangers, nicht an Relays.
+3. Der Nutzer bezahlt die Rechnung.
+4. Der Wallet-Server des Empfangers veroffentlicht eine Zap-Quittung vom Kind `9735` an die in der Zap-Anfrage aufgefuhrten Relays.
+5. Clients validieren und zeigen den Zap an.
 
-## Zap-Anfrage (Kind 9734)
+## Zap-Anfrage (kind 9734)
 
-Die Zap-Anfrage ist ein signiertes Event, das beweist, wer den Zap gesendet hat und an welchen Inhalt. Es enthält:
-- `p`-Tag mit Empfänger-Pubkey
+Die Zap-Anfrage ist ein signiertes Event, das den Zahler und das beabsichtigte Ziel identifiziert. Sie enthalt meistens:
+
+- `p`-Tag mit dem Pubkey des Empfangers
 - `e`-Tag mit dem gezappten Event (optional)
 - `amount`-Tag in Millisatoshis
-- `relays`-Tag, das auflistet, wo die Quittung veröffentlicht werden soll
+- `relays`-Tag mit der Liste der Orte, an denen die Quittung veroffentlicht werden soll
 
-## Zap-Quittung (Kind 9735)
+Adressierbare Inhalte konnen ein `a`-Tag statt eines `e`-Tags oder zusatzlich dazu verwenden. Das optionale `k`-Tag zeichnet das Ziel-Kind auf.
 
-Vom LNURL-Server nach Zahlungsbestätigung veröffentlicht. Enthält:
-- Die ursprüngliche Zap-Anfrage in einem `description`-Tag
+## Zap-Quittung (kind 9735)
+
+Sie wird nach Bestatigung der Zahlung vom Wallet-Server des Empfangers veroffentlicht. Sie enthalt:
+
+- Die ursprungliche Zap-Anfrage in einem `description`-Tag
 - `bolt11`-Tag mit der bezahlten Rechnung
-- `preimage`-Tag als Zahlungsnachweis
+- `preimage`-Tag als Nachweis der Zahlung
+
+Clients sollten die Quittung gegen den `nostrPubkey` der LNURL des Empfangers, den Rechnungsbetrag und die ursprungliche Zap-Anfrage validieren. Ohne diese Validierung ist eine Quittung nur eine Behauptung.
+
+## Vertrauen und Tradeoffs
+
+Zaps sind nutzlich, weil sie Zahlungen im sozialen Graph sichtbar machen, aber die Quittung wird weiterhin von der Wallet-Infrastruktur des Empfangers erzeugt. Die Spezifikation selbst weist darauf hin, dass eine Zap-Quittung kein universeller Zahlungsnachweis ist. Am besten versteht man sie als von einer Wallet signierte Aussage, dass eine Rechnung, die an eine Zap-Anfrage gebunden war, bezahlt wurde.
 
 ---
 
-**Primärquellen:**
-- [NIP-57 Spezifikation](https://github.com/nostr-protocol/nips/blob/master/57.md)
+**Primarquellen:**
+- [NIP-57 Specification](https://github.com/nostr-protocol/nips/blob/master/57.md)
 
-**Erwähnt in:**
-- [Newsletter #1: Neuigkeiten](/de/newsletters/2025-12-17-newsletter/#news)
-- [Newsletter #2: Neuigkeiten](/de/newsletters/2025-12-24-newsletter/#news)
+**Erwahnt in:**
+- [Newsletter #1: News](/en/newsletters/2025-12-17-newsletter/#news)
+- [Newsletter #2: News](/en/newsletters/2025-12-24-newsletter/#news)
+- [Newsletter #3: Notable Code Changes](/en/newsletters/2025-12-31-newsletter/#amethyst-android)
+- [Newsletter #9: NIP Updates](/en/newsletters/2026-02-11-newsletter/#nip-updates)
 
 **Siehe auch:**
 - [NIP-47: Nostr Wallet Connect](/de/topics/nip-47/)

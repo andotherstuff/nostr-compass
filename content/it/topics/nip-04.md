@@ -1,47 +1,57 @@
 ---
-title: "NIP-04: Messaggi Diretti Crittografati (Deprecato)"
+title: "NIP-04: Messaggi diretti cifrati (deprecato)"
 date: 2025-12-31
 translationOf: /en/topics/nip-04.md
-translationDate: 2025-12-31
+translationDate: 2026-03-07
 draft: false
 categories:
   - Privacy
-  - Messaggistica
+  - Messaging
 ---
-
-NIP-04 definisce i messaggi diretti crittografati utilizzando la crittografia AES-256-CBC. Era il metodo originale per la messaggistica privata su Nostr, ma è stato deprecato in favore di NIP-17 a causa di significative limitazioni di privacy.
+NIP-04 definisce i messaggi diretti cifrati usando eventi kind 4 e un segreto condiviso derivato con ECDH. È stato il primo schema DM di Nostr, ma oggi è tecnologia legacy e il nuovo lavoro sulla messaggistica privata si è spostato su NIP-17.
 
 ## Come funziona
 
-I messaggi utilizzano eventi di kind 4 con il seguente schema di crittografia:
-1. Un segreto condiviso viene generato usando ECDH con la chiave pubblica del destinatario e la chiave privata del mittente
-2. Il messaggio viene crittografato con AES-256-CBC
-3. Il testo cifrato viene codificato in base64 con il vettore di inizializzazione aggiunto
-4. Un tag `p` identifica la chiave pubblica del destinatario
+I messaggi usano eventi kind 4 con questo flusso di base:
 
-## Limitazioni di sicurezza
+1. Il mittente deriva un segreto condiviso con secp256k1 ECDH.
+2. Il plaintext viene cifrato con AES-256-CBC.
+3. L'evento include un tag `p` che identifica il destinatario.
+4. Il ciphertext viene codificato in base64 e memorizzato in `content` insieme all'IV.
 
-NIP-04 ha significative carenze di privacy:
+L'evento stesso resta un normale evento Nostr firmato, quindi i relay possono vedere i metadati esterni anche se non possono leggere il plaintext.
 
-- **Perdita di metadati** - La pubkey del mittente è pubblicamente visibile su ogni messaggio
-- **Nessuna privacy del mittente** - Chiunque può vedere chi sta inviando messaggi a chi
-- **Timestamp esatti** - Il timing dei messaggi non è randomizzato
-- **Implementazione non standard** - Usa solo la coordinata X del punto ECDH invece dell'hash SHA256 standard
+## Limiti di sicurezza e privacy
 
-La specifica avverte esplicitamente che "non si avvicina nemmeno allo stato dell'arte nella comunicazione crittografata".
+NIP-04 ha limiti di privacy significativi:
 
-## Stato di deprecazione
+- **Perdita di metadati** - La pubkey del mittente è visibile pubblicamente in ogni messaggio
+- **Nessuna privacy del mittente** - Chiunque può vedere chi sta scrivendo a chi
+- **Timestamp esatti** - Il timing dei messaggi non viene randomizzato
+- **Gestione delle chiavi non standard** - Lo schema usa solo la coordinata X del punto ECDH, cosa che ha reso più difficile la correttezza tra librerie diverse e ha lasciato poco spazio all'evoluzione del protocollo
 
-NIP-04 è deprecato in favore di NIP-17, che utilizza il gift wrapping di NIP-59 per nascondere l'identità del mittente. Le nuove implementazioni dovrebbero usare NIP-17 per la messaggistica privata.
+La specifica avverte esplicitamente che "does not go anywhere near the state-of-the-art in encrypted communication."
+
+## Perché è stato sostituito
+
+NIP-04 cifra il contenuto dei messaggi, ma non nasconde il grafo sociale. Gli operatori dei relay possono comunque vedere chi ha inviato l'evento, chi lo riceve e quando è stato pubblicato. Sono metadati sufficienti per mappare le conversazioni anche senza decifrare il payload.
+
+NIP-17 affronta questo problema combinando la cifratura del payload di NIP-44 con il gift wrapping di NIP-59, che nasconde il mittente ai relay e agli osservatori casuali. Le nuove implementazioni dovrebbero trattare NIP-04 solo come livello di compatibilità.
+
+## Stato di implementazione
+
+Client legacy e signer espongono ancora metodi di cifratura e decifratura NIP-04 perché vecchie conversazioni e applicazioni meno recenti sono ancora in circolazione. Questo livello di compatibilità conta per la migrazione, ma costruire nuove funzionalità sopra eventi kind 4 di solito significa trascinare in avanti i vecchi limiti di privacy.
 
 ---
 
-**Fonti principali:**
-- [Specifica NIP-04](https://github.com/nostr-protocol/nips/blob/master/04.md)
+**Fonti primarie:**
+- [NIP-04 Specification](https://github.com/nostr-protocol/nips/blob/master/04.md)
 
 **Menzionato in:**
-- [Newsletter #3: Riepilogo di Dicembre](/it/newsletters/2025-12-31-newsletter/#december-recap-five-years-of-nostr-decembers)
+- [Newsletter #4: NIP Deep Dive](/en/newsletters/2026-01-07-newsletter/#nip-04-encrypted-direct-messages-legacy)
+- [Newsletter #3: December Recap](/en/newsletters/2025-12-31-newsletter/#december-recap-five-years-of-nostr-decembers)
 
 **Vedi anche:**
-- [NIP-17: Messaggi Diretti Privati](/it/topics/nip-17/)
+- [NIP-44: Payload cifrati](/it/topics/nip-44/)
+- [NIP-17: Messaggi diretti privati](/it/topics/nip-17/)
 - [NIP-59: Gift Wrap](/it/topics/nip-59/)

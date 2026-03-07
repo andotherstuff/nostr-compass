@@ -1,6 +1,8 @@
 ---
 title: "NIP-59: Gift Wrap"
 date: 2025-12-17
+translationOf: /en/topics/nip-59.md
+translationDate: 2026-03-07
 draft: false
 categories:
   - Privacy

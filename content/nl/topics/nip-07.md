@@ -2,7 +2,7 @@
 title: "NIP-07: Browser Extension Signer"
 date: 2026-01-28
 translationOf: /en/topics/nip-07.md
-translationDate: 2026-01-28
+translationDate: 2026-03-07
 draft: false
 categories:
   - NIP
@@ -10,55 +10,72 @@ categories:
   - Security
 ---
 
-NIP-07 definieert een standaardinterface voor browserextensies om ondertekeningscapaciteiten te bieden aan webgebaseerde Nostr-clients, waarbij privésleutels veilig in de extensie blijven in plaats van blootgesteld te worden aan websites.
+NIP-07 definieert een standaardinterface waarmee browserextensies signing-mogelijkheden kunnen bieden aan webgebaseerde Nostr-clients, zodat private keys in de extensie blijven in plaats van aan websites blootgesteld te worden.
 
-## Hoe Het Werkt
+## Hoe het werkt
 
 Browserextensies injecteren een `window.nostr` object dat webapps kunnen gebruiken:
 
 ```javascript
-// Publieke sleutel ophalen
+// Get public key
 const pubkey = await window.nostr.getPublicKey();
 
-// Een event ondertekenen
+// Sign an event
 const signedEvent = await window.nostr.signEvent(unsignedEvent);
 
-// Versleutelen (NIP-04, legacy)
+// Encrypt (NIP-04, legacy)
 const ciphertext = await window.nostr.nip04.encrypt(pubkey, plaintext);
 
-// Ontcijferen (NIP-04, legacy)
+// Decrypt (NIP-04, legacy)
 const plaintext = await window.nostr.nip04.decrypt(pubkey, ciphertext);
 
-// NIP-44 methoden (modern, indien ondersteund)
+// NIP-44 methods (modern, if supported)
 // const ciphertext = await window.nostr.nip44.encrypt(pubkey, plaintext);
 // const plaintext = await window.nostr.nip44.decrypt(pubkey, ciphertext);
 ```
 
 ## Beveiligingsmodel
 
-- **Sleutelisolatie**: Privésleutels verlaten de extensie nooit
-- **Gebruikersgoedkeuring**: Extensies kunnen bij elk ondertekeningsverzoek om bevestiging vragen
-- **Domeincontrole**: Extensies kunnen beperken welke sites handtekeningen mogen aanvragen
+- **Sleutelisolatie**: Private keys verlaten de extensie nooit
+- **Goedkeuring door de gebruiker**: Extensies kunnen voor elk signing-verzoek om bevestiging vragen
+- **Domeincontrole**: Extensies kunnen beperken welke sites signatures mogen aanvragen
 
-## Implementaties
+NIP-07 verbetert key custody, maar neemt het vertrouwen in de extensie zelf niet weg. Een kwaadaardige of gecompromitteerde extensie kan nog steeds het verkeerde signeren, metadata lekken of permissies te ruim toekennen.
 
-Populaire NIP-07 extensies zijn onder andere:
-- **Alby** - Lightning wallet met Nostr-ondertekening
-- **nos2x** - Lichtgewicht Nostr-ondertekenaar
-- **Flamingo** - Feature-rijke Nostr-extensie
+## Interop-opmerkingen
+
+Het lastigste deel van NIP-07 is niet de vorm van de API. Het is de variatie in capabilities. Sommige extensies ondersteunen alleen `getPublicKey()` en `signEvent()`. Andere bieden ook `nip04`, `nip44` of nieuwere optionele methoden aan. Webapps hebben feature detection en redelijke fallbacks nodig, in plaats van ervan uit te gaan dat elke injected signer zich hetzelfde gedraagt.
+
+De UX rond gebruikersgoedkeuring verandert ook het gedrag. Een site die stilletjes toegang op de achtergrond verwacht, werkt misschien met de ene extensie en voelt kapot aan met een andere die bij elk verzoek om bevestiging vraagt. Goede NIP-07 apps behandelen signing als een interactieve permissiegrens.
+
+## Implementatiestatus
+
+Populaire NIP-07 extensies zijn onder meer:
+- **Alby** - Lightning wallet met Nostr-signing
+- **nos2x** - Lichtgewicht Nostr-signer
+- **Flamingo** - Nostr-extensie met veel functies
 
 ## Beperkingen
 
-- Alleen browser (geen mobiele ondersteuning)
-- Vereist extensie-installatie
-- Elke extensie heeft andere UX voor goedkeuringen
+- Alleen browser, geen mobiele ondersteuning
+- Vereist installatie van een extensie
+- Elke extensie heeft een andere UX voor goedkeuringen
 
-## Alternatieven
+Voor signing tussen apparaten of op mobiel passen NIP-46 en NIP-55 meestal beter.
 
-- [NIP-46](/nl/topics/nip-46/) - Remote signing via Nostr relays
-- [NIP-55](/nl/topics/nip-55/) - Android lokale ondertekenaar
+---
 
-## Gerelateerd
+**Primaire bronnen:**
+- [NIP-07-specificatie](https://github.com/nostr-protocol/nips/blob/master/07.md)
+- [PR #2233](https://github.com/nostr-protocol/nips/pull/2233) - `peekPublicKey()`-voorstel
 
-- [NIP-44](/nl/topics/nip-44/) - Moderne encryptie (vervangt NIP-04)
-- [NIP-46](/nl/topics/nip-46/) - Remote Signing
+**Vermeld in:**
+- [Nieuwsbrief #7: NIP-updates](/en/newsletters/2026-01-28-newsletter/#nip-updates)
+- [Nieuwsbrief #8: Nieuws](/en/newsletters/2026-02-04-newsletter/#news)
+- [Nieuwsbrief #11: Nieuws](/en/newsletters/2026-02-25-newsletter/#news)
+
+**Zie ook:**
+- [NIP-04: Encrypted Direct Messages (verouderd)](/nl/topics/nip-04/)
+- [NIP-44: Encrypted Payloads](/nl/topics/nip-44/)
+- [NIP-46: Nostr Connect](/nl/topics/nip-46/)
+- [NIP-55: Android Signer Applications](/nl/topics/nip-55/)

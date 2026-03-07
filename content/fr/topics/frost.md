@@ -2,54 +2,56 @@
 title: "FROST (Flexible Round-Optimized Schnorr Threshold Signatures)"
 date: 2025-12-31
 translationOf: /en/topics/frost.md
-translationDate: 2025-12-31
+translationDate: 2026-03-07
 draft: false
 categories:
-  - Cryptographie
-  - Protocole
+  - Cryptography
+  - Protocol
 ---
 
-FROST (Flexible Round-Optimized Schnorr Threshold Signatures) est un schéma de signature à seuil qui permet à un groupe de participants de produire collaborativement des signatures Schnorr valides sans qu'aucune partie ne détienne la clé privée complète.
+FROST (Flexible Round-Optimized Schnorr Threshold Signatures) est un schéma de signature à seuil qui permet à un groupe de produire une signature Schnorr valide sans qu'aucun participant ne détienne la clé privée complète.
 
 ## Fonctionnement
 
-FROST permet la signature à seuil T-sur-N, où T participants parmi N détenteurs de clés au total doivent coopérer pour produire une signature valide. Le protocole fonctionne en deux tours :
+FROST permet la signature T-sur-N. Tout sous-ensemble atteignant le seuil peut coopérer pour produire une signature pour la clé publique du groupe.
 
-1. **Tour d'engagement** : Chaque participant génère et partage des engagements cryptographiques
-2. **Tour de signature** : Les participants combinent leurs signatures partielles en une signature agrégée finale
+Le protocole de signature utilise deux tours :
 
-La signature résultante est indiscernable d'une signature Schnorr standard, maintenant la compatibilité ascendante avec les systèmes de vérification existants.
+1. **Tour d'engagement** : chaque participant génère et partage des engagements cryptographiques
+2. **Tour de signature** : les participants combinent leurs signatures partielles en une signature agrégée finale
 
-## Propriétés clés
+Le résultat final se vérifie comme une signature Schnorr ordinaire. Les vérificateurs voient une seule signature sous une seule clé publique, pas une liste de cosignataires.
 
-- **Sécurité à seuil** : Aucun participant ne peut signer seul ; T parties doivent coopérer
-- **Efficacité des tours** : Seulement deux tours de communication requis pour signer
-- **Protection contre la falsification** : Des techniques novatrices protègent contre les attaques sur les schémas à seuil antérieurs
-- **Agrégation de signatures** : Plusieurs signatures se combinent en une seule signature compacte
-- **Confidentialité** : Les signatures finales ne révèlent pas quels T participants ont signé
+## Notes de sécurité
+
+La gestion des nonces est critique. La RFC est explicite : les nonces de signature sont à usage unique. Leur réutilisation peut compromettre le matériel de clé.
+
+La RFC ne standardise pas non plus la génération distribuée de clés. Elle spécifie le protocole de signature lui-même et inclut la génération de clés par tiers de confiance uniquement en annexe. En pratique, la sécurité d'un déploiement FROST dépend à la fois du flux de signature et de la manière dont les parts ont été créées et stockées.
 
 ## Cas d'utilisation dans Nostr
 
-Dans le contexte de Nostr, FROST permet :
+Dans le contexte de Nostr, FROST peut supporter :
 
-- **Gouvernance par quorum** : Les groupes peuvent partager un nsec via des schémas T-sur-N, où les membres peuvent se représenter eux-mêmes ou déléguer à des conseils
-- **Administration multi-signature** : Modération communautaire nécessitant plusieurs signatures d'administrateurs
-- **Gestion décentralisée des clés** : Distribution de la confiance entre plusieurs parties pour les opérations critiques
+- **Gouvernance par quorum** : les groupes peuvent partager un nsec via des schémas T-sur-N, où les membres peuvent se représenter eux-mêmes ou déléguer à des conseils
+- **Administration multi-signature** : modération communautaire nécessitant plusieurs signatures d'administrateurs
+- **Gestion décentralisée des clés** : distribution de la confiance entre plusieurs parties pour les opérations critiques
 
-## Standardisation
+## Statut
 
-FROST a été standardisé sous le nom RFC 9591 en juin 2024, intitulé "The Flexible Round-Optimized Schnorr Threshold (FROST) Protocol for Two-Round Schnorr Signatures".
+FROST est spécifié dans la [RFC 9591](https://datatracker.ietf.org/doc/rfc9591/), publiée sur le flux IRTF en juin 2024. Cela donne au protocole une spécification publique stable, mais ce n'est pas une RFC sur le parcours de standardisation IETF.
 
 ---
 
 **Sources principales :**
 - [RFC 9591: FROST Protocol](https://datatracker.ietf.org/doc/rfc9591/)
 - [FROST Paper (IACR)](https://eprint.iacr.org/2020/852.pdf)
-- [University of Waterloo CrySP](https://crysp.uwaterloo.ca/software/frost/)
 - [Zcash Foundation Rust Implementation](https://github.com/ZcashFoundation/frost)
 
 **Mentionné dans :**
 - [Newsletter #3 : Dépôt NIPs](/fr/newsletters/2025-12-31-newsletter/#nips-repository)
+- [Newsletter #8](/fr/newsletters/2026-02-04-newsletter/)
+- [Newsletter #10](/fr/newsletters/2026-02-18-newsletter/)
 
 **Voir aussi :**
-- [Proposition NIP-XX Quorum](https://github.com/nostr-protocol/nips/pull/2179)
+- [NIP-46 : Nostr Connect](/fr/topics/nip-46/)
+- [NIP-55 : Android Signer Application](/fr/topics/nip-55/)

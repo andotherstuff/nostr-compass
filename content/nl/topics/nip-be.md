@@ -1,48 +1,46 @@
 ---
 title: "NIP-BE: Bluetooth Low Energy"
 date: 2025-12-17
+translationDate: 2026-03-07
 draft: false
 categories:
   - Protocol
   - Connectiviteit
 ---
 
-NIP-BE specificeert hoe Nostr-applicaties kunnen communiceren en synchroniseren via Bluetooth Low Energy, waardoor offline-capabele apps data kunnen synchroniseren tussen apparaten in de buurt zonder internetverbinding.
+NIP-BE specificeert hoe Nostr-applicaties via Bluetooth Low Energy kunnen communiceren en synchroniseren, zodat offline-capabele apps gegevens kunnen synchroniseren tussen apparaten in elkaars buurt zonder internetverbinding.
 
-## GATT Structuur
+## Hoe het werkt
 
-Gebruikt een Nordic UART Service met twee karakteristieken:
-- **Write characteristic** - Client stuurt data naar server
-- **Read characteristic** - Server stuurt data naar client (via notificaties)
+NIP-BE hergebruikt gewone Nostr-berichtframes over BLE in plaats van een apart eventmodel te bedenken. Apparaten adverteren een BLE-service plus een apparaat-UUID, vergelijken UUID's wanneer ze elkaar tegenkomen, en bepalen dan op deterministische wijze welke kant de GATT-server wordt en welke kant de GATT-client.
+
+De GATT-service gebruikt een Nordic UART-achtige vorm met één write characteristic en één read/notify characteristic. Dat houdt het transport eenvoudig genoeg voor beperkte mobiele stacks, terwijl het nog steeds gewone Nostr-berichten kan dragen.
 
 ## Berichtframing
 
-BLE heeft kleine payload-limieten (20-256 bytes afhankelijk van versie), dus berichten worden:
-- Gecomprimeerd met DEFLATE
-- Opgesplitst in chunks met een 2-byte index en final-batch vlag
-- Beperkt tot maximaal 64KB
+BLE heeft kleine payloadlimieten, dus NIP-BE comprimeert berichten met DEFLATE, splitst ze op in geïndexeerde chunks en verstuurt slechts één bericht tegelijk. De specificatie beperkt berichten tot 64 KB, wat een nuttige herinnering is dat dit transport bedoeld is voor synchronisatie en lokale verspreiding, niet voor bulkoverdracht.
 
-## Rolonderhandeling
+## Synchronisatiemodel
 
-Apparaten vergelijken geadverteerde UUID's bij ontdekking:
-- Hogere UUID wordt GATT-server (relay-rol)
-- Lagere UUID wordt GATT-client
-- Vooraf bepaalde UUID's bestaan voor single-role apparaten
+Nadat een verbinding tot stand is gebracht, gebruiken peers een half-duplex syncstroom op basis van [NIP-77](https://github.com/nostr-protocol/nips/blob/master/77.md) negentropy-berichten zoals `NEG-OPEN`, `NEG-MSG`, `EVENT` en `EOSE`. Die ontwerpkeuze is belangrijk, omdat implementaties zo bestaande relay-synclogica kunnen hergebruiken in plaats van een BLE-specifiek replicatie-algoritme te bouwen.
 
-## Synchronisatie
+De half-duplexregel sluit ook aan op de realiteit van instabiele BLE-verbindingen. Onderbroken short-range verbindingen werken beter wanneer elke kant precies weet wie aan de beurt is om te spreken.
 
-Gebruikt half-duplex communicatie met standaard Nostr-berichttypes (`EVENT`, `EOSE`, `NEG-MSG`) om datasync te coördineren over intermitterende verbindingen.
+## Waarom het belangrijk is
 
-## Gebruiksscenario's
+NIP-BE geeft Nostr-applicaties een pad naar local-first networking. Twee telefoons kunnen notities of relaystatus direct synchroniseren wanneer ze dicht bij elkaar zijn, zelfs als geen van beide een werkende internetverbinding heeft. Dat maakt BLE nuttig voor censuurbestendigheid, rampsituaties en sociale apps met beperkte connectiviteit.
 
-- Offline event-synchronisatie tussen apparaten in de buurt
-- Mesh-stijl berichtpropagatie zonder internet
-- Backup-connectiviteit wanneer netwerk niet beschikbaar is
+De beperkingen zijn net zo belangrijk: BLE-bandbreedte is laag, verbindingen zijn kortstondig en grote geschiedenissen passen niet goed. In de praktijk is NIP-BE het meest geschikt voor incrementele synchronisatie en verspreiding van berichten in de buurt, niet voor volledige archiefreplicatie.
 
 ---
 
 **Primaire bronnen:**
-- [NIP-BE Specificatie](https://github.com/nostr-protocol/nips/blob/master/BE.md)
+- [NIP-BE-specificatie](https://github.com/nostr-protocol/nips/blob/master/BE.md)
+- [PR #1979](https://github.com/nostr-protocol/nips/pull/1979)
 
 **Vermeld in:**
-- [Nieuwsbrief #1: Nieuws](/nl/newsletters/2025-12-17-newsletter/#news)
+- [Nieuwsbrief #1: Nieuws](/en/newsletters/2025-12-17-newsletter/#news)
+- [Nieuwsbrief #3: Decemberoverzicht](/en/newsletters/2025-12-31-newsletter/#december-recap-five-years-of-nostr-decembers)
+
+**Zie ook:**
+- [NIP-01: Basic Protocol](/nl/topics/nip-01/)

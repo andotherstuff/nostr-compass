@@ -1,27 +1,29 @@
 ---
-title: "NIP-89: Handlers de Aplicação Recomendados"
+title: 'NIP-89: Manipuladores de aplicativos recomendados'
 date: 2026-01-07
 draft: false
 categories:
-  - Discovery
-  - Clients
-  - Protocol
+- Discovery
+- Clients
+- Protocol
+translationOf: /en/topics/nip-89.md
+translationDate: '2026-03-07'
 ---
 
-O NIP-89 define como aplicações podem anunciar suas capacidades e como usuários podem recomendar apps que lidam com tipos específicos de eventos.
+O NIP-89 define como os aplicativos podem anunciar seus recursos e como os usuários podem recomendar aplicativos que lidam com eventos específicos kinds.
 
-## Tipos de Eventos
+## Tipos de eventos
 
-- **kind 31990** - Handler de aplicação (publicado por desenvolvedores de apps)
-- **kind 31989** - Recomendação de app (publicada por usuários)
+- **kind 31990** - Manipulador de aplicativos (publicado por desenvolvedores de aplicativos)
+- **kind 31989** - Recomendação de aplicativo (publicada pelos usuários)
 
-## Como Funciona
+## Como funciona
 
-1. **Aplicações** publicam eventos de handler descrevendo quais tipos de eventos suportam e como abrir conteúdo
-2. **Usuários** recomendam apps que usam para tipos específicos de eventos
-3. **Clientes** consultam recomendações para oferecer funcionalidade "abrir em..." para tipos de eventos desconhecidos
+1. **Aplicativos** publicam eventos do manipulador descrevendo qual evento kinds eles suportam e como abrir o conteúdo
+2. **Usuários** recomendam aplicativos que usam para eventos específicos kinds
+3. **Clientes** consultam recomendações para oferecer a funcionalidade "abrir em..." para tipos de eventos desconhecidos
 
-## Handler de Aplicação
+## Manipulador de aplicativos
 
 ```json
 {
@@ -40,9 +42,11 @@ O NIP-89 define como aplicações podem anunciar suas capacidades e como usuári
 }
 ```
 
-As tags `k` especificam os tipos de eventos suportados. Templates de URL usam `<bech32>` como placeholder para entidades codificadas em NIP-19.
+O `k` tags especifica o evento suportado kinds. Os modelos de URL usam `<bech32>` como espaço reservado para entidades codificadas NIP-19.
 
-## Recomendação de Usuário
+O mesmo evento de manipulador pode anunciar vários kinds suportados se eles compartilharem o mesmo padrão de roteamento. Isso mantém a descoberta de aplicativos compacta e evita a publicação de um evento de manipulador por kind quando a lógica de destino é idêntica.
+
+## Recomendação do usuário
 
 ```json
 {
@@ -59,14 +63,26 @@ As tags `k` especificam os tipos de eventos suportados. Templates de URL usam `<
 }
 ```
 
-A tag `d` é o tipo de evento sendo recomendado. Múltiplas tags `a` podem recomendar diferentes apps para diferentes plataformas.
+O `d` tag é o evento kind recomendado. Vários `a` tags podem recomendar aplicativos diferentes para plataformas diferentes.
 
-## Casos de Uso
+## Etiqueta do cliente
 
-- Descobrir apps que podem exibir artigos longos (kind 30023)
-- Encontrar clientes que suportam tipos específicos de eventos
+O NIP-89 também define um `client` tag opcional que os aplicativos de publicação podem anexar a eventos comuns. Ele registra o nome do cliente mais um ponteiro para o evento do manipulador, o que permite que outros clientes mostrem de onde veio uma nota ou procurem metadados de aplicativo mais ricos.
+
+Isso tem implicações de privacidade. A especificação diz explicitamente que os clientes devem permitir que os usuários optem pela exclusão, porque a publicação da identidade do software em cada evento pode revelar padrões de uso que as pessoas podem não querer expor.
+
+## Casos de uso
+
+- Descobrindo aplicativos que podem exibir artigos longos (kind 30023)
+- Encontrar clientes que suportam tipos de eventos específicos
 - Funcionalidade "abrir em..." entre clientes
-- Detectar capacidades de clientes para suporte de criptografia
+- Detecção de recursos do cliente para suporte de criptografia
+
+## Notas de confiança e segurança
+
+O NIP-89 melhora a interoperabilidade, mas também cria uma superfície de redirecionamento. Se um cliente consultar anúncios arbitrários de manipuladores de relays não confiáveis, ele pode acabar enviando os usuários para aplicativos maliciosos ou enganosos.
+
+É por isso que o fluxo de recomendação começa com as pessoas que você segue. As recomendações filtradas socialmente não são perfeitas, mas são mais seguras do que tratar todos os manipuladores publicados como igualmente confiáveis.
 
 ---
 
@@ -74,7 +90,8 @@ A tag `d` é o tipo de evento sendo recomendado. Múltiplas tags `a` podem recom
 - [Especificação NIP-89](https://github.com/nostr-protocol/nips/blob/master/89.md)
 
 **Mencionado em:**
-- [Newsletter #4: Aprofundamento em NIPs](/pt/newsletters/2026-01-07-newsletter/#nip-44-criptografia-versionada)
+- [Boletim informativo nº 4: Aprofundamento do NIP](/pt/newsletters/2026-01-07-newsletter/#nip-44-versioned-encryption)
+- [Boletim Informativo #12: Damus](/pt/newsletters/2026-03-04-newsletter/#damus-nip-89-recommended-application-handlers)
 
 **Veja também:**
-- [NIP-19: Entidades Codificadas em Bech32](/pt/topics/nip-19/)
+- [NIP-19: Entidades codificadas em Bech32](/pt/topics/nip-19/)

@@ -1,37 +1,40 @@
 ---
-title: "NIP-40: Timestamp de Expiração"
+title: 'NIP-40: Carimbo de data e hora de expiração'
 date: 2025-12-17
 draft: false
 categories:
-  - Protocol
+- Protocol
 translationOf: /en/topics/nip-40.md
-translationDate: 2025-12-26
+translationDate: '2026-03-07'
 ---
 
-NIP-40 define uma tag de expiração que informa aos relays quando um evento deve ser deletado.
+O NIP-40 define uma expiração tag que informa ao relays quando um evento deve ser excluído.
 
-## Estrutura
+## Como funciona
 
-Eventos incluem uma tag `expiration` com um timestamp Unix:
+Os eventos incluem um `expiration` tag com um carimbo de data/hora Unix:
 
 ```json
 ["expiration", "1734567890"]
 ```
 
-Após esse tempo, os relays devem deletar o evento e recusar servi-lo.
+Após este horário, relays deverá excluir o evento e recusar-se a atendê-lo.
 
-## Casos de Uso
+## Por que é importante
 
-- Conteúdo efêmero que deve desaparecer após um tempo definido
+- Conteúdo efêmero que deve desaparecer após um determinado tempo
 - Ofertas ou anúncios por tempo limitado
-- Expiração de listagens em marketplaces (ex: Shopstr)
-- Redução de requisitos de armazenamento dos relays
+- Expiração da listagem em mercados (por exemplo, Shopstr)
+- Reduzindo os requisitos de armazenamento relay
 
-## Considerações
+A expiração é uma dica de retenção, não um sistema de revogação. Ajuda a alinhar o comportamento do relay em torno do conteúdo desatualizado, mas não garante o apagamento quando outro relay, cliente ou arquivo já tiver copiado o evento.
 
-- Relays não são obrigados a honrar expiração (mas a maioria o faz)
-- Clientes não devem depender de expiração para deleção de conteúdo crítico de segurança
-- Uma vez que o conteúdo é buscado por outro cliente, ele pode ser armazenado em cache ou republicado
+## Notas de confiança e segurança
+
+- Os relays não são obrigados a honrar a expiração (mas a maioria o faz)
+- Os clientes não devem confiar na expiração para exclusão de conteúdo crítico para a segurança
+- Uma vez que o conteúdo é obtido por outro cliente, ele pode ser armazenado em cache ou republicado
+- A expiração não esconde a existência de um evento. IDs de eventos, cotações ou cópias fora do relay ainda podem sobreviver após a passagem do carimbo de data/hora
 
 ---
 
@@ -39,4 +42,8 @@ Após esse tempo, os relays devem deletar o evento e recusar servi-lo.
 - [Especificação NIP-40](https://github.com/nostr-protocol/nips/blob/master/40.md)
 
 **Mencionado em:**
-- [Newsletter #1: Notícias](/pt/newsletters/2025-12-17-newsletter/#news)
+- [Boletim informativo nº 1: Notícias](/pt/newsletters/2025-12-17-newsletter/#news)
+- [Boletim informativo nº 3: Mudanças notáveis no código](/pt/newsletters/2025-12-31-newsletter/#rust-nostr-library)
+
+**Veja também:**
+- [NIP-01: Protocolo Básico](/pt/topics/nip-01/)

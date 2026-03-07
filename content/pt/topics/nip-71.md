@@ -1,25 +1,27 @@
 ---
-title: "NIP-71: Eventos de Vídeo"
+title: 'NIP-71: Eventos de Vídeo'
 date: 2026-01-13
 draft: false
 categories:
-  - Media
-  - Protocol
+- Media
+- Protocol
+translationOf: /en/topics/nip-71.md
+translationDate: '2026-03-07'
 ---
 
-O NIP-71 define kinds de evento para conteúdo de vídeo no Nostr, habilitando compartilhamento de vídeo com suporte adequado a metadados. A especificação cobre tanto eventos de vídeo regulares quanto eventos de vídeo endereçáveis, com os últimos adicionados em janeiro de 2026 para permitir que criadores atualizem metadados de vídeo sem republicar.
+NIP-71 define o evento kinds para conteúdo de vídeo no Nostr, permitindo o compartilhamento de vídeo com suporte adequado de metadados. A especificação cobre eventos de vídeo regulares e eventos de vídeo endereçáveis, com o último adicionado em janeiro de 2026 para permitir que os criadores atualizem os metadados do vídeo sem republicá-los.
 
-## Kinds de Evento
+## Tipos de eventos
 
-O NIP-71 define quatro kinds de evento divididos em duas categorias baseadas em proporção de aspecto e endereçabilidade.
+O NIP-71 define quatro eventos kinds divididos em duas categorias com base na proporção e endereçamento.
 
 Eventos de vídeo regulares usam kind 21 para vídeos horizontais (paisagem) e kind 22 para vídeos verticais (retrato/shorts). Estes são eventos Nostr padrão com conteúdo imutável uma vez publicados.
 
-Eventos de vídeo endereçáveis usam kind 34235 para vídeos horizontais e kind 34236 para vídeos verticais. Estes são eventos substituíveis parametrizados identificados pela combinação de pubkey, kind e tag `d`. Publicar um novo evento com os mesmos identificadores substitui a versão anterior, permitindo atualizações de metadados.
+Eventos de vídeo endereçáveis ​​usam kind 34235 para vídeos horizontais e kind 34236 para vídeos verticais. Esses são eventos substituíveis parametrizados identificados pela combinação de pubkey, kind e `d` tag. A publicação de um novo evento com os mesmos identificadores substitui a versão anterior, permitindo atualizações de metadados.
 
 ## Estrutura
 
-Um evento de vídeo endereçável completo inclui campos de identificação, tags de metadados e a referência do conteúdo de vídeo.
+Um evento de vídeo endereçável completo inclui campos de identificação, metadados tags e referência de conteúdo de vídeo.
 
 ```json
 {
@@ -42,23 +44,31 @@ Um evento de vídeo endereçável completo inclui campos de identificação, tag
 }
 ```
 
-A tag `d` fornece um identificador único dentro dos seus vídeos daquele kind, para que você possa ter múltiplos vídeos endereçáveis usando valores `d` diferentes. As tags `title` e `summary` fornecem o título do vídeo e uma descrição curta para exibição nos clientes. A tag `url` aponta para o arquivo de vídeo real, enquanto `thumb` fornece uma imagem de preview. A tag `duration` especifica a duração em segundos, e `dim` opcionalmente especifica as dimensões do vídeo.
+O `d` tag fornece um identificador exclusivo em seus vídeos desse kind, para que você possa ter vários vídeos endereçáveis ​​usando diferentes valores `d`. O `title` e `summary` tags fornecem o título do vídeo e uma breve descrição para exibição nos clientes. O `url` tag aponta para o arquivo de vídeo real, enquanto `thumb` fornece uma imagem de visualização. O `duration` tag especifica a duração em segundos e `dim` especifica opcionalmente as dimensões do vídeo.
 
-A tag `origin` rastreia a plataforma de origem ao importar conteúdo de outros serviços. Isso preserva a proveniência ao migrar vídeos do YouTube, Vimeo ou outras plataformas para hospedagem Nostr.
+O `origin` tag rastreia a plataforma de origem ao importar conteúdo de outros serviços. Isso preserva a procedência ao migrar vídeos do YouTube, Vimeo ou outras plataformas para a hospedagem Nostr.
 
-O campo `content` pode conter uma descrição estendida, transcrição completa ou qualquer texto adicional associado ao vídeo.
+O campo `content` pode conter uma descrição estendida, uma transcrição completa ou qualquer texto adicional associado ao vídeo.
 
-## Por que Eventos Endereçáveis Importam
+## Por que eventos endereçáveis ​​são importantes
 
-Eventos de vídeo regulares (kinds 21 e 22) são imutáveis uma vez publicados. Se você publicar um vídeo e depois notar um erro de digitação no título, quiser atualizar a miniatura, ou precisar mudar a URL de hospedagem porque migrou para um serviço de vídeo diferente, você não pode modificar o evento original. Sua única opção é publicar um novo evento com um novo ID, o que quebra quaisquer referências existentes e perde métricas de engajamento.
+Eventos de vídeo regulares (kinds 21 e 22) são imutáveis ​​depois de publicados. Se você publicar um vídeo e posteriormente notar um erro de digitação no título, desejar atualizar a miniatura ou precisar alterar o URL de hospedagem porque migrou para um serviço de vídeo diferente, não será possível modificar o evento original. Sua única opção é publicar um novo evento com um novo ID, o que quebra todas as referências existentes e perde métricas de engajamento.
 
-Eventos de vídeo endereçáveis resolvem esse problema tornando o evento substituível. A combinação de sua pubkey, o kind do evento e a tag `d` identifica unicamente seu vídeo. Quando você publica um novo evento com os mesmos identificadores, os relays substituem a versão antiga pela nova. Clientes buscando seu vídeo sempre obtêm os metadados mais recentes.
+Os eventos de vídeo endereçáveis ​​resolvem esse problema tornando o evento substituível. A combinação do seu pubkey, do evento kind e do `d` tag identifica exclusivamente o seu vídeo. Ao publicar um novo evento com os mesmos identificadores, relays substitui a versão antiga pela nova. Os clientes que buscam seu vídeo sempre recebem os metadados mais recentes.
 
-Isso é particularmente valioso para corrigir erros de metadados após publicar, atualizar miniaturas conforme você melhora sua marca, migrar URLs de hospedagem de vídeo ao trocar de provedores e importar conteúdo de plataformas descontinuadas como Vine enquanto preserva a proveniência através da tag `origin`.
+Isso é particularmente valioso para corrigir erros de metadados após a publicação, atualizar miniaturas à medida que você melhora sua marca, migrar URLs de hospedagem de vídeo ao mudar de provedor e importar conteúdo de plataformas descontinuadas como Vine, preservando a proveniência por meio do `origin` tag.
+
+Um benefício adicional é a vinculação estável. Outros eventos podem continuar se referindo ao mesmo vídeo endereçável enquanto o criador atualiza os detalhes da apresentação em torno dele, o que é mais limpo do que fragmentar comentários e referências em várias republicações imutáveis.
+
+## Compensações
+
+A substituibilidade ajuda na manutenção dos metadados, mas também significa que os clientes precisam decidir quanto estado histórico preservar. Se um criador alterar o título ou resumo após a publicação, o evento mais recente se tornará canônico, mesmo que clientes mais antigos possam ter indexado a versão anterior.
+
+Os kinds 21 e 22 ainda são importantes para aplicativos que desejam um registro de publicação imutável. O NIP-71 não força todos os fluxos de trabalho de vídeo no modelo substituível.
 
 ## Implementações
 
-Eventos de vídeo endereçáveis (kinds 34235 e 34236) estão atualmente implementados no Amethyst e nostrvine. Ambos os clientes podem criar, exibir e atualizar eventos de vídeo endereçáveis.
+Eventos de vídeo endereçáveis ​​(kinds 34235 e 34236) estão atualmente implementados em Amethyst e nostrvine. Ambos os clientes podem criar, exibir e atualizar eventos de vídeo endereçáveis.
 
 ---
 
@@ -67,7 +77,8 @@ Eventos de vídeo endereçáveis (kinds 34235 e 34236) estão atualmente impleme
 - [PR #1669](https://github.com/nostr-protocol/nips/pull/1669) - Atualização de eventos de vídeo endereçáveis
 
 **Mencionado em:**
-- [Newsletter #5: Atualizações de NIPs](/pt/newsletters/2026-01-13-newsletter/#nip-updates)
+- [Boletim Informativo nº 5: Atualizações do NIP](/pt/newsletters/2026-01-13-newsletter/#nip-updates)
+- [Boletim informativo nº 12: NoorNote](/pt/newsletters/2026-03-04-newsletter/)
 
 **Veja também:**
-- [NIP-94: Metadados de Arquivo](/pt/topics/nip-94/)
+- [NIP-94: Metadados do arquivo](/pt/topics/nip-94/)

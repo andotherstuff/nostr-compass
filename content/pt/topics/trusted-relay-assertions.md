@@ -1,40 +1,49 @@
 ---
-title: "Trusted Relay Assertions"
+title: Trusted Relay Assertions
 date: 2026-01-21
 draft: false
 categories:
-  - Protocol
-  - Relays
+- Protocol
+- Relays
+translationOf: /en/topics/trusted-relay-assertions.md
+translationDate: '2026-03-07'
 ---
 
-Trusted Relay Assertions é uma proposta de rascunho de NIP para padronização de pontuação de confiança de relay e gerenciamento de reputação. A especificação introduz eventos kind 30385 onde provedores de assertivas publicam pontuações de confiança computadas a partir de métricas observadas, reputação do operador e relatórios de usuários.
+Trusted Relay Assertions é a ideia de publicar avaliações assinadas de terceiros de relays no Nostr para que os clientes possam escolher relays com mais contexto do que apenas metadados auto-relatados. O bloco de construção padronizado atual é [NIP-85: Asserções Confiáveis](/pt/topics/nip-85/), que define como os usuários confiam nos provedores e como os provedores publicam resultados computados assinados.
 
-## Como Funciona
+## Como funciona
 
-A proposta preenche uma lacuna no ecossistema de relays. Enquanto [NIP-11](/pt/topics/nip-11/) define o que relays alegam sobre si mesmos e [NIP-66](/pt/topics/nip-66/) mede o que observamos, Trusted Relay Assertions padroniza o que concluímos sobre a confiabilidade dos relays.
+A seleção do relay possui três camadas. [NIP-11: Relay Information Document](/pt/topics/nip-11/) cobre o que um relay diz sobre si mesmo. [NIP-66: Relay Discovery and Liveness Monitoring](/pt/topics/nip-66/) cobre o que os observadores podem medir, como disponibilidade e latência. As afirmações confiáveis ​​do relay tentam preencher a lacuna restante: o que um terceiro conclui a partir desses dados e se um cliente decide confiar nessa conclusão.
 
-Provedores de assertivas computam pontuações através de três dimensões. Confiabilidade mede disponibilidade, velocidade de recuperação, consistência e latência. Qualidade avalia documentação de política, segurança TLS e responsabilidade do operador. Acessibilidade avalia barreiras de acesso, liberdade de jurisdição e risco de vigilância. Uma pontuação de confiança geral (0-100) combina esses componentes com pesos: 40% confiabilidade, 35% qualidade, 25% acessibilidade.
+No modelo NIP-85 mais amplo, os usuários nomeiam provedores confiáveis ​​com eventos kind `10040`, e os provedores publicam eventos de asserção endereçáveis ​​assinados. Uma aplicação de pontuação relay precisaria então de mais duas peças com as quais os clientes concordassem: como um relay é identificado como o sujeito e qual resultado tags representa a pontuação e suas evidências de apoio.
 
-Cada assertiva inclui níveis de confiança (baixo, médio, alto) baseados em contagens de observação. Verificação do operador usa múltiplos métodos: prova criptográfica via documentos NIP-11 assinados, registros DNS TXT ou arquivos .well-known. A especificação integra Web of Trust através de pontuações de confiança do operador. Classificação de política ajuda usuários a encontrar relays apropriados: aberto, moderado, curado ou especializado.
+Essa distinção é importante porque a delegação de transporte e confiança são padronizadas, mas o modelo de pontuação específico do relay ainda é um padrão de aplicação. Diferentes provedores podem discordar legitimamente sobre o que torna um relay confiável.
 
-Usuários declaram provedores de assertivas confiáveis via eventos kind 10385. Clientes consultam múltiplos provedores e comparam pontuações. A proposta inclui um processo de apelação onde operadores de relay podem contestar pontuações usando eventos de rotulagem [NIP-32](/pt/topics/nip-32/).
+## Modelo de confiança
 
-## Casos de Uso
+As pontuações de confiança do relay não são fatos objetivos. Um provedor pode priorizar o tempo de atividade e a taxa de transferência de gravação, outro pode priorizar a jurisdição legal, a política de moderação ou a identidade do operador, e um terceiro pode se preocupar mais com a resistência à vigilância. Um cliente útil deve mostrar quem produziu a partitura, e não apenas a partitura em si.
 
-Para assinadores remotos [NIP-46](/pt/topics/nip-46/), assertivas de confiança ajudam usuários a avaliar relays desconhecidos embutidos em URIs de conexão antes de aceitar conexões. Combinado com listas de relay [NIP-65](/pt/topics/nip-65/), clientes podem tomar decisões informadas de seleção de relay baseadas tanto em preferências do usuário quanto em avaliações de confiança de terceiros.
+É aqui também que [Web of Trust](/pt/topics/web-of-trust/) entra em cena. Se um cliente já confia em determinadas pessoas ou serviços, pode preferir avaliações relay provenientes dessa mesma vizinhança social em vez de fingir que existe um único ranking global.
 
-A especificação complementa mecanismos de descoberta de relay existentes. [NIP-66](/pt/topics/nip-66/) fornece descoberta (o que existe), esta proposta adiciona avaliação (o que é bom). Juntos, eles habilitam seleção informada de relay em vez de confiar em padrões codificados ou recomendações de boca a boca.
+## Por que é importante
+
+Para assinantes remotos [NIP-46](/pt/topics/nip-46/), conexões de carteira ou qualquer aplicativo que sugira relays desconhecido, avaliações relay de terceiros podem reduzir a confiança cega nos padrões. Combinado com listas [NIP-65](/pt/topics/nip-65/) relay, os clientes podem separar "quais relays eu uso" de "quais relays eu confio para esta tarefa".
+
+A principal advertência de correção é o escopo. A cobertura do boletim informativo de janeiro de 2026 descreveu a pontuação de confiança relay como uma proposta dedicada, mas o padrão mesclado no repositório NIPs é o formato mais amplo [NIP-85: Asserções confiáveis](/pt/topics/nip-85/). A pontuação de relay continua sendo um caso de uso construído sobre esse modelo, e não um formato de fio de confiança relay finalizado e separado.
 
 ---
 
 **Fontes primárias:**
-- [Documento de Rascunho de NIP](https://nostr.com/nevent1qqsqjymvcp6ch3ps3fqsxljf6j8u3adz64ucw8npnzuj3cn6dekn0gspz9mhxue69uhkummnw3ezumrpdejz7qg3waehxw309ahx7um5wgh8w6twv5hsyga3qg) - Evento kind 30817 propondo a especificação
+- [Especificação NIP-85](https://github.com/nostr-protocol/nips/blob/master/85.md)
+- [PR #1534: Asserções confiáveis](https://github.com/nostr-protocol/nips/pull/1534)
 
 **Mencionado em:**
-- [Newsletter #6: Notícias](/pt/newsletters/2026-01-21-newsletter/#trusted-relay-assertions-a-new-approach-to-relay-trust)
-- [Newsletter #6: Atualizações de NIP](/pt/newsletters/2026-01-21-newsletter/#nip-updates)
+- [Boletim informativo nº 6: Notícias](/pt/newsletters/2026-01-21-newsletter/#trusted-relay-assertions-a-new-approach-to-relay-trust)
+- [Boletim informativo nº 6: Atualizações do NIP](/pt/newsletters/2026-01-21-newsletter/#nip-updates)
+- [Boletim informativo nº 7: Atualizações do NIP](/pt/newsletters/2026-01-28-newsletter/#nip-updates)
 
 **Veja também:**
-- [NIP-11: Documento de Informações de Relay](/pt/topics/nip-11/)
-- [NIP-66: Descoberta de Relay e Monitoramento de Disponibilidade](/pt/topics/nip-66/)
-- [NIP-32: Rotulagem](/pt/topics/nip-32/)
+- [NIP-11: Documento de Informações do Relay](/pt/topics/nip-11/)
+- [NIP-66: Descoberta de relay e monitoramento de atividade](/pt/topics/nip-66/)
+- [NIP-85: Asserções confiáveis](/pt/topics/nip-85/)
+- [Web of Trust](/pt/topics/web-of-trust/)

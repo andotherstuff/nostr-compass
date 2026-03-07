@@ -2,7 +2,7 @@
 title: "NIP-66: リレー発見と稼働監視"
 date: 2026-01-21
 translationOf: /en/topics/nip-66.md
-translationDate: 2026-01-28
+translationDate: 2026-03-07
 draft: false
 categories:
   - NIPs

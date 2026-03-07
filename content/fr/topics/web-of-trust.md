@@ -2,50 +2,51 @@
 title: "Web of Trust"
 date: 2025-12-31
 translationOf: /en/topics/web-of-trust.md
-translationDate: 2025-12-31
+translationDate: 2026-03-07
 draft: false
 categories:
   - Confiance
-  - Graphe Social
+  - Graphe social
 ---
 
 Web of Trust (WoT) est un modèle de confiance décentralisé où la réputation et la fiabilité sont dérivées des relations du graphe social plutôt que d'autorités centrales.
 
-## Comment Ça Fonctionne
+## Comment ça fonctionne
 
-Dans Nostr, Web of Trust exploite le graphe de suivi (listes de contacts NIP-02) et les événements de signalement pour calculer des scores de confiance :
+Dans Nostr, Web of Trust part généralement du graphe de suivi défini dans [NIP-02: Follow List](/fr/topics/nip-02/) et ajoute parfois des masquages, des signalements ou des signaux d'identité vérifiée. Un client ou un service choisit une ou plusieurs pubkeys de départ auxquelles il fait déjà confiance, puis propage cette confiance vers l'extérieur dans le graphe.
 
-1. **Construction du Graphe** : Un graphe orienté est construit à partir des pubkeys, événements et leurs relations (suivis, masqués, signalements)
-2. **Attribution des Poids** : Des poids initiaux sont attribués aux pubkeys connues comme fiables (par ex., celles avec des identifiants NIP-05 vérifiés)
-3. **Propagation Itérative** : Les scores de confiance se propagent à travers le réseau en utilisant des algorithmes similaires à PageRank
-4. **Résistance Sybil** : Si un attaquant crée de nombreux faux comptes, la confiance qui leur est transmise est divisée par le nombre de faux
+1. **Construction du graphe** : Construire un graphe orienté des suivis et d'éventuels signaux négatifs
+2. **Sélection des seeds** : Partir des pubkeys auxquelles l'observateur fait déjà confiance
+3. **Propagation du score** : Propager le rang dans le graphe avec un algorithme comme PageRank ou une variante
+4. **Seuils et normalisation** : Limiter la profondeur, atténuer les comptes avec peu de signal et normaliser le score final pour l'affichage ou le filtrage
 
-## Propriétés Clés
+L'algorithme exact n'est pas standardisé. Deux systèmes WoT peuvent tous deux être valides tout en produisant des classements différents parce qu'ils utilisent des seeds différents, une profondeur de graphe différente, des règles de décroissance différentes ou des traitements distincts des masquages et des signalements.
 
-- **Décentralisé** : Aucune autorité centrale ne détermine la réputation
-- **Personnalisé** : La confiance peut être calculée du point de vue de chaque utilisateur en fonction de qui il suit
-- **Résistant aux Sybil** : Les fermes de bots ne peuvent pas facilement manipuler le système en raison de la dilution de confiance
-- **Composable** : Peut être appliqué au filtrage de spam, à la modération de contenu, à l'admission aux relays et aux annuaires de paiement
+## Pourquoi c'est important
+
+WoT donne à Nostr un moyen de classer et de filtrer sans service central de modération. Un graphe de confiance personnalisé est plus difficile à manipuler qu'un simple nombre d'abonnés, parce que les faux comptes ont toujours besoin qu'un flux de confiance leur parvienne depuis le réseau existant de l'observateur.
+
+L'envers du décor, c'est le démarrage à froid. Si vous ne suivez personne, un WoT personnalisé n'a presque aucune base pour classer quoi que ce soit. Beaucoup de produits règlent ce problème avec des listes de départ, des fournisseurs de confiance par défaut ou des scores précalculés venus de services externes.
 
 ## Applications dans Nostr
 
-- **Filtrage de Spam** : Les relays peuvent utiliser WoT pour filtrer le contenu à faible confiance
-- **Découverte de Contenu** : Afficher le contenu des comptes auxquels votre réseau fait confiance
-- **Annuaires de Paiement** : Recherche d'adresses Lightning avec prévention de l'usurpation d'identité
-- **Politiques de Relay** : Les relays WoT n'acceptent que les notes des pubkeys de confiance
-- **Modération Décentralisée** : Les communautés peuvent curatorer en fonction des scores de confiance
+- **Filtrage du spam** : Les relays peuvent utiliser WoT pour filtrer le contenu peu fiable
+- **Découverte de contenu** : Faire remonter le contenu des comptes auxquels votre réseau fait confiance
+- **Annuaires de paiement** : Recherche d'adresses Lightning avec prévention de l'usurpation d'identité
+- **Politiques de relay** : Les relays WoT n'acceptent que les notes de pubkeys de confiance
+- **Modération décentralisée** : Les communautés peuvent sélectionner le contenu selon des scores de confiance
 
-## Implémentations
+## Notes d'implémentation
 
-Plusieurs projets implémentent Web of Trust pour Nostr :
-- **Nostr.Band Trust Rank** : Notation de style PageRank pour le réseau
-- **WoT Relays** : Relays filtrant par distance sociale
-- **DCoSL** : Protocole pour les systèmes de réputation décentralisés
-- **Noswot** : Notation de confiance basée sur les suivis et signalements
+Comme les calculs WoT exigent d'explorer de grandes parties du réseau, beaucoup de clients ne les font pas localement. [NIP-85: Trusted Assertions](/fr/topics/nip-85/) existe en partie pour cette raison : il donne aux clients un moyen de consommer des calculs WoT tiers signés quand le calcul local coûte trop cher.
+
+Les implémentations existantes répondent aussi à des questions différentes. Un rang de confiance global est utile pour la découverte et la résistance au spam à l'échelle du réseau. Un score local personnalisé est meilleur pour répondre à "montre-moi les comptes auxquels mon graphe ferait confiance". Lire un nombre WoT sans savoir quel modèle l'a produit reste une source fréquente de confusion.
 
 ---
 
 **Sources principales :**
+- [NIP-02: Follow List](https://github.com/nostr-protocol/nips/blob/master/02.md)
+- [NIP-85: Trusted Assertions](https://github.com/nostr-protocol/nips/blob/master/85.md)
 - [Nostr.Band Trust Rank](https://trust.nostr.band/)
 - [Protocole DCoSL](https://github.com/wds4/DCoSL)
 - [Noswot](https://codeberg.org/weex/noswot)

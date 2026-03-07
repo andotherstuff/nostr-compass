@@ -2,69 +2,67 @@
 title: "MLS (Message Layer Security)"
 date: 2025-12-31
 translationOf: /en/topics/mls.md
-translationDate: 2025-12-31
+translationDate: 2026-03-07
 draft: false
 categories:
-  - Crittografia
-  - Protocollo
-  - Messaggistica
+  - Cryptography
+  - Protocol
+  - Messaging
   - Privacy
 ---
-
-Message Layer Security (MLS) è un protocollo standardizzato dall'IETF per la messaggistica di gruppo con crittografia end-to-end. Fornisce un efficiente stabilimento delle chiavi con forward secrecy e sicurezza post-compromissione per gruppi che vanno da due a migliaia di partecipanti.
+Message Layer Security (MLS) è un protocollo IETF per la messaggistica di gruppo end-to-end encrypted. Fornisce forward secrecy e post-compromise security per gruppi in cui l'appartenenza può cambiare nel tempo.
 
 ## Come funziona
 
-MLS utilizza una struttura di accordo delle chiavi basata su albero chiamata TreeKEM:
+MLS usa una struttura di accordo sulle chiavi basata su alberi chiamata TreeKEM:
 
-1. **Pacchetti di chiavi**: Ogni partecipante pubblica un pacchetto di chiavi contenente la propria identità e chiavi di crittografia
-2. **Stato del gruppo**: Un albero ratchet mantiene lo stato crittografico del gruppo
-3. **Commit**: I membri aggiornano l'albero quando si uniscono, escono o ruotano le chiavi
-4. **Crittografia dei messaggi**: Il contenuto viene crittografato usando chiavi derivate dal segreto condiviso del gruppo
+1. **Key Packages**: ogni partecipante pubblica un key package che contiene la propria identità e le chiavi di cifratura
+2. **Group State**: un ratchet tree mantiene lo stato crittografico del gruppo
+3. **Commits**: i membri aggiornano l'albero quando entrano, escono o ruotano le chiavi
+4. **Message Encryption**: il contenuto viene cifrato usando chiavi derivate dal segreto condiviso del gruppo
 
-## Proprietà di sicurezza chiave
+## Perché conta
 
-- **Forward secrecy**: I messaggi passati rimangono sicuri anche se le chiavi attuali vengono compromesse
-- **Sicurezza post-compromissione**: I messaggi futuri tornano sicuri dopo la rotazione delle chiavi
-- **Autenticazione dei membri**: Tutti i membri del gruppo sono verificati crittograficamente
-- **Operazione asincrona**: I membri possono unirsi/uscire senza che tutti i partecipanti siano online
-- **Scalabilità**: Efficiente per gruppi fino a 50.000 partecipanti
+MLS risolve un problema che la cifratura pairwise non risolve bene: mantenere coerenti appartenenza al gruppo e stato di cifratura mentre i membri entrano, escono o ruotano le chiavi in modo asincrono.
+
+La sua struttura ad albero è l'idea pratica. Gli aggiornamenti non richiedono che ogni partecipante rinegozi pairwise con tutti gli altri, quindi il protocollo scala molto meglio degli schemi ad hoc di chiavi di gruppo.
 
 ## Standardizzazione
 
-- **RFC 9420** (luglio 2023): Specifica del protocollo MLS principale
-- **RFC 9750** (aprile 2025): Architettura MLS per l'integrazione di sistema
+- **RFC 9420** (luglio 2023): specifica del protocollo MLS di base
+- **RFC 9750** (aprile 2025): architettura MLS per l'integrazione di sistema
 
 ## Adozione in Nostr
 
-Diverse applicazioni Nostr utilizzano MLS per la messaggistica di gruppo sicura:
+Diverse applicazioni Nostr usano MLS per la messaggistica di gruppo sicura:
 
-- **KeyChat**: App di messaggistica crittografata basata su MLS per mobile e desktop
-- **White Noise**: Messaggistica privata che utilizza MLS con integrazione del protocollo Marmot
-- **Marmot Protocol**: Estensione Nostr che fornisce crittografia di gruppo basata su MLS
+- **KeyChat**: app di messaggistica cifrata basata su MLS per mobile e desktop
+- **White Noise**: messaggistica privata che usa MLS con integrazione del protocollo Marmot
+- **Marmot Protocol**: estensione Nostr che fornisce cifratura di gruppo basata su MLS
 
-MLS offre garanzie di sicurezza più forti rispetto a NIP-04 o NIP-44 da soli, particolarmente per le chat di gruppo dove i membri si uniscono e escono dinamicamente.
+MLS offre garanzie di sicurezza di gruppo più forti rispetto a [NIP-04](/it/topics/nip-04/) o [NIP-44](/it/topics/nip-44/) da soli, soprattutto quando l'appartenenza cambia spesso.
 
-## Adozione nell'industria
+## Compromessi
 
-Oltre a Nostr, MLS viene adottato da:
-- Google Messages (RCS con MLS via GSMA Universal Profile 3.0)
-- Apple Messages (supporto RCS annunciato per MLS)
-- Cisco WebEx, Wickr, Matrix
+MLS non è un prodotto di messaggistica completo. Le applicazioni hanno comunque bisogno di identità, trasporto, resistenza allo spam, storage e gestione dei conflitti attorno al protocollo.
+
+Per questo i progetti Nostr come Marmot aggiungono regole extra sopra MLS. La crittografia è standardizzata, ma il protocollo applicativo attorno ad essa conta ancora per l'interoperabilità.
 
 ---
 
-**Fonti principali:**
+**Fonti primarie:**
 - [RFC 9420: MLS Protocol](https://datatracker.ietf.org/doc/rfc9420/)
 - [RFC 9750: MLS Architecture](https://datatracker.ietf.org/doc/rfc9750/)
 - [IETF MLS Working Group](https://datatracker.ietf.org/wg/mls/about/)
 - [MLS Protocol Website](https://messaginglayersecurity.rocks/)
 
-**Menzionato in:**
-- [Newsletter #3: Rilasci](/it/newsletters/2025-12-31-newsletter/#releases)
+**Citato in:**
+- [Newsletter #3: Releases](/en/newsletters/2025-12-31-newsletter/#releases)
+- [Newsletter #10](/en/newsletters/2026-02-18-newsletter/)
+- [Newsletter #12](/en/newsletters/2026-03-04-newsletter/)
 
 **Vedi anche:**
 - [Marmot Protocol](/it/topics/marmot/)
-- [MIP-05: Notifiche Push che Preservano la Privacy](/it/topics/mip-05/)
-- [NIP-17: Messaggi Diretti Privati](/it/topics/nip-17/)
-- [NIP-44: Payload Crittografati](/it/topics/nip-44/)
+- [MIP-05: Privacy-Preserving Push Notifications](/it/topics/mip-05/)
+- [NIP-17: Private Direct Messages](/it/topics/nip-17/)
+- [NIP-44: Encrypted Payloads](/it/topics/nip-44/)

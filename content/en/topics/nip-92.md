@@ -11,10 +11,9 @@ NIP-92 enables users to attach media files to Nostr events by including URLs alo
 
 ## How It Works
 
-1. User places media URLs directly in event content (e.g., in a kind 1 text note)
-2. A matching `imeta` (inline metadata) tag provides details about each URL
-3. Clients can replace imeta URLs with rich previews based on the metadata
-4. Metadata is typically auto-generated when files are uploaded during composition
+Users place media URLs directly in event content, for example in a kind `1` text note. A matching `imeta` tag then adds machine-readable details for that exact URL. Clients can use the metadata to render previews, reserve layout space, and avoid guessing file properties after the note is already on screen.
+
+Each `imeta` tag should match one URL in the event content. Clients may ignore tags that do not match, which gives implementations a simple rule for rejecting stale or malformed metadata.
 
 ## The imeta Tag
 
@@ -27,6 +26,18 @@ Each `imeta` tag must have a `url` and at least one other field. Supported field
 - `alt` - Alt text description for accessibility
 - `x` - SHA-256 hash (from NIP-94)
 - `fallback` - Alternative URLs if primary fails
+
+Because `imeta` may carry fields from [NIP-94: File Metadata](/en/topics/nip-94/), clients can reuse the same MIME type, dimensions, hash, and accessibility text they would already understand for standalone file metadata events.
+
+## Why It Matters
+
+The most immediate benefit is better rendering before download. If `dim` is present, clients can reserve the right amount of space for an image or video instead of reflowing the timeline after the file loads. If `blurhash` is present, they can show a low-cost preview first. If `alt` is present, the attachment stays usable for screen-reader and low-vision users.
+
+NIP-92 also lets clients keep the post itself as the source of truth. The URL remains in `content`, so older clients still show a plain link, while newer clients can upgrade the same note into a richer media card.
+
+## Interop Notes
+
+NIP-92 is inline metadata, not a separate media object format. If a client needs a reusable file record with its own event, [NIP-94: File Metadata](/en/topics/nip-94/) is the better fit.
 
 ## Example
 
@@ -43,9 +54,11 @@ Each `imeta` tag must have a `url` and at least one other field. Supported field
 
 **Primary sources:**
 - [NIP-92 Specification](https://github.com/nostr-protocol/nips/blob/master/92.md)
+- [Primal Android PR #718](https://github.com/PrimalHQ/primal-android-app/pull/718) - A concrete client implementation for dimensions and aspect-ratio handling
 
 **Mentioned in:**
 - [Newsletter #3: December Recap](/en/newsletters/2025-12-31-newsletter/#december-recap-five-years-of-nostr-decembers)
+- [Newsletter #6: News](/en/newsletters/2026-01-21-newsletter/#news)
 
 **See also:**
 - [NIP-94: File Metadata](/en/topics/nip-94/)

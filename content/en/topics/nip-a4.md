@@ -11,23 +11,31 @@ NIP-A4 defines public messages (kind 24) designed for notification screens, with
 
 ## How It Works
 
-Unlike threaded conversations, these messages have no concept of chat history or message chains. They're simple one-off messages intended to appear in a recipient's notification feed.
+Kind `24` is a signed plaintext message to one or more recipients. The message body lives in `content`, and `p` tags identify the intended receivers. The spec says clients should send these events to the recipients' [NIP-65](/en/topics/nip-65/) inbox relays and to the sender's outbox relay.
 
-## Structure
+Unlike threaded conversations, these messages have no concept of chat history, room state, or thread roots. They are meant to appear in a notification surface and be understandable on their own.
 
-- Uses `q` tags (quotations) rather than `e` tags to avoid threading complications
-- No conversation state or history
-- Designed for simple public notifications
+## Protocol Rules
 
-## Use Cases
+- Uses `p` tags to identify recipients
+- Must not use `e` tags for threading
+- May use `q` tags to quote another event
+- Works best with [NIP-40](https://github.com/nostr-protocol/nips/blob/master/40.md) expiration tags so stale notification-style messages disappear over time
 
-- Public acknowledgments or shoutouts
-- Broadcast messages to a user
-- Notifications that don't need reply threading
+## Why It Exists
+
+NIP-A4 gives clients a simpler public-message primitive than a full threaded note. That is useful for mention-style messages, lightweight shoutouts, or one-off notifications where building a permanent conversation tree would add more complexity than value.
+
+The tradeoff is that these messages are public. They are easy to show in a notification UI precisely because they do not create private session state. Anyone can read and reply to them if they see them.
+
+## Interop Notes
+
+NIP-A4 is easy to confuse with direct-message protocols because it targets named recipients, but it is still a public event kind. Clients should not present kind `24` as private messaging or assume any confidentiality beyond relay placement.
 
 ---
 
 **Primary sources:**
+- [NIP-A4 Specification](https://github.com/nostr-protocol/nips/blob/master/A4.md)
 - [NIP-A4 PR](https://github.com/nostr-protocol/nips/pull/1988)
 
 **Mentioned in:**

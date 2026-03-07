@@ -1,59 +1,61 @@
 ---
-title: "NIP-45: Event 카운팅"
+title: "NIP-45: 이벤트 카운팅"
 date: 2026-02-11
 translationOf: /en/topics/nip-45.md
-translationDate: 2026-02-12
+translationDate: 2026-03-07
 draft: false
 categories:
   - NIPs
   - Protocol
 ---
-
-NIP-45는 클라이언트가 event 자체를 전송하지 않고 필터와 일치하는 event의 수를 relay에 요청하는 방법을 정의합니다. 클라이언트는 REQ와 동일한 필터 구문으로 COUNT 메시지를 보내고, relay는 카운트로 응답합니다.
+NIP-45는 클라이언트가 릴레이에 필터와 일치하는 이벤트의 수를 요청하되, 일치하는 이벤트 자체는 전송하지 않는 방법을 정의한다. NIP-01 필터 구문을 재사용하므로, 클라이언트는 기존 `REQ`를 동일한 필터로 `COUNT` 요청으로 변환할 수 있다.
 
 ## 작동 방식
 
-클라이언트는 구독 ID와 필터가 포함된 COUNT 요청을 보냅니다:
+클라이언트가 구독 ID와 필터를 포함한 `COUNT` 요청을 전송한다:
 
 ```json
 ["COUNT", "<subscription_id>", {"kinds": [7], "#e": ["<event_id>"]}]
 ```
 
-relay는 카운트로 응답합니다:
+릴레이가 카운트로 응답한다:
 
 ```json
 ["COUNT", "<subscription_id>", {"count": 238}]
 ```
 
-이를 통해 숫자를 표시하기 위해 수백, 수천 개의 event를 다운로드하는 것을 피할 수 있습니다.
+이로써 단순히 숫자를 표시하기 위해 수백 또는 수천 개의 이벤트를 다운로드하는 것을 피할 수 있다. 클라이언트가 하나의 `COUNT` 요청에 여러 필터를 전송하면, 릴레이는 여러 `REQ` 필터가 OR로 결합되는 것과 마찬가지로 하나의 결과로 집계한다.
 
 ## HyperLogLog 근사 카운팅
 
-2026년 2월 기준, NIP-45는 HyperLogLog (HLL) 근사 카운팅을 지원합니다([PR #1561](https://github.com/nostr-protocol/nips/pull/1561)). relay는 COUNT 응답과 함께 256바이트 HLL 레지스터 값을 반환할 수 있습니다:
+2026년 2월 기준, NIP-45는 HyperLogLog(HLL) 근사 카운팅을 지원한다([PR #1561](https://github.com/nostr-protocol/nips/pull/1561)). 릴레이는 결과를 근사값으로 표시할 수 있으며, 릴레이 간 중복 제거를 위해 카운트와 함께 256개의 HLL 레지스터를 반환할 수 있다:
 
 ```json
-["COUNT", "<subscription_id>", {"count": 4527, "hll": "<base64 encoded 256 bytes>"}]
+["COUNT", "<subscription_id>", {"count": 4527, "hll": "<512자 hex 문자열>"}]
 ```
 
-HLL은 근본적인 문제를 해결합니다: 여러 relay에 걸쳐 고유한 event를 카운팅하는 것입니다. relay A가 50개의 리액션을 보고하고 relay B가 40개를 보고하면, 많은 event가 양쪽 relay에 존재하기 때문에 합계는 90이 아닙니다. 여러 relay의 HLL 레지스터는 각 레지스터 위치에서 최대값을 취하여 병합할 수 있으며, 네트워크 전체에서 자동으로 중복을 제거합니다.
+HLL은 근본적인 문제를 해결한다: 여러 릴레이에 걸친 고유 이벤트 카운팅이다. 릴레이 A가 50개의 리액션을, 릴레이 B가 40개를 보고하면, 많은 이벤트가 양쪽 릴레이에 모두 존재하므로 합계는 90이 아니다. 클라이언트는 각 레지스터 위치에서 최댓값을 취하여 HLL 값을 병합하며, 원시 이벤트를 다운로드하지 않고도 네트워크 전체 추정치를 얻을 수 있다.
 
-256개의 레지스터로 표준 오차는 약 5.2%입니다. HyperLogLog++ 보정은 200개 미만의 작은 카디널리티에서 정확도를 향상시킵니다. 리액션 event 두 개만으로도 256바이트 HLL 페이로드보다 더 많은 대역폭을 소비하므로, 사소한 숫자 이상의 모든 카운트에 효율적입니다.
+사양은 상호운용성을 위해 레지스터 수를 256으로 고정한다. 이를 통해 페이로드를 작게 유지하고, 모든 릴레이가 동일한 적격 필터에 대해 동일한 레지스터 레이아웃을 계산하므로 릴레이 측 캐싱이 실용적이 된다.
 
-명세는 모든 relay 구현 간의 상호 운용성을 위해 레지스터 수를 256으로 고정합니다.
+## 상호운용성 참고사항
 
-## 사용 사례
+HLL은 태그 속성이 있는 필터에 대해서만 정의되는데, 레지스터를 구성하는 데 사용되는 오프셋이 필터의 첫 번째 태그 값에서 파생되기 때문이다. 사양은 리액션, 리포스트, 인용, 답글, 댓글, 팔로워 수를 포함한 소수의 표준 쿼리도 명시한다. 이들은 릴레이가 사전 계산하거나 캐싱하기 가장 쉬운 카운트이다.
 
-소셜 메트릭(팔로워 수, 리액션 수, 리포스트 수)이 주요 활용 분야입니다. HLL 없이 클라이언트는 카운트를 위해 단일 "신뢰할 수 있는" relay에 쿼리하거나(데이터를 중앙화), 로컬에서 중복 제거를 위해 모든 relay에서 전체 event를 다운로드해야 합니다(대역폭 낭비). HLL은 relay당 256바이트의 오버헤드로 근사적인 크로스 relay 카운트를 제공합니다.
+## 왜 중요한가
+
+팔로워 수, 리액션 수, 답글 수가 주요 사용 사례이다. NIP-45 없이는 클라이언트가 단일 릴레이의 로컬 뷰를 신뢰하거나, 모든 일치하는 이벤트를 다운로드하여 로컬에서 중복을 제거해야 한다. NIP-45는 카운팅을 릴레이 내부에서 처리하며, HLL은 하나의 릴레이를 권위자로 만들지 않고도 다중 릴레이 카운트를 실용적으로 만든다.
 
 ---
 
 **주요 출처:**
-- [NIP-45: Event Counting](https://github.com/nostr-protocol/nips/blob/master/45.md)
-- [PR #1561: HyperLogLog Relay Response](https://github.com/nostr-protocol/nips/pull/1561)
+- [NIP-45: 이벤트 카운팅](https://github.com/nostr-protocol/nips/blob/master/45.md)
+- [PR #1561: HyperLogLog 릴레이 응답](https://github.com/nostr-protocol/nips/pull/1561)
 
-**언급된 곳:**
-- [뉴스레터 #9: NIP 심층 분석](/ko/newsletters/2026-02-11-newsletter/#nip-심층-분석-nip-45-event-카운팅과-hyperloglog)
-- [뉴스레터 #9: NIP 업데이트](/ko/newsletters/2026-02-11-newsletter/#nip-업데이트)
+**언급된 뉴스레터:**
+- [Newsletter #9: NIP 심층 분석](/en/newsletters/2026-02-11-newsletter/#nip-deep-dive-nip-45-event-counting-and-hyperloglog)
+- [Newsletter #9: NIP 업데이트](/en/newsletters/2026-02-11-newsletter/#nip-updates)
+- [Newsletter #12: Nostr 2월의 5년](/en/newsletters/2026-03-04-newsletter/)
 
-**참고:**
-- [NIP-11: Relay 정보 문서](/ko/topics/nip-11/)
+**같이 보기:**
+- [NIP-11: 릴레이 정보 문서](/ko/topics/nip-11/)

@@ -1,35 +1,39 @@
 ---
-title: "NIP-40: Verloopdatum Tijdstempel"
+title: "NIP-40: Verlooptijdstempel"
 date: 2025-12-17
+translationDate: 2026-03-07
 draft: false
 categories:
   - Protocol
 ---
 
-NIP-40 definieert een verloopdatum-tag die relays vertelt wanneer een event verwijderd moet worden.
+NIP-40 definieert een `expiration`-tag die relays vertelt wanneer een event moet worden verwijderd.
 
-## Structuur
+## Hoe het werkt
 
-Events bevatten een `expiration` tag met een Unix-tijdstempel:
+Events bevatten een `expiration`-tag met een Unix-tijdstempel:
 
 ```json
 ["expiration", "1734567890"]
 ```
 
-Na deze tijd moeten relays het event verwijderen en weigeren het te serveren.
+Na dit tijdstip moeten relays het event verwijderen en weigeren het nog te serveren.
 
-## Gebruiksscenario's
+## Waarom het belangrijk is
 
-- Vluchtige content die na een bepaalde tijd moet verdwijnen
-- Tijdgelimiteerde aanbiedingen of aankondigingen
-- Verloopdatum van vermeldingen in marktplaatsen (bijv. Shopstr)
-- Verminderen van relay-opslagvereisten
+- Ephemeral content die na een vaste tijd moet verdwijnen
+- Tijdgebonden aanbiedingen of aankondigingen
+- Verloop van vermeldingen in marktplaatsen, zoals Shopstr
+- Het verlagen van relay-opslagvereisten
 
-## Overwegingen
+Expiration is een bewaarrichtlijn, geen herroepingssysteem. Het helpt relaygedrag rond verouderde content op elkaar af te stemmen, maar het garandeert geen verwijdering zodra een andere relay, client of archief het event al heeft gekopieerd.
 
-- Relays zijn niet verplicht om verloopdatum te honoreren (maar de meeste doen dat)
-- Clients moeten niet vertrouwen op verloopdatum voor beveiligingskritieke contentverwijdering
-- Zodra content is opgehaald door een andere client, kan deze worden gecachet of opnieuw gepubliceerd
+## Vertrouwens- en beveiligingsnotities
+
+- Relays zijn niet verplicht expiration te respecteren, al doen de meeste dat wel
+- Clients moeten niet vertrouwen op expiration voor het verwijderen van beveiligingskritieke content
+- Zodra content door een andere client is opgehaald, kan die worden gecachet of opnieuw gepubliceerd
+- Expiration verbergt niet dat een event heeft bestaan. Event ids, citaten of kopieën buiten relays kunnen nog steeds blijven bestaan nadat het tijdstip is verstreken
 
 ---
 
@@ -37,4 +41,8 @@ Na deze tijd moeten relays het event verwijderen en weigeren het te serveren.
 - [NIP-40 Specificatie](https://github.com/nostr-protocol/nips/blob/master/40.md)
 
 **Vermeld in:**
-- [Nieuwsbrief #1: Nieuws](/nl/newsletters/2025-12-17-newsletter/#news)
+- [Nieuwsbrief #1: Nieuws](/en/newsletters/2025-12-17-newsletter/#news)
+- [Nieuwsbrief #3: Opmerkelijke codewijzigingen](/en/newsletters/2025-12-31-newsletter/#rust-nostr-library)
+
+**Zie ook:**
+- [NIP-01: Basisprotocol](/nl/topics/nip-01/)

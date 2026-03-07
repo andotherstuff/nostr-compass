@@ -2,31 +2,29 @@
 title: "NIP-94: File Metadata"
 date: 2025-12-31
 translationOf: /en/topics/nip-94.md
-translationDate: 2025-12-31
+translationDate: 2026-03-07
 draft: false
 categories:
-  - Multimedia
-  - Protocolo
+  - Media
+  - Protocol
 ---
 
 NIP-94 define un evento de metadatos de archivo (kind 1063) para organizar y clasificar archivos compartidos en Nostr, permitiendo a los relays filtrar y organizar contenido de manera efectiva.
 
-## Cómo Funciona
+## Cómo funciona
 
-1. El usuario sube un archivo a un servicio de alojamiento
-2. Se publica un evento kind 1063 con metadatos sobre el archivo
-3. El contenido del evento contiene una descripción legible por humanos
-4. Tags estructurados proporcionan metadatos legibles por máquinas
-5. Clientes especializados pueden organizar y mostrar archivos sistemáticamente
+NIP-94 usa kind `1063` como un evento de metadatos independiente para un archivo. El `content` del evento contiene una descripción legible por humanos, mientras que las etiquetas llevan campos legibles por máquina como URL de descarga, tipo MIME, hashes, dimensiones e indicaciones de vista previa.
 
-## Tags Requeridos y Opcionales
+Esa separación importa porque el evento de metadatos puede ser indexado, filtrado y reutilizado independientemente de cualquier nota que enlace al archivo. Un cliente puede tratar un evento kind `1063` como la descripción canónica de un recurso en lugar de extraer metadatos del texto libre de una publicación.
 
-**Tags principales:**
+## Etiquetas requeridas y opcionales
+
+**Etiquetas principales:**
 - `url` - Enlace de descarga del archivo
-- `m` - MIME type (formato en minúsculas requerido)
+- `m` - Tipo MIME (formato en minúsculas requerido)
 - `x` - Hash SHA-256 del archivo
 
-**Tags opcionales:**
+**Etiquetas opcionales:**
 - `ox` - Hash SHA-256 del archivo original antes de transformaciones del servidor
 - `size` - Tamaño del archivo en bytes
 - `dim` - Dimensiones (ancho x alto) para imágenes/video
@@ -38,8 +36,11 @@ NIP-94 define un evento de metadatos de archivo (kind 1063) para organizar y cla
 - `summary` - Extracto de texto
 - `alt` - Descripción de accesibilidad
 - `fallback` - Fuentes de descarga alternativas
+- `service` - Protocolo o tipo de servicio de almacenamiento, como NIP-96
 
-## Casos de Uso
+Las etiquetas `ox` y `x` son fáciles de pasar por alto pero útiles en la práctica. `ox` identifica el archivo original subido, mientras que `x` puede identificar la versión transformada que un servidor realmente sirve. Cuando un servidor de medios comprime o redimensiona las subidas, los clientes pueden preservar la identidad del archivo original sin pretender que el blob transformado es idéntico byte por byte.
+
+## Cuándo usarlo
 
 NIP-94 está diseñado para aplicaciones de compartición de archivos en lugar de clientes de contenido social o de formato largo. Las aplicaciones sugeridas incluyen:
 
@@ -48,14 +49,20 @@ NIP-94 está diseñado para aplicaciones de compartición de archivos en lugar d
 - Distribución de configuración y actualizaciones de software
 - Bibliotecas y archivos de medios
 
+Si los metadatos del archivo solo necesitan decorar una URL incrustada dentro de otro evento, [NIP-92: Media Attachments](/es/topics/nip-92/) es más ligero. NIP-94 es la mejor opción cuando el archivo mismo debería ser consultable como un objeto de primera clase.
+
+## Notas de interoperabilidad
+
+NIP-94 funciona entre backends de almacenamiento. Un archivo puede subirse a través de [NIP-96: HTTP File Storage](/es/topics/nip-96/), Blossom u otro servicio, y aún así describirse con la misma forma de evento kind `1063`. Por eso el formato de metadatos sobrevive a cualquier protocolo de subida individual.
+
 ---
 
-**Fuentes principales:**
+**Fuentes primarias:**
 - [Especificación NIP-94](https://github.com/nostr-protocol/nips/blob/master/94.md)
 
 **Mencionado en:**
-- [Newsletter #3: Resumen de Diciembre](/es/newsletters/2025-12-31-newsletter/#december-recap-five-years-of-nostr-decembers)
+- [Newsletter #3: December Recap](/en/newsletters/2025-12-31-newsletter/#december-recap-five-years-of-nostr-decembers)
 
 **Ver también:**
-- [NIP-92: Archivos Adjuntos de Medios](/es/topics/nip-92/)
+- [NIP-92: Media Attachments](/es/topics/nip-92/)
 - [Blossom](/es/topics/blossom/)

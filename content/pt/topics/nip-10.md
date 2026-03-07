@@ -1,23 +1,23 @@
 ---
-title: "NIP-10: Encadeamento de Notas de Texto"
+title: 'NIP-10: Encadeamento de notas de texto'
 date: 2025-12-24
 draft: false
 categories:
-  - Protocol
-  - Social
+- Protocol
+- Social
 translationOf: /en/topics/nip-10.md
-translationDate: 2025-12-26
+translationDate: '2026-03-07'
 ---
 
-NIP-10 especifica como notas kind 1 referenciam umas às outras para formar threads de respostas. Entender isso é essencial para construir visualizações de conversas.
+NIP-10 especifica como as notas kind 1 fazem referência umas às outras para formar threads de resposta. Compreender isso é essencial para construir visualizações de conversa.
 
-## O Problema
+## Como funciona
 
-Quando alguém responde a uma nota, os clientes precisam saber: A que isso é uma resposta? Qual é a raiz da conversa? Quem deve ser notificado? NIP-10 responde essas perguntas através de tags `e` (referências de eventos) e tags `p` (menções de pubkey).
+Quando alguém responde a uma nota, os clientes precisam saber: Para que isso é uma resposta? Qual é a raiz da conversa? Quem deve ser notificado? O NIP-10 responde a essas perguntas por meio de `e` tags (referências de eventos) e `p` tags (menções de pubkey).
 
-## Tags Marcadas (Preferido)
+## Tags marcadas (preferencial)
 
-Clientes modernos usam marcadores explícitos nas tags `e`:
+Os clientes modernos usam marcadores explícitos em `e` tags:
 
 ```json
 {
@@ -31,40 +31,42 @@ Clientes modernos usam marcadores explícitos nas tags `e`:
     ["p", "91cf9..."],
     ["p", "14aeb..."]
   ],
-  "content": "Otimo ponto! Eu concordo.",
+  "content": "Great point! I agree.",
   "sig": "b7d3f..."
 }
 ```
 
-O marcador `root` aponta para a nota original que iniciou o thread. O marcador `reply` aponta para a nota específica sendo respondida. Se respondendo diretamente à raiz, use apenas `root` (nenhuma tag `reply` é necessária). A distinção importa para renderização: o `reply` determina a indentação em uma visualização de thread, enquanto `root` agrupa todas as respostas.
+O marcador `root` aponta para a nota original que iniciou o tópico. O marcador `reply` aponta para a nota específica que está sendo respondida. Se responder diretamente ao root, use apenas `root` (não é necessário `reply` tag). A distinção é importante para a renderização: o `reply` determina o recuo em uma visualização de thread, enquanto o `root` agrupa todas as respostas.
 
-## Regras de Encadeamento
+## Regras de Threading
 
-- **Resposta direta a raiz:** Uma tag `e` com marcador `root`
-- **Resposta a uma resposta:** Duas tags `e`, uma `root` e uma `reply`
-- O `root` permanece constante durante todo o thread; `reply` muda baseado no que você está respondendo
+- **Resposta direta ao root:** Um `e` tag com marcador `root`
+- **Resposta a uma resposta:** Dois `e` tags, um `root` e um `reply`
+- O `root` permanece constante durante toda a rosca; `reply` muda com base no que você está respondendo
 
-## Tags de Pubkey para Notificações
+## Notificações e menções
 
-Inclua tags `p` para todos que devem ser notificados. No mínimo, marque o autor da nota que você está respondendo. A convenção é também incluir todas as tags `p` do evento pai (para que todos na conversa permaneçam informados), além de quaisquer usuários que você @mencione em seu conteúdo.
+Inclua `p` tags para todos que devem ser notificados. No mínimo, tag é o autor da nota à qual você está respondendo. A convenção é incluir também todos os `p` tags do evento pai, para que todos na conversa permaneçam informados, além de quaisquer usuários que você @mencionar em seu conteúdo.
 
-## Dicas de Relay
+## Dicas de relay
 
-A terceira posição nas tags `e` e `p` pode conter uma URL de relay onde aquele evento ou conteúdo do usuário pode ser encontrado. Isso ajuda os clientes a buscar o conteúdo referenciado mesmo se não estiverem conectados ao relay original.
+A terceira posição em `e` e `p` tags pode conter uma URL relay onde esse evento ou conteúdo do usuário pode ser encontrado. Isso ajuda os clientes a buscar o conteúdo referenciado mesmo que não estejam conectados ao relay original.
 
-## Tags Posicionais Obsoletas
+## Notas de interoperabilidade
 
-Implementações antigas do Nostr inferiam significado da posição da tag em vez de marcadores: a primeira tag `e` era raiz, a última era resposta, as do meio eram menções. Esta abordagem está obsoleta porque cria ambiguidade. Se você vir tags `e` sem marcadores, elas provavelmente são de clientes antigos. Implementações modernas devem sempre usar marcadores explícitos.
+As primeiras implementações do Nostr inferiram o significado da posição tag em vez dos marcadores: o primeiro `e` tag era a raiz, o último era a resposta, os do meio eram as menções. Essa abordagem está obsoleta porque cria ambiguidade. Se você vir `e` tags sem marcadores, provavelmente são de clientes mais antigos. As implementações modernas devem sempre usar marcadores explícitos.
 
-## Construindo Visualizações de Thread
+Os clientes ainda precisam analisar ambos os formatos se quiserem renderizar threads mais antigos corretamente. Na prática, a interoperabilidade do NIP-10 é, em parte, um problema de migração: os produtores deveriam emitir a marca tags, mas os leitores deveriam permanecer tolerantes com as formas posicionais mais antigas.
 
-Para exibir um thread, busque o evento raiz, depois consulte todos os eventos com uma tag `e` referenciando aquela raiz:
+## Construindo visualizações de thread
+
+Para exibir um thread, busque o evento raiz e consulte todos os eventos com um `e` tag referenciando essa raiz:
 
 ```json
 ["REQ", "thread", {"kinds": [1], "#e": ["<root-event-id>"]}]
 ```
 
-Ordene os resultados por `created_at` e use marcadores `reply` para construir a estrutura em árvore. Eventos cujo `reply` aponta para a raiz são respostas de nível superior; eventos cujo `reply` aponta para outra resposta são respostas aninhadas.
+Classifique os resultados por `created_at` e use marcadores `reply` para construir a estrutura em árvore. Os eventos cujo `reply` aponta para a raiz são respostas de nível superior; eventos cujo `reply` aponta para outra resposta são respostas aninhadas.
 
 ---
 
@@ -72,7 +74,8 @@ Ordene os resultados por `created_at` e use marcadores `reply` para construir a 
 - [Especificação NIP-10](https://github.com/nostr-protocol/nips/blob/master/10.md)
 
 **Mencionado em:**
-- [Newsletter #2: Análise Profunda de NIP](/pt/newsletters/2025-12-24-newsletter/#nip-10-text-note-threading)
+- [Boletim informativo nº 2: Aprofundamento do NIP](/pt/newsletters/2025-12-24-newsletter/#nip-10-text-note-threading)
 
 **Veja também:**
 - [NIP-01: Protocolo Básico](/pt/topics/nip-01/)
+- [NIP-18: Repostagens](/pt/topics/nip-18/)

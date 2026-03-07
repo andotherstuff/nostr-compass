@@ -7,7 +7,7 @@ categories:
   - Protocol
 ---
 
-NIP-91 adds AND filter semantics for tag arrays in Nostr relay subscriptions. It merged on March 3, 2026 after implementation across multiple relays.
+NIP-91 adds AND filter semantics for tag arrays in Nostr relay subscriptions. It merged on 2026-03-03 after implementations appeared in multiple relays.
 
 ## The Problem
 
@@ -17,18 +17,23 @@ This forced clients to over-fetch events from relays and filter locally, increas
 
 ## How It Works
 
-NIP-91 introduces AND semantics for tag arrays. When a client needs events matching all specified tag values, it can use the AND operator to require that every value in the array is present in the event's tags.
+NIP-91 introduces AND semantics for tag arrays. When a client needs events matching all specified tag values, it can opt into intersection matching instead of the default union behavior.
 
-The specification defines the convention for relay implementations to support this, while maintaining backward compatibility with existing OR behavior for clients that do not opt in.
+That matters for queries such as "events that tag both participants in a conversation" or "events carrying two required labels at once." Before this change, relays could only answer the broader superset and leave the precise intersection to the client.
 
-## Relay Implementations
+## Why It Matters
+
+AND filters make relay-side indexes more useful. Clients can ask a relay for a smaller, already-relevant result set, which cuts down bandwidth and local post-processing. The gain is most noticeable on mobile clients and on queries over large tag-heavy datasets.
+
+## Interop Notes
 
 At the time of merge, working implementations existed in nostr-rs-relay, satellite-node, worker-relay, and applesauce. The proposal was formerly numbered NIP-119 before renumbering.
+
+Clients should still expect mixed support while relay adoption catches up. A practical fallback is to keep the old client-side intersection path for relays that have not implemented the new semantics yet.
 
 ---
 
 **Primary sources:**
-- [NIP-91 Specification](https://github.com/nostr-protocol/nips/blob/master/91.md)
 - [PR #1365](https://github.com/nostr-protocol/nips/pull/1365)
 
 **Mentioned in:**

@@ -1,6 +1,8 @@
 ---
 title: "NIP-89: Manejadores de Aplicaciones Recomendados"
 date: 2026-01-07
+translationOf: /en/topics/nip-89.md
+translationDate: 2026-03-07
 draft: false
 categories:
   - Discovery
@@ -42,6 +44,8 @@ NIP-89 define cómo las aplicaciones pueden anunciar sus capacidades y cómo los
 
 Las etiquetas `k` especifican los tipos de eventos soportados. Las plantillas de URL usan `<bech32>` como marcador de posición para entidades codificadas en NIP-19.
 
+El mismo evento de manejador puede anunciar varios kinds soportados si comparten el mismo patrón de enrutamiento. Eso mantiene el descubrimiento de aplicaciones compacto y evita publicar un evento de manejador por kind cuando la lógica de destino es idéntica.
+
 ## Recomendación de Usuario
 
 ```json
@@ -61,6 +65,12 @@ Las etiquetas `k` especifican los tipos de eventos soportados. Las plantillas de
 
 La etiqueta `d` es el tipo de evento que se recomienda. Múltiples etiquetas `a` pueden recomendar diferentes aplicaciones para diferentes plataformas.
 
+## Etiqueta Client
+
+NIP-89 también define una etiqueta `client` opcional que las aplicaciones que publican pueden adjuntar a eventos ordinarios. Registra el nombre del cliente más un puntero al evento de manejador, lo que permite a otros clientes mostrar de dónde vino una nota o buscar metadatos más ricos de la aplicación.
+
+Esto tiene implicaciones de privacidad. La especificación dice explícitamente que los clientes deben permitir a los usuarios desactivarlo, porque publicar la identidad del software en cada evento puede revelar patrones de uso que las personas pueden no querer exponer.
+
 ## Casos de Uso
 
 - Descubrir aplicaciones que pueden mostrar artículos de formato largo (kind 30023)
@@ -68,13 +78,20 @@ La etiqueta `d` es el tipo de evento que se recomienda. Múltiples etiquetas `a`
 - Funcionalidad "abrir en..." entre clientes
 - Detectar capacidades de cliente para soporte de cifrado
 
+## Notas de Confianza y Seguridad
+
+NIP-89 mejora la interoperabilidad, pero también crea una superficie de redirección. Si un cliente consulta anuncios de manejadores arbitrarios desde relays no confiables, puede terminar enviando usuarios a aplicaciones maliciosas o engañosas.
+
+Por eso el flujo de recomendación comienza con personas que sigues. Las recomendaciones filtradas socialmente no son perfectas, pero son más seguras que tratar cada manejador publicado como igualmente confiable.
+
 ---
 
 **Fuentes primarias:**
 - [Especificación NIP-89](https://github.com/nostr-protocol/nips/blob/master/89.md)
 
 **Mencionado en:**
-- [Newsletter #4: Profundización en NIPs](/es/newsletters/2026-01-07-newsletter/#nip-44-cifrado-versionado)
+- [Newsletter #4: Análisis Profundo de NIPs](/en/newsletters/2026-01-07-newsletter/#nip-44-versioned-encryption)
+- [Newsletter #12: Damus](/en/newsletters/2026-03-04-newsletter/#damus-nip-89-recommended-application-handlers)
 
 **Ver también:**
 - [NIP-19: Entidades Codificadas en Bech32](/es/topics/nip-19/)

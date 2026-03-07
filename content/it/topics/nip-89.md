@@ -1,27 +1,28 @@
 ---
-title: "NIP-89: Handler di Applicazioni Raccomandati"
+title: "NIP-89: Recommended Application Handlers"
 date: 2026-01-07
+translationOf: /en/topics/nip-89/
+translationDate: 2026-03-07
 draft: false
 categories:
   - Discovery
   - Clients
   - Protocol
 ---
+NIP-89 definisce come le applicazioni possono annunciare le proprie capacità e come gli utenti possono raccomandare app che gestiscono specifici kind di evento.
 
-NIP-89 definisce come le applicazioni possono annunciare le proprie capacità e come gli utenti possono raccomandare app che gestiscono tipi di evento specifici.
+## Tipi di evento
 
-## Tipi di Evento
+- **kind 31990** - Application handler (pubblicato dagli sviluppatori dell'app)
+- **kind 31989** - Raccomandazione di app (pubblicata dagli utenti)
 
-- **kind 31990** - Handler di applicazione (pubblicato dagli sviluppatori di app)
-- **kind 31989** - Raccomandazione app (pubblicata dagli utenti)
+## Come funziona
 
-## Come Funziona
+1. **Le applicazioni** pubblicano eventi handler che descrivono quali kind di evento supportano e come aprire il contenuto
+2. **Gli utenti** raccomandano le app che usano per specifici kind di evento
+3. **I client** interrogano le raccomandazioni per offrire funzionalità "open in..." per tipi di evento sconosciuti
 
-1. **Le applicazioni** pubblicano eventi handler che descrivono quali tipi di evento supportano e come aprire i contenuti
-2. **Gli utenti** raccomandano app che usano per tipi di evento specifici
-3. **I client** cercano raccomandazioni per offrire funzionalità "apri con..." per tipi di evento sconosciuti
-
-## Handler di Applicazione
+## Application Handler
 
 ```json
 {
@@ -40,9 +41,11 @@ NIP-89 definisce come le applicazioni possono annunciare le proprie capacità e 
 }
 ```
 
-I tag `k` specificano i tipi di evento supportati. I template URL usano `<bech32>` come placeholder per entità codificate NIP-19.
+I tag `k` specificano i kind di evento supportati. I template URL usano `<bech32>` come placeholder per entità codificate con NIP-19.
 
-## Raccomandazione Utente
+Lo stesso evento handler può pubblicizzare diversi kind supportati se condividono lo stesso schema di routing. Questo mantiene compatta la discoverability delle app ed evita di pubblicare un evento handler per ogni kind quando la logica di destinazione è identica.
+
+## Raccomandazione dell'utente
 
 ```json
 {
@@ -59,22 +62,35 @@ I tag `k` specificano i tipi di evento supportati. I template URL usano `<bech32
 }
 ```
 
-Il tag `d` è il tipo di evento raccomandato. Tag `a` multipli possono raccomandare diverse app per diverse piattaforme.
+Il tag `d` è il kind di evento raccomandato. Più tag `a` possono raccomandare app diverse per piattaforme diverse.
 
-## Casi d'Uso
+## Tag Client
 
-- Scoprire app che possono visualizzare articoli longform (kind 30023)
-- Trovare client che supportano tipi di evento specifici
-- Funzionalità "apri con..." cross-client
-- Rilevare le capacità del client per il supporto della crittografia
+NIP-89 definisce anche un tag `client` opzionale che le app di pubblicazione possono allegare agli eventi ordinari. Registra il nome del client più un puntatore all'evento handler, il che consente ad altri client di mostrare da dove proviene una nota o di recuperare metadata applicativi più ricchi.
+
+Questo ha implicazioni per la privacy. La specifica dice esplicitamente che i client dovrebbero consentire agli utenti di disattivarlo, perché pubblicare l'identità del software su ogni evento può rivelare pattern d'uso che le persone potrebbero non voler esporre.
+
+## Casi d'uso
+
+- Scoprire app che possono mostrare articoli longform (kind 30023)
+- Trovare client che supportano specifici tipi di evento
+- Funzionalità cross-client "open in..."
+- Rilevare capacità del client per il supporto alla cifratura
+
+## Note su trust e sicurezza
+
+NIP-89 migliora l'interoperabilità, ma crea anche una superficie di redirect. Se un client interroga annunci handler arbitrari da relay non fidati, può finire per inviare gli utenti verso applicazioni malevole o fuorvianti.
+
+Per questo il flusso di raccomandazione parte dalle persone che segui. Le raccomandazioni filtrate socialmente non sono perfette, ma sono più sicure che trattare ogni handler pubblicato come ugualmente affidabile.
 
 ---
 
-**Fonti primarie:**
-- [Specifica NIP-89](https://github.com/nostr-protocol/nips/blob/master/89.md)
+**Fonti principali:**
+- [NIP-89 Specification](https://github.com/nostr-protocol/nips/blob/master/89.md)
 
 **Menzionato in:**
-- [Newsletter #4: Approfondimento NIP](/it/newsletters/2026-01-07-newsletter/#nip-44-crittografia-versionata)
+- [Newsletter #4: NIP Deep Dive](/en/newsletters/2026-01-07-newsletter/#nip-44-versioned-encryption)
+- [Newsletter #12: Damus](/en/newsletters/2026-03-04-newsletter/#damus-nip-89-recommended-application-handlers)
 
 **Vedi anche:**
-- [NIP-19: Entità Codificate Bech32](/it/topics/nip-19/)
+- [NIP-19: Bech32-Encoded Entities](/it/topics/nip-19/)

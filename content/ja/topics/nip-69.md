@@ -1,6 +1,8 @@
 ---
 title: "NIP-69: ピアツーピア取引"
 date: 2025-12-17
+translationOf: /en/topics/nip-69.md
+translationDate: 2026-03-07
 draft: false
 categories:
   - Trading

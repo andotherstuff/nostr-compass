@@ -1,19 +1,19 @@
 ---
-title: "NIP-42: Authenticatie van clients aan relays"
+title: "NIP-42: Authenticatie van clients bij relays"
 date: 2026-01-21
 translationOf: /en/topics/nip-42.md
-translationDate: 2026-01-28
+translationDate: 2026-03-07
 draft: false
 categories:
   - NIPs
   - Authentication
 ---
 
-NIP-42 definieert hoe clients authenticeren bij relays. Relays kunnen authenticatie vereisen om toegangscontrole te bieden, misbruik te voorkomen of betaalde relay-diensten te implementeren.
+NIP-42 definieert hoe clients zich authenticeren bij relays. Relays kunnen authenticatie vereisen om toegangscontrole af te dwingen, misbruik te voorkomen of betaalde relay-diensten aan te bieden.
 
-## Hoe Het Werkt
+## Hoe het werkt
 
-De authenticatieflow begint wanneer een relay een AUTH-bericht naar de client stuurt. Dit bericht bevat een challenge-string die de client moet ondertekenen. De client maakt een kind 22242 authenticatie-event aan dat de challenge bevat en ondertekent dit met zijn privésleutel. De relay verifieert de handtekening en challenge, en verleent vervolgens toegang.
+De authenticatiestroom begint wanneer een relay een `AUTH`-bericht naar de client stuurt. Dat bericht bevat een challenge-string die de client moet ondertekenen. De client maakt een kind 22242 authentication event aan met de challenge en ondertekent dat met zijn private key. De relay verifieert de handtekening en de challenge, en verleent daarna toegang.
 
 ```json
 {
@@ -29,21 +29,30 @@ De authenticatieflow begint wanneer een relay een AUTH-bericht naar de client st
 }
 ```
 
-De challenge voorkomt replay-aanvallen: clients moeten verse challenges ondertekenen voor elke authenticatiepoging. De relay URL in de tags zorgt ervoor dat authenticatietokens niet kunnen worden hergebruikt over verschillende relays.
+De challenge voorkomt replay-aanvallen. De relay-URL in de tags voorkomt dat hetzelfde ondertekende event opnieuw kan worden gebruikt bij andere relays.
+
+## Protocolnotities
+
+Authenticatie is connection-scoped. Een challenge blijft geldig voor de duur van de verbinding, of totdat de relay een nieuwe stuurt. Het ondertekende event is ephemeral en mag niet als normaal event worden uitgezonden.
+
+De specificatie definieert ook machine-readable foutprefixen. `auth-required:` betekent dat de client nog niet is geauthenticeerd. `restricted:` betekent dat de client zich wel heeft geauthenticeerd, maar dat die pubkey nog steeds geen toestemming heeft voor de gevraagde actie.
 
 ## Toepassingen
 
-Betaalde relays gebruiken NIP-42 om abonnees te verifiëren voordat toegang wordt verleend. Na authenticatie kunnen relays betalingsstatus of abonnementsverloop controleren. Privé-relays beperken toegang tot goedgekeurde pubkeys, waardoor gesloten communities of persoonlijke relay-infrastructuur wordt gecreëerd.
+Betaalde relays gebruiken NIP-42 om abonnees te verifiëren voordat ze toegang geven. Privé-relays gebruiken het om lees- of schrijfrechten te beperken tot goedgekeurde pubkeys. Het verbetert ook rate limiting, omdat relays gedrag per geauthenticeerde key kunnen volgen in plaats van per IP-adres.
 
-Rate limiting wordt effectiever met authenticatie. Relays kunnen verzoeksnelheden per geauthenticeerde pubkey volgen in plaats van per IP-adres, wat misbruik voorkomt terwijl legitieme gebruikers achter gedeelde IP's worden ondersteund. Spampreventie verbetert wanneer relays authenticatie vereisen voor het publiceren van events.
-
-Sommige relays gebruiken NIP-42 voor analytics, om te volgen welke gebruikers welke content benaderen zonder gecentraliseerde accounts te vereisen. Gecombineerd met [NIP-11](/nl/topics/nip-11/) metadata, ontdekken clients of relays authenticatie vereisen voordat ze verbindingen proberen.
+Gecombineerd met [NIP-11](/nl/topics/nip-11/) metadata kunnen clients ontdekken of een relay NIP-42 ondersteunt voordat ze protected queries proberen. In de praktijk is ondersteuning nog ongelijk verdeeld, dus clients hebben een fallback-pad nodig wanneer een relay NIP-42 adverteert maar protected events verkeerd afhandelt.
 
 ---
 
 **Primaire bronnen:**
-- [NIP-42 Specificatie](https://github.com/nostr-protocol/nips/blob/master/42.md) - Authenticatie van clients aan relays
+- [NIP-42-specificatie](https://github.com/nostr-protocol/nips/blob/master/42.md) - Authenticatie van clients bij relays
+
+**Vermeld in:**
+- [Nieuwsbrief #6: Relay Information Documents worden geformaliseerd](/en/newsletters/2026-01-21-newsletter/#relay-information-documents-get-formalized)
+- [Nieuwsbrief #9: Marmot Relay Status Testing](/en/newsletters/2026-02-11-newsletter/#nip-70-relay-support-critical-for-encrypted-messaging-security)
+- [Nieuwsbrief #10: Nostr MCP Server](/en/newsletters/2026-02-18-newsletter/#nostr-mcp-server)
 
 **Zie ook:**
 - [NIP-11: Relay Information Document](/nl/topics/nip-11/)
-- [NIP-50: Zoekcapaciteit](/nl/topics/nip-50/)
+- [NIP-50: Search Capability](/nl/topics/nip-50/)

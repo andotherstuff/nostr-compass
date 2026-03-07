@@ -2,7 +2,7 @@
 title: "Cashu: Ecashプロトコル"
 date: 2026-01-28
 translationOf: /en/topics/cashu.md
-translationDate: 2026-01-28
+translationDate: 2026-03-07
 draft: false
 categories:
   - Payments
@@ -10,42 +10,51 @@ categories:
   - Bitcoin
 ---
 
-Cashuは、BitcoinとLightning Network上に構築されたChaumian ecashプロトコルで、暗号トークンを通じてプライベートで即時かつ低手数料の支払いを可能にします。
+Cashuは、BitcoinとLightningの上に構築されたChaumian ecashプロトコルです。ユーザーはmintが発行するbearer tokenを保持し、そのtokenを移転するときに、支払いグラフ全体をmintへ露出させずに済みます。
 
 ## 仕組み
 
-Cashuはブラインド署名を使用して追跡不可能なecashトークンを作成します：
+Cashuはblind signatureを使ってecash tokenを発行します。
 
-1. **ミンティング**：ユーザーはミントにBitcoin/Lightningを預け、ブラインドトークンを受け取ります
-2. **支払い**：トークンはミントの関与なしにピアツーピアで転送できます
-3. **換金**：受取人はミントでトークンをBitcoin/Lightningに換金します
+1. **Minting**: ユーザーはBitcoin/Lightningをmintに預け、blinded tokenを受け取る
+2. **Spending**: tokenはmintを介さずにpeer-to-peerで移転できる
+3. **Redemption**: 受取人はtokenをmintでBitcoin/Lightningに引き換える
 
-ミントはブラインドプロセスにより預金と換金を紐付けることができず、強力なプライバシー保証を提供します。
+mintはblinded secretに署名するため、後でtokenを検証できても、発行時点では元のsecretを見ません。これにより、mint内部で入金と換金を直接結び付けにくくなります。
 
-## 主な特性
+## セキュリティと信頼モデル
 
-- **プライバシー**：ミントはユーザー間のトークン転送を追跡できない
-- **即時**：転送はオフラインで行われ、ブロックチェーン確認は不要
-- **低手数料**：トークン転送にオンチェーン手数料がかからない
-- **カストディアル**：ユーザーは換金を履行するミントを信頼する必要がある
+Cashuは支払いのプライバシーを改善しますが、依然としてcustodialです。mintは換金を拒否でき、オフラインになれますし、裏付け資金を失うこともあります。
 
-## Nostr統合
+Cashu proofはbearer instrumentです。proofを保持する者がそれを使えます。proofの扱いは口座残高より現金に近く、バックアップ、端末侵害、平文tokenの漏えいはすぐに問題になります。
 
-CashuはNostrといくつかの方法で統合されています：
+## Nostrとの統合
 
-- **Nutzaps**：プライバシーを強化したzapとして送られるecashトークン
-- **エスクロー**：ライドシェアリングなどのサービス向けのHTLCベースの支払いエスクロー
-- **ウォレット**：Nostrネイティブウォレットがリレー上に暗号化されたCashuトークンを保存
-- **[NIP-87](/ja/topics/nip-87/)**：Nostrを介したミントの発見とレビュー
+Cashuは複数の形でNostrと統合されています。
 
-## 信頼モデル
+- **Nutzaps**: プライバシーを強化したzapとして送られるecash token
+- **Escrow**: ライドシェアのようなサービス向けのHTLCベースのpayment escrow
+- **Wallets**: Nostrネイティブwalletが暗号化されたCashu tokenをrelayに保存する
+- **[NIP-87](/ja/topics/nip-87/)**: Nostrを介したmintの発見とレビュー
 
-セルフカストディアルのBitcoinとは異なり、Cashuはミントオペレーターを信頼する必要があります。ユーザーは以下を行うべきです：
-- 評判が良く、レビューの多いミントを使用する
-- 信頼レベルに応じた少額の残高を維持する
-- ミントがexitスキャムやオフラインになって資金を持ち去る可能性があることを理解する
+## トレードオフ
 
-## 関連
+Cashuは、転送がon-chainでもなく、多くの場合redeemまでoff-mintでもあるため高速です。代わりに、相互運用性と信頼の問題が残ります。
 
-- [NIP-87](/ja/topics/nip-87/) - Cashuミント推奨
-- [NIP-60](/ja/topics/nip-60/) - Nostrウォレット
+実際には、ユーザーは同じmintを使う必要があるか、mint間のswapやbridgeが必要になります。だからこそ、NostrアプリはCashuをmint discovery、wallet sync、reviewシステムと組み合わせることが多いのです。
+
+---
+
+**主要ソース:**
+- [Cashu NUTs Repository](https://github.com/cashubtc/nuts)
+- [NUT-00: Cryptography and models](https://github.com/cashubtc/nuts/blob/main/00.md)
+- [NIP-60: Cashu Wallet](/ja/topics/nip-60/)
+- [NIP-87: Cashu Mint Recommendations](/ja/topics/nip-87/)
+
+**言及箇所:**
+- [Newsletter #7](/en/newsletters/2026-01-28-newsletter/)
+- [Newsletter #11](/en/newsletters/2026-02-25-newsletter/)
+
+**関連項目:**
+- [NIP-60: Cashu Wallet](/ja/topics/nip-60/)
+- [NIP-87: Cashu Mint Recommendations](/ja/topics/nip-87/)

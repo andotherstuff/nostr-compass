@@ -2,7 +2,7 @@
 title: "NIP-58 : Badges"
 date: 2026-01-28
 translationOf: /en/topics/nip-58.md
-translationDate: 2026-01-28
+translationDate: 2026-03-07
 draft: false
 categories:
   - NIP
@@ -10,7 +10,7 @@ categories:
   - Reputation
 ---
 
-NIP-58 définit un système de badges pour Nostr, permettant aux émetteurs de créer des badges et de les attribuer aux utilisateurs qui peuvent ensuite les afficher sur leurs profils.
+NIP-58 définit un système de badges pour Nostr. Un événement définit le badge, un autre l'attribue, et un troisième permet au destinataire de choisir s'il l'affiche sur son profil.
 
 ## Fonctionnement
 
@@ -23,8 +23,8 @@ Les émetteurs créent des définitions de badges comme événements adressables
   "kind": 30009,
   "tags": [
     ["d", "early-adopter"],
-    ["name", "Adopteur précoce"],
-    ["description", "A rejoint avant 2024"],
+    ["name", "Early Adopter"],
+    ["description", "Joined before 2024"],
     ["image", "https://example.com/badge.png"],
     ["thumb", "https://example.com/badge-thumb.png"]
   ]
@@ -33,7 +33,7 @@ Les émetteurs créent des définitions de badges comme événements adressables
 
 ### Attribution de badge (Kind 8)
 
-Les émetteurs attribuent des badges aux utilisateurs :
+Les émetteurs attribuent des badges à un ou plusieurs utilisateurs :
 
 ```json
 {
@@ -60,21 +60,40 @@ Les utilisateurs choisissent quels badges afficher sur leur profil :
 }
 ```
 
+Dans un événement de badges de profil, les clients doivent lire les tags `a` et `e` comme des paires ordonnées. Un tag `a` sans son événement d'attribution correspondant, ou un tag `e` sans sa définition de badge correspondante, doit être ignoré.
+
 ## Cas d'utilisation
 
-- **Appartenance à une communauté** : Prouver l'appartenance à des groupes ou communautés
-- **Accomplissements** : Reconnaître les contributions ou les jalons
-- **Vérification** : Attestations tierces (employé, créateur, etc.)
-- **Contrôle d'accès** : Restreindre le contenu ou les fonctionnalités en fonction de la possession de badges
+- **Appartenance à une communauté** : montrer l'appartenance à des groupes ou communautés
+- **Accomplissements** : reconnaître les contributions ou les jalons
+- **Attestations** : permettre à un tiers de se porter garant d'un rôle ou d'un statut
+- **Contrôle d'accès** : restreindre des fonctionnalités ou des espaces à l'aide de badges émis par une autorité
 
 ## Modèle de confiance
 
-La valeur des badges dépend entièrement de la réputation de l'émetteur. N'importe qui peut créer des badges, donc les clients devraient :
+La valeur d'un badge dépend entièrement de la réputation de l'émetteur. N'importe qui peut créer des badges, donc les clients doivent :
+
 - Afficher les informations de l'émetteur de manière visible
 - Permettre aux utilisateurs de filtrer par émetteurs de confiance
 - Ne pas traiter les badges comme faisant autorité sans contexte
 
-## Voir aussi
+Les attributions de badges sont immuables et non transférables. Cela rend les badges adaptés aux attestations et aux reconnaissances, mais pas aux identifiants portables au sens tokenisé.
 
-- [NIP-51](/fr/topics/nip-51/) - Listes
-- [Toile de confiance](/fr/topics/web-of-trust/)
+## Notes d'implémentation
+
+Les définitions de badges sont des événements adressables, donc les émetteurs peuvent mettre à jour les visuels ou les descriptions d'un badge sans changer l'identifiant du badge. L'événement d'attribution est l'enregistrement durable qui lie un destinataire à cette définition à un moment donné.
+
+Les clients ont aussi une latitude dans la présentation. La spécification leur permet explicitement d'afficher moins de badges que ceux listés par un utilisateur et de choisir la taille de miniature adaptée à l'espace disponible.
+
+---
+
+**Sources principales :**
+- [Spécification NIP-58](https://github.com/nostr-protocol/nips/blob/master/58.md)
+
+**Mentionné dans :**
+- [Newsletter #7 : Cinq ans de janviers Nostr](/en/newsletters/2026-01-28-newsletter/)
+- [Newsletter #15 : Cinq ans de févriers Nostr](/en/newsletters/2026-03-04-newsletter/)
+
+**Voir aussi :**
+- [NIP-51 : Listes](/fr/topics/nip-51/)
+- [Web of Trust](/fr/topics/web-of-trust/)

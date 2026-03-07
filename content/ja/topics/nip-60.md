@@ -2,7 +2,7 @@
 title: "NIP-60: Cashu Wallet"
 date: 2025-12-31
 translationOf: /en/topics/nip-60.md
-translationDate: 2025-12-31
+translationDate: 2026-03-07
 draft: false
 categories:
   - ウォレット
