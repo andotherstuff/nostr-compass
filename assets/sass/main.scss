@@ -363,6 +363,10 @@ hr {
     color: var(--text-color);
   }
 
+  .pagefind-ui__result-thumb {
+    display: none;
+  }
+
   .pagefind-ui__result-link:hover,
   .pagefind-ui__result-link:focus-visible {
     color: var(--brand-color-bright);
