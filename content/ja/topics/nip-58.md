@@ -2,7 +2,7 @@
 title: "NIP-58: バッジ"
 date: 2026-01-28
 translationOf: /en/topics/nip-58.md
-translationDate: 2026-01-28
+translationDate: 2026-03-07
 draft: false
 categories:
   - NIP

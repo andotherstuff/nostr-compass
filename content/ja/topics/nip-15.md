@@ -2,7 +2,7 @@
 title: "NIP-15: Nostrマーケットプレイス"
 date: 2026-01-28
 translationOf: /en/topics/nip-15.md
-translationDate: 2026-01-28
+translationDate: 2026-03-07
 draft: false
 categories:
   - NIP
@@ -10,13 +10,13 @@ categories:
   - Marketplace
 ---
 
-NIP-15は、Nostr上の分散型マーケットプレイスのためのプロトコルを定義し、マーチャントが商品をリストし、バイヤーがBitcoinとLightningを使用して購入できるようにします。
+NIP-15は、Nostr上の分散型marketplaceのためのprotocolを定義します。merchantがproductを出品し、buyerがBitcoinとLightningで購入できるようにします。
 
 ## 仕組み
 
-### マーチャントスタール（Kind 30017）
+### Merchant Stalls（Kind 30017）
 
-マーチャントはアドレス可能なイベントとしてスタールを作成します：
+merchantはstallをaddressable eventとして作成します。
 
 ```json
 {
@@ -31,9 +31,9 @@ NIP-15は、Nostr上の分散型マーケットプレイスのためのプロト
 }
 ```
 
-### 商品（Kind 30018）
+### Products（Kind 30018）
 
-商品はスタール内にリストされます：
+productはstall内に出品されます。
 
 ```json
 {
@@ -49,28 +49,43 @@ NIP-15は、Nostr上の分散型マーケットプレイスのためのプロト
 }
 ```
 
-## 購入フロー
+## Purchase Flow
 
-1. バイヤーが複数のスタールで商品を閲覧
-2. バイヤーがマーチャントに暗号化された注文メッセージを送信
-3. マーチャントがLightningインボイスで応答
-4. バイヤーがインボイスを支払い
-5. マーチャントが商品を発送
+1. buyerが複数stallの商品を閲覧する
+2. buyerがmerchantへ暗号化された注文messageを送る
+3. merchantがLightning invoiceで応答する
+4. buyerがinvoiceを支払う
+5. merchantが商品を発送する
 
-## 主な機能
+## なぜ重要か
 
-- **分散型**：中央マーケットプレイスオペレーターなし
-- **相互運用可能**：任意のNIP-15クライアントが任意のマーチャントを閲覧可能
-- **プライベート**：注文はバイヤーとセラー間で暗号化
-- **Bitcoinネイティブ**：Lightning支払いが組み込み
+- **Decentralized**: 中央marketplace operatorがいない
+- **Interoperable**: どのNIP-15 clientでもどのmerchantでも閲覧できる
+- **Private**: 注文はbuyerとsellerの間で暗号化される
+- **Bitcoin-native**: Lightning paymentが組み込まれている
 
-## 実装
+実務上の利点は可搬性です。merchantはcatalog dataを一度公開すればよく、複数のclientがそれを表示できます。1つのmarketplace front endに閉じ込められません。
 
-- **Plebeian Market** - フル機能のNIP-15マーケットプレイス
-- **Shopstr** - パーミッションレスBitcoinコマース
-- **Amethyst** - ソーシャルフィードに統合された商品リスト
+## Tradeoffs
 
-## 関連
+NIP-15が標準化するのはlistingであって、trustではありません。buyerは、merchantが本物か、inventoryが実在するか、disputeをどう処理するかを自分で判断する必要があります。protocolが提供するのは共通のdata structureとmessage flowであり、reputationとfulfillmentはapplication layerの問題として残ります。
 
-- [NIP-44](/ja/topics/nip-44/) - 注文用の暗号化メッセージ
-- [NIP-57](/ja/topics/nip-57/) - Lightning Zaps
+paymentとshippingも、標準化は部分的です。clientはstallとproductを理解できても、invoice、order state、delivery trackingについては独自ロジックが必要になる場合があります。
+
+## Implementation Status
+
+- **Plebeian Market** - フル機能のNIP-15 marketplace
+- **Shopstr** - permissionlessなBitcoin commerce
+- **Amethyst** - social feedに統合されたproduct listing
+
+---
+
+**主要ソース:**
+- [NIP-15 Specification](https://github.com/nostr-protocol/nips/blob/master/15.md)
+
+**言及箇所:**
+- [Newsletter #7: January 2024 Protocol Hardening](/en/newsletters/2026-01-28-newsletter/#january-2024-protocol-hardening)
+
+**関連項目:**
+- [NIP-44: Encrypted Payloads](/ja/topics/nip-44/)
+- [NIP-57: Lightning Zaps](/ja/topics/nip-57/)

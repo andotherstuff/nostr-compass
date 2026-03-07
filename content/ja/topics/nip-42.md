@@ -2,7 +2,7 @@
 title: "NIP-42: クライアントからリレーへの認証"
 date: 2026-01-21
 translationOf: /en/topics/nip-42.md
-translationDate: 2026-01-28
+translationDate: 2026-03-07
 draft: false
 categories:
   - NIPs

@@ -1,6 +1,8 @@
 ---
 title: "NIP-10: Hilos de Notas de Texto"
 date: 2025-12-24
+translationOf: /en/topics/nip-10.md
+translationDate: 2026-03-07
 draft: false
 categories:
   - Protocol
@@ -9,7 +11,7 @@ categories:
 
 NIP-10 especifica cómo las notas kind 1 se referencian entre sí para formar hilos de respuestas. Entender esto es esencial para construir vistas de conversación.
 
-## El Problema
+## Cómo Funciona
 
 Cuando alguien responde a una nota, los clientes necesitan saber: ¿A qué es esto una respuesta? ¿Cuál es la raíz de la conversación? ¿Quién debe ser notificado? NIP-10 responde estas preguntas a través de etiquetas `e` (referencias a eventos) y etiquetas `p` (menciones de pubkey).
 
@@ -42,17 +44,19 @@ El marcador `root` apunta a la nota original que inició el hilo. El marcador `r
 - **Respuesta a una respuesta:** Dos etiquetas `e`, una `root` y una `reply`
 - El `root` permanece constante a lo largo del hilo; `reply` cambia según a qué estés respondiendo
 
-## Etiquetas Pubkey para Notificaciones
+## Notificaciones y Menciones
 
-Incluye etiquetas `p` para todos los que deben ser notificados. Como mínimo, etiqueta al autor de la nota a la que estás respondiendo. La convención es también incluir todas las etiquetas `p` del evento padre (para que todos en la conversación se mantengan al tanto), más cualquier usuario que @menciones en tu contenido.
+Incluye etiquetas `p` para todos los que deben ser notificados. Como mínimo, etiqueta al autor de la nota a la que estás respondiendo. La convención es también incluir todas las etiquetas `p` del evento padre, para que todos en la conversación se mantengan al tanto, más cualquier usuario que @menciones en tu contenido.
 
 ## Pistas de Relay
 
 La tercera posición en las etiquetas `e` y `p` puede contener una URL de relay donde se puede encontrar ese evento o el contenido del usuario. Esto ayuda a los clientes a obtener el contenido referenciado incluso si no están conectados al relay original.
 
-## Etiquetas Posicionales Obsoletas
+## Notas de Interoperabilidad
 
 Las implementaciones tempranas de Nostr inferían el significado de la posición de la etiqueta en lugar de los marcadores: la primera etiqueta `e` era la raíz, la última era la respuesta, las del medio eran menciones. Este enfoque está obsoleto porque crea ambigüedad. Si ves etiquetas `e` sin marcadores, probablemente son de clientes antiguos. Las implementaciones modernas siempre deben usar marcadores explícitos.
+
+Los clientes aún necesitan parsear ambos formatos si quieren renderizar hilos más antiguos correctamente. En la práctica, la interoperabilidad de NIP-10 es en parte un problema de migración: los productores deben emitir etiquetas marcadas, pero los lectores deben seguir tolerando las formas posicionales más antiguas.
 
 ## Construyendo Vistas de Hilo
 
@@ -74,3 +78,4 @@ Ordena los resultados por `created_at` y usa los marcadores `reply` para constru
 
 **Ver también:**
 - [NIP-01: Protocolo Básico](/es/topics/nip-01/)
+- [NIP-18: Reposts](/es/topics/nip-18/)

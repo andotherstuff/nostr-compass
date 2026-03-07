@@ -1,43 +1,57 @@
 ---
-title: "Negentropy: Set Reconciliation Protocol"
+title: "Negentropy: protocol voor set-reconciliatie"
 date: 2026-01-28
 translationOf: /en/topics/negentropy.md
-translationDate: 2026-01-28
+translationDate: 2026-03-07
 draft: false
 categories:
   - Protocol
   - Sync
 ---
 
-Negentropy is een set reconciliation protocol dat efficiënte synchronisatie mogelijk maakt tussen Nostr-clients en relays door ontbrekende events te identificeren zonder de volledige dataset over te dragen.
+Negentropy is een protocol voor set-reconciliatie waarmee je kunt vaststellen welke events de ene kant heeft en de andere mist, zonder de volledige dataset opnieuw te verzenden.
 
-## Hoe Het Werkt
+## Hoe het werkt
 
-In plaats van alle events op te vragen die aan een filter voldoen, stelt negentropy clients in staat om hun lokale event-set te vergelijken met die van een relay en alleen de verschillen te identificeren. Dit wordt bereikt via een multi-round protocol:
+In plaats van elk event op te vragen dat aan een filter voldoet, vergelijkt negentropy twee gesorteerde sets en zoomt het alleen in op de bereiken die verschillen. Het protocol wisselt compacte samenvattingen van bereiken uit en valt alleen waar nodig terug op expliciete lijsten met ID's.
 
-1. **Fingerprinting**: Client en relay berekenen elk een fingerprint van hun event-sets
-2. **Vergelijking**: Fingerprints worden uitgewisseld en vergeleken
-3. **Reconciliatie**: Alleen ontbrekende event ID's worden geïdentificeerd en overgedragen
+1. **Ordening**: Beide kanten sorteren records op timestamp, daarna op ID
+2. **Vergelijking van bereiken**: Ze wisselen fingerprints uit voor bereiken van records
+3. **Verfijning**: Bereiken met verschillen worden opgesplitst totdat de werkelijk ontbrekende ID's duidelijk zijn
 
-## Waarom Het Belangrijk Is
+## Waarom het belangrijk is
 
-Traditionele Nostr-sync gebruikt tijdstempelgebaseerde `since`-filters, die events kunnen missen door:
+Traditionele Nostr-sync gebruikt op timestamp gebaseerde `since`-filters, die events kunnen missen door:
 - Klokdrift tussen client en relay
-- Meerdere events met identieke tijdstempels
+- Meerdere events met identieke timestamps
 - Events die buiten volgorde aankomen
 
-Negentropy lost deze problemen op door daadwerkelijke event-sets te vergelijken in plaats van te vertrouwen op tijdstempels.
+Negentropy lost deze problemen op door feitelijke event-sets te vergelijken in plaats van op timestamps te vertrouwen.
 
-## Toepassingen
+## Praktisch gebruik
 
-- **DM-Herstel**: Clients kunnen ontbrekende directe berichten detecteren en ophalen, zelfs met oude tijdstempels
-- **Feed Sync**: Zorgt voor complete tijdlijnsynchronisatie over relays
-- **Offline Sync**: Haalt efficiënt achterstand in na periodes van disconnectie
+- **DM-herstel**: Clients kunnen ontbrekende directe berichten detecteren en ophalen, zelfs met oude timestamps
+- **Feed-sync**: Zorgt voor volledige tijdlijnsynchronisatie tussen relays
+- **Offline sync**: Werkt de achterstand efficiënt bij na periodes zonder verbinding
 
-## Implementatie
+Het relevante implementatiedetail is dat veel clients normale subscriptions niet vervangen door negentropy. Ze gebruiken het als herstelpad. Damus hield bijvoorbeeld de gewone DM-laadstroom aan en voegde negentropy toe bij handmatige refresh om berichten terug te halen die de normale stroom zou missen.
 
-Negentropy vereist relay-ondersteuning. Clients implementeren het typisch als een fallback-herstelmechanisme in plaats van standaard REQ-abonnementen te vervangen, en degraderen elegant wanneer relays het protocol niet ondersteunen.
+## Afwegingen
 
-## Gerelateerd
+Negentropy vereist ondersteuning aan beide kanten en voegt protocolcomplexiteit toe bovenop standaard `REQ`-gebruik. Het is het nuttigst wanneer correctheid zwaarder weegt dan minimale implementatie-inspanning.
 
-- [NIP-01](/nl/topics/nip-01/) - Basisprotocol
+In gemengde omgevingen hebben clients nog steeds nette fallback-logica nodig, omdat niet elke relay het protocol ondersteunt.
+
+---
+
+**Primaire bronnen:**
+- [Negentropy Protocol Repository](https://github.com/hoytech/negentropy)
+- [Damus PR #3536](https://github.com/damus-io/damus/pull/3536)
+- [Damus PR #3547](https://github.com/damus-io/damus/pull/3547)
+
+**Vermeld in:**
+- [Nieuwsbrief #6: Damus levert negentropy voor betrouwbare DM-sync](/en/newsletters/2026-01-28-newsletter/#damus-ships-negentropy-for-reliable-dm-syncing)
+- [Nieuwsbrief #12](/en/newsletters/2026-03-04-newsletter/)
+
+**Zie ook:**
+- [NIP-01: Basic Protocol Flow](/nl/topics/nip-01/)

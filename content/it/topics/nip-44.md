@@ -1,70 +1,79 @@
 ---
-title: "NIP-44: Encrypted Payloads"
+title: "NIP-44: Payload crittografati"
 date: 2025-12-31
 translationOf: /en/topics/nip-44.md
-translationDate: 2025-12-31
+translationDate: 2026-03-07
 draft: false
 categories:
   - NIP
-  - Crittografia
+  - Cryptography
   - Privacy
 ---
+NIP-44 definisce uno standard di crittografia versionato per i payload Nostr, sostituendo lo schema di crittografia NIP-04, difettoso, con primitive crittografiche moderne.
 
-NIP-44 definisce uno standard di crittografia versionato per i payload Nostr, sostituendo lo schema di crittografia difettoso di NIP-04 con primitive crittografiche moderne.
+## Come funziona
 
-## Come Funziona
+NIP-44 versione 2 usa un processo di crittografia in più fasi:
 
-NIP-44 versione 2 utilizza un processo di crittografia a più fasi:
-
-1. **Accordo delle Chiavi**: ECDH (secp256k1) tra le chiavi pubbliche del mittente e del destinatario produce un segreto condiviso
-2. **Derivazione delle Chiavi**: HKDF-extract con SHA256 e salt `nip44-v2` crea una chiave di conversazione
-3. **Chiavi Per Messaggio**: HKDF-expand deriva la chiave ChaCha, nonce e chiave HMAC da un nonce casuale
-4. **Padding**: Il contenuto viene riempito per nascondere la lunghezza del messaggio
-5. **Crittografia**: ChaCha20 cripta il contenuto riempito
+1. **Accordo della chiave**: ECDH (secp256k1) tra le chiavi pubbliche del mittente e del destinatario produce un segreto condiviso
+2. **Derivazione della chiave**: HKDF-extract con SHA256 e salt `nip44-v2` crea una chiave di conversazione
+3. **Chiavi per messaggio**: HKDF-expand deriva chiave ChaCha, nonce e chiave HMAC da un nonce casuale
+4. **Padding**: Il contenuto riceve padding per nascondere la lunghezza del messaggio
+5. **Crittografia**: ChaCha20 crittografa il contenuto con padding
 6. **Autenticazione**: HMAC-SHA256 fornisce l'integrità del messaggio
 
-## Scelte Crittografiche
+L'output è un payload base64 versionato che va dentro un normale evento Nostr firmato. La specifica richiede ai client di validare la firma dell'evento esterno NIP-01 prima di decrittare il payload interno NIP-44.
 
-- **ChaCha20** rispetto ad AES: Più veloce, migliore resistenza agli attacchi multi-chiave
-- **HMAC-SHA256** rispetto a Poly1305: I MAC polinomiali sono più facili da falsificare
-- **SHA256**: Coerente con le primitive Nostr esistenti
-- **Formato Versionato**: Consente futuri aggiornamenti degli algoritmi
+## Scelte crittografiche
 
-## Proprietà di Sicurezza
+- **ChaCha20** invece di AES: più veloce, migliore resistenza agli attacchi multi-key
+- **HMAC-SHA256** invece di Poly1305: i MAC polinomiali sono più facili da falsificare
+- **SHA256**: coerente con le primitive Nostr esistenti
+- **Formato versionato**: permette futuri aggiornamenti degli algoritmi
 
-- **Crittografia Autenticata**: I messaggi non possono essere manomessi
-- **Occultamento della Lunghezza**: Il padding oscura la dimensione del messaggio
-- **Chiavi di Conversazione**: La stessa chiave per conversazioni continue riduce il calcolo
-- **Verificato**: L'audit di sicurezza Cure53 non ha trovato vulnerabilità sfruttabili
+## Proprietà di sicurezza
 
-## Limitazioni
+- **Authenticated Encryption**: i messaggi non possono essere manomessi
+- **Length Hiding**: il padding nasconde la dimensione del messaggio
+- **Chiavi di conversazione**: la stessa chiave per conversazioni in corso riduce il calcolo
+- **Sottoposto ad audit**: l'audit di sicurezza di Cure53 non ha trovato vulnerabilità sfruttabili
+
+## Note di implementazione
+
+NIP-44 non è un sostituto diretto dei payload NIP-04. Definisce un formato di crittografia, non un kind di evento per messaggi diretti. Protocolli come [NIP-17](/it/topics/nip-17/) e [NIP-59](/it/topics/nip-59/) definiscono come i payload crittografati vengono usati nei flussi di messaggi reali.
+
+L'input in chiaro è testo UTF-8 con una lunghezza da 1 a 65535 byte. Questo è un vincolo reale per chi implementa: se la tua applicazione deve crittografare blob binari arbitrari, ti serve una codifica aggiuntiva o un formato contenitore diverso.
+
+## Limiti
 
 NIP-44 non fornisce:
-- **Forward Secrecy**: Le chiavi compromesse espongono i messaggi passati
-- **Post-Compromise Security**: Recupero dopo la compromissione delle chiavi
-- **Negabilità**: I messaggi sono probabilmente firmati da chiavi specifiche
-- **Occultamento dei Metadati**: L'architettura dei relay limita la privacy
+- **Forward Secrecy**: chiavi compromesse espongono i messaggi passati
+- **Post-Compromise Security**: recupero dopo la compromissione della chiave
+- **Deniability**: i messaggi sono firmati in modo dimostrabile da chiavi specifiche
+- **Metadata Hiding**: l'architettura dei relay limita la privacy
 
 Per esigenze di alta sicurezza, NIP-104 (double ratchet) o protocolli basati su MLS come Marmot offrono garanzie più forti.
 
 ## Storia
 
-NIP-44 revisione 3 è stato unito a dicembre 2023 a seguito di un audit di sicurezza indipendente di Cure53. Costituisce la base crittografica per i DM privati NIP-17 e il gift wrapping NIP-59.
+La revisione 3 di NIP-44 è stata unita a dicembre 2023 dopo un audit di sicurezza indipendente di Cure53. Costituisce la base crittografica per i DM privati di NIP-17 e per il gift wrapping di NIP-59.
 
 ---
 
 **Fonti primarie:**
-- [Specifica NIP-44](https://github.com/nostr-protocol/nips/blob/master/44.md)
-- [Implementazioni di Riferimento NIP-44](https://github.com/paulmillr/nip44)
-- [Rapporto di Audit Cure53](https://cure53.de/audit-report_nip44-implementations.pdf)
+- [NIP-44 Specification](https://github.com/nostr-protocol/nips/blob/master/44.md)
+- [NIP-44 Reference Implementations](https://github.com/paulmillr/nip44)
+- [Cure53 Audit Report](https://cure53.de/audit-report_nip44-implementations.pdf)
 
-**Menzionato in:**
-- [Newsletter #3: Dicembre 2023](/it/newsletters/2025-12-31-newsletter/#december-2023-ecosystem-maturation)
-- [Newsletter #3: Dicembre 2024](/it/newsletters/2025-12-31-newsletter/#december-2024-protocol-advancement)
+**Citato in:**
+- [Newsletter #4: NIP Deep Dive](/en/newsletters/2026-01-07-newsletter/#nip-44-versioned-encryption)
+- [Newsletter #3: December 2023](/en/newsletters/2025-12-31-newsletter/#december-2023-ecosystem-maturation)
+- [Newsletter #3: December 2024](/en/newsletters/2025-12-31-newsletter/#december-2024-protocol-advancement)
+- [Newsletter #12: Marmot](/en/newsletters/2026-03-04-newsletter/#marmot-development-kit-ships-first-public-release)
 
 **Vedi anche:**
-- [NIP-04: Encrypted Direct Messages (deprecato)](/it/topics/nip-04/)
-- [NIP-17: Messaggi Diretti Privati](/it/topics/nip-17/)
+- [NIP-04: Messaggi diretti crittografati (deprecato)](/it/topics/nip-04/)
+- [NIP-17: Messaggi diretti privati](/it/topics/nip-17/)
 - [NIP-59: Gift Wrap](/it/topics/nip-59/)
 - [NIP-104: Double Ratchet Encryption](/it/topics/nip-104/)
 - [MLS: Message Layer Security](/it/topics/mls/)

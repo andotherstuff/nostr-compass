@@ -2,32 +2,36 @@
 title: "NIP-56: Rapportage"
 date: 2026-02-18
 translationOf: /en/topics/nip-56.md
-translationDate: 2026-02-18
+translationDate: 2026-03-07
 draft: false
 categories:
   - Moderation
   - Protocol
 ---
 
-NIP-56 definieert een rapportagemechanisme via kind 1984-events, waarmee gebruikers en applicaties aanstootgevende inhoud kunnen markeren in het Nostr-netwerk.
+NIP-56 definieert kind `1984` report-events. Daarmee kunnen gebruikers en apps moderatiesignalen publiceren over accounts, notities en blobs, zonder dat daar een enkele gedeelde moderatieautoriteit voor nodig is.
 
 ## Hoe het werkt
 
-Een gebruiker publiceert een kind 1984-event met een `p`-tag die verwijst naar de pubkey die wordt gerapporteerd. Bij het rapporteren van een specifieke notitie verwijst een `e`-tag naar het notitie-ID. Beide tags accepteren een derde parameter die de schendingscategorie specificeert.
+Een report moet een `p`-tag bevatten voor de gerapporteerde pubkey. Als het report over een specifiek event gaat, moet het ook een `e`-tag voor dat event bevatten. Het reporttype staat als derde waarde in de relevante `p`-, `e`- of `x`-tag.
 
-## Rapportagecategorieën
+## Rapportcategorieen
 
 - **nudity**: inhoud voor volwassenen
-- **malware**: virussen, trojans, ransomware
-- **profanity**: aanstootgevend taalgebruik en haatzaaien
+- **malware**: virussen, trojans, ransomware en vergelijkbare payloads
+- **profanity**: beledigend taalgebruik en haatzaaien
 - **illegal**: inhoud die mogelijk wetten schendt
 - **spam**: ongewenste herhaalde berichten
 - **impersonation**: frauduleuze identiteitsclaims
-- **other**: schendingen die niet in bovenstaande categorieën passen
+- **other**: overtredingen die niet in de bovenstaande categorieen passen
 
-## Gedrag van clients en relays
+Blob-reports gebruiken `x`-tags met de blobhash en kunnen een `server`-tag bevatten die naar het hostingendpoint wijst. Daardoor is NIP-56 bruikbaar voor mediamoderatie, niet alleen voor notities en profielen.
 
-Clients kunnen rapporten van gevolgde gebruikers gebruiken voor moderatiebeslissingen, zoals het vervagen van inhoud wanneer meerdere vertrouwde contacten die markeren. Relays moeten automatische moderatie via rapporten vermijden vanwege het risico op misbruik; rapporten van vertrouwde moderatoren kunnen handhaviging ondersteunen. Aanvullende classificatie wordt ondersteund via NIP-32 `l`- en `L`-tags.
+## Beveiligings- en vertrouwensmodel
+
+Reports zijn signalen, geen vonnissen. Clients kunnen ze wegen op basis van sociaal vertrouwen, moderatielijsten of expliciete moderatorrollen. Relays kunnen ze ook lezen, maar de specificatie waarschuwt tegen volledig automatische moderatie omdat reports makkelijk te manipuleren zijn.
+
+Aanvullende classificatie kan worden toegevoegd met NIP-32 `l`- en `L`-tags, wat nuttig is wanneer een client een fijnmaziger moderatievocabulaire wil dan de zeven basisrapporttypes.
 
 ---
 
@@ -35,7 +39,7 @@ Clients kunnen rapporten van gevolgde gebruikers gebruiken voor moderatiebesliss
 - [NIP-56-specificatie](https://github.com/nostr-protocol/nips/blob/master/56.md)
 
 **Vermeld in:**
-- [Nieuwsbrief #10: Projectupdates](/nl/newsletters/2026-02-18-newsletter/#notedeck-voorbereiding-voor-android-app-store)
+- [Nieuwsbrief #10: Projectupdates](/en/newsletters/2026-02-18-newsletter/#notedeck-android-app-store-prep)
 
 **Zie ook:**
 - [NIP-22: Commentaar](/nl/topics/nip-22/)

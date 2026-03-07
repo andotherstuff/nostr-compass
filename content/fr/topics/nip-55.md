@@ -1,45 +1,51 @@
 ---
 title: "NIP-55 : Application de signature Android"
 date: 2025-12-17
+translationOf: /en/topics/nip-55.md
+translationDate: 2026-03-07
 draft: false
 categories:
   - Signing
   - Mobile
 ---
 
-NIP-55 définit comment les applications Android peuvent demander des opérations de signature à une application de signature dédiée, permettant aux utilisateurs de garder leurs clés privées dans un seul emplacement sécurisé tout en utilisant plusieurs clients Nostr.
+NIP-55 définit comment les applications Android demandent des opérations de signature et de chiffrement à une application de signature séparée. Il offre aux clients Android une alternative native aux extensions de navigateur et aux bunkers distants.
 
 ## Fonctionnement
 
-NIP-55 utilise l'interface content provider d'Android pour exposer les opérations de signature. Une application de signature s'enregistre comme content provider, et d'autres applications Nostr peuvent demander des signatures sans jamais accéder directement à la clé privée.
+NIP-55 utilise deux mécanismes Android :
 
-Le flux :
-1. L'application cliente appelle le content provider du signer
-2. Le signer affiche l'interface d'approbation à l'utilisateur
-3. L'utilisateur approuve ou refuse la demande
-4. Le signer renvoie la signature (ou le rejet) au client
+- **Intents** pour les flux en avant-plan avec approbation explicite de l'utilisateur
+- **Content resolvers** pour les flux en arrière-plan après que l'utilisateur a accordé une permission persistante
+
+Le flux de connexion habituel commence par `get_public_key`. Le signataire retourne la clé publique de l'utilisateur et le nom du package du signataire, et le client est censé mettre les deux en cache. Répéter `get_public_key` dans des boucles en arrière-plan est une erreur d'implémentation courante contre laquelle la spécification met explicitement en garde.
 
 ## Opérations clés
 
-- **get_public_key** - Récupérer la clé publique de l'utilisateur (appeler une fois lors de la connexion initiale)
+- **get_public_key** - Récupérer la clé publique de l'utilisateur et le nom du package du signataire
 - **sign_event** - Signer un événement Nostr
 - **nip04_encrypt/decrypt** - Chiffrer ou déchiffrer les messages NIP-04
 - **nip44_encrypt/decrypt** - Chiffrer ou déchiffrer les messages NIP-44
+- **decrypt_zap_event** - Déchiffrer les charges utiles d'événements liés aux zaps
 
-## Initiation de connexion
+## Notes de sécurité et d'UX
 
-Une erreur d'implémentation courante est d'appeler `get_public_key` répétitivement depuis des processus en arrière-plan. La spécification recommande de l'appeler seulement une fois lors de la configuration de connexion initiale, puis de mettre le résultat en cache.
+NIP-55 garde les clés sur l'appareil, mais dépend toujours des frontières d'application Android et de la gestion des permissions du signataire. Le support des content resolvers offre une UX bien plus fluide que les demandes répétées via intents, mais uniquement après que l'utilisateur a accordé une approbation durable à ce client.
+
+Pour les applications web sur Android, NIP-55 est moins ergonomique que NIP-46. Les flux basés sur le navigateur ne peuvent pas recevoir de réponses directes en arrière-plan comme le font les applications Android natives, de sorte que de nombreuses implémentations se rabattent sur les URLs de callback, le transfert par presse-papiers ou le collage manuel.
 
 ---
 
 **Sources principales :**
-- [Spécification NIP-55](https://github.com/nostr-protocol/nips/blob/master/55.md)
+- [NIP-55 Specification](https://github.com/nostr-protocol/nips/blob/master/55.md)
 
 **Mentionné dans :**
-- [Newsletter #1 : Sorties](/fr/newsletters/2025-12-17-newsletter/#releases)
-- [Newsletter #2 : Actualités](/fr/newsletters/2025-12-24-newsletter/#news)
-- [Newsletter #2 : Mises à jour NIP](/fr/newsletters/2025-12-24-newsletter/#nip-updates)
+- [Newsletter #1 : Releases](/en/newsletters/2025-12-17-newsletter/#releases)
+- [Newsletter #2 : News](/en/newsletters/2025-12-24-newsletter/#news)
+- [Newsletter #2 : NIP Updates](/en/newsletters/2025-12-24-newsletter/#nip-updates)
+- [Newsletter #3 : December Recap](/en/newsletters/2025-12-31-newsletter/#december-recap-five-years-of-nostr-decembers)
+- [Newsletter #7 : NIP Updates](/en/newsletters/2026-01-07-newsletter/#nip-updates)
+- [Newsletter #11 : NIP Deep Dive](/en/newsletters/2026-02-25-newsletter/#nip-deep-dive-nip-55-android-signer-application)
 
 **Voir aussi :**
 - [NIP-46 : Nostr Connect](/fr/topics/nip-46/)
-

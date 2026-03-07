@@ -2,7 +2,7 @@
 title: "NIP-45：Event Counting"
 date: 2026-02-11
 translationOf: /en/topics/nip-45.md
-translationDate: 2026-02-12
+translationDate: 2026-03-07
 draft: false
 categories:
   - NIPs

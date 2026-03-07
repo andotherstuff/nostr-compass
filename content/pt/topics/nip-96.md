@@ -1,45 +1,51 @@
 ---
-title: "NIP-96: Armazenamento de Arquivos HTTP"
+title: 'NIP-96: Armazenamento de arquivos HTTP'
 date: 2026-02-11
-translationOf: /en/topics/nip-96.md
-translationDate: 2026-02-12
 draft: false
 categories:
-  - NIPs
-  - Media
+- NIPs
+- Media
+translationOf: /en/topics/nip-96.md
+translationDate: '2026-03-07'
 ---
 
-NIP-96 definiu como aplicações Nostr fazem upload, download e gerenciam arquivos em servidores de mídia HTTP. Agora marcado como "não recomendado" em favor do Blossom, o NIP-96 permanece relevante enquanto projetos navegam a transição entre os dois padrões de mídia.
+O NIP-96 define como os clientes Nostr carregam, baixam e gerenciam arquivos em servidores de mídia HTTP. Agora está marcado como "não recomendado" em favor do Blossom, mas ainda é importante porque os servidores e clientes existentes continuam a apoiá-lo durante a transição.
 
-## Como Funciona
+## Como funciona
 
-A aplicação descobre as capacidades de servidor de arquivos buscando `/.well-known/nostr/nip96.json`, que retorna a URL da API, tipos de conteúdo suportados, limites de tamanho e transformações de mídia disponíveis.
+Um cliente descobre as capacidades de um servidor de arquivos buscando `/.well-known/nostr/nip96.json`. Esse documento anuncia o URL da API de upload, o URL de download opcional, os tipos de conteúdo suportados, os limites de tamanho e se o servidor suporta transformações de mídia ou hospedagem delegada.
 
-O upload consiste em POST `multipart/form-data` à URL da API com header de autorização NIP-98 (evento Nostr assinado provando a identidade de quem faz o upload). O servidor retorna estrutura de metadados de arquivo NIP-94 contendo a URL do arquivo, hashes SHA-256, tipo MIME e dimensões.
+Para fazer upload, o cliente envia um `multipart/form-data` POST para a URL da API com um cabeçalho de autorização [NIP-98](https://github.com/nostr-protocol/nips/blob/master/98.md). O servidor responde com um objeto de metadados em formato NIP-94 que inclui a URL do arquivo mais tags como `ox` para o hash original e, quando aplicável, `x` para o arquivo transformado que será realmente servido.
 
-Downloads usam requisições GET a `<api_url>/<sha256-hash>`, com parâmetros de query opcionais em transformações do lado do servidor como redimensionamento de imagem. Exclusão usa DELETE com auth NIP-98. Usuários publicam eventos kind 10096 declarando seus servidores de upload preferidos.
+Os downloads usam `GET <api_url>/<sha256-hash>` com parâmetros de consulta opcionais, como largura da imagem. A exclusão usa `DELETE` com autenticação NIP-98. Os usuários publicam eventos kind `10096` para declarar seus servidores de upload preferidos.
 
-## Por Que Foi Depreciado
+## Detalhes do modelo de dados
 
-NIP-96 vinculava URLs de arquivo a servidores específicos. Se servidor caísse, toda nota Nostr referenciando aquelas URLs perdia sua mídia. Blossom inverte isso tornando o hash SHA-256 do conteúdo do arquivo o identificador canônico. Qualquer servidor Blossom hospedando o mesmo arquivo o serve no mesmo caminho de hash, tornando conteúdo portável entre servidores por padrão.
+Um detalhe útil é que o NIP-96 identifica os arquivos pelo hash do arquivo original, mesmo quando o servidor transforma o upload. Isso permite que um cliente exclua ou baixe novamente o ativo pelo mesmo identificador estável, enquanto ainda obtém miniaturas geradas pelo servidor ou variantes recompactadas, quando disponíveis.
 
-Blossom simplifica a API: PUT simples em uploads, GET em downloads, e eventos Nostr assinados (não headers HTTP) na autorização. A depreciação aconteceu em setembro de 2025 via [PR #2047](https://github.com/nostr-protocol/nips/pull/2047).
+O conhecido documento também suporta `delegated_to_url`, que permite que um relay aponte clientes para um servidor de armazenamento HTTP separado. Isso evitou que o software relay implementasse a API de mídia completa.
 
-## A Transição
+## Por que foi descontinuado
 
-Servidores como nostr.build e void.cat suportavam NIP-96 e adicionaram ou migraram a endpoints Blossom. As aplicações estão em vários estágios: Angor v0.2.5 adicionou configuração de servidor NIP-96, enquanto ZSP v0.3.1 faz upload exclusivamente a servidores Blossom. A coexistência continuará até que as implementações NIP-96 restantes completem a migração.
+NIP-96 vinculou URLs de arquivos a servidores específicos. Se um servidor caísse, cada nota do Nostr que fizesse referência aos URLs desse servidor perderia sua mídia. Blossom inverte isso tornando o hash SHA-256 do conteúdo do arquivo o identificador canônico. Qualquer servidor Blossom que hospeda o mesmo arquivo o veicula no mesmo caminho de hash, tornando o conteúdo portátil entre servidores por padrão.
 
-Eventos de preferência de servidor kind 10096 continuam úteis na seleção de servidor Blossom. Metadados de arquivo NIP-94 (eventos kind 1063) descrevem propriedades de arquivo independente de qual protocolo de upload os criou.
+Blossom também simplifica a API: PUT simples para uploads, GET para downloads e eventos Nostr assinados (não cabeçalhos HTTP) para autorização. A suspensão de uso ocorreu em setembro de 2025 via [PR #2047](https://github.com/nostr-protocol/nips/pull/2047).
+
+## Notas de interoperabilidade
+
+Servidores como nostr.build e void.cat suportaram NIP-96 e foram adicionados ou migrados para endpoints Blossom. Os clientes estão em vários estágios: Angor v0.2.5 adicionou configuração de servidor NIP-96 enquanto ZSP v0.3.1 carrega exclusivamente para servidores Blossom. A coexistência continuará até que as implementações restantes do NIP-96 concluam a migração.
+
+Os eventos de preferência do servidor kind 10096 permanecem úteis para a seleção do servidor Blossom. Os metadados do arquivo NIP-94 (eventos kind 1063) descrevem as propriedades do arquivo, independentemente de qual protocolo de upload os criou.
 
 ---
 
 **Fontes primárias:**
-- [NIP-96: HTTP File Storage](https://github.com/nostr-protocol/nips/blob/master/96.md)
-- [PR #2047: Mark NIP-96 as Unrecommended](https://github.com/nostr-protocol/nips/pull/2047)
+- [NIP-96: Armazenamento de arquivos HTTP](https://github.com/nostr-protocol/nips/blob/master/96.md)
+- [PR #2047: Marcar NIP-96 como não recomendado](https://github.com/nostr-protocol/nips/pull/2047)
 
 **Mencionado em:**
-- [Newsletter #9: Deep Dive de NIP](/pt/newsletters/2026-02-11-newsletter/#deep-dive-de-nip-nip-96-armazenamento-de-arquivos-http-e-a-transição-ao-blossom)
+- [Boletim informativo nº 9: Aprofundamento do NIP](/pt/newsletters/2026-02-11-newsletter/#nip-deep-dive-nip-96-http-file-storage-and-the-transition-to-blossom)
 
 **Veja também:**
 - [Protocolo Blossom](/pt/topics/blossom/)
-- [NIP-94: Metadados de Arquivo](/pt/topics/nip-94/)
+- [NIP-94: Metadados do arquivo](/pt/topics/nip-94/)

@@ -7,34 +7,41 @@ categories:
   - Relays
 ---
 
-Trusted Relay Assertions is a draft NIP proposal for standardizing relay trust scoring and reputation management. The specification introduces kind 30385 events where assertion providers publish trust scores computed from observed metrics, operator reputation, and user reports.
+Trusted Relay Assertions is the idea of publishing signed third-party evaluations of relays on Nostr so clients can choose relays with more context than self-reported metadata alone. The current standardized building block is [NIP-85: Trusted Assertions](/en/topics/nip-85/), which defines how users trust providers and how providers publish signed computed results.
 
 ## How It Works
 
-The proposal fills a gap in the relay ecosystem. While [NIP-11](/en/topics/nip-11/) defines what relays claim about themselves and [NIP-66](/en/topics/nip-66/) measures what we observe, Trusted Relay Assertions standardizes what we conclude about relay trustworthiness.
+Relay selection has three layers. [NIP-11: Relay Information Document](/en/topics/nip-11/) covers what a relay says about itself. [NIP-66: Relay Discovery and Liveness Monitoring](/en/topics/nip-66/) covers what observers can measure, such as availability and latency. Trusted relay assertions try to fill the remaining gap: what a third party concludes from that data, and whether a client decides to trust that conclusion.
 
-Assertion providers compute scores across three dimensions. Reliability measures availability, recovery speed, consistency, and latency. Quality evaluates policy documentation, TLS security, and operator accountability. Accessibility assesses access barriers, jurisdiction freedom, and surveillance risk. An overall trust score (0-100) combines these components with weights: 40% reliability, 35% quality, 25% accessibility.
+In the broader NIP-85 model, users name trusted providers with kind `10040` events, and providers publish signed addressable assertion events. A relay-scoring application would then need two more pieces that clients agree on: how a relay is identified as the subject, and which result tags represent the score and its supporting evidence.
 
-Each assertion includes confidence levels (low, medium, high) based on observation counts. Operator verification uses multiple methods: cryptographic proof via signed NIP-11 documents, DNS TXT records, or .well-known files. The spec integrates Web of Trust through operator trust scores. Policy classification helps users find appropriate relays: open, moderated, curated, or specialized.
+That distinction is important because the transport and trust delegation are standardized, but the relay-specific scoring model is still an application pattern. Different providers can legitimately disagree about what makes a relay trustworthy.
 
-Users declare trusted assertion providers via kind 10385 events. Clients query multiple providers and compare scores. The proposal includes an appeals process where relay operators can dispute scores using [NIP-32](/en/topics/nip-32/) labeling events.
+## Trust Model
 
-## Use Cases
+Relay trust scores are not objective facts. One provider may prioritize uptime and write throughput, another may prioritize legal jurisdiction, moderation policy, or operator identity, and a third may care most about resistance to surveillance. A useful client should show who produced the score, not just the score itself.
 
-For [NIP-46](/en/topics/nip-46/) remote signers, trust assertions help users evaluate unfamiliar relays embedded in connection URIs before accepting connections. Combined with [NIP-65](/en/topics/nip-65/) relay lists, clients can make informed relay selection decisions based on both user preferences and third-party trust evaluations.
+This is also where [Web of Trust](/en/topics/web-of-trust/) enters the picture. If a client already trusts certain people or services, it can prefer relay evaluations coming from that same social neighborhood instead of pretending a single global ranking exists.
 
-The specification complements existing relay discovery mechanisms. [NIP-66](/en/topics/nip-66/) provides discovery (what exists), this proposal adds evaluation (what's good). Together they enable informed relay selection rather than relying on hardcoded defaults or word-of-mouth recommendations.
+## Why It Matters
+
+For [NIP-46](/en/topics/nip-46/) remote signers, wallet connections, or any app that suggests unfamiliar relays, third-party relay evaluations can reduce blind trust in defaults. Combined with [NIP-65](/en/topics/nip-65/) relay lists, clients can separate "which relays do I use" from "which relays do I trust for this task."
+
+The main correctness caveat is scope. January 2026 newsletter coverage described relay trust scoring as a dedicated proposal, but the merged standard in the NIPs repository is the broader [NIP-85: Trusted Assertions](/en/topics/nip-85/) format. Relay scoring remains a use case built on top of that model, not a separate finalized relay-trust wire format.
 
 ---
 
 **Primary sources:**
-- [Draft NIP Document](https://nostr.com/nevent1qqsqjymvcp6ch3ps3fqsxljf6j8u3adz64ucw8npnzuj3cn6dekn0gspz9mhxue69uhkummnw3ezumrpdejz7qg3waehxw309ahx7um5wgh8w6twv5hsyga3qg) - Kind 30817 event proposing the specification
+- [NIP-85 Specification](https://github.com/nostr-protocol/nips/blob/master/85.md)
+- [PR #1534: Trusted Assertions](https://github.com/nostr-protocol/nips/pull/1534)
 
 **Mentioned in:**
 - [Newsletter #6: News](/en/newsletters/2026-01-21-newsletter/#trusted-relay-assertions-a-new-approach-to-relay-trust)
 - [Newsletter #6: NIP Updates](/en/newsletters/2026-01-21-newsletter/#nip-updates)
+- [Newsletter #7: NIP Updates](/en/newsletters/2026-01-28-newsletter/#nip-updates)
 
 **See also:**
 - [NIP-11: Relay Information Document](/en/topics/nip-11/)
 - [NIP-66: Relay Discovery and Liveness Monitoring](/en/topics/nip-66/)
-- [NIP-32: Labeling](/en/topics/nip-32/)
+- [NIP-85: Trusted Assertions](/en/topics/nip-85/)
+- [Web of Trust](/en/topics/web-of-trust/)

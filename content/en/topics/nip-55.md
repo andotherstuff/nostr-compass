@@ -7,28 +7,30 @@ categories:
   - Mobile
 ---
 
-NIP-55 defines how Android applications can request signing operations from a dedicated signer app, allowing users to keep their private keys in one secure location while using multiple Nostr clients.
+NIP-55 defines how Android apps request signing and encryption operations from a separate signer application. It gives Android clients a native alternative to browser extensions and remote bunkers.
 
 ## How It Works
 
-NIP-55 uses Android's content provider interface to expose signing operations. A signer app registers as a content provider, and other Nostr apps can request signatures without ever accessing the private key directly.
+NIP-55 uses two Android mechanisms:
 
-The flow:
-1. Client app calls the signer's content provider
-2. Signer shows approval UI to the user
-3. User approves or denies the request
-4. Signer returns the signature (or rejection) to the client
+- **Intents** for foreground flows with explicit user approval
+- **Content resolvers** for background flows after the user grants persistent permission
+
+The usual connection flow starts with `get_public_key`. The signer returns both the user pubkey and the signer package name, and the client is expected to cache both. Repeating `get_public_key` in background loops is a common implementation mistake the spec explicitly warns against.
 
 ## Key Operations
 
-- **get_public_key** - Retrieve the user's public key (call once during initial connection)
+- **get_public_key** - Retrieve the user's pubkey and signer package name
 - **sign_event** - Sign a Nostr event
 - **nip04_encrypt/decrypt** - Encrypt or decrypt NIP-04 messages
 - **nip44_encrypt/decrypt** - Encrypt or decrypt NIP-44 messages
+- **decrypt_zap_event** - Decrypt zap-related event payloads
 
-## Connection Initiation
+## Security and UX Notes
 
-A common implementation mistake is calling `get_public_key` repeatedly from background processes. The spec recommends calling it only once during initial connection setup, then caching the result.
+NIP-55 keeps keys on-device, but it still depends on Android app boundaries and signer permission handling. Content resolver support gives a much smoother UX than repeated intent prompts, but only after the user has granted durable approval to that client.
+
+For web apps on Android, NIP-55 is less ergonomic than NIP-46. Browser-based flows cannot receive direct background responses the way native Android apps can, so many implementations fall back to callback URLs, clipboard transfer, or manual paste.
 
 ---
 
@@ -40,6 +42,8 @@ A common implementation mistake is calling `get_public_key` repeatedly from back
 - [Newsletter #2: News](/en/newsletters/2025-12-24-newsletter/#news)
 - [Newsletter #2: NIP Updates](/en/newsletters/2025-12-24-newsletter/#nip-updates)
 - [Newsletter #3: December Recap](/en/newsletters/2025-12-31-newsletter/#december-recap-five-years-of-nostr-decembers)
+- [Newsletter #4: NIP Updates](/en/newsletters/2026-01-07-newsletter/#nip-updates)
+- [Newsletter #11: NIP Deep Dive](/en/newsletters/2026-02-25-newsletter/#nip-deep-dive-nip-55-android-signer-application)
 
 **See also:**
 - [NIP-46: Nostr Connect](/en/topics/nip-46/)

@@ -1,15 +1,16 @@
 ---
-title: "NIP-02: Lista Follow"
+title: "NIP-02: Lista dei follow"
 date: 2025-12-24
+translationOf: /en/topics/nip-02/
+translationDate: 2026-03-07
 draft: false
 categories:
   - Protocol
   - Social
 ---
+NIP-02 definisce gli eventi kind 3, che memorizzano la follow list di un utente. Questo evento è l'input di base per i feed home, le notifiche di risposta e molte strategie di selezione dei relay.
 
-NIP-02 definisce gli eventi kind 3, che memorizzano la vostra lista follow. Questo semplice meccanismo alimenta il grafo sociale che rende possibili le timeline.
-
-## Struttura
+## Come funziona
 
 Un evento kind 3 contiene tag `p` che elencano le pubkey seguite:
 
@@ -29,38 +30,43 @@ Un evento kind 3 contiene tag `p` che elencano le pubkey seguite:
 }
 ```
 
-Ogni tag `p` ha quattro posizioni: il nome del tag, la pubkey seguita (esadecimale), un suggerimento URL relay opzionale, e un "petname" opzionale (un soprannome locale). Il suggerimento relay dice ad altri client dove trovare gli eventi di quell'utente. Il petname vi consente di assegnare nomi memorabili ai contatti senza affidarvi ai nomi visualizzati auto-dichiarati.
+Ogni tag `p` ha quattro posizioni: il nome del tag, la pubkey seguita (hex), un relay URL hint opzionale e un "petname" opzionale (un soprannome locale). Il relay hint dice agli altri client dove trovare gli eventi di quell'utente. Il petname permette di assegnare nomi memorabili ai contatti senza dipendere dai display name dichiarati dall'utente stesso.
 
-## Comportamento Sostituibile
+## Comportamento replaceable
 
-Kind 3 rientra nell'intervallo sostituibile (0, 3, 10000-19999), quindi i relay mantengono solo l'ultima versione per pubkey. Quando seguite qualcuno di nuovo, il vostro client pubblica un nuovo kind 3 completo contenente tutti i vostri follow piu' quello nuovo. Questo significa che le liste follow devono essere complete ogni volta; non potete pubblicare aggiornamenti incrementali.
+Il kind 3 rientra nell'intervallo replaceable (0, 3, 10000-19999), quindi i relay mantengono solo la versione più recente per pubkey. Quando inizi a seguire una nuova persona, il tuo client pubblica un nuovo kind 3 completo che contiene tutti i follow esistenti più quello nuovo. Questo significa che le follow list devono essere complete ogni volta; non puoi pubblicare aggiornamenti incrementali.
 
-## Costruire Timeline
+## Perché conta
 
-Per costruire un feed home, i client recuperano il kind 3 dell'utente, estraggono tutte le pubkey dai tag `p`, poi si iscrivono agli eventi kind 1 da quegli autori:
+Per costruire un feed home, i client recuperano il kind 3 dell'utente, estraggono tutte le pubkey dai tag `p`, poi si iscrivono agli eventi kind 1 di quegli autori:
 
 ```json
 ["REQ", "home", {"kinds": [1], "authors": ["91cf9...", "14aeb...", "612ae..."], "limit": 50}]
 ```
 
-Il relay restituisce le note corrispondenti, e il client le renderizza. I suggerimenti relay nel kind 3 aiutano i client a sapere quali relay interrogare per ogni utente seguito.
+Il relay restituisce le note corrispondenti e il client le mostra. I relay hint nel kind 3 aiutano i client a sapere quali relay interrogare per ogni utente seguito.
 
-## Petname e Identita'
+Questo evento è anche il punto in cui emerge per prima una condizione sociale obsoleta. Se il kind 3 più recente di un utente manca sui relay che interroghi, il suo feed può sembrare vuoto anche se i suoi follow esistono ancora altrove. I client che uniscono i risultati di più relay di solito recuperano meglio dei client che si fidano di un solo relay.
 
-Il campo petname abilita uno schema di naming decentralizzato. Invece di fidarvi di qualsiasi nome un utente dichiara nel suo profilo, potete assegnare la vostra etichetta. Un client potrebbe visualizzare "alice (Mia Sorella)" dove "alice" viene dal suo profilo kind 0 e "Mia Sorella" e' il vostro petname. Questo fornisce contesto che i nomi utente globali non possono.
+## Petname e identità
 
-## Considerazioni Pratiche
+Il campo petname abilita uno schema di naming decentralizzato. Invece di fidarti del nome che un utente dichiara nel proprio profilo, puoi assegnargli la tua etichetta. Un client potrebbe mostrare "alice (Mia sorella)" dove "alice" proviene dal suo profilo kind 0 e "Mia sorella" è il tuo petname. Questo aggiunge contesto che gli username globali non possono fornire.
 
-Poiche' gli eventi kind 3 sono sostituibili e devono essere completi, i client dovrebbero preservare tag sconosciuti durante l'aggiornamento. Se un altro client ha aggiunto tag che il vostro client non capisce, sovrascrivere alla cieca perderebbe quei dati. Aggiungete nuovi follow invece di ricostruire da zero.
+## Note di interoperabilità
+
+Poiché gli eventi kind 3 sono replaceable e devono essere completi, i client dovrebbero preservare i tag sconosciuti durante un aggiornamento. Se un altro client ha aggiunto tag che il tuo client non comprende, sovrascriverli alla cieca farebbe perdere quei dati.
+
+La stessa cautela vale per relay hint e petname. Sono campi opzionali, ma rimuoverli in scrittura può peggiorare in silenzio l'esperienza di un altro client. Un percorso di aggiornamento sicuro è: caricare l'ultimo kind 3 noto, modificare solo i tag che il client capisce, mantenere il resto, poi ripubblicare l'evento completo.
 
 ---
 
 **Fonti primarie:**
-- [Specifica NIP-02](https://github.com/nostr-protocol/nips/blob/master/02.md)
+- [NIP-02 Specification](https://github.com/nostr-protocol/nips/blob/master/02.md)
 
 **Menzionato in:**
-- [Newsletter #2: Approfondimento NIP](/it/newsletters/2025-12-24-newsletter/#nip-02-follow-list)
+- [Newsletter #2: NIP Deep Dive](/en/newsletters/2025-12-24-newsletter/#nip-02-follow-list)
 
 **Vedi anche:**
-- [NIP-01: Protocollo Base](/it/topics/nip-01/)
-
+- [NIP-01: Protocollo di base](/it/topics/nip-01/)
+- [NIP-10: Threading delle text note](/it/topics/nip-10/)
+- [NIP-65: Relay List Metadata](/it/topics/nip-65/)

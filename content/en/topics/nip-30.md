@@ -42,6 +42,12 @@ Custom emoji can be organized into named sets published as kind 30030 parameteri
 
 A March 2026 update ([PR #2247](https://github.com/nostr-protocol/nips/pull/2247)) added optional emoji set address references in emoji tags, letting clients open the originating set for browsing or bookmarking when a user clicks an emoji.
 
+## Interop Notes
+
+Custom emoji are a presentation feature, not a transport guarantee. If a client does not understand NIP-30 or cannot fetch the image URL, it should still show the raw `:shortcode:` text. That fallback is why readable shortcodes matter.
+
+The tag is event-local unless it references a set. Reusing `:fire:` in two different events does not imply a shared global meaning unless both point at the same image or set. Clients should resolve the emoji definition from the current event first.
+
 ## Reactions
 
 NIP-30 custom emoji also work in kind 7 reaction events. A reaction with `content` set to a shortcode and a matching `emoji` tag renders as a custom emoji reaction on the referenced event:

@@ -2,54 +2,55 @@
 title: "FROST (Flexible Round-Optimized Schnorr Threshold Signatures)"
 date: 2025-12-31
 translationOf: /en/topics/frost.md
-translationDate: 2025-12-31
+translationDate: 2026-03-07
 draft: false
 categories:
-  - Crittografia
-  - Protocollo
+  - Cryptography
+  - Protocol
 ---
-
-FROST (Flexible Round-Optimized Schnorr Threshold Signatures) è uno schema di firme a soglia che permette a un gruppo di partecipanti di produrre collaborativamente firme Schnorr valide senza che nessuna singola parte possieda la chiave privata completa.
+FROST (Flexible Round-Optimized Schnorr Threshold Signatures) è uno schema di threshold signature che permette a un gruppo di produrre una singola firma Schnorr valida senza che nessun partecipante detenga l'intera chiave privata.
 
 ## Come funziona
 
-FROST abilita la firma a soglia T-di-N, dove T partecipanti su N totali detentori di chiavi devono cooperare per produrre una firma valida. Il protocollo opera in due round:
+FROST abilita la firma T-of-N. Qualsiasi sottoinsieme che soddisfa la soglia può cooperare per produrre una firma per la chiave pubblica del gruppo.
 
-1. **Round di impegno**: Ogni partecipante genera e condivide impegni crittografici
-2. **Round di firma**: I partecipanti combinano le loro firme parziali in una firma aggregata finale
+Il protocollo di firma usa due round:
 
-La firma risultante è indistinguibile da una firma Schnorr standard, mantenendo la compatibilità retroattiva con i sistemi di verifica esistenti.
+1. **Round di commitment**: ogni partecipante genera e condivide commitment crittografici
+2. **Round di firma**: i partecipanti combinano le loro firme parziali in una firma aggregata finale
 
-## Proprietà chiave
+L'output finale si verifica come una normale firma Schnorr. I verificatori vedono una firma sotto una chiave pubblica, non un elenco di cofirmatari.
 
-- **Sicurezza a soglia**: Nessun singolo partecipante può firmare da solo; T parti devono cooperare
-- **Efficienza dei round**: Solo due round di comunicazione richiesti per firmare
-- **Protezione dalla falsificazione**: Tecniche innovative proteggono dagli attacchi agli schemi a soglia precedenti
-- **Aggregazione delle firme**: Più firme si combinano in un'unica firma compatta
-- **Privacy**: Le firme finali non rivelano quali T partecipanti hanno firmato
+## Note di sicurezza
+
+La gestione dei nonce è critica. L'RFC è esplicito sul fatto che i nonce di firma sono monouso. Il riuso può esporre materiale di chiave.
+
+L'RFC inoltre non standardizza la distributed key generation. Specifica il protocollo di firma stesso e include la generazione delle chiavi con trusted dealer solo come appendice. In pratica, la sicurezza di un deployment FROST dipende sia dal flusso di firma sia da come le share sono state create e conservate.
 
 ## Casi d'uso in Nostr
 
-Nel contesto di Nostr, FROST permette:
+Nel contesto di Nostr, FROST può supportare:
 
-- **Governance per quorum**: I gruppi possono condividere un nsec tramite schemi T-di-N, dove i membri possono rappresentare se stessi o delegare a consigli
-- **Amministrazione multi-firma**: Moderazione comunitaria che richiede più firme degli amministratori
-- **Gestione decentralizzata delle chiavi**: Distribuzione della fiducia tra più parti per operazioni critiche
+- **Governance di quorum**: i gruppi possono condividere un nsec tramite schemi T-of-N, in cui i membri possono rappresentare sé stessi o delegare a consigli
+- **Amministrazione multi-sig**: moderazione comunitaria che richiede più firme di amministratori
+- **Gestione decentralizzata delle chiavi**: distribuzione della fiducia tra più parti per operazioni critiche
 
-## Standardizzazione
+## Stato
 
-FROST è stato standardizzato come RFC 9591 nel giugno 2024, intitolato "The Flexible Round-Optimized Schnorr Threshold (FROST) Protocol for Two-Round Schnorr Signatures".
+FROST è specificato in [RFC 9591](https://datatracker.ietf.org/doc/rfc9591/), pubblicato sullo stream IRTF nel giugno 2024. Questo dà al protocollo una specifica pubblica stabile, ma non è un RFC IETF standards-track.
 
 ---
 
-**Fonti principali:**
+**Fonti primarie:**
 - [RFC 9591: FROST Protocol](https://datatracker.ietf.org/doc/rfc9591/)
 - [FROST Paper (IACR)](https://eprint.iacr.org/2020/852.pdf)
-- [University of Waterloo CrySP](https://crysp.uwaterloo.ca/software/frost/)
 - [Zcash Foundation Rust Implementation](https://github.com/ZcashFoundation/frost)
 
-**Menzionato in:**
-- [Newsletter #3: Repository NIPs](/it/newsletters/2025-12-31-newsletter/#nips-repository)
+**Citato in:**
+- [Newsletter #3: NIPs Repository](/en/newsletters/2025-12-31-newsletter/#nips-repository)
+- [Newsletter #8](/en/newsletters/2026-02-04-newsletter/)
+- [Newsletter #10](/en/newsletters/2026-02-18-newsletter/)
 
 **Vedi anche:**
-- [Proposta NIP-XX Quorum](https://github.com/nostr-protocol/nips/pull/2179)
+- [NIP-46: Nostr Connect](/it/topics/nip-46/)
+- [NIP-55: Android Signer Application](/it/topics/nip-55/)

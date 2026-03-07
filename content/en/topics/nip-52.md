@@ -8,12 +8,13 @@ categories:
   - Events
 ---
 
-NIP-52 defines event kinds for calendar functionality on Nostr, enabling scheduling, RSVPs, and event coordination.
+NIP-52 defines calendar events, calendars, and RSVPs on Nostr. It gives clients a standard way to publish time-based or date-based events without inventing a custom event model for every app.
 
 ## Event Kinds
 
 ### Kind 31922: Date-Based Calendar Event
-For events spanning one or more days without specific times:
+
+Use kind `31922` for all-day or multi-day events where clock time does not matter.
 
 ```json
 {
@@ -22,14 +23,15 @@ For events spanning one or more days without specific times:
     ["d", "unique-identifier"],
     ["title", "Nostr Meetup"],
     ["start", "2026-02-15"],
-    ["end", "2026-02-15"],
+    ["end", "2026-02-16"],
     ["location", "Austin, TX"]
   ]
 }
 ```
 
 ### Kind 31923: Time-Based Calendar Event
-For events with specific start and end times:
+
+Use kind `31923` for events with precise start and end times.
 
 ```json
 {
@@ -39,27 +41,50 @@ For events with specific start and end times:
     ["title", "Weekly Call"],
     ["start", "1706900400"],
     ["end", "1706904000"],
+    ["D", "19755"],
     ["start_tzid", "America/New_York"]
   ]
 }
 ```
 
-## RSVP Support
+Time-based events also require one or more `D` tags, each containing the day-granularity Unix timestamp for the days the event spans. That tag exists so relays and clients can index by day without parsing every full timestamp.
 
-Kind 31925 events allow users to respond to calendar events:
+## Calendar and RSVP Support
+
+Kind `31924` is a calendar, an addressable list of calendar events. Kind `31925` is an RSVP that points back to a specific calendar event with an `a` tag and optionally to a specific revision with an `e` tag.
+
+Kind `31925` events allow users to respond with:
 
 - `accepted` - Will attend
 - `declined` - Will not attend
 - `tentative` - May attend
 
-## Features
+RSVPs can also include `fb` values of `free` or `busy`, which adds scheduling context beyond attendance status.
 
-- **Addressable**: Events can be updated without creating duplicates
-- **Timezone Support**: Proper handling of time zones via IANA identifiers
-- **Location**: Physical or virtual meeting locations
-- **Recurrence**: Support for recurring events (proposed extension)
+## Implementation Notes
 
-## Related
+- **Addressable**: Events and calendars can be updated without creating duplicates
+- **Timezone support**: Time-based events can use IANA timezone identifiers
+- **Location data**: Tags can include human-readable locations, links, and geohashes
+- **Collaborative requests**: Event authors can request inclusion in someone else's calendar by tagging it
 
-- [NIP-22](/en/topics/nip-22/) - Comments (for calendar event discussions)
-- [NIP-51](/en/topics/nip-51/) - Lists (for calendar collections)
+Recurring events are intentionally out of scope. The spec pushes recurrence rules to clients, which keeps relay-side indexing simple and avoids the usual calendar edge cases around daylight saving changes and exceptions.
+
+## Why It Matters
+
+NIP-52 does more than describe a meeting. It separates event definition, calendar membership, and attendee responses into different event kinds. That makes it possible for one app to publish an event, another to aggregate calendars, and a third to manage RSVP state without all three sharing the same backend.
+
+---
+
+**Primary sources:**
+- [NIP-52 Specification](https://github.com/nostr-protocol/nips/blob/master/52.md)
+- [PR #1752: Day-Granularity Timestamp Tag](https://github.com/nostr-protocol/nips/pull/1752)
+
+**Mentioned in:**
+- [Newsletter #7: Notedeck Calendar App Draft](/en/newsletters/2026-01-28-newsletter/#notedeck-progress-calendar-app-and-ux-polish)
+- [Newsletter #10: NIP Updates](/en/newsletters/2026-02-18-newsletter/#nip-updates)
+- [Newsletter #10: NIP Deep Dive](/en/newsletters/2026-02-18-newsletter/#nip-deep-dive-nip-52-calendar-events)
+
+**See also:**
+- [NIP-22: Comment](/en/topics/nip-22/)
+- [NIP-51: Lists](/en/topics/nip-51/)

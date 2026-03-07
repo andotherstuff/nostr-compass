@@ -1,6 +1,8 @@
 ---
 title: "NIP-71 : Événements vidéo"
 date: 2026-01-13
+translationOf: /en/topics/nip-71.md
+translationDate: 2026-03-07
 draft: false
 categories:
   - Media
@@ -52,9 +54,17 @@ Le champ `content` peut contenir une description étendue, une transcription com
 
 Les événements vidéo réguliers (kinds 21 et 22) sont immuables une fois publiés. Si vous publiez une vidéo et remarquez plus tard une faute de frappe dans le titre, voulez mettre à jour la miniature, ou devez changer l'URL d'hébergement parce que vous avez migré vers un autre service vidéo, vous ne pouvez pas modifier l'événement original. Votre seule option est de publier un nouvel événement avec un nouvel identifiant, ce qui casse toutes les références existantes et perd les métriques d'engagement.
 
-Les événements vidéo adressables résolvent ce problème en rendant l'événement remplaçable. La combinaison de votre pubkey, du kind d'événement et du tag `d` identifie uniquement votre vidéo. Quand vous publiez un nouvel événement avec les mêmes identifiants, les relays remplacent l'ancienne version par la nouvelle. Les clients récupérant votre vidéo obtiennent toujours les dernières métadonnées.
+Les événements vidéo adressables résolvent ce problème en rendant l'événement remplaçable. La combinaison de votre pubkey, du kind d'événement et du tag `d` identifie de manière unique votre vidéo. Quand vous publiez un nouvel événement avec les mêmes identifiants, les relais remplacent l'ancienne version par la nouvelle. Les clients récupérant votre vidéo obtiennent toujours les dernières métadonnées.
 
 C'est particulièrement précieux pour corriger les erreurs de métadonnées après publication, mettre à jour les miniatures à mesure que vous améliorez votre image de marque, migrer les URL d'hébergement vidéo lors d'un changement de fournisseur, et importer du contenu depuis des plateformes abandonnées comme Vine tout en préservant la provenance via le tag `origin`.
+
+Un avantage supplémentaire est la stabilité des liens. D'autres événements peuvent continuer à référencer la même vidéo adressable tandis que le créateur met à jour les détails de présentation autour d'elle, ce qui est plus propre que de fragmenter les commentaires et les références à travers plusieurs republications immuables.
+
+## Compromis
+
+La remplaçabilité facilite la maintenance des métadonnées, mais elle signifie aussi que les clients doivent décider combien d'état historique ils préservent. Si un créateur change le titre ou le résumé après publication, le nouvel événement devient canonique même si des clients plus anciens ont peut-être indexé la version précédente.
+
+Les kinds 21 et 22 restent pertinents pour les applications qui veulent un enregistrement de publication immuable. NIP-71 ne force pas chaque flux de travail vidéo dans le modèle remplaçable.
 
 ## Implémentations
 
@@ -62,12 +72,13 @@ Les événements vidéo adressables (kinds 34235 et 34236) sont actuellement imp
 
 ---
 
-**Sources principales :**
+**Sources primaires :**
 - [Spécification NIP-71](https://github.com/nostr-protocol/nips/blob/master/71.md)
 - [PR #1669](https://github.com/nostr-protocol/nips/pull/1669) - Mise à jour des événements vidéo adressables
 
 **Mentionné dans :**
-- [Newsletter #5 : Mises à jour des NIP](/fr/newsletters/2026-01-13-newsletter/#nip-updates)
+- [Newsletter #5 : NIP Updates](/en/newsletters/2026-01-13-newsletter/#nip-updates)
+- [Newsletter #12 : NoorNote](/en/newsletters/2026-03-04-newsletter/)
 
 **Voir aussi :**
-- [NIP-94 : Métadonnées de fichier](/fr/topics/nip-94/)
+- [NIP-94 : File Metadata](/fr/topics/nip-94/)

@@ -1,52 +1,75 @@
 ---
-title: "NIP-73 (Geotags)"
+title: "NIP-73: External Content IDs"
 date: 2026-02-04
-description: "NIP-73 definiert Standort-Tagging für Nostr-Events unter Verwendung von geografischen Koordinaten und Identifikatoren."
+translationOf: /en/topics/nip-73.md
+translationDate: 2026-03-07
+draft: false
+categories:
+  - Protocol
+  - Discovery
+  - Metadata
 ---
 
-NIP-73 spezifiziert, wie geografische Standortdaten an Nostr-Events angehängt werden. Dies ermöglicht standortbasierte Entdeckung und Filterung von Inhalten.
+NIP-73 definiert einen Standard, um externe Inhalte innerhalb von Nostr-Events zu referenzieren. Es verwendet `i`-Tags für den Bezeichner selbst und `k`-Tags für dessen Typ, sodass Clients Diskussionen über dasselbe Buch, dieselbe Website, Podcast-Episode, denselben Ort, Hashtag oder Blockchain-Objekt bündeln können.
 
 ## Funktionsweise
 
-Standortdaten werden Events über `g` (Geohash)-Tags hinzugefügt. Die Geohash-Kodierung repräsentiert Breitengrad und Längengrad als einen einzelnen String, wobei die Präzision durch die String-Länge bestimmt wird. Längere Strings zeigen präzisere Standorte an.
-
-Events können mehrere Geohash-Tags auf verschiedenen Präzisionsstufen enthalten, was es Clients ermöglicht, auf verschiedenen Granularitäten abzufragen. Ein Beitrag mit einem 6-Zeichen-Geohash deckt ungefähr einen Häuserblock ab, während ein 4-Zeichen-Geohash eine kleine Stadt abdeckt.
-
-## Tag-Format
+Ein Event, das NIP-73 nutzt, enthält ein `i`-Tag mit einem normalisierten externen Bezeichner und ein `k`-Tag, das beschreibt, um welche Art von Bezeichner es sich handelt. Clients können dann alle Events abfragen, die auf dasselbe Thema verweisen.
 
 ```json
 {
   "tags": [
-    ["g", "u4pruydqqvj", "geohash"],
-    ["g", "u4pruyd", "geohash"],
-    ["g", "u4pru", "geohash"]
+    ["i", "isbn:9780765382030"],
+    ["k", "isbn"]
   ]
 }
 ```
 
-## Ländercodes
+Die Spezifikation deckt mehrere Familien von Bezeichnern ab, darunter:
 
-Aktuelle Updates zu NIP-73 ([PR #2205](https://github.com/nostr-protocol/nips/pull/2205)) fügten Unterstützung für ISO 3166 Ländercodes hinzu, was es ermöglicht, Events mit Standort auf Länderebene zu taggen, ohne präzise Koordinaten zu benötigen:
+- normalisierte Web-URLs ohne Fragment
+- ISBNs für Bücher
+- ISANs für Filme
+- Geohashes sowie ISO-3166-Länder- und Verwaltungscodes
+- Podcast-Feed-, Episode- und Publisher-GUIDs
+- Hashtags
+- Blockchain-Transaktions- und Adressbezeichner
 
-```json
-{
-  "tags": [
-    ["g", "US", "countryCode"]
-  ]
-}
-```
+## Normalisierungsregeln
 
-## Implementierungen
+Das wichtigste Detail auf Nutzerseite in NIP-73 ist die Normalisierung. Dasselbe Objekt sollte auf genau eine kanonische Zeichenkette abgebildet werden, sonst verteilen Clients eine Diskussion auf mehrere Bezeichner, die eigentlich dasselbe meinen.
 
-- Standortbewusste Clients verwenden NIP-73 für Check-ins und lokale Entdeckung
-- Relay-Filter können Inhalte nach Geografie einschränken oder priorisieren
-- Kartenanwendungen zeigen geogetaggte Notizen an
+Beispiele aus der Spezifikation:
 
-## Primäre Quellen
+- Geohashes verwenden `geo:<value>` und müssen kleingeschrieben sein
+- Länder- und Verwaltungscodes verwenden `iso3166:<code>` und müssen großgeschrieben sein
+- ISBNs werden ohne Bindestriche geschrieben
+- Web-URLs lassen Fragmente weg
+- Blockchain-Transaktions-Hashes verwenden Hex in Kleinbuchstaben
 
-- [NIP-73 Spezifikation](https://github.com/nostr-protocol/nips/blob/master/73.md)
-- [PR #2205](https://github.com/nostr-protocol/nips/pull/2205) - Fügt ISO 3166 Ländercodes hinzu
+Das klingt klein, ist aber der Unterschied zwischen einem gemeinsamen Gespräch und mehreren inkompatiblen Indizes.
 
-## Erwähnt in
+## Nützliche Muster
 
-- [Newsletter #8 (2026-02-04)](/de/newsletters/2026-02-04-newsletter/) - Ländercode-Unterstützung gemerged
+NIP-73 ist eine allgemeine Referenzschicht, kein Inhaltsformat. Eine Longform-Note kann auf eine ISBN verweisen, eine Rezension auf eine ISAN, und ein lokaler Post auf einen Geohash oder Ländercode, ohne dass jedes Mal ein eigenes Custom-Tag erfunden werden muss.
+
+Die Spezifikation erlaubt außerdem optional einen URL-Hint als zweiten Wert eines `i`-Tags. Das gibt Clients einen Fallback-Link, wenn sie für diesen Bezeichnertyp keinen eigenen Renderer haben.
+
+## Warum das wichtig ist
+
+Nostr hat bereits starke interne Referenzen für Events und Profile. NIP-73 erweitert diese Idee auf Dinge außerhalb von Nostr. Sobald Bezeichner normalisiert sind, können Kommentare, Bewertungen, Highlights und Trusted Assertions alle am selben externen Objekt hängen, auch über verschiedene Clients hinweg.
+
+Darauf baut auch [NIP-85](/de/topics/nip-85/) auf. Trusted Assertions können nicht nur Nutzer und Events bewerten, sondern auch NIP-73-Bezeichner wie Bücher, Websites, Hashtags und Orte.
+
+---
+
+**Primärquellen:**
+- [NIP-73 Specification](https://github.com/nostr-protocol/nips/blob/master/73.md)
+- [PR #2205](https://github.com/nostr-protocol/nips/pull/2205) - Adds ISO 3166 country and subdivision codes
+
+**Erwähnt in:**
+- [Newsletter #8: NIP Updates](/de/newsletters/2026-02-04-newsletter/#nip-updates)
+- [Newsletter #10: NIP-85 Deep Dive](/de/newsletters/2026-02-18-newsletter/#nip-deep-dive-nip-85-trusted-assertions)
+
+**Siehe auch:**
+- [NIP-85: Trusted Assertions](/de/topics/nip-85/)

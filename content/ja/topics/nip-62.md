@@ -1,6 +1,8 @@
 ---
 title: "NIP-62: Vanish Requests"
 date: 2026-01-13
+translationOf: /en/topics/nip-62.md
+translationDate: 2026-03-07
 draft: false
 categories:
   - Privacy

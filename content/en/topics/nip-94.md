@@ -11,11 +11,9 @@ NIP-94 defines a file metadata event (kind 1063) for organizing and classifying 
 
 ## How It Works
 
-1. User uploads a file to a hosting service
-2. A kind 1063 event is published with metadata about the file
-3. The event content contains a human-readable description
-4. Structured tags provide machine-readable metadata
-5. Specialized clients can organize and display files systematically
+NIP-94 uses kind `1063` as a standalone metadata event for a file. The event `content` holds a human-readable description, while tags carry machine-readable fields such as download URL, MIME type, hashes, dimensions, and preview hints.
+
+That separation matters because the metadata event can be indexed, filtered, and reused independently of any note that links to the file. A client can treat a kind `1063` event as the canonical description of an asset instead of scraping metadata from free-form post text.
 
 ## Required and Optional Tags
 
@@ -36,8 +34,11 @@ NIP-94 defines a file metadata event (kind 1063) for organizing and classifying 
 - `summary` - Text excerpt
 - `alt` - Accessibility description
 - `fallback` - Alternative download sources
+- `service` - Storage protocol or service type, such as NIP-96
 
-## Use Cases
+The `ox` and `x` tags are easy to overlook but useful in practice. `ox` identifies the original uploaded file, while `x` can identify the transformed version a server actually serves. When a media host compresses or resizes uploads, clients can still preserve the original-file identity without pretending the transformed blob is byte-for-byte identical.
+
+## When To Use It
 
 NIP-94 is designed for file-sharing applications rather than social or longform content clients. Suggested applications include:
 
@@ -45,6 +46,12 @@ NIP-94 is designed for file-sharing applications rather than social or longform 
 - Portfolio-sharing platforms (similar to Pinterest)
 - Software configuration and update distribution
 - Media libraries and archives
+
+If the file metadata only needs to decorate a URL embedded inside another event, [NIP-92: Media Attachments](/en/topics/nip-92/) is lighter. NIP-94 is the better choice when the file itself should be queryable as a first-class object.
+
+## Interop Notes
+
+NIP-94 works across storage backends. A file can be uploaded through [NIP-96: HTTP File Storage](/en/topics/nip-96/), Blossom, or another service, then still described with the same kind `1063` event shape. That is why the metadata format keeps outliving any single upload protocol.
 
 ---
 

@@ -8,24 +8,23 @@ categories:
   - Bitcoin
 ---
 
-Cashu is a Chaumian ecash protocol built on Bitcoin and Lightning Network, enabling private, instant, and low-fee payments through cryptographic tokens.
+Cashu is a Chaumian ecash protocol built on Bitcoin and Lightning. Users hold bearer tokens issued by a mint, then transfer those tokens without exposing the full payment graph to the mint.
 
 ## How It Works
 
-Cashu uses blind signatures to create untraceable ecash tokens:
+Cashu uses blind signatures to issue ecash tokens:
 
 1. **Minting**: Users deposit Bitcoin/Lightning to a mint and receive blinded tokens
 2. **Spending**: Tokens can be transferred peer-to-peer without mint involvement
 3. **Redemption**: Recipients redeem tokens at the mint for Bitcoin/Lightning
 
-The mint cannot link deposits to redemptions due to the blinding process, providing strong privacy guarantees.
+The mint signs blinded secrets, so it can verify tokens later without seeing the original secrets at issuance time. That breaks the direct link between deposit and redemption inside the mint.
 
-## Key Properties
+## Security And Trust Model
 
-- **Privacy**: Mint cannot track token transfers between users
-- **Instant**: Transfers happen offline, no blockchain confirmation needed
-- **Low-fee**: No on-chain fees for token transfers
-- **Custodial**: Users trust the mint to honor redemptions
+Cashu improves payment privacy, but it is still custodial. A mint can refuse redemptions, go offline, or lose backing funds.
+
+Cashu proofs are bearer instruments. Whoever controls the proof can spend it. That makes proof handling closer to cash than to an account balance: backup, device compromise, or plaintext token leakage all matter immediately.
 
 ## Nostr Integration
 
@@ -36,14 +35,24 @@ Cashu integrates with Nostr in several ways:
 - **Wallets**: Nostr-native wallets store encrypted Cashu tokens on relays
 - **[NIP-87](/en/topics/nip-87/)**: Mint discovery and reviews via Nostr
 
-## Trust Model
+## Tradeoffs
 
-Unlike self-custodial Bitcoin, Cashu requires trusting mint operators. Users should:
-- Use reputable, well-reviewed mints
-- Keep small balances appropriate to the trust level
-- Understand mints can exit-scam or go offline, taking funds with them
+Cashu is fast because transfers happen off-chain and often off-mint until redemption. The tradeoff is interoperability and trust.
 
-## Related
+In practice, users often need the same mint, or they need a swap or bridge between mints. That is why Nostr applications frequently combine Cashu with mint discovery, wallet sync, and review systems.
 
-- [NIP-87](/en/topics/nip-87/) - Cashu Mint Recommendations
-- [NIP-60](/en/topics/nip-60/) - Nostr Wallet
+---
+
+**Primary sources:**
+- [Cashu NUTs Repository](https://github.com/cashubtc/nuts)
+- [NUT-00: Cryptography and models](https://github.com/cashubtc/nuts/blob/main/00.md)
+- [NIP-60 Specification](https://github.com/nostr-protocol/nips/blob/master/60.md)
+- [NIP-87 Specification](https://github.com/nostr-protocol/nips/blob/master/87.md)
+
+**Mentioned in:**
+- [Newsletter #7](/en/newsletters/2026-01-28-newsletter/)
+- [Newsletter #11](/en/newsletters/2026-02-25-newsletter/)
+
+**See also:**
+- [NIP-60: Cashu Wallet](/en/topics/nip-60/)
+- [NIP-87: Cashu Mint Recommendations](/en/topics/nip-87/)

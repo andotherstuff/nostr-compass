@@ -43,9 +43,17 @@ Clients following the outbox model maintain connections to relays listed in thei
 
 This architecture improves censorship resistance because no single relay needs to store or serve everyone's content. If one relay goes offline or blocks a user, their content remains available on their other listed relays.
 
+## Why It Matters
+
+NIP-65 changes relay selection from a hardcoded client default into user-published routing metadata. That lets clients adapt to each account's actual publishing and reading habits instead of assuming everyone uses the same relay set.
+
+It also shifts complexity to clients. To use the outbox model well, a client needs relay caching, retry logic, and fallback behavior when a relay list is missing or stale. The spec improves discoverability, but it does not remove the need for good relay selection heuristics.
+
 ## Relationship to Relay Hints
 
 NIP-65 complements the relay hints found throughout other NIPs. When you tag someone with `["p", "pubkey", "wss://hint.relay"]`, the hint tells clients where to look for that specific reference. NIP-65 provides the authoritative, user-controlled list of preferred relays, while hints offer shortcuts embedded in individual events for faster discovery.
+
+For private messaging, NIP-65 is not the whole story. Public content routing uses kind 10002, but modern private messaging stacks often rely on separate inbox metadata such as [NIP-17](/en/topics/nip-17/) relay lists so users can keep DM routing distinct from public posting relays.
 
 ## Best Practices
 
@@ -62,6 +70,8 @@ Mix general-purpose relays with any specialized relays you use. For instance, yo
 
 **Mentioned in:**
 - [Newsletter #5: NIP Deep Dive](/en/newsletters/2026-01-13-newsletter/#nip-65-relay-list-metadata)
+- [Newsletter #12: Outbox Model Benchmarks](/en/newsletters/2026-03-04-newsletter/)
 
 **See also:**
 - [NIP-11: Relay Information](/en/topics/nip-11/)
+- [NIP-17: Private Direct Messages](/en/topics/nip-17/)

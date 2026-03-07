@@ -2,54 +2,56 @@
 title: "FROST (Flexible Round-Optimized Schnorr Threshold Signatures)"
 date: 2025-12-31
 translationOf: /en/topics/frost.md
-translationDate: 2025-12-31
+translationDate: 2026-03-07
 draft: false
 categories:
   - 暗号技術
   - プロトコル
 ---
 
-FROST (Flexible Round-Optimized Schnorr Threshold Signatures) は、グループの参加者が単一の当事者が完全な秘密鍵を保持することなく、協力して有効なSchnorr署名を生成できる閾値署名スキームです。
+FROST (Flexible Round-Optimized Schnorr Threshold Signatures) は、どの参加者も完全な秘密鍵を保持せずに、グループで1つの有効なSchnorr署名を生成できるthreshold signature schemeです。
 
 ## 仕組み
 
-FROSTはT-of-N閾値署名を可能にします。N人の鍵保持者のうちT人の参加者が協力して有効な署名を生成します。プロトコルは2ラウンドで動作します：
+FROSTはT-of-N署名を可能にします。しきい値を満たす参加者集合であれば、グループ公開鍵に対する署名を協調して生成できます。
 
-1. **コミットメントラウンド**: 各参加者が暗号学的コミットメントを生成し共有
-2. **署名ラウンド**: 参加者が部分署名を組み合わせて最終的な集約署名を作成
+署名プロトコルは2ラウンドです。
 
-生成された署名は標準的なSchnorr署名と区別がつかず、既存の検証システムとの後方互換性を維持します。
+1. **Commitment Round**: 各参加者が暗号学的commitmentを生成して共有する
+2. **Signature Round**: 参加者がpartial signatureを組み合わせ、最終的なaggregate signatureを作る
 
-## 主要な特性
+最終出力は通常のSchnorr署名として検証されます。検証側から見えるのは、1つの公開鍵に対する1つの署名だけで、cosignerの一覧ではありません。
 
-- **閾値セキュリティ**: 単一の参加者だけでは署名できず、T人の当事者が協力する必要がある
-- **ラウンド効率**: 署名に必要な通信は2ラウンドのみ
-- **偽造防止**: 以前の閾値スキームへの攻撃から保護する新しい技術
-- **署名集約**: 複数の署名が1つのコンパクトな署名に結合
-- **プライバシー**: 最終署名からどのT人の参加者が署名したかは分からない
+## セキュリティ上の注意
 
-## Nostrでの使用例
+nonceの扱いは重要です。RFCでは、署名nonceは一度しか使ってはいけないと明記されています。再利用すると鍵情報が漏れる可能性があります。
 
-Nostrの文脈において、FROSTは以下を可能にします：
+RFCはdistributed key generation自体を標準化していません。標準化しているのは署名プロトコル本体であり、trusted-dealerによる鍵生成は付録にあるだけです。実際のFROST運用の安全性は、署名フローだけでなく、shareをどう生成し、どう保管したかにも依存します。
 
-- **クォーラムガバナンス**: グループがT-of-Nスキームを通じてnsecを共有でき、メンバーは自身を代表するか評議会に委任可能
-- **マルチシグ管理**: 複数の管理者署名を必要とするコミュニティモデレーション
-- **分散型鍵管理**: 重要な操作のために複数の当事者間で信頼を分散
+## Nostrでの用途
 
-## 標準化
+Nostrの文脈では、FROSTは次の用途を支えます。
 
-FROSTは2024年6月にRFC 9591として標準化され、「The Flexible Round-Optimized Schnorr Threshold (FROST) Protocol for Two-Round Schnorr Signatures」というタイトルが付けられました。
+- **Quorum Governance**: グループがT-of-N方式でnsecを共有し、メンバーが自分で参加したり評議会へ委任したりできる
+- **Multi-sig Administration**: 複数の管理者署名を必要とするコミュニティ運営
+- **Decentralized Key Management**: 重要操作の信頼を複数の当事者に分散する
+
+## ステータス
+
+FROSTは、2024年6月にIRTF streamで公開された[RFC 9591](https://datatracker.ietf.org/doc/rfc9591/)で仕様化されています。これにより安定した公開仕様が得られましたが、IETF standards-trackのRFCではありません。
 
 ---
 
-**主要な情報源:**
+**主要ソース:**
 - [RFC 9591: FROST Protocol](https://datatracker.ietf.org/doc/rfc9591/)
 - [FROST Paper (IACR)](https://eprint.iacr.org/2020/852.pdf)
-- [University of Waterloo CrySP](https://crysp.uwaterloo.ca/software/frost/)
 - [Zcash Foundation Rust Implementation](https://github.com/ZcashFoundation/frost)
 
-**関連記事:**
-- [Newsletter #3: NIPsリポジトリ](/ja/newsletters/2025-12-31-newsletter/#nips-repository)
+**言及箇所:**
+- [Newsletter #3: NIPs Repository](/en/newsletters/2025-12-31-newsletter/#nips-repository)
+- [Newsletter #8](/en/newsletters/2026-02-04-newsletter/)
+- [Newsletter #10](/en/newsletters/2026-02-18-newsletter/)
 
 **関連項目:**
-- [NIP-XX Quorum提案](https://github.com/nostr-protocol/nips/pull/2179)
+- [NIP-46: Nostr Connect](/ja/topics/nip-46/)
+- [NIP-55: Android Signer Application](/ja/topics/nip-55/)

@@ -1,9 +1,9 @@
 ---
 title: "NIP-BE: Bluetooth Low Energy"
 url: /ja/topics/nip-be/
-translationOf: /en/topics/nip-be.md
-translationDate: 2025-12-26
 date: 2025-12-17
+translationOf: /en/topics/nip-be.md
+translationDate: 2026-03-07
 draft: false
 categories:
   - Protocol

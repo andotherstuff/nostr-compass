@@ -9,41 +9,37 @@ categories:
 
 NIP-BE specifies how Nostr applications can communicate and synchronize over Bluetooth Low Energy, enabling offline-capable apps to sync data across nearby devices without internet connectivity.
 
-## GATT Structure
+## How It Works
 
-Uses a Nordic UART Service with two characteristics:
-- **Write characteristic** - Client sends data to server
-- **Read characteristic** - Server sends data to client (via notifications)
+NIP-BE reuses normal Nostr message frames over BLE instead of inventing a separate event model. Devices advertise a BLE service plus a device UUID, compare UUIDs when they meet, and deterministically decide which side becomes the GATT server and which side becomes the GATT client.
+
+The GATT service uses a Nordic UART-style shape with one write characteristic and one read/notify characteristic. That keeps the transport simple enough for constrained mobile stacks while still carrying ordinary Nostr messages.
 
 ## Message Framing
 
-BLE has small payload limits (20-256 bytes depending on version), so messages are:
-- Compressed with DEFLATE
-- Split into chunks with a 2-byte index and final-batch flag
-- Limited to 64KB maximum size
+BLE has small payload limits, so NIP-BE compresses messages with DEFLATE, splits them into indexed chunks, and sends only one message at a time. The spec caps messages at 64 KB, which is a useful reminder that this transport is for synchronization and local propagation, not bulk transfer.
 
-## Role Negotiation
+## Sync Model
 
-Devices compare advertised UUIDs on discovery:
-- Higher UUID becomes GATT server (relay role)
-- Lower UUID becomes GATT client
-- Predetermined UUIDs exist for single-role devices
+After a connection is established, peers use a half-duplex sync flow based on [NIP-77](https://github.com/nostr-protocol/nips/blob/master/77.md) negentropy messages such as `NEG-OPEN`, `NEG-MSG`, `EVENT`, and `EOSE`. That design choice matters because it lets implementations reuse existing relay-sync logic instead of building a BLE-only replication algorithm.
 
-## Synchronization
+The half-duplex rule also reflects the reality of flaky BLE links. Intermittent short-range connections work better when each side knows exactly whose turn it is to speak.
 
-Uses half-duplex communication with standard Nostr message types (`EVENT`, `EOSE`, `NEG-MSG`) to coordinate data sync across intermittent connections.
+## Why It Matters
 
-## Use Cases
+NIP-BE gives Nostr applications a path for local-first networking. Two phones can sync notes or relay state directly when they are near each other, even if neither has working internet. That makes BLE useful for censorship resistance, disaster scenarios, and low-connectivity social apps.
 
-- Offline event syncing between nearby devices
-- Mesh-style message propagation without internet
-- Backup connectivity when network is unavailable
+The constraints are equally important: BLE bandwidth is low, connections are short-lived, and large histories do not fit well. In practice, NIP-BE is best for incremental sync and nearby message spread, not full archival replication.
 
 ---
 
 **Primary sources:**
 - [NIP-BE Specification](https://github.com/nostr-protocol/nips/blob/master/BE.md)
+- [PR #1979](https://github.com/nostr-protocol/nips/pull/1979)
 
 **Mentioned in:**
 - [Newsletter #1: News](/en/newsletters/2025-12-17-newsletter/#news)
 - [Newsletter #3: December Recap](/en/newsletters/2025-12-31-newsletter/#december-recap-five-years-of-nostr-decembers)
+
+**See also:**
+- [NIP-01: Basic Protocol](/en/topics/nip-01/)

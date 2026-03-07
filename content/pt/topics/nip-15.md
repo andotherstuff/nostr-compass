@@ -1,39 +1,39 @@
 ---
-title: "NIP-15: Marketplace Nostr"
+title: 'NIP-15: Mercado Nostr'
 date: 2026-01-28
-translationOf: /en/topics/nip-15.md
-translationDate: 2026-01-28
 draft: false
 categories:
-  - NIP
-  - Commerce
-  - Marketplace
+- NIP
+- Commerce
+- Marketplace
+translationOf: /en/topics/nip-15.md
+translationDate: '2026-03-07'
 ---
 
-NIP-15 define um protocolo para marketplaces descentralizados no Nostr, permitindo que comerciantes listem produtos e compradores façam compras usando Bitcoin e Lightning.
+O NIP-15 define um protocolo para mercados descentralizados no Nostr, permitindo que os comerciantes listem produtos e os compradores façam compras usando Bitcoin e Lightning.
 
-## Como Funciona
+## Como funciona
 
-### Lojas de Comerciantes (Kind 30017)
+### Barracas de Comerciantes (kind 30017)
 
-Comerciantes criam lojas como eventos endereçáveis:
+Os comerciantes criam barracas como eventos endereçáveis:
 
 ```json
 {
   "kind": 30017,
   "tags": [
     ["d", "my-stall"],
-    ["name", "Eletrônicos do Bob"],
-    ["description", "Eletrônicos usados de qualidade"],
+    ["name", "Bob's Electronics"],
+    ["description", "Quality used electronics"],
     ["currency", "sat"],
-    ["shipping", "{...opções de envio...}"]
+    ["shipping", "{...shipping options...}"]
   ]
 }
 ```
 
-### Produtos (Kind 30018)
+### Produtos (kind 30018)
 
-Produtos são listados dentro de lojas:
+Os produtos estão listados nas barracas:
 
 ```json
 {
@@ -49,28 +49,43 @@ Produtos são listados dentro de lojas:
 }
 ```
 
-## Fluxo de Compra
+## Fluxo de compra
 
-1. Comprador navega produtos em múltiplas lojas
-2. Comprador envia mensagem de pedido criptografada para o comerciante
-3. Comerciante responde com invoice Lightning
-4. Comprador paga o invoice
-5. Comerciante envia o produto
+1. O comprador procura produtos em várias barracas
+2. O comprador envia uma mensagem criptografada do pedido ao comerciante
+3. O comerciante responde com uma fatura Lightning
+4. O comprador paga a fatura
+5. Produto de navios mercantes
 
-## Recursos Principais
+## Por que é importante
 
-- **Descentralizado**: Sem operador central de marketplace
-- **Interoperável**: Qualquer cliente NIP-15 pode navegar qualquer comerciante
-- **Privado**: Pedidos são criptografados entre comprador e vendedor
-- **Nativo do Bitcoin**: Pagamentos Lightning integrados
+- **Descentralizado**: Sem operador central de mercado
+- **Interoperável**: Qualquer cliente NIP-15 pode navegar em qualquer comerciante
+- **Privado**: os pedidos são criptografados entre comprador e vendedor
+- **Bitcoin nativo**: pagamentos relâmpago integrados
 
-## Implementações
+O ganho prático é a portabilidade. Um comerciante pode publicar dados de catálogo uma vez e permitir que vários clientes os processem, em vez de ficar preso a um front-end de mercado.
 
-- **Plebeian Market** - Marketplace NIP-15 completo
+## Compensações
+
+O NIP-15 padroniza listagens, não confiança. Os compradores ainda precisam decidir se um comerciante é legítimo, se o inventário é real e como as disputas serão tratadas. O protocolo fornece estruturas de dados e fluxo de mensagens comuns, mas a reputação e o cumprimento continuam sendo problemas no nível da aplicação.
+
+Pagamentos e remessas também são apenas parcialmente padronizados. Um cliente pode entender barracas e produtos e ainda precisar de lógica personalizada para faturas, estado do pedido ou rastreamento de entrega.
+
+## Status de implementação
+
+- **Mercado Plebeu** - Mercado NIP-15 completo
 - **Shopstr** - Comércio Bitcoin sem permissão
-- **Amethyst** - Listagens de produtos integradas no feed social
+- **Ametista** - Listagens de produtos integradas no feed social
 
-## Relacionados
+---
 
-- [NIP-44](/pt/topics/nip-44/) - Mensagens criptografadas para pedidos
-- [NIP-57](/pt/topics/nip-57/) - Zaps Lightning
+**Fontes primárias:**
+- [Especificação NIP-15](https://github.com/nostr-protocol/nips/blob/master/15.md)
+
+**Mencionado em:**
+- [Boletim informativo nº 7: Endurecimento do protocolo de janeiro de 2024](/pt/newsletters/2026-01-28-newsletter/#january-2024-protocol-hardening)
+
+**Veja também:**
+- [NIP-44: cargas criptografadas](/pt/topics/nip-44/)
+- [NIP-57: Zaps relâmpagos](/pt/topics/nip-57/)

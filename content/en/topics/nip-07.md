@@ -38,7 +38,15 @@ const plaintext = await window.nostr.nip04.decrypt(pubkey, ciphertext);
 - **User Approval**: Extensions can prompt for each signing request
 - **Domain Control**: Extensions can restrict which sites can request signatures
 
-## Implementations
+NIP-07 improves key custody, but it does not remove trust from the extension itself. A malicious or compromised extension can still sign the wrong thing, leak metadata, or grant permissions too broadly.
+
+## Interop Notes
+
+The hardest part of NIP-07 is not the API shape. It is capability variation. Some extensions support only `getPublicKey()` and `signEvent()`. Others also expose `nip04`, `nip44`, or newer optional methods. Web apps need feature detection and reasonable fallbacks instead of assuming every injected signer behaves the same way.
+
+User approval UX also changes behavior. A site that silently expects background access may work with one extension and feel broken with another that prompts on every request. Good NIP-07 apps treat signing as an interactive permission boundary.
+
+## Implementation Status
 
 Popular NIP-07 extensions include:
 - **Alby** - Lightning wallet with Nostr signing
@@ -51,12 +59,21 @@ Popular NIP-07 extensions include:
 - Requires extension installation
 - Each extension has different UX for approvals
 
-## Alternatives
+For cross-device or mobile signing, NIP-46 and NIP-55 usually fit better.
 
-- [NIP-46](/en/topics/nip-46/) - Remote signing via Nostr relays
-- [NIP-55](/en/topics/nip-55/) - Android local signer
+---
 
-## Related
+**Primary sources:**
+- [NIP-07 Specification](https://github.com/nostr-protocol/nips/blob/master/07.md)
+- [PR #2233](https://github.com/nostr-protocol/nips/pull/2233) - `peekPublicKey()` proposal
 
-- [NIP-44](/en/topics/nip-44/) - Modern encryption (replacing NIP-04)
-- [NIP-46](/en/topics/nip-46/) - Remote Signing
+**Mentioned in:**
+- [Newsletter #7: NIP Updates](/en/newsletters/2026-01-28-newsletter/#nip-updates)
+- [Newsletter #8: News](/en/newsletters/2026-02-04-newsletter/#news)
+- [Newsletter #11: News](/en/newsletters/2026-02-25-newsletter/#news)
+
+**See also:**
+- [NIP-04: Encrypted Direct Messages (Deprecated)](/en/topics/nip-04/)
+- [NIP-44: Encrypted Payloads](/en/topics/nip-44/)
+- [NIP-46: Nostr Connect](/en/topics/nip-46/)
+- [NIP-55: Android Signer Applications](/en/topics/nip-55/)

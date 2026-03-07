@@ -1,6 +1,8 @@
 ---
 title: "NIP-55: Android署名アプリケーション"
 date: 2025-12-17
+translationOf: /en/topics/nip-55.md
+translationDate: 2026-03-07
 draft: false
 categories:
   - Signing

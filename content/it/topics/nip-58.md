@@ -1,22 +1,21 @@
 ---
-title: "NIP-58: Badge"
+title: "NIP-58: Badges"
 date: 2026-01-28
 translationOf: /en/topics/nip-58.md
-translationDate: 2026-01-28
+translationDate: 2026-03-07
 draft: false
 categories:
   - NIP
   - Identity
   - Reputation
 ---
+NIP-58 definisce un sistema di badge per Nostr. Un evento definisce il badge, un altro lo assegna e un terzo permette al destinatario di scegliere se mostrarlo sul proprio profilo.
 
-NIP-58 definisce un sistema di badge per Nostr, permettendo agli emittenti di creare badge e assegnarli agli utenti che possono poi mostrarli sui loro profili.
+## Come funziona
 
-## Come Funziona
+### Definizione del badge (Kind 30009)
 
-### Definizione Badge (Kind 30009)
-
-Gli emittenti creano definizioni di badge come eventi addressable:
+Gli issuer creano definizioni di badge come eventi addressable:
 
 ```json
 {
@@ -24,16 +23,16 @@ Gli emittenti creano definizioni di badge come eventi addressable:
   "tags": [
     ["d", "early-adopter"],
     ["name", "Early Adopter"],
-    ["description", "Iscritto prima del 2024"],
+    ["description", "Joined before 2024"],
     ["image", "https://example.com/badge.png"],
     ["thumb", "https://example.com/badge-thumb.png"]
   ]
 }
 ```
 
-### Assegnazione Badge (Kind 8)
+### Assegnazione del badge (Kind 8)
 
-Gli emittenti assegnano badge agli utenti:
+Gli issuer assegnano badge a uno o più utenti:
 
 ```json
 {
@@ -45,9 +44,9 @@ Gli emittenti assegnano badge agli utenti:
 }
 ```
 
-### Visualizzazione Badge (Kind 30008)
+### Visualizzazione del badge (Kind 30008)
 
-Gli utenti scelgono quali badge mostrare sul loro profilo:
+Gli utenti scelgono quali badge mostrare sul proprio profilo:
 
 ```json
 {
@@ -60,21 +59,40 @@ Gli utenti scelgono quali badge mostrare sul loro profilo:
 }
 ```
 
-## Casi d'Uso
+In un evento profile badges, i client dovrebbero leggere i tag `a` ed `e` come coppie ordinate. Un tag `a` senza il relativo evento di assegnazione, o un tag `e` senza la relativa definizione del badge, dovrebbe essere ignorato.
 
-- **Appartenenza a Community**: Dimostrare l'appartenenza a gruppi o community
-- **Traguardi**: Riconoscere contributi o milestone
-- **Verifica**: Attestazioni di terze parti (dipendente, creatore, ecc.)
-- **Controllo Accessi**: Limitare contenuti o funzionalità in base al possesso di badge
+## Casi d'uso
 
-## Modello di Fiducia
+- **Appartenenza a una community**: mostra l'appartenenza a gruppi o community
+- **Risultati**: riconosce contributi o traguardi
+- **Attestazioni**: permette a una terza parte di confermare un ruolo o uno stato
+- **Controllo degli accessi**: limita funzionalità o spazi usando badge sostenuti da issuer
 
-Il valore del badge dipende interamente dalla reputazione dell'emittente. Chiunque può creare badge, quindi i client dovrebbero:
-- Mostrare le informazioni sull'emittente in modo prominente
-- Permettere agli utenti di filtrare per emittenti fidati
-- Non trattare i badge come autorevoli senza contesto
+## Modello di fiducia
 
-## Correlati
+Il valore di un badge dipende interamente dalla reputazione dell'issuer. Chiunque può creare badge, quindi i client dovrebbero:
 
-- [NIP-51](/it/topics/nip-51/) - Liste
+- mostrare in modo evidente le informazioni sull'issuer
+- permettere agli utenti di filtrare per issuer fidati
+- non trattare i badge come autorevoli senza contesto
+
+Le assegnazioni di badge sono immutabili e non trasferibili. Questo rende i badge adatti ad attestazioni e riconoscimenti, ma non a credenziali portabili nel senso tokenizzato.
+
+## Note di implementazione
+
+Le definizioni di badge sono eventi addressable, quindi gli issuer possono aggiornare nel tempo grafica o descrizioni del badge senza cambiarne l'identificatore. L'evento di assegnazione è il record durevole che collega un destinatario a quella definizione in un determinato momento.
+
+I client hanno anche margine nella presentazione. La specifica consente esplicitamente di mostrare meno badge di quelli elencati da un utente e di scegliere la dimensione della thumbnail più adatta allo spazio disponibile.
+
+---
+
+**Fonti primarie:**
+- [NIP-58 Specification](https://github.com/nostr-protocol/nips/blob/master/58.md)
+
+**Citato in:**
+- [Newsletter #7: Five Years of Nostr Januarys](/en/newsletters/2026-01-28-newsletter/)
+- [Newsletter #15: Five Years of Nostr Februaries](/en/newsletters/2026-03-04-newsletter/)
+
+**Vedi anche:**
+- [NIP-51: Lists](/it/topics/nip-51/)
 - [Web of Trust](/it/topics/web-of-trust/)

@@ -1,36 +1,41 @@
 ---
-title: "NIP-90"
+title: "NIP-90: Data Vending Machines"
 date: 2026-02-25
 translationOf: /en/topics/nip-90.md
-translationDate: 2026-02-25
+translationDate: 2026-03-07
 draft: false
 categories:
   - NIP
-  - Protocol
+  - DVM
 ---
 
-NIP-90はData Vending Machines（DVM）を定義します。Nostr上で計算作業をリクエストして支払うためのマーケットプレイスプロトコルです。
+NIP-90はData Vending Machines（DVMs）を定義し、有料の計算処理をNostr上で依頼し、受け取るためのprotocolです。
 
 ## 仕組み
 
-クライアントは必要な作業を指定するジョブリクエストevent（kind 5000-5999）を公開します。サービスプロバイダーは自分の能力に合うリクエストを監視し、計算完了後に結果を公開します。支払いはLightningまたはジョブフロー内で交渉される他のメカニズムで行われます。
+customerは`5000-5999` rangeのjob request eventを公開します。各requestには、1つ以上のinput用`i` tag、job固有設定の`param` tag、期待するformatを示す`output` tag、`bid` ceiling、reply先relay hintを含められます。service providerは、対応する`6000-6999` rangeのresult kindで応答し、kind番号はrequestより常に`1000`大きくなります。
 
-ジョブkindは異なる計算タイプを定義します。テキスト生成、画像生成、翻訳、コンテンツ発見などです。各kindは期待される入出力フォーマットを指定します。
+resultには、元のrequest、customer pubkey、optionalな`amount` tagやinvoiceが含まれます。providerは`payment-required`、`processing`、`partial`、`error`、`success`といったkind `7000` feedback eventも送れます。これによりclientは、最終resultが届く前に進捗を表示できます。
 
-## 主な機能
+## PaymentとPrivacy
 
-- 分散型コンピュートマーケットプレイス
-- kindベースのジョブタイプシステム
-- 価格と品質でのプロバイダー競争
-- 新しい計算タイプへの拡張性
+protocolはbusiness logicを意図的に開いたままにしています。providerは、作業開始前、sample返却後、または完全なresult配信後に支払いを求められます。この柔軟さは、DVM jobが安価なtext transformから高価なGPU workまで幅広いため重要です。
+
+customerがprivate inputを望む場合、`i`と`param` dataを暗号化した`content`へ移し、providerの`p` tagと`encrypted` tagでmarkできます。これによりpromptやsource materialをrelay observerから守れますが、その代わり特定providerを指名する必要があり、open market requestにはなりません。
+
+## 相互運用メモ
+
+NIP-90は、input type `job`を持つ`i` tagによるjob chainingもサポートします。あるresultを次のrequestの入力へ流せるため、別のorchestration layerを設けなくてもmulti-step flowを組めます。
+
+provider discoveryはrequest/response loop自体の外にあります。仕様は、対応するjob kindをadvertiseする手段として[NIP-89: Recommended Application Handlers](/ja/topics/nip-89/)を参照しています。clientは、それを使ってrequestを出す前にvendorを見つけられます。
 
 ---
 
-**主要ソース：**
-- [NIP-90仕様](https://github.com/nostr-protocol/nips/blob/master/90.md)
+**主要ソース:**
+- [NIP-90 Specification](https://github.com/nostr-protocol/nips/blob/master/90.md)
 
-**掲載ニュースレター：**
-- [ニュースレター#11：NIP-AC DVMエージェント調整](/ja/newsletters/2026-02-25-newsletter/#nipアップデート)
+**言及箇所:**
+- [Newsletter #11: NIP-AC DVM Agent Coordination](/en/newsletters/2026-02-25-newsletter/#nip-updates)
 
-**関連項目：**
-- [NIP-85：Trusted Assertions](/ja/topics/nip-85/)
+**関連項目:**
+- [NIP-89: Recommended Application Handlers](/ja/topics/nip-89/)

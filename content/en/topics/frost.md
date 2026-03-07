@@ -7,47 +7,49 @@ categories:
   - Protocol
 ---
 
-FROST (Flexible Round-Optimized Schnorr Threshold Signatures) is a threshold signature scheme that allows a group of participants to collaboratively produce valid Schnorr signatures without any single party holding the complete private key.
+FROST (Flexible Round-Optimized Schnorr Threshold Signatures) is a threshold signature scheme that lets a group produce one valid Schnorr signature without any participant holding the full private key.
 
 ## How It Works
 
-FROST enables T-of-N threshold signing, where T participants out of N total keyholders must cooperate to produce a valid signature. The protocol operates in two rounds:
+FROST enables T-of-N signing. Any threshold set of participants can cooperate to produce a signature for the group's public key.
+
+The signing protocol uses two rounds:
 
 1. **Commitment Round**: Each participant generates and shares cryptographic commitments
 2. **Signature Round**: Participants combine their partial signatures into a final aggregate signature
 
-The resulting signature is indistinguishable from a standard Schnorr signature, maintaining backward compatibility with existing verification systems.
+The final output verifies like an ordinary Schnorr signature. Verifiers see one signature under one public key, not a list of cosigners.
 
-## Key Properties
+## Security Notes
 
-- **Threshold Security**: No single participant can sign alone; T parties must cooperate
-- **Round Efficiency**: Only two rounds of communication required for signing
-- **Forgery Protection**: Novel techniques protect against attacks on prior threshold schemes
-- **Signature Aggregation**: Multiple signatures combine into a single compact signature
-- **Privacy**: Final signatures reveal nothing about which T participants signed
+Nonce handling is critical. The RFC is explicit that signing nonces are one-time use. Reuse can leak key material.
+
+The RFC also does not standardize distributed key generation. It specifies the signing protocol itself and includes trusted-dealer key generation only as an appendix. In practice, the safety of a FROST deployment depends on both the signing flow and how shares were created and stored.
 
 ## Use Cases in Nostr
 
-In the context of Nostr, FROST enables:
+In the context of Nostr, FROST can support:
 
 - **Quorum Governance**: Groups can share an nsec through T-of-N schemes, where members can represent themselves or delegate to councils
 - **Multi-sig Administration**: Community moderation requiring multiple admin signatures
 - **Decentralized Key Management**: Distributing trust across multiple parties for critical operations
 
-## Standardization
+## Status
 
-FROST was standardized as RFC 9591 in June 2024, titled "The Flexible Round-Optimized Schnorr Threshold (FROST) Protocol for Two-Round Schnorr Signatures."
+FROST is specified in [RFC 9591](https://datatracker.ietf.org/doc/rfc9591/), published on the IRTF stream in June 2024. That gives the protocol a stable public specification, but it is not an IETF standards-track RFC.
 
 ---
 
 **Primary sources:**
 - [RFC 9591: FROST Protocol](https://datatracker.ietf.org/doc/rfc9591/)
 - [FROST Paper (IACR)](https://eprint.iacr.org/2020/852.pdf)
-- [University of Waterloo CrySP](https://crysp.uwaterloo.ca/software/frost/)
 - [Zcash Foundation Rust Implementation](https://github.com/ZcashFoundation/frost)
 
 **Mentioned in:**
 - [Newsletter #3: NIPs Repository](/en/newsletters/2025-12-31-newsletter/#nips-repository)
+- [Newsletter #8](/en/newsletters/2026-02-04-newsletter/)
+- [Newsletter #10](/en/newsletters/2026-02-18-newsletter/)
 
 **See also:**
-- [NIP-XX Quorum Proposal](https://github.com/nostr-protocol/nips/pull/2179)
+- [NIP-46: Nostr Connect](/en/topics/nip-46/)
+- [NIP-55: Android Signer Application](/en/topics/nip-55/)

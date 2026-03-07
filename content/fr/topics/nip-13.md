@@ -2,7 +2,7 @@
 title: "NIP-13 : Preuve de travail"
 date: 2026-01-28
 translationOf: /en/topics/nip-13.md
-translationDate: 2026-01-28
+translationDate: 2026-03-07
 draft: false
 categories:
   - NIP
@@ -35,19 +35,31 @@ La preuve de travail est démontrée en trouvant un ID d'événement (hash SHA25
 | 20 | 1 048 576 | Protection modérée |
 | 24 | 16 777 216 | Forte résistance au spam |
 
-## Cas d'utilisation
+## Pourquoi c'est important
 
 - **Admission au relais** : Les relais peuvent exiger un PoW minimum pour l'acceptation des événements
 - **Limitation de débit** : Difficulté plus élevée pour des actions comme l'enregistrement de compte
 - **Filtrage du spam** : Les clients peuvent prioriser les événements à PoW élevé dans les fils
 - **Amorçage de réputation** : Les nouveaux comptes peuvent démontrer leur engagement via le PoW
 
-## Limitations
+La propriété utile est le coût asymétrique. Créer de nombreux événements acceptables devient coûteux pour l'expéditeur, tandis que vérifier la preuve reste peu coûteux pour les relais et les clients.
+
+## Compromis
 
 - Favorise les utilisateurs avec du matériel puissant
 - Préoccupations de consommation énergétique
 - N'empêche pas tout le spam, augmente seulement le coût
 
-## Voir aussi
+Le PoW déplace aussi la résistance au spam de l'identité de compte vers la disponibilité de calcul. Cela peut aider dans les environnements sans permission, mais ne permet pas de distinguer un utilisateur légitime nouveau d'un spammeur bien financé.
 
-- [NIP-01](/fr/topics/nip-01/) - Protocole de base
+---
+
+**Sources principales :**
+- [Spécification NIP-13](https://github.com/nostr-protocol/nips/blob/master/13.md)
+
+**Mentionné dans :**
+- [Newsletter #7 : Actualités](/en/newsletters/2026-01-28-newsletter/#news)
+- [Newsletter #12 : Actualités](/en/newsletters/2026-03-04-newsletter/#news)
+
+**Voir aussi :**
+- [NIP-01 : Protocole de base](/fr/topics/nip-01/)

@@ -1,39 +1,39 @@
 ---
-title: "NIP-58: Badges"
+title: 'NIP-58: Emblemas'
 date: 2026-01-28
-translationOf: /en/topics/nip-58.md
-translationDate: 2026-01-28
 draft: false
 categories:
-  - NIP
-  - Identity
-  - Reputation
+- NIP
+- Identity
+- Reputation
+translationOf: /en/topics/nip-58.md
+translationDate: '2026-03-07'
 ---
 
-NIP-58 define um sistema de badges para Nostr, permitindo que emissores criem badges e as concedam a usuários que podem então exibi-las em seus perfis.
+NIP-58 define um sistema de crachás para Nostr. Um evento define o selo, outro o concede e um terceiro permite que o destinatário escolha se deseja exibi-lo em seu perfil.
 
-## Como Funciona
+## Como funciona
 
-### Definição de Badge (Kind 30009)
+### Definição do selo (kind 30009)
 
-Emissores criam definições de badge como eventos endereçáveis:
+Os emissores criam definições de crachás como eventos endereçáveis:
 
 ```json
 {
   "kind": 30009,
   "tags": [
     ["d", "early-adopter"],
-    ["name", "Adotante Inicial"],
-    ["description", "Entrou antes de 2024"],
+    ["name", "Early Adopter"],
+    ["description", "Joined before 2024"],
     ["image", "https://example.com/badge.png"],
     ["thumb", "https://example.com/badge-thumb.png"]
   ]
 }
 ```
 
-### Concessão de Badge (Kind 8)
+### Prêmio Distintivo (kind 8)
 
-Emissores concedem badges a usuários:
+Os emissores concedem emblemas a um ou mais usuários:
 
 ```json
 {
@@ -45,9 +45,9 @@ Emissores concedem badges a usuários:
 }
 ```
 
-### Exibição de Badge (Kind 30008)
+### Exibição de crachá (kind 30008)
 
-Usuários escolhem quais badges exibir em seu perfil:
+Os usuários escolhem quais emblemas exibir em seus perfis:
 
 ```json
 {
@@ -60,21 +60,40 @@ Usuários escolhem quais badges exibir em seu perfil:
 }
 ```
 
-## Casos de Uso
+Em um evento de crachás de perfil, os clientes deverão ler `a` e `e` tags como pares ordenados. Um `a` tag sem seu evento de premiação correspondente, ou um `e` tag sem sua definição de crachá correspondente, deve ser ignorado.
 
-- **Associação a Comunidade**: Provar associação a grupos ou comunidades
-- **Conquistas**: Reconhecer contribuições ou marcos
-- **Verificação**: Atestações de terceiros (funcionário, criador, etc.)
-- **Controle de Acesso**: Restringir conteúdo ou recursos baseado em posse de badge
+## Casos de uso
 
-## Modelo de Confiança
+- **Associação à comunidade**: mostre a associação em grupos ou comunidades
+- **Conquistas**: reconheça contribuições ou marcos
+- **Atestados**: permita que um terceiro ateste uma função ou status
+- **Controle de acesso**: recursos de portão ou espaços usando crachás apoiados pelo emissor
 
-O valor da badge depende inteiramente da reputação do emissor. Qualquer um pode criar badges, então clientes devem:
-- Exibir informações do emissor de forma proeminente
-- Permitir que usuários filtrem por emissores confiáveis
-- Não tratar badges como autoritativas sem contexto
+## Modelo de confiança
 
-## Relacionados
+O valor do selo depende inteiramente da reputação do emissor. Qualquer pessoa pode criar crachás, portanto os clientes devem:
 
-- [NIP-51](/pt/topics/nip-51/) - Listas
+- Exibir informações do emissor com destaque
+- Permitir que os usuários filtrem por emissores confiáveis
+- Não tratar os emblemas como oficiais sem contexto
+
+Os prêmios de distintivo são imutáveis ​​e intransferíveis. Isso torna os crachás adequados para atestados e reconhecimentos, mas não para credenciais portáteis no sentido tokenizado.
+
+## Notas de implementação
+
+As definições de crachás são eventos endereçáveis, de modo que os emissores podem atualizar a arte ou as descrições dos crachás ao longo do tempo, sem alterar o identificador do crachá. O evento de premiação é o registro durável que vincula o destinatário a essa definição em um determinado momento.
+
+Os clientes também têm liberdade na apresentação. A especificação permite explicitamente que eles mostrem menos emblemas do que as listas de usuários e escolham o tamanho da miniatura que se ajusta ao espaço disponível.
+
+---
+
+**Fontes primárias:**
+- [Especificação NIP-58](https://github.com/nostr-protocol/nips/blob/master/58.md)
+
+**Mencionado em:**
+- [Boletim informativo nº 7: Cinco anos de Nostr Januarys](/pt/newsletters/2026-01-28-newsletter/)
+- [Boletim informativo nº 15: Cinco anos de fevereiro de Nostr](/pt/newsletters/2026-03-04-newsletter/)
+
+**Veja também:**
+- [NIP-51: Listas](/pt/topics/nip-51/)
 - [Web of Trust](/pt/topics/web-of-trust/)

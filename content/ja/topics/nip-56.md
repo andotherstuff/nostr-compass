@@ -2,7 +2,7 @@
 title: "NIP-56: 報告"
 date: 2026-02-18
 translationOf: /en/topics/nip-56.md
-translationDate: 2026-02-18
+translationDate: 2026-03-07
 draft: false
 categories:
   - Moderation

@@ -1,6 +1,8 @@
 ---
 title: "NIP-65: Relay List Metadata"
 date: 2026-01-13
+translationOf: /en/topics/nip-65.md
+translationDate: 2026-03-07
 draft: false
 categories:
   - Protocol

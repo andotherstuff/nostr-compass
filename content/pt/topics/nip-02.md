@@ -1,19 +1,19 @@
 ---
-title: "NIP-02: Lista de Seguidos"
+title: 'NIP-02: Seguir Lista'
 date: 2025-12-24
 draft: false
 categories:
-  - Protocol
-  - Social
+- Protocol
+- Social
 translationOf: /en/topics/nip-02.md
-translationDate: 2025-12-26
+translationDate: '2026-03-07'
 ---
 
-NIP-02 define eventos kind 3, que armazenam sua lista de seguidos. Este mecanismo simples alimenta o grafo social que torna os timelines possíveis.
+NIP-02 define eventos kind 3, que armazenam a lista de seguidores de um usuário. Este evento é a entrada básica para feeds iniciais, notificações de resposta e muitas estratégias de seleção de relays.
 
-## Estrutura
+## Como funciona
 
-Um evento kind 3 contém tags `p` listando as pubkeys seguidas:
+Um evento kind 3 contém `p` tags listagem seguida de pubkeys:
 
 ```json
 {
@@ -31,29 +31,33 @@ Um evento kind 3 contém tags `p` listando as pubkeys seguidas:
 }
 ```
 
-Cada tag `p` tem quatro posições: o nome da tag, a pubkey seguida (hex), uma URL de relay opcional como dica, e um "petname" opcional (um apelido local). A dica de relay informa a outros clientes onde encontrar os eventos daquele usuário. O petname permite que você atribua nomes memoráveis aos contatos sem depender dos nomes de exibição declarados por eles.
+Cada `p` tag tem quatro posições: o nome tag, o pubkey seguido (hex), uma dica de URL relay opcional e um "petname" opcional (um apelido local). A dica relay informa aos outros clientes onde encontrar os eventos daquele usuário. O petname permite atribuir nomes memoráveis ​​aos contatos sem depender de seus nomes de exibição autodeclarados.
 
-## Comportamento Substituível
+## Comportamento substituível
 
-O kind 3 está na faixa substituível (0, 3, 10000-19999), então os relays mantêm apenas a versão mais recente por pubkey. Quando você segue alguém novo, seu cliente publica um novo kind 3 completo contendo todos os seus seguidos mais o novo. Isso significa que as listas de seguidos devem ser completas a cada vez; você não pode publicar atualizações incrementais.
+O kind 3 está no intervalo substituível (0, 3, 10000-19999), então relays mantém apenas a versão mais recente por pubkey. Quando você segue alguém novo, seu cliente publica um novo kind 3 completo contendo todos os seus seguidores mais o novo. Isso significa que as listas a seguir devem ser completadas todas as vezes; você não pode publicar atualizações incrementais.
 
-## Construindo Timelines
+## Por que é importante
 
-Para construir um feed inicial, os clientes buscam o kind 3 do usuário, extraem todas as pubkeys das tags `p`, e então assinam eventos kind 1 daqueles autores:
+Para construir um feed inicial, os clientes buscam o kind 3 do usuário, extraem todos os `p` tag pubkeys e, em seguida, assinam os eventos kind 1 desses autores:
 
 ```json
 ["REQ", "home", {"kinds": [1], "authors": ["91cf9...", "14aeb...", "612ae..."], "limit": 50}]
 ```
 
-O relay retorna as notas correspondentes, e o cliente as renderiza. As dicas de relay no kind 3 ajudam os clientes a saber quais relays consultar para cada usuário seguido.
+O relay retorna notas correspondentes e o cliente as renderiza. O dicas de relay no kind 3 ajuda os clientes a saber quais relays consultar para cada usuário seguido.
 
-## Petnames e Identidade
+Este evento é também onde o estado social obsoleto aparece primeiro. Se o kind 3 mais recente de um usuário estiver faltando nos relays que você consulta, o feed dele pode parecer vazio, mesmo que seus seguidores ainda existam em outro lugar. Os clientes que mesclam resultados de vários relays geralmente se recuperam melhor do que os clientes que confiam em um único relay.
 
-O campo petname permite um esquema de nomenclatura descentralizado. Em vez de confiar em qualquer nome que um usuário declare em seu perfil, você pode atribuir seu próprio rótulo. Um cliente pode exibir "alice (Minha Irmã)" onde "alice" vem do perfil kind 0 dela e "Minha Irmã" é seu petname. Isso fornece contexto que nomes de usuário globais não podem fornecer.
+## Nomes de animais de estimação e identidade
 
-## Considerações Práticas
+O campo petname permite um esquema de nomenclatura descentralizado. Em vez de confiar no nome que um usuário afirma em seu perfil, você pode atribuir seu próprio rótulo. Um cliente pode exibir "alice (My Sister)", onde "alice" vem de seu perfil kind 0 e "My Sister" é seu nome de animal de estimação. Isso fornece um contexto que os nomes de usuários globais não conseguem.
 
-Como os eventos kind 3 são substituíveis e devem ser completos, os clientes devem preservar tags desconhecidas ao atualizar. Se outro cliente adicionou tags que seu cliente não entende, sobrescrever cegamente perderia esses dados. Adicione novos seguidos em vez de reconstruir do zero.
+## Notas de interoperabilidade
+
+Como os eventos kind 3 são substituíveis e devem ser concluídos, os clientes devem preservar o tags desconhecido durante a atualização. Se outro cliente adicionasse tags que seu cliente não entende, a substituição cega perderia esses dados.
+
+O mesmo cuidado se aplica a dicas de relay e nomes de animais de estimação. Eles são campos opcionais, mas descartá-los durante a gravação pode piorar silenciosamente a experiência de outro cliente. Um caminho de atualização seguro é: carregar o kind 3 mais recente conhecido, modificar apenas o tags que você entende, manter o restante e republicar o evento completo.
 
 ---
 
@@ -61,7 +65,9 @@ Como os eventos kind 3 são substituíveis e devem ser completos, os clientes de
 - [Especificação NIP-02](https://github.com/nostr-protocol/nips/blob/master/02.md)
 
 **Mencionado em:**
-- [Newsletter #2: Análise Profunda de NIP](/pt/newsletters/2025-12-24-newsletter/#nip-02-follow-list)
+- [Boletim informativo nº 2: Aprofundamento do NIP](/pt/newsletters/2025-12-24-newsletter/#nip-02-follow-list)
 
 **Veja também:**
 - [NIP-01: Protocolo Básico](/pt/topics/nip-01/)
+- [NIP-10: Threading de notas de texto](/pt/topics/nip-10/)
+- [NIP-65: Metadados da Lista de Relays](/pt/topics/nip-65/)

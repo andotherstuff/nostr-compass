@@ -2,7 +2,7 @@
 title: "Quartz"
 date: 2025-12-31
 translationOf: /en/topics/quartz.md
-translationDate: 2025-12-31
+translationDate: 2026-03-07
 draft: false
 categories:
   - ライブラリ

@@ -1,39 +1,51 @@
 ---
 title: "NIP-47: Nostr Wallet Connect"
 date: 2025-12-17
+translationOf: /en/topics/nip-47.md
+translationDate: 2026-03-07
 draft: false
 categories:
   - Wallet
   - Lightning
 ---
 
-NIP-47はNostrアプリケーションをLightningウォレットに接続するためのプロトコルを定義し、すべてのアプリにウォレット認証情報を公開することなく支払いを可能にします。
+NIP-47はNostr Wallet Connectを定義し、Nostr appがwalletの主要credentialを各clientへ渡さずに、remote Lightning wallet serviceと通信できるようにします。
 
 ## 仕組み
 
-ウォレット（Zeusなど）は特定のNostrリレーで支払いリクエストをリッスンするNWCサービスを実行します。アプリはウォレットのpubkeyとリレー情報を含む接続文字列を使用して接続します。支払いリクエストと応答はアプリとウォレット間で暗号化されます。
+wallet serviceは、対応するmethodとencryption modeを記述したreplaceableなkind `13194` info eventを公開します。clientは、wallet service pubkey、1つ以上のrelay、接続専用secretを含む`nostr+walletconnect://` URIで接続します。requestはkind `23194` eventとして送られ、responseはkind `23195` eventで返ります。
+
+## CommandsとNotifications
+
+よく使われるmethodには`pay_invoice`、`pay_keysend`、`make_invoice`、`lookup_invoice`、`list_transactions`、`get_balance`、`get_info`があります。wallet serviceは`payment_received`、`payment_sent`、`hold_invoice_accepted`のようなnotificationもpushできます。
+
+仕様には以前、いくつかのoptional methodが増えていましたが、最近の整理で`multi_` payment methodは削除されました。実運用では、walletのinfo eventでadvertiseされたcommandだけを使うほうが相互運用しやすく、広いmethod setを前提にしないほうが安全です。
 
 ## ユースケース
 
-- **Zapping** - 投稿、プロフィール、コンテンツクリエイターにsatsを送信
-- **支払い** - どのNostrアプリからでもLightning請求書を支払い
-- **サブスクリプション** - プレミアムコンテンツへの定期的な支払い
+- **Zapping** - 投稿、profile、creatorにsatsを送る
+- **Payments** - どのNostr appからでもLightning invoiceを支払う
+- **Wallet UX separation** - 1つのwallet serviceを複数のNostr clientで使う
 
-## 主な機能
+## セキュリティと相互運用メモ
 
-- **バジェット制御** - 接続ごとに支出制限を設定
-- **カスタムリレー** - ウォレット通信に独自のリレーを使用
-- **並列支払い** - バッチ操作のために複数のzapを同時に処理
+接続URIには、clientが署名と暗号化に使う専用secretが含まれます。これによりappごとに別のwallet identityを持てるため、revokeしやすく、privacy面でも有利です。walletはspending上限を設けたり、methodを無効化したり、ある1つのconnectionだけを取り消したりできます。
+
+現在はNIP-44が推奨encryption modeです。ただし仕様には旧実装向けのNIP-04 fallbackも残っているため、clientはwalletの`encryption` tagを見て判断する必要があります。すべてのwalletが移行済みだと決め打ちするべきではありません。
 
 ---
 
 **主要ソース:**
-- [NIP-47仕様](https://github.com/nostr-protocol/nips/blob/master/47.md)
+- [NIP-47 Specification](https://github.com/nostr-protocol/nips/blob/master/47.md)
+- [PR #1913: Hold Invoice Support](https://github.com/nostr-protocol/nips/pull/1913)
+- [PR #2210: Simplification](https://github.com/nostr-protocol/nips/pull/2210)
 
 **言及箇所:**
-- [ニュースレター #1: ニュース](/ja/newsletters/2025-12-17-newsletter/#news)
-- [ニュースレター #2: リリース](/ja/newsletters/2025-12-24-newsletter/#releases)
+- [Newsletter #1: News](/en/newsletters/2025-12-17-newsletter/#news)
+- [Newsletter #2: Releases](/en/newsletters/2025-12-24-newsletter/#releases)
+- [Newsletter #3: December Recap](/en/newsletters/2025-12-31-newsletter/#december-recap-five-years-of-nostr-decembers)
+- [Newsletter #8: NIP Deep Dive](/en/newsletters/2026-02-04-newsletter/#nip-deep-dive-nip-47-nostr-wallet-connect)
+- [Newsletter #10: NIP Updates](/en/newsletters/2026-02-18-newsletter/#nip-updates)
 
 **関連項目:**
 - [NIP-57: Zaps](/ja/topics/nip-57/)
-

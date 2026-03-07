@@ -1,59 +1,62 @@
 ---
-title: "NIP-45: Contagem de Eventos"
+title: 'NIP-45: Contagem de Eventos'
 date: 2026-02-11
-translationOf: /en/topics/nip-45.md
-translationDate: 2026-02-12
 draft: false
 categories:
-  - NIPs
-  - Protocol
+- NIPs
+- Protocol
+translationOf: /en/topics/nip-45.md
+translationDate: '2026-03-07'
 ---
 
-NIP-45 define como aplicações pedem a relays a contagem de eventos que correspondem a um filtro sem transferir os eventos em si. A aplicação envia mensagem COUNT com a mesma sintaxe de filtro que REQ, e o relay responde com a contagem.
+O NIP-45 define como os clientes pedem ao relays para contar os eventos que correspondem a um filtro sem transferir eles próprios os eventos correspondentes. Ele reutiliza a sintaxe do filtro NIP-01, para que um cliente muitas vezes possa transformar uma solicitação `REQ` existente em uma solicitação `COUNT` com os mesmos filtros.
 
-## Como Funciona
+## Como funciona
 
-A aplicação envia requisição COUNT com ID de subscrição e filtro:
+Um cliente envia uma solicitação `COUNT` com um ID de assinatura e filtro:
 
 ```json
 ["COUNT", "<subscription_id>", {"kinds": [7], "#e": ["<event_id>"]}]
 ```
 
-O relay responde com a contagem:
+O relay responde com uma contagem:
 
 ```json
 ["COUNT", "<subscription_id>", {"count": 238}]
 ```
 
-Isso evita baixar centenas ou milhares de eventos apenas para exibir um número.
+Isso evita o download de centenas ou milhares de eventos apenas para exibir um número. Se um cliente enviar vários filtros em uma solicitação `COUNT`, o relay os agregará em um único resultado, assim como vários filtros `REQ` são submetidos a operação OR juntos.
 
-## Contagem Aproximada HyperLogLog
+## Contagem aproximada do HyperLogLog
 
-Em fevereiro de 2026, NIP-45 passou a suportar contagem aproximada HyperLogLog (HLL) ([PR #1561](https://github.com/nostr-protocol/nips/pull/1561)). Relays podem retornar valores de registros HLL de 256 bytes junto com respostas COUNT:
+A partir de fevereiro de 2026, o NIP-45 oferece suporte à contagem aproximada do HyperLogLog (HLL) ([PR #1561](https://github.com/nostr-protocol/nips/pull/1561)). Os relays podem marcar um resultado como aproximado e, para desduplicação cruzada relay, eles podem retornar 256 registros HLL junto com a contagem:
 
 ```json
-["COUNT", "<subscription_id>", {"count": 4527, "hll": "<base64 encoded 256 bytes>"}]
+["COUNT", "<subscription_id>", {"count": 4527, "hll": "<512-char hex string>"}]
 ```
 
-HLL resolve problema fundamental: contar eventos distintos em múltiplos relays. Se o relay A reporta 50 reações e o relay B reporta 40, o total não é 90 porque muitos eventos existem em ambos os relays. Registros HLL de múltiplos relays podem ser mergeados tomando o valor máximo em cada posição de registro, deduplicando automaticamente pela rede.
+A HLL resolve um problema fundamental: contar eventos distintos em vários relays. Se relay A relatar 50 reações e relay B relatar 40, o total não será 90 porque existem muitos eventos em ambos relays. Os clientes mesclam os valores HLL obtendo o valor máximo em cada posição de registro, o que fornece uma estimativa para toda a rede sem baixar os eventos brutos.
 
-Com 256 registros, o erro padrão é aproximadamente 5,2%. Correções HyperLogLog++ melhoram a precisão em cardinalidades pequenas abaixo de ~200 eventos. Até dois eventos de reação consomem mais largura de banda que o payload HLL de 256 bytes, tornando isso eficiente em qualquer contagem acima de números triviais.
+A especificação fixa a contagem de registros em 256 para interoperabilidade. Isso mantém o payload pequeno e torna o cache do lado relay prático porque cada relay calcula o mesmo layout de registro para o mesmo filtro elegível.
 
-A spec fixa a quantidade de registros em 256 por interoperabilidade entre todas as implementações de relay.
+## Notas de interoperabilidade
 
-## Casos de Uso
+HLL é definido apenas para filtros com atributo tag, pois o deslocamento usado para construir os registros é derivado do primeiro valor marcado no filtro. A especificação também apresenta um pequeno conjunto de consultas canônicas, incluindo reações, republicações, citações, respostas, comentários e contagens de seguidores. Essas são as contagens mais fáceis para relays pré-calcular ou armazenar em cache.
 
-Métricas sociais (contagens de seguidores, reações, reposts) são a aplicação principal. Sem HLL, a opção é consultar relay único "confiável" (centralizando os dados) ou baixar todos os eventos de todos os relays e deduplicar localmente (desperdiçando largura de banda). HLL fornece contagens cross-relay aproximadas com 256 bytes de overhead por relay.
+## Por que é importante
+
+Contagens de seguidores, contagens de reações e contagens de respostas são os principais casos de uso. Sem o NIP-45, os clientes devem confiar na visualização local de uma única relay ou baixar todos os eventos correspondentes e desduplicá-los localmente. O NIP-45 continua contando dentro do relay, e a HLL torna práticas as contagens multi-relay sem transformar um relay na autoridade.
 
 ---
 
 **Fontes primárias:**
-- [NIP-45: Event Counting](https://github.com/nostr-protocol/nips/blob/master/45.md)
-- [PR #1561: HyperLogLog Relay Response](https://github.com/nostr-protocol/nips/pull/1561)
+- [NIP-45: Contagem de Eventos](https://github.com/nostr-protocol/nips/blob/master/45.md)
+- [PR #1561: Resposta de relay do HyperLogLog](https://github.com/nostr-protocol/nips/pull/1561)
 
 **Mencionado em:**
-- [Newsletter #9: Deep Dive de NIP](/pt/newsletters/2026-02-11-newsletter/#deep-dive-de-nip-nip-45-contagem-de-eventos-e-hyperloglog)
-- [Newsletter #9: Atualizações de NIPs](/pt/newsletters/2026-02-11-newsletter/#atualizações-de-nips)
+- [Boletim informativo nº 9: Aprofundamento do NIP](/pt/newsletters/2026-02-11-newsletter/#nip-deep-dive-nip-45-event-counting-and-hyperloglog)
+- [Boletim informativo nº 9: Atualizações do NIP](/pt/newsletters/2026-02-11-newsletter/#nip-updates)
+- [Boletim informativo nº 12: Cinco anos de fevereiro de Nostr](/pt/newsletters/2026-03-04-newsletter/)
 
 **Veja também:**
-- [NIP-11: Documento de Informação de Relay](/pt/topics/nip-11/)
+- [NIP-11: Documento de Informações do Relay](/pt/topics/nip-11/)

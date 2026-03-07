@@ -2,46 +2,57 @@
 title: "NIP-04: 暗号化ダイレクトメッセージ（非推奨）"
 date: 2025-12-31
 translationOf: /en/topics/nip-04.md
-translationDate: 2025-12-31
+translationDate: 2026-03-07
 draft: false
 categories:
-  - プライバシー
-  - メッセージング
+  - Privacy
+  - Messaging
 ---
 
-NIP-04はAES-256-CBC暗号化を使用した暗号化ダイレクトメッセージを定義しています。Nostrにおけるプライベートメッセージングの元々の方法でしたが、重大なプライバシー上の制限のためNIP-17に置き換えられ、非推奨となりました。
+NIP-04は、kind 4 eventとECDH由来のshared secretを使う暗号化ダイレクトメッセージを定義します。これはNostr最初のDM方式でしたが、いまはlegacy technologyであり、新しいprivate messagingの作業はNIP-17へ移っています。
 
 ## 仕組み
 
-メッセージはkind 4イベントを使用し、以下の暗号化スキームを採用しています：
-1. 受信者の公開鍵と送信者の秘密鍵を使用したECDHで共有シークレットを生成
-2. メッセージをAES-256-CBCで暗号化
-3. 暗号文を初期化ベクトルを付加してbase64エンコード
-4. `p`タグで受信者の公開鍵を識別
+メッセージはkind 4 eventを使い、基本の流れは次のとおりです。
 
-## セキュリティ上の制限
+1. 送信者がsecp256k1 ECDHでshared secretを導出する。
+2. plaintextをAES-256-CBCで暗号化する。
+3. eventに受信者を示す`p` tagを入れる。
+4. ciphertextをbase64でencodeし、IVと一緒に`content`へ格納する。
 
-NIP-04には重大なプライバシー上の欠陥があります：
+event自体は通常の署名済みNostr eventのままなので、relayはplaintextを読めなくても外側のmetadataは見えます。
 
-- **メタデータの漏洩** - 送信者のpubkeyがすべてのメッセージで公開される
-- **送信者のプライバシーがない** - 誰が誰にメッセージを送っているか誰でも見られる
-- **正確なタイムスタンプ** - メッセージのタイミングがランダム化されていない
-- **非標準的な実装** - 標準的なSHA256ハッシュではなく、ECDHポイントのX座標のみを使用
+## Security and Privacy Limits
 
-仕様書は「暗号化通信の最先端には程遠い」と明確に警告しています。
+NIP-04には大きなprivacy上の弱点があります。
 
-## 非推奨ステータス
+- **Metadata leakage** - 送信者のpubkeyがすべてのメッセージで公開される
+- **No sender privacy** - 誰が誰にメッセージを送っているかが見える
+- **Exact timestamps** - メッセージ時刻がランダム化されない
+- **Non-standard key handling** - この方式はECDH pointのX coordinateだけを使うため、library間で正しく実装し続けるのが難しく、protocol evolutionの余地も小さい
 
-NIP-04はNIP-17に置き換えられ非推奨となりました。NIP-17はNIP-59のギフトラッピングを使用して送信者の身元を隠します。新しい実装ではプライベートメッセージングにNIP-17を使用すべきです。
+仕様自体も、これは"does not go anywhere near the state-of-the-art in encrypted communication"だと明記しています。
+
+## なぜ置き換えられたか
+
+NIP-04はメッセージ内容は暗号化しますが、social graphは隠しません。relay operatorは、誰がeventを送ったか、誰が受け取るか、いつ公開されたかを見られます。payloadを復号しなくても、これだけで会話の構造を把握できます。
+
+NIP-17は、NIP-44のpayload encryptionとNIP-59のgift wrappingを組み合わせることで、relayや無関係な観測者から送信者を隠します。新しい実装では、NIP-04は互換性維持専用として扱うべきです。
+
+## Implementation Status
+
+古い会話と旧世代appがまだ流通しているため、legacy clientやsignerの多くは今でもNIP-04のencrypt/decrypt methodを公開しています。この互換層は移行のために必要ですが、新機能をkind 4 eventの上に作ると、古いprivacy制約をそのまま引きずることになります。
 
 ---
 
-**主要な情報源:**
-- [NIP-04仕様](https://github.com/nostr-protocol/nips/blob/master/04.md)
+**主要ソース:**
+- [NIP-04 Specification](https://github.com/nostr-protocol/nips/blob/master/04.md)
 
-**関連記事:**
-- [Newsletter #3: 12月の振り返り](/ja/newsletters/2025-12-31-newsletter/#december-recap-five-years-of-nostr-decembers)
+**言及箇所:**
+- [Newsletter #4: NIP Deep Dive](/en/newsletters/2026-01-07-newsletter/#nip-04-encrypted-direct-messages-legacy)
+- [Newsletter #3: December Recap](/en/newsletters/2025-12-31-newsletter/#december-recap-five-years-of-nostr-decembers)
 
 **関連項目:**
-- [NIP-17: プライベートダイレクトメッセージ](/ja/topics/nip-17/)
+- [NIP-44: Encrypted Payloads](/ja/topics/nip-44/)
+- [NIP-17: Private Direct Messages](/ja/topics/nip-17/)
 - [NIP-59: Gift Wrap](/ja/topics/nip-59/)

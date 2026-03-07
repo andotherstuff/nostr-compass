@@ -2,7 +2,7 @@
 title: "NIP-58: Insignias"
 date: 2026-01-28
 translationOf: /en/topics/nip-58.md
-translationDate: 2026-01-28
+translationDate: 2026-03-07
 draft: false
 categories:
   - NIP
@@ -10,11 +10,11 @@ categories:
   - Reputation
 ---
 
-NIP-58 define un sistema de insignias para Nostr, permitiendo a emisores crear insignias y otorgarlas a usuarios quienes pueden luego mostrarlas en sus perfiles.
+NIP-58 define un sistema de insignias para Nostr. Un evento define la insignia, otro la otorga, y un tercero permite al destinatario elegir si la muestra en su perfil.
 
-## Cómo Funciona
+## Cómo funciona
 
-### Definición de Insignia (Kind 30009)
+### Definición de insignia (Kind 30009)
 
 Los emisores crean definiciones de insignias como eventos direccionables:
 
@@ -23,17 +23,17 @@ Los emisores crean definiciones de insignias como eventos direccionables:
   "kind": 30009,
   "tags": [
     ["d", "early-adopter"],
-    ["name", "Adoptante Temprano"],
-    ["description", "Se unió antes de 2024"],
+    ["name", "Early Adopter"],
+    ["description", "Joined before 2024"],
     ["image", "https://example.com/badge.png"],
     ["thumb", "https://example.com/badge-thumb.png"]
   ]
 }
 ```
 
-### Otorgamiento de Insignia (Kind 8)
+### Otorgamiento de insignia (Kind 8)
 
-Los emisores otorgan insignias a usuarios:
+Los emisores otorgan insignias a uno o más usuarios:
 
 ```json
 {
@@ -45,7 +45,7 @@ Los emisores otorgan insignias a usuarios:
 }
 ```
 
-### Visualización de Insignia (Kind 30008)
+### Visualización de insignia (Kind 30008)
 
 Los usuarios eligen qué insignias mostrar en su perfil:
 
@@ -60,21 +60,40 @@ Los usuarios eligen qué insignias mostrar en su perfil:
 }
 ```
 
-## Casos de Uso
+En un evento de insignias de perfil, los clientes deben leer las etiquetas `a` y `e` como pares ordenados. Una etiqueta `a` sin su evento de otorgamiento correspondiente, o una etiqueta `e` sin su definición de insignia correspondiente, debe ser ignorada.
 
-- **Membresía de comunidad**: Probar membresía en grupos o comunidades
+## Casos de uso
+
+- **Membresía de comunidad**: Demostrar membresía en grupos o comunidades
 - **Logros**: Reconocer contribuciones o hitos
-- **Verificación**: Atestaciones de terceros (empleado, creador, etc.)
-- **Control de acceso**: Restringir contenido o funciones basado en posesión de insignia
+- **Atestaciones**: Permitir que un tercero avale un rol o estado
+- **Control de acceso**: Restringir funciones o espacios usando insignias respaldadas por el emisor
 
-## Modelo de Confianza
+## Modelo de confianza
 
-El valor de la insignia depende completamente de la reputación del emisor. Cualquiera puede crear insignias, por lo que los clientes deben:
-- Mostrar información del emisor prominentemente
-- Permitir a usuarios filtrar por emisores confiables
-- No tratar insignias como autoritativas sin contexto
+El valor de una insignia depende completamente de la reputación del emisor. Cualquiera puede crear insignias, así que los clientes deben:
 
-## Relacionado
+- Mostrar la información del emisor de manera prominente
+- Permitir a los usuarios filtrar por emisores confiables
+- No tratar las insignias como autoritativas sin contexto
 
-- [NIP-51](/es/topics/nip-51/) - Listas
-- [Web de Confianza](/es/topics/web-of-trust/)
+Los otorgamientos de insignias son inmutables y no transferibles. Eso hace a las insignias adecuadas para atestaciones y reconocimientos, pero no para credenciales portátiles en el sentido tokenizado.
+
+## Notas de implementación
+
+Las definiciones de insignias son eventos direccionables, así que los emisores pueden actualizar el arte o las descripciones de la insignia con el tiempo sin cambiar el identificador de la insignia. El evento de otorgamiento es el registro durable que vincula a un destinatario con esa definición en un momento dado.
+
+Los clientes también tienen libertad en la presentación. La especificación permite explícitamente que muestren menos insignias de las que un usuario lista y que elijan el tamaño de miniatura que se ajuste al espacio disponible.
+
+---
+
+**Fuentes primarias:**
+- [Especificación NIP-58](https://github.com/nostr-protocol/nips/blob/master/58.md)
+
+**Mencionado en:**
+- [Boletín #7: Cinco años de eneros en Nostr](/en/newsletters/2026-01-28-newsletter/)
+- [Boletín #15: Cinco años de febreros en Nostr](/en/newsletters/2026-03-04-newsletter/)
+
+**Ver también:**
+- [NIP-51: Listas](/es/topics/nip-51/)
+- [Web of Trust](/es/topics/web-of-trust/)

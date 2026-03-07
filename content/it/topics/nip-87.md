@@ -1,28 +1,29 @@
 ---
-title: "NIP-87: Scoperta dei Mint Ecash"
+title: "NIP-87: Ecash Mint Discoverability"
 date: 2026-01-07
+translationOf: /en/topics/nip-87/
+translationDate: 2026-03-07
 draft: false
 categories:
   - Ecash
   - Discovery
   - Protocol
 ---
+NIP-87 definisce come gli ecash mint (Cashu e Fedimint) possono annunciarsi su Nostr e come gli utenti possono raccomandare mint ad altri utenti.
 
-NIP-87 definisce come i mint ecash (Cashu e Fedimint) possono annunciarsi su Nostr, e come gli utenti possono raccomandare mint ad altri.
+## Tipi di evento
 
-## Tipi di Evento
-
-- **kind 38172** - Annuncio mint Cashu (pubblicato dagli operatori del mint)
+- **kind 38172** - Annuncio di mint Cashu (pubblicato dagli operatori del mint)
 - **kind 38173** - Annuncio Fedimint (pubblicato dagli operatori del mint)
-- **kind 38000** - Raccomandazione mint (pubblicata dagli utenti)
+- **kind 38000** - Raccomandazione di mint (pubblicata dagli utenti)
 
-## Come Funziona
+## Come funziona
 
-1. **Gli operatori del mint** pubblicano l'URL del loro mint, le funzionalità supportate e la rete (mainnet/testnet)
+1. **Gli operatori del mint** pubblicano l'URL del loro mint, le feature supportate e la rete (mainnet/testnet)
 2. **Gli utenti** che si fidano di un mint pubblicano raccomandazioni con recensioni opzionali
-3. **Altri utenti** cercano raccomandazioni dalle persone che seguono per scoprire mint fidati
+3. **Altri utenti** interrogano le raccomandazioni di persone che seguono per scoprire mint affidabili
 
-## Annuncio Mint Cashu
+## Annuncio di mint Cashu
 
 ```json
 {
@@ -41,9 +42,11 @@ NIP-87 definisce come i mint ecash (Cashu e Fedimint) possono annunciarsi su Nos
 }
 ```
 
-Il tag `nuts` elenca i NUT supportati (Notation, Usage, and Terminology - specifiche per Cashu).
+Il tag `nuts` elenca i NUT supportati (Notation, Usage, and Terminology specs per Cashu).
 
-## Raccomandazioni degli Utenti
+Il tag `d` dovrebbe essere la pubkey Cashu del mint, che dà ai client un identificatore stabile per la discoverability anche se il mint in seguito cambia metadata o ripubblica il proprio annuncio.
+
+## Raccomandazioni degli utenti
 
 ```json
 {
@@ -56,20 +59,34 @@ Il tag `nuts` elenca i NUT supportati (Notation, Usage, and Terminology - specif
     ["d", "<mint-identifier>"],
     ["a", "38172:mint-pubkey:<d-tag>", "wss://relay"]
   ],
-  "content": "Ho usato questo mint per mesi, molto affidabile",
+  "content": "I've used this mint for months, very reliable",
   "sig": "<signature>"
 }
 ```
 
-Gli utenti possono includere recensioni nel campo `content` e puntare a eventi di annuncio mint specifici.
+Gli utenti possono includere recensioni nel campo `content` e puntare a specifici eventi di annuncio del mint.
+
+Gli eventi di raccomandazione sono parameterized replaceable events. Questo è utile perché un utente può rivedere una raccomandazione, aggiornare il testo della recensione o smettere di sostenere un mint senza lasciare dietro di sé diversi eventi di raccomandazione obsoleti.
+
+## Modello di trust
+
+NIP-87 non dice ai client quale mint sia sicuro. Fornisce loro un modo per combinare metadata pubblicati dagli operatori con raccomandazioni sociali provenienti da account di cui l'utente si fida già.
+
+Questa distinzione conta perché le query dirette degli eventi di annuncio del mint possono essere rumorose o malevole. La specifica avverte esplicitamente i client di usare misure anti-spam o relay di alta qualità quando aggirano le raccomandazioni sociali e interrogano direttamente gli annunci.
+
+## Note di interoperabilità
+
+Cashu e Fedimint usano kind di annuncio diversi perché espongono dettagli di connessione diversi. Gli annunci Cashu pubblicano URL del mint e NUT supportati, mentre gli annunci Fedimint pubblicano codici di invito e moduli federation supportati. Un wallet che supporta entrambi deve fare il parse di entrambi i formati.
 
 ---
 
-**Fonti primarie:**
-- [Specifica NIP-87](https://github.com/nostr-protocol/nips/blob/master/87.md)
+**Fonti principali:**
+- [NIP-87 Specification](https://github.com/nostr-protocol/nips/blob/master/87.md)
 
 **Menzionato in:**
-- [Newsletter #4: Rilasci](/it/newsletters/2026-01-07-newsletter/#rilasci)
+- [Newsletter #4: Releases](/en/newsletters/2026-01-07-newsletter/#releases)
+- [Newsletter #7: Zeus](/en/newsletters/2026-01-28-newsletter/)
 
 **Vedi anche:**
-- [NIP-60: Wallet Cashu](/it/topics/nip-60/)
+- [Cashu](/it/topics/cashu/)
+- [NIP-60: Cashu Wallet](/it/topics/nip-60/)

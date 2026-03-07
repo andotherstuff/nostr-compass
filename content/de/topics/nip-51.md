@@ -1,54 +1,62 @@
 ---
 title: "NIP-51: Listen"
 date: 2025-12-17
+translationDate: 2026-03-07
 draft: false
 categories:
   - Protocol
   - Social
 ---
 
-NIP-51 definiert verschiedene Listentypen zum Organisieren von Verweisen auf Events, Benutzer und Inhalte in Nostr.
+NIP-51 definiert Listen-Events zum Organisieren von Benutzern, Events, Relays, Hashtags und anderen Referenzen. Es ist das wichtigste Protokoll fur Lesezeichen, Stummschaltlisten, Follow-Sets, Relay-Sets und mehrere andere vom Nutzer kuratierte Sammlungen.
 
-## Listen-Kinds
+## Standardlisten und Sets
 
-- **Kind 10000**: Stummschaltliste (Benutzer, Threads oder Wörter zum Ausblenden)
-- **Kind 10001**: Pin-Liste (Events, die im Profil hervorgehoben werden)
-- **Kind 30000**: Follow-Sets (kategorisierte Folgelisten)
-- **Kind 30003**: Lesezeichen-Sets
-- **Kind 30004**: Kuratierungs-Sets (Artikel)
-- **Kind 30005**: Video-Sets
-- **Kind 30006**: Bilder-Sets
-- **Kind 30015**: Interessen-Sets (Hashtags)
-- **Kind 30030**: Emoji-Sets
+- **Standardlisten** verwenden ersetzbare Event-Kinds wie Kind `10000` fur Stummschaltlisten, Kind `10003` fur Lesezeichen und Kind `10007` fur Search Relays.
+- **Sets** verwenden adressierbare Kinds mit `d`-Tags, etwa Kind `30000` fur Follow-Sets, Kind `30003` fur Bookmark-Sets und Kind `30030` fur Emoji-Sets.
+
+Diese Unterscheidung ist fur das Verhalten von Clients wichtig. Standardlisten implizieren eine kanonische Liste pro Nutzer und Kind. Sets implizieren viele benannte Sammlungen, deshalb mussen Clients das `d`-Tag jeder Liste erhalten.
 
 ## Struktur
 
-Listen verwenden Tags zum Verweisen auf Inhalte:
-- `p`-Tags für Pubkeys
-- `e`-Tags für Events
-- `a`-Tags für adressierbare Events
-- `t`-Tags für Hashtags
-- `word`-Tags für stummgeschaltete Wörter
+Listen verwenden Tags, um Inhalte zu referenzieren:
 
-## Öffentlich vs. Privat
+- `p`-Tags fur Pubkeys
+- `e`-Tags fur Events
+- `a`-Tags fur adressierbare Events
+- `t`-Tags fur Hashtags
+- `word`-Tags fur stummgeschaltete Worter
+- `relay`-Tags fur Relay-URLs in relay-orientierten List-Kinds
 
-Listen können öffentliche Tags (für jeden sichtbar) und verschlüsselten Inhalt (privat) haben. Private Elemente werden mit NIP-44 verschlüsselt und im `content`-Feld des Events gespeichert. Die Verschlüsselung verwendet die eigenen Schlüssel des Autors (Verschlüsselung an sich selbst).
+Einige List-Kinds erlauben engere Tag-Formen als andere. Relay-orientierte Listen verwenden zum Beispiel `relay`-Tags, wahrend Lesezeichen auf Notizen oder adressierbare Events zeigen sollen. Clients, die jede NIP-51-Liste als beliebige Sammlung freier Tags behandeln, verlieren Interoperabilitat.
 
-Dies ermöglicht Funktionen wie öffentliche Lesezeichen mit privaten Notizen oder eine Stummschaltliste, bei der stummgeschaltete Elemente vor anderen verborgen sind.
+## Offentlich vs. privat
 
-## Aktuelle Änderungen
+Listen konnen offentliche Tags und private Eintrage enthalten. Private Eintrage werden als JSON-Array serialisiert, das die Struktur von `tags` spiegelt, verschlusselt und im Event-`content` gespeichert. Die aktuelle Spezifikation verwendet fur dieses Self-Encryption-Modell NIP-44, NIP-04 bleibt nur als Legacy-Kompatibilitat.
 
-- Hashtag- und URL-Tags aus allgemeinen Lesezeichen entfernt; Hashtags verwenden jetzt Kind 30015
-- Kind 30006 für kuratierte Bilder-Sets hinzugefügt
+Diese Trennung erlaubt es Nutzern, eine sichtbare Listenhulle zu veroffentlichen und einzelne Eintrage trotzdem zu verbergen. Eine Lesezeichenliste kann offentlich sein, wahrend private Notizen oder private Lesezeichen im verschlusselten Inhalt bleiben.
+
+## Nutzliche Kinds
+
+- **Kind 10000**: Stummschaltliste fur Pubkeys, Threads, Hashtags und stummgeschaltete Worter
+- **Kind 10003**: Lesezeichen fur Notizen und adressierbare Inhalte
+- **Kind 10007**: Bevorzugte Search Relays
+- **Kind 30002**: Relay-Sets fur benannte Relay-Gruppen
+- **Kind 30006**: Picture Curation Sets
+- **Kind 39089**: Starter Packs fur teilbare Follow-Bundles
+
+Jungere Anderungen an der Spezifikation haben Hashtags aus generischen Lesezeichen entfernt und in Interest Sets verschoben. AuBerdem wurde Kind `30006` fur Picture Curation hinzugefugt. Beides verringert Mehrdeutigkeit bei der Interpretation von Listeninhalten durch Clients.
 
 ---
 
-**Primärquellen:**
-- [NIP-51 Spezifikation](https://github.com/nostr-protocol/nips/blob/master/51.md)
+**Primarquellen:**
+- [NIP-51 Specification](https://github.com/nostr-protocol/nips/blob/master/51.md)
 
-**Erwähnt in:**
-- [Newsletter #1: NIP-Updates](/de/newsletters/2025-12-17-newsletter/#nip-updates)
-- [Newsletter #2: NIP-Updates](/de/newsletters/2025-12-24-newsletter/#nip-updates)
+**Erwahnt in:**
+- [Newsletter #1: NIP Updates](/en/newsletters/2025-12-17-newsletter/#nip-updates)
+- [Newsletter #2: NIP Updates](/en/newsletters/2025-12-24-newsletter/#nip-updates)
+- [Newsletter #4: NIP Deep Dive](/en/newsletters/2026-01-13-newsletter/#nip-deep-dive-nip-51-and-nip-65)
+- [Newsletter #8: njump Adds NIP-51 Support](/en/newsletters/2026-02-04-newsletter/#njump)
 
 **Siehe auch:**
-- [NIP-02: Folgeliste](/de/topics/nip-02/)
+- [NIP-02: Follow List](/de/topics/nip-02/)

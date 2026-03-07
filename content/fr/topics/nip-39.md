@@ -2,41 +2,50 @@
 title: "NIP-39 : Identités externes dans les profils"
 date: 2026-02-11
 translationOf: /en/topics/nip-39.md
-translationDate: 2026-02-12
+translationDate: 2026-03-07
 draft: false
 categories:
   - NIPs
   - Identity
 ---
 
-NIP-39 définit comment les utilisateurs attachent des revendications d'identité externes à leurs profils Nostr en utilisant des tags `i`. Ces tags lient une pubkey Nostr à des comptes sur des plateformes externes comme GitHub, Twitter ou des domaines DNS.
+NIP-39 définit comment les utilisateurs attachent des revendications d'identité externe à leurs profils Nostr en utilisant des tags `i`. Ces tags lient une pubkey Nostr à des comptes sur des plateformes externes comme GitHub, Twitter, Mastodon ou Telegram.
 
 ## Fonctionnement
 
-Chaque revendication d'identité prend la forme d'un tag `i` contenant un identifiant de plateforme et une URL de preuve. Le compte externe renvoie vers la pubkey Nostr, établissant une vérification bidirectionnelle :
+Les utilisateurs publient des revendications d'identité dans des événements kind 10011 sous forme de tags `i`. Chaque tag contient une valeur `plateforme:identité` ainsi qu'un pointeur de preuve permettant au client de vérifier la revendication :
 
 ```json
 {
+  "kind": 10011,
   "tags": [
-    ["i", "github:username", "https://gist.github.com/username/proof"],
-    ["i", "twitter:handle", "https://twitter.com/handle/status/proof_tweet_id"]
+    ["i", "github:username", "gist-id"],
+    ["i", "twitter:handle", "tweet-id"]
   ]
 }
 ```
 
-Pour vérifier une revendication, un client récupère l'URL de preuve et confirme qu'elle contient la pubkey Nostr de l'utilisateur. Ce mécanisme crée un réseau de connexions d'identité sans nécessiter de services de vérification centralisés.
+Les clients reconstituent l'URL de preuve à partir de la plateforme et de la valeur de preuve, puis vérifient que la publication externe contient le `npub` de l'utilisateur. Cela rend la revendication portable entre clients sans nécessiter de vérificateur central.
 
-## Changements récents
+## Modèle de preuve
 
-En février 2026, la [PR #2216](https://github.com/nostr-protocol/nips/pull/2216) a extrait ces tags d'identité des événements kind 0 (métadonnées utilisateur) vers un kind 10011 dédié. Ce déplacement fait partie de la campagne d'allègement du kind 0 de vitorpamplona, motivée par une faible adoption. Presque aucun client n'implémentait la vérification des tags `i`, pourtant chaque récupération de kind 0 transportait cette surcharge. Le nouveau kind 10011 permet aux clients intéressés de récupérer les revendications d'identité séparément.
+Le point important est que NIP-39 prouve le contrôle de deux identités simultanément : la clé Nostr et le compte externe. Si l'un des côtés de cette preuve disparaît, la vérification s'affaiblit. Un gist ou un tweet supprimé n'invalide pas l'événement historique, mais supprime la preuve en direct dont la plupart des clients dépendent.
+
+Un autre point d'implémentation utile concerne la stratégie de récupération. Comme les revendications vivent désormais en dehors du kind 0, les clients peuvent décider de ne les demander que sur les vues de profil détaillées, uniquement pour les utilisateurs suivis, ou pas du tout. Cela évite d'alourdir le chemin déjà très sollicité du kind 0.
+
+## État actuel
+
+Selon la spécification actuelle, les revendications d'identité vivent dans des événements kind 10011 dédiés plutôt que dans les métadonnées kind 0. Cette séparation provient de l'effort plus large visant à alléger les récupérations de profil kind 0.
 
 ---
 
 **Sources principales :**
-- [NIP-39: External Identities in Profiles](https://github.com/nostr-protocol/nips/blob/master/39.md)
+- [NIP-39 : External Identities in Profiles](https://github.com/nostr-protocol/nips/blob/master/39.md)
+- [PR #2216](https://github.com/nostr-protocol/nips/pull/2216) - Extraction des revendications d'identité hors du kind 0
 
 **Mentionné dans :**
-- [Newsletter #9 : Mises à jour des NIP](/fr/newsletters/2026-02-11-newsletter/#mises-à-jour-des-nip)
+- [Newsletter #9 : Mises à jour NIP](/en/newsletters/2026-02-11-newsletter/#nip-updates)
+- [Newsletter #12 : Amethyst](/en/newsletters/2026-03-04-newsletter/#amethyst-nip-39-nip-c0-nip-66)
 
 **Voir aussi :**
-- [NIP-05 : Vérification par domaine DNS](/fr/topics/nip-05/)
+- [NIP-05 : Vérification basée sur DNS](/fr/topics/nip-05/)

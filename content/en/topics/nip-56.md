@@ -7,25 +7,29 @@ categories:
   - Protocol
 ---
 
-NIP-56 defines a reporting mechanism using kind 1984 events, allowing users and applications to flag objectionable content across the Nostr network.
+NIP-56 defines kind `1984` report events. They let users and apps publish moderation signals about accounts, notes, and blobs without requiring a single shared moderation authority.
 
 ## How It Works
 
-A user publishes a kind 1984 event with a `p` tag referencing the pubkey being reported. When reporting a specific note, an `e` tag references the note ID. Both tags accept a third parameter specifying the violation category.
+A report must include a `p` tag for the reported pubkey. If the report is about a specific event, it must also include an `e` tag for that event. The report type appears as the third value in the relevant `p`, `e`, or `x` tag.
 
 ## Report Categories
 
 - **nudity**: adult content
-- **malware**: viruses, trojans, ransomware
+- **malware**: viruses, trojans, ransomware, and similar payloads
 - **profanity**: offensive language and hate speech
 - **illegal**: content potentially violating laws
 - **spam**: unwanted repetitive messages
 - **impersonation**: fraudulent identity claims
 - **other**: violations not fitting above categories
 
-## Client and Relay Behavior
+Blob reports use `x` tags with the blob hash and may include a `server` tag pointing at the hosting endpoint. That makes NIP-56 usable for media moderation, not just notes and profiles.
 
-Clients can use reports from followed users for moderation decisions, such as blurring content when multiple trusted contacts flag it. Relays should avoid automatic moderation via reports due to gaming risks; trusted moderators' reports may inform manual enforcement instead. Additional classification is supported through NIP-32 `l` and `L` tags.
+## Security and Trust Model
+
+Reports are signals, not verdicts. Clients can weight them using social trust, moderation lists, or explicit moderator roles. Relays can read them too, but the spec warns against fully automatic moderation because reports are easy to game.
+
+Additional classification can be added with NIP-32 `l` and `L` tags, which is useful when a client wants a finer moderation vocabulary than the base seven report types.
 
 ---
 

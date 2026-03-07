@@ -1,49 +1,57 @@
 ---
-title: "NIP-42: Autenticazione dei client verso i relay"
+title: "NIP-42: Autenticazione dei client ai relay"
 date: 2026-01-21
 translationOf: /en/topics/nip-42.md
-translationDate: 2026-01-28
+translationDate: 2026-03-07
 draft: false
 categories:
   - NIPs
   - Authentication
 ---
+NIP-42 definisce come i client si autenticano ai relay. I relay possono richiedere autenticazione per fornire controllo di accesso, prevenire abusi o implementare servizi di relay a pagamento.
 
-NIP-42 definisce come i client si autenticano verso i relay. I relay possono richiedere l'autenticazione per fornire controllo degli accessi, prevenire abusi o implementare servizi relay a pagamento.
+## Come funziona
 
-## Come Funziona
-
-Il flusso di autenticazione inizia quando un relay invia un messaggio AUTH al client. Questo messaggio contiene una stringa di challenge che il client deve firmare. Il client crea un evento di autenticazione kind 22242 contenente la challenge e lo firma con la sua chiave privata. Il relay verifica la firma e la challenge, poi concede l'accesso.
+Il flusso di autenticazione inizia quando un relay invia un messaggio `AUTH` al client. Questo messaggio contiene una stringa challenge che il client deve firmare. Il client crea un evento di autenticazione kind 22242 che contiene la challenge e lo firma con la propria chiave privata. Il relay verifica la firma e la challenge, poi concede l'accesso.
 
 ```json
 {
   "kind": 22242,
   "tags": [
     ["relay", "wss://relay.example.com"],
-    ["challenge", "stringa-challenge-casuale"]
+    ["challenge", "random-challenge-string"]
   ],
   "content": "",
-  "pubkey": "<pubkey_client>",
+  "pubkey": "<client_pubkey>",
   "created_at": 1736784000,
-  "sig": "<firma>"
+  "sig": "<signature>"
 }
 ```
 
-La challenge previene attacchi replay: i client devono firmare challenge fresche per ogni tentativo di autenticazione. L'URL del relay nei tag assicura che i token di autenticazione non possano essere riutilizzati tra relay diversi.
+La challenge impedisce attacchi replay. L'URL del relay nei tag impedisce che lo stesso evento firmato venga riusato su relay diversi.
 
-## Casi d'Uso
+## Note sul protocollo
 
-I relay a pagamento usano NIP-42 per verificare gli abbonati prima di concedere l'accesso. Dopo l'autenticazione, i relay possono controllare lo stato del pagamento o la scadenza dell'abbonamento. I relay privati restringono l'accesso a pubkey approvate, creando community chiuse o infrastruttura relay personale.
+L'autenticazione è limitata alla connessione. Una challenge resta valida per la durata della connessione, o finché il relay non ne invia una nuova. L'evento firmato è effimero e non deve essere trasmesso come un normale evento.
 
-Il rate limiting diventa più efficace con l'autenticazione. I relay possono tracciare le frequenze di richiesta per pubkey autenticata piuttosto che per indirizzo IP, prevenendo abusi mentre supportano utenti legittimi dietro IP condivisi. La prevenzione dello spam migliora quando i relay richiedono l'autenticazione per pubblicare eventi.
+La spec definisce anche prefissi di errore machine-readable. `auth-required:` significa che il client non si è ancora autenticato. `restricted:` significa che si è autenticato, ma quella pubkey non ha ancora il permesso per l'azione richiesta.
 
-Alcuni relay usano NIP-42 per analytics, tracciando quali utenti accedono a quali contenuti senza richiedere account centralizzati. Combinato con i metadati [NIP-11](/it/topics/nip-11/), i client scoprono se i relay richiedono autenticazione prima di tentare le connessioni.
+## Casi d'uso
+
+I relay a pagamento usano NIP-42 per verificare gli abbonati prima di concedere accesso. I relay privati lo usano per limitare letture o scritture alle pubkeys approvate. Migliora anche il rate limiting perché i relay possono tracciare il comportamento per chiave autenticata invece che per indirizzo IP.
+
+Combinato con i metadati [NIP-11](/it/topics/nip-11/), i client possono scoprire se un relay supporta NIP-42 prima di tentare query protette. In pratica, il supporto è ancora disomogeneo, quindi i client hanno bisogno di un percorso di fallback quando un relay dichiara NIP-42 ma gestisce gli eventi protetti in modo scorretto.
 
 ---
 
 **Fonti primarie:**
-- [Specifica NIP-42](https://github.com/nostr-protocol/nips/blob/master/42.md) - Autenticazione dei client verso i relay
+- [NIP-42 Specification](https://github.com/nostr-protocol/nips/blob/master/42.md) - Autenticazione dei client ai relay
+
+**Citato in:**
+- [Newsletter #6: Relay Information Documents](/en/newsletters/2026-01-21-newsletter/#relay-information-documents-get-formalized)
+- [Newsletter #9: Marmot Relay Status Testing](/en/newsletters/2026-02-11-newsletter/#nip-70-relay-support-critical-for-encrypted-messaging-security)
+- [Newsletter #10: Nostr MCP Server](/en/newsletters/2026-02-18-newsletter/#nostr-mcp-server)
 
 **Vedi anche:**
-- [NIP-11: Documento Informativo del Relay](/it/topics/nip-11/)
-- [NIP-50: Capacità di Ricerca](/it/topics/nip-50/)
+- [NIP-11: Relay Information Document](/it/topics/nip-11/)
+- [NIP-50: Search Capability](/it/topics/nip-50/)

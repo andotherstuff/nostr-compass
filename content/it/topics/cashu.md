@@ -1,51 +1,59 @@
 ---
-title: "Cashu: Protocollo Ecash"
+title: "Cashu: Protocollo ecash"
 date: 2026-01-28
 translationOf: /en/topics/cashu.md
-translationDate: 2026-01-28
+translationDate: 2026-03-07
 draft: false
 categories:
   - Payments
   - Privacy
   - Bitcoin
 ---
+Cashu è un protocollo ecash chaumiano costruito su Bitcoin e Lightning. Gli utenti detengono bearer token emessi da una mint, poi trasferiscono quei token senza esporre alla mint l'intero grafo dei pagamenti.
 
-Cashu è un protocollo ecash Chaumiano costruito su Bitcoin e Lightning Network, che consente pagamenti privati, istantanei e a basso costo attraverso token crittografici.
+## Come funziona
 
-## Come Funziona
+Cashu usa blind signatures per emettere token ecash:
 
-Cashu usa firme cieche per creare token ecash non tracciabili:
+1. **Minting**: gli utenti depositano Bitcoin/Lightning presso una mint e ricevono token accecati
+2. **Spending**: i token possono essere trasferiti peer-to-peer senza coinvolgere la mint
+3. **Redemption**: i destinatari riscattano i token presso la mint per ottenere Bitcoin/Lightning
 
-1. **Minting**: Gli utenti depositano Bitcoin/Lightning presso un mint e ricevono token oscurati
-2. **Spesa**: I token possono essere trasferiti peer-to-peer senza coinvolgimento del mint
-3. **Riscatto**: I destinatari riscattano i token presso il mint per Bitcoin/Lightning
+La mint firma segreti accecati, quindi può verificare i token in seguito senza vedere i segreti originali al momento dell'emissione. Questo interrompe il collegamento diretto tra deposito e riscatto all'interno della mint.
 
-Il mint non può collegare i depositi ai riscatti grazie al processo di oscuramento, fornendo forti garanzie di privacy.
+## Modello di sicurezza e fiducia
 
-## Proprietà Chiave
+Cashu migliora la privacy dei pagamenti, ma resta custodial. Una mint può rifiutare i riscatti, andare offline o perdere i fondi di copertura.
 
-- **Privacy**: Il mint non può tracciare i trasferimenti di token tra utenti
-- **Istantaneo**: I trasferimenti avvengono offline, nessuna conferma blockchain necessaria
-- **Basso costo**: Nessuna commissione on-chain per i trasferimenti di token
-- **Custodiale**: Gli utenti si fidano del mint per onorare i riscatti
+Le proof Cashu sono strumenti al portatore. Chiunque controlli la proof può spenderla. Questo rende la gestione delle proof più vicina al contante che a un saldo di conto: backup, compromissione del dispositivo o fuga di token in chiaro contano subito.
 
 ## Integrazione con Nostr
 
-Cashu si integra con Nostr in diversi modi:
+Cashu si integra con Nostr in vari modi:
 
-- **Nutzaps**: Token ecash inviati come zap con privacy migliorata
-- **Escrow**: Escrow di pagamento basato su HTLC per servizi come il ridesharing
-- **Wallet**: Wallet nativi Nostr memorizzano token Cashu crittografati sui relay
-- **[NIP-87](/it/topics/nip-87/)**: Scoperta e recensioni dei mint via Nostr
+- **Nutzaps**: token ecash inviati come zaps con maggiore privacy
+- **Escrow**: escrow di pagamento basato su HTLC per servizi come il ridesharing
+- **Wallets**: wallet nativi Nostr archiviano token Cashu cifrati sui relay
+- **[NIP-87](/it/topics/nip-87/)**: scoperta e recensioni delle mint tramite Nostr
 
-## Modello di Fiducia
+## Compromessi
 
-A differenza del Bitcoin in auto-custodia, Cashu richiede di fidarsi degli operatori del mint. Gli utenti dovrebbero:
-- Usare mint affidabili e ben recensiti
-- Mantenere saldi piccoli appropriati al livello di fiducia
-- Capire che i mint possono fare exit-scam o andare offline, portando via i fondi
+Cashu è veloce perché i trasferimenti avvengono off-chain e spesso off-mint fino al riscatto. Il compromesso riguarda interoperabilità e fiducia.
 
-## Correlati
+In pratica, gli utenti spesso devono usare la stessa mint, oppure hanno bisogno di uno swap o di un bridge tra mint. Per questo le applicazioni Nostr combinano spesso Cashu con scoperta delle mint, sincronizzazione del wallet e sistemi di recensione.
 
-- [NIP-87](/it/topics/nip-87/) - Raccomandazioni Mint Cashu
-- [NIP-60](/it/topics/nip-60/) - Nostr Wallet
+---
+
+**Fonti primarie:**
+- [Cashu NUTs Repository](https://github.com/cashubtc/nuts)
+- [NUT-00: Cryptography and models](https://github.com/cashubtc/nuts/blob/main/00.md)
+- [NIP-60: Cashu Wallet](/it/topics/nip-60/)
+- [NIP-87: Cashu Mint Recommendations](/it/topics/nip-87/)
+
+**Citato in:**
+- [Newsletter #7](/en/newsletters/2026-01-28-newsletter/)
+- [Newsletter #11](/en/newsletters/2026-02-25-newsletter/)
+
+**Vedi anche:**
+- [NIP-60: Cashu Wallet](/it/topics/nip-60/)
+- [NIP-87: Cashu Mint Recommendations](/it/topics/nip-87/)

@@ -27,13 +27,21 @@ Labels use kind 1985 events with an `L` tag defining the label namespace and `l`
 
 The namespace system prevents label collisions. A "spam" label in the "ugc-moderation" namespace has different semantics than "spam" in the "relay-report" namespace. This enables multiple label systems to coexist without interference.
 
+## Why It Matters
+
+The key design choice is that labels are assertions, not facts built into the protocol. A kind 1985 event says that some actor labeled something in some namespace. Clients still need a trust policy for deciding whose labels to show, hide, or ignore.
+
+That makes NIP-32 useful well beyond moderation. The same structure can carry content warnings, verification markers, classification systems, or relay reputation data without forcing all clients into one global vocabulary.
+
 ## Use Cases
 
-Content moderation systems use labels to mark spam, illegal content, or policy violations. Reputation systems attach trust scores or verification status to pubkeys. Media platforms apply content warnings (NSFW, violence, spoilers). Relay operators use labels for appeals and dispute resolution.
+Content moderation systems use labels to mark spam, illegal content, or policy violations. Reputation systems attach trust scores or verification status to pubkeys. Media platforms apply content warnings such as NSFW, violence, or spoilers. Relay operators use labels for appeals and dispute resolution.
 
-The Trusted Relay Assertions proposal uses NIP-32 labels for relay appeals. When operators dispute trust scores, they publish kind 1985 events with `L` = `relay-appeal` and label types like "spam", "censorship", or "score".
+The Trusted Relay Assertions proposal uses NIP-32 labels for relay appeals. When operators dispute trust scores, they publish kind 1985 events with `L = relay-appeal` and labels such as `spam`, `censorship`, or `score`.
 
-Client implementations vary in how they consume labels. Some clients treat labels from followed users as recommendations, while others query specialized labeling services. The decentralized design lets users choose which labelers to trust.
+## Interop Notes
+
+Clients differ in how they consume labels. Some treat labels from followed users as recommendations, while others query specialized labeling services. The decentralized design lets users choose which labelers to trust, but it also means a label with no visible trust context can be misleading.
 
 ---
 

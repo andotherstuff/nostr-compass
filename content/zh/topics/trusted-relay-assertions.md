@@ -1,40 +1,49 @@
 ---
-title: "Trusted Relay Assertions"
+title: "可信中继断言"
 date: 2026-01-21
 draft: false
+translationOf: /en/topics/trusted-relay-assertions.md
+translationDate: 2026-03-07
 categories:
-  - 协议
-  - 中继
+  - Protocol
+  - Relays
 ---
 
-Trusted Relay Assertions 是标准化中继信任评分和声誉管理的 NIP 提案草案。该规范引入 kind 30385 事件，其中断言提供者发布从观察到的指标、运营商声誉和用户报告计算出的信任分数。
+可信中继断言是在 Nostr 上发布经签名的第三方中继评估的理念，使客户端在选择中继时能获得比仅靠自行报告的元数据更多的上下文。当前标准化的构建模块是 [NIP-85：可信断言](/zh/topics/nip-85/)，它定义了用户如何信任提供者以及提供者如何发布签名的计算结果。
 
 ## 工作原理
 
-该提案填补了中继生态系统的空白。虽然 [NIP-11](/zh/topics/nip-11/) 定义了中继声称的内容，[NIP-66](/zh/topics/nip-66/) 测量我们观察到的内容，但 Trusted Relay Assertions 标准化了我们对中继可信度的结论。
+中继选择分为三个层次。[NIP-11：中继信息文档](/zh/topics/nip-11/) 涵盖中继关于自身的声明。[NIP-66：中继发现和存活监测](/zh/topics/nip-66/) 涵盖观察者可以测量的内容，如可用性和延迟。可信中继断言试图填补剩余的空白：第三方从这些数据中得出的结论，以及客户端是否决定信任该结论。
 
-断言提供者在三个维度上计算分数。可靠性衡量可用性、恢复速度、一致性和延迟。质量评估政策文档、TLS 安全和运营商责任。可访问性评估访问障碍、司法管辖区自由和监视风险。总体信任分数（0-100）结合了这些组件，权重为：40% 可靠性、35% 质量、25% 可访问性。
+在更广泛的 NIP-85 模型中，用户通过 kind `10040` 事件指定可信提供者，提供者发布签名的可寻址断言事件。中继评分应用还需要客户端认可的另外两个要素：如何标识作为评估对象的中继，以及哪些结果标签代表分数及其支撑证据。
 
-每个断言都包含基于观察计数的置信水平（低、中、高）。运营商验证使用多种方法：通过签名的 NIP-11 文档进行加密证明、DNS TXT 记录或 .well-known 文件。该规范通过运营商信任分数集成信任网络。政策分类帮助用户找到合适的中继：开放、审核、策展或专门化。
+这种区分很重要，因为传输和信任委托已经标准化，但中继特定的评分模型仍然是应用层模式。不同提供者可以在什么使中继值得信任这个问题上持有合理的不同意见。
 
-用户通过 kind 10385 事件声明受信任的断言提供者。客户端查询多个提供者并比较分数。该提案包括一个申诉流程，中继运营商可以使用 [NIP-32](/zh/topics/nip-32/) 标签事件对分数提出异议。
+## 信任模型
 
-## 用例
+中继信任分数不是客观事实。一个提供者可能优先考虑正常运行时间和写入吞吐量，另一个可能优先考虑法律管辖区、审核政策或运营者身份，第三个可能最关心对监控的抵抗力。有用的客户端应该显示谁生成了分数，而不仅仅是分数本身。
 
-对于 [NIP-46](/zh/topics/nip-46/) 远程签名器，信任断言帮助用户在接受连接之前评估嵌入在连接 URI 中的不熟悉中继。与 [NIP-65](/zh/topics/nip-65/) 中继列表相结合，客户端可以根据用户偏好和第三方信任评估做出明智的中继选择决策。
+这也是[信任网络](/zh/topics/web-of-trust/)进入视野的地方。如果客户端已经信任某些人或服务，它可以优先选择来自同一社交圈的中继评估，而非假装存在单一的全局排名。
 
-该规范补充了现有的中继发现机制。[NIP-66](/zh/topics/nip-66/) 提供发现（存在什么），该提案添加评估（什么是好的）。它们共同支持知情的中继选择，而不是依赖于硬编码的默认值或口碑推荐。
+## 重要意义
+
+对于 [NIP-46](/zh/topics/nip-46/) 远程签名者、钱包连接或任何建议使用不熟悉中继的应用，第三方中继评估可以减少对默认设置的盲目信任。结合 [NIP-65](/zh/topics/nip-65/) 中继列表，客户端可以将"我使用哪些中继"与"我信任哪些中继执行此任务"分开。
+
+主要的准确性说明是范围。2026 年 1 月的 Newsletter 报道将中继信任评分描述为专门提案，但 NIPs 仓库中合并的标准是更广泛的 [NIP-85：可信断言](/zh/topics/nip-85/) 格式。中继评分仍然是建立在该模型之上的用例，而非单独的已定稿中继信任协议格式。
 
 ---
 
 **主要来源：**
-- [NIP 草案文档](https://nostr.com/nevent1qqsqjymvcp6ch3ps3fqsxljf6j8u3adz64ucw8npnzuj3cn6dekn0gspz9mhxue69uhkummnw3ezumrpdejz7qg3waehxw309ahx7um5wgh8w6twv5hsyga3qg) - 提出规范的 Kind 30817 事件
+- [NIP-85 规范](https://github.com/nostr-protocol/nips/blob/master/85.md)
+- [PR #1534：可信断言](https://github.com/nostr-protocol/nips/pull/1534)
 
 **提及于：**
-- [第 6 期新闻简报：新闻](/zh/newsletters/2026-01-21-newsletter/#trusted-relay-assertions-a-new-approach-to-relay-trust)
-- [第 6 期新闻简报：NIP 更新](/zh/newsletters/2026-01-21-newsletter/#nip-updates)
+- [Newsletter #6：新闻](/zh/newsletters/2026-01-21-newsletter/#trusted-relay-assertions-a-new-approach-to-relay-trust)
+- [Newsletter #6：NIP 更新](/zh/newsletters/2026-01-21-newsletter/#nip-updates)
+- [Newsletter #7：NIP 更新](/zh/newsletters/2026-01-28-newsletter/#nip-updates)
 
-**另见：**
+**另请参阅：**
 - [NIP-11：中继信息文档](/zh/topics/nip-11/)
-- [NIP-66：中继发现和活跃度监控](/zh/topics/nip-66/)
-- [NIP-32：标签](/zh/topics/nip-32/)
+- [NIP-66：中继发现和存活监测](/zh/topics/nip-66/)
+- [NIP-85：可信断言](/zh/topics/nip-85/)
+- [信任网络](/zh/topics/web-of-trust/)

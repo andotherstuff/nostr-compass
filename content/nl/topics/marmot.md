@@ -1,6 +1,7 @@
 ---
 title: "Marmot Protocol"
 date: 2025-12-17
+translationDate: 2026-03-07
 draft: false
 categories:
   - Protocol
@@ -8,28 +9,41 @@ categories:
   - Berichten
 ---
 
-Marmot is een protocol voor end-to-end versleutelde groepsberichten gebouwd op Nostr, met gebruik van de Message Layer Security (MLS) standaard voor forward secrecy en post-compromise beveiliging.
+Marmot is een protocol voor end-to-end versleutelde groepsberichten op Nostr. Het combineert Nostr's identiteit en relaynetwerk met MLS voor groepssleutelbeheer, forward secrecy en post-compromise security.
 
 ## Hoe Het Werkt
 
-Marmot breidt Nostr uit met MLS-gebaseerde encryptie voor groepschats. In tegenstelling tot NIP-17 DMs die één-op-één zijn, handelt Marmot veilige groepscommunicatie af waar leden kunnen toe- en uittreden terwijl encryptiegaranties behouden blijven.
+Marmot gebruikt Nostr voor identiteit, relaytransport en eventdistributie, en legt daar MLS bovenop voor wijzigingen in groepslidmaatschap en berichtversleuteling. In tegenstelling tot [NIP-17](/nl/topics/nip-17/), dat zich richt op één-op-één berichten, is Marmot gebouwd voor groepen waarin leden in de loop van de tijd toetreden, vertrekken of sleutels roteren.
 
-## Belangrijke Kenmerken
+## Waarom Het Belangrijk Is
 
-- Forward secrecy en post-compromise beveiliging via MLS
-- Groepssleutelbeheer voor dynamisch lidmaatschap
-- Privacy-behoudende push-notificaties via MIP-05
+MLS geeft Marmot eigenschappen die Nostr's schema's voor directe berichten op zichzelf niet bieden: evolutie van de groepsstatus, semantiek voor het verwijderen van leden en herstel na compromittering via latere sleutelupdates.
+
+Die taakverdeling is het nuttige inzicht. Nostr lost identiteit en transport op in een open netwerk. MLS lost geauthenticeerde groepssleutelafspraak op. Marmot is de lijmlaag tussen die twee.
+
+## Implementatiestatus
+
+Het protocol blijft experimenteel, maar heeft nu meerdere implementaties en actief gebruik in applicaties. MDK is de belangrijkste Rust-referentiestack, `marmot-ts` brengt het model naar TypeScript, en applicaties zoals White Noise, Pika en Vector gebruiken Marmot-compatibele componenten.
+
+Recent werk heeft zich gericht op hardening en interop. Auditgedreven fixes landden begin 2026, en MIP-03 introduceerde deterministische commit resolution zodat clients kunnen convergeren wanneer gelijktijdige wijzigingen in de groepsstatus via relays met elkaar concurreren.
 
 ---
 
 **Primaire bronnen:**
 - [Marmot Protocol Repository](https://github.com/marmot-protocol/marmot)
+- [NIP-104: MLS-based Encrypted Group Chats](/nl/topics/nip-104/)
+- [Marmot Development Kit](https://github.com/marmot-protocol/mdk)
+- [marmot-ts](https://github.com/marmot-protocol/marmot-ts)
 
 **Vermeld in:**
-- [Nieuwsbrief #1: Nieuws](/nl/newsletters/2025-12-17-newsletter/#news)
-- [Nieuwsbrief #1: Releases](/nl/newsletters/2025-12-17-newsletter/#releases)
+- [Nieuwsbrief #1: Nieuws](/en/newsletters/2025-12-17-newsletter/#news)
+- [Nieuwsbrief #1: Releases](/en/newsletters/2025-12-17-newsletter/#releases)
+- [Nieuwsbrief #4](/en/newsletters/2026-01-07-newsletter/)
+- [Nieuwsbrief #7](/en/newsletters/2026-01-28-newsletter/)
+- [Nieuwsbrief #12](/en/newsletters/2026-03-04-newsletter/)
 
 **Zie ook:**
-- [MIP-05: Privacy-behoudende Push-notificaties](/nl/topics/mip-05/)
-- [NIP-17: Privé Directe Berichten](/nl/topics/nip-17/)
+- [MLS (Message Layer Security)](/nl/topics/mls/)
+- [MIP-05: Privacy-Preserving Push Notifications](/nl/topics/mip-05/)
+- [NIP-17: Private Direct Messages](/nl/topics/nip-17/)
 - [NIP-59: Gift Wrap](/nl/topics/nip-59/)

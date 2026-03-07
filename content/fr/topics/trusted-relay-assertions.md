@@ -1,40 +1,49 @@
 ---
-title: "Assertions de Relais de Confiance"
+title: "Trusted Relay Assertions"
 date: 2026-01-21
+translationOf: /en/topics/trusted-relay-assertions.md
+translationDate: 2026-03-07
 draft: false
 categories:
-  - Protocol
+  - Protocole
   - Relays
 ---
 
-Les Assertions de Relais de Confiance est une proposition de NIP brouillon pour standardiser la notation de confiance des relais et la gestion de la réputation. La spécification introduit des événements kind 30385 où les fournisseurs d'assertions publient des scores de confiance calculés à partir de métriques observées, de la réputation de l'opérateur et des rapports utilisateurs.
+Trusted Relay Assertions désigne l'idée de publier sur Nostr des évaluations tierces signées des relays afin que les clients puissent choisir leurs relays avec plus de contexte que les seules métadonnées auto-déclarées. Le bloc standardisé actuel est [NIP-85: Trusted Assertions](/fr/topics/nip-85/), qui définit comment les utilisateurs font confiance à des fournisseurs et comment ces fournisseurs publient des résultats calculés et signés.
 
 ## Comment ça fonctionne
 
-La proposition comble une lacune dans l'écosystème des relais. Alors que [NIP-11](/fr/topics/nip-11/) définit ce que les relais revendiquent à propos d'eux-mêmes et [NIP-66](/fr/topics/nip-66/) mesure ce que nous observons, les Assertions de Relais de Confiance standardisent ce que nous concluons sur la fiabilité des relais.
+La sélection des relays comporte trois couches. [NIP-11: Relay Information Document](/fr/topics/nip-11/) couvre ce qu'un relay dit de lui-même. [NIP-66: Relay Discovery and Liveness Monitoring](/fr/topics/nip-66/) couvre ce que des observateurs peuvent mesurer, comme la disponibilité et la latence. Trusted relay assertions cherchent à combler le manque restant : ce qu'un tiers conclut à partir de ces données, et si un client décide de faire confiance à cette conclusion.
 
-Les fournisseurs d'assertions calculent des scores sur trois dimensions. La fiabilité mesure la disponibilité, la vitesse de récupération, la cohérence et la latence. La qualité évalue la documentation des politiques, la sécurité TLS et la responsabilité de l'opérateur. L'accessibilité évalue les barrières d'accès, la liberté juridictionnelle et le risque de surveillance. Un score de confiance global (0-100) combine ces composantes avec des pondérations : 40% fiabilité, 35% qualité, 25% accessibilité.
+Dans le modèle plus large de NIP-85, les utilisateurs nomment des fournisseurs de confiance avec des événements kind `10040`, et les fournisseurs publient des événements d'assertion adressables et signés. Une application d'évaluation de relays aurait alors besoin de deux éléments supplémentaires sur lesquels les clients s'accordent : la manière d'identifier un relay comme sujet, et les tags de résultat qui représentent le score et les preuves qui l'étayent.
 
-Chaque assertion inclut des niveaux de confiance (faible, moyen, élevé) basés sur les comptages d'observation. La vérification de l'opérateur utilise plusieurs méthodes : preuve cryptographique via des documents NIP-11 signés, enregistrements DNS TXT ou fichiers .well-known. La spécification intègre le Web of Trust via des scores de confiance d'opérateur. La classification des politiques aide les utilisateurs à trouver des relais appropriés : ouverts, modérés, curés ou spécialisés.
+Cette distinction compte parce que le transport et la délégation de confiance sont standardisés, mais que le modèle de notation spécifique aux relays reste un motif applicatif. Différents fournisseurs peuvent être légitimement en désaccord sur ce qui rend un relay digne de confiance.
 
-Les utilisateurs déclarent les fournisseurs d'assertions de confiance via des événements kind 10385. Les clients interrogent plusieurs fournisseurs et comparent les scores. La proposition inclut un processus d'appel où les opérateurs de relais peuvent contester les scores en utilisant des événements d'étiquetage [NIP-32](/fr/topics/nip-32/).
+## Modèle de confiance
 
-## Cas d'utilisation
+Les scores de confiance des relays ne sont pas des faits objectifs. Un fournisseur peut privilégier l'uptime et le débit d'écriture, un autre la juridiction, la politique de modération ou l'identité de l'opérateur, et un troisième la résistance à la surveillance. Un client utile devrait montrer qui a produit le score, pas seulement le score lui-même.
 
-Pour les signataires distants [NIP-46](/fr/topics/nip-46/), les assertions de confiance aident les utilisateurs à évaluer les relais inconnus intégrés dans les URI de connexion avant d'accepter les connexions. Combiné avec les listes de relais [NIP-65](/fr/topics/nip-65/), les clients peuvent prendre des décisions de sélection de relais informées basées à la fois sur les préférences utilisateur et les évaluations de confiance tierces.
+C'est aussi là que [Web of Trust](/fr/topics/web-of-trust/) entre en jeu. Si un client fait déjà confiance à certaines personnes ou à certains services, il peut préférer des évaluations de relays provenant de ce même voisinage social au lieu de prétendre qu'il existe un classement global unique.
 
-La spécification complète les mécanismes de découverte de relais existants. [NIP-66](/fr/topics/nip-66/) fournit la découverte (ce qui existe), cette proposition ajoute l'évaluation (ce qui est bon). Ensemble, ils permettent une sélection de relais informée plutôt que de s'appuyer sur des valeurs par défaut codées en dur ou des recommandations de bouche à oreille.
+## Pourquoi c'est important
+
+Pour les signers distants [NIP-46](/fr/topics/nip-46/), les connexions de wallet ou toute application qui suggère des relays peu familiers, des évaluations tierces de relays peuvent réduire la confiance aveugle dans les valeurs par défaut. Combinées aux listes de relays [NIP-65](/fr/topics/nip-65/), les clients peuvent séparer "quels relays j'utilise" de "quels relays je juge dignes de confiance pour cette tâche".
+
+Le principal point d'attention sur l'exactitude concerne la portée. La newsletter de janvier 2026 décrivait la notation de confiance des relays comme une proposition dédiée, mais le standard fusionné dans le dépôt NIPs est le format plus large [NIP-85: Trusted Assertions](/fr/topics/nip-85/). La notation des relays reste un cas d'usage construit au-dessus de ce modèle, pas un format filaire finalisé et séparé pour la confiance des relays.
 
 ---
 
 **Sources principales :**
-- [Document NIP brouillon](https://nostr.com/nevent1qqsqjymvcp6ch3ps3fqsxljf6j8u3adz64ucw8npnzuj3cn6dekn0gspz9mhxue69uhkummnw3ezumrpdejz7qg3waehxw309ahx7um5wgh8w6twv5hsyga3qg) - Événement kind 30817 proposant la spécification
+- [Spécification NIP-85](https://github.com/nostr-protocol/nips/blob/master/85.md)
+- [PR #1534: Trusted Assertions](https://github.com/nostr-protocol/nips/pull/1534)
 
 **Mentionné dans :**
 - [Newsletter #6 : Actualités](/fr/newsletters/2026-01-21-newsletter/#assertions-de-relais-de-confiance-une-nouvelle-approche-de-la-confiance-des-relais)
 - [Newsletter #6 : Mises à jour des NIP](/fr/newsletters/2026-01-21-newsletter/#mises-à-jour-des-nip)
+- [Newsletter #7 : Mises à jour des NIP](/fr/newsletters/2026-01-28-newsletter/#nip-updates)
 
 **Voir aussi :**
 - [NIP-11 : Document d'information de relais](/fr/topics/nip-11/)
 - [NIP-66 : Découverte de relais et surveillance de disponibilité](/fr/topics/nip-66/)
-- [NIP-32 : Étiquetage](/fr/topics/nip-32/)
+- [NIP-85 : Trusted Assertions](/fr/topics/nip-85/)
+- [Web of Trust](/fr/topics/web-of-trust/)

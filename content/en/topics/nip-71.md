@@ -56,6 +56,14 @@ Addressable video events solve this problem by making the event replaceable. The
 
 This is particularly valuable for fixing metadata errors after publishing, updating thumbnails as you improve your branding, migrating video hosting URLs when changing providers, and importing content from discontinued platforms like Vine while preserving provenance through the `origin` tag.
 
+An additional benefit is stable linking. Other events can keep referring to the same addressable video while the creator updates presentation details around it, which is cleaner than fragmenting comments and references across multiple immutable reposts.
+
+## Tradeoffs
+
+Replaceability helps metadata maintenance, but it also means clients need to decide how much historical state to preserve. If a creator changes the title or summary after publication, the newest event becomes canonical even though older clients may have indexed the previous version.
+
+Kinds 21 and 22 still matter for applications that want an immutable publication record. NIP-71 does not force every video workflow into the replaceable model.
+
 ## Implementations
 
 Addressable video events (kinds 34235 and 34236) are currently implemented in Amethyst and nostrvine. Both clients can create, display, and update addressable video events.
@@ -68,6 +76,7 @@ Addressable video events (kinds 34235 and 34236) are currently implemented in Am
 
 **Mentioned in:**
 - [Newsletter #5: NIP Updates](/en/newsletters/2026-01-13-newsletter/#nip-updates)
+- [Newsletter #12: NoorNote](/en/newsletters/2026-03-04-newsletter/)
 
 **See also:**
 - [NIP-94: File Metadata](/en/topics/nip-94/)

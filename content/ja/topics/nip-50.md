@@ -2,7 +2,7 @@
 title: "NIP-50: Search"
 date: 2025-12-31
 translationOf: /en/topics/nip-50.md
-translationDate: 2025-12-31
+translationDate: 2026-03-07
 draft: false
 categories:
   - プロトコル

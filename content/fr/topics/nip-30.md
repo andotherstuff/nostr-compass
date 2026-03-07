@@ -2,14 +2,14 @@
 title: "NIP-30 : Emoji personnalisés"
 date: 2026-03-04
 translationOf: /en/topics/nip-30.md
-translationDate: 2026-03-04
+translationDate: 2026-03-07
 draft: false
 categories:
   - NIP
   - Social
 ---
 
-NIP-30 définit comment les clients affichent des emoji personnalisés dans les événements Nostr. Les emoji personnalisés sont référencés dans le contenu de l'événement à l'aide de shortcodes (`:shortcode:`) et résolus via des tags `emoji` qui associent chaque shortcode à une URL d'image.
+NIP-30 définit comment les clients affichent des emoji personnalisés dans les événements Nostr. Les emoji personnalisés sont référencés dans le contenu de l'événement à l'aide de shortcodes (`:shortcode:`) et résolus via des tags `emoji` associant chaque shortcode à une URL d'image.
 
 ## Fonctionnement
 
@@ -25,7 +25,7 @@ Un événement utilisant des emoji personnalisés inclut des tags `emoji` aux c�
 }
 ```
 
-Les clients remplacent `:gleam:` et `:nostrich:` dans le contenu rendu par des images en ligne provenant des URLs spécifiées. Les shortcodes doivent être alphanumériques (avec des séparateurs underscore autorisés), et les URLs d'image doivent pointer vers de petites images carrées adaptées à l'affichage en ligne.
+Les clients remplacent `:gleam:` et `:nostrich:` dans le contenu rendu par des images en ligne provenant des URLs spécifiées. Les shortcodes doivent être alphanumériques (avec des séparateurs underscore autorisés), et les URLs d'image devraient pointer vers de petites images carrées adaptées à l'affichage en ligne.
 
 ## Ensembles d'emoji
 
@@ -42,7 +42,13 @@ Les emoji personnalisés peuvent être organisés en ensembles nommés publiés 
 }
 ```
 
-Une mise à jour de mars 2026 ([PR #2247](https://github.com/nostr-protocol/nips/pull/2247)) a ajouté des références optionnelles d'adresse d'ensemble d'emoji dans les tags emoji, permettant aux clients d'ouvrir l'ensemble d'origine pour la navigation ou la mise en signet lorsqu'un utilisateur clique sur un emoji.
+Une mise à jour de mars 2026 ([PR #2247](https://github.com/nostr-protocol/nips/pull/2247)) a ajouté des références optionnelles d'adresse d'ensemble d'emoji dans les tags emoji, permettant aux clients d'ouvrir l'ensemble d'origine pour la navigation ou la mise en favoris lorsqu'un utilisateur clique sur un emoji.
+
+## Notes d'interopérabilité
+
+Les emoji personnalisés sont une fonction de présentation, pas une garantie de transport. Si un client ne comprend pas NIP-30 ou ne peut pas récupérer l'URL de l'image, il devrait afficher le texte brut `:shortcode:`. Ce repli est la raison pour laquelle les shortcodes lisibles sont importants.
+
+Le tag est local à l'événement sauf s'il référence un ensemble. Réutiliser `:fire:` dans deux événements différents n'implique pas une signification globale partagée, sauf si les deux pointent vers la même image ou le même ensemble. Les clients devraient résoudre la définition de l'emoji à partir de l'événement courant en priorité.
 
 ## Réactions
 
@@ -66,5 +72,5 @@ Les emoji personnalisés NIP-30 fonctionnent également dans les événements de
 - [PR #2247](https://github.com/nostr-protocol/nips/pull/2247) - Adresse d'ensemble d'emoji dans les tags
 
 **Mentionné dans :**
-- [Newsletter #12 : NoorNote v0.5.x](/fr/newsletters/2026-03-04-newsletter/#noornote-v05x)
-- [Newsletter #12 : Mises à jour des NIP](/fr/newsletters/2026-03-04-newsletter/#mises-à-jour-des-nip)
+- [Newsletter #12 : NoorNote v0.5.x](/en/newsletters/2026-03-04-newsletter/#noornote-v05x)
+- [Newsletter #12 : Mises à jour NIP](/en/newsletters/2026-03-04-newsletter/#nip-updates)

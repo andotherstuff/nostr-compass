@@ -1,6 +1,8 @@
 ---
 title: "NIP-65: Metadatos de Lista de Relays"
 date: 2026-01-13
+translationOf: /en/topics/nip-65.md
+translationDate: 2026-03-07
 draft: false
 categories:
   - Protocol
@@ -43,9 +45,17 @@ Los clientes que siguen el modelo outbox mantienen conexiones con los relays lis
 
 Esta arquitectura mejora la resistencia a la censura porque ningún relay único necesita almacenar o servir el contenido de todos. Si un relay se cae o bloquea a un usuario, su contenido permanece disponible en sus otros relays listados.
 
+## Por Qué Importa
+
+NIP-65 cambia la selección de relays de un valor predeterminado codificado en el cliente a metadatos de enrutamiento publicados por el usuario. Eso permite a los clientes adaptarse a los hábitos reales de publicación y lectura de cada cuenta en lugar de asumir que todos usan el mismo conjunto de relays.
+
+También traslada la complejidad a los clientes. Para usar bien el modelo outbox, un cliente necesita caché de relays, lógica de reintentos y comportamiento de respaldo cuando una lista de relays falta o está desactualizada. La especificación mejora la descubribilidad, pero no elimina la necesidad de buenas heurísticas de selección de relays.
+
 ## Relación con las Pistas de Relay
 
 NIP-65 complementa las pistas de relay encontradas a lo largo de otros NIPs. Cuando etiquetas a alguien con `["p", "pubkey", "wss://hint.relay"]`, la pista le dice a los clientes dónde buscar esa referencia específica. NIP-65 proporciona la lista autoritativa de relays preferidos controlada por el usuario, mientras que las pistas ofrecen atajos incrustados en eventos individuales para un descubrimiento más rápido.
+
+Para mensajería privada, NIP-65 no es toda la historia. El enrutamiento de contenido público usa kind 10002, pero los sistemas modernos de mensajería privada a menudo dependen de metadatos de bandeja de entrada separados como las listas de relays de [NIP-17](/es/topics/nip-17/) para que los usuarios puedan mantener el enrutamiento de DMs distinto de los relays de publicación pública.
 
 ## Mejores Prácticas
 
@@ -61,7 +71,9 @@ Mezcla relays de propósito general con cualquier relay especializado que uses. 
 - [Especificación NIP-65](https://github.com/nostr-protocol/nips/blob/master/65.md)
 
 **Mencionado en:**
-- [Newsletter #5: Análisis Profundo de NIPs](/es/newsletters/2026-01-13-newsletter/#nip-65-metadatos-de-lista-de-relays)
+- [Newsletter #5: Análisis Profundo de NIPs](/en/newsletters/2026-01-13-newsletter/#nip-65-relay-list-metadata)
+- [Newsletter #10: Benchmarks del Modelo Outbox](/en/newsletters/2026-03-04-newsletter/)
 
 **Ver también:**
 - [NIP-11: Información de Relay](/es/topics/nip-11/)
+- [NIP-17: Mensajes Directos Privados](/es/topics/nip-17/)

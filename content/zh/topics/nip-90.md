@@ -1,28 +1,33 @@
 ---
-title: "NIP-90"
+title: "NIP-90：数据自动售货机"
 date: 2026-02-25
-translationOf: /en/topics/nip-90.md
-translationDate: 2026-02-25
 draft: false
+translationOf: /en/topics/nip-90.md
+translationDate: 2026-03-07
 categories:
   - NIP
   - DVM
 ---
 
-NIP-90 定义了数据自动售货机（DVM），这是一种在 Nostr 上请求和支付计算工作的市场协议。
+NIP-90 定义了数据自动售货机（DVM），一种通过 Nostr 请求和交付付费计算工作的协议。
 
 ## 工作原理
 
-客户端发布任务请求 event（kind 5000-5999），说明所需的计算内容。服务提供商监听与其能力匹配的请求，完成计算后发布结果。支付通过 Lightning 或任务流程中协商的其他机制完成。
+客户发布 `5000-5999` 范围内的任务请求事件。每个请求可以包含一个或多个用于输入的 `i` 标签、用于任务特定设置的 `param` 标签、用于预期格式的 `output` 标签、`bid` 上限以及指定回复应出现位置的中继提示。服务提供者以 `6000-6999` 范围内的匹配结果类型作答，始终比请求类型高 `1000`。
 
-任务类型由 kind 决定，涵盖文本生成、图像生成、翻译、内容发现等不同计算类型。每种 kind 规定了预期的输入/输出格式。
+结果包括原始请求、客户的公钥，以及可选的 `amount` 标签或发票。提供者还可以发送 kind `7000` 反馈事件，如 `payment-required`、`processing`、`partial`、`error` 或 `success`，这让客户端可以在最终结果到达前显示进度。
 
-## 主要特性
+## 支付与隐私
 
-- 去中心化计算市场
-- 基于 kind 的任务类型系统
-- 提供商在价格和质量上竞争
-- 可扩展以支持新的计算类型
+该协议有意将业务逻辑保持开放。提供者可以在工作开始前、返回样本后或交付完整结果后要求付款。这种灵活性很重要，因为 DVM 任务从廉价的文本转换到昂贵的 GPU 工作不等，各提供者承担的支付风险也不同。
+
+如果客户希望输入保持私密，可以将 `i` 和 `param` 数据移入加密的 `content` 中，并用 `encrypted` 标签加上提供者的 `p` 标签标记该事件。这可以保护提示或源材料不被中继观察者看到，但也意味着客户必须指定特定提供者，而非广播一个开放市场请求。
+
+## 互操作说明
+
+NIP-90 通过输入类型为 `job` 的 `i` 标签支持任务链，使一个结果可以作为后续请求的输入。这使得多步骤流程无需发明单独的编排层即可实现。
+
+提供者发现在请求/响应循环之外。规范指向 [NIP-89：推荐应用处理器](/zh/topics/nip-89/) 公告来宣传支持的任务类型，客户端据此在发布请求前发现供应商。
 
 ---
 
@@ -30,7 +35,7 @@ NIP-90 定义了数据自动售货机（DVM），这是一种在 Nostr 上请求
 - [NIP-90 规范](https://github.com/nostr-protocol/nips/blob/master/90.md)
 
 **提及于：**
-- [Newsletter #11：NIP-AC DVM 代理协调](/zh/newsletters/2026-02-25-newsletter/#nip-更新)
+- [Newsletter #11：NIP 更新](/zh/newsletters/2026-02-25-newsletter/#nip-updates)
 
-**参见：**
-- [NIP-85：Trusted Assertions](/zh/topics/nip-85/)
+**另请参阅：**
+- [NIP-89：推荐应用处理器](/zh/topics/nip-89/)

@@ -2,7 +2,7 @@
 title: "NIP-32: ラベリング"
 date: 2026-01-21
 translationOf: /en/topics/nip-32.md
-translationDate: 2026-01-28
+translationDate: 2026-03-07
 draft: false
 categories:
   - NIPs
@@ -29,22 +29,30 @@ NIP-32は、Nostrイベント、ユーザー、その他のエンティティに
 
 名前空間システムはラベルの衝突を防ぎます。「ugc-moderation」名前空間の「spam」ラベルは、「relay-report」名前空間の「spam」とは異なるセマンティクスを持ちます。これにより、複数のラベルシステムが干渉なく共存できます。
 
-## ユースケース
+## なぜ重要か
+
+設計上の重要点は、ラベルが事実ではなく主張だということです。kind 1985 eventは、あるactorがあるnamespaceで何かにラベルを付けたことを示すだけです。どのラベルを表示し、隠し、無視するかは、クライアント側がtrust policyを持って判断する必要があります。
+
+そのためNIP-32はmoderation以外にも使えます。同じ構造でcontent warning、verification marker、分類体系、relay reputation dataを運べます。しかも、すべてのクライアントを1つのグローバル語彙に縛りません。
+
+## 利用例
 
 コンテンツモデレーションシステムはラベルを使用してスパム、違法コンテンツ、またはポリシー違反をマークします。評価システムは信頼スコアや検証ステータスをpubkeyに付与します。メディアプラットフォームはコンテンツ警告（NSFW、暴力、ネタバレ）を適用します。リレーオペレーターは異議申し立てや紛争解決にラベルを使用します。
 
 Trusted Relay Assertions提案はリレーの異議申し立てにNIP-32ラベルを使用します。オペレーターが信頼スコアに異議を唱える場合、`L` = `relay-appeal`と「spam」、「censorship」、「score」などのラベルタイプを持つkind 1985イベントを公開します。
 
-クライアント実装はラベルの消費方法が異なります。一部のクライアントはフォローしているユーザーからのラベルを推奨として扱い、他のクライアントは専門のラベリングサービスにクエリします。分散型設計により、ユーザーはどのラベラーを信頼するかを選択できます。
+## 相互運用メモ
+
+クライアントごとにラベルの取り込み方は異なります。フォロー中ユーザーのラベルを推薦として扱うものもあれば、専用のlabeling serviceを問い合わせるものもあります。分散型の設計により、どのlabelerを信頼するかはユーザーが選べますが、信頼文脈が見えないラベルは誤解を招くこともあります。
 
 ---
 
-**主要な出典：**
+**主要ソース:**
 - [NIP-32仕様](https://github.com/nostr-protocol/nips/blob/master/32.md) - ラベリング標準
 
-**言及先：**
-- [ニュースレター#6: NIPアップデート](/ja/newsletters/2026-01-21-newsletter/#nip-updates)
+**言及箇所:**
+- [ニュースレター #6: NIP更新](/ja/newsletters/2026-01-21-newsletter/#nip-updates)
 
-**関連項目：**
+**関連項目:**
 - [Trusted Relay Assertions](/ja/topics/trusted-relay-assertions/)
 - [NIP-51: リスト](/ja/topics/nip-51/)

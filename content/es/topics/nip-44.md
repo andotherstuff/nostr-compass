@@ -1,8 +1,8 @@
 ---
-title: "NIP-44: Encrypted Payloads"
+title: "NIP-44: Payloads Cifrados"
 date: 2025-12-31
 translationOf: /en/topics/nip-44.md
-translationDate: 2025-12-31
+translationDate: 2026-03-07
 draft: false
 categories:
   - NIP
@@ -23,6 +23,8 @@ NIP-44 versión 2 utiliza un proceso de cifrado de múltiples pasos:
 5. **Cifrado**: ChaCha20 cifra el contenido rellenado
 6. **Autenticación**: HMAC-SHA256 proporciona integridad del mensaje
 
+La salida es un payload base64 versionado que va dentro de un evento Nostr firmado normal. La especificación requiere que los clientes validen la firma del evento NIP-01 externo antes de descifrar el payload NIP-44 interno.
+
 ## Elecciones Criptográficas
 
 - **ChaCha20** sobre AES: Más rápido, mejor resistencia a ataques multi-clave
@@ -37,12 +39,18 @@ NIP-44 versión 2 utiliza un proceso de cifrado de múltiples pasos:
 - **Claves de Conversación**: La misma clave para conversaciones continuas reduce la computación
 - **Auditado**: La auditoría de seguridad de Cure53 no encontró vulnerabilidades explotables
 
+## Notas de Implementación
+
+NIP-44 no es un reemplazo directo para payloads NIP-04. Define un formato de cifrado, no un tipo de evento de mensaje directo. Protocolos como [NIP-17](/es/topics/nip-17/) y [NIP-59](/es/topics/nip-59/) definen cómo se usan los payloads cifrados en flujos de mensajes reales.
+
+La entrada de texto plano es texto UTF-8 con una longitud de 1 a 65535 bytes. Esa es una restricción real para implementadores: si tu aplicación necesita cifrar blobs binarios arbitrarios, necesitas una codificación adicional o un formato de contenedor diferente.
+
 ## Limitaciones
 
 NIP-44 no proporciona:
 - **Forward Secrecy**: Las claves comprometidas exponen mensajes pasados
 - **Post-Compromise Security**: Recuperación después del compromiso de claves
-- **Negabilidad**: Los mensajes están probablemente firmados por claves específicas
+- **Negabilidad**: Los mensajes están demostrablemente firmados por claves específicas
 - **Ocultación de Metadatos**: La arquitectura de relays limita la privacidad
 
 Para necesidades de alta seguridad, NIP-104 (double ratchet) o protocolos basados en MLS como Marmot ofrecen garantías más fuertes.
@@ -59,8 +67,10 @@ NIP-44 revisión 3 se fusionó en diciembre de 2023 tras una auditoría de segur
 - [Informe de Auditoría Cure53](https://cure53.de/audit-report_nip44-implementations.pdf)
 
 **Mencionado en:**
-- [Newsletter #3: Diciembre 2023](/es/newsletters/2025-12-31-newsletter/#december-2023-ecosystem-maturation)
-- [Newsletter #3: Diciembre 2024](/es/newsletters/2025-12-31-newsletter/#december-2024-protocol-advancement)
+- [Newsletter #4: Análisis Profundo de NIP](/en/newsletters/2026-01-07-newsletter/#nip-44-versioned-encryption)
+- [Newsletter #3: Diciembre 2023](/en/newsletters/2025-12-31-newsletter/#december-2023-ecosystem-maturation)
+- [Newsletter #3: Diciembre 2024](/en/newsletters/2025-12-31-newsletter/#december-2024-protocol-advancement)
+- [Newsletter #12: Marmot](/en/newsletters/2026-03-04-newsletter/#marmot-development-kit-ships-first-public-release)
 
 **Ver también:**
 - [NIP-04: Mensajes Directos Cifrados (obsoleto)](/es/topics/nip-04/)

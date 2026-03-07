@@ -1,6 +1,8 @@
 ---
 title: "NIP-71: Eventos de Video"
 date: 2026-01-13
+translationOf: /en/topics/nip-71.md
+translationDate: 2026-03-07
 draft: false
 categories:
   - Media
@@ -56,6 +58,14 @@ Los eventos de video direccionables resuelven este problema haciendo el evento r
 
 Esto es particularmente valioso para corregir errores de metadatos después de publicar, actualizar miniaturas a medida que mejoras tu marca, migrar URLs de alojamiento de video al cambiar de proveedores, e importar contenido de plataformas descontinuadas como Vine mientras se preserva la procedencia a través de la etiqueta `origin`.
 
+Un beneficio adicional es el enlace estable. Otros eventos pueden seguir refiriéndose al mismo video direccionable mientras el creador actualiza detalles de presentación alrededor de él, lo cual es más limpio que fragmentar comentarios y referencias a través de múltiples reposts inmutables.
+
+## Consideraciones
+
+La reemplazabilidad ayuda al mantenimiento de metadatos, pero también significa que los clientes necesitan decidir cuánto estado histórico preservar. Si un creador cambia el título o resumen después de la publicación, el evento más nuevo se convierte en canónico aunque clientes más antiguos puedan haber indexado la versión previa.
+
+Los kinds 21 y 22 siguen siendo relevantes para aplicaciones que quieren un registro de publicación inmutable. NIP-71 no fuerza cada flujo de trabajo de video al modelo reemplazable.
+
 ## Implementaciones
 
 Los eventos de video direccionables (kinds 34235 y 34236) están actualmente implementados en Amethyst y nostrvine. Ambos clientes pueden crear, mostrar y actualizar eventos de video direccionables.
@@ -67,7 +77,8 @@ Los eventos de video direccionables (kinds 34235 y 34236) están actualmente imp
 - [PR #1669](https://github.com/nostr-protocol/nips/pull/1669) - Actualización de eventos de video direccionables
 
 **Mencionado en:**
-- [Newsletter #5: Actualizaciones de NIPs](/es/newsletters/2026-01-13-newsletter/#actualizaciones-de-nips)
+- [Newsletter #5: Actualizaciones de NIPs](/en/newsletters/2026-01-13-newsletter/#nip-updates)
+- [Newsletter #12: NoorNote](/en/newsletters/2026-03-04-newsletter/)
 
 **Ver también:**
 - [NIP-94: Metadatos de Archivos](/es/topics/nip-94/)

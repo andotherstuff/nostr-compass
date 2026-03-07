@@ -1,64 +1,80 @@
 ---
-title: "NIP-07: Signer per Estensione Browser"
+title: "NIP-07: Firmatario tramite estensione del browser"
 date: 2026-01-28
 translationOf: /en/topics/nip-07.md
-translationDate: 2026-01-28
+translationDate: 2026-03-07
 draft: false
 categories:
   - NIP
   - Signing
   - Security
 ---
+NIP-07 definisce un'interfaccia standard che permette alle estensioni del browser di fornire capacità di firma ai client Nostr basati sul web, mantenendo le chiavi private al sicuro nell'estensione invece di esporle ai siti web.
 
-NIP-07 definisce un'interfaccia standard per le estensioni browser per fornire capacità di firma ai client Nostr basati su web, mantenendo le chiavi private sicure nell'estensione invece di esporle ai siti web.
+## Come funziona
 
-## Come Funziona
-
-Le estensioni browser iniettano un oggetto `window.nostr` che le web app possono usare:
+Le estensioni del browser iniettano un oggetto `window.nostr` che le web app possono usare:
 
 ```javascript
-// Ottieni la chiave pubblica
+// Get public key
 const pubkey = await window.nostr.getPublicKey();
 
-// Firma un evento
+// Sign an event
 const signedEvent = await window.nostr.signEvent(unsignedEvent);
 
-// Crittografa (NIP-04, legacy)
+// Encrypt (NIP-04, legacy)
 const ciphertext = await window.nostr.nip04.encrypt(pubkey, plaintext);
 
-// Decrittografa (NIP-04, legacy)
+// Decrypt (NIP-04, legacy)
 const plaintext = await window.nostr.nip04.decrypt(pubkey, ciphertext);
 
-// Metodi NIP-44 (moderni, se supportati)
+// NIP-44 methods (modern, if supported)
 // const ciphertext = await window.nostr.nip44.encrypt(pubkey, plaintext);
 // const plaintext = await window.nostr.nip44.decrypt(pubkey, ciphertext);
 ```
 
-## Modello di Sicurezza
+## Modello di sicurezza
 
-- **Isolamento Chiavi**: Le chiavi private non lasciano mai l'estensione
-- **Approvazione Utente**: Le estensioni possono richiedere conferma per ogni richiesta di firma
-- **Controllo Dominio**: Le estensioni possono limitare quali siti possono richiedere firme
+- **Isolamento delle chiavi**: Le chiavi private non lasciano mai l'estensione
+- **Approvazione dell'utente**: Le estensioni possono chiedere conferma per ogni richiesta di firma
+- **Controllo del dominio**: Le estensioni possono limitare quali siti possono richiedere firme
 
-## Implementazioni
+NIP-07 migliora la custodia delle chiavi, ma non elimina la fiducia richiesta nell'estensione stessa. Un'estensione malevola o compromessa può comunque firmare la cosa sbagliata, perdere metadata o concedere permessi troppo ampi.
 
-Le estensioni NIP-07 popolari includono:
+## Note sull'interoperabilità
+
+La parte più difficile di NIP-07 non è la forma dell'API. È la variazione delle capacità. Alcune estensioni supportano solo `getPublicKey()` e `signEvent()`. Altre espongono anche `nip04`, `nip44` o metodi opzionali più recenti. Le web app hanno bisogno di feature detection e fallback ragionevoli invece di presumere che ogni signer iniettato si comporti allo stesso modo.
+
+Anche la UX di approvazione dell'utente cambia il comportamento. Un sito che si aspetta in silenzio l'accesso in background può funzionare con un'estensione e sembrare rotto con un'altra che chiede conferma per ogni richiesta. Le buone app NIP-07 trattano la firma come un confine di permesso interattivo.
+
+## Stato delle implementazioni
+
+Le estensioni NIP-07 più diffuse includono:
 - **Alby** - Wallet Lightning con firma Nostr
 - **nos2x** - Signer Nostr leggero
 - **Flamingo** - Estensione Nostr ricca di funzionalità
 
-## Limitazioni
+## Limiti
 
-- Solo browser (nessun supporto mobile)
-- Richiede installazione dell'estensione
-- Ogni estensione ha UX diverse per le approvazioni
+- Solo browser, nessun supporto mobile
+- Richiede l'installazione di un'estensione
+- Ogni estensione ha una UX diversa per le approvazioni
 
-## Alternative
+Per la firma tra dispositivi o su mobile, NIP-46 e NIP-55 di solito sono più adatti.
 
-- [NIP-46](/it/topics/nip-46/) - Firma remota via relay Nostr
-- [NIP-55](/it/topics/nip-55/) - Signer locale Android
+---
 
-## Correlati
+**Fonti primarie:**
+- [NIP-07 Specification](https://github.com/nostr-protocol/nips/blob/master/07.md)
+- [PR #2233](https://github.com/nostr-protocol/nips/pull/2233) - proposta `peekPublicKey()`
 
-- [NIP-44](/it/topics/nip-44/) - Crittografia moderna (sostituzione di NIP-04)
-- [NIP-46](/it/topics/nip-46/) - Firma Remota
+**Citato in:**
+- [Newsletter #7: NIP Updates](/en/newsletters/2026-01-28-newsletter/#nip-updates)
+- [Newsletter #8: News](/en/newsletters/2026-02-04-newsletter/#news)
+- [Newsletter #11: News](/en/newsletters/2026-02-25-newsletter/#news)
+
+**Vedi anche:**
+- [NIP-04: Messaggi diretti cifrati (Deprecato)](/it/topics/nip-04/)
+- [NIP-44: Encrypted Payloads](/it/topics/nip-44/)
+- [NIP-46: Nostr Connect](/it/topics/nip-46/)
+- [NIP-55: Applicazioni signer per Android](/it/topics/nip-55/)

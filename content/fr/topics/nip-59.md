@@ -1,39 +1,44 @@
 ---
 title: "NIP-59 : Gift Wrap"
 date: 2025-12-17
+translationOf: /en/topics/nip-59.md
+translationDate: 2026-03-07
 draft: false
 categories:
   - Privacy
   - Protocol
 ---
 
-NIP-59 définit l'emballage cadeau (gift wrapping), une technique pour cacher l'expéditeur d'un événement en l'enveloppant dans des couches de chiffrement avec une identité jetable.
+NIP-59 définit le gift wrap, un moyen d'encapsuler un événement afin que les relays et les observateurs extérieurs ne puissent pas identifier le véritable expéditeur à partir de l'événement externe qu'ils reçoivent.
 
 ## Structure
 
-Un événement emballé cadeau a trois couches :
+Un événement gift-wrapped comporte trois couches :
 
-1. **Rumeur** - Le contenu de l'événement original non signé
-2. **Sceau** (kind 13) - La rumeur chiffrée pour le destinataire, signée par le vrai expéditeur
-3. **Emballage cadeau** (kind 1059) - Le sceau chiffré pour le destinataire, signé par une clé jetable aléatoire
+1. **Rumeur** : l'événement cible sans signature.
+2. **Sceau** (kind `13`) : la rumeur chiffrée pour le destinataire et signée par le véritable expéditeur.
+3. **Gift Wrap** (kind `1059`) : le sceau chiffré à nouveau et signé par une clé aléatoire à usage unique.
 
-La couche externe utilise une paire de clés aléatoire générée juste pour ce message, donc les observateurs ne peuvent pas le lier à l'expéditeur.
+Le sceau doit avoir des tags vides. Le gift wrap externe porte généralement le tag `p` du destinataire pour que les relays puissent l'acheminer.
 
-## Pourquoi trois couches ?
+## Ce qu'il dissimule
 
-- La **rumeur** contient le contenu réel
-- Le **sceau** prouve le vrai expéditeur (visible uniquement par le destinataire)
-- L'**emballage cadeau** cache l'expéditeur aux relais et observateurs
+Le gift wrap dissimule l'expéditeur aux relays et aux observateurs réseau car l'événement externe est signé par une clé jetable. Le destinataire, cependant, peut toujours déchiffrer le sceau interne et identifier quelle clé permanente l'a signé. Le gain en confidentialité est donc la protection des métadonnées sur la couche de transport, pas l'anonymat vis-à-vis du destinataire.
 
-## Support de suppression
+La spécification recommande aussi de randomiser les horodatages du wrapper et, lorsque c'est possible, d'utiliser des relays qui exigent une authentification et ne servent les événements encapsulés qu'au destinataire prévu. Sans ces comportements de relay, les métadonnées du destinataire peuvent quand même fuiter.
 
-Les événements emballés cadeau peuvent maintenant être supprimés via les demandes de suppression NIP-09/NIP-62. Ceci a été ajouté pour permettre aux utilisateurs de retirer les messages emballés des relais.
+## Notes opérationnelles
+
+Le gift wrap n'est pas un protocole de messagerie en soi. D'autres protocoles, comme les systèmes de messagerie privée, l'utilisent comme brique de base.
+
+Les relays peuvent choisir de ne pas stocker les événements encapsulés longtemps car ils ne sont pas utiles publiquement. La spécification permet aussi la preuve de travail sur le wrapper externe lorsque les implémentations souhaitent une résistance supplémentaire au spam.
 
 ## Cas d'utilisation
 
 - Messages directs privés (NIP-17)
-- Conseils anonymes ou lanceurs d'alerte
-- Tout scénario où la confidentialité de l'expéditeur est importante
+- Notes réservées aux amis (proposition NIP-FR)
+- Charges utiles de notifications push (proposition NIP-9a)
+- Tout scénario nécessitant la confidentialité de l'expéditeur vis-à-vis du réseau
 
 ---
 
@@ -41,9 +46,11 @@ Les événements emballés cadeau peuvent maintenant être supprimés via les de
 - [Spécification NIP-59](https://github.com/nostr-protocol/nips/blob/master/59.md)
 
 **Mentionné dans :**
-- [Newsletter #1 : Actualités](/fr/newsletters/2025-12-17-newsletter/#news)
-- [Newsletter #1 : Mises à jour NIP](/fr/newsletters/2025-12-17-newsletter/#nip-updates)
+- [Newsletter #8 : Plongée approfondie NIP](/en/newsletters/2026-02-04-newsletter/#nip-deep-dive-nip-59-gift-wrap)
+- [Newsletter #1 : Actualités](/en/newsletters/2025-12-17-newsletter/#news)
+- [Newsletter #1 : Mises à jour NIP](/en/newsletters/2025-12-17-newsletter/#nip-updates)
+- [Newsletter #3 : Récapitulatif de décembre](/en/newsletters/2025-12-31-newsletter/#december-recap-five-years-of-nostr-decembers)
+- [Newsletter #15 : PRs ouverts](/en/newsletters/2026-03-04-newsletter/#open-prs-and-project-updates)
 
 **Voir aussi :**
 - [NIP-17 : Messages directs privés](/fr/topics/nip-17/)
-

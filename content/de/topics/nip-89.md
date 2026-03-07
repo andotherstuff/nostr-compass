@@ -1,6 +1,8 @@
 ---
-title: "NIP-89: Empfohlene Anwendungs-Handler"
+title: "NIP-89: Empfohlene Application Handlers"
 date: 2026-01-07
+translationOf: /en/topics/nip-89.md
+translationDate: 2026-03-07
 draft: false
 categories:
   - Discovery
@@ -8,20 +10,20 @@ categories:
   - Protocol
 ---
 
-NIP-89 definiert, wie Anwendungen ihre Fähigkeiten ankündigen können und wie Nutzer Apps empfehlen können, die bestimmte Event-Kinds verarbeiten.
+NIP-89 definiert, wie Anwendungen ihre Fähigkeiten ankündigen können und wie Nutzer Apps empfehlen, die bestimmte Event-Kinds verarbeiten.
 
-## Event Kinds
+## Event-Kinds
 
-- **kind 31990** - Anwendungs-Handler (veröffentlicht von App-Entwicklern)
-- **kind 31989** - App-Empfehlung (veröffentlicht von Nutzern)
+- **kind 31990** - Application Handler, veröffentlicht von App-Entwicklern
+- **kind 31989** - App-Empfehlung, veröffentlicht von Nutzern
 
-## Wie es funktioniert
+## Funktionsweise
 
 1. **Anwendungen** veröffentlichen Handler-Events, die beschreiben, welche Event-Kinds sie unterstützen und wie Inhalte geöffnet werden
-2. **Nutzer** empfehlen Apps, die sie für bestimmte Event-Kinds nutzen
-3. **Clients** fragen Empfehlungen ab, um "Öffnen mit..."-Funktionalität für unbekannte Event-Typen anzubieten
+2. **Nutzer** empfehlen Apps, die sie für bestimmte Event-Kinds verwenden
+3. **Clients** fragen Empfehlungen ab, um für unbekannte Event-Typen eine Funktion "open in..." anzubieten
 
-## Anwendungs-Handler
+## Application Handler
 
 ```json
 {
@@ -40,9 +42,11 @@ NIP-89 definiert, wie Anwendungen ihre Fähigkeiten ankündigen können und wie 
 }
 ```
 
-Die `k`-Tags spezifizieren unterstützte Event-Kinds. URL-Vorlagen verwenden `<bech32>` als Platzhalter für NIP-19-kodierte Entitäten.
+Die `k`-Tags geben an, welche Event-Kinds unterstützt werden. URL-Templates verwenden `<bech32>` als Platzhalter für nach NIP-19 kodierte Entitäten.
 
-## Nutzer-Empfehlung
+Dasselbe Handler-Event kann mehrere unterstützte Kinds bewerben, wenn sie dasselbe Routing-Muster teilen. Das hält App-Discovery kompakt und vermeidet ein eigenes Handler-Event pro Kind, wenn die Ziel-Logik identisch ist.
+
+## Empfehlung durch Nutzer
 
 ```json
 {
@@ -59,22 +63,35 @@ Die `k`-Tags spezifizieren unterstützte Event-Kinds. URL-Vorlagen verwenden `<b
 }
 ```
 
-Der `d`-Tag ist der Event-Kind, der empfohlen wird. Mehrere `a`-Tags können verschiedene Apps für verschiedene Plattformen empfehlen.
+Das `d`-Tag ist der empfohlene Event-Kind. Mehrere `a`-Tags können unterschiedliche Apps für verschiedene Plattformen empfehlen.
+
+## Client-Tag
+
+NIP-89 definiert außerdem ein optionales `client`-Tag, das veröffentlichende Apps an gewöhnliche Events anhängen können. Es hält den Client-Namen plus einen Verweis auf das Handler-Event fest, sodass andere Clients sehen können, woher eine Note stammt, oder reichere Anwendungs-Metadaten abrufen können.
+
+Das hat Datenschutzfolgen. Die Spezifikation sagt ausdrücklich, dass Clients Nutzern ein Opt-out geben sollten, weil die Software-Identität an jedem Event Nutzungsgewohnheiten offenlegen kann, die jemand vielleicht nicht preisgeben will.
 
 ## Anwendungsfälle
 
-- Apps entdecken, die Langform-Artikel (kind 30023) anzeigen können
+- Apps entdecken, die Longform-Artikel vom kind 30023 darstellen können
 - Clients finden, die bestimmte Event-Typen unterstützen
-- Cross-Client "Öffnen mit..."-Funktionalität
-- Client-Fähigkeiten für Verschlüsselungsunterstützung erkennen
+- Client-übergreifende Funktionen vom Typ "open in..."
+- Fähigkeiten eines Clients bei der Verschlüsselung erkennen
+
+## Hinweise zu Vertrauen und Sicherheit
+
+NIP-89 verbessert Interoperabilität, schafft aber auch eine Umleitungsfläche. Wenn ein Client beliebige Handler-Ankündigungen von nicht vertrauenswürdigen Relays abfragt, kann er Nutzer zu bösartigen oder irreführenden Anwendungen schicken.
+
+Deshalb beginnt der Empfehlungsfluss mit Menschen, denen du folgst. Sozial gefilterte Empfehlungen sind nicht perfekt, aber sicherer, als jeden veröffentlichten Handler als gleich vertrauenswürdig zu behandeln.
 
 ---
 
-**Primäre Quellen:**
-- [NIP-89 Spezifikation](https://github.com/nostr-protocol/nips/blob/master/89.md)
+**Primärquellen:**
+- [NIP-89 Specification](https://github.com/nostr-protocol/nips/blob/master/89.md)
 
 **Erwähnt in:**
 - [Newsletter #4: NIP Deep Dive](/de/newsletters/2026-01-07-newsletter/#nip-44-versionierte-verschluesselung)
+- [Newsletter #12: Damus](/de/newsletters/2026-03-04-newsletter/#damus-nip-89-recommended-application-handlers)
 
 **Siehe auch:**
-- [NIP-19: Bech32-kodierte Entitäten](/de/topics/nip-19/)
+- [NIP-19: Bech32-Encoded Entities](/de/topics/nip-19/)

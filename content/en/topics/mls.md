@@ -9,7 +9,7 @@ categories:
   - Privacy
 ---
 
-Message Layer Security (MLS) is an IETF-standardized protocol for end-to-end encrypted group messaging. It provides efficient key establishment with forward secrecy and post-compromise security for groups ranging from two to thousands of participants.
+Message Layer Security (MLS) is an IETF protocol for end-to-end encrypted group messaging. It provides forward secrecy and post-compromise security for groups that may change membership over time.
 
 ## How It Works
 
@@ -20,20 +20,18 @@ MLS uses a tree-based key agreement structure called TreeKEM:
 3. **Commits**: Members update the tree when joining, leaving, or rotating keys
 4. **Message Encryption**: Content is encrypted using keys derived from the shared group secret
 
-## Key Security Properties
+## Why It Matters
 
-- **Forward Secrecy**: Past messages remain secure even if current keys are compromised
-- **Post-Compromise Security**: Future messages become secure again after key rotation
-- **Membership Authentication**: All group members are cryptographically verified
-- **Asynchronous Operation**: Members can join/leave without all participants being online
-- **Scalability**: Efficient for groups up to 50,000 participants
+MLS solves a problem that pairwise encryption does not solve well: keeping group membership and encryption state coherent as members join, leave, or rotate keys asynchronously.
+
+Its tree structure is the practical insight. Updates do not require every participant to renegotiate pairwise with everyone else, so the protocol scales much better than ad hoc group-key schemes.
 
 ## Standardization
 
 - **RFC 9420** (July 2023): Core MLS protocol specification
 - **RFC 9750** (April 2025): MLS architecture for system integration
 
-## Adoption in Nostr
+## Adoption In Nostr
 
 Several Nostr applications use MLS for secure group messaging:
 
@@ -41,14 +39,13 @@ Several Nostr applications use MLS for secure group messaging:
 - **White Noise**: Private messaging using MLS with Marmot protocol integration
 - **Marmot Protocol**: Nostr extension providing MLS-based group encryption
 
-MLS offers stronger security guarantees than NIP-04 or NIP-44 alone, particularly for group chats where members join and leave dynamically.
+MLS offers stronger group-security guarantees than [NIP-04](/en/topics/nip-04/) or [NIP-44](/en/topics/nip-44/) alone, especially when membership changes frequently.
 
-## Industry Adoption
+## Tradeoffs
 
-Beyond Nostr, MLS is being adopted by:
-- Google Messages (RCS with MLS via GSMA Universal Profile 3.0)
-- Apple Messages (RCS support announced for MLS)
-- Cisco WebEx, Wickr, Matrix
+MLS is not a full messaging product. Applications still need identity, transport, spam resistance, storage, and conflict handling around the protocol.
+
+That is why Nostr projects such as Marmot add extra rules on top of MLS. The cryptography is standardized, but the surrounding application protocol still matters for interoperability.
 
 ---
 
@@ -60,6 +57,8 @@ Beyond Nostr, MLS is being adopted by:
 
 **Mentioned in:**
 - [Newsletter #3: Releases](/en/newsletters/2025-12-31-newsletter/#releases)
+- [Newsletter #10](/en/newsletters/2026-02-18-newsletter/)
+- [Newsletter #12](/en/newsletters/2026-03-04-newsletter/)
 
 **See also:**
 - [Marmot Protocol](/en/topics/marmot/)

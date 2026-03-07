@@ -1,50 +1,58 @@
 ---
-title: "NIP-50: Search"
+title: "NIP-50: Ricerca"
 date: 2025-12-31
 translationOf: /en/topics/nip-50.md
-translationDate: 2025-12-31
+translationDate: 2026-03-07
 draft: false
 categories:
-  - Protocollo
+  - Protocol
   - Relay
 ---
+NIP-50 definisce una capacità generale di ricerca per i relay Nostr. Aggiunge query in stile full-text sopra i filtri a corrispondenza esatta di NIP-01.
 
-NIP-50 definisce una capacità di ricerca generalizzata per i relay Nostr, consentendo ai client di eseguire ricerche full-text oltre alle query strutturate per tag o ID.
+## Come funziona
 
-## Come Funziona
+Il protocollo aggiunge un campo `search` agli oggetti filtro nei messaggi `REQ`:
 
-Il protocollo aggiunge un campo `search` agli oggetti filtro nei messaggi REQ:
+1. I client inviano una stringa di query leggibile da esseri umani come `best nostr apps`.
+2. I relay interpretano quella query rispetto ai dati degli eventi, principalmente il campo `content`.
+3. I risultati vengono ordinati per qualità della corrispondenza, non per `created_at`.
+4. `limit` si applica dopo l'ordinamento per rilevanza.
 
-1. I client inviano query di ricerca leggibili dall'uomo (es. "migliori app nostr")
-2. I relay interpretano e fanno corrispondere le query ai dati degli eventi, principalmente il campo `content`
-3. I risultati sono ordinati per rilevanza anziché in ordine cronologico
-4. Il filtro `limit` viene applicato dopo l'ordinamento per rilevanza
+I filtri di ricerca possono essere combinati con `kinds`, `ids`, autori e altri normali campi filtro per query più specifiche.
 
-I filtri di ricerca possono essere combinati con altri vincoli come `kinds` e `ids` per query più specifiche.
+## Estensioni di ricerca
 
-## Estensioni di Ricerca
+I relay possono supportare facoltativamente questi parametri di estensione:
 
-I relay possono opzionalmente supportare questi parametri di estensione:
-
-- `include:spam` - Disabilita il filtraggio spam predefinito
+- `include:spam` - Disabilita il filtro antispam predefinito
 - `domain:<domain>` - Filtra per dominio NIP-05 verificato
 - `language:<code>` - Filtra per codice lingua ISO
-- `sentiment:<value>` - Filtra per sentimento negativo/neutro/positivo
+- `sentiment:<value>` - Filtra per sentiment negativo, neutro o positivo
 - `nsfw:<true/false>` - Include o esclude contenuti NSFW
 
-## Considerazioni per i Client
+I relay dovrebbero ignorare le estensioni che non supportano, quindi i client devono trattarle come indizi, non come garanzie.
 
-- I client dovrebbero verificare le capacità del relay tramite il campo `supported_nips`
-- La verifica dei risultati lato client è raccomandata
-- Non tutti i relay implementano la ricerca; rimane una funzionalità opzionale
+## Note di interoperabilità
+
+- I client dovrebbero controllare le capacità del relay tramite il campo `supported_nips`
+- È consigliata la verifica lato client dei risultati
+- Non tutti i relay implementano la ricerca, resta una funzionalità opzionale
+
+Poiché il ranking è definito dall'implementazione, la stessa query può restituire insiemi di risultati diversi su relay diversi. I client che tengono al recall dovrebbero interrogare più di un relay di ricerca e unire i risultati.
+
+## Perché è importante
+
+I filtri strutturati funzionano bene quando conosci già l'autore, il kind o il tag che vuoi. La ricerca serve per il caso opposto: la scoperta. Questo rende NIP-50 utile per directory di app, archivi lunghi e ricerca tra note pubbliche, ma significa anche che la qualità della ricerca dipende molto dalle scelte di indicizzazione e filtro antispam di ciascun relay.
 
 ---
 
 **Fonti primarie:**
-- [Specifica NIP-50](https://github.com/nostr-protocol/nips/blob/master/50.md)
+- [NIP-50 Specification](https://github.com/nostr-protocol/nips/blob/master/50.md)
 
-**Menzionato in:**
-- [Newsletter #3: Riepilogo di Dicembre](/it/newsletters/2025-12-31-newsletter/#december-recap-five-years-of-nostr-decembers)
+**Citato in:**
+- [Newsletter #3: December Recap](/en/newsletters/2025-12-31-newsletter/#december-recap-five-years-of-nostr-decembers)
+- [Newsletter #7: NIP Updates](/en/newsletters/2026-01-07-newsletter/#nip-updates)
 
 **Vedi anche:**
-- [NIP-11: Informazioni Relay](/it/topics/nip-11/)
+- [NIP-11: Relay Information](/it/topics/nip-11/)

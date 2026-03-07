@@ -1,16 +1,20 @@
 ---
-title: "NIP-05 (Domeinverificatie)"
+title: "NIP-05: Domeinverificatie"
 date: 2026-02-04
-description: "NIP-05 maakt menselijk leesbare identifiers mogelijk voor Nostr pubkeys via domeinverificatie."
+translationDate: 2026-03-07
+draft: false
+categories:
+  - Identity
+  - Discovery
 ---
 
-NIP-05 koppelt Nostr publieke sleutels aan menselijk leesbare internet-identifiers zoals `user@example.com`. Dit biedt een manier om identiteit te verifieren via domeineigendom zonder vertrouwen in een centrale autoriteit.
+NIP-05 koppelt Nostr public keys aan menselijk leesbare internet-identifiers zoals `user@example.com`. Het geeft gebruikers een door DNS ondersteunde identiteitsaanduiding die clients via HTTPS kunnen verifiëren.
 
-## Hoe Het Werkt
+## Hoe het werkt
 
-Een gebruiker claimt een identifier door een `nip05` veld toe te voegen aan zijn profielmetadata. De identifier volgt het formaat `naam@domein`. Clients verifieren de claim door `https://domein/.well-known/nostr.json` op te halen en te controleren of de naam is gekoppeld aan de pubkey van de gebruiker.
+Een gebruiker claimt een identifier door een `nip05`-veld toe te voegen aan zijn profielmetadata. De identifier volgt het formaat `name@domain`. Clients verifiëren de claim door `https://domain/.well-known/nostr.json` op te halen en te controleren of de naam overeenkomt met de pubkey van de gebruiker.
 
-Het JSON-bestand op het well-known pad bevat een `names` object dat lokale namen koppelt aan hex pubkeys:
+Het JSON-bestand op het well-known-pad bevat een `names`-object dat lokale namen koppelt aan hex pubkeys:
 
 ```json
 {
@@ -21,23 +25,40 @@ Het JSON-bestand op het well-known pad bevat een `names` object dat lokale namen
 }
 ```
 
-Wanneer verificatie slaagt, kunnen clients de identifier tonen in plaats van of naast de npub. Sommige clients tonen een vinkje of andere indicator voor geverifieerde identifiers.
+Wanneer verificatie slaagt, kunnen clients de identifier tonen in plaats van of naast de npub. Sommige clients tonen een verificatie-indicator, terwijl andere de identifier als platte tekst tonen en de vertrouwensbeslissing aan de lezer overlaten.
 
-## Relay Hints
+## Vertrouwensmodel
 
-Het `nostr.json` bestand kan optioneel een `relays` object bevatten dat pubkeys koppelt aan arrays van relay-URL's. Dit helpt clients te ontdekken waar events van een bepaalde gebruiker te vinden zijn.
+NIP-05 is geen wereldwijd username-register. Het bewijst controle over een domeinnaam en een webserverpad, niet de juridische identiteit of langdurige continuïteit van een account. Als een domeineigenaar de koppeling later wijzigt, verifiëren clients de nieuwe koppeling tenzij ze eerdere status bewaren.
 
-## Implementaties
+Dat maakt NIP-05 nuttig voor vindbaarheid en reputatie, maar zwakker dan gebruikers vaak aannemen. Een goede client zou het moeten behandelen als geverifieerde domeincontrole, niet als bewijs dat een persoon of organisatie werkelijk is wie die beweert te zijn.
 
-De meeste grote clients ondersteunen NIP-05 verificatie:
-- Damus, Amethyst, Primal tonen geverifieerde identifiers
-- Veel relay-diensten bieden NIP-05 identifiers als feature
-- Er bestaan talrijke gratis en betaalde NIP-05 providers
+## Relay hints
 
-## Primaire Bronnen
+Het `nostr.json`-bestand kan optioneel een `relays`-object bevatten dat pubkeys koppelt aan arrays met relay-URL's. Dit helpt clients te ontdekken waar ze events van een bepaalde gebruiker kunnen vinden.
 
-- [NIP-05 Specificatie](https://github.com/nostr-protocol/nips/blob/master/05.md)
+## Interop-opmerkingen
 
-## Vermeld In
+De lowercase-vereiste is belangrijker dan ze lijkt. Namen of pubkeys met gemengde hoofdletters en kleine letters kunnen in de ene implementatie werken en in de andere falen, dus clients moeten uitgaan van lowercase-namen en lowercase hex keys in `nostr.json`.
 
-- [Nieuwsbrief #8 (2026-02-04)](/nl/newsletters/2026-02-04-newsletter/) - PR die lowercase vereist voor hex keys en namen
+Een ander praktisch detail is de speciale naam `_`, waarmee een domein de kale identifier-vorm zoals `_@example.com` of alleen `example.com` kan koppelen in clients die dat ondersteunen. Niet elke client behandelt die vorm op dezelfde manier, dus gebruikers krijgen nog steeds de meest consistente resultaten met expliciete `name@domain`-identifiers.
+
+## Implementatiestatus
+
+De meeste grote clients ondersteunen NIP-05-verificatie:
+- Damus, Amethyst en Primal tonen geverifieerde identifiers
+- Veel relay-services bieden NIP-05-identifiers als feature
+- Er bestaan veel gratis en betaalde NIP-05-providers
+
+---
+
+**Primaire bronnen:**
+- [NIP-05 Specification](https://github.com/nostr-protocol/nips/blob/master/05.md)
+- [PR #2208](https://github.com/nostr-protocol/nips/pull/2208) - lowercase-vereiste voor namen en hex keys
+
+**Vermeld in:**
+- [Newsletter #8: NIP Updates](/en/newsletters/2026-02-04-newsletter/#nip-updates)
+
+**Zie ook:**
+- [NIP-01: Basic Protocol](/nl/topics/nip-01/)
+- [NIP-65: Relay List Metadata](/nl/topics/nip-65/)

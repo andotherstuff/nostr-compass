@@ -1,24 +1,31 @@
 ---
-title: "NIP-27 (Referências em Notas de Texto)"
+title: NIP-27 (referências de notas de texto)
 date: 2026-02-04
-description: "NIP-27 define como referenciar perfis, notas e outras entidades dentro do conteúdo de notas usando o esquema de URI nostr:."
+draft: false
+description: 'O NIP-27 define como fazer referência a perfis, notas e outras entidades
+  no conteúdo da nota usando o esquema nostr: URI.'
+categories:
+- NIP
+- Social
+translationOf: /en/topics/nip-27.md
+translationDate: '2026-03-07'
 ---
 
-NIP-27 especifica como incorporar referências a entidades Nostr dentro do conteúdo de notas de texto. Referências usam o esquema de URI `nostr:` seguido de um identificador codificado em bech32 (npub, note, nevent, nprofile, naddr).
+O NIP-27 especifica como incorporar referências a entidades Nostr no conteúdo das notas de texto. As referências usam o esquema URI `nostr:` seguido por um identificador codificado em bech32 (npub, note, nevent, nprofile, naddr).
 
-## Como Funciona
+## Como funciona
 
-Ao compor uma nota que menciona outro usuário ou referencia outro evento, a referência é incorporada diretamente no conteúdo:
+Ao redigir uma nota que mencione outro usuário ou faça referência a outro evento, a referência é incorporada diretamente no conteúdo:
 
 ```
-Confira este post de nostr:npub1... sobre nostr:note1...
+Check out this post by nostr:npub1... about nostr:note1...
 ```
 
-Clientes analisam essas referências e as renderizam apropriadamente, tipicamente como links clicáveis ou cards de perfil inline. As entidades referenciadas também são adicionadas às tags do evento para indexação e propósitos de notificação.
+Os clientes analisam essas referências e as renderizam adequadamente, normalmente como links clicáveis ​​ou cartões de perfil embutidos. As entidades referenciadas também podem ser espelhadas no evento tags para indexação ou notificações, mas a especificação deixa isso opcional.
 
-O NIP também cobre análise de hashtags. Tags prefixadas com `#` são extraídas e adicionadas às tags `t` do evento para pesquisabilidade.
+O NIP também cobre a análise de hashtag. Tags prefixadas com `#` são extraídas e adicionadas ao `t` tags do evento para pesquisa.
 
-## Tipos de Referência
+## Tipos de referência
 
 - `nostr:npub1...` - Referência a um perfil de usuário
 - `nostr:note1...` - Referência a um evento de nota específico
@@ -26,18 +33,29 @@ O NIP também cobre análise de hashtags. Tags prefixadas com `#` são extraída
 - `nostr:nprofile1...` - Referência a um perfil com dicas de relay
 - `nostr:naddr1...` - Referência a um evento endereçável
 
-## Implementações
+## Por que é importante
 
-Todos os principais clientes Nostr implementam NIP-27:
-- Parsers de texto extraem referências durante a composição
-- Renderizadores exibem referências como elementos interativos
-- Sistemas de notificação usam as tags associadas
+O NIP-27 separa o que as pessoas leem do que os clientes armazenam. Um usuário pode digitar `@name` em um compositor rico, mas o evento publicado ainda pode conter uma referência `nostr:nprofile...` estável em `content`. Isso torna a referência portátil entre clientes sem depender da sintaxe de menção de um aplicativo.
 
-## Fontes Primárias
+Outro benefício prático é a resiliência. Um `nostr:nevent...` ou `nostr:naddr...` bruto incorporado no texto ainda carrega informações suficientes para outro cliente reconstruir o alvo, mesmo que nunca tenha visto a renderização local original.
+
+## Notas de interoperabilidade
+
+- Utilizar o formulário [NIP-21](https://github.com/nostr-protocol/nips/blob/master/21.md) no próprio conteúdo: `nostr:<bech32-id>`
+- Adicione `p` ou `q` tags somente quando seu cliente desejar notificações de menção ou indexação de eventos mais forte
+- Não presuma que toda referência in-line deva se tornar um relacionamento de resposta. A especificação deixa essa escolha para o cliente
+
+---
+
+**Fontes primárias:**
 
 - [Especificação NIP-27](https://github.com/nostr-protocol/nips/blob/master/27.md)
-- [NIP-19 (Entidades Codificadas em Bech32)](/pt/topics/nip-19/) - Define os formatos de codificação usados em referências
+- [NIP-19 (Entidades Codificadas Bech32)](/pt/topics/nip-19/) - Define os formatos de codificação usados nas referências
 
-## Mencionado Em
+**Mencionado em:**
 
-- [Newsletter #8 (2026-02-04)](/pt/newsletters/2026-02-04-newsletter/) - Correção no nostr-tools para análise de hashtags após quebras de linha
+- [Newsletter #8 (2026-02-04)](/pt/newsletters/2026-02-04-newsletter/) - correção de nostr-tools para análise de hashtag após novas linhas
+
+**Veja também:**
+- [NIP-18: Repostagens](/pt/topics/nip-18/)
+- [NIP-19: Entidades codificadas em Bech32](/pt/topics/nip-19/)

@@ -1,47 +1,52 @@
 ---
-title: "NIP-51: Listas"
+title: 'NIP-51: Listas'
 date: 2025-12-17
 draft: false
 categories:
-  - Protocol
-  - Social
+- Protocol
+- Social
 translationOf: /en/topics/nip-51.md
-translationDate: 2025-12-26
+translationDate: '2026-03-07'
 ---
 
-NIP-51 define vários tipos de listas para organizar referências a eventos, usuários e conteúdo no Nostr.
+O NIP-51 define lista de eventos para organização de usuários, eventos, relays, hashtags e outras referências. É o protocolo principal para marcadores, listas de mudo, conjuntos de acompanhamento, conjuntos relay e várias outras coleções selecionadas pelo usuário.
 
-## Tipos de Lista
+## Listas e conjuntos padrão
 
-- **Kind 10000**: Lista de silenciados (usuários, threads ou palavras para esconder)
-- **Kind 10001**: Lista de fixados (eventos para destacar no perfil)
-- **Kind 30000**: Conjuntos de seguidos (listas de seguidos categorizadas)
-- **Kind 30003**: Conjuntos de favoritos
-- **Kind 30004**: Conjuntos de curadoria (artigos)
-- **Kind 30005**: Conjuntos de videos
-- **Kind 30006**: Conjuntos de imagens
-- **Kind 30015**: Conjuntos de interesses (hashtags)
-- **Kind 30030**: Conjuntos de emojis
+- **Listas padrão** usam eventos substituíveis kinds, como listas de mudo kind `10000`, marcadores kind `10003` e pesquisa kind `10007` relays.
+- **Conjuntos** usam kinds endereçáveis ​​com `d` tags, como conjuntos de acompanhamento kind `30000`, conjuntos de marcadores kind `30003` e conjuntos de emoji kind `30030`.
+
+A distinção é importante no comportamento do cliente. As listas padrão implicam uma lista canônica por usuário e kind. Os conjuntos implicam muitas coleções nomeadas, portanto os clientes devem preservar o `d` tag de cada lista.
 
 ## Estrutura
 
-Listas usam tags para referenciar conteúdo:
-- Tags `p` para pubkeys
-- Tags `e` para eventos
-- Tags `a` para eventos endereçáveis
-- Tags `t` para hashtags
-- Tags `word` para palavras silenciadas
+As listas usam tags para fazer referência ao conteúdo:
 
-## Público vs Privado
+- `p` tags para pubkeys
+- `e` tags para eventos
+- `a` tags para eventos endereçáveis
+- `t` tags para hashtags
+- `word` tags para palavras silenciadas
+- `relay` tags para URLs relay na lista orientada a relay kinds
 
-Listas podem ter tags públicas (visíveis para todos) e conteúdo criptografado (privado). Itens privados são criptografados usando NIP-44 e armazenados no campo `content` do evento. A criptografia usa as próprias chaves do autor (criptografando para si mesmo).
+Algumas listas kinds têm formas tag permitidas mais estreitas do que outras. Por exemplo, listas orientadas a relay usam `relay` tags, enquanto espera-se que os marcadores apontem para notas ou eventos endereçáveis. Os clientes que tratam cada lista NIP-51 como tags de formato livre arbitrário perderão a interoperabilidade.
 
-Isso permite recursos como favoritos públicos com notas privadas, ou uma lista de silenciados onde os itens silenciados são escondidos de outros.
+## Público x Privado
 
-## Mudanças Recentes
+As listas podem ter tags públicos e itens privados. Os itens privados são serializados como um array JSON que espelha a estrutura `tags`, criptografados e armazenados no evento `content`. A especificação atual usa NIP-44 para este modelo de autocriptografia, com NIP-04 apenas como compatibilidade legada.
 
-- Tags de hashtag e URL removidas de favoritos genéricos; hashtags agora usam kind 30015
-- Kind 30006 adicionado para conjuntos de imagens curados
+Essa divisão permite que os usuários publiquem um shell de lista visível enquanto ocultam algumas entradas. Uma lista de marcadores pode permanecer pública enquanto notas privadas ou marcadores privados permanecem em conteúdo criptografado.
+
+## Tipos úteis
+
+- **Kind 10000**: lista de silenciamento para pubkeys, tópicos, hashtags e palavras silenciadas
+- **Kind 10003**: marcadores para notas e conteúdo endereçável
+- **kind 10007**: pesquisa preferida relays
+- **kind 30002**: conjuntos relay para grupos relay nomeados
+- **Kind 30006**: conjuntos de curadoria de imagens
+- **kind 39089**: pacotes iniciais para pacotes de acompanhamento compartilháveis
+
+Mudanças recentes nas especificações moveram as hashtags de marcadores genéricos para conjuntos de interesse e adicionaram kind `30006` para curadoria de imagens. Ambas as alterações reduzem a ambiguidade na forma como os clientes interpretam o conteúdo da lista.
 
 ---
 
@@ -49,8 +54,10 @@ Isso permite recursos como favoritos públicos com notas privadas, ou uma lista 
 - [Especificação NIP-51](https://github.com/nostr-protocol/nips/blob/master/51.md)
 
 **Mencionado em:**
-- [Newsletter #1: Atualizações de NIP](/pt/newsletters/2025-12-17-newsletter/#nip-updates)
-- [Newsletter #2: Atualizações de NIP](/pt/newsletters/2025-12-24-newsletter/#nip-updates)
+- [Boletim informativo nº 1: atualizações do NIP](/pt/newsletters/2025-12-17-newsletter/#nip-updates)
+- [Boletim informativo nº 2: Atualizações do NIP](/pt/newsletters/2025-12-24-newsletter/#nip-updates)
+- [Boletim informativo nº 4: Aprofundamento do NIP](/pt/newsletters/2026-01-13-newsletter/#nip-deep-dive-nip-51-and-nip-65)
+- [Boletim informativo nº 8: njump adiciona suporte NIP-51](/pt/newsletters/2026-02-04-newsletter/#njump)
 
 **Veja também:**
-- [NIP-02: Lista de Seguidos](/pt/topics/nip-02/)
+- [NIP-02: Lista de Seguidores](/pt/topics/nip-02/)

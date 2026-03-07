@@ -7,15 +7,21 @@ categories:
   - Media
 ---
 
-NIP-96 defined how Nostr clients upload, download, and manage files on HTTP media servers. Now marked as "unrecommended" in favor of Blossom, NIP-96 remains relevant as projects navigate the transition between the two media standards.
+NIP-96 defines how Nostr clients upload, download, and manage files on HTTP media servers. It is now marked "unrecommended" in favor of Blossom, but it still matters because existing servers and clients continue to support it during the transition.
 
 ## How It Works
 
-A client discovers a file server's capabilities by fetching `/.well-known/nostr/nip96.json`, which returns the API URL, supported content types, size limits, and available media transformations.
+A client discovers a file server's capabilities by fetching `/.well-known/nostr/nip96.json`. That document advertises the upload API URL, optional download URL, supported content types, size limits, and whether the server supports media transformations or delegated hosting.
 
-To upload, the client sends a `multipart/form-data` POST to the API URL with a NIP-98 authorization header (a signed Nostr event proving the uploader's identity). The server returns a NIP-94 file metadata structure containing the file URL, SHA-256 hashes, MIME type, and dimensions.
+To upload, the client sends a `multipart/form-data` POST to the API URL with a [NIP-98](https://github.com/nostr-protocol/nips/blob/master/98.md) authorization header. The server responds with a NIP-94-shaped metadata object that includes the file URL plus tags such as `ox` for the original hash and, when applicable, `x` for the transformed file that will actually be served.
 
-Downloads use GET requests to `<api_url>/<sha256-hash>`, with optional query parameters for server-side transforms like image resizing. Deletion uses DELETE with NIP-98 auth. Users publish kind 10096 events to declare their preferred upload servers.
+Downloads use `GET <api_url>/<sha256-hash>` with optional query parameters such as image width. Deletion uses `DELETE` with NIP-98 auth. Users publish kind `10096` events to declare their preferred upload servers.
+
+## Data Model Details
+
+One useful detail is that NIP-96 identifies files by the original file hash, even when the server transforms the upload. That lets a client delete or redownload the asset by the same stable identifier, while still getting server-generated thumbnails or recompressed variants when available.
+
+The well-known document also supports `delegated_to_url`, which lets a relay point clients at a separate HTTP storage server. That kept relay software from having to implement the full media API itself.
 
 ## Why It Was Deprecated
 
@@ -23,11 +29,11 @@ NIP-96 tied file URLs to specific servers. If a server went down, every Nostr no
 
 Blossom also simplifies the API: plain PUT for uploads, GET for downloads, and signed Nostr events (not HTTP headers) for authorization. The deprecation happened in September 2025 via [PR #2047](https://github.com/nostr-protocol/nips/pull/2047).
 
-## The Transition
+## Interop Notes
 
-Servers like nostr.build and void.cat supported NIP-96 and have added or migrated to Blossom endpoints. Clients are at various stages: Angor v0.2.5 added NIP-96 server configuration while ZSP v0.3.1 uploads exclusively to Blossom servers. The coexistence will continue until remaining NIP-96 implementations complete migration.
+Servers like nostr.build and void.cat supported NIP-96 and have added or migrated to Blossom endpoints. Clients are at various stages: [Angor v0.2.5](https://github.com/block-core/angor/releases/tag/v0.2.5) added NIP-96 server configuration while [ZSP v0.3.1](https://github.com/zapstore/zsp/releases/tag/v0.3.1) uploads exclusively to Blossom servers. The coexistence will continue until remaining NIP-96 implementations complete migration.
 
-Kind 10096 server preference events remain useful for Blossom server selection. NIP-94 file metadata (kind 1063 events) describes file properties regardless of which upload protocol created them.
+Kind 10096 server preference events remain useful while clients still support NIP-96 upload backends. NIP-94 file metadata (kind 1063 events) describes file properties regardless of which upload protocol created them.
 
 ---
 
