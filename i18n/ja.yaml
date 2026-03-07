@@ -29,6 +29,13 @@ menu_about: "概要"
 menu_newsletters: "ニュースレター"
 menu_topics: "トピック"
 menu_podcast: "ポッドキャスト"
+menu_search: "検索"
+
+# Search
+search_intro: "生成されたサイトインデックスからニュースレター、トピック、ポッドキャストのページを検索します。"
+search_placeholder: "サイトを検索"
+search_javascript_required: "検索を使うにはブラウザで JavaScript を有効にする必要があります。"
+search_assets_missing: "検索アセットがありません。Pagefind インデックスを生成するにはサイト全体をビルドしてください。"
 
 # Podcast
 podcast_available_in_english: "ポッドキャストのエピソードは英語で提供されています。"

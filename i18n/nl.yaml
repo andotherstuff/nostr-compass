@@ -29,6 +29,13 @@ menu_about: "Over ons"
 menu_newsletters: "Nieuwsbrieven"
 menu_topics: "Onderwerpen"
 menu_podcast: "Podcast"
+menu_search: "Zoeken"
+
+# Search
+search_intro: "Doorzoek nieuwsbrieven, onderwerpen en podcastpagina's vanuit de gebouwde site-index."
+search_placeholder: "Doorzoek de site"
+search_javascript_required: "Zoeken vereist JavaScript in je browser."
+search_assets_missing: "Zoekbestanden ontbreken. Voer de volledige site-build uit om de Pagefind-index te genereren."
 
 # Podcast
 podcast_available_in_english: "Podcast-afleveringen zijn beschikbaar in het Engels."

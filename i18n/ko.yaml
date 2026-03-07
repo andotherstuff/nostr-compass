@@ -29,6 +29,13 @@ menu_about: "소개"
 menu_newsletters: "뉴스레터"
 menu_topics: "주제"
 menu_podcast: "팟캐스트"
+menu_search: "검색"
+
+# Search
+search_intro: "생성된 사이트 인덱스에서 뉴스레터, 주제, 팟캐스트 페이지를 검색합니다."
+search_placeholder: "사이트 검색"
+search_javascript_required: "검색을 사용하려면 브라우저에서 JavaScript를 활성화해야 합니다."
+search_assets_missing: "검색 자산이 없습니다. Pagefind 인덱스를 만들려면 전체 사이트 빌드를 실행하세요."
 
 # Podcast
 podcast_available_in_english: "팟캐스트 에피소드는 영어로 제공됩니다."

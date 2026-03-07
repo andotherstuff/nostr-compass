@@ -318,6 +318,26 @@ hr {
   margin-right: 10px;
 }
 
+.search-page {
+  .search-intro {
+    color: var(--text-muted);
+    max-width: 42rem;
+  }
+}
+
+.search-shell {
+  margin-top: 1.5rem;
+  --pagefind-ui-scale: 0.95;
+  --pagefind-ui-primary: var(--brand-color);
+  --pagefind-ui-text: var(--text-color);
+  --pagefind-ui-background: var(--background-color);
+  --pagefind-ui-border: var(--border-color);
+  --pagefind-ui-tag: var(--background-secondary);
+  --pagefind-ui-border-width: 1px;
+  --pagefind-ui-border-radius: 8px;
+  --pagefind-ui-font: inherit;
+}
+
 /* Logo sizing - PNG has built-in padding, so we scale and clip */
 .logo-img {
   vertical-align: middle;

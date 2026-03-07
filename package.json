@@ -1,0 +1,11 @@
+{
+  "scripts": {
+    "build": "bash scripts/build-site.sh"
+  },
+  "dependencies": {
+    "yaml": "^2.8.2"
+  },
+  "devDependencies": {
+    "pagefind": "^1.4.0"
+  }
+}

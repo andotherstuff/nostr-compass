@@ -45,9 +45,12 @@ docker-compose up
 
 **Build static site:**
 ```bash
-hugo
+bun install
+bun run build
 # Output in /public/
 ```
+
+`hugo server` is still useful for content work, but `Pagefind` search assets are generated during the full build step.
 
 ## Deployment
 

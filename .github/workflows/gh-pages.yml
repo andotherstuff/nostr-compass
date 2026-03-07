@@ -40,6 +40,10 @@ jobs:
         with:
           submodules: recursive
           fetch-depth: 0
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+      - name: Install JavaScript dependencies
+        run: bun install --frozen-lockfile
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v4
@@ -47,12 +51,8 @@ jobs:
         env:
           HUGO_ENVIRONMENT: production
           HUGO_ENV: production
-        run: |
-          hugo \
-            --gc \
-            --minify \
-            --ignoreVendorPaths "hugo_modules" \
-            --baseURL "${{ steps.pages.outputs.base_url }}/"
+          HUGO_BASE_URL: ${{ steps.pages.outputs.base_url }}/
+        run: bun run build
       - name: Create .nojekyll file
         run: touch public/.nojekyll
       - name: Upload artifact
@@ -72,4 +72,3 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-
