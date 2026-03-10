@@ -1,0 +1,38 @@
+# Non-GitHub Project Updates
+# Manual tracking for projects hosted on Codeberg, Sourcehut, or other platforms
+# that the GitHub fetch script cannot reach.
+#
+# Update this file weekly before newsletter generation.
+# Format: list entries under each platform with date, project, type, and description.
+#
+# Last updated: 2026-03-10
+
+codeberg:
+  # ngit - Git collaboration over Nostr (NIP-34)
+  # Repo: https://codeberg.org/DanConwayDev/ngit-cli
+  - project: ngit
+    repo: https://codeberg.org/DanConwayDev/ngit-cli
+    updates: []
+    # Example entry:
+    # - date: 2026-02-10
+    #   type: release  # release | pr | commit
+    #   title: "v1.5.0"
+    #   description: "Added support for NIP-34 patch sets"
+    #   url: "https://codeberg.org/DanConwayDev/ngit-cli/releases/tag/v1.5.0"
+
+sourcehut:
+  # nostr-rs-relay - Rust relay with SQLite/PostgreSQL
+  # Repo: https://sr.ht/~gheartsfield/nostr-rs-relay/
+  - project: nostr-rs-relay
+    repo: https://sr.ht/~gheartsfield/nostr-rs-relay/
+    updates: []
+
+other:
+  # Projects with non-standard hosting or no public repo
+  # - project: sigit
+  #   repo: https://git.nostrdev.com/sigit/sigit.io
+  #   updates: []
+
+  - project: didactyl
+    repo: https://git.laantungir.net/laantungir/didactyl
+    updates: []

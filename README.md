@@ -51,6 +51,7 @@ bun run build
 ```
 
 `hugo server` is still useful for content work, but `Pagefind` search assets are generated during the full build step.
+Local builds automatically reserve 2 CPU cores for headroom. Override with `BUILD_HEADROOM_CORES=<n>` or cap the build directly with `BUILD_MAX_CORES=<n>`.
 
 ## Deployment
 

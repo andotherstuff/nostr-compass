@@ -69,6 +69,7 @@ NIP-44 revision 3 was merged in December 2023 following an independent Cure53 se
 - [Newsletter #3: December 2023](/en/newsletters/2025-12-31-newsletter/#december-2023-ecosystem-maturation)
 - [Newsletter #3: December 2024](/en/newsletters/2025-12-31-newsletter/#december-2024-protocol-advancement)
 - [Newsletter #12: Marmot](/en/newsletters/2026-03-04-newsletter/#marmot-development-kit-ships-first-public-release)
+- [Newsletter #13: Vector](/en/newsletters/2026-03-11-newsletter/#vector-v032-ships-nip-77-negentropy-sync-and-mls-improvements)
 
 **See also:**
 - [NIP-04: Encrypted Direct Messages (deprecated)](/en/topics/nip-04/)

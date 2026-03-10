@@ -77,6 +77,7 @@ Addressable video events (kinds 34235 and 34236) are currently implemented in Am
 **Mentioned in:**
 - [Newsletter #5: NIP Updates](/en/newsletters/2026-01-13-newsletter/#nip-updates)
 - [Newsletter #12: NoorNote](/en/newsletters/2026-03-04-newsletter/)
+- [Newsletter #13: NIP Updates](/en/newsletters/2026-03-11-newsletter/#nip-updates)
 
 **See also:**
 - [NIP-94: File Metadata](/en/topics/nip-94/)

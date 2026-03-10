@@ -58,6 +58,7 @@ Most major clients support NIP-05 verification:
 
 **Mentioned in:**
 - [Newsletter #8: NIP Updates](/en/newsletters/2026-02-04-newsletter/#nip-updates)
+- [Newsletter #13: Amethyst](/en/newsletters/2026-03-11-newsletter/#amethyst)
 
 **See also:**
 - [NIP-01: Basic Protocol](/en/topics/nip-01/)

@@ -44,6 +44,7 @@ For web apps on Android, NIP-55 is less ergonomic than NIP-46. Browser-based flo
 - [Newsletter #3: December Recap](/en/newsletters/2025-12-31-newsletter/#december-recap-five-years-of-nostr-decembers)
 - [Newsletter #4: NIP Updates](/en/newsletters/2026-01-07-newsletter/#nip-updates)
 - [Newsletter #11: NIP Deep Dive](/en/newsletters/2026-02-25-newsletter/#nip-deep-dive-nip-55-android-signer-application)
+- [Newsletter #13: Samizdat v1.0.0-alpha](/en/newsletters/2026-03-11-newsletter/#samizdat-v100-alpha)
 
 **See also:**
 - [NIP-46: Nostr Connect](/en/topics/nip-46/)

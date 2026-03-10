@@ -43,6 +43,7 @@ Kind 10096 server preference events remain useful while clients still support NI
 
 **Mentioned in:**
 - [Newsletter #9: NIP Deep Dive](/en/newsletters/2026-02-11-newsletter/#nip-deep-dive-nip-96-http-file-storage-and-the-transition-to-blossom)
+- [Newsletter #13: Route96 v0.5.0 and v0.5.1](/en/newsletters/2026-03-11-newsletter/#route96-v050-and-v051)
 
 **See also:**
 - [Blossom Protocol](/en/topics/blossom/)
