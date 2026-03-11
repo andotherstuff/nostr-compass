@@ -1,11 +1,12 @@
 ---
 title: "NIP-17: Privé Directe Berichten"
 date: 2025-12-17
-translationDate: 2026-03-07
+translationOf: /en/topics/nip-17.md
+translationDate: 2026-03-11
 draft: false
 categories:
   - Privacy
-  - Berichten
+  - Messaging
 ---
 
 NIP-17 definieert private direct messages met NIP-59 gift wrapping voor afzenderprivacy. In tegenstelling tot NIP-04 DMs, die de afzender in het buitenste event zichtbaar maken, verbergt NIP-17 de afzender voor relays en toevallige waarnemers.
@@ -57,11 +58,11 @@ NIP-17 definieert ook inbox relay lists voor private messaging. Clients kunnen e
 - [PR #2098](https://github.com/nostr-protocol/nips/pull/2098) - opschoning van de formulering en update voor reaction support
 
 **Vermeld in:**
-- [Nieuwsbrief #1: NIP Updates](/en/newsletters/2025-12-17-newsletter/#nip-updates)
-- [Nieuwsbrief #2: News](/en/newsletters/2025-12-24-newsletter/#news)
-- [Nieuwsbrief #3: December Recap](/en/newsletters/2025-12-31-newsletter/#december-recap-five-years-of-nostr-decembers)
-- [Nieuwsbrief #3: Notable Code Changes](/en/newsletters/2025-12-31-newsletter/#shopstr-marketplace)
-- [Nieuwsbrief #5: News](/en/newsletters/2026-01-13-newsletter/#news)
+- [Nieuwsbrief #1: NIP Updates](/nl/newsletters/2025-12-17-newsletter/#nip-updates)
+- [Nieuwsbrief #2: News](/nl/newsletters/2025-12-24-newsletter/#news)
+- [Nieuwsbrief #3: December Recap](/nl/newsletters/2025-12-31-newsletter/#december-recap-five-years-of-nostr-decembers)
+- [Nieuwsbrief #3: Notable Code Changes](/nl/newsletters/2025-12-31-newsletter/#shopstr-marketplace)
+- [Nieuwsbrief #5: News](/nl/newsletters/2026-01-13-newsletter/#news)
 
 **Zie ook:**
 - [NIP-04: Versleutelde Direct Messages (Verouderd)](/nl/topics/nip-04/)

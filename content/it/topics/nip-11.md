@@ -1,8 +1,8 @@
 ---
 title: "NIP-11: Documento informativo del relay"
 date: 2025-12-17
-translationOf: /en/topics/nip-11/
-translationDate: 2026-03-07
+translationOf: /en/topics/nip-11.md
+translationDate: 2026-03-11
 draft: false
 categories:
   - Relay
@@ -48,7 +48,7 @@ La specifica è stata ridotta nel tempo. Vecchi campi opzionali come `software`,
 - [PR #2231](https://github.com/nostr-protocol/nips/pull/2231) - rimozione dei campi deprecati
 
 **Citato in:**
-- [Newsletter #1: NIP Updates](/en/newsletters/2025-12-17-newsletter/#nip-updates)
+- [Newsletter #1: NIP Updates](/it/newsletters/2025-12-17-newsletter/#nip-updates)
 
 **Vedi anche:**
 - [NIP-66: Discovery dei relay e monitoraggio della disponibilità](/it/topics/nip-66/)

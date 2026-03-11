@@ -1,13 +1,13 @@
 ---
 title: "NIP-17: プライベートダイレクトメッセージ"
 date: 2025-12-17
-translationDate: 2026-03-07
+translationOf: /en/topics/nip-17.md
+translationDate: 2026-03-11
 draft: false
 categories:
-  - Privacy
-  - Messaging
+  - プライバシー
+  - メッセージング
 ---
-
 NIP-17は、送信者のプライバシーを守るためにNIP-59のgift wrappingを使うプライベートダイレクトメッセージを定義します。外側のイベントで送信者が露出するNIP-04 DMとは違い、NIP-17は送信者をリレーや何気なく観測している第三者から隠します。
 
 ## 仕組み

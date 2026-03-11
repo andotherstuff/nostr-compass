@@ -2,10 +2,10 @@
 title: "NIP-47: Nostr Wallet Connect"
 date: 2025-12-17
 translationOf: /en/topics/nip-47.md
-translationDate: 2026-03-07
+translationDate: 2026-03-11
 draft: false
 categories:
-  - Wallet
+  - 지갑
   - Lightning
 ---
 NIP-47은 Nostr Wallet Connect를 정의한다. Nostr 앱이 원격 Lightning 월렛 서비스와 통신할 때 월렛의 주요 자격 증명을 모든 클라이언트에 노출하지 않도록 하는 프로토콜이다.

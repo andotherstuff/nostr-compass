@@ -2,7 +2,7 @@
 title: "NIP-96: HTTP File Storage"
 date: 2026-02-11
 translationOf: /en/topics/nip-96.md
-translationDate: 2026-03-07
+translationDate: 2026-03-11
 draft: false
 categories:
   - NIPs
@@ -44,7 +44,7 @@ Los eventos kind 10096 de preferencia de servidor siguen siendo útiles para la 
 - [PR #2047: Mark NIP-96 as Unrecommended](https://github.com/nostr-protocol/nips/pull/2047)
 
 **Mencionado en:**
-- [Newsletter #9: NIP Deep Dive](/en/newsletters/2026-02-11-newsletter/#nip-deep-dive-nip-96-http-file-storage-and-the-transition-to-blossom)
+- [Newsletter #9: NIP Deep Dive](/es/newsletters/2026-02-11-newsletter/#nip-deep-dive-nip-96-http-file-storage-and-the-transition-to-blossom)
 
 **Ver también:**
 - [Blossom Protocol](/es/topics/blossom/)

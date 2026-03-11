@@ -2,10 +2,10 @@
 title: "NIP-60: Cashu Wallet"
 date: 2025-12-31
 translationOf: /en/topics/nip-60.md
-translationDate: 2026-03-07
+translationDate: 2026-03-11
 draft: false
 categories:
-  - Wallet
+  - 지갑
   - Ecash
 ---
 NIP-60은 Cashu 기반 ecash 지갑이 Nostr 내에서 작동하는 방식을 정의한다. 지갑 정보가 릴레이에 저장되어, 별도 계정 없이 다양한 애플리케이션에서 작동하는 이식 가능한 지갑을 가능하게 한다.

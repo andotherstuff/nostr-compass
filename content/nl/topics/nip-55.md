@@ -1,11 +1,12 @@
 ---
 title: "NIP-55: Android Signer-applicatie"
 date: 2025-12-17
-translationDate: 2026-03-07
+translationOf: /en/topics/nip-55.md
+translationDate: 2026-03-11
 draft: false
 categories:
-  - Ondertekening
-  - Mobiel
+  - Signing
+  - Mobile
 ---
 
 NIP-55 definieert hoe Android-apps ondertekenings- en encryptiebewerkingen aanvragen bij een aparte signer-applicatie. Het geeft Android-clients een native alternatief voor browserextensies en externe bunkers.
@@ -39,12 +40,12 @@ Voor webapps op Android is NIP-55 minder praktisch dan NIP-46. Browsergebaseerde
 - [NIP-55-specificatie](https://github.com/nostr-protocol/nips/blob/master/55.md)
 
 **Vermeld in:**
-- [Nieuwsbrief #1: Releases](/en/newsletters/2025-12-17-newsletter/#releases)
-- [Nieuwsbrief #2: News](/en/newsletters/2025-12-24-newsletter/#news)
-- [Nieuwsbrief #2: NIP Updates](/en/newsletters/2025-12-24-newsletter/#nip-updates)
-- [Nieuwsbrief #3: December Recap](/en/newsletters/2025-12-31-newsletter/#december-recap-five-years-of-nostr-decembers)
-- [Nieuwsbrief #7: NIP Updates](/en/newsletters/2026-01-07-newsletter/#nip-updates)
-- [Nieuwsbrief #11: NIP Deep Dive](/en/newsletters/2026-02-25-newsletter/#nip-deep-dive-nip-55-android-signer-application)
+- [Nieuwsbrief #1: Releases](/nl/newsletters/2025-12-17-newsletter/#releases)
+- [Nieuwsbrief #2: News](/nl/newsletters/2025-12-24-newsletter/#news)
+- [Nieuwsbrief #2: NIP Updates](/nl/newsletters/2025-12-24-newsletter/#nip-updates)
+- [Nieuwsbrief #3: December Recap](/nl/newsletters/2025-12-31-newsletter/#december-recap-five-years-of-nostr-decembers)
+- [Nieuwsbrief #7: NIP Updates](/nl/newsletters/2026-01-07-newsletter/#nip-updates)
+- [Nieuwsbrief #11: NIP Deep Dive](/nl/newsletters/2026-02-25-newsletter/#nip-deep-dive-nip-55-android-signer-application)
 
 **Zie ook:**
 - [NIP-46: Nostr Connect](/nl/topics/nip-46/)

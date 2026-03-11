@@ -1,45 +1,53 @@
 ---
-title: "NIP-96：HTTPファイルストレージ"
+title: "NIP-96: HTTPファイルストレージ"
 date: 2026-02-11
 translationOf: /en/topics/nip-96.md
-translationDate: 2026-03-07
+translationDate: 2026-03-11
 draft: false
 categories:
-  - NIPs
-  - Media
+  - NIP
+  - メディア
 ---
 
-NIP-96は、NostrクライアントがHTTPメディアサーバー上でファイルをアップロード、ダウンロード、管理する方法を定義していました。現在はBlossomに移行が推奨されていますが、プロジェクトが2つのメディア標準間の移行を進める中でNIP-96は引き続き関連性を持っています。
+NIP-96は、NostrクライアントがHTTPメディアサーバー上でファイルをupload、download、管理する方法を定義します。現在はBlossom推奨により「unrecommended」とされていますが、移行期間中も既存サーバーとクライアントがサポートを続けているため、依然として重要です。
 
-## 動作原理
+## 仕組み
 
-クライアントは`/.well-known/nostr/nip96.json`を取得してファイルサーバーの機能を発見します。API URL、サポートされるコンテンツタイプ、サイズ制限、利用可能なメディア変換が返されます。
+クライアントは`/.well-known/nostr/nip96.json`を取得してファイルサーバーの能力を発見します。この文書はupload API URL、任意のdownload URL、サポートするcontent type、サイズ制限、メディア変換やdelegated hostingの有無を告知します。
 
-アップロードするには、クライアントはNIP-98認可ヘッダー付きの`multipart/form-data` POSTをAPI URLに送信します。認可ヘッダーにはアップローダーのアイデンティティを証明する署名済みNostr eventが含まれます。サーバーはファイルURL、SHA-256ハッシュ、MIMEタイプ、寸法を含むNIP-94ファイルメタデータ構造を返します。
+upload時、クライアントは[NIP-98](https://github.com/nostr-protocol/nips/blob/master/98.md)認証header付きで、API URLへ`multipart/form-data`のPOSTを送ります。サーバーは、ファイルURLに加えて、元のhashを示す`ox`や、実際に配信される変換後ファイルを示す`x`などのtagを含む、NIP-94形状のmetadata objectを返します。
 
-ダウンロードは`<api_url>/<sha256-hash>`へのGETリクエストを使用し、画像リサイズなどのサーバーサイド変換のオプションクエリパラメータが利用可能です。削除はNIP-98認証付きDELETEを使用します。ユーザーは優先アップロードサーバーを宣言するkind 10096イベントを公開します。
+downloadは、画像幅などの任意query parameter付きで`GET <api_url>/<sha256-hash>`を使います。削除はNIP-98 auth付きの`DELETE`です。ユーザーは、自分のpreferred upload serverを宣言するためにkind `10096`イベントを公開します。
 
-## 非推奨化の理由
+## データモデルの詳細
 
-NIP-96はファイルURLを特定のサーバーに紐付けていました。サーバーがダウンした場合、そのサーバーのURLを参照するすべてのNostrノートがメディアを失います。Blossomはこれを反転させ、ファイルコンテンツのSHA-256ハッシュを正規の識別子とします。同じファイルをホストする任意のBlossomサーバーが同じハッシュパスで提供するため、デフォルトでコンテンツがサーバー間で移行可能になります。
+NIP-96の有用な点の1つは、サーバーがuploadを変換した場合でも、元ファイルhashでファイルを識別することです。これにより、クライアントは同じ安定識別子でassetを削除・再取得しつつ、可能ならサーバー生成thumbnailや再圧縮版も受け取れます。
 
-BlossomはAPIも簡素化しています。アップロードにプレーンなPUT、ダウンロードにGET、認可には署名付きNostr eventを使用し、HTTPヘッダーに依存しません。非推奨化は2025年9月に[PR #2047](https://github.com/nostr-protocol/nips/pull/2047)で行われました。
+well-known文書は`delegated_to_url`もサポートしており、Relayがクライアントを別のHTTPストレージサーバーへ向けることができます。これにより、Relayソフトウェアが完全なメディアAPI全体を実装しなくても済みました。
 
-## 移行の状況
+## 非推奨になった理由
 
-nostr.buildやvoid.catのようなサーバーはNIP-96をサポートし、Blossomエンドポイントを追加または移行しました。クライアントは様々な段階にあります。Angor v0.2.5がNIP-96サーバー設定を追加した一方、ZSP v0.3.1はBlossomサーバーのみにアップロードしています。残りのNIP-96実装が移行を完了するまで、両者の共存は続くでしょう。
+NIP-96はファイルURLを特定サーバーに結び付けます。サーバーが落ちると、そのURLを参照していたすべてのNostr noteがメディアを失います。Blossomはここを逆転させ、ファイルcontentのSHA-256 hashを正規の識別子にします。同じファイルをhostingする任意のBlossomサーバーは、同じhash pathでそれを配信するため、contentはデフォルトでサーバー間をまたいで可搬になります。
 
-Kind 10096サーバー設定イベントはBlossomサーバー選択に引き続き有用です。NIP-94ファイルメタデータ（kind 1063イベント）は、どのアップロードプロトコルで作成されたかに関わらず、ファイルプロパティを記述します。
+BlossomはAPIも簡素化します。uploadは単純なPUT、downloadはGET、認証はHTTP headerではなく署名済みNostrイベントです。非推奨化は[PR #2047](https://github.com/nostr-protocol/nips/pull/2047)により2025年9月に行われました。
+
+## 相互運用メモ
+
+nostr.buildやvoid.catのようなサーバーはNIP-96をサポートしており、Blossom endpointを追加したり移行したりしています。クライアント側も進捗はまちまちです。[Angor v0.2.5](https://github.com/block-core/angor/releases/tag/v0.2.5)はNIP-96サーバー設定を追加し、[ZSP v0.3.1](https://github.com/zapstore/zsp/releases/tag/v0.3.1)はBlossomサーバーにのみuploadします。残るNIP-96実装が移行を終えるまで、この併存は続きます。
+
+kind 10096のサーバー設定イベントは、クライアントがまだNIP-96 upload backendをサポートしている間は有用です。NIP-94のファイルmetadata（kind 1063イベント）は、どのupload protocolがそれを作ったかに関わらずファイル属性を記述します。
 
 ---
 
-**主要ソース：**
-- [NIP-96：HTTP File Storage](https://github.com/nostr-protocol/nips/blob/master/96.md)
-- [PR #2047：Mark NIP-96 as Unrecommended](https://github.com/nostr-protocol/nips/pull/2047)
+**主要ソース:**
+- [NIP-96: HTTP File Storage](https://github.com/nostr-protocol/nips/blob/master/96.md)
+- [PR #2047: Mark NIP-96 as Unrecommended](https://github.com/nostr-protocol/nips/pull/2047)
 
-**言及先：**
-- [ニュースレター #9：NIPディープダイブ](/ja/newsletters/2026-02-11-newsletter/#nipディープダイブnip-96httpファイルストレージとblossomへの移行)
+**言及箇所:**
+- [Newsletter #9: NIP Deep Dive](/ja/newsletters/2026-02-11-newsletter/)
+- [Newsletter #13: Route96 v0.5.0 and v0.5.1](/ja/newsletters/2026-03-11-newsletter/)
 
-**関連項目：**
-- [Blossomプロトコル](/ja/topics/blossom/)
-- [NIP-94：ファイルメタデータ](/ja/topics/nip-94/)
+**関連項目:**
+- [Blossom Protocol](/ja/topics/blossom/)
+- [NIP-94: File Metadata](/ja/topics/nip-94/)
+

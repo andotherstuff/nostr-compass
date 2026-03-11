@@ -3,10 +3,10 @@ title: "NIP-66：中继发现与活性监控"
 date: 2026-01-21
 draft: false
 translationOf: /en/topics/nip-66.md
-translationDate: 2026-03-07
+translationDate: 2026-03-11
 categories:
-  - NIPs
-  - Relays
+  - NIP
+  - 中继
 ---
 
 NIP-66 标准化了将中继监控数据发布到 Nostr 的方式。监控服务持续测试中继的可用性、延迟、协议合规性和支持的 NIP，并将结果作为 kind 30166 事件发布。

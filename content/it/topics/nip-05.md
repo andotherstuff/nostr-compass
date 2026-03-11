@@ -1,8 +1,8 @@
 ---
 title: "NIP-05: Verifica del dominio"
 date: 2026-02-04
-translationOf: /en/topics/nip-05/
-translationDate: 2026-03-07
+translationOf: /en/topics/nip-05.md
+translationDate: 2026-03-11
 draft: false
 categories:
   - Identity
@@ -57,7 +57,7 @@ La maggior parte dei client principali supporta la verifica NIP-05:
 - [PR #2208](https://github.com/nostr-protocol/nips/pull/2208) - requisito lowercase per nomi e chiavi hex
 
 **Menzionato in:**
-- [Newsletter #8: NIP Updates](/en/newsletters/2026-02-04-newsletter/#nip-updates)
+- [Newsletter #8: NIP Updates](/it/newsletters/2026-02-04-newsletter/#nip-updates)
 
 **Vedi anche:**
 - [NIP-01: Protocollo di base](/it/topics/nip-01/)

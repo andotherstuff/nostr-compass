@@ -2,7 +2,7 @@
 title: "NIP-91 : Opérateur AND pour les filtres"
 date: 2026-03-04
 translationOf: /en/topics/nip-91.md
-translationDate: 2026-03-07
+translationDate: 2026-03-11
 draft: false
 categories:
   - NIP
@@ -39,7 +39,7 @@ Les clients doivent s'attendre à un support inégal pendant que l'adoption par 
 - [PR #1365](https://github.com/nostr-protocol/nips/pull/1365)
 
 **Mentionné dans :**
-- [Newsletter #12 : NIP Updates](/en/newsletters/2026-03-04-newsletter/#nip-updates)
+- [Newsletter #12 : NIP Updates](/fr/newsletters/2026-03-04-newsletter/#nip-updates)
 
 **Voir aussi :**
 - [NIP-01 : Basic Protocol](/fr/topics/nip-01/)

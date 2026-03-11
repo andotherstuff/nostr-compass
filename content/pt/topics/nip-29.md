@@ -6,7 +6,7 @@ categories:
 - Social
 - Groups
 translationOf: /en/topics/nip-29.md
-translationDate: '2026-03-07'
+translationDate: 2026-03-11
 ---
 
 NIP-29 define grupos baseados em relay, onde um relay gerencia membros de grupos, permissões e visibilidade de mensagens.

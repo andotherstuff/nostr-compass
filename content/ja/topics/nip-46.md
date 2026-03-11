@@ -2,13 +2,12 @@
 title: "NIP-46: Nostr Connect"
 date: 2025-12-17
 translationOf: /en/topics/nip-46.md
-translationDate: 2026-03-07
+translationDate: 2026-03-11
 draft: false
 categories:
-  - Signing
-  - Protocol
+  - 署名
+  - プロトコル
 ---
-
 NIP-46は、Nostr relay越しのremote signingを定義します。clientは、bunkerと呼ばれる別のsignerに処理を依頼できるため、signing keyをいま使っているappの外に置けます。
 
 ## 仕組み
@@ -47,10 +46,10 @@ NIP-46はprivate keyをclientの外へ移しますが、signerへの信頼その
 - [NIP-46 Specification](https://github.com/nostr-protocol/nips/blob/master/46.md)
 
 **言及箇所:**
-- [Newsletter #1: Notable Code Changes](/en/newsletters/2025-12-17-newsletter/#amethyst-android)
-- [Newsletter #3: December Recap](/en/newsletters/2025-12-31-newsletter/#december-recap-five-years-of-nostr-decembers)
-- [Newsletter #7: Primal Android Becomes a Full Signing Hub](/en/newsletters/2026-01-07-newsletter/#primal-android-becomes-a-full-signing-hub)
-- [Newsletter #15: NDK Collaborative Events and NIP-46 Timeout](/en/newsletters/2026-03-04-newsletter/#ndk-collaborative-events-and-nip-46-timeout)
+- [Newsletter #1: Notable Code Changes](/ja/newsletters/2025-12-17-newsletter/#amethyst-android)
+- [Newsletter #3: December Recap](/ja/newsletters/2025-12-31-newsletter/#december-recap-five-years-of-nostr-decembers)
+- [Newsletter #7: Primal Android Becomes a Full Signing Hub](/ja/newsletters/2026-01-07-newsletter/#primal-android-becomes-a-full-signing-hub)
+- [Newsletter #15: NDK Collaborative Events and NIP-46 Timeout](/ja/newsletters/2026-03-04-newsletter/#ndk-collaborative-events-and-nip-46-timeout)
 
 **関連項目:**
 - [NIP-55: Android Signer](/ja/topics/nip-55/)

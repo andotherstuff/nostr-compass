@@ -2,7 +2,7 @@
 title: "NIP-42: 릴레이에 대한 클라이언트 인증"
 date: 2026-01-21
 translationOf: /en/topics/nip-42.md
-translationDate: 2026-03-07
+translationDate: 2026-03-11
 draft: false
 categories:
   - NIPs

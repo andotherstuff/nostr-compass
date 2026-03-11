@@ -2,7 +2,7 @@
 title: "NIP-66: Relay-ontdekking en liveness-monitoring"
 date: 2026-01-21
 translationOf: /en/topics/nip-66.md
-translationDate: 2026-03-07
+translationDate: 2026-03-11
 draft: false
 categories:
   - NIPs

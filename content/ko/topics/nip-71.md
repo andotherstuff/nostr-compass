@@ -2,11 +2,11 @@
 title: "NIP-71: 비디오 이벤트"
 date: 2026-01-13
 translationOf: /en/topics/nip-71.md
-translationDate: 2026-03-07
+translationDate: 2026-03-11
 draft: false
 categories:
-  - Media
-  - Protocol
+  - 미디어
+  - 프로토콜
 ---
 NIP-71은 Nostr에서 비디오 콘텐츠를 위한 이벤트 kind를 정의하여, 적절한 메타데이터 지원과 함께 비디오 공유를 가능하게 한다. 이 사양은 일반 비디오 이벤트와 addressable 비디오 이벤트를 모두 다루며, 후자는 2026년 1월에 추가되어 크리에이터가 재게시 없이 비디오 메타데이터를 업데이트할 수 있게 한다.
 

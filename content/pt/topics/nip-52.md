@@ -7,7 +7,7 @@ categories:
 - Calendar
 - Events
 translationOf: /en/topics/nip-52.md
-translationDate: '2026-03-07'
+translationDate: 2026-03-11
 ---
 
 NIP-52 define eventos de calendário, calendários e RSVPs no Nostr. Ele oferece aos clientes uma maneira padrão de publicar eventos baseados em tempo ou data sem inventar um modelo de evento personalizado para cada aplicativo.

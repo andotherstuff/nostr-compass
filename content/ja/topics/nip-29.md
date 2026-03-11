@@ -1,13 +1,13 @@
 ---
-title: "NIP-29: リレーベースグループ"
+title: "NIP-29: Relayベースのグループ"
 date: 2025-12-24
-translationDate: 2026-03-07
+translationOf: /en/topics/nip-29.md
+translationDate: 2026-03-11
 draft: false
 categories:
-  - Social
-  - Groups
+  - ソーシャル
+  - グループ
 ---
-
 NIP-29はリレーベースのグループを定義し、リレーがグループのメンバーシップ、権限、メッセージの可視性を管理します。
 
 ## 仕組み

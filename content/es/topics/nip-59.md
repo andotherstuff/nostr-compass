@@ -2,7 +2,7 @@
 title: "NIP-59: Gift Wrap"
 date: 2025-12-17
 translationOf: /en/topics/nip-59.md
-translationDate: 2026-03-07
+translationDate: 2026-03-11
 draft: false
 categories:
   - Privacy
@@ -46,11 +46,11 @@ Los relays pueden optar por no almacenar eventos envueltos durante mucho tiempo 
 - [Especificación NIP-59](https://github.com/nostr-protocol/nips/blob/master/59.md)
 
 **Mencionado en:**
-- [Boletín #8: NIP Deep Dive](/en/newsletters/2026-02-04-newsletter/#nip-deep-dive-nip-59-gift-wrap)
-- [Boletín #1: Noticias](/en/newsletters/2025-12-17-newsletter/#news)
-- [Boletín #1: Actualizaciones de NIP](/en/newsletters/2025-12-17-newsletter/#nip-updates)
-- [Boletín #3: Resumen de diciembre](/en/newsletters/2025-12-31-newsletter/#december-recap-five-years-of-nostr-decembers)
-- [Boletín #15: PRs abiertos](/en/newsletters/2026-03-04-newsletter/#open-prs-and-project-updates)
+- [Boletín #8: NIP Deep Dive](/es/newsletters/2026-02-04-newsletter/#nip-deep-dive-nip-59-gift-wrap)
+- [Boletín #1: Noticias](/es/newsletters/2025-12-17-newsletter/#news)
+- [Boletín #1: Actualizaciones de NIP](/es/newsletters/2025-12-17-newsletter/#nip-updates)
+- [Boletín #3: Resumen de diciembre](/es/newsletters/2025-12-31-newsletter/#december-recap-five-years-of-nostr-decembers)
+- [Boletín #15: PRs abiertos](/es/newsletters/2026-03-04-newsletter/#open-prs-and-project-updates)
 
 **Ver también:**
 - [NIP-17: Mensajes directos privados](/es/topics/nip-17/)

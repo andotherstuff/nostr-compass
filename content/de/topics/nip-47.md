@@ -1,7 +1,8 @@
 ---
 title: "NIP-47: Nostr Wallet Connect"
 date: 2025-12-17
-translationDate: 2026-03-07
+translationOf: /en/topics/nip-47.md
+translationDate: 2026-03-11
 draft: false
 categories:
   - Wallet

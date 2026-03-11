@@ -6,7 +6,7 @@ categories:
 - NIPs
 - Relays
 translationOf: /en/topics/nip-66.md
-translationDate: '2026-03-07'
+translationDate: 2026-03-11
 ---
 
 NIP-66 padroniza a publicação de dados de monitoramento relay para Nostr. Os serviços de monitoramento testam continuamente os relays quanto à disponibilidade, latência, conformidade de protocolo e NIPs suportados, publicando resultados como eventos kind 30166.

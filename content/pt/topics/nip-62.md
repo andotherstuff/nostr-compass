@@ -6,7 +6,7 @@ categories:
 - Privacy
 - Protocol
 translationOf: /en/topics/nip-62.md
-translationDate: '2026-03-07'
+translationDate: 2026-03-11
 ---
 
 O NIP-62 define solicitações de desaparecimento, um mecanismo para os usuários solicitarem que relays exclua seu conteúdo. Embora aos relays não seja obrigada a honrar essas solicitações, o suporte ao NIP-62 dá aos usuários mais controle sobre seus dados publicados e fornece uma maneira padronizada de sinalizar a intenção de exclusão em toda a rede.

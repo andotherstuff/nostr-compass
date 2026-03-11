@@ -2,13 +2,12 @@
 title: "NIP-59: Gift Wrap"
 date: 2025-12-17
 translationOf: /en/topics/nip-59.md
-translationDate: 2026-03-07
+translationDate: 2026-03-11
 draft: false
 categories:
-  - Privacy
-  - Protocol
+  - プライバシー
+  - プロトコル
 ---
-
 NIP-59はgift wrappingを定義します。これは使い捨てアイデンティティを使用した暗号化層でラップすることでイベントの送信者を隠す技術です。
 
 ## 構造

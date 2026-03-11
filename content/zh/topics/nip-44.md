@@ -3,11 +3,11 @@ title: "NIP-44：加密载荷"
 date: 2025-12-31
 draft: false
 translationOf: /en/topics/nip-44.md
-translationDate: 2026-03-07
+translationDate: 2026-03-11
 categories:
   - NIP
-  - Cryptography
-  - Privacy
+  - 密码学
+  - 隐私
 ---
 
 NIP-44 定义了 Nostr 载荷的版本化加密标准，用现代密码学原语替代了存在缺陷的 NIP-04 加密方案。

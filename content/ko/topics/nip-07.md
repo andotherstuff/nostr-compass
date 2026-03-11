@@ -2,12 +2,12 @@
 title: "NIP-07: 브라우저 확장 서명자"
 date: 2026-01-28
 translationOf: /en/topics/nip-07.md
-translationDate: 2026-03-07
+translationDate: 2026-03-11
 draft: false
 categories:
   - NIP
-  - Signing
-  - Security
+  - 서명
+  - 보안
 ---
 NIP-07은 브라우저 확장 프로그램이 웹 기반 Nostr 클라이언트에 서명 기능을 제공하기 위한 표준 인터페이스를 정의한다. 개인 키를 웹사이트에 노출하지 않고 확장 프로그램 내에서 안전하게 보관한다.
 

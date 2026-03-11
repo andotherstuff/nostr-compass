@@ -2,10 +2,10 @@
 title: "NIP-55: Android 서명 애플리케이션"
 date: 2025-12-17
 translationOf: /en/topics/nip-55.md
-translationDate: 2026-03-07
+translationDate: 2026-03-11
 draft: false
 categories:
-  - Signing
+  - 서명
   - Mobile
 ---
 NIP-55는 Android 앱이 별도의 서명 애플리케이션에 서명 및 암호화 작업을 요청하는 방법을 정의한다. Android 클라이언트에게 브라우저 확장과 원격 벙커의 네이티브 대안을 제공한다.

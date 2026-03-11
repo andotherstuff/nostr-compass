@@ -2,7 +2,7 @@
 title: "NIP-11 : Document d'information du relais"
 date: 2025-12-17
 translationOf: /en/topics/nip-11.md
-translationDate: 2026-03-07
+translationDate: 2026-03-11
 draft: false
 categories:
   - Relay
@@ -49,7 +49,7 @@ La spécification a été réduite au fil du temps. Les anciens champs optionnel
 - [PR #2231](https://github.com/nostr-protocol/nips/pull/2231) - suppression des champs obsolètes
 
 **Mentionné dans :**
-- [Newsletter #1 : NIP Updates](/en/newsletters/2025-12-17-newsletter/#nip-updates)
+- [Newsletter #1 : NIP Updates](/fr/newsletters/2025-12-17-newsletter/#nip-updates)
 
 **Voir aussi :**
 - [NIP-66 : Découverte de relais et surveillance de disponibilité](/fr/topics/nip-66/)

@@ -2,11 +2,11 @@
 title: "NIP-62：消失请求"
 date: 2026-01-13
 translationOf: /en/topics/nip-62.md
-translationDate: 2026-03-07
+translationDate: 2026-03-11
 draft: false
 categories:
-  - Privacy
-  - Protocol
+  - 隐私
+  - 协议
 ---
 
 NIP-62 定义了消失请求，一种用户请求中继删除其内容的机制。虽然中继没有义务遵守这些请求，但支持 NIP-62 可以让用户对已发布的数据拥有更多控制权，并提供一种标准化的方式在网络中表达删除意图。

@@ -2,7 +2,7 @@
 title: "NIP-07: Browser Extension Signer"
 date: 2026-01-28
 translationOf: /en/topics/nip-07.md
-translationDate: 2026-03-07
+translationDate: 2026-03-11
 draft: false
 categories:
   - NIP
@@ -70,9 +70,9 @@ Voor signing tussen apparaten of op mobiel passen NIP-46 en NIP-55 meestal beter
 - [PR #2233](https://github.com/nostr-protocol/nips/pull/2233) - `peekPublicKey()`-voorstel
 
 **Vermeld in:**
-- [Nieuwsbrief #7: NIP-updates](/en/newsletters/2026-01-28-newsletter/#nip-updates)
-- [Nieuwsbrief #8: Nieuws](/en/newsletters/2026-02-04-newsletter/#news)
-- [Nieuwsbrief #11: Nieuws](/en/newsletters/2026-02-25-newsletter/#news)
+- [Nieuwsbrief #7: NIP-updates](/nl/newsletters/2026-01-28-newsletter/#nip-updates)
+- [Nieuwsbrief #8: Nieuws](/nl/newsletters/2026-02-04-newsletter/#news)
+- [Nieuwsbrief #11: Nieuws](/nl/newsletters/2026-02-25-newsletter/#news)
 
 **Zie ook:**
 - [NIP-04: Encrypted Direct Messages (verouderd)](/nl/topics/nip-04/)

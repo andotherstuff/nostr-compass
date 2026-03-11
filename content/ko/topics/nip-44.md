@@ -2,12 +2,12 @@
 title: "NIP-44: 암호화된 페이로드"
 date: 2025-12-31
 translationOf: /en/topics/nip-44.md
-translationDate: 2026-03-07
+translationDate: 2026-03-11
 draft: false
 categories:
   - NIP
-  - Cryptography
-  - Privacy
+  - 암호화
+  - 프라이버시
 ---
 NIP-44는 Nostr 페이로드를 위한 버전 관리형 암호화 표준을 정의하며, 결함이 있는 NIP-04 암호화 방식을 현대적인 암호화 기본 요소로 대체한다.
 

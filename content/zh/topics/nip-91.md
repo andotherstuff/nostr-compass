@@ -3,10 +3,10 @@ title: "NIP-91：过滤器的 AND 运算符"
 date: 2026-03-04
 draft: false
 translationOf: /en/topics/nip-91.md
-translationDate: 2026-03-07
+translationDate: 2026-03-11
 categories:
   - NIP
-  - Protocol
+  - 协议
 ---
 
 NIP-91 为 Nostr 中继订阅中的标签数组添加了 AND 过滤语义。该提案在多个中继实现后于 2026-03-03 合并。

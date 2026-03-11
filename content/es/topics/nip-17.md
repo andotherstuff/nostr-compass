@@ -2,7 +2,7 @@
 title: "NIP-17: Mensajes Directos Privados"
 date: 2025-12-17
 translationOf: /en/topics/nip-17.md
-translationDate: 2026-03-07
+translationDate: 2026-03-11
 draft: false
 categories:
   - Privacy
@@ -58,11 +58,11 @@ NIP-17 también define listas de relays de bandeja de entrada para mensajería p
 - [PR #2098](https://github.com/nostr-protocol/nips/pull/2098) - Limpieza de redacción y actualización de soporte de reacciones
 
 **Mencionado en:**
-- [Newsletter #1: NIP Updates](/en/newsletters/2025-12-17-newsletter/#nip-updates)
-- [Newsletter #2: News](/en/newsletters/2025-12-24-newsletter/#news)
-- [Newsletter #3: December Recap](/en/newsletters/2025-12-31-newsletter/#december-recap-five-years-of-nostr-decembers)
-- [Newsletter #3: Notable Code Changes](/en/newsletters/2025-12-31-newsletter/#shopstr-marketplace)
-- [Newsletter #5: News](/en/newsletters/2026-01-13-newsletter/#news)
+- [Newsletter #1: NIP Updates](/es/newsletters/2025-12-17-newsletter/#nip-updates)
+- [Newsletter #2: News](/es/newsletters/2025-12-24-newsletter/#news)
+- [Newsletter #3: December Recap](/es/newsletters/2025-12-31-newsletter/#december-recap-five-years-of-nostr-decembers)
+- [Newsletter #3: Notable Code Changes](/es/newsletters/2025-12-31-newsletter/#shopstr-marketplace)
+- [Newsletter #5: News](/es/newsletters/2026-01-13-newsletter/#news)
 
 **Ver también:**
 - [NIP-04: Encrypted Direct Messages (Deprecated)](/es/topics/nip-04/)

@@ -2,7 +2,7 @@
 title: "NIP-42: Autenticación de clientes a relays"
 date: 2026-01-21
 translationOf: /en/topics/nip-42.md
-translationDate: 2026-03-07
+translationDate: 2026-03-11
 draft: false
 categories:
   - NIPs
@@ -49,9 +49,9 @@ Combinado con metadatos [NIP-11](/es/topics/nip-11/), los clientes pueden descub
 - [Especificación NIP-42](https://github.com/nostr-protocol/nips/blob/master/42.md) - Autenticación de clientes a relays
 
 **Mencionado en:**
-- [Newsletter #6: Documentos de Información de Relay](/en/newsletters/2026-01-21-newsletter/#relay-information-documents-get-formalized)
-- [Newsletter #9: Pruebas de Estado de Relay Marmot](/en/newsletters/2026-02-11-newsletter/#nip-70-relay-support-critical-for-encrypted-messaging-security)
-- [Newsletter #10: Nostr MCP Server](/en/newsletters/2026-02-18-newsletter/#nostr-mcp-server)
+- [Newsletter #6: Documentos de Información de Relay](/es/newsletters/2026-01-21-newsletter/#relay-information-documents-get-formalized)
+- [Newsletter #9: Pruebas de Estado de Relay Marmot](/es/newsletters/2026-02-11-newsletter/#nip-70-relay-support-critical-for-encrypted-messaging-security)
+- [Newsletter #10: Nostr MCP Server](/es/newsletters/2026-02-18-newsletter/#nostr-mcp-server)
 
 **Ver también:**
 - [NIP-11: Documento de Información de Relay](/es/topics/nip-11/)

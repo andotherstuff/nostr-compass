@@ -2,7 +2,7 @@
 title: "NIP-66: 릴레이 탐색 및 가동 모니터링"
 date: 2026-01-21
 translationOf: /en/topics/nip-66.md
-translationDate: 2026-03-07
+translationDate: 2026-03-11
 draft: false
 categories:
   - NIPs

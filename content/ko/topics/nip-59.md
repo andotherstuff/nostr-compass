@@ -2,11 +2,11 @@
 title: "NIP-59: Gift Wrap"
 date: 2025-12-17
 translationOf: /en/topics/nip-59.md
-translationDate: 2026-03-07
+translationDate: 2026-03-11
 draft: false
 categories:
-  - Privacy
-  - Protocol
+  - 프라이버시
+  - 프로토콜
 ---
 NIP-59는 gift wrap을 정의한다. 이벤트를 캡슐화하여 릴레이와 외부 관찰자가 수신하는 외부 이벤트에서 실제 발신자를 알 수 없게 하는 방식이다.
 

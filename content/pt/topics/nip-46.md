@@ -6,7 +6,7 @@ categories:
 - Signing
 - Protocol
 translationOf: /en/topics/nip-46.md
-translationDate: '2026-03-07'
+translationDate: 2026-03-11
 ---
 
 NIP-46 define assinatura remota sobre Nostr relays. Um cliente se comunica com um assinante separado, geralmente chamado de bunker, portanto, a assinatura das chaves pode ficar fora do aplicativo que o usuário está usando ativamente.

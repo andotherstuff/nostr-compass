@@ -2,12 +2,12 @@
 title: "NIP-52：日历事件"
 date: 2026-01-28
 translationOf: /en/topics/nip-52.md
-translationDate: 2026-03-07
+translationDate: 2026-03-11
 draft: false
 categories:
   - NIP
-  - Calendar
-  - Events
+  - 日历
+  - 事件
 ---
 
 NIP-52 定义了 Nostr 上的日历事件、日历和 RSVP。它为客户端提供了一种标准方式来发布基于时间或基于日期的事件，无需每个应用都发明自定义事件模型。

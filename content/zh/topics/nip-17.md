@@ -2,11 +2,11 @@
 title: "NIP-17：私密直接消息"
 date: 2025-12-17
 translationOf: /en/topics/nip-17.md
-translationDate: 2026-03-07
+translationDate: 2026-03-11
 draft: false
 categories:
-  - Privacy
-  - Messaging
+  - 隐私
+  - 消息
 ---
 
 NIP-17 使用 NIP-59 gift wrapping 定义了具有发送者隐私保护的私密直接消息。与在外层事件中暴露发送者的 NIP-04 私信不同，NIP-17 将发送者隐藏于 relay 和普通观察者之外。

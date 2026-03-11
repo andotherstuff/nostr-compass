@@ -2,11 +2,11 @@
 title: "NIP-29：基于 relay 的群组"
 date: 2025-12-24
 translationOf: /en/topics/nip-29.md
-translationDate: 2026-03-07
+translationDate: 2026-03-11
 draft: false
 categories:
-  - Social
-  - Groups
+  - 社交
+  - 群组
 ---
 
 NIP-29 定义了基于 relay 的群组，其中 relay 管理群组成员资格、权限和消息可见性。

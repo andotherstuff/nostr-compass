@@ -2,7 +2,7 @@
 title: "NIP-66 : Découverte et surveillance de la disponibilité des relais"
 date: 2026-01-21
 translationOf: /en/topics/nip-66.md
-translationDate: 2026-03-07
+translationDate: 2026-03-11
 draft: false
 categories:
   - NIPs
@@ -50,7 +50,7 @@ NIP-66 ne crée pas un moniteur unique faisant autorité. Plusieurs moniteurs pe
 - [Spécification NIP-66](https://github.com/nostr-protocol/nips/blob/master/66.md) - Standard de découverte et surveillance de la disponibilité des relais
 
 **Mentionné dans :**
-- [Newsletter #6 : NIP Deep Dive](/en/newsletters/2026-01-21-newsletter/#nip-deep-dive-nip-11-and-nip-66)
+- [Newsletter #6 : NIP Deep Dive](/fr/newsletters/2026-01-21-newsletter/#nip-deep-dive-nip-11-and-nip-66)
 
 **Voir aussi :**
 - [NIP-11 : Relay Information Document](/fr/topics/nip-11/)

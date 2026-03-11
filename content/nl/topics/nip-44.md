@@ -2,11 +2,11 @@
 title: "NIP-44: Versleutelde Payloads"
 date: 2025-12-31
 translationOf: /en/topics/nip-44.md
-translationDate: 2026-03-07
+translationDate: 2026-03-11
 draft: false
 categories:
   - NIP
-  - Cryptografie
+  - Cryptography
   - Privacy
 ---
 
@@ -67,10 +67,10 @@ NIP-44 revisie 3 werd in december 2023 gemerged na een onafhankelijke Cure53-bev
 - [Cure53-auditrapport](https://cure53.de/audit-report_nip44-implementations.pdf)
 
 **Vermeld in:**
-- [Nieuwsbrief #4: NIP Deep Dive](/en/newsletters/2026-01-07-newsletter/#nip-44-versioned-encryption)
-- [Nieuwsbrief #3: December 2023](/en/newsletters/2025-12-31-newsletter/#december-2023-ecosystem-maturation)
-- [Nieuwsbrief #3: December 2024](/en/newsletters/2025-12-31-newsletter/#december-2024-protocol-advancement)
-- [Nieuwsbrief #12: Marmot](/en/newsletters/2026-03-04-newsletter/#marmot-development-kit-ships-first-public-release)
+- [Nieuwsbrief #4: NIP Deep Dive](/nl/newsletters/2026-01-07-newsletter/#nip-44-versioned-encryption)
+- [Nieuwsbrief #3: December 2023](/nl/newsletters/2025-12-31-newsletter/#december-2023-ecosystem-maturation)
+- [Nieuwsbrief #3: December 2024](/nl/newsletters/2025-12-31-newsletter/#december-2024-protocol-advancement)
+- [Nieuwsbrief #12: Marmot](/nl/newsletters/2026-03-04-newsletter/#marmot-development-kit-ships-first-public-release)
 
 **Zie ook:**
 - [NIP-04: Encrypted Direct Messages (verouderd)](/nl/topics/nip-04/)

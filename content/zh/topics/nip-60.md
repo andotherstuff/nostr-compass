@@ -2,10 +2,10 @@
 title: "NIP-60：Cashu Wallet"
 date: 2025-12-31
 translationOf: /en/topics/nip-60.md
-translationDate: 2026-03-07
+translationDate: 2026-03-11
 draft: false
 categories:
-  - Wallet
+  - 钱包
   - Ecash
 ---
 

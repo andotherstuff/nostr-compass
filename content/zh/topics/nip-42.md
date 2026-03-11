@@ -3,10 +3,10 @@ title: "NIP-42：客户端到中继的身份验证"
 date: 2026-01-21
 draft: false
 translationOf: /en/topics/nip-42.md
-translationDate: 2026-03-07
+translationDate: 2026-03-11
 categories:
-  - NIPs
-  - Authentication
+  - NIP
+  - 身份验证
 ---
 
 NIP-42 定义了客户端向中继进行身份验证的方式。中继可以要求身份验证以提供访问控制、防止滥用或实现付费中继服务。

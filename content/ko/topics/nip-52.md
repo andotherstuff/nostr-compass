@@ -2,11 +2,11 @@
 title: "NIP-52: 캘린더 이벤트"
 date: 2026-01-28
 translationOf: /en/topics/nip-52.md
-translationDate: 2026-03-07
+translationDate: 2026-03-11
 draft: false
 categories:
   - NIP
-  - Calendar
+  - 캘린더
   - Events
 ---
 NIP-52는 Nostr에서 캘린더 이벤트, 캘린더, RSVP를 정의한다. 앱마다 별도의 이벤트 모델을 만들지 않고도, 시간 기반 또는 날짜 기반 이벤트를 게시할 수 있는 표준 방법을 제공한다.

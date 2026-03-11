@@ -2,7 +2,7 @@
 title: "NIP-29: Grupos Basados en Relay"
 date: 2025-12-24
 translationOf: /en/topics/nip-29.md
-translationDate: 2026-03-07
+translationDate: 2026-03-11
 draft: false
 categories:
   - Social
@@ -47,11 +47,11 @@ Eso hace que la migración y bifurcación sean posibles, pero no automáticas. E
 - [PR #2111](https://github.com/nostr-protocol/nips/pull/2111) - Adición de `unallowpubkey` y `unbanpubkey`
 
 **Mencionado en:**
-- [Newsletter #2: NIP Updates](/en/newsletters/2025-12-24-newsletter/#nip-updates)
-- [Newsletter #3: December Recap](/en/newsletters/2025-12-31-newsletter/#december-recap-five-years-of-nostr-decembers)
-- [Newsletter #6: NIP Updates](/en/newsletters/2026-01-21-newsletter/#nip-updates)
-- [Newsletter #11: NIP Updates](/en/newsletters/2026-02-25-newsletter/#nip-updates)
-- [Newsletter #12: NIP Updates](/en/newsletters/2026-03-04-newsletter/#nip-updates)
+- [Newsletter #2: NIP Updates](/es/newsletters/2025-12-24-newsletter/#nip-updates)
+- [Newsletter #3: December Recap](/es/newsletters/2025-12-31-newsletter/#december-recap-five-years-of-nostr-decembers)
+- [Newsletter #6: NIP Updates](/es/newsletters/2026-01-21-newsletter/#nip-updates)
+- [Newsletter #11: NIP Updates](/es/newsletters/2026-02-25-newsletter/#nip-updates)
+- [Newsletter #12: NIP Updates](/es/newsletters/2026-03-04-newsletter/#nip-updates)
 
 **Ver también:**
 - [NIP-11: Relay Information Document](/es/topics/nip-11/)

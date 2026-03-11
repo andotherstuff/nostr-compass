@@ -2,11 +2,11 @@
 title: "NIP-59：Gift Wrap"
 date: 2025-12-17
 translationOf: /en/topics/nip-59.md
-translationDate: 2026-03-07
+translationDate: 2026-03-11
 draft: false
 categories:
-  - Privacy
-  - Protocol
+  - 隐私
+  - 协议
 ---
 
 NIP-59 定义了 gift wrap，一种封装事件的方式，使中继和外部观察者无法从接收到的外层事件中获知真正的发送者。

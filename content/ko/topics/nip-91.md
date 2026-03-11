@@ -2,11 +2,11 @@
 title: "NIP-91: 필터용 AND 연산자"
 date: 2026-03-04
 translationOf: /en/topics/nip-91.md
-translationDate: 2026-03-07
+translationDate: 2026-03-11
 draft: false
 categories:
   - NIP
-  - Protocol
+  - 프로토콜
 ---
 NIP-91은 Nostr 릴레이 구독에서 태그 배열에 대한 AND 필터 의미론을 추가한다. 여러 릴레이에 구현이 등장한 후 2026-03-03에 머지되었다.
 

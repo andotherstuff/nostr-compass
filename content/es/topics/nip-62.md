@@ -2,7 +2,7 @@
 title: "NIP-62: Solicitudes de desvanecimiento"
 date: 2026-01-13
 translationOf: /en/topics/nip-62.md
-translationDate: 2026-03-07
+translationDate: 2026-03-11
 draft: false
 categories:
   - Privacy
@@ -64,8 +64,8 @@ NIP-62 complementa a [NIP-09](/es/topics/nip-09/). NIP-09 es el evento general d
 - [Especificación NIP-62](https://github.com/nostr-protocol/nips/blob/master/62.md)
 
 **Mencionado en:**
-- [Boletín #5: Cambios notables de código](/en/newsletters/2026-01-13-newsletter/#rust-nostr-library)
-- [Boletín #10: rust-nostr](/en/newsletters/2026-03-04-newsletter/#rust-nostr-nip-62-request-to-vanish)
+- [Boletín #5: Cambios notables de código](/es/newsletters/2026-01-13-newsletter/#rust-nostr-library)
+- [Boletín #10: rust-nostr](/es/newsletters/2026-03-04-newsletter/#rust-nostr-nip-62-request-to-vanish)
 
 **Ver también:**
 - [NIP-09: Solicitud de eliminación de eventos](/es/topics/nip-09/)

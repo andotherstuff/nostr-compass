@@ -2,7 +2,7 @@
 title: "NIP-52: Eventos de calendario"
 date: 2026-01-28
 translationOf: /en/topics/nip-52.md
-translationDate: 2026-03-07
+translationDate: 2026-03-11
 draft: false
 categories:
   - NIP
@@ -83,9 +83,9 @@ NIP-52 hace más que describir una reunión. Separa la definición de evento, la
 - [PR #1752: Etiqueta de timestamp con granularidad de día](https://github.com/nostr-protocol/nips/pull/1752)
 
 **Mencionado en:**
-- [Boletín #7: Borrador de app de calendario en Notedeck](/en/newsletters/2026-01-28-newsletter/#notedeck-progress-calendar-app-and-ux-polish)
-- [Boletín #10: Actualizaciones de NIP](/en/newsletters/2026-02-18-newsletter/#nip-updates)
-- [Boletín #10: NIP Deep Dive](/en/newsletters/2026-02-18-newsletter/#nip-deep-dive-nip-52-calendar-events)
+- [Boletín #7: Borrador de app de calendario en Notedeck](/es/newsletters/2026-01-28-newsletter/#notedeck-progress-calendar-app-and-ux-polish)
+- [Boletín #10: Actualizaciones de NIP](/es/newsletters/2026-02-18-newsletter/#nip-updates)
+- [Boletín #10: NIP Deep Dive](/es/newsletters/2026-02-18-newsletter/#nip-deep-dive-nip-52-calendar-events)
 
 **Ver también:**
 - [NIP-22: Comment](/es/topics/nip-22/)

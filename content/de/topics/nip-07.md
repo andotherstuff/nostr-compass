@@ -2,7 +2,7 @@
 title: "NIP-07: Browser-Erweiterungs-Signer"
 date: 2026-01-28
 translationOf: /en/topics/nip-07.md
-translationDate: 2026-03-07
+translationDate: 2026-03-11
 draft: false
 categories:
   - NIP

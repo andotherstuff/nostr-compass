@@ -2,10 +2,10 @@
 title: "NIP-05: 도메인 검증"
 date: 2026-02-04
 translationOf: /en/topics/nip-05.md
-translationDate: 2026-03-07
+translationDate: 2026-03-11
 draft: false
 categories:
-  - Identity
+  - 신원
   - Discovery
 ---
 NIP-05는 Nostr 공개키를 `user@example.com`과 같은 사람이 읽을 수 있는 인터넷 식별자에 매핑한다. 사용자에게 클라이언트가 HTTPS를 통해 검증할 수 있는 DNS 기반 아이덴티티 힌트를 제공한다.

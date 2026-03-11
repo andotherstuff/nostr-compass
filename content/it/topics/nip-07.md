@@ -2,7 +2,7 @@
 title: "NIP-07: Firmatario tramite estensione del browser"
 date: 2026-01-28
 translationOf: /en/topics/nip-07.md
-translationDate: 2026-03-07
+translationDate: 2026-03-11
 draft: false
 categories:
   - NIP
@@ -69,9 +69,9 @@ Per la firma tra dispositivi o su mobile, NIP-46 e NIP-55 di solito sono più ad
 - [PR #2233](https://github.com/nostr-protocol/nips/pull/2233) - proposta `peekPublicKey()`
 
 **Citato in:**
-- [Newsletter #7: NIP Updates](/en/newsletters/2026-01-28-newsletter/#nip-updates)
-- [Newsletter #8: News](/en/newsletters/2026-02-04-newsletter/#news)
-- [Newsletter #11: News](/en/newsletters/2026-02-25-newsletter/#news)
+- [Newsletter #7: NIP Updates](/it/newsletters/2026-01-28-newsletter/#nip-updates)
+- [Newsletter #8: News](/it/newsletters/2026-02-04-newsletter/#news)
+- [Newsletter #11: News](/it/newsletters/2026-02-25-newsletter/#news)
 
 **Vedi anche:**
 - [NIP-04: Messaggi diretti cifrati (Deprecato)](/it/topics/nip-04/)

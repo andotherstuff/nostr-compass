@@ -6,7 +6,7 @@ categories:
 - NIPs
 - Media
 translationOf: /en/topics/nip-96.md
-translationDate: '2026-03-07'
+translationDate: 2026-03-11
 ---
 
 O NIP-96 define como os clientes Nostr carregam, baixam e gerenciam arquivos em servidores de mídia HTTP. Agora está marcado como "não recomendado" em favor do Blossom, mas ainda é importante porque os servidores e clientes existentes continuam a apoiá-lo durante a transição.

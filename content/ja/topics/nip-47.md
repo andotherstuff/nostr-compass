@@ -2,13 +2,12 @@
 title: "NIP-47: Nostr Wallet Connect"
 date: 2025-12-17
 translationOf: /en/topics/nip-47.md
-translationDate: 2026-03-07
+translationDate: 2026-03-11
 draft: false
 categories:
-  - Wallet
-  - Lightning
+  - ウォレット
+  - ライトニング
 ---
-
 NIP-47はNostr Wallet Connectを定義し、Nostr appがwalletの主要credentialを各clientへ渡さずに、remote Lightning wallet serviceと通信できるようにします。
 
 ## 仕組み
@@ -41,11 +40,11 @@ wallet serviceは、対応するmethodとencryption modeを記述したreplaceab
 - [PR #2210: Simplification](https://github.com/nostr-protocol/nips/pull/2210)
 
 **言及箇所:**
-- [Newsletter #1: News](/en/newsletters/2025-12-17-newsletter/#news)
-- [Newsletter #2: Releases](/en/newsletters/2025-12-24-newsletter/#releases)
-- [Newsletter #3: December Recap](/en/newsletters/2025-12-31-newsletter/#december-recap-five-years-of-nostr-decembers)
-- [Newsletter #8: NIP Deep Dive](/en/newsletters/2026-02-04-newsletter/#nip-deep-dive-nip-47-nostr-wallet-connect)
-- [Newsletter #10: NIP Updates](/en/newsletters/2026-02-18-newsletter/#nip-updates)
+- [Newsletter #1: News](/ja/newsletters/2025-12-17-newsletter/#news)
+- [Newsletter #2: Releases](/ja/newsletters/2025-12-24-newsletter/#releases)
+- [Newsletter #3: December Recap](/ja/newsletters/2025-12-31-newsletter/#december-recap-five-years-of-nostr-decembers)
+- [Newsletter #8: NIP Deep Dive](/ja/newsletters/2026-02-04-newsletter/#nip-deep-dive-nip-47-nostr-wallet-connect)
+- [Newsletter #10: NIP Updates](/ja/newsletters/2026-02-18-newsletter/#nip-updates)
 
 **関連項目:**
 - [NIP-57: Zaps](/ja/topics/nip-57/)

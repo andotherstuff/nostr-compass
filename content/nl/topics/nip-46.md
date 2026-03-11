@@ -1,10 +1,11 @@
 ---
 title: "NIP-46: Nostr Connect"
 date: 2025-12-17
-translationDate: 2026-03-07
+translationOf: /en/topics/nip-46.md
+translationDate: 2026-03-11
 draft: false
 categories:
-  - Ondertekening
+  - Signing
   - Protocol
 ---
 
@@ -46,10 +47,10 @@ De methode `switch_relays` bestaat zodat de signer de sessie na verloop van tijd
 - [NIP-46-specificatie](https://github.com/nostr-protocol/nips/blob/master/46.md)
 
 **Vermeld in:**
-- [Nieuwsbrief #1: Opvallende codewijzigingen](/en/newsletters/2025-12-17-newsletter/#amethyst-android)
-- [Nieuwsbrief #3: Decemberoverzicht](/en/newsletters/2025-12-31-newsletter/#december-recap-five-years-of-nostr-decembers)
-- [Nieuwsbrief #7: Primal Android wordt een volledige signing hub](/en/newsletters/2026-01-07-newsletter/#primal-android-becomes-a-full-signing-hub)
-- [Nieuwsbrief #15: NDK collaborative events en NIP-46-time-out](/en/newsletters/2026-03-04-newsletter/#ndk-collaborative-events-and-nip-46-timeout)
+- [Nieuwsbrief #1: Opvallende codewijzigingen](/nl/newsletters/2025-12-17-newsletter/#amethyst-android)
+- [Nieuwsbrief #3: Decemberoverzicht](/nl/newsletters/2025-12-31-newsletter/#december-recap-five-years-of-nostr-decembers)
+- [Nieuwsbrief #7: Primal Android wordt een volledige signing hub](/nl/newsletters/2026-01-07-newsletter/#primal-android-becomes-a-full-signing-hub)
+- [Nieuwsbrief #15: NDK collaborative events en NIP-46-time-out](/nl/newsletters/2026-03-04-newsletter/#ndk-collaborative-events-and-nip-46-timeout)
 
 **Zie ook:**
 - [NIP-55: Android Signer](/nl/topics/nip-55/)

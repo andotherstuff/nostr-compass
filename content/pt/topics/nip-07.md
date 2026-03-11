@@ -7,7 +7,7 @@ categories:
 - Signing
 - Security
 translationOf: /en/topics/nip-07.md
-translationDate: '2026-03-07'
+translationDate: 2026-03-11
 ---
 
 O NIP-07 define uma interface padrão para extensões de navegador para fornecer recursos de assinatura para clientes Nostr baseados na web, mantendo as chaves privadas seguras na extensão em vez de expô-las a sites.

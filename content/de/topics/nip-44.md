@@ -2,12 +2,12 @@
 title: "NIP-44: Verschlüsselte Payloads"
 date: 2025-12-31
 translationOf: /en/topics/nip-44.md
-translationDate: 2026-03-07
+translationDate: 2026-03-11
 draft: false
 categories:
   - NIP
-  - Kryptographie
-  - Datenschutz
+  - Cryptography
+  - Privacy
 ---
 
 NIP-44 definiert einen versionierten Verschlüsselungsstandard für Nostr-Payloads und ersetzt das fehlerhafte NIP-04-Verschlüsselungsschema durch moderne kryptographische Primitive.

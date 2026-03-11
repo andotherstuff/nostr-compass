@@ -1,7 +1,8 @@
 ---
 title: "NIP-05: Domeinverificatie"
 date: 2026-02-04
-translationDate: 2026-03-07
+translationOf: /en/topics/nip-05.md
+translationDate: 2026-03-11
 draft: false
 categories:
   - Identity
@@ -57,7 +58,7 @@ De meeste grote clients ondersteunen NIP-05-verificatie:
 - [PR #2208](https://github.com/nostr-protocol/nips/pull/2208) - lowercase-vereiste voor namen en hex keys
 
 **Vermeld in:**
-- [Newsletter #8: NIP Updates](/en/newsletters/2026-02-04-newsletter/#nip-updates)
+- [Newsletter #8: NIP Updates](/nl/newsletters/2026-02-04-newsletter/#nip-updates)
 
 **Zie ook:**
 - [NIP-01: Basic Protocol](/nl/topics/nip-01/)

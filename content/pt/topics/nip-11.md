@@ -6,7 +6,7 @@ categories:
 - Relay
 - Protocol
 translationOf: /en/topics/nip-11.md
-translationDate: '2026-03-07'
+translationDate: 2026-03-11
 ---
 
 O NIP-11 define como relays publica uma descrição legível por máquina de si mesmo, incluindo suporte a recursos reivindicados, limites e metadados do operador.

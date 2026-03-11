@@ -3,10 +3,10 @@ title: "NIP-96：HTTP 文件存储"
 date: 2026-02-11
 draft: false
 translationOf: /en/topics/nip-96.md
-translationDate: 2026-03-07
+translationDate: 2026-03-11
 categories:
-  - NIPs
-  - Media
+  - NIP
+  - 媒体
 ---
 
 NIP-96 定义了 Nostr 客户端如何在 HTTP 媒体服务器上上传、下载和管理文件。该规范现已标记为"不推荐"以支持 Blossom，但由于现有服务器和客户端在过渡期间仍继续支持它，因此仍然重要。

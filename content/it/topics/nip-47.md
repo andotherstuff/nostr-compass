@@ -1,8 +1,8 @@
 ---
 title: "NIP-47: Nostr Wallet Connect"
 date: 2025-12-17
-translationOf: /en/topics/nip-47/
-translationDate: 2026-03-07
+translationOf: /en/topics/nip-47.md
+translationDate: 2026-03-11
 draft: false
 categories:
   - Wallet
@@ -40,11 +40,11 @@ NIP-44 è ora la modalità di crittografia preferita. La specifica documenta anc
 - [PR #2210: Simplification](https://github.com/nostr-protocol/nips/pull/2210)
 
 **Citato in:**
-- [Newsletter #1: News](/en/newsletters/2025-12-17-newsletter/#news)
-- [Newsletter #2: Releases](/en/newsletters/2025-12-24-newsletter/#releases)
-- [Newsletter #3: December Recap](/en/newsletters/2025-12-31-newsletter/#december-recap-five-years-of-nostr-decembers)
-- [Newsletter #8: NIP Deep Dive](/en/newsletters/2026-02-04-newsletter/#nip-deep-dive-nip-47-nostr-wallet-connect)
-- [Newsletter #10: NIP Updates](/en/newsletters/2026-02-18-newsletter/#nip-updates)
+- [Newsletter #1: News](/it/newsletters/2025-12-17-newsletter/#news)
+- [Newsletter #2: Releases](/it/newsletters/2025-12-24-newsletter/#releases)
+- [Newsletter #3: December Recap](/it/newsletters/2025-12-31-newsletter/#december-recap-five-years-of-nostr-decembers)
+- [Newsletter #8: NIP Deep Dive](/it/newsletters/2026-02-04-newsletter/#nip-deep-dive-nip-47-nostr-wallet-connect)
+- [Newsletter #10: NIP Updates](/it/newsletters/2026-02-18-newsletter/#nip-updates)
 
 **Vedi anche:**
 - [NIP-57: Zaps](/it/topics/nip-57/)

@@ -2,7 +2,7 @@
 title: "NIP-46: Nostr Connect"
 date: 2025-12-17
 translationOf: /en/topics/nip-46.md
-translationDate: 2026-03-07
+translationDate: 2026-03-11
 draft: false
 categories:
   - Signing
@@ -47,10 +47,10 @@ El método `switch_relays` existe para que el firmante pueda mover la sesión a 
 - [Especificación NIP-46](https://github.com/nostr-protocol/nips/blob/master/46.md)
 
 **Mencionado en:**
-- [Newsletter #1: Cambios Notables de Código](/en/newsletters/2025-12-17-newsletter/#amethyst-android)
-- [Newsletter #3: Resumen de Diciembre](/en/newsletters/2025-12-31-newsletter/#december-recap-five-years-of-nostr-decembers)
-- [Newsletter #7: Primal Android se Convierte en Hub de Firma Completo](/en/newsletters/2026-01-07-newsletter/#primal-android-becomes-a-full-signing-hub)
-- [Newsletter #15: Eventos Colaborativos de NDK y Timeout de NIP-46](/en/newsletters/2026-03-04-newsletter/#ndk-collaborative-events-and-nip-46-timeout)
+- [Newsletter #1: Cambios Notables de Código](/es/newsletters/2025-12-17-newsletter/#amethyst-android)
+- [Newsletter #3: Resumen de Diciembre](/es/newsletters/2025-12-31-newsletter/#december-recap-five-years-of-nostr-decembers)
+- [Newsletter #7: Primal Android se Convierte en Hub de Firma Completo](/es/newsletters/2026-01-07-newsletter/#primal-android-becomes-a-full-signing-hub)
+- [Newsletter #15: Eventos Colaborativos de NDK y Timeout de NIP-46](/es/newsletters/2026-03-04-newsletter/#ndk-collaborative-events-and-nip-46-timeout)
 
 **Ver también:**
 - [NIP-55: Android Signer](/es/topics/nip-55/)

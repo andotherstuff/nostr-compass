@@ -8,7 +8,7 @@ categories:
 - Identity
 - Discovery
 translationOf: /en/topics/nip-05.md
-translationDate: '2026-03-07'
+translationDate: 2026-03-11
 ---
 
 O NIP-05 mapeia as chaves públicas Nostr para identificadores de Internet legíveis por humanos, como `user@example.com`. Ele fornece aos usuários uma dica de identidade baseada em DNS que os clientes podem verificar por HTTPS.

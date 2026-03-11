@@ -3,10 +3,10 @@ title: "NIP-46：Nostr Connect"
 date: 2025-12-17
 draft: false
 translationOf: /en/topics/nip-46.md
-translationDate: 2026-03-07
+translationDate: 2026-03-11
 categories:
-  - Signing
-  - Protocol
+  - 签名
+  - 协议
 ---
 
 NIP-46 定义了通过 Nostr 中继进行远程签名的协议。客户端与一个独立的签名器（通常称为 bunker）通信，这样签名密钥可以保存在用户正在使用的应用之外。

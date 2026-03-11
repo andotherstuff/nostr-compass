@@ -2,7 +2,7 @@
 title: "NIP-11: Documento de Información del Relay"
 date: 2025-12-17
 translationOf: /en/topics/nip-11.md
-translationDate: 2026-03-07
+translationDate: 2026-03-11
 draft: false
 categories:
   - Relay

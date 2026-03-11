@@ -2,7 +2,7 @@
 title: "NIP-96: HTTP-bestandsopslag"
 date: 2026-02-11
 translationOf: /en/topics/nip-96.md
-translationDate: 2026-03-07
+translationDate: 2026-03-11
 draft: false
 categories:
   - NIPs
@@ -44,7 +44,7 @@ Kind 10096 server preference events blijven bruikbaar voor selectie van Blossom-
 - [PR #2047: Mark NIP-96 as Unrecommended](https://github.com/nostr-protocol/nips/pull/2047)
 
 **Vermeld in:**
-- [Newsletter #9: NIP Deep Dive](/en/newsletters/2026-02-11-newsletter/#nip-deep-dive-nip-96-http-file-storage-and-the-transition-to-blossom)
+- [Newsletter #9: NIP Deep Dive](/nl/newsletters/2026-02-11-newsletter/#nip-deep-dive-nip-96-http-file-storage-and-the-transition-to-blossom)
 
 **Zie ook:**
 - [Blossom Protocol](/nl/topics/blossom/)

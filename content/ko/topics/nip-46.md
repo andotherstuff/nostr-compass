@@ -2,11 +2,11 @@
 title: "NIP-46: Nostr Connect"
 date: 2025-12-17
 translationOf: /en/topics/nip-46.md
-translationDate: 2026-03-07
+translationDate: 2026-03-11
 draft: false
 categories:
-  - Signing
-  - Protocol
+  - 서명
+  - 프로토콜
 ---
 NIP-46은 Nostr 릴레이를 통한 원격 서명을 정의한다. 클라이언트가 흔히 벙커(bunker)라 불리는 별도의 서명자와 통신하여, 서명 키가 사용자가 활발히 사용 중인 앱 외부에 보관될 수 있도록 한다.
 

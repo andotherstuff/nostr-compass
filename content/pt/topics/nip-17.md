@@ -6,7 +6,7 @@ categories:
 - Privacy
 - Messaging
 translationOf: /en/topics/nip-17.md
-translationDate: '2026-03-07'
+translationDate: 2026-03-11
 ---
 
 NIP-17 define mensagens diretas privadas usando embalagem de presente NIP-59 para privacidade do remetente. Ao contrário dos DMs NIP-04, que expõem o remetente no evento externo, o NIP-17 esconde o remetente de relays e de observadores casuais.

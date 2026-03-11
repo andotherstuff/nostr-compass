@@ -2,7 +2,7 @@
 title: "NIP-44 : Payloads chiffrés"
 date: 2025-12-31
 translationOf: /en/topics/nip-44.md
-translationDate: 2026-03-07
+translationDate: 2026-03-11
 draft: false
 categories:
   - NIP
@@ -67,10 +67,10 @@ La révision 3 de NIP-44 a été fusionnée en décembre 2023 suite à un audit 
 - [Rapport d'audit Cure53](https://cure53.de/audit-report_nip44-implementations.pdf)
 
 **Mentionné dans :**
-- [Newsletter #4 : Analyse approfondie NIP](/en/newsletters/2026-01-07-newsletter/#nip-44-versioned-encryption)
-- [Newsletter #3 : Décembre 2023](/en/newsletters/2025-12-31-newsletter/#december-2023-ecosystem-maturation)
-- [Newsletter #3 : Décembre 2024](/en/newsletters/2025-12-31-newsletter/#december-2024-protocol-advancement)
-- [Newsletter #12 : Marmot](/en/newsletters/2026-03-04-newsletter/#marmot-development-kit-ships-first-public-release)
+- [Newsletter #4 : Analyse approfondie NIP](/fr/newsletters/2026-01-07-newsletter/#nip-44-versioned-encryption)
+- [Newsletter #3 : Décembre 2023](/fr/newsletters/2025-12-31-newsletter/#december-2023-ecosystem-maturation)
+- [Newsletter #3 : Décembre 2024](/fr/newsletters/2025-12-31-newsletter/#december-2024-protocol-advancement)
+- [Newsletter #12 : Marmot](/fr/newsletters/2026-03-04-newsletter/#marmot-development-kit-ships-first-public-release)
 
 **Voir aussi :**
 - [NIP-04 : Messages directs chiffrés (obsolète)](/fr/topics/nip-04/)

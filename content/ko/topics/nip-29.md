@@ -2,10 +2,10 @@
 title: "NIP-29: 릴레이 기반 그룹"
 date: 2025-12-24
 translationOf: /en/topics/nip-29.md
-translationDate: 2026-03-07
+translationDate: 2026-03-11
 draft: false
 categories:
-  - Social
+  - 소셜
   - Groups
 ---
 NIP-29는 릴레이가 그룹 멤버십, 권한 및 메시지 가시성을 관리하는 릴레이 기반 그룹을 정의한다.

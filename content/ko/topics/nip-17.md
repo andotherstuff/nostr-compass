@@ -2,10 +2,10 @@
 title: "NIP-17: 비공개 다이렉트 메시지"
 date: 2025-12-17
 translationOf: /en/topics/nip-17.md
-translationDate: 2026-03-07
+translationDate: 2026-03-11
 draft: false
 categories:
-  - Privacy
+  - 프라이버시
   - Messaging
 ---
 NIP-17은 NIP-59 gift wrapping을 사용하여 발신자 프라이버시를 보장하는 비공개 다이렉트 메시지를 정의한다. 외부 이벤트에 발신자가 노출되는 NIP-04 DM과 달리, NIP-17은 릴레이와 일반 관찰자로부터 발신자를 숨긴다.

@@ -2,11 +2,11 @@
 title: "NIP-96: HTTP File Storage"
 date: 2026-02-11
 translationOf: /en/topics/nip-96.md
-translationDate: 2026-03-07
+translationDate: 2026-03-11
 draft: false
 categories:
   - NIPs
-  - Media
+  - 미디어
 ---
 NIP-96은 Nostr 클라이언트가 HTTP 미디어 서버에서 파일을 업로드, 다운로드, 관리하는 방법을 정의한다. 현재 Blossom을 권장하면서 "비권장(unrecommended)"으로 표시되었지만, 기존 서버와 클라이언트가 전환 기간 동안 계속 지원하고 있어 여전히 중요하다.
 

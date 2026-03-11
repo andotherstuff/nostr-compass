@@ -6,7 +6,7 @@ categories:
 - Signing
 - Mobile
 translationOf: /en/topics/nip-55.md
-translationDate: '2026-03-07'
+translationDate: 2026-03-11
 ---
 
 O NIP-55 define como os aplicativos Android solicitam operações de assinatura e criptografia de um aplicativo assinante separado. Oferece aos clientes Android uma alternativa nativa para extensões de navegador e bunkers remotos.

@@ -2,7 +2,7 @@
 title: "NIP-96 : Stockage de fichiers HTTP"
 date: 2026-02-11
 translationOf: /en/topics/nip-96.md
-translationDate: 2026-03-07
+translationDate: 2026-03-11
 draft: false
 categories:
   - NIPs

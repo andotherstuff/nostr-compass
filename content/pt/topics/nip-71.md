@@ -6,7 +6,7 @@ categories:
 - Media
 - Protocol
 translationOf: /en/topics/nip-71.md
-translationDate: '2026-03-07'
+translationDate: 2026-03-11
 ---
 
 NIP-71 define o evento kinds para conteúdo de vídeo no Nostr, permitindo o compartilhamento de vídeo com suporte adequado de metadados. A especificação cobre eventos de vídeo regulares e eventos de vídeo endereçáveis, com o último adicionado em janeiro de 2026 para permitir que os criadores atualizem os metadados do vídeo sem republicá-los.

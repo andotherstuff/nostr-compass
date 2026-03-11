@@ -3,9 +3,9 @@ title: "NIP-47：Nostr Wallet Connect"
 date: 2025-12-17
 draft: false
 translationOf: /en/topics/nip-47.md
-translationDate: 2026-03-07
+translationDate: 2026-03-11
 categories:
-  - Wallet
+  - 钱包
   - Lightning
 ---
 

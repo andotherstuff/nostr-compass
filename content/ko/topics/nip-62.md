@@ -2,11 +2,11 @@
 title: "NIP-62: Vanish Requests"
 date: 2026-01-13
 translationOf: /en/topics/nip-62.md
-translationDate: 2026-03-07
+translationDate: 2026-03-11
 draft: false
 categories:
-  - Privacy
-  - Protocol
+  - 프라이버시
+  - 프로토콜
 ---
 NIP-62는 vanish 요청을 정의한다. 사용자가 릴레이에 자신의 콘텐츠 삭제를 요청하는 메커니즘이다. 릴레이가 이 요청을 이행할 의무는 없지만, NIP-62를 지원하면 사용자에게 발행된 데이터에 대한 더 많은 통제권을 부여하고 네트워크 전반에 걸쳐 삭제 의사를 전달하는 표준화된 방법을 제공한다.
 

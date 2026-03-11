@@ -6,7 +6,7 @@ categories:
 - NIPs
 - Authentication
 translationOf: /en/topics/nip-42.md
-translationDate: '2026-03-07'
+translationDate: 2026-03-11
 ---
 
 NIP-42 define como os clientes se autenticam nos relays. Os relays podem exigir autenticação para fornecer controle de acesso, evitar abusos ou implementar serviços relay pagos.

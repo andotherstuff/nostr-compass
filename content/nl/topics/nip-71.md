@@ -1,7 +1,8 @@
 ---
 title: "NIP-71: Video Events"
 date: 2026-01-13
-translationDate: 2026-03-07
+translationOf: /en/topics/nip-71.md
+translationDate: 2026-03-11
 draft: false
 categories:
   - Media
@@ -76,8 +77,8 @@ Adresseerbare video events (kinds 34235 en 34236) zijn momenteel geïmplementeer
 - [PR #1669](https://github.com/nostr-protocol/nips/pull/1669) - Update voor adresseerbare video events
 
 **Vermeld in:**
-- [Nieuwsbrief #5: NIP Updates](/en/newsletters/2026-01-13-newsletter/#nip-updates)
-- [Nieuwsbrief #12: NoorNote](/en/newsletters/2026-03-04-newsletter/)
+- [Nieuwsbrief #5: NIP Updates](/nl/newsletters/2026-01-13-newsletter/#nip-updates)
+- [Nieuwsbrief #12: NoorNote](/nl/newsletters/2026-03-04-newsletter/)
 
 **Zie ook:**
 - [NIP-94: File Metadata](/nl/topics/nip-94/)

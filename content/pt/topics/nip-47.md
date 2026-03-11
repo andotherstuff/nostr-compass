@@ -6,7 +6,7 @@ categories:
 - Wallet
 - Lightning
 translationOf: /en/topics/nip-47.md
-translationDate: '2026-03-07'
+translationDate: 2026-03-11
 ---
 
 O NIP-47 define o Nostr Wallet Connect, um protocolo para permitir que um aplicativo Nostr se comunique com um serviço remoto de carteira Lightning sem expor as credenciais principais da carteira a todos os clientes.

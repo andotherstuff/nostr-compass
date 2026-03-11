@@ -2,7 +2,7 @@
 title: "NIP-52: Kalenderereignisse"
 date: 2026-01-28
 translationOf: /en/topics/nip-52.md
-translationDate: 2026-03-07
+translationDate: 2026-03-11
 draft: false
 categories:
   - NIP

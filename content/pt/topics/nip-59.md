@@ -6,7 +6,7 @@ categories:
 - Privacy
 - Protocol
 translationOf: /en/topics/nip-59.md
-translationDate: '2026-03-07'
+translationDate: 2026-03-11
 ---
 
 NIP-59 define gift wrap, uma forma de encapsular um evento para que relays e observadores externos não descubram o verdadeiro remetente do evento externo que recebem.

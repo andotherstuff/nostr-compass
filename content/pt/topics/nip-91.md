@@ -6,7 +6,7 @@ categories:
 - NIP
 - Protocol
 translationOf: /en/topics/nip-91.md
-translationDate: '2026-03-07'
+translationDate: 2026-03-11
 ---
 
 NIP-91 adiciona semântica de filtro AND para arrays de tags em assinaturas de relay do Nostr. Ele foi mesclado em 2026-03-03 depois que implementações apareceram em vários relays.

@@ -2,7 +2,7 @@
 title: "NIP-05: Verificación de Dominio"
 date: 2026-02-04
 translationOf: /en/topics/nip-05.md
-translationDate: 2026-03-07
+translationDate: 2026-03-11
 draft: false
 description: "NIP-05 habilita identificadores legibles para humanos para claves públicas de Nostr mediante verificación de dominio."
 categories:

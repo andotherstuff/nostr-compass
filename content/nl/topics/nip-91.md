@@ -2,7 +2,7 @@
 title: "NIP-91: AND-operator voor filters"
 date: 2026-03-04
 translationOf: /en/topics/nip-91.md
-translationDate: 2026-03-07
+translationDate: 2026-03-11
 draft: false
 categories:
   - NIP
@@ -39,7 +39,7 @@ Clients moeten nog steeds rekening houden met gemengde ondersteuning terwijl rel
 - [PR #1365](https://github.com/nostr-protocol/nips/pull/1365)
 
 **Vermeld in:**
-- [Nieuwsbrief #12: NIP-updates](/en/newsletters/2026-03-04-newsletter/#nip-updates)
+- [Nieuwsbrief #12: NIP-updates](/nl/newsletters/2026-03-04-newsletter/#nip-updates)
 
 **Zie ook:**
 - [NIP-01: Basisprotocol](/nl/topics/nip-01/)

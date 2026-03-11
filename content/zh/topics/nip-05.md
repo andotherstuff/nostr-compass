@@ -4,10 +4,10 @@ date: 2026-02-04
 draft: false
 description: "NIP-05 通过域名验证为 Nostr 公钥提供人类可读的标识符。"
 translationOf: /en/topics/nip-05.md
-translationDate: 2026-03-07
+translationDate: 2026-03-11
 categories:
-  - Identity
-  - Discovery
+  - 身份
+  - 发现
 ---
 
 NIP-05 将 Nostr 公钥映射为类似 `user@example.com` 的人类可读互联网标识符。它为用户提供一个基于 DNS 的身份提示，客户端可以通过 HTTPS 进行验证。

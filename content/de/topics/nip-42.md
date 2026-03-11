@@ -2,7 +2,7 @@
 title: "NIP-42: Authentifizierung von Clients bei Relays"
 date: 2026-01-21
 translationOf: /en/topics/nip-42.md
-translationDate: 2026-03-07
+translationDate: 2026-03-11
 draft: false
 categories:
   - NIPs

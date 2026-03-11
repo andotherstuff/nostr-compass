@@ -1,7 +1,8 @@
 ---
 title: "NIP-47: Nostr Wallet Connect"
 date: 2025-12-17
-translationDate: 2026-03-07
+translationOf: /en/topics/nip-47.md
+translationDate: 2026-03-11
 draft: false
 categories:
   - Wallet
@@ -40,11 +41,11 @@ NIP-44 heeft nu de voorkeur als encryptiemodus. De spec documenteert nog steeds 
 - [PR #2210: Vereenvoudiging](https://github.com/nostr-protocol/nips/pull/2210)
 
 **Vermeld in:**
-- [Nieuwsbrief #1: News](/en/newsletters/2025-12-17-newsletter/#news)
-- [Nieuwsbrief #2: Releases](/en/newsletters/2025-12-24-newsletter/#releases)
-- [Nieuwsbrief #3: December Recap](/en/newsletters/2025-12-31-newsletter/#december-recap-five-years-of-nostr-decembers)
-- [Nieuwsbrief #8: NIP Deep Dive](/en/newsletters/2026-02-04-newsletter/#nip-deep-dive-nip-47-nostr-wallet-connect)
-- [Nieuwsbrief #10: NIP Updates](/en/newsletters/2026-02-18-newsletter/#nip-updates)
+- [Nieuwsbrief #1: News](/nl/newsletters/2025-12-17-newsletter/#news)
+- [Nieuwsbrief #2: Releases](/nl/newsletters/2025-12-24-newsletter/#releases)
+- [Nieuwsbrief #3: December Recap](/nl/newsletters/2025-12-31-newsletter/#december-recap-five-years-of-nostr-decembers)
+- [Nieuwsbrief #8: NIP Deep Dive](/nl/newsletters/2026-02-04-newsletter/#nip-deep-dive-nip-47-nostr-wallet-connect)
+- [Nieuwsbrief #10: NIP Updates](/nl/newsletters/2026-02-18-newsletter/#nip-updates)
 
 **Zie ook:**
 - [NIP-57: Zaps](/nl/topics/nip-57/)

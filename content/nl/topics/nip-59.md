@@ -1,7 +1,8 @@
 ---
 title: "NIP-59: Gift Wrap"
 date: 2025-12-17
-translationDate: 2026-03-07
+translationOf: /en/topics/nip-59.md
+translationDate: 2026-03-11
 draft: false
 categories:
   - Privacy
@@ -45,11 +46,11 @@ Relays kunnen ervoor kiezen wrapped events niet lang op te slaan omdat ze publie
 - [NIP-59 Specificatie](https://github.com/nostr-protocol/nips/blob/master/59.md)
 
 **Vermeld in:**
-- [Nieuwsbrief #8: NIP Deep Dive](/en/newsletters/2026-02-04-newsletter/#nip-deep-dive-nip-59-gift-wrap)
-- [Nieuwsbrief #1: Nieuws](/en/newsletters/2025-12-17-newsletter/#news)
-- [Nieuwsbrief #1: NIP Updates](/en/newsletters/2025-12-17-newsletter/#nip-updates)
-- [Nieuwsbrief #3: December Recap](/en/newsletters/2025-12-31-newsletter/#december-recap-five-years-of-nostr-decembers)
-- [Nieuwsbrief #15: Open PRs](/en/newsletters/2026-03-04-newsletter/#open-prs-and-project-updates)
+- [Nieuwsbrief #8: NIP Deep Dive](/nl/newsletters/2026-02-04-newsletter/#nip-deep-dive-nip-59-gift-wrap)
+- [Nieuwsbrief #1: Nieuws](/nl/newsletters/2025-12-17-newsletter/#news)
+- [Nieuwsbrief #1: NIP Updates](/nl/newsletters/2025-12-17-newsletter/#nip-updates)
+- [Nieuwsbrief #3: December Recap](/nl/newsletters/2025-12-31-newsletter/#december-recap-five-years-of-nostr-decembers)
+- [Nieuwsbrief #15: Open PRs](/nl/newsletters/2026-03-04-newsletter/#open-prs-and-project-updates)
 
 **Zie ook:**
 - [NIP-17: Private Direct Messages](/nl/topics/nip-17/)

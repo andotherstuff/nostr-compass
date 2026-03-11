@@ -3,10 +3,10 @@ title: "NIP-11：中继器信息文档"
 date: 2025-12-17
 draft: false
 translationOf: /en/topics/nip-11.md
-translationDate: 2026-03-07
+translationDate: 2026-03-11
 categories:
-  - Relay
-  - Protocol
+  - 中继
+  - 协议
 ---
 
 NIP-11 定义了中继器如何发布其机器可读的自我描述，包括声明的功能支持、限制和运营者元数据。

@@ -2,11 +2,11 @@
 title: "NIP-11: 릴레이 정보 문서"
 date: 2025-12-17
 translationOf: /en/topics/nip-11.md
-translationDate: 2026-03-07
+translationDate: 2026-03-11
 draft: false
 categories:
-  - Relay
-  - Protocol
+  - 릴레이
+  - 프로토콜
 ---
 NIP-11은 릴레이가 지원하는 기능, 제한 사항, 운영자 메타데이터를 포함하여 기계가 읽을 수 있는 자기 설명을 게시하는 방법을 정의한다.
 

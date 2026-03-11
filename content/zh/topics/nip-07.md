@@ -3,11 +3,11 @@ title: "NIP-07：浏览器扩展签名器"
 date: 2026-01-28
 draft: false
 translationOf: /en/topics/nip-07.md
-translationDate: 2026-03-07
+translationDate: 2026-03-11
 categories:
   - NIP
-  - Signing
-  - Security
+  - 签名
+  - 安全
 ---
 
 NIP-07 定义了浏览器扩展为基于 Web 的 Nostr 客户端提供签名功能的标准接口，将私钥安全地保存在扩展中，而非暴露给网站。

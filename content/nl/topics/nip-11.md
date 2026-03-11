@@ -1,7 +1,8 @@
 ---
 title: "NIP-11: Relay-informatiedocument"
 date: 2025-12-17
-translationDate: 2026-03-07
+translationOf: /en/topics/nip-11.md
+translationDate: 2026-03-11
 draft: false
 categories:
   - Relay
@@ -48,7 +49,7 @@ De specificatie is in de loop van de tijd teruggesnoeid. Oudere optionele velden
 - [PR #2231](https://github.com/nostr-protocol/nips/pull/2231) - verwijdering van verouderde velden
 
 **Vermeld in:**
-- [Nieuwsbrief #1: NIP Updates](/en/newsletters/2025-12-17-newsletter/#nip-updates)
+- [Nieuwsbrief #1: NIP Updates](/nl/newsletters/2025-12-17-newsletter/#nip-updates)
 
 **Zie ook:**
 - [NIP-66: Relay Discovery and Liveness Monitoring](/nl/topics/nip-66/)

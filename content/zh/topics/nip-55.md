@@ -2,11 +2,11 @@
 title: "NIP-55：Android 签名器应用"
 date: 2025-12-17
 translationOf: /en/topics/nip-55.md
-translationDate: 2026-03-07
+translationDate: 2026-03-11
 draft: false
 categories:
-  - Signing
-  - Mobile
+  - 签名
+  - 移动端
 ---
 
 NIP-55 定义了 Android 应用如何从单独的签名器应用请求签名和加密操作。它为 Android 客户端提供了浏览器扩展和远程 bunker 之外的原生替代方案。

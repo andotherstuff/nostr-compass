@@ -7,7 +7,7 @@ categories:
 - Cryptography
 - Privacy
 translationOf: /en/topics/nip-44.md
-translationDate: '2026-03-07'
+translationDate: 2026-03-11
 ---
 
 NIP-44 define um padrão de criptografia versionado para Nostr payloads, substituindo o esquema de criptografia falho NIP-04 por primitivas criptográficas modernas.

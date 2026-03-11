@@ -1,11 +1,12 @@
 ---
 title: "NIP-29: Relay-gebaseerde groepen"
 date: 2025-12-24
-translationDate: 2026-03-07
+translationOf: /en/topics/nip-29.md
+translationDate: 2026-03-11
 draft: false
 categories:
-  - Sociaal
-  - Groepen
+  - Social
+  - Groups
 ---
 
 NIP-29 definieert relay-gebaseerde groepen, waarbij een relay groepslidmaatschap, permissies en zichtbaarheid van berichten beheert.
@@ -46,11 +47,11 @@ Dat maakt migratie en forks mogelijk, maar niet automatisch. Dezelfde group id k
 - [PR #2111](https://github.com/nostr-protocol/nips/pull/2111) - Voegde `unallowpubkey` en `unbanpubkey` toe
 
 **Vermeld in:**
-- [Nieuwsbrief #2: NIP Updates](/en/newsletters/2025-12-24-newsletter/#nip-updates)
-- [Nieuwsbrief #3: Decemberoverzicht](/en/newsletters/2025-12-31-newsletter/#december-recap-five-years-of-nostr-decembers)
-- [Nieuwsbrief #6: NIP Updates](/en/newsletters/2026-01-21-newsletter/#nip-updates)
-- [Nieuwsbrief #11: NIP Updates](/en/newsletters/2026-02-25-newsletter/#nip-updates)
-- [Nieuwsbrief #12: NIP Updates](/en/newsletters/2026-03-04-newsletter/#nip-updates)
+- [Nieuwsbrief #2: NIP Updates](/nl/newsletters/2025-12-24-newsletter/#nip-updates)
+- [Nieuwsbrief #3: Decemberoverzicht](/nl/newsletters/2025-12-31-newsletter/#december-recap-five-years-of-nostr-decembers)
+- [Nieuwsbrief #6: NIP Updates](/nl/newsletters/2026-01-21-newsletter/#nip-updates)
+- [Nieuwsbrief #11: NIP Updates](/nl/newsletters/2026-02-25-newsletter/#nip-updates)
+- [Nieuwsbrief #12: NIP Updates](/nl/newsletters/2026-03-04-newsletter/#nip-updates)
 
 **Zie ook:**
 - [NIP-11: Relay Information Document](/nl/topics/nip-11/)

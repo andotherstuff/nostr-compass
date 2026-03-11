@@ -2,7 +2,7 @@
 title: "NIP-05 : Vérification de domaine"
 date: 2026-02-04
 translationOf: /en/topics/nip-05.md
-translationDate: 2026-03-07
+translationDate: 2026-03-11
 draft: false
 description: "NIP-05 permet d'associer des identifiants lisibles par l'homme aux pubkeys Nostr via la vérification de domaine."
 categories:
@@ -59,7 +59,7 @@ La plupart des clients majeurs supportent la vérification NIP-05 :
 - [PR #2208](https://github.com/nostr-protocol/nips/pull/2208) - exigence de minuscules pour les noms et clés hex
 
 **Mentionné dans :**
-- [Newsletter #8 : NIP Updates](/en/newsletters/2026-02-04-newsletter/#nip-updates)
+- [Newsletter #8 : NIP Updates](/fr/newsletters/2026-02-04-newsletter/#nip-updates)
 
 **Voir aussi :**
 - [NIP-01 : Protocole de base](/fr/topics/nip-01/)

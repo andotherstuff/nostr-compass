@@ -2,7 +2,7 @@
 title: "NIP-07 : Signataire par extension navigateur"
 date: 2026-01-28
 translationOf: /en/topics/nip-07.md
-translationDate: 2026-03-07
+translationDate: 2026-03-11
 draft: false
 categories:
   - NIP
@@ -70,9 +70,9 @@ Pour la signature multi-appareils ou mobile, NIP-46 et NIP-55 sont généralemen
 - [PR #2233](https://github.com/nostr-protocol/nips/pull/2233) - proposition `peekPublicKey()`
 
 **Mentionné dans :**
-- [Newsletter #7 : NIP Updates](/en/newsletters/2026-01-28-newsletter/#nip-updates)
-- [Newsletter #8 : News](/en/newsletters/2026-02-04-newsletter/#news)
-- [Newsletter #11 : News](/en/newsletters/2026-02-25-newsletter/#news)
+- [Newsletter #7 : NIP Updates](/fr/newsletters/2026-01-28-newsletter/#nip-updates)
+- [Newsletter #8 : News](/fr/newsletters/2026-02-04-newsletter/#news)
+- [Newsletter #11 : News](/fr/newsletters/2026-02-25-newsletter/#news)
 
 **Voir aussi :**
 - [NIP-04 : Messages directs chiffrés (obsolète)](/fr/topics/nip-04/)

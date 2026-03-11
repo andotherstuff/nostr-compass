@@ -2,7 +2,7 @@
 title: "NIP-91: AND-Operator für Filter"
 date: 2026-03-04
 translationOf: /en/topics/nip-91.md
-translationDate: 2026-03-07
+translationDate: 2026-03-11
 draft: false
 categories:
   - NIP

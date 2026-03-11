@@ -1,7 +1,8 @@
 ---
 title: "NIP-17: Private Direktnachrichten"
 date: 2025-12-17
-translationDate: 2026-03-07
+translationOf: /en/topics/nip-17.md
+translationDate: 2026-03-11
 draft: false
 categories:
   - Privacy

@@ -6,7 +6,7 @@ categories:
 - Wallet
 - Ecash
 translationOf: /en/topics/nip-60.md
-translationDate: '2026-03-07'
+translationDate: 2026-03-11
 ---
 
 O NIP-60 define como as carteiras ecash baseadas em Cashu operam dentro do Nostr. As informações da carteira são armazenadas nos relays, permitindo carteiras portáteis que funcionam em diferentes aplicativos sem a necessidade de contas separadas.

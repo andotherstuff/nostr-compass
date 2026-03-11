@@ -2,10 +2,10 @@
 title: "NIP-60: Cashu Wallet"
 date: 2025-12-31
 translationOf: /en/topics/nip-60.md
-translationDate: 2026-03-07
+translationDate: 2026-03-11
 draft: false
 categories:
-  - Portemonnee
+  - Wallet
   - Ecash
 ---
 
@@ -55,8 +55,8 @@ De specificatie vereist ook dat de private key van de wallet gescheiden blijft v
 - [NIP-60 Specificatie](https://github.com/nostr-protocol/nips/blob/master/60.md)
 
 **Vermeld in:**
-- [Nieuwsbrief #3: December Recap](/en/newsletters/2025-12-31-newsletter/#december-recap-five-years-of-nostr-decembers)
-- [Nieuwsbrief #9: NIP Deep Dive](/en/newsletters/2026-02-25-newsletter/#nip-deep-dive-nip-60-cashu-wallet)
+- [Nieuwsbrief #3: December Recap](/nl/newsletters/2025-12-31-newsletter/#december-recap-five-years-of-nostr-decembers)
+- [Nieuwsbrief #9: NIP Deep Dive](/nl/newsletters/2026-02-25-newsletter/#nip-deep-dive-nip-60-cashu-wallet)
 
 **Zie ook:**
 - [NIP-57: Zaps](/nl/topics/nip-57/)

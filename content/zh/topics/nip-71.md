@@ -3,10 +3,10 @@ title: "NIP-71：视频事件"
 date: 2026-01-13
 draft: false
 translationOf: /en/topics/nip-71.md
-translationDate: 2026-03-07
+translationDate: 2026-03-11
 categories:
-  - Media
-  - Protocol
+  - 媒体
+  - 协议
 ---
 
 NIP-71 定义了 Nostr 上视频内容的事件类型，支持带有适当元数据的视频分享。该规范涵盖常规视频事件和可寻址视频事件，后者于 2026 年 1 月新增，允许创作者在不重新发布的情况下更新视频元数据。
