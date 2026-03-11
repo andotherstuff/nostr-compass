@@ -345,6 +345,14 @@ social_clients:
     status: active
     priority: low
 
+  - name: Roadstr
+    description: Decentralized road event reporting using Nostr and MeshCore
+    platforms: [web, android]
+    repo: https://github.com/jooray/roadstr
+    status: active
+    priority: low
+    notes: Uses custom kinds 1315 and 1316 for road reports and confirmations
+
   - name: Agora
     description: Topic-following client for Nostr, Mastodon, Reddit, Bluesky, and Twitter
     platforms: [web]
@@ -371,6 +379,15 @@ social_clients:
     status: active
     priority: medium
 
+  - name: Calendar by Form*
+    description: Decentralized calendar app with NIP-59 private event sharing
+    platforms: [web, android]
+    repo: https://github.com/formstr-hq/nostr-calendar
+    website: https://calendar.formstr.app
+    status: active
+    priority: medium
+    notes: Public and private events, recurring schedules, ICS export
+
   - name: Nostree
     description: Linktree-style application for managing link lists on Nostr
     platforms: [web]
@@ -395,6 +412,15 @@ social_clients:
     status: active
     priority: medium
     notes: Real-time collaborative editing on Nostr
+
+  - name: Nostr-Doc
+    description: Collaborative Markdown editor using Nostr relays and Yjs CRDT sync
+    platforms: [web]
+    repo: https://github.com/formstr-hq/nostr-docs
+    website: https://nostr-docs.vercel.app
+    status: active
+    priority: low
+    notes: Real-time collaborative document editing over Nostr relays
 
   - name: Oracolo
     description: Minimalist blog powered by Nostr in a single HTML file
@@ -792,6 +818,24 @@ longform_clients:
     priority: low
     notes: OpenSats funded, supports kind:1 and kind:30023, integrates with Keystache
 
+  - name: Samizdat
+    description: Writer-first publishing tool for NIP-23 long-form articles
+    platforms: [web, android]
+    repo: https://github.com/satsdisco/samizdat
+    website: https://samizdat.press
+    status: active
+    priority: medium
+    notes: NIP-07, NIP-46, and NIP-65 support with NIP-98 media uploads
+
+  - name: Manent
+    description: Private encrypted notes and file storage built on Nostr
+    platforms: [web, android, linux, macos]
+    repo: https://github.com/dtonon/manent
+    website: https://manent.dtonon.com
+    status: active
+    priority: low
+    notes: Uses NIP-44 encryption, NIP-46, NIP-55, NIP-65, and Blossom storage
+
 # =============================================================================
 # MESSAGING
 # =============================================================================
@@ -870,6 +914,15 @@ messaging_clients:
     status: beta
     priority: low
     notes: Uses MDK for MLS over Nostr relays
+
+  - name: Marmota
+    description: End-to-end encrypted group messaging client using the Marmot protocol
+    platforms: [web]
+    repo: https://github.com/dcadenas/marmota
+    website: https://groups.privdm.com
+    status: beta
+    priority: low
+    notes: React client built on marmot-ts with local IndexedDB storage
 
   - name: White Noise TUI
     description: Terminal-based client for White Noise MLS-encrypted messaging
@@ -1093,6 +1146,15 @@ marketplaces:
     status: active
     priority: high
 
+  - name: Milk Market
+    description: Food marketplace on Nostr with Lightning, Cashu, and fiat payment options
+    platforms: [web]
+    repo: https://github.com/shopstr-eng/milk-market
+    website: https://milk.market
+    status: active
+    priority: medium
+    notes: Supports NIP-17 DMs, NIP-46 signers, NIP-47, NIP-60, and NIP-99 listings
+
   - name: Plebeian Market
     description: Bitcoin marketplace (NIP-15)
     platforms: [web]
@@ -1190,7 +1252,7 @@ devtools:
   - name: Formstr
     description: Google Forms alternative on Nostr
     platforms: [web]
-    repo: https://github.com/abh3po/nostr-forms
+    repo: https://github.com/formstr-hq/nostr-forms
     website: https://formstr.app
     status: active
     priority: medium
@@ -1199,11 +1261,27 @@ devtools:
   - name: Pollerama
     description: Polling app built on nostr-polls library
     platforms: [web]
-    repo: https://github.com/abh3po/nostr-polls
+    repo: https://github.com/formstr-hq/nostr-polls
     website: https://pollerama.fun
     status: active
     priority: low
     notes: NIP-17 DM sharing for polls
+
+  - name: Verify
+    description: File integrity verification using a decentralized Nostr web of trust
+    platforms: [web]
+    repo: https://github.com/tinfoilhash/verify
+    website: https://verify.tinfoilhash.com
+    status: active
+    priority: low
+
+  - name: Blossom Uploader
+    description: CLI uploader for Blossom-compatible media servers
+    platforms: [cli]
+    repo: https://github.com/djinoz/blossom_uploader
+    status: active
+    priority: low
+    notes: Supports Blossom authentication with Nostr nsec keys
 
   - name: Nostrability Outbox
     description: Outbox model benchmark suite and test results across clients
@@ -1863,6 +1941,14 @@ signers:
     priority: medium
     notes: No single device holds the complete private key, FROST threshold signing
 
+  - name: OAuth Bunker
+    description: NIP-46 bunker that bridges OAuth providers to Nostr signing
+    platforms: [web, self-hosted]
+    repo: https://github.com/flox1an/oauth-bunker
+    status: active
+    priority: low
+    notes: Split bunker/web architecture with NIP-44 relay communication
+
   - name: keyNest
     description: Secure key management for Nostr and Bitcoin
     platforms: [cli]
@@ -2094,6 +2180,13 @@ relays:
     status: active
     priority: medium
     notes: OpenSats LTS grant, NIP-42 AUTH, NIP-59 GiftWrap
+
+  - name: bcr-relay
+    description: Rust Nostr relay implementation for the Bitcredit project
+    repo: https://github.com/BitcreditProtocol/bcr-relay
+    status: active
+    priority: low
+    notes: Specialized relay for Bitcredit credit-transaction workflows
 
   - name: nostr-filter-relay
     description: AI content filtering relay (NSFW, toxicity, language detection)
@@ -3112,6 +3205,15 @@ other:
     priority: high
     notes: Milestone-based funding with investor recovery, no backend
 
+  - name: Bitcredit E-Bills
+    description: E-bill application with a Nostr transport layer and dedicated relay
+    platforms: [web, wasm]
+    repo: https://github.com/BitcreditProtocol/Bitcredit-Core
+    website: https://www.bit.cr/
+    status: active
+    priority: low
+    notes: Includes Nostr transport traits and Bitcredit-specific relay integration
+
   - name: Wikifreedia
     description: Wikipedia-style wiki embracing viewpoint diversity via Nostr
     platforms: [web]
@@ -3521,4 +3623,3 @@ protocols:
     status: beta
     priority: medium
     notes: SEC-04/05 project, enables rich interactivity without protocol changes
-

@@ -71,6 +71,7 @@ For cross-device or mobile signing, NIP-46 and NIP-55 usually fit better.
 - [Newsletter #7: NIP Updates](/en/newsletters/2026-01-28-newsletter/#nip-updates)
 - [Newsletter #8: News](/en/newsletters/2026-02-04-newsletter/#news)
 - [Newsletter #11: News](/en/newsletters/2026-02-25-newsletter/#news)
+- [Newsletter #13: Relay AUTH Starts Reaching Real Apps](/en/newsletters/2026-03-11-newsletter/#relay-auth-starts-reaching-real-apps)
 
 **See also:**
 - [NIP-04: Encrypted Direct Messages (Deprecated)](/en/topics/nip-04/)

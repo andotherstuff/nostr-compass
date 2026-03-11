@@ -61,6 +61,7 @@ NIP-17 also defines inbox relay lists for private messaging. Clients can publish
 - [Newsletter #3: December Recap](/en/newsletters/2025-12-31-newsletter/#december-recap-five-years-of-nostr-decembers)
 - [Newsletter #3: Notable Code Changes](/en/newsletters/2025-12-31-newsletter/#shopstr-marketplace)
 - [Newsletter #5: News](/en/newsletters/2026-01-13-newsletter/#news)
+- [Newsletter #13: Vector](/en/newsletters/2026-03-11-newsletter/#vector-v032-ships-nip-77-negentropy-sync-and-mls-improvements)
 
 **See also:**
 - [NIP-04: Encrypted Direct Messages (Deprecated)](/en/topics/nip-04/)

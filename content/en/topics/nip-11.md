@@ -48,6 +48,7 @@ The specification has been trimmed over time. Older optional fields such as `sof
 
 **Mentioned in:**
 - [Newsletter #1: NIP Updates](/en/newsletters/2025-12-17-newsletter/#nip-updates)
+- [Newsletter #13: NIP Updates](/en/newsletters/2026-03-11-newsletter/#nip-updates)
 
 **See also:**
 - [NIP-66: Relay Discovery and Liveness Monitoring](/en/topics/nip-66/)

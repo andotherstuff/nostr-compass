@@ -1,0 +1,357 @@
+# Nostr npub database for publish workflow
+# Maps project/person names to their Nostr npubs
+# Used by scripts/publish.ts to generate nostr:npub1... mentions
+#
+# Lookup is case-insensitive
+# One npub per entry; deduplicated by value before building mention strings
+#
+# To add entries: look up npubs via njump.me, nostr.band, or ask the project maintainer
+#
+# Two formats:
+#   String value (project account):  ProjectName: npub1...
+#     -> Replaces "ProjectName" with nostr:npub in body (renders as project name)
+#   Object value (dev account):      ProjectName:
+#                                       npub: npub1...
+#                                       mention_only: true
+#     -> Keeps "ProjectName" in body, appends (nostr:npub) after it
+#        Renders as "ProjectName (devname)" so readers see both
+#
+# Legend:
+#   [project]  = dedicated project account (string format)
+#   [dev:name] = uses developer's personal npub (object format, mention_only)
+#   commented  = no verified npub found
+
+# =============================================================================
+# Nostr Compass
+# =============================================================================
+Nostr Compass: npub1wav4fae3gyfy3xj298kxj2mj8phavz7vavps34przq02j7w902qq902923
+
+# =============================================================================
+# Projects
+# =============================================================================
+
+# --- Clients (project accounts) ---
+Damus: npub18m76awca3y37hkvuneavuw6pjj4525fw90necxmadrvjg0sdy6qsngq955
+Amethyst: npub142gywvjkq0dv6nupggyn2euhx4nduwc7yz5f24ah9rpmunr2s39se3xrj0
+Primal: npub12vkcxr0luzwp8e673v29eqjhrr7p9vqq8asav85swaepclllj09sylpugg
+# alias for Primal
+Primal Android: npub12vkcxr0luzwp8e673v29eqjhrr7p9vqq8asav85swaepclllj09sylpugg
+Gossip: npub189j8y280mhezlp98ecmdzydn0r8970g4hpqpx3u9tcztynywfczqqr3tg8
+Nostur: npub1n0stur7q092gyverzc2wfc00e8egkrdnnqq3alhv7p072u89m5es5mk6h0
+
+# --- Clients (developer accounts, no dedicated project npub) ---
+# [dev:hodlbod]
+Coracle:
+  npub: npub1jlrs53pkdfjnts29kveljul2sm0actt6n8dxrrzqcersttvcuv3qdjynqn
+  mention_only: true
+# [dev:hzrd149]
+noStrudel:
+  npub: npub1ye5ptcxfyyxl5vjvdjar2ua3f0hynkjzpx552mu5snj3qmx5pzjscpknpr
+  mention_only: true
+# [dev:v0l]
+Snort:
+  npub: npub1v0lxxxxutpvrelsksy8cdhgfux9l6a42hsj2qzquu2zk7vc9qnkszrqj49
+  mention_only: true
+# [dev:v0l]
+Zap.stream:
+  npub: npub1v0lxxxxutpvrelsksy8cdhgfux9l6a42hsj2qzquu2zk7vc9qnkszrqj49
+  mention_only: true
+# Damus team sub-projects (use Damus project npub)
+Damus iOS: npub18m76awca3y37hkvuneavuw6pjj4525fw90necxmadrvjg0sdy6qsngq955
+Notedeck: npub18m76awca3y37hkvuneavuw6pjj4525fw90necxmadrvjg0sdy6qsngq955
+nostrdb-rs: npub18m76awca3y37hkvuneavuw6pjj4525fw90necxmadrvjg0sdy6qsngq955
+Notecrumbs: npub18m76awca3y37hkvuneavuw6pjj4525fw90necxmadrvjg0sdy6qsngq955
+# [dev:hodlbod]
+Flotilla:
+  npub: npub1jlrs53pkdfjnts29kveljul2sm0actt6n8dxrrzqcersttvcuv3qdjynqn
+  mention_only: true
+# [dev:sondreb]
+Nostria:
+  npub: npub1zl3g38a6qypp6py2z07shggg45cu8qex992xpss7d8zrl28mu52s4cjajh
+  mention_only: true
+Nostria Signer:
+  npub: npub1zl3g38a6qypp6py2z07shggg45cu8qex992xpss7d8zrl28mu52s4cjajh
+  mention_only: true
+Nostria Signer Extension:
+  npub: npub1zl3g38a6qypp6py2z07shggg45cu8qex992xpss7d8zrl28mu52s4cjajh
+  mention_only: true
+
+# --- Dev tools and libraries ---
+# [dev:pablof7z]
+NDK:
+  npub: npub1l2vyh47mk2p0qlsku7hg0vn29faehy9hy34ygaclpn66ukqp3afqutajft
+  mention_only: true
+# [dev:fiatjaf]
+nostr-tools:
+  npub: npub180cvv07tjdrrgpa0j7j7tmnyl2yr6yr7l8j4s3evf6u64th6gkwsyjh6w6
+  mention_only: true
+# [dev:yukibtc]
+rust-nostr:
+  npub: npub1drvpzev3syqt0kjrls50050uzf25gehpz9vgdw08hvex7e0vgfeq0eseet
+  mention_only: true
+# [dev:fiatjaf]
+nak:
+  npub: npub180cvv07tjdrrgpa0j7j7tmnyl2yr6yr7l8j4s3evf6u64th6gkwsyjh6w6
+  mention_only: true
+# [dev:fiatjaf]
+njump:
+  npub: npub180cvv07tjdrrgpa0j7j7tmnyl2yr6yr7l8j4s3evf6u64th6gkwsyjh6w6
+  mention_only: true
+# [dev:hzrd149]
+Applesauce:
+  npub: npub1ye5ptcxfyyxl5vjvdjar2ua3f0hynkjzpx552mu5snj3qmx5pzjscpknpr
+  mention_only: true
+# [dev:hzrd149]
+nostr-idb:
+  npub: npub1ye5ptcxfyyxl5vjvdjar2ua3f0hynkjzpx552mu5snj3qmx5pzjscpknpr
+  mention_only: true
+# [dev:fiatjaf]
+Branle:
+  npub: npub180cvv07tjdrrgpa0j7j7tmnyl2yr6yr7l8j4s3evf6u64th6gkwsyjh6w6
+  mention_only: true
+# [dev:fiatjaf]
+noscl:
+  npub: npub180cvv07tjdrrgpa0j7j7tmnyl2yr6yr7l8j4s3evf6u64th6gkwsyjh6w6
+  mention_only: true
+# [dev:mattn]
+go-nostr:
+  npub: npub1937vv2nf06360qn9y8el6d8sevnndy7tuh5nzre4gj05xc32tnwqauhaj6
+  mention_only: true
+# [dev:greenart7c3]
+Citrine:
+  npub: npub1w4uswmv6lu9yel005l3qgheysmr7tk9uvwluddznju3nuxalevvs2d0jr5
+  mention_only: true
+# [dev:greenart7c3]
+Amber:
+  npub: npub1w4uswmv6lu9yel005l3qgheysmr7tk9uvwluddznju3nuxalevvs2d0jr5
+  mention_only: true
+Frostr: npub17uvdffljczhlpjfvfj0q30dmh4ugh8wlzm8u6w64y2v4ts7fqsqqj28tr4
+# aliases for Frostr
+Frost2x: npub17uvdffljczhlpjfvfj0q30dmh4ugh8wlzm8u6w64y2v4ts7fqsqqj28tr4
+Igloo desktop: npub17uvdffljczhlpjfvfj0q30dmh4ugh8wlzm8u6w64y2v4ts7fqsqqj28tr4
+Igloo Desktop: npub17uvdffljczhlpjfvfj0q30dmh4ugh8wlzm8u6w64y2v4ts7fqsqqj28tr4
+Igloo for Android: npub17uvdffljczhlpjfvfj0q30dmh4ugh8wlzm8u6w64y2v4ts7fqsqqj28tr4
+Igloo for iOS: npub17uvdffljczhlpjfvfj0q30dmh4ugh8wlzm8u6w64y2v4ts7fqsqqj28tr4
+Frostr Igloo iOS TestFlight: npub17uvdffljczhlpjfvfj0q30dmh4ugh8wlzm8u6w64y2v4ts7fqsqqj28tr4
+
+# --- Lightning and payments ---
+Zeus: npub1xnf02f60r9v0e5kty33a404dm79zr7z2eepyrk5gsq3m7pwvsz2sazlpr5
+Alby Hub: npub1getal6ykt05fsz5nqu4uld09nfj3y3qxmv8crys4aeut53unfvlqr80nfm
+eNuts: npub1dx5q2el8nd4eh3eg9t2e25fd7zuqg7zxz6ldkc3uzgh66ss2yc6st288sj
+Bitcredit: npub1eajvs8x67vmzsnwaf9ltfgt59e6acmeztx9shduewvfgwftx8ahsagcd93
+
+# --- App stores and marketplaces ---
+Zapstore: npub10r8xl2njyepcw2zwv3a6dyufj4e4ajx86hz6v4ehu4gnpupxxp7stjt2p8
+Shopstr: npub15dc33fyg3cpd9r58vlqge2hh8dy6hkkrjxkhluv2xpyfreqkmsesesyv6e
+Milk Market: npub1wm7wcrsx8q6378gwphzwhtmd60t8gpqjd4ny23m8gpc0x96jw0vs2jpud0
+Mostro: npub1m0str0d7z2ww8rdh20t2n9lx520xjwhaq24p68umqp06wwrwtsnqen40un
+Mostro Mobile: npub1m0str0d7z2ww8rdh20t2n9lx520xjwhaq24p68umqp06wwrwtsnqen40un
+Mostro daemon: npub1m0str0d7z2ww8rdh20t2n9lx520xjwhaq24p68umqp06wwrwtsnqen40un
+
+# --- Chat and messaging ---
+KeyChat: npub1h0uj825jgcr9lzxyp37ehasuenq070707pj63je07n8mkcsg3u0qnsrwx8
+Shosho: npub1sh0spghk4yvy2d2v35kelw45qq4msk6zykaw4ds047e9slzs8r4qr7q2xa
+# [dev:haorendashu]
+Nostrmo:
+  npub: npub19yeqjawls407xjnmgkk6yss7936pcd7qzd5srlj8wye6j8433vrsjazqwk
+  mention_only: true
+
+# --- Relays ---
+# [dev:utxo]
+HAVEN:
+  npub: npub1utx00neqgqln72j22kej3ux7803c2k986henvvha4thuwfkper4s7r50e8
+  mention_only: true
+Marmot: npub1whtn0s68y3cs98zysa4nxrfzss5g5snhndv35tk5m2sudsr7ltms48r3ec
+# aliases for Marmot
+White Noise: npub1whtn0s68y3cs98zysa4nxrfzss5g5snhndv35tk5m2sudsr7ltms48r3ec
+MDK: npub1whtn0s68y3cs98zysa4nxrfzss5g5snhndv35tk5m2sudsr7ltms48r3ec
+marmot-ts: npub1whtn0s68y3cs98zysa4nxrfzss5g5snhndv35tk5m2sudsr7ltms48r3ec
+Marmot Protocol: npub1whtn0s68y3cs98zysa4nxrfzss5g5snhndv35tk5m2sudsr7ltms48r3ec
+Marmot Development Kit: npub1whtn0s68y3cs98zysa4nxrfzss5g5snhndv35tk5m2sudsr7ltms48r3ec
+Marmot TypeScript SDK: npub1whtn0s68y3cs98zysa4nxrfzss5g5snhndv35tk5m2sudsr7ltms48r3ec
+Marmot mdk: npub1whtn0s68y3cs98zysa4nxrfzss5g5snhndv35tk5m2sudsr7ltms48r3ec
+Marmot Protocol Updates: npub1whtn0s68y3cs98zysa4nxrfzss5g5snhndv35tk5m2sudsr7ltms48r3ec
+Marmot TS: npub1whtn0s68y3cs98zysa4nxrfzss5g5snhndv35tk5m2sudsr7ltms48r3ec
+
+# --- Media ---
+Wavlake: npub1yfg0d955c2jrj2080ew7pa4xrtj7x7s7umt28wh0zurwmxgpyj9shwv6vg
+Pod21: npub1p0d28pw4jhu22xfehsvzcc95rkqg32tkq8epe5ma5kpyzz09wsuqu4f8tq
+# [dev:v0l]
+Route96:
+  npub: npub1v0lxxxxutpvrelsksy8cdhgfux9l6a42hsj2qzquu2zk7vc9qnkszrqj49
+  mention_only: true
+# [dev:rabble]
+diVine:
+  npub: npub1wmr34t36fy03m8hvgl96zl3znndyzyaqhwmwdtshwmtkg03fetaqhjg240
+  mention_only: true
+Samizdat:
+  npub: npub1gunkavtrl32txueexz44el2l49rg0gv48pc6suadf7hwj852tuuqj3nudq
+  mention_only: true
+# [dev:hzrd149]
+Blossom:
+  npub: npub1ye5ptcxfyyxl5vjvdjar2ua3f0hynkjzpx552mu5snj3qmx5pzjscpknpr
+  mention_only: true
+
+# --- Other tools ---
+Jumble: npub17n4cuc4d6y6qh89dekvxrenfkt5s0n49xns00uavjaxpr36c55dq87fyh9
+Formstr: npub1qu7dsd44275lms4x9snnwvnnmgx926nsppmr7lcw9dlj36n4fltqgs7p98
+Calendar by Form*: npub1qu7dsd44275lms4x9snnwvnnmgx926nsppmr7lcw9dlj36n4fltqgs7p98
+# [dev:abh3po]
+Pollerama:
+  npub: npub1cgd35mxmy37vhkfcmjckk9dylguz6q8l67cj6h9m45tj5rx569cql9kfex
+  mention_only: true
+# [dev:flox1an]
+OAuth Bunker:
+  npub: npub1klr0dy2ul2dx9llk58czvpx73rprcmrvd5dc7ck8esg8f8es06qs427gxc
+  mention_only: true
+# [dev:aegis signer dev]
+Aegis:
+  npub: npub179e5zckwq9vqsenc8ha9qv7p9vxwq20cq526ac67prts8kc4khmqu50zj8
+  mention_only: true
+
+# --- More projects ---
+Bitchat: npub17slpd6rnsagjuyj9l0lrs4d7f0vnjryakhjwwsk64f8c0mtw72zsp2w9r8
+Vector: npub1hrujuc08r4zcdtn0u6ts7u7apldcjqgftz0z7stmaaz9hwaf9jxs66f3yh
+# [dev:andotherstuff]
+Pensieve:
+  npub: npub1zuuajd7u3sx8xu92yav9jwxpr839cs0kc3q6t56vd5u9q033xmhsk6c2uc
+  mention_only: true
+# [dev:sana]
+NosCall:
+  npub: npub1qn6wvpmqfnpl3xsu79yvfcgpjz4azdfe5ft220nqjmwqg223fvaq58xsha
+  mention_only: true
+Ridestr: npub1mfushgvwvwh8nvtwzu5swvqeq62h530n3mcvnuse6rcpd6h3vy5qegpf33
+# [dev:jooray]
+Roadstr:
+  npub: npub1m2mvvpjugwdehtaskrcl7ksvdqnnhnjur9v6g9v266nss504q7mqvlr8p9
+  mention_only: true
+# Clawstr: (no project npub; parent org Soapbox exists)
+0xchat: npub1tm99pgz2lth724jeld6gzz6zv48zy6xp4n9xu5uqrwvx9km54qaqkkxn72
+Chachi: npub1gm7gw8q6akeft2pjt270we35vlff0v9g2fene6cxkz2h68q5hl6qls0fte
+Listr: npub1lstr2kmdthkgfuzne8e4cn2nhr646x8jt25szdj7t4wr6xemtuuq3lczsj
+# [dev:turizspace]
+OpenSignal:
+  npub: npub1q6ps7m94jfdastx2tx76sj8sq4nxdhlsgmzns2tr4xt6ydx6grzspm0kxr
+  mention_only: true
+Iris: npub1wnwwcv0a8wx0m9stck34ajlwhzuua68ts8mw3kjvspn42dcfyjxs4n95l8
+Astral: npub19hmfe5xx4w27pr6xd2l8kwdmvnn5fm33llpsg8e8p007c23hasrq9ja0z2
+Camelus: npub1camelhq7t54m7hkata58sklug2vm83masprf2lx8n0zdykke6vcqxl9339
+Plebeian Market: npub1market6g3zl4mxwx5ugw56hfg0f7dy7jnnw8t380788mvdyrnwuqgep7hd
+# [dev:hodlbod]
+Pomade:
+  npub: npub1jlrs53pkdfjnts29kveljul2sm0actt6n8dxrrzqcersttvcuv3qdjynqn
+  mention_only: true
+npub.cash: npub1s4m06xdlu6fuhfhs4m3nhpp8xdpsdprwccdktckkzusfu8qzzprqnfpz6a
+nostr.band: npub1sx9rnd03vs34lp39fvfv5krwlnxpl90f3dzuk8y3cuwutk2gdhdqjz6g8m
+Catallax: npub1qwe3auavzmlfzkul67j02atcntgd8hwynvj2794zjmuuly6czcds69qldl
+# [dev:elsat]
+Nostrability:
+  npub: npub1zafcms4xya5ap9zr7xxr0jlrtrattwlesytn2s42030lzu0dwlzqpd26k5
+  mention_only: true
+nostrability/schemata:
+  npub: npub1zafcms4xya5ap9zr7xxr0jlrtrattwlesytn2s42030lzu0dwlzqpd26k5
+  mention_only: true
+Bitcoin Optech: npub1hkuk45c6c6h3y0rks0z4wa0wyyud5ru0qy0rn9x4dgnjwrnfy46s5a432p
+# [dev:v0l]
+cuda_vanity:
+  npub: npub1v0lxxxxutpvrelsksy8cdhgfux9l6a42hsj2qzquu2zk7vc9qnkszrqj49
+  mention_only: true
+# [dev:greenart7c3]
+Morganite:
+  npub: npub1w4uswmv6lu9yel005l3qgheysmr7tk9uvwluddznju3nuxalevvs2d0jr5
+  mention_only: true
+# [dev:greenart7c3]
+Magnolias:
+  npub: npub1w4uswmv6lu9yel005l3qgheysmr7tk9uvwluddznju3nuxalevvs2d0jr5
+  mention_only: true
+# [dev:justin moon]
+Pika:
+  npub: npub1zxu639qym0esxnn7rzrt48wycmfhdu3e5yvzwx7ja3t84zyc2r8qz8cx2y
+  mention_only: true
+# [dev:wksantiago] Keep - self-custodial key mgmt (privkeyio)
+Keep:
+  npub: npub1h3fzzzeq60acjvnyvw34rpn5clkaueteffmkt3ln4ygekg9lcm0qhw96sj
+  mention_only: true
+# [dev:hardran3] Aerith - Android Blossom media manager
+# Aerith: (no verified npub - developer hardran3 has no public Nostr profile)
+# [dev:hardran3] Prism - Android share-to-Nostr tool
+# Prism: (no verified npub - same developer as Aerith)
+ContextVM: npub1dvmcpmefwtnn6dctsj3728n64xhrf06p9yude77echmrkgs5zmyqw33jdm
+Relatr: npub1w5rgyvpunuxa446egx6fahyagm376vrtnm3nx5ec5gdruszvt73spqeu4t
+# [dev:derek ross]
+Burrow:
+  npub: npub18ams6ewn5aj2n3wt2qawzglx9mr4nzksxhvrdc4gzrecw7n5tvjqctp424
+  mention_only: true
+# [dev:johnathan/jmcorgan]
+FIPS:
+  npub: npub19wavu4f7l6l43h24jyskn7fvzy37kcfp67aqjtmv2qgy4lp34nhsda8p6k
+  mention_only: true
+# [dev:gandlafbtc]
+Nutsack:
+  npub: npub1cj6ndx5akfazux7f0vjl4fyx9k0ulf682p437fe03a9ndwqjm0tqj886t6
+  mention_only: true
+# [dev:barrydeen]
+Wisp:
+  npub: npub1utx00neqgqln72j22kej3ux7803c2k986henvvha4thuwfkper4s7r50e8
+  mention_only: true
+# [dev:psic4t]
+nospeak:
+  npub: npub174t832slt4252dk526cnh64sfa3k6claah2cdl3c5n9eeeyvjz7q2fmqm6
+  mention_only: true
+# [dev:77elements]
+NoorNote:
+  npub: npub175nul9cvufswwsnpy99lvyhg7ad9nkccxhkhusznxfkr7e0zxthql9g6w0
+  mention_only: true
+Angor: npub1wrzguj625auyeysfuuxzf7ywhzlwfz9gm3fml2lul72gwqxw8n9swtcm02
+# [dev:hoytech]
+strfry:
+  npub: npub1yxprsscnjw2e6myxz73mmzvnqw5kvzd5ffjya9ecjypc5l0gvgksh8qud4
+  mention_only: true
+# [dev:pablof7z]
+TENEX:
+  npub: npub1l2vyh47mk2p0qlsku7hg0vn29faehy9hy34ygaclpn66ukqp3afqutajft
+  mention_only: true
+Zap Cooking: npub1xxdd8eusvdxmaph3fkuu9x2mymhrcc3ghe2l38zv0l4f4nqp659qskkt7a
+Grimoire: npub1eras6w483zu6ee8kewfdm97n72fdkfd4e8ujgch0d3jfycfflwhsytskz0
+# [dev:nostr.watch operator]
+nostr.watch:
+  npub: npub1uac67zc9er54ln0kl6e4qp2y6ta3enfcg7ywnayshvlw9r5w6ehsqq99rx
+  mention_only: true
+# [dev:DavidGershony]
+OpenChat:
+  npub: npub1nwt2g6fkshuj4udrs9zxr8992dyp75s9qx647kxaue98trzqqmssrxx05y
+  mention_only: true
+# [dev:0ceanSlim]
+GRAIN:
+  npub: npub1zmc6qyqdfnllhnzzxr5wpepfpnzcf8q6m3jdveflmgruqvd3qa9sjv7f60
+  mention_only: true
+# [dev:Uncle Bob / Robert C. Martin]
+more-speech:
+  npub: npub19mun7qwdyjf7qs3456u8kyxncjn5u2n7klpu4utgy68k4aenzj6synjnft
+  mention_only: true
+
+# =============================================================================
+# Individuals
+# =============================================================================
+fiatjaf: npub180cvv07tjdrrgpa0j7j7tmnyl2yr6yr7l8j4s3evf6u64th6gkwsyjh6w6
+vitorpamplona: npub1gcxzte5zlkncx26j68ez60fzkvtkm9e0vrwdcvsjakxf9mu9qewqlfnj5z
+jb55: npub1xtscya34g58tk0z605fvr788k263gsu6cy9x0mhnm87echrgufzsevkk5s
+hodlbod: npub1jlrs53pkdfjnts29kveljul2sm0actt6n8dxrrzqcersttvcuv3qdjynqn
+abh3po: npub1cgd35mxmy37vhkfcmjckk9dylguz6q8l67cj6h9m45tj5rx569cql9kfex
+pablof7z: npub1l2vyh47mk2p0qlsku7hg0vn29faehy9hy34ygaclpn66ukqp3afqutajft
+hzrd149: npub1ye5ptcxfyyxl5vjvdjar2ua3f0hynkjzpx552mu5snj3qmx5pzjscpknpr
+sondreb: npub1zl3g38a6qypp6py2z07shggg45cu8qex992xpss7d8zrl28mu52s4cjajh
+rabble: npub1wmr34t36fy03m8hvgl96zl3znndyzyaqhwmwdtshwmtkg03fetaqhjg240
+franzap: npub1wf4pufsucer5va8g9p0rj5dnhvfeh6d8w0g6eayaep5dhps6rsgs43dgh9
+greenart7c3: npub1w4uswmv6lu9yel005l3qgheysmr7tk9uvwluddznju3nuxalevvs2d0jr5
+yukibtc: npub1drvpzev3syqt0kjrls50050uzf25gehpz9vgdw08hvex7e0vgfeq0eseet
+joelklabo: npub19a86gzxctwtz68l8zld2u9y2fjvyyj4juyx8m5geylssrmfj27eqs22ckt
+v0l: npub1v0lxxxxutpvrelsksy8cdhgfux9l6a42hsj2qzquu2zk7vc9qnkszrqj49
+flox1an: npub1klr0dy2ul2dx9llk58czvpx73rprcmrvd5dc7ck8esg8f8es06qs427gxc
+andotherstuff: npub1zuuajd7u3sx8xu92yav9jwxpr839cs0kc3q6t56vd5u9q033xmhsk6c2uc
+jooray: npub1m2mvvpjugwdehtaskrcl7ksvdqnnhnjur9v6g9v266nss504q7mqvlr8p9
+turizspace: npub1q6ps7m94jfdastx2tx76sj8sq4nxdhlsgmzns2tr4xt6ydx6grzspm0kxr
+miljan: npub16c0nh3dnadzqpm76uctf5hqhe2lny344zsmpm6feee9p5rdxaa9q586nvr
+gandlafbtc: npub1cj6ndx5akfazux7f0vjl4fyx9k0ulf682p437fe03a9ndwqjm0tqj886t6
+derek_ross: npub18ams6ewn5aj2n3wt2qawzglx9mr4nzksxhvrdc4gzrecw7n5tvjqctp424
+mattn: npub1937vv2nf06360qn9y8el6d8sevnndy7tuh5nzre4gj05xc32tnwqauhaj6

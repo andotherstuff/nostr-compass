@@ -46,9 +46,11 @@ NIP-66 does not create a single authoritative monitor. Multiple monitors can pub
 
 **Primary sources:**
 - [NIP-66 Specification](https://github.com/nostr-protocol/nips/blob/master/66.md) - Relay discovery and liveness monitoring standard
+- [PR #2240](https://github.com/nostr-protocol/nips/pull/2240) - Defensive measures and unhappy-path guidance
 
 **Mentioned in:**
 - [Newsletter #6: NIP Deep Dive](/en/newsletters/2026-01-21-newsletter/#nip-deep-dive-nip-11-and-nip-66)
+- [Newsletter #13: NIP Updates](/en/newsletters/2026-03-11-newsletter/#nip-updates)
 
 **See also:**
 - [NIP-11: Relay Information Document](/en/topics/nip-11/)

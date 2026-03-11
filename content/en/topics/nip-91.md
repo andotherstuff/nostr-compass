@@ -38,6 +38,7 @@ Clients should still expect mixed support while relay adoption catches up. A pra
 
 **Mentioned in:**
 - [Newsletter #12: NIP Updates](/en/newsletters/2026-03-04-newsletter/#nip-updates)
+- [Newsletter #13: NIP Updates](/en/newsletters/2026-03-11-newsletter/#nip-updates)
 
 **See also:**
 - [NIP-01: Basic Protocol](/en/topics/nip-01/)
