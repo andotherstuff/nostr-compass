@@ -24,12 +24,12 @@ That normalization rule matters for interoperability. If two clients normalize t
 
 ## Content Format
 
-The merged spec uses Asciidoc markup with two extra features:
+The canonical spec now uses Djot markup with two extra behaviors:
 
-- **Wikilinks** (`[[target page]]`) - Links to other wiki articles across Nostr
 - **Nostr links** - References to profiles or events per NIP-21
+- **Wikilinks** - Reference-style links without explicit targets resolve to normalized wiki article names
 
-A switch to Djot has been proposed, but it has not replaced Asciidoc in the canonical NIP as of March 2026.
+That change landed in [PR #2242](https://github.com/nostr-protocol/nips/pull/2242), which replaced the older Asciidoc-based text. The merged update also adds clearer examples for merge requests, redirects, and non-Latin `d` tag normalization.
 
 ## Article Selection
 
@@ -55,10 +55,12 @@ Forks and deference markers let authors acknowledge better versions without dele
 **Primary sources:**
 - [NIP-54 Specification](https://github.com/nostr-protocol/nips/blob/master/54.md)
 - [PR #2177: Internationalized d-tag normalization](https://github.com/nostr-protocol/nips/pull/2177)
+- [PR #2242: Switch from Asciidoc to Djot](https://github.com/nostr-protocol/nips/pull/2242)
 
 **Mentioned in:**
 - [Newsletter #3: NIP Updates](/en/newsletters/2025-12-31-newsletter/#nip-updates)
 - [Newsletter #12: Open PRs](/en/newsletters/2026-03-04-newsletter/#open-prs-and-project-updates)
+- [Newsletter #14: NIP Deep Dive](/en/newsletters/2026-03-18-newsletter/#nip-deep-dive-nip-54-wiki)
 
 **See also:**
 - [NIP-51: Lists](/en/topics/nip-51/)

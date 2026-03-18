@@ -60,6 +60,7 @@ NIP-94 works across storage backends. A file can be uploaded through [NIP-96: HT
 
 **Mentioned in:**
 - [Newsletter #3: December Recap](/en/newsletters/2025-12-31-newsletter/#december-recap-five-years-of-nostr-decembers)
+- [Newsletter #14: NIP Deep Dive](/en/newsletters/2026-03-18-newsletter/#nip-deep-dive-nip-94-file-metadata)
 
 **See also:**
 - [NIP-92: Media Attachments](/en/topics/nip-92/)
