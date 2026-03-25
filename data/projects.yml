@@ -1839,6 +1839,84 @@ devtools:
     status: active
     priority: low
 
+  - name: nostr-vpn
+    description: VPN tunneling over the Nostr protocol
+    platforms: [cli]
+    repo: https://github.com/mmalmi/nostr-vpn
+    maintainer: mmalmi
+    status: active
+    priority: medium
+    notes: Routes VPN traffic over Nostr relays
+
+  - name: nsec-leak-checker
+    description: DVM for checking exposed Nostr private keys
+    platforms: [cli]
+    repo: https://github.com/BigBrotr/nsec-leak-checker
+    status: active
+    priority: medium
+    notes: Security tool, checks for leaked nsecs
+
+  - name: schemata-rs
+    description: Rust implementation of Nostr event JSON Schema definitions
+    repo: https://github.com/nostrability/schemata-rs
+    status: active
+    priority: medium
+    notes: Companion to nostrability/schemata
+
+  - name: schemata-validator-rs
+    description: Rust validator for Nostr event schemas
+    repo: https://github.com/nostrability/schemata-validator-rs
+    status: active
+    priority: medium
+
+  - name: schemata-go
+    description: Go implementation of Nostr event JSON Schema definitions
+    repo: https://github.com/nostrability/schemata-go
+    status: active
+    priority: medium
+
+  - name: schemata-validator-go
+    description: Go validator for Nostr event schemas
+    repo: https://github.com/nostrability/schemata-validator-go
+    status: active
+    priority: medium
+
+  - name: schemata-dart
+    description: Dart implementation of Nostr event JSON Schema definitions
+    repo: https://github.com/nostrability/schemata-dart
+    status: active
+    priority: medium
+
+  - name: schemata-validator-dart
+    description: Dart validator for Nostr event schemas
+    repo: https://github.com/nostrability/schemata-validator-dart
+    status: active
+    priority: medium
+
+  - name: schemata-swift
+    description: Swift implementation of Nostr event JSON Schema definitions
+    repo: https://github.com/nostrability/schemata-swift
+    status: active
+    priority: medium
+
+  - name: schemata-validator-swift
+    description: Swift validator for Nostr event schemas
+    repo: https://github.com/nostrability/schemata-validator-swift
+    status: active
+    priority: medium
+
+  - name: schemata-py
+    description: Python implementation of Nostr event JSON Schema definitions
+    repo: https://github.com/nostrability/schemata-py
+    status: active
+    priority: medium
+
+  - name: schemata-validator-py
+    description: Python validator for Nostr event schemas
+    repo: https://github.com/nostrability/schemata-validator-py
+    status: active
+    priority: medium
+
 # =============================================================================
 # SIGNING & KEY MANAGEMENT
 # =============================================================================
@@ -3535,6 +3613,23 @@ other:
     platforms: [desktop]
     status: active
     priority: low
+
+  - name: npub.world
+    description: Nostr Web of Trust visualization and exploration tool
+    platforms: [web]
+    repo: https://github.com/vertex-lab/npub.world
+    maintainer: vertex-lab
+    status: active
+    priority: medium
+    notes: WoT infrastructure by Vertex Lab
+
+  - name: DOOM
+    description: Open-source Nostr-integrated DOOM game
+    platforms: [desktop]
+    repo: https://github.com/VectorPrivacy/DOOM
+    status: active
+    priority: medium
+    notes: Gaming on Nostr by Vector team
 
 # =============================================================================
 # RELATED PROTOCOLS
