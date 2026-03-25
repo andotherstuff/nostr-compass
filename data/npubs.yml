@@ -244,13 +244,9 @@ Pomade:
 npub.cash: npub1s4m06xdlu6fuhfhs4m3nhpp8xdpsdprwccdktckkzusfu8qzzprqnfpz6a
 nostr.band: npub1sx9rnd03vs34lp39fvfv5krwlnxpl90f3dzuk8y3cuwutk2gdhdqjz6g8m
 Catallax: npub1qwe3auavzmlfzkul67j02atcntgd8hwynvj2794zjmuuly6czcds69qldl
-# [dev:elsat]
-Nostrability:
-  npub: npub1zafcms4xya5ap9zr7xxr0jlrtrattwlesytn2s42030lzu0dwlzqpd26k5
-  mention_only: true
-nostrability/schemata:
-  npub: npub1zafcms4xya5ap9zr7xxr0jlrtrattwlesytn2s42030lzu0dwlzqpd26k5
-  mention_only: true
+# [project]
+Nostrability: npub1g5qtwz2nh9q0mnw555kv787kh6lysds95522gzptre3qpvz9p20s83m80d
+nostrability/schemata: npub1g5qtwz2nh9q0mnw555kv787kh6lysds95522gzptre3qpvz9p20s83m80d
 Bitcoin Optech: npub1hkuk45c6c6h3y0rks0z4wa0wyyud5ru0qy0rn9x4dgnjwrnfy46s5a432p
 # [dev:v0l]
 cuda_vanity:
