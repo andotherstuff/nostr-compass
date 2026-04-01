@@ -48,7 +48,19 @@ research/
 podcastnotes/
 publicationnotes/
 
+# Node modules
+node_modules/
+
+# Temp translation working dirs
+.tmp_translate*/
+.tmp_*_topic_meta.json
+
 # Python virtual environment
 .venv/
 __pycache__/
 scripts/__pycache__/
+
+# Fetcher data (generated, not committed)
+data/nostr_nip_discussions/*.json
+data/nostr_recap/*.json
+data/shakespeare_apps/*.json

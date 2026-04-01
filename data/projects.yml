@@ -379,6 +379,15 @@ social_clients:
     status: active
     priority: medium
 
+  - name: Evento
+    description: Social event management platform with a built-in self-custodial Lightning wallet
+    platforms: [web]
+    repo: https://github.com/sevenlabsxyz/evento-client
+    maintainer: sevenlabsxyz
+    status: active
+    priority: medium
+    notes: Event creation, guest management, batch zaps, Breez SDK wallet
+
   - name: Calendar by Form*
     description: Decentralized calendar app with NIP-59 private event sharing
     platforms: [web, android]
@@ -403,6 +412,16 @@ social_clients:
     website: https://fevela.me
     status: active
     priority: low
+
+  - name: Nalgorithm
+    description: Relevance-ranked Nostr feed and digest generator using user-defined and learned preferences
+    platforms: [web, cli]
+    repo: https://github.com/jooray/nalgorithm
+    website: https://cypherpunk.today/nalgorithm/
+    maintainer: jooray
+    status: beta
+    priority: low
+    notes: Browser-based ranking plus CLI digest tool, local-first score caching
 
   - name: Docstr
     description: Collaborative documents platform (Google Docs alternative) on Nostr
@@ -940,6 +959,16 @@ messaging_clients:
     priority: medium
     notes: GPL-3.0 licensed, Blossom integration
 
+  - name: Nostr Mail Client
+    description: Flutter mail client for sending and receiving encrypted mail over Nostr
+    platforms: [android, linux, web]
+    repo: https://github.com/nogringo/nostr-mail-client
+    website: https://nogringo.github.io/nostr-mail-client
+    maintainer: nogringo
+    status: active
+    priority: low
+    notes: Traditional email-style UX on top of Nostr identities and encrypted delivery
+
   - name: NostrChat
     description: Decentralized chat app built on Nostr
     platforms: [web]
@@ -1275,6 +1304,14 @@ devtools:
     status: active
     priority: low
 
+  - name: Attestr
+    description: Web app for searching assertions, publishing attestations, and inspecting trust signals on Nostr
+    platforms: [web]
+    website: https://attestr.xyz/
+    status: active
+    priority: low
+    notes: Assertion search and attestation workflow, website only
+
   - name: Blossom Uploader
     description: CLI uploader for Blossom-compatible media servers
     platforms: [cli]
@@ -1397,6 +1434,15 @@ devtools:
     status: active
     priority: medium
     notes: SEC-04 project, AI/MCP integration
+
+  - name: nostrain
+    description: Coordinator-free distributed machine learning training over Nostr relays
+    platforms: [cli]
+    repo: https://github.com/AbdelStark/nostrain
+    maintainer: AbdelStark
+    status: beta
+    priority: low
+    notes: DiLoCo over Nostr, signed gradient exchange, checkpointing and worker discovery
 
   - name: Nostr MCP Server
     description: MCP server enabling AI agents to interact with the Nostr network
@@ -1534,6 +1580,15 @@ devtools:
     website: https://ghostr.org
     status: active
     priority: low
+
+  - name: schemata-codegen
+    description: Nostr code generator that ports schemata schemas to typed native language constructs
+    platforms: [cli]
+    repo: https://github.com/nostrability/schemata-codegen
+    maintainer: nostrability
+    status: beta
+    priority: low
+    notes: Produces typed tag tuples, kind interfaces, runtime validators from schemata schemas
 
   - name: nostr-wot-oracle
     description: Global follow-graph indexer answering pairwise distance queries between pubkeys
@@ -3257,6 +3312,15 @@ other:
     priority: medium
     notes: SEC project, decentralized static site hosting, kind 34128
 
+  - name: Hashtree
+    description: Content-addressed blob storage with Merkle roots published on Nostr and WebRTC mesh distribution
+    platforms: [cli, web]
+    repo: https://github.com/mmalmi/hashtree
+    maintainer: mmalmi
+    status: active
+    priority: medium
+    notes: Blossom-compatible, bundles Iris Desktop, WebRTC peer-to-peer blob sharing
+
   - name: Blossom Drive
     description: Cloud storage using Blossom servers
     platforms: [web]
@@ -3718,3 +3782,11 @@ protocols:
     status: beta
     priority: medium
     notes: SEC-04/05 project, enables rich interactivity without protocol changes
+
+  - name: Flora
+    description: Chrome extension for decentralized screen recording and sharing on Nostr
+    platforms: [web]
+    repo: https://github.com/shawnyeager/flora-extension
+    status: beta
+    priority: low
+    notes: Encrypted video sharing via NIP-17, AES-256-GCM, Blossom storage
