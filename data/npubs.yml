@@ -351,3 +351,35 @@ miljan: npub16c0nh3dnadzqpm76uctf5hqhe2lny344zsmpm6feee9p5rdxaa9q586nvr
 gandlafbtc: npub1cj6ndx5akfazux7f0vjl4fyx9k0ulf682p437fe03a9ndwqjm0tqj886t6
 derek_ross: npub18ams6ewn5aj2n3wt2qawzglx9mr4nzksxhvrdc4gzrecw7n5tvjqctp424
 mattn: npub1937vv2nf06360qn9y8el6d8sevnndy7tuh5nzre4gj05xc32tnwqauhaj6
+
+# Newsletter #16 additions
+Igloo: npub17uvdffljczhlpjfvfj0q30dmh4ugh8wlzm8u6w64y2v4ts7fqsqqj28tr4
+Igloo Signer: npub17uvdffljczhlpjfvfj0q30dmh4ugh8wlzm8u6w64y2v4ts7fqsqqj28tr4
+Schemata: npub1g5qtwz2nh9q0mnw555kv787kh6lysds95522gzptre3qpvz9p20s83m80d
+Nymchat: npub16jdfqgazrkapk0yrqm9rdxlnys7ck39c7zmdzxtxqlmmpxg04r0sd733sv
+YakiHonne: npub1yzvxlwp7wawed5vgefwfmugvumtp8c8t0etk3g8sky4n0ndvyxfslnm9n4
+YakiHonne Mobile: npub1yzvxlwp7wawed5vgefwfmugvumtp8c8t0etk3g8sky4n0ndvyxfslnm9n4
+Nostr VPN:
+  npub: npub1klgggm0e8jmjzde5sswx0ger4fzmkfjqy9erdsq79fqsz80kzlzsz9ky7h
+  mention_only: true
+Hashtree:
+  npub: npub1klgggm0e8jmjzde5sswx0ger4fzmkfjqy9erdsq79fqsz80kzlzsz9ky7h
+  mention_only: true
+nsite:
+  npub: npub1lez7kezu34ntcpe3xyshkmz8wnyhvmad0aulqez47rfscu4zxmrspm7u08
+  mention_only: true
+Nostr-Doc: npub1qu7dsd44275lms4x9snnwvnnmgx926nsppmr7lcw9dlj36n4fltqgs7p98
+Nalgorithm:
+  npub: npub1m2mvvpjugwdehtaskrcl7ksvdqnnhnjur9v6g9v266nss504q7mqvlr8p9
+  mention_only: true
+Dart NDK:
+  npub: npub1relaystr0ng75ecpd8av2v35kwf3a86vlrr3c4gs02p3gvy57haaqgt3a6p
+  mention_only: true
+Vertex:
+  npub: npub176phtjylv0t6wv2d7mc6z50w3rr90k4g5eyauhwmhrcga8kh3wpqrgvgup
+  mention_only: true
+Vertex Lab:
+  npub: npub176phtjylv0t6wv2d7mc6z50w3rr90k4g5eyauhwmhrcga8kh3wpqrgvgup
+  mention_only: true
+Branta: npub16ndruwfg7dsdhnp3w8zvqrg0r2rn3wucnttgrg5acm2lhqpkepkqncr9qr
+Vertex Lab relay: npub1kpt95rv4q3mcz8e4lamwtxq7men6jprf49l7asfac9lnv2gda0lqdknhmz
