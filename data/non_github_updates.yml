@@ -27,6 +27,30 @@ sourcehut:
     repo: https://sr.ht/~gheartsfield/nostr-rs-relay/
     updates: []
 
+gitea:
+  # Flotilla - Discord-like NIP-29 group chat client
+  # Repo: https://gitea.coracle.social/coracle/flotilla
+  - project: flotilla
+    repo: https://gitea.coracle.social/coracle/flotilla
+    updates:
+      - date: 2026-03-30
+        type: release
+        title: "v1.7.0"
+        description: "Voice rooms, email/password login, PoW on DMs, DM editing, relay onboarding redesign, Blossom support detection, Android push notification fallback"
+        url: "https://gitea.coracle.social/coracle/flotilla/src/tag/1.7.0"
+      - date: 2026-03-31
+        type: release
+        title: "v1.7.1"
+        description: "Fix pomade registration fallback for offline signers"
+        url: "https://gitea.coracle.social/coracle/flotilla/src/tag/1.7.1"
+
+  # Caravel - Hosting manager for zooid relays
+  # Repo: https://gitea.coracle.social/coracle/caravel
+  - project: caravel
+    repo: https://gitea.coracle.social/coracle/caravel
+    updates: []
+    # 40 commits this week, initial development
+
 other:
   # Projects with non-standard hosting or no public repo
   # - project: sigit
