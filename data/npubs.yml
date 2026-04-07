@@ -383,3 +383,41 @@ Vertex Lab:
   mention_only: true
 Branta: npub16ndruwfg7dsdhnp3w8zvqrg0r2rn3wucnttgrg5acm2lhqpkepkqncr9qr
 Vertex Lab relay: npub1kpt95rv4q3mcz8e4lamwtxq7men6jprf49l7asfac9lnv2gda0lqdknhmz
+
+# =============================================================================
+# Podcast Guests
+# =============================================================================
+Tim Bouma: npub1q6mcr8tlr3l4gus3sfnw6772s7zae6hqncmw5wj27ejud5wcxf7q0nx7d5
+Pete Marcano: npub1marcan0laywmjprf4m8d34dr8m724a6jxxa56a5wwygcgj23q7nskfwmfg
+Vinny: npub19ma2w9dmk3kat0nt0k5dwuqzvmg3va9ezwup0zkakhpwv0vcwvcsg8axkl
+calvadev: npub16dhgpql60vmd4mnydjut87vla23a38j689jssaqlqqlzrtqtd0kqex0nkq
+Max: npub1klkk3vrzme455yh9rl2jshq7rc8dpegj3ndf82c3ks2sk40dxt7qulx3vt
+Vincenzo: npub1szgdn7q6g9huf8a4zd980khntyk2mwqa7s5rlqye6v3y3w7gs4zspmv73y
+elsat: npub1zafcms4xya5ap9zr7xxr0jlrtrattwlesytn2s42030lzu0dwlzqpd26k5
+JeffG: npub1zuuajd7u3sx8xu92yav9jwxpr839cs0kc3q6t56vd5u9q033xmhsk6c2uc
+Fmar: npub1wf4pufsucer5va8g9p0rj5dnhvfeh6d8w0g6eayaep5dhps6rsgs43dgh9
+Pip: npub1plpngahkx2pudue7enq3su2cl0uy2f6gzm83j62rg2r6y3ehp9sqluct7p
+Sondre: npub1zl3g38a6qypp6py2z07shggg45cu8qex992xpss7d8zrl28mu52s4cjajh
+
+# --- Newsletter #17 additions ---
+# [dev:Mnpezz]
+Bikel:
+  npub: npub1jdn6j50nukyq82ug6vzn5xmmr0j98xkaemz4tdsulgvutu3e06psp3t054
+  mention_only: true
+# [project]
+Captain's Log: npub1809mpa7748df7kext899m2yatetky9w78zz72x7jgaxarvxyfvtqwvfpz8
+Comet: npub1809mpa7748df7kext899m2yatetky9w78zz72x7jgaxarvxyfvtqwvfpz8
+# [project]
+Nostrord: npub1ktxukd7ny5e3ghqqcn6r6hs7rh4hceaua6n77cl4ym9ye2ufzces7rzc2h
+# [dev:tami1A84]
+Nurunuru:
+  npub: npub194dkgpxl2vk7pqkeualh7sjh5m6rldumh80gm5av0h67d494qzcqum2u20
+  mention_only: true
+# [dev:EthnTuttle]
+Purser:
+  npub: npub1tmycvul7aj4fxhypg5qkjgsjtx30zvnrfeufrgx9xlwtv0hne7cs67el78
+  mention_only: true
+# [dev:block]
+Sprout:
+  npub: npub16l0ck0s5zened29dsaqtqm6z0t4fmk2mwtszw64fz7fppcnls8mss3yj9s
+  mention_only: true
