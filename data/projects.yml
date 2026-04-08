@@ -3035,8 +3035,8 @@ wallets:
     repo: https://github.com/cashubtc/cdk
     website: https://cashudevkit.org
     status: active
-    priority: high
-    notes: Multi-database backends, FFI for mobile apps
+    priority: medium
+    notes: Multi-database backends, FFI for mobile apps. Not Nostr-native; cover only Nostr-relevant changes
 
   - name: Nutshell
     description: Reference Cashu wallet and mint implementation in Python
@@ -3044,8 +3044,8 @@ wallets:
     repo: https://github.com/cashubtc/nutshell
     website: https://cashu.space
     status: active
-    priority: high
-    notes: Full protocol implementation, reference for NUTs
+    priority: medium
+    notes: Full protocol implementation, reference for NUTs. Not Nostr-native; cover only Nostr-relevant changes
 
   - name: Cashu.me
     description: Progressive web app Cashu wallet with NWC and Nostr mint discovery
@@ -3053,8 +3053,8 @@ wallets:
     repo: https://github.com/cashubtc/cashu.me
     website: https://cashu.me
     status: active
-    priority: high
-    notes: Multi-currency (BTC/USD), primary web ecash wallet
+    priority: medium
+    notes: Multi-currency (BTC/USD), primary web ecash wallet. Not Nostr-native; cover only Nostr-relevant changes
 
   - name: eNuts
     description: Mobile Cashu wallet for Android and iOS
@@ -3062,8 +3062,8 @@ wallets:
     repo: https://github.com/cashubtc/eNuts
     website: https://enuts.cash
     status: active
-    priority: high
-    notes: Multi-mint, multi-language support
+    priority: medium
+    notes: Multi-mint, multi-language support. Not Nostr-native; cover only Nostr-relevant changes
 
   - name: Nutstash
     description: Feature-rich web Cashu wallet with send-to-Nostr-key
@@ -3079,8 +3079,8 @@ wallets:
     platforms: [browser]
     repo: https://github.com/getAlby/bitcoin-connect
     status: active
-    priority: high
-    notes: Framework agnostic, mobile/desktop support
+    priority: medium
+    notes: Framework agnostic, mobile/desktop support. Not Nostr-native; cover only Nostr-relevant changes
 
   - name: mcp-money
     description: MCP server giving AI agents Cashu wallets with zap support
@@ -3096,8 +3096,8 @@ wallets:
     repo: https://github.com/geyserfund/geyser-app
     website: https://geyser.fund
     status: active
-    priority: high
-    notes: NWC integration, $10K NWC grant program, $10M+ funded
+    priority: medium
+    notes: NWC integration, $10K NWC grant program, $10M+ funded. Not primarily Nostr-native; cover only Nostr-relevant changes
 
   - name: Coinos
     description: Bitcoin web wallet supporting Lightning, Liquid, and on-chain
@@ -3344,8 +3344,8 @@ other:
     website: https://angor.io
     maintainer: block-core
     status: active
-    priority: high
-    notes: Milestone-based funding with investor recovery, no backend
+    priority: medium
+    notes: Milestone-based funding with investor recovery, no backend. Not primarily Nostr-native; cover only Nostr-relevant changes
 
   - name: Bitcredit E-Bills
     description: E-bill application with a Nostr transport layer and dedicated relay
@@ -3790,3 +3790,43 @@ protocols:
     status: beta
     priority: low
     notes: Encrypted video sharing via NIP-17, AES-256-GCM, Blossom storage
+
+  - name: Purser
+    description: Nostr-native payment daemon replacing Zaprite, uses Marmot/MDK for encrypted merchant-customer messaging
+    language: rust
+    repo: https://github.com/EthnTuttle/purser
+    status: active
+    priority: medium
+    notes: Strike and Square payment providers, Marmot MLS for order communication
+
+  - name: Bikel
+    description: Decentralized cycling tracker that turns rides into public infrastructure data
+    platforms: [android, web]
+    repo: https://github.com/Mnpezz/bikel
+    status: active
+    priority: medium
+    notes: Cashu nutzaps, OSM integration, native foreground service for de-Googled phones
+
+  - name: Sprout
+    description: Hive mind communication platform by Block with Nostr relay and NIP support
+    platforms: [desktop]
+    repo: https://github.com/block/sprout
+    status: pre-alpha
+    priority: medium
+    notes: NIP-01, NIP-02, NIP-23, NIP-33 support, built-in Nostr relay
+
+  - name: Titan
+    description: Native nsite:// browser for the Nostr web with Bitcoin-based human-readable name registration
+    platforms: [desktop]
+    repo: https://github.com/btcjt/titan
+    status: active
+    priority: medium
+    notes: Resolves nsite:// URLs via Nostr relays, renders from Blossom servers, no DNS or certificates
+
+  - name: mesh-llm
+    description: Distributed LLM inference across machines using Nostr for identity and config
+    platforms: [desktop]
+    repo: https://github.com/michaelneale/mesh-llm
+    status: active
+    priority: low
+    notes: Nostr keypair identity, distributed config protocol, llama.cpp based
