@@ -8,11 +8,12 @@
  * - Simplifies footer (removes HTML anchor with nostr URI)
  * - Extracts mentioned projects/people from content
  * - Matches mentions against data/npubs.yml
- * - For project npubs: replaces first standalone mention with nostr:npub tag
- * - For dev npubs (mention_only): appends (nostr:npub) after project name
- * - Deduplicates by npub value
+ * - NIP-27 npub injection: places nostr:npub after first markdown link per project
+ *   - Project accounts: [Name](url) nostr:npub1...
+ *   - Dev accounts: [Name](url) (nostr:npub1...)
+ * - Deduplicates by npub value (one injection per npub)
  *
- * Usage: bun scripts/publish.ts [path/to/newsletter.md]
+ * Usage: bun scripts/publish.ts [path/to/newsletter.md] [--force]
  *        If no path given, auto-detects the most recent newsletter.
  *
  * Output: JSON to stdout
@@ -20,12 +21,16 @@
  */
 
 import { readFileSync, readdirSync } from "fs";
-import { join, resolve } from "path";
+import { join, resolve, dirname } from "path";
+import { fileURLToPath } from "url";
 import { parse as parseYaml } from "yaml";
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
 const BASE_URL = "https://nostrcompass.org";
-const NEWSLETTERS_DIR = resolve(import.meta.dir, "../content/en/newsletters");
-const NPUBS_FILE = resolve(import.meta.dir, "../data/npubs.yml");
+const NEWSLETTERS_DIR = resolve(__dirname, "../content/en/newsletters");
+const NPUBS_FILE = resolve(__dirname, "../data/npubs.yml");
 const BANNER_IMAGE =
   "https://image.nostr.build/fbf98ad0d8f84fd6b60fd920c0364df3549ea7a2e0ca16a159202a2cd87b8baf.png";
 
@@ -278,69 +283,152 @@ function extractMentions(
 }
 
 // ---------------------------------------------------------------------------
-// Inject nostr:npub tags into body text
+// Inject nostr:npub tags into body text (NIP-27 compliant)
 // ---------------------------------------------------------------------------
 
 /**
  * Inject nostr:npub tags into body text for each mentioned project.
  *
- * Two modes based on npub type:
- * - Project account (mention_only=false): Replace project name with nostr:npub
- *   e.g. "Damus ships..." -> "nostr:npub1... ships..." (renders as "Damus ships...")
- * - Dev account (mention_only=true): Keep project name, append dev npub
- *   e.g. "Coracle 0.6.29..." -> "Coracle (nostr:npub1...) 0.6.29..." (renders as "Coracle (hodlbod) 0.6.29...")
+ * Per NIP-27, `nostr:npub1...` in content is for rendering (clients show
+ * the display name). Placing it next to a markdown link keeps the human-
+ * readable name visible while notifying the project/dev.
  *
- * Rules:
- * - Only injects the FIRST standalone occurrence per npub
- * - Skips occurrences inside markdown link text [Name](url)
- * - Longer names are replaced first to avoid partial matches
+ * Two modes based on npub type:
+ * - Project account (mention_only=false):
+ *     `[ProjectName](url) nostr:npub1...`
+ * - Dev account (mention_only=true):
+ *     `[ProjectName](url) (nostr:npub1...)`
+ *
+ * Algorithm:
+ * 1. For each project with a known npub, find the FIRST markdown link
+ *    whose text contains the project name: `[...Name...](url)`
+ * 2. Insert the npub RIGHT AFTER the link's closing `)`
+ * 3. If no markdown link found, find the first bare-text mention
+ *    (NOT in a `### ` header line, NOT inside `[...]()`) and inject after it
+ * 4. Never inject in header lines
+ * 5. Never inject inside link brackets
+ * 6. Only inject once per npub (first occurrence wins)
  */
 function injectNpubMentions(
   body: string,
   found: { name: string; npub: string; mention_only: boolean }[]
 ): string {
   // Sort by name length descending to avoid partial matches
+  // (e.g. "Primal Android" before "Primal")
   const sorted = [...found].sort((a, b) => b.name.length - a.name.length);
   const injected = new Set<string>();
+
+  // Split body into lines for line-level analysis
+  let lines = body.split("\n");
 
   for (const { name, npub, mention_only } of sorted) {
     // Skip if we already injected this npub (deduplicate aliases)
     if (injected.has(npub)) continue;
 
     const escaped = name.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    const npubTag = mention_only
+      ? ` (nostr:${npub})`
+      : ` nostr:${npub}`;
 
-    // Pattern with alternation:
-    //   Group 1: markdown link text containing the name -> preserve as-is
-    //            Matches [... Name ...](url) to avoid injecting inside link brackets
-    //   Ungroup: standalone name as whole word -> inject
-    const pattern = new RegExp(
-      `(\\[[^\\]]*${escaped}[^\\]]*\\]\\([^)]+\\))|\\b${escaped}\\b`,
-      "g"
+    // --- Strategy 1: Find first markdown link containing the name ---
+    // Match: [text containing Name](url)
+    // The name must appear in the link text portion (between [ and ])
+    const linkPattern = new RegExp(
+      `(\\[[^\\]]*${escaped}[^\\]]*\\]\\([^)]+\\))`,
+      "i"
     );
 
-    let replaced = false;
-    body = body.replace(pattern, (match, linkGroup) => {
-      // Preserve markdown links containing the name
-      if (linkGroup) return match;
-      // Only inject on the first standalone occurrence
-      if (replaced) return match;
-      replaced = true;
+    let didInject = false;
 
-      if (mention_only) {
-        // Dev account: keep project name, append dev npub in parens
-        return `${name} (nostr:${npub})`;
-      } else {
-        // Project account: replace name with npub (renders as project name)
-        return `nostr:${npub}`;
+    for (let i = 0; i < lines.length; i++) {
+      const line = lines[i];
+
+      // Never inject in header lines
+      if (/^#{1,6}\s/.test(line)) continue;
+
+      const linkMatch = linkPattern.exec(line);
+      if (linkMatch && linkMatch.index !== undefined) {
+        // Insert npub tag right after the matched link's closing )
+        const insertPos = linkMatch.index + linkMatch[0].length;
+        lines[i] =
+          line.slice(0, insertPos) + npubTag + line.slice(insertPos);
+        injected.add(npub);
+        didInject = true;
+        break;
       }
-    });
+    }
 
-    if (replaced) {
+    if (didInject) continue;
+
+    // --- Strategy 2: Find first bare-text mention (not in header, not in link brackets) ---
+    // We look for the project name as a word boundary match in body text,
+    // ensuring it's not inside [...] of a markdown link.
+    const barePattern = new RegExp(`\\b${escaped}\\b`, "i");
+
+    for (let i = 0; i < lines.length; i++) {
+      const line = lines[i];
+
+      // Never inject in header lines
+      if (/^#{1,6}\s/.test(line)) continue;
+
+      // Skip lines that are only horizontal rules, blank, etc.
+      if (/^\s*$/.test(line) || /^---/.test(line)) continue;
+
+      const bareMatch = barePattern.exec(line);
+      if (!bareMatch) continue;
+
+      // Check if this match is inside markdown link brackets [...]
+      // Find all [...](url) spans in the line and see if our match overlaps
+      const matchStart = bareMatch.index;
+      const matchEnd = matchStart + bareMatch[0].length;
+
+      let insideLink = false;
+      const linkSpans = /\[([^\]]*)\]\([^)]*\)/g;
+      let span;
+      while ((span = linkSpans.exec(line)) !== null) {
+        // The bracket content starts at span.index + 1 and ends at span.index + 1 + span[1].length
+        const bracketStart = span.index + 1;
+        const bracketEnd = bracketStart + span[1].length;
+        if (matchStart >= bracketStart && matchEnd <= bracketEnd) {
+          insideLink = true;
+          break;
+        }
+      }
+
+      if (insideLink) {
+        // The bare name is inside a link's bracket text. This means there IS
+        // a link containing the name but our Strategy 1 should have caught it.
+        // This can happen if the link pattern didn't match (e.g. case).
+        // Inject after the link containing it.
+        const linkSpans2 = /\[[^\]]*\]\([^)]*\)/g;
+        let span2;
+        while ((span2 = linkSpans2.exec(line)) !== null) {
+          const bracketStart = span2.index + 1;
+          const bracketEnd = bracketStart + (span2[0].indexOf("](") - 1);
+          if (matchStart >= bracketStart && matchEnd <= bracketStart + span2[0].indexOf("](")) {
+            const insertPos = span2.index + span2[0].length;
+            lines[i] =
+              line.slice(0, insertPos) + npubTag + line.slice(insertPos);
+            injected.add(npub);
+            didInject = true;
+            break;
+          }
+        }
+        if (didInject) break;
+        continue; // try next line
+      }
+
+      // Not inside a link - inject right after the bare mention
+      const insertPos = matchEnd;
+      lines[i] =
+        line.slice(0, insertPos) + npubTag + line.slice(insertPos);
       injected.add(npub);
+      didInject = true;
+      break;
     }
   }
 
-  return body;
+  return lines.join("\n");
 }
 
 // ---------------------------------------------------------------------------
@@ -351,6 +439,7 @@ function main() {
   // Parse flags
   const args = process.argv.slice(2);
   const forceMode = args.includes("--force");
+  const noInject = args.includes("--no-inject");
   const positionalArgs = args.filter((a) => !a.startsWith("--"));
 
   const inputPath = positionalArgs[0]
@@ -375,8 +464,10 @@ function main() {
   const npubs = loadNpubs();
   const mentions = extractMentions(body, npubs);
 
-  // Inject nostr:npub tags into body text (replaces first standalone mention)
-  body = injectNpubMentions(body, mentions.found);
+  // Inject nostr:npub tags into body text (NIP-27: after first link per project)
+  if (!noInject) {
+    body = injectNpubMentions(body, mentions.found);
+  }
 
   // Report found mentions on stderr
   if (mentions.found.length > 0) {
