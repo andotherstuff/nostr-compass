@@ -5,7 +5,7 @@
 # Update this file weekly before newsletter generation.
 # Format: list entries under each platform with date, project, type, and description.
 #
-# Last updated: 2026-03-10
+# Last updated: 2026-04-15
 
 codeberg:
   # ngit - Git collaboration over Nostr (NIP-34)
