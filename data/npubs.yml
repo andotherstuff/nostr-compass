@@ -421,3 +421,26 @@ Purser:
 Sprout:
   npub: npub16l0ck0s5zened29dsaqtqm6z0t4fmk2mwtszw64fz7fppcnls8mss3yj9s
   mention_only: true
+# --- Newsletter #18 additions ---
+# Primal Web uses same npub as Primal
+Primal Web: npub12vkcxr0luzwp8e673v29eqjhrr7p9vqq8asav85swaepclllj09sylpugg
+# Botburrow uses Marmot team npub
+Botburrow: npub1whtn0s68y3cs98zysa4nxrfzss5g5snhndv35tk5m2sudsr7ltms48r3ec
+# [dev:derek_ross]
+Plektos:
+  npub: npub18ams6ewn5aj2n3wt2qawzglx9mr4nzksxhvrdc4gzrecw7n5tvjqctp424
+  mention_only: true
+# [dev:barrydeen / utxo]
+Nostr Archives:
+  npub: npub1utx00neqgqln72j22kej3ux7803c2k986henvvha4thuwfkper4s7r50e8
+  mention_only: true
+# DVMDash: no verified npub found for dtdannen
+# [dev:justin moon]
+Shadow:
+  npub: npub1zxu639qym0esxnn7rzrt48wycmfhdu3e5yvzwx7ja3t84zyc2r8qz8cx2y
+  mention_only: true
+# nstrfy, HAMSTR, Bloom, WaveFunc, TubeStr, Lief, Espy: no verified npubs found
+# [dev:nogringo]
+Nostr Mail:
+  npub: npub1kg4sdvz3l4fr99n2jdz2vdxe2mpacva87hkdetv76ywacsfq5leqquw5te
+  mention_only: true
