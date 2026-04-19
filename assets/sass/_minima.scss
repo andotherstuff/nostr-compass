@@ -50,6 +50,7 @@ html, body {
 }
 
 body {
+  margin: 0;
   font: $base-font-weight #{$base-font-size}/#{$base-line-height} $base-font-family;
   color: var(--text-color);
   background-color: var(--background-color);
@@ -161,6 +162,18 @@ pre {
   padding-right: $spacing-unit;
   padding-left: $spacing-unit;
   @extend %clearfix;
+
+  // Reduce side padding on small viewports so text goes nearly
+  // edge-to-edge on phones (was 30px, wasting ~20% of width at 390px).
+  @media screen and (max-width: 750px) {
+    padding-right: 16px;
+    padding-left: 16px;
+  }
+
+  @media screen and (max-width: 480px) {
+    padding-right: 12px;
+    padding-left: 12px;
+  }
 }
 
 %clearfix:after {
