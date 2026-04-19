@@ -3,9 +3,9 @@
     "build": "bash scripts/build-site.sh"
   },
   "dependencies": {
-    "yaml": "^2.8.2"
+    "yaml": "^2.8.3"
   },
   "devDependencies": {
-    "pagefind": "^1.4.0"
+    "pagefind": "^1.5.2"
   }
 }
