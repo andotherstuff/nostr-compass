@@ -38,6 +38,12 @@ This distinction matters for relay selection. A relay may advertise NIP-50 searc
 
 The specification has been trimmed over time. Older optional fields such as `software`, `version`, privacy policy details, and retention metadata were removed after years of weak adoption. That makes current NIP-11 documents smaller and more realistic, but it also means clients should not expect rich policy metadata from relays.
 
+[PR #2318](https://github.com/nostr-protocol/nips/pull/2318) proposes adding an optional `access_control` object to the relay information document, listing the relay's gating mode (open, invite, payment, allowlist) and any endpoint a client can use to request access. The field is advisory only, intended to let clients and directories filter gated relays out of public-discovery lists and show users upfront why a relay refuses writes.
+
+## Implementations
+
+- [nostream PR #557](https://github.com/Cameri/nostream/pull/557) brings nostream to complete NIP-11 relay info parity.
+
 ---
 
 **Primary sources:**
@@ -45,10 +51,13 @@ The specification has been trimmed over time. Older optional fields such as `sof
 - [PR #1764](https://github.com/nostr-protocol/nips/pull/1764) - relay identity field update
 - [PR #1946](https://github.com/nostr-protocol/nips/pull/1946) - cleanup of rarely used fields
 - [PR #2231](https://github.com/nostr-protocol/nips/pull/2231) - removal of deprecated fields
+- [PR #2318](https://github.com/nostr-protocol/nips/pull/2318) - `access_control` field for gated-relay discovery
+- [nostream PR #557](https://github.com/Cameri/nostream/pull/557) - Complete NIP-11 relay info parity
 
 **Mentioned in:**
 - [Newsletter #1: NIP Updates](/en/newsletters/2025-12-17-newsletter/#nip-updates)
 - [Newsletter #13: NIP Updates](/en/newsletters/2026-03-11-newsletter/#nip-updates)
+- [Newsletter #19: NIP Updates (`access_control` proposal)](/en/newsletters/2026-04-22-newsletter/#nip-updates)
 
 **See also:**
 - [NIP-66: Relay Discovery and Liveness Monitoring](/en/topics/nip-66/)

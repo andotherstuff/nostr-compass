@@ -53,6 +53,7 @@ Root sites use the npub as the subdomain. Named sites use a 50-character base36 
 **Mentioned in:**
 - [Newsletter #16: NIP-5A merges](/en/newsletters/2026-04-01-newsletter/#nip-5a-merges-bringing-static-websites-to-nostr)
 - [Newsletter #16: NIP Deep Dive](/en/newsletters/2026-04-01-newsletter/#nip-deep-dive-nip-5a-static-websites)
+- [Newsletter #19: NIP-5D applets proposal](/en/newsletters/2026-04-22-newsletter/#nip-updates)
 
 **See also:**
 - [Blossom](/en/topics/blossom/)

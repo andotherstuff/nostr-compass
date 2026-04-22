@@ -22,17 +22,28 @@ That division of labor is the useful insight. Nostr solves identity and transpor
 
 ## Implementation Status
 
-The protocol remains experimental, but it now has multiple implementations and active application use. MDK is the main Rust reference stack, `marmot-ts` brings the model to TypeScript, and applications such as White Noise, Pika, and Vector have been using Marmot-compatible components.
+The protocol remains experimental, but it now has multiple implementations and active application use. [MDK](https://github.com/marmot-protocol/mdk) is the main Rust reference stack, [marmot-ts](https://github.com/marmot-protocol/marmot-ts) brings the model to TypeScript, and applications such as [White Noise](https://github.com/marmot-protocol/whitenoise), [Amethyst](https://github.com/vitorpamplona/amethyst), Pika, and Vector have been using Marmot-compatible components.
 
 Recent work has focused on hardening and interop. Audit-driven fixes landed in early 2026, and MIP-03 introduced deterministic commit resolution so clients can converge when concurrent group state changes race across relays.
+
+In April 2026, Amethyst brought its embedded MDK into line with the MIP-01 and MIP-05 wire formats: [PR #2462](https://github.com/vitorpamplona/amethyst/pull/2462) added VarInt encoding of TLS-style length prefixes and round-trip validation against MDK test vectors, [PR #2435](https://github.com/vitorpamplona/amethyst/pull/2435) added MIP-00 KeyPackage Relay List support, and [PR #2436](https://github.com/vitorpamplona/amethyst/pull/2436) closed remaining admin-gate and media-handling gaps flagged by cross-client testing against White Noise. [PR #2466](https://github.com/vitorpamplona/amethyst/pull/2466) corrected MLS commit framing so encrypted welcome bytes match mdk-core output, and [PR #2471](https://github.com/vitorpamplona/amethyst/pull/2471) fixed an outer-layer decryption bug that caused state divergence between co-admins. Follow-up [PR #2493](https://github.com/vitorpamplona/amethyst/pull/2493) adds comprehensive MLS commit cryptography validation, and [PR #2488](https://github.com/vitorpamplona/amethyst/pull/2488) ships `amy`, a CLI interface for Marmot and MLS group operations driven from Amethyst's implementation.
+
+MDK landed [PR #261](https://github.com/marmot-protocol/mdk/pull/261) to compute a group's `RequiredCapabilities` as the LCD of invitee capabilities (unblocking mixed-version invites between Amethyst and White Noise), [PR #262](https://github.com/marmot-protocol/mdk/pull/262) to parse invitee key packages before persisting the creator's signer, [PR #264](https://github.com/marmot-protocol/mdk/pull/264) to converge the SelfUpdate wire format across implementations, and [PR #265](https://github.com/marmot-protocol/mdk/pull/265) to expose a `group_required_proposals` accessor.
+
+[whitenoise-rs](https://github.com/marmot-protocol/whitenoise-rs) is in the middle of a multi-phase refactor from global singletons to per-account `AccountSession` views: [PR #743](https://github.com/marmot-protocol/whitenoise-rs/pull/743) established the `AccountSession` and `AccountManager` scaffolding, and follow-on phases have migrated relay handles, drafts and settings, message ops, group read and write, membership, push notifications, key-package reads, group creation, and, as of [PR #770](https://github.com/marmot-protocol/whitenoise-rs/pull/770), session-scoped event dispatch. [marmot-ts PR #68](https://github.com/marmot-protocol/marmot-ts/pull/68) migrates the TypeScript client to addressable kind `30443` key packages.
 
 ---
 
 **Primary sources:**
 - [Marmot Protocol Repository](https://github.com/marmot-protocol/marmot)
 - [MLS Protocol](https://messaginglayersecurity.rocks/)
-- [Marmot Development Kit](https://github.com/marmot-protocol/mdk)
+- [Marmot Development Kit (MDK)](https://github.com/marmot-protocol/mdk)
 - [marmot-ts](https://github.com/marmot-protocol/marmot-ts)
+- [whitenoise-rs](https://github.com/marmot-protocol/whitenoise-rs)
+- [White Noise client](https://github.com/marmot-protocol/whitenoise)
+- [Amethyst PR #2462](https://github.com/vitorpamplona/amethyst/pull/2462) - MIP-01/MIP-05 wire format alignment
+- [Amethyst PR #2435](https://github.com/vitorpamplona/amethyst/pull/2435) - MIP-00 KeyPackage Relay List
+- [Amethyst PR #2488](https://github.com/vitorpamplona/amethyst/pull/2488) - Amy CLI
 
 **Mentioned in:**
 - [Newsletter #1: News](/en/newsletters/2025-12-17-newsletter/#news)
@@ -40,6 +51,9 @@ Recent work has focused on hardening and interop. Audit-driven fixes landed in e
 - [Newsletter #4](/en/newsletters/2026-01-07-newsletter/)
 - [Newsletter #7](/en/newsletters/2026-01-28-newsletter/)
 - [Newsletter #12](/en/newsletters/2026-03-04-newsletter/)
+- [Newsletter #19: Amethyst MIP compliance](/en/newsletters/2026-04-22-newsletter/#amethyst-ships-marmot-mip-compliance-nip-72-communities-and-live-stream-zap-goals)
+- [Newsletter #19: MDK interop work](/en/newsletters/2026-04-22-newsletter/#mdk-adds-mixed-version-invite-support-and-selfupdate-wire-format-convergence)
+- [Newsletter #19: whitenoise-rs session refactor](/en/newsletters/2026-04-22-newsletter/#whitenoise-rs-refactors-to-session-scoped-account-views)
 
 **See also:**
 - [MLS (Message Layer Security)](/en/topics/mls/)

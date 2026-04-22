@@ -49,6 +49,9 @@ The `switch_relays` method exists so the signer can move the session to a differ
 - [Newsletter #3: December Recap](/en/newsletters/2025-12-31-newsletter/#december-recap-five-years-of-nostr-decembers)
 - [Newsletter #4: Primal Android Becomes a Full Signing Hub](/en/newsletters/2026-01-07-newsletter/#primal-android-becomes-a-full-signing-hub)
 - [Newsletter #12: NDK Collaborative Events and NIP-46 Timeout](/en/newsletters/2026-03-04-newsletter/#ndk-collaborative-events-and-nip-46-timeout)
+- [Newsletter #19: NipLock signer support](/en/newsletters/2026-04-22-newsletter/#niplock-ships-a-nip-17-based-password-manager)
+- [Newsletter #19: Forgesworn Heartwood signer](/en/newsletters/2026-04-22-newsletter/#forgesworn-publishes-a-29-repo-cryptographic-toolkit-for-nostr)
+- [Newsletter #19: Flotilla Aegis NIP-46 login](/en/newsletters/2026-04-22-newsletter/#flotilla-173-and-174-add-kind-9-wrapping-for-richer-nip-29-rooms)
 
 **See also:**
 - [NIP-55: Android Signer](/en/topics/nip-55/)

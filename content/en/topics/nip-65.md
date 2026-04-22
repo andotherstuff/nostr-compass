@@ -71,6 +71,7 @@ Mix general-purpose relays with any specialized relays you use. For instance, yo
 **Mentioned in:**
 - [Newsletter #5: NIP Deep Dive](/en/newsletters/2026-01-13-newsletter/#nip-65-relay-list-metadata)
 - [Newsletter #12: Outbox Model Benchmarks](/en/newsletters/2026-03-04-newsletter/)
+- [Newsletter #19: Wisp inbox-relay broadcasting](/en/newsletters/2026-04-22-newsletter/#wisp-v0180-beta-adds-normie-mode-for-you-feed-and-nip-29-group-config)
 
 **See also:**
 - [NIP-11: Relay Information](/en/topics/nip-11/)
