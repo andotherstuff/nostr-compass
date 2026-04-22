@@ -34,6 +34,8 @@ Provider discovery is outside the request/response loop itself. The spec points 
 
 **Mentioned in:**
 - [Newsletter #11: NIP-AC DVM Agent Coordination](/en/newsletters/2026-02-25-newsletter/#nip-updates)
+- [Newsletter #19: Forgesworn toll-booth-dvm](/en/newsletters/2026-04-22-newsletter/#forgesworn-publishes-a-29-repo-cryptographic-toolkit-for-nostr)
+- [Newsletter #19: Agent Reputation Attestations proposal](/en/newsletters/2026-04-22-newsletter/#nip-updates)
 
 **See also:**
 - [NIP-89: Recommended Application Handlers](/en/topics/nip-89/)

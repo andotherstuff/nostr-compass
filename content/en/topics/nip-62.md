@@ -65,6 +65,7 @@ It also goes beyond [NIP-09](/en/topics/nip-09/). NIP-09 deletes individual even
 - [rust-nostr PR #1316](https://github.com/rust-nostr/nostr/pull/1316) - LMDB backend support
 - [rust-nostr PR #1317](https://github.com/rust-nostr/nostr/pull/1317) - SQLite backend support
 - [rust-nostr PR #1318](https://github.com/rust-nostr/nostr/pull/1318) - Database test coverage for relay-specific vanish support
+- [nostream PR #544](https://github.com/Cameri/nostream/pull/544) - Added NIP-62 right-to-vanish to the advertised feature list
 
 ---
 
@@ -75,12 +76,14 @@ It also goes beyond [NIP-09](/en/topics/nip-09/). NIP-09 deletes individual even
 - [rust-nostr PR #1316](https://github.com/rust-nostr/nostr/pull/1316)
 - [rust-nostr PR #1317](https://github.com/rust-nostr/nostr/pull/1317)
 - [rust-nostr PR #1318](https://github.com/rust-nostr/nostr/pull/1318)
+- [nostream PR #544](https://github.com/Cameri/nostream/pull/544)
 
 **Mentioned in:**
 - [Newsletter #5: Notable Code Changes](/en/newsletters/2026-01-13-newsletter/#rust-nostr-library)
 - [Newsletter #12: rust-nostr](/en/newsletters/2026-03-04-newsletter/#rust-nostr-nip-62-request-to-vanish)
 - [Newsletter #16: Amethyst ships NIP-62 support](/en/newsletters/2026-04-01-newsletter/#amethyst-ships-pinned-notes-relay-management-and-request-to-vanish)
 - [Newsletter #16: NIP Deep Dive](/en/newsletters/2026-04-01-newsletter/#nip-deep-dive-nip-62-request-to-vanish)
+- [Newsletter #19: nostream NIP-62 support](/en/newsletters/2026-04-22-newsletter/#nostream-merges-53-prs-for-nip-45-nip-62-compression-and-query-hardening)
 
 **See also:**
 - [NIP-09: Event Deletion Request](/en/topics/nip-09/)

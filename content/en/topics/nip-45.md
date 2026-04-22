@@ -47,14 +47,22 @@ Follower counts, reaction counts, and reply counts are the main use cases. Witho
 
 ---
 
+## Implementations
+
+- [nostream](https://github.com/Cameri/nostream) added `COUNT` support in [PR #522](https://github.com/Cameri/nostream/pull/522), letting clients ask how many events match a filter without fetching them.
+
+---
+
 **Primary sources:**
 - [NIP-45: Event Counting](https://github.com/nostr-protocol/nips/blob/master/45.md)
 - [PR #1561: HyperLogLog Relay Response](https://github.com/nostr-protocol/nips/pull/1561)
+- [nostream PR #522](https://github.com/Cameri/nostream/pull/522) - NIP-45 COUNT support
 
 **Mentioned in:**
 - [Newsletter #9: NIP Deep Dive](/en/newsletters/2026-02-11-newsletter/#nip-deep-dive-nip-45-event-counting-and-hyperloglog)
 - [Newsletter #9: NIP Updates](/en/newsletters/2026-02-11-newsletter/#nip-updates)
 - [Newsletter #12: Five Years of Nostr Februaries](/en/newsletters/2026-03-04-newsletter/)
+- [Newsletter #19: nostream NIP-45 support](/en/newsletters/2026-04-22-newsletter/#nostream-merges-53-prs-for-nip-45-nip-62-compression-and-query-hardening)
 
 **See also:**
 - [NIP-11: Relay Information Document](/en/topics/nip-11/)

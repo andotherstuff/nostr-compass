@@ -65,6 +65,7 @@ Two details cause many implementation bugs. First, clients should treat relay re
 
 **Mentioned in:**
 - [Newsletter #1: NIP Deep Dive](/en/newsletters/2025-12-17-newsletter/#nip-deep-dive-nip-01-and-nip-19)
+- [Newsletter #19: NIP-67 EOSE completeness hint proposal](/en/newsletters/2026-04-22-newsletter/#nip-updates)
 
 **See also:**
 - [NIP-19: Bech32-Encoded Entities](/en/topics/nip-19/)

@@ -27,6 +27,7 @@ A [demo app](https://nprogram.netlify.app/) shows scrolls running in-browser, wi
 
 **Mentioned in:**
 - [Newsletter #17](/en/newsletters/2026-04-08-newsletter/#nip-updates)
+- [Newsletter #19: NIP-5D applets proposal](/en/newsletters/2026-04-22-newsletter/#nip-updates)
 
 **See also:**
 - [NIP-5D (Web Applets)](/en/topics/nip-5d/)

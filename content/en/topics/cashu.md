@@ -34,6 +34,7 @@ Cashu integrates with Nostr in several ways:
 - **Escrow**: HTLC-based payment escrow for services like ridesharing
 - **Wallets**: Nostr-native wallets store encrypted Cashu tokens on relays
 - **[NIP-87](/en/topics/nip-87/)**: Mint discovery and reviews via Nostr
+- **[TollGate](/en/topics/tollgate/)**: Pay-per-use network access protocol that accepts Cashu ecash tokens for connectivity, defined in [TIP-02](https://github.com/OpenTollGate/tollgate/blob/v0.1.0/TIP-02.md) as of the [v0.1.0 release](https://github.com/OpenTollGate/tollgate/releases/tag/v0.1.0)
 
 ## Tradeoffs
 
@@ -52,7 +53,9 @@ In practice, users often need the same mint, or they need a swap or bridge betwe
 **Mentioned in:**
 - [Newsletter #7](/en/newsletters/2026-01-28-newsletter/)
 - [Newsletter #11](/en/newsletters/2026-02-25-newsletter/)
+- [Newsletter #19: TollGate v0.1.0](/en/newsletters/2026-04-22-newsletter/#tollgate-v010-stabilizes-pay-per-use-internet-over-nostr-and-cashu)
 
 **See also:**
 - [NIP-60: Cashu Wallet](/en/topics/nip-60/)
 - [NIP-87: Cashu Mint Recommendations](/en/topics/nip-87/)
+- [TollGate](/en/topics/tollgate/)

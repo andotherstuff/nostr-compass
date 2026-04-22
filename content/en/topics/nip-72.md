@@ -40,10 +40,23 @@ Because approval events are separate Nostr events, moderation decisions are tran
 
 Relay support matters for community functionality. Clients need to query for both the community definition and approval events, which requires relays that index these event kinds efficiently.
 
+Compared to [NIP-29](/en/topics/nip-29/) relay-based groups, where the relay is the authority for both membership and moderation, NIP-72 lives in plain Nostr events. Any relay that carries kinds `34550`, `4549`, and the submission kinds can serve a community, and moderation is visible and forkable. The tradeoff is that unapproved submissions are only hidden at the client-render layer, so NIP-29 remains the better fit when spam must stay off the wire entirely.
+
+## Implementations
+
+- [noStrudel](https://github.com/hzrd149/nostrudel) has long-standing NIP-72 community support, including a pending submission queue for moderators.
+- [Amethyst](https://github.com/vitorpamplona/amethyst) added first-class community creation and management in [PR #2468](https://github.com/vitorpamplona/amethyst/pull/2468): authoring the kind `34550` community definition, adding moderators and relay hints, submitting posts with an `a` tag, and managing pending approvals via kind `4549` events.
+
 ---
 
 **Primary sources:**
 - [NIP-72 Specification](https://github.com/nostr-protocol/nips/blob/master/72.md) - Moderated Communities
+- [Amethyst PR #2468](https://github.com/vitorpamplona/amethyst/pull/2468) - NIP-72 community creation and moderation
 
 **Mentioned in:**
 - [Newsletter #15](/en/newsletters/2026-03-25-newsletter/)
+- [Newsletter #19: Amethyst community support](/en/newsletters/2026-04-22-newsletter/#amethyst-ships-marmot-mip-compliance-nip-72-communities-and-live-stream-zap-goals)
+- [Newsletter #19: NIP Deep Dive](/en/newsletters/2026-04-22-newsletter/#nip-deep-dive-nip-72-moderated-communities)
+
+**See also:**
+- [NIP-29: Relay-based Groups](/en/topics/nip-29/)

@@ -49,6 +49,7 @@ Legacy clients and signers still expose NIP-04 encrypt/decrypt methods because o
 **Mentioned in:**
 - [Newsletter #4: NIP Deep Dive](/en/newsletters/2026-01-07-newsletter/#nip-04-encrypted-direct-messages-legacy)
 - [Newsletter #3: December Recap](/en/newsletters/2025-12-31-newsletter/#december-recap-five-years-of-nostr-decembers)
+- [Newsletter #19: nostter NIP-44 migration](/en/newsletters/2026-04-22-newsletter/#nostter-adds-nip-44-encryption-across-people-lists-bookmarks-and-mutes)
 
 **See also:**
 - [NIP-44: Encrypted Payloads](/en/topics/nip-44/)

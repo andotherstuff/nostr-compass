@@ -36,6 +36,17 @@ That makes migration and forking possible, but not automatic. The same group id 
 - Group state is reconstructed from moderation history, while 39000-series relay events are informative snapshots of that state
 - Timeline `previous` references are there to prevent out-of-context rebroadcasting across relay forks, not just to improve UI threading
 
+## Recent Spec Work
+
+- [PR #2310](https://github.com/nostr-protocol/nips/pull/2310) and hodlbod's [Flotilla 1.7.3/1.7.4 release notes](https://gitea.coracle.social/coracle/flotilla/src/tag/1.7.4) propose kind-9 wrapping of non-chat content types (calendar events, polls, other payloads) so the room context is preserved when those objects are sent into a group.
+- [PR #2319](https://github.com/nostr-protocol/nips/pull/2319) extends the spec with a subgroup hierarchy so a single group can host multiple parallel channels without spawning independent groups on the same relay; the subgroup identifier piggybacks on the existing `h` tag, preserving single-`h`-tag messages for older clients.
+- [PR #2316](https://github.com/nostr-protocol/nips/pull/2316) defines explicit permissions on the kind `39003` role event so each role becomes a named set of granted operations (invite, add-user, remove-user, edit-metadata, delete-event, add-permission) with an optional time-bound expiry.
+
+## Implementations
+
+- [Flotilla](https://gitea.coracle.social/coracle/flotilla) is hodlbod's primary NIP-29 client; [1.7.3](https://gitea.coracle.social/coracle/flotilla/src/tag/1.7.3) and [1.7.4](https://gitea.coracle.social/coracle/flotilla/src/tag/1.7.4) shipped kind-9 wrapping, polls, [NIP-46](/en/topics/nip-46/) login via the Aegis URL scheme, native share support for space invites, room mentions, mobile clipboard image paste, drafts, and video in calls.
+- [Wisp](https://github.com/barrydeen/wisp) added NIP-29 group configuration for flags, invites, roles, and AUTH prompts in [PR #471](https://github.com/barrydeen/wisp/pull/471) and hardened AUTH sequencing before group `9021`, `9007`, and `9009` events in [PR #478](https://github.com/barrydeen/wisp/pull/478).
+
 ---
 
 **Primary sources:**
@@ -43,6 +54,11 @@ That makes migration and forking possible, but not automatic. The same group id 
 - [PR #2106](https://github.com/nostr-protocol/nips/pull/2106) - Clarified `private`, `closed`, and `hidden`
 - [PR #2190](https://github.com/nostr-protocol/nips/pull/2190) - Clarified relay URL as the relay key
 - [PR #2111](https://github.com/nostr-protocol/nips/pull/2111) - Added `unallowpubkey` and `unbanpubkey`
+- [PR #2310](https://github.com/nostr-protocol/nips/pull/2310) - Kind-9 wrapping for non-chat content
+- [PR #2319](https://github.com/nostr-protocol/nips/pull/2319) - Subgroups spec
+- [PR #2316](https://github.com/nostr-protocol/nips/pull/2316) - Explicit role permissions on kind 39003
+- [Flotilla 1.7.4](https://gitea.coracle.social/coracle/flotilla/src/tag/1.7.4)
+- [Wisp PR #471](https://github.com/barrydeen/wisp/pull/471) - NIP-29 group configuration
 
 **Mentioned in:**
 - [Newsletter #2: NIP Updates](/en/newsletters/2025-12-24-newsletter/#nip-updates)
@@ -50,6 +66,9 @@ That makes migration and forking possible, but not automatic. The same group id 
 - [Newsletter #6: NIP Updates](/en/newsletters/2026-01-21-newsletter/#nip-updates)
 - [Newsletter #11: NIP Updates](/en/newsletters/2026-02-25-newsletter/#nip-updates)
 - [Newsletter #12: NIP Updates](/en/newsletters/2026-03-04-newsletter/#nip-updates)
+- [Newsletter #19: Flotilla 1.7.3/1.7.4](/en/newsletters/2026-04-22-newsletter/#flotilla-173-and-174-add-kind-9-wrapping-for-richer-nip-29-rooms)
+- [Newsletter #19: Wisp NIP-29 config](/en/newsletters/2026-04-22-newsletter/#wisp-v0180-beta-adds-normie-mode-for-you-feed-and-nip-29-group-config)
+- [Newsletter #19: NIP Updates (subgroups, role permissions)](/en/newsletters/2026-04-22-newsletter/#nip-updates)
 
 **See also:**
 - [NIP-11: Relay Information Document](/en/topics/nip-11/)

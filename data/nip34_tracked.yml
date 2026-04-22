@@ -51,6 +51,41 @@ tracked_repos:
     in_projects_yml: false
     notes: Test/dev repo from Pleb5 (pubkey is in noise list but tracked explicitly)
 
+  - name: nostrability
+    d_tag: nostrability
+    pubkey: 17538dc2a62769d09443f18c37cbe358fab5bbf981173542aa7c5ff171ed77c4
+    relays: [wss://relay.ngit.dev, wss://relay.damus.io, wss://pyramid.fiatjaf.com]
+    in_projects_yml: false
+    notes: Nostr protocol compliance tracking (elsat@habla.news); migrated from github to ngit
+
+  - name: nostrability-MCP
+    d_tag: nostrability-MCP
+    pubkey: 17538dc2a62769d09443f18c37cbe358fab5bbf981173542aa7c5ff171ed77c4
+    relays: [wss://relay.ngit.dev, wss://relay.damus.io, wss://pyramid.fiatjaf.com]
+    in_projects_yml: false
+    notes: MCP server exposing Nostrability data (elsat)
+
+  - name: borkstr
+    d_tag: borkstr
+    pubkey: 17538dc2a62769d09443f18c37cbe358fab5bbf981173542aa7c5ff171ed77c4
+    relays: [wss://relay.ngit.dev, wss://relay.damus.io, wss://pyramid.fiatjaf.com]
+    in_projects_yml: false
+    notes: Borkstr interop reports (elsat)
+
+  - name: rummage
+    d_tag: rummage
+    pubkey: 17538dc2a62769d09443f18c37cbe358fab5bbf981173542aa7c5ff171ed77c4
+    relays: [wss://relay.ngit.dev, wss://relay.damus.io, wss://pyramid.fiatjaf.com]
+    in_projects_yml: false
+    notes: elsat tooling
+
+  - name: NipLock
+    d_tag: passwd
+    pubkey: 15249f1f976e8e29f1ce770aad2ef4a0c4d7b8879b4b8fd86f8e0ca56ddbcbe4
+    relays: [wss://relay.ngit.dev, wss://relay.damus.io, wss://nos.lol]
+    in_projects_yml: false
+    notes: NIP-17 DM-based password manager (nsec/nos2x/Amber signing)
+
 # Noise filtering is handled in scripts/fetch_nip34_repos.sh:
 #   - NOISE_PUBKEYS array: known noise pubkeys (hardcoded, with comments)
 #   - filter_noise() function: d_tag patterns, clone URL patterns
