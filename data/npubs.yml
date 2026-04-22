@@ -444,3 +444,67 @@ Shadow:
 Nostr Mail:
   npub: npub1kg4sdvz3l4fr99n2jdz2vdxe2mpacva87hkdetv76ywacsfq5leqquw5te
   mention_only: true
+
+# =============================================================================
+# Newsletter #19 additions (2026-04-22)
+# =============================================================================
+
+# [project] TollGate - pay-per-use internet over Nostr + Cashu
+TollGate: npub1zzt0d0s2f4lsanpd7nkjep5r79p7ljq7aw37eek64hf0ef6v0mxqgwljrv
+
+# [project] NipLock - NIP-17 password manager (npub from gitworkshop URL)
+NipLock: npub1z5jf78uhd68znuwwwu926th55rzd0wy8nd9clkr03cx22mwme0jqazk56h
+
+# [dev:Cameri] nostream - TypeScript relay
+nostream:
+  npub: npub1a5r222zpak8w239w673ly9tznxyp4wc2vh59lcyx9cu7wgyt9xfqtug39a
+  mention_only: true
+
+# [dev:bitvora] WoT Relay - web-of-trust-filtered relay
+WoT Relay:
+  npub: npub1utx00neqgqln72j22kej3ux7803c2k986henvvha4thuwfkper4s7r50e8
+  mention_only: true
+
+# [dev:patrickulrich] nostr.blue - Dioxus Rust client
+nostr.blue:
+  npub: npub1patrlck0muvqevgytp4etpen0xsvrlw0hscp4qxgy40n852lqwwsz79h9a
+  mention_only: true
+
+# [dev:5t34k] nowhere - URL-fragment website
+nowhere:
+  npub: npub1x5t34kxd79m657qcuwp4zrypy9t8t4e6yks5zapjvau29t0xvgaqakh2p2
+  mention_only: true
+
+# [dev:brainstorm] Brainstorm Search - single-page Nostr search UI
+Brainstorm Search:
+  npub: npub1u5njm6g5h5cpw4wy8xugu62e5s7f6fnysv0sj0z3a8rengt2zqhsxrldq3
+  mention_only: true
+
+# [dev:shakespeare] Shakespeare.diy - browser-based Nostr app builder
+Shakespeare:
+  npub: npub1q3sle0kvfsehgsuexttt3ugjd8xdklxfwwkh559wxckmzddywnws6cd26p
+  mention_only: true
+
+# [dev:sam] relayk.it - Shakespeare-built relay discovery client
+relayk.it:
+  npub: npub1yzfm42rzr3dj2h50flpvdl0uzrv22kv2y4ghve804w5xqu6lzqcqkyfxu5
+  mention_only: true
+
+# [dev:fiatjaf] topaz - Nostr relay for Android
+topaz:
+  npub: npub180cvv07tjdrrgpa0j7j7tmnyl2yr6yr7l8j4s3evf6u64th6gkwsyjh6w6
+  mention_only: true
+
+# [dev:fiatjaf] nos2x - browser extension signer
+nos2x:
+  npub: npub180cvv07tjdrrgpa0j7j7tmnyl2yr6yr7l8j4s3evf6u64th6gkwsyjh6w6
+  mention_only: true
+
+# Aliases for suite / sub-project names used in the newsletter
+Nostr Calendar by Formstr: npub1qu7dsd44275lms4x9snnwvnnmgx926nsppmr7lcw9dlj36n4fltqgs7p98
+Formstr suite: npub1qu7dsd44275lms4x9snnwvnnmgx926nsppmr7lcw9dlj36n4fltqgs7p98
+Nostrability issues: npub1g5qtwz2nh9q0mnw555kv787kh6lysds95522gzptre3qpvz9p20s83m80d
+White Noise app: npub1whtn0s68y3cs98zysa4nxrfzss5g5snhndv35tk5m2sudsr7ltms48r3ec
+Keep Android:
+  npub: npub1h3fzzzeq60acjvnyvw34rpn5clkaueteffmkt3ln4ygekg9lcm0qhw96sj
+  mention_only: true
