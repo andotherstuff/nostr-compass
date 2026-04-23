@@ -2,6 +2,7 @@
 title: "NIP-24: Extra metadatavelden"
 date: 2025-12-17
 translationDate: 2026-03-07
+translationOf: /en/topics/nip-24.md
 draft: false
 categories:
   - Protocol

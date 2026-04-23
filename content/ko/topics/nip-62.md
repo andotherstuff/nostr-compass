@@ -2,70 +2,92 @@
 title: "NIP-62: Vanish Requests"
 date: 2026-01-13
 translationOf: /en/topics/nip-62.md
-translationDate: 2026-03-07
+translationDate: 2026-04-22
 draft: false
 categories:
   - Privacy
   - Protocol
 ---
-NIP-62는 vanish 요청을 정의한다. 사용자가 릴레이에 자신의 콘텐츠 삭제를 요청하는 메커니즘이다. 릴레이가 이 요청을 이행할 의무는 없지만, NIP-62를 지원하면 사용자에게 발행된 데이터에 대한 더 많은 통제권을 부여하고 네트워크 전반에 걸쳐 삭제 의사를 전달하는 표준화된 방법을 제공한다.
+
+NIP-62는 vanish request, 즉 kind `62` 이벤트를 정의합니다. 이 이벤트는 특정 릴레이에 요청자의 pubkey에서 나온 모든 이벤트를 삭제해 달라고 요구합니다. 기본적으로 요청은 릴레이 대상이며, 특수한 `ALL_RELAYS` 태그 값을 사용하면 전역 요청으로도 브로드캐스트할 수 있습니다.
 
 ## 작동 방식
 
-Vanish 요청은 콘텐츠 제거를 원하는 사용자가 서명한 kind 62 이벤트다. 요청은 `e` 태그에 이벤트 ID를 포함하여 특정 이벤트를 대상으로 하거나, `e` 태그를 완전히 생략하여 해당 공개키의 모든 콘텐츠 삭제를 요청할 수 있다.
+vanish request는 자신의 히스토리를 제거하고 싶은 pubkey가 서명한 kind `62` 이벤트입니다. 태그 목록에는 최소 하나 이상의 `relay` 값이 들어 있어야 하며, 여기에는 요청을 처리해야 할 릴레이가 명시됩니다.
 
 ```json
 {
-  "id": "a1b2c3d4e5f6...",
-  "pubkey": "abcd1234...",
-  "created_at": 1736726400,
+  "id": "a7b8c9d0e1f23456789012345678901234567890abcdef1234567890abcdef12",
+  "pubkey": "f1e2d3c4b5a697887766554433221100ffeeddccbbaa99887766554433221100",
+  "created_at": 1743465600,
   "kind": 62,
   "tags": [
-    ["e", "event1234...", "wss://relay.example.com"],
-    ["e", "event5678...", "wss://relay.example.com"]
+    ["relay", "wss://relay.example.com"]
   ],
-  "content": "Removing old posts",
-  "sig": "sig1234..."
+  "content": "Requesting deletion of all events from this relay.",
+  "sig": "11aa22bb33cc44dd55ee66ff77889900aabbccddeeff0011223344556677889911aa22bb33cc44dd55ee66ff77889900aabbccddeeff00112233445566778899"
 }
 ```
 
-`content` 필드는 선택적으로 삭제 요청에 대한 사람이 읽을 수 있는 사유를 담는다. `e` 태그의 릴레이 힌트는 원본 이벤트가 발행된 위치를 릴레이에 알려주지만, 릴레이는 지정된 이벤트 보유 여부와 관계없이 요청을 이행할 수 있다.
+`content` 필드에는 릴레이 운영자에게 전하는 사유나 법적 고지를 담을 수 있습니다. 클라이언트는 사용자가 네트워크 전역 vanish를 의도한 경우가 아니라면 이 이벤트를 널리 게시하기보다 대상 릴레이에 직접 보내야 합니다.
 
 ## 릴레이 동작
 
-NIP-62를 지원하는 릴레이는 지정된 이벤트를 스토리지에서 삭제하고 구독자에게 제공하는 것을 중단해야 한다. Vanish 요청 자체는 삭제가 요청되었다는 기록으로 보존될 수 있으며, 이는 삭제된 이벤트가 다른 릴레이에서 재수입되는 것을 방지하는 데 도움이 된다.
+vanish request를 보고 자신의 서비스 URL이 `relay` 태그에 들어 있음을 확인한 릴레이는, 요청의 `created_at` 시점까지 해당 pubkey에서 나온 모든 이벤트를 완전히 삭제해야 합니다. 명세는 또한 릴레이가 vanished pubkey를 `p` 태그로 가리킨 [NIP-59](/ko/topics/nip-59/) (Gift Wrap) 이벤트도 삭제해야 한다고 말합니다. 따라서 사용자의 자체 이벤트뿐 아니라 들어오는 DM도 함께 제거됩니다.
 
-Vanish 요청이 모든 `e` 태그를 생략하면 릴레이는 이를 해당 공개키의 모든 이벤트 제거 요청으로 해석한다. 이는 더 급진적인 조치이며 릴레이마다 다르게 처리할 수 있다. 예를 들어 해당 공개키를 "vanished"로 표시하고 향후 해당 이벤트의 수락이나 제공을 거부할 수 있다.
+릴레이는 삭제된 이벤트가 다시 브로드캐스트되어 재유입되지 않도록 해야 합니다. bookkeeping을 위해 서명된 vanish request 자체는 보관할 수 있습니다.
 
-릴레이가 NIP-62를 지원할 의무는 없다. Nostr 네트워크는 탈중앙화되어 있으며, 각 릴레이 운영자가 자체 데이터 보존 정책을 결정한다. 사용자는 vanish 요청을 발행했다고 해서 모든 곳에서 콘텐츠가 삭제될 것이라고 가정해서는 안 된다.
+## 전역 요청
+
+이 이벤트를 본 모든 릴레이에 삭제를 요청하려면 태그 값에 대문자 `ALL_RELAYS`를 사용합니다:
+
+```json
+{
+  "kind": 62,
+  "pubkey": "<32-byte-hex-pubkey>",
+  "tags": [
+    ["relay", "ALL_RELAYS"]
+  ],
+  "content": "Global vanish request"
+}
+```
+
+클라이언트는 이 형태를 가능한 많은 릴레이에 브로드캐스트해야 합니다.
 
 ## 왜 중요한가
 
-NIP-62는 클라이언트와 릴레이 운영자에게 임시 모더레이션 API나 릴레이별 대시보드를 넘어서는 공유 삭제 신호를 제공한다. 사용자가 하나의 서명된 요청을 발행하면 각 릴레이가 처리 방식을 결정할 수 있다.
+NIP-62는 임시 moderation API나 릴레이별 대시보드를 넘어서는, 클라이언트와 릴레이 운영자 사이의 공통 삭제 신호를 제공합니다. 사용자는 하나의 서명된 요청을 게시하고 각 릴레이가 동일한 이벤트 형식으로 이를 처리하게 할 수 있습니다.
 
-실질적 한계는 범위다. Vanish 요청은 해당 요청을 수신하고, 지원하며, 이행하기로 선택한 릴레이에만 영향을 미친다. 스크린샷, 로컬 데이터베이스, 제3자 아카이브, 또는 릴레이 통제 범위 밖의 이미 리포스트된 사본은 철회하지 못한다.
+또한 [NIP-09](/ko/topics/nip-09/)보다 더 나아갑니다. NIP-09는 개별 이벤트를 삭제하며 릴레이가 이를 따를 수 있습니다. NIP-62는 태그된 릴레이에 해당 pubkey의 모든 이벤트를 삭제하고, 그 이벤트가 다시 유입되지 않도록 요구합니다.
 
-## 프라이버시 고려사항
+## 구현체
 
-Vanish 요청은 최선 노력 삭제 메커니즘이지 프라이버시 보장이 아니다. Vanish 요청을 발행한 후에도 콘텐츠 사본이 네트워크의 다른 곳에 존재할 수 있다. NIP-62를 지원하지 않는 다른 릴레이, 클라이언트 기기의 로컬 캐시, 제3자 아카이브나 검색 엔진, 백업 등이 해당된다.
-
-요청 자체도 서명된 Nostr 이벤트이므로 공개 기록의 일부가 된다. Vanish 요청을 본 사람은 무엇이 삭제되었는지는 알 수 없더라도 무언가를 삭제했다는 사실은 알 수 있다.
-
-반드시 비공개로 유지해야 하는 콘텐츠의 경우, 사후 삭제에 의존하기보다 [NIP-17](/ko/topics/nip-17/)과 같은 암호화 메시징 사용을 고려해야 한다.
-
-## 상호운용성 참고사항
-
-NIP-62는 [NIP-09](/ko/topics/nip-09/)를 보완한다. NIP-09는 Nostr 전반에서 사용되는 일반 삭제 요청 이벤트이고, NIP-62는 릴레이에 특정 이벤트 또는 전체 공개키의 콘텐츠 세트를 대상으로 할 수 있는 더 강력한 vanish 지향 신호를 제공한다. 구현체는 두 가지 모두를 지원할 수 있으며, rust-nostr의 데이터베이스 백엔드는 해당 적용 경계에 대한 설정을 공개하고 있다.
+- [Amethyst v1.07.0](https://github.com/vitorpamplona/amethyst/releases/tag/v1.07.0) - 클라이언트 측 vanish request 지원
+- [rust-nostr PR #1315](https://github.com/rust-nostr/nostr/pull/1315) - Memory backend 지원
+- [rust-nostr PR #1316](https://github.com/rust-nostr/nostr/pull/1316) - LMDB backend 지원
+- [rust-nostr PR #1317](https://github.com/rust-nostr/nostr/pull/1317) - SQLite backend 지원
+- [rust-nostr PR #1318](https://github.com/rust-nostr/nostr/pull/1318) - 릴레이별 vanish 지원용 데이터베이스 테스트 추가
+- [nostream PR #544](https://github.com/Cameri/nostream/pull/544) - 광고 기능 목록에 NIP-62 right-to-vanish 추가
 
 ---
 
 **주요 출처:**
 - [NIP-62 명세](https://github.com/nostr-protocol/nips/blob/master/62.md)
+- [Amethyst v1.07.0](https://github.com/vitorpamplona/amethyst/releases/tag/v1.07.0) - 클라이언트 측 vanish 지원
+- [rust-nostr PR #1315](https://github.com/rust-nostr/nostr/pull/1315)
+- [rust-nostr PR #1316](https://github.com/rust-nostr/nostr/pull/1316)
+- [rust-nostr PR #1317](https://github.com/rust-nostr/nostr/pull/1317)
+- [rust-nostr PR #1318](https://github.com/rust-nostr/nostr/pull/1318)
+- [nostream PR #544](https://github.com/Cameri/nostream/pull/544)
 
 **언급된 뉴스레터:**
-- [Newsletter #5: Notable Code Changes](/en/newsletters/2026-01-13-newsletter/#rust-nostr-library)
-- [Newsletter #10: rust-nostr](/en/newsletters/2026-03-04-newsletter/#rust-nostr-nip-62-request-to-vanish)
+- [Newsletter #5: Notable Code Changes](/ko/newsletters/2026-01-13-newsletter/)
+- [Newsletter #12: rust-nostr](/ko/newsletters/2026-03-04-newsletter/)
+- [Newsletter #16: Amethyst ships NIP-62 support](/ko/newsletters/2026-04-01-newsletter/)
+- [Newsletter #16: NIP Deep Dive](/ko/newsletters/2026-04-01-newsletter/)
+- [Newsletter #19: nostream NIP-62 support](/en/newsletters/2026-04-22-newsletter/)
 
 **같이 보기:**
 - [NIP-09: 이벤트 삭제 요청](/ko/topics/nip-09/)
-- [NIP-17: 비공개 다이렉트 메시지](/ko/topics/nip-17/)
+- [NIP-17: 비공개 DM](/ko/topics/nip-17/)
+- [NIP-59: Gift Wrap](/ko/topics/nip-59/)

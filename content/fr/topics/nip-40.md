@@ -42,8 +42,8 @@ L'expiration est une indication de rétention, pas un système de révocation. E
 - [Spécification NIP-40](https://github.com/nostr-protocol/nips/blob/master/40.md)
 
 **Mentionné dans :**
-- [Newsletter #1 : Actualités](/en/newsletters/2025-12-17-newsletter/#news)
-- [Newsletter #3 : Changements de code notables](/en/newsletters/2025-12-31-newsletter/#rust-nostr-library)
+- [Newsletter #1 : Actualités](/en/newsletters/2025-12-17-newsletter/)
+- [Newsletter #3 : Changements de code notables](/en/newsletters/2025-12-31-newsletter/)
 
 **Voir aussi :**
 - [NIP-01 : Protocole de base](/fr/topics/nip-01/)

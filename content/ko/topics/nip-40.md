@@ -41,8 +41,8 @@ NIP-40은 릴레이에 이벤트를 언제 삭제해야 하는지 알려주는 �
 - [NIP-40 명세](https://github.com/nostr-protocol/nips/blob/master/40.md)
 
 **언급된 뉴스레터:**
-- [뉴스레터 #1: 뉴스](/en/newsletters/2025-12-17-newsletter/#news)
-- [뉴스레터 #3: 주요 코드 변경사항](/en/newsletters/2025-12-31-newsletter/#rust-nostr-library)
+- [뉴스레터 #1: 뉴스](/en/newsletters/2025-12-17-newsletter/)
+- [뉴스레터 #3: 주요 코드 변경사항](/en/newsletters/2025-12-31-newsletter/)
 
 **같이 보기:**
 - [NIP-01: 기본 프로토콜](/ko/topics/nip-01/)

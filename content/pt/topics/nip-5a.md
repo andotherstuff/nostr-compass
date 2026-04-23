@@ -1,19 +1,19 @@
 ---
-title: "NIP-5A: Sites Estáticos"
+title: 'NIP-5A: Sites estáticos'
 date: 2026-04-01
-translationOf: /en/topics/nip-5a.md
-translationDate: 2026-04-01
 draft: false
 categories:
   - Protocol
   - Hosting
+translationOf: /en/topics/nip-5a.md
+translationDate: 2026-04-22
 ---
 
-NIP-5A define como hospedar sites estáticos sob pares de chaves Nostr. Autores de sites publicam eventos de manifesto assinados que mapeiam caminhos de URL para hashes SHA256 de conteúdo, e servidores host resolvem esses manifestos para servir os arquivos do site a partir do armazenamento Blossom.
+NIP-5A define como hospedar sites estáticos sob keypairs Nostr. Autores de sites publicam eventos de manifesto assinados que mapeiam paths de URL para hashes SHA256 de conteúdo, e servidores host resolvem esses manifestos para servir os arquivos do site a partir de armazenamento Blossom.
 
-## Como Funciona
+## Como funciona
 
-A spec usa dois kinds de evento. Kind `15128` é um manifesto de site raiz, um por pubkey, que serve como o site padrão para aquela chave. Kind `35128` é um manifesto de site nomeado, identificado por uma tag `d`, que funciona como um subdomínio. Cada manifesto contém tags `path` mapeando caminhos de URL absolutos para hashes SHA256 dos arquivos que devem ser servidos.
+A spec usa dois kinds de evento. O kind `15128` é um manifesto de site raiz, um por pubkey, que serve como website padrão daquela chave. O kind `35128` é um manifesto de site nomeado, identificado por uma tag `d`, que funciona como um subdomínio. Cada manifesto contém tags `path` mapeando paths absolutos de URL para hashes SHA256 dos arquivos que devem ser servidos.
 
 ```json
 {
@@ -33,30 +33,31 @@ A spec usa dois kinds de evento. Kind `15128` é um manifesto de site raiz, um p
 }
 ```
 
-Um servidor host recebe uma requisição HTTP, extrai a pubkey do autor do subdomínio, busca o manifesto do site na lista de relays do autor, resolve o caminho solicitado para um hash de conteúdo, e baixa o blob correspondente do(s) servidor(es) Blossom listado(s) nas tags `server`.
+Um servidor host recebe um request HTTP, extrai a pubkey do autor a partir do subdomínio, busca o manifesto do site na lista de relays do autor, resolve o path solicitado para um hash de conteúdo e baixa o blob correspondente do ou dos servidores Blossom listados nas tags `server`.
 
 ## Resolução de URL
 
-Sites raiz usam o npub como subdomínio. Sites nomeados usam uma codificação base36 de 50 caracteres da pubkey bruta seguida pelo valor da tag `d`, tudo em um único rótulo DNS. Como rótulos DNS são limitados a 63 caracteres e a pubkey em base36 sempre usa 50, identificadores de sites nomeados são limitados a 13 caracteres.
+Sites raiz usam o npub como subdomínio. Sites nomeados usam uma codificação base36 de 50 caracteres da pubkey bruta seguida do valor da tag `d`, tudo em um único rótulo DNS. Como rótulos DNS são limitados a 63 caracteres e a pubkey em base36 sempre ocupa 50, identificadores de sites nomeados ficam limitados a 13 caracteres.
 
 ## Implementações
 
-- [nsite](https://github.com/lez/nsite) - Servidor host que resolve manifestos NIP-5A e serve arquivos
-- [nsite-manager](https://github.com/hzrd149/nsite-manager) - Interface para construir e publicar manifestos de site
+- [nsite](https://github.com/lez/nsite) - servidor host que resolve manifestos NIP-5A e serve arquivos
+- [nsite-manager](https://github.com/hzrd149/nsite-manager) - UI para construir e publicar manifestos de site
 
 ---
 
 **Fontes primárias:**
 - [Especificação NIP-5A](https://github.com/nostr-protocol/nips/blob/master/5A.md)
-- [PR #1538](https://github.com/nostr-protocol/nips/pull/1538) - Proposta original e merge
-- [nsite](https://github.com/lez/nsite) - Implementação de referência do servidor host
-- [nsite-manager](https://github.com/hzrd149/nsite-manager) - Interface de publicação e gerenciamento
+- [PR #1538](https://github.com/nostr-protocol/nips/pull/1538) - proposta original e merge
+- [nsite](https://github.com/lez/nsite) - implementação de referência do host
+- [nsite-manager](https://github.com/hzrd149/nsite-manager) - UI de publicação e gerenciamento
 
 **Mencionado em:**
-- [Newsletter #16: NIP-5A é mergeado](/pt/newsletters/2026-04-01-newsletter/#nip-5a-é-mergeado-trazendo-sites-estáticos-para-o-nostr)
-- [Newsletter #16: NIP Deep Dive](/pt/newsletters/2026-04-01-newsletter/#nip-deep-dive-nip-5a-sites-estáticos)
+- [Newsletter #16: merge da NIP-5A](/pt/newsletters/2026-04-01-newsletter/)
+- [Newsletter #16: NIP Deep Dive](/pt/newsletters/2026-04-01-newsletter/)
+- [Newsletter #19: proposta de applets NIP-5D](/en/newsletters/2026-04-22-newsletter/)
 
 **Veja também:**
 - [Blossom](/pt/topics/blossom/)
-- [NIP-65: Relay List Metadata](/pt/topics/nip-65/)
+- [NIP-65: Metadados de lista de relays](/pt/topics/nip-65/)
 - [NIP-96: HTTP File Storage](/pt/topics/nip-96/)

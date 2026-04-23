@@ -2,6 +2,7 @@
 title: "NIP-27 (テキストノート参照)"
 date: 2026-02-04
 description: "NIP-27はnostr: URIスキームを使用してノートコンテンツ内でプロファイル、ノート、その他のエンティティを参照する方法を定義します。"
+translationOf: /en/topics/nip-27.md
 translationDate: 2026-03-07
 draft: false
 categories:

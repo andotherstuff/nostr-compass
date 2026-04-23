@@ -2,6 +2,7 @@
 title: "NIP-40: Verlooptijdstempel"
 date: 2025-12-17
 translationDate: 2026-03-07
+translationOf: /en/topics/nip-40.md
 draft: false
 categories:
   - Protocol
@@ -41,8 +42,8 @@ Expiration is een bewaarrichtlijn, geen herroepingssysteem. Het helpt relaygedra
 - [NIP-40 Specificatie](https://github.com/nostr-protocol/nips/blob/master/40.md)
 
 **Vermeld in:**
-- [Nieuwsbrief #1: Nieuws](/en/newsletters/2025-12-17-newsletter/#news)
-- [Nieuwsbrief #3: Opmerkelijke codewijzigingen](/en/newsletters/2025-12-31-newsletter/#rust-nostr-library)
+- [Nieuwsbrief #1: Nieuws](/en/newsletters/2025-12-17-newsletter/)
+- [Nieuwsbrief #3: Opmerkelijke codewijzigingen](/en/newsletters/2025-12-31-newsletter/)
 
 **Zie ook:**
 - [NIP-01: Basisprotocol](/nl/topics/nip-01/)

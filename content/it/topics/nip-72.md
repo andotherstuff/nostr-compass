@@ -2,7 +2,7 @@
 title: "NIP-72: Comunità Moderate"
 date: 2026-03-25
 translationOf: /en/topics/nip-72.md
-translationDate: 2026-04-01
+translationDate: 2026-04-22
 draft: false
 categories:
   - NIPs

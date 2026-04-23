@@ -2,40 +2,42 @@
 title: "NIP-90: Data Vending Machines"
 date: 2026-02-25
 translationOf: /en/topics/nip-90.md
-translationDate: 2026-03-07
+translationDate: 2026-04-22
 draft: false
 categories:
   - NIP
   - DVM
 ---
 
-NIP-90はData Vending Machines（DVMs）を定義し、有料の計算処理をNostr上で依頼し、受け取るためのprotocolです。
+NIP-90は、Data Vending Machines（DVMs）を定義します。これは、Nostr上で有料の計算処理をリクエストし、配信するためのプロトコルです。
 
 ## 仕組み
 
-customerは`5000-5999` rangeのjob request eventを公開します。各requestには、1つ以上のinput用`i` tag、job固有設定の`param` tag、期待するformatを示す`output` tag、`bid` ceiling、reply先relay hintを含められます。service providerは、対応する`6000-6999` rangeのresult kindで応答し、kind番号はrequestより常に`1000`大きくなります。
+customerは`5000-5999`範囲のjob request eventを公開します。各requestには、1つ以上の入力用`i`タグ、job固有設定用の`param`タグ、期待する出力形式を示す`output`タグ、上限価格を示す`bid`、reply先を示すrelay hintを含められます。service providerは、対応する`6000-6999`範囲のresult kindで応答し、kind番号は常にrequestより`1000`高くなります。
 
-resultには、元のrequest、customer pubkey、optionalな`amount` tagやinvoiceが含まれます。providerは`payment-required`、`processing`、`partial`、`error`、`success`といったkind `7000` feedback eventも送れます。これによりclientは、最終resultが届く前に進捗を表示できます。
+resultには、元request、customerのpubkey、任意で`amount`タグやinvoiceが含まれます。providerはさらに、`payment-required`、`processing`、`partial`、`error`、`success`のようなkind `7000` feedback eventも送れます。これによりclientは、最終結果が届く前に進捗を表示できます。
 
 ## PaymentとPrivacy
 
-protocolはbusiness logicを意図的に開いたままにしています。providerは、作業開始前、sample返却後、または完全なresult配信後に支払いを求められます。この柔軟さは、DVM jobが安価なtext transformから高価なGPU workまで幅広いため重要です。
+このプロトコルは、business logicを意図的に開いたままにしています。providerは、作業前、sample返却後、または完全結果の配信後に支払いを求められます。この柔軟性は重要です。DVMのjobは、軽いtext変換から高価なGPU処理まで幅広く、providerごとに許容できる支払いリスクが異なるからです。
 
-customerがprivate inputを望む場合、`i`と`param` dataを暗号化した`content`へ移し、providerの`p` tagと`encrypted` tagでmarkできます。これによりpromptやsource materialをrelay observerから守れますが、その代わり特定providerを指名する必要があり、open market requestにはなりません。
+customerがprivate inputを望む場合、requestは`i`と`param` dataを暗号化した`content`へ移し、providerの`p`タグとともに`encrypted`タグを付けられます。これによりpromptやsource materialはrelay observerから保護されますが、その代わりcustomerはopen market requestではなく特定providerを指名しなければなりません。
 
 ## 相互運用メモ
 
-NIP-90は、input type `job`を持つ`i` tagによるjob chainingもサポートします。あるresultを次のrequestの入力へ流せるため、別のorchestration layerを設けなくてもmulti-step flowを組めます。
+NIP-90は、入力タイプ`job`を持つ`i`タグによるjob chainingをサポートします。これにより、あるresultを次のrequestの入力として流し込めるため、別のorchestration layerを発明しなくても多段処理が可能になります。
 
-provider discoveryはrequest/response loop自体の外にあります。仕様は、対応するjob kindをadvertiseする手段として[NIP-89: Recommended Application Handlers](/ja/topics/nip-89/)を参照しています。clientは、それを使ってrequestを出す前にvendorを見つけられます。
+provider discovery自体はrequest/response loopの外にあります。仕様は、対応job kindをadvertiseする方法として[NIP-89: Recommended Application Handlers](/ja/topics/nip-89/)を参照しており、clientはrequestを公開する前にそれを使ってvendorを見つけられます。
 
 ---
 
-**主要ソース:**
+**Primary sources:**
 - [NIP-90 Specification](https://github.com/nostr-protocol/nips/blob/master/90.md)
 
-**言及箇所:**
-- [Newsletter #11: NIP-AC DVM Agent Coordination](/en/newsletters/2026-02-25-newsletter/#nip-updates)
+**Mentioned in:**
+- [Newsletter #11: NIP-AC DVM Agent Coordination](/ja/newsletters/2026-02-25-newsletter/)
+- [Newsletter #19: Forgesworn toll-booth-dvm](/en/newsletters/2026-04-22-newsletter/)
+- [Newsletter #19: Agent Reputation Attestations proposal](/en/newsletters/2026-04-22-newsletter/)
 
-**関連項目:**
+**See also:**
 - [NIP-89: Recommended Application Handlers](/ja/topics/nip-89/)

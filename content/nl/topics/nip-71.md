@@ -2,6 +2,7 @@
 title: "NIP-71: Video Events"
 date: 2026-01-13
 translationDate: 2026-03-07
+translationOf: /en/topics/nip-71.md
 draft: false
 categories:
   - Media

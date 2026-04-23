@@ -41,8 +41,8 @@ La scadenza è un suggerimento di retention, non un sistema di revoca. Aiuta ad 
 - [NIP-40 Specification](https://github.com/nostr-protocol/nips/blob/master/40.md)
 
 **Citato in:**
-- [Newsletter #1: News](/en/newsletters/2025-12-17-newsletter/#news)
-- [Newsletter #3: Notable Code Changes](/en/newsletters/2025-12-31-newsletter/#rust-nostr-library)
+- [Newsletter #1: News](/en/newsletters/2025-12-17-newsletter/)
+- [Newsletter #3: Notable Code Changes](/en/newsletters/2025-12-31-newsletter/)
 
 **Vedi anche:**
 - [NIP-01: Basic Protocol](/it/topics/nip-01/)

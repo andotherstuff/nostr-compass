@@ -43,9 +43,9 @@ Esa separación permite a los clientes implementar lo mínimo necesario para int
 - [Guía de caché local de Blossom](https://github.com/hzrd149/blossom/blob/master/implementations/local-blossom-cache.md)
 
 **Mencionado en:**
-- [Boletín #1: Noticias](/es/newsletters/2025-12-17-newsletter/#news)
-- [Boletín #2: Cambios Notables de Código y Documentación](/es/newsletters/2025-12-24-newsletter/#notable-code-and-documentation-changes)
-- [Boletín #10: Emerge la capa de caché local de Blossom](/es/newsletters/2026-02-18-newsletter/#blossom-local-cache-layer-emerges)
+- [Boletín #1: Noticias](/es/newsletters/2025-12-17-newsletter/)
+- [Boletín #2: Cambios Notables de Código y Documentación](/es/newsletters/2025-12-24-newsletter/)
+- [Boletín #10: Emerge la capa de caché local de Blossom](/es/newsletters/2026-02-18-newsletter/)
 
 **Ver también:**
 - [BUD-03: Lista de Servidores del Usuario](/es/topics/bud-03/)

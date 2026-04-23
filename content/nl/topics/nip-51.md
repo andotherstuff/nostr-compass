@@ -2,6 +2,7 @@
 title: "NIP-51: Lijsten"
 date: 2025-12-17
 translationDate: 2026-03-07
+translationOf: /en/topics/nip-51.md
 draft: false
 categories:
   - Protocol

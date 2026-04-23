@@ -44,7 +44,7 @@ NIP-50は、Nostrリレーのための汎用検索機能を定義し、タグや
 - [NIP-50仕様](https://github.com/nostr-protocol/nips/blob/master/50.md)
 
 **言及：**
-- [ニュースレター #3：12月のまとめ](/ja/newsletters/2025-12-31-newsletter/#december-recap-five-years-of-nostr-decembers)
+- [ニュースレター #3：12月のまとめ](/ja/newsletters/2025-12-31-newsletter/)
 
 **関連項目：**
 - [NIP-11: リレー情報](/ja/topics/nip-11/)

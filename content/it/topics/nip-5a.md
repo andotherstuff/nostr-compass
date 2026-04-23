@@ -2,7 +2,7 @@
 title: "NIP-5A: Siti Web Statici"
 date: 2026-04-01
 translationOf: /en/topics/nip-5a.md
-translationDate: 2026-04-01
+translationDate: 2026-04-22
 draft: false
 categories:
   - Protocol
@@ -53,8 +53,8 @@ I siti root usano l'npub come sottodominio. I siti con nome usano una codifica b
 - [nsite-manager](https://github.com/hzrd149/nsite-manager) - UI di pubblicazione e gestione
 
 **Menzionato in:**
-- [Newsletter #16: NIP-5A viene unito](/it/newsletters/2026-04-01-newsletter/#nip-5a-viene-unito-portando-i-siti-web-statici-su-nostr)
-- [Newsletter #16: NIP Deep Dive](/it/newsletters/2026-04-01-newsletter/#nip-deep-dive-nip-5a-siti-web-statici)
+- [Newsletter #16: NIP-5A viene unito](/it/newsletters/2026-04-01-newsletter/)
+- [Newsletter #16: NIP Deep Dive](/it/newsletters/2026-04-01-newsletter/)
 
 **Vedi anche:**
 - [Blossom](/it/topics/blossom/)

@@ -5,6 +5,10 @@ type: topics
 cascade:
   type: topics
 draft: false
+translationOf: /en/topics/_index.md
+translationDate: 2026-04-23
+categories:
+  - 토픽
 ---
 
 Nostr Compass 토픽 인덱스는 주요 프로토콜 개념, NIP, 클라이언트 구현 및 릴레이 소프트웨어를 문서화합니다. 각 토픽에는 기본 소스(NIP, 코드 저장소) 링크와 뉴스레터 관련 기사가 포함되어 있습니다.

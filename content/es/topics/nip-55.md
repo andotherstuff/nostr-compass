@@ -2,7 +2,7 @@
 title: "NIP-55: Aplicación firmante para Android"
 date: 2025-12-17
 translationOf: /en/topics/nip-55.md
-translationDate: 2026-03-07
+translationDate: 2026-04-22
 draft: false
 categories:
   - Signing
@@ -40,12 +40,13 @@ Para aplicaciones web en Android, NIP-55 es menos ergonómico que NIP-46. Los fl
 - [Especificación NIP-55](https://github.com/nostr-protocol/nips/blob/master/55.md)
 
 **Mencionado en:**
-- [Boletín #1: Lanzamientos](/en/newsletters/2025-12-17-newsletter/#releases)
-- [Boletín #2: Noticias](/en/newsletters/2025-12-24-newsletter/#news)
-- [Boletín #2: Actualizaciones de NIP](/en/newsletters/2025-12-24-newsletter/#nip-updates)
-- [Boletín #3: Resumen de diciembre](/en/newsletters/2025-12-31-newsletter/#december-recap-five-years-of-nostr-decembers)
-- [Boletín #7: Actualizaciones de NIP](/en/newsletters/2026-01-07-newsletter/#nip-updates)
-- [Boletín #11: NIP Deep Dive](/en/newsletters/2026-02-25-newsletter/#nip-deep-dive-nip-55-android-signer-application)
+- [Boletín #1: Lanzamientos](/es/newsletters/2025-12-17-newsletter/)
+- [Boletín #2: Noticias](/es/newsletters/2025-12-24-newsletter/)
+- [Boletín #2: Actualizaciones de NIP](/es/newsletters/2025-12-24-newsletter/)
+- [Boletín #3: Resumen de diciembre](/es/newsletters/2025-12-31-newsletter/)
+- [Boletín #7: Actualizaciones de NIP](/es/newsletters/2026-01-07-newsletter/)
+- [Boletín #11: NIP Deep Dive](/es/newsletters/2026-02-25-newsletter/)
+- [Boletín #13: Samizdat v1.0.0-alpha](/en/newsletters/2026-03-11-newsletter/)
 
 **Ver también:**
 - [NIP-46: Nostr Connect](/es/topics/nip-46/)

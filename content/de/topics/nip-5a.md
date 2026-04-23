@@ -2,18 +2,18 @@
 title: "NIP-5A: Static Websites"
 date: 2026-04-01
 translationOf: /en/topics/nip-5a.md
-translationDate: 2026-04-01
+translationDate: 2026-04-22
 draft: false
 categories:
   - Protocol
   - Hosting
 ---
 
-NIP-5A definiert, wie statische Websites unter Nostr-Schlüsselpaaren gehostet werden. Seitenautoren veröffentlichen signierte Manifest-Events, die URL-Pfade auf SHA256-Content-Hashes abbilden, und Host-Server lösen diese Manifeste auf, um die Dateien der Website aus Blossom-Speicher auszuliefern.
+NIP-5A definiert, wie statische Websites unter Nostr-Keypairs gehostet werden. Site-Autoren veröffentlichen signierte Manifest-Events, die URL-Pfade auf SHA256-Content-Hashes abbilden, und Host-Server lösen diese Manifeste auf, um die Dateien der Site aus Blossom-Storage auszuliefern.
 
 ## Funktionsweise
 
-Die Spezifikation verwendet zwei Event-Kinds. Kind `15128` ist ein Root-Site-Manifest, eines pro Pubkey, das als Standard-Website für diesen Schlüssel dient. Kind `35128` ist ein benanntes Site-Manifest, identifiziert durch einen `d`-Tag, das wie eine Subdomain fungiert. Jedes Manifest enthält `path`-Tags, die absolute URL-Pfade auf SHA256-Hashes der auszuliefernden Dateien abbilden.
+Die Spezifikation verwendet zwei Event-Kinds. Kind `15128` ist ein Root-Site-Manifest, eines pro pubkey, das als Standard-Website für diesen Schlüssel dient. Kind `35128` ist ein benanntes Site-Manifest, identifiziert durch ein `d`-Tag, das wie eine Subdomain fungiert. Jedes Manifest enthält `path`-Tags, die absolute URL-Pfade auf SHA256-Hashes der auszuliefernden Dateien abbilden.
 
 ```json
 {
@@ -33,11 +33,11 @@ Die Spezifikation verwendet zwei Event-Kinds. Kind `15128` ist ein Root-Site-Man
 }
 ```
 
-Ein Host-Server empfängt eine HTTP-Anfrage, extrahiert den Pubkey des Autors aus der Subdomain, ruft das Site-Manifest aus der Relay-Liste des Autors ab, löst den angeforderten Pfad in einen Content-Hash auf und lädt den passenden Blob vom Blossom-Server oder den Servern herunter, die in den `server`-Tags aufgeführt sind.
+Ein Host-Server empfängt eine HTTP-Anfrage, extrahiert den pubkey des Autors aus der Subdomain, ruft das Site-Manifest aus der Relay-Liste des Autors ab, löst den angeforderten Pfad in einen Content-Hash auf und lädt den passenden Blob vom Blossom-Server oder den Servern herunter, die in den `server`-Tags aufgeführt sind.
 
 ## URL-Auflösung
 
-Root-Sites verwenden den npub als Subdomain. Benannte Sites verwenden eine 50-Zeichen-Base36-Kodierung des rohen Pubkeys gefolgt vom `d`-Tag-Wert, alles in einem einzigen DNS-Label. Da DNS-Labels auf 63 Zeichen begrenzt sind und die Base36-Pubkey-Kodierung immer 50 verwendet, sind Bezeichner für benannte Sites auf 13 Zeichen begrenzt.
+Root-Sites verwenden den npub als Subdomain. Benannte Sites verwenden eine 50-Zeichen-Base36-Kodierung des rohen pubkey gefolgt vom `d`-Tag-Wert, alles in einem einzigen DNS-Label. Weil DNS-Labels auf 63 Zeichen begrenzt sind und die Base36-pubkey-Kodierung immer 50 Zeichen nutzt, sind Bezeichner für benannte Sites auf 13 Zeichen begrenzt.
 
 ## Implementierungen
 
@@ -47,14 +47,15 @@ Root-Sites verwenden den npub als Subdomain. Benannte Sites verwenden eine 50-Ze
 ---
 
 **Primärquellen:**
-- [NIP-5A-Spezifikation](https://github.com/nostr-protocol/nips/blob/master/5A.md)
-- [PR #1538](https://github.com/nostr-protocol/nips/pull/1538) - Ursprünglicher Vorschlag und Merge
-- [nsite](https://github.com/lez/nsite) - Referenz-Host-Implementierung
-- [nsite-manager](https://github.com/hzrd149/nsite-manager) - Veröffentlichungs- und Verwaltungs-UI
+- [NIP-5A Specification](https://github.com/nostr-protocol/nips/blob/master/5A.md)
+- [PR #1538](https://github.com/nostr-protocol/nips/pull/1538) - Original proposal and merge
+- [nsite](https://github.com/lez/nsite) - Reference host implementation
+- [nsite-manager](https://github.com/hzrd149/nsite-manager) - Publishing and management UI
 
 **Erwähnt in:**
-- [Newsletter #16: NIP-5A wird gemergt](/de/newsletters/2026-04-01-newsletter/#nip-5a-wird-gemergt-und-bringt-statische-websites-auf-nostr)
-- [Newsletter #16: NIP Deep Dive](/de/newsletters/2026-04-01-newsletter/#nip-deep-dive-nip-5a-static-websites)
+- [Newsletter #16: NIP-5A merges](/de/newsletters/2026-04-01-newsletter/)
+- [Newsletter #16: NIP Deep Dive](/de/newsletters/2026-04-01-newsletter/)
+- [Newsletter #19: NIP-5D applets proposal](/en/newsletters/2026-04-22-newsletter/)
 
 **Siehe auch:**
 - [Blossom](/de/topics/blossom/)

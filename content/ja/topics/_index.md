@@ -5,6 +5,10 @@ type: topics
 cascade:
   type: topics
 draft: false
+translationOf: /en/topics/_index.md
+translationDate: 2026-04-23
+categories:
+  - トピック
 ---
 
 Nostr Compassのトピックインデックスでは、プロトコルの主要概念、NIP、クライアント実装、リレーソフトウェアを解説しています。各トピックには、一次情報源（NIP、コードリポジトリ）へのリンクと、ニュースレターでの関連記事が含まれています。

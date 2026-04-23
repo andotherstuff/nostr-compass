@@ -1,8 +1,8 @@
 ---
-title: "NIP-94: Bestandsmetadata"
+title: "NIP-94: File Metadata"
 date: 2025-12-31
 translationOf: /en/topics/nip-94.md
-translationDate: 2026-03-07
+translationDate: 2026-04-22
 draft: false
 categories:
   - Media
@@ -17,7 +17,7 @@ NIP-94 gebruikt kind `1063` als een zelfstandig metadata-event voor een bestand.
 
 Die scheiding is belangrijk omdat het metadata-event onafhankelijk kan worden geïndexeerd, gefilterd en hergebruikt van elke note die naar het bestand linkt. Een client kan een kind `1063` event behandelen als de canonieke beschrijving van een asset in plaats van metadata uit vrije posttekst te moeten halen.
 
-## Vereiste en Optionele Tags
+## Required and Optional Tags
 
 **Kerntags:**
 - `url` - Downloadlink voor het bestand
@@ -40,7 +40,7 @@ Die scheiding is belangrijk omdat het metadata-event onafhankelijk kan worden ge
 
 De tags `ox` en `x` zijn makkelijk over het hoofd te zien, maar nuttig in de praktijk. `ox` identificeert het originele geuploade bestand, terwijl `x` de getransformeerde versie kan identificeren die een server daadwerkelijk aanbiedt. Wanneer een mediahost uploads comprimeert of schaalt, kunnen clients toch de identiteit van het originele bestand behouden zonder te doen alsof de getransformeerde blob byte voor byte identiek is.
 
-## Wanneer Je Het Gebruikt
+## When To Use It
 
 NIP-94 is bedoeld voor toepassingen voor bestandsdeling, niet voor social- of longform-contentclients. Voorgestelde toepassingen zijn onder meer:
 
@@ -58,10 +58,11 @@ NIP-94 werkt over storage backends heen. Een bestand kan worden geüpload via [N
 ---
 
 **Primaire bronnen:**
-- [NIP-94-specificatie](https://github.com/nostr-protocol/nips/blob/master/94.md)
+- [NIP-94 Specification](https://github.com/nostr-protocol/nips/blob/master/94.md)
 
-**Genoemd in:**
-- [Newsletter #3: December-terugblik](/en/newsletters/2025-12-31-newsletter/#december-recap-five-years-of-nostr-decembers)
+**Vermeld in:**
+- [Newsletter #3: December Recap](/en/newsletters/2025-12-31-newsletter/)
+- [Newsletter #14: NIP Deep Dive](/nl/newsletters/2026-03-18-newsletter/)
 
 **Zie ook:**
 - [NIP-92: Mediabijlagen](/nl/topics/nip-92/)

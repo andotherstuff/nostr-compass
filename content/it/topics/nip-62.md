@@ -1,8 +1,8 @@
 ---
 title: "NIP-62: Vanish Requests"
 date: 2026-01-13
-translationOf: /en/topics/nip-62/
-translationDate: 2026-03-07
+translationOf: /en/topics/nip-62.md
+translationDate: 2026-04-22
 draft: false
 categories:
   - Privacy
@@ -63,8 +63,8 @@ NIP-62 integra [NIP-09](/it/topics/nip-09/). NIP-09 è l'evento generale di rich
 - [NIP-62 Specification](https://github.com/nostr-protocol/nips/blob/master/62.md)
 
 **Citato in:**
-- [Newsletter #5: Notable Code Changes](/en/newsletters/2026-01-13-newsletter/#rust-nostr-library)
-- [Newsletter #10: rust-nostr](/en/newsletters/2026-03-04-newsletter/#rust-nostr-nip-62-request-to-vanish)
+- [Newsletter #5: Notable Code Changes](/it/newsletters/2026-01-13-newsletter/)
+- [Newsletter #10: rust-nostr](/it/newsletters/2026-03-04-newsletter/)
 
 **Vedi anche:**
 - [NIP-09: Event Deletion Request](/it/topics/nip-09/)

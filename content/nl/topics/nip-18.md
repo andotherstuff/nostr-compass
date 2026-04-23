@@ -2,6 +2,7 @@
 title: "NIP-18: Reposts"
 date: 2025-12-17
 translationDate: 2026-03-07
+translationOf: /en/topics/nip-18.md
 draft: false
 categories:
   - Sociaal

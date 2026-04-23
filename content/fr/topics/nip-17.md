@@ -2,7 +2,7 @@
 title: "NIP-17 : Messages directs privés"
 date: 2025-12-17
 translationOf: /en/topics/nip-17.md
-translationDate: 2026-03-07
+translationDate: 2026-04-22
 draft: false
 categories:
   - Privacy
@@ -58,11 +58,12 @@ NIP-17 définit aussi des listes de relais de boîte de réception pour la messa
 - [PR #2098](https://github.com/nostr-protocol/nips/pull/2098) - nettoyage de formulation et mise à jour du support des réactions
 
 **Mentionné dans :**
-- [Newsletter #1 : NIP Updates](/en/newsletters/2025-12-17-newsletter/#nip-updates)
-- [Newsletter #2 : News](/en/newsletters/2025-12-24-newsletter/#news)
-- [Newsletter #3 : December Recap](/en/newsletters/2025-12-31-newsletter/#december-recap-five-years-of-nostr-decembers)
-- [Newsletter #3 : Notable Code Changes](/en/newsletters/2025-12-31-newsletter/#shopstr-marketplace)
-- [Newsletter #5 : News](/en/newsletters/2026-01-13-newsletter/#news)
+- [Newsletter #1 : NIP Updates](/fr/newsletters/2025-12-17-newsletter/)
+- [Newsletter #2 : News](/fr/newsletters/2025-12-24-newsletter/)
+- [Newsletter #3 : December Recap](/en/newsletters/2025-12-31-newsletter/)
+- [Newsletter #3 : Notable Code Changes](/en/newsletters/2025-12-31-newsletter/)
+- [Newsletter #5 : News](/fr/newsletters/2026-01-13-newsletter/)
+- [Newsletter #19 : NipLock](/en/newsletters/2026-04-22-newsletter/)
 
 **Voir aussi :**
 - [NIP-04 : Messages directs chiffrés (obsolète)](/fr/topics/nip-04/)

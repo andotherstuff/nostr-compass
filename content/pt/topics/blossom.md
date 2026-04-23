@@ -43,9 +43,9 @@ Essa divisão permite que os clientes implementem o mínimo necessário para a i
 - [Guia de cache local Blossom](https://github.com/hzrd149/blossom/blob/master/implementations/local-blossom-cache.md)
 
 **Mencionado em:**
-- [Boletim informativo nº 1: Notícias](/pt/newsletters/2025-12-17-newsletter/#news)
-- [Boletim informativo nº 2: Mudanças notáveis no código](/pt/newsletters/2025-12-24-newsletter/#notable-code-and-documentation-changes)
-- [Boletim informativo nº 10: Surge a camada de cache local Blossom](/pt/newsletters/2026-02-18-newsletter/#blossom-local-cache-layer-emerges)
+- [Boletim informativo nº 1: Notícias](/pt/newsletters/2025-12-17-newsletter/)
+- [Boletim informativo nº 2: Mudanças notáveis no código](/pt/newsletters/2025-12-24-newsletter/)
+- [Boletim informativo nº 10: Surge a camada de cache local Blossom](/pt/newsletters/2026-02-18-newsletter/)
 
 **Veja também:**
 - [BUD-03: Lista de servidores de usuários](/pt/topics/bud-03/)

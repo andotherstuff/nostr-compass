@@ -1,8 +1,8 @@
 ---
-title: "NIP-52: Kalenderereignisse"
+title: "NIP-52: Calendar Events"
 date: 2026-01-28
 translationOf: /en/topics/nip-52.md
-translationDate: 2026-03-07
+translationDate: 2026-04-22
 draft: false
 categories:
   - NIP
@@ -10,13 +10,13 @@ categories:
   - Events
 ---
 
-NIP-52 definiert Kalenderereignisse, Kalender und RSVPs auf Nostr. Es gibt Clients einen Standardweg, zeitbasierte oder datumsbasierte Ereignisse zu veroffentlichen, ohne fur jede App ein eigenes Event-Modell zu erfinden.
+NIP-52 definiert Calendar Events, Kalender und RSVPs auf Nostr. Es gibt Clients einen Standardweg, zeitbasierte oder datumsbasierte Events zu veröffentlichen, ohne für jede App ein eigenes Event-Modell zu erfinden.
 
-## Event-Kinds
+## Event Kinds
 
-### Kind 31922: Datumsbasiertes Kalenderereignis
+### Kind 31922: Date-Based Calendar Event
 
-Verwende Kind `31922` fur ganztagige oder mehrtagige Ereignisse, bei denen die genaue Uhrzeit keine Rolle spielt.
+Verwende kind `31922` für ganztägige oder mehrtägige Events, bei denen die genaue Uhrzeit keine Rolle spielt.
 
 ```json
 {
@@ -31,9 +31,9 @@ Verwende Kind `31922` fur ganztagige oder mehrtagige Ereignisse, bei denen die g
 }
 ```
 
-### Kind 31923: Zeitbasiertes Kalenderereignis
+### Kind 31923: Time-Based Calendar Event
 
-Verwende Kind `31923` fur Ereignisse mit genauen Start- und Endzeiten.
+Verwende kind `31923` für Events mit präzisen Start- und Endzeiten.
 
 ```json
 {
@@ -49,43 +49,44 @@ Verwende Kind `31923` fur Ereignisse mit genauen Start- und Endzeiten.
 }
 ```
 
-Zeitbasierte Ereignisse brauchen auBerdem ein oder mehrere `D`-Tags, die jeweils den Unix-Timestamp auf Tagesebene fur die Tage enthalten, uber die sich das Ereignis erstreckt. Dieses Tag existiert, damit Relays und Clients nach Tagen indexieren konnen, ohne jeden vollstandigen Timestamp zu parsen.
+Zeitbasierte Events brauchen außerdem ein oder mehrere `D`-Tags, die jeweils den Unix-Timestamp auf Tagesebene für die Tage enthalten, über die sich das Event erstreckt. Dieses Tag existiert, damit Relays und Clients nach Tagen indexieren können, ohne jeden vollständigen Timestamp zu parsen.
 
-## Kalender- und RSVP-Unterstutzung
+## Calendar and RSVP Support
 
-Kind `31924` ist ein Kalender, also eine adressierbare Liste von Kalenderereignissen. Kind `31925` ist ein RSVP, das mit einem `a`-Tag auf ein bestimmtes Kalenderereignis verweist und optional mit einem `e`-Tag auf eine konkrete Revision.
+Kind `31924` ist ein Kalender, also eine addressable Liste von Calendar Events. Kind `31925` ist ein RSVP, das mit einem `a`-Tag auf ein bestimmtes Calendar Event verweist und optional mit einem `e`-Tag auf eine konkrete Revision.
 
-Events vom Kind `31925` erlauben Nutzern Antworten mit:
+Kind-`31925`-Events erlauben Nutzern Antworten mit:
 
-- `accepted` - Wird teilnehmen
-- `declined` - Wird nicht teilnehmen
-- `tentative` - Nimmt vielleicht teil
+- `accepted` - wird teilnehmen
+- `declined` - wird nicht teilnehmen
+- `tentative` - nimmt vielleicht teil
 
-RSVPs konnen auch `fb`-Werte von `free` oder `busy` enthalten. Das liefert zusatzlichen Planungs-Kontext uber den reinen Teilnahme-Status hinaus.
+RSVPs können außerdem `fb`-Werte von `free` oder `busy` enthalten. Das liefert zusätzlichen Planungskontext über den reinen Teilnahmestatus hinaus.
 
 ## Implementierungshinweise
 
-- **Addressable**: Ereignisse und Kalender konnen aktualisiert werden, ohne Duplikate zu erzeugen
-- **Timezone support**: Zeitbasierte Ereignisse konnen IANA-Zeitzonenbezeichner verwenden
-- **Location data**: Tags konnen menschenlesbare Orte, Links und Geohashes enthalten
-- **Collaborative requests**: Autoren konnen um Aufnahme in den Kalender anderer bitten, indem sie ihn taggen
+- **Addressable**: Events und Kalender können aktualisiert werden, ohne Duplikate zu erzeugen
+- **Timezone support**: Zeitbasierte Events können IANA-Zeitzonenbezeichner nutzen
+- **Location data**: Tags können menschenlesbare Orte, Links und Geohashes enthalten
+- **Collaborative requests**: Event-Autoren können um Aufnahme in den Kalender anderer bitten, indem sie ihn taggen
 
-Wiederkehrende Ereignisse sind bewusst nicht Teil des Scopes. Die Spezifikation uberlasst Wiederholungsregeln den Clients. Das halt die Indexierung auf Relay-Seite einfach und vermeidet die ublichen Kalender-Randfalle rund um Sommerzeit-Wechsel und Ausnahmen.
+Wiederkehrende Events sind bewusst nicht Teil des Scopes. Die Spezifikation überlässt Recurrence Rules den Clients. Das hält die Indexierung auf Relay-Seite einfach und vermeidet die üblichen Kalender-Randfälle rund um Sommerzeitwechsel und Ausnahmen.
 
-## Warum es wichtig ist
+## Warum das wichtig ist
 
-NIP-52 beschreibt mehr als nur ein Treffen. Es trennt Ereignisdefinition, Kalender-Mitgliedschaft und Teilnehmerantworten in unterschiedliche Event-Kinds. So kann eine App ein Ereignis veroffentlichen, eine andere Kalender aggregieren und eine dritte den RSVP-Status verwalten, ohne dass alle drei dasselbe Backend teilen mussen.
+NIP-52 beschreibt mehr als nur ein Treffen. Es trennt Event-Definition, Kalender-Mitgliedschaft und Teilnehmerantworten in unterschiedliche Event-Kinds. So kann eine App ein Event veröffentlichen, eine andere Kalender aggregieren und eine dritte den RSVP-Status verwalten, ohne dass alle drei dasselbe Backend teilen müssen.
 
 ---
 
-**Primarquellen:**
+**Primärquellen:**
 - [NIP-52 Specification](https://github.com/nostr-protocol/nips/blob/master/52.md)
 - [PR #1752: Day-Granularity Timestamp Tag](https://github.com/nostr-protocol/nips/pull/1752)
 
-**Erwahnt in:**
-- [Newsletter #7: Notedeck Calendar App Draft](/en/newsletters/2026-01-28-newsletter/#notedeck-progress-calendar-app-and-ux-polish)
-- [Newsletter #10: NIP Updates](/en/newsletters/2026-02-18-newsletter/#nip-updates)
-- [Newsletter #10: NIP Deep Dive](/en/newsletters/2026-02-18-newsletter/#nip-deep-dive-nip-52-calendar-events)
+**Erwähnt in:**
+- [Newsletter #7: Notedeck Calendar App Draft](/de/newsletters/2026-01-28-newsletter/)
+- [Newsletter #10: NIP Updates](/de/newsletters/2026-02-18-newsletter/)
+- [Newsletter #10: NIP Deep Dive](/de/newsletters/2026-02-18-newsletter/)
+- [Newsletter #13: Calendar by Form* v0.2.0](/en/newsletters/2026-03-11-newsletter/)
 
 **Siehe auch:**
 - [NIP-22: Comment](/de/topics/nip-22/)

@@ -5,6 +5,10 @@ type: topics
 cascade:
   type: topics
 draft: false
+translationOf: /en/topics/_index.md
+translationDate: 2026-04-23
+categories:
+  - 主题
 ---
 
 Nostr Compass 主题索引记录了关键协议概念、NIP、客户端实现和中继软件。每个主题都包含指向主要来源（NIP、代码仓库）的链接以及我们通讯中的相关报道。

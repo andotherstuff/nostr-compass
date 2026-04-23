@@ -2,7 +2,7 @@
 title: "NIP-46 : Nostr Connect"
 date: 2025-12-17
 translationOf: /en/topics/nip-46.md
-translationDate: 2026-03-07
+translationDate: 2026-04-22
 draft: false
 categories:
   - Signing
@@ -47,10 +47,13 @@ La méthode `switch_relays` existe pour que le signataire puisse déplacer la se
 - [NIP-46 Specification](https://github.com/nostr-protocol/nips/blob/master/46.md)
 
 **Mentionné dans :**
-- [Newsletter #1 : Notable Code Changes](/en/newsletters/2025-12-17-newsletter/#amethyst-android)
-- [Newsletter #3 : December Recap](/en/newsletters/2025-12-31-newsletter/#december-recap-five-years-of-nostr-decembers)
-- [Newsletter #7 : Primal Android Becomes a Full Signing Hub](/en/newsletters/2026-01-07-newsletter/#primal-android-becomes-a-full-signing-hub)
-- [Newsletter #15 : NDK Collaborative Events and NIP-46 Timeout](/en/newsletters/2026-03-04-newsletter/#ndk-collaborative-events-and-nip-46-timeout)
+- [Newsletter #1 : Notable Code Changes](/fr/newsletters/2025-12-17-newsletter/)
+- [Newsletter #3 : December Recap](/en/newsletters/2025-12-31-newsletter/)
+- [Newsletter #7 : Primal Android Becomes a Full Signing Hub](/fr/newsletters/2026-01-07-newsletter/)
+- [Newsletter #15 : NDK Collaborative Events and NIP-46 Timeout](/fr/newsletters/2026-03-04-newsletter/)
+- [Newsletter #19 : support signataire de NipLock](/en/newsletters/2026-04-22-newsletter/)
+- [Newsletter #19 : signataire Heartwood de Forgesworn](/en/newsletters/2026-04-22-newsletter/)
+- [Newsletter #19 : connexion Aegis de Flotilla](/en/newsletters/2026-04-22-newsletter/)
 
 **Voir aussi :**
 - [NIP-55 : Android Signer](/fr/topics/nip-55/)

@@ -2,7 +2,7 @@
 title: "NIP-45: Event Counting"
 date: 2026-02-11
 translationOf: /en/topics/nip-45.md
-translationDate: 2026-03-07
+translationDate: 2026-04-22
 draft: false
 categories:
   - NIPs
@@ -11,7 +11,7 @@ categories:
 
 NIP-45 definieert hoe clients relays vragen om events te tellen die overeenkomen met een filter, zonder de overeenkomende events zelf over te dragen. Het hergebruikt de NIP-01-filtersyntax, zodat een client vaak een bestaande `REQ` kan omzetten in een `COUNT`-verzoek met dezelfde filters.
 
-## Hoe het werkt
+## Hoe Het Werkt
 
 Een client stuurt een `COUNT`-verzoek met een subscription ID en filter:
 
@@ -39,24 +39,32 @@ HLL lost een fundamenteel probleem op: het tellen van unieke events over meerder
 
 De spec legt het aantal registers vast op 256 voor interoperabiliteit. Dat houdt de payload klein en maakt relay-side caching praktisch omdat elke relay dezelfde registerindeling berekent voor dezelfde geschikte filter.
 
-## Interop-opmerkingen
+## Interop Notes
 
 HLL is alleen gedefinieerd voor filters met een tag-attribuut, omdat de offset die wordt gebruikt om de registers op te bouwen wordt afgeleid van de eerste tagwaarde in het filter. De spec noemt ook een kleine set canonieke query's, waaronder reacties, reposts, quotes, replies, comments en follower counts. Dat zijn de tellingen die relays het makkelijkst kunnen voorberekenen of cachen.
 
-## Waarom het belangrijk is
+## Why It Matters
 
 Follower counts, reaction counts en reply counts zijn de belangrijkste use cases. Zonder NIP-45 moeten clients ofwel de lokale weergave van een enkele relay vertrouwen, of alle overeenkomende events downloaden en ze lokaal dedupliceren. NIP-45 houdt het tellen binnen de relay, en HLL maakt multi-relay tellingen praktisch zonder een relay tot autoriteit te maken.
+
+---
+
+## Implementaties
+
+- [nostream](https://github.com/Cameri/nostream) voegde `COUNT`-ondersteuning toe in [PR #522](https://github.com/Cameri/nostream/pull/522), zodat clients kunnen opvragen hoeveel events bij een filter passen zonder ze op te halen.
 
 ---
 
 **Primaire bronnen:**
 - [NIP-45: Event Counting](https://github.com/nostr-protocol/nips/blob/master/45.md)
 - [PR #1561: HyperLogLog Relay Response](https://github.com/nostr-protocol/nips/pull/1561)
+- [nostream PR #522](https://github.com/Cameri/nostream/pull/522) - NIP-45 COUNT support
 
 **Vermeld in:**
-- [Nieuwsbrief #9: NIP Deep Dive](/en/newsletters/2026-02-11-newsletter/#nip-deep-dive-nip-45-event-counting-and-hyperloglog)
-- [Nieuwsbrief #9: NIP Updates](/en/newsletters/2026-02-11-newsletter/#nip-updates)
-- [Nieuwsbrief #12: Five Years of Nostr Februaries](/en/newsletters/2026-03-04-newsletter/)
+- [Newsletter #9: NIP Deep Dive](/nl/newsletters/2026-02-11-newsletter/)
+- [Newsletter #9: NIP Updates](/nl/newsletters/2026-02-11-newsletter/)
+- [Newsletter #12: Five Years of Nostr Februaries](/nl/newsletters/2026-03-04-newsletter/)
+- [Newsletter #19: nostream NIP-45 support](/en/newsletters/2026-04-22-newsletter/)
 
 **Zie ook:**
 - [NIP-11: Relay Information Document](/nl/topics/nip-11/)

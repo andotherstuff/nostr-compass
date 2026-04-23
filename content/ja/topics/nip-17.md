@@ -1,70 +1,73 @@
 ---
-title: "NIP-17: プライベートダイレクトメッセージ"
+title: "NIP-17: Private Direct Messages"
 date: 2025-12-17
-translationDate: 2026-03-07
+translationOf: /en/topics/nip-17.md
+translationDate: 2026-04-22
 draft: false
 categories:
   - Privacy
   - Messaging
 ---
 
-NIP-17は、送信者のプライバシーを守るためにNIP-59のgift wrappingを使うプライベートダイレクトメッセージを定義します。外側のイベントで送信者が露出するNIP-04 DMとは違い、NIP-17は送信者をリレーや何気なく観測している第三者から隠します。
+NIP-17は、送信者privacyのためにNIP-59 gift wrappingを使うprivate direct messagesを定義します。外側のイベントで送信者が露出するNIP-04 DMとは異なり、NIP-17はrelayや受動的な観測者から送信者を隠します。
 
 ## 仕組み
 
-メッセージは複数の暗号化レイヤーで包まれます。
+メッセージは複数の暗号化層で包まれます。
+1. 実際のメッセージcontentはkind 14のrumor eventに入る
+2. sealがそのcontentを受信者向けに暗号化する
+3. gift wrapがsealをさらに暗号化し、使い捨てkeypairから公開する
 
-1. 実際のメッセージ内容はkind 14のrumor eventに入ります。
-2. sealがその内容を受信者向けに暗号化します。
-3. gift wrapがsealをさらに暗号化し、使い捨てのkeypairから公開します。
-
-外側のgift wrapはランダムな使い捨てキーペアを使用するため、リレーや観察者は誰がメッセージを送信したかを判断できません。
+外側のgift wrapはランダムな使い捨てkeypairを使うため、relayや観測者は誰がメッセージを送ったか判定できません。
 
 ## メッセージ構造
 
-- **Kind 14** - ラップされたレイヤーの内側にある実際のDM内容
-- **Kind 1059** - リレーに公開される外側のgift wrapイベント
-- ラッピングの内部ペイロードにはNIP-44暗号化を使います
-- 仕様は、reactionsのような対話的DM機能をより扱いやすくする方向で整理されています
+- **Kind 14** - 包まれた層の最内側にある実際のDM content
+- **Kind 1059** - relayへ公開される外側のgift wrap event
+- 包装フロー内のpayloadにはNIP-44 encryptionを使う
+- 仕様は、reactionsのような対話的DM機能をよりよく支えるため改善されてきた
 
 ## セキュリティと信頼モデル
 
-- リレーは送信者を見ることができない（gift wrapの使い捨てキーペアで隠される）
+- gift wrapの使い捨てkeypairにより、relayは送信者を見られない
 - 受信者は見える（gift wrapの`p`タグ内）
-- メッセージのタイムスタンプはウィンドウ内でランダム化される
-- リレー上で可視のスレッディングや会話グループ化がない
+- メッセージtimestampは一定の範囲でランダム化される
+- relay上ではvisibleなthreadingや会話グループ化がない
 
-受信者はアンラップ後に送信者が誰かを知ります。NIP-17が隠すのはネットワークに対する送信者の識別情報であって、相手参加者に対する識別情報ではありません。これが「private DMs」という表現を考えるうえで重要な区別です。
+受信者は、unwrapした後には誰が送ったかを知ります。NIP-17が隠すのはネットワークに対する送信者identityであって、相手参加者に対してではありません。NIP-17を「private DMs」と呼ぶとき、この違いは重要です。
 
 ## なぜ重要か
 
-NIP-04 DMはコンテンツを暗号化しますがメタデータは公開されたまま:
-- 送信者pubkeyは公開
-- 受信者pubkeyは`p`タグ内
-- タイムスタンプは正確
+NIP-04 DMはcontentを暗号化しても、metadataは可視のままです。
 
-NIP-17はより複雑な実装を犠牲にして送信者を隠します。
+- 送信者pubkeyは公開される
+- 受信者pubkeyは`p`タグに入る
+- timestampは正確なまま
 
-その複雑さによって、実際のプライバシー改善が得られます。リレーはラップされたメッセージが特定の受信者宛てであることまでは見えますが、kind 4メッセージの外側メタデータのように、送信者と受信者の関係を直接組み立てることはできません。
+NIP-17は、その代償として実装が複雑になる一方、送信者を隠します。
+
+この複雑さは実際のプライバシー改善をもたらします。relayはwrapped messageが誰宛てかは見えても、kind 4メッセージのように外側metadataだけで直接的な送信者-受信者グラフを構築できません。
 
 ## 相互運用メモ
 
-NIP-17はプライベートメッセージ向けのinbox relay listも定義します。クライアントはkind 10050イベントを公開して、送信者がDM配信先としてどのリレーを使うべきかを知らせられます。DMの配送経路を公開コンテンツの経路と分けることで、プライベートなトラフィックを誤った場所に流すのを避けやすくなります。
+NIP-17は、private messaging向けのinbox relay listも定義します。clientはkind 10050イベントを公開し、送信者がDM配信先としてどのrelayを使うべきか分かるようにします。DM routingをpublic content routingと分離することで、private trafficを誤った場所へ公開するリスクを減らせます。
 
 ---
 
-**主要ソース:**
-- [NIP-17仕様](https://github.com/nostr-protocol/nips/blob/master/17.md)
+**Primary sources:**
+- [NIP-17 Specification](https://github.com/nostr-protocol/nips/blob/master/17.md)
 - [PR #2098](https://github.com/nostr-protocol/nips/pull/2098) - wording cleanup and reaction support update
 
-**言及箇所:**
-- [ニュースレター #1: NIP更新](/ja/newsletters/2025-12-17-newsletter/#nip-updates)
-- [ニュースレター #2: ニュース](/ja/newsletters/2025-12-24-newsletter/#news)
-- [ニュースレター #3: December Recap](/ja/newsletters/2025-12-31-newsletter/#december-recap-five-years-of-nostr-decembers)
-- [ニュースレター #3: Notable Code Changes](/ja/newsletters/2025-12-31-newsletter/#shopstr-marketplace)
-- [ニュースレター #5: ニュース](/ja/newsletters/2026-01-13-newsletter/#news)
+**Mentioned in:**
+- [Newsletter #1: NIP Updates](/ja/newsletters/2025-12-17-newsletter/)
+- [Newsletter #2: News](/ja/newsletters/2025-12-24-newsletter/)
+- [Newsletter #3: December Recap](/en/newsletters/2025-12-31-newsletter/)
+- [Newsletter #3: Notable Code Changes](/en/newsletters/2025-12-31-newsletter/)
+- [Newsletter #5: News](/ja/newsletters/2026-01-13-newsletter/)
+- [Newsletter #13: Vector](/en/newsletters/2026-03-11-newsletter/)
+- [Newsletter #19: NipLock password manager](/en/newsletters/2026-04-22-newsletter/)
 
-**関連項目:**
+**See also:**
 - [NIP-04: Encrypted Direct Messages (Deprecated)](/ja/topics/nip-04/)
 - [NIP-44: Encrypted Payloads](/ja/topics/nip-44/)
 - [NIP-59: Gift Wrap](/ja/topics/nip-59/)

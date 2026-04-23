@@ -1,12 +1,13 @@
 ---
 title: "NIP-57: Zaps"
 date: 2025-12-17
-translationDate: 2026-03-07
+translationOf: /en/topics/nip-57.md
+translationDate: 2026-04-22
 draft: false
 categories:
   - Wallet
   - Lightning
-  - Sociaal
+  - Social
 ---
 
 NIP-57 definieert zaps, een manier om Lightning-betalingen te koppelen aan Nostr-identiteiten en content. De NIP standaardiseert zowel het verzoek om een zap-enabled invoice als het ontvangstbewijs-event dat wallets na betaling publiceren.
@@ -40,20 +41,33 @@ Gepubliceerd door de wallet server van de ontvanger na betalingsbevestiging. Het
 
 Clients moeten het receipt valideren tegen de LNURL `nostrPubkey` van de ontvanger, het invoicebedrag en het oorspronkelijke zap request. Een receipt zonder die validatie is alleen een claim.
 
-## Vertrouwen en Afwegingen
+## Trust and Tradeoffs
+
+## Private en Anonieme Zaps
+
+Private zaps voegen daarbovenop een vertrouwelijkheidslaag toe. Een afzender kan de `content` van het zap request voor de ontvanger encrypten en een `anon`-tag op het outer request opnemen, zodat het relaynetwerk het betalingsdoel ziet maar de meegestuurde notitie niet kan lezen. Een anonieme zap gaat nog een stap verder: de client genereert voor het zap request zelf een nieuw ephemeral keypair, zodat het receipt nog steeds bewijst dat een betaling heeft plaatsgevonden, maar de ontvanger de zap niet aan de langlevende pubkey van de afzender kan koppelen.
+
+## Zap Goals en Splits
+
+NIP-57 vormt de basis voor het zap-goalsysteem uit [NIP-75](/nl/topics/nip-75/). Een goal is een kind `9041`-event dat een target amount en een relayset opgeeft waar receipts meetellen, en clients tellen de goal progress op door de gevalideerde `bolt11`-bedragen van gematchte kind `9735`-events te sommeren.
+
+Zap splits, gedefinieerd in een appendix van de NIP, laten een ontvanger een kind `0`-profiel publiceren met meerdere gewogen `zap`-tags zodat een enkele zap-betaling atomair over meerdere pubkeys wordt verdeeld. [Amethyst](https://github.com/vitorpamplona/amethyst), [Damus](https://github.com/damus-io/damus) en [noStrudel](https://github.com/hzrd149/nostrudel) implementeren split-paying end-to-end.
 
 Zaps zijn nuttig omdat ze betalingen zichtbaar maken binnen de sociale graph, maar het receipt wordt nog steeds gemaakt door de wallet-infrastructuur van de ontvanger. De specificatie zelf merkt op dat een zap receipt geen universeel betalingsbewijs is. Je kunt het het best begrijpen als een door de wallet ondertekende verklaring dat een invoice die aan een zap request was gekoppeld, is betaald.
 
 ---
 
 **Primaire bronnen:**
-- [NIP-57-specificatie](https://github.com/nostr-protocol/nips/blob/master/57.md)
+- [NIP-57 Specification](https://github.com/nostr-protocol/nips/blob/master/57.md)
 
 **Vermeld in:**
-- [Nieuwsbrief #1: Nieuws](/en/newsletters/2025-12-17-newsletter/#news)
-- [Nieuwsbrief #2: Nieuws](/en/newsletters/2025-12-24-newsletter/#news)
-- [Nieuwsbrief #3: Opmerkelijke codewijzigingen](/en/newsletters/2025-12-31-newsletter/#amethyst-android)
-- [Nieuwsbrief #9: NIP-updates](/en/newsletters/2026-02-11-newsletter/#nip-updates)
+- [Newsletter #1: News](/nl/newsletters/2025-12-17-newsletter/)
+- [Newsletter #2: News](/nl/newsletters/2025-12-24-newsletter/)
+- [Newsletter #3: Notable Code Changes](/en/newsletters/2025-12-31-newsletter/)
+- [Newsletter #9: NIP Updates](/nl/newsletters/2026-02-11-newsletter/)
+- [Newsletter #19: NIP Deep Dive](/en/newsletters/2026-04-22-newsletter/)
 
 **Zie ook:**
 - [NIP-47: Nostr Wallet Connect](/nl/topics/nip-47/)
+- [NIP-75: Zap Goals](/nl/topics/nip-75/)
+- [NIP-53: Live Activities](/nl/topics/nip-53/)

@@ -2,6 +2,7 @@
 title: "NIP-34 (Git コラボレーション)"
 date: 2026-02-04
 description: "NIP-34はNostrイベントを通じて分散型gitリポジトリホスティングとコラボレーションを可能にします。"
+translationOf: /en/topics/nip-34.md
 translationDate: 2026-03-07
 draft: false
 categories:

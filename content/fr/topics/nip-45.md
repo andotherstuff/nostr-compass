@@ -2,11 +2,17 @@
 title: "NIP-45 : Comptage d'événements"
 date: 2026-02-11
 translationOf: /en/topics/nip-45.md
-translationDate: 2026-03-07
+translationDate: 2026-04-22
 draft: false
 categories:
   - NIPs
   - Protocol
+---
+
+## Implémentations
+
+- [nostream](https://github.com/Cameri/nostream) a ajouté le support `COUNT` dans [PR #522](https://github.com/Cameri/nostream/pull/522), permettant aux clients de demander combien d'événements correspondent à un filtre sans les récupérer.
+
 ---
 
 NIP-45 définit comment les clients demandent aux relais de compter les événements correspondant à un filtre sans transférer les événements eux-mêmes. Il réutilise la syntaxe de filtre NIP-01, de sorte qu'un client peut souvent transformer un `REQ` existant en requête `COUNT` avec les mêmes filtres.
@@ -52,11 +58,13 @@ Le nombre de followers, de réactions et de réponses sont les principaux cas d'
 **Sources principales :**
 - [NIP-45: Event Counting](https://github.com/nostr-protocol/nips/blob/master/45.md)
 - [PR #1561: HyperLogLog Relay Response](https://github.com/nostr-protocol/nips/pull/1561)
+- [nostream PR #522](https://github.com/Cameri/nostream/pull/522) - Support `COUNT` NIP-45
 
 **Mentionné dans :**
-- [Newsletter #9 : NIP Deep Dive](/en/newsletters/2026-02-11-newsletter/#nip-deep-dive-nip-45-event-counting-and-hyperloglog)
-- [Newsletter #9 : NIP Updates](/en/newsletters/2026-02-11-newsletter/#nip-updates)
-- [Newsletter #12 : Five Years of Nostr Februaries](/en/newsletters/2026-03-04-newsletter/)
+- [Newsletter #9 : NIP Deep Dive](/fr/newsletters/2026-02-11-newsletter/)
+- [Newsletter #9 : NIP Updates](/fr/newsletters/2026-02-11-newsletter/)
+- [Newsletter #12 : Five Years of Nostr Februaries](/fr/newsletters/2026-03-04-newsletter/)
+- [Newsletter #19 : support NIP-45 de nostream](/en/newsletters/2026-04-22-newsletter/)
 
 **Voir aussi :**
 - [NIP-11 : Relay Information Document](/fr/topics/nip-11/)

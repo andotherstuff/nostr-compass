@@ -1,47 +1,47 @@
 ---
-title: 'NIP-04: Mensagens diretas criptografadas (obsoleto)'
+title: 'NIP-04: Mensagens diretas criptografadas (obsoleta)'
 date: 2025-12-31
 draft: false
 categories:
-- Privacy
-- Messaging
+  - Privacy
+  - Messaging
 translationOf: /en/topics/nip-04.md
-translationDate: '2026-03-07'
+translationDate: 2026-04-22
 ---
 
-NIP-04 define mensagens diretas criptografadas usando eventos kind 4 e um segredo compartilhado derivado de ECDH. Foi o primeiro esquema DM da Nostr, mas agora é uma tecnologia legada e o novo trabalho de mensagens privadas foi transferido para o NIP-17.
+NIP-04 define mensagens diretas criptografadas usando eventos kind 4 e um segredo compartilhado derivado por ECDH. Foi o primeiro esquema de DM do Nostr, mas hoje é tecnologia legada, e o trabalho novo em mensagens privadas migrou para a NIP-17.
 
 ## Como funciona
 
-As mensagens usam eventos kind 4 com este fluxo básico:
+Mensagens usam eventos kind 4 com este fluxo básico:
 
-1. O remetente deriva um segredo compartilhado com o ECDH secp256k1.
-2. O texto simples é criptografado com AES-256-CBC.
-3. O evento inclui um `p` tag nomeando o destinatário.
-4. O texto cifrado é codificado como base64 e armazenado em `content` junto com o IV.
+1. O remetente deriva um segredo compartilhado com ECDH em secp256k1.
+2. O plaintext é criptografado com AES-256-CBC.
+3. O evento inclui uma tag `p` nomeando o destinatário.
+4. O ciphertext é codificado em base64 e armazenado em `content` junto com o IV.
 
-O evento em si ainda é um evento Nostr normal assinado, então relays pode ver os metadados externos mesmo que não consiga ler o texto simples.
+O próprio evento continua sendo um evento Nostr assinado normal, então relays conseguem ver os metadados externos mesmo sem conseguir ler o plaintext.
 
 ## Limites de segurança e privacidade
 
-O NIP-04 tem deficiências significativas de privacidade:
+NIP-04 tem deficiências importantes de privacidade:
 
-- **Vazamento de metadados** - O pubkey do remetente fica visível publicamente em todas as mensagens
-- **Sem privacidade do remetente** - Qualquer pessoa pode ver quem está enviando mensagens para quem
-- **Carimbos de data e hora exatos** - O tempo da mensagem não é aleatório
-- **Manuseio de chave não padrão** - O esquema usa apenas a coordenada X do ponto ECDH, o que dificultou a correção entre bibliotecas e deixou pouco espaço para evolução do protocolo
+- **Vazamento de metadados** - a pubkey do remetente fica publicamente visível em toda mensagem
+- **Sem privacidade do remetente** - qualquer pessoa consegue ver quem está mandando mensagem para quem
+- **Timestamps exatos** - o timing da mensagem não é randomizado
+- **Tratamento não padrão de chaves** - o esquema usa apenas a coordenada X do ponto ECDH, o que dificultou corretude entre bibliotecas e deixou pouco espaço para evolução do protocolo
 
-A especificação alerta explicitamente que "não chega nem perto do que há de mais moderno em comunicação criptografada".
+A própria especificação alerta explicitamente que ela não chega perto do estado da arte em comunicação criptografada.
 
-## Por que foi substituído
+## Por que foi substituída
 
-O NIP-04 criptografa o conteúdo da mensagem, mas não oculta o gráfico social. Os operadores de relay ainda podem ver quem enviou o evento, quem o recebe e quando foi publicado. São metadados suficientes para mapear conversas mesmo sem descriptografar o payload.
+NIP-04 criptografa o conteúdo da mensagem, mas não esconde o grafo social. Operadores de relay ainda conseguem ver quem enviou o evento, quem o recebe e quando ele foi publicado. Esse volume de metadados basta para mapear conversas mesmo sem descriptografar o payload.
 
-O NIP-17 resolve isso combinando a criptografia NIP-44 payload com o embrulho de presente NIP-59, que esconde o remetente dos relays e de observadores aleatórios. Novas implementações devem tratar o NIP-04 apenas como compatibilidade.
+A NIP-17 resolve isso combinando criptografia de payload da NIP-44 com gift wrapping da NIP-59, o que esconde o remetente de relays e observadores casuais. Implementações novas devem tratar a NIP-04 como compatibilidade apenas.
 
 ## Status de implementação
 
-Clientes e assinantes legados ainda expõem métodos de criptografia/descriptografia NIP-04 porque conversas antigas e aplicativos mais antigos permanecem em circulação. Essa camada de compatibilidade é importante para a migração, mas construir novos recursos sobre os eventos kind 4 geralmente significa levar adiante os antigos limites de privacidade.
+Clientes e signers legados ainda expõem métodos de encrypt e decrypt da NIP-04 porque conversas antigas e apps mais velhos ainda circulam. Essa camada de compatibilidade importa para migração, mas construir recursos novos em cima de eventos kind 4 geralmente significa carregar adiante os limites antigos de privacidade.
 
 ---
 
@@ -49,8 +49,9 @@ Clientes e assinantes legados ainda expõem métodos de criptografia/descriptogr
 - [Especificação NIP-04](https://github.com/nostr-protocol/nips/blob/master/04.md)
 
 **Mencionado em:**
-- [Boletim informativo nº 4: Aprofundamento do NIP](/pt/newsletters/2026-01-07-newsletter/#nip-04-encrypted-direct-messages-legacy)
-- [Boletim informativo nº 3: Recapitulação de dezembro](/pt/newsletters/2025-12-31-newsletter/#december-recap-five-years-of-nostr-decembers)
+- [Newsletter #4: NIP Deep Dive](/pt/newsletters/2026-01-07-newsletter/)
+- [Newsletter #3: Recapitulação de dezembro](/pt/newsletters/2025-12-31-newsletter/)
+- [Newsletter #19: migração do nostter para NIP-44](/en/newsletters/2026-04-22-newsletter/)
 
 **Veja também:**
 - [NIP-44: cargas criptografadas](/pt/topics/nip-44/)

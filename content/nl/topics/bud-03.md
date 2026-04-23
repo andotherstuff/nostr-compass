@@ -2,6 +2,7 @@
 title: "BUD-03: Gebruikersserverlijst"
 date: 2025-12-17
 translationDate: 2026-03-07
+translationOf: /en/topics/bud-03.md
 draft: false
 categories:
   - Media

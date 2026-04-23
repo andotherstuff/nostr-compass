@@ -2,7 +2,7 @@
 title: "NIP-65: Metadatos de Lista de Relays"
 date: 2026-01-13
 translationOf: /en/topics/nip-65.md
-translationDate: 2026-03-07
+translationDate: 2026-04-22
 draft: false
 categories:
   - Protocol
@@ -35,7 +35,7 @@ Cada etiqueta `r` contiene una URL WebSocket de relay y un marcador opcional que
 
 El campo `content` está vacío para eventos de lista de relays.
 
-## El Modelo Outbox
+## El modelo outbox
 
 NIP-65 habilita un patrón de distribución de contenido descentralizado llamado el "modelo outbox". En lugar de que todos publiquen y lean de los mismos relays centrales, los usuarios publican en sus propios relays preferidos y los clientes descubren dinámicamente dónde encontrar el contenido de cada usuario.
 
@@ -45,19 +45,19 @@ Los clientes que siguen el modelo outbox mantienen conexiones con los relays lis
 
 Esta arquitectura mejora la resistencia a la censura porque ningún relay único necesita almacenar o servir el contenido de todos. Si un relay se cae o bloquea a un usuario, su contenido permanece disponible en sus otros relays listados.
 
-## Por Qué Importa
+## Por qué importa
 
 NIP-65 cambia la selección de relays de un valor predeterminado codificado en el cliente a metadatos de enrutamiento publicados por el usuario. Eso permite a los clientes adaptarse a los hábitos reales de publicación y lectura de cada cuenta en lugar de asumir que todos usan el mismo conjunto de relays.
 
 También traslada la complejidad a los clientes. Para usar bien el modelo outbox, un cliente necesita caché de relays, lógica de reintentos y comportamiento de respaldo cuando una lista de relays falta o está desactualizada. La especificación mejora la descubribilidad, pero no elimina la necesidad de buenas heurísticas de selección de relays.
 
-## Relación con las Pistas de Relay
+## Relación con las pistas de relay
 
 NIP-65 complementa las pistas de relay encontradas a lo largo de otros NIPs. Cuando etiquetas a alguien con `["p", "pubkey", "wss://hint.relay"]`, la pista le dice a los clientes dónde buscar esa referencia específica. NIP-65 proporciona la lista autoritativa de relays preferidos controlada por el usuario, mientras que las pistas ofrecen atajos incrustados en eventos individuales para un descubrimiento más rápido.
 
 Para mensajería privada, NIP-65 no es toda la historia. El enrutamiento de contenido público usa kind 10002, pero los sistemas modernos de mensajería privada a menudo dependen de metadatos de bandeja de entrada separados como las listas de relays de [NIP-17](/es/topics/nip-17/) para que los usuarios puedan mantener el enrutamiento de DMs distinto de los relays de publicación pública.
 
-## Mejores Prácticas
+## Mejores prácticas
 
 Mantén tu lista de relays actualizada ya que las entradas obsoletas que apuntan a relays desaparecidos te hacen más difícil de encontrar. Incluye al menos dos o tres relays para redundancia de modo que si un relay se cae, tu contenido permanezca accesible a través de los otros.
 
@@ -71,8 +71,9 @@ Mezcla relays de propósito general con cualquier relay especializado que uses. 
 - [Especificación NIP-65](https://github.com/nostr-protocol/nips/blob/master/65.md)
 
 **Mencionado en:**
-- [Newsletter #5: Análisis Profundo de NIPs](/en/newsletters/2026-01-13-newsletter/#nip-65-relay-list-metadata)
-- [Newsletter #10: Benchmarks del Modelo Outbox](/en/newsletters/2026-03-04-newsletter/)
+- [Newsletter #5: Análisis Profundo de NIPs](/es/newsletters/2026-01-13-newsletter/)
+- [Newsletter #10: Benchmarks del Modelo Outbox](/es/newsletters/2026-03-04-newsletter/)
+- [Newsletter #19: broadcast a inbox relays en Wisp](/en/newsletters/2026-04-22-newsletter/)
 
 **Ver también:**
 - [NIP-11: Información de Relay](/es/topics/nip-11/)

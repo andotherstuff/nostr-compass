@@ -1,6 +1,7 @@
 ---
 title: "BUD-03: Benutzer-Serverliste"
 date: 2025-12-17
+translationOf: /en/topics/bud-03.md
 translationDate: 2026-03-07
 draft: false
 categories:

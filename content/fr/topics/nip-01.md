@@ -2,7 +2,7 @@
 title: "NIP-01 : Protocole de base"
 date: 2025-12-17
 translationOf: /en/topics/nip-01.md
-translationDate: 2026-03-07
+translationDate: 2026-04-22
 draft: false
 categories:
   - Protocol
@@ -66,7 +66,8 @@ Deux détails causent de nombreux bugs d'implémentation. D'abord, les clients d
 - [Spécification NIP-01](https://github.com/nostr-protocol/nips/blob/master/01.md)
 
 **Mentionné dans :**
-- [Newsletter #1 : Analyse approfondie NIP](/fr/newsletters/2025-12-17-newsletter/#nip-deep-dive-nip-01-and-nip-19)
+- [Newsletter #1 : Analyse approfondie NIP](/fr/newsletters/2025-12-17-newsletter/)
+- [Newsletter #19 : proposition NIP-67 sur la complétude EOSE](/en/newsletters/2026-04-22-newsletter/)
 
 **Voir aussi :**
 - [NIP-19 : Entités encodées en Bech32](/fr/topics/nip-19/)

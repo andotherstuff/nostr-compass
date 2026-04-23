@@ -1,60 +1,63 @@
 ---
-title: 'Cashu: Protocolo Ecash'
+title: 'Cashu: Protocolo de ecash'
 date: 2026-01-28
 draft: false
 categories:
-- Payments
-- Privacy
-- Bitcoin
+  - Payments
+  - Privacy
+  - Bitcoin
 translationOf: /en/topics/cashu.md
-translationDate: '2026-03-07'
+translationDate: 2026-04-22
 ---
 
-Cashu é um protocolo ecash Chaumian construído em Bitcoin e Lightning. Os usuários detêm tokens ao portador emitidos por um mint e, em seguida, transferem esses tokens sem expor o gráfico de pagamento completo ao mint.
+Cashu é um protocolo de ecash Chaumiano construído sobre Bitcoin e Lightning. Usuários mantêm bearer tokens emitidos por uma mint e depois transferem esses tokens sem expor o grafo completo de pagamentos à mint.
 
 ## Como funciona
 
-Cashu usa assinaturas cegas para emitir tokens ecash:
+Cashu usa blind signatures para emitir tokens de ecash:
 
-1. **Minting**: Os usuários depositam Bitcoin/Lightning em um mint e recebem tokens cegos
-2. **Gastos**: Os tokens podem ser transferidos ponto a ponto sem o envolvimento do mint
-3. **Resgate**: Os destinatários resgatam tokens no mint por Bitcoin/Lightning
+1. **Minting**: usuários depositam Bitcoin ou Lightning em uma mint e recebem tokens cegados
+2. **Spending**: tokens podem ser transferidos peer-to-peer sem envolvimento da mint
+3. **Redemption**: destinatários resgatam tokens na mint por Bitcoin ou Lightning
 
-O mint assina segredos cegos, para que possa verificar os tokens posteriormente sem ver os segredos originais no momento da emissão. Isso quebra a ligação direta entre depósito e resgate dentro do mint.
+A mint assina segredos cegados, então pode verificar os tokens depois sem ver os segredos originais no momento da emissão. Isso quebra o vínculo direto entre depósito e resgate dentro da mint.
 
 ## Modelo de segurança e confiança
 
-Cashu melhora a privacidade do pagamento, mas ainda tem custódia. Um mint pode recusar resgates, ficar offline ou perder fundos de garantia.
+Cashu melhora a privacidade de pagamentos, mas continua sendo custodial. Uma mint pode recusar resgates, sair do ar ou perder os fundos de lastro.
 
-Cashu proofs são instrumentos de portador. Quem controla o proof pode gastá-lo. Isso torna o manuseio do proof mais próximo do dinheiro do que do saldo de uma conta: backup, comprometimento do dispositivo ou vazamento de token de texto simples são importantes imediatamente.
+Proofs Cashu são instrumentos bearer. Quem controla a proof pode gastá-la. Isso torna o manuseio de proofs mais próximo de dinheiro em espécie do que de um saldo de conta: backup, comprometimento do dispositivo ou vazamento de tokens em plaintext importam imediatamente.
 
-## Integração Nostr
+## Integração com Nostr
 
-Cashu se integra ao Nostr de várias maneiras:
+Cashu se integra ao Nostr de várias formas:
 
-- **Nutzaps**: tokens Ecash enviados como zaps com maior privacidade
-- **Escrow**: garantia de pagamento baseada em HTLC para serviços como compartilhamento de viagens
-- **Carteiras**: carteiras nativas Nostr armazenam tokens Cashu criptografados em relays
-- **[NIP-87](/pt/topics/nip-87/)**: descoberta e análises do Mint via Nostr
+- **Nutzaps**: tokens de ecash enviados como zaps com mais privacidade
+- **Escrow**: escrow de pagamento baseado em HTLC para serviços como ride-sharing
+- **Carteiras**: carteiras nativas de Nostr armazenam tokens Cashu criptografados em relays
+- **[NIP-87](/pt/topics/nip-87/)**: descoberta e reviews de mints via Nostr
+- **[TollGate](/pt/topics/tollgate/)**: protocolo de acesso à rede pay-per-use que aceita tokens de ecash Cashu para conectividade, definido em [TIP-02](https://github.com/OpenTollGate/tollgate/blob/v0.1.0/TIP-02.md) a partir do [release v0.1.0](https://github.com/OpenTollGate/tollgate/releases/tag/v0.1.0)
 
-## Compensações
+## Tradeoffs
 
-Cashu é rápido porque as transferências acontecem fora da rede e muitas vezes fora do mint até o resgate. A compensação é interoperabilidade e confiança.
+Cashu é rápido porque as transferências acontecem off-chain e, com frequência, off-mint até o resgate. O tradeoff é interoperabilidade e confiança.
 
-Na prática, os usuários geralmente precisam do mesmo mint ou de uma troca ou ponte entre mints. É por isso que os aplicativos Nostr frequentemente combinam Cashu com descoberta mint, sincronização de carteira e sistemas de revisão.
+Na prática, usuários frequentemente precisam usar a mesma mint, ou então uma swap ou bridge entre mints. É por isso que aplicações Nostr costumam combinar Cashu com descoberta de mints, sincronização de carteiras e sistemas de review.
 
 ---
 
 **Fontes primárias:**
 - [Repositório Cashu NUTs](https://github.com/cashubtc/nuts)
-- [NUT-00: Criptografia e modelos](https://github.com/cashubtc/nuts/blob/main/00.md)
-- [NIP-60: Carteira Cashu](/pt/topics/nip-60/)
-- [NIP-87: Recomendações Cashu Mint](/pt/topics/nip-87/)
+- [NUT-00: criptografia e modelos](https://github.com/cashubtc/nuts/blob/main/00.md)
+- [Especificação NIP-60](https://github.com/nostr-protocol/nips/blob/master/60.md)
+- [Especificação NIP-87](https://github.com/nostr-protocol/nips/blob/master/87.md)
 
 **Mencionado em:**
-- [Boletim informativo nº 7](/pt/newsletters/2026-01-28-newsletter/)
-- [Boletim informativo nº 11](/pt/newsletters/2026-02-25-newsletter/)
+- [Newsletter #7](/pt/newsletters/2026-01-28-newsletter/)
+- [Newsletter #11](/pt/newsletters/2026-02-25-newsletter/)
+- [Newsletter #19: TollGate v0.1.0](/en/newsletters/2026-04-22-newsletter/)
 
 **Veja também:**
 - [NIP-60: Carteira Cashu](/pt/topics/nip-60/)
-- [NIP-87: Recomendações Cashu Mint](/pt/topics/nip-87/)
+- [NIP-87: Recomendações de mints Cashu](/pt/topics/nip-87/)
+- [TollGate](/pt/topics/tollgate/)

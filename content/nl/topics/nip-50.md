@@ -52,8 +52,8 @@ Gestructureerde filters werken goed wanneer je al weet welke auteur, kind of tag
 - [NIP-50 Specificatie](https://github.com/nostr-protocol/nips/blob/master/50.md)
 
 **Vermeld in:**
-- [Nieuwsbrief #3: Decemberoverzicht](/en/newsletters/2025-12-31-newsletter/#december-recap-five-years-of-nostr-decembers)
-- [Nieuwsbrief #7: NIP-updates](/en/newsletters/2026-01-07-newsletter/#nip-updates)
+- [Nieuwsbrief #3: Decemberoverzicht](/en/newsletters/2025-12-31-newsletter/)
+- [Nieuwsbrief #7: NIP-updates](/en/newsletters/2026-01-07-newsletter/)
 
 **Zie ook:**
 - [NIP-11: Relay Information](/nl/topics/nip-11/)

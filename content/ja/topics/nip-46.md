@@ -2,55 +2,58 @@
 title: "NIP-46: Nostr Connect"
 date: 2025-12-17
 translationOf: /en/topics/nip-46.md
-translationDate: 2026-03-07
+translationDate: 2026-04-22
 draft: false
 categories:
   - Signing
   - Protocol
 ---
 
-NIP-46は、Nostr relay越しのremote signingを定義します。clientは、bunkerと呼ばれる別のsignerに処理を依頼できるため、signing keyをいま使っているappの外に置けます。
+NIP-46は、Nostr relays越しのremote signingを定義します。clientは、一般にbunkerと呼ばれる別のsignerと通信するため、署名鍵をユーザーが今使っているappの外側へ置いておけます。
 
 ## 仕組み
 
-1. clientは、bunker session専用のlocal keypairを生成します。
-2. 接続は`bunker://`または`nostrconnect://` URIで開始します。
-3. clientとsignerは、relay上で暗号化されたkind `24133` request/response eventをやり取りします。
-4. 接続後、clientは`get_public_key`を呼び出して、実際に署名対象となるuser pubkeyを取得します。
+1. clientは、bunker session専用のローカルkeypairを生成します。
+2. 接続は`bunker://`または`nostrconnect://` URIで確立されます。
+3. clientとsignerは、relay上で暗号化されたkind `24133`のrequestとresponse eventを交換します。
+4. 接続後、clientは`get_public_key`を呼んで、実際に署名対象となるユーザーpubkeyを取得します。
 
 ## 接続方法
 
 - **bunker://** - signer主導の接続
-- **nostrconnect://** - QR codeやdeep link経由でclientが始める接続
+- **nostrconnect://** - QR codeまたはdeep linkによるclient主導の接続
 
-`nostrconnect://` flowにはshared secretが必須です。これによりclientは、最初のresponseが意図したsignerから来たものかを検証でき、単純なconnection spoofingを防げます。
+`nostrconnect://`のflowには、共有secretが必須です。これによりclientは、最初のresponseが本当に意図したsignerから来たものかを検証でき、単純な接続spoofingを防げます。
 
-## サポートされる操作
+## 対応操作
 
-- `sign_event` - 任意のeventに署名
-- `get_public_key` - signerからuserのpubkeyを取得
+- `sign_event` - 任意のイベントへ署名する
+- `get_public_key` - signerからユーザーpubkeyを取得する
 - `nip04_encrypt/decrypt` - NIP-04暗号化操作
 - `nip44_encrypt/decrypt` - NIP-44暗号化操作
-- `switch_relays` - signerに更新済みrelay setを要求
+- `switch_relays` - 更新されたrelay setをsignerへ求める
 
-多くの実装では、setup時に`sign_event:1`や`nip44_encrypt`のようなpermission stringも使います。signerは、全面的なaccessではなく、狭いscopeだけを承認できます。
+多くの実装は、セットアップ時に`sign_event:1`や`nip44_encrypt`のようなpermission stringも使い、全面的なアクセスではなく狭いscopeだけをsignerが承認できるようにしています。
 
 ## Relayと信頼モデル
 
-NIP-46はprivate keyをclientの外へ移しますが、signerへの信頼そのものは消しません。signerはrequestを承認、拒否、遅延でき、clientが求めたすべての操作を見られます。relay選択も重要で、protocolは両者が到達できるrelay上でrequestとresponseが届くことに依存します。
+NIP-46は秘密鍵をclientの外へ移しますが、signerへの信頼自体を消すわけではありません。signerはrequestを承認、拒否、遅延できますし、clientが依頼するすべての操作を見ます。relay選択も重要で、プロトコルはrequestとresponseを両者が到達できるrelay上で配信できることに依存します。
 
-`switch_relays` methodは、signerが時間とともにsessionを別のrelay setへ移せるようにするためのものです。これを無視するclientは、signerのrelay設定が変わったときに信頼性が落ちます。
+`switch_relays` methodがあるのは、signerが時間とともにsessionを別のrelay setへ移せるようにするためです。これを無視するclientは、signer側のrelay設定が変わったとき信頼性が落ちます。
 
 ---
 
-**主要ソース:**
+**Primary sources:**
 - [NIP-46 Specification](https://github.com/nostr-protocol/nips/blob/master/46.md)
 
-**言及箇所:**
-- [Newsletter #1: Notable Code Changes](/en/newsletters/2025-12-17-newsletter/#amethyst-android)
-- [Newsletter #3: December Recap](/en/newsletters/2025-12-31-newsletter/#december-recap-five-years-of-nostr-decembers)
-- [Newsletter #7: Primal Android Becomes a Full Signing Hub](/en/newsletters/2026-01-07-newsletter/#primal-android-becomes-a-full-signing-hub)
-- [Newsletter #15: NDK Collaborative Events and NIP-46 Timeout](/en/newsletters/2026-03-04-newsletter/#ndk-collaborative-events-and-nip-46-timeout)
+**Mentioned in:**
+- [Newsletter #1: Notable Code Changes](/ja/newsletters/2025-12-17-newsletter/)
+- [Newsletter #3: December Recap](/en/newsletters/2025-12-31-newsletter/)
+- [Newsletter #4: Primal Android Becomes a Full Signing Hub](/ja/newsletters/2026-01-07-newsletter/)
+- [Newsletter #12: NDK Collaborative Events and NIP-46 Timeout](/ja/newsletters/2026-03-04-newsletter/)
+- [Newsletter #19: NipLock signer support](/en/newsletters/2026-04-22-newsletter/)
+- [Newsletter #19: Forgesworn Heartwood signer](/en/newsletters/2026-04-22-newsletter/)
+- [Newsletter #19: Flotilla Aegis NIP-46 login](/en/newsletters/2026-04-22-newsletter/)
 
-**関連項目:**
+**See also:**
 - [NIP-55: Android Signer](/ja/topics/nip-55/)

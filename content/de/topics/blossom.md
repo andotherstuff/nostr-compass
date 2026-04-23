@@ -1,6 +1,7 @@
 ---
 title: "Blossom-Protokoll"
 date: 2025-12-17
+translationOf: /en/topics/blossom.md
 translationDate: 2026-03-07
 draft: false
 categories:
@@ -42,9 +43,9 @@ Diese Aufteilung ermöglicht es Clients, das Minimum für grundlegende Interoper
 - [Leitfaden für lokalen Blossom-Cache](https://github.com/hzrd149/blossom/blob/master/implementations/local-blossom-cache.md)
 
 **Erwähnt in:**
-- [Newsletter #1: News](/en/newsletters/2025-12-17-newsletter/#news)
-- [Newsletter #2: Notable Code Changes](/en/newsletters/2025-12-24-newsletter/#notable-code-and-documentation-changes)
-- [Newsletter #10: Blossom local cache layer emerges](/en/newsletters/2026-02-18-newsletter/#blossom-local-cache-layer-emerges)
+- [Newsletter #1: News](/en/newsletters/2025-12-17-newsletter/)
+- [Newsletter #2: Notable Code Changes](/en/newsletters/2025-12-24-newsletter/)
+- [Newsletter #10: Blossom local cache layer emerges](/en/newsletters/2026-02-18-newsletter/)
 
 **Siehe auch:**
 - [BUD-03: User Server List](/de/topics/bud-03/)

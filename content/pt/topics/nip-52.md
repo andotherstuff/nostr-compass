@@ -1,22 +1,22 @@
 ---
-title: 'NIP-52: Eventos do calendário'
+title: 'NIP-52: Eventos de calendário'
 date: 2026-01-28
 draft: false
 categories:
-- NIP
-- Calendar
-- Events
+  - NIP
+  - Calendar
+  - Events
 translationOf: /en/topics/nip-52.md
-translationDate: '2026-03-07'
+translationDate: 2026-04-22
 ---
 
-NIP-52 define eventos de calendário, calendários e RSVPs no Nostr. Ele oferece aos clientes uma maneira padrão de publicar eventos baseados em tempo ou data sem inventar um modelo de evento personalizado para cada aplicativo.
+NIP-52 define eventos de calendário, calendários e RSVPs no Nostr. Ela dá a clientes uma forma padrão de publicar eventos baseados em data ou horário sem precisar inventar um modelo customizado para cada app.
 
-## Tipos de eventos
+## Kinds de evento
 
-### kind 31922: evento de calendário baseado em data
+### Kind 31922: evento de calendário baseado em data
 
-Use kind `31922` para eventos de dia inteiro ou de vários dias onde o horário não importa.
+Use o kind `31922` para eventos de dia inteiro ou multi-dia em que horário de relógio não importa.
 
 ```json
 {
@@ -31,9 +31,9 @@ Use kind `31922` para eventos de dia inteiro ou de vários dias onde o horário 
 }
 ```
 
-### kind 31923: evento de calendário baseado em tempo
+### Kind 31923: evento de calendário baseado em horário
 
-Use kind `31923` para eventos com horários de início e término precisos.
+Use o kind `31923` para eventos com horário preciso de início e fim.
 
 ```json
 {
@@ -49,44 +49,45 @@ Use kind `31923` para eventos com horários de início e término precisos.
 }
 ```
 
-Os eventos baseados em tempo também exigem um ou mais `D` tags, cada um contendo o carimbo de data/hora Unix com granularidade diária para os dias em que o evento se estende. Esse tag existe para que relays e os clientes possam indexar por dia sem analisar cada carimbo de data/hora completo.
+Eventos baseados em horário também exigem uma ou mais tags `D`, cada uma contendo o timestamp Unix em granularidade de dia para os dias abrangidos pelo evento. Essa tag existe para que relays e clientes possam indexar por dia sem ter de fazer parse de todo timestamp completo.
 
-## Calendário e suporte RSVP
+## Suporte a calendário e RSVP
 
-O kind `31924` é um calendário, uma lista endereçável de eventos do calendário. O kind `31925` é um RSVP que aponta para um evento específico do calendário com um `a` tag e opcionalmente para uma revisão específica com um `e` tag.
+O kind `31924` é um calendário, uma lista endereçável de eventos de calendário. O kind `31925` é um RSVP que aponta de volta para um evento específico de calendário com uma tag `a` e, opcionalmente, para uma revisão específica com uma tag `e`.
 
-Os eventos kind `31925` permitem que os usuários respondam com:
+Eventos kind `31925` permitem que usuários respondam com:
 
-- `accepted` - Participará
-- `declined` - Não comparecerá
-- `tentative` - Pode participar
+- `accepted` - vai participar
+- `declined` - não vai participar
+- `tentative` - talvez participe
 
-RSVPs também podem incluir valores `fb` de `free` ou `busy`, o que adiciona contexto de agendamento além do status de atendimento.
+RSVPs também podem incluir valores `fb` de `free` ou `busy`, adicionando contexto de agenda além do status de presença.
 
 ## Notas de implementação
 
 - **Endereçável**: eventos e calendários podem ser atualizados sem criar duplicatas
-- **Suporte para fuso horário**: eventos baseados em horário podem usar identificadores de fuso horário da IANA
-- **Dados de localização**: as tags podem incluir locais legíveis, links e geohashes
-- **Solicitações colaborativas**: os autores do evento podem solicitar inclusão na agenda de outra pessoa marcando-a
+- **Suporte a timezone**: eventos baseados em horário podem usar identificadores IANA de timezone
+- **Dados de localização**: tags podem incluir localizações legíveis por humanos, links e geohashes
+- **Requests colaborativos**: autores de eventos podem pedir inclusão em calendários de outras pessoas tagueando esse calendário
 
-Eventos recorrentes estão intencionalmente fora do escopo. A especificação envia regras de recorrência para os clientes, o que mantém a indexação do lado relay simples e evita os casos extremos usuais do calendário em torno de alterações e exceções no horário de verão.
+Eventos recorrentes ficam intencionalmente fora do escopo. A spec empurra regras de recorrência para os clientes, o que mantém a indexação do lado do relay simples e evita casos de borda habituais de calendários, como horário de verão e exceções.
 
-## Por que é importante
+## Por que importa
 
-O NIP-52 faz mais do que descrever uma reunião. Ele separa a definição do evento, a associação ao calendário e as respostas dos participantes em diferentes eventos kinds. Isso possibilita que um aplicativo publique um evento, outro agregue calendários e um terceiro gerencie o estado de RSVP sem que todos os três compartilhem o mesmo back-end.
+A NIP-52 faz mais do que descrever uma reunião. Ela separa definição do evento, membership do calendário e responses de participantes em kinds de evento diferentes. Isso permite que um app publique um evento, outro agregue calendários e um terceiro gerencie estado de RSVP sem que os três compartilhem o mesmo backend.
 
 ---
 
 **Fontes primárias:**
 - [Especificação NIP-52](https://github.com/nostr-protocol/nips/blob/master/52.md)
-- [PR #1752: Tag de carimbo de data/hora com granularidade de dia](https://github.com/nostr-protocol/nips/pull/1752)
+- [PR #1752: tag de timestamp com granularidade de dia](https://github.com/nostr-protocol/nips/pull/1752)
 
 **Mencionado em:**
-- [Boletim informativo nº 7: Rascunho do aplicativo Notedeck Calendar](/pt/newsletters/2026-01-28-newsletter/#notedeck-progress-calendar-app-and-ux-polish)
-- [Boletim Informativo nº 10: Atualizações do NIP](/pt/newsletters/2026-02-18-newsletter/#nip-updates)
-- [Boletim informativo nº 10: Aprofundamento do NIP](/pt/newsletters/2026-02-18-newsletter/#nip-deep-dive-nip-52-calendar-events)
+- [Newsletter #7: rascunho do app de calendário do Notedeck](/pt/newsletters/2026-01-28-newsletter/)
+- [Newsletter #10: Atualizações de NIP](/pt/newsletters/2026-02-18-newsletter/)
+- [Newsletter #10: NIP Deep Dive](/pt/newsletters/2026-02-18-newsletter/)
+- [Newsletter #13: Calendar by Form* v0.2.0](/en/newsletters/2026-03-11-newsletter/)
 
 **Veja também:**
-- [NIP-22: Comentário](/pt/topics/nip-22/)
-- [NIP-51: Listas](/pt/topics/nip-51/)
+- [NIP-22: Comment](/pt/topics/nip-22/)
+- [NIP-51: Lists](/pt/topics/nip-51/)

@@ -1,6 +1,7 @@
 ---
 title: "NIP-40: Ablaufzeitstempel"
 date: 2025-12-17
+translationOf: /en/topics/nip-40.md
 translationDate: 2026-03-07
 draft: false
 categories:
@@ -41,8 +42,8 @@ Expiration ist ein Hinweis zur Aufbewahrung und kein Widerrufssystem. Es hilft d
 - [NIP-40 Spezifikation](https://github.com/nostr-protocol/nips/blob/master/40.md)
 
 **Erwähnt in:**
-- [Newsletter #1: News](/en/newsletters/2025-12-17-newsletter/#news)
-- [Newsletter #3: Notable Code Changes](/en/newsletters/2025-12-31-newsletter/#rust-nostr-library)
+- [Newsletter #1: News](/en/newsletters/2025-12-17-newsletter/)
+- [Newsletter #3: Notable Code Changes](/en/newsletters/2025-12-31-newsletter/)
 
 **Siehe auch:**
 - [NIP-01: Basic Protocol](/de/topics/nip-01/)

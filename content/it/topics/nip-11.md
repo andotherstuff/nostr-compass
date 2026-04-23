@@ -1,8 +1,8 @@
 ---
 title: "NIP-11: Documento informativo del relay"
 date: 2025-12-17
-translationOf: /en/topics/nip-11/
-translationDate: 2026-03-07
+translationOf: /en/topics/nip-11.md
+translationDate: 2026-04-22
 draft: false
 categories:
   - Relay
@@ -39,6 +39,8 @@ Questa distinzione conta per la selezione dei relay. Un relay può pubblicizzare
 
 La specifica è stata ridotta nel tempo. Vecchi campi opzionali come `software`, `version`, dettagli sulla privacy policy e metadata di retention sono stati rimossi dopo anni di adozione debole. Questo rende i documenti NIP-11 attuali più piccoli e più realistici, ma significa anche che i client non dovrebbero aspettarsi metadata di policy ricchi dai relay.
 
+[PR #2318](https://github.com/nostr-protocol/nips/pull/2318) propone di aggiungere un oggetto facoltativo `access_control` al documento informativo del relay, elencando il modello di gating del relay, come open, invite, payment o allowlist, e l'endpoint che un client può usare per richiedere accesso. Il campo è solo advisory ed è pensato per permettere a client e directory di filtrare i relay gated fuori dalle liste pubbliche di discovery e mostrare agli utenti perché un relay rifiuta le scritture.
+
 ---
 
 **Fonti primarie:**
@@ -46,9 +48,13 @@ La specifica è stata ridotta nel tempo. Vecchi campi opzionali come `software`,
 - [PR #1764](https://github.com/nostr-protocol/nips/pull/1764) - aggiornamento del campo d'identità del relay
 - [PR #1946](https://github.com/nostr-protocol/nips/pull/1946) - pulizia dei campi usati di rado
 - [PR #2231](https://github.com/nostr-protocol/nips/pull/2231) - rimozione dei campi deprecati
+- [PR #2318](https://github.com/nostr-protocol/nips/pull/2318) - campo `access_control` per la discovery di relay gated
+- [nostream PR #557](https://github.com/Cameri/nostream/pull/557) - parità completa con le info relay NIP-11
 
 **Citato in:**
-- [Newsletter #1: NIP Updates](/en/newsletters/2025-12-17-newsletter/#nip-updates)
+- [Newsletter #1: NIP Updates](/it/newsletters/2025-12-17-newsletter/)
+- [Newsletter #13: NIP Updates](/en/newsletters/2026-03-11-newsletter/)
+- [Newsletter #19: NIP Updates (`access_control`)](/en/newsletters/2026-04-22-newsletter/)
 
 **Vedi anche:**
 - [NIP-66: Discovery dei relay e monitoraggio della disponibilità](/it/topics/nip-66/)

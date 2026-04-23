@@ -42,8 +42,8 @@ La expiración es una indicación de retención, no un sistema de revocación. A
 - [Especificación NIP-40](https://github.com/nostr-protocol/nips/blob/master/40.md)
 
 **Mencionado en:**
-- [Newsletter #1: Noticias](/en/newsletters/2025-12-17-newsletter/#news)
-- [Newsletter #3: Cambios Notables de Código](/en/newsletters/2025-12-31-newsletter/#rust-nostr-library)
+- [Newsletter #1: Noticias](/en/newsletters/2025-12-17-newsletter/)
+- [Newsletter #3: Cambios Notables de Código](/en/newsletters/2025-12-31-newsletter/)
 
 **Ver también:**
 - [NIP-01: Protocolo Básico](/es/topics/nip-01/)

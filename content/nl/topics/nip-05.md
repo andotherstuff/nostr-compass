@@ -2,6 +2,7 @@
 title: "NIP-05: Domeinverificatie"
 date: 2026-02-04
 translationDate: 2026-03-07
+translationOf: /en/topics/nip-05.md
 draft: false
 categories:
   - Identity

@@ -42,8 +42,8 @@ A expiração é uma dica de retenção, não um sistema de revogação. Ajuda a
 - [Especificação NIP-40](https://github.com/nostr-protocol/nips/blob/master/40.md)
 
 **Mencionado em:**
-- [Boletim informativo nº 1: Notícias](/pt/newsletters/2025-12-17-newsletter/#news)
-- [Boletim informativo nº 3: Mudanças notáveis no código](/pt/newsletters/2025-12-31-newsletter/#rust-nostr-library)
+- [Boletim informativo nº 1: Notícias](/pt/newsletters/2025-12-17-newsletter/)
+- [Boletim informativo nº 3: Mudanças notáveis no código](/pt/newsletters/2025-12-31-newsletter/)
 
 **Veja também:**
 - [NIP-01: Protocolo Básico](/pt/topics/nip-01/)

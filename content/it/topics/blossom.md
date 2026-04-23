@@ -42,9 +42,9 @@ Questa divisione permette ai client di implementare il minimo necessario per un'
 - [Local Blossom Cache guide](https://github.com/hzrd149/blossom/blob/master/implementations/local-blossom-cache.md)
 
 **Citato in:**
-- [Newsletter #1: News](/en/newsletters/2025-12-17-newsletter/#news)
-- [Newsletter #2: Notable Code Changes](/en/newsletters/2025-12-24-newsletter/#notable-code-and-documentation-changes)
-- [Newsletter #10: Blossom local cache layer emerges](/en/newsletters/2026-02-18-newsletter/#blossom-local-cache-layer-emerges)
+- [Newsletter #1: News](/en/newsletters/2025-12-17-newsletter/)
+- [Newsletter #2: Notable Code Changes](/en/newsletters/2025-12-24-newsletter/)
+- [Newsletter #10: Blossom local cache layer emerges](/en/newsletters/2026-02-18-newsletter/)
 
 **Vedi anche:**
 - [BUD-03: User Server List](/it/topics/bud-03/)

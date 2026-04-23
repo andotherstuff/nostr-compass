@@ -2,71 +2,92 @@
 title: "NIP-62: Vanish Requests"
 date: 2026-01-13
 translationOf: /en/topics/nip-62.md
-translationDate: 2026-03-07
+translationDate: 2026-04-22
 draft: false
 categories:
   - Privacy
   - Protocol
 ---
 
-NIP-62 definiert Vanish Requests, einen Mechanismus, mit dem Nutzer Relays auffordern können, ihre Inhalte zu löschen. Relays müssen diese Requests nicht befolgen, aber die Unterstützung von NIP-62 gibt Nutzern mehr Kontrolle über ihre veröffentlichten Daten und schafft einen standardisierten Weg, Löschabsicht im ganzen Netzwerk zu signalisieren.
+NIP-62 definiert Vanish Requests, also kind-`62`-Events, die bestimmte Relays auffordern, alle Events des anfragenden pubkey zu löschen. Die Anfrage ist standardmäßig relay-gerichtet, kann aber auch als globale Anfrage mit dem speziellen Tag-Wert `ALL_RELAYS` gesendet werden.
 
 ## Funktionsweise
 
-Ein Vanish Request ist ein kind 62 Event, das vom Nutzer signiert wird, der seine Inhalte entfernen möchte. Der Request kann bestimmte Events ansprechen, indem deren IDs in `e`-Tags angegeben werden, oder die Löschung aller Inhalte dieses Pubkeys anfordern, indem die `e`-Tags ganz weggelassen werden.
+Ein Vanish Request ist ein kind-`62`-Event, das vom pubkey signiert wird, dessen Verlauf entfernt werden soll. Die Tag-Liste muss mindestens einen `relay`-Wert enthalten, der das Relay benennt, das auf die Anfrage reagieren soll.
 
 ```json
 {
-  "id": "a1b2c3d4e5f6...",
-  "pubkey": "abcd1234...",
-  "created_at": 1736726400,
+  "id": "a7b8c9d0e1f23456789012345678901234567890abcdef1234567890abcdef12",
+  "pubkey": "f1e2d3c4b5a697887766554433221100ffeeddccbbaa99887766554433221100",
+  "created_at": 1743465600,
   "kind": 62,
   "tags": [
-    ["e", "event1234...", "wss://relay.example.com"],
-    ["e", "event5678...", "wss://relay.example.com"]
+    ["relay", "wss://relay.example.com"]
   ],
-  "content": "Removing old posts",
-  "sig": "sig1234..."
+  "content": "Requesting deletion of all events from this relay.",
+  "sig": "11aa22bb33cc44dd55ee66ff77889900aabbccddeeff0011223344556677889911aa22bb33cc44dd55ee66ff77889900aabbccddeeff00112233445566778899"
 }
 ```
 
-Das `content`-Feld kann optional einen menschenlesbaren Grund für die Löschanfrage enthalten. Relay-Hints in den `e`-Tags zeigen Relays, wo die ursprünglichen Events veröffentlicht wurden, auch wenn Relays den Request unabhängig davon befolgen können, ob sie die genannten Events besitzen.
+Das Feld `content` kann einen Grund oder einen rechtlichen Hinweis an den Relay-Betreiber enthalten. Clients sollten das Event direkt an die Ziel-Relays senden, statt es breit zu posten, außer der Nutzer beabsichtigt ausdrücklich eine netzwerkweite Vanish-Anfrage.
 
 ## Relay-Verhalten
 
-Relays, die NIP-62 unterstützen, sollten die angegebenen Events aus ihrem Speicher entfernen und sie nicht mehr an Abonnenten ausliefern. Der Vanish Request selbst kann als Nachweis erhalten bleiben, dass eine Löschung angefordert wurde. Das hilft zu verhindern, dass gelöschte Events später wieder von anderen Relays importiert werden.
+Relays, die einen Vanish Request sehen und ihre eigene Service-URL in einem `relay`-Tag finden, müssen alle Events dieses pubkey bis einschließlich `created_at` der Anfrage vollständig löschen. Die Spezifikation sagt außerdem, dass Relays [NIP-59](/de/topics/nip-59/) Gift-Wrap-Events löschen sollen, die den verschwundenen pubkey mit `p` taggen, damit eingehende DMs zusammen mit den eigenen Events des Nutzers entfernt werden.
 
-Wenn ein Vanish Request alle `e`-Tags weglässt, interpretieren Relays das als Bitte, alle Events dieses Pubkeys zu entfernen. Das ist ein stärkerer Eingriff, und Relays können unterschiedlich damit umgehen, zum Beispiel indem sie den Pubkey als "vanished" markieren und künftig keine Events dieses Schlüssels mehr akzeptieren oder ausliefern.
+Das Relay muss außerdem sicherstellen, dass diese gelöschten Events nicht erneut in das Relay rebroadcastet werden können. Für Buchführungszwecke darf es den signierten Vanish Request selbst behalten.
 
-Relays müssen NIP-62 nicht unterstützen. Das Nostr-Netzwerk ist dezentral, und jeder Relay-Betreiber entscheidet über seine eigene Datenaufbewahrung. Nutzer sollten nicht annehmen, dass ihre Inhalte überall gelöscht werden, nur weil sie einen Vanish Request veröffentlicht haben.
+## Globale Anfragen
+
+Um Löschung auf jedem Relay anzufordern, das das Event sieht, wird der Tag-Wert in Großbuchstaben zu `ALL_RELAYS`:
+
+```json
+{
+  "kind": 62,
+  "pubkey": "<32-byte-hex-pubkey>",
+  "tags": [
+    ["relay", "ALL_RELAYS"]
+  ],
+  "content": "Global vanish request"
+}
+```
+
+Clients sollten diese Form an möglichst viele Relays broadcasten.
 
 ## Warum das wichtig ist
 
-NIP-62 gibt Clients und Relay-Betreibern ein gemeinsames Löschsignal, das über ad-hoc-Moderations-APIs oder relay-spezifische Dashboards hinausgeht. Ein Nutzer kann einen einzigen signierten Request veröffentlichen und jedes Relay entscheidet selbst, wie es ihn verarbeitet.
+NIP-62 gibt Clients und Relay-Betreibern ein gemeinsames Löschsignal, das über ad-hoc-Moderations-APIs oder relay-spezifische Dashboards hinausgeht. Ein Nutzer kann eine einzige signierte Anfrage veröffentlichen und jedes Relay sie im selben Event-Format verarbeiten lassen.
 
-Die praktische Grenze ist der Geltungsbereich. Ein Vanish Request wirkt nur auf Relays, die ihn sehen, unterstützen und befolgen wollen. Er nimmt keine Screenshots, lokalen Datenbanken, Drittanbieter-Archive oder erneut veröffentlichten Kopien außerhalb der Kontrolle des Relays zurück.
+Es geht außerdem über [NIP-09](/de/topics/nip-09/) hinaus. NIP-09 löscht einzelne Events und Relays können dem folgen. NIP-62 fordert getaggte Relays auf, alles von diesem pubkey zu löschen und zu verhindern, dass diese Events erneut importiert werden.
 
-## Datenschutzaspekte
+## Implementierungen
 
-Vanish Requests sind ein Best-Effort-Mechanismus zur Löschung, keine Garantie für Privatsphäre. Selbst nach der Veröffentlichung eines Vanish Requests können Kopien des Inhalts anderswo im Netzwerk existieren, etwa auf Relays ohne NIP-62-Unterstützung, in lokalen Caches auf Client-Geräten, in Drittanbieter-Archiven oder Suchmaschinen sowie in Backups.
-
-Auch der Request selbst ist ein signiertes Nostr-Event und damit Teil des öffentlichen Verlaufs. Jeder, der den Vanish Request sieht, weiß also, dass du etwas gelöscht hast, auch wenn er nicht sehen kann, was genau gelöscht wurde.
-
-Für Inhalte, die privat bleiben müssen, ist verschlüsselte Kommunikation wie [NIP-17](/de/topics/nip-17/) die bessere Wahl, statt sich auf spätere Löschung zu verlassen.
-
-## Interop-Hinweise
-
-NIP-62 ergänzt [NIP-09](/de/topics/nip-09/). NIP-09 ist das allgemeine Event für Löschanfragen in Nostr, während NIP-62 Relays ein stärkeres, auf Verschwinden ausgerichtetes Signal gibt, das bestimmte Events oder den gesamten Inhaltsbestand eines Pubkeys abdecken kann. Implementierungen können beides unterstützen, und die Datenbank-Backends von rust-nostr bieten inzwischen Konfiguration für diese Durchsetzungsgrenze.
+- [Amethyst v1.07.0](https://github.com/vitorpamplona/amethyst/releases/tag/v1.07.0) - Client-seitige Vanish-Request-Unterstützung
+- [rust-nostr PR #1315](https://github.com/rust-nostr/nostr/pull/1315) - Unterstützung im Memory-Backend
+- [rust-nostr PR #1316](https://github.com/rust-nostr/nostr/pull/1316) - Unterstützung im LMDB-Backend
+- [rust-nostr PR #1317](https://github.com/rust-nostr/nostr/pull/1317) - Unterstützung im SQLite-Backend
+- [rust-nostr PR #1318](https://github.com/rust-nostr/nostr/pull/1318) - Datenbank-Testabdeckung für relay-spezifische Vanish-Unterstützung
+- [nostream PR #544](https://github.com/Cameri/nostream/pull/544) - Ergänzt NIP-62 Right-to-Vanish in der beworbenen Feature-Liste
 
 ---
 
 **Primärquellen:**
 - [NIP-62 Specification](https://github.com/nostr-protocol/nips/blob/master/62.md)
+- [Amethyst v1.07.0](https://github.com/vitorpamplona/amethyst/releases/tag/v1.07.0) - Client-side vanish support
+- [rust-nostr PR #1315](https://github.com/rust-nostr/nostr/pull/1315)
+- [rust-nostr PR #1316](https://github.com/rust-nostr/nostr/pull/1316)
+- [rust-nostr PR #1317](https://github.com/rust-nostr/nostr/pull/1317)
+- [rust-nostr PR #1318](https://github.com/rust-nostr/nostr/pull/1318)
+- [nostream PR #544](https://github.com/Cameri/nostream/pull/544)
 
 **Erwähnt in:**
-- [Newsletter #5: Notable Code Changes](/de/newsletters/2026-01-13-newsletter/#rust-nostr-library)
-- [Newsletter #10: rust-nostr](/de/newsletters/2026-03-04-newsletter/#rust-nostr-nip-62-request-to-vanish)
+- [Newsletter #5: Notable Code Changes](/de/newsletters/2026-01-13-newsletter/)
+- [Newsletter #12: rust-nostr](/de/newsletters/2026-03-04-newsletter/)
+- [Newsletter #16: Amethyst ships NIP-62 support](/de/newsletters/2026-04-01-newsletter/)
+- [Newsletter #16: NIP Deep Dive](/de/newsletters/2026-04-01-newsletter/)
+- [Newsletter #19: nostream NIP-62 support](/en/newsletters/2026-04-22-newsletter/)
 
 **Siehe auch:**
 - [NIP-09: Event Deletion Request](/de/topics/nip-09/)
 - [NIP-17: Private Direct Messages](/de/topics/nip-17/)
+- [NIP-59: Gift Wrap](/de/topics/nip-59/)

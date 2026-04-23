@@ -1,6 +1,7 @@
 ---
 title: "NIP-51: Listen"
 date: 2025-12-17
+translationOf: /en/topics/nip-51.md
 translationDate: 2026-03-07
 draft: false
 categories:

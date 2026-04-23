@@ -1,55 +1,65 @@
 ---
-title: 'NIP-11: Documento de Informações do Relay'
+title: 'NIP-11: Relay Information Document'
 date: 2025-12-17
 draft: false
 categories:
-- Relay
-- Protocol
+  - Relay
+  - Protocol
 translationOf: /en/topics/nip-11.md
-translationDate: '2026-03-07'
+translationDate: 2026-04-22
 ---
 
-O NIP-11 define como relays publica uma descrição legível por máquina de si mesmo, incluindo suporte a recursos reivindicados, limites e metadados do operador.
+NIP-11 define como relays publicam uma descrição legível por máquina sobre si mesmos, incluindo suporte declarado a features, limites e metadados do operador.
 
 ## Como funciona
 
-Os clientes buscam informações do relay fazendo uma solicitação HTTP GET para o URL WebSocket do relay com um cabeçalho `Accept: application/nostr+json`. O relay retorna um documento JSON descrevendo suas capacidades.
+Clientes buscam informações de relay fazendo um request HTTP GET para a URL WebSocket do relay com o header `Accept: application/nostr+json`. O relay retorna um documento JSON descrevendo suas capabilities.
 
 ## Campos úteis
 
-- **nome** - Nome relay legível por humanos
-- **descrição** - Para que serve o relay
-- **supported_nips** - Lista de suporte NIP reivindicado
-- **limitação** - Restrições como tamanho máximo da mensagem, autenticação necessária, etc.
-- **pubkey** - Chave pública do operador de relay quando fornecida
-- **contato** - Endereço de contato da operadora
+- **name** - nome legível do relay
+- **description** - para que o relay serve
+- **supported_nips** - lista do suporte a NIPs declarado
+- **limitation** - restrições como tamanho máximo de mensagem, auth obrigatória e afins
+- **pubkey** - chave pública do operador do relay, quando fornecida
+- **contact** - endereço de contato do operador
 
 ## Modelo de confiança
 
-NIP-11 são metadados auto-relatados. Ele informa o que um relay diz sobre si mesmo, não o que provou no tráfego ao vivo. Isso ainda é útil para descoberta e UX, mas os clientes não devem tratar `supported_nips` como verdade sem testar o comportamento.
+NIP-11 é metadado autorreportado. Ela diz o que um relay afirma sobre si mesmo, não o que ele provou em tráfego real. Isso ainda é útil para descoberta e UX, mas clientes não devem tratar `supported_nips` como verdade absoluta sem testar o comportamento.
 
-Esta distinção é importante para a seleção do relay. Um relay pode anunciar pesquisa NIP-50, requisitos de autenticação ou um grande limite de mensagens, mas a resposta real só aparece quando um cliente realmente se conecta e exercita esses caminhos de código.
+Essa distinção importa para seleção de relay. Um relay pode anunciar busca NIP-50, exigências de autenticação ou um grande limite de mensagem, mas a resposta real só aparece quando um cliente de fato se conecta e exercita esses caminhos de código.
 
-## Por que é importante
+## Por que importa
 
-- Os clientes podem verificar se um relay suporta os recursos necessários antes de conectar
-- Os serviços de descoberta podem indexar recursos relay
-- Os usuários podem ver as políticas relay antes de publicar
+- clientes podem checar se um relay suporta features exigidas antes de conectar
+- serviços de descoberta podem indexar capabilities de relays
+- usuários podem ver políticas de relay antes de publicar
 
-## Direção de especificações recentes
+## Direção recente da spec
 
-A especificação foi reduzida ao longo do tempo. Campos opcionais mais antigos, como `software`, `version`, detalhes da política de privacidade e metadados de retenção foram removidos após anos de fraca adoção. Isso torna os documentos atuais do NIP-11 menores e mais realistas, mas também significa que os clientes não devem esperar metadados de políticas ricos dos relays.
+A especificação foi enxugada ao longo do tempo. Campos opcionais antigos, como `software`, `version`, detalhes de política de privacidade e metadados de retenção, foram removidos depois de anos de adoção fraca. Isso torna documentos NIP-11 atuais menores e mais realistas, mas também significa que clientes não devem esperar metadados ricos de política vindos de relays.
+
+O [PR #2318](https://github.com/nostr-protocol/nips/pull/2318) propõe adicionar um objeto opcional `access_control` ao relay information document, listando o modo de restrição do relay, como open, invite, payment ou allowlist, e qualquer endpoint que um cliente possa usar para pedir acesso. O campo é apenas consultivo e pretende permitir que clientes e diretórios filtrem relays restritos para fora de listas públicas de descoberta e mostrem aos usuários, de antemão, por que um relay recusa escritas.
+
+## Implementações
+
+- [nostream PR #557](https://github.com/Cameri/nostream/pull/557) leva o nostream à paridade completa com informações de relay NIP-11.
 
 ---
 
 **Fontes primárias:**
 - [Especificação NIP-11](https://github.com/nostr-protocol/nips/blob/master/11.md)
-- [PR #1764](https://github.com/nostr-protocol/nips/pull/1764) - Atualização do campo de identidade relay
+- [PR #1764](https://github.com/nostr-protocol/nips/pull/1764) - atualização do campo de identidade do relay
 - [PR #1946](https://github.com/nostr-protocol/nips/pull/1946) - limpeza de campos raramente usados
 - [PR #2231](https://github.com/nostr-protocol/nips/pull/2231) - remoção de campos obsoletos
+- [PR #2318](https://github.com/nostr-protocol/nips/pull/2318) - campo `access_control` para descoberta de relays restritos
+- [nostream PR #557](https://github.com/Cameri/nostream/pull/557) - paridade completa de informações de relay NIP-11
 
 **Mencionado em:**
-- [Boletim informativo nº 1: atualizações do NIP](/pt/newsletters/2025-12-17-newsletter/#nip-updates)
+- [Newsletter #1: Atualizações de NIP](/pt/newsletters/2025-12-17-newsletter/)
+- [Newsletter #13: Atualizações de NIP](/en/newsletters/2026-03-11-newsletter/)
+- [Newsletter #19: Atualizações de NIP, proposta `access_control`](/en/newsletters/2026-04-22-newsletter/)
 
 **Veja também:**
-- [NIP-66: Descoberta de relay e monitoramento de atividade](/pt/topics/nip-66/)
+- [NIP-66: Relay Discovery and Liveness Monitoring](/pt/topics/nip-66/)

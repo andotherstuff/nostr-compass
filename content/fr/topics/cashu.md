@@ -1,8 +1,8 @@
 ---
-title: "Cashu : Protocole Ecash"
+title: "Cashu : protocole ecash"
 date: 2026-01-28
 translationOf: /en/topics/cashu.md
-translationDate: 2026-03-07
+translationDate: 2026-04-22
 draft: false
 categories:
   - Payments
@@ -30,12 +30,13 @@ Les preuves Cashu sont des instruments au porteur. Quiconque contrôle la preuve
 
 ## Intégration Nostr
 
-Cashu s'intègre avec Nostr de plusieurs façons :
+Cashu s'intègre à Nostr de plusieurs façons :
 
 - **Nutzaps** : tokens ecash envoyés comme zaps avec une confidentialité renforcée
 - **Séquestre** : séquestre de paiement basé sur HTLC pour des services comme le covoiturage
 - **Portefeuilles** : les portefeuilles natifs Nostr stockent des tokens Cashu chiffrés sur les relais
 - **[NIP-87](/fr/topics/nip-87/)** : découverte et avis de mints via Nostr
+- **[TollGate](/fr/topics/tollgate/)** : protocole d'accès réseau pay-per-use qui accepte des tokens ecash Cashu pour la connectivité, défini dans [TIP-02](https://github.com/OpenTollGate/tollgate/blob/v0.1.0/TIP-02.md) à partir de la [release v0.1.0](https://github.com/OpenTollGate/tollgate/releases/tag/v0.1.0)
 
 ## Compromis
 
@@ -48,13 +49,15 @@ En pratique, les utilisateurs ont souvent besoin du même mint, ou d'un échange
 **Sources principales :**
 - [Dépôt NUTs Cashu](https://github.com/cashubtc/nuts)
 - [NUT-00 : Cryptographie et modèles](https://github.com/cashubtc/nuts/blob/main/00.md)
-- [NIP-60 : Portefeuille Cashu](/fr/topics/nip-60/)
-- [NIP-87 : Recommandations de mints Cashu](/fr/topics/nip-87/)
+- [Spécification NIP-60](https://github.com/nostr-protocol/nips/blob/master/60.md)
+- [Spécification NIP-87](https://github.com/nostr-protocol/nips/blob/master/87.md)
 
 **Mentionné dans :**
-- [Newsletter #7](/en/newsletters/2026-01-28-newsletter/)
-- [Newsletter #11](/en/newsletters/2026-02-25-newsletter/)
+- [Newsletter #7](/fr/newsletters/2026-01-28-newsletter/)
+- [Newsletter #11](/fr/newsletters/2026-02-25-newsletter/)
+- [Newsletter #19 : TollGate v0.1.0](/en/newsletters/2026-04-22-newsletter/)
 
 **Voir aussi :**
 - [NIP-60 : Portefeuille Cashu](/fr/topics/nip-60/)
 - [NIP-87 : Recommandations de mints Cashu](/fr/topics/nip-87/)
+- [TollGate](/fr/topics/tollgate/)

@@ -1,19 +1,19 @@
 ---
-title: 'NIP-65: Metadados da Lista de Relays'
+title: 'NIP-65: Metadados de lista de relays'
 date: 2026-01-13
 draft: false
 categories:
-- Protocol
-- Discovery
+  - Protocol
+  - Discovery
 translationOf: /en/topics/nip-65.md
-translationDate: '2026-03-07'
+translationDate: 2026-04-22
 ---
 
-NIP-65 define eventos kind 10002 que anunciam quais relays um usuário prefere para leitura e escrita. Esses metadados ajudam outros usuários e clientes a localizar seu conteúdo na rede distribuída de relays, habilitando o "modelo outbox" que distribui a carga e melhora a resistência à censura.
+NIP-65 define eventos kind `10002` que anunciam quais relays um usuário prefere para leitura e escrita. Esses metadados ajudam outros usuários e clientes a localizar seu conteúdo na rede distribuída de relays, habilitando o outbox model, que distribui carga e melhora resistência à censura.
 
 ## Estrutura
 
-Uma lista de relays é um evento substituível (kind 10002) contendo `r` tags para cada relay que o usuário deseja anunciar. O evento substitui qualquer lista de relays anterior do mesmo pubkey.
+Uma lista de relays é um evento replaceable, kind `10002`, contendo tags `r` para cada relay que o usuário quer anunciar. O evento substitui qualquer lista de relays anterior da mesma pubkey.
 
 ```json
 {
@@ -31,39 +31,39 @@ Uma lista de relays é um evento substituível (kind 10002) contendo `r` tags pa
 }
 ```
 
-Cada `r` tag contém uma URL WebSocket de relay e um marcador opcional que indica como o usuário interage com aquele relay. O marcador `read` significa que o usuário consome eventos deste relay, portanto outros deverão publicar lá para chegar ao usuário. O marcador `write` significa que o usuário publica neste relay, portanto outros devem se inscrever lá para ver o conteúdo do usuário. A omissão do marcador indica leitura e gravação.
+Cada tag `r` contém uma URL WebSocket de relay e um marcador opcional indicando como o usuário interage com aquele relay. O marcador `read` significa que o usuário consome eventos desse relay, então outros deveriam publicar lá para alcançá-lo. O marcador `write` significa que o usuário publica nesse relay, então outros deveriam assinar ali para ver o conteúdo do usuário. Omitir o marcador indica leitura e escrita.
 
-O campo `content` fica vazio para eventos de lista de relays.
+O campo `content` é vazio em eventos de lista de relays.
 
-## O Modelo Outbox
+## O outbox model
 
-O NIP-65 permite um padrão de distribuição de conteúdo descentralizado chamado "modelo outbox". Em vez de todos publicarem e lerem nos mesmos relays centrais, os usuários publicam nos relays de sua preferência, e os clientes descobrem dinamicamente onde encontrar o conteúdo de cada usuário.
+NIP-65 habilita um padrão descentralizado de distribuição de conteúdo chamado outbox model. Em vez de todo mundo publicar e ler nos mesmos relays centrais, usuários publicam em seus próprios relays preferidos e clientes descobrem dinamicamente onde encontrar o conteúdo de cada usuário.
 
-Quando Alice deseja encontrar as postagens de Bob, seu cliente primeiro busca o evento kind 10002 de Bob em qualquer relay que o possua. Ela então extrai os relays que Bob marcou com `write`, já que é nesses relays que ele publica. O cliente dela passa a assinar esses relays para receber os eventos de Bob. Quando Alice deseja enviar uma mensagem direta a Bob, seu cliente procura os relays marcados com `read` e publica a mensagem neles.
+Quando Alice quer encontrar os posts de Bob, o cliente dela primeiro busca o evento kind `10002` de Bob em qualquer relay que o tenha. Em seguida, extrai os relays que Bob marcou para `write`, porque é ali que ele publica. O cliente dela assina esses relays para receber os eventos de Bob. Quando Alice quer enviar uma mensagem direta a Bob, o cliente procura os relays `read` dele e publica a mensagem lá.
 
-Os clientes que seguem o modelo outbox mantêm conexões com os relays listados nos eventos NIP-65 das contas que acompanham. À medida que descobrem novas contas, eles se conectam dinamicamente a novos relays. Relays que aparecem nas listas de vários usuários seguidos recebem prioridade, porque conectar-se a eles atende uma parcela maior do grafo social do usuário.
+Clientes que seguem o outbox model mantêm conexões com relays listados nos eventos NIP-65 dos usuários seguidos. À medida que descobrem novas contas, conectam-se dinamicamente a novos relays. Relays que aparecem nas listas de múltiplos usuários seguidos ganham prioridade, já que conectar a eles atende uma parte maior do grafo social do usuário.
 
-Essa arquitetura melhora a resistência à censura porque nenhum relay precisa armazenar ou servir o conteúdo de todos. Se um relay ficar offline ou bloquear um usuário, seu conteúdo permanece disponível nos outros relays listados.
+Essa arquitetura melhora a resistência à censura porque nenhum relay único precisa armazenar ou servir o conteúdo de todos. Se um relay sai do ar ou bloqueia um usuário, o conteúdo dele continua disponível nos outros relays listados.
 
-## Por que é importante
+## Por que importa
 
-NIP-65 altera a seleção de relays de um padrão de cliente codificado para metadados de roteamento publicados pelo usuário. Isso permite que os clientes se adaptem aos hábitos reais de publicação e leitura de cada conta, em vez de presumir que todos usam o mesmo conjunto de relays.
+NIP-65 transforma seleção de relay de um padrão hardcoded do cliente em metadados de roteamento publicados pelo usuário. Isso permite que clientes se adaptem aos hábitos reais de publicação e leitura de cada conta em vez de assumir que todos usam o mesmo conjunto de relays.
 
-Também transfere a complexidade para os clientes. Para usar bem o modelo outbox, um cliente precisa de cache de relays, lógica de nova tentativa e comportamento de fallback quando uma lista de relays está ausente ou obsoleta. A especificação melhora a capacidade de descoberta, mas não elimina a necessidade de boas heurísticas de seleção de relays.
+Também desloca complexidade para os clientes. Para usar bem o outbox model, um cliente precisa de cache de relay, lógica de retry e fallback quando uma lista de relays está ausente ou desatualizada. A spec melhora a discoverability, mas não elimina a necessidade de boas heurísticas de seleção de relay.
 
-## Relação com Dicas de Relay
+## Relação com relay hints
 
-O NIP-65 complementa as dicas de relay encontradas em outros NIPs. Quando você marca alguém com `["p", "pubkey", "wss://hint.relay"]`, a dica informa aos clientes onde procurar aquela referência específica. O NIP-65 fornece a lista autoritativa de relays preferidos controlada pelo usuário, enquanto as dicas oferecem atalhos incorporados em eventos individuais para uma descoberta mais rápida.
+NIP-65 complementa os relay hints espalhados por outros NIPs. Quando você marca alguém com `['p', 'pubkey', 'wss://hint.relay']`, o hint diz aos clientes onde procurar por aquela referência específica. NIP-65 fornece a lista autoritativa e controlada pelo usuário de relays preferidos, enquanto hints oferecem atalhos embutidos em eventos individuais para descoberta mais rápida.
 
-Para mensagens privadas, o NIP-65 não conta a história completa. O roteamento de conteúdo público usa kind 10002, mas as pilhas modernas de mensagens privadas geralmente dependem de metadados de caixa de entrada separados, como as listas de relay do [NIP-17](/pt/topics/nip-17/), para que os usuários possam manter o roteamento de DM separado dos relays usados para postagem pública.
+Para mensagens privadas, NIP-65 não conta toda a história. O roteamento de conteúdo público usa kind `10002`, mas stacks modernas de mensagens privadas frequentemente dependem de metadados separados de inbox, como listas de relays da [NIP-17](/pt/topics/nip-17/), para que usuários mantenham o roteamento de DMs distinto dos relays de postagem pública.
 
-## Melhores práticas
+## Boas práticas
 
-Mantenha sua lista de relays atualizada, porque entradas obsoletas apontando para relays extintos tornam você mais difícil de encontrar. Inclua pelo menos dois ou três relays para redundância, para que, se um relay ficar offline, seu conteúdo permaneça acessível pelos outros.
+Mantenha sua lista de relays atualizada, porque entradas desatualizadas apontando para relays mortos tornam você mais difícil de encontrar. Inclua pelo menos dois ou três relays para redundância, para que, se um relay sair do ar, seu conteúdo continue acessível nos demais.
 
-Evite listar muitos relays. Quando você lista dez ou quinze relays, cada cliente que deseja buscar seu conteúdo deve se conectar a todos eles, tornando sua experiência mais lenta e aumentando a carga na rede. Uma lista focada de três a cinco relays bem escolhidos é melhor para você do que uma lista exaustiva que sobrecarrega todos que o seguem.
+Evite listar relays demais. Quando você lista dez ou quinze relays, todo cliente que quiser buscar seu conteúdo precisa conectar a todos eles, deixando a experiência mais lenta e aumentando a carga na rede. Uma lista focada de três a cinco relays bem escolhidos serve melhor do que uma lista exaustiva que pesa sobre todos que seguem você.
 
-Misture relays de uso geral com qualquer relay especializado que você usar. Por exemplo, você pode listar um relay geral popular como `wss://relay.damus.io`, um relay focado em sua região geográfica e um relay para uma comunidade específica da qual você participa.
+Misture relays de uso geral com relays especializados que você utiliza. Por exemplo, você pode listar um relay geral popular como `wss://relay.damus.io`, um relay focado em sua região geográfica e um relay de uma comunidade específica da qual você participa.
 
 ---
 
@@ -71,9 +71,10 @@ Misture relays de uso geral com qualquer relay especializado que você usar. Por
 - [Especificação NIP-65](https://github.com/nostr-protocol/nips/blob/master/65.md)
 
 **Mencionado em:**
-- [Boletim informativo nº 5: Aprofundamento do NIP](/pt/newsletters/2026-01-13-newsletter/#nip-65-relay-list-metadata)
-- [Boletim informativo nº 10: Benchmarks do Modelo Outbox](/pt/newsletters/2026-03-04-newsletter/)
+- [Newsletter #5: NIP Deep Dive](/pt/newsletters/2026-01-13-newsletter/)
+- [Newsletter #12: benchmarks do outbox model](/pt/newsletters/2026-03-04-newsletter/)
+- [Newsletter #19: broadcasting para inbox relays no Wisp](/en/newsletters/2026-04-22-newsletter/)
 
 **Veja também:**
-- [NIP-11: Informações do Relay](/pt/topics/nip-11/)
+- [NIP-11: Relay Information](/pt/topics/nip-11/)
 - [NIP-17: Mensagens Diretas Privadas](/pt/topics/nip-17/)

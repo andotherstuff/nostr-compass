@@ -1,6 +1,7 @@
 ---
 title: "NIP-10: Threading für Textnotizen"
 date: 2025-12-24
+translationOf: /en/topics/nip-10.md
 translationDate: 2026-03-07
 draft: false
 categories:

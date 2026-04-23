@@ -52,8 +52,8 @@ Les filtres structurés fonctionnent bien quand on connaît déjà l'auteur, le 
 - [NIP-50 Specification](https://github.com/nostr-protocol/nips/blob/master/50.md)
 
 **Mentionné dans :**
-- [Newsletter #3 : December Recap](/en/newsletters/2025-12-31-newsletter/#december-recap-five-years-of-nostr-decembers)
-- [Newsletter #7 : NIP Updates](/en/newsletters/2026-01-07-newsletter/#nip-updates)
+- [Newsletter #3 : December Recap](/en/newsletters/2025-12-31-newsletter/)
+- [Newsletter #7 : NIP Updates](/en/newsletters/2026-01-07-newsletter/)
 
 **Voir aussi :**
 - [NIP-11 : Relay Information](/fr/topics/nip-11/)

@@ -2,7 +2,7 @@
 title: "NIP-04 : Messages directs chiffrés (obsolète)"
 date: 2025-12-31
 translationOf: /en/topics/nip-04.md
-translationDate: 2026-03-07
+translationDate: 2026-04-22
 draft: false
 categories:
   - Privacy
@@ -49,8 +49,9 @@ Les clients et signataires hérités exposent toujours les méthodes encrypt/dec
 - [Spécification NIP-04](https://github.com/nostr-protocol/nips/blob/master/04.md)
 
 **Mentionné dans :**
-- [Newsletter #4 : NIP Deep Dive](/en/newsletters/2026-01-07-newsletter/#nip-04-encrypted-direct-messages-legacy)
-- [Newsletter #3 : Récapitulatif de décembre](/en/newsletters/2025-12-31-newsletter/#december-recap-five-years-of-nostr-decembers)
+- [Newsletter #4 : NIP Deep Dive](/fr/newsletters/2026-01-07-newsletter/)
+- [Newsletter #3 : Récapitulatif de décembre](/en/newsletters/2025-12-31-newsletter/)
+- [Newsletter #19 : migration NIP-44 de nostter](/en/newsletters/2026-04-22-newsletter/)
 
 **Voir aussi :**
 - [NIP-44 : Charges utiles chiffrées](/fr/topics/nip-44/)

@@ -2,7 +2,7 @@
 title: "Cashu: Protocolo Ecash"
 date: 2026-01-28
 translationOf: /en/topics/cashu.md
-translationDate: 2026-03-07
+translationDate: 2026-04-22
 draft: false
 categories:
   - Payments
@@ -12,7 +12,7 @@ categories:
 
 Cashu es un protocolo ecash Chaumiano construido sobre Bitcoin y Lightning. Los usuarios poseen tokens al portador emitidos por un mint, y luego transfieren esos tokens sin exponer el grafo completo de pagos al mint.
 
-## Cómo Funciona
+## Cómo funciona
 
 Cashu usa firmas ciegas para emitir tokens ecash:
 
@@ -36,6 +36,7 @@ Cashu se integra con Nostr de varias formas:
 - **Depósito en garantía**: Depósito de pagos basado en HTLC para servicios como viajes compartidos
 - **Billeteras**: Billeteras nativas de Nostr almacenan tokens Cashu cifrados en relays
 - **[NIP-87](/es/topics/nip-87/)**: Descubrimiento y reseñas de mints vía Nostr
+- **[TollGate](/es/topics/tollgate/)**: Protocolo de acceso de red de pago por uso que acepta tokens ecash de Cashu para conectividad, definido en [TIP-02](https://github.com/OpenTollGate/tollgate/blob/v0.1.0/TIP-02.md) a partir del [release v0.1.0](https://github.com/OpenTollGate/tollgate/releases/tag/v0.1.0)
 
 ## Compensaciones
 
@@ -54,7 +55,9 @@ En la práctica, los usuarios frecuentemente necesitan el mismo mint, o necesita
 **Mencionado en:**
 - [Boletín #7](/es/newsletters/2026-01-28-newsletter/)
 - [Boletín #11](/es/newsletters/2026-02-25-newsletter/)
+- [Boletín #19: TollGate v0.1.0](/en/newsletters/2026-04-22-newsletter/)
 
 **Ver también:**
 - [NIP-60: Billetera Cashu](/es/topics/nip-60/)
 - [NIP-87: Recomendaciones de Mints Cashu](/es/topics/nip-87/)
+- [TollGate](/es/topics/tollgate/)

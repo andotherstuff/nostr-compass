@@ -1,8 +1,8 @@
 ---
-title: "Cashu: Ecashプロトコル"
+title: "Cashu: Ecash Protocol"
 date: 2026-01-28
 translationOf: /en/topics/cashu.md
-translationDate: 2026-03-07
+translationDate: 2026-04-22
 draft: false
 categories:
   - Payments
@@ -10,51 +10,54 @@ categories:
   - Bitcoin
 ---
 
-Cashuは、BitcoinとLightningの上に構築されたChaumian ecashプロトコルです。ユーザーはmintが発行するbearer tokenを保持し、そのtokenを移転するときに、支払いグラフ全体をmintへ露出させずに済みます。
+Cashuは、BitcoinとLightning上に構築されたChaumian ecash protocolです。ユーザーはmintが発行したbearer tokenを保持し、そのtokenをmintへ完全なpayment graphを見せずに転送できます。
 
 ## 仕組み
 
 Cashuはblind signatureを使ってecash tokenを発行します。
 
-1. **Minting**: ユーザーはBitcoin/Lightningをmintに預け、blinded tokenを受け取る
-2. **Spending**: tokenはmintを介さずにpeer-to-peerで移転できる
-3. **Redemption**: 受取人はtokenをmintでBitcoin/Lightningに引き換える
+1. **Minting**: ユーザーはmintへBitcoin/Lightningを預け、blinded tokenを受け取る
+2. **Spending**: tokenはmintを介さずpeer-to-peerで転送できる
+3. **Redemption**: 受取人はmintでtokenをBitcoin/Lightningへ償還する
 
-mintはblinded secretに署名するため、後でtokenを検証できても、発行時点では元のsecretを見ません。これにより、mint内部で入金と換金を直接結び付けにくくなります。
+mintはblinded secretへ署名するため、後でtokenを検証できても、発行時点では元のsecretを見ません。これによりmint内部でdepositとredemptionの直接リンクが切れます。
 
 ## セキュリティと信頼モデル
 
-Cashuは支払いのプライバシーを改善しますが、依然としてcustodialです。mintは換金を拒否でき、オフラインになれますし、裏付け資金を失うこともあります。
+Cashuは支払いprivacyを改善しますが、依然としてcustodialです。mintは償還を拒否したり、offlineになったり、裏付け資金を失ったりできます。
 
-Cashu proofはbearer instrumentです。proofを保持する者がそれを使えます。proofの扱いは口座残高より現金に近く、バックアップ、端末侵害、平文tokenの漏えいはすぐに問題になります。
+Cashu proofはbearer instrumentです。proofを支配する者が支出できます。そのためproofの扱いはaccount balanceより現金に近く、backup、端末侵害、平文token漏えいはどれも即座に問題になります。
 
-## Nostrとの統合
+## Nostr integration
 
-Cashuは複数の形でNostrと統合されています。
+CashuはNostrといくつかの形で統合されます。
 
-- **Nutzaps**: プライバシーを強化したzapとして送られるecash token
-- **Escrow**: ライドシェアのようなサービス向けのHTLCベースのpayment escrow
-- **Wallets**: Nostrネイティブwalletが暗号化されたCashu tokenをrelayに保存する
-- **[NIP-87](/ja/topics/nip-87/)**: Nostrを介したmintの発見とレビュー
+- **Nutzaps**: ecash tokenをprivacy強化付きでzapとして送る
+- **Escrow**: ridesharingのようなservice向けHTLCベースpayment escrow
+- **Wallets**: Nostrネイティブwalletが暗号化されたCashu tokenをrelayへ保存する
+- **[NIP-87](/ja/topics/nip-87/)**: Nostr経由のmint discoveryとreview
+- **[TollGate](/ja/topics/tollgate/)**: 接続性に対してCashu ecash tokenを受け付けるpay-per-use network access protocol。これは[v0.1.0 release](https://github.com/OpenTollGate/tollgate/releases/tag/v0.1.0)時点で[TIP-02](https://github.com/OpenTollGate/tollgate/blob/v0.1.0/TIP-02.md)により定義されています
 
 ## トレードオフ
 
-Cashuは、転送がon-chainでもなく、多くの場合redeemまでoff-mintでもあるため高速です。代わりに、相互運用性と信頼の問題が残ります。
+Cashuはtransferがoff-chainで行われ、償還までoff-mintで済むことも多いため高速です。代わりにinteroperabilityとtrustのトレードオフがあります。
 
-実際には、ユーザーは同じmintを使う必要があるか、mint間のswapやbridgeが必要になります。だからこそ、NostrアプリはCashuをmint discovery、wallet sync、reviewシステムと組み合わせることが多いのです。
+実際には、ユーザーは同じmintを使う必要があることが多く、そうでなければmint間のswapやbridgeが必要です。そのためNostr applicationは、Cashuをmint discovery、wallet sync、review systemと組み合わせることがよくあります。
 
 ---
 
-**主要ソース:**
+**Primary sources:**
 - [Cashu NUTs Repository](https://github.com/cashubtc/nuts)
 - [NUT-00: Cryptography and models](https://github.com/cashubtc/nuts/blob/main/00.md)
+- [NIP-60 Specification](https://github.com/nostr-protocol/nips/blob/master/60.md)
+- [NIP-87 Specification](https://github.com/nostr-protocol/nips/blob/master/87.md)
+
+**Mentioned in:**
+- [Newsletter #7](/ja/newsletters/2026-01-28-newsletter/)
+- [Newsletter #11](/ja/newsletters/2026-02-25-newsletter/)
+- [Newsletter #19: TollGate v0.1.0](/en/newsletters/2026-04-22-newsletter/)
+
+**See also:**
 - [NIP-60: Cashu Wallet](/ja/topics/nip-60/)
 - [NIP-87: Cashu Mint Recommendations](/ja/topics/nip-87/)
-
-**言及箇所:**
-- [Newsletter #7](/en/newsletters/2026-01-28-newsletter/)
-- [Newsletter #11](/en/newsletters/2026-02-25-newsletter/)
-
-**関連項目:**
-- [NIP-60: Cashu Wallet](/ja/topics/nip-60/)
-- [NIP-87: Cashu Mint Recommendations](/ja/topics/nip-87/)
+- [TollGate](/ja/topics/tollgate/)

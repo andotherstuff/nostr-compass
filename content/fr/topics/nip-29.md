@@ -2,7 +2,7 @@
 title: "NIP-29 : Groupes basés sur les relais"
 date: 2025-12-24
 translationOf: /en/topics/nip-29.md
-translationDate: 2026-03-07
+translationDate: 2026-04-22
 draft: false
 categories:
   - Social
@@ -38,6 +38,17 @@ Cela rend la migration et le fork possibles, mais pas automatiques. Le même ide
 - L'état du groupe est reconstruit à partir de l'historique de modération, tandis que les événements relais de la série 39000 sont des instantanés informatifs de cet état
 - Les références `previous` de la chronologie servent à empêcher la rediffusion hors contexte entre forks de relais, pas uniquement à améliorer le threading de l'interface
 
+## Travail récent sur la spécification
+
+- [PR #2310](https://github.com/nostr-protocol/nips/pull/2310) et les [notes de release de Flotilla 1.7.3/1.7.4](https://gitea.coracle.social/coracle/flotilla/src/tag/1.7.4) proposent l'enveloppement kind-9 de types de contenu non orientés chat (événements calendrier, sondages, autres payloads) afin de préserver le contexte du salon lorsque ces objets sont envoyés dans un groupe.
+- [PR #2319](https://github.com/nostr-protocol/nips/pull/2319) étend la spécification avec une hiérarchie de sous-groupes afin qu'un seul groupe puisse héberger plusieurs canaux parallèles sans créer de groupes indépendants sur le même relay. L'identifiant de sous-groupe s'appuie sur le tag `h` existant, ce qui préserve les messages à tag `h` unique pour les anciens clients.
+- [PR #2316](https://github.com/nostr-protocol/nips/pull/2316) définit des permissions explicites sur l'événement de rôle kind `39003`, afin que chaque rôle devienne un ensemble nommé d'opérations accordées (invite, add-user, remove-user, edit-metadata, delete-event, add-permission) avec une expiration optionnelle bornée dans le temps.
+
+## Implémentations
+
+- [Flotilla](https://gitea.coracle.social/coracle/flotilla) est le principal client NIP-29 de hodlbod ; [1.7.3](https://gitea.coracle.social/coracle/flotilla/src/tag/1.7.3) et [1.7.4](https://gitea.coracle.social/coracle/flotilla/src/tag/1.7.4) ont livré l'enveloppement kind-9, les sondages, la connexion [NIP-46](/fr/topics/nip-46/) via le schéma d'URL Aegis, le support natif du partage pour les invitations d'espaces, les mentions de salons, le collage d'images depuis le presse-papiers mobile, les brouillons et la vidéo pendant les appels.
+- [Wisp](https://github.com/barrydeen/wisp) a ajouté la configuration de groupe NIP-29 pour les flags, invitations, rôles et prompts AUTH dans la [PR #471](https://github.com/barrydeen/wisp/pull/471) et a durci la séquence AUTH avant les événements de groupe `9021`, `9007` et `9009` dans la [PR #478](https://github.com/barrydeen/wisp/pull/478).
+
 ---
 
 **Sources principales :**
@@ -45,13 +56,21 @@ Cela rend la migration et le fork possibles, mais pas automatiques. Le même ide
 - [PR #2106](https://github.com/nostr-protocol/nips/pull/2106) - Clarification de `private`, `closed` et `hidden`
 - [PR #2190](https://github.com/nostr-protocol/nips/pull/2190) - Clarification de l'URL du relais comme clé du relais
 - [PR #2111](https://github.com/nostr-protocol/nips/pull/2111) - Ajout de `unallowpubkey` et `unbanpubkey`
+- [PR #2310](https://github.com/nostr-protocol/nips/pull/2310) - Enveloppement kind-9 pour le contenu non orienté chat
+- [PR #2319](https://github.com/nostr-protocol/nips/pull/2319) - Spécification des sous-groupes
+- [PR #2316](https://github.com/nostr-protocol/nips/pull/2316) - Permissions explicites de rôle sur le kind 39003
+- [Flotilla 1.7.4](https://gitea.coracle.social/coracle/flotilla/src/tag/1.7.4)
+- [Wisp PR #471](https://github.com/barrydeen/wisp/pull/471) - Configuration de groupe NIP-29
 
 **Mentionné dans :**
-- [Newsletter #2 : Mises à jour NIP](/en/newsletters/2025-12-24-newsletter/#nip-updates)
-- [Newsletter #3 : Rétrospective de décembre](/en/newsletters/2025-12-31-newsletter/#december-recap-five-years-of-nostr-decembers)
-- [Newsletter #6 : Mises à jour NIP](/en/newsletters/2026-01-21-newsletter/#nip-updates)
-- [Newsletter #11 : Mises à jour NIP](/en/newsletters/2026-02-25-newsletter/#nip-updates)
-- [Newsletter #12 : Mises à jour NIP](/en/newsletters/2026-03-04-newsletter/#nip-updates)
+- [Newsletter #2 : Mises à jour NIP](/fr/newsletters/2025-12-24-newsletter/)
+- [Newsletter #3 : Rétrospective de décembre](/en/newsletters/2025-12-31-newsletter/)
+- [Newsletter #6 : Mises à jour NIP](/fr/newsletters/2026-01-21-newsletter/)
+- [Newsletter #11 : Mises à jour NIP](/fr/newsletters/2026-02-25-newsletter/)
+- [Newsletter #12 : Mises à jour NIP](/fr/newsletters/2026-03-04-newsletter/)
+- [Newsletter #19 : Flotilla 1.7.3/1.7.4](/en/newsletters/2026-04-22-newsletter/)
+- [Newsletter #19 : configuration NIP-29 de Wisp](/en/newsletters/2026-04-22-newsletter/)
+- [Newsletter #19 : mises à jour NIP (sous-groupes, permissions de rôles)](/en/newsletters/2026-04-22-newsletter/)
 
 **Voir aussi :**
 - [NIP-11 : Document d'information du relais](/fr/topics/nip-11/)

@@ -2,7 +2,12 @@
 title: "NIP-27 (Textnotiz-Referenzen)"
 date: 2026-02-04
 description: "NIP-27 definiert, wie Profile, Notizen und andere Entitäten innerhalb von Notizinhalten mit dem nostr: URI-Schema referenziert werden."
+translationOf: /en/topics/nip-27.md
 translationDate: 2026-03-07
+draft: false
+categories:
+  - NIP
+  - Social
 ---
 
 NIP-27 legt fest, wie Referenzen auf Nostr-Entitäten in den Inhalt von Text Notes eingebettet werden. Referenzen verwenden das `nostr:`-URI-Schema, gefolgt von einem bech32-kodierten Identifikator, `npub`, `note`, `nevent`, `nprofile` oder `naddr`.
