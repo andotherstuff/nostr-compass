@@ -1,7 +1,8 @@
 ---
-title: "NIP-65: Relaylijstmetadata"
+title: "NIP-65: Relay List Metadata"
 date: 2026-01-13
-translationDate: 2026-03-07
+translationOf: /en/topics/nip-65.md
+translationDate: 2026-04-22
 draft: false
 categories:
   - Protocol
@@ -67,11 +68,12 @@ Combineer algemene relays met gespecialiseerde relays die je gebruikt. Je kunt b
 ---
 
 **Primaire bronnen:**
-- [NIP-65-specificatie](https://github.com/nostr-protocol/nips/blob/master/65.md)
+- [NIP-65 Specification](https://github.com/nostr-protocol/nips/blob/master/65.md)
 
 **Vermeld in:**
-- [Nieuwsbrief #5: NIP Deep Dive](/en/newsletters/2026-01-13-newsletter/#nip-65-relay-list-metadata)
-- [Nieuwsbrief #10: Outbox Model Benchmarks](/en/newsletters/2026-03-04-newsletter/)
+- [Newsletter #5: NIP Deep Dive](/nl/newsletters/2026-01-13-newsletter/)
+- [Newsletter #12: Outbox Model Benchmarks](/nl/newsletters/2026-03-04-newsletter/)
+- [Newsletter #19: Wisp inbox-relay broadcasting](/en/newsletters/2026-04-22-newsletter/)
 
 **Zie ook:**
 - [NIP-11: Relay Information](/nl/topics/nip-11/)

@@ -5,6 +5,10 @@ type: topics
 cascade:
   type: topics
 draft: false
+translationOf: /en/topics/_index.md
+translationDate: 2026-04-23
+categories:
+  - Topics
 ---
 
 Das Themenverzeichnis von Nostr Compass dokumentiert wichtige Protokollkonzepte, NIPs, Client-Implementierungen und Relay-Software. Jedes Thema enthält Links zu Primärquellen (NIPs, Code-Repositories) und unserer Newsletter-Berichterstattung.

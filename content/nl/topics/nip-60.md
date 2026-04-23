@@ -2,10 +2,10 @@
 title: "NIP-60: Cashu Wallet"
 date: 2025-12-31
 translationOf: /en/topics/nip-60.md
-translationDate: 2026-03-07
+translationDate: 2026-04-22
 draft: false
 categories:
-  - Portemonnee
+  - Wallet
   - Ecash
 ---
 
@@ -36,13 +36,13 @@ Dat onderscheid is belangrijk voor interoperabiliteit. Twee clients kunnen allee
 - **Privacy** - Alle wallet-gegevens zijn versleuteld naar de sleutels van de gebruiker
 - **Proof-beheer** - Houdt wallet-statusovergangen bij zodat clients op dezelfde balans kunnen uitkomen
 
-## Interop-opmerkingen
+## Interop Notes
 
 Clients zoeken eerst naar wallet relay-informatie via kind 10019 en vallen terug op de relay-lijst van de gebruiker uit [NIP-65](/nl/topics/nip-65/) als er geen aparte wallet relay-lijst aanwezig is. Die fallback is nuttig, maar betekent ook dat wallet-portabiliteit nog steeds afhangt van relays die de versleutelde wallet events daadwerkelijk opslaan en serveren.
 
 De specificatie vereist ook dat de private key van de wallet gescheiden blijft van de Nostr identity key van de gebruiker. Dat houdt de afhandeling van wallet-ontvangsten los van de hoofd-signing key en verkleint de kans dat een key voor twee verschillende doelen wordt hergebruikt.
 
-## Werkstroom
+## Workflow
 
 1. De client haalt wallet-configuratie op van wallet-relays of de relay-lijst van de gebruiker
 2. Token events worden geladen en ontsleuteld om beschikbare fondsen te bepalen
@@ -52,11 +52,12 @@ De specificatie vereist ook dat de private key van de wallet gescheiden blijft v
 ---
 
 **Primaire bronnen:**
-- [NIP-60 Specificatie](https://github.com/nostr-protocol/nips/blob/master/60.md)
+- [NIP-60 Specification](https://github.com/nostr-protocol/nips/blob/master/60.md)
 
 **Vermeld in:**
-- [Nieuwsbrief #3: December Recap](/en/newsletters/2025-12-31-newsletter/#december-recap-five-years-of-nostr-decembers)
-- [Nieuwsbrief #9: NIP Deep Dive](/en/newsletters/2026-02-25-newsletter/#nip-deep-dive-nip-60-cashu-wallet)
+- [Newsletter #3: December Recap](/en/newsletters/2025-12-31-newsletter/)
+- [Newsletter #11: NIP Deep Dive](/nl/newsletters/2026-02-25-newsletter/)
+- [Newsletter #13: Shopstr and Milk Market Open MCP Commerce Surfaces](/en/newsletters/2026-03-11-newsletter/)
 
 **Zie ook:**
 - [NIP-57: Zaps](/nl/topics/nip-57/)

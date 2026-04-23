@@ -5,6 +5,10 @@ type: topics
 cascade:
   type: topics
 draft: false
+translationOf: /en/topics/_index.md
+translationDate: 2026-04-23
+categories:
+  - Topics
 ---
 
 El índice de temas de Nostr Compass documenta conceptos clave del protocolo, NIPs, implementaciones de clientes y software de relays. Cada tema incluye enlaces a fuentes primarias (NIPs, repositorios de código) y nuestra cobertura en el boletín.

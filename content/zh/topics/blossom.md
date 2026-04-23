@@ -43,9 +43,9 @@ Blossom 是模块化的。核心的检索和上传行为位于 BUD-01 和 BUD-02
 - [本地 Blossom 缓存指南](https://github.com/hzrd149/blossom/blob/master/implementations/local-blossom-cache.md)
 
 **提及于：**
-- [第1期周刊：新闻动态](/zh/newsletters/2025-12-17-newsletter/#news)
-- [第2期周刊：重要代码变更](/zh/newsletters/2025-12-24-newsletter/#notable-code-and-documentation-changes)
-- [第10期周刊：Blossom 本地缓存层出现](/zh/newsletters/2026-02-18-newsletter/#blossom-local-cache-layer-emerges)
+- [第1期周刊：新闻动态](/zh/newsletters/2025-12-17-newsletter/)
+- [第2期周刊：重要代码变更](/zh/newsletters/2025-12-24-newsletter/)
+- [第10期周刊：Blossom 本地缓存层出现](/zh/newsletters/2026-02-18-newsletter/)
 
 **另请参阅：**
 - [BUD-03：用户服务器列表](/zh/topics/bud-03/)

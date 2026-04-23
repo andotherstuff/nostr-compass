@@ -2,6 +2,7 @@
 title: "MIP-05: Privacybehoudende pushnotificaties"
 date: 2025-12-17
 translationDate: 2026-03-07
+translationOf: /en/topics/mip-05.md
 draft: false
 categories:
   - Privacy

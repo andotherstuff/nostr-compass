@@ -1,8 +1,8 @@
 ---
-title: "NIP-52: Kalenderevenementen"
+title: "NIP-52: Calendar Events"
 date: 2026-01-28
 translationOf: /en/topics/nip-52.md
-translationDate: 2026-03-07
+translationDate: 2026-04-22
 draft: false
 categories:
   - NIP
@@ -72,20 +72,21 @@ RSVP's kunnen ook `fb`-waarden van `free` of `busy` bevatten, wat planningsconte
 
 Terugkerende evenementen vallen bewust buiten scope. De specificatie schuift herhalingsregels door naar clients, wat relay-side indexering eenvoudig houdt en de gebruikelijke kalenderproblemen rond zomertijdwisselingen en uitzonderingen vermijdt.
 
-## Waarom dit belangrijk is
+## Why It Matters
 
 NIP-52 doet meer dan een bijeenkomst beschrijven. Het scheidt eventdefinitie, kalenderlidmaatschap en reacties van deelnemers in verschillende event kinds. Daardoor kan de ene app een evenement publiceren, een andere kalenders aggregeren en een derde RSVP-status beheren zonder dat alle drie dezelfde backend delen.
 
 ---
 
 **Primaire bronnen:**
-- [NIP-52-specificatie](https://github.com/nostr-protocol/nips/blob/master/52.md)
+- [NIP-52 Specification](https://github.com/nostr-protocol/nips/blob/master/52.md)
 - [PR #1752: Day-Granularity Timestamp Tag](https://github.com/nostr-protocol/nips/pull/1752)
 
 **Vermeld in:**
-- [Nieuwsbrief #7: Notedeck Calendar App Draft](/en/newsletters/2026-01-28-newsletter/#notedeck-progress-calendar-app-and-ux-polish)
-- [Nieuwsbrief #10: NIP Updates](/en/newsletters/2026-02-18-newsletter/#nip-updates)
-- [Nieuwsbrief #10: NIP Deep Dive](/en/newsletters/2026-02-18-newsletter/#nip-deep-dive-nip-52-calendar-events)
+- [Newsletter #7: Notedeck Calendar App Draft](/nl/newsletters/2026-01-28-newsletter/)
+- [Newsletter #10: NIP Updates](/nl/newsletters/2026-02-18-newsletter/)
+- [Newsletter #10: NIP Deep Dive](/nl/newsletters/2026-02-18-newsletter/)
+- [Newsletter #13: Calendar by Form* v0.2.0](/en/newsletters/2026-03-11-newsletter/)
 
 **Zie ook:**
 - [NIP-22: Comment](/nl/topics/nip-22/)

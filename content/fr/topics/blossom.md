@@ -43,9 +43,9 @@ Cette séparation permet aux clients d'implémenter le minimum nécessaire pour 
 - [Guide du cache local Blossom](https://github.com/hzrd149/blossom/blob/master/implementations/local-blossom-cache.md)
 
 **Mentionné dans :**
-- [Newsletter #1 : Actualités](/en/newsletters/2025-12-17-newsletter/#news)
-- [Newsletter #2 : Changements notables de code et documentation](/en/newsletters/2025-12-24-newsletter/#notable-code-and-documentation-changes)
-- [Newsletter #10 : La couche de cache local Blossom émerge](/en/newsletters/2026-02-18-newsletter/#blossom-local-cache-layer-emerges)
+- [Newsletter #1 : Actualités](/en/newsletters/2025-12-17-newsletter/)
+- [Newsletter #2 : Changements notables de code et documentation](/en/newsletters/2025-12-24-newsletter/)
+- [Newsletter #10 : La couche de cache local Blossom émerge](/en/newsletters/2026-02-18-newsletter/)
 
 **Voir aussi :**
 - [BUD-03 : Liste de serveurs utilisateur](/fr/topics/bud-03/)

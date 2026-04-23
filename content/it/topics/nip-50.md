@@ -51,8 +51,8 @@ I filtri strutturati funzionano bene quando conosci già l'autore, il kind o il 
 - [NIP-50 Specification](https://github.com/nostr-protocol/nips/blob/master/50.md)
 
 **Citato in:**
-- [Newsletter #3: December Recap](/en/newsletters/2025-12-31-newsletter/#december-recap-five-years-of-nostr-decembers)
-- [Newsletter #7: NIP Updates](/en/newsletters/2026-01-07-newsletter/#nip-updates)
+- [Newsletter #3: December Recap](/en/newsletters/2025-12-31-newsletter/)
+- [Newsletter #7: NIP Updates](/en/newsletters/2026-01-07-newsletter/)
 
 **Vedi anche:**
 - [NIP-11: Relay Information](/it/topics/nip-11/)

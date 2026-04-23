@@ -1,6 +1,7 @@
 ---
 title: "NIP-19: Bech32-kodierte Entitäten"
 date: 2025-12-17
+translationOf: /en/topics/nip-19.md
 translationDate: 2026-03-07
 draft: false
 categories:

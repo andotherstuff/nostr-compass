@@ -2,6 +2,7 @@
 title: "NIP-69: Peer-to-Peer Handel"
 date: 2025-12-17
 translationDate: 2026-03-07
+translationOf: /en/topics/nip-69.md
 draft: false
 categories:
   - Handel

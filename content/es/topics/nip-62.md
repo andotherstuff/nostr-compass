@@ -2,7 +2,7 @@
 title: "NIP-62: Solicitudes de desvanecimiento"
 date: 2026-01-13
 translationOf: /en/topics/nip-62.md
-translationDate: 2026-03-07
+translationDate: 2026-04-22
 draft: false
 categories:
   - Privacy
@@ -58,15 +58,34 @@ Para contenido que debe permanecer privado, considera usar mensajería cifrada c
 
 NIP-62 complementa a [NIP-09](/es/topics/nip-09/). NIP-09 es el evento general de solicitud de eliminación usado en todo Nostr, mientras que NIP-62 da a los relays una señal de desvanecimiento más fuerte que puede cubrir eventos específicos o el conjunto completo de contenido de una pubkey. Las implementaciones pueden soportar ambos, y los backends de base de datos de rust-nostr ahora exponen configuración alrededor de ese límite de aplicación.
 
+## Implementaciones
+
+- [Amethyst v1.07.0](https://github.com/vitorpamplona/amethyst/releases/tag/v1.07.0) - soporte del lado cliente para solicitudes de desvanecimiento
+- [rust-nostr PR #1315](https://github.com/rust-nostr/nostr/pull/1315) - soporte en backend de memoria
+- [rust-nostr PR #1316](https://github.com/rust-nostr/nostr/pull/1316) - soporte en backend LMDB
+- [rust-nostr PR #1317](https://github.com/rust-nostr/nostr/pull/1317) - soporte en backend SQLite
+- [rust-nostr PR #1318](https://github.com/rust-nostr/nostr/pull/1318) - cobertura de tests de base de datos para soporte de vanish específico por relay
+- [nostream PR #544](https://github.com/Cameri/nostream/pull/544) - añade right-to-vanish de NIP-62 a la lista de funcionalidades anunciadas
+
 ---
 
 **Fuentes primarias:**
 - [Especificación NIP-62](https://github.com/nostr-protocol/nips/blob/master/62.md)
+- [Amethyst v1.07.0](https://github.com/vitorpamplona/amethyst/releases/tag/v1.07.0) - soporte de vanish del lado cliente
+- [rust-nostr PR #1315](https://github.com/rust-nostr/nostr/pull/1315)
+- [rust-nostr PR #1316](https://github.com/rust-nostr/nostr/pull/1316)
+- [rust-nostr PR #1317](https://github.com/rust-nostr/nostr/pull/1317)
+- [rust-nostr PR #1318](https://github.com/rust-nostr/nostr/pull/1318)
+- [nostream PR #544](https://github.com/Cameri/nostream/pull/544)
 
 **Mencionado en:**
-- [Boletín #5: Cambios notables de código](/en/newsletters/2026-01-13-newsletter/#rust-nostr-library)
-- [Boletín #10: rust-nostr](/en/newsletters/2026-03-04-newsletter/#rust-nostr-nip-62-request-to-vanish)
+- [Boletín #5: Cambios notables de código](/es/newsletters/2026-01-13-newsletter/)
+- [Boletín #10: rust-nostr](/es/newsletters/2026-03-04-newsletter/)
+- [Boletín #16: Amethyst lanza soporte NIP-62](/es/newsletters/2026-04-01-newsletter/)
+- [Boletín #16: NIP Deep Dive](/es/newsletters/2026-04-01-newsletter/)
+- [Boletín #19: soporte NIP-62 en nostream](/en/newsletters/2026-04-22-newsletter/)
 
 **Ver también:**
 - [NIP-09: Solicitud de eliminación de eventos](/es/topics/nip-09/)
 - [NIP-17: Mensajes directos privados](/es/topics/nip-17/)
+- [NIP-59: Gift Wrap](/es/topics/nip-59/)

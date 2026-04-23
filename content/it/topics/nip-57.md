@@ -1,8 +1,8 @@
 ---
 title: "NIP-57: Zaps"
 date: 2025-12-17
-translationOf: /en/topics/nip-57/
-translationDate: 2026-03-07
+translationOf: /en/topics/nip-57.md
+translationDate: 2026-04-22
 draft: false
 categories:
   - Wallet
@@ -50,10 +50,10 @@ Gli zap sono utili perché rendono visibili i pagamenti nel social graph, ma la 
 - [NIP-57 Specification](https://github.com/nostr-protocol/nips/blob/master/57.md)
 
 **Citato in:**
-- [Newsletter #1: News](/en/newsletters/2025-12-17-newsletter/#news)
-- [Newsletter #2: News](/en/newsletters/2025-12-24-newsletter/#news)
-- [Newsletter #3: Notable Code Changes](/en/newsletters/2025-12-31-newsletter/#amethyst-android)
-- [Newsletter #9: NIP Updates](/en/newsletters/2026-02-11-newsletter/#nip-updates)
+- [Newsletter #1: News](/it/newsletters/2025-12-17-newsletter/)
+- [Newsletter #2: News](/it/newsletters/2025-12-24-newsletter/)
+- [Newsletter #3: Notable Code Changes](/en/newsletters/2025-12-31-newsletter/)
+- [Newsletter #9: NIP Updates](/it/newsletters/2026-02-11-newsletter/)
 
 **Vedi anche:**
 - [NIP-47: Nostr Wallet Connect](/it/topics/nip-47/)

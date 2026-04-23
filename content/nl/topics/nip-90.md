@@ -2,7 +2,7 @@
 title: "NIP-90: Data Vending Machines"
 date: 2026-02-25
 translationOf: /en/topics/nip-90.md
-translationDate: 2026-03-07
+translationDate: 2026-04-22
 draft: false
 categories:
   - NIP
@@ -11,7 +11,7 @@ categories:
 
 NIP-90 definieert Data Vending Machines (DVMs), een protocol voor het aanvragen en leveren van betaald rekenwerk via Nostr.
 
-## Hoe het werkt
+## Hoe Het Werkt
 
 Klanten publiceren job request-events in de `5000-5999`-reeks. Elke aanvraag kan een of meer `i`-tags voor input bevatten, `param`-tags voor jobspecifieke instellingen, een `output`-tag voor het verwachte formaat, een `bid`-plafond en relay-hints voor waar antwoorden moeten verschijnen. Serviceproviders antwoorden met een bijpassende result kind in de `6000-6999`-reeks, altijd `1000` hoger dan de request kind.
 
@@ -32,10 +32,12 @@ Provider discovery valt buiten de request/response-lus zelf. De specificatie ver
 ---
 
 **Primaire bronnen:**
-- [NIP-90-specificatie](https://github.com/nostr-protocol/nips/blob/master/90.md)
+- [NIP-90 Specification](https://github.com/nostr-protocol/nips/blob/master/90.md)
 
 **Vermeld in:**
-- [Newsletter #11: NIP-AC DVM Agent Coordination](/nl/newsletters/2026-02-25-newsletter/#nip-updates)
+- [Newsletter #11: NIP-AC DVM Agent Coordination](/nl/newsletters/2026-02-25-newsletter/)
+- [Newsletter #19: Forgesworn toll-booth-dvm](/en/newsletters/2026-04-22-newsletter/)
+- [Newsletter #19: Agent Reputation Attestations proposal](/en/newsletters/2026-04-22-newsletter/)
 
 **Zie ook:**
 - [NIP-89: Aanbevolen applicatiehandlers](/nl/topics/nip-89/)

@@ -2,7 +2,7 @@
 title: "NIP-94: File Metadata"
 date: 2025-12-31
 translationOf: /en/topics/nip-94.md
-translationDate: 2026-03-07
+translationDate: 2026-04-22
 draft: false
 categories:
   - Media
@@ -61,7 +61,8 @@ NIP-94 funciona entre backends de almacenamiento. Un archivo puede subirse a tra
 - [Especificación NIP-94](https://github.com/nostr-protocol/nips/blob/master/94.md)
 
 **Mencionado en:**
-- [Newsletter #3: December Recap](/en/newsletters/2025-12-31-newsletter/#december-recap-five-years-of-nostr-decembers)
+- [Newsletter #3: December Recap](/es/newsletters/2025-12-31-newsletter/)
+- [Newsletter #14: NIP Deep Dive](/es/newsletters/2026-03-18-newsletter/)
 
 **Ver también:**
 - [NIP-92: Media Attachments](/es/topics/nip-92/)

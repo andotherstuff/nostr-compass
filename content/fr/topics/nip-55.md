@@ -2,7 +2,7 @@
 title: "NIP-55 : Application de signature Android"
 date: 2025-12-17
 translationOf: /en/topics/nip-55.md
-translationDate: 2026-03-07
+translationDate: 2026-04-22
 draft: false
 categories:
   - Signing
@@ -40,12 +40,12 @@ Pour les applications web sur Android, NIP-55 est moins ergonomique que NIP-46. 
 - [NIP-55 Specification](https://github.com/nostr-protocol/nips/blob/master/55.md)
 
 **Mentionné dans :**
-- [Newsletter #1 : Releases](/en/newsletters/2025-12-17-newsletter/#releases)
-- [Newsletter #2 : News](/en/newsletters/2025-12-24-newsletter/#news)
-- [Newsletter #2 : NIP Updates](/en/newsletters/2025-12-24-newsletter/#nip-updates)
-- [Newsletter #3 : December Recap](/en/newsletters/2025-12-31-newsletter/#december-recap-five-years-of-nostr-decembers)
-- [Newsletter #7 : NIP Updates](/en/newsletters/2026-01-07-newsletter/#nip-updates)
-- [Newsletter #11 : NIP Deep Dive](/en/newsletters/2026-02-25-newsletter/#nip-deep-dive-nip-55-android-signer-application)
+- [Newsletter #1 : Releases](/fr/newsletters/2025-12-17-newsletter/)
+- [Newsletter #2 : News](/fr/newsletters/2025-12-24-newsletter/)
+- [Newsletter #2 : NIP Updates](/fr/newsletters/2025-12-24-newsletter/)
+- [Newsletter #3 : December Recap](/en/newsletters/2025-12-31-newsletter/)
+- [Newsletter #7 : NIP Updates](/fr/newsletters/2026-01-07-newsletter/)
+- [Newsletter #11 : NIP Deep Dive](/fr/newsletters/2026-02-25-newsletter/)
 
 **Voir aussi :**
 - [NIP-46 : Nostr Connect](/fr/topics/nip-46/)

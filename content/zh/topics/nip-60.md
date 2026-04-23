@@ -2,63 +2,64 @@
 title: "NIP-60：Cashu Wallet"
 date: 2025-12-31
 translationOf: /en/topics/nip-60.md
-translationDate: 2026-03-07
+translationDate: 2026-04-22
 draft: false
 categories:
   - Wallet
   - Ecash
 ---
 
-NIP-60 定义了基于 Cashu 的 ecash 钱包如何在 Nostr 中运作。钱包信息存储在中继上，实现了无需单独账户即可在不同应用间使用的便携式钱包。
+NIP-60 定义了基于 Cashu 的 ecash wallets 如何在 Nostr 内运行。wallet 信息被存储在 relays 上，因此可以形成可移植的钱包，在不同应用之间工作，而无需单独注册账户。
 
 ## 工作原理
 
-NIP-60 使用三种存储在中继上的核心事件类型，外加一种可选的辅助事件用于待处理报价：
+NIP-60 使用三种存储在 relays 上的核心 event 类型，以及一种可选的、用于待处理 quotes 的辅助 event：
 
-**钱包事件（kind 17375）：** 一个可替换事件，包含加密的钱包配置，包括 mint URL 和用于接收支付的私钥。此密钥与用户的 Nostr 身份密钥分开。
+**Wallet Event（kind 17375）：** 一种可替换 event，包含加密后的 wallet 配置，其中包括 mint URLs 和一个用于接收付款的私钥。这个 key 与用户的 Nostr 身份 key 分离。
 
-**代币事件（kind 7375）：** 存储加密的未花费 Cashu 证明。当证明被花费时，客户端删除旧事件并用剩余证明创建新事件。
+**Token Events（kind 7375）：** 存储加密后的、未花费的 Cashu proofs。当 proofs 被花掉后，客户端会删除旧 event，并创建一个带有剩余 proofs 的新 event。
 
-**支出历史（kind 7376）：** 显示资金流动的可选交易记录，包含加密内容以及对已创建/销毁的代币事件的引用。
+**Spending History（kind 7376）：** 可选的交易记录，用来展示资金流动，内容经过加密，并引用被创建或销毁的 token events。
 
-**报价事件（kind 7374）：** 用于待处理 mint 报价的可选加密状态。规范建议使用带有过期标签的短期事件，主要用于本地状态不够用的情况。
+**Quote Events（kind 7374）：** 可选的、面向待处理 mint quotes 的加密状态。规范建议这些 event 应当是短生命周期的，并带有 expiration tags，主要用于本地状态不足以处理的情况。
 
 ## 状态模型
 
-NIP-60 关注的是钱包状态同步，而非接收资金的行为本身。钱包事件告诉客户端使用哪些 mint 和钱包密钥，而代币事件是实际的余额状态，因为它们包含未花费的证明。
+NIP-60 关注的是 wallet 状态同步，而不是“接收金钱”这个动作本身。wallet event 告诉客户端该使用哪些 mints 和哪个 wallet key，而 token events 才是真正的余额状态，因为它们包含未花费 proofs。
 
-这一区别对互操作性很重要。两个客户端只有在以相同方式解释代币轮换时才能显示相同的钱包：花费证明，发布替换证明，并通过 [NIP-09](/zh/topics/nip-09/) 删除已花费的代币事件，这样其他客户端就不会继续将已花费的证明计入余额。
+这一区分对互操作很重要。两个客户端只有在以同样方式解释 token rollover 时，才能展示同一个 wallet：花掉 proofs、发布替代 proofs，并通过 [NIP-09](/zh/topics/nip-09/) 删除已花费的 token event，这样其他客户端才不会继续把已经花掉的 proofs 计入余额。
 
-## 重要意义
+## 为什么重要
 
-- **易用性** - 新用户无需外部账户设置即可立即接收 ecash
-- **互操作性** - 钱包数据跟随用户在不同 Nostr 应用间移动
-- **隐私性** - 所有钱包数据都使用用户密钥加密
-- **证明管理** - 跟踪钱包状态转换，使客户端能够收敛到相同余额
+- **易用性** - 新用户无需额外注册账户，就能立刻接收 ecash
+- **互操作性** - wallet 数据会跟随用户出现在不同的 Nostr 应用中
+- **隐私** - 所有 wallet 数据都加密到用户自己的 keys 上
+- **Proof 管理** - 追踪 wallet 状态变迁，让多个客户端能收敛到同一个余额
 
 ## 互操作说明
 
-客户端首先通过 kind 10019 查找钱包中继信息，如果没有专用钱包中继列表，则退回到用户的 [NIP-65](/zh/topics/nip-65/) 中继列表。这种退回机制很实用，但也意味着钱包的可移植性仍然依赖于中继实际存储和提供加密的钱包事件。
+客户端会先通过 kind 10019 查找 wallet relay 信息；如果没有单独的 wallet relay list，则回退到用户的 [NIP-65](/zh/topics/nip-65/) relay list。这种回退很有用，但也意味着 wallet 的可移植性仍然依赖这些 relays 真的会存储并提供加密后的 wallet events。
 
-规范还要求钱包私钥与用户的 Nostr 身份密钥保持分离。这使得钱包接收处理与主签名密钥隔离，减少了一个密钥被两个不同用途重复使用的风险。
+规范还要求 wallet 私钥与用户的 Nostr 身份 key 保持分离。这样一来，wallet 收款相关处理就不会与主签名 key 混在一起，也能降低同一个 key 被复用到两个不同目的上的风险。
 
-## 工作流程
+## 工作流
 
-1. 客户端从钱包中继或用户的中继列表获取钱包配置
-2. 加载并解密代币事件以获取可用资金
-3. 支出时创建新的代币事件并删除旧事件
-4. 可选的历史事件记录交易供用户参考
+1. 客户端从 wallet relays 或用户的 relay list 中抓取 wallet 配置
+2. 加载并解密 token events，以获得可用资金
+3. 花费时创建新的 token events，并删除旧 ones
+4. 可选的 history events 记录交易，供用户查看
 
 ---
 
 **主要来源：**
-- [NIP-60 规范](https://github.com/nostr-protocol/nips/blob/master/60.md)
+- [NIP-60 Specification](https://github.com/nostr-protocol/nips/blob/master/60.md)
 
 **提及于：**
-- [第3期周刊：十二月回顾](/zh/newsletters/2025-12-31-newsletter/#december-recap-five-years-of-nostr-decembers)
-- [第9期周刊：NIP 深度解析](/zh/newsletters/2026-02-25-newsletter/#nip-deep-dive-nip-60-cashu-wallet)
+- [Newsletter #3：December Recap](/en/newsletters/2025-12-31-newsletter/)
+- [Newsletter #11：NIP Deep Dive](/zh/newsletters/2026-02-25-newsletter/)
+- [Newsletter #13：Shopstr and Milk Market Open MCP Commerce Surfaces](/en/newsletters/2026-03-11-newsletter/)
 
 **另请参阅：**
 - [NIP-57：Zaps](/zh/topics/nip-57/)
-- [NIP-09：事件删除请求](/zh/topics/nip-09/)
+- [NIP-09：Event Deletion Request](/zh/topics/nip-09/)
 - [NIP-47：Nostr Wallet Connect](/zh/topics/nip-47/)

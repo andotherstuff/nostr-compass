@@ -2,69 +2,82 @@
 title: "NIP-44: Encrypted Payloads"
 date: 2025-12-31
 translationOf: /en/topics/nip-44.md
-translationDate: 2026-03-07
+translationDate: 2026-04-22
 draft: false
 categories:
   - NIP
-  - 暗号技術
-  - プライバシー
+  - Cryptography
+  - Privacy
 ---
 
-NIP-44は、Nostrペイロードのためのバージョン管理された暗号化標準を定義し、欠陥のあるNIP-04暗号化スキームを現代的な暗号プリミティブで置き換えます。
+NIP-44は、Nostr payload向けのversioned encryption標準を定義し、欠陥のあったNIP-04暗号方式を現代的な暗号primitiveで置き換えます。
 
 ## 仕組み
 
-NIP-44バージョン2は、複数のステップによる暗号化プロセスを使用します：
+NIP-44 version 2は、多段階の暗号化プロセスを使います。
 
-1. **鍵合意**：送信者と受信者の公開鍵間のECDH（secp256k1）が共有シークレットを生成
-2. **鍵導出**：SHA256とソルト`nip44-v2`を使用したHKDF-extractが会話キーを作成
-3. **メッセージごとのキー**：HKDF-expandがランダムなnonceからChaChaキー、nonce、HMACキーを導出
-4. **パディング**：メッセージの長さを隠すためにコンテンツをパディング
-5. **暗号化**：ChaCha20がパディングされたコンテンツを暗号化
-6. **認証**：HMAC-SHA256がメッセージの完全性を提供
+1. **Key Agreement**: 送信者と受信者の公開鍵間でECDH（secp256k1）を行い、shared secretを得る
+2. **Key Derivation**: SHA256とsalt `nip44-v2`を使うHKDF-extractでconversation keyを作る
+3. **Per-Message Keys**: ランダムnonceからHKDF-expandでChaCha key、nonce、HMAC keyを導出する
+4. **Padding**: message長を隠すためにcontentへpaddingを入れる
+5. **Encryption**: ChaCha20でpadding後のcontentを暗号化する
+6. **Authentication**: HMAC-SHA256でmessage integrityを与える
 
-## 暗号選択
+出力はversion付きのbase64 payloadで、通常の署名付きNostrイベント内へ入ります。仕様は、clientが内側のNIP-44 payloadを復号する前に、外側のNIP-01イベント署名を検証することを求めています。
 
-- **ChaCha20**（AESより優先）：より高速で、マルチキー攻撃への耐性が優れている
-- **HMAC-SHA256**（Poly1305より優先）：多項式MACは偽造されやすい
-- **SHA256**：既存のNostrプリミティブと一貫性がある
-- **バージョン管理形式**：将来のアルゴリズムアップグレードを可能にする
+## 暗号設計の選択
+
+- **AESよりChaCha20**: より高速で、multi-key attack耐性も高い
+- **Poly1305よりHMAC-SHA256**: polynomial MACは偽造しやすい
+- **SHA256**: 既存のNostr primitiveと一貫している
+- **Versioned Format**: 将来のalgorithm更新を可能にする
 
 ## セキュリティ特性
 
-- **認証付き暗号化**：メッセージは改ざんできない
-- **長さの隠蔽**：パディングがメッセージサイズを隠す
-- **会話キー**：継続的な会話に同じキーを使用し、計算を削減
-- **監査済み**：Cure53のセキュリティ監査で悪用可能な脆弱性は発見されなかった
+- **Authenticated Encryption**: メッセージの改ざんを防ぐ
+- **Length Hiding**: paddingでメッセージ長を隠す
+- **Conversation Keys**: 継続する会話で同じkeyを使い、計算量を下げる
+- **Audited**: Cure53のsecurity auditで悪用可能な脆弱性は見つからなかった
 
-## 制限事項
+## 実装メモ
 
-NIP-44は以下を提供しません：
-- **Forward Secrecy**：侵害されたキーは過去のメッセージを露出
-- **Post-Compromise Security**：キー侵害後の回復
-- **否認可能性**：メッセージは特定のキーによって署名されたことが証明可能
-- **メタデータ隠蔽**：リレーアーキテクチャがプライバシーを制限
+NIP-44は、NIP-04 payloadの単純な置き換えではありません。これは暗号化形式を定義するもので、direct-message event kind自体を定義するものではありません。実際のメッセージフローでこの暗号payloadをどう使うかは、[NIP-17](/ja/topics/nip-17/)や[NIP-59](/ja/topics/nip-59/)のような上位仕様が定義します。
 
-高セキュリティのニーズには、NIP-104（Double Ratchet）やMarmotのようなMLSベースのプロトコルがより強力な保証を提供します。
+plaintext入力はUTF-8テキストで、長さは1から65535バイトです。これは実装者にとって現実的な制約です。任意のbinary blobを暗号化したい場合は、追加のencodingか別のcontainer formatが必要になります。
 
-## 歴史
+## 制限
 
-NIP-44リビジョン3は、Cure53による独立したセキュリティ監査の後、2023年12月にマージされました。NIP-17プライベートDMとNIP-59 gift wrappingの暗号基盤を形成しています。
+NIP-44は次のものを提供しません。
+- **Forward Secrecy**: 鍵が侵害されると過去メッセージが露出する
+- **Post-Compromise Security**: 鍵侵害後の回復性
+- **Deniability**: 特定の鍵が署名したことを否認できる性質
+- **Metadata Hiding**: relay architectureがprivacyを制限する
+
+高いセキュリティ要件がある場合は、NIP-104（double ratchet）やMarmotのようなMLSベースのプロトコルのほうが強い保証を与えます。
+
+## 履歴
+
+NIP-44 revision 3は、独立したCure53 security auditの後、2023年12月にマージされました。これはNIP-17 private DMsとNIP-59 gift wrappingの暗号基盤になっています。
 
 ---
 
-**主要ソース：**
-- [NIP-44仕様](https://github.com/nostr-protocol/nips/blob/master/44.md)
-- [NIP-44リファレンス実装](https://github.com/paulmillr/nip44)
-- [Cure53監査レポート](https://cure53.de/audit-report_nip44-implementations.pdf)
+**Primary sources:**
+- [NIP-44 Specification](https://github.com/nostr-protocol/nips/blob/master/44.md)
+- [NIP-44 Reference Implementations](https://github.com/paulmillr/nip44)
+- [Cure53 Audit Report](https://cure53.de/audit-report_nip44-implementations.pdf)
 
-**言及：**
-- [ニュースレター #3：2023年12月](/ja/newsletters/2025-12-31-newsletter/#december-2023-ecosystem-maturation)
-- [ニュースレター #3：2024年12月](/ja/newsletters/2025-12-31-newsletter/#december-2024-protocol-advancement)
+**Mentioned in:**
+- [Newsletter #4: NIP Deep Dive](/ja/newsletters/2026-01-07-newsletter/)
+- [Newsletter #3: December 2023](/en/newsletters/2025-12-31-newsletter/)
+- [Newsletter #3: December 2024](/en/newsletters/2025-12-31-newsletter/)
+- [Newsletter #12: Marmot](/ja/newsletters/2026-03-04-newsletter/)
+- [Newsletter #13: Vector](/en/newsletters/2026-03-11-newsletter/)
+- [Newsletter #19: nostter NIP-44 migration](/en/newsletters/2026-04-22-newsletter/)
+- [Newsletter #19: nowhere encrypts Nostr traffic](/en/newsletters/2026-04-22-newsletter/)
 
-**関連項目：**
-- [NIP-04: 暗号化ダイレクトメッセージ（非推奨）](/ja/topics/nip-04/)
-- [NIP-17: プライベートダイレクトメッセージ](/ja/topics/nip-17/)
-- [NIP-59: ギフトラップ](/ja/topics/nip-59/)
-- [NIP-104: ダブルラチェット暗号化](/ja/topics/nip-104/)
-- [MLS: メッセージレイヤーセキュリティ](/ja/topics/mls/)
+**See also:**
+- [NIP-04: Encrypted Direct Messages (deprecated)](/ja/topics/nip-04/)
+- [NIP-17: Private Direct Messages](/ja/topics/nip-17/)
+- [NIP-59: Gift Wrap](/ja/topics/nip-59/)
+- [NIP-104: Double Ratchet Encryption](/ja/topics/nip-104/)
+- [MLS: Message Layer Security](/ja/topics/mls/)

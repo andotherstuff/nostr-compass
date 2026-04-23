@@ -2,7 +2,7 @@
 title: "NIP-90 : Data Vending Machines"
 date: 2026-02-25
 translationOf: /en/topics/nip-90.md
-translationDate: 2026-03-07
+translationDate: 2026-04-22
 draft: false
 categories:
   - NIP
@@ -35,7 +35,9 @@ La découverte de fournisseurs est en dehors de la boucle requête/réponse elle
 - [Spécification NIP-90](https://github.com/nostr-protocol/nips/blob/master/90.md)
 
 **Mentionné dans :**
-- [Newsletter #11 : NIP Updates](/en/newsletters/2026-02-25-newsletter/#nip-updates)
+- [Newsletter #11 : NIP-AC DVM Agent Coordination](/fr/newsletters/2026-02-25-newsletter/)
+- [Newsletter #19 : Forgesworn toll-booth-dvm](/en/newsletters/2026-04-22-newsletter/)
+- [Newsletter #19 : proposition Agent Reputation Attestations](/en/newsletters/2026-04-22-newsletter/)
 
 **Voir aussi :**
 - [NIP-89 : Recommended Application Handlers](/fr/topics/nip-89/)

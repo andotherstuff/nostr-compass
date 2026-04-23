@@ -2,6 +2,7 @@
 title: "NIP-63: Paywall / Premium Content"
 date: 2025-12-17
 translationDate: 2026-03-07
+translationOf: /en/topics/nip-63.md
 draft: false
 categories:
   - Protocol

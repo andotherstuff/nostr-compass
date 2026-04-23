@@ -2,7 +2,7 @@
 title: "NIP-60 : Cashu Wallet"
 date: 2025-12-31
 translationOf: /en/topics/nip-60.md
-translationDate: 2026-03-07
+translationDate: 2026-04-22
 draft: false
 categories:
   - Wallet
@@ -55,8 +55,9 @@ La spécification exige aussi que la clé privée du portefeuille reste distinct
 - [Spécification NIP-60](https://github.com/nostr-protocol/nips/blob/master/60.md)
 
 **Mentionné dans :**
-- [Newsletter #3 : Récapitulatif de décembre](/en/newsletters/2025-12-31-newsletter/#december-recap-five-years-of-nostr-decembers)
-- [Newsletter #9 : Plongée approfondie NIP](/en/newsletters/2026-02-25-newsletter/#nip-deep-dive-nip-60-cashu-wallet)
+- [Newsletter #3 : Récapitulatif de décembre](/en/newsletters/2025-12-31-newsletter/)
+- [Newsletter #9 : Plongée approfondie NIP](/fr/newsletters/2026-02-25-newsletter/)
+- [Newsletter #19 : TollGate v0.1.0](/en/newsletters/2026-04-22-newsletter/)
 
 **Voir aussi :**
 - [NIP-57 : Zaps](/fr/topics/nip-57/)

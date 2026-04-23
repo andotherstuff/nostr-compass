@@ -2,6 +2,7 @@
 title: "NIP-19: Bech32-gecodeerde Entiteiten"
 date: 2025-12-17
 translationDate: 2026-03-07
+translationOf: /en/topics/nip-19.md
 draft: false
 categories:
   - Protocol

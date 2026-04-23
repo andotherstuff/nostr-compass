@@ -1,7 +1,8 @@
 ---
-title: "NIP-01: Basisprotocol"
+title: "NIP-01: Basic Protocol"
 date: 2025-12-17
-translationDate: 2026-03-07
+translationOf: /en/topics/nip-01.md
+translationDate: 2026-04-22
 draft: false
 categories:
   - Protocol
@@ -9,7 +10,7 @@ categories:
 
 NIP-01 definieert het basismodel voor events en het relayprotocol waarop de rest van Nostr voortbouwt. Als een client, relay of library Nostr spreekt, begint het hier.
 
-## Hoe het werkt
+## Hoe Het Werkt
 
 Events zijn het enige objecttype in Nostr. Profielen, notities, reacties, relaylijsten en veel applicatiespecifieke payloads gebruiken allemaal dezelfde envelope met zeven velden:
 
@@ -41,7 +42,7 @@ Clients communiceren met relays via WebSocket-verbindingen met JSON-arrays:
 **Client naar relay:**
 - `["EVENT", <event>]` - Publiceer een event
 - `["REQ", <sub-id>, <filter>, ...]` - Abonneer je op events
-- `["CLOSE", <sub-id>]` - Beeindig een abonnement
+- `["CLOSE", <sub-id>]` - Beëindig een abonnement
 
 **Relay naar client:**
 - `["EVENT", <sub-id>, <event>]` - Lever een overeenkomend event af
@@ -49,7 +50,7 @@ Clients communiceren met relays via WebSocket-verbindingen met JSON-arrays:
 - `["OK", <event-id>, <true|false>, <message>]` - Acceptatie- of afwijzingsbevestiging
 - `["NOTICE", <message>]` - Menselijk leesbaar bericht
 
-In de praktijk veranderen de meeste hogere NIPs de transportlaag niet. Ze definieren nieuwe event kinds, tags of interpretatieregels, terwijl ze nog steeds dezelfde `EVENT`-, `REQ`- en `CLOSE`-berichten uit NIP-01 gebruiken.
+In de praktijk veranderen de meeste hogere NIPs de transportlaag niet. Ze definiëren nieuwe event kinds, tags of interpretatieregels, terwijl ze nog steeds dezelfde `EVENT`-, `REQ`- en `CLOSE`-berichten uit NIP-01 gebruiken.
 
 ## Filters
 
@@ -65,7 +66,8 @@ Twee details veroorzaken veel implementatiebugs. Ten eerste moeten clients relay
 - [NIP-01-specificatie](https://github.com/nostr-protocol/nips/blob/master/01.md)
 
 **Vermeld in:**
-- [Nieuwsbrief #1: NIP Deep Dive](/en/newsletters/2025-12-17-newsletter/#nip-deep-dive-nip-01-and-nip-19)
+- [Newsletter #1: NIP Deep Dive](/nl/newsletters/2025-12-17-newsletter/)
+- [Newsletter #19: NIP-67 EOSE completeness hint proposal](/en/newsletters/2026-04-22-newsletter/)
 
 **Zie ook:**
 - [NIP-19: Bech32-gecodeerde entiteiten](/nl/topics/nip-19/)

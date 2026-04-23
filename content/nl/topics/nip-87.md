@@ -2,6 +2,7 @@
 title: "NIP-87: Ecash Mint Vindbaarheid"
 date: 2026-01-07
 translationDate: 2026-03-07
+translationOf: /en/topics/nip-87.md
 draft: false
 categories:
   - Ecash

@@ -1,54 +1,55 @@
 ---
-title: "NIP-17: Private Direktnachrichten"
+title: "NIP-17: Private Direct Messages"
 date: 2025-12-17
-translationDate: 2026-03-07
+translationOf: /en/topics/nip-17.md
+translationDate: 2026-04-22
 draft: false
 categories:
   - Privacy
   - Messaging
 ---
 
-NIP-17 definiert private Direktnachrichten mit NIP-59 Gift Wrapping für die Privatsphäre des Absenders. Im Gegensatz zu NIP-04 DMs, die den Absender im äußeren Event offenlegen, verbirgt NIP-17 den Absender vor Relays und beiläufigen Beobachtern.
+NIP-17 definiert private Direct Messages, die NIP-59-Gift-Wrapping für Sender-Privatsphäre nutzen. Anders als NIP-04-DMs, die den Sender im äußeren Event offenlegen, verbirgt NIP-17 den Sender vor Relays und beiläufigen Beobachtern.
 
-## Wie es funktioniert
+## Funktionsweise
 
-Nachrichten werden in mehrere Verschlüsselungsschichten eingehüllt:
-1. Der eigentliche Nachrichteninhalt liegt in einem rumor Event vom Kind 14.
-2. Ein seal verschlüsselt diesen Inhalt für den Empfänger.
-3. Ein gift wrap verschlüsselt das seal erneut und veröffentlicht es von einem wegwerfbaren Keypair aus.
+Nachrichten sind in mehrere Verschlüsselungsschichten eingepackt:
+1. Der eigentliche Nachrichteninhalt lebt in einem Rumor-Event vom kind 14.
+2. Ein Seal verschlüsselt diesen Inhalt für den Empfänger.
+3. Ein Gift Wrap verschlüsselt den Seal erneut und veröffentlicht ihn von einem Wegwerf-Keypair aus.
 
-Das äußere gift wrap nutzt ein zufälliges, wegwerfbares Keypair, sodass Relays und Beobachter nicht feststellen können, wer die Nachricht gesendet hat.
+Der äußere Gift Wrap nutzt ein zufälliges, Wegwerf-Keypair, sodass Relays und Beobachter nicht feststellen können, wer die Nachricht gesendet hat.
 
 ## Nachrichtenstruktur
 
-- **Kind 14** - Der eigentliche DM-Inhalt innerhalb der eingehüllten Schichten
-- **Kind 1059** - Das äußere GiftWrap-Event, das an Relays veröffentlicht wird
+- **Kind 14** - Der eigentliche DM-Inhalt innerhalb der eingepackten Schichten
+- **Kind 1059** - Das äußere Gift-Wrap-Event, das an Relays publiziert wird
 - Verwendet NIP-44-Verschlüsselung für die Payloads innerhalb des Wrapping-Flows
 - Die Spezifikation wurde verfeinert, um interaktive DM-Features wie Reaktionen besser zu unterstützen
 
 ## Sicherheits- und Vertrauensmodell
 
-- Relays können den Absender nicht sehen, da er durch das wegwerfbare Keypair des gift wrap verborgen wird
-- Der Empfänger bleibt sichtbar, im `p`-Tag des gift wrap
+- Relays können den Sender nicht sehen, weil das Wegwerf-Keypair des Gift Wraps ihn verbirgt
+- Der Empfänger bleibt sichtbar, im `p`-Tag des Gift Wraps
 - Nachrichtentimestamps werden innerhalb eines Fensters randomisiert
-- Auf dem Relay gibt es kein sichtbares Threading oder Gruppieren von Konversationen
+- Es gibt kein sichtbares Threading oder Conversation Grouping auf Relay-Ebene
 
-Der Empfänger erfährt nach dem Auspacken trotzdem, wer die Nachricht gesendet hat. NIP-17 verbirgt die Absenderidentität vor dem Netzwerk, nicht vor dem anderen Teilnehmer. Diese Unterscheidung ist wichtig, wenn Leute von "privaten DMs" sprechen.
+Der Empfänger erfährt nach dem Entpacken trotzdem, wer die Nachricht gesendet hat. NIP-17 verbirgt die Senderidentität vor dem Netzwerk, nicht vor dem anderen Teilnehmer. Diese Unterscheidung ist wichtig, wenn von "privaten DMs" gesprochen wird.
 
-## Warum es wichtig ist
+## Warum das wichtig ist
 
-NIP-04 DMs verschlüsseln Inhalte, lassen Metadaten aber sichtbar:
-- Der Pubkey des Absenders ist öffentlich
-- Der Pubkey des Empfängers steht im `p`-Tag
+NIP-04-DMs verschlüsseln Inhalte, lassen aber Metadaten sichtbar:
+- Der pubkey des Senders ist öffentlich
+- Der pubkey des Empfängers steht im `p`-Tag
 - Timestamps sind exakt
 
-NIP-17 verbirgt den Absender, kostet aber mehr Implementierungskomplexität.
+NIP-17 verbirgt den Sender, erkauft sich das aber mit höherer Implementierungskomplexität.
 
-Diese Komplexität bringt einen echten Gewinn an Privatsphäre. Ein Relay kann weiter sehen, dass eine eingehüllte Nachricht an einen Empfänger adressiert ist, aber es kann nicht direkt einen Absender-Empfänger-Graphen aus den Metadaten des äußeren Events bauen, wie es bei Kind-4-Nachrichten möglich ist.
+Diese Komplexität bringt einen echten Privatsphäregewinn. Ein Relay kann weiterhin sehen, dass eine verpackte Nachricht an einen Empfänger adressiert ist, aber es kann aus den äußeren Event-Metadaten nicht direkt einen Sender-Empfänger-Graphen ableiten wie bei kind-4-Nachrichten.
 
 ## Interop-Hinweise
 
-NIP-17 definiert auch Inbox-Relay-Listen für private Nachrichten. Clients können ein Kind-10050-Event veröffentlichen, damit Absender wissen, welche Relays sie für die DM-Zustellung ansprechen sollen. Die Trennung von DM-Relay-Routing und öffentlichem Content-Routing hilft dabei, privaten Verkehr nicht an die falschen Orte zu veröffentlichen.
+NIP-17 definiert außerdem Inbox-Relay-Listen für private Nachrichten. Clients können ein kind-10050-Event veröffentlichen, damit Sender wissen, welche Relays sie für die DM-Zustellung nutzen sollen. Private Relay-Routing-Daten getrennt von öffentlichem Content-Routing zu halten, hilft dabei, private Kommunikation nicht an die falschen Orte zu veröffentlichen.
 
 ---
 
@@ -57,11 +58,13 @@ NIP-17 definiert auch Inbox-Relay-Listen für private Nachrichten. Clients könn
 - [PR #2098](https://github.com/nostr-protocol/nips/pull/2098) - wording cleanup and reaction support update
 
 **Erwähnt in:**
-- [Newsletter #1: NIP Updates](/en/newsletters/2025-12-17-newsletter/#nip-updates)
-- [Newsletter #2: News](/en/newsletters/2025-12-24-newsletter/#news)
-- [Newsletter #3: December Recap](/en/newsletters/2025-12-31-newsletter/#december-recap-five-years-of-nostr-decembers)
-- [Newsletter #3: Notable Code Changes](/en/newsletters/2025-12-31-newsletter/#shopstr-marketplace)
-- [Newsletter #5: News](/en/newsletters/2026-01-13-newsletter/#news)
+- [Newsletter #1: NIP Updates](/de/newsletters/2025-12-17-newsletter/)
+- [Newsletter #2: News](/de/newsletters/2025-12-24-newsletter/)
+- [Newsletter #3: December Recap](/de/newsletters/2025-12-31-newsletter/)
+- [Newsletter #3: Notable Code Changes](/de/newsletters/2025-12-31-newsletter/)
+- [Newsletter #5: News](/de/newsletters/2026-01-13-newsletter/)
+- [Newsletter #13: Vector](/en/newsletters/2026-03-11-newsletter/)
+- [Newsletter #19: NipLock password manager](/en/newsletters/2026-04-22-newsletter/)
 
 **Siehe auch:**
 - [NIP-04: Encrypted Direct Messages (Deprecated)](/de/topics/nip-04/)

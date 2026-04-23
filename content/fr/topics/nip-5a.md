@@ -2,7 +2,7 @@
 title: "NIP-5A : Sites web statiques"
 date: 2026-04-01
 translationOf: /en/topics/nip-5a.md
-translationDate: 2026-04-01
+translationDate: 2026-04-22
 draft: false
 categories:
   - Protocol
@@ -53,8 +53,9 @@ Les sites racines utilisent le npub comme sous-domaine. Les sites nommés utilis
 - [nsite-manager](https://github.com/hzrd149/nsite-manager) - Interface de publication et de gestion
 
 **Mentionné dans :**
-- [Newsletter #16 : Fusion de NIP-5A](/fr/newsletters/2026-04-01-newsletter/#nip-5a-merges-bringing-static-websites-to-nostr)
-- [Newsletter #16 : NIP Deep Dive](/fr/newsletters/2026-04-01-newsletter/#nip-deep-dive-nip-5a-static-websites)
+- [Newsletter #16 : Fusion de NIP-5A](/fr/newsletters/2026-04-01-newsletter/)
+- [Newsletter #16 : NIP Deep Dive](/fr/newsletters/2026-04-01-newsletter/)
+- [Newsletter #19 : proposition NIP-5D applets](/en/newsletters/2026-04-22-newsletter/)
 
 **Voir aussi :**
 - [Blossom](/fr/topics/blossom/)

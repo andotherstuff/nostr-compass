@@ -2,7 +2,7 @@
 title: "NIP-45: Conteggio degli eventi"
 date: 2026-02-11
 translationOf: /en/topics/nip-45.md
-translationDate: 2026-03-07
+translationDate: 2026-04-22
 draft: false
 categories:
   - NIPs
@@ -53,9 +53,9 @@ Conteggi dei follower, delle reaction e delle reply sono i principali casi d'uso
 - [PR #1561: HyperLogLog Relay Response](https://github.com/nostr-protocol/nips/pull/1561)
 
 **Citato in:**
-- [Newsletter #9: NIP Deep Dive](/en/newsletters/2026-02-11-newsletter/#nip-deep-dive-nip-45-event-counting-and-hyperloglog)
-- [Newsletter #9: NIP Updates](/en/newsletters/2026-02-11-newsletter/#nip-updates)
-- [Newsletter #12: Five Years of Nostr Februaries](/en/newsletters/2026-03-04-newsletter/)
+- [Newsletter #9: NIP Deep Dive](/it/newsletters/2026-02-11-newsletter/)
+- [Newsletter #9: NIP Updates](/it/newsletters/2026-02-11-newsletter/)
+- [Newsletter #12: Five Years of Nostr Februaries](/it/newsletters/2026-03-04-newsletter/)
 
 **Vedi anche:**
 - [NIP-11: Relay Information Document](/it/topics/nip-11/)

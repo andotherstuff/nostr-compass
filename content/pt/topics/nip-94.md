@@ -3,57 +3,57 @@ title: 'NIP-94: Metadados de arquivo'
 date: 2025-12-31
 draft: false
 categories:
-- Media
-- Protocol
+  - Media
+  - Protocol
 translationOf: /en/topics/nip-94.md
-translationDate: '2026-03-07'
+translationDate: 2026-04-22
 ---
 
-O NIP-94 define um evento de metadados de arquivo (kind 1063) para organizar e classificar arquivos compartilhados no Nostr, permitindo que relays filtre e organize o conteúdo de forma eficaz.
+NIP-94 define um evento de metadados de arquivo, kind 1063, para organizar e classificar arquivos compartilhados no Nostr, permitindo que relays filtrem e organizem conteúdo com eficiência.
 
 ## Como funciona
 
-NIP-94 usa kind `1063` como um evento de metadados independente para um arquivo. O evento `content` contém uma descrição legível por humanos, enquanto tags carrega campos legíveis por máquina, como URL de download, tipo MIME, hashes, dimensões e dicas de visualização.
+A NIP-94 usa o kind `1063` como um evento autônomo de metadados para um arquivo. O `content` do evento contém uma descrição legível por humanos, enquanto tags carregam campos legíveis por máquina, como URL de download, tipo MIME, hashes, dimensões e hints de preview.
 
-Essa separação é importante porque o evento de metadados pode ser indexado, filtrado e reutilizado independentemente de qualquer nota vinculada ao arquivo. Um cliente pode tratar um evento kind `1063` como a descrição canônica de um ativo em vez de extrair metadados do texto da postagem em formato livre.
+Essa separação importa porque o evento de metadados pode ser indexado, filtrado e reutilizado independentemente de qualquer nota que faça link para o arquivo. Um cliente pode tratar um evento kind `1063` como a descrição canônica de um asset em vez de raspar metadados de texto livre em um post.
 
 ## Tags obrigatórias e opcionais
 
-**Núcleo tags:**
-- `url` - Link para download do arquivo
-- `m` - tipo MIME (é necessário formato minúsculo)
+**Tags centrais:**
+- `url` - link de download do arquivo
+- `m` - tipo MIME, com formato em lowercase obrigatório
 - `x` - hash SHA-256 do arquivo
 
-**tags opcional:**
-- `ox` - hash SHA-256 do arquivo original antes das transformações do servidor
-- `size` - Tamanho do arquivo em bytes
-- `dim` - Dimensões (largura x altura) para imagens/vídeo
-- `magnet` - URI magnético para distribuição de torrent
-- `i` - Infohash de torrent
-- `blurhash` - Imagem de espaço reservado para visualizações
-- `thumb` - URL da miniatura
-- `image` - URL da imagem de visualização
-- `summary` - Trecho do texto
-- `alt` - Descrição de acessibilidade
-- `fallback` - Fontes alternativas de download
-- `service` - Protocolo de armazenamento ou tipo de serviço, como NIP-96
+**Tags opcionais:**
+- `ox` - hash SHA-256 do arquivo original antes de transformações do servidor
+- `size` - tamanho do arquivo em bytes
+- `dim` - dimensões, largura x altura, para imagem ou vídeo
+- `magnet` - URI magnet para distribuição por torrent
+- `i` - infohash do torrent
+- `blurhash` - imagem placeholder para previews
+- `thumb` - URL de thumbnail
+- `image` - URL de imagem de preview
+- `summary` - trecho de texto
+- `alt` - descrição de acessibilidade
+- `fallback` - fontes alternativas de download
+- `service` - protocolo de armazenamento ou tipo de serviço, como NIP-96
 
-O `ox` e o `x` tags são fáceis de ignorar, mas úteis na prática. `ox` identifica o arquivo original carregado, enquanto `x` pode identificar a versão transformada que um servidor realmente atende. Quando um host de mídia compacta ou redimensiona uploads, os clientes ainda podem preservar a identidade do arquivo original sem fingir que o blob transformado é idêntico byte por byte.
+As tags `ox` e `x` são fáceis de ignorar, mas úteis na prática. `ox` identifica o arquivo original enviado, enquanto `x` pode identificar a versão transformada que um servidor realmente serve. Quando um host de mídia comprime ou redimensiona uploads, clientes ainda conseguem preservar a identidade do arquivo original sem fingir que o blob transformado é byte a byte idêntico.
 
 ## Quando usar
 
-O NIP-94 foi projetado para aplicativos de compartilhamento de arquivos, em vez de clientes de conteúdo social ou de formato longo. As aplicações sugeridas incluem:
+A NIP-94 foi desenhada para aplicações de compartilhamento de arquivos, e não para clientes sociais ou de conteúdo longform. Aplicações sugeridas incluem:
 
-- Indexação de torrents relays
-- Plataformas de compartilhamento de portfólio (semelhantes ao Pinterest)
-- Configuração de software e distribuição de atualizações
-- Bibliotecas e arquivos de mídia
+- relays de indexação de torrents
+- plataformas de compartilhamento de portfólio, no estilo Pinterest
+- distribuição de configuração e updates de software
+- bibliotecas e arquivos de mídia
 
-Se os metadados do arquivo só precisam decorar uma URL embutida em outro evento, [NIP-92: Media Attachments](/pt/topics/nip-92/) é mais leve. NIP-94 é a melhor escolha quando o próprio arquivo deve ser consultado como um objeto de primeira classe.
+Se os metadados do arquivo só precisarem decorar uma URL embutida dentro de outro evento, a [NIP-92: Media Attachments](/pt/topics/nip-92/) é mais leve. A NIP-94 é a melhor escolha quando o próprio arquivo deve ser consultável como objeto de primeira classe.
 
 ## Notas de interoperabilidade
 
-O NIP-94 funciona em back-ends de armazenamento. Um arquivo pode ser carregado através de [NIP-96: HTTP File Storage](/pt/topics/nip-96/), Blossom ou outro serviço, ainda descrito com o mesmo formato de evento kind `1063`. É por isso que o formato de metadados sobrevive a qualquer protocolo de upload único.
+A NIP-94 funciona em diferentes backends de armazenamento. Um arquivo pode ser enviado via [NIP-96: HTTP File Storage](/pt/topics/nip-96/), Blossom ou outro serviço, e ainda assim ser descrito com o mesmo formato de evento kind `1063`. É por isso que o formato de metadados sobrevive a qualquer protocolo individual de upload.
 
 ---
 
@@ -61,8 +61,9 @@ O NIP-94 funciona em back-ends de armazenamento. Um arquivo pode ser carregado a
 - [Especificação NIP-94](https://github.com/nostr-protocol/nips/blob/master/94.md)
 
 **Mencionado em:**
-- [Boletim informativo nº 3: Recapitulação de dezembro](/pt/newsletters/2025-12-31-newsletter/#december-recap-five-years-of-nostr-decembers)
+- [Newsletter #3: Recapitulação de dezembro](/pt/newsletters/2025-12-31-newsletter/)
+- [Newsletter #14: NIP Deep Dive](/pt/newsletters/2026-03-18-newsletter/)
 
 **Veja também:**
-- [NIP-92: Anexos de mídia](/pt/topics/nip-92/)
+- [NIP-92: Media Attachments](/pt/topics/nip-92/)
 - [Blossom](/pt/topics/blossom/)

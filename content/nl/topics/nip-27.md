@@ -2,6 +2,7 @@
 title: "NIP-27 (Tekstnotitiereferenties)"
 date: 2026-02-04
 translationDate: 2026-03-07
+translationOf: /en/topics/nip-27.md
 draft: false
 categories:
   - NIP

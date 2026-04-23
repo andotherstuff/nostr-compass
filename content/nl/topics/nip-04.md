@@ -1,17 +1,17 @@
 ---
-title: "NIP-04: Versleutelde directe berichten (verouderd)"
+title: "NIP-04: Encrypted Direct Messages (Deprecated)"
 date: 2025-12-31
 translationOf: /en/topics/nip-04.md
-translationDate: 2026-03-07
+translationDate: 2026-04-22
 draft: false
 categories:
   - Privacy
-  - Berichtenverkeer
+  - Messaging
 ---
 
 NIP-04 definieert versleutelde directe berichten met kind 4 events en een via ECDH afgeleid gedeeld geheim. Het was Nostr's eerste DM-schema, maar het is nu legacy-technologie en nieuw werk rond private messaging is verschoven naar NIP-17.
 
-## Hoe het werkt
+## Hoe Het Werkt
 
 Berichten gebruiken kind 4 events met deze basisstroom:
 
@@ -22,7 +22,7 @@ Berichten gebruiken kind 4 events met deze basisstroom:
 
 Het event zelf blijft een normaal ondertekend Nostr-event, dus relays kunnen de buitenste metadata zien, ook al kunnen ze de plaintext niet lezen.
 
-## Beveiligings- en privacybeperkingen
+## Security and Privacy Limits
 
 NIP-04 heeft aanzienlijke privacytekortkomingen:
 
@@ -33,24 +33,25 @@ NIP-04 heeft aanzienlijke privacytekortkomingen:
 
 De specificatie waarschuwt expliciet dat het "niet in de buurt komt van de stand van de techniek in versleutelde communicatie".
 
-## Waarom het is vervangen
+## Waarom Het Is Vervangen
 
 NIP-04 versleutelt de inhoud van berichten, maar verbergt de sociale graaf niet. Relaybeheerders kunnen nog steeds zien wie het event heeft verstuurd, wie het ontvangt en wanneer het is gepubliceerd. Dat is genoeg metadata om gesprekken in kaart te brengen, zelfs zonder de payload te ontsleutelen.
 
 NIP-17 pakt dit aan door NIP-44 payload encryption te combineren met NIP-59 gift wrapping, wat de afzender verbergt voor relays en willekeurige observatoren. Nieuwe implementaties moeten NIP-04 alleen nog als compatibiliteitslaag behandelen.
 
-## Implementatiestatus
+## Implementation Status
 
 Legacy clients en signers bieden nog steeds NIP-04 encrypt/decrypt-methoden aan, omdat oude gesprekken en oudere apps nog in omloop zijn. Die compatibiliteitslaag is belangrijk voor migratie, maar nieuwe functies bouwen bovenop kind 4 events betekent meestal dat oude privacybeperkingen worden meegenomen.
 
 ---
 
 **Primaire bronnen:**
-- [NIP-04-specificatie](https://github.com/nostr-protocol/nips/blob/master/04.md)
+- [NIP-04 Specification](https://github.com/nostr-protocol/nips/blob/master/04.md)
 
 **Vermeld in:**
-- [Nieuwsbrief #4: NIP Deep Dive](/en/newsletters/2026-01-07-newsletter/#nip-04-encrypted-direct-messages-legacy)
-- [Nieuwsbrief #3: Decemberoverzicht](/en/newsletters/2025-12-31-newsletter/#december-recap-five-years-of-nostr-decembers)
+- [Newsletter #4: NIP Deep Dive](/nl/newsletters/2026-01-07-newsletter/)
+- [Newsletter #3: December Recap](/en/newsletters/2025-12-31-newsletter/)
+- [Newsletter #19: nostter NIP-44 migration](/en/newsletters/2026-04-22-newsletter/)
 
 **Zie ook:**
 - [NIP-44: Versleutelde payloads](/nl/topics/nip-44/)

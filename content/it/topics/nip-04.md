@@ -2,7 +2,7 @@
 title: "NIP-04: Messaggi diretti cifrati (deprecato)"
 date: 2025-12-31
 translationOf: /en/topics/nip-04.md
-translationDate: 2026-03-07
+translationDate: 2026-04-22
 draft: false
 categories:
   - Privacy
@@ -48,8 +48,8 @@ Client legacy e signer espongono ancora metodi di cifratura e decifratura NIP-04
 - [NIP-04 Specification](https://github.com/nostr-protocol/nips/blob/master/04.md)
 
 **Menzionato in:**
-- [Newsletter #4: NIP Deep Dive](/en/newsletters/2026-01-07-newsletter/#nip-04-encrypted-direct-messages-legacy)
-- [Newsletter #3: December Recap](/en/newsletters/2025-12-31-newsletter/#december-recap-five-years-of-nostr-decembers)
+- [Newsletter #4: NIP Deep Dive](/it/newsletters/2026-01-07-newsletter/)
+- [Newsletter #3: December Recap](/en/newsletters/2025-12-31-newsletter/)
 
 **Vedi anche:**
 - [NIP-44: Payload cifrati](/it/topics/nip-44/)

@@ -1,7 +1,9 @@
 ---
 title: "NIP-34: Git-Zusammenarbeit"
 date: 2026-02-04
+translationOf: /en/topics/nip-34.md
 translationDate: 2026-03-07
+draft: false
 description: "NIP-34 ermöglicht dezentrales Hosting und dezentrale Zusammenarbeit für Git-Repositories über Nostr-Events."
 categories:
   - NIP

@@ -2,7 +2,7 @@
 title: "NIP-5A: Static Websites"
 date: 2026-04-01
 translationOf: /en/topics/nip-5a.md
-translationDate: 2026-04-01
+translationDate: 2026-04-22
 draft: false
 categories:
   - Protocol
@@ -53,8 +53,9 @@ Rootsites gebruiken de npub als subdomein. Benoemde sites gebruiken een 50-karak
 - [nsite-manager](https://github.com/hzrd149/nsite-manager) - Publicatie- en beheer-UI
 
 **Vermeld in:**
-- [Newsletter #16: NIP-5A merges](/nl/newsletters/2026-04-01-newsletter/#nip-5a-merges-bringing-static-websites-to-nostr)
-- [Newsletter #16: NIP Deep Dive](/nl/newsletters/2026-04-01-newsletter/#nip-deep-dive-nip-5a-static-websites)
+- [Newsletter #16: NIP-5A merges](/nl/newsletters/2026-04-01-newsletter/)
+- [Newsletter #16: NIP Deep Dive](/nl/newsletters/2026-04-01-newsletter/)
+- [Newsletter #19: NIP-5D applets proposal](/en/newsletters/2026-04-22-newsletter/)
 
 **Zie ook:**
 - [Blossom](/nl/topics/blossom/)

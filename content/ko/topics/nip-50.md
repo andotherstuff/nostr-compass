@@ -51,8 +51,8 @@ NIP-50은 Nostr 릴레이를 위한 일반 검색 기능을 정의한다. NIP-01
 - [NIP-50 사양](https://github.com/nostr-protocol/nips/blob/master/50.md)
 
 **언급된 뉴스레터:**
-- [Newsletter #3: 12월 회고](/en/newsletters/2025-12-31-newsletter/#december-recap-five-years-of-nostr-decembers)
-- [Newsletter #7: NIP 업데이트](/en/newsletters/2026-01-07-newsletter/#nip-updates)
+- [Newsletter #3: 12월 회고](/en/newsletters/2025-12-31-newsletter/)
+- [Newsletter #7: NIP 업데이트](/en/newsletters/2026-01-07-newsletter/)
 
 **같이 보기:**
 - [NIP-11: 릴레이 정보](/ko/topics/nip-11/)

@@ -1,38 +1,38 @@
 ---
-title: 'NIP-55: Aplicativo de Assinante Android'
+title: 'NIP-55: Android Signer Application'
 date: 2025-12-17
 draft: false
 categories:
-- Signing
-- Mobile
+  - Signing
+  - Mobile
 translationOf: /en/topics/nip-55.md
-translationDate: '2026-03-07'
+translationDate: 2026-04-22
 ---
 
-O NIP-55 define como os aplicativos Android solicitam operações de assinatura e criptografia de um aplicativo assinante separado. Oferece aos clientes Android uma alternativa nativa para extensões de navegador e bunkers remotos.
+NIP-55 define como apps Android pedem operações de assinatura e criptografia a uma signer application separada. Ela dá a clientes Android uma alternativa nativa a extensões de navegador e bunkers remotos.
 
 ## Como funciona
 
-O NIP-55 usa dois mecanismos Android:
+A NIP-55 usa dois mecanismos do Android:
 
-- **Intents** para fluxos em primeiro plano com aprovação explícita do usuário
-- **Resolvedores de conteúdo** para fluxos em segundo plano depois que o usuário concede permissão persistente
+- **Intents** para fluxos em foreground com aprovação explícita do usuário
+- **Content resolvers** para fluxos em background depois que o usuário concede permissão persistente
 
-O fluxo de conexão normal começa com `get_public_key`. O signatário retorna o usuário pubkey e o nome do pacote do signatário, e espera-se que o cliente armazene ambos em cache. Repetir `get_public_key` em loops de segundo plano é um erro de implementação comum contra o qual a especificação alerta explicitamente.
+O fluxo de conexão usual começa com `get_public_key`. O signer retorna tanto a pubkey do usuário quanto o nome do pacote do signer, e o cliente deve armazenar ambos em cache. Repetir `get_public_key` em loops de background é um erro comum de implementação que a spec alerta explicitamente para evitar.
 
-## Principais operações
+## Operações principais
 
-- **get_public_key** - Recupera o pubkey do usuário e o nome do pacote do assinante
-- **sign_event** - Assine um evento Nostr
-- **nip04_encrypt/decrypt** - Criptografa ou descriptografa mensagens NIP-04
-- **nip44_encrypt/decrypt** - Criptografa ou descriptografa mensagens NIP-44
-- **decrypt_zap_event** - Descriptografar evento relacionado ao zap payloads
+- **get_public_key** - recupera a pubkey do usuário e o nome do pacote do signer
+- **sign_event** - assina um evento Nostr
+- **nip04_encrypt/decrypt** - criptografa ou descriptografa mensagens NIP-04
+- **nip44_encrypt/decrypt** - criptografa ou descriptografa mensagens NIP-44
+- **decrypt_zap_event** - descriptografa payloads de eventos relacionados a zap
 
 ## Notas de segurança e UX
 
-O NIP-55 mantém as chaves no dispositivo, mas ainda depende dos limites do aplicativo Android e do tratamento de permissões do assinante. O suporte ao resolvedor de conteúdo oferece uma experiência do usuário muito mais suave do que solicitações repetidas de intenção, mas somente depois que o usuário concede aprovação durável a esse cliente.
+A NIP-55 mantém as chaves no dispositivo, mas ainda depende dos limites entre apps do Android e do tratamento de permissões do signer. O suporte a content resolver oferece uma UX muito mais suave do que prompts repetidos com intent, mas somente depois que o usuário concedeu aprovação durável àquele cliente.
 
-Para aplicativos da web no Android, o NIP-55 é menos ergonômico que o NIP-46. Os fluxos baseados em navegador não podem receber respostas diretas em segundo plano da mesma forma que os aplicativos Android nativos, portanto, muitas implementações recorrem a URLs de retorno de chamada, transferência da área de transferência ou colagem manual.
+Para apps web no Android, a NIP-55 é menos ergonômica do que a NIP-46. Fluxos baseados em navegador não conseguem receber responses diretas em background da mesma forma que apps Android nativos conseguem, então muitas implementações recorrem a callback URLs, transferência por clipboard ou colagem manual.
 
 ---
 
@@ -40,12 +40,13 @@ Para aplicativos da web no Android, o NIP-55 é menos ergonômico que o NIP-46. 
 - [Especificação NIP-55](https://github.com/nostr-protocol/nips/blob/master/55.md)
 
 **Mencionado em:**
-- [Boletim Informativo nº 1: Lançamentos](/pt/newsletters/2025-12-17-newsletter/#releases)
-- [Boletim informativo nº 2: Notícias](/pt/newsletters/2025-12-24-newsletter/#news)
-- [Boletim informativo nº 2: Atualizações do NIP](/pt/newsletters/2025-12-24-newsletter/#nip-updates)
-- [Boletim informativo nº 3: Recapitulação de dezembro](/pt/newsletters/2025-12-31-newsletter/#december-recap-five-years-of-nostr-decembers)
-- [Boletim informativo nº 7: Atualizações do NIP](/pt/newsletters/2026-01-07-newsletter/#nip-updates)
-- [Boletim informativo nº 11: Aprofundamento do NIP](/pt/newsletters/2026-02-25-newsletter/#nip-deep-dive-nip-55-android-signer-application)
+- [Newsletter #1: Lançamentos](/pt/newsletters/2025-12-17-newsletter/)
+- [Newsletter #2: Notícias](/pt/newsletters/2025-12-24-newsletter/)
+- [Newsletter #2: Atualizações de NIP](/pt/newsletters/2025-12-24-newsletter/)
+- [Newsletter #3: Recapitulação de dezembro](/pt/newsletters/2025-12-31-newsletter/)
+- [Newsletter #4: Atualizações de NIP](/pt/newsletters/2026-01-07-newsletter/)
+- [Newsletter #11: NIP Deep Dive](/pt/newsletters/2026-02-25-newsletter/)
+- [Newsletter #13: Samizdat v1.0.0-alpha](/en/newsletters/2026-03-11-newsletter/)
 
 **Veja também:**
 - [NIP-46: Nostr Connect](/pt/topics/nip-46/)

@@ -2,7 +2,7 @@
 title: "NIP-65 : Métadonnées de liste de relays"
 date: 2026-01-13
 translationOf: /en/topics/nip-65.md
-translationDate: 2026-03-07
+translationDate: 2026-04-22
 draft: false
 categories:
   - Protocol
@@ -71,8 +71,9 @@ Mélangez des relays généralistes avec des relays spécialisés que vous utili
 - [Spécification NIP-65](https://github.com/nostr-protocol/nips/blob/master/65.md)
 
 **Mentionné dans :**
-- [Newsletter #5 : Plongée approfondie NIP](/en/newsletters/2026-01-13-newsletter/#nip-65-relay-list-metadata)
-- [Newsletter #10 : Benchmarks du modèle outbox](/en/newsletters/2026-03-04-newsletter/)
+- [Newsletter #5 : Plongée approfondie NIP](/fr/newsletters/2026-01-13-newsletter/)
+- [Newsletter #10 : Benchmarks du modèle outbox](/fr/newsletters/2026-03-04-newsletter/)
+- [Newsletter #19 : diffusion inbox-relay de Wisp](/en/newsletters/2026-04-22-newsletter/)
 
 **Voir aussi :**
 - [NIP-11 : Information relay](/fr/topics/nip-11/)

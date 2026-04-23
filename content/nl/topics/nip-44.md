@@ -2,11 +2,11 @@
 title: "NIP-44: Versleutelde Payloads"
 date: 2025-12-31
 translationOf: /en/topics/nip-44.md
-translationDate: 2026-03-07
+translationDate: 2026-04-22
 draft: false
 categories:
   - NIP
-  - Cryptografie
+  - Cryptography
   - Privacy
 ---
 
@@ -25,14 +25,14 @@ NIP-44 versie 2 gebruikt een meerstaps encryptieproces:
 
 De uitvoer is een versiegebonden base64-payload die in een normaal ondertekend Nostr-event gaat. De specificatie vereist dat clients eerst de buitenste NIP-01-eventhandtekening valideren voordat ze de binnenste NIP-44-payload ontsleutelen.
 
-## Cryptografische Keuzes
+## Cryptographic Choices
 
 - **ChaCha20** boven AES: sneller, met betere weerstand tegen multi-key-aanvallen
 - **HMAC-SHA256** boven Poly1305: polynomiale MACs zijn makkelijker te vervalsen
 - **SHA256**: consistent met bestaande Nostr-primitieven
 - **Versiegebonden Formaat**: maakt toekomstige algoritme-upgrades mogelijk
 
-## Beveiligingseigenschappen
+## Security Properties
 
 - **Authenticated Encryption**: berichten kunnen niet ongemerkt worden aangepast
 - **Lengteverhulling**: padding verbergt de berichtgrootte
@@ -55,22 +55,25 @@ NIP-44 biedt geen:
 
 Voor hoge beveiligingseisen bieden NIP-104 (double ratchet) of MLS-gebaseerde protocollen zoals Marmot sterkere garanties.
 
-## Geschiedenis
+## History
 
 NIP-44 revisie 3 werd in december 2023 gemerged na een onafhankelijke Cure53-beveiligingsaudit. Het vormt de cryptografische basis voor NIP-17 private DMs en NIP-59 gift wrapping.
 
 ---
 
 **Primaire bronnen:**
-- [NIP-44-specificatie](https://github.com/nostr-protocol/nips/blob/master/44.md)
+- [NIP-44 Specification](https://github.com/nostr-protocol/nips/blob/master/44.md)
 - [NIP-44-reference implementations](https://github.com/paulmillr/nip44)
 - [Cure53-auditrapport](https://cure53.de/audit-report_nip44-implementations.pdf)
 
 **Vermeld in:**
-- [Nieuwsbrief #4: NIP Deep Dive](/en/newsletters/2026-01-07-newsletter/#nip-44-versioned-encryption)
-- [Nieuwsbrief #3: December 2023](/en/newsletters/2025-12-31-newsletter/#december-2023-ecosystem-maturation)
-- [Nieuwsbrief #3: December 2024](/en/newsletters/2025-12-31-newsletter/#december-2024-protocol-advancement)
-- [Nieuwsbrief #12: Marmot](/en/newsletters/2026-03-04-newsletter/#marmot-development-kit-ships-first-public-release)
+- [Newsletter #4: NIP Deep Dive](/nl/newsletters/2026-01-07-newsletter/)
+- [Newsletter #3: December 2023](/en/newsletters/2025-12-31-newsletter/)
+- [Newsletter #3: December 2024](/en/newsletters/2025-12-31-newsletter/)
+- [Newsletter #12: Marmot](/nl/newsletters/2026-03-04-newsletter/)
+- [Newsletter #13: Vector](/en/newsletters/2026-03-11-newsletter/)
+- [Newsletter #19: nostter NIP-44 migration](/en/newsletters/2026-04-22-newsletter/)
+- [Newsletter #19: nowhere encrypts Nostr traffic](/en/newsletters/2026-04-22-newsletter/)
 
 **Zie ook:**
 - [NIP-04: Encrypted Direct Messages (verouderd)](/nl/topics/nip-04/)

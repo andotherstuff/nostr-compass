@@ -2,6 +2,7 @@
 title: "NIP-89: Aanbevolen applicatiehandlers"
 date: 2026-01-07
 translationDate: 2026-03-07
+translationOf: /en/topics/nip-89.md
 draft: false
 categories:
   - Discovery

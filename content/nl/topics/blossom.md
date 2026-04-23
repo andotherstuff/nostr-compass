@@ -2,6 +2,7 @@
 title: "Blossom-protocol"
 date: 2025-12-17
 translationDate: 2026-03-07
+translationOf: /en/topics/blossom.md
 draft: false
 categories:
   - Media
@@ -42,9 +43,9 @@ Die opsplitsing laat clients het minimum implementeren dat nodig is voor basisin
 - [Handleiding voor Local Blossom Cache](https://github.com/hzrd149/blossom/blob/master/implementations/local-blossom-cache.md)
 
 **Vermeld in:**
-- [Nieuwsbrief #1: Nieuws](/en/newsletters/2025-12-17-newsletter/#news)
-- [Nieuwsbrief #2: Opvallende code- en documentatiewijzigingen](/en/newsletters/2025-12-24-newsletter/#notable-code-and-documentation-changes)
-- [Nieuwsbrief #10: Blossom local cache-laag verschijnt](/en/newsletters/2026-02-18-newsletter/#blossom-local-cache-layer-emerges)
+- [Nieuwsbrief #1: Nieuws](/en/newsletters/2025-12-17-newsletter/)
+- [Nieuwsbrief #2: Opvallende code- en documentatiewijzigingen](/en/newsletters/2025-12-24-newsletter/)
+- [Nieuwsbrief #10: Blossom local cache-laag verschijnt](/en/newsletters/2026-02-18-newsletter/)
 
 **Zie ook:**
 - [BUD-03: Gebruikersserverlijst](/nl/topics/bud-03/)

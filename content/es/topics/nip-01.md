@@ -2,7 +2,7 @@
 title: "NIP-01: Protocolo Básico"
 date: 2025-12-17
 translationOf: /en/topics/nip-01.md
-translationDate: 2026-03-07
+translationDate: 2026-04-22
 draft: false
 categories:
   - Protocol
@@ -10,7 +10,7 @@ categories:
 
 NIP-01 define el modelo base de eventos y el protocolo de relays sobre el que se construye el resto de Nostr. Si un cliente, relay o biblioteca habla Nostr, empieza aquí.
 
-## Cómo Funciona
+## Cómo funciona
 
 Los eventos son el único tipo de objeto en Nostr. Perfiles, notas, reacciones, listas de relays y muchos payloads específicos de aplicación usan la misma envoltura de siete campos:
 
@@ -35,7 +35,7 @@ Los kinds determinan cómo los relays almacenan y manejan los eventos:
 
 Los kinds principales incluyen: 0 (metadatos de usuario), 1 (nota de texto) y 3 (lista de seguidos).
 
-## Comunicación Cliente-Relay
+## Comunicación cliente-relay
 
 Los clientes se comunican con los relays a través de conexiones WebSocket usando arrays JSON:
 
@@ -56,7 +56,7 @@ En la práctica, la mayoría de NIPs de nivel superior no cambian la capa de tra
 
 Los filtros especifican qué eventos recuperar, con campos que incluyen `ids`, `authors`, `kinds`, `#e`/`#p`/`#t`, `since`, `until` y `limit`. Las condiciones dentro de un filtro usan lógica AND. Múltiples filtros dentro de un `REQ` usan lógica OR.
 
-## Notas de Interoperabilidad
+## Notas de interoperabilidad
 
 Dos detalles causan muchos errores de implementación. Primero, los clientes deben tratar las respuestas del relay como eventualmente consistentes, no globalmente ordenadas, porque diferentes relays pueden devolver diferentes subconjuntos del historial. Segundo, los eventos reemplazables y direccionables significan que "el más reciente" es parte del modelo del protocolo, así que los clientes necesitan reglas determinísticas para elegir el evento válido más nuevo cuando varios relays no coinciden.
 
@@ -66,7 +66,8 @@ Dos detalles causan muchos errores de implementación. Primero, los clientes deb
 - [Especificación NIP-01](https://github.com/nostr-protocol/nips/blob/master/01.md)
 
 **Mencionado en:**
-- [Boletín #1: Análisis Profundo de NIP](/es/newsletters/2025-12-17-newsletter/#nip-deep-dive-nip-01-and-nip-19)
+- [Boletín #1: Análisis Profundo de NIP](/es/newsletters/2025-12-17-newsletter/)
+- [Boletín #19: propuesta de completitud EOSE de NIP-67](/en/newsletters/2026-04-22-newsletter/)
 
 **Ver también:**
 - [NIP-19: Entidades Codificadas en Bech32](/es/topics/nip-19/)

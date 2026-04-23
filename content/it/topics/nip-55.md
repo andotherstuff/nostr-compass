@@ -1,8 +1,8 @@
 ---
 title: "NIP-55: Applicazione signer Android"
 date: 2025-12-17
-translationOf: /en/topics/nip-55/
-translationDate: 2026-03-07
+translationOf: /en/topics/nip-55.md
+translationDate: 2026-04-22
 draft: false
 categories:
   - Signing
@@ -39,12 +39,12 @@ Per le web app su Android, NIP-55 è meno ergonomico di NIP-46. I flussi basati 
 - [Specifica NIP-55](https://github.com/nostr-protocol/nips/blob/master/55.md)
 
 **Citato in:**
-- [Newsletter #1: Releases](/en/newsletters/2025-12-17-newsletter/#releases)
-- [Newsletter #2: News](/en/newsletters/2025-12-24-newsletter/#news)
-- [Newsletter #2: NIP Updates](/en/newsletters/2025-12-24-newsletter/#nip-updates)
-- [Newsletter #3: December Recap](/en/newsletters/2025-12-31-newsletter/#december-recap-five-years-of-nostr-decembers)
-- [Newsletter #7: NIP Updates](/en/newsletters/2026-01-07-newsletter/#nip-updates)
-- [Newsletter #11: NIP Deep Dive](/en/newsletters/2026-02-25-newsletter/#nip-deep-dive-nip-55-android-signer-application)
+- [Newsletter #1: Releases](/it/newsletters/2025-12-17-newsletter/)
+- [Newsletter #2: News](/it/newsletters/2025-12-24-newsletter/)
+- [Newsletter #2: NIP Updates](/it/newsletters/2025-12-24-newsletter/)
+- [Newsletter #3: December Recap](/en/newsletters/2025-12-31-newsletter/)
+- [Newsletter #7: NIP Updates](/it/newsletters/2026-01-07-newsletter/)
+- [Newsletter #11: NIP Deep Dive](/it/newsletters/2026-02-25-newsletter/)
 
 **Vedi anche:**
 - [NIP-46: Nostr Connect](/it/topics/nip-46/)

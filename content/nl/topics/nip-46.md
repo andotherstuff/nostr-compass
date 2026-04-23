@@ -1,10 +1,11 @@
 ---
 title: "NIP-46: Nostr Connect"
 date: 2025-12-17
-translationDate: 2026-03-07
+translationOf: /en/topics/nip-46.md
+translationDate: 2026-04-22
 draft: false
 categories:
-  - Ondertekening
+  - Signing
   - Protocol
 ---
 
@@ -24,7 +25,7 @@ NIP-46 definieert remote signing via Nostr-relays. Een client praat met een apar
 
 `nostrconnect://`-flows bevatten een vereiste shared secret zodat de client kan verifiëren dat de eerste response echt van de bedoelde signer kwam. Dat voorkomt eenvoudige connection spoofing.
 
-## Ondersteunde Bewerkingen
+## Supported Operations
 
 - `sign_event` - Een willekeurig event ondertekenen
 - `get_public_key` - De pubkey van de gebruiker ophalen bij de signer
@@ -34,7 +35,7 @@ NIP-46 definieert remote signing via Nostr-relays. Een client praat met een apar
 
 Veel implementaties gebruiken tijdens het opzetten ook permission strings zoals `sign_event:1` of `nip44_encrypt`, zodat de signer een beperkte scope kan goedkeuren in plaats van volledige toegang.
 
-## Relay- en Vertrouwensmodel
+## Relay and Trust Model
 
 NIP-46 verplaatst private keys uit de client, maar haalt vertrouwen niet weg bij de signer. De signer kan requests goedkeuren, weigeren of vertragen, en ziet elke bewerking die de client vraagt uit te voeren. Ook de relay-keuze is belangrijk, omdat het protocol afhangt van request- en response-delivery via relays die beide kanten kunnen bereiken.
 
@@ -43,13 +44,16 @@ De methode `switch_relays` bestaat zodat de signer de sessie na verloop van tijd
 ---
 
 **Primaire bronnen:**
-- [NIP-46-specificatie](https://github.com/nostr-protocol/nips/blob/master/46.md)
+- [NIP-46 Specification](https://github.com/nostr-protocol/nips/blob/master/46.md)
 
 **Vermeld in:**
-- [Nieuwsbrief #1: Opvallende codewijzigingen](/en/newsletters/2025-12-17-newsletter/#amethyst-android)
-- [Nieuwsbrief #3: Decemberoverzicht](/en/newsletters/2025-12-31-newsletter/#december-recap-five-years-of-nostr-decembers)
-- [Nieuwsbrief #7: Primal Android wordt een volledige signing hub](/en/newsletters/2026-01-07-newsletter/#primal-android-becomes-a-full-signing-hub)
-- [Nieuwsbrief #15: NDK collaborative events en NIP-46-time-out](/en/newsletters/2026-03-04-newsletter/#ndk-collaborative-events-and-nip-46-timeout)
+- [Newsletter #1: Notable Code Changes](/nl/newsletters/2025-12-17-newsletter/)
+- [Newsletter #3: December Recap](/en/newsletters/2025-12-31-newsletter/)
+- [Newsletter #4: Primal Android Becomes a Full Signing Hub](/nl/newsletters/2026-01-07-newsletter/)
+- [Newsletter #12: NDK Collaborative Events and NIP-46 Timeout](/nl/newsletters/2026-03-04-newsletter/)
+- [Newsletter #19: NipLock signer support](/en/newsletters/2026-04-22-newsletter/)
+- [Newsletter #19: Forgesworn Heartwood signer](/en/newsletters/2026-04-22-newsletter/)
+- [Newsletter #19: Flotilla Aegis NIP-46 login](/en/newsletters/2026-04-22-newsletter/)
 
 **Zie ook:**
 - [NIP-55: Android Signer](/nl/topics/nip-55/)

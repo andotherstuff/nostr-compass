@@ -1,7 +1,8 @@
 ---
-title: "NIP-11: Relay-informatiedocument"
+title: "NIP-11: Relay Information Document"
 date: 2025-12-17
-translationDate: 2026-03-07
+translationOf: /en/topics/nip-11.md
+translationDate: 2026-04-22
 draft: false
 categories:
   - Relay
@@ -14,7 +15,7 @@ NIP-11 definieert hoe relays een machineleesbare beschrijving van zichzelf publi
 
 Clients halen relay-informatie op door een HTTP GET-request te doen naar de WebSocket-URL van de relay met een `Accept: application/nostr+json`-header. De relay retourneert dan een JSON-document dat zijn mogelijkheden beschrijft.
 
-## Nuttige Velden
+## Useful Fields
 
 - **name** - Menselijk leesbare relay-naam
 - **description** - Waar de relay voor bedoeld is
@@ -23,7 +24,7 @@ Clients halen relay-informatie op door een HTTP GET-request te doen naar de WebS
 - **pubkey** - Public key van de relay-operator, als die is opgegeven
 - **contact** - Contactadres van de operator
 
-## Vertrouwensmodel
+## Trust Model
 
 NIP-11 is zelfgerapporteerde metadata. Het vertelt je wat een relay over zichzelf zegt, niet wat die in live verkeer heeft bewezen. Dat is nog steeds nuttig voor discovery en UX, maar clients moeten `supported_nips` niet als grondwaarheid behandelen zonder gedrag te testen.
 
@@ -35,20 +36,30 @@ Dit onderscheid is belangrijk voor relayselectie. Een relay kan NIP-50 search, a
 - Discovery-services kunnen relay-capaciteiten indexeren
 - Gebruikers kunnen relay-beleid bekijken voordat ze publiceren
 
-## Recente Richting van de Specificatie
+## Recent Spec Direction
 
-De specificatie is in de loop van de tijd teruggesnoeid. Oudere optionele velden zoals `software`, `version`, privacybeleid-details en retention-metadata zijn verwijderd na jaren van zwakke adoptie. Daardoor zijn huidige NIP-11-documenten kleiner en realistischer, maar het betekent ook dat clients geen rijke beleidsmetadata van relays moeten verwachten.
+De specificatie is in de loop van de tijd teruggesnoeid. Oudere optionele velden zoals `software`, `version`, details van privacybeleid en retention metadata zijn verwijderd na jaren van zwakke adoptie. Daardoor zijn huidige NIP-11-documenten kleiner en realistischer, maar het betekent ook dat clients geen rijke beleidsmetadata van relays moeten verwachten.
+
+[PR #2318](https://github.com/nostr-protocol/nips/pull/2318) stelt voor een optioneel `access_control`-object toe te voegen aan het relay information document, met daarin de gating mode van de relay (open, invite, payment, allowlist) en elk endpoint dat een client kan gebruiken om toegang aan te vragen. Het veld is alleen adviserend bedoeld, zodat clients en directories gated relays uit publieke discoverylijsten kunnen filteren en gebruikers vooraf kunnen tonen waarom een relay writes weigert.
+
+## Implementaties
+
+- [nostream PR #557](https://github.com/Cameri/nostream/pull/557) brengt nostream naar volledige NIP-11 relay info parity.
 
 ---
 
 **Primaire bronnen:**
-- [NIP-11-specificatie](https://github.com/nostr-protocol/nips/blob/master/11.md)
+- [NIP-11 Specification](https://github.com/nostr-protocol/nips/blob/master/11.md)
 - [PR #1764](https://github.com/nostr-protocol/nips/pull/1764) - update van relay identity field
 - [PR #1946](https://github.com/nostr-protocol/nips/pull/1946) - opschoning van zelden gebruikte velden
 - [PR #2231](https://github.com/nostr-protocol/nips/pull/2231) - verwijdering van verouderde velden
+- [PR #2318](https://github.com/nostr-protocol/nips/pull/2318) - `access_control` field for gated-relay discovery
+- [nostream PR #557](https://github.com/Cameri/nostream/pull/557) - Complete NIP-11 relay info parity
 
 **Vermeld in:**
-- [Nieuwsbrief #1: NIP Updates](/en/newsletters/2025-12-17-newsletter/#nip-updates)
+- [Newsletter #1: NIP Updates](/nl/newsletters/2025-12-17-newsletter/)
+- [Newsletter #13: NIP Updates](/en/newsletters/2026-03-11-newsletter/)
+- [Newsletter #19: NIP Updates (`access_control` proposal)](/en/newsletters/2026-04-22-newsletter/)
 
 **Zie ook:**
 - [NIP-66: Relay Discovery and Liveness Monitoring](/nl/topics/nip-66/)

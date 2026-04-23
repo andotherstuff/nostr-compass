@@ -2,7 +2,7 @@
 title: "NIP-62 : Requêtes de disparition"
 date: 2026-01-13
 translationOf: /en/topics/nip-62.md
-translationDate: 2026-03-07
+translationDate: 2026-04-22
 draft: false
 categories:
   - Privacy
@@ -44,7 +44,7 @@ Les relays ne sont pas obligés de supporter NIP-62. Le réseau Nostr est décen
 
 NIP-62 offre aux clients et aux opérateurs de relay un signal de suppression partagé qui va au-delà des APIs de modération ad hoc ou des tableaux de bord spécifiques aux relays. Un utilisateur peut publier une seule requête signée et laisser chaque relay décider comment la traiter.
 
-La limite pratique est la portée. Une requête de disparition n'affecte que les relays qui la voient, la supportent et choisissent de l'honorer. Elle ne retire pas les captures d'écran, les bases de données locales, les archives tierces ou les copies republieées déjà hors du contrôle du relay.
+La limite pratique est la portée. Une requête de disparition n'affecte que les relays qui la voient, la supportent et choisissent de l'honorer. Elle ne retire pas les captures d'écran, les bases de données locales, les archives tierces ou les copies republiées déjà hors du contrôle du relay.
 
 ## Considérations de confidentialité
 
@@ -64,8 +64,10 @@ NIP-62 complète [NIP-09](/fr/topics/nip-09/). NIP-09 est l'événement généra
 - [Spécification NIP-62](https://github.com/nostr-protocol/nips/blob/master/62.md)
 
 **Mentionné dans :**
-- [Newsletter #5 : Changements notables de code](/en/newsletters/2026-01-13-newsletter/#rust-nostr-library)
-- [Newsletter #10 : rust-nostr](/en/newsletters/2026-03-04-newsletter/#rust-nostr-nip-62-request-to-vanish)
+- [Newsletter #5 : Changements notables de code](/fr/newsletters/2026-01-13-newsletter/)
+- [Newsletter #10 : rust-nostr](/fr/newsletters/2026-03-04-newsletter/)
+- [Newsletter #16 : support NIP-62 d'Amethyst](/fr/newsletters/2026-04-01-newsletter/)
+- [Newsletter #19 : support NIP-62 de nostream](/en/newsletters/2026-04-22-newsletter/)
 
 **Voir aussi :**
 - [NIP-09 : Demande de suppression d'événement](/fr/topics/nip-09/)

@@ -2,7 +2,7 @@
 title: "NIP-52 : Événements de calendrier"
 date: 2026-01-28
 translationOf: /en/topics/nip-52.md
-translationDate: 2026-03-07
+translationDate: 2026-04-22
 draft: false
 categories:
   - NIP
@@ -83,9 +83,11 @@ NIP-52 fait plus que décrire une réunion. Il sépare la définition de l'évé
 - [PR #1752: Day-Granularity Timestamp Tag](https://github.com/nostr-protocol/nips/pull/1752)
 
 **Mentionné dans :**
-- [Newsletter #7 : Notedeck Calendar App Draft](/en/newsletters/2026-01-28-newsletter/#notedeck-progress-calendar-app-and-ux-polish)
-- [Newsletter #10 : NIP Updates](/en/newsletters/2026-02-18-newsletter/#nip-updates)
-- [Newsletter #10 : NIP Deep Dive](/en/newsletters/2026-02-18-newsletter/#nip-deep-dive-nip-52-calendar-events)
+- [Newsletter #7 : Notedeck Calendar App Draft](/fr/newsletters/2026-01-28-newsletter/)
+- [Newsletter #10 : NIP Updates](/fr/newsletters/2026-02-18-newsletter/)
+- [Newsletter #10 : NIP Deep Dive](/fr/newsletters/2026-02-18-newsletter/)
+- [Newsletter #13 : Calendar by Form* v0.2.0](/en/newsletters/2026-03-11-newsletter/)
+- [Newsletter #19 : suite Formstr](/en/newsletters/2026-04-22-newsletter/)
 
 **Voir aussi :**
 - [NIP-22 : Comment](/fr/topics/nip-22/)

@@ -42,9 +42,9 @@ Blossom은 모듈식이다. 핵심 조회 및 업로드 동작은 BUD-01과 BUD-
 - [로컬 Blossom 캐시 가이드](https://github.com/hzrd149/blossom/blob/master/implementations/local-blossom-cache.md)
 
 **언급된 뉴스레터:**
-- [뉴스레터 #1: 뉴스](/en/newsletters/2025-12-17-newsletter/#news)
-- [뉴스레터 #2: 주요 코드 변경사항](/en/newsletters/2025-12-24-newsletter/#notable-code-and-documentation-changes)
-- [뉴스레터 #10: Blossom 로컬 캐시 레이어 등장](/en/newsletters/2026-02-18-newsletter/#blossom-local-cache-layer-emerges)
+- [뉴스레터 #1: 뉴스](/en/newsletters/2025-12-17-newsletter/)
+- [뉴스레터 #2: 주요 코드 변경사항](/en/newsletters/2025-12-24-newsletter/)
+- [뉴스레터 #10: Blossom 로컬 캐시 레이어 등장](/en/newsletters/2026-02-18-newsletter/)
 
 **같이 보기:**
 - [BUD-03: 사용자 서버 목록](/ko/topics/bud-03/)

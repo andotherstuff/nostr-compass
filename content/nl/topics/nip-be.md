@@ -2,6 +2,7 @@
 title: "NIP-BE: Bluetooth Low Energy"
 date: 2025-12-17
 translationDate: 2026-03-07
+translationOf: /en/topics/nip-be.md
 draft: false
 categories:
   - Protocol

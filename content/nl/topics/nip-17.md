@@ -1,11 +1,12 @@
 ---
 title: "NIP-17: Privé Directe Berichten"
 date: 2025-12-17
-translationDate: 2026-03-07
+translationOf: /en/topics/nip-17.md
+translationDate: 2026-04-22
 draft: false
 categories:
   - Privacy
-  - Berichten
+  - Messaging
 ---
 
 NIP-17 definieert private direct messages met NIP-59 gift wrapping voor afzenderprivacy. In tegenstelling tot NIP-04 DMs, die de afzender in het buitenste event zichtbaar maken, verbergt NIP-17 de afzender voor relays en toevallige waarnemers.
@@ -46,24 +47,26 @@ NIP-17 verbergt de afzender, ten koste van een complexere implementatie.
 
 Die extra complexiteit levert een echte privacyverbetering op. Een relay kan nog steeds zien dat een wrapped message aan een ontvanger is gericht, maar kan niet direct een afzender-ontvanger-grafiek opbouwen uit metadata van het buitenste event, zoals dat wel kan bij kind 4-berichten.
 
-## Interop-Hinweise
+## Interop Notes
 
 NIP-17 definieert ook inbox relay lists voor private messaging. Clients kunnen een kind 10050-event publiceren, zodat afzenders weten naar welke relays ze DM-verkeer moeten sturen. DM-routing gescheiden houden van routing voor publieke content helpt voorkomen dat privéverkeer op de verkeerde plaatsen terechtkomt.
 
 ---
 
 **Primaire bronnen:**
-- [NIP-17-specificatie](https://github.com/nostr-protocol/nips/blob/master/17.md)
+- [NIP-17 Specification](https://github.com/nostr-protocol/nips/blob/master/17.md)
 - [PR #2098](https://github.com/nostr-protocol/nips/pull/2098) - opschoning van de formulering en update voor reaction support
 
 **Vermeld in:**
-- [Nieuwsbrief #1: NIP Updates](/en/newsletters/2025-12-17-newsletter/#nip-updates)
-- [Nieuwsbrief #2: News](/en/newsletters/2025-12-24-newsletter/#news)
-- [Nieuwsbrief #3: December Recap](/en/newsletters/2025-12-31-newsletter/#december-recap-five-years-of-nostr-decembers)
-- [Nieuwsbrief #3: Notable Code Changes](/en/newsletters/2025-12-31-newsletter/#shopstr-marketplace)
-- [Nieuwsbrief #5: News](/en/newsletters/2026-01-13-newsletter/#news)
+- [Newsletter #1: NIP Updates](/nl/newsletters/2025-12-17-newsletter/)
+- [Newsletter #2: News](/nl/newsletters/2025-12-24-newsletter/)
+- [Newsletter #3: December Recap](/en/newsletters/2025-12-31-newsletter/)
+- [Newsletter #3: Notable Code Changes](/en/newsletters/2025-12-31-newsletter/)
+- [Newsletter #5: News](/nl/newsletters/2026-01-13-newsletter/)
+- [Newsletter #13: Vector](/en/newsletters/2026-03-11-newsletter/)
+- [Newsletter #19: NipLock password manager](/en/newsletters/2026-04-22-newsletter/)
 
 **Zie ook:**
-- [NIP-04: Versleutelde Direct Messages (Verouderd)](/nl/topics/nip-04/)
+- [NIP-04: Encrypted Direct Messages (Deprecated)](/nl/topics/nip-04/)
 - [NIP-44: Encrypted Payloads](/nl/topics/nip-44/)
 - [NIP-59: Gift Wrap](/nl/topics/nip-59/)

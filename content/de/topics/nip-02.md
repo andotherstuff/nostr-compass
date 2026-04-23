@@ -1,6 +1,7 @@
 ---
 title: "NIP-02: Folgeliste"
 date: 2025-12-24
+translationOf: /en/topics/nip-02.md
 translationDate: 2026-03-07
 draft: false
 categories:

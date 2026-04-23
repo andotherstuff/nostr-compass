@@ -1,7 +1,8 @@
 ---
 title: "NIP-47: Nostr Wallet Connect"
 date: 2025-12-17
-translationDate: 2026-03-07
+translationOf: /en/topics/nip-47.md
+translationDate: 2026-04-22
 draft: false
 categories:
   - Wallet
@@ -10,7 +11,7 @@ categories:
 
 NIP-47 definieert Nostr Wallet Connect, een protocol waarmee een Nostr-app met een externe Lightning-walletservice kan praten zonder de hoofdcredentials van de wallet bloot te stellen aan elke client.
 
-## Hoe het werkt
+## Hoe Het Werkt
 
 Een walletservice publiceert een vervangbaar kind `13194` info-event dat beschrijft welke methoden en encryptiemodi worden ondersteund. Een client maakt verbinding via een `nostr+walletconnect://`-URI die de pubkey van de walletservice, een of meer relays en een speciaal secret voor die verbinding bevat. Verzoeken worden verzonden als kind `23194` events en responses komen terug als kind `23195` events.
 
@@ -20,13 +21,13 @@ Veelgebruikte methoden zijn `pay_invoice`, `pay_keysend`, `make_invoice`, `looku
 
 De spec kreeg in de loop van de tijd verschillende optionele methoden erbij, maar recente opschoning heeft de `multi_`-betaalmethoden verwijderd. In de praktijk is interoperabiliteit beter wanneer clients zich houden aan de opdrachten die in het info-event van de wallet worden geadverteerd, in plaats van uit te gaan van een brede methodenset.
 
-## Toepassingen
+## Use Cases
 
 - **Zaps** - Verstuur sats naar posts, profielen of makers van content
 - **Betalingen** - Betaal Lightning-facturen vanuit elke Nostr-app
 - **Scheiding van wallet-UX** - Gebruik een walletservice in meerdere Nostr-clients
 
-## Beveiligings- en interoperabiliteitsnotities
+## Security and Interop Notes
 
 De verbindings-URI bevat een speciaal secret dat de client gebruikt voor signing en encryptie. Daardoor krijgt elke app een eigen walletidentiteit, wat helpt bij zowel intrekking als privacy. Een wallet kan bestedingslimieten instellen, methoden uitschakelen of een enkele verbinding intrekken zonder andere verbindingen te raken.
 
@@ -35,16 +36,18 @@ NIP-44 heeft nu de voorkeur als encryptiemodus. De spec documenteert nog steeds 
 ---
 
 **Primaire bronnen:**
-- [NIP-47-specificatie](https://github.com/nostr-protocol/nips/blob/master/47.md)
+- [NIP-47 Specification](https://github.com/nostr-protocol/nips/blob/master/47.md)
 - [PR #1913: Hold Invoice-ondersteuning](https://github.com/nostr-protocol/nips/pull/1913)
 - [PR #2210: Vereenvoudiging](https://github.com/nostr-protocol/nips/pull/2210)
 
 **Vermeld in:**
-- [Nieuwsbrief #1: News](/en/newsletters/2025-12-17-newsletter/#news)
-- [Nieuwsbrief #2: Releases](/en/newsletters/2025-12-24-newsletter/#releases)
-- [Nieuwsbrief #3: December Recap](/en/newsletters/2025-12-31-newsletter/#december-recap-five-years-of-nostr-decembers)
-- [Nieuwsbrief #8: NIP Deep Dive](/en/newsletters/2026-02-04-newsletter/#nip-deep-dive-nip-47-nostr-wallet-connect)
-- [Nieuwsbrief #10: NIP Updates](/en/newsletters/2026-02-18-newsletter/#nip-updates)
+- [Newsletter #1: News](/nl/newsletters/2025-12-17-newsletter/)
+- [Newsletter #2: Releases](/nl/newsletters/2025-12-24-newsletter/)
+- [Newsletter #3: December Recap](/en/newsletters/2025-12-31-newsletter/)
+- [Newsletter #8: NIP Deep Dive](/nl/newsletters/2026-02-04-newsletter/)
+- [Newsletter #10: NIP Updates](/nl/newsletters/2026-02-18-newsletter/)
+- [Newsletter #13: Shopstr and Milk Market Open MCP Commerce Surfaces](/en/newsletters/2026-03-11-newsletter/)
+- [Newsletter #19: ShockWallet Nostr-native wallet sync](/en/newsletters/2026-04-22-newsletter/)
 
 **Zie ook:**
 - [NIP-57: Zaps](/nl/topics/nip-57/)

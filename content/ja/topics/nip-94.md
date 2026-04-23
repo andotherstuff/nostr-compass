@@ -2,60 +2,68 @@
 title: "NIP-94: File Metadata"
 date: 2025-12-31
 translationOf: /en/topics/nip-94.md
-translationDate: 2026-03-07
+translationDate: 2026-04-22
 draft: false
 categories:
-  - メディア
-  - プロトコル
+  - Media
+  - Protocol
 ---
 
-NIP-94は、Nostr上で共有されるファイルを整理・分類するためのファイルメタデータイベント（kind 1063）を定義し、relayがコンテンツを効果的にフィルタリング・整理できるようにします。
+NIP-94は、共有ファイルを整理し分類するためのfile metadata event（kind 1063）を定義します。これによりrelayはcontentを効果的にfilterし、整理できます。
 
 ## 仕組み
 
-1. ユーザーがホスティングサービスにファイルをアップロード
-2. ファイルに関するメタデータを含むkind 1063イベントが公開される
-3. イベントの内容には人間が読める説明が含まれる
-4. 構造化されたtagが機械可読なメタデータを提供
-5. 専門的なクライアントがファイルを体系的に整理・表示できる
+NIP-94は、ファイル向けの独立したmetadata eventとしてkind `1063`を使います。eventの`content`には人間向け説明が入り、tagにはdownload URL、MIME type、hash、dimensions、preview hintのようなmachine-readable fieldが入ります。
 
-## 必須タグとオプションタグ
+この分離が重要なのは、metadata eventが、そのファイルへリンクするnoteとは独立にindex、filter、再利用できるからです。clientはkind `1063`イベントをassetの正規記述として扱え、自由文の投稿本文からmetadataをこじ開ける必要がありません。
 
-**主要なtag：**
-- `url` - ファイルのダウンロードリンク
+## 必須タグと任意タグ
+
+**Core tags:**
+- `url` - ファイルのdownload link
 - `m` - MIME type（小文字形式が必須）
-- `x` - ファイルのSHA-256ハッシュ
+- `x` - ファイルのSHA-256 hash
 
-**オプションのtag：**
-- `ox` - サーバー変換前のオリジナルファイルのSHA-256ハッシュ
+**Optional tags:**
+- `ox` - server変換前の元ファイルのSHA-256 hash
 - `size` - バイト単位のファイルサイズ
-- `dim` - 画像/動画の寸法（幅 x 高さ）
-- `magnet` - torrent配布用のmagnet URI
+- `dim` - 画像や動画のdimensions（width x height）
+- `magnet` - torrent配布向けMagnet URI
 - `i` - torrent infohash
-- `blurhash` - プレビュー用のプレースホルダー画像
-- `thumb` - サムネイルURL
-- `image` - プレビュー画像URL
+- `blurhash` - preview用placeholder image
+- `thumb` - thumbnail URL
+- `image` - preview image URL
 - `summary` - テキスト抜粋
-- `alt` - アクセシビリティ説明
-- `fallback` - 代替ダウンロードソース
+- `alt` - accessibility description
+- `fallback` - 代替download source
+- `service` - NIP-96のようなstorage protocolまたはservice type
 
-## ユースケース
+`ox`と`x`タグは見落とされやすいものの、実際には有用です。`ox`は元のアップロードファイルを識別し、`x`はserverが実際に配信する変換後バージョンを識別できます。media hostがuploadを圧縮またはresizeしても、clientは変換後blobを元ファイルと同一だと偽らずに、元ファイルidentityを保持できます。
 
-NIP-94は、ソーシャルや長文コンテンツクライアントではなく、ファイル共有アプリケーション向けに設計されています。推奨されるアプリケーションには以下が含まれます：
+## いつ使うべきか
 
-- Torrentインデックスrelay
-- ポートフォリオ共有プラットフォーム（Pinterestに類似）
-- ソフトウェア設定とアップデートの配布
-- メディアライブラリとアーカイブ
+NIP-94は、social clientやlongform clientよりも、file-sharing application向けに設計されています。想定される用途には次があります。
+
+- Torrent indexing relay
+- Portfolio-sharing platform（Pinterestに近い）
+- ソフトウェア設定や更新の配布
+- Media libraryやarchive
+
+ファイルmetadataが、別イベント内のURLを飾るだけでよいなら、[NIP-92: Media Attachments](/ja/topics/nip-92/)のほうが軽量です。ファイル自体をfirst-class objectとしてquery可能にしたいなら、NIP-94のほうが適しています。
+
+## 相互運用メモ
+
+NIP-94はstorage backendをまたいで機能します。ファイルは[NIP-96: HTTP File Storage](/ja/topics/nip-96/)、Blossom、そのほかのservice経由でuploadされた後でも、同じkind `1063` event shapeで記述できます。だからこそ、このmetadata formatは1つのupload protocolを超えて生き残ります。
 
 ---
 
-**主要なソース：**
-- [NIP-94仕様](https://github.com/nostr-protocol/nips/blob/master/94.md)
+**Primary sources:**
+- [NIP-94 Specification](https://github.com/nostr-protocol/nips/blob/master/94.md)
 
-**言及先：**
-- [Newsletter #3: 12月の振り返り](/ja/newsletters/2025-12-31-newsletter/#december-recap-five-years-of-nostr-decembers)
+**Mentioned in:**
+- [Newsletter #3: December Recap](/en/newsletters/2025-12-31-newsletter/)
+- [Newsletter #14: NIP Deep Dive](/ja/newsletters/2026-03-18-newsletter/)
 
-**関連項目：**
-- [NIP-92: メディア添付](/ja/topics/nip-92/)
+**See also:**
+- [NIP-92: Media Attachments](/ja/topics/nip-92/)
 - [Blossom](/ja/topics/blossom/)

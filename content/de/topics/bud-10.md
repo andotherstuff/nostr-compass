@@ -1,6 +1,7 @@
 ---
 title: "BUD-10: Blossom-URI-Schema"
 date: 2025-12-17
+translationOf: /en/topics/bud-10.md
 translationDate: 2026-03-07
 draft: false
 categories:

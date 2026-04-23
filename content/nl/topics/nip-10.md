@@ -2,6 +2,7 @@
 title: "NIP-10: Tekstnotitie-threading"
 date: 2025-12-24
 translationDate: 2026-03-07
+translationOf: /en/topics/nip-10.md
 draft: false
 categories:
   - Protocol

@@ -2,7 +2,7 @@
 title: "NIP-5A: Sitios Web Estáticos"
 date: 2026-04-01
 translationOf: /en/topics/nip-5a.md
-translationDate: 2026-04-01
+translationDate: 2026-04-22
 draft: false
 categories:
   - Protocol
@@ -11,7 +11,7 @@ categories:
 
 NIP-5A define cómo alojar sitios web estáticos bajo claves Nostr. Los autores de sitios publican eventos de manifiesto firmados que mapean rutas URL a hashes SHA256 de contenido, y los servidores host resuelven esos manifiestos para servir los archivos del sitio desde almacenamiento Blossom.
 
-## Cómo Funciona
+## Cómo funciona
 
 La especificación usa dos kinds de evento. Kind `15128` es un manifiesto de sitio raíz, uno por pubkey, que sirve como el sitio web predeterminado para esa clave. Kind `35128` es un manifiesto de sitio nombrado, identificado por una etiqueta `d`, que actúa como un subdominio. Cada manifiesto contiene etiquetas `path` que mapean rutas URL absolutas a hashes SHA256 de los archivos que deben servirse.
 
@@ -53,8 +53,9 @@ Los sitios raíz usan el npub como subdominio. Los sitios nombrados usan una cod
 - [nsite-manager](https://github.com/hzrd149/nsite-manager) - UI de publicación y gestión
 
 **Mencionado en:**
-- [Newsletter #16: NIP-5A se fusiona](/es/newsletters/2026-04-01-newsletter/#nip-5a-se-fusiona-trayendo-sitios-web-estáticos-a-nostr)
-- [Newsletter #16: NIP Deep Dive](/es/newsletters/2026-04-01-newsletter/#nip-deep-dive-nip-5a-sitios-web-estáticos)
+- [Newsletter #16: NIP-5A se fusiona](/es/newsletters/2026-04-01-newsletter/)
+- [Newsletter #16: NIP Deep Dive](/es/newsletters/2026-04-01-newsletter/)
+- [Newsletter #19: propuesta de applets NIP-5D](/en/newsletters/2026-04-22-newsletter/)
 
 **Ver también:**
 - [Blossom](/es/topics/blossom/)

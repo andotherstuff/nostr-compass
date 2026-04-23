@@ -2,7 +2,7 @@
 title: "NIP-04: Mensajes Directos Cifrados (Obsoleto)"
 date: 2025-12-31
 translationOf: /en/topics/nip-04.md
-translationDate: 2026-03-07
+translationDate: 2026-04-22
 draft: false
 categories:
   - Privacy
@@ -11,7 +11,7 @@ categories:
 
 NIP-04 define mensajes directos cifrados usando eventos kind 4 y un secreto compartido derivado de ECDH. Fue el primer esquema de DM de Nostr, pero ahora es tecnología legacy y el nuevo trabajo de mensajería privada se ha trasladado a NIP-17.
 
-## Cómo Funciona
+## Cómo funciona
 
 Los mensajes usan eventos kind 4 con este flujo básico:
 
@@ -22,7 +22,7 @@ Los mensajes usan eventos kind 4 con este flujo básico:
 
 El evento en sí sigue siendo un evento Nostr firmado normal, por lo que los relays pueden ver los metadatos externos aunque no puedan leer el texto plano.
 
-## Límites de Seguridad y Privacidad
+## Límites de seguridad y privacidad
 
 NIP-04 tiene deficiencias significativas de privacidad:
 
@@ -33,13 +33,13 @@ NIP-04 tiene deficiencias significativas de privacidad:
 
 La especificación advierte explícitamente que "no se acerca ni de lejos al estado del arte en comunicación cifrada".
 
-## Por Qué Fue Reemplazado
+## Por qué fue reemplazado
 
 NIP-04 cifra el contenido del mensaje, pero no oculta el grafo social. Los operadores de relays aún pueden ver quién envió el evento, quién lo recibe y cuándo fue publicado. Esos metadatos son suficientes para mapear conversaciones incluso sin descifrar el payload.
 
 NIP-17 aborda esto combinando el cifrado de payload de NIP-44 con el gift wrapping de NIP-59, que oculta al remitente de los relays y observadores casuales. Las nuevas implementaciones deben tratar NIP-04 como solo para compatibilidad.
 
-## Estado de Implementación
+## Estado de implementación
 
 Los clientes y firmantes legacy aún exponen métodos de cifrado/descifrado de NIP-04 porque las conversaciones antiguas y aplicaciones más viejas siguen en circulación. Esa capa de compatibilidad importa para la migración, pero construir nuevas funcionalidades sobre eventos kind 4 generalmente significa cargar las limitaciones de privacidad antiguas.
 
@@ -49,8 +49,9 @@ Los clientes y firmantes legacy aún exponen métodos de cifrado/descifrado de N
 - [Especificación NIP-04](https://github.com/nostr-protocol/nips/blob/master/04.md)
 
 **Mencionado en:**
-- [Boletín #4: Análisis Profundo de NIP](/es/newsletters/2026-01-07-newsletter/#nip-04-encrypted-direct-messages-legacy)
-- [Boletín #3: Resumen de Diciembre](/es/newsletters/2025-12-31-newsletter/#december-recap-five-years-of-nostr-decembers)
+- [Boletín #4: Análisis Profundo de NIP](/es/newsletters/2026-01-07-newsletter/)
+- [Boletín #3: Resumen de Diciembre](/es/newsletters/2025-12-31-newsletter/)
+- [Boletín #19: migración a NIP-44 en nostter](/en/newsletters/2026-04-22-newsletter/)
 
 **Ver también:**
 - [NIP-44: Payloads Cifrados](/es/topics/nip-44/)

@@ -2,7 +2,7 @@
 title: "NIP-44: Payloads Cifrados"
 date: 2025-12-31
 translationOf: /en/topics/nip-44.md
-translationDate: 2026-03-07
+translationDate: 2026-04-22
 draft: false
 categories:
   - NIP
@@ -12,7 +12,7 @@ categories:
 
 NIP-44 define un estándar de cifrado versionado para payloads de Nostr, reemplazando el esquema de cifrado defectuoso de NIP-04 con primitivas criptográficas modernas.
 
-## Cómo Funciona
+## Cómo funciona
 
 NIP-44 versión 2 utiliza un proceso de cifrado de múltiples pasos:
 
@@ -25,14 +25,14 @@ NIP-44 versión 2 utiliza un proceso de cifrado de múltiples pasos:
 
 La salida es un payload base64 versionado que va dentro de un evento Nostr firmado normal. La especificación requiere que los clientes validen la firma del evento NIP-01 externo antes de descifrar el payload NIP-44 interno.
 
-## Elecciones Criptográficas
+## Elecciones criptográficas
 
 - **ChaCha20** sobre AES: Más rápido, mejor resistencia a ataques multi-clave
 - **HMAC-SHA256** sobre Poly1305: Los MACs polinomiales son más fáciles de falsificar
 - **SHA256**: Consistente con las primitivas existentes de Nostr
 - **Formato Versionado**: Permite futuras actualizaciones de algoritmos
 
-## Propiedades de Seguridad
+## Propiedades de seguridad
 
 - **Cifrado Autenticado**: Los mensajes no pueden ser manipulados
 - **Ocultación de Longitud**: El relleno oscurece el tamaño del mensaje
@@ -67,10 +67,13 @@ NIP-44 revisión 3 se fusionó en diciembre de 2023 tras una auditoría de segur
 - [Informe de Auditoría Cure53](https://cure53.de/audit-report_nip44-implementations.pdf)
 
 **Mencionado en:**
-- [Newsletter #4: Análisis Profundo de NIP](/en/newsletters/2026-01-07-newsletter/#nip-44-versioned-encryption)
-- [Newsletter #3: Diciembre 2023](/en/newsletters/2025-12-31-newsletter/#december-2023-ecosystem-maturation)
-- [Newsletter #3: Diciembre 2024](/en/newsletters/2025-12-31-newsletter/#december-2024-protocol-advancement)
-- [Newsletter #12: Marmot](/en/newsletters/2026-03-04-newsletter/#marmot-development-kit-ships-first-public-release)
+- [Newsletter #4: Análisis Profundo de NIP](/es/newsletters/2026-01-07-newsletter/)
+- [Newsletter #3: Diciembre 2023](/es/newsletters/2025-12-31-newsletter/)
+- [Newsletter #3: Diciembre 2024](/es/newsletters/2025-12-31-newsletter/)
+- [Newsletter #12: Marmot](/es/newsletters/2026-03-04-newsletter/)
+- [Newsletter #13: Vector](/en/newsletters/2026-03-11-newsletter/)
+- [Newsletter #19: migración a NIP-44 en nostter](/en/newsletters/2026-04-22-newsletter/)
+- [Newsletter #19: nowhere cifra tráfico Nostr](/en/newsletters/2026-04-22-newsletter/)
 
 **Ver también:**
 - [NIP-04: Mensajes Directos Cifrados (obsoleto)](/es/topics/nip-04/)

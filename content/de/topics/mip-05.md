@@ -1,6 +1,7 @@
 ---
 title: "MIP-05: Datenschutzfreundliche Push-Benachrichtigungen"
 date: 2025-12-17
+translationOf: /en/topics/mip-05.md
 translationDate: 2026-03-07
 draft: false
 categories:

@@ -2,7 +2,12 @@
 title: "NIP-05: Domain-Verifizierung"
 date: 2026-02-04
 description: "NIP-05 ermöglicht menschenlesbare Identifikatoren für Nostr-Pubkeys durch Domain-Verifizierung."
+translationOf: /en/topics/nip-05.md
 translationDate: 2026-03-07
+draft: false
+categories:
+  - Identity
+  - Discovery
 ---
 
 NIP-05 ordnet Nostr-Public Keys menschenlesbaren Internet-Identifikatoren wie `user@example.com` zu. Es gibt Nutzern einen DNS-gestützten Identitätshinweis, den Clients über HTTPS verifizieren können.

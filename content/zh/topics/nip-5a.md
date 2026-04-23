@@ -2,18 +2,18 @@
 title: "NIP-5A：静态网站"
 date: 2026-04-01
 translationOf: /en/topics/nip-5a.md
-translationDate: 2026-04-01
+translationDate: 2026-04-22
 draft: false
 categories:
-  - 协议
-  - 托管
+  - Protocol
+  - Hosting
 ---
 
-NIP-5A 定义了如何在 Nostr 密钥对下托管静态网站。网站作者发布签名的清单事件，将 URL 路径映射到 SHA256 内容哈希，主机服务器解析这些清单以从 Blossom 存储提供网站文件。
+NIP-5A 定义了如何在 Nostr keypairs 之下托管静态网站。站点作者发布已签名的 manifest events，把 URL 路径映射到 SHA256 内容哈希，而 host server 则解析这些 manifests，并从 Blossom 存储中把站点文件提供出来。
 
 ## 工作原理
 
-该规范使用两种 event kind。Kind `15128` 是根网站清单，每个 pubkey 一个，作为该密钥的默认网站。Kind `35128` 是命名网站清单，由 `d` tag 标识，类似于子域名。每个清单包含 `path` tag，将绝对 URL 路径映射到应提供的文件的 SHA256 哈希。
+该规范使用两种 event kinds。kind `15128` 是 root site manifest，每个 pubkey 对应一个，作为该 key 的默认网站。kind `35128` 是 named site manifest，通过 `d` tag 标识，作用类似子域名。每个 manifest 都包含 `path` tags，把绝对 URL 路径映射到应被提供文件的 SHA256 哈希。
 
 ```json
 {
@@ -33,30 +33,31 @@ NIP-5A 定义了如何在 Nostr 密钥对下托管静态网站。网站作者发
 }
 ```
 
-主机服务器接收 HTTP 请求，从子域名中提取作者的 pubkey，从作者的 relay 列表获取网站清单，将请求路径解析为内容哈希，并从 `server` tag 中列出的 Blossom 服务器下载匹配的 blob。
+host server 接收到 HTTP 请求后，会从子域名中提取作者 pubkey，从作者的 relay list 中抓取 site manifest，把所请求路径解析成内容哈希，然后从 `server` tags 列出的 Blossom server 中下载对应 blob。
 
 ## URL 解析
 
-根网站使用 npub 作为子域名。命名网站使用原始 pubkey 的 50 字符 base36 编码，后跟 `d` tag 值，全部在单个 DNS 标签中。由于 DNS 标签限制为 63 个字符，且 base36 pubkey 始终使用 50 个字符，命名网站标识符限制为 13 个字符。
+root sites 以 npub 作为子域名。named sites 则使用原始 pubkey 的 50 字符 base36 编码，再接上 `d` tag 的值，合并进同一个 DNS label。由于 DNS label 最长只能有 63 个字符，而 base36 pubkey 固定占用 50 个，因此 named site 的标识符最多只能有 13 个字符。
 
 ## 实现
 
-- [nsite](https://github.com/lez/nsite) - 解析 NIP-5A 清单并提供文件的主机服务器
-- [nsite-manager](https://github.com/hzrd149/nsite-manager) - 构建和发布网站清单的 UI
+- [nsite](https://github.com/lez/nsite) - 解析 NIP-5A manifests 并提供文件的 host server
+- [nsite-manager](https://github.com/hzrd149/nsite-manager) - 用于构建和发布 site manifests 的 UI
 
 ---
 
 **主要来源：**
-- [NIP-5A 规范](https://github.com/nostr-protocol/nips/blob/master/5A.md)
-- [PR #1538](https://github.com/nostr-protocol/nips/pull/1538) - 原始提案和合并
-- [nsite](https://github.com/lez/nsite) - 参考主机实现
-- [nsite-manager](https://github.com/hzrd149/nsite-manager) - 发布和管理 UI
+- [NIP-5A Specification](https://github.com/nostr-protocol/nips/blob/master/5A.md)
+- [PR #1538](https://github.com/nostr-protocol/nips/pull/1538) - 最初提案与合并
+- [nsite](https://github.com/lez/nsite) - 参考 host 实现
+- [nsite-manager](https://github.com/hzrd149/nsite-manager) - 发布与管理 UI
 
 **提及于：**
-- [周刊 #16：NIP-5A 合并](/zh/newsletters/2026-04-01-newsletter/#nip-5a-合并将静态网站引入-nostr)
-- [周刊 #16：NIP 深度解析](/zh/newsletters/2026-04-01-newsletter/#nip-深度解析nip-5a静态网站)
+- [Newsletter #16：NIP-5A merges](/zh/newsletters/2026-04-01-newsletter/)
+- [Newsletter #16：NIP Deep Dive](/zh/newsletters/2026-04-01-newsletter/)
+- [Newsletter #19：NIP-5D applets proposal](/en/newsletters/2026-04-22-newsletter/)
 
-**另见：**
+**另请参阅：**
 - [Blossom](/zh/topics/blossom/)
-- [NIP-65：Relay 列表元数据](/zh/topics/nip-65/)
-- [NIP-96：HTTP 文件存储](/zh/topics/nip-96/)
+- [NIP-65：Relay List Metadata](/zh/topics/nip-65/)
+- [NIP-96：HTTP File Storage](/zh/topics/nip-96/)

@@ -1,19 +1,19 @@
 ---
-title: "NIP-5A: 静的ウェブサイト"
+title: "NIP-5A: Static Websites"
 date: 2026-04-01
 translationOf: /en/topics/nip-5a.md
-translationDate: 2026-04-01
+translationDate: 2026-04-22
 draft: false
 categories:
-  - プロトコル
-  - ホスティング
+  - Protocol
+  - Hosting
 ---
 
-NIP-5Aは、Nostrキーペアの下で静的ウェブサイトをホスティングする方法を定義します。サイト作成者はURLパスをSHA256コンテンツハッシュにマッピングする署名済みマニフェストイベントを公開し、ホストサーバーはそのマニフェストを解決してBlossomストレージからサイトのファイルを配信します。
+NIP-5Aは、Nostr keypair配下でstatic websiteをホストする方法を定義します。site authorは、URL pathをSHA256 content hashへ対応付ける署名済みmanifest eventを公開し、host serverはそのmanifestを解決してBlossom storageからsiteファイルを配信します。
 
 ## 仕組み
 
-仕様は2つのイベントkindを使用します。Kind `15128`はルートサイトマニフェストで、pubkeyごとに1つ存在し、そのキーのデフォルトウェブサイトとして機能します。Kind `35128`は`d`タグで識別される名前付きサイトマニフェストで、サブドメインのように機能します。各マニフェストは絶対URLパスを配信されるべきファイルのSHA256ハッシュにマッピングする`path`タグを含みます。
+仕様は2つのevent kindを使います。Kind `15128`はroot site manifestで、pubkeyごとに1つ、その鍵のデフォルトwebsiteになります。Kind `35128`は`d`タグで識別されるnamed site manifestで、subdomainのように振る舞います。各manifestには、絶対URL pathを配信対象ファイルのSHA256 hashへ対応付ける`path`タグが入ります。
 
 ```json
 {
@@ -33,30 +33,31 @@ NIP-5Aは、Nostrキーペアの下で静的ウェブサイトをホスティン
 }
 ```
 
-ホストサーバーはHTTPリクエストを受信し、サブドメインから著者のpubkeyを抽出し、著者のrelayリストからサイトマニフェストを取得し、リクエストされたパスをコンテンツハッシュに解決し、`server`タグにリストされたBlossomサーバーから一致するBlobをダウンロードします。
+host serverはHTTP requestを受け取ると、subdomainからauthorのpubkeyを取り出し、そのauthorのrelay listからsite manifestを取得し、要求pathをcontent hashへ解決し、`server`タグに列挙されたBlossom serverから対応blobをダウンロードします。
 
 ## URL解決
 
-ルートサイトはnpubをサブドメインとして使用します。名前付きサイトは生のpubkeyの50文字のbase36エンコーディングに続いて`d`タグの値を1つのDNSラベルに入れます。DNSラベルは63文字に制限されており、base36 pubkeyは常に50文字を使用するため、名前付きサイト識別子は13文字に制限されます。
+root siteはnpubをsubdomainとして使います。named siteは、生pubkeyの50文字base36エンコードに`d`タグ値を続けた1つのDNS labelを使います。DNS labelは63文字までで、base36 pubkeyは常に50文字なので、named site identifierは13文字までに制限されます。
 
-## 実装
+## Implementations
 
-- [nsite](https://github.com/lez/nsite) - NIP-5Aマニフェストを解決しファイルを配信するホストサーバー
-- [nsite-manager](https://github.com/hzrd149/nsite-manager) - サイトマニフェストの構築と公開用UI
+- [nsite](https://github.com/lez/nsite) - NIP-5A manifestを解決してファイルを配信するhost server
+- [nsite-manager](https://github.com/hzrd149/nsite-manager) - site manifestを構築し公開するUI
 
 ---
 
-**主要ソース:**
-- [NIP-5A仕様](https://github.com/nostr-protocol/nips/blob/master/5A.md)
-- [PR #1538](https://github.com/nostr-protocol/nips/pull/1538) - オリジナル提案とマージ
-- [nsite](https://github.com/lez/nsite) - リファレンスホスト実装
-- [nsite-manager](https://github.com/hzrd149/nsite-manager) - 公開・管理UI
+**Primary sources:**
+- [NIP-5A Specification](https://github.com/nostr-protocol/nips/blob/master/5A.md)
+- [PR #1538](https://github.com/nostr-protocol/nips/pull/1538) - Original proposal and merge
+- [nsite](https://github.com/lez/nsite) - Reference host implementation
+- [nsite-manager](https://github.com/hzrd149/nsite-manager) - Publishing and management UI
 
-**掲載号:**
-- [Newsletter #16: NIP-5Aのマージ](/ja/newsletters/2026-04-01-newsletter/#nip-5aがマージ-nostrに静的ウェブサイトをもたらす)
-- [Newsletter #16: NIPディープダイブ](/ja/newsletters/2026-04-01-newsletter/#nipディープダイブ-nip-5a静的ウェブサイト)
+**Mentioned in:**
+- [Newsletter #16: NIP-5A merges](/ja/newsletters/2026-04-01-newsletter/)
+- [Newsletter #16: NIP Deep Dive](/ja/newsletters/2026-04-01-newsletter/)
+- [Newsletter #19: NIP-5D applets proposal](/en/newsletters/2026-04-22-newsletter/)
 
-**関連項目:**
+**See also:**
 - [Blossom](/ja/topics/blossom/)
-- [NIP-65: Relayリストメタデータ](/ja/topics/nip-65/)
-- [NIP-96: HTTPファイルストレージ](/ja/topics/nip-96/)
+- [NIP-65: Relay List Metadata](/ja/topics/nip-65/)
+- [NIP-96: HTTP File Storage](/ja/topics/nip-96/)

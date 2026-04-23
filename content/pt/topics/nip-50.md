@@ -52,8 +52,8 @@ Filtros estruturados funcionam bem quando você já conhece o autor, kind ou tag
 - [Especificação NIP-50](https://github.com/nostr-protocol/nips/blob/master/50.md)
 
 **Mencionado em:**
-- [Boletim informativo nº 3: Recapitulação de dezembro](/pt/newsletters/2025-12-31-newsletter/#december-recap-five-years-of-nostr-decembers)
-- [Boletim informativo nº 7: Atualizações do NIP](/pt/newsletters/2026-01-07-newsletter/#nip-updates)
+- [Boletim informativo nº 3: Recapitulação de dezembro](/pt/newsletters/2025-12-31-newsletter/)
+- [Boletim informativo nº 7: Atualizações do NIP](/pt/newsletters/2026-01-07-newsletter/)
 
 **Veja também:**
 - [NIP-11: Informações do Relay](/pt/topics/nip-11/)
