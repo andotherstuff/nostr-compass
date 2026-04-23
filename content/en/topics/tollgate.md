@@ -6,7 +6,7 @@ categories:
   - Protocols
 ---
 
-TollGate is a protocol for selling network access in exchange for small, frequent bearer asset payments. A device that can gate connectivity, such as a WiFi router, an Ethernet switch, or a Bluetooth tether, acts as a TollGate that advertises pricing, accepts [Cashu](/en/topics/cashu/) ecash tokens, and manages sessions. Customers pay for exactly the minutes or megabytes they consume. There are no accounts, no subscriptions, no KYC.
+TollGate is a protocol for selling network access in exchange for small, frequent bearer asset payments. A device that can gate connectivity, typically a WiFi router running the TollGate software, advertises pricing, accepts [Cashu](/en/topics/cashu/) ecash tokens, and manages sessions. Customers pay for exactly the minutes or megabytes they consume. There are no accounts, no subscriptions, no KYC.
 
 ## How It Works
 
@@ -20,7 +20,7 @@ Because the payment asset is a bearer token rather than a credential, the custom
 
 ## Why It Matters
 
-Conventional paid WiFi relies on accounts, captive portals, and payment cards, each of which creates friction and a data trail. TollGate's model turns connectivity into a commodity that any router can sell to any paying customer without knowing who they are. The abstraction lets independent operators set their own prices, accept their own preferred mints, and compete on coverage and quality rather than on lock-in.
+Conventional ISPs bill periodically, which forces them to maintain a credit line against an identified account (a billing address, a SIM card, a payment card on file), each of which creates friction and a data trail. TollGate uses a captive portal to manage firewall rules as well, but the payment model is different: bearer instruments settle small, frequent, granular purchases, so customers can buy one megabyte at a time with no account behind the transaction. Because there is no sunk cost in a relationship, customers can switch gateways freely, which maximizes competition between operators. Independent operators set their own prices, accept their preferred mints, and compete on coverage and quality rather than on lock-in.
 
 The [v0.1.0 release](https://github.com/OpenTollGate/tollgate/releases/tag/v0.1.0) is the first tagged snapshot of these specifications. It does not standardize every detail but fixes enough of the surface that router firmware, client wallets, and multi-hop resellers can start building against a stable reference.
 
