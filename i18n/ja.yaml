@@ -44,3 +44,22 @@ podcast_intro: "Nostrを構築している開発者との対話。"
 
 # Footer
 footer_description: "Nostrプロトコルの技術リソース。NIP提案、クライアントのアップデート、リレーの開発、注目すべきコード変更を取り上げる週刊ニュースレターとポッドキャスト。"
+
+# Projects index page
+menu_projects: "プロジェクト"
+projects_total_count:
+  one: "{{.Count}}件のプロジェクトを追跡中。"
+  other: "{{.Count}}件のプロジェクトを追跡中。"
+projects_back_to_top: "トップへ戻る"
+projects_cat_social: "ソーシャルクライアント"
+projects_cat_longform: "長文クライアント"
+projects_cat_messaging: "メッセージング"
+projects_cat_media: "メディア"
+projects_cat_marketplaces: "マーケットプレイス"
+projects_cat_wallets: "ウォレット"
+projects_cat_signers: "署名ツール"
+projects_cat_relays: "リレー"
+projects_cat_devtools: "開発者ツール"
+projects_cat_libraries: "ライブラリ"
+projects_cat_protocols: "プロトコル"
+projects_cat_other: "その他"

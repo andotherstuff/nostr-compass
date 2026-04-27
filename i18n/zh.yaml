@@ -44,3 +44,22 @@ podcast_intro: "与构建 Nostr 的开发者对话。"
 
 # Footer
 footer_description: "Nostr 协议的技术资源。每周通讯和播客涵盖 NIP 提案、客户端更新、中继发展和值得注意的代码更改。"
+
+# Projects index page
+menu_projects: "项目"
+projects_total_count:
+  one: "已跟踪 {{.Count}} 个项目。"
+  other: "已跟踪 {{.Count}} 个项目。"
+projects_back_to_top: "返回顶部"
+projects_cat_social: "社交客户端"
+projects_cat_longform: "长文客户端"
+projects_cat_messaging: "消息"
+projects_cat_media: "媒体"
+projects_cat_marketplaces: "市场"
+projects_cat_wallets: "钱包"
+projects_cat_signers: "签名器"
+projects_cat_relays: "中继"
+projects_cat_devtools: "开发者工具"
+projects_cat_libraries: "库"
+projects_cat_protocols: "协议"
+projects_cat_other: "其他"

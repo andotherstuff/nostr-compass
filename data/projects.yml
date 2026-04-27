@@ -30,7 +30,7 @@ social_clients:
   # --- Mobile ---
   - name: Damus
     description: The OG Nostr client for iOS
-    platforms: [ios, macos]
+    platforms: [ ios, macos ]
     repo: https://github.com/damus-io/damus
     website: https://damus.io
     maintainer: jb55
@@ -40,7 +40,7 @@ social_clients:
 
   - name: Amethyst
     description: Feature-rich Android client
-    platforms: [android]
+    platforms: [ android ]
     repo: https://github.com/vitorpamplona/amethyst
     website: https://amethyst.social
     maintainer: vitorpamplona
@@ -50,7 +50,7 @@ social_clients:
 
   - name: Primal Android
     description: Android client with built-in Lightning wallet
-    platforms: [android]
+    platforms: [ android ]
     repo: https://github.com/PrimalHQ/primal-android-app
     website: https://primal.net
     maintainer: miljan
@@ -60,7 +60,7 @@ social_clients:
 
   - name: Primal iOS
     description: iOS client with built-in Lightning wallet
-    platforms: [ios]
+    platforms: [ ios ]
     repo: https://github.com/PrimalHQ/primal-ios-app
     website: https://primal.net
     maintainer: miljan
@@ -70,7 +70,7 @@ social_clients:
 
   - name: Primal Web
     description: Web client with built-in Lightning wallet
-    platforms: [web]
+    platforms: [ web ]
     repo: https://github.com/PrimalHQ/primal-web-app
     website: https://primal.net
     maintainer: miljan
@@ -80,7 +80,7 @@ social_clients:
 
   - name: Nostur
     description: Native iOS/macOS client with extensive feature set
-    platforms: [ios, macos]
+    platforms: [ ios, macos ]
     repo: https://github.com/nostur-com/nostur-ios-public
     website: https://nostur.com
     maintainer: fabian
@@ -89,7 +89,7 @@ social_clients:
 
   - name: Nos
     description: UX-focused iOS/macOS app by Planetary
-    platforms: [ios, macos]
+    platforms: [ ios, macos ]
     repo: https://github.com/planetary-social/nos
     website: https://nos.social
     maintainer: planetary-social
@@ -98,7 +98,7 @@ social_clients:
 
   - name: Camelus
     description: Mobile Nostr client
-    platforms: [ios, android]
+    platforms: [ ios, android ]
     repo: https://github.com/camelus-hq/camelus
     status: active
     priority: low
@@ -107,7 +107,7 @@ social_clients:
   # --- Web ---
   - name: Snort
     description: Fast React-based web client
-    platforms: [web]
+    platforms: [ web ]
     repo: https://github.com/v0l/snort
     website: https://snort.social
     maintainer: v0l
@@ -116,8 +116,8 @@ social_clients:
 
   - name: Coracle
     description: Flexible web client with custom feeds and relay management
-    platforms: [web]
-    repo: https://gitea.coracle.social/coracle/coracle
+    platforms: [ web ]
+    repo: https://github.com/coracle-social/coracle
     website: https://coracle.social
     maintainer: staab
     status: active
@@ -126,7 +126,7 @@ social_clients:
 
   - name: noStrudel
     description: Jack-of-all-trades web client supporting many NIPs
-    platforms: [web]
+    platforms: [ web ]
     repo: https://github.com/hzrd149/nostrudel
     website: https://nostrudel.ninja
     maintainer: hzrd149
@@ -136,7 +136,7 @@ social_clients:
 
   - name: Iris
     description: Simple and fast web client with built-in Cashu wallet
-    platforms: [web]
+    platforms: [ web ]
     repo: https://github.com/irislib/iris-messenger
     website: https://iris.to
     maintainer: mmalmi
@@ -146,7 +146,7 @@ social_clients:
 
   - name: Jumble
     description: Web client focused on browsing relay feeds
-    platforms: [web]
+    platforms: [ web ]
     repo: https://github.com/CodyTseng/jumble
     website: https://jumble.social
     status: active
@@ -155,7 +155,7 @@ social_clients:
 
   - name: Satellite
     description: Reddit-style threaded discussions
-    platforms: [web]
+    platforms: [ web ]
     repo: https://github.com/lovvtide/satellite-web
     website: https://satellite.earth
     status: active
@@ -164,7 +164,7 @@ social_clients:
   # --- Desktop ---
   - name: Gossip
     description: Desktop client for power users with outbox model
-    platforms: [windows, macos, linux]
+    platforms: [ windows, macos, linux ]
     repo: https://github.com/mikedilger/gossip
     maintainer: mikedilger
     status: active
@@ -173,7 +173,7 @@ social_clients:
 
   - name: Notedeck
     description: Fast native desktop client by Damus team
-    platforms: [windows, macos, linux]
+    platforms: [ windows, macos, linux ]
     repo: https://github.com/damus-io/notedeck
     website: https://notedeck.io
     maintainer: jb55
@@ -183,7 +183,7 @@ social_clients:
 
   - name: Lume
     description: Cross-platform desktop app
-    platforms: [windows, macos, linux]
+    platforms: [ windows, macos, linux ]
     repo: https://github.com/lumehq/lume
     website: https://lume.nu
     status: active
@@ -191,7 +191,7 @@ social_clients:
 
   - name: Nostrmo
     description: Cross-platform Flutter Nostr client
-    platforms: [android, ios, macos, windows, linux, web]
+    platforms: [ android, ios, macos, windows, linux, web ]
     repo: https://github.com/haorendashu/nostrmo
     status: active
     priority: low
@@ -199,17 +199,18 @@ social_clients:
 
   - name: Nostria
     description: Modern cross-platform Nostr client built for global scale
-    platforms: [android, ios, windows, web]
+    platforms: [ android, ios, windows, web ]
     repo: https://github.com/nostria-app/nostria
     website: https://www.nostria.app
     maintainer: sondreb
     status: active
     priority: medium
-    notes: Premium cloud infrastructure, dedicated relays, media hosting, automated backups
+    notes: Premium cloud infrastructure, dedicated relays, media hosting, automated
+      backups
 
   - name: Alphaama
     description: Nostr client implementation
-    platforms: [web]
+    platforms: [ web ]
     repo: https://github.com/eskema/alphaama
     status: active
     priority: low
@@ -217,7 +218,7 @@ social_clients:
 
   - name: Openvibe
     description: Multi-network app combining Mastodon, Bluesky, Nostr, and Threads
-    platforms: [ios, android]
+    platforms: [ ios, android ]
     repo: https://github.com/plebstr/plebstr
     website: https://openvibe.social
     status: active
@@ -226,7 +227,7 @@ social_clients:
 
   - name: Voyage
     description: Lightweight Reddit-style Android client with offline-first design
-    platforms: [android]
+    platforms: [ android ]
     repo: https://github.com/dluvian/voyage
     status: active
     priority: medium
@@ -234,7 +235,7 @@ social_clients:
 
   - name: Yana
     description: Cross-platform Flutter client with gossip model relay discovery
-    platforms: [android, ios, macos, windows, linux, web]
+    platforms: [ android, ios, macos, windows, linux, web ]
     repo: https://github.com/frnandu/yana
     status: active
     priority: low
@@ -242,7 +243,7 @@ social_clients:
 
   - name: Coop
     description: Fast Rust desktop client for secure direct messaging
-    platforms: [windows, macos, linux]
+    platforms: [ windows, macos, linux ]
     repo: https://github.com/lumehq/coop
     status: beta
     priority: medium
@@ -250,7 +251,7 @@ social_clients:
 
   - name: Seer
     description: Swift-native NIP-29 group client for Apple platforms
-    platforms: [ios, macos]
+    platforms: [ ios, macos ]
     repo: https://github.com/Galaxoid-Labs/Seer
     status: active
     priority: medium
@@ -258,7 +259,7 @@ social_clients:
 
   - name: Nostter
     description: Clean Twitter-like web client
-    platforms: [web]
+    platforms: [ web ]
     repo: https://github.com/SnowCait/nostter
     website: https://nostter.app
     status: active
@@ -266,7 +267,7 @@ social_clients:
 
   - name: Lumilumi
     description: Lightweight web client with low-data modes for accessibility
-    platforms: [web]
+    platforms: [ web ]
     repo: https://github.com/TsukemonoGit/lumilumi
     website: https://lumilumi.app
     status: active
@@ -275,15 +276,15 @@ social_clients:
 
   - name: Zapddit
     description: Reddit-style client with hashtag feeds and Upzap voting
-    platforms: [web]
+    platforms: [ web ]
     repo: https://github.com/vivganes/zapddit
     status: active
     priority: low
     notes: Upzaps send sats to authors, Downzaps to charity
 
   - name: Spring
-    description: Android Nostr browser for micro-app ecosystem
-    platforms: [android]
+    description: Android Nostr browser for micro-app catalog
+    platforms: [ android ]
     repo: https://github.com/nostrband/nostr-universe
     status: active
     priority: medium
@@ -291,15 +292,16 @@ social_clients:
 
   - name: Clawstr
     description: Reddit-inspired platform where AI agents create and manage communities
-    platforms: [web]
+    platforms: [ web ]
     repo: https://github.com/clawstr/clawstr
     status: active
     priority: medium
     notes: AI-powered community creation on Nostr
 
   - name: HiveTalk
-    description: Open source real-time video conferencing with Nostr and Lightning integration
-    platforms: [web]
+    description: Open source real-time video conferencing with Nostr and Lightning
+      integration
+    platforms: [ web ]
     repo: https://github.com/hivetalk/hivetalksfu
     website: https://hivetalk.org
     status: active
@@ -307,15 +309,16 @@ social_clients:
     notes: Nostr + Lightning powered video calls
 
   - name: Alexandria
-    description: Knowledge base and eReader app implementing NKBIP-01 for decentralized publishing
-    platforms: [web]
+    description: Knowledge base and eReader app implementing NKBIP-01 for
+      decentralized publishing
+    platforms: [ web ]
     repo: https://github.com/ShadowySupercode/gc-alexandria
     status: active
     priority: medium
 
   - name: Groups
     description: NIP-29 group chat web client
-    platforms: [web]
+    platforms: [ web ]
     repo: https://github.com/max21dev/groups
     website: https://groups.nip29.com
     status: active
@@ -324,7 +327,7 @@ social_clients:
 
   - name: LUMINA
     description: Picture-first Nostr web client for image feeds
-    platforms: [web]
+    platforms: [ web ]
     repo: https://github.com/lumina-rocks/lumina
     website: https://lumina.rocks
     status: active
@@ -332,7 +335,7 @@ social_clients:
 
   - name: Nostrube
     description: Nostr-based video sharing platform
-    platforms: [web]
+    platforms: [ web ]
     repo: https://github.com/flox1an/nostube
     website: https://nostu.be
     status: active
@@ -340,14 +343,14 @@ social_clients:
 
   - name: Locus
     description: End-to-end encrypted location sharing on Nostr
-    platforms: [android]
+    platforms: [ android ]
     repo: https://github.com/Myzel394/locus
     status: active
     priority: low
 
   - name: Roadstr
     description: Decentralized road event reporting using Nostr and MeshCore
-    platforms: [web, android]
+    platforms: [ web, android ]
     repo: https://github.com/jooray/roadstr
     status: active
     priority: low
@@ -355,7 +358,7 @@ social_clients:
 
   - name: Agora
     description: Topic-following client for Nostr, Mastodon, Reddit, Bluesky, and Twitter
-    platforms: [web]
+    platforms: [ web ]
     repo: https://github.com/ghobs91/agora
     website: https://agorasocial.app
     status: active
@@ -364,7 +367,7 @@ social_clients:
 
   - name: Meetstr
     description: NIP-52 calendar client for meetups and community events
-    platforms: [web]
+    platforms: [ web ]
     repo: https://github.com/gillohner/meetstr
     website: https://meetstr.com
     status: active
@@ -373,15 +376,16 @@ social_clients:
 
   - name: Plektos
     description: Decentralized meetup, events, and calendar platform on Nostr
-    platforms: [web]
+    platforms: [ web ]
     repo: https://github.com/derekross/plektos
     website: https://plektos.app
     status: active
     priority: medium
 
   - name: Evento
-    description: Social event management platform with a built-in self-custodial Lightning wallet
-    platforms: [web]
+    description: Social event management platform with a built-in self-custodial
+      Lightning wallet
+    platforms: [ web ]
     repo: https://github.com/sevenlabsxyz/evento-client
     maintainer: sevenlabsxyz
     status: active
@@ -390,7 +394,7 @@ social_clients:
 
   - name: Calendar by Form*
     description: Decentralized calendar app with NIP-59 private event sharing
-    platforms: [web, android]
+    platforms: [ web, android ]
     repo: https://github.com/formstr-hq/nostr-calendar
     website: https://calendar.formstr.app
     status: active
@@ -399,23 +403,24 @@ social_clients:
 
   - name: Nostree
     description: Linktree-style application for managing link lists on Nostr
-    platforms: [web]
+    platforms: [ web ]
     repo: https://github.com/gzuuus/linktr-nostr
     website: https://nostree.me
     status: active
     priority: low
 
   - name: Fevela
-    description: Social client with innovative interface for attention and time control
-    platforms: [web]
+    description: Social client with attention-control and time-budget UI
+    platforms: [ web ]
     repo: https://github.com/dtonon/fevela
     website: https://fevela.me
     status: active
     priority: low
 
   - name: Nalgorithm
-    description: Relevance-ranked Nostr feed and digest generator using user-defined and learned preferences
-    platforms: [web, cli]
+    description: Relevance-ranked Nostr feed and digest generator using user-defined
+      and learned preferences
+    platforms: [ web, cli ]
     repo: https://github.com/jooray/nalgorithm
     website: https://cypherpunk.today/nalgorithm/
     maintainer: jooray
@@ -425,7 +430,7 @@ social_clients:
 
   - name: Docstr
     description: Collaborative documents platform (Google Docs alternative) on Nostr
-    platforms: [web]
+    platforms: [ web ]
     repo: https://github.com/sepehr-safari/docstr
     website: https://docstr.app
     status: active
@@ -434,7 +439,7 @@ social_clients:
 
   - name: Nostr-Doc
     description: Collaborative Markdown editor using Nostr relays and Yjs CRDT sync
-    platforms: [web]
+    platforms: [ web ]
     repo: https://github.com/formstr-hq/nostr-docs
     website: https://nostr-docs.vercel.app
     status: active
@@ -443,14 +448,14 @@ social_clients:
 
   - name: Oracolo
     description: Minimalist blog powered by Nostr in a single HTML file
-    platforms: [web]
+    platforms: [ web ]
     repo: https://github.com/dtonon/oracolo
     status: active
     priority: low
 
   - name: Gittr
     description: Decentralized Git platform with zaps, bounties, SSH keys, and NIP-34
-    platforms: [web]
+    platforms: [ web ]
     repo: https://github.com/arbadacarbaYK/gittr
     website: https://gittr.space
     status: active
@@ -458,7 +463,7 @@ social_clients:
 
   - name: Samiz
     description: BLE mesh for Nostr notes when the internet is down
-    platforms: [android]
+    platforms: [ android ]
     repo: https://github.com/KoalaSat/Samiz
     status: active
     priority: medium
@@ -466,7 +471,7 @@ social_clients:
 
   - name: Nostrid
     description: Multi-platform client for Android, Windows, macOS, and Linux
-    platforms: [android, windows, macos, linux]
+    platforms: [ android, windows, macos, linux ]
     repo: https://github.com/lapulpeta/Nostrid
     website: https://web.nostrid.app
     status: active
@@ -474,14 +479,14 @@ social_clients:
 
   - name: Nootti
     description: Cross-posting iOS/iPad client for Bluesky, Mastodon, and Nostr
-    platforms: [ios]
+    platforms: [ ios ]
     website: https://nootti.com
     status: active
     priority: low
 
   - name: Blockcore Notes
     description: PWA with circles and public/private following lists
-    platforms: [web]
+    platforms: [ web ]
     repo: https://github.com/block-core/blockcore-notes
     website: https://notes.blockcore.net
     status: active
@@ -489,22 +494,23 @@ social_clients:
 
   - name: Swarmstr
     description: Q&A Nostr client for finding answers from #asknostr activity
-    platforms: [web]
+    platforms: [ web ]
     repo: https://github.com/ptrio42/swarmstr.com
     website: https://swarmstr.com
     status: active
     priority: low
 
   - name: Brezn
-    description: PWA client for local networking using geohash - like CB radio for the internet
-    platforms: [web]
+    description: PWA client for local networking using geohash - like CB radio for
+      the internet
+    platforms: [ web ]
     repo: https://github.com/DaBena/Brezn
     status: active
     priority: low
 
   - name: Pollstr
     description: Nostr web client focused on polls
-    platforms: [web]
+    platforms: [ web ]
     repo: https://github.com/mroxso/pollstr
     website: https://pollstr.online
     status: active
@@ -512,14 +518,14 @@ social_clients:
 
   - name: Tamga
     description: Offline-first nostr contact and profile manager for iOS
-    platforms: [ios]
+    platforms: [ ios ]
     repo: https://github.com/erdaltoprak/tamga
     status: active
     priority: low
 
   - name: YakBak
     description: Voice message social platform built on Nostr
-    platforms: [web]
+    platforms: [ web ]
     repo: https://github.com/fiatjaf/yakbak2
     website: https://yakbak.app
     status: active
@@ -527,28 +533,28 @@ social_clients:
 
   - name: Bookstr
     description: Book tracking and sharing on decentralized Nostr
-    platforms: [web]
+    platforms: [ web ]
     website: https://bookstr.xyz
     status: active
     priority: low
 
   - name: Satlantis
     description: Social discovery app for events, calendars, communities, and destinations
-    platforms: [web]
+    platforms: [ web ]
     website: https://satlantis.io
     status: active
     priority: low
 
   - name: Treasures
     description: Decentralized geocaching adventure powered by Nostr
-    platforms: [web]
+    platforms: [ web ]
     website: https://treasures.to
     status: active
     priority: low
 
   - name: Pinstr
     description: Decentralized social network for curating and sharing interests
-    platforms: [web]
+    platforms: [ web ]
     repo: https://github.com/sepehr-safari/pinstr
     website: https://pinstr.app
     status: active
@@ -556,14 +562,14 @@ social_clients:
 
   - name: mapstr
     description: Find local businesses accepting BTC with reviews and zaps
-    platforms: [web]
+    platforms: [ web ]
     website: https://mapstr.xyz
     status: active
     priority: low
 
   - name: Minds
     description: Open source social network with Nostr protocol support
-    platforms: [web]
+    platforms: [ web ]
     website: https://www.minds.com
     status: active
     priority: low
@@ -571,14 +577,15 @@ social_clients:
 
   - name: Nozzle
     description: Lightweight Android nostr client
-    platforms: [android]
+    platforms: [ android ]
     repo: https://github.com/dluvian/Nozzle
     status: active
     priority: low
 
   - name: nostr_console
-    description: Nostr console client, open-source Twitter-like social network with DMs and group chat
-    platforms: [cli]
+    description: Nostr console client, open-source Twitter-like social network with
+      DMs and group chat
+    platforms: [ cli ]
     repo: https://github.com/vishalxl/nostr_console
     status: inactive
     priority: low
@@ -586,7 +593,7 @@ social_clients:
 
   - name: nostros
     description: FOSS Android Nostr client with relay management and encrypted DMs
-    platforms: [android]
+    platforms: [ android ]
     repo: https://github.com/KoalaSat/nostros
     status: inactive
     priority: low
@@ -594,7 +601,7 @@ social_clients:
 
   - name: more-speech
     description: Nostr browser written in Clojure
-    platforms: [desktop]
+    platforms: [ desktop ]
     repo: https://github.com/unclebob/more-speech
     status: inactive
     priority: low
@@ -602,7 +609,7 @@ social_clients:
 
   - name: branle
     description: Twitter-like Nostr web client made with Quasar framework
-    platforms: [web]
+    platforms: [ web ]
     repo: https://github.com/fiatjaf/branle
     status: inactive
     priority: low
@@ -610,7 +617,7 @@ social_clients:
 
   - name: Nosky
     description: Native Android client for Nostr
-    platforms: [android]
+    platforms: [ android ]
     repo: https://github.com/KotlinGeekDev/Nosky
     status: active
     priority: low
@@ -618,28 +625,29 @@ social_clients:
 
   - name: rabbit
     description: TweetDeck-like multi-column Nostr client
-    platforms: [web]
+    platforms: [ web ]
     repo: https://github.com/syusui-s/rabbit
     status: active
     priority: low
 
   - name: Flycat
     description: Nostr web client for exploring long-form and social content
-    platforms: [web]
+    platforms: [ web ]
     website: https://flycat.club
     status: active
     priority: low
 
   - name: FreeFrom
     description: Privacy and free speech SNS app
-    platforms: [ios, android]
+    platforms: [ ios, android ]
     website: https://freefrom.space
     status: active
     priority: low
 
   - name: Futr
-    description: Native Nostr desktop client in Haskell, supports NIP-29 groups and NIP-17 DMs
-    platforms: [linux, windows, macos, android, ios]
+    description: Native Nostr desktop client in Haskell, supports NIP-29 groups and
+      NIP-17 DMs
+    platforms: [ linux, windows, macos, android, ios ]
     repo: https://github.com/futrnostr/futr
     website: https://futrnostr.com
     status: active
@@ -648,50 +656,51 @@ social_clients:
 
   - name: Oddbean
     description: Hacker News style Nostr client
-    platforms: [web]
+    platforms: [ web ]
     website: https://oddbean.com
     status: active
     priority: low
 
   - name: Phoenix
     description: Twitter-like web client for Nostr
-    platforms: [web]
+    platforms: [ web ]
     website: https://phoenix.social
     status: active
     priority: low
 
   - name: Wired
     description: Anonymous-first agora with Proof-of-Work spam prevention
-    platforms: [web]
+    platforms: [ web ]
     website: https://www.getwired.app
     status: active
     priority: low
 
   - name: Joyboy
     description: Decentralized social built on Nostr and powered by Starknet
-    platforms: [web]
+    platforms: [ web ]
     repo: https://github.com/keep-starknet-strange/joyboy
     status: active
     priority: low
 
   - name: bbs-on-nostr
     description: BBS-style message board on Nostr
-    platforms: [web]
+    platforms: [ web ]
     repo: https://github.com/murakmii/bbs-on-nostr
     status: active
     priority: low
 
   - name: Nostroots
     description: Migration of Trustroots.org hospitality network onto Nostr
-    platforms: [web]
+    platforms: [ web ]
     repo: https://github.com/Trustroots/nostroots
     status: beta
     priority: low
-    notes: OpenSats funded, 100K+ member network, aims for full decentralization by 2027
+    notes: OpenSats funded, 100K+ member network, aims for full decentralization by
+      2027
 
   - name: Jester
     description: Chess game on Nostr with Bitcoin micropayments and zaps
-    platforms: [web]
+    platforms: [ web ]
     repo: https://github.com/jesterui/jesterui
     status: active
     priority: low
@@ -699,7 +708,7 @@ social_clients:
 
   - name: ONOSENDAI
     description: Experimental 3D cyberspace visualization of the Nostr protocol
-    platforms: [web]
+    platforms: [ web ]
     repo: https://github.com/arkin0x/cyberspace
     status: beta
     priority: low
@@ -707,7 +716,7 @@ social_clients:
 
   - name: Flockstr
     description: Calendar events app on Nostr, alternative to Eventbrite/Meetups
-    platforms: [web]
+    platforms: [ web ]
     repo: https://github.com/zmeyer44/flockstr
     status: active
     priority: low
@@ -715,14 +724,14 @@ social_clients:
 
   - name: nostr-attached
     description: Open-source mobile client for Nostr
-    platforms: [ios, android]
+    platforms: [ ios, android ]
     repo: https://github.com/dyegolara/nostr-attached
     status: inactive
     priority: low
 
   - name: narr
     description: Self-hosted Nostr and RSS reader
-    platforms: [desktop]
+    platforms: [ desktop ]
     repo: https://github.com/fiatjaf/narr
     status: active
     priority: low
@@ -730,11 +739,76 @@ social_clients:
 
   - name: Nostr Feedz
     description: Web app for following RSS feeds alongside Nostr long-form content
-    platforms: [web]
+    platforms: [ web ]
     repo: https://github.com/PlebOne/Nostr-Feedz
     status: active
     priority: low
     notes: OpenSats funded, includes WoT-based relay at relay.pleb.one
+  - name: Zappix
+    description: Image sharing client for browsing, posting, and zapping visual content
+    platforms:
+      - web
+    repo: https://github.com/derekross/zappix
+    website: https://zappix.app
+    maintainer: derekross
+    status: active
+    priority: medium
+  - name: Wherostr
+    description: Geo-social client with location-based feeds
+    platforms:
+      - ios
+      - android
+    repo: https://github.com/mapboss/wherostr_social
+    status: active
+    priority: medium
+  - name: Votestr
+    description: Poll web app with Nostr authentication and blind signature unlinkability
+    platforms:
+      - web
+    repo: https://github.com/vilm3r/votestr
+    website: https://votestr.com
+    status: active
+    priority: medium
+  - name: Pretty Good Apps
+    description: Desktop client focused on decentralized reputation and web of trust
+    platforms:
+      - linux
+      - macos
+      - windows
+    repo: https://github.com/wds4/pretty-good
+    maintainer: wds4
+    status: active
+    priority: medium
+  - name: Memestr
+    description: Hub for sharing memes and visual humor
+    platforms:
+      - web
+    website: https://memestr.app
+    status: active
+    priority: low
+  - name: Streakstr
+    description: Daily activity tracker with streak monitoring via bot
+    platforms:
+      - web
+    repo: https://github.com/theakash04/Streakstr
+    status: active
+    priority: low
+  - name: Member
+    description: Progressive web app client that runs on desktop and mobile
+    platforms:
+      - web
+    repo: https://github.com/memberapp/memberapp.github.io
+    website: https://member.cash
+    status: active
+    priority: low
+  - name: Hook Cafe
+    description: Social app for connecting people to meet in real life
+    platforms:
+      - web
+    repo: https://github.com/kuba-04/hook.cafe
+    website: https://hook.cafe
+    status: active
+    priority: low
 
 # =============================================================================
 # LONG-FORM CONTENT
@@ -743,7 +817,7 @@ social_clients:
 longform_clients:
   - name: Habla
     description: Long-form content publishing (NIP-23)
-    platforms: [web]
+    platforms: [ web ]
     repo: https://github.com/verbiricha/habla.news
     website: https://habla.news
     maintainer: verbiricha
@@ -753,7 +827,7 @@ longform_clients:
 
   - name: YakiHonne
     description: Multi-platform long-form client with mobile apps
-    platforms: [web, ios, android]
+    platforms: [ web, ios, android ]
     repo: https://github.com/YakiHonne/yakihonne-mobile-app
     website: https://yakihonne.com
     status: active
@@ -762,7 +836,7 @@ longform_clients:
 
   - name: Highlighter
     description: Content curation and highlighting
-    platforms: [web]
+    platforms: [ web ]
     repo: https://github.com/pablof7z/highlighter
     website: https://highlighter.com
     maintainer: pablof7z
@@ -772,7 +846,7 @@ longform_clients:
 
   - name: Boris
     description: Improved highlighting client for Nostr
-    platforms: [web]
+    platforms: [ web ]
     repo: https://github.com/dergigi/boris
     status: active
     priority: low
@@ -780,7 +854,7 @@ longform_clients:
 
   - name: blogstack.io
     description: Blogging site for nostr with markdown support
-    platforms: [web]
+    platforms: [ web ]
     repo: https://github.com/nodetec/blogstack
     website: https://blogstack.io
     status: active
@@ -788,42 +862,42 @@ longform_clients:
 
   - name: Untype
     description: Long-form content writing and publishing client
-    platforms: [web]
+    platforms: [ web ]
     website: https://untype.app
     status: active
     priority: low
 
   - name: Breefly
     description: Low-stimulus reading environment for Nostr long-form articles
-    platforms: [web]
+    platforms: [ web ]
     website: https://breefly.social
     status: active
     priority: low
 
   - name: blogo
     description: Lightweight blogging engine that backs up to Nostr
-    platforms: [self-hosted]
+    platforms: [ self-hosted ]
     repo: https://github.com/pluja/blogo
     status: active
     priority: low
 
   - name: notestack
     description: Decentralized blogging platform using Nostr relays with Lightning tips
-    platforms: [web]
+    platforms: [ web ]
     repo: https://github.com/nodetec/notestack
     status: active
     priority: low
 
   - name: MAKIMONO
     description: Barebones app for publishing long-form articles on Nostr
-    platforms: [web]
+    platforms: [ web ]
     website: https://makimono.lumilumi.app
     status: active
     priority: low
 
   - name: Noflux
     description: Desktop RSS and Nostr long-form content reader
-    platforms: [desktop]
+    platforms: [ desktop ]
     repo: https://github.com/fiatjaf/noflux
     status: active
     priority: low
@@ -831,7 +905,7 @@ longform_clients:
 
   - name: Captain's Log
     description: Nostr-native desktop note-taking app with markdown support
-    platforms: [linux, macos, windows]
+    platforms: [ linux, macos, windows ]
     repo: https://github.com/nodetec/captains-log
     status: active
     priority: low
@@ -839,7 +913,7 @@ longform_clients:
 
   - name: Samizdat
     description: Writer-first publishing tool for NIP-23 long-form articles
-    platforms: [web, android]
+    platforms: [ web, android ]
     repo: https://github.com/satsdisco/samizdat
     website: https://samizdat.press
     status: active
@@ -848,12 +922,34 @@ longform_clients:
 
   - name: Manent
     description: Private encrypted notes and file storage built on Nostr
-    platforms: [web, android, linux, macos]
+    platforms: [ web, android, linux, macos ]
     repo: https://github.com/dtonon/manent
     website: https://manent.dtonon.com
     status: active
     priority: low
     notes: Uses NIP-44 encryption, NIP-46, NIP-55, NIP-65, and Blossom storage
+  - name: Pareto
+    description: Publishing client for citizen journalism and long-form articles
+    platforms:
+      - web
+    website: https://pareto.space/read
+    status: active
+    priority: medium
+  - name: Decent Newsroom
+    description: Long-form articles and magazines client for publishers and readers
+    platforms:
+      - web
+    website: https://decentnewsroom.com
+    status: active
+    priority: medium
+  - name: uBlog
+    description: Minimalist personal micro-blog on Nostr
+    platforms:
+      - web
+    repo: https://github.com/nodetec/ublog
+    maintainer: nodetec
+    status: active
+    priority: low
 
 # =============================================================================
 # MESSAGING
@@ -862,7 +958,7 @@ longform_clients:
 messaging_clients:
   - name: 0xchat
     description: Telegram-style DMs and group chat with Cashu support
-    platforms: [ios, android]
+    platforms: [ ios, android ]
     repo: https://github.com/0xchat-app/0xchat-app-main
     maintainer: pextar
     status: active
@@ -871,7 +967,7 @@ messaging_clients:
 
   - name: White Noise
     description: MLS-based secure messaging client
-    platforms: [ios, android]
+    platforms: [ ios, android ]
     repo: https://github.com/marmot-protocol/whitenoise
     maintainer: erskingardner
     status: beta
@@ -880,7 +976,7 @@ messaging_clients:
 
   - name: Vector
     description: Privacy-focused desktop messenger with NIP-17/44/59 encryption
-    platforms: [windows, macos, linux, android]
+    platforms: [ windows, macos, linux, android ]
     repo: https://github.com/VectorPrivacy/Vector
     status: active
     priority: medium
@@ -888,7 +984,7 @@ messaging_clients:
 
   - name: Flotilla
     description: NIP-29 relay-based group chat
-    platforms: [web]
+    platforms: [ web ]
     repo: https://gitea.coracle.social/coracle/flotilla
     website: https://flotilla.social
     status: active
@@ -897,22 +993,23 @@ messaging_clients:
 
   - name: Chachi
     description: NIP-29 group chat client
-    platforms: [web]
+    platforms: [ web ]
     repo: https://github.com/purrgrammer/chachi
     status: active
     priority: low
 
   - name: Bitchat
     description: Censorship-resistant messaging with Nostr and Cashu, offline via Bluetooth
-    platforms: [ios, android]
+    platforms: [ ios, android ]
     repo: https://github.com/permissionlesstech/bitchat
     status: active
     priority: medium
-    notes: Uses Noise Protocol for encryption, Cashu for offline payments via Bluetooth mesh
+    notes: Uses Noise Protocol for encryption, Cashu for offline payments via
+      Bluetooth mesh
 
   - name: KeyChat
     description: Private messaging app with Cashu integration
-    platforms: [ios, android]
+    platforms: [ ios, android ]
     repo: https://github.com/keychat-io/keychat-app
     status: active
     priority: low
@@ -920,7 +1017,7 @@ messaging_clients:
 
   - name: Pika
     description: E2E encrypted messaging using MLS protocol layered over Nostr relays
-    platforms: [ios, android]
+    platforms: [ ios, android ]
     repo: https://github.com/sledtools/pika
     status: active
     priority: medium
@@ -928,7 +1025,7 @@ messaging_clients:
 
   - name: Wisp
     description: Minimal messaging app using Marmot protocol for MLS-encrypted chat
-    platforms: [web]
+    platforms: [ web ]
     repo: https://github.com/barrydeen/wisp
     status: beta
     priority: low
@@ -936,7 +1033,7 @@ messaging_clients:
 
   - name: Marmota
     description: End-to-end encrypted group messaging client using the Marmot protocol
-    platforms: [web]
+    platforms: [ web ]
     repo: https://github.com/dcadenas/marmota
     website: https://groups.privdm.com
     status: beta
@@ -945,15 +1042,15 @@ messaging_clients:
 
   - name: White Noise TUI
     description: Terminal-based client for White Noise MLS-encrypted messaging
-    platforms: [cli]
+    platforms: [ cli ]
     repo: https://github.com/marmot-protocol/wn-tui
     status: beta
     priority: medium
-    notes: CLI client in whitenoise-rs repo ecosystem
+    notes: CLI client in whitenoise-rs repo
 
   - name: nospeak
     description: Decentralized chat with NIP-17 E2E encryption and no metadata leakage
-    platforms: [android]
+    platforms: [ android ]
     repo: https://github.com/psic4t/nospeak
     status: active
     priority: medium
@@ -961,77 +1058,122 @@ messaging_clients:
 
   - name: Nostr Mail Client
     description: Flutter mail client for sending and receiving encrypted mail over Nostr
-    platforms: [android, linux, web]
+    platforms: [ android, linux, web ]
     repo: https://github.com/nogringo/nostr-mail-client
     website: https://nogringo.github.io/nostr-mail-client
     maintainer: nogringo
     status: active
     priority: low
-    notes: Traditional email-style UX on top of Nostr identities and encrypted delivery
+    notes: Traditional email-style UX on top of Nostr identities and encrypted
+      delivery
 
   - name: NostrChat
     description: Decentralized chat app built on Nostr
-    platforms: [web]
+    platforms: [ web ]
     repo: https://github.com/NostrChat/NostrChat
     status: active
     priority: low
 
   - name: sendstr-web
     description: End-to-end encrypted shared clipboard built on Nostr
-    platforms: [web]
+    platforms: [ web ]
     repo: https://github.com/vilm3r/sendstr-web
     status: active
     priority: low
 
   - name: NYM
     description: Lightweight ephemeral chat client on Nostr, bridged with Bitchat
-    platforms: [web]
+    platforms: [ web ]
     repo: https://github.com/Spl0itable/NYM
     status: active
     priority: low
 
   - name: nostribe
     description: Social tribe community client on Nostr
-    platforms: [web]
+    platforms: [ web ]
     repo: https://github.com/sepehr-safari/nostribe
     status: active
     priority: low
 
   - name: nostr-chat-widget
     description: Embeddable Nostr-based chat widget for websites
-    platforms: [web]
+    platforms: [ web ]
     repo: https://github.com/pablof7z/nostr-chat-widget
     status: active
     priority: low
 
   - name: denny
     description: Nostr client for encrypted group chat
-    platforms: [web]
+    platforms: [ web ]
     repo: https://github.com/denostr-lab/denny
     status: active
     priority: low
 
   - name: garnet
     description: Nostr Public Chat (NIP-28) client
-    platforms: [web]
+    platforms: [ web ]
     repo: https://github.com/murakmii/garnet
     status: active
     priority: low
 
   - name: Coolr
     description: Minimalist IRC-like ephemeral chat built on Nostr
-    platforms: [web]
+    platforms: [ web ]
     website: https://coolr.chat
     status: active
     priority: low
 
   - name: Blowater
     description: DM-focused Nostr client aiming to replace Telegram/Slack/Discord
-    platforms: [web, desktop]
+    platforms: [ web, desktop ]
     repo: https://github.com/BlowaterNostr/blowater
     status: active
     priority: low
     notes: OpenSats funded
+  - name: OstrichGram
+    description: Telegram-style desktop app for Linux and Windows with group chats and DMs
+    platforms:
+      - linux
+      - windows
+    website: https://ostrichgram.com
+    status: active
+    priority: medium
+  - name: gupt
+    description: Instant chat with video, audio, screen sharing, and private groups
+    platforms:
+      - web
+    website: https://gupt.app
+    status: active
+    priority: medium
+  - name: Beagle
+    description: Real-time text, audio, and video chat client for iOS
+    platforms:
+      - ios
+    repo: https://github.com/0xli/beagle.chat
+    status: active
+    priority: low
+  - name: Tides
+    description: Chrome extension messenger with built-in radio stream
+    platforms:
+      - browser
+    repo: https://github.com/arbadacarbayk/tides
+    status: active
+    priority: low
+
+  - name: Sprout
+    description: Hive mind communication platform by Block with Nostr relay and NIP support
+    platforms: [ desktop ]
+    repo: https://github.com/block/sprout
+    status: pre-alpha
+    priority: medium
+    notes: NIP-01, NIP-02, NIP-23, NIP-33 support, built-in Nostr relay
+
+  - name: OpenChat
+    description: Chat application built on dotnet-mls and marmot-cs
+    repo: https://github.com/DavidGershony/openChat
+    status: beta
+    priority: low
+    notes: .NET chat client using Marmot protocol over Nostr
 
 # =============================================================================
 # MEDIA & STREAMING
@@ -1040,7 +1182,7 @@ messaging_clients:
 media_clients:
   - name: Zap.stream
     description: Live streaming with Lightning zaps
-    platforms: [web, ios, android]
+    platforms: [ web, ios, android ]
     repo: https://github.com/v0l/zap.stream
     website: https://zap.stream
     maintainer: v0l
@@ -1050,7 +1192,7 @@ media_clients:
 
   - name: Olas
     description: Instagram-like photo sharing
-    platforms: [ios, android, web]
+    platforms: [ ios, android, web ]
     repo: https://github.com/pablof7z/olas
     maintainer: pablof7z
     status: active
@@ -1058,16 +1200,17 @@ media_clients:
 
   - name: Unfiltered
     description: Instagram-like photo sharing without algorithms or ads
-    platforms: [android]
+    platforms: [ android ]
     repo: https://github.com/dmcarrington/unfiltered
     maintainer: dmcarrington
     status: active
     priority: medium
-    notes: NIP-68 picture events, Blossom hosting, Lightning zaps, Amber signer support
+    notes: NIP-68 picture events, Blossom hosting, Lightning zaps, Amber signer
+      support
 
   - name: Nostr Nests
     description: Audio spaces (Clubhouse-like)
-    platforms: [web]
+    platforms: [ web ]
     repo: https://github.com/nostrnests/nests
     website: https://nostrnests.com
     status: active
@@ -1075,7 +1218,7 @@ media_clients:
 
   - name: Corny Chat
     description: Open source audio rooms
-    platforms: [web]
+    platforms: [ web ]
     repo: https://github.com/vicariousdrama/cornychat
     website: https://cornychat.com
     status: active
@@ -1084,7 +1227,7 @@ media_clients:
 
   - name: diVine
     description: Short-form looping video client with restored Vine archives
-    platforms: [ios, android, web]
+    platforms: [ ios, android, web ]
     repo: https://github.com/divinevideo/divine-mobile
     website: https://divine.video
     maintainer: rabble
@@ -1094,7 +1237,7 @@ media_clients:
 
   - name: Wavlake
     description: Music streaming platform with Lightning zaps and NOM spec
-    platforms: [web, android]
+    platforms: [ web, android ]
     repo: https://github.com/wavlake/wavman
     website: https://wavlake.com
     status: active
@@ -1103,7 +1246,7 @@ media_clients:
 
   - name: Shosho
     description: Live streaming app with recording/VOD, room presence, and threaded chats
-    platforms: [ios, android]
+    platforms: [ ios, android ]
     repo: https://github.com/r0d8lsh0p/shosho-releases
     status: active
     priority: medium
@@ -1111,7 +1254,7 @@ media_clients:
 
   - name: NosCall
     description: Audio and video calling app with contact groups and relay management
-    platforms: [android, ios]
+    platforms: [ android, ios ]
     repo: https://github.com/sanah9/noscall
     status: active
     priority: medium
@@ -1119,7 +1262,7 @@ media_clients:
 
   - name: Fountain
     description: Podcast app with Nostr social integration and Lightning streaming
-    platforms: [ios, android]
+    platforms: [ ios, android ]
     website: https://www.fountain.fm
     status: active
     priority: medium
@@ -1127,28 +1270,28 @@ media_clients:
 
   - name: Zaplife
     description: Aggregation of all Zaps across Nostr - the Zap leaderboard
-    platforms: [web]
+    platforms: [ web ]
     website: https://zaplife.lol
     status: active
     priority: low
 
   - name: Slidestr
     description: Immersive media browsing for images and videos on Nostr
-    platforms: [web]
+    platforms: [ web ]
     website: https://slidestr.net
     status: active
     priority: low
 
   - name: Stemstr
     description: Music collaboration and sharing client for producers and artists
-    platforms: [web]
+    platforms: [ web ]
     website: https://stemstr.app
     status: active
     priority: low
 
   - name: Swae
     description: Mobile-first live streaming app on Nostr with Lightning zaps and Cashu
-    platforms: [ios, android]
+    platforms: [ ios, android ]
     repo: https://github.com/suhailsaqan/swae
     status: beta
     priority: low
@@ -1156,11 +1299,20 @@ media_clients:
 
   - name: Route96
     description: Nostr-integrated media backend for NIP-96 and Blossom file hosting
-    platforms: [self-hosted]
+    platforms: [ self-hosted ]
     repo: https://github.com/v0l/route96
     status: active
     priority: medium
-    notes: Thumbnails, compression, mirroring, Lightning-based storage limits. Deployed at nostr.download
+    notes: Thumbnails, compression, mirroring, Lightning-based storage limits.
+      Deployed at nostr.download
+
+  - name: Flora
+    description: Chrome extension for decentralized screen recording and sharing on Nostr
+    platforms: [ web ]
+    repo: https://github.com/shawnyeager/flora-extension
+    status: beta
+    priority: low
+    notes: Encrypted video sharing via NIP-17, AES-256-GCM, Blossom storage
 
 # =============================================================================
 # MARKETPLACES
@@ -1169,7 +1321,7 @@ media_clients:
 marketplaces:
   - name: Shopstr
     description: P2P marketplace with Lightning/Cashu (NIP-99)
-    platforms: [web]
+    platforms: [ web ]
     repo: https://github.com/shopstr-eng/shopstr
     website: https://shopstr.store
     status: active
@@ -1177,7 +1329,7 @@ marketplaces:
 
   - name: Milk Market
     description: Food marketplace on Nostr with Lightning, Cashu, and fiat payment options
-    platforms: [web]
+    platforms: [ web ]
     repo: https://github.com/shopstr-eng/milk-market
     website: https://milk.market
     status: active
@@ -1186,7 +1338,7 @@ marketplaces:
 
   - name: Plebeian Market
     description: Bitcoin marketplace (NIP-15)
-    platforms: [web]
+    platforms: [ web ]
     repo: https://github.com/PlebeianTech/plebeian-market
     website: https://plebeian.market
     status: active
@@ -1194,7 +1346,7 @@ marketplaces:
 
   - name: Mostro
     description: P2P Bitcoin exchange over Nostr
-    platforms: [cli, web]
+    platforms: [ cli, web ]
     repo: https://github.com/MostroP2P/mostro
     status: active
     priority: medium
@@ -1202,7 +1354,7 @@ marketplaces:
 
   - name: Mostro Mobile
     description: Mobile client for Mostro P2P Bitcoin exchange
-    platforms: [android, ios]
+    platforms: [ android, ios ]
     repo: https://github.com/MostroP2P/mobile
     status: active
     priority: medium
@@ -1210,7 +1362,7 @@ marketplaces:
 
   - name: SatShoot
     description: Freelancing platform on Nostr with Bitcoin payments
-    platforms: [web]
+    platforms: [ web ]
     repo: https://github.com/Pleb5/satshoot
     status: active
     priority: medium
@@ -1218,33 +1370,34 @@ marketplaces:
 
   - name: Kartapio
     description: Restaurant menu and ordering with Bitcoin payments
-    platforms: [web]
+    platforms: [ web ]
     repo: https://github.com/vstabile/kartapio
     status: active
     priority: low
     notes: SEC-02 project
 
-  - name: Pod21
-    description: Decentralized 3D printing marketplace with NIP-17 DM bot
-    platforms: [web]
-    repo: ""
-    status: beta
-    priority: medium
-    notes: Connects 3D printer operators with buyers via Nostr relay coordination. No public repo yet.
-
   - name: LNBits Nostrmarket
     description: LNBits extension for selling items directly via NIP-15
-    platforms: [web]
+    platforms: [ web ]
     repo: https://github.com/lnbits/nostrmarket
     status: active
     priority: low
 
   - name: Ostrich Work
     description: Job board over Nostr
-    platforms: [web]
+    platforms: [ web ]
     website: https://ostrich.work
     status: active
     priority: low
+  - name: P2P band
+    description: Aggregator for P2P Bitcoin exchanges across multiple platforms
+    platforms:
+      - web
+    repo: https://github.com/KoalaSat/p2pband
+    website: https://p2p.band
+    maintainer: KoalaSat
+    status: active
+    priority: medium
 
 # =============================================================================
 # DEVELOPER TOOLS
@@ -1253,8 +1406,8 @@ marketplaces:
 devtools:
   - name: ngit
     description: Git collaboration over Nostr (NIP-34)
-    platforms: [cli]
-    repo: https://codeberg.org/DanConwayDev/ngit-cli
+    platforms: [ cli ]
+    repo: https://github.com/DanConwayDev/ngit-cli
     maintainer: DanConwayDev
     status: active
     priority: high
@@ -1262,7 +1415,7 @@ devtools:
 
   - name: GitWorkshop
     description: Web UI for git collaboration on Nostr
-    platforms: [web]
+    platforms: [ web ]
     repo: https://github.com/DanConwayDev/gitworkshop
     website: https://gitworkshop.dev
     maintainer: DanConwayDev
@@ -1271,8 +1424,8 @@ devtools:
 
   - name: ZapStore
     description: Permissionless app store for Android
-    platforms: [android]
-    repo: https://github.com/ArcadeCity/zapstore
+    platforms: [ android ]
+    repo: https://github.com/zapstore/zapstore
     website: https://zapstore.dev
     status: active
     priority: medium
@@ -1280,7 +1433,7 @@ devtools:
 
   - name: Formstr
     description: Google Forms alternative on Nostr
-    platforms: [web]
+    platforms: [ web ]
     repo: https://github.com/formstr-hq/nostr-forms
     website: https://formstr.app
     status: active
@@ -1289,7 +1442,7 @@ devtools:
 
   - name: Pollerama
     description: Polling app built on nostr-polls library
-    platforms: [web]
+    platforms: [ web ]
     repo: https://github.com/formstr-hq/nostr-polls
     website: https://pollerama.fun
     status: active
@@ -1298,15 +1451,16 @@ devtools:
 
   - name: Verify
     description: File integrity verification using a decentralized Nostr web of trust
-    platforms: [web]
+    platforms: [ web ]
     repo: https://github.com/tinfoilhash/verify
     website: https://verify.tinfoilhash.com
     status: active
     priority: low
 
   - name: Attestr
-    description: Web app for searching assertions, publishing attestations, and inspecting trust signals on Nostr
-    platforms: [web]
+    description: Web app for searching assertions, publishing attestations, and
+      inspecting trust signals on Nostr
+    platforms: [ web ]
     website: https://attestr.xyz/
     status: active
     priority: low
@@ -1314,23 +1468,15 @@ devtools:
 
   - name: Blossom Uploader
     description: CLI uploader for Blossom-compatible media servers
-    platforms: [cli]
+    platforms: [ cli ]
     repo: https://github.com/djinoz/blossom_uploader
     status: active
     priority: low
     notes: Supports Blossom authentication with Nostr nsec keys
 
-  - name: Nostrability Outbox
-    description: Outbox model benchmark suite and test results across clients
-    platforms: [web]
-    repo: https://github.com/nostrability/outbox
-    status: active
-    priority: medium
-    notes: Benchmarks outbox model (NIP-65) implementation quality across clients
-
   - name: NoorNote
     description: Nostr-based note-taking application
-    platforms: [web]
+    platforms: [ web ]
     repo: https://github.com/77elements/noornote
     status: beta
     priority: low
@@ -1338,7 +1484,7 @@ devtools:
 
   - name: Wikistr
     description: Wikipedia-like wiki client
-    platforms: [web]
+    platforms: [ web ]
     repo: https://github.com/fiatjaf/wikistr
     website: https://wikistr.com
     status: active
@@ -1346,7 +1492,7 @@ devtools:
 
   - name: Nostr Army Knife (nak)
     description: Multi-purpose CLI tool by fiatjaf
-    platforms: [cli, web]
+    platforms: [ cli, web ]
     repo: https://github.com/fiatjaf/nak
     website: https://nak.nostr.com
     maintainer: fiatjaf
@@ -1355,7 +1501,7 @@ devtools:
 
   - name: GitPear
     description: Git collaboration tool with Nostr integration
-    platforms: [cli]
+    platforms: [ cli ]
     repo: https://github.com/dzdidi/gitpear
     status: active
     priority: low
@@ -1363,7 +1509,7 @@ devtools:
 
   - name: Sigit
     description: Document signing tool using Nostr and Blossom
-    platforms: [web]
+    platforms: [ web ]
     repo: https://git.nostrdev.com/sigit/sigit.io
     website: https://sigit.io
     status: active
@@ -1372,32 +1518,24 @@ devtools:
 
   - name: Nostr Writer
     description: Obsidian plugin for publishing notes to Nostr
-    platforms: [desktop]
+    platforms: [ desktop ]
     repo: https://github.com/jamesmagoo/nostr-writer
     status: active
     priority: low
     notes: Long-form and short-form publishing, image support
 
-  - name: Schemata
-    description: JSON Schema definitions for validating Nostr events, messages, and tags
-    repo: https://github.com/nostrability/schemata
-    maintainer: alltheseas
-    status: active
-    priority: medium
-    notes: JSON Schema Draft-07, useful for integration testing and fuzz testing
-
   - name: relay-tester
     description: Test suite for verifying Nostr relay implementations
-    platforms: [cli]
+    platforms: [ cli ]
     repo: https://github.com/mikedilger/relay-tester
     maintainer: mikedilger
     status: active
     priority: medium
-    notes: By Gossip creator, comprehensive relay testing
+    notes: By Gossip creator, thorough relay testing
 
   - name: algia
     description: Full-featured CLI client with timeline, posting, zaps, and DMs
-    platforms: [cli]
+    platforms: [ cli ]
     repo: https://github.com/mattn/algia
     status: active
     priority: medium
@@ -1405,15 +1543,15 @@ devtools:
 
   - name: DVMDash
     description: Monitoring and debugging dashboard for DVM/AI activity on Nostr
-    platforms: [web]
+    platforms: [ web ]
     repo: https://github.com/dtdannen/dvmdash
     status: active
     priority: medium
-    notes: NIP-90 ecosystem visibility
+    notes: NIP-90 implementations visibility
 
   - name: nostr-webhook
     description: Webhook bot with event matching and cron scheduling
-    platforms: [cli]
+    platforms: [ cli ]
     repo: https://github.com/mattn/nostr-webhook
     status: active
     priority: low
@@ -1421,15 +1559,15 @@ devtools:
 
   - name: matrix-nostr-bridge
     description: Bridge between Matrix and Nostr protocols
-    platforms: [cli]
+    platforms: [ cli ]
     repo: https://github.com/nicfab/matrix-nostr-bridge
     status: active
     priority: medium
     notes: Federation bridge
 
   - name: DVMCP
-    description: Bridge connecting MCP servers to Nostr DVM ecosystem
-    platforms: [cli]
+    description: Bridge connecting MCP servers to Nostr DVMs
+    platforms: [ cli ]
     repo: https://github.com/gzuuus/dvmcp
     status: active
     priority: medium
@@ -1437,16 +1575,17 @@ devtools:
 
   - name: nostrain
     description: Coordinator-free distributed machine learning training over Nostr relays
-    platforms: [cli]
+    platforms: [ cli ]
     repo: https://github.com/AbdelStark/nostrain
     maintainer: AbdelStark
     status: beta
     priority: low
-    notes: DiLoCo over Nostr, signed gradient exchange, checkpointing and worker discovery
+    notes: DiLoCo over Nostr, signed gradient exchange, checkpointing and worker
+      discovery
 
   - name: Nostr MCP Server
     description: MCP server enabling AI agents to interact with the Nostr network
-    platforms: [cli]
+    platforms: [ cli ]
     repo: https://github.com/AustinKelsay/nostr-mcp-server
     maintainer: AustinKelsay
     status: active
@@ -1455,7 +1594,7 @@ devtools:
 
   - name: Mostro Skill
     description: MCP skill for trading on Mostro P2P exchange via Nostr
-    platforms: [cli]
+    platforms: [ cli ]
     repo: https://github.com/MostroP2P/mostro-skill
     status: active
     priority: low
@@ -1463,14 +1602,14 @@ devtools:
 
   - name: SyncStr
     description: Web app for synchronizing Nostr profile data across relays
-    platforms: [web]
+    platforms: [ web ]
     repo: https://github.com/derekross/syncstr
     status: active
     priority: low
 
   - name: cuda_vanity
     description: GPU-accelerated vanity npub generator using NVIDIA CUDA
-    platforms: [cli]
+    platforms: [ cli ]
     repo: https://github.com/v0l/cuda_vanity
     maintainer: v0l
     status: active
@@ -1479,7 +1618,7 @@ devtools:
 
   - name: rana
     description: Rust vanity key miner with difficulty customization
-    platforms: [cli]
+    platforms: [ cli ]
     repo: https://github.com/grunch/rana
     status: active
     priority: low
@@ -1487,15 +1626,15 @@ devtools:
 
   - name: Bucket
     description: Simple in-memory relay for testing (<100 LOC)
-    platforms: [cli]
-    repo: https://gitea.coracle.social/coracle/bucket
+    platforms: [ cli ]
+    repo: https://github.com/coracle-social/bucket
     status: active
     priority: low
     notes: By Coracle team, for development/testing
 
   - name: nostr-idb
     description: Helper methods for storing Nostr events in IndexedDB
-    platforms: [browser]
+    platforms: [ browser ]
     repo: https://github.com/hzrd149/nostr-idb
     status: active
     priority: low
@@ -1503,7 +1642,7 @@ devtools:
 
   - name: go-dvm
     description: Go implementation of Data Vending Machine
-    platforms: [cli]
+    platforms: [ cli ]
     repo: https://github.com/sebdeveloper6952/godvm
     status: active
     priority: low
@@ -1511,7 +1650,7 @@ devtools:
 
   - name: spryte
     description: Lightweight Nostr client library
-    platforms: [browser]
+    platforms: [ browser ]
     repo: https://github.com/sandwichfarm/spryte
     status: active
     priority: low
@@ -1519,7 +1658,7 @@ devtools:
 
   - name: nsite-manager
     description: Management interface for nsite hosting
-    platforms: [web]
+    platforms: [ web ]
     repo: https://github.com/hzrd149/nsite-manager
     status: active
     priority: low
@@ -1527,7 +1666,7 @@ devtools:
 
   - name: Backyard Explorer
     description: Example search app for window.nostrdb
-    platforms: [web]
+    platforms: [ web ]
     repo: https://github.com/hzrd149/backyard-explorer
     status: active
     priority: low
@@ -1535,7 +1674,7 @@ devtools:
 
   - name: Instagram to Nostr v2
     description: Content migration tool from Instagram, TikTok, Twitter, Substack to Nostr
-    platforms: [cli]
+    platforms: [ cli ]
     repo: https://github.com/primalpaul1/instagram-to-nostr-v2
     status: active
     priority: low
@@ -1543,7 +1682,7 @@ devtools:
 
   - name: NostrDVM
     description: Python framework for building NIP-90 Data Vending Machines
-    platforms: [cli]
+    platforms: [ cli ]
     repo: https://github.com/believethehype/nostrdvm
     status: active
     priority: medium
@@ -1551,7 +1690,7 @@ devtools:
 
   - name: NWS
     description: Route TCP traffic over Nostr relays
-    platforms: [cli]
+    platforms: [ cli ]
     repo: https://github.com/asmogo/nws
     status: active
     priority: medium
@@ -1559,7 +1698,7 @@ devtools:
 
   - name: Bloom
     description: File manager for Blossom and NIP-96 servers with metadata editing
-    platforms: [web]
+    platforms: [ web ]
     repo: https://github.com/Letdown2491/bloom
     website: https://bloomapp.me
     status: active
@@ -1568,31 +1707,23 @@ devtools:
 
   - name: NOW (Nostr Outbox for WordPress)
     description: WordPress/WooCommerce notifications via Nostr with Lightning payments
-    platforms: [web]
+    platforms: [ web ]
     repo: https://github.com/Mnpezz/nostr-outbox-for-wordpress
     status: active
     priority: low
 
   - name: Ghostr
     description: Post delegation workflow - writers draft, publishers sign
-    platforms: [web]
+    platforms: [ web ]
     repo: https://github.com/dmnyc/ghostr
     website: https://ghostr.org
     status: active
     priority: low
 
-  - name: schemata-codegen
-    description: Nostr code generator that ports schemata schemas to typed native language constructs
-    platforms: [cli]
-    repo: https://github.com/nostrability/schemata-codegen
-    maintainer: nostrability
-    status: beta
-    priority: low
-    notes: Produces typed tag tuples, kind interfaces, runtime validators from schemata schemas
-
   - name: nostr-wot-oracle
-    description: Global follow-graph indexer answering pairwise distance queries between pubkeys
-    platforms: [cli]
+    description: Global follow-graph indexer answering pairwise distance queries
+      between pubkeys
+    platforms: [ cli ]
     repo: https://github.com/nostr-wot/nostr-wot-oracle
     status: active
     priority: medium
@@ -1600,21 +1731,21 @@ devtools:
 
   - name: Grapevine Client
     description: Web client for the My Grapevine web of trust system
-    platforms: [web]
+    platforms: [ web ]
     repo: https://github.com/Pretty-Good-Freedom-Tech/grapevine-client
     status: active
     priority: low
 
   - name: blossy
     description: Framework for building custom Blossom servers with full protocol compliance
-    platforms: [cli]
+    platforms: [ cli ]
     repo: https://github.com/pippellia-btc/blossy
     status: active
     priority: medium
 
   - name: nostr-crdt
     description: Nostr-CRDT Yjs provider for collaborative local-first apps
-    platforms: [web]
+    platforms: [ web ]
     repo: https://github.com/YousefED/nostr-crdt
     status: active
     priority: low
@@ -1622,7 +1753,7 @@ devtools:
 
   - name: Nostr Playground
     description: Simple and user-friendly playground for Nostr
-    platforms: [web]
+    platforms: [ web ]
     repo: https://github.com/sepehr-safari/nostr-playground
     website: https://playground.nostr.com
     status: active
@@ -1630,7 +1761,7 @@ devtools:
 
   - name: Primal Caching Service
     description: Event caching service collecting and serving nostr events via WebSocket API
-    platforms: [cli]
+    platforms: [ cli ]
     repo: https://github.com/PrimalHQ/primal-caching-service
     status: active
     priority: medium
@@ -1638,28 +1769,28 @@ devtools:
 
   - name: nostcat
     description: Cat-like nostr client for scripting and debugging in Rust
-    platforms: [cli]
+    platforms: [ cli ]
     repo: https://github.com/blakejakopovic/nostcat
     status: active
     priority: low
 
   - name: nostr-commander
     description: CLI-based Nostr app for following users and sending DMs
-    platforms: [cli]
+    platforms: [ cli ]
     repo: https://github.com/8go/nostr-commander-rs
     status: active
     priority: low
 
   - name: nostr-tool
     description: Rust CLI tool to generate and publish events
-    platforms: [cli]
+    platforms: [ cli ]
     repo: https://github.com/0xtrr/nostr-tool
     status: active
     priority: low
 
   - name: nostril
     description: C CLI tool for creating nostr events
-    platforms: [cli]
+    platforms: [ cli ]
     repo: https://github.com/jb55/nostril
     maintainer: jb55
     status: active
@@ -1667,14 +1798,14 @@ devtools:
 
   - name: nosdump
     description: CLI tool to download events stored in Nostr relays
-    platforms: [cli]
+    platforms: [ cli ]
     repo: https://github.com/jiftechnify/nosdump
     status: active
     priority: low
 
   - name: strfry-policies
     description: Collection of moderation and antispam policies for strfry relay
-    platforms: [cli]
+    platforms: [ cli ]
     repo: https://gitlab.com/soapbox-pub/strfry-policies
     status: active
     priority: low
@@ -1682,49 +1813,49 @@ devtools:
 
   - name: Chief
     description: Strfry write policy plugin with blacklists for keys, kinds, words
-    platforms: [cli]
+    platforms: [ cli ]
     repo: https://github.com/0xtrr/chief
     status: active
     priority: low
 
   - name: nostrillery
     description: Tool for running performance tests against Nostr relays
-    platforms: [cli]
+    platforms: [ cli ]
     repo: https://github.com/Cameri/nostrillery
     status: active
     priority: low
 
   - name: nostdress
     description: Lightning address server with NIP-05 and NIP-57 support
-    platforms: [cli]
+    platforms: [ cli ]
     repo: https://github.com/believethehype/nostdress
     status: active
     priority: low
 
   - name: NostrAirTracker
     description: Flight tracking on Nostr (Elonjet-style)
-    platforms: [web]
+    platforms: [ web ]
     repo: https://github.com/gourcetools/NostrAirTracker
     status: active
     priority: low
 
   - name: Listr
     description: Create, manage, and browse Nostr lists for content curation
-    platforms: [web]
+    platforms: [ web ]
     website: https://listr.lol
     status: active
     priority: low
 
   - name: NostrGit
     description: Censorship-resistant alternative to GitHub built on Nostr
-    platforms: [web]
+    platforms: [ web ]
     repo: https://github.com/NostrGit/NostrGit
     status: active
     priority: low
 
   - name: noscl
     description: Command line client for Nostr
-    platforms: [cli]
+    platforms: [ cli ]
     repo: https://github.com/fiatjaf/noscl
     status: active
     priority: low
@@ -1732,108 +1863,85 @@ devtools:
 
   - name: nostr.directory
     description: Find people you know from other social media on Nostr
-    platforms: [web]
+    platforms: [ web ]
     repo: https://github.com/pseudozach/nostr.directory
     status: active
     priority: low
 
   - name: key-convertr
     description: Convert Nostr keys and note-ids between hex and bech32
-    platforms: [web]
+    platforms: [ web ]
     repo: https://github.com/rot13maxi/key-convertr
     status: active
     priority: low
 
   - name: kanbanstr
     description: Kanban board on Nostr using public events
-    platforms: [web]
+    platforms: [ web ]
     repo: https://github.com/vivganes/kanbanstr
     status: active
     priority: low
 
   - name: nostatus
     description: Web client for browsing user status (NIP-38)
-    platforms: [web]
+    platforms: [ web ]
     repo: https://github.com/jiftechnify/nostatus
     status: active
     priority: low
 
   - name: nostracker
     description: Website for collecting and analyzing information from the Nostr network
-    platforms: [web]
+    platforms: [ web ]
     repo: https://github.com/marcodpt/nostracker
     status: active
     priority: low
 
   - name: Nostr-Clients-Features-List
     description: Comparison of Nostr clients and NIP support
-    platforms: [web]
+    platforms: [ web ]
     repo: https://github.com/vishalxl/Nostr-Clients-Features-List
     status: active
     priority: low
 
   - name: Bouquet
     description: Personal manager for Blossom media servers
-    platforms: [web]
+    platforms: [ web ]
     website: https://bouquet.slidestr.net
     status: active
     priority: low
 
   - name: Emojito
     description: Create custom emoji sets for Nostr clients
-    platforms: [web]
+    platforms: [ web ]
     website: https://emojito.meme
     status: active
     priority: low
 
   - name: GIF Buddy
     description: Make GIFs available inside Nostr clients
-    platforms: [web]
+    platforms: [ web ]
     website: https://gifbuddy.lol
-    status: active
-    priority: low
-
-  - name: Grimoire
-    description: Meta-client power-user tool for Nostr
-    platforms: [web]
-    status: active
-    priority: low
-
-  - name: Lantern
-    description: Collaboratively annotate, highlight, and bookmark web pages/PDFs on Nostr
-    platforms: [browser]
     status: active
     priority: low
 
   - name: Nostr App Manager
     description: Discover Nostr apps, DVMs, and code repos
-    platforms: [web]
+    platforms: [ web ]
     website: https://nostrapp.link
-    status: active
-    priority: low
-
-  - name: Relay Tools
-    description: Android app for browsing and managing Nostr relays
-    platforms: [android]
-    status: active
-    priority: low
-
-  - name: Shakespeare
-    description: Open-source AI website builder with full local control
-    platforms: [web]
     status: active
     priority: low
 
   - name: Zapplepay
     description: Zap from any client, bypass Apple restrictions via NWC
-    platforms: [web]
+    platforms: [ web ]
     website: https://www.zapplepay.com
     status: active
     priority: low
 
   - name: ZapTracker
-    description: Dashboard for Lightning/Nostr creators combining zap analytics and NWC wallet management
-    platforms: [web]
+    description: Dashboard for Lightning/Nostr creators combining zap analytics and
+      NWC wallet management
+    platforms: [ web ]
     repo: https://github.com/pratik227/zap_dashboard
     status: active
     priority: low
@@ -1841,38 +1949,23 @@ devtools:
 
   - name: Bigbrotr
     description: Modular infrastructure for archiving and monitoring the Nostr network
-    platforms: [self-hosted]
+    platforms: [ self-hosted ]
     repo: https://github.com/Bigbrotr/bigbrotr
     status: active
     priority: low
     notes: OpenSats funded, containerized with PostgreSQL
 
-  - name: Grasp
-    description: Distributed Nostr-native git hosting built on NIP-34, extends ngit
-    platforms: [web]
-    status: beta
-    priority: low
-    notes: OpenSats funded, libraries for Nostr clients to interact with git data
-
   - name: Gitplaza
     description: Decentralized desktop-based GitHub alternative on Nostr
-    platforms: [desktop]
+    platforms: [ desktop ]
     repo: https://codeberg.org/dluvian/gitplaza
     status: beta
     priority: low
     notes: OpenSats funded, issue tracking, kanban boards, offline-first
 
-  - name: Nostrability
-    description: Documentation project tracking Nostr client interoperability
-    platforms: [web]
-    repo: https://github.com/nostrability/nostrability
-    status: active
-    priority: low
-    notes: OpenSats funded, developing nostrCI for automated compatibility testing
-
   - name: relay.tools
     description: Web-based control panel for deploying and managing Nostr relays
-    platforms: [web]
+    platforms: [ web ]
     repo: https://github.com/relaytools
     status: active
     priority: low
@@ -1880,7 +1973,7 @@ devtools:
 
   - name: nostr.build
     description: Free media hosting service for Nostr (images, GIFs, video, audio)
-    platforms: [web]
+    platforms: [ web ]
     repo: https://github.com/nostrbuild/nostr.build
     website: https://nostr.build
     status: active
@@ -1889,14 +1982,14 @@ devtools:
 
   - name: myrelay.page
     description: Canonical relay page generator
-    platforms: [web]
+    platforms: [ web ]
     repo: https://github.com/sandwichfarm/myrelay.page
     status: active
     priority: low
 
   - name: nostr-vpn
     description: VPN tunneling over the Nostr protocol
-    platforms: [cli]
+    platforms: [ cli ]
     repo: https://github.com/mmalmi/nostr-vpn
     maintainer: mmalmi
     status: active
@@ -1905,72 +1998,90 @@ devtools:
 
   - name: nsec-leak-checker
     description: DVM for checking exposed Nostr private keys
-    platforms: [cli]
+    platforms: [ cli ]
     repo: https://github.com/BigBrotr/nsec-leak-checker
     status: active
     priority: medium
     notes: Security tool, checks for leaked nsecs
-
-  - name: schemata-rs
-    description: Rust implementation of Nostr event JSON Schema definitions
-    repo: https://github.com/nostrability/schemata-rs
+  - name: Zaplytics
+    description: Analytics dashboard for tracking zap earnings and creator activity
+    platforms:
+      - web
+    repo: https://github.com/derekross/zaplytics
+    website: https://zaplytics.app
+    maintainer: derekross
     status: active
     priority: medium
-    notes: Companion to nostrability/schemata
-
-  - name: schemata-validator-rs
-    description: Rust validator for Nostr event schemas
-    repo: https://github.com/nostrability/schemata-validator-rs
+  - name: gitstr
+    description: Send and receive git patches over Nostr using NIP-34
+    platforms:
+      - cli
+    repo: https://github.com/fiatjaf/gitstr
+    maintainer: fiatjaf
     status: active
     priority: medium
-
-  - name: schemata-go
-    description: Go implementation of Nostr event JSON Schema definitions
-    repo: https://github.com/nostrability/schemata-go
+    notes: Predates and overlaps with ngit
+  - name: Disgus
+    description: Disqus-style comment widget powered by Nostr for embedding on websites
+    platforms:
+      - web
+    repo: https://github.com/carlitoplatanito/disgus
     status: active
     priority: medium
+  - name: Postr For Nostr
+    description: WordPress plugin to post directly to Nostr using NIP-07 signers
+    platforms:
+      - web
+    repo: https://github.com/joel-st/postr-for-nostr
+    status: active
+    priority: low
+  - name: Hugo2Nostr
+    description: Sync a Hugo blog with the Nostr network using sync scripts
+    platforms:
+      - cli
+    repo: https://github.com/delirehberi/hugo2nostr
+    status: active
+    priority: low
+  - name: Shirushi
+    description: Web-based protocol testing tool for monitoring relays and NIPs
+    platforms:
+      - web
+    repo: https://github.com/00quasr/Shirushi
+    status: active
+    priority: low
+  - name: nosbin
+    description: Pastebin-style content sharing built on Nostr
+    platforms:
+      - web
+    repo: https://github.com/jacany/nosbin
+    website: https://nosbin.com
+    status: active
+    priority: low
+  - name: earthly
+    description: Social GeoJSON editor with maps on Nostr
+    platforms:
+      - web
+    repo: https://github.com/moogmodular/earthly
+    status: active
+    priority: low
+  - name: georelays
+    description: Collection of relays with estimated geographic locations for nearby
+      discovery
+    platforms:
+      - cli
+    repo: https://github.com/permissionlesstech/georelays
+    status: active
+    priority: low
 
-  - name: schemata-validator-go
-    description: Go validator for Nostr event schemas
-    repo: https://github.com/nostrability/schemata-validator-go
+  - name: Titan
+    description: Native nsite:// browser for the Nostr web with Bitcoin-based
+      human-readable name registration
+    platforms: [ desktop ]
+    repo: https://github.com/btcjt/titan
     status: active
     priority: medium
-
-  - name: schemata-dart
-    description: Dart implementation of Nostr event JSON Schema definitions
-    repo: https://github.com/nostrability/schemata-dart
-    status: active
-    priority: medium
-
-  - name: schemata-validator-dart
-    description: Dart validator for Nostr event schemas
-    repo: https://github.com/nostrability/schemata-validator-dart
-    status: active
-    priority: medium
-
-  - name: schemata-swift
-    description: Swift implementation of Nostr event JSON Schema definitions
-    repo: https://github.com/nostrability/schemata-swift
-    status: active
-    priority: medium
-
-  - name: schemata-validator-swift
-    description: Swift validator for Nostr event schemas
-    repo: https://github.com/nostrability/schemata-validator-swift
-    status: active
-    priority: medium
-
-  - name: schemata-py
-    description: Python implementation of Nostr event JSON Schema definitions
-    repo: https://github.com/nostrability/schemata-py
-    status: active
-    priority: medium
-
-  - name: schemata-validator-py
-    description: Python validator for Nostr event schemas
-    repo: https://github.com/nostrability/schemata-validator-py
-    status: active
-    priority: medium
+    notes: Resolves nsite:// URLs via Nostr relays, renders from Blossom servers, no
+      DNS or certificates
 
 # =============================================================================
 # SIGNING & KEY MANAGEMENT
@@ -1979,7 +2090,7 @@ devtools:
 signers:
   - name: Amber
     description: Android event signer
-    platforms: [android]
+    platforms: [ android ]
     repo: https://github.com/greenart7c3/amber
     maintainer: greenart7c3
     status: active
@@ -1988,7 +2099,7 @@ signers:
 
   - name: Alby Extension
     description: Browser extension for Lightning and Nostr
-    platforms: [browser]
+    platforms: [ browser ]
     repo: https://github.com/getAlby/lightning-browser-extension
     website: https://getalby.com
     maintainer: getalby
@@ -1998,7 +2109,7 @@ signers:
 
   - name: nos2x
     description: Original NIP-07 browser signer by fiatjaf
-    platforms: [browser]
+    platforms: [ browser ]
     repo: https://github.com/fiatjaf/nos2x
     maintainer: fiatjaf
     status: maintained
@@ -2007,7 +2118,7 @@ signers:
 
   - name: Nsec App
     description: Web-based signer
-    platforms: [web]
+    platforms: [ web ]
     repo: https://github.com/nostrband/noauth
     website: https://nsec.app
     status: active
@@ -2016,7 +2127,7 @@ signers:
 
   - name: Aegis
     description: Cross-platform signer with multiple connection methods
-    platforms: [android, ios, windows, macos, linux]
+    platforms: [ android, ios, windows, macos, linux ]
     repo: https://github.com/ZharlieW/Aegis
     status: active
     priority: medium
@@ -2024,14 +2135,14 @@ signers:
 
   - name: Nowser
     description: Mobile signer for iOS/Android
-    platforms: [ios, android]
+    platforms: [ ios, android ]
     repo: https://github.com/haorendashu/nowser
     status: active
     priority: low
 
   - name: nostr-keyx
     description: Browser extension using OS keychain or YubiKey
-    platforms: [browser]
+    platforms: [ browser ]
     repo: https://github.com/susumuota/nostr-keyx
     status: active
     priority: low
@@ -2039,12 +2150,12 @@ signers:
 
   - name: Frostr
     description: Threshold signing protocol for Nostr - splits keys across devices
-    platforms: [ios, android, desktop, browser]
-    repo: https://github.com/FROSTR-ORG/igloo-desktop
+    platforms: [ ios, android, desktop, browser ]
     repos:
       ios: https://github.com/FROSTR-ORG/igloo-ios-prototype
       android: https://github.com/FROSTR-ORG/igloo-android
       browser: https://github.com/FROSTR-ORG/frost2x
+      desktop: https://github.com/FROSTR-ORG/igloo-desktop
     website: https://frostr.org
     status: active
     priority: high
@@ -2052,7 +2163,7 @@ signers:
 
   - name: Pokey
     description: Real-time notification tool for Nostr events with Amber integration
-    platforms: [android]
+    platforms: [ android ]
     repo: https://github.com/greenart7c3/pokey
     status: active
     priority: low
@@ -2060,7 +2171,7 @@ signers:
 
   - name: Signet
     description: Self-hosted NIP-46 remote signer with web dashboard
-    platforms: [web, android]
+    platforms: [ web, android ]
     repo: https://github.com/Letdown2491/signet
     status: active
     priority: medium
@@ -2068,7 +2179,7 @@ signers:
 
   - name: Keep
     description: FROST threshold signer for Android with NIP-55 and NIP-46 support
-    platforms: [android]
+    platforms: [ android ]
     repo: https://github.com/privkeyio/keep-android
     status: active
     priority: medium
@@ -2076,7 +2187,7 @@ signers:
 
   - name: OAuth Bunker
     description: NIP-46 bunker that bridges OAuth providers to Nostr signing
-    platforms: [web, self-hosted]
+    platforms: [ web, self-hosted ]
     repo: https://github.com/flox1an/oauth-bunker
     status: active
     priority: low
@@ -2084,7 +2195,7 @@ signers:
 
   - name: keyNest
     description: Secure key management for Nostr and Bitcoin
-    platforms: [cli]
+    platforms: [ cli ]
     repo: https://github.com/gzuuus/keynest
     status: active
     priority: low
@@ -2092,14 +2203,14 @@ signers:
 
   - name: Nostash
     description: NIP-07 signing extension for iOS/iPadOS/macOS Safari
-    platforms: [browser]
+    platforms: [ browser ]
     repo: https://github.com/tyiu/nostash
     status: active
     priority: low
 
   - name: nostr-signing-device
     description: Hardware signing device for Nostr built on ESP32
-    platforms: [hardware]
+    platforms: [ hardware ]
     repo: https://github.com/lnbits/nostr-signing-device
     status: active
     priority: low
@@ -2107,7 +2218,7 @@ signers:
 
   - name: horse
     description: Hardware remote nostr event signer with webserial
-    platforms: [hardware]
+    platforms: [ hardware ]
     repo: https://github.com/fiatjaf/horse
     maintainer: fiatjaf
     status: active
@@ -2115,28 +2226,28 @@ signers:
 
   - name: Blockcore Wallet
     description: Multi-wallet browser extension with nostr NIP-07 support
-    platforms: [browser]
+    platforms: [ browser ]
     repo: https://github.com/block-core/blockcore-wallet
     status: active
     priority: low
 
   - name: Aka Profile
     description: Nostr signing extension for Chrome supporting multiple key pairs
-    platforms: [browser]
+    platforms: [ browser ]
     repo: https://github.com/neilck/aka-extension
     status: active
     priority: low
 
   - name: Nostore
     description: Nostr Signer Extension for iOS/macOS Safari
-    platforms: [browser]
+    platforms: [ browser ]
     repo: https://github.com/ursuscamp/nostore
     status: active
     priority: low
 
   - name: nos2x-fox
     description: Nostr signer extension for Firefox (NIP-07)
-    platforms: [browser]
+    platforms: [ browser ]
     repo: https://github.com/diegogurpegui/nos2x-fox
     status: active
     priority: low
@@ -2144,34 +2255,28 @@ signers:
 
   - name: nsecbunkerd
     description: nsecBunker daemon for remote key management
-    platforms: [self-hosted]
+    platforms: [ self-hosted ]
     repo: https://github.com/kind-0/nsecbunkerd
     status: active
     priority: medium
 
   - name: Nostrame
     description: Nostr Account Management Extension (derive accounts from mnemonic)
-    platforms: [browser]
+    platforms: [ browser ]
     repo: https://github.com/getnostrame/nostrame
-    status: active
-    priority: low
-
-  - name: Peridot
-    description: Nostr bunker for desktop (Linux, macOS, Windows, Android, web)
-    platforms: [linux, macos, windows, android, web]
     status: active
     priority: low
 
   - name: Keys Band
     description: Multiple Nostr key management with light/dark mode
-    platforms: [web]
+    platforms: [ web ]
     website: https://keys.band
     status: active
     priority: low
 
   - name: Keystache
     description: Desktop-native Nostr signing app with SSO-like key management
-    platforms: [desktop]
+    platforms: [ desktop ]
     repo: https://github.com/nodetec/keystache
     status: active
     priority: low
@@ -2179,7 +2284,7 @@ signers:
 
   - name: Keydex
     description: Backup and recovery tool using Shamir's Secret Sharing
-    platforms: [ios, android]
+    platforms: [ ios, android ]
     repo: https://github.com/mplorentz/keydex
     status: beta
     priority: low
@@ -2272,7 +2377,7 @@ relays:
 
   - name: nostr-relay-tray
     description: Desktop GUI relay for non-technical users
-    platforms: [windows, macos, linux]
+    platforms: [ windows, macos, linux ]
     repo: https://github.com/CodyTseng/nostr-relay-tray
     status: active
     priority: medium
@@ -2366,7 +2471,8 @@ relays:
     notes: Bridge between Fediverse and Nostr, by Soapbox team
 
   - name: Alienos
-    description: Plugin-based lightweight nostr stack (relay/blossom/NIP-05) for self-hosting with Tor support
+    description: Plugin-based lightweight nostr stack (relay/blossom/NIP-05) for
+      self-hosting with Tor support
     repo: https://github.com/dezh-tech/alienos
     status: active
     priority: medium
@@ -2392,13 +2498,14 @@ relays:
     priority: low
 
   - name: nostrcheck-server
-    description: All-in-one server with relay, file hosting, NIP-05, Lightning redirects, NWC, and WoT
+    description: All-in-one server with relay, file hosting, NIP-05, Lightning
+      redirects, NWC, and WoT
     repo: https://github.com/quentintaranpino/nostrcheck-server
     status: active
     priority: medium
 
   - name: Zapstore Server
-    description: Nostr relay and Blossom server for the Zapstore ecosystem
+    description: Nostr relay and Blossom server backing Zapstore
     repo: https://github.com/zapstore/server
     status: active
     priority: low
@@ -2416,7 +2523,8 @@ relays:
     priority: low
 
   - name: netstr
-    description: General purpose Nostr relay in C# backed by Postgres with high test coverage
+    description: General purpose Nostr relay in C# backed by Postgres with high test
+      coverage
     repo: https://github.com/bezysoftware/netstr
     status: active
     priority: low
@@ -2515,7 +2623,7 @@ relays:
     notes: By fiatjaf
 
   - name: nex
-    description: Powerful and flexible Nostr relay written in Elixir
+    description: Nostr relay implementation in Elixir
     repo: https://github.com/aaronrussell/nex
     status: active
     priority: low
@@ -2553,7 +2661,7 @@ relays:
 
   - name: Pyramid
     description: Nostr relay with invite hierarchy, built on Khatru
-    platforms: [self-hosted]
+    platforms: [ self-hosted ]
     repo: https://github.com/github-tijlxyz/khatru-pyramid
     status: active
     priority: low
@@ -2577,7 +2685,50 @@ relays:
     repo: https://github.com/theborakompanioni/nostr-spring-boot-starter
     status: active
     priority: low
-    notes: OpenSats funded, foundational infrastructure for JVM ecosystem
+    notes: OpenSats funded, foundational infrastructure for JVM languages
+  - name: Ephemerelay
+    description: In-memory relay that does not store data, by Soapbox team
+    repo: https://gitlab.com/soapbox-pub/ephemerelay
+    status: active
+    priority: medium
+    notes: Useful for testing and development
+  - name: zooid
+    description: Multi-tenant relay designed for communities, by Coracle team
+    repo: https://github.com/coracle-social/zooid
+    maintainer: staab
+    status: active
+    priority: medium
+  - name: multiplextr
+    description: Custom relay that saves bandwidth for clients with multiplexer support
+    repo: https://github.com/coracle-social/multiplextr
+    maintainer: staab
+    status: active
+    priority: medium
+  - name: groups_relay
+    description: NIP-29 group chat relay implementation in Rust
+    repo: https://github.com/verse-pbc/groups_relay
+    status: active
+    priority: low
+  - name: Astro Relay
+    description: Elixir-based relay built to be performant and distributed
+    repo: https://github.com/Nostrology/astro
+    status: active
+    priority: low
+  - name: n0str
+    description: Relay designed for simplicity without sacrificing capability
+    repo: https://github.com/tani/n0str
+    status: active
+    priority: low
+  - name: Nerostr
+    description: Expensive relay paid with Monero, written in Go
+    repo: https://codeberg.org/pluja/nerostr
+    status: active
+    priority: low
+  - name: gnost-relay
+    description: Go relay backed by PostgreSQL with permessage-deflate compression
+    repo: https://github.com/barkyq/gnost-relay
+    status: active
+    priority: low
 
 # =============================================================================
 # LIBRARIES & SDKs
@@ -2678,7 +2829,8 @@ libraries:
     priority: low
 
   - name: Granary
-    description: Social web translation library converting between Nostr, Bluesky, ActivityPub, and other formats
+    description: Social web translation library converting between Nostr, Bluesky,
+      ActivityPub, and other formats
     language: python
     repo: https://github.com/snarfed/granary
     maintainer: snarfed
@@ -2715,7 +2867,7 @@ libraries:
     maintainer: jb55
     status: active
     priority: high
-    notes: Core data layer for Damus ecosystem
+    notes: Core data layer for Damus and Notedeck
 
   - name: nostr-sqlite
     description: High-performance customizable SQLite store for Nostr events
@@ -2910,7 +3062,8 @@ libraries:
     priority: low
 
   - name: Quartz
-    description: Kotlin Multiplatform library extracting shared Nostr functionality from Amethyst
+    description: Kotlin Multiplatform library extracting shared Nostr functionality
+      from Amethyst
     language: kotlin
     repo: https://github.com/KotlinGeekDev/amethyst
     status: active
@@ -2950,7 +3103,8 @@ libraries:
     notes: OpenSats funded, used by Habla.news and others
 
   - name: Atomic Signature Swaps
-    description: Protocol for trustless Schnorr signature exchange using Nostr events and adaptor signatures
+    description: Protocol for trustless Schnorr signature exchange using Nostr
+      events and adaptor signatures
     language: typescript
     repo: https://github.com/vstabile/sig4sats-script
     status: beta
@@ -2963,7 +3117,8 @@ libraries:
     repo: https://github.com/NostrGameEngine/ngengine
     status: beta
     priority: low
-    notes: OpenSats funded, replaces centralized game systems with Nostr-native modules
+    notes: OpenSats funded, replaces centralized game systems with Nostr-native
+      modules
 
   - name: noble-ciphers
     description: JS cryptography library underlying NIP-44 encrypted direct messaging
@@ -2972,6 +3127,27 @@ libraries:
     status: active
     priority: low
     notes: OpenSats funded security audit
+  - name: Nuxstr
+    description: Starter template for building clients with Nuxt Vue and NDK
+    language: typescript
+    repo: https://github.com/sebastix/nuxstr
+    website: https://nuxstr.nostrver.se
+    status: active
+    priority: low
+
+  - name: dotnet-mls
+    description: .NET implementation of the MLS protocol for Marmot
+    repo: https://github.com/DavidGershony/dotnet-mls
+    status: beta
+    priority: low
+    notes: C# MLS implementation, enables .NET integration
+
+  - name: marmot-cs
+    description: C# implementation of the Marmot protocol
+    repo: https://github.com/DavidGershony/marmot-cs
+    status: beta
+    priority: low
+    notes: Marmot protocol port to .NET/C#
 
 # =============================================================================
 # WALLETS & LIGHTNING INTEGRATION
@@ -2980,7 +3156,7 @@ libraries:
 wallets:
   - name: Alby Hub
     description: Self-custodial Lightning node with NWC
-    platforms: [web, self-hosted]
+    platforms: [ web, self-hosted ]
     repo: https://github.com/getAlby/hub
     website: https://albyhub.com
     maintainer: getalby
@@ -2990,7 +3166,7 @@ wallets:
 
   - name: Alby Go
     description: Mobile app for Alby Hub
-    platforms: [ios, android]
+    platforms: [ ios, android ]
     repo: https://github.com/getAlby/go
     website: https://albygo.com
     maintainer: getalby
@@ -2999,7 +3175,7 @@ wallets:
 
   - name: Mutiny
     description: Self-custodial browser wallet with NWC
-    platforms: [web]
+    platforms: [ web ]
     repo: https://github.com/MutinyWallet/mutiny-web
     website: https://mutinywallet.com
     status: inactive
@@ -3008,14 +3184,14 @@ wallets:
 
   - name: Zeus
     description: Mobile Bitcoin/Lightning wallet
-    platforms: [ios, android]
+    platforms: [ ios, android ]
     repo: https://github.com/ZeusLN/zeus
     status: active
     priority: medium
 
   - name: Minibits
     description: Android Cashu wallet with Nostr integration
-    platforms: [android]
+    platforms: [ android ]
     repo: https://github.com/minibits-cash/minibits_wallet
     status: active
     priority: medium
@@ -3023,7 +3199,7 @@ wallets:
 
   - name: Npub.cash
     description: Cashu-based modular client for Nostr ecash
-    platforms: [web]
+    platforms: [ web ]
     repo: https://github.com/cashubtc/npubcash-server
     status: active
     priority: medium
@@ -3031,43 +3207,47 @@ wallets:
 
   - name: CDK
     description: Cashu Development Kit - Rust library for building wallets and mints
-    platforms: [cli]
+    platforms: [ cli ]
     repo: https://github.com/cashubtc/cdk
     website: https://cashudevkit.org
     status: active
     priority: medium
-    notes: Multi-database backends, FFI for mobile apps. Not Nostr-native; cover only Nostr-relevant changes
+    notes: Multi-database backends, FFI for mobile apps. Not Nostr-native; cover
+      only Nostr-relevant changes
 
   - name: Nutshell
     description: Reference Cashu wallet and mint implementation in Python
-    platforms: [cli]
+    platforms: [ cli ]
     repo: https://github.com/cashubtc/nutshell
     website: https://cashu.space
     status: active
     priority: medium
-    notes: Full protocol implementation, reference for NUTs. Not Nostr-native; cover only Nostr-relevant changes
+    notes: Full protocol implementation, reference for NUTs. Not Nostr-native; cover
+      only Nostr-relevant changes
 
   - name: Cashu.me
     description: Progressive web app Cashu wallet with NWC and Nostr mint discovery
-    platforms: [web]
+    platforms: [ web ]
     repo: https://github.com/cashubtc/cashu.me
     website: https://cashu.me
     status: active
     priority: medium
-    notes: Multi-currency (BTC/USD), primary web ecash wallet. Not Nostr-native; cover only Nostr-relevant changes
+    notes: Multi-currency (BTC/USD), primary web ecash wallet. Not Nostr-native;
+      cover only Nostr-relevant changes
 
   - name: eNuts
     description: Mobile Cashu wallet for Android and iOS
-    platforms: [ios, android]
+    platforms: [ ios, android ]
     repo: https://github.com/cashubtc/eNuts
     website: https://enuts.cash
     status: active
     priority: medium
-    notes: Multi-mint, multi-language support. Not Nostr-native; cover only Nostr-relevant changes
+    notes: Multi-mint, multi-language support. Not Nostr-native; cover only
+      Nostr-relevant changes
 
   - name: Nutstash
     description: Feature-rich web Cashu wallet with send-to-Nostr-key
-    platforms: [web]
+    platforms: [ web ]
     repo: https://github.com/gandlafbtc/nutstash-wallet
     website: https://wallet.nutstash.app
     status: active
@@ -3076,15 +3256,16 @@ wallets:
 
   - name: Bitcoin Connect
     description: Web components library enabling WebLN without extensions
-    platforms: [browser]
+    platforms: [ browser ]
     repo: https://github.com/getAlby/bitcoin-connect
     status: active
     priority: medium
-    notes: Framework agnostic, mobile/desktop support. Not Nostr-native; cover only Nostr-relevant changes
+    notes: Framework agnostic, mobile/desktop support. Not Nostr-native; cover only
+      Nostr-relevant changes
 
   - name: mcp-money
     description: MCP server giving AI agents Cashu wallets with zap support
-    platforms: [cli]
+    platforms: [ cli ]
     repo: https://github.com/pablof7z/mcp-money
     status: active
     priority: medium
@@ -3092,16 +3273,17 @@ wallets:
 
   - name: Geyser
     description: Bitcoin/Nostr-native crowdfunding platform
-    platforms: [web]
+    platforms: [ web ]
     repo: https://github.com/geyserfund/geyser-app
     website: https://geyser.fund
     status: active
     priority: medium
-    notes: NWC integration, $10K NWC grant program, $10M+ funded. Not primarily Nostr-native; cover only Nostr-relevant changes
+    notes: NWC integration, $10K NWC grant program, $10M+ funded. Not primarily
+      Nostr-native; cover only Nostr-relevant changes
 
   - name: Coinos
     description: Bitcoin web wallet supporting Lightning, Liquid, and on-chain
-    platforms: [web]
+    platforms: [ web ]
     repo: https://github.com/coinos/coinos-ui
     website: https://coinos.io
     status: active
@@ -3110,7 +3292,7 @@ wallets:
 
   - name: Wally
     description: Desktop native wallet with NWC support
-    platforms: [windows, macos, linux]
+    platforms: [ windows, macos, linux ]
     repo: https://github.com/ArcadeCity/wally
     status: active
     priority: low
@@ -3118,15 +3300,16 @@ wallets:
 
   - name: Nutoff
     description: Cashu wallet using ContextVM
-    platforms: [web]
+    platforms: [ web ]
     repo: https://github.com/gzuuus/nutoff-wallet
     status: active
     priority: low
     notes: SEC-05 project
 
   - name: Bold Bitcoin Wallet
-    description: MPC TSS Bitcoin wallet using Nostr for decentralized device pairing and signing
-    platforms: [android]
+    description: MPC TSS Bitcoin wallet using Nostr for decentralized device pairing
+      and signing
+    platforms: [ android ]
     repo: https://github.com/nicfab/BoldWallet
     status: active
     priority: medium
@@ -3134,28 +3317,28 @@ wallets:
 
   - name: Lightning.Pub
     description: Nostr daemon for Lightning nodes
-    platforms: [cli]
+    platforms: [ cli ]
     repo: https://github.com/shocknet/Lightning.Pub
     status: active
     priority: medium
 
   - name: LNBits
     description: Bitcoin Lightning accounting system with zappable LN addresses
-    platforms: [web]
+    platforms: [ web ]
     repo: https://github.com/lnbits/lnbits
     status: active
     priority: medium
 
   - name: Current
     description: Nostr client combined with Lightning wallet
-    platforms: [ios, android]
+    platforms: [ ios, android ]
     website: https://app.getcurrent.io
     status: active
     priority: low
 
   - name: nostr-wallet-connect
     description: Nostr Wallet Connect (NIP-47) app to connect apps to your node
-    platforms: [self-hosted]
+    platforms: [ self-hosted ]
     repo: https://github.com/getAlby/nostr-wallet-connect
     status: active
     priority: low
@@ -3163,11 +3346,30 @@ wallets:
 
   - name: mutiny-node
     description: Lightning SDK behind Mutiny Wallet
-    platforms: [web]
+    platforms: [ web ]
     repo: https://github.com/MutinyWallet/mutiny-node
     status: inactive
     priority: low
     notes: Mutiny Wallet shut down, but SDK remains
+  - name: shockwallet
+    description: Lightning wallet using Nostr and LNURL to connect to remote nodes
+    platforms:
+      - web
+      - ios
+      - android
+    repo: https://github.com/shocknet/wallet2
+    maintainer: shocknet
+    status: active
+    priority: medium
+
+  - name: Purser
+    description: Nostr-native payment daemon replacing Zaprite, uses Marmot/MDK for
+      encrypted merchant-customer messaging
+    language: rust
+    repo: https://github.com/EthnTuttle/purser
+    status: active
+    priority: medium
+    notes: Strike and Square payment providers, Marmot MLS for order communication
 
 # =============================================================================
 # OTHER NOTABLE PROJECTS
@@ -3176,7 +3378,7 @@ wallets:
 other:
   - name: Nostr.band
     description: Search engine and analytics
-    platforms: [web]
+    platforms: [ web ]
     repo: https://github.com/nostrband/nostr-band-app
     website: https://nostr.band
     status: active
@@ -3192,7 +3394,7 @@ other:
 
   - name: Nostr.watch
     description: Relay monitoring and status
-    platforms: [web]
+    platforms: [ web ]
     repo: https://github.com/sandwichfarm/nostr-watch
     website: https://nostr.watch
     status: active
@@ -3201,7 +3403,7 @@ other:
 
   - name: njump
     description: Static gateway for viewing Nostr content
-    platforms: [web]
+    platforms: [ web ]
     repo: https://github.com/fiatjaf/njump
     website: https://njump.me
     status: active
@@ -3210,7 +3412,7 @@ other:
 
   - name: Npub.pro
     description: Website builder that turns Nostr content into personal websites
-    platforms: [web]
+    platforms: [ web ]
     repo: https://github.com/nostrband/nostrsite
     website: https://npub.pro
     status: active
@@ -3219,7 +3421,7 @@ other:
 
   - name: Nstart
     description: Onboarding wizard for new users
-    platforms: [web]
+    platforms: [ web ]
     repo: https://github.com/dtonon/nstart
     website: https://nstart.me
     status: active
@@ -3228,7 +3430,7 @@ other:
 
   - name: Shipyard
     description: Schedule and manage posts via DVM
-    platforms: [web, cli]
+    platforms: [ web, cli ]
     repo: https://github.com/dextryz/shipyard
     website: https://shipyard.pub
     maintainer: pablof7z
@@ -3238,7 +3440,7 @@ other:
 
   - name: Nostr Profile Manager
     description: Backup and manage profile metadata
-    platforms: [web]
+    platforms: [ web ]
     repo: https://github.com/DanConwayDev/nostr-profile-manager
     website: https://metadata.nostr.com
     maintainer: DanConwayDev
@@ -3247,7 +3449,7 @@ other:
 
   - name: Vertex
     description: Web of Trust infrastructure for spam filtering and content personalization
-    platforms: [web]
+    platforms: [ web ]
     repo: https://github.com/vertex-lab/vertex
     website: https://vertexlab.io
     status: active
@@ -3256,7 +3458,7 @@ other:
 
   - name: Chorus
     description: Community organizing app with Cashu wallet for activists
-    platforms: [ios, android, web]
+    platforms: [ ios, android, web ]
     repo: https://github.com/andotherstuff/chorus
     maintainer: andotherstuff
     status: active
@@ -3273,11 +3475,12 @@ other:
 
   - name: Nostr Epoxy
     description: Paid WebSocket proxy for relays and Cashu mints
-    platforms: [web]
+    platforms: [ web ]
     repo: https://github.com/Origami74/nostr-epoxy-reverse-proxy
     status: active
     priority: medium
-    notes: OpenSats grant recipient, bridges Tor/I2P/Hyper networks with Cashu payments
+    notes: OpenSats grant recipient, bridges Tor/I2P/Hyper networks with Cashu
+      payments
 
   - name: HAMSTR
     description: Off-grid Nostr communication via ham radio with Cashu/NWC
@@ -3288,7 +3491,7 @@ other:
 
   - name: Routstr
     description: Decentralized AI marketplace with Nostr discovery and Cashu payments
-    platforms: [web]
+    platforms: [ web ]
     repo: https://github.com/Routstr/otrta-client
     website: https://routstr.com
     status: active
@@ -3305,7 +3508,7 @@ other:
 
   - name: Nsite
     description: Static website hosting on Nostr using Blossom and relays
-    platforms: [web]
+    platforms: [ web ]
     repo: https://github.com/lez/nsite
     website: https://nsite.run
     status: active
@@ -3313,8 +3516,9 @@ other:
     notes: SEC project, decentralized static site hosting, kind 34128
 
   - name: Hashtree
-    description: Content-addressed blob storage with Merkle roots published on Nostr and WebRTC mesh distribution
-    platforms: [cli, web]
+    description: Content-addressed blob storage with Merkle roots published on Nostr
+      and WebRTC mesh distribution
+    platforms: [ cli, web ]
     repo: https://github.com/mmalmi/hashtree
     maintainer: mmalmi
     status: active
@@ -3323,7 +3527,7 @@ other:
 
   - name: Blossom Drive
     description: Cloud storage using Blossom servers
-    platforms: [web]
+    platforms: [ web ]
     repo: https://github.com/hzrd149/blossom-drive
     status: active
     priority: medium
@@ -3331,7 +3535,7 @@ other:
 
   - name: Nostrocket
     description: Decentralized organization and project coordination platform
-    platforms: [web]
+    platforms: [ web ]
     repo: https://github.com/nostrocket/oxygen
     status: active
     priority: medium
@@ -3339,17 +3543,18 @@ other:
 
   - name: Angor
     description: Decentralized P2P crowdfunding with time-locked Bitcoin and Nostr
-    platforms: [web]
+    platforms: [ web ]
     repo: https://github.com/block-core/angor
     website: https://angor.io
     maintainer: block-core
     status: active
     priority: medium
-    notes: Milestone-based funding with investor recovery, no backend. Not primarily Nostr-native; cover only Nostr-relevant changes
+    notes: Milestone-based funding with investor recovery, no backend. Not primarily
+      Nostr-native; cover only Nostr-relevant changes
 
   - name: Bitcredit E-Bills
     description: E-bill application with a Nostr transport layer and dedicated relay
-    platforms: [web, wasm]
+    platforms: [ web, wasm ]
     repo: https://github.com/BitcreditProtocol/Bitcredit-Core
     website: https://www.bit.cr/
     status: active
@@ -3358,7 +3563,7 @@ other:
 
   - name: Wikifreedia
     description: Wikipedia-style wiki embracing viewpoint diversity via Nostr
-    platforms: [web]
+    platforms: [ web ]
     repo: https://github.com/pablof7z/wikifreedia
     status: active
     priority: low
@@ -3366,7 +3571,7 @@ other:
 
   - name: Nostr Safebox
     description: Secure encrypted storage for personal information
-    platforms: [web]
+    platforms: [ web ]
     repo: https://github.com/Nostr-Safebox/safebox
     status: active
     priority: low
@@ -3374,7 +3579,7 @@ other:
 
   - name: Novia
     description: Video archive service using Nostr metadata
-    platforms: [web]
+    platforms: [ web ]
     repo: https://github.com/teamnovia/novia
     status: active
     priority: low
@@ -3382,7 +3587,7 @@ other:
 
   - name: Totem
     description: Identity and reputation system on Nostr
-    platforms: [web]
+    platforms: [ web ]
     repo: https://github.com/totemize/totem
     status: active
     priority: medium
@@ -3390,7 +3595,7 @@ other:
 
   - name: castr.me
     description: Converts npubs into podcast feeds
-    platforms: [web]
+    platforms: [ web ]
     repo: https://github.com/dergigi/castr.me
     website: https://castr.me
     status: active
@@ -3406,7 +3611,7 @@ other:
 
   - name: ants
     description: Nostr search engine
-    platforms: [web]
+    platforms: [ web ]
     repo: https://github.com/dergigi/ants
     status: active
     priority: medium
@@ -3414,7 +3619,7 @@ other:
 
   - name: Beacon
     description: AI and Bitcoin integration in chat apps using ContextVM
-    platforms: [web]
+    platforms: [ web ]
     repo: https://github.com/beacon21m/beacon
     status: active
     priority: low
@@ -3422,7 +3627,7 @@ other:
 
   - name: Spotstr
     description: Maps on Nostr with encrypted location sharing
-    platforms: [web]
+    platforms: [ web ]
     repo: https://github.com/k0sti/spotstr
     status: active
     priority: medium
@@ -3430,7 +3635,7 @@ other:
 
   - name: Nostr Bucket
     description: Browser extension for event caching
-    platforms: [browser]
+    platforms: [ browser ]
     repo: https://github.com/hzrd149/nostr-bucket
     status: active
     priority: low
@@ -3438,7 +3643,7 @@ other:
 
   - name: Mostr
     description: Bridge between Nostr and the Fediverse (Mastodon, ActivityPub)
-    platforms: [cli]
+    platforms: [ cli ]
     repo: https://gitlab.com/soapbox-pub/mostr
     status: active
     priority: high
@@ -3446,7 +3651,7 @@ other:
 
   - name: Nostr over LoRa
     description: Gateway relaying off-grid Meshtastic messages to Nostr
-    platforms: [cli]
+    platforms: [ cli ]
     repo: https://github.com/geoffwhittington/meshtastic-bridge
     status: active
     priority: medium
@@ -3454,7 +3659,7 @@ other:
 
   - name: atomstr
     description: RSS/Atom gateway to Nostr
-    platforms: [cli]
+    platforms: [ cli ]
     repo: https://github.com/psic4t/atomstr
     website: https://atomstr.data.haus
     status: active
@@ -3462,14 +3667,14 @@ other:
 
   - name: nostrss
     description: Flexible application to broadcast RSS feeds on Nostr
-    platforms: [cli]
+    platforms: [ cli ]
     repo: https://github.com/Asone/nostrss
     status: active
     priority: low
 
   - name: rsslay
     description: Bridge that puts RSS feeds into Nostr
-    platforms: [cli]
+    platforms: [ cli ]
     repo: https://github.com/piraces/rsslay
     website: https://rsslay.nostr.moe
     status: active
@@ -3477,14 +3682,14 @@ other:
 
   - name: NostrHub
     description: Hub for NIPs, forums, app directory, DVM registry
-    platforms: [web]
+    platforms: [ web ]
     website: https://nostrhub.io
     status: active
     priority: low
 
   - name: Nostr Gatekeeper
     description: Nostr Connect bunker for secure signing
-    platforms: [web]
+    platforms: [ web ]
     repo: https://github.com/hzrd149/nostr-gatekeeper
     status: active
     priority: low
@@ -3492,7 +3697,7 @@ other:
 
   - name: Nostr Secrets Vault (nicfab)
     description: E2E encrypted password manager synced via Nostr relays
-    platforms: [android]
+    platforms: [ android ]
     repo: https://github.com/nicfab/nostr-secrets
     status: active
     priority: medium
@@ -3500,7 +3705,7 @@ other:
 
   - name: Nostr Secrets Vault (tzongocu)
     description: Zero-knowledge password manager with Nostr sync
-    platforms: [web, android]
+    platforms: [ web, android ]
     repo: https://github.com/tzongocu/nostr-secrets
     status: active
     priority: medium
@@ -3508,7 +3713,7 @@ other:
 
   - name: Zap Cooking
     description: Decentralized recipe platform with Lightning zaps
-    platforms: [web]
+    platforms: [ web ]
     repo: https://github.com/zapcooking/frontend
     status: active
     priority: medium
@@ -3516,7 +3721,7 @@ other:
 
   - name: Holy Fit
     description: Step tracker anchoring fitness data to Nostr (Kind 30078)
-    platforms: [android]
+    platforms: [ android ]
     repo: https://git.vanderwarker.family/wellbeing/holyfit-android
     status: active
     priority: low
@@ -3524,7 +3729,7 @@ other:
 
   - name: featurestr-bountiestr
     description: Feature request and bounty system on Nostr
-    platforms: [web]
+    platforms: [ web ]
     repo: https://github.com/sebdeveloper6952/featurestr-bountiestr
     status: active
     priority: low
@@ -3532,7 +3737,7 @@ other:
 
   - name: Blob Box
     description: Simple Blossom server for UmbrelOS
-    platforms: [self-hosted]
+    platforms: [ self-hosted ]
     repo: https://github.com/hzrd149/umbrel-blob-box
     status: active
     priority: low
@@ -3540,7 +3745,7 @@ other:
 
   - name: hashpool
     description: Mining pools with eHash and Cashu
-    platforms: [cli]
+    platforms: [ cli ]
     repo: https://github.com/vnprc/hashpool
     status: beta
     priority: low
@@ -3548,7 +3753,7 @@ other:
 
   - name: Innpub
     description: Location-sensitive voice meetup app using MoQ
-    platforms: [web]
+    platforms: [ web ]
     repo: https://github.com/futurepaul/innpub
     status: beta
     priority: low
@@ -3556,7 +3761,7 @@ other:
 
   - name: NEET
     description: P2P calls via Nostr using Iroh
-    platforms: [desktop]
+    platforms: [ desktop ]
     repo: https://github.com/justinmoon/neet-native
     status: beta
     priority: low
@@ -3564,7 +3769,7 @@ other:
 
   - name: Paygress
     description: VM provisioning and VPN purchasing over Nostr
-    platforms: [web]
+    platforms: [ web ]
     repo: https://github.com/DhananjayPurohit/paygress
     status: beta
     priority: low
@@ -3572,7 +3777,7 @@ other:
 
   - name: Local++
     description: Mobile app for local LLM with dynamic model switching
-    platforms: [android]
+    platforms: [ android ]
     repo: https://github.com/Routstr/local-plus-plus
     status: beta
     priority: low
@@ -3580,7 +3785,7 @@ other:
 
   - name: Mapnolia
     description: Geospatial data server announcing map tile chunks over Nostr relays
-    platforms: [cli]
+    platforms: [ cli ]
     repo: https://github.com/zeSchlausKwab/mapnolia
     status: active
     priority: medium
@@ -3588,7 +3793,7 @@ other:
 
   - name: Morganite
     description: Local Blossom cache application for Android
-    platforms: [android]
+    platforms: [ android ]
     repo: https://github.com/greenart7c3/Morganite
     maintainer: greenart7c3
     status: active
@@ -3597,7 +3802,7 @@ other:
 
   - name: Aerith
     description: Blossom image manager with labels, bulk operations, and local cache
-    platforms: [web]
+    platforms: [ web ]
     repo: https://github.com/hardran3/Aerith
     status: active
     priority: medium
@@ -3605,11 +3810,12 @@ other:
 
   - name: Prism
     description: Android share target for publishing media and links to Nostr
-    platforms: [android]
+    platforms: [ android ]
     repo: https://github.com/hardran3/Prism
     status: active
     priority: medium
-    notes: Scheduled posting, OpenGraph previews, Blossom integration, NIP-55 signer support
+    notes: Scheduled posting, OpenGraph previews, Blossom integration, NIP-55 signer
+      support
 
   - name: Ridestr
     description: Decentralized rideshare coordination on Nostr
@@ -3620,43 +3826,24 @@ other:
 
   - name: DTAN
     description: Decentralized torrents directory on Nostr
-    platforms: [web]
+    platforms: [ web ]
     website: https://dtan.xyz
     status: active
     priority: low
 
   - name: Yondar
     description: Social map for adding and discovering places by friends
-    platforms: [web]
+    platforms: [ web ]
     website: https://go.yondar.me
     status: active
     priority: low
 
   - name: arcade
     description: Nostr and AI chat app
-    platforms: [web]
+    platforms: [ web ]
     repo: https://github.com/OpenAgentsInc/arcade
     status: active
     priority: low
-
-  - name: Primal Studio
-    description: Content creation tools for Nostr creators
-    platforms: [web]
-    status: active
-    priority: low
-
-  - name: Nstart.me
-    description: Easy onboarding wizard for new Nostr users
-    platforms: [web]
-    status: active
-    priority: low
-
-  - name: Nostr Design
-    description: Design resource for Nostr product designers and developers
-    platforms: [web]
-    status: active
-    priority: low
-    notes: OpenSats funded, design modules and best practices
 
   - name: Persian NIPs
     description: Persian/Farsi translations of key NIPs with user guides and developer docs
@@ -3667,20 +3854,14 @@ other:
 
   - name: Feeder
     description: Open-source Android feed reader with Nostr article support
-    platforms: [android]
+    platforms: [ android ]
     repo: https://github.com/spacecowboy/Feeder
-    status: active
-    priority: low
-
-  - name: Obsidian Nostr Writer
-    description: Obsidian plugin for publishing articles to Nostr
-    platforms: [desktop]
     status: active
     priority: low
 
   - name: npub.world
     description: Nostr Web of Trust visualization and exploration tool
-    platforms: [web]
+    platforms: [ web ]
     repo: https://github.com/vertex-lab/npub.world
     maintainer: vertex-lab
     status: active
@@ -3689,11 +3870,55 @@ other:
 
   - name: DOOM
     description: Open-source Nostr-integrated DOOM game
-    platforms: [desktop]
+    platforms: [ desktop ]
     repo: https://github.com/VectorPrivacy/DOOM
     status: active
     priority: medium
     notes: Gaming on Nostr by Vector team
+  - name: Heya.fund
+    description: Crowdfunding for causes and goals using Lightning
+    platforms:
+      - web
+    repo: https://github.com/verbiricha/goalz
+    website: https://heya.fund
+    maintainer: verbiricha
+    status: active
+    priority: medium
+  - name: Stackerstan
+    description: Decentralized organization on Bitcoin and Nostr, Go replicated
+      state machine
+    platforms:
+      - cli
+    repo: https://github.com/stackerstan/mindmachine
+    website: https://stackerstan.org
+    status: active
+    priority: low
+  - name: Zofie Archive
+    description: Library using Nostr and torrent protocols to preserve knowledge
+    platforms:
+      - web
+    repo: https://codeberg.org/zofie-archive/archive
+    status: active
+    priority: low
+
+  - name: Bikel
+    description: Decentralized cycling tracker that turns rides into public
+      infrastructure data
+    platforms: [ android, web ]
+    repo: https://github.com/Mnpezz/bikel
+    status: active
+    priority: medium
+    notes: Cashu nutzaps, OSM integration, native foreground service for de-Googled
+      phones
+
+  - name: mesh-llm
+    description: Distributed LLM inference across machines using Nostr for identity
+      and config
+    platforms: [ desktop ]
+    repo: https://github.com/michaelneale/mesh-llm
+    status: active
+    priority: low
+    notes: Nostr keypair identity, distributed config protocol, llama.cpp based
 
 # =============================================================================
 # RELATED PROTOCOLS
@@ -3721,9 +3946,7 @@ protocols:
 
   - name: Marmot Protocol
     description: MLS-based end-to-end encrypted messaging for Nostr (NIP-104)
-    repo: https://github.com/marmot-protocol/marmot
     repos:
-      spec: https://github.com/marmot-protocol/marmot
       mdk: https://github.com/marmot-protocol/mdk
       typescript: https://github.com/marmot-protocol/marmot-ts
       whitenoise-backend: https://github.com/marmot-protocol/whitenoise-rs
@@ -3733,27 +3956,7 @@ protocols:
     status: beta
     priority: high
     notes: MLS (Messaging Layer Security) for Nostr, enables secure group messaging
-
-  - name: dotnet-mls
-    description: .NET implementation of the MLS protocol for Marmot
-    repo: https://github.com/DavidGershony/dotnet-mls
-    status: beta
-    priority: low
-    notes: C# MLS implementation, enables .NET ecosystem integration
-
-  - name: marmot-cs
-    description: C# implementation of the Marmot protocol
-    repo: https://github.com/DavidGershony/marmot-cs
-    status: beta
-    priority: low
-    notes: Marmot protocol port to .NET/C#
-
-  - name: OpenChat
-    description: Chat application built on dotnet-mls and marmot-cs
-    repo: https://github.com/DavidGershony/openChat
-    status: beta
-    priority: low
-    notes: .NET chat client using Marmot protocol over Nostr
+    repo: https://github.com/marmot-protocol/marmot
 
   - name: MDK PWA Reference
     description: Progressive web app reference implementation for Marmot Development Kit
@@ -3762,71 +3965,9 @@ protocols:
     priority: medium
     notes: Reference PWA for building MLS-encrypted apps with MDK
 
-  - name: NIP-60/NIP-61
-    description: Nostr ecash wallet protocol - store Cashu tokens on Nostr
-    repo: https://github.com/nostr-protocol/nips
-    status: active
-    priority: high
-    notes: Enables Nutzaps (publicly verifiable ecash microtransactions)
-
-  - name: NIP-90
-    description: Data Vending Machines - on-demand computation over Nostr
-    repo: https://github.com/nostr-protocol/nips
-    status: active
-    priority: high
-    notes: SEC-00 project, enables AI/ML services, content processing, and more
-
   - name: HyperNote
     description: Protocol for hypermedia on Nostr - stores HTML-like content as events
     repo: https://github.com/futurepaul/hypernote
     status: beta
     priority: medium
     notes: SEC-04/05 project, enables rich interactivity without protocol changes
-
-  - name: Flora
-    description: Chrome extension for decentralized screen recording and sharing on Nostr
-    platforms: [web]
-    repo: https://github.com/shawnyeager/flora-extension
-    status: beta
-    priority: low
-    notes: Encrypted video sharing via NIP-17, AES-256-GCM, Blossom storage
-
-  - name: Purser
-    description: Nostr-native payment daemon replacing Zaprite, uses Marmot/MDK for encrypted merchant-customer messaging
-    language: rust
-    repo: https://github.com/EthnTuttle/purser
-    status: active
-    priority: medium
-    notes: Strike and Square payment providers, Marmot MLS for order communication
-
-  - name: Bikel
-    description: Decentralized cycling tracker that turns rides into public infrastructure data
-    platforms: [android, web]
-    repo: https://github.com/Mnpezz/bikel
-    status: active
-    priority: medium
-    notes: Cashu nutzaps, OSM integration, native foreground service for de-Googled phones
-
-  - name: Sprout
-    description: Hive mind communication platform by Block with Nostr relay and NIP support
-    platforms: [desktop]
-    repo: https://github.com/block/sprout
-    status: pre-alpha
-    priority: medium
-    notes: NIP-01, NIP-02, NIP-23, NIP-33 support, built-in Nostr relay
-
-  - name: Titan
-    description: Native nsite:// browser for the Nostr web with Bitcoin-based human-readable name registration
-    platforms: [desktop]
-    repo: https://github.com/btcjt/titan
-    status: active
-    priority: medium
-    notes: Resolves nsite:// URLs via Nostr relays, renders from Blossom servers, no DNS or certificates
-
-  - name: mesh-llm
-    description: Distributed LLM inference across machines using Nostr for identity and config
-    platforms: [desktop]
-    repo: https://github.com/michaelneale/mesh-llm
-    status: active
-    priority: low
-    notes: Nostr keypair identity, distributed config protocol, llama.cpp based
