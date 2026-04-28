@@ -44,3 +44,22 @@ podcast_intro: "Nostr를 구축하는 개발자들과의 대화."
 
 # Footer
 footer_description: "Nostr 프로토콜을 위한 기술 리소스. NIP 제안, 클라이언트 업데이트, 릴레이 개발, 주목할 만한 코드 변경 사항을 다루는 주간 뉴스레터와 팟캐스트."
+
+# Projects index page
+menu_projects: "프로젝트"
+projects_total_count:
+  one: "{{.Count}}개 프로젝트 추적 중."
+  other: "{{.Count}}개 프로젝트 추적 중."
+projects_back_to_top: "맨 위로"
+projects_cat_social: "소셜 클라이언트"
+projects_cat_longform: "장문 클라이언트"
+projects_cat_messaging: "메시징"
+projects_cat_media: "미디어"
+projects_cat_marketplaces: "마켓플레이스"
+projects_cat_wallets: "지갑"
+projects_cat_signers: "서명자"
+projects_cat_relays: "릴레이"
+projects_cat_devtools: "개발자 도구"
+projects_cat_libraries: "라이브러리"
+projects_cat_protocols: "프로토콜"
+projects_cat_other: "기타"

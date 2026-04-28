@@ -44,3 +44,22 @@ podcast_intro: "Conversaciones con los desarrolladores que construyen Nostr."
 
 # Footer
 footer_description: "Recurso técnico para el protocolo Nostr. Boletín semanal y podcast que cubren propuestas de NIP, actualizaciones de clientes, desarrollos de relays y cambios de código notables."
+
+# Projects index page
+menu_projects: "Proyectos"
+projects_total_count:
+  one: "{{.Count}} proyecto rastreado."
+  other: "{{.Count}} proyectos rastreados."
+projects_back_to_top: "Volver arriba"
+projects_cat_social: "Clientes sociales"
+projects_cat_longform: "Clientes de formato largo"
+projects_cat_messaging: "Mensajería"
+projects_cat_media: "Medios"
+projects_cat_marketplaces: "Mercados"
+projects_cat_wallets: "Carteras"
+projects_cat_signers: "Firmadores"
+projects_cat_relays: "Relays"
+projects_cat_devtools: "Herramientas para desarrolladores"
+projects_cat_libraries: "Bibliotecas"
+projects_cat_protocols: "Protocolos"
+projects_cat_other: "Otros"

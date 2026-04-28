@@ -1,0 +1,129 @@
+{{ define "main" }}
+{{ $data := .Site.Data.projects }}
+
+{{/* Display order and labels for categories. Order is intentional: clients, infra, libraries, protocols, other. */}}
+{{ $sections := slice
+  (dict "key" "social_clients"     "label" (i18n "projects_cat_social"))
+  (dict "key" "longform_clients"   "label" (i18n "projects_cat_longform"))
+  (dict "key" "messaging_clients"  "label" (i18n "projects_cat_messaging"))
+  (dict "key" "media_clients"      "label" (i18n "projects_cat_media"))
+  (dict "key" "marketplaces"       "label" (i18n "projects_cat_marketplaces"))
+  (dict "key" "wallets"            "label" (i18n "projects_cat_wallets"))
+  (dict "key" "signers"            "label" (i18n "projects_cat_signers"))
+  (dict "key" "relays"             "label" (i18n "projects_cat_relays"))
+  (dict "key" "devtools"           "label" (i18n "projects_cat_devtools"))
+  (dict "key" "libraries"          "label" (i18n "projects_cat_libraries"))
+  (dict "key" "protocols"          "label" (i18n "projects_cat_protocols"))
+  (dict "key" "other"              "label" (i18n "projects_cat_other"))
+}}
+
+{{/* Total count across all sections */}}
+{{ $total := 0 }}
+{{ range $sections }}
+  {{ $items := index $data .key }}
+  {{ if $items }}{{ $total = add $total (len $items) }}{{ end }}
+{{ end }}
+
+<article class="post projects-page">
+  <header class="post-header">
+    <h1 class="post-title" data-pagefind-weight="8">{{ .Title }}</h1>
+  </header>
+
+  <div class="post-content">
+    {{ .Content }}
+
+    {{ if gt $total 0 }}
+    <p class="projects-summary"><em>{{ i18n "projects_total_count" $total }}</em></p>
+
+    <nav class="projects-nav" aria-label="Project categories">
+      {{ range $i, $s := $sections }}
+        {{ $items := index $data .key }}
+        {{ if $items }}
+          {{ if gt $i 0 }} · {{ end }}
+          <a href="#{{ .key }}">{{ .label }}</a>
+        {{ end }}
+      {{ end }}
+    </nav>
+
+    {{ range $sections }}
+      {{ $key := .key }}
+      {{ $label := .label }}
+      {{ $items := index $data $key }}
+      {{ if $items }}
+        {{ $sorted := sort $items "name" "asc" }}
+        <section class="projects-section" id="{{ $key }}">
+          <h2 class="projects-section-title">{{ $label }} <span class="projects-section-count">({{ len $items }})</span></h2>
+          <ul class="projects-list">
+            {{ range $sorted }}
+              {{ $name := .name }}
+              {{ $desc := .description }}
+              {{ $repo := .repo }}
+              {{ $repos := .repos }}
+              {{ $site := .website }}
+              {{ $platforms := .platforms }}
+              {{ $maintainer := .maintainer }}
+              {{ $status := .status }}
+              {{/* Pick primary link: website > repo > first repo by sorted key */}}
+              {{ $primary := "" }}
+              {{ if $site }}{{ $primary = $site }}
+              {{ else if $repo }}{{ $primary = $repo }}
+              {{ else if $repos }}
+                {{ $keys := slice }}
+                {{ range $k, $u := $repos }}{{ $keys = $keys | append $k }}{{ end }}
+                {{ $keys = sort $keys }}
+                {{ if gt (len $keys) 0 }}
+                  {{ $primary = index $repos (index $keys 0) }}
+                {{ end }}
+              {{ end }}
+              {{/* Determine if any sub-links should render */}}
+              {{ $hasSubLinks := or (and $site $repo) $repos }}
+              <li class="project{{ if eq $status "inactive" }} project--inactive{{ end }}{{ if eq $status "beta" }} project--beta{{ end }}">
+                <span class="project-name">
+                  {{ if $primary }}
+                    <a href="{{ $primary }}" rel="noopener nofollow" target="_blank">{{ $name }}</a>
+                  {{ else }}
+                    {{ $name }}
+                  {{ end }}
+                </span>
+                {{ with $status }}
+                  {{ if or (eq . "beta") (eq . "inactive") }}
+                    <span class="project-status project-status--{{ . }}">{{ . }}</span>
+                  {{ end }}
+                {{ end }}
+                {{ with $desc }}<span class="project-desc">: {{ . }}</span>{{ end }}
+                {{ if $hasSubLinks }}
+                  <span class="project-links">
+                    {{/* When site is primary AND repo also exists, show repo as "code" */}}
+                    {{ if and $site $repo }}
+                      <a href="{{ $repo }}" rel="noopener nofollow" target="_blank">code</a>
+                    {{ end }}
+                    {{/* For multi-repo entries, render each repo with deterministic order */}}
+                    {{ with $repos }}
+                      {{ $keys := slice }}
+                      {{ range $k, $u := . }}{{ $keys = $keys | append $k }}{{ end }}
+                      {{ $keys = sort $keys }}
+                      {{ range $keys }}
+                        {{ $url := index $repos . }}
+                        <a href="{{ $url }}" rel="noopener nofollow" target="_blank">{{ . }}</a>
+                      {{ end }}
+                    {{ end }}
+                  </span>
+                {{ end }}
+                {{ with $platforms }}
+                  <span class="project-platforms">{{ range . }}<span class="project-platform">{{ . }}</span>{{ end }}</span>
+                {{ end }}
+                {{ with $maintainer }}<span class="project-maintainer">by {{ . }}</span>{{ end }}
+              </li>
+            {{ end }}
+          </ul>
+        </section>
+      {{ end }}
+    {{ end }}
+
+    <p class="projects-back-to-top"><a href="#top">{{ i18n "projects_back_to_top" }}</a></p>
+    {{ else }}
+    <p>Project data is currently unavailable.</p>
+    {{ end }}
+  </div>
+</article>
+{{ end }}
