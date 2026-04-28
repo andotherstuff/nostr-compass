@@ -1422,6 +1422,13 @@ messaging_clients:
     status: active
     priority: low
 
+  - name: Nostrord
+    description: A NIP-29 client for decentralized group chat on Nostr.
+    platforms: [ web, android, linux ]
+    repo: https://github.com/nostrord/nostrord
+    status: active
+    priority: low
+
   - name: Bitchat
     description: Censorship-resistant messaging with Nostr and Cashu, offline via Bluetooth
     platforms: [ ios, android ]
