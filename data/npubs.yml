@@ -385,6 +385,64 @@ Branta: npub16ndruwfg7dsdhnp3w8zvqrg0r2rn3wucnttgrg5acm2lhqpkepkqncr9qr
 Vertex Lab relay: npub1kpt95rv4q3mcz8e4lamwtxq7men6jprf49l7asfac9lnv2gda0lqdknhmz
 
 # =============================================================================
+# Newsletter #20 additions (2026-04-29)
+# =============================================================================
+
+# [project] Routstr - Nostr-native inference routing
+Routstr: npub130mznv74rxs032peqym6g3wqavh472623mt3z5w73xq9r6qqdufs7ql29s
+
+# Routstrd uses the Routstr project npub
+Routstrd: npub130mznv74rxs032peqym6g3wqavh472623mt3z5w73xq9r6qqdufs7ql29s
+
+# HAVEN already defined above (line ~162) - same dev as Wisp (barrydeen/utxo)
+
+# Nostrord project account (already in #17 section above)
+# Nostrord: npub1ktxukd7ny5e3ghqqcn6r6hs7rh4hceaua6n77cl4ym9ye2ufzces7rzc2h
+
+# [dev:DanConwayDev] GitWorkshop / ngit
+GitWorkshop:
+  npub: npub15qydau2hjma6ngxkl2cyar74wzyjshvl65za5k5rl69264ar2exs5cyejr
+  mention_only: true
+ngit:
+  npub: npub15qydau2hjma6ngxkl2cyar74wzyjshvl65za5k5rl69264ar2exs5cyejr
+  mention_only: true
+DanConwayDev: npub15qydau2hjma6ngxkl2cyar74wzyjshvl65za5k5rl69264ar2exs5cyejr
+
+# [dev:DocNR] Clave - iOS NIP-46 remote signer
+Clave:
+  npub: npub1uadpshqpn5ysf82lev8zngkvn07szmkq7mvf9lyc7ml7qxq6fqxsmrqt2s
+  mention_only: true
+
+# [project] CruxCoach - Kilter Board climbing app
+CruxCoach: npub1uadpshqpn5ysf82lev8zngkvn07szmkq7mvf9lyc7ml7qxq6fqxsmrqt2s
+
+# [dev:chad.curtis] Surveil + Treasures
+Surveil:
+  npub: npub1scvyzz02ayma34hesz62pdrd5nhsmxp74hjq8msmfs9khh3r3drsnw68d8
+  mention_only: true
+Treasures:
+  npub: npub1scvyzz02ayma34hesz62pdrd5nhsmxp74hjq8msmfs9khh3r3drsnw68d8
+  mention_only: true
+
+# [dev:mleku] smesh
+smesh:
+  npub: npub1fjqqy4a93z5zsjwsfxqhc2764kvykfdyttvldkkkdera8dr78vhsmmleku
+  mention_only: true
+
+# [project] Fundstr - Cashu creator funding
+Fundstr: npub1mxmqzhgvla9wrgc8qlptmuylqzal2c50pc744zcm9kunhekv6g3s63ytu0
+
+# [project] OpenSats - Nostr grants organization
+OpenSats: npub10pensatlcfwktnvjjw2dtem38n6rvw8g6fv73h84cuacxn4c28eqyfn34f
+
+# Quartz (vitorpamplona): same npub as vitorpamplona individual
+
+# Quartz library uses vitorpamplona's personal npub
+Quartz:
+  npub: npub1gcxzte5zlkncx26j68ez60fzkvtkm9e0vrwdcvsjakxf9mu9qewqlfnj5z
+  mention_only: true
+
+# =============================================================================
 # Podcast Guests
 # =============================================================================
 Tim Bouma: npub1q6mcr8tlr3l4gus3sfnw6772s7zae6hqncmw5wj27ejud5wcxf7q0nx7d5
@@ -430,10 +488,7 @@ Botburrow: npub1whtn0s68y3cs98zysa4nxrfzss5g5snhndv35tk5m2sudsr7ltms48r3ec
 Plektos:
   npub: npub18ams6ewn5aj2n3wt2qawzglx9mr4nzksxhvrdc4gzrecw7n5tvjqctp424
   mention_only: true
-# [dev:barrydeen / utxo]
-Nostr Archives:
-  npub: npub1utx00neqgqln72j22kej3ux7803c2k986henvvha4thuwfkper4s7r50e8
-  mention_only: true
+# [dev:barrydeen / utxo the webmaster] Wisp already defined above (line ~290)
 # DVMDash: no verified npub found for dtdannen
 # [dev:justin moon]
 Shadow:
