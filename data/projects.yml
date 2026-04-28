@@ -2944,7 +2944,7 @@ devtools:
     priority: low
 
   - name: Rebased
-    description: rebased — unify dev cryptography with your npub..
+    description: Unify developer cryptography with your Nostr npub identity
     repo: https://codeberg.org/Zsub/rebased
     status: active
     priority: low
