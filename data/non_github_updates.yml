@@ -5,7 +5,7 @@
 # Update this file weekly before newsletter generation.
 # Format: list entries under each platform with date, project, type, and description.
 #
-# Last updated: 2026-04-15
+# Last updated: 2026-04-29
 
 codeberg:
   # ngit - Git collaboration over Nostr (NIP-34)
@@ -25,6 +25,24 @@ sourcehut:
   # Repo: https://sr.ht/~gheartsfield/nostr-rs-relay/
   - project: nostr-rs-relay
     repo: https://sr.ht/~gheartsfield/nostr-rs-relay/
+    updates: []
+
+gitlab:
+  # Surveil - Magic: The Gathering deck builder on Nostr
+  # Repo: https://gitlab.com/chad.curtis/surveil
+  - project: surveil
+    repo: https://gitlab.com/chad.curtis/surveil
+    updates:
+      - date: 2026-04-29
+        type: release
+        title: "v0.1.6"
+        description: "Mobile UI polish: tighter layout, life counter improvements, refined mobile bottom nav, overhauled About page, relay pill on deck hero banner, safe-area insets for toast viewport"
+        url: "https://gitlab.com/chad.curtis/surveil/-/tags/v0.1.6"
+
+  # Treasures - Decentralized geocaching on Nostr
+  # Repo: https://gitlab.com/chad.curtis/treasures
+  - project: treasures
+    repo: https://gitlab.com/chad.curtis/treasures
     updates: []
 
 gitea:

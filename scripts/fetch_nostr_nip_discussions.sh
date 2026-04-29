@@ -140,7 +140,12 @@ fetch_custom_nips() {
     for relay in "${NOSTR_RELAYS[@]}"; do
         echo "  Querying $relay..." >&2
         nak req -k 30817 --since "$SINCE_TIMESTAMP" --limit 50 "$relay" 2>/dev/null || true
-    done | jq -s 'unique_by(.id)' > "$LONGFORM_FILE"
+    done | jq -s 'unique_by(.id) | map(select(
+        .kind == 30817 and
+        (.tags | any(.[0] == "client" and .[1] == "nostrhub.io")) and
+        (.tags | any(.[0] == "title")) and
+        (.tags | any(.[0] == "d"))
+    ))' > "$LONGFORM_FILE"
 
     local count=$(jq 'length' "$LONGFORM_FILE")
     echo "  Found $count custom NIP documents" >&2

@@ -1448,12 +1448,12 @@ messaging_clients:
     notes: Uses Marmot protocol for MLS group encryption on Nostr relays
 
   - name: Wisp
-    description: Minimal messaging app using Marmot protocol for MLS-encrypted chat
-    platforms: [ web ]
+    description: Minimal native Android Nostr client focused on relay routing, privacy, and performance
+    platforms: [ android ]
     repo: https://github.com/barrydeen/wisp
-    status: beta
-    priority: low
-    notes: Uses MDK for MLS over Nostr relays
+    status: active
+    priority: medium
+    notes: Kotlin/Jetpack Compose; NIP-65 outbox/inbox routing; NIP-17 DMs; NIP-44 encryption; NIP-29 groups; not an Amethyst fork
 
   - name: Marmota
     description: End-to-end encrypted group messaging client using the Marmot protocol
@@ -1855,12 +1855,49 @@ marketplaces:
     notes: Flutter/Dart, NWC integration, multi-node support
 
   - name: SatShoot
-    description: Freelancing platform on Nostr with Bitcoin payments
+    description: Freelancing marketplace on Nostr with Bitcoin and Cashu payments
     platforms: [ web ]
     repo: https://github.com/Pleb5/satshoot
+    website: https://satshoot.com
     status: active
     priority: medium
-    notes: SEC-02 project
+    notes: SEC-02 project; custom kinds 32765-32768 for freelance protocol; NIP-85 WoT anti-spam
+
+  - name: Fundstr
+    description: Creator funding platform on Nostr using Cashu ecash for recurring pledges
+    platforms: [ web, android, ios ]
+    repo: https://github.com/ritty65/Fundstr
+    status: beta
+    priority: medium
+    notes: Patreon-style on Nostr; kind 10019 nutzap profile; NIP-04 DMs; NIP-65 relay list
+
+  - name: Treasures
+    description: Decentralized geocaching platform on Nostr with Lightning zaps and QR-code proof of finds
+    platforms: [ web ]
+    repo: https://gitlab.com/chad.curtis/treasures
+    website: https://treasures.to
+    maintainer: chad.curtis
+    status: active
+    priority: medium
+    notes: GitLab-hosted; kind 37516 geocache events; NIP-57 zaps; QR cryptographic find verification
+
+  - name: Meiso
+    description: Minimalist encrypted task manager synced via Nostr relays
+    platforms: [ android ]
+    repo: https://github.com/higedamc/meiso
+    maintainer: higedamc
+    status: active
+    priority: medium
+    notes: NIP-44 encrypted tasks; kind 30078; Amber signer; Blossom attachments; Japanese dev
+
+  - name: Clave
+    description: iOS NIP-46 remote signer using APNs for background signing without the app open
+    platforms: [ ios ]
+    repo: https://github.com/DocNR/clave
+    maintainer: DocNR
+    status: beta
+    priority: high
+    notes: iOS Amber equivalent; APNs-based NIP-46; NIP-98 auth for token registration; TestFlight beta
 
   - name: Kartapio
     description: Restaurant menu and ordering with Bitcoin payments
@@ -3401,11 +3438,12 @@ relays:
     notes: Docker-ready, production-grade
 
   - name: grain
-    description: Go relay with MongoDB, highly configurable
-    repo: https://github.com/0ceanslim/grain
-    maintainer: 0ceanslim
+    description: Go relay with fine-grained access control, built-in Go client library, and web dashboard
+    repo: https://github.com/0ceanSlim/grain
+    maintainer: 0ceanSlim
     status: active
     priority: medium
+    notes: NIP-11; whitelist/blacklist; per-kind rate limiting; nostrdb LMDB storage; web UI
 
   - name: Khatru
     description: Go framework for building custom relays
@@ -4918,6 +4956,16 @@ wallets:
     priority: low
 
 other:
+  - name: Surveil
+    description: Magic The Gathering deck builder on Nostr (kind 37381)
+    platforms: [ web, android ]
+    repo: https://gitlab.com/chad.curtis/surveil
+    website: https://gitlab.com/chad.curtis/surveil
+    maintainer: chad.curtis
+    status: active
+    priority: low
+    notes: GitLab-hosted; Zapstore Android distribution; deck events kind 37381 indexed by Ditto
+
   - name: Nostr.band
     description: Search engine and analytics
     platforms: [ web ]
@@ -5014,6 +5062,77 @@ other:
     status: active
     priority: medium
     notes: Bitcoin-powered WiFi network
+
+  - name: CruxCoach
+    description: Android climbing app for Kilter Board with Nostr identity and Blossom-backed encrypted cloud backup
+    platforms: [ android ]
+    repo: https://codeberg.org/CruxCoach/CruxCoach
+    maintainer: CruxCoach
+    status: active
+    priority: medium
+    notes: Codeberg-hosted; NIP-44/46/65/Blossom backup; Quartz library; Zapstore distribution
+
+  - name: smesh
+    description: Self-hosted Nostr stack written in Moxie — relay, web client, and browser signer extension
+    repo: https://git.smesh.lol/smesh/smesh
+    website: https://smesh.lol
+    maintainer: mleku
+    status: active
+    priority: medium
+    notes: Custom git forge (not GitHub); monitor via git tags or dev npub npub1fjqqy4a93z5zsjwsfxqhc2764kvykfdyttvldkkkdera8dr78vhsmmleku; NIP-01/07/09/44/65/70/Blossom/Negentropy/WoT/MLS
+
+  - name: Routstrd
+    description: Local daemon client for Routstr decentralized AI inference network — routes LLM requests via Nostr to competing nodes
+    repo: https://github.com/routstr/routstrd
+    website: https://routstr.com
+    maintainer: routstr
+    status: active
+    priority: medium
+    notes: kind 38421 node discovery; NIP-60 Cashu wallet; OpenAI-compatible local endpoint; bun install -g routstrd
+
+  - name: Nostrord
+    description: NIP-29 group chat client built with Kotlin Multiplatform and WebAssembly
+    platforms: [ web, android, ios ]
+    repo: https://github.com/nostrord/nostrord
+    website: https://nostrord.com
+    maintainer: nostrord
+    status: active
+    priority: medium
+    notes: OpenSats-funded; KMP/WASM; NIP-29/42/44/46/57/65/98
+
+  - name: FIPS
+    description: Free Internetworking Peering System — decentralized mesh networking protocol using Nostr keypairs for node identity and NIP-59 for peer discovery
+    repo: https://github.com/jmcorgan/fips
+    maintainer: jmcorgan
+    status: active
+    priority: medium
+    notes: Previously covered in Newsletter #6 and #10; correct tracked repo is jmcorgan/fips; Rust; nodes addressed by npub; NIP-59 gift-wrap for peer discovery; Nostr relay advertisements
+
+  - name: null--nostr
+    description: Japanese Nostr client for Android and web with MLS group messaging, NIP-50 search, and Rust crypto engine
+    platforms: [ android, web ]
+    repo: https://github.com/tami1A84/null--nostr
+    website: https://www.nullnull.app
+    maintainer: tami1A84
+    status: active
+    priority: medium
+    notes: Japanese ecosystem; 17 releases; NIP-44/55/70/MLS kind-443; Amber; NIP-50 advanced search; Zapstore
+
+  - name: deploy-nsite-to-pages
+    description: GitHub Action to mirror a Nostr nsite (NIP-5A static site) to GitHub Pages as a fallback
+    repo: https://github.com/Origami74/deploy-nsite-to-pages
+    maintainer: Origami74
+    status: active
+    priority: low
+    notes: Uses nsyte CLI; supports root (kind 15128) and named (kind 35128) nsites
+
+  - name: Nod City
+    description: Decentralized review platform for Bitcoin services where reviews are signed Nostr events portable across clients
+    website: https://nod.city
+    maintainer: notgui
+    status: active
+    priority: medium
+    notes: No public GitHub repo; reviews as signed Nostr events; NIP-57 zaps for reviewers; covers exchanges, wallets, privacy tools, Nostr clients
 
   - name: Nostr Epoxy
     description: Paid WebSocket proxy for relays and Cashu mints
