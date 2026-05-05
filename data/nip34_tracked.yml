@@ -86,6 +86,62 @@ tracked_repos:
     in_projects_yml: false
     notes: NIP-17 DM-based password manager (nsec/nos2x/Amber signing)
 
+  - name: joinmarket-ng
+    d_tag: joinmarket-ng
+    pubkey: 7459d333af66066f066cf87796e690db3a96ff4534f9edf4eab74df2f207289b
+    relays: [wss://relay.ngit.dev]
+    in_projects_yml: false
+    notes: JoinMarket (Bitcoin CoinJoin) modern alternative implementation; high patch traffic on relay.ngit.dev
+
+  - name: schemata
+    d_tag: schemata
+    pubkey: 17538dc2a62769d09443f18c37cbe358fab5bbf981173542aa7c5ff171ed77c4
+    relays: [wss://relay.ngit.dev]
+    in_projects_yml: false
+    notes: Nostr protocol specification (formal/typed schemas); active issues from elsat
+
+  - name: gitworkshop.dev
+    d_tag: gitworkshop
+    pubkey: a008def15796fba9a0d6fab04e8fd57089285d9fd505da5a83fe8aad57a3564d
+    relays: [wss://relay.ngit.dev]
+    in_projects_yml: true
+    notes: Nostr web client for code collaboration (NIP-34); DanConwayDev pubkey owns active traffic
+
+  - name: ngit-indexer
+    d_tag: ngit-indexer
+    pubkey: a008def15796fba9a0d6fab04e8fd57089285d9fd505da5a83fe8aad57a3564d
+    relays: [wss://relay.ngit.dev]
+    in_projects_yml: false
+    notes: Nostr relay that indexes Git repositories across the network
+
+  - name: ngit (canonical)
+    d_tag: ngit
+    pubkey: a34b99f22c790c4e36b2b3c2c35a36db06226e41c692fc82b8b56ac1c540c5bd
+    relays: [wss://relay.ngit.dev]
+    in_projects_yml: true
+    notes: ngit cli and git plugin for code collaboration over nostr (DanConwayDev)
+
+  - name: flotilla-budabit
+    d_tag: flotilla-budabit
+    pubkey: d04ecf33a303a59852fdb681ed8b412201ba85d8d2199aec73cb62681d62aa90
+    relays: [wss://relay.ngit.dev]
+    in_projects_yml: false
+    notes: Flotilla fork with extras for budabit community
+
+  - name: nostr-git-ui
+    d_tag: nostr-git-ui
+    pubkey: d04ecf33a303a59852fdb681ed8b412201ba85d8d2199aec73cb62681d62aa90
+    relays: [wss://relay.ngit.dev]
+    in_projects_yml: false
+    notes: Svelte UI components for the @nostr-git package
+
+  - name: micro-vpn-ansible
+    d_tag: micro-vpn-ansible
+    pubkey: df0a985eaae5ea758e78cb1a1970f82323b36e4504a236c818ae8588aab8d5c9
+    relays: [wss://relay.ngit.dev, wss://gitnostr.com]
+    in_projects_yml: false
+    notes: Ansible playbooks for micro VPN deployment; canonical announcement at gitworkshop.dev
+
 # Noise filtering is handled in scripts/fetch_nip34_repos.sh:
 #   - NOISE_PUBKEYS array: known noise pubkeys (hardcoded, with comments)
 #   - filter_noise() function: d_tag patterns, clone URL patterns
