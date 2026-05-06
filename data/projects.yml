@@ -1609,10 +1609,10 @@ messaging_clients:
     status: active
     priority: low
 
-  - name: FMD (Find my device)
-    description: 'Find your device and control it remotely. Works over Marmot (Nostr), SMS, instant messengers, or FMD Server''s web interface. A secure open source alternative to Google''s Find Hub. Fork of FMD Android.'
-    platforms: [ web ]
-    repo: https://gitlab.com/Kalle/fmd-android/-/tree/nostr-marmot?ref_type=heads
+  - name: FMDtr (Find my device (Nostr))
+    description: 'Find your device and control it remotely. Works over Marmot (Nostr), SMS, instant messengers, or FMD Server''s web interface. A secure open source alternative to Google''s Find Hub.'
+    platforms: [ web, android ]
+    repo: https://gitlab.com/Kalle/fmdtr-android
     status: active
     priority: low
 
