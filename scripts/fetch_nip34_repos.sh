@@ -267,44 +267,57 @@ fetch_tracked_repos() {
         return
     fi
 
-    # Extract tracked d_tags from YAML (simple grep, no YAML parser needed)
-    local d_tags
-    d_tags=$(grep '^[[:space:]]*d_tag:' "$TRACKED_FILE" | sed 's/.*d_tag:[[:space:]]*//' | tr -d '"' | tr -d "'" | xargs)
+    # Extract tracked (pubkey, d_tag) pairs from YAML.
+    # Strategy: walk the file and pair each `name:` block's d_tag with the
+    # nearest following `pubkey:` line. This honors the canonical pubkey from
+    # nip34_tracked.yml so we don't get fooled by orchestrator forks publishing
+    # later 30617 events under the same d_tag.
+    local pairs
+    pairs=$(awk '
+        /^[[:space:]]*-[[:space:]]*name:/ { name=$0; sub(/.*name:[[:space:]]*/, "", name); gsub(/["\047]/, "", name); d=""; pk=""; next }
+        /^[[:space:]]*d_tag:/ { v=$0; sub(/.*d_tag:[[:space:]]*/, "", v); gsub(/["\047]/, "", v); d=v; next }
+        /^[[:space:]]*pubkey:/ { v=$0; sub(/.*pubkey:[[:space:]]*/, "", v); gsub(/["\047]/, "", v); pk=v;
+            if (d != "" && pk != "") { print pk "|" d "|" name; d=""; pk=""; name="" }
+            next }
+    ' "$TRACKED_FILE")
 
-    if [ -z "$d_tags" ]; then
+    if [ -z "$pairs" ]; then
         echo "  No tracked repos found in $TRACKED_FILE" >&2
         return
     fi
 
-    echo "  Tracked repos: $d_tags" >&2
+    local pair_count=$(echo "$pairs" | wc -l)
+    echo "  Tracked repos: $pair_count entries" >&2
     echo "" >&2
 
     local tracked_array="[]"
 
-    for d_tag in $d_tags; do
-        echo "  Fetching repo: $d_tag" >&2
+    while IFS='|' read -r yml_pubkey d_tag yml_name <&3; do
+        [ -z "$d_tag" ] && continue
+        echo "  Fetching repo: $d_tag (canonical pubkey: ${yml_pubkey:0:12}...)" >&2
 
         local repo_data="null"
         local patch_count=0
         local issue_count=0
 
-        # Fetch the repo announcement (kind 30617) - get latest version
-        # nak accepts multiple relay URLs as positional args and queries them in parallel
+        # Fetch repo announcements (kind 30617) and select by canonical pubkey,
+        # NOT by latest-wins. This prevents orchestrator-fork events with the
+        # same d_tag from hijacking the tracked entry.
         local repo_event
         repo_event=$(
-            timeout "$NAK_TIMEOUT" nak req -k "$KIND_REPO" -t d="$d_tag" --limit 5 \
-                $RELAY_ARGS 2>/dev/null \
-            | jq -s 'sort_by(-.created_at) | .[0] // empty' 2>/dev/null || true
+            timeout "$NAK_TIMEOUT" nak req -k "$KIND_REPO" -t d="$d_tag" --limit 10 \
+                -a "$yml_pubkey" $RELAY_ARGS 2>/dev/null \
+            | jq -s --arg pk "$yml_pubkey" '[.[] | select(.pubkey == $pk)] | sort_by(-.created_at) | .[0] // empty' 2>/dev/null || true
         )
 
         if [ -n "$repo_event" ] && [ "$repo_event" != "null" ]; then
             repo_data=$(echo "$repo_event" | extract_repo_data)
             echo "    Found repo announcement ($(echo "$repo_data" | jq -r '.name'))" >&2
 
-            # Get the "a" tag reference for this repo to find patches/issues
-            local repo_pubkey
-            repo_pubkey=$(echo "$repo_event" | jq -r '.pubkey')
-            local a_tag="$KIND_REPO:$repo_pubkey:$d_tag"
+            # Build the canonical a-tag from yml pubkey + d_tag (NOT from the
+            # event's pubkey, which is the same here but defends against
+            # future hijack attempts).
+            local a_tag="$KIND_REPO:$yml_pubkey:$d_tag"
 
             # Fetch patches (kind 1617) referencing this repo
             local patches
@@ -376,7 +389,7 @@ fetch_tracked_repos() {
         fi
 
         echo "" >&2
-    done
+    done 3< <(echo "$pairs")
 
     echo "$tracked_array" > "$TRACKED_RESULTS"
     local total

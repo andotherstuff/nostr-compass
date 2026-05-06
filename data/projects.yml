@@ -3589,6 +3589,15 @@ relays:
     priority: high
     notes: Bridge between Fediverse and Nostr, by Soapbox team
 
+  - name: Kubo
+    description: Child-safe Nostr video platform with Web of Trust feed curation, per-child profiles, time limits, and view-only mode
+    repo: https://github.com/JeroenOnNostr/kubo
+    website: https://kubo.watch
+    maintainer: JeroenOnNostr
+    status: active
+    priority: medium
+    notes: Soft fork of Ditto rebranded for kids; TEPP trust system; NIP-66 relay discovery; NIP-72 communities; kind 34236 vine play tracking; per-child Nostr keypairs; Android wrapper
+
   - name: Alienos
     description: Plugin-based lightweight nostr stack (relay/blossom/NIP-05) for
       self-hosting with Tor support
@@ -4142,6 +4151,15 @@ libraries:
     repo: https://github.com/vnuge/noscrypt
     status: active
     priority: medium
+
+  - name: libschnorr256k1
+    description: Kotlin Multiplatform Schnorr/secp256k1 library for Nostr signing
+    language: kotlin
+    repo: https://github.com/vitorpamplona/libschnorr256k1
+    maintainer: vitorpamplona
+    status: active
+    priority: medium
+    notes: Replaces Amethyst custom secp256k1 C implementation
 
   - name: nostr-hooks
     description: React hooks for building Nostr clients
@@ -5089,6 +5107,15 @@ other:
     status: active
     priority: medium
     notes: kind 38421 node discovery; NIP-60 Cashu wallet; OpenAI-compatible local endpoint; bun install -g routstrd
+
+  - name: routstrd-auth
+    description: Dockerized Routstrd for teams with NIP-98 HTTP auth and granular npub RBAC
+    repo: https://github.com/Routstr/routstrd-auth
+    website: https://routstr.com
+    maintainer: routstr
+    status: active
+    priority: medium
+    notes: NIP-98 auth; admin/user/bootstrap roles; PATCH /npubs role updates; Cloudron deployment; multi-user team-scale variant of Routstrd
 
   - name: Nostrord
     description: NIP-29 group chat client built with Kotlin Multiplatform and WebAssembly
