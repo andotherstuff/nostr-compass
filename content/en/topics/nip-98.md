@@ -41,7 +41,7 @@ The optional `payload` tag contains a SHA-256 hash of the request body, which pr
 
 ## Use Cases
 
-Blossom servers use NIP-98 to authenticate file uploads and deletions, tying stored media to a specific Nostr identity. File hosting services use it to enforce upload quotas per pubkey. Any HTTP API that needs to identify a Nostr user without maintaining its own account system can accept NIP-98 headers as proof of identity.
+Blossom servers use NIP-98 to authenticate file uploads and deletions, tying stored media to a specific Nostr identity. Routstr uses it for per-request HTTP API access control with npub-level RBAC — admins grant roles to pubkeys and the relay enforces them on every signed request. Sprout replaced its entire Bearer token auth system with NIP-98 for git transport and REST relay access. Clave uses it to authenticate proxy pairing calls between the iOS signer and its relay proxy. Alby Hub uses NIP-98-derived authentication for its admin API. Nostr.build uses it for upload authorization.
 
 ---
 
@@ -50,3 +50,4 @@ Blossom servers use NIP-98 to authenticate file uploads and deletions, tying sto
 
 **Mentioned in:**
 - [Newsletter #15](/en/newsletters/2026-03-25-newsletter/)
+- [Newsletter #22: NIP-98 Deep Dive](/en/newsletters/2026-05-14-newsletter/#nip-deep-dive-nip-98-http-auth)
