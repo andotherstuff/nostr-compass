@@ -44,7 +44,7 @@ That makes migration and forking possible, but not automatic. The same group id 
 
 ## Implementations
 
-- [Flotilla](https://gitea.coracle.social/coracle/flotilla) is hodlbod's primary NIP-29 client; [1.7.3](https://gitea.coracle.social/coracle/flotilla/src/tag/1.7.3) and [1.7.4](https://gitea.coracle.social/coracle/flotilla/src/tag/1.7.4) shipped kind-9 wrapping, polls, [NIP-46](/en/topics/nip-46/) login via the Aegis URL scheme, native share support for space invites, room mentions, mobile clipboard image paste, drafts, and video in calls.
+- [Flotilla](https://gitea.coracle.social/coracle/flotilla) is hodlbod's primary NIP-29 client; [1.7.3](https://gitea.coracle.social/coracle/flotilla/src/tag/1.7.3) and [1.7.4](https://gitea.coracle.social/coracle/flotilla/src/tag/1.7.4) shipped kind-9 wrapping, polls, [NIP-46](/en/topics/nip-46/) login via the Aegis URL scheme, native share support for space invites, room mentions, mobile clipboard image paste, and drafts. [1.8.0](https://gitea.coracle.social/coracle/flotilla/src/tag/1.8.0) added video in calls, email rendering, and improved space search.
 - [Wisp](https://github.com/barrydeen/wisp) added NIP-29 group configuration for flags, invites, roles, and AUTH prompts in [PR #471](https://github.com/barrydeen/wisp/pull/471) and hardened AUTH sequencing before group `9021`, `9007`, and `9009` events in [PR #478](https://github.com/barrydeen/wisp/pull/478).
 
 ---
@@ -69,6 +69,7 @@ That makes migration and forking possible, but not automatic. The same group id 
 - [Newsletter #19: Flotilla 1.7.3/1.7.4](/en/newsletters/2026-04-22-newsletter/#flotilla-173-and-174-add-kind-9-wrapping-for-richer-nip-29-rooms)
 - [Newsletter #19: Wisp NIP-29 config](/en/newsletters/2026-04-22-newsletter/#wisp-v0180-beta-adds-normie-mode-for-you-feed-and-nip-29-group-config)
 - [Newsletter #19: NIP Updates (subgroups, role permissions)](/en/newsletters/2026-04-22-newsletter/#nip-updates)
+- [Newsletter #22: Flotilla 1.8.0](/en/newsletters/2026-05-14-newsletter/#flotilla-180-ships-video-calls-email-rendering-and-room-mentions)
 
 **See also:**
 - [NIP-11: Relay Information Document](/en/topics/nip-11/)

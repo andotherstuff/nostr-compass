@@ -26,6 +26,20 @@
 # =============================================================================
 Nostr Compass: npub1wav4fae3gyfy3xj298kxj2mj8phavz7vavps34przq02j7w902qq902923
 
+# Added for Newsletter #21 publication
+LaWallet NWC: npub1ek4262k6nv3l9axh403w2e66pzl2pqhhnjrhgv2wpzx2akak285scxv4pd
+Mostro Core: npub1m0str0d7z2ww8rdh20t2n9lx520xjwhaq24p68umqp06wwrwtsnqen40un
+Routstr Core: npub130mznv74rxs032peqym6g3wqavh472623mt3z5w73xq9r6qqdufs7ql29s
+Kubo: npub1kdstrkmhv0yx8pdqcf9ed8l26752gqprx68twg7qp5nsd7qtegnsr3nsze
+whitenoise: npub1whtn0s68y3cs98zysa4nxrfzss5g5snhndv35tk5m2sudsr7ltms48r3ec
+GitWorkshop.dev: npub15qydau2hjma6ngxkl2cyar74wzyjshvl65za5k5rl69264ar2exs5cyejr
+gnostr: npub15d9enu3v0yxyud4jk0pvxk3kmvrzymjpc6f0eq4ck44vr32qck7smrxq6k
+BitMacro Signer: npub1at83n2trk5kxcyag400crtgps7n0mwcjtfezcappntu083k7fqrqrga4ty
+Ditto: npub10qdp2fc9ta6vraczxrcs8prqnv69fru2k6s2dj48gqjcylulmtjsg9arpj
+Corny Chat: npub1c0rnyyhmdnvg6xkvrrmgf8rxp3r28jtjhad8vmze8rgxf87aed7qlltlvg
+HiveTalk: npub1z0lcg9p2v5nzg5fycxq0k56ze6snp42clmrafzqpn5w6u74v5x9q708ldk
+nostrnests: npub1us9uc0sjjg0vyvh7vefgu2a96hx5up5gujl6pqays65hlk4de6hsnwq4g0
+
 # =============================================================================
 # Projects
 # =============================================================================
@@ -410,7 +424,7 @@ DanConwayDev: npub15qydau2hjma6ngxkl2cyar74wzyjshvl65za5k5rl69264ar2exs5cyejr
 
 # [dev:DocNR] Clave - iOS NIP-46 remote signer
 Clave:
-  npub: npub1uadpshqpn5ysf82lev8zngkvn07szmkq7mvf9lyc7ml7qxq6fqxsmrqt2s
+  npub: npub1claveqd4fwqj5rsssmg3f5sa97qc8sh8rq5x607em9s8hth3t54qyc539g
   mention_only: true
 
 # [project] CruxCoach - Kilter Board climbing app

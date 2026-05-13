@@ -5742,3 +5742,11 @@ protocols:
     status: beta
     priority: medium
     notes: SEC-04/05 project, enables rich interactivity without protocol changes
+
+  - name: Tamagostrich
+    description: Decentralized virtual pet game on Nostr - pet state stored via NIP-78, sats rewards via NIP-47
+    repo: https://github.com/Negr087/tamagostrich
+    maintainer: Negr087
+    status: active
+    priority: medium
+    notes: Built for IDENTITY Hackathon 2026; uses NIP-78 kind:30078 for cross-device pet state sync, NIP-47 for automatic sats payouts at level milestones
