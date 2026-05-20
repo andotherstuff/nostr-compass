@@ -54,6 +54,7 @@ MDK landed [PR #261](https://github.com/marmot-protocol/mdk/pull/261) to compute
 - [Newsletter #19: Amethyst MIP compliance](/en/newsletters/2026-04-22-newsletter/#amethyst-ships-marmot-mip-compliance-nip-72-communities-and-live-stream-zap-goals)
 - [Newsletter #19: MDK interop work](/en/newsletters/2026-04-22-newsletter/#mdk-adds-mixed-version-invite-support-and-selfupdate-wire-format-convergence)
 - [Newsletter #19: whitenoise-rs session refactor](/en/newsletters/2026-04-22-newsletter/#whitenoise-rs-refactors-to-session-scoped-account-views)
+- [Newsletter #23: White Noise](/en/newsletters/2026-05-21-newsletter/#white-noise-markdown-deep-links-and-audio-metadata)
 
 **See also:**
 - [MLS (Message Layer Security)](/en/topics/mls/)

@@ -574,6 +574,14 @@ Nostr Calendar by Formstr: npub1qu7dsd44275lms4x9snnwvnnmgx926nsppmr7lcw9dlj36n4
 Formstr suite: npub1qu7dsd44275lms4x9snnwvnnmgx926nsppmr7lcw9dlj36n4fltqgs7p98
 Nostrability issues: npub1g5qtwz2nh9q0mnw555kv787kh6lysds95522gzptre3qpvz9p20s83m80d
 White Noise app: npub1whtn0s68y3cs98zysa4nxrfzss5g5snhndv35tk5m2sudsr7ltms48r3ec
+Marmot / White Noise: npub1whtn0s68y3cs98zysa4nxrfzss5g5snhndv35tk5m2sudsr7ltms48r3ec
+Calendar by Formstr: npub1qu7dsd44275lms4x9snnwvnnmgx926nsppmr7lcw9dlj36n4fltqgs7p98
+github.com/formstr-hq/nostr-calendar: npub1qu7dsd44275lms4x9snnwvnnmgx926nsppmr7lcw9dlj36n4fltqgs7p98
 Keep Android:
   npub: npub1h3fzzzeq60acjvnyvw34rpn5clkaueteffmkt3ln4ygekg9lcm0qhw96sj
+  mention_only: true
+
+# Added for Newsletter #23 publication
+Hostr:
+  npub: npub1cp3vl3azq9v20mju0hz4dtut8pyup9z55fxrhxt48y92md7jmvcs4wlakk
   mention_only: true

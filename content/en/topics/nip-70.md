@@ -57,6 +57,7 @@ That is why follow-up work matters. [PR #2251](https://github.com/nostr-protocol
 **Mentioned in:**
 - [Newsletter #13: NIP Updates](/en/newsletters/2026-03-11-newsletter/#nip-updates)
 - [Newsletter #13: NIP Deep Dive](/en/newsletters/2026-03-11-newsletter/#nip-deep-dive-nip-70-protected-events)
+- [Newsletter #23: NIP Updates](/en/newsletters/2026-05-21-newsletter/#nip-updates)
 
 **See also:**
 - [NIP-42: Client Authentication](/en/topics/nip-42/)

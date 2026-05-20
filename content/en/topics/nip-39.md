@@ -56,6 +56,7 @@ As of the current spec, identity claims live in dedicated kind 10011 events inst
 - [Newsletter #9: NIP Updates](/en/newsletters/2026-02-11-newsletter/#nip-updates)
 - [Newsletter #12: Amethyst](/en/newsletters/2026-03-04-newsletter/#amethyst-nip-39-nip-c0-nip-66)
 - [Newsletter #13: NIP Updates](/en/newsletters/2026-03-11-newsletter/#nip-updates)
+- [Newsletter #23: NIP Deep Dive](/en/newsletters/2026-05-21-newsletter/#nip-deep-dive-nip-39-external-identities-in-profiles)
 
 **See also:**
 - [NIP-05: DNS-Based Verification](/en/topics/nip-05/)
