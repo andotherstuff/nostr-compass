@@ -57,12 +57,16 @@ if [[ -n "${HUGO_BASE_URL:-}" ]]; then
   hugo \
     --gc \
     --minify \
+    --buildFuture \
+    --buildDrafts \
     --ignoreVendorPaths "hugo_modules" \
     --baseURL "$HUGO_BASE_URL"
 else
   hugo \
     --gc \
     --minify \
+    --buildFuture \
+    --buildDrafts \
     --ignoreVendorPaths "hugo_modules"
 fi
 
