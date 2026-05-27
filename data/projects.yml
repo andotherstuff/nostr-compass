@@ -1478,6 +1478,23 @@ messaging_clients:
     repo: https://github.com/psic4t/nospeak
     status: active
     priority: medium
+
+  - name: Cordn
+    description: Coordinator-assisted MLS messenger built on ContextVM
+    platforms: [ web ]
+    repo: https://github.com/Cordn-msg/cordn
+    website: https://cordn.net
+    status: alpha
+    priority: medium
+    notes: Per-group coordinator orders MLS commits; trades operator metadata exposure for ordering and recovery simplicity; built on ts-mls
+
+  - name: deepmarks
+    description: Social bookmark client for NIP-B0 (kind 39701) with curator-monetized tier system
+    platforms: [ web, browser-extension, ios, android ]
+    repo: https://github.com/ostermayer/deepmarks-public
+    status: alpha
+    priority: medium
+    notes: Three-box architecture (curator, indexer, viewer); NIP-07, NIP-46, NIP-57, NIP-44, NIP-98, NIP-65, Blossom BUD-01/04
     notes: GPL-3.0 licensed, Blossom integration
 
   - name: Nostr Mail Client
@@ -1609,10 +1626,10 @@ messaging_clients:
     status: active
     priority: low
 
-  - name: FMD (Find my device)
-    description: 'Find your device and control it remotely. Works over Marmot (Nostr), SMS, instant messengers, or FMD Server''s web interface. A secure open source alternative to Google''s Find Hub. Fork of FMD Android.'
-    platforms: [ web ]
-    repo: https://gitlab.com/Kalle/fmd-android/-/tree/nostr-marmot?ref_type=heads
+  - name: FMDtr (Find my device, Nostr)
+    description: 'Find your device and control it remotely. Works over Marmot (Nostr), SMS, instant messengers, or FMD Server''s web interface. A secure open source alternative to Google''s Find Hub.'
+    platforms: [ web, android ]
+    repo: https://gitlab.com/Kalle/fmdtr-android
     status: active
     priority: low
 
@@ -1862,6 +1879,16 @@ marketplaces:
     status: active
     priority: medium
     notes: SEC-02 project; custom kinds 32765-32768 for freelance protocol; NIP-85 WoT anti-spam
+
+  - name: Catalax
+    description: Bounties backed by zap-native, trusted escrow agents on Nostr
+    platforms: [ web ]
+    repo: https://github.com/vcavallo/catallax-reference-client
+    website: https://catallax.network
+    maintainer: vcavallo
+    status: active
+    priority: low
+    notes: Proposes a new NIP for bounty escrow flows (nostr-protocol/nips#1714); reference client by Vinney Cavallo
 
   - name: Fundstr
     description: Creator funding platform on Nostr using Cashu ecash for recurring pledges
@@ -3115,6 +3142,26 @@ signers:
     status: active
     priority: medium
     notes: NIP-46 remote signer by Nostr.Band team
+
+  - name: Mill (nostr-mill)
+    description: Zero-dependency Web Component for Nostr account access. Drop-in script tag with six signing methods (NIP-07, NIP-46, NIP-55, encrypted nsec, read-only, new keypair).
+    platforms: [ web ]
+    repo: https://github.com/0ceanSlim/nostr-mill
+    website: https://happytavern.co/mill
+    maintainer: 0ceanSlim
+    status: active
+    priority: medium
+    notes: Web Component on npm + jsDelivr. NIP-46 supports user-specifiable bunker relays. Themeable via 29 CSS custom properties.
+
+  - name: Mill (nostr-mill)
+    description: Drop-in Web Component bundling six Nostr signer methods (NIP-07, NIP-46, NIP-55, encrypted nsec, read-only, new keypair) behind a unified, themeable UI
+    platforms: [ web ]
+    repo: https://github.com/0ceanSlim/nostr-mill
+    website: https://happytavern.co/mill
+    maintainer: OceanSlim
+    status: alpha
+    priority: medium
+    notes: NIP-46 bunker with user-specifiable relays; 29 CSS-variable theme tokens; published as `nostr-mill` on npm and via jsDelivr CDN; same maintainer as grain
 
   - name: Aegis
     description: Cross-platform signer with multiple connection methods
