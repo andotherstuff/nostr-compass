@@ -42,6 +42,7 @@ Expiration is a retention hint, not a revocation system. It helps align relay be
 **Mentioned in:**
 - [Newsletter #1: News](/en/newsletters/2025-12-17-newsletter/#news)
 - [Newsletter #3: Notable Code Changes](/en/newsletters/2025-12-31-newsletter/#rust-nostr-library)
+- [Newsletter #24: MDK Disappearing Messages and Deep Dive](/en/newsletters/2026-05-28-newsletter/#nip-deep-dive-nip-40-event-expiration)
 
 **See also:**
 - [NIP-01: Basic Protocol](/en/topics/nip-01/)
