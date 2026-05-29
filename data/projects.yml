@@ -1492,10 +1492,10 @@ messaging_clients:
     description: Social bookmark client for NIP-B0 (kind 39701) with curator-monetized tier system
     platforms: [ web, browser-extension, ios, android ]
     repo: https://github.com/ostermayer/deepmarks-public
+    website: https://deepmarks.org
     status: alpha
     priority: medium
-    notes: Three-box architecture (curator, indexer, viewer); NIP-07, NIP-46, NIP-57, NIP-44, NIP-98, NIP-65, Blossom BUD-01/04
-    notes: GPL-3.0 licensed, Blossom integration
+    notes: NIP-07, NIP-46, NIP-57, NIP-44, NIP-98, NIP-65, Blossom BUD-01/04; GPL-3.0 licensed
 
   - name: Nostr Mail Client
     description: Flutter mail client for sending and receiving encrypted mail over Nostr
