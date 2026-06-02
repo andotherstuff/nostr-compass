@@ -20,6 +20,17 @@ codeberg:
     #   description: "Added support for NIP-34 patch sets"
     #   url: "https://codeberg.org/DanConwayDev/ngit-cli/releases/tag/v1.5.0"
 
+  # NostrBotKit - Self-hosted Rust framework for running Nostr bots, configured via DM
+  # Repo: https://codeberg.org/Tuxor/NostrBotKit
+  - project: NostrBotKit
+    repo: https://codeberg.org/Tuxor/NostrBotKit
+    updates:
+      - date: 2026-05-24
+        type: release
+        title: "v0.5.0 — Marmot extensions"
+        description: "Adds Marmot (MLS-over-Nostr, NIP-104) support: bots publish MLS key packages (kind 443, 30443, 10051) and accept group invitations; two new command types dm_marmot and dm_marmot_npub send to named Marmot groups or 1:1 Marmot chats; bots respond only to /command or @botname/command in groups to prevent feedback loops; encrypted attachments (MIP-04) auto-decrypted and re-uploaded via Blossom or NIP-96; per-group relay subscription on subscription update"
+        url: "https://codeberg.org/Tuxor/NostrBotKit/releases/tag/v0.5.0"
+
 sourcehut:
   # nostr-rs-relay - Rust relay with SQLite/PostgreSQL
   # Repo: https://sr.ht/~gheartsfield/nostr-rs-relay/
