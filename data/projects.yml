@@ -1855,6 +1855,15 @@ marketplaces:
     status: active
     priority: medium
 
+  - name: Chama
+    description: Nostr-native P2P escrow client with Fedimint ecash, 2-of-3 Shamir secret sharing, serverless
+    platforms: [ web ]
+    repo: https://github.com/jesuspirate/chama
+    website: https://getchama.app
+    status: active
+    priority: medium
+    notes: P2P escrow over Nostr, Fedimint ecash settlement, no server
+
   - name: Mostro
     description: P2P Bitcoin exchange over Nostr
     platforms: [ cli, web ]
@@ -2559,13 +2568,85 @@ devtools:
     priority: low
     notes: OpenSats funded, issue tracking, kanban boards, offline-first
 
-  - name: relay.tools
+  - name: relay.tools (relaycreator)
     description: Web-based control panel for deploying and managing Nostr relays
     platforms: [ web ]
-    repo: https://github.com/relaytools
+    repo: https://github.com/relaytools/relaycreator
     status: active
     priority: low
     notes: OpenSats funded, enables non-technical relay management
+
+  - name: relay.tools (cookiecutter)
+    description: Agent for managing strfry and haproxy deployments for relay.tools
+    platforms: [ server ]
+    repo: https://github.com/relaytools/cookiecutter
+    status: active
+    priority: low
+    notes: relay.tools deployment orchestrator
+
+  - name: relay.tools (spamblaster)
+    description: strfry plugin for spam control and curation
+    platforms: [ server ]
+    repo: https://github.com/relaytools/spamblaster
+    status: active
+    priority: low
+    notes: relay.tools curation plugin
+
+  - name: relay.tools (interceptor-proxy)
+    description: Proxy that intercepts NIP-42 AUTH for strfry-based relays
+    platforms: [ server ]
+    repo: https://github.com/relaytools/interceptor-proxy
+    status: active
+    priority: low
+    notes: NIP-42 management layer for vanilla relays
+
+  - name: relay.tools (interceptor)
+    description: WebSocket proxy providing NIP-42 AUTH for nostr relays
+    platforms: [ server ]
+    repo: https://github.com/relaytools/interceptor
+    status: active
+    priority: low
+    notes: NIP-42 auth proxy
+
+  - name: relay.tools (monitorlizard)
+    description: Relay monitoring with NIP-66 output and InfluxDB export
+    platforms: [ server ]
+    repo: https://github.com/relaytools/monitorlizard
+    status: active
+    priority: low
+    notes: NIP-66 relay monitoring
+
+  - name: relay.tools (feedbuilder)
+    description: Outbox-pattern relay feed builder for strfry-router
+    platforms: [ server ]
+    repo: https://github.com/relaytools/feedbuilder
+    status: active
+    priority: low
+    notes: NIP-65 outbox feed builder for strfry-router
+
+  - name: relay.tools (crusher86)
+    description: CLI for managing a Nostr relay via NIP-86
+    platforms: [ cli ]
+    repo: https://github.com/relaytools/crusher86
+    status: active
+    priority: low
+    notes: NIP-86 relay management CLI
+
+  - name: relay.tools (relay-tools-images)
+    description: Build and deploy repository for relay.tools container images
+    platforms: [ server ]
+    repo: https://github.com/relaytools/relay-tools-images
+    status: active
+    priority: low
+    notes: relay.tools build and deploy
+
+  - name: relay.tools (docs)
+    description: relay.tools extra documentation and guides
+    platforms: [ web ]
+    repo: https://github.com/relaytools/docs
+    status: active
+    priority: low
+    notes: relay.tools documentation
 
   - name: nostr.build
     description: Free media hosting service for Nostr (images, GIFs, video, audio)
