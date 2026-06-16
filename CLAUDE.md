@@ -48,6 +48,22 @@ Every newsletter MUST follow this section order. The boundary between sections i
 
 NEVER add a "Closing notes" or "Closing thoughts" section. The newsletter ends with the deep dives or the history section. Forward-looking commentary belongs inside the relevant section as a single concrete sentence, not in a meta-summary at the end.
 
+### NIP-34 hosting is delivery, not subject matter (CRITICAL — scope rule)
+
+**A repository being hosted via NIP-34 git-over-Nostr does NOT make its subject matter Nostr news.** NIP-34 is the transport for the source code; the project's substance determines coverage.
+
+Out of scope, even with heavy patch volume on `relay.ngit.dev` or a GRASP server:
+- CoinJoin coordinators and clients (joinmarket-ng, Whirlpool clones, PayJoin tooling)
+- On-chain mixers, Bitcoin Core forks, hardware-wallet firmware
+- Pure Lightning/Bitcoin tooling without a Nostr surface
+- Tor/I2P relay binaries, generic network infrastructure
+
+In scope:
+- NIP-34 tooling itself (ngit, GitWorkshop, ngit-indexer, GRASP servers, gitstr, nostr-git, schemata)
+- Any project whose own runtime functionality runs on Nostr
+
+The NIP-34 tracker (`data/nip34_tracked.yml`) MUST only track repositories whose subject matter is itself Nostr-relevant. NIP-34 repos for Bitcoin-only tools are visible in the discovery output but never promoted into `nip34_tracked.yml` and never written into newsletter prose. If a NIP-34 repo's project description names a Bitcoin-only protocol (CoinJoin, PayJoin, BIP-352 silent payments outside a Nostr context, etc.) and the project does not also implement a Nostr surface, the repo fails this gate.
+
 ### NIP-34 fetcher access (CRITICAL — wrong-key bug)
 
 `data/nip34_repos/nip34_*.json` stores per-repo activity as `tracked[].activity.patches` and `tracked[].activity.issues`, NOT `tracked[].patches`. The `summary.total_patches_in_period` field is the authoritative count. To enumerate repos with activity:

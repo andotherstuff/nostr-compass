@@ -86,13 +86,6 @@ tracked_repos:
     in_projects_yml: false
     notes: NIP-17 DM-based password manager (nsec/nos2x/Amber signing)
 
-  - name: joinmarket-ng
-    d_tag: joinmarket-ng
-    pubkey: 7459d333af66066f066cf87796e690db3a96ff4534f9edf4eab74df2f207289b
-    relays: [wss://relay.ngit.dev]
-    in_projects_yml: false
-    notes: JoinMarket (Bitcoin CoinJoin) modern alternative implementation; high patch traffic on relay.ngit.dev
-
   - name: schemata
     d_tag: schemata
     pubkey: 17538dc2a62769d09443f18c37cbe358fab5bbf981173542aa7c5ff171ed77c4
