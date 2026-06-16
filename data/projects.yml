@@ -8,6 +8,7 @@
 #   - messaging: DMs and chat applications
 #   - media: Streaming, audio, video, photos
 #   - marketplace: P2P commerce
+#   - shops: Bitcoin shops (top-ups, gift cards, prepaid cards)
 #   - devtools: Developer tools and git integration
 #   - signing: Key management and signers
 #   - relay: Relay implementations
@@ -2007,6 +2008,24 @@ marketplaces:
     repo: https://github.com/nobu-maeda/n3xb
     status: active
     priority: low
+
+shops:
+  - name: BTC Recharge
+    description: Nostr DM bot for Lightning mobile top-ups across 170+ countries
+    platforms: [ web ]
+    repo: https://github.com/i2dor/btcrecharge-nostr-bot
+    website: https://btcrecharge.com/verify
+    status: active
+    priority: medium
+    notes: NIP-05 verified (bot@btcrecharge.com), NIP-17 gift-wrapped DMs, no account or app; DM /menu to start
+
+  - name: giftcardshop
+    description: Nostr DM bot for Lightning top-ups of prepaid cards, gift cards and game credit
+    platforms: [ web ]
+    website: https://giftcardshop.org/verify
+    status: active
+    priority: medium
+    notes: NIP-05 verified (bot@giftcardshop.org), single-view reveal-link delivery; DM /menu to start
 
 devtools:
   - name: ngit
