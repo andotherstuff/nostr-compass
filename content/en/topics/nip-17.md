@@ -63,6 +63,7 @@ NIP-17 also defines inbox relay lists for private messaging. Clients can publish
 - [Newsletter #5: News](/en/newsletters/2026-01-13-newsletter/#news)
 - [Newsletter #13: Vector](/en/newsletters/2026-03-11-newsletter/#vector-v032-ships-nip-77-negentropy-sync-and-mls-improvements)
 - [Newsletter #19: NipLock password manager](/en/newsletters/2026-04-22-newsletter/#niplock-ships-a-nip-17-based-password-manager)
+- [Newsletter #27: Signet v1.11.0 patches a NIP-17 admin-command signature bypass](/en/newsletters/2026-06-17-newsletter/#signet-v1110-patches-a-nip-17-admin-command-signature-bypass)
 
 **See also:**
 - [NIP-04: Encrypted Direct Messages (Deprecated)](/en/topics/nip-04/)

@@ -52,6 +52,7 @@ The `switch_relays` method exists so the signer can move the session to a differ
 - [Newsletter #19: NipLock signer support](/en/newsletters/2026-04-22-newsletter/#niplock-ships-a-nip-17-based-password-manager)
 - [Newsletter #19: Forgesworn Heartwood signer](/en/newsletters/2026-04-22-newsletter/#forgesworn-publishes-a-29-repo-cryptographic-toolkit-for-nostr)
 - [Newsletter #19: Flotilla Aegis NIP-46 login](/en/newsletters/2026-04-22-newsletter/#flotilla-173-and-174-add-kind-9-wrapping-for-richer-nip-29-rooms)
+- [Newsletter #27: NIP deep dive: NIP-46 (Nostr Connect)](/en/newsletters/2026-06-17-newsletter/#nip-deep-dive-nip-46-nostr-connect)
 
 **See also:**
 - [NIP-55: Android Signer](/en/topics/nip-55/)

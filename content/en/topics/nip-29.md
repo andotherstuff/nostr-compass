@@ -70,6 +70,7 @@ That makes migration and forking possible, but not automatic. The same group id 
 - [Newsletter #19: Wisp NIP-29 config](/en/newsletters/2026-04-22-newsletter/#wisp-v0180-beta-adds-normie-mode-for-you-feed-and-nip-29-group-config)
 - [Newsletter #19: NIP Updates (subgroups, role permissions)](/en/newsletters/2026-04-22-newsletter/#nip-updates)
 - [Newsletter #22: Flotilla 1.8.0](/en/newsletters/2026-05-14-newsletter/#flotilla-180-ships-video-calls-email-rendering-and-room-mentions)
+- [Newsletter #27: NIP updates and protocol spec work](/en/newsletters/2026-06-17-newsletter/#nip-updates-and-protocol-spec-work)
 
 **See also:**
 - [NIP-11: Relay Information Document](/en/topics/nip-11/)

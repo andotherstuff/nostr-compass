@@ -56,6 +56,7 @@ Recent spec changes moved hashtags out of generic bookmarks and into interest se
 - [Newsletter #2: NIP Updates](/en/newsletters/2025-12-24-newsletter/#nip-updates)
 - [Newsletter #5: NIP Deep Dive](/en/newsletters/2026-01-13-newsletter/#nip-deep-dive-nip-51-and-nip-65)
 - [Newsletter #8: njump Adds NIP-51 Support](/en/newsletters/2026-02-04-newsletter/#njump)
+- [Newsletter #27: Citrine v3.0.0 ships Negentropy, NIP-42 AUTH, and onion-relay filtering](/en/newsletters/2026-06-17-newsletter/#citrine-v3-0-0-ships-negentropy-nip-42-auth-and-onion-relay-filtering)
 
 **See also:**
 - [NIP-02: Follow List](/en/topics/nip-02/)

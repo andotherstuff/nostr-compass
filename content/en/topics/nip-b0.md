@@ -53,6 +53,7 @@ Because every bookmark is a first-class event, any Nostr client can render a fee
 
 **Mentioned in:**
 - [Newsletter #24: deepmarks NIP-B0 bookmarks with curator-monetized publishing](/en/newsletters/2026-05-28-newsletter/#deepmarks-nip-b0-bookmarks-with-curator-monetized-publishing)
+- [Newsletter #27: Also shipped](/en/newsletters/2026-06-17-newsletter/#also-shipped)
 
 **See also:**
 - [NIP-57: Lightning Zaps](/en/topics/nip-57/)
