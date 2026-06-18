@@ -72,6 +72,7 @@ NIP-44 revision 3 was merged in December 2023 following an independent Cure53 se
 - [Newsletter #13: Vector](/en/newsletters/2026-03-11-newsletter/#vector-v032-ships-nip-77-negentropy-sync-and-mls-improvements)
 - [Newsletter #19: nostter NIP-44 migration](/en/newsletters/2026-04-22-newsletter/#nostter-adds-nip-44-encryption-across-people-lists-bookmarks-and-mutes)
 - [Newsletter #19: nowhere encrypts Nostr traffic](/en/newsletters/2026-04-22-newsletter/#nowhere-encodes-full-websites-into-url-fragments-and-routes-orders-through-nostr)
+- [Newsletter #27: Signet v1.11.0 patches a NIP-17 admin-command signature bypass](/en/newsletters/2026-06-17-newsletter/#signet-v1-11-0-patches-a-nip-17-admin-command-signature-bypass)
 
 **See also:**
 - [NIP-04: Encrypted Direct Messages (deprecated)](/en/topics/nip-04/)

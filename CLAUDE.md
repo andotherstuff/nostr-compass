@@ -48,6 +48,52 @@ Every newsletter MUST follow this section order. The boundary between sections i
 
 NEVER add a "Closing notes" or "Closing thoughts" section. The newsletter ends with the deep dives or the history section. Forward-looking commentary belongs inside the relevant section as a single concrete sentence, not in a meta-summary at the end.
 
+### Brief description on first NIP mention (CRITICAL)
+
+**Every NIP mentioned in the newsletter MUST carry a brief description on its first appearance.** The description is one short clause or noun phrase that tells a reader unfamiliar with the protocol what the NIP defines. Subsequent mentions of the same NIP do not need re-description.
+
+Two acceptable shapes:
+- **Parenthetical**: `[NIP-17](/en/topics/nip-17/) (gift-wrapped private DMs)`
+- **Inline-via-context**: `[NIP-77](/en/topics/nip-77/) Negentropy support for set-reconciliation syncs` (the surrounding sentence already states the spec's purpose)
+
+If neither shape fits without distorting the sentence, prefer the parenthetical. Description length: one short clause or noun phrase, ideally fewer than 10 words. Do NOT re-describe within the dedicated deep-dive sections — those explain the spec in full.
+
+Verify before commit: scan every `NIP-XX` token; for each token's first appearance, the same paragraph (or the prior clause in the same sentence) must explain what the NIP does. If not, add a parenthetical.
+
+### Topic page link targets must match the NIP being linked (CRITICAL)
+
+**A `[NIP-XX](/en/topics/nip-YY/)` link where XX != YY is always a bug.** This has happened before with `[NIP-44](/en/topics/nip-17/)` (NIP-44 is the encryption spec; NIP-17 is the private-DMs spec). Both deserve their own topic page links.
+
+Audit before commit:
+
+```bash
+grep -oE '\[NIP-[A-Z0-9]+\]\(/en/topics/nip-[a-z0-9]+/\)' content/en/newsletters/<file>.md | awk -F'[][()/]' '{print $2, "->", $9}' | awk '$1 != $2 {print "MISMATCH:", $0}'
+```
+
+The audit must return no MISMATCH lines.
+
+### NIP Deep Dive structure (CRITICAL — spec first, news last)
+
+**A deep dive is a spec explainer, not a release recap.** ~80% of the prose must explain how the spec works, what problem it solves, and the design tradeoffs. ~20% (at most) is a closing pointer to current-week implementations.
+
+Mandatory structure for every deep dive:
+1. **Opening paragraph** — what the spec defines in one sentence, plus the core problem it solves
+2. **Mechanics** — wire format, event kinds, tags, message exchange, encryption layer (whichever apply). Use precise field names, kind numbers, and concrete byte/structure detail.
+3. **Design tradeoffs** — what was rejected, what was made optional, what the spec deliberately punts on, the trust model
+4. **Comparison to adjacent specs** — when relevant, contrast with the closest NIP that solves a related problem (NIP-57 vs NIP-61, NIP-34 vs traditional git, NIP-46 vs NIP-55)
+5. **Example event** — a full JSON example with all 7 NIP-01 fields (id, pubkey, created_at, kind, tags, content, sig)
+6. **Implementation pointer** — ONE short paragraph linking to this week's substantive implementation, no longer than three sentences
+
+What a deep dive is NOT:
+- A list of this week's PRs by implementation project
+- A round-up of "Amber/Clave/Nostur all shipped X"
+- An update on protocol-PR status (that's the NIP updates section's job)
+- A history of the proposal's open/merge timeline beyond one sentence
+
+Anti-pattern caught in #27 first draft (now fixed): the original NIP-46 deep dive devoted entire paragraphs to "this week's PR #2373 logout method, Amber shipped it, Clave shipped it, Nostur shipped it" — that belongs in the lead and the NIP updates section, NOT in the deep dive. The same draft devoted only one paragraph each to the bunker/nostrconnect pairing flow, with no concrete byte-level detail.
+
+When picking which NIPs to deep dive each week, check the rotation table in MEMORY.md (`grep -E "^## NIP Deep Dive" content/en/newsletters/*.md` is the authoritative source). NEVER deep dive a NIP that has been covered before; the rotation is one-shot.
+
 ### NIP-34 hosting is delivery, not subject matter (CRITICAL — scope rule)
 
 **A repository being hosted via NIP-34 git-over-Nostr does NOT make its subject matter Nostr news.** NIP-34 is the transport for the source code; the project's substance determines coverage.
@@ -63,6 +109,51 @@ In scope:
 - Any project whose own runtime functionality runs on Nostr
 
 The NIP-34 tracker (`data/nip34_tracked.yml`) MUST only track repositories whose subject matter is itself Nostr-relevant. NIP-34 repos for Bitcoin-only tools are visible in the discovery output but never promoted into `nip34_tracked.yml` and never written into newsletter prose. If a NIP-34 repo's project description names a Bitcoin-only protocol (CoinJoin, PayJoin, BIP-352 silent payments outside a Nostr context, etc.) and the project does not also implement a Nostr surface, the repo fails this gate.
+
+### Per-PR Nostr-surface gate (CRITICAL — applies to EVERY project)
+
+**Compass is a Nostr newsletter. Every PR, release item, or feature mentioned MUST touch a Nostr surface.** A project being broadly Nostr-aware (e.g. Zeus has NWC, Alby Extension has NIP-07) does NOT make every change in that project newsletter material. Each item is gated individually.
+
+**Nostr surfaces (in scope):**
+- Event publishing / signing / verifying (any kind)
+- NIP implementations (any NIP, including NWC NIP-47, signers NIP-07/NIP-46/NIP-55, zaps NIP-57, nutzaps NIP-61, Cashu wallets NIP-60, etc.)
+- Nostr-as-transport (NIP-34 hosting tooling, NIP-17 DMs, NIP-29 groups, NIP-59 gift wrap)
+- Relay implementations and relay-protocol changes
+- Nostr-key-derived primitives (CLINK noffers, NIP-07 signed payloads)
+- Cryptographic libraries used by the Nostr signer/encryption path (noble/scure, secp256k1, NIP-44 ciphers) — only when bumping affects the wire format or signer behavior
+
+**Out of scope (cut every time), even for Nostr-aware projects:**
+- Lightning-only changes: LDK pathfinding, payment retry timeouts, Bolt11/Bolt12 mechanics, channel management, pathfinding heuristics, LNURL flows that don't touch a Nostr event
+- Cashu-only changes: token decoding/redemption, keyset rotation, mint input/output limits, CDK Bolt12 quote recovery, melt recovery, Cashu wallet UX — unless the change touches kind 17375 (wallet), kind 7375 (token), kind 9321 (nutzap), kind 10019 (mint announcement), or another Nostr surface
+- Bitcoin-only changes: on-chain wallet UX, signing flows, hardware wallet integration, coin control, fee estimation
+- Generic UX/UI polish: animated keypads, QR scanner improvements (unless they scan Nostr payloads specifically), settings page redesigns, icon updates, theme tweaks
+- Dependency bumps that don't change protocol behavior (security patches for `uuid`, `axios`, `postcss`, `webpack-dev-server`; ESLint config migrations; build-tool updates)
+- Connector removals (LaWallet/Kollider/Citadel-style cleanup) — these are Lightning-wallet integrations, not Nostr; mention only if it ALSO drops a Nostr surface
+- URL parsing / deep-link handling that doesn't decode `nostr:` URIs
+
+**Examples of correct gating:**
+- ✅ Zeus CLINK noffers (CLINK is a Nostr-key payment primitive) — KEEP
+- ✅ Zeus queue-less NWC on iOS (NIP-47 surface) — KEEP
+- ✅ Zeus Nostr Zap opt-out (controls kind 9735 receipts) — KEEP
+- ❌ Zeus Cashu multi-mint sends — CUT (Cashu payment mechanics, no Nostr surface)
+- ❌ Zeus LDK pathfinding improvements — CUT (Lightning-only)
+- ❌ Zeus animated keypad / stealth QR scanner — CUT (UX polish)
+- ❌ CDK token decoding for inactive keysets — CUT (Cashu-only)
+- ❌ CDK CLN Bolt12 quote recovery — CUT (Lightning-only)
+- ✅ Alby Extension @noble/@scure crypto migration — KEEP (touches NIP-07 signer / NIP-44 wire format)
+- ❌ Alby Extension Boltz/SideShift Send-to-BTC swap flow — CUT (on-chain swap, no Nostr surface)
+- ❌ Alby Extension dependency bumps (React, axios, etc.) — CUT
+- ✅ Alby Hub stops retrying NIP-47 info publish for deleted apps (kind 13194 surface) — KEEP
+- ❌ Alby Hub Just-in-Time channels / Cards page / Ark backend — CUT (already correctly gated as "outside Compass scope")
+
+**Procedure when drafting any release writeup:**
+1. List the release's full changelog
+2. For each item, ask: "What Nostr event kind, NIP, or wire-format surface does this touch?"
+3. If the answer is "none" — CUT the item
+4. If the entire release has no Nostr surface — DROP the entire entry (e.g. CDK v0.17.1 in this week's audit)
+5. Never use phrases like "the non-Nostr surface is large" to justify covering non-Nostr content alongside Nostr content — split the prose so only the Nostr surface appears
+
+This rule applies retroactively: when auditing a draft, every Lightning/Cashu/Bitcoin-only line is a defect, not a stylistic choice.
 
 ### NIP-34 fetcher access (CRITICAL — wrong-key bug)
 

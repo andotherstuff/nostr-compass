@@ -402,6 +402,16 @@ social_clients:
     priority: medium
     notes: Public and private events, recurring schedules, ICS export
 
+  - name: Pollerama
+    description: Form*-family Nostr-native polls and feeds client by abh3po; NIP-17 DM sharing for polls, profile editor, themes, emoji picker
+    platforms: [ web ]
+    repo: https://github.com/formstr-hq/nostr-polls
+    website: https://pollerama.fun
+    maintainer: abh3po
+    status: active
+    priority: medium
+    notes: Sibling of Calendar by Form*. Latest tag v1.6.4 (March 2026); active merged-PR stream between tags. Dedup of legacy devtools-bucket entry, 2026-06-16.
+
   - name: Nostree
     description: Linktree-style application for managing link lists on Nostr
     platforms: [ web ]
@@ -1380,6 +1390,15 @@ longform_clients:
     status: active
     priority: low
 
+  - name: ZapBook
+    description: Nostr-native social reading app for circles of 1-100 people who share milestones and zap each other sats as encouragement
+    platforms: [ ios, android ]
+    repo: https://github.com/codeswot/ZapBook
+    maintainer: codeswot
+    status: active
+    priority: medium
+    notes: Flutter; MLS key-package publication on onboarding; NWC integration; ONNX embedding for in-reader semantic search
+
 messaging_clients:
   - name: 0xchat
     description: Telegram-style DMs and group chat with Cashu support
@@ -2063,15 +2082,6 @@ devtools:
     status: active
     priority: medium
     notes: OpenSats grant recipient
-
-  - name: Pollerama
-    description: Polling app built on nostr-polls library
-    platforms: [ web ]
-    repo: https://github.com/formstr-hq/nostr-polls
-    website: https://pollerama.fun
-    status: active
-    priority: low
-    notes: NIP-17 DM sharing for polls
 
   - name: Verify
     description: File integrity verification using a decentralized Nostr web of trust

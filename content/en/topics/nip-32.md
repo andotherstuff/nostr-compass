@@ -51,6 +51,7 @@ Clients differ in how they consume labels. Some treat labels from followed users
 **Mentioned in:**
 - [Newsletter #6: NIP Updates](/en/newsletters/2026-01-21-newsletter/#nip-updates)
 - [Newsletter #25: Amethyst hashtag labeling + NIP-32 deep dive](/en/newsletters/2026-06-03-newsletter/#nip-deep-dive-nip-32-labeling)
+- [Newsletter #27: Amethyst v1.12.0 ships Cashu wallets, nutzaps, a CLINK driver, and Tor self-heal](/en/newsletters/2026-06-17-newsletter/#amethyst-v1120-ships-cashu-wallets-nutzaps-a-clink-driver-and-tor-self-heal)
 
 **See also:**
 - [Trusted Relay Assertions](/en/topics/trusted-relay-assertions/)
