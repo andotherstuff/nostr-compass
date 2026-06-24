@@ -1621,13 +1621,14 @@ messaging_clients:
     status: active
     priority: low
 
-  - name: Sprout
-    description: Hive mind communication platform by Block with Nostr relay and NIP support
+  - name: Buzz
+    description: Self-hostable workspace by Block where humans and AI agents share Nostr relay rooms; every message, reaction, workflow step, review approval, and git event is a signed Nostr event in one log
     platforms: [ desktop ]
-    repo: https://github.com/block/sprout
-    status: pre-alpha
+    repo: https://github.com/block/buzz
+    maintainer: Block
+    status: alpha
     priority: medium
-    notes: NIP-01, NIP-02, NIP-23, NIP-33 support, built-in Nostr relay
+    notes: Apache 2.0, Rust; runs as a self-hosted Nostr relay; previously published as block/sprout (renamed 2026)
 
   - name: OpenChat
     description: Chat application built on dotnet-mls and marmot-cs
@@ -1702,6 +1703,15 @@ messaging_clients:
     repo: https://github.com/whisperbit-labs/zemzeme-android
     status: active
     priority: low
+
+  - name: Haven
+    description: Private and censorship-resistant location sharing app on Nostr using the Marmot protocol
+    platforms: [ android, ios ]
+    repo: https://github.com/mehmetefeumit/Haven-App
+    maintainer: mehmetefeumit
+    status: active
+    priority: medium
+    notes: Marmot-based encrypted location sharing; Dart/Flutter; published to Zapstore as developer-signed app
 
 media_clients:
   - name: Zap.stream
@@ -2027,6 +2037,40 @@ marketplaces:
     repo: https://github.com/nobu-maeda/n3xb
     status: active
     priority: low
+
+  - name: Conduit
+    description: Decentralized marketplace on Nostr; three-app monorepo (buyer market, merchant portal, store builder) defining its own NIP and spec primitives for Nostr commerce
+    repo: https://github.com/Conduit-BTC/conduit-mono
+    website: https://conduit.market
+    maintainer: Conduit-BTC
+    status: active
+    priority: medium
+    notes: Self-hosts its own nips/ and specs/ directories; companion L2 relay extension at Conduit-BTC/conduit-relay
+
+  - name: Conduit L2 Relay
+    description: Scope-2 khatru relay extension powering the Conduit marketplace
+    repo: https://github.com/Conduit-BTC/conduit-relay
+    maintainer: Conduit-BTC
+    status: active
+    priority: medium
+    notes: Go, khatru-based; runs the L2 layer underneath conduit-mono
+
+  - name: Gamma Markets - Market Spec
+    description: NIP-99 extension specification for full ecommerce use cases on Nostr
+    repo: https://github.com/GammaMarkets/market-spec
+    maintainer: GammaMarkets
+    status: active
+    priority: medium
+    notes: Specification-only repo; referenced by shipping marketplaces (Shopstr, Plebeian, Conduit)
+
+  - name: Gamma Markets - Commerce Schema
+    description: Zod schemas and TypeScript types for the Gamma Markets Nostr commerce spec
+    repo: https://github.com/GammaMarkets/nostr-commerce-schema
+    maintainer: GammaMarkets
+    status: active
+    priority: medium
+    notes: Implementation library for market-spec consumers
+
 
 shops:
   - name: BTC Recharge
@@ -3214,6 +3258,30 @@ devtools:
     website: https://zapper.nostrapps.org
     status: active
     priority: low
+
+  - name: BitBlik
+    description: Flutter P2P BLIK/Lightning exchange protocol over Nostr; encrypted DMs (NIP-44), kind 38383 offers, custom RPC kinds 25195/25196/25197
+    repo: https://github.com/bit-blik/bitblik
+    website: https://www.bitblik.app
+    status: active
+    priority: medium
+    notes: Also published as NIP-34 repo (relay.ngit.dev pubkey npub1k3g092rlzvn7nftz3jte9pkx63zp705nh78r6hjpjm55fjg7r2cqx8stj3) and as Zapstore app app.bitblik; coordinator settles atomically between BLIK fiat and Lightning hold invoices
+
+  - name: CodeDeck
+    description: Android/desktop Tauri app to control Claude Code sessions remotely over encrypted Nostr relays
+    repo: https://github.com/JeroenOnNostr/codedeck
+    maintainer: JeroenOnNostr
+    status: active
+    priority: medium
+    notes: Multi-session agentic coding UI; designed for Pixel Fold inner display; Nostr is the encrypted transport layer between phone and laptop
+
+  - name: Formstr Drive
+    description: Formstr-team project, scope TBD pending README (currently stock Vite template as of 2026-06-23)
+    repo: https://github.com/formstr-hq/formstr-drive
+    status: alpha
+    priority: low
+    notes: Track but verify scope before covering in newsletter
+
 
 signers:
   - name: Amber
@@ -5907,3 +5975,38 @@ protocols:
     status: active
     priority: medium
     notes: Built for IDENTITY Hackathon 2026; uses NIP-78 kind:30078 for cross-device pet state sync, NIP-47 for automatic sats payouts at level milestones
+
+  - name: Napplets - Web Packages
+    description: Composable Nostr applets distributed as nsite-shaped events over Nostr+Blossom; defines a trust boundary protocol
+    repo: https://github.com/napplet/web
+    website: https://napplet.run
+    maintainer: sandwich
+    status: alpha
+    priority: medium
+    notes: Apps resolved over Nostr+Blossom; runtimes broker dangerous operations; companions kehto/web (runtime) and napplet/naps (NAPs spec track)
+
+  - name: Napplets - NAPs Spec
+    description: Specification track for the Napplet Application Protocol (NAPs)
+    repo: https://github.com/napplet/naps
+    website: https://napplet.run
+    maintainer: sandwich
+    status: alpha
+    priority: medium
+    notes: Spec repo for the napplet protocol; defines trust boundary, event shapes, runtime interop with NMP and Tiles
+
+  - name: Kehto - Web Runtime
+    description: Web runtime packages and playground for napplets
+    repo: https://github.com/kehto/web
+    website: https://kehto.github.io/web/playground
+    maintainer: sandwich
+    status: alpha
+    priority: medium
+    notes: Reference web runtime for napplets; companion to napplet/web and napplet/naps
+
+  - name: Cordn Ad-hoc CVM
+    description: Browser-based MLS coordinator for ad-hoc Cordn groups; runs ContextVM coordinator in a browser tab, publishes coordinator pubkey, stores MLS key packages and welcomes locally
+    repo: https://github.com/sandwichfarm/cordn-adhoc-cvm
+    maintainer: sandwich
+    status: alpha
+    priority: medium
+    notes: For short-lived MLS groups, demos, and operator-controlled coordination without provisioning a backend; companion to existing Cordn tracking
