@@ -7,11 +7,12 @@
 #   ./fetch_all.sh --since-days 7  # Explicit time range
 #
 # Runs:
-#   1. fetch_project_updates.py    (GitHub releases, PRs, commits)
+#   1. fetch_project_updates.py       (GitHub releases, PRs, commits)
 #   2. fetch_nostr_nip_discussions.sh (NIP discussions from relays)
-#   3. fetch_nostr_recap.sh        (Nostr Recap weekly summaries)
-#   4. fetch_shakespeare_apps.sh   (Soapbox MiniApps submissions)
-#   5. fetch_nip34_repos.sh        (NIP-34 git repos from relays)
+#   3. fetch_nostr_recap.sh           (Nostr Recap weekly summaries)
+#   4. fetch_shakespeare_apps.sh      (Soapbox MiniApps submissions)
+#   5. fetch_nip34_repos.sh           (NIP-34 git repos from relays)
+#   6. fetch_zapstore_releases.sh     (Zapstore developer-signed app releases)
 #
 # Prerequisites:
 #   - Python 3 + requirements.txt (for GitHub fetcher)
@@ -71,7 +72,7 @@ FAILED=0
 SKIPPED=0
 
 # 1. GitHub project updates (Python)
-echo "[1/5] GitHub project updates..."
+echo "[1/6] GitHub project updates..."
 if command -v python3 &>/dev/null; then
     cd "$PROJECT_ROOT"
     if python3 scripts/fetch_project_updates.py $SINCE_ARG $VERBOSE; then
@@ -87,7 +88,7 @@ fi
 echo ""
 
 # 2. NIP discussions (Nostr relay via nak)
-echo "[2/5] NIP discussions from relays..."
+echo "[2/6] NIP discussions from relays..."
 if command -v nak &>/dev/null; then
     if "$SCRIPT_DIR/fetch_nostr_nip_discussions.sh" $SINCE_ARG; then
         echo "  Done."
@@ -102,7 +103,7 @@ fi
 echo ""
 
 # 3. Nostr Recap weekly summaries (Nostr relay via nak)
-echo "[3/5] Nostr Recap summaries..."
+echo "[3/6] Nostr Recap summaries..."
 if command -v nak &>/dev/null; then
     if "$SCRIPT_DIR/fetch_nostr_recap.sh" $SINCE_ARG; then
         echo "  Done."
@@ -117,7 +118,7 @@ fi
 echo ""
 
 # 4. Shakespeare Apps / Soapbox MiniApps (Nostr relay via nak)
-echo "[4/5] Shakespeare Apps (Soapbox MiniApps)..."
+echo "[4/6] Shakespeare Apps (Soapbox MiniApps)..."
 if command -v nak &>/dev/null; then
     if "$SCRIPT_DIR/fetch_shakespeare_apps.sh" $SINCE_ARG; then
         echo "  Done."
@@ -132,7 +133,7 @@ fi
 echo ""
 
 # 5. NIP-34 git repos (Nostr relay via nak)
-echo "[5/5] NIP-34 git repos..."
+echo "[5/6] NIP-34 git repos..."
 if command -v nak &>/dev/null; then
     if "$SCRIPT_DIR/fetch_nip34_repos.sh" $SINCE_ARG; then
         echo "  Done."
@@ -146,18 +147,33 @@ else
 fi
 echo ""
 
+# 6. Zapstore developer-signed releases (Nostr relay via nak)
+echo "[6/6] Zapstore releases..."
+if command -v nak &>/dev/null; then
+    if "$SCRIPT_DIR/fetch_zapstore_releases.sh" $SINCE_ARG; then
+        echo "  Done."
+    else
+        echo "  WARNING: Zapstore fetcher failed (exit code $?) — soft-fail, continuing"
+        FAILED=$((FAILED + 1))
+    fi
+else
+    echo "  SKIPPED: nak not installed"
+    SKIPPED=$((SKIPPED + 1))
+fi
+echo ""
+
 # Summary
 echo "==========================================="
 echo "  Collection Summary"
 echo "==========================================="
-echo "  Completed: $((5 - FAILED - SKIPPED))/5"
+echo "  Completed: $((6 - FAILED - SKIPPED))/6"
 echo "  Failed:    $FAILED"
 echo "  Skipped:   $SKIPPED"
 echo ""
 
 # Show data freshness
 echo "Data freshness:"
-for dir in project_updates nostr_nip_discussions nostr_recap shakespeare_apps nip34_repos; do
+for dir in project_updates nostr_nip_discussions nostr_recap shakespeare_apps nip34_repos zapstore_releases; do
     latest=$(ls -t "$PROJECT_ROOT/data/$dir"/*.json 2>/dev/null | head -1)
     if [ -n "$latest" ]; then
         age_hours=$(( ($(date +%s) - $(stat -c %Y "$latest")) / 3600 ))
