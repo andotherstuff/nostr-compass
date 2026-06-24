@@ -821,6 +821,17 @@ social_clients:
     status: active
     priority: low
 
+  # --- Browser Extensions ---
+  - name: Nostru
+    description: Nostr social client and Bitcoin Silent Payment receiver as a Chrome browser extension
+    platforms: [ browser-extension ]
+    repo: https://github.com/i2dor/nostru
+    website: https://github.com/i2dor/nostru/releases/latest
+    maintainer: i2dor
+    status: beta
+    priority: low
+    notes: Derives BIP-352 Silent Payment addresses from any Nostr keypair (NSP); publishes and discovers SP addresses via NIP-352 (kind:30352); NWC zaps; local ECDH scanning via native host; scan key never leaves device
+
 # =============================================================================
 # LONG-FORM CONTENT
 # =============================================================================
