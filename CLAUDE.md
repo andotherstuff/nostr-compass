@@ -205,22 +205,35 @@ When working on newsletter updates:
 1. **ALWAYS check for existing PR first** - Newsletter branches typically have an open PR already
 2. **Update existing PR** - Force push changes to the existing newsletter branch
 3. **Never create duplicate PRs** - One PR per newsletter issue
+4. **ALWAYS keep the PR at exactly one commit.** No multi-commit history. Every push after the first must be a force-push that squashes all local commits into a single "Newsletter #N (YYYY-MM-DD)" commit. Reviewers should see one clean diff, not a chain of amendments.
 
 ### Workflow
 ```bash
 # Check for existing PR
 gh pr list --head newsletter/YYYY-MM-DD
 
-# If PR exists, update it
+# If PR exists, update it (SQUASH-AND-FORCE-PUSH REQUIRED)
 git checkout newsletter/YYYY-MM-DD
 # Make changes
 git add .
-git commit --amend
-git push --force
+BASE=$(git merge-base HEAD origin/main)
+git reset --soft "$BASE"
+git commit -m "Newsletter #N (YYYY-MM-DD)"
+git push --force-with-lease
 
 # If no PR exists (rare), create one
-gh pr create --title "Newsletter #X (YYYY-MM-DD)" ...
+gh pr create --title "Newsletter #N (YYYY-MM-DD)" ...
 ```
+
+### Why squash-and-force-push, always
+
+Multi-commit PR history for a newsletter is noise. Every commit after the first is a "fix a review comment" or "audit addendum" or "user feedback pass," none of which matter to a future reader. The final PR should contain exactly one commit that IS the newsletter, so that:
+- `git log content/en/newsletters/*.md` reads as one row per issue
+- PR review pulls up one diff, not four
+- Reverting a bad issue is one revert, not a rebase
+- Reviewers waste zero energy on intermediate state
+
+Use `git reset --soft $(git merge-base HEAD origin/main)` to collapse everything into a single staged change, then commit once, then `push --force-with-lease`. Never `--force` without `--with-lease` (protects against someone else's push racing yours).
 
 ## Common Newsletter Fixes
 
@@ -234,19 +247,22 @@ gh pr create --title "Newsletter #X (YYYY-MM-DD)" ...
 **NEVER ask for an nsec. NEVER use `nak` directly. Always use the pipeline.**
 
 ```bash
-# Full pipeline (all stages)
-COMPASS_PUBLISH_INVOCATION=manual bun ~/compass/publish/publish.ts <N> --stage all --really-broadcast
+# Full pipeline (all stages: parse → sign → announce-sign → broadcast → merge)
+COMPASS_PUBLISH_INVOCATION=manual bun ~/compass/publish/publish.ts <N> --stage all --really-broadcast --really-merge
 
 # Individual stages (run in order)
 COMPASS_PUBLISH_INVOCATION=manual bun ~/compass/publish/publish.ts <N> --stage parse
 COMPASS_PUBLISH_INVOCATION=manual bun ~/compass/publish/publish.ts <N> --stage sign
 COMPASS_PUBLISH_INVOCATION=manual bun ~/compass/publish/publish.ts <N> --stage announce-sign
 COMPASS_PUBLISH_INVOCATION=manual bun ~/compass/publish/publish.ts <N> --stage broadcast --really-broadcast
+COMPASS_PUBLISH_INVOCATION=manual bun ~/compass/publish/publish.ts <N> --stage merge --really-merge
 
 # Or use the wrapper (same thing, shorter)
 compass-publish <N>
 compass-publish <N> --stage sign
 ```
+
+**Always pass `--really-merge` with `--really-broadcast`.** Broadcast posts the newsletter to Nostr but leaves the GitHub PR open; the website only updates when the PR is merged and Hugo deploy runs from main. The merge stage refuses to run unless the broadcast ledger shows at least one ok relay, so the two stages are safe to chain. This was the cause of Newsletter #27 being on Nostr but missing from the website for ~19 hours on 2026-06-17.
 
 **Config:**
 - Bunker URI: `~/.config/compass-publish/bunker.json`

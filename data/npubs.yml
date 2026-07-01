@@ -585,3 +585,95 @@ Keep Android:
 Hostr:
   npub: npub1cp3vl3azq9v20mju0hz4dtut8pyup9z55fxrhxt48y92md7jmvcs4wlakk
   mention_only: true
+
+# =============================================================================
+# Added for Newsletter #29 publication (validated via kind:0 metadata fetch)
+# =============================================================================
+
+# Lead-story project accounts
+Buzz: npub16l0ck0s5zened29dsaqtqm6z0t4fmk2mwtszw64fz7fppcnls8mss3yj9s
+block: npub16l0ck0s5zened29dsaqtqm6z0t4fmk2mwtszw64fz7fppcnls8mss3yj9s
+
+# Lead-story dev accounts (mention_only: appear alongside their project name)
+Nostr Codex Phone:
+  npub: npub19at4nqjjymca2lh3v546vcg5ktun3al4c5xu2pts3ewckv0y70ys0gupzr
+  mention_only: true
+tidley:
+  npub: npub19at4nqjjymca2lh3v546vcg5ktun3al4c5xu2pts3ewckv0y70ys0gupzr
+  mention_only: true
+
+myco:
+  npub: npub1hw6amg8p24ne08c9gdq8hhpqx0t0pwanpae9z25crn7m9uy7yarse465gr
+  mention_only: true
+Origami74:
+  npub: npub1hw6amg8p24ne08c9gdq8hhpqx0t0pwanpae9z25crn7m9uy7yarse465gr
+  mention_only: true
+
+Coop Mobile:
+  npub: npub1zfss807aer0j26mwp2la0ume0jqde3823rmu97ra6sgyyg956e0s6xw445
+  mention_only: true
+reya:
+  npub: npub1zfss807aer0j26mwp2la0ume0jqde3823rmu97ra6sgyyg956e0s6xw445
+  mention_only: true
+
+# Tagged-release / active-project dev accounts
+Meiso:
+  npub: npub1gzuushllat7pet0ccv9yuhygvc8ldeyhrgxuwg744dn5khnpk3gs3ea5ds
+  mention_only: true
+higedamc:
+  npub: npub1gzuushllat7pet0ccv9yuhygvc8ldeyhrgxuwg744dn5khnpk3gs3ea5ds
+  mention_only: true
+
+Cordn:
+  npub: npub1atv4akyv986nswm4f87zdspfgehzgsva82l5jsd2k3dzgrtzpagssl84q8
+  mention_only: true
+
+# Conduit-BTC project account
+Conduit: npub1nkfqwlz7xkhhdaa3ekz88qqqk7a0ks7jpv9zdsv0u206swxjw9rq0g2svu
+
+# Napplet / sandwich.farm dev account
+Napplet:
+  npub: npub1uac67zc9er54ln0kl6e4qp2y6ta3enfcg7ywnayshvlw9r5w6ehsqq99rx
+  mention_only: true
+sandwich.farm:
+  npub: npub1uac67zc9er54ln0kl6e4qp2y6ta3enfcg7ywnayshvlw9r5w6ehsqq99rx
+  mention_only: true
+
+# ntrack / f321x project account
+ntrack: npub1mxscnuhl2swlmul9a0mldyckuj02zunu9eetm8g3xx2huzargcyqg2uwh7
+f321x:
+  npub: npub1mxscnuhl2swlmul9a0mldyckuj02zunu9eetm8g3xx2huzargcyqg2uwh7
+  mention_only: true
+
+# Protocol / NIP author dev accounts
+staab:
+  npub: npub1jlrs53pkdfjnts29kveljul2sm0actt6n8dxrrzqcersttvcuv3qdjynqn
+  mention_only: true
+
+DocNR:
+  npub: npub1xy54p83r6wnpyhs52xjeztd7qyyeu9ghymz8v66yu8kt3jzx75rqhf3urc
+  mention_only: true
+
+hoytech:
+  npub: npub1yxprsscnjw2e6myxz73mmzvnqw5kvzd5ffjya9ecjypc5l0gvgksh8qud4
+  mention_only: true
+
+smolgrrr:
+  npub: npub1z9n5ktfjrlpyywds9t7ljekr9cm9jjnzs27h702te5fy8p2c4dgs5zvycf
+  mention_only: true
+
+alexgleason:
+  npub: npub1q3sle0kvfsehgsuexttt3ugjd8xdklxfwwkh559wxckmzddywnws6cd26p
+  mention_only: true
+
+# NIP-34 authors recovered from relay data
+Whitenoise Linux: npub1ven4zk8xxw873876gx8y9g9l9fazkye9qnwnglcptgvfwxmygscqsxddfh
+Vidstr: npub14rg4vrt2v374q95ezeeydu3hkdhmzglcj950mggacap4x0lv0gyq04wun7
+TaipeiBlocks:
+  npub: npub14rg4vrt2v374q95ezeeydu3hkdhmzglcj950mggacap4x0lv0gyq04wun7
+  mention_only: true
+
+CustID: npub1h2vymvsw7t6syasg5peq7sxnlcejldsugz676c8nz6azqsypx85sz35sx0
+
+Holy Fit: npub1h0lyfxchuex6x0pxecd8guk45h3k85zgphxzk2qz23x8tdrffghqkhskfa
+Nunlock: npub1nunl0c6e9gjrxc6zt0wu2sv6ztdv686xkagmhgr4s483nlpgvccqqzxycg
