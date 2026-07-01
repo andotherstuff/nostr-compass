@@ -36,9 +36,14 @@ DEFAULT_DAYS=7
 OUTPUT_DIR="$PROJECT_ROOT/data/nip34_repos"
 TRACKED_FILE="$PROJECT_ROOT/data/nip34_tracked.yml"
 
-# NIP-34 specific relays (relay.ngit.dev is the primary NIP-34 relay)
+# NIP-34 specific relays
+# - relay.ngit.dev: primary NIP-34 / ngit ecosystem relay
+# - git.nostrhub.io: NostrHub's GRASP server (kind 30617 repo announcements,
+#   kind 1621 issues, NIP-related discussions and shakespeare/grasp-launched projects)
+# - damus.io, nos.lol, nostr.band: broad-coverage relays for gossiped NIP-34 events
 NIP34_RELAYS=(
     "wss://relay.ngit.dev"
+    "wss://git.nostrhub.io"
     "wss://relay.damus.io"
     "wss://nos.lol"
     "wss://relay.nostr.band"

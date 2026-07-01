@@ -1713,6 +1713,15 @@ messaging_clients:
     priority: medium
     notes: Marmot-based encrypted location sharing; Dart/Flutter; published to Zapstore as developer-signed app
 
+  - name: Coop Mobile
+    description: NIP-17 encrypted direct messaging client for mobile platforms
+    platforms: [ android, ios ]
+    repo: https://git.reya.su/reya/coop-mobile
+    maintainer: reya
+    status: alpha
+    priority: low
+    notes: Mobile companion to the coop NIP-17 client; hosted on Gitea (git.reya.su)
+
 media_clients:
   - name: Zap.stream
     description: Live streaming with Lightning zaps
@@ -3281,6 +3290,22 @@ devtools:
     status: alpha
     priority: low
     notes: Track but verify scope before covering in newsletter
+
+  - name: NostrAppShell
+    description: Application shell scaffold for building Nostr apps (early-stage; readme and NIP-07 docs landed 2026-06-29)
+    repo: https://git.nostrdev.com/stuff/NostrAppShell
+    status: alpha
+    priority: low
+    notes: Hosted on git.nostrdev.com (Gitea); track for scope as the project develops
+
+  - name: NIPs by Pollerama (better-nips)
+    description: Trust-weighted community NIPs browser for NostrHub kind-30817 events, ranking by NIP-32 kind-1985 approvals across the user's web of trust
+    repo: https://github.com/abh3po/better-nips
+    website: https://nips.pollerama.fun
+    maintainer: abh3po
+    status: alpha
+    priority: medium
+    notes: Alternative surface to nostrhub.io; ships approvals as NIP-32 labels (L=nostrhub, l=approve); Formstr signer stack (@formstr/signer, @formstr/local-relay) with NIP-07/46/49/55 support; created 2026-06-29
 
 
 signers:
@@ -5640,6 +5665,42 @@ other:
     priority: low
     notes: Unique fitness use case on Nostr
 
+  - name: Nunlock
+    description: Minimalist Android app that tracks daily phone unlocks and anchors the data to Nostr
+    platforms: [ android ]
+    repo: https://git.vanderwarker.family/wellbeing/nunlock-android
+    maintainer: stephen (npub1lqulkec5tx98yv7snk759tuzejtcr5865468fuvyrtuskhynpyush5qaf3)
+    status: active
+    priority: low
+    notes: Vanderwarker wellbeing suite; NIP-34 announced (d=Nunlock-Android-App)
+
+  - name: Saint Stream
+    description: Android app that tracks current media playback and publishes it to Nostr as a User Status
+    platforms: [ android ]
+    repo: https://git.vanderwarker.family/wellbeing/saintstream-android
+    maintainer: stephen
+    status: active
+    priority: low
+    notes: Vanderwarker wellbeing suite
+
+  - name: Sister Charge
+    description: Android app that monitors battery level, voltage, and temperature every 15 minutes and publishes to Nostr
+    platforms: [ android ]
+    repo: https://git.vanderwarker.family/wellbeing/sistercharge-android
+    maintainer: stephen
+    status: active
+    priority: low
+    notes: Vanderwarker wellbeing suite
+
+  - name: Cellibacy
+    description: Android wellbeing app from the Vanderwarker suite (description pending upstream)
+    platforms: [ android ]
+    repo: https://git.vanderwarker.family/wellbeing/cellibacy-android
+    maintainer: stephen
+    status: active
+    priority: low
+    notes: Vanderwarker wellbeing suite
+
   - name: featurestr-bountiestr
     description: Feature request and bounty system on Nostr
     platforms: [ web ]
@@ -5921,6 +5982,34 @@ other:
     status: active
     priority: low
 
+  - name: myco
+    description: Peer-to-peer nsite sharing app over a FIPS mesh (UDP/TCP/Tor/Bluetooth); install apps from people around you, fully offline-capable
+    platforms: [ android ]
+    repo: https://github.com/Origami74/myco
+    maintainer: Origami74
+    status: alpha
+    priority: medium
+    notes: Rust + FIPS transport; offline-first distribution of nsite content
+
+  - name: Nostr Codex Phone
+    description: Android control surface for a local Codex coding-assistant worker over encrypted Nostr DMs; multi-repo sessions, voice input, Blossom media uploads, optional spoken replies
+    platforms: [ android ]
+    repo: https://github.com/tidley/nostr-codex-phone
+    maintainer: tidley
+    status: alpha
+    priority: medium
+    notes: Sibling to CodeDeck; agent control-plane over Nostr transport
+
+  - name: ntrack
+    description: Privacy-preserving location-sharing Android app
+    platforms: [ android ]
+    repo: https://github.com/f321x/ntrack
+    website: https://zapstore.dev/apps/naddr1qqxkjmewde68yctrdvhxzursqyv8wumn8ghj7un9d3shjtn6v9c8xar0wfjjuer9wcpzpkdp38e074qalhe7t6lh76f3dey759e8ctnjhkw3zvv40c96x3sgqvzqqqr7pvmps38m
+    maintainer: f321x
+    status: alpha
+    priority: low
+    notes: Rust + Slint UI; published to Zapstore as developer-signed app
+
 protocols:
   - name: NIPs
     description: Nostr Implementation Possibilities - the protocol specification
@@ -5953,6 +6042,13 @@ protocols:
     priority: high
     notes: MLS (Messaging Layer Security) for Nostr, enables secure group messaging
     repo: https://github.com/marmot-protocol/marmot
+
+  - name: Gamma Market Spec
+    description: Project-owned extension to NIP-99 consolidating commerce-on-Nostr surface (orders, checkout, escrow, disputes) as a spec composing on top of NIP-99 marketplace listings
+    repo: https://github.com/GammaMarkets/market-spec
+    status: active
+    priority: medium
+    notes: Commerce protocol extension tracked alongside Marmot and Blossom; monitor for open PRs each newsletter
 
   - name: MDK PWA Reference
     description: Progressive web app reference implementation for Marmot Development Kit

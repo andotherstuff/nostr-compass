@@ -135,6 +135,55 @@ tracked_repos:
     in_projects_yml: false
     notes: Ansible playbooks for micro VPN deployment; canonical announcement at gitworkshop.dev
 
+  - name: Holy Fit
+    d_tag: holyfit-steps-tracker
+    pubkey: bbfe449b17e64da33c26ce1a7472d5a5e363d0480dcc2b2802544c75b4694a2e
+    relays: [wss://relay.ngit.dev, wss://gitnostr.com, wss://relay.vanderwarker.family]
+    in_projects_yml: true
+    notes: Per-app project pubkey (distinct from Vanderwarker's personal pubkey); also tracked as gitea repo
+
+  - name: Nunlock
+    d_tag: Nunlock-Android-App
+    pubkey: 9f27f7e3592a243363425bddc5419a12dacd1f46b751bba075854f19fc286630
+    relays: [wss://relay.ngit.dev, wss://gitnostr.com, wss://relay.vanderwarker.family]
+    in_projects_yml: true
+    notes: Per-app project pubkey; also tracked as gitea repo (wellbeing/nunlock-android)
+
+  - name: Whitenoise Linux
+    d_tag: darkmatter-linux
+    pubkey: 66675158e6338fe89fda418e42a0bf2a7a2b132504dd347f015a18971b644430
+    relays: [wss://relay.ngit.dev, wss://gitnostr.com]
+    in_projects_yml: false
+    notes: Desktop Linux Marmot/MLS client built in Rust+Slint; password-encrypted vault for keys; clone at relay.ngit.dev/.../darkmatter-linux.git
+
+  - name: Vidstr
+    d_tag: vidstr
+    pubkey: a8d1560d6a647d501699167246f237b36fb123f89168fda11dc743533fec7a08
+    relays: [wss://git.shakespeare.diy, wss://relay.ngit.dev]
+    in_projects_yml: false
+    notes: Nostr video project hosted on git.shakespeare.diy; active patches from TaipeiBlocks
+
+  - name: nostrapps.com — verdana
+    d_tag: verdana
+    pubkey: 3bf0c63fcb93463407af97a5e5ee64fa883d107ef9e558472c4eb9aaaefa459d
+    relays: [wss://gitnostr.com, wss://relay.ngit.dev]
+    in_projects_yml: false
+    notes: Napp VM for desktop; part of the nostrapps.com napps ecosystem
+
+  - name: nostrapps.com — hallway
+    d_tag: hallway
+    pubkey: 3bf0c63fcb93463407af97a5e5ee64fa883d107ef9e558472c4eb9aaaefa459d
+    relays: [wss://gitnostr.com, wss://relay.ngit.dev]
+    in_projects_yml: false
+    notes: Customizable communities client; part of the nostrapps.com napps ecosystem
+
+  - name: nostrapps.com — napps
+    d_tag: napps
+    pubkey: 3bf0c63fcb93463407af97a5e5ee64fa883d107ef9e558472c4eb9aaaefa459d
+    relays: [wss://gitnostr.com, wss://relay.ngit.dev]
+    in_projects_yml: false
+    notes: HTML microapps spec/runtime; companion to napplet ecosystem; same author as verdana and hallway
+
 # Noise filtering is handled in scripts/fetch_nip34_repos.sh:
 #   - NOISE_PUBKEYS array: known noise pubkeys (hardcoded, with comments)
 #   - filter_noise() function: d_tag patterns, clone URL patterns
