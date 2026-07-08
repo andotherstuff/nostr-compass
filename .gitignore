@@ -64,3 +64,10 @@ scripts/__pycache__/
 data/nostr_nip_discussions/*.json
 data/nostr_recap/*.json
 data/shakespeare_apps/*.json
+data/zapstore_releases/
+data/april_history/
+data/non_github_sources_*.json
+data/coverage_history.json
+logs/
+publish/
+workspace/
