@@ -137,9 +137,13 @@ Divine Video's [mobile app](https://github.com/divinevideo/divine-mobile) merged
 
 [yysskk/swift-nostr-client](https://github.com/yysskk/swift-nostr-client) shipped [v0.6.0](https://github.com/yysskk/swift-nostr-client/releases/tag/0.6.0) alongside 30 merged PRs. The Swift Nostr library moves closer to a first stable API surface for Swift Nostr clients that avoid linking the MDK or MarmotKit toolchains.
 
-### Napplet realigns NIP-5D sandbox surface and drops NAP-RESOURCE
+### Nostr Applet Protocol (NAPS) tightens NAP-OUTBOX Routing and Fanout
 
-[Napplet](https://github.com/napplet) shipped 26 more releases across `@napplet/core`, `@napplet/nap`, `@napplet/sdk`, `@napplet/shim`, `@napplet/skills`, and `@napplet/vite-plugin`, plus 9 PRs to the `naps` spec repo. The most substantive spec move is [PR #79](https://github.com/napplet/naps/pull/79) reverting the NAP-RESOURCE merge (sandboxed resource fetching over `https`, `blossom`, `htree`, `nostr`, and `data` schemes was withdrawn from the spec pending more review), and PRs #81 through #86 replace schema pseudocode with tables across NAP-IDENTITY, NAP-INC, NAP-SHELL, NAP-THEME, and NAP-INTENT. On the runtime side, `kehto/web` (the napplet browser and shell) merged 15 PRs on [NIP-5D](/en/topics/nip-5d/) sandbox capability language, CSP insertion, and the injected NAP-KEYS prelude, narrowing the sandbox surface for napplet execution.
+NAPS had a meaningful cleanup week, mostly in [NAP-OUTBOX](https://github.com/napplet/naps/pull/32). The headline is tighter boundaries: less caller-controlled routing, fewer leaked relay details, and a shared event result shape that can carry relay hints and resource sidecars, tying into [NAP-RESOURCE](https://github.com/napplet/naps/pull/80). Publishing is clearer too: explicit outbox, inbox, and relay fanout rules. Net effect: less ambiguity, better interoperability.
+
+### Napplet Toolchain Tightens Protocol Alignment and Ships Its CLI
+
+This week, Napplet’s packages moved from “useful SDK” toward a tighter protocol toolchain. The big story is alignment with the live NAP specs: [NAP-COUNT query support](https://github.com/napplet/web/pull/104), [OUTBOX’s runtime-owned lifecycle](https://github.com/napplet/web/pull/112), and [RelayEventResult sidecars](https://github.com/napplet/web/pull/108) all landed, making shell-mediated reads and subscriptions more precise. Several domains were sharpened too: CVM registry support, DM error envelopes, MEDIA session context, LISTS count fields, COMMON profile results, and the htree: RESOURCE scheme. On tooling, the new [@napplet/cli](https://github.com/napplet/web/pull/103) is a major milestone, adding config discovery, deploy planning, signing, Blossom uploads, and manifest generation. Finally, the [host-injectable shim prelude](https://github.com/napplet/web/pull/127) and [JSR readiness work](https://github.com/napplet/web/pull/145) made the stack easier to inject, publish, and verify.
 
 ### primal-android extends the remote-signer surface
 
