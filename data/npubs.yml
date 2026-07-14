@@ -175,17 +175,21 @@ Nostrmo:
 HAVEN:
   npub: npub1utx00neqgqln72j22kej3ux7803c2k986henvvha4thuwfkper4s7r50e8
   mention_only: true
-Marmot: npub1whtn0s68y3cs98zysa4nxrfzss5g5snhndv35tk5m2sudsr7ltms48r3ec
-# aliases for Marmot
+# Marmot now has its own dedicated project npub (provided directly, decoded/verified
+# via `nak decode`). White Noise (the client app/team) keeps the older shared npub
+# below since it is a distinct product identity from the protocol account.
+Marmot: npub1marm0t9qkmv8lq7pe7vdx60ed8fl2d876a2ytk3ade208dlyfweqg5r6m9
+# aliases for Marmot (the protocol / MDK, not the White Noise client)
+MDK: npub1marm0t9qkmv8lq7pe7vdx60ed8fl2d876a2ytk3ade208dlyfweqg5r6m9
+marmot-ts: npub1marm0t9qkmv8lq7pe7vdx60ed8fl2d876a2ytk3ade208dlyfweqg5r6m9
+Marmot Protocol: npub1marm0t9qkmv8lq7pe7vdx60ed8fl2d876a2ytk3ade208dlyfweqg5r6m9
+Marmot Development Kit: npub1marm0t9qkmv8lq7pe7vdx60ed8fl2d876a2ytk3ade208dlyfweqg5r6m9
+Marmot TypeScript SDK: npub1marm0t9qkmv8lq7pe7vdx60ed8fl2d876a2ytk3ade208dlyfweqg5r6m9
+Marmot mdk: npub1marm0t9qkmv8lq7pe7vdx60ed8fl2d876a2ytk3ade208dlyfweqg5r6m9
+Marmot Protocol Updates: npub1marm0t9qkmv8lq7pe7vdx60ed8fl2d876a2ytk3ade208dlyfweqg5r6m9
+Marmot TS: npub1marm0t9qkmv8lq7pe7vdx60ed8fl2d876a2ytk3ade208dlyfweqg5r6m9
+# White Noise (the client app) keeps its own pre-existing npub
 White Noise: npub1whtn0s68y3cs98zysa4nxrfzss5g5snhndv35tk5m2sudsr7ltms48r3ec
-MDK: npub1whtn0s68y3cs98zysa4nxrfzss5g5snhndv35tk5m2sudsr7ltms48r3ec
-marmot-ts: npub1whtn0s68y3cs98zysa4nxrfzss5g5snhndv35tk5m2sudsr7ltms48r3ec
-Marmot Protocol: npub1whtn0s68y3cs98zysa4nxrfzss5g5snhndv35tk5m2sudsr7ltms48r3ec
-Marmot Development Kit: npub1whtn0s68y3cs98zysa4nxrfzss5g5snhndv35tk5m2sudsr7ltms48r3ec
-Marmot TypeScript SDK: npub1whtn0s68y3cs98zysa4nxrfzss5g5snhndv35tk5m2sudsr7ltms48r3ec
-Marmot mdk: npub1whtn0s68y3cs98zysa4nxrfzss5g5snhndv35tk5m2sudsr7ltms48r3ec
-Marmot Protocol Updates: npub1whtn0s68y3cs98zysa4nxrfzss5g5snhndv35tk5m2sudsr7ltms48r3ec
-Marmot TS: npub1whtn0s68y3cs98zysa4nxrfzss5g5snhndv35tk5m2sudsr7ltms48r3ec
 
 # --- Media ---
 Wavlake: npub1yfg0d955c2jrj2080ew7pa4xrtj7x7s7umt28wh0zurwmxgpyj9shwv6vg
@@ -630,6 +634,8 @@ Cordn:
 
 # Conduit-BTC project account
 Conduit: npub1nkfqwlz7xkhhdaa3ekz88qqqk7a0ks7jpv9zdsv0u206swxjw9rq0g2svu
+# alias used when the newsletter refers to it as "Conduit Mono"
+Conduit Mono: npub1nkfqwlz7xkhhdaa3ekz88qqqk7a0ks7jpv9zdsv0u206swxjw9rq0g2svu
 
 # Napplet / sandwich.farm dev account
 Napplet:
@@ -658,8 +664,17 @@ hoytech:
   npub: npub1yxprsscnjw2e6myxz73mmzvnqw5kvzd5ffjya9ecjypc5l0gvgksh8qud4
   mention_only: true
 
+# NOTE: previously mapped to the wrong npub (a copy of f321x's key above).
+# Corrected via GitHub verified social_accounts link (njump.me/npub13az...),
+# confirmed on-relay profile nip05 doot@wiredsignal.online, matching "Wired".
 smolgrrr:
-  npub: npub1z9n5ktfjrlpyywds9t7ljekr9cm9jjnzs27h702te5fy8p2c4dgs5zvycf
+  npub: npub13azv2cf3kd3xdzcwqxlgcudjg7r9nzak37usnn7h374lkpvd6rcq4k8m54
+  mention_only: true
+Wired:
+  npub: npub13azv2cf3kd3xdzcwqxlgcudjg7r9nzak37usnn7h374lkpvd6rcq4k8m54
+  mention_only: true
+TAO:
+  npub: npub13azv2cf3kd3xdzcwqxlgcudjg7r9nzak37usnn7h374lkpvd6rcq4k8m54
   mention_only: true
 
 alexgleason:
@@ -677,3 +692,85 @@ CustID: npub1h2vymvsw7t6syasg5peq7sxnlcejldsugz676c8nz6azqsypx85sz35sx0
 
 Holy Fit: npub1h0lyfxchuex6x0pxecd8guk45h3k85zgphxzk2qz23x8tdrffghqkhskfa
 Nunlock: npub1nunl0c6e9gjrxc6zt0wu2sv6ztdv686xkagmhgr4s483nlpgvccqqzxycg
+
+# =============================================================================
+# Newsletter #31 additions (2026-07-15)
+# =============================================================================
+
+# alias: newsletter refers to Nostr Mail (already defined above) as "Nmail"
+Nmail:
+  npub: npub1kg4sdvz3l4fr99n2jdz2vdxe2mpacva87hkdetv76ywacsfq5leqquw5te
+  mention_only: true
+
+# alias: newsletter refers to Formstr/Nostr-Doc (already defined above) as "Nostr Docs"
+Nostr Docs: npub1qu7dsd44275lms4x9snnwvnnmgx926nsppmr7lcw9dlj36n4fltqgs7p98
+
+# alias: newsletter refers to tidley (already defined above, Nostr Codex Phone dev)
+# under the project name "Auditable Voting"
+Auditable Voting:
+  npub: npub19at4nqjjymca2lh3v546vcg5ktun3al4c5xu2pts3ewckv0y70ys0gupzr
+  mention_only: true
+
+# [project] Sonar - privacy-focused Nostr client (sonarprivacy.xyz)
+Sonar: npub1wg2m9ku823y5l5699dlj6294dc3cvwu4g34ldrtelxq20t27clxsd7dzaw
+
+# [project] Bitcoin-Safe - desktop Bitcoin wallet, reached Flathub this week
+# npub verified via bitcoin-safe.org/.well-known/nostr.json (hex round-tripped
+# through `nak encode npub` / `nak decode` to confirm validity despite malformed
+# surrounding JSON on that page)
+Bitcoin-Safe: npub1g9uhysae68vhvwwqel8v9enr9mg43rn4tpurs6a9g4jsrw6nl7lsplhs9v
+# [dev:andreasgriffin] verified via GitHub verified social_accounts link
+andreasgriffin:
+  npub: npub1q67f4d7qdja237us384ryeekxsz88lz5kaawrcynwe4hqsnufr6s27up0e
+  mention_only: true
+
+# [project] Manent - [dev:dtonon] verified via GitHub verified social_accounts link
+Manent: npub10000003zmk89narqpczy4ff6rnuht2wu05na7kpnh3mak7z2tqzsv8vwqk
+dtonon:
+  npub: npub10000003zmk89narqpczy4ff6rnuht2wu05na7kpnh3mak7z2tqzsv8vwqk
+  mention_only: true
+
+# [project] Lumilumi - [dev:TsukemonoGit] verified via GitHub verified social_accounts link
+Lumilumi: npub1sjcvg64knxkrt6ev52rywzu9uzqakgy8ehhk8yezxmpewsthst6sw3jqcw
+TsukemonoGit:
+  npub: npub1sjcvg64knxkrt6ev52rywzu9uzqakgy8ehhk8yezxmpewsthst6sw3jqcw
+  mention_only: true
+
+# [dev:Anderson-Juhasc] NIP-29 pinning PR #2379 - verified via GitHub
+Anderson-Juhasc:
+  npub: npub1f27g79lrpey73wtqa2pprn7vv3yveyytws08lxqe7pn0yuj8ppyqyk9swu
+  mention_only: true
+
+# alias: NIP-66 restructure PR #2241 credited to "VincenzoImp", same person as
+# the existing Vincenzo podcast-guest entry above
+VincenzoImp:
+  npub: npub1szgdn7q6g9huf8a4zd980khntyk2mwqa7s5rlqye6v3y3w7gs4zspmv73y
+  mention_only: true
+
+# [dev:geralt-debugs] Form* NIP author (private encrypted drive / NIP-FS,
+# NIP-4E-inspired decoupled encryption key) - pubkey decoded directly from the
+# naddr coordinates shared for the NIP proposal via `nak decode`
+geralt-debugs:
+  npub: npub15gkmu50rcuv6mzevmslyllppwmeqxulnqfak0gwud3hfwmau6mvqqnpfvg
+  mention_only: true
+Form*:
+  npub: npub15gkmu50rcuv6mzevmslyllppwmeqxulnqfak0gwud3hfwmau6mvqqnpfvg
+  mention_only: true
+
+# No verified public Nostr identity found after reasonable effort (no GitHub
+# social_accounts link, no working project site/.well-known/nostr.json, or
+# domain unreachable). Left unresolved rather than guessed.
+# n_cord: no verified npub found
+# Nostr WoT: no verified npub found
+# Kehto: no verified npub found
+# Bray: no verified npub found
+# Cambium: no verified npub found
+# Earthly: no verified npub found
+# lnbits: no verified npub found
+# OpenDiscord: no verified npub found
+# echoes: no verified npub found
+# Dispatch: no verified npub found
+# Linky: no verified npub found
+# JAFairweather: no verified npub found
+# vincenzopalazzo: no verified npub found
+# cdk: no verified npub found
