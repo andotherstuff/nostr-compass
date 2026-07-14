@@ -7,6 +7,14 @@
 #
 # To add entries: look up npubs via njump.me, nostr.band, or ask the project maintainer
 #
+# --- Never DM (read by publish/dm-outreach.ts) ---
+# npubs listed here are never sent a weekly outreach DM, even when
+# scripts/publish.ts resolves them as a genuine mention in that week's
+# newsletter. Use this for accounts that should not receive outreach
+# solicitation, as distinct from being excluded from the npub lookup itself.
+no_dm:
+  - npub1marm0t9qkmv8lq7pe7vdx60ed8fl2d876a2ytk3ade208dlyfweqg5r6m9  # Marmot protocol/MDK - this chat, the bunker signing, and the DM transport itself all run over Marmot; never solicit outreach to it
+#
 # Two formats:
 #   String value (project account):  ProjectName: npub1...
 #     -> Replaces "ProjectName" with nostr:npub in body (renders as project name)
