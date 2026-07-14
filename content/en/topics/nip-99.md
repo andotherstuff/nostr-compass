@@ -42,7 +42,7 @@ The event is addressable, so a seller can update the listing while keeping the s
 
 The strength of NIP-99 is that it leaves room for different marketplace designs while still standardizing the core listing shape. One client can focus on local classifieds, another on subscriptions, and another on global product catalogs. If they all agree on the event structure, sellers can publish once and still get some cross-client visibility.
 
-That flexibility also explains why current marketplace projects favor it. The spec is structured enough to support search and display, but it does not force every app into a single escrow, shipping, or payment workflow.
+That flexibility also explains why current marketplace projects favor it. The spec is structured enough to support search and display, but it does not force every app into a single escrow, shipping, or payment workflow. [Gamma Markets](/en/topics/gamma-markets/) is the emerging convention that fills in the shipping, order-flow, collection, and review pieces NIP-99 itself leaves undefined, without changing the kind `30402`/`30403` listing shape.
 
 ## Implementation Notes
 
@@ -65,8 +65,11 @@ That flexibility also explains why current marketplace projects favor it. The sp
 
 **Mentioned in:**
 - [Newsletter #13: Shopstr and Milk Market Open MCP Commerce Surfaces](/en/newsletters/2026-03-11-newsletter/#shopstr-and-milk-market-open-mcp-commerce-surfaces)
+- [Newsletter #31: Conduit Mono rebuilds the merchant orders inbox around ephemeral guest checkout](/en/newsletters/2026-07-15-newsletter/#conduit-mono-rebuilds-the-merchant-orders-inbox-around-ephemeral-guest-checkout)
+- [Newsletter #31: NIP Deep Dive: NIP-99 and the Gamma Markets commerce extension](/en/newsletters/2026-07-15-newsletter/#nip-deep-dive-nip-99-and-the-gamma-markets-commerce-extension)
 
 **See also:**
 - [NIP-15: Marketplace Offers](/en/topics/nip-15/)
 - [NIP-47: Nostr Wallet Connect](/en/topics/nip-47/)
 - [NIP-60: Cashu Wallet](/en/topics/nip-60/)
+- [Gamma Markets](/en/topics/gamma-markets/) - shipping, order-flow, and review conventions built on top of NIP-99 listings

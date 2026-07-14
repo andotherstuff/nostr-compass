@@ -51,6 +51,7 @@ NIP-66 does not create a single authoritative monitor. Multiple monitors can pub
 **Mentioned in:**
 - [Newsletter #6: NIP Deep Dive](/en/newsletters/2026-01-21-newsletter/#nip-deep-dive-nip-11-and-nip-66)
 - [Newsletter #13: NIP Updates](/en/newsletters/2026-03-11-newsletter/#nip-updates)
+- [Newsletter #31: Open: NIP-66 relay discovery restructure](/en/newsletters/2026-07-15-newsletter/#open-nip-66-relay-discovery-restructure)
 
 **See also:**
 - [NIP-11: Relay Information Document](/en/topics/nip-11/)

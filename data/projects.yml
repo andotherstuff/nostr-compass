@@ -821,6 +821,25 @@ social_clients:
     status: active
     priority: low
 
+  # --- Browser Extensions ---
+  - name: Nostru
+    description: Nostr social client and Bitcoin Silent Payment receiver as a Chrome browser extension
+    platforms: [ browser-extension ]
+    repo: https://github.com/i2dor/nostru
+    website: https://github.com/i2dor/nostru/releases/latest
+    maintainer: i2dor
+    status: beta
+    priority: low
+    notes: Derives BIP-352 Silent Payment addresses from any Nostr keypair (NSP); publishes and discovers SP addresses via NIP-352 (kind:30352); NWC zaps; local ECDH scanning via native host; scan key never leaves device
+
+  - name: OpenDiscord
+    description: Discord-style server/channel client with voice lobbies built on Nostr
+    platforms: [ web ]
+    repo: https://github.com/sofia-gros/open-discord
+    status: active
+    priority: low
+    notes: Server/channel layout with role-based permissions, WebRTC/SFU voice lobbies, and direct posting to the global Nostr feed from the same client
+
 # =============================================================================
 # LONG-FORM CONTENT
 # =============================================================================
@@ -1721,6 +1740,15 @@ messaging_clients:
     status: alpha
     priority: low
     notes: Mobile companion to the coop NIP-17 client; hosted on Gitea (git.reya.su)
+
+  - name: Sonar
+    description: Decentralized, privacy-first messenger and Lightning wallet over Bluetooth mesh and Nostr
+    platforms: [ ios, macos, android, desktop ]
+    repo: https://github.com/hedwig-corp/bitchat-to-sonar
+    website: http://sonarprivacy.xyz/
+    status: active
+    priority: medium
+    notes: Grew out of bitchat; Marmot (MLS over Nostr) group DMs interoperable with White Noise, NIP-17 gift-wrapped mesh fallback, embedded Lightning wallet, geohash location channels over Nostr relays
 
 media_clients:
   - name: Zap.stream
@@ -3307,6 +3335,13 @@ devtools:
     priority: medium
     notes: Alternative surface to nostrhub.io; ships approvals as NIP-32 labels (L=nostrhub, l=approve); Formstr signer stack (@formstr/signer, @formstr/local-relay) with NIP-07/46/49/55 support; created 2026-06-29
 
+  - name: n8n-nodes-nostr
+    description: n8n community node package for the Nostr protocol
+    repo: https://github.com/coracle-social/n8n-nodes-nostr
+    maintainer: coracle-social
+    status: active
+    priority: low
+    notes: Create/sign/fetch events, NIP-44 encrypt/decrypt, NIP-19 encode/decode, NIP-42 relay auth, live subscription trigger; vendored schnorr/bech32 crypto, no runtime deps; from the Coracle team
 
 signers:
   - name: Amber
@@ -3661,6 +3696,15 @@ signers:
     repo: https://github.com/TP-Lab/TokenPocket
     status: active
     priority: low
+
+  - name: Cambium
+    description: Android NIP-55 signer holding no private key material, proxying signing requests over NIP-46 to a companion Heartwood hardware signer
+    platforms: [ android ]
+    repo: https://github.com/forgesworn/cambium
+    maintainer: forgesworn
+    status: active
+    priority: medium
+    notes: Keyless companion app to the Heartwood hardware signing bridge; shares the forgesworn GitHub org with Bray
 
 relays:
   - name: strfry
@@ -4909,6 +4953,15 @@ wallets:
     priority: medium
     notes: Browser-based Lightning, shutting down end of 2024
 
+  - name: Bitcoin-Safe
+    description: Free & OpenSource desktop software for managing your cold storage wallets
+    platforms: [ macOS, Win, Linux ]
+    repo: https://github.com/andreasgriffin/bitcoin-safe
+    website: https://bitcoin-safe.org
+    status: active
+    priority: medium
+    notes: Label sync, signer chat, and remote multisig PSBT signing over NIP-17; exploring Marmot for future group chat
+
   - name: Zeus
     description: Mobile Bitcoin/Lightning wallet
     platforms: [ ios, android ]
@@ -6009,6 +6062,28 @@ other:
     status: alpha
     priority: low
     notes: Rust + Slint UI; published to Zapstore as developer-signed app
+
+  - name: Auditable Voting
+    description: Client-only Nostr voting shell for voters and coordinators
+    repo: https://github.com/tidley/auditable-voting
+    website: https://tidley.github.io/auditable-voting/
+    maintainer: tidley
+    status: alpha
+    priority: low
+
+  - name: Nostrautica
+    description: Nostr-native event matchmaking with intro videos, AI matchmaking, and a portable identity
+    website: https://cypherpunk.today/nostrautica/
+    status: alpha
+    priority: low
+    notes: Docs site hosted alongside Nalgorithm on cypherpunk.today; maintainer unconfirmed; no public repo found
+
+  - name: Iris Drive
+    description: Experimental NIP-34 repo published via Iris Git using a custom htree:// clone scheme
+    website: https://git.iris.to/#/npub1xdhnr9mrv47kkrn95k6cwecearydeh8e895990n3acntwvmgk2dsdeeycm/iris-drive
+    status: alpha
+    priority: low
+    notes: Published by the "Sirius Business Ltd" Nostr identity (same operator as Iris/iris.to); repo announcement (kind 30617) carries no description field, substance unverified, flagged for follow-up
 
 protocols:
   - name: NIPs

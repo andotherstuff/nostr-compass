@@ -67,6 +67,7 @@ Zap splits, defined in an appendix to the NIP, let a recipient publish a kind `0
 - [Newsletter #9: NIP Updates](/en/newsletters/2026-02-11-newsletter/#nip-updates)
 - [Newsletter #19: NIP Deep Dive](/en/newsletters/2026-04-22-newsletter/#nip-deep-dive-nip-57-zaps)
 - [Newsletter #27: Amethyst v1.12.0 ships Cashu wallets, nutzaps, a CLINK driver, and Tor self-heal](/en/newsletters/2026-06-17-newsletter/#amethyst-v1-12-0-ships-cashu-wallets-nutzaps-a-clink-driver-and-tor-self-heal)
+- [Newsletter #31: Wired and TAO add NIP-57 creator revenue sharing](/en/newsletters/2026-07-15-newsletter/#wired-and-tao-add-nip-57-creator-revenue-sharing)
 
 **See also:**
 - [NIP-47: Nostr Wallet Connect](/en/topics/nip-47/)
