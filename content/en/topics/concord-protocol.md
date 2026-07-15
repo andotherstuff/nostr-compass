@@ -11,11 +11,29 @@ Concord is an open, MIT-licensed protocol for end-to-end encrypted communities a
 
 ## How It Works
 
-Concord splits what a Discord-style community server normally does into pieces that need to trust nobody: relays only ever store encrypted blobs addressed to rotating labels, holding a room's key is what makes someone a member, and authority over roles, kicks, and bans is a signed roster rooted in the owner's identity that every client verifies locally instead of trusting a server to enforce it. Control, chat, and guestbook traffic rides as [NIP-59](/en/topics/nip-59/) gift-wrapped events over ordinary relays. The spec is split into seven CORD documents: private streams (01), communities and membership (02), channels (03), roles (04), invites (05), rekeying and re-founding to cut off removed members (06), and audio/video via a blind token broker (07).
+Concord splits what a Discord-style community server normally does into pieces that need to trust nobody: relays only ever store encrypted blobs addressed to rotating labels, holding a room's key is what makes someone a member, and authority over roles, kicks, and bans is a signed roster rooted in the owner's identity that every client verifies locally instead of trusting a server to enforce it. Every durable event rides the same three-layer envelope: a kind 1059 wrap signed by the plane's own derived stream key, containing a seal signed by the author's real key, containing an unsigned rumor that carries the functional event. A chat message rumor is a plain kind 9 event:
 
-## Why It Matters
+```json
+{
+  "kind": 9,
+  "pubkey": "<author>",
+  "content": "Hey chat!",
+  "tags": [
+    ["channel", "<channel_id>"],
+    ["epoch", "0"]
+  ]
+}
+```
 
-Concord is positioned against Marmot, not as a variant of it: Marmot's MLS-based ratcheting is built for small, high-stakes groups with per-device key packages, while Concord targets large, casual, high-churn public communities where that ratcheting overhead does not scale. [Vector v0.4.0](https://github.com/VectorPrivacy/Vector/releases/tag/v0.4.0) retired Marmot for its own Group Chats in favor of Concord, and [v0.4.1](https://github.com/VectorPrivacy/Vector/releases/tag/v0.4.1) shipped "Concord v2" days later with privacy and stability improvements. Within the same week, [Amethyst merged its own clean-room, wire-compatible Concord implementation](https://github.com/vitorpamplona/amethyst/pull/3566), and Soapbox's Discord-style client [Armada](https://gitlab.com/soapbox-pub/armada) already builds its Communities feature on the same spec as a reference implementation. Three independent clients converging on one open spec within days of each other is a faster path to real cross-client interop than Marmot saw early on, and worth tracking against how much of the rest of the group-chat ecosystem stays consolidated around Marmot instead.
+Control, chat, and guestbook traffic each get their own [NIP-59](/en/topics/nip-59/) gift-wrapped plane, so a relay holding all three still cannot tell a control message from a chat message from a guestbook entry without the room key. The spec is split into seven CORD documents: private streams (01), communities and membership (02), channels (03), roles (04), invites (05), rekeying and re-founding to cut off removed members (06), and audio/video via a blind token broker (07). Membership itself has no server-side list: whoever can decrypt the plane is a member, and removing someone for real means rolling the community to a new key epoch and handing it only to who is left, instead of deleting a row from a table.
+
+## How It Differs from Marmot
+
+Concord and [Marmot](/en/topics/marmot/) solve encrypted group messaging on Nostr with different cryptography for different group shapes, and the Concord project's own comparison is explicit about the split: Marmot layers [MLS](/en/topics/mls/) on top of Nostr for forward secrecy and post-compromise security, using per-device key packages and ordered commits that advance the whole group in lockstep. That buys strong guarantees, at a cost that scales with membership changes, well suited to small, high-stakes groups where joins and leaves are rare. Concord instead gives every member the same room key and re-keys the whole room on removal instead of ratcheting per commit, trading some of MLS's cryptographic guarantees for a model that stays cheap as a community grows into the hundreds or thousands of casual, high-churn members, the shape Discord-style communities actually take.
+
+## Why Vector Switched
+
+Vector's own [v0.4.0 release notes](https://github.com/VectorPrivacy/Vector/releases/tag/v0.4.0) describe Concord only as "our custom messaging protocol" for Group Chats, without stating the reasoning directly. The fit with Concord's own published rationale is clear regardless: Group Chats in a client like Vector are exactly the large, open, frequently-changing-membership case where Marmot's per-device MLS state becomes the more expensive path, and Concord's asynchronous, fold-anytime design is built for that case instead. [Vector v0.4.0](https://github.com/VectorPrivacy/Vector/releases/tag/v0.4.0) retired Marmot for Group Chats in favor of Concord, and existing Marmot group history did not carry over in the switch. [v0.4.1](https://github.com/VectorPrivacy/Vector/releases/tag/v0.4.1) shipped "Concord v2" four days later with privacy and stability improvements. Within the same week, [Amethyst merged its own clean-room, wire-compatible Concord implementation](https://github.com/vitorpamplona/amethyst/pull/3566), and Soapbox's Discord-style client [Armada](https://gitlab.com/soapbox-pub/armada) already builds its Communities feature on the same spec as a reference implementation. Three independent clients converging on one open spec within days of each other is a fast path to real cross-client interop, worth tracking against how much of the rest of Nostr's group-chat clients stay on Marmot instead.
 
 ## Implementations
 

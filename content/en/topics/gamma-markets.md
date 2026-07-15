@@ -21,9 +21,27 @@ Gamma Markets adds five event kinds around NIP-99's existing kind `30402` listin
 - **Kind 17** - payment receipts
 - **Kind 31555** - product reviews, addressed to a specific seller pubkey and listing `d` tag
 
-A merchant's payment preferences are declared via a `payment_preference` tag on their kind `0` profile metadata, and clients discover compatible apps through [NIP-89](/en/topics/nip-89/) application recommendations. Order communication builds on [NIP-17](/en/topics/nip-17/) private messages rather than a new encryption scheme.
+A merchant's payment preferences are declared via a `payment_preference` tag on their kind `0` profile metadata, and clients discover compatible apps through [NIP-89](/en/topics/nip-89/) application recommendations. Order communication builds on [NIP-17](/en/topics/nip-17/) private messages, with no new encryption scheme of its own.
 
-The spec's defining design choice is that nothing cascades: a listing that belongs to a collection, or that uses a shipping option, references it explicitly with an `a` tag rather than inheriting its parent's settings automatically. That is a deliberate departure from the older [NIP-15](/en/topics/nip-15/) stall model, where a product silently inherited its stall's currency and shipping table.
+The spec's defining design choice is that nothing cascades: a listing that belongs to a collection, or that uses a shipping option, references it explicitly with an `a` tag instead of inheriting its parent's settings automatically. That is a deliberate departure from the older [NIP-15](/en/topics/nip-15/) stall model, where a product silently inherited its stall's currency and shipping table.
+
+### Example: order creation (kind 16, type 1)
+
+```json
+{
+  "kind": 16,
+  "content": "Please leave the package with the doorman.",
+  "tags": [
+    ["p", "<merchant-pubkey>"],
+    ["subject", "New order"],
+    ["type", "1"],
+    ["order", "order-8f21"],
+    ["amount", "115000"],
+    ["item", "30402:<merchant-pubkey>:keyboard-mx-blue-01", "1"],
+    ["shipping", "30406:<merchant-pubkey>:standard-regional"]
+  ]
+}
+```
 
 ## Why It Matters
 

@@ -23,11 +23,11 @@ The NIPs repository merges nothing in the last week and opens six proposals: [ki
 
 ### Vector v0.4.0 moves Group Chats from Marmot to Concord, and Amethyst ships its own Concord client days later
 
-[Vector](https://github.com/VectorPrivacy/Vector) is a Nostr messenger built around a single-binary, privacy-first client for DMs and group chats. [Vector v0.4.0](https://github.com/VectorPrivacy/Vector/releases/tag/v0.4.0) rewrites the app's messaging engine into a shared `vector-core` library and, in the same release, retires [Marmot](/en/topics/marmot/) (MLS-over-Nostr) as the default transport for Group Chats in favor of [Concord](/en/topics/concord-protocol/), an end-to-end encrypted community protocol; existing Marmot group history does not carry over, and the release notes tell users to back up any Marmot group data before upgrading. Vector's own release notes describe Concord as "our custom messaging protocol," but the underlying [CORD-01 through CORD-07 specs](https://github.com/concord-protocol/concord) are published separately, MIT-licensed, and already implemented outside Vector: Soapbox's Discord-style client [Armada](https://gitlab.com/soapbox-pub/armada) builds its Communities feature on the same Concord spec, and one day later, [Amethyst merged its own clean-room, wire-compatible Concord implementation](https://github.com/vitorpamplona/amethyst/pull/3566), covered in full below. The same Vector release adds optional Tor routing for all traffic, [NIP-46](/en/topics/nip-46/) remote-signer login by QR or pasted bunker URI, multiple accounts with an in-app switcher, and custom emoji packs shared across clients. Message deletion removes a message for both sides in DMs and group chats while Vector deliberately keeps the ephemeral signing key rather than following the standard [NIP-17](/en/topics/nip-17/) deletion flow, a privacy-motivated departure the project calls out explicitly in the release notes. Four days later, [v0.4.1](https://github.com/VectorPrivacy/Vector/releases/tag/v0.4.1) ships **Concord v2**, described as bringing major privacy and stability improvements to Communities while keeping existing ones working, alongside a Discord-style slash-command picker for bots with typed parameters, a per-chat self-destruct timer, and a NIP-58 badge system for bug hunters. The move away from Marmot for group chat comes the same week [MDK v0.9.4](#mdk-v094-bounds-external-signer-login-and-adds-draft-persistence) below continues investing in the spec.
+[Vector](https://github.com/VectorPrivacy/Vector) is a Nostr messenger built around a single-binary, privacy-first client for DMs and group chats. [Vector v0.4.0](https://github.com/VectorPrivacy/Vector/releases/tag/v0.4.0) rewrites the app's messaging engine into a shared `vector-core` library and, in the same release, retires [Marmot](/en/topics/marmot/) (MLS-over-Nostr) as the default transport for Group Chats in favor of [Concord](/en/topics/concord-protocol/), an end-to-end encrypted community protocol; existing Marmot group history does not carry over, and the release notes tell users to back up any Marmot group data before upgrading. Vector's own release notes describe Concord as "our custom messaging protocol," but the underlying [CORD-01 through CORD-07 specs](https://github.com/concord-protocol/concord) are published separately, MIT-licensed, and already implemented outside Vector: Soapbox's Discord-style client [Armada](https://gitlab.com/soapbox-pub/armada) builds its Communities feature on the same Concord spec, and one day later, [Amethyst merged its own clean-room, wire-compatible Concord implementation](https://github.com/vitorpamplona/amethyst/pull/3566), covered in full below. The same Vector release adds optional Tor routing for all traffic, [NIP-46](/en/topics/nip-46/) remote-signer login by QR or pasted bunker URI, multiple accounts with an in-app switcher, and custom emoji packs shared across clients. Message deletion removes a message for both sides in DMs and group chats, and Vector deliberately keeps the ephemeral signing key instead of following the standard [NIP-17](/en/topics/nip-17/) deletion flow, a privacy-motivated departure the project calls out explicitly in the release notes. Four days later, [v0.4.1](https://github.com/VectorPrivacy/Vector/releases/tag/v0.4.1) ships **Concord v2**, described as bringing major privacy and stability improvements to Communities while keeping existing ones working, alongside a Discord-style slash-command picker for bots with typed parameters, a per-chat self-destruct timer, and a NIP-58 badge system for bug hunters. The move away from Marmot for group chat comes the same week [MDK v0.9.4](#mdk-v094-bounds-external-signer-login-and-adds-draft-persistence) below continues investing in the spec.
 
 ### Amethyst ships a clean-room Concord implementation for end-to-end encrypted communities
 
-[Amethyst](https://github.com/vitorpamplona/amethyst) is a feature-rich Android and multiplatform Nostr client. [PR #3566](https://github.com/vitorpamplona/amethyst/pull/3566) adds a full implementation of [Concord](/en/topics/concord-protocol/) (CORD-01 through CORD-07) covering serverless, end-to-end encrypted communities: gift-wrapped control, chat, and guestbook planes over ordinary relays, owner-rooted role and ban enforcement that every client verifies locally instead of trusting a server, and rekeying to cut off removed members. Protocol and crypto code lives in `quartz/`, state and view models in `commons/`, and screens and navigation in `amethyst/` for Android, with thin CLI verbs under `cli/`; there is no desktop UI yet, since the shared logic sits in `quartz`/`commons` for Desktop to adopt later. The implementation is a clean-room reimplementation wire-compatible with Soapbox's [Armada](https://gitlab.com/soapbox-pub/armada) reference client, matched from the public CORD specs and observed wire constants rather than copied from Armada's AGPL-3.0-licensed code; Amethyst ships under MIT, and Armada's own test-vector values were ported into Quartz's unit tests to confirm interop. This gives Concord at least three independent parties within days of each other: Vector as the protocol's first shipping client, Soapbox's Armada as a reference implementation, and now Amethyst's own from-spec build.
+[Amethyst](https://github.com/vitorpamplona/amethyst) is a feature-rich Android and multiplatform Nostr client. [PR #3566](https://github.com/vitorpamplona/amethyst/pull/3566) adds a full implementation of [Concord](/en/topics/concord-protocol/) (CORD-01 through CORD-07) covering serverless, end-to-end encrypted communities: gift-wrapped control, chat, and guestbook planes over ordinary relays, owner-rooted role and ban enforcement that every client verifies locally instead of trusting a server, and rekeying to cut off removed members. Protocol and crypto code lives in `quartz/`, state and view models in `commons/`, and screens and navigation in `amethyst/` for Android, with thin CLI verbs under `cli/`; there is no desktop UI yet, since the shared logic sits in `quartz`/`commons` for Desktop to adopt later. The implementation is clean-room: built from the public CORD specs and observed wire constants, under Amethyst's own MIT license, distinct from Armada's AGPL-3.0 codebase. Armada's own test-vector values were ported into Quartz's unit tests to confirm the two clients actually interoperate on the wire, giving Concord three independent implementations within days of each other: Vector shipping first, Armada as Soapbox's reference client, and now Amethyst's from-spec build.
 
 ### Sonar splits off from Bitchat with a cross-platform alpha and a sticker-pack spec
 
@@ -35,11 +35,11 @@ The NIPs repository merges nothing in the last week and opens six proposals: [ki
 
 ### Divine Mobile 1.0.16 ships a deeper video editor, at-rest encryption, and ProofMode provenance
 
-[Divine](https://github.com/divinevideo/divine-mobile) is a short-video client built on Nostr with Web-of-Trust feed curation. [v1.0.16](https://github.com/divinevideo/divine-mobile/releases/tag/1.0.16), the first tagged release since #30, adds clip transitions, reverse playback, a voice-over recorder, and timeline beat markers to the video editor, alongside a feed-tuning control that lets a user swipe to adjust recommendations directly rather than through opaque engagement signals. The release also turns on at-rest encryption for local data, adds background uploads that survive the app being suspended, and carries [ProofMode](/en/topics/proofmode/) provenance data forward when a watermarked clip is downloaded so the human-made attestation is not stripped in transit. Divine also ships new protections for under-16 accounts and expands localization to 17 languages and 284 translated strings.
+[Divine](https://github.com/divinevideo/divine-mobile) is a short-video client built on Nostr with Web-of-Trust feed curation. [v1.0.16](https://github.com/divinevideo/divine-mobile/releases/tag/1.0.16), the first tagged release since #30, adds clip transitions, reverse playback, a voice-over recorder, and timeline beat markers to the video editor, alongside a feed-tuning control that lets a user swipe to adjust recommendations directly instead of leaving them to opaque engagement signals. The release also turns on at-rest encryption for local data, adds background uploads that survive the app being suspended, and carries [ProofMode](/en/topics/proofmode/) provenance data forward when a watermarked clip is downloaded so the human-made attestation is not stripped in transit. Divine also ships new protections for under-16 accounts and expands localization to 17 languages and 284 translated strings.
 
 ### Bitchat v1.7.0 adds live push-to-talk voice for DMs and the public mesh
 
-[Bitchat](https://github.com/permissionlesstech/bitchat) is a Bluetooth-mesh chat app with an opt-in gateway onto Nostr relays. [v1.7.0](https://github.com/permissionlesstech/bitchat/releases/tag/v1.7.0), released the evening #30 published, adds live push-to-talk voice in [PR #1403](https://github.com/permissionlesstech/bitchat/pull/1403) that streams audio while the sender holds the button and falls back to a voice note if the stream drops, plus signed public-mesh push-to-talk in [PR #1406](https://github.com/permissionlesstech/bitchat/pull/1406) so live voice bursts on the shared mesh channel carry sender authentication. The release also heals peer-ID rotation by rebinding the link on a verified re-announce rather than treating the peer as new ([PR #1401](https://github.com/permissionlesstech/bitchat/pull/1401)), and direct messages to a currently unreachable peer now queue with store-and-forward delivery instead of failing outright ([PR #1415](https://github.com/permissionlesstech/bitchat/pull/1415)). This continues directly from #30's coverage of v1.6.0's [NIP-13](/en/topics/nip-13/) proof-of-work and mesh-to-Nostr gateway work.
+[Bitchat](https://github.com/permissionlesstech/bitchat) is a Bluetooth-mesh chat app with an opt-in gateway onto Nostr relays. [v1.7.0](https://github.com/permissionlesstech/bitchat/releases/tag/v1.7.0), released the evening #30 published, adds live push-to-talk voice in [PR #1403](https://github.com/permissionlesstech/bitchat/pull/1403) that streams audio while the sender holds the button and falls back to a voice note if the stream drops, plus signed public-mesh push-to-talk in [PR #1406](https://github.com/permissionlesstech/bitchat/pull/1406) so live voice bursts on the shared mesh channel carry sender authentication. The release also heals peer-ID rotation by rebinding the link on a verified re-announce, recognizing the same peer under its new ID ([PR #1401](https://github.com/permissionlesstech/bitchat/pull/1401)), and direct messages to a currently unreachable peer now queue with store-and-forward delivery instead of failing outright ([PR #1415](https://github.com/permissionlesstech/bitchat/pull/1415)). This continues directly from #30's coverage of v1.6.0's [NIP-13](/en/topics/nip-13/) proof-of-work and mesh-to-Nostr gateway work.
 
 ### MDK v0.9.4 bounds external-signer login and adds draft persistence
 
@@ -83,19 +83,19 @@ The NIPs repository merges nothing in the last week and opens six proposals: [ki
 
 ### Kubo ships tablet mode and group-chat photos
 
-[Kubo](https://github.com/JeroenOnNostr/kubo) is a child-safe Nostr video platform with Web-of-Trust feed curation, not covered since 2026-06-24. [kubo-v2026.07.05](https://github.com/JeroenOnNostr/kubo/releases/tag/kubo-v2026.07.05) adds an opt-in tablet grid layout for the child feed and support for attaching photos to group-chat messages, plus fixes for the sign-up button hiding behind the on-screen keyboard on Android.
+[Kubo](https://github.com/JeroenOnNostr/kubo) is a child-safe Nostr video platform with Web-of-Trust feed curation. [kubo-v2026.07.05](https://github.com/JeroenOnNostr/kubo/releases/tag/kubo-v2026.07.05) adds an opt-in tablet grid layout for the child feed and support for attaching photos to group-chat messages, plus fixes for the sign-up button hiding behind the on-screen keyboard on Android.
 
 ### Nostr Codex Phone v0.2.9 adds git/diff/read-file helper requests
 
-[Nostr Codex Phone](https://github.com/tidley/nostr-codex-phone) is a mobile control surface for a local coding-assistant worker communicating over encrypted Nostr DMs, which launched in #29. [v0.2.9](https://github.com/tidley/nostr-codex-phone/releases/tag/v0.2.9) adds mobile OpenCode tool actions including git, diff, read-file, status, and history helper requests, session pin and search improvements, and a task-stop control, alongside an encrypted [Blossom](/en/topics/blossom/) upload wrapper that shipped in the preceding v0.2.8.
+[Nostr Codex Phone](https://github.com/tidley/nostr-codex-phone) is a mobile control surface for a local coding-assistant worker communicating over encrypted Nostr DMs. [v0.2.9](https://github.com/tidley/nostr-codex-phone/releases/tag/v0.2.9) adds mobile OpenCode tool actions including git, diff, read-file, status, and history helper requests, session pin and search improvements, and a task-stop control, alongside an encrypted [Blossom](/en/topics/blossom/) upload wrapper that shipped in the preceding v0.2.8.
 
-### GitWorkshop v3.0.3 fixes newly announced refs in the repo explorer
+### GitWorkshop v3.0.3 fixes newly announced refs in the repo explorer, and ships its first Android build
 
-[GitWorkshop](https://github.com/DanConwayDev/gitworkshop) is a git-over-Nostr web UI for browsing and reviewing NIP-34 repositories. [v3.0.3](https://github.com/DanConwayDev/gitworkshop/releases/tag/v3.0.3) fixes the branches, tags, commits, and code-browsing views failing to resolve a ref that a repo announces after the explorer has already loaded it, alongside CI workflow-timing cleanup, confirmed directly against the tag and commit history.
+[GitWorkshop](https://github.com/DanConwayDev/gitworkshop) is a git-over-Nostr web UI for browsing and reviewing NIP-34 repositories. [v3.0.3](https://github.com/DanConwayDev/gitworkshop/releases/tag/v3.0.3) fixes the branches, tags, commits, and code-browsing views failing to resolve a ref that a repo announces after the explorer has already loaded it, alongside CI workflow-timing cleanup, confirmed directly against the tag and commit history. The same week, GitWorkshop published its first native Android build to [Zapstore](https://zapstore.dev), starting at v3.0.0 and reaching v3.0.3 within hours; the web UI stays the primary interface, and the Android package brings the same NIP-34 repository browsing to a phone for the first time.
 
 ### Bitcoin-Safe reaches Flathub, spotlighting its Nostr Sync & Chat plugin
 
-[Bitcoin-Safe](https://bitcoin-safe.org) is a self-custody Bitcoin wallet built around hardware-signer workflows. The project [shipped a Flathub package](https://flathub.org/apps/org.bitcoin_safe.BitcoinSafe) this week, its first listing in a mainstream Linux app store. The Flathub release puts Bitcoin-Safe's Sync & Chat plugin in front of a wider audience: the plugin uses [NIP-17](/en/topics/nip-17/) direct messages, via the project's own [bitcoin-nostr-chat](https://github.com/andreasgriffin/bitcoin-nostr-chat) library, to synchronize wallet labels between a user's devices and to send and receive PSBTs for remote multisig co-signing between trusted participants. The Nostr layer itself shipped earlier, in [2.0.0](https://github.com/andreasgriffin/bitcoin-safe/releases/tag/2.0.0) (2026-06-29), which redesigned transaction signing around a "Share via Chat & Sync" connection type alongside QR, USB, and Bluetooth; this week's news is the Flathub reach rather than new protocol work. Whether the project eventually moves this messaging layer onto [Marmot](/en/topics/marmot/) (MLS-over-Nostr) instead of individually-wrapped NIP-17 DMs is worth watching as group-signing setups grow past two or three participants.
+[Bitcoin-Safe](https://bitcoin-safe.org) is a self-custody Bitcoin wallet built around hardware-signer workflows. The project [shipped a Flathub package](https://flathub.org/apps/org.bitcoin_safe.BitcoinSafe) this week, its first listing in a mainstream Linux app store. The Flathub release puts Bitcoin-Safe's Sync & Chat plugin in front of a wider audience: the plugin uses [NIP-17](/en/topics/nip-17/) direct messages, via the project's own [bitcoin-nostr-chat](https://github.com/andreasgriffin/bitcoin-nostr-chat) library, to synchronize wallet labels between a user's devices and to send and receive PSBTs for remote multisig co-signing between trusted participants. The Nostr layer itself shipped earlier, in [2.0.0](https://github.com/andreasgriffin/bitcoin-safe/releases/tag/2.0.0) (2026-06-29), which redesigned transaction signing around a "Share via Chat & Sync" connection type alongside QR, USB, and Bluetooth. This week's news is the Flathub packaging putting that existing feature in front of a mainstream Linux audience for the first time.
 
 ---
 
@@ -111,7 +111,7 @@ Beyond the [Concord implementation](#amethyst-ships-a-clean-room-concord-impleme
 
 ### Kehto streams outbox reads before relay discovery
 
-[Kehto](https://github.com/kehto/web) is an early web-based runtime for [NIP-5D](/en/topics/nip-5d/) Nostr applets, or "napplets." It merged 26 PRs. [PR #193](https://github.com/kehto/web/pull/193) fixes outbox reads that previously waited on [NIP-65](/en/topics/nip-65/) relay-list loading to finish before opening any relay at all, so a relay-list load that never settled could block both event delivery and query timeouts; the fix opens validated relay hints immediately and streams results as write relays are discovered. A second change ([PR #196](https://github.com/kehto/web/pull/196)) aligns the project's identity-audit page with NAP-SHELL, the Napplet ecosystem's lifecycle contract, part of the same protocol-alignment work visible elsewhere in this week's `napplet/web` release.
+[Kehto](https://github.com/kehto/web) is an early web-based runtime for [NIP-5D](/en/topics/nip-5d/) Nostr applets, or "napplets." It merged 26 PRs. [PR #193](https://github.com/kehto/web/pull/193) fixes outbox reads that previously waited on [NIP-65](/en/topics/nip-65/) relay-list loading to finish before opening any relay at all, so a relay-list load that never settled could block both event delivery and query timeouts; the fix opens validated relay hints immediately and streams results as write relays are discovered. A second change ([PR #196](https://github.com/kehto/web/pull/196)) aligns the project's identity-audit page with NAP-SHELL, the Napplet platform's lifecycle contract, part of the same protocol-alignment work visible elsewhere in this week's `napplet/web` release.
 
 ### Wired and TAO add NIP-57 creator revenue sharing
 
@@ -119,7 +119,7 @@ Beyond the [Concord implementation](#amethyst-ships-a-clean-room-concord-impleme
 
 ### Conduit Mono rebuilds the merchant orders inbox around ephemeral guest checkout
 
-[Conduit Mono](https://github.com/Conduit-BTC/conduit-mono) is a marketplace protocol adjacent to [NIP-99](/en/topics/nip-99/) classified listings. [PR #174](https://github.com/Conduit-BTC/conduit-mono/pull/174) adds guest checkout using a browser-generated ephemeral key: the guest sends an encrypted order and a payment report to the merchant using that one-time key, and the merchant follows up out of band by phone or email rather than the buyer holding a durable inbox identity. [PR #175](https://github.com/Conduit-BTC/conduit-mono/pull/175) rebuilds the merchant orders inbox around a single shared order-state model, separating buyer and merchant roles and requiring a tracking code and carrier before a physical or mixed order can move to shipped. The project's checkout flow builds on [NIP-17](/en/topics/nip-17/) private messages, [NIP-44](/en/topics/nip-44/) encryption, and [NIP-59](/en/topics/nip-59/) gift wrap. This week's [NIP Deep Dive](#nip-deep-dive-nip-99-and-the-gamma-markets-commerce-extension) covers the [Gamma Markets](/en/topics/gamma-markets/) conventions this same order-state problem builds toward.
+[Conduit Mono](https://github.com/Conduit-BTC/conduit-mono) is a marketplace protocol adjacent to [NIP-99](/en/topics/nip-99/) classified listings. [PR #174](https://github.com/Conduit-BTC/conduit-mono/pull/174) adds guest checkout using a browser-generated ephemeral key: the guest sends an encrypted order and a payment report to the merchant using that one-time key, and the merchant follows up out of band by phone or email, so the buyer never needs a durable inbox identity. [PR #175](https://github.com/Conduit-BTC/conduit-mono/pull/175) rebuilds the merchant orders inbox around a single shared order-state model, separating buyer and merchant roles and requiring a tracking code and carrier before a physical or mixed order can move to shipped. The project's checkout flow builds on [NIP-17](/en/topics/nip-17/) private messages, [NIP-44](/en/topics/nip-44/) encryption, and [NIP-59](/en/topics/nip-59/) gift wrap. This week's [NIP Deep Dive](#nip-deep-dive-nip-99-and-the-gamma-markets-commerce-extension) covers the [Gamma Markets](/en/topics/gamma-markets/) conventions this same order-state problem builds toward.
 
 ### Buzz hardens channel-creator provisioning around kind 39002
 
@@ -165,13 +165,13 @@ No PRs merged into the [NIPs repository](https://github.com/nostr-protocol/nips)
 
 ### Open: private encrypted drive extends NIP-4E
 
-[PR #2412](https://github.com/nostr-protocol/nips/pull/2412), from the Form* team (GitHub handle geralt-debugs), proposes a generic Metadata event, kind 34578, distinguished by a `d` identifier tag and a `t` sub-type tag, along with a private encrypted file system built on top of it that is already implemented in Form*'s own, still-experimental Form* Drive client. A file record is a Metadata event with `t=files`: file blobs live on [Blossom](/en/topics/blossom/) servers while only an encrypted index sits on relays, and each file chunk gets its own ephemeral keypair with [NIP-44](/en/topics/nip-44/) v2 HKDF-derived encryption. A companion Decoupled Encryption Key event holds one drive-wide symmetric key that every file's metadata decrypts against, and it explicitly builds on [NIP-4E](/en/topics/nip-4e/), fiatjaf's still-open storage-abstraction draft ([PR #1647](https://github.com/nostr-protocol/nips/pull/1647), open since December 2024).
+[PR #2412](https://github.com/nostr-protocol/nips/pull/2412), from the Form* team, proposes a generic Metadata event, kind 34578, distinguished by a `d` identifier tag and a `t` sub-type tag, along with a private encrypted file system built on top of it that is already implemented in Form*'s own, still-experimental Form* Drive client. A file record is a Metadata event with `t=files`: file blobs live on [Blossom](/en/topics/blossom/) servers while only an encrypted index sits on relays, and each file chunk gets its own ephemeral keypair with [NIP-44](/en/topics/nip-44/) v2 HKDF-derived encryption. A companion Decoupled Encryption Key event holds one drive-wide symmetric key that every file's metadata decrypts against, and it explicitly builds on [NIP-4E](/en/topics/nip-4e/), fiatjaf's still-open storage-abstraction draft ([PR #1647](https://github.com/nostr-protocol/nips/pull/1647), open since December 2024).
 
-That single drive-wide key is worth flagging for anyone implementing this: it means a leaked key exposes every file's metadata in the drive, not just one file, since the per-file ephemeral keypairs only vary the chunk-encryption key, not the metadata-decryption key. No rotation or revocation path exists yet beyond publishing a new Metadata event warning that older events may be lost. A second, narrower proposal reaches for the same underlying NIP-4E idea from a different angle: [PR #2361](https://github.com/nostr-protocol/nips/pull/2361), from fiatjaf, decouples identity and encryption keys inside [NIP-17](/en/topics/nip-17/) messaging specifically, open since June 1. Both PRs are unmerged, so this remains active, contested design space rather than a settled spec. Form* says the Drive client is experimental with an update coming soon.
+That single drive-wide key means a leaked key exposes every file's metadata in the drive, not just one file, since the per-file ephemeral keypairs only vary the chunk-encryption key, not the metadata-decryption key; no rotation or revocation path exists yet beyond publishing a new Metadata event warning that older events may be lost. A second, narrower proposal reaches for the same underlying NIP-4E idea from a different angle: [PR #2361](https://github.com/nostr-protocol/nips/pull/2361), from fiatjaf, decouples identity and encryption keys inside [NIP-17](/en/topics/nip-17/) messaging specifically, open since June 1. Both PRs are unmerged, leaving this an active, contested corner of the design space. Form* says the Drive client is experimental with an update coming soon.
 
 ### Open: NIP-DA permissioned private data sharing
 
-[PR #2411](https://github.com/nostr-protocol/nips/pull/2411), from JAFairweather, is a new NIP-DA draft for permissioned private data sharing through scoped data grants. Each user keeps one encrypted, authoritative record per scope on relays, and access is granted by privately delivering that scope's symmetric key inside a [NIP-59](/en/topics/nip-59/) gift wrap, so relays store only ciphertext and never learn who granted access to whom; a revocation is just a key rotation rather than a rewrite of every consumer's copy. The author positions it as distinct from [NIP-17](/en/topics/nip-17/) DMs (which can carry a data snapshot but not live updates or revocation) and from NIP-51 private lists (which carry no key material), and cites two independent implementations, a JavaScript reference library and a Go CLI on go-nostr, cross-tested against relay.damus.io, nos.lol, and relay.primal.net.
+[PR #2411](https://github.com/nostr-protocol/nips/pull/2411), from JAFairweather, is a new NIP-DA draft for permissioned private data sharing through scoped data grants. Each user keeps one encrypted, authoritative record per scope on relays, and access is granted by privately delivering that scope's symmetric key inside a [NIP-59](/en/topics/nip-59/) gift wrap, so relays store only ciphertext and never learn who granted access to whom; a revocation is just a key rotation, with no need to rewrite every consumer's copy. The author positions it as distinct from [NIP-17](/en/topics/nip-17/) DMs (which can carry a data snapshot but not live updates or revocation) and from NIP-51 private lists (which carry no key material), and cites two independent implementations, a JavaScript reference library and a Go CLI on go-nostr, cross-tested against relay.damus.io, nos.lol, and relay.primal.net.
 
 ### Open: sticker pack kinds 10031 and 30031
 
@@ -189,25 +189,109 @@ That single drive-wide key is worth flagging for anyone implementing this: it me
 
 ## NIP Deep Dive: NIP-99 and the Gamma Markets commerce extension
 
-[NIP-15](/en/topics/nip-15/), the original Nostr Marketplace spec, is legacy at this point: it modeled a merchant stall (kind 30017) with products (kind 30018) filed underneath it, but the clients that once ran on it, Shopstr among them, have moved to [NIP-99](/en/topics/nip-99/) classified listings as the active spec. NIP-99 itself is a single addressable event, kind 30402 for an active listing or kind 30403 for a draft, with no stall to create first. What it does not define is everything past the listing: shipping cost, order status, receipts, reviews, or a way to group several listings under one storefront, precisely the parts of NIP-15 that never carried over. That gap is what [Gamma Markets](/en/topics/gamma-markets/) fills, and it is the actual modern layer worth understanding, not a NIP-15 revival.
+[NIP-15](/en/topics/nip-15/), the original Nostr Marketplace spec, is legacy at this point: it modeled a merchant stall (kind 30017) with products (kind 30018) filed underneath it, and the clients that once ran on it, Shopstr among them, have since moved to [NIP-99](/en/topics/nip-99/) classified listings as the active spec. NIP-99 itself is a single addressable event, kind 30402 for an active listing or kind 30403 for a draft, with no stall to create first. It leaves everything past the listing undefined: shipping cost, order status, receipts, reviews, and a way to group several listings under one storefront, exactly the parts of NIP-15 that never carried over. [Gamma Markets](/en/topics/gamma-markets/) fills that gap, and is the modern commerce layer worth understanding today.
 
 ### The gap NIP-99 leaves open
 
-A NIP-99 listing's `content` field carries a Markdown description, `price` and `location` sit directly on the event, and `t` tags make it searchable as ordinary hashtag content. Because it is addressable on the pubkey, kind, and `d` tag tuple, a seller edits a listing in place by publishing a new version with the same `d` tag. That is the entire spec: a signed, updatable classified ad. Every client implementing NIP-99 for real e-commerce, rather than a one-off classified, ended up inventing its own private conventions for shipping, order messages, and reviews, which meant two NIP-99 clients could each render a listing correctly and still have no shared way to complete a checkout between them.
+A NIP-99 listing's `content` field carries a Markdown description, `price` and `location` sit directly on the event, and `t` tags make it searchable as ordinary hashtag content. Because it is addressable on the pubkey, kind, and `d` tag tuple, a seller edits a listing in place by publishing a new version with the same `d` tag:
+
+```json
+{
+  "kind": 30402,
+  "content": "Vintage mechanical keyboard, Cherry MX Blue switches, barely used.",
+  "tags": [
+    ["d", "keyboard-mx-blue-01"],
+    ["title", "Vintage Mechanical Keyboard"],
+    ["summary", "Cherry MX Blue, barely used"],
+    ["published_at", "1752537600"],
+    ["location", "NYC"],
+    ["price", "100", "USD"],
+    ["t", "electronics"]
+  ]
+}
+```
+
+That is the entire spec: a signed, updatable classified ad. Every client implementing NIP-99 for real e-commerce, beyond a one-off classified, ended up inventing its own private conventions for shipping, order messages, and reviews. Two NIP-99 clients could each render a listing correctly and still have no shared way to complete a checkout between them.
 
 ### Gamma Markets: standardizing what NIP-99 left out
 
-Gamma Markets is the name a working group of Nostr marketplace developers, the teams behind Shopstr, Cypher, Plebeian Market, and Conduit Market, gave to a shared set of e-commerce conventions built on top of NIP-99's existing kind 30402 event rather than replacing it. The spec is linked from the canonical NIP-99 document via [PR #1784](https://github.com/nostr-protocol/nips/pull/1784) and maintained in its own repository, [GammaMarkets/market-spec](https://github.com/GammaMarkets/market-spec).
+Gamma Markets is the name a working group of Nostr marketplace developers, the teams behind Shopstr, Cypher, Plebeian Market, and Conduit Market, gave to a shared set of e-commerce conventions built on top of NIP-99's existing kind 30402 event. The spec is linked from the canonical NIP-99 document via [PR #1784](https://github.com/nostr-protocol/nips/pull/1784) and maintained in its own repository, [GammaMarkets/market-spec](https://github.com/GammaMarkets/market-spec).
 
-Gamma Markets adds five kinds around the existing listing event: kind 30405 groups multiple listings into a product collection, kind 30406 defines a shipping option with per-country pricing and optional weight- or distance-based cost rules, kind 31555 is a buyer's review addressed at a specific seller pubkey and listing `d` tag, and order creation, payment requests, status or shipping updates, and payment receipts are exchanged as ordinary [NIP-17](/en/topics/nip-17/) gift-wrapped private messages (kind 14 for order creation and status, kind 16 for payment requests, kind 17 for receipts), so a Gamma Markets checkout rides on the same private-message transport clients already use for DMs rather than a bespoke order-message kind.
+Gamma Markets adds two standalone listing-adjacent kinds. Kind 30405 groups multiple listings into a product collection, referencing each one by an explicit `a` tag:
 
-The spec's core design choice is that nothing cascades. A listing that belongs to a collection references it explicitly with an `a` tag rather than inheriting the collection's shipping options or description automatically, and a shipping option a listing uses is referenced the same explicit way. That is a deliberate reversal of NIP-15's stall model, where a product silently inherited whatever currency and shipping table its parent stall defined. The tradeoff is more explicit tagging on every listing in exchange for a rule that a listing's full configuration is always readable from the event itself, without resolving a parent object first.
+```json
+{
+  "kind": 30405,
+  "content": "Summer sale picks",
+  "tags": [
+    ["d", "summer-picks"],
+    ["title", "Summer Sale"],
+    ["a", "30402:<merchant-pubkey>:keyboard-mx-blue-01"],
+    ["shipping_option", "30406:<merchant-pubkey>:standard-regional"]
+  ]
+}
+```
+
+Kind 30406 defines a shipping option with per-country pricing and optional weight- or distance-based cost rules:
+
+```json
+{
+  "kind": 30406,
+  "content": "Standard Regional Shipping",
+  "tags": [
+    ["d", "standard-regional"],
+    ["title", "Standard Shipping"],
+    ["price", "5.99", "USD"],
+    ["country", "US"],
+    ["service", "standard"],
+    ["duration", "24", "72", "H"],
+    ["weight-max", "30", "kg"]
+  ]
+}
+```
+
+Order creation, payment requests, status and shipping updates, and payment receipts all move as ordinary [NIP-17](/en/topics/nip-17/) gift-wrapped private messages, split across three kinds by role, not by rewrapping the transport: kind 14 carries free-form buyer/merchant communication, kind 16 carries every order-state transition (a `type` tag of 1 through 4 marks order creation, payment request, status update, or shipping update), and kind 17 carries the buyer's payment receipt. An order creation message looks like this before gift-wrapping:
+
+```json
+{
+  "kind": 16,
+  "content": "Please leave the package with the doorman.",
+  "tags": [
+    ["p", "<merchant-pubkey>"],
+    ["subject", "New order"],
+    ["type", "1"],
+    ["order", "order-8f21"],
+    ["amount", "115000"],
+    ["item", "30402:<merchant-pubkey>:keyboard-mx-blue-01", "1"],
+    ["shipping", "30406:<merchant-pubkey>:standard-regional"]
+  ]
+}
+```
+
+Rating a completed purchase is a separate addressable kind, 31555, pointing back at the listing it reviews:
+
+```json
+{
+  "kind": 31555,
+  "content": "Arrived fast, exactly as described.",
+  "tags": [
+    ["d", "a:30402:<merchant-pubkey>:keyboard-mx-blue-01"],
+    ["rating", "1", "thumb"],
+    ["rating", "1.0", "quality"],
+    ["rating", "0.9", "delivery"]
+  ]
+}
+```
+
+Riding order messages on NIP-17 means a Gamma Markets checkout uses the same private-message transport clients already ship for DMs, instead of a bespoke order-message kind.
+
+The spec's core design choice is that nothing cascades. A listing that belongs to a collection references it explicitly with an `a` tag instead of inheriting the collection's shipping options or description automatically, and a shipping option a listing uses is referenced the same explicit way. That is a deliberate reversal of NIP-15's stall model, where a product silently inherited whatever currency and shipping table its parent stall defined. The tradeoff is more explicit tagging on every listing, in exchange for a listing's full configuration always being readable from the event itself, with no parent object to resolve first.
 
 ### Where this shows up in practice
 
-This week's [Conduit Mono](#conduit-mono-rebuilds-the-merchant-orders-inbox-around-ephemeral-guest-checkout) work sits in the same order-message territory Gamma Markets standardizes: [PR #174](https://github.com/Conduit-BTC/conduit-mono/pull/174)'s ephemeral-key guest checkout and [PR #175](https://github.com/Conduit-BTC/conduit-mono/pull/175)'s merchant-orders-inbox rebuild both solve the buyer/merchant order-state problem that Gamma Markets' kind 14, 16, and 17 messages formalize, even though Conduit Mono runs its own order-state model rather than those exact kinds. Shopstr, one of the four projects that authored the spec, kept its own commerce plumbing moving in the last week too: [PR #568](https://github.com/shopstr-eng/shopstr/pull/568) extracts duplicated [NIP-17](/en/topics/nip-17/) gift-wrap logic into a shared module, and [PR #567](https://github.com/shopstr-eng/shopstr/pull/567) brings its [NIP-98](/en/topics/nip-98/) HTTP-auth parser to full test coverage, maintenance on exactly the messaging and auth layers a Gamma Markets order flow depends on to reach a buyer and merchant safely.
+This week's [Conduit Mono](#conduit-mono-rebuilds-the-merchant-orders-inbox-around-ephemeral-guest-checkout) work sits in the same order-message territory Gamma Markets standardizes: [PR #174](https://github.com/Conduit-BTC/conduit-mono/pull/174)'s ephemeral-key guest checkout and [PR #175](https://github.com/Conduit-BTC/conduit-mono/pull/175)'s merchant-orders-inbox rebuild both solve the buyer/merchant order-state problem that Gamma Markets' kind 14, 16, and 17 messages formalize; Conduit Mono runs its own order-state model alongside those kinds, without adopting them directly. Shopstr, one of the four projects that authored the spec, kept its own commerce plumbing moving in the last week too: [PR #568](https://github.com/shopstr-eng/shopstr/pull/568) extracts duplicated NIP-17 gift-wrap logic into a shared module, and [PR #567](https://github.com/shopstr-eng/shopstr/pull/567) brings its [NIP-98](/en/topics/nip-98/) HTTP-auth parser to full test coverage, maintenance on exactly the messaging and auth layers a Gamma Markets order flow depends on to reach a buyer and merchant safely.
 
-NIP-15 lost the storefront role by standardizing a stall and a product, then leaving payments, shipping, reviews, and order status as an application problem. Gamma Markets fills most of that missing surface without touching NIP-99's single-listing shape, and does it by building on Nostr's existing DM stack, NIP-17, rather than inventing a new messaging layer.
+NIP-15 lost the storefront role by standardizing a stall and a product, then leaving payments, shipping, reviews, and order status as an application problem. Gamma Markets fills most of that missing surface without touching NIP-99's single-listing shape, building on Nostr's existing DM stack, NIP-17, instead of inventing a new messaging layer.
 
 ---
 
