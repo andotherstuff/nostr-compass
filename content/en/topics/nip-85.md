@@ -44,6 +44,7 @@ NIP-85 extends beyond people and posts. Kind 30385 lets providers score NIP-73 e
 - [Newsletter #10: NIP-85 Deep Dive](/en/newsletters/2026-02-18-newsletter/#nip-deep-dive-nip-85-trusted-assertions)
 - [Newsletter #11: NIP-85 Service Provider Discoverability](/en/newsletters/2026-02-25-newsletter/#nip-updates)
 - [Newsletter #12: Protocol Recap](/en/newsletters/2026-03-04-newsletter/)
+- [Newsletter #31: Amethyst lets accounts nickname contacts with encrypted NIP-85 cards](/en/newsletters/2026-07-15-newsletter/#amethyst-lets-accounts-nickname-contacts-with-encrypted-nip-85-cards)
 
 **See also:**
 - [NIP-44: Encrypted Payloads](/en/topics/nip-44/)

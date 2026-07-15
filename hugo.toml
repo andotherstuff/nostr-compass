@@ -8,6 +8,10 @@ defaultContentLanguageInSubdir = true
 enableRobotsTXT = true
 enableGitInfo = true
 
+# Exclude the in-progress newsletter pipeline workspace from Hugo's data
+# directory processing; it holds markdown scratch files, not structured data.
+ignoreFiles = ['newsletter_workspace']
+
 [params]
   description = "Technical resource for the Nostr protocol. Weekly newsletter covering NIP proposals, client updates, relay developments, and notable code changes."
   npub = "npub1wav4fae3gyfy3xj298kxj2mj8phavz7vavps34przq02j7w902qq902923"
