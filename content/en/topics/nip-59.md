@@ -49,6 +49,7 @@ Relays may choose not to store wrapped events for long because they are not publ
 - [Newsletter #1: NIP Updates](/en/newsletters/2025-12-17-newsletter/#nip-updates)
 - [Newsletter #3: December Recap](/en/newsletters/2025-12-31-newsletter/#december-recap-five-years-of-nostr-decembers)
 - [Newsletter #12: Open PRs](/en/newsletters/2026-03-04-newsletter/#open-prs-and-project-updates)
+- [Newsletter #31: Amethyst ships a clean-room Concord implementation](/en/newsletters/2026-07-15-newsletter/#amethyst-ships-a-clean-room-concord-implementation-for-end-to-end-encrypted-communities)
 
 **See also:**
 - [NIP-17: Private Direct Messages](/en/topics/nip-17/)

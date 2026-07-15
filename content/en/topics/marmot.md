@@ -56,7 +56,7 @@ MDK landed [PR #261](https://github.com/marmot-protocol/mdk/pull/261) to compute
 - [Newsletter #19: whitenoise-rs session refactor](/en/newsletters/2026-04-22-newsletter/#whitenoise-rs-refactors-to-session-scoped-account-views)
 - [Newsletter #23: White Noise](/en/newsletters/2026-05-21-newsletter/#white-noise-markdown-deep-links-and-audio-metadata)
 - [Newsletter #27: ZapBook builds 4 through 27 ship multi-account, Marmot key publication, and circle re-invitations](/en/newsletters/2026-06-17-newsletter/#zapbook-builds-4-through-27-ship-multi-account-marmot-key-publication-and-circle-re-invitations)
-- [Newsletter #31: Vector v0.4.0 moves Group Chats from Marmot to a custom Concord Protocol](/en/newsletters/2026-07-15-newsletter/#vector-v040-moves-group-chats-from-marmot-to-a-custom-concord-protocol)
+- [Newsletter #31: Vector v0.4.0 moves Group Chats from Marmot to Concord, and Amethyst ships its own Concord client days later](/en/newsletters/2026-07-15-newsletter/#vector-v040-moves-group-chats-from-marmot-to-concord-and-amethyst-ships-its-own-concord-client-days-later)
 - [Newsletter #31: Bitcoin-Safe reaches Flathub, spotlighting its Nostr Sync & Chat plugin](/en/newsletters/2026-07-15-newsletter/#bitcoin-safe-reaches-flathub-spotlighting-its-nostr-sync--chat-plugin)
 
 **See also:**
