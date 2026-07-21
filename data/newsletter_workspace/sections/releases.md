@@ -6,7 +6,7 @@
 
 ### Nostrord v2.3.0 ships the client side of this week's NIP-29 spec work
 
-[Nostrord](https://github.com/nostrord/nostrord) is a [NIP-29](/en/topics/nip-29/) relay-based group-chat client for Android, iOS, web, and desktop. [v2.3.0](https://github.com/nostrord/nostrord/releases/tag/v2.3.0) lands the shipped half of the NIP-29 cluster covered in this week's News section: cross-platform [NIP-51](/en/topics/nip-51/) mute lists, wired-up NIP-29 moderation actions on all UIs ([PR #188](https://github.com/nostrord/nostrord/pull/188), [PR #192](https://github.com/nostrord/nostrord/pull/192), [PR #195](https://github.com/nostrord/nostrord/pull/195)), consent-gated group invites with cross-relay detection, and Tor .onion relay support. The release follows v2.2.0's DM controls covered in #31.
+[Nostrord v2.3.0](https://github.com/nostrord/nostrord/releases/tag/v2.3.0) is the shipped half of the NIP-29 cluster covered in this week's News section, and adds [PR #192](https://github.com/nostrord/nostrord/pull/192) (moderation wiring) beyond what the lead story lists. The release follows v2.2.0's DM controls covered in #31.
 
 ### Wisp v1.2.0 adds a multi-account switcher and collapsible reply threads
 
@@ -20,9 +20,9 @@
 
 [Sonar](https://github.com/hedwig-corp/bitchat-to-sonar), last week's lead story, cut [v0.1-alpha.11](https://github.com/hedwig-corp/bitchat-to-sonar/releases/tag/v0.1-alpha.11) with work on the Rust mesh link engine, BLE and mesh fixes, and relay diagnostics; an incremental follow-up to the alpha line covered in #31 rather than a new headline.
 
-### nostr-social-graph 2.0.0 ships signed roster operations and device approval
+### nostr-social-graph 2.0.0 and the rest of the week's smaller launches
 
-[nostr-social-graph](https://github.com/mmalmi/nostr-social-graph) is the social-graph library in the Iris ecosystem cluster covered in this week's News section. [2.0.0](https://github.com/mmalmi/nostr-social-graph/releases/tag/v2.0.0) is a major version adding signed Nostr identity roster operations, device-approval flows with a canonical three-field bootstrap URI, and FIPS transport identity facets with shared Rust/TypeScript test vectors. The major-version bump signals breaking changes for consumers of the 1.x API; see the News item for how it fits with this week's nostr-pubsub and fips-ts releases from the same ecosystem.
+[nostr-social-graph 2.0.0](https://github.com/mmalmi/nostr-social-graph/releases/tag/v2.0.0), the Iris-ecosystem social-graph library from this week's News section, is a major-version bump adding signed Nostr identity roster operations, device-approval flows with a canonical three-field bootstrap URI, and FIPS transport identity facets with shared Rust/TypeScript test vectors. Breaking changes for 1.x consumers. Beyond the cluster, three smaller launches deserve one line each: [noscall v0.6.0](https://github.com/sanah9/noscall/releases/tag/v0.6.0-release), the Nostr calling app, migrated its push notifications to UnifiedPush, keeping call signaling off Google's push infrastructure; [nostr-vpn v4.1.1](https://github.com/mmalmi/nostr-vpn/releases/tag/v4.1.1), a mesh VPN that uses Nostr for signaling, launched on Zapstore; and two new apps debuted there as well: StableKraft, a Nostr-plus-Lightning music and podcast aggregator, and Hakari, an encrypted Nostr backup for a weight logger.
 
 ### Amethyst lands v1.13.0 pre-release QA on napplet isolation and Concord authority
 

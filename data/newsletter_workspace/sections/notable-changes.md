@@ -6,7 +6,7 @@
 
 ### Open: NIP-47 simplification proposal
 
-[PR #2419](https://github.com/nostr-protocol/nips/pull/2419), opened by frnandu, proposes simplifying the [NIP-47](/en/topics/nip-47/) (Nostr Wallet Connect) core spec and moving functionality into extensions. NWC is among the most widely deployed NIPs, so a structural split of its core spec is a discussion worth watching even before any merge decision. Client and wallet authors that implement NIP-47 should weigh in while the proposal is young.
+[PR #2419](https://github.com/nostr-protocol/nips/pull/2419), opened by frnandu, proposes simplifying the [NIP-47](/en/topics/nip-47/) (Nostr Wallet Connect) core spec and moving functionality into extensions. NWC is implemented across a large share of Nostr wallets and apps, so a structural split of its core spec deserves attention even before any merge decision. Client and wallet authors that implement NIP-47 should weigh in while the proposal is young.
 
 ### FIPS v0.4.1 tightens the transport the Iris ecosystem builds on
 
