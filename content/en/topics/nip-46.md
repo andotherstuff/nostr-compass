@@ -55,6 +55,7 @@ The `switch_relays` method exists so the signer can move the session to a differ
 - [Newsletter #27: NIP deep dive: NIP-46 (Nostr Connect)](/en/newsletters/2026-06-17-newsletter/#nip-deep-dive-nip-46-nostr-connect)
 - [Newsletter #31: Vector v0.4.0 moves Group Chats from Marmot to Concord, and Amethyst ships its own Concord client days later](/en/newsletters/2026-07-15-newsletter/#vector-v040-moves-group-chats-from-marmot-to-concord-and-amethyst-ships-its-own-concord-client-days-later)
 - [Newsletter #31: n_cord v1.1 adds NSEC Bunker support](/en/newsletters/2026-07-15-newsletter/#n_cord-v11-adds-nsec-bunker-support)
+- [Newsletter #32: News](/en/newsletters/2026-07-22-newsletter/#zapstore-110-makes-the-device-key-portable-and-the-app-catalog-relay-native)
 
 **See also:**
 - [NIP-55: Android Signer](/en/topics/nip-55/)

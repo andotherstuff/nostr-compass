@@ -2197,6 +2197,15 @@ devtools:
     priority: low
     notes: New note-taking project on Nostr
 
+  - name: ClipRelay
+    description: Syncs clipboard contents across a user's devices over Nostr relays
+    platforms: [ android ]
+    repo: https://github.com/tajava2006/cliprelay
+    maintainer: tajava2006
+    status: alpha
+    priority: low
+    notes: New project; first tracked via Zapstore listing, v0.1.2 (2026-07)
+
   - name: Wikistr
     description: Wikipedia-like wiki client
     platforms: [ web ]
@@ -4924,6 +4933,32 @@ libraries:
     status: active
     priority: low
 
+  - name: nostr-pubsub
+    description: Transport-neutral Nostr pubsub for FIPS, relays, and browsers
+    language: javascript
+    repo: https://github.com/mmalmi/nostr-pubsub
+    maintainer: mmalmi
+    status: active
+    priority: medium
+    notes: Submitted via link queue 2026-07-16 as part of the Iris Stack toolkit
+
+  - name: fips-ts
+    description: Browser TypeScript FIPS implementation with Noise IK/XK over secp256k1, WebRTC datachannels, and Nostr signaling
+    language: typescript
+    repo: https://github.com/mmalmi/fips-ts
+    maintainer: mmalmi
+    status: active
+    priority: medium
+    notes: Wire-compatible with jmcorgan/fips; hashtree adapter; submitted via link queue 2026-07-16
+
+  - name: fips-tcp
+    description: Reliable ordered TCP streams over authenticated FIPS service datagrams
+    repo: https://github.com/mmalmi/fips-tcp
+    maintainer: mmalmi
+    status: active
+    priority: low
+    notes: Transport plumbing; Nostr-surface gate applies at triage; submitted via link queue 2026-07-16
+
 wallets:
   - name: Alby Hub
     description: Self-custodial Lightning node with NWC
@@ -6084,6 +6119,33 @@ other:
     status: alpha
     priority: low
     notes: Published by the "Sirius Business Ltd" Nostr identity (same operator as Iris/iris.to); repo announcement (kind 30617) carries no description field, substance unverified, flagged for follow-up
+
+  - name: Iris Stack
+    description: Architecture and process-level integration lab for the permissionless Iris Stack toolkit
+    platforms: [ web ]
+    repo: https://github.com/irislib/iris-stack
+    website: https://stack.iris.to/
+    maintainer: mmalmi
+    status: active
+    priority: medium
+    notes: Freedom tech toolkit integrating Iris, FIPS, hashtree, Blossom; submitted via link queue 2026-07-16
+
+  - name: iris-kit
+    description: Shared Iris application and identity packages
+    language: javascript
+    repo: https://github.com/mmalmi/iris-kit
+    maintainer: mmalmi
+    status: active
+    priority: low
+    notes: Submitted via link queue 2026-07-16 as part of the Iris Stack toolkit
+
+  - name: IndieSats
+    description: Nostr music infrastructure - open relay, player, and discovery layer for artist-published music
+    platforms: [ web ]
+    website: https://indiesats.com
+    status: active
+    priority: medium
+    notes: Pivoted from publisher platform to pure infrastructure 2026-07-20; artists publish under their own keys, open relay, opt-in splits; no public repo found
 
 protocols:
   - name: NIPs

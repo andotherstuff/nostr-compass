@@ -59,6 +59,7 @@ The specification has been trimmed over time. Older optional fields such as `sof
 - [Newsletter #13: NIP Updates](/en/newsletters/2026-03-11-newsletter/#nip-updates)
 - [Newsletter #19: NIP Updates (`access_control` proposal)](/en/newsletters/2026-04-22-newsletter/#nip-updates)
 - [Newsletter #27: Citrine v3.0.0 ships Negentropy, NIP-42 AUTH, and onion-relay filtering](/en/newsletters/2026-06-17-newsletter/#citrine-v3-0-0-ships-negentropy-nip-42-auth-and-onion-relay-filtering)
+- [Newsletter #32: NIP Updates](/en/newsletters/2026-07-22-newsletter/#protocol-work-and-nip-updates)
 
 **See also:**
 - [NIP-66: Relay Discovery and Liveness Monitoring](/en/topics/nip-66/)
