@@ -52,7 +52,7 @@ Combined with [NIP-11](/en/topics/nip-11/) metadata, clients can discover whethe
 - [Newsletter #10: Nostr MCP Server](/en/newsletters/2026-02-18-newsletter/#nostr-mcp-server)
 - [Newsletter #13: Relay AUTH Starts Reaching Real Apps](/en/newsletters/2026-03-11-newsletter/#relay-auth-starts-reaching-real-apps)
 - [Newsletter #27: Citrine v3.0.0 ships Negentropy, NIP-42 AUTH, and onion-relay filtering](/en/newsletters/2026-06-17-newsletter/#citrine-v300-ships-negentropy-nip-42-auth-and-onion-relay-filtering)
-- [Newsletter #32: NIP Deep Dive](/en/newsletters/2026-07-22-newsletter/#nip-deep-dive-nip-42-and-nip-43)
+- [Newsletter #32: NIP Deep Dive](/en/newsletters/2026-07-22-newsletter/#nip-deep-dive)
 
 **See also:**
 - [NIP-11: Relay Information Document](/en/topics/nip-11/)

@@ -43,7 +43,7 @@ Because the events sit in relay-controlled and user-controlled spaces at the sam
 
 **Mentioned in:**
 - [Newsletter #14: NIP Updates](/en/newsletters/2026-03-18-newsletter/#nip-updates)
-- [Newsletter #32: NIP Deep Dive](/en/newsletters/2026-07-22-newsletter/#nip-deep-dive-nip-42-and-nip-43)
+- [Newsletter #32: NIP Deep Dive](/en/newsletters/2026-07-22-newsletter/#nip-deep-dive)
 
 **See also:**
 - [NIP-11: Relay Information Document](/en/topics/nip-11/)
