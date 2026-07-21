@@ -2206,6 +2206,22 @@ devtools:
     priority: low
     notes: New project; first tracked via Zapstore listing, v0.1.2 (2026-07)
 
+  - name: StableKraft
+    description: Music and podcast aggregator with Nostr and Lightning integration
+    platforms: [ web ]
+    repo: https://github.com/ChadFarrow/stablekraft-app
+    status: alpha
+    priority: low
+    notes: New project; first tracked via Zapstore listing, v1.1 (2026-07)
+
+  - name: Hakari
+    description: Privacy-first weight logger with encrypted Nostr backup
+    platforms: [ android ]
+    repo: https://github.com/higedamc/hakari
+    status: alpha
+    priority: low
+    notes: New project; first tracked via Zapstore listing, v0.4.3 (2026-07)
+
   - name: Wikistr
     description: Wikipedia-like wiki client
     platforms: [ web ]
