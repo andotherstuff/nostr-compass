@@ -39,6 +39,7 @@ The main correctness caveat is scope. January 2026 newsletter coverage described
 - [Newsletter #6: News](/en/newsletters/2026-01-21-newsletter/#trusted-relay-assertions-a-new-approach-to-relay-trust)
 - [Newsletter #6: NIP Updates](/en/newsletters/2026-01-21-newsletter/#nip-updates)
 - [Newsletter #7: NIP Updates](/en/newsletters/2026-01-28-newsletter/#nip-updates)
+- [Newsletter #32: NIP Updates](/en/newsletters/2026-07-22-newsletter/#protocol-work-and-nip-updates)
 
 **See also:**
 - [NIP-11: Relay Information Document](/en/topics/nip-11/)

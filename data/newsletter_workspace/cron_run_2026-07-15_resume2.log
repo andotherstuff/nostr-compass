@@ -1,0 +1,23 @@
+
+session_id: 20260714_170956_4981ac
+Newsletter #31 (2026-07-15) is done through the pre-publish gate. Status report:
+
+**Resumed and completed Stage 4 (Selection) through Stage 8 (Handoff)** in one continuous pass — no stalls, no API timeouts/500s, so the retry-with-backoff instruction was never needed.
+
+**Draft:** `content/en/newsletters/2026-07-15-newsletter.md`
+- Lead stories: 5, Tagged releases: 10, Unreleased changes: 7 (+1 grouped paragraph), Newly tracked: 3 (+1 grouped paragraph), Protocol/NIP PRs: 6 open / 0 merged, NIP Deep Dive: NIP-15 + NIP-99 (paired, first appearance of both)
+
+**Supporting changes:**
+- `data/projects.yml`: added Cambium (signers, priority `medium`, correctly not `high` on first appearance)
+- 10 topic pages updated with new "Mentioned in" entries (nip-15, nip-99, nip-85, nip-29, nip-66, nip-57, nip-49, nip-55, nip-47, nip-46) — no new topic pages needed
+- **Infrastructure fix:** `hugo.toml` was missing an `ignoreFiles` exclusion for `data/newsletter_workspace/`, causing Hugo's data-directory loader to choke on the pipeline's own scratch markdown and fail the *entire* site build. Added `ignoreFiles = ['newsletter_workspace']`. This is a real, recurring bug (would hit every week the workspace dir exists) and I recommend keeping the fix.
+
+**Review swarm — all four GATE: PASS** (full log: `data/newsletter_workspace/review_log_2026-07-15.md`):
+- LinkChecker: 83/83 external links HTTP 200, 20/20 internal topic links resolve, 37/37 anchors resolve, `hugo --buildFuture` clean (277 EN pages)
+- ClaimCheck: every PR/release/NIP claim sourced and spot-checked against `gh`; correctly avoided citing Noscall's fabricated "NIP-9A" label
+- ProseReview: one fix applied (rhetorical question in NIP Deep Dive intro rewritten to declarative) and re-verified clean; zero em dashes/curly quotes/exclamation marks/hype phrases
+- TopicAudit: all "Mentioned in" updates validated, `projects.yml` YAML validated
+
+**Outstanding for human review** (documented in `data/newsletter_workspace/handoff_2026-07-15.md`): npub-injection correctness for ~29 previously-tracked projects wasn't independently re-verified (relies on existing `data/npubs.yml`), and `data/coverage_history.json` was intentionally left unregenerated pending Stage 8/9 publish tooling.
+
+**Stopping here, as instructed.** No publish-side action taken — no branch, no PR, no `bun scripts/publish.ts`, no Nostr signing/broadcast. Awaiting your explicit go-ahead to publish.

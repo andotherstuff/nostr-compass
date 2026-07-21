@@ -13,6 +13,7 @@
 #   4. fetch_shakespeare_apps.sh      (Soapbox MiniApps submissions)
 #   5. fetch_nip34_repos.sh           (NIP-34 git repos from relays)
 #   6. fetch_zapstore_releases.sh     (Zapstore developer-signed app releases)
+#   7. fetch_heartbeats.sh            (OpenSats + Sovereign Engineering grantee activity)
 #
 # Prerequisites:
 #   - Python 3 + requirements.txt (for GitHub fetcher)
@@ -62,6 +63,10 @@ SINCE_ARG=""
 if [ -n "$SINCE_DAYS" ]; then
     SINCE_ARG="--since-days $SINCE_DAYS"
 fi
+
+# Absolute window for the heartbeat fetcher (defaults to 8 days back through today)
+HB_SINCE="$(date -u -d "${SINCE_DAYS:-8} days ago" +%F)"
+HB_UNTIL="$(date -u +%F)"
 
 echo "==========================================="
 echo "  Nostr Compass - Data Collection"
@@ -162,18 +167,28 @@ else
 fi
 echo ""
 
+# 7. Grantee heartbeat feeds (OpenSats nostr/general funds + Sovereign Engineering note)
+echo "[7/7] Grantee heartbeat feeds (OpenSats / Sovereign Engineering)..."
+if "$SCRIPT_DIR/fetch_heartbeats.sh" "$HB_SINCE" "$HB_UNTIL"; then
+    echo "  Done."
+else
+    echo "  WARNING: Heartbeat fetcher failed (exit code $?) — soft-fail, continuing"
+    FAILED=$((FAILED + 1))
+fi
+echo ""
+
 # Summary
 echo "==========================================="
 echo "  Collection Summary"
 echo "==========================================="
-echo "  Completed: $((6 - FAILED - SKIPPED))/6"
+echo "  Completed: $((7 - FAILED - SKIPPED))/7"
 echo "  Failed:    $FAILED"
 echo "  Skipped:   $SKIPPED"
 echo ""
 
 # Show data freshness
 echo "Data freshness:"
-for dir in project_updates nostr_nip_discussions nostr_recap shakespeare_apps nip34_repos zapstore_releases; do
+for dir in project_updates nostr_nip_discussions nostr_recap shakespeare_apps nip34_repos zapstore_releases heartbeats; do
     latest=$(ls -t "$PROJECT_ROOT/data/$dir"/*.json 2>/dev/null | head -1)
     if [ -n "$latest" ]; then
         age_hours=$(( ($(date +%s) - $(stat -c %Y "$latest")) / 3600 ))

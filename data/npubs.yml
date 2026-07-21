@@ -782,3 +782,48 @@ Form*:
 # JAFairweather: no verified npub found
 # vincenzopalazzo: no verified npub found
 # cdk: no verified npub found
+
+# =============================================================================
+# Newsletter #32 additions (verified 2026-07-21)
+# =============================================================================
+# IndieSats lead; Zapstore signer profile = Gunnar Stødle (IndieSats founder)
+IndieSats:
+  npub: npub1rx9wg2d5lhah45xst3580sajcld44m0ll9u5dqhu2t74p6xwufaqwghtd4
+  mention_only: true
+# mmalmi (Martti Malmi / Sirius) — Iris ecosystem: nostr-pubsub, fips-ts,
+# nostr-social-graph, nostr-vpn. Sirius is the well-known public identity.
+mmalmi: npub1g53mukxnjkcmr94fhryzkqutdz2ukq4ks0gvy5af25rgmwsl4ngq43drvk
+nostr-vpn:
+  npub: npub1g53mukxnjkcmr94fhryzkqutdz2ukq4ks0gvy5af25rgmwsl4ngq43drvk
+  mention_only: true
+nostr-pubsub:
+  npub: npub1g53mukxnjkcmr94fhryzkqutdz2ukq4ks0gvy5af25rgmwsl4ngq43drvk
+  mention_only: true
+nostr-social-graph:
+  npub: npub1g53mukxnjkcmr94fhryzkqutdz2ukq4ks0gvy5af25rgmwsl4ngq43drvk
+  mention_only: true
+fips-ts:
+  npub: npub1g53mukxnjkcmr94fhryzkqutdz2ukq4ks0gvy5af25rgmwsl4ngq43drvk
+  mention_only: true
+# ClipRelay — Zapstore signer profile = hoppe2 (tajava2006)
+ClipRelay:
+  npub: npub1pt4qwkcpp76et45pfatrxqywsuxh0gky84xa592yapesuqye29zql4eera
+  mention_only: true
+# StableKraft — ChadFarrow's native Nostr account (listed in his own profile
+# fields; the podcastindex-social.mostr.pub account is a bridged mirror)
+StableKraft:
+  npub: npub177fz5zkm87jdmf0we2nz7mm7uc2e7l64uzqrv6rvdrsg8qkrg7yqx0aaq7
+  mention_only: true
+# Hakari — Zapstore signer profile = kohei (higedamc; key differs from the
+# higedamc entry above, which is the older known key)
+Hakari:
+  npub: npub16lrdq99ng2q4hg5ufre5f8j0qpealp8544vq4ctn2wqyrf4tk6uqn8mfeq
+  mention_only: true
+# noscall project account already exists above as NosCall (dev: sana/sanah9)
+# jmcorgan = jcorgan on Nostr (FIPS upstream; existing FIPS entry uses this key)
+jmcorgan: npub19wavu4f7l6l43h24jyskn7fvzy37kcfp67aqjtmv2qgy4lp34nhsda8p6k
+
+# No verified npub found after reasonable effort (relay search, NIP-05,
+# GitHub profiles, web search all negative):
+# frnandu (Keep/FROST, NIP-47 PR #2419): no verified npub found
+# Letdown2491 (Signet, Trusted Relay Assertions PR #2418): no verified npub found

@@ -72,6 +72,7 @@ That makes migration and forking possible, but not automatic. The same group id 
 - [Newsletter #22: Flotilla 1.8.0](/en/newsletters/2026-05-14-newsletter/#flotilla-180-ships-video-calls-email-rendering-and-room-mentions)
 - [Newsletter #27: NIP updates and protocol spec work](/en/newsletters/2026-06-17-newsletter/#nip-updates-and-protocol-spec-work)
 - [Newsletter #31: Open: NIP-29 message pinning with kind:9010 and kind:39005](/en/newsletters/2026-07-15-newsletter/#open-nip-29-message-pinning-with-kind9010-and-kind39005)
+- [Newsletter #32: News](/en/newsletters/2026-07-22-newsletter/#nostrord-v230-ships-group-moderation-mute-lists-and-onion-relays)
 
 **See also:**
 - [NIP-11: Relay Information Document](/en/topics/nip-11/)

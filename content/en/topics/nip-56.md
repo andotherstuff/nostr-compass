@@ -38,6 +38,7 @@ Additional classification can be added with NIP-32 `l` and `L` tags, which is us
 
 **Mentioned in:**
 - [Newsletter #10: Project Updates](/en/newsletters/2026-02-18-newsletter/#notedeck-android-app-store-prep)
+- [Newsletter #32: News](/en/newsletters/2026-07-22-newsletter/#zapstore-110-makes-the-device-key-portable-and-adds-background-auto-updates)
 
 **See also:**
 - [NIP-22: Comment](/en/topics/nip-22/)

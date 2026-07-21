@@ -48,6 +48,7 @@ NIP-44 is now the preferred encryption mode. The spec still documents NIP-04 fal
 - [Newsletter #19: ShockWallet Nostr-native wallet sync](/en/newsletters/2026-04-22-newsletter/#shockwallet-ships-nostr-native-lightning-wallet-sync-and-multi-node-connections)
 - [Newsletter #27: Alby Hub v1.23.0 fixes NIP-47 publish for deleted apps and switches Bitrefill to NWC](/en/newsletters/2026-06-17-newsletter/#alby-hub-v1230-fixes-nip-47-publish-for-deleted-apps-and-switches-bitrefill-to-nwc)
 - [Newsletter #31: cdk v0.17.3 adds NIP-47 wallet-service support across cdk, cdk-nwc, and cdk-ffi](/en/newsletters/2026-07-15-newsletter/#cdk-v0173-adds-nip-47-wallet-service-support-across-cdk-cdk-nwc-and-cdk-ffi)
+- [Newsletter #32: NIP Updates](/en/newsletters/2026-07-22-newsletter/#protocol-work-and-nip-updates)
 
 **See also:**
 - [NIP-57: Zaps](/en/topics/nip-57/)
