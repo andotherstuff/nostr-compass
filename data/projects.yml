@@ -4995,6 +4995,15 @@ wallets:
     status: active
     priority: medium
 
+  - name: Bitcoin-Safe
+    description: Free & OpenSource desktop software for managing your cold storage wallets
+    platforms: [ macOS, Win, Linux ]
+    repo: https://github.com/andreasgriffin/bitcoin-safe
+    website: https://bitcoin-safe.org
+    status: active
+    priority: medium
+    notes: NIP17 support for label sync, multisig chat and PSBT remote signing
+
   - name: Mutiny
     description: Self-custodial browser wallet with NWC
     platforms: [ web ]
