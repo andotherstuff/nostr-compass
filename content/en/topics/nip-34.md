@@ -114,6 +114,7 @@ NIP-34 splits discovery from transport. The repository data can still live on or
 - [Newsletter #20 (2026-04-29): Six Nostr Aprils (April 2024 git-over-Nostr milestones)](/en/newsletters/2026-04-29-newsletter/#april-2024-private-messaging-git-over-nostr-and-maintainer-support)
 - [Newsletter #20 (2026-04-29): April 2026: NIP-34 hardening, badges, and adoption-focused grants](/en/newsletters/2026-04-29-newsletter/#april-2026-nip-34-hardening-badges-and-adoption-focused-grants)
 - [Newsletter #31 (2026-07-15): GitWorkshop v3.0.3 fixes newly announced refs in the repo explorer](/en/newsletters/2026-07-15-newsletter/#gitworkshop-v303-fixes-newly-announced-refs-in-the-repo-explorer)
+- [Newsletter #32 (2026-07-22): Armada and nak add NIP-34 workspace and CLI support](/en/newsletters/2026-07-22-newsletter/#armada-v0370-opens-buzz-workspaces-from-a-second-client)
 
 **See also:**
 
