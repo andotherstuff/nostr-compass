@@ -37,7 +37,7 @@ As covered in Compass, the current Rust implementation already includes working 
 **Mentioned in:**
 - [Newsletter #11: FIPS News](/en/newsletters/2026-02-25-newsletter/#fips-nostr-native-mesh-networking)
 - [Newsletter #12](/en/newsletters/2026-03-04-newsletter/)
-- [Newsletter #32: News](/en/newsletters/2026-07-22-newsletter/#the-iris-ecosystem-ships-a-pubsub-library-a-browser-fips-runtime-and-a-social-graph-20-in-one-week)
+- [Newsletter #32: News](/en/newsletters/2026-07-22-newsletter/#the-iris-projects-ship-a-pubsub-library-a-browser-fips-runtime-and-a-social-graph-20-in-one-week)
 
 **See also:**
 - [Marmot Protocol](/en/topics/marmot/)
