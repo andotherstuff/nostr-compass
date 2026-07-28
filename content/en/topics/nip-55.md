@@ -36,6 +36,8 @@ For web apps on Android, NIP-55 is less ergonomic than NIP-46. Browser-based flo
 
 **Primary sources:**
 - [NIP-55 Specification](https://github.com/nostr-protocol/nips/blob/master/55.md)
+- [Hanami for Android](https://github.com/Letdown2491/hanami-android) - native signer bridge for authenticated Blossom sessions
+- [GitWorkshop July 27 release](https://primal.net/e/869e01f9a74d98f468a66f3b83865d198a82cc718c1db36324398b1b88a17c60) - Android signer login for repository collaboration
 
 **Mentioned in:**
 - [Newsletter #1: Releases](/en/newsletters/2025-12-17-newsletter/#releases)
@@ -47,6 +49,7 @@ For web apps on Android, NIP-55 is less ergonomic than NIP-46. Browser-based flo
 - [Newsletter #13: Samizdat v1.0.0-alpha](/en/newsletters/2026-03-11-newsletter/#samizdat-v100-alpha)
 - [Newsletter #27: NIP deep dive: NIP-55 (Android Signer Application)](/en/newsletters/2026-06-17-newsletter/#nip-deep-dive-nip-55-android-signer-application)
 - [Newsletter #31: Cambium v0.3.2 pairs with Heartwood as a keyless NIP-55 signer](/en/newsletters/2026-07-15-newsletter/#cambium-v032-pairs-with-heartwood-as-a-keyless-nip-55-signer)
+- [Newsletter #33: Lead stories](/en/newsletters/2026-07-29-newsletter/#top-stories)
 
 **See also:**
 - [NIP-46: Nostr Connect](/en/topics/nip-46/)

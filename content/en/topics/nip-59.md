@@ -42,6 +42,7 @@ Relays may choose not to store wrapped events for long because they are not publ
 
 **Primary sources:**
 - [NIP-59 Specification](https://github.com/nostr-protocol/nips/blob/master/59.md)
+- [PR #2399](https://github.com/nostr-protocol/nips/pull/2399) - proposal to reject standalone seals
 
 **Mentioned in:**
 - [Newsletter #8: NIP Deep Dive](/en/newsletters/2026-02-04-newsletter/#nip-deep-dive-nip-59-gift-wrap)
@@ -50,6 +51,7 @@ Relays may choose not to store wrapped events for long because they are not publ
 - [Newsletter #3: December Recap](/en/newsletters/2025-12-31-newsletter/#december-recap-five-years-of-nostr-decembers)
 - [Newsletter #12: Open PRs](/en/newsletters/2026-03-04-newsletter/#open-prs-and-project-updates)
 - [Newsletter #31: Amethyst ships a clean-room Concord implementation](/en/newsletters/2026-07-15-newsletter/#amethyst-ships-a-clean-room-concord-implementation-for-end-to-end-encrypted-communities)
+- [Newsletter #33: Protocol work and NIP updates](/en/newsletters/2026-07-29-newsletter/#protocol-and-spec-work)
 
 **See also:**
 - [NIP-17: Private Direct Messages](/en/topics/nip-17/)

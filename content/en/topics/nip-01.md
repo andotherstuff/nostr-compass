@@ -62,11 +62,13 @@ Two details cause many implementation bugs. First, clients should treat relay re
 
 **Primary sources:**
 - [NIP-01 Specification](https://github.com/nostr-protocol/nips/blob/master/01.md)
+- [Deterministic ordering commit](https://github.com/nostr-protocol/nips/commit/9c54549f1842245b842d8a66f3bade744da24189)
 
 **Mentioned in:**
 - [Newsletter #1: NIP Deep Dive](/en/newsletters/2025-12-17-newsletter/#nip-deep-dive-nip-01-and-nip-19)
 - [Newsletter #19: NIP-67 EOSE completeness hint proposal](/en/newsletters/2026-04-22-newsletter/#nip-updates)
 - [Newsletter #27: Clave 1.0 ships to the App Store](/en/newsletters/2026-06-17-newsletter/#clave-1-0-ships-to-the-app-store-with-push-woken-background-signing)
+- [Newsletter #33: Six Years of Nostr Julys](/en/newsletters/2026-07-29-newsletter/#six-years-of-nostr-julys)
 
 **See also:**
 - [NIP-19: Bech32-Encoded Entities](/en/topics/nip-19/)

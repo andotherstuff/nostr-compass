@@ -38,12 +38,12 @@ const BANNER_IMAGE =
 // Load npubs database
 // ---------------------------------------------------------------------------
 
-interface NpubEntry {
+export interface NpubEntry {
   npub: string;
   mention_only: boolean; // true = dev account, keep project name + append npub
 }
 
-interface NpubMap {
+export interface NpubMap {
   [name: string]: NpubEntry; // lowercased name -> entry
 }
 
@@ -156,7 +156,7 @@ function simplifyFooter(body: string): string {
 // Extract mentioned projects and people from newsletter body
 // ---------------------------------------------------------------------------
 
-function extractMentions(
+export function extractMentions(
   body: string,
   npubs: NpubMap
 ): {
@@ -166,8 +166,25 @@ function extractMentions(
 } {
   const mentionedNames = new Set<string>();
 
+  const projectSections = new Set([
+    "Top Stories",
+    "Tagged Releases",
+    "Shipping This Week",
+    "In Development",
+    "New Projects",
+  ]);
+
+  let linkSection = "";
+  const applicationLines: string[] = [];
+  for (const line of body.split("\n")) {
+    const h2 = line.match(/^##\s+(.+)$/);
+    if (h2) linkSection = h2[1].trim();
+    if (projectSections.has(linkSection)) applicationLines.push(line);
+  }
+  const applicationBody = applicationLines.join("\n");
+
   // Helper: clean a candidate name and decide whether to keep it
-  function addIfValid(text: string) {
+  function addIfValid(text: string, fromApplicationHeading = false) {
     text = text.trim();
     // Skip very short names (noise like "Mi", "Go", etc.)
     if (text.length < 3) return;
@@ -177,9 +194,9 @@ function extractMentions(
     // Skip bare domain names (foo.com, foo.org, etc.)
     if (/^[a-z0-9.-]+\.[a-z]{2,}$/.test(text)) return;
     // Skip all-lowercase multi-word phrases (descriptions, not project names)
-    if (/^[a-z]/.test(text) && text.split(/\s+/).length > 1) return;
+    if (!fromApplicationHeading && /^[a-z]/.test(text) && text.split(/\s+/).length > 1) return;
     // Skip hyphenated repo-style names (marmots-web-chat, etc.)
-    if (/^[a-z][a-z0-9]*-[a-z]/.test(text)) return;
+    if (!fromApplicationHeading && /^[a-z][a-z0-9]*-[a-z]/.test(text)) return;
     // Skip parenthetical descriptions: "MDK (Marmot Development Kit)"
     // Strip the parenthetical and keep the base name
     const stripped = text.replace(/\s*\([^)]+\)/, "").trim();
@@ -206,26 +223,35 @@ function extractMentions(
   // 1. Extract project names from GitHub repo links (not PRs, commits, releases)
   const repoLinkPattern = /\[([^\]]+)\]\(https:\/\/github\.com\/[^/]+\/[^/)]+\)/g;
   let match;
-  while ((match = repoLinkPattern.exec(body)) !== null) {
+  while ((match = repoLinkPattern.exec(applicationBody)) !== null) {
     addIfValid(match[1]);
   }
 
   // 2. Extract from project website links (top-level domain only, no paths)
   const siteLinkPattern = /\[([^\]]+)\]\(https:\/\/(?:www\.)?([a-z0-9.-]+\.[a-z]{2,})\/?(?:\))/g;
-  while ((match = siteLinkPattern.exec(body)) !== null) {
+  while ((match = siteLinkPattern.exec(applicationBody)) !== null) {
     const domain = match[2];
     if (["github.com", "nostrcompass.org", "testflight.apple.com"].includes(domain)) continue;
     addIfValid(match[1]);
   }
 
-  // 3. Extract project names from H3 section headers
-  const headerPattern = /^###\s+(.+)$/gm;
-  while ((match = headerPattern.exec(body)) !== null) {
-    const fullHeader = match[1].trim();
+  // 3. Extract project names from H3 section headers, but only inside
+  // application sections. Protocol/deep-dive H3s are subjects or chronology
+  // labels (for example "Merged" and "July 2026"), not project mentions.
+  let currentSection = "";
+  for (const line of body.split("\n")) {
+    const h2 = line.match(/^##\s+(.+)$/);
+    if (h2) {
+      currentSection = h2[1].trim();
+      continue;
+    }
+    const h3 = line.match(/^###\s+(.+)$/);
+    if (!h3 || !projectSections.has(currentSection)) continue;
+    const fullHeader = h3[1].trim();
     if (/^NIP-/.test(fullHeader)) continue;
     // Extract name before action verb, version, or colon
     const nameMatch = fullHeader.match(
-      /^(.+?)(?:\s+(?:Ships?|Adds?|Implements?|Releases?|Merges?|Launches?|Fixes?|Receives?|Enables?|Expands?|Extracts?|Gets?|Updates?|Introduces?|Reaches?|Begins?|Gains?|Supports?|Drops?|Brings?|Rolls?|Publishes?|Integrates?|Migrates?|Moves?)\b|\s+v\d|\s+\d+\.\d|:|$)/i
+      /^(.+?)(?:\s+(?:Ships?|Adds?|Implements?|Releases?|Merges?|Launches?|Fixes?|Receives?|Recovers?|Remembers?|Keeps?|Tightens?|Pairs?|Gives?|Lets?|Clarifies?|Schedules?|Binds?|Turns?|Enables?|Expands?|Extracts?|Gets?|Updates?|Introduces?|Reaches?|Begins?|Gains?|Supports?|Drops?|Brings?|Rolls?|Publishes?|Integrates?|Migrates?|Moves?|Coordinates?|Opens?)\b|\s+v\d|\s+\d+\.\d|:|$)/i
     );
     if (nameMatch) {
       let name = nameMatch[1].trim();
@@ -237,7 +263,7 @@ function extractMentions(
           // Take capitalized prefix (e.g. "OpenSats" from "OpenSats Sixteenth Wave...")
           name = words[0];
         }
-        addIfValid(name);
+        addIfValid(name, true);
       }
     }
   }
@@ -512,4 +538,6 @@ function main() {
   }
 }
 
-main();
+if (import.meta.main) {
+  main();
+}

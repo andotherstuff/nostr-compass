@@ -38,6 +38,7 @@ Several Nostr applications use MLS for secure group messaging:
 - **KeyChat**: MLS-based encrypted messaging app for mobile and desktop
 - **White Noise**: Private messaging using MLS with Marmot protocol integration
 - **Marmot Protocol**: Nostr extension providing MLS-based group encryption
+- **Cordn**: Private group messaging with Nostr identity and coordinator-assisted delivery
 
 MLS offers stronger group-security guarantees than [NIP-04](/en/topics/nip-04/) or [NIP-44](/en/topics/nip-44/) alone, especially when membership changes frequently.
 
@@ -54,11 +55,13 @@ That is why Nostr projects such as Marmot add extra rules on top of MLS. The cry
 - [RFC 9750: MLS Architecture](https://datatracker.ietf.org/doc/rfc9750/)
 - [IETF MLS Working Group](https://datatracker.ietf.org/wg/mls/about/)
 - [MLS Protocol Website](https://messaginglayersecurity.rocks/)
+- [Cordn 0.2.1](https://github.com/Cordn-msg/cordn-web/releases/tag/v0.2.1) - Android client release using MLS group messaging
 
 **Mentioned in:**
 - [Newsletter #3: Releases](/en/newsletters/2025-12-31-newsletter/#releases)
 - [Newsletter #10](/en/newsletters/2026-02-18-newsletter/)
 - [Newsletter #12](/en/newsletters/2026-03-04-newsletter/)
+- [Newsletter #33: Lead stories](/en/newsletters/2026-07-29-newsletter/#top-stories)
 
 **See also:**
 - [Marmot Protocol](/en/topics/marmot/)

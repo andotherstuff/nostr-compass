@@ -221,7 +221,23 @@ Blossom:
 # --- Other tools ---
 Jumble: npub17n4cuc4d6y6qh89dekvxrenfkt5s0n49xns00uavjaxpr36c55dq87fyh9
 Formstr: npub1qu7dsd44275lms4x9snnwvnnmgx926nsppmr7lcw9dlj36n4fltqgs7p98
+Formstr Drive: npub1qu7dsd44275lms4x9snnwvnnmgx926nsppmr7lcw9dlj36n4fltqgs7p98
 Calendar by Form*: npub1qu7dsd44275lms4x9snnwvnnmgx926nsppmr7lcw9dlj36n4fltqgs7p98
+Code Call: npub19at4nqjjymca2lh3v546vcg5ktun3al4c5xu2pts3ewckv0y70ys0gupzr
+Earthly: npub1dmmh0futyszl4445mv4xrygkgsgj8vpu79yx3qyy9qxmz4pemtzqlqmc87
+Hanami: npub1m2jphmdkskgnvwl5gplksl9e0zwv2sldqf9mwlpz6tyymz84g9fsqr3wgu
+Imwald Android: npub1l5sga6xg72phsz5422ykujprejwud075ggrr3z2hwyrfgr7eylqstegx9z
+Mafrend: npub19jvs7ry26263w3l6h4hst46t0fsukcmyhhmmshh8rsavfqd95xnsa5guks
+
+# [dev:pablof7z]
+Mosaico:
+  npub: npub1l2vyh47mk2p0qlsku7hg0vn29faehy9hy34ygaclpn66ukqp3afqutajft
+  mention_only: true
+
+# [dev:mattn]
+algia:
+  npub: npub1937vv2nf06360qn9y8el6d8sevnndy7tuh5nzre4gj05xc32tnwqauhaj6
+  mention_only: true
 # [dev:abh3po]
 Pollerama:
   npub: npub1cgd35mxmy37vhkfcmjckk9dylguz6q8l67cj6h9m45tj5rx569cql9kfex
@@ -827,3 +843,28 @@ jmcorgan: npub19wavu4f7l6l43h24jyskn7fvzy37kcfp67aqjtmv2qgy4lp34nhsda8p6k
 # GitHub profiles, web search all negative):
 # frnandu (Keep/FROST, NIP-47 PR #2419): no verified npub found
 # Letdown2491 (Signet, Trusted Relay Assertions PR #2418): no verified npub found
+
+# =============================================================================
+# Newsletter #33 additions (verified 2026-07-28)
+# =============================================================================
+# Keep one project/maintainer group per blank-line-delimited block so
+# publish/dm-outreach.ts can augment project accounts without cross-pairing.
+# Amethyst project account + lead maintainer
+Amethyst project: npub142gywvjkq0dv6nupggyn2euhx4nduwc7yz5f24ah9rpmunr2s39se3xrj0
+vitorpamplona maintainer:
+  npub: npub1gcxzte5zlkncx26j68ez60fzkvtkm9e0vrwdcvsjakxf9mu9qewqlfnj5z
+  mention_only: true
+
+# Ditto project account + maintainer
+Ditto project: npub10qdp2fc9ta6vraczxrcs8prqnv69fru2k6s2dj48gqjcylulmtjsg9arpj
+alexgleason maintainer:
+  npub: npub1q3sle0kvfsehgsuexttt3ugjd8xdklxfwwkh559wxckmzddywnws6cd26p
+  mention_only: true
+
+# Heading alias needed by automated H3 mention extraction.
+lawallet-nwc: npub1ek4262k6nv3l9axh403w2e66pzl2pqhhnjrhgv2wpzx2akak285scxv4pd
+
+# No verified public Nostr identity found after repository, profile, NIP-05,
+# relay-search, and project-site checks. Never guess an npub.
+# swift-nostr / yysskk: no verified npub found
+# pakstr / ado: no verified npub found

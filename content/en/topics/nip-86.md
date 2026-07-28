@@ -25,9 +25,11 @@ Available methods include banning and allowing pubkeys, listing banned users, an
 - [NIP-86 Specification](https://github.com/nostr-protocol/nips/blob/master/86.md)
 - [Amethyst v1.07.0](https://github.com/vitorpamplona/amethyst/releases/tag/v1.07.0) - Client-side NIP-86 support
 - [PR #2039](https://github.com/vitorpamplona/amethyst/pull/2039) - Relay management user search dialog
+- [Citrine PR #150](https://github.com/greenart7c3/Citrine/pull/150) - Android NIP-86 relay management
 
 **Mentioned in:**
 - [Newsletter #16: Amethyst ships relay management](/en/newsletters/2026-04-01-newsletter/#amethyst-ships-pinned-notes-relay-management-and-request-to-vanish)
+- [Newsletter #33: Unreleased app/client changes](/en/newsletters/2026-07-29-newsletter/#in-development)
 
 **See also:**
 - [NIP-11: Relay Information Document](/en/topics/nip-11/)
