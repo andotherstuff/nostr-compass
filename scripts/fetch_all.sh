@@ -5,6 +5,7 @@
 # Usage:
 #   ./fetch_all.sh                 # Auto-detect time range from last run
 #   ./fetch_all.sh --since-days 7  # Explicit time range
+#   ./fetch_all.sh --newsletter-date 2026-07-29  # Month-end history discovery
 #
 # Runs:
 #   1. fetch_project_updates.py       (GitHub releases, PRs, commits)
@@ -14,6 +15,7 @@
 #   5. fetch_nip34_repos.sh           (NIP-34 git repos from relays)
 #   6. fetch_zapstore_releases.sh     (Zapstore developer-signed app releases)
 #   7. fetch_heartbeats.sh            (OpenSats + Sovereign Engineering grantee activity)
+#   8. fetch_monthly_history.py       (history candidates; final weekly issue only)
 #
 # Prerequisites:
 #   - Python 3 + requirements.txt (for GitHub fetcher)
@@ -32,10 +34,15 @@ source "$SCRIPT_DIR/nostr_common.sh"
 # Parse arguments
 SINCE_DAYS=""
 VERBOSE=""
+NEWSLETTER_DATE="$(date -u +%F)"
 while [[ $# -gt 0 ]]; do
     case $1 in
         --since-days)
             SINCE_DAYS="$2"
+            shift 2
+            ;;
+        --newsletter-date)
+            NEWSLETTER_DATE="$2"
             shift 2
             ;;
         -v|--verbose)
@@ -43,13 +50,14 @@ while [[ $# -gt 0 ]]; do
             shift
             ;;
         -h|--help)
-            echo "Usage: $0 [--since-days N] [-v|--verbose]"
+            echo "Usage: $0 [--since-days N] [--newsletter-date YYYY-MM-DD] [-v|--verbose]"
             echo ""
             echo "Runs all data fetchers for newsletter generation."
             echo ""
             echo "Options:"
-            echo "  --since-days N  Number of days to look back (default: auto-detect)"
-            echo "  -v, --verbose   Show detailed progress"
+            echo "  --since-days N       Number of days to look back (default: auto-detect)"
+            echo "  --newsletter-date D  Planned issue date; runs history discovery on the final weekly issue"
+            echo "  -v, --verbose        Show detailed progress"
             echo "  -h, --help      Show this help"
             exit 0
             ;;
@@ -77,7 +85,7 @@ FAILED=0
 SKIPPED=0
 
 # 1. GitHub project updates (Python)
-echo "[1/6] GitHub project updates..."
+echo "[1/8] GitHub project updates..."
 if command -v python3 &>/dev/null; then
     cd "$PROJECT_ROOT"
     if python3 scripts/fetch_project_updates.py $SINCE_ARG $VERBOSE; then
@@ -93,7 +101,7 @@ fi
 echo ""
 
 # 2. NIP discussions (Nostr relay via nak)
-echo "[2/6] NIP discussions from relays..."
+echo "[2/8] NIP discussions from relays..."
 if command -v nak &>/dev/null; then
     if "$SCRIPT_DIR/fetch_nostr_nip_discussions.sh" $SINCE_ARG; then
         echo "  Done."
@@ -108,7 +116,7 @@ fi
 echo ""
 
 # 3. Nostr Recap weekly summaries (Nostr relay via nak)
-echo "[3/6] Nostr Recap summaries..."
+echo "[3/8] Nostr Recap summaries..."
 if command -v nak &>/dev/null; then
     if "$SCRIPT_DIR/fetch_nostr_recap.sh" $SINCE_ARG; then
         echo "  Done."
@@ -123,7 +131,7 @@ fi
 echo ""
 
 # 4. Shakespeare Apps / Soapbox MiniApps (Nostr relay via nak)
-echo "[4/6] Shakespeare Apps (Soapbox MiniApps)..."
+echo "[4/8] Shakespeare Apps (Soapbox MiniApps)..."
 if command -v nak &>/dev/null; then
     if "$SCRIPT_DIR/fetch_shakespeare_apps.sh" $SINCE_ARG; then
         echo "  Done."
@@ -138,7 +146,7 @@ fi
 echo ""
 
 # 5. NIP-34 git repos (Nostr relay via nak)
-echo "[5/6] NIP-34 git repos..."
+echo "[5/8] NIP-34 git repos..."
 if command -v nak &>/dev/null; then
     if "$SCRIPT_DIR/fetch_nip34_repos.sh" $SINCE_ARG; then
         echo "  Done."
@@ -153,7 +161,7 @@ fi
 echo ""
 
 # 6. Zapstore developer-signed releases (Nostr relay via nak)
-echo "[6/6] Zapstore releases..."
+echo "[6/8] Zapstore releases..."
 if command -v nak &>/dev/null; then
     if "$SCRIPT_DIR/fetch_zapstore_releases.sh" $SINCE_ARG; then
         echo "  Done."
@@ -168,7 +176,7 @@ fi
 echo ""
 
 # 7. Grantee heartbeat feeds (OpenSats nostr/general funds + Sovereign Engineering note)
-echo "[7/7] Grantee heartbeat feeds (OpenSats / Sovereign Engineering)..."
+echo "[7/8] Grantee heartbeat feeds (OpenSats / Sovereign Engineering)..."
 if "$SCRIPT_DIR/fetch_heartbeats.sh" "$HB_SINCE" "$HB_UNTIL"; then
     echo "  Done."
 else
@@ -177,11 +185,31 @@ else
 fi
 echo ""
 
+# 8. Same-calendar-month history candidates (final weekly issue only)
+ISSUE_MONTH="$(date -d "$NEWSLETTER_DATE" +%m)"
+ISSUE_YEAR="$(date -d "$NEWSLETTER_DATE" +%Y)"
+NEXT_WEEK_MONTH="$(date -d "$NEWSLETTER_DATE +7 days" +%m)"
+echo "[8/8] Month-end history candidates..."
+if [ "$ISSUE_MONTH" != "$NEXT_WEEK_MONTH" ]; then
+    if python3 "$SCRIPT_DIR/fetch_monthly_history.py" \
+        --month "$((10#$ISSUE_MONTH))" \
+        --through-year "$ISSUE_YEAR"; then
+        echo "  Done."
+    else
+        echo "  WARNING: monthly history fetcher failed (exit code $?)"
+        FAILED=$((FAILED + 1))
+    fi
+else
+    echo "  SKIPPED: $NEWSLETTER_DATE is not the final weekly issue of its month"
+    SKIPPED=$((SKIPPED + 1))
+fi
+echo ""
+
 # Summary
 echo "==========================================="
 echo "  Collection Summary"
 echo "==========================================="
-echo "  Completed: $((7 - FAILED - SKIPPED))/7"
+echo "  Completed: $((8 - FAILED - SKIPPED))/8"
 echo "  Failed:    $FAILED"
 echo "  Skipped:   $SKIPPED"
 echo ""
