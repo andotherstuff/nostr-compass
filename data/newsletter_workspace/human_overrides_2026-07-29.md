@@ -36,3 +36,23 @@ Named Codex profile discovery and Goose's Top Of Mind view expose the fabric ins
 - Because July 29 is the last Wednesday of the month, the final section is history, not a NIP Deep Dive. Title it `Six Years of Nostr Julys`, matching the earlier month-end naming pattern.
 - Rerun July history research from primary repository history. Write at least two substantive, source-linked paragraphs for each year from 2021 through 2026 and match the denser narrative style of the January through June retrospectives.
 - Keep the draft unpublished at the human-review gate; do not translate, prepare podcast assets, commit, push, or publish.
+
+## Mandatory include: Nostrology relay observatory
+
+User request: Research `https://dev.nostrolo.gy/relays` and add it to the current unpublished newsletter.
+
+- Placement: Top Stories in Nostr Compass #33, not the next-week link queue.
+- Topic linkage: Link NIP-65 on first mention, add the observatory to the NIP-65 topic page, and add the Newsletter #33 backlink.
+- Persistence: Preserve the item through any Stage 5 regeneration, Stage 6 review, and Stage 7 assembly.
+
+### Verified primary-source facts
+
+- The page identifies itself as a Nostr ecosystem observatory for NIP-65 relay-list adoption.
+- It derives the dataset from each profile's latest kind `10002` event and separates read, write, read-only, write-only, and combined roles.
+- The fetched page contained 34,427 distinct relay URL values.
+- Its distribution data grouped 520,468 profiles at exactly one listed relay, 150,657 at three, and 60,710 at four.
+- The four largest overlapping counts were `relay.momostr.pink` at 298,859 profiles, `relay.damus.io` at 287,181, `nos.lol` at 279,468, and `relay.primal.net` at 225,336.
+- The raw values include malformed URLs, local addresses, and unreachable endpoints, so the page measures published preferences and does not provide NIP-66-style liveness data.
+- Both `https://dev.nostrolo.gy/relays` and the NIP-65 specification returned HTTP 200 during verification.
+- Resolve both new-project and maintainer identities before pre-publication outreach. For Nostrology, the project source attribution, Sovereign Engineering interview, relay-backed kind `0` profile, and `_@whisperhash.com` NIP-05 all resolve to WhisperHash's `npub1t6m495kynns7xjmgz8yt6krrw4r8tac0mvr3f25f9r35ke72ap3su4qycp`; no distinct project npub was found, so the shared pubkey must receive one deduplicated DM.
+- Whenever a genuinely new project enters an unpublished draft, update the review PR and send the standard review/podcast DM to the verified project and maintainer identities after a targeted dry run. Honor `no_dm`, never guess an identity, and verify event IDs plus relay acceptances.

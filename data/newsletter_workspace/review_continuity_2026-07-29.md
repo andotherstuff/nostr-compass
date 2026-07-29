@@ -1,16 +1,16 @@
 # Continuity Review: Newsletter 2026-07-29
 
-Run: 2026-07-28T17:37:16Z
+Run: 2026-07-29T05:28:27Z
 
 Command:
-`python3 scripts/check_newsletter_continuity.py content/en/newsletters/2026-07-29-newsletter.md content/en/newsletters/2026-07-22-newsletter.md`
+`python3 scripts/check_newsletter_continuity.py content/en/newsletters/2026-07-29-newsletter.md --history-dir content/en/newsletters`
 
 Result:
-`PASS: repeated project headers each cite a new primary source`
+`PASS: repeated projects each cite a distinct primary source`
 
 Manual check:
-- The script found no repeated H3 project header between Newsletter #32 and Newsletter #33.
-- Newsletter #32's NIP Deep Dive covered NIP-42 and NIP-43; Newsletter #33's July retrospective does not reuse that pair.
-- Current draft items therefore do not need a repeat-project exception.
+- Nostrology does not appear in any prior English newsletter or existing Compass topic prose.
+- Newsletter #33's NIP-65 coverage uses a newly supplied primary source and reports current relay-list adoption data, not the implementation explanations or client changes covered in earlier issues.
+- The section therefore adds distinct evidence and impact without repeating Newsletter #5's NIP-65 deep dive or later client-specific NIP-65 coverage.
 
-GATE: PASS (continuity script passed and manual repeated-project/deep-dive check found no carryover; ran 2026-07-28T17:37:16Z)
+GATE: PASS (all-history continuity script passed; Nostrology is new coverage with a distinct primary source and current adoption evidence; ran 2026-07-29T05:28:27Z)

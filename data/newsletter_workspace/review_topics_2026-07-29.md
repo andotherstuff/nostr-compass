@@ -1,12 +1,12 @@
 # TopicCoverage Review: Newsletter 2026-07-29
 
-Run: 2026-07-28T17:37:16Z
+Run: 2026-07-29T05:28:27Z
 
-- Checked 29 unique topic targets and 51 topic-link occurrences in the assembled draft.
-- All 29 topic pages exist, include a Primary sources section, and link back to Newsletter #33.
-- Linked first mentions of the remote-signer concept, negentropy, BOLT12 zaps, NIP-59, and GRASP to existing topic pages.
-- Added Amethyst PR #3747 and the Newsletter #33 mention to `content/en/topics/negentropy.md`.
-- Added current release, PR, commit, or relay-event sources to the nine topic pages selected by the Stage 5 source audit.
+- Linked Nostrology's first NIP-65 mention to `content/en/topics/nip-65.md`.
+- Added an Observed Adoption section to the NIP-65 topic page, with the live Nostrology observatory as a primary source and an explicit metadata-versus-liveness boundary.
+- Added the Newsletter #33 Nostrology backlink to the NIP-65 topic page.
+- Rendered the unpublished newsletter with Hugo and ran `scripts/check_topic_backlinks.py` against the generated HTML.
+- Result: 21 referenced topic pages contain Primary sources blocks and all 30 rendered newsletter backlinks resolve.
 - No new topic page is required.
 
-GATE: PASS (29/29 topic targets exist with current sources and Newsletter #33 backlinks; advanced first mentions linked; ran 2026-07-28T17:37:16Z)
+GATE: PASS (NIP-65 topic updated; 21/21 topic pages have Primary sources and 30/30 rendered backlinks resolve; ran 2026-07-29T05:28:27Z)

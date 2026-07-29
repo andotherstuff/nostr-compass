@@ -46,4 +46,4 @@ NIP-29 then grew from flat relay groups into structured spaces. The July 15 [sub
 
 Two smaller edits clarified implementation boundaries. [NIP-46 commit f0af204](https://github.com/nostr-protocol/nips/commit/f0af20484c5e0d12e2d1936f87c5a6681a08daff) requires a remote signer to return an error for unknown or unsupported methods instead of leaving a client to time out silently. [NIP-34 commit 6d2979b](https://github.com/nostr-protocol/nips/commit/6d2979b3f503a8539c983efbcdcf901bbcf9ed23) removes GRASP-specific hosting directions from the pull-request event description. One gives callers a terminal response; the other keeps a portable git event from silently inheriting one server protocol.
 
-GATE: PENDING REVIEW
+GATE: PASS (Stage 7 revised-draft review: all five evidence-bearing gates pass 2026-07-29T05:28:27Z)

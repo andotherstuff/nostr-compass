@@ -34,4 +34,4 @@ The [Gamma Markets specification repository](https://github.com/GammaMarkets/mar
 
 [NWC PR #2](https://github.com/nostr-wallet-connect/nwc/pull/2) proposes optional `pay` and `receive` methods for BIP-321 payment URIs. A wallet service can advertise support, choose one compatible BOLT11 invoice or BOLT12 offer from a URI, reject a mismatched Bitcoin network before payment, and report which instruction type it used. The proposal stays outside the NWC core so wallets without BIP-321 or BOLT12 support do not have to implement it.
 
-GATE: PENDING REVIEW
+GATE: PASS (Stage 7 revised-draft review: all five evidence-bearing gates pass 2026-07-29T05:28:27Z)

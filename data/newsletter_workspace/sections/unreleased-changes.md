@@ -28,4 +28,4 @@ Wired, a browser-based Nostr client, now follows feed roots, replies, and refere
 
 The browser also preserves relay hints on referenced events and uses them only for still-missing context, restoring conversations that configured relays do not carry ([PR #145](https://github.com/smolgrrr/Wired/pull/145), [PR #144](https://github.com/smolgrrr/Wired/pull/144)). Incomplete retrieval is kept distinct from a completed snapshot, so a partial response does not overwrite the prior cached view.
 
-GATE: PENDING REVIEW
+GATE: PASS (Stage 7 revised-draft review: all five evidence-bearing gates pass 2026-07-29T05:28:27Z)

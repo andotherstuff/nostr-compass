@@ -52,4 +52,4 @@ For Swift applications, [swift-nostr 0.7.0](https://github.com/yysskk/swift-nost
 
 [Earthly 0.0.9](https://github.com/zeSchlausKwab/earthly/releases/tag/v0.0.9), a collaborative map editor built on Nostr, now keeps likes visible when a map entity drawer closes, reopens, or refreshes. Its [NIP-57 (Lightning zaps)](/en/topics/nip-57/) flow sends valid zap-request JSON so Lightning providers can publish verified receipts to publicly reachable relays, including during local development. Generated invoices remain visible across entity-surface changes, and the app shows confirmation after a verified receipt arrives.
 
-GATE: PENDING REVIEW
+GATE: PASS (Stage 7 revised-draft review: all five evidence-bearing gates pass 2026-07-29T05:28:27Z)

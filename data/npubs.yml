@@ -861,6 +861,16 @@ alexgleason maintainer:
   npub: npub1q3sle0kvfsehgsuexttt3ugjd8xdklxfwwkh559wxckmzddywnws6cd26p
   mention_only: true
 
+# Nostrology is operated by WhisperHash. No separate project key was found;
+# the project source link, Sovereign Engineering interview, relay-backed kind
+# 0 profile, and whisperhash.com NIP-05 all resolve to this same verified key.
+Nostrology:
+  npub: npub1t6m495kynns7xjmgz8yt6krrw4r8tac0mvr3f25f9r35ke72ap3su4qycp
+  mention_only: true
+WhisperHash maintainer:
+  npub: npub1t6m495kynns7xjmgz8yt6krrw4r8tac0mvr3f25f9r35ke72ap3su4qycp
+  mention_only: true
+
 # Heading alias needed by automated H3 mention extraction.
 lawallet-nwc: npub1ek4262k6nv3l9axh403w2e66pzl2pqhhnjrhgv2wpzx2akak285scxv4pd
 

@@ -4,12 +4,12 @@ date: 2026-07-29
 publishDate: 2026-07-29
 draft: true
 type: newsletters
-description: "Amethyst 1.13.0 ships Nostr apps, collaboration, and payment paths; Mosaico coordinates coding agents; seven specification families and six years of July history follow."
+description: "Amethyst 1.13.0 ships Nostr apps, Mosaico coordinates coding agents, and Nostrology maps NIP-65 relay-list concentration."
 ---
 
 Welcome back to [Nostr Compass](https://github.com/andotherstuff/nostr-compass), your weekly guide to Nostr.
 
-**This week:** [Amethyst 1.13.0](https://github.com/vitorpamplona/amethyst/releases/tag/v1.13.0) ships embedded Nostr apps, collaboration surfaces, and new payment paths. [Code Call 0.2.66](https://github.com/tidley/nostr-codex-phone/releases/tag/v0.2.66) keeps remote coding sessions moving from a phone, [GitWorkshop](https://github.com/DanConwayDev/gitworkshop) coordinates maintainers and repository synchronization, and [Mosaico 0.1.2](https://github.com/pablof7z/mosaico/releases/tag/v0.1.2) gives coding agents a shared Nostr awareness layer. Android releases from [Mafrend](https://github.com/DestBro/mafrend-zapstore/releases/tag/v1.0), [Hanami](https://github.com/Letdown2491/hanami-android/releases/tag/v0.1.0), and [Cordn](https://github.com/Cordn-msg/cordn-web/releases/tag/v0.2.1) lead the tagged releases, while [FIPS](https://github.com/jmcorgan/fips/pull/126) opens an OpenWrt access layer and begins a FreeBSD port. Protocol coverage reports NIPs, BUDs, NAPs, Marmot, Gamma Markets, Concord, and NWC, while [Six Years of Nostr Julys](https://github.com/nostr-protocol/nips/commits/master/) follows July changes from early domain lookup through relay-group state.
+**This week:** [Amethyst 1.13.0](https://github.com/vitorpamplona/amethyst/releases/tag/v1.13.0) ships embedded Nostr apps, collaboration surfaces, and new payment paths. [Code Call 0.2.66](https://github.com/tidley/nostr-codex-phone/releases/tag/v0.2.66) keeps remote coding sessions moving from a phone, [GitWorkshop](https://github.com/DanConwayDev/gitworkshop) coordinates maintainers and repository synchronization, and [Mosaico 0.1.2](https://github.com/pablof7z/mosaico/releases/tag/v0.1.2) gives coding agents a shared Nostr awareness layer. [Nostrology](https://dev.nostrolo.gy/relays) maps how profiles divide read and write duties across their published relay lists. Android releases from [Mafrend](https://github.com/DestBro/mafrend-zapstore/releases/tag/v1.0), [Hanami](https://github.com/Letdown2491/hanami-android/releases/tag/v0.1.0), and [Cordn](https://github.com/Cordn-msg/cordn-web/releases/tag/v0.2.1) lead the tagged releases, while [FIPS](https://github.com/jmcorgan/fips/pull/126) opens an OpenWrt access layer and begins a FreeBSD port. Protocol coverage reports NIPs, BUDs, NAPs, Marmot, Gamma Markets, Concord, and NWC, while [Six Years of Nostr Julys](https://github.com/nostr-protocol/nips/commits/master/) follows July changes from early domain lookup through relay-group state.
 ## Top Stories
 
 ### Amethyst 1.13.0 ships Nostr apps, collaboration, and new payment paths
@@ -33,6 +33,12 @@ Payments and identity also widened in [version 1.13.0](https://github.com/vitorp
 [Mosaico 0.1.2](https://github.com/pablof7z/mosaico/releases/tag/v0.1.2) gives coding-agent sessions in Claude Code, Codex, Goose, Hermes, OpenCode, and Grok a shared-awareness fabric over [NIP-29 (Relay-based Groups)](/en/topics/nip-29/). Sessions broadcast short status updates and can find related active work across hosts while keeping their transcripts and context separate.
 
 Named Codex profile discovery and Goose's Top Of Mind view expose the fabric inside two more harnesses ([PR #618](https://github.com/pablof7z/mosaico/pull/618), [PR #619](https://github.com/pablof7z/mosaico/pull/619)). Hosted agents can acquire a public fabric again, and setup now requires an explicit relay choice ([PR #626](https://github.com/pablof7z/mosaico/pull/626), [PR #629](https://github.com/pablof7z/mosaico/pull/629)). Mosaico remains an awareness layer, not an agent host, orchestrator, or transcript merger.
+
+### Nostrology maps relay-list concentration from published NIP-65 events
+
+[Nostrology's relay observatory](https://dev.nostrolo.gy/relays) derives its dataset from each profile's latest [NIP-65 (Relay List Metadata)](/en/topics/nip-65/) kind `10002` event, following the [published specification](https://github.com/nostr-protocol/nips/blob/master/65.md). It separates read, write, and combined relay roles, charts how many relays each profile lists, and exposes the underlying counts in a sortable table. The current page contains 34,427 distinct relay URL values and groups 520,468 profiles at exactly one listed relay, compared with 150,657 at three and 60,710 at four.
+
+The same [Nostrology dataset](https://dev.nostrolo.gy/relays) shows overlapping concentration around `relay.momostr.pink` at 298,859 profiles, `relay.damus.io` at 287,181, `nos.lol` at 279,468, and `relay.primal.net` at 225,336. Those counts measure published routing preferences, not availability: the raw table retains malformed URLs, local addresses, and unreachable endpoints, while the [NIP-65 specification](https://github.com/nostr-protocol/nips/blob/master/65.md) defines routing metadata and does not test relay health. The observatory makes adoption and data-quality problems visible without treating a listed relay as a live one.
 
 ## Tagged Releases
 
