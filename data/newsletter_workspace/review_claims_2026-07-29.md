@@ -1,19 +1,23 @@
 # Newsletter #33 claims review
 
-Generated: 2026-07-29T14:35:31Z
+Generated: 2026-07-29T16:15:40Z
 Target: `content/en/newsletters/2026-07-29-newsletter.md`
 
 ## Live verification
 
-- Extracted 34 distinct `NIP-XX` citations and verified every corresponding file through `gh api repos/nostr-protocol/nips/contents/<NN>.md`: 34/34 present.
-- Extracted 52 distinct GitHub PR URLs and queried every pull-request API endpoint: 52/52 present, comprising 43 merged and 9 open PRs, with 0 closed-unmerged PRs.
-- Rechecked Amethyst release tags `1.13.0` and `1.13.1`. The broad app, browser, Git, payment, and identity feature set is now attributed to 1.13.0; only the July 29 follow-up changes are attributed to 1.13.1.
-- Rechecked Bray `2.3.0` and merged PRs #75, #76, and #77 against the live release and PR APIs.
-- Rechecked Buzz Desktop `0.5.0` and merged PRs #3141, #2871, #2862, and #2607 against the live release and PR APIs.
-- Rechecked Kairos `0.1.1` against the developer-signed Zapstore event; the text now uses the release's exact local-instruction terminology.
+- A three-agent factual/editorial review checked the full newsletter against live primary sources. The factual reviewers covered every release and feature claim in the first half, all cited pull-request states in the second half, protocol proposals, specification commits, and the six-year historical section.
+- Extracted 37 distinct `NIP-XX` citations and resolved every corresponding canonical file through the GitHub GraphQL API: 37/37 present.
+- Rechecked 52 distinct GitHub pull requests: 43 merged and 9 open, with no closed-unmerged PR represented as shipped.
+- Resolved all 27 distinct GitHub release-tag links and 29 cited GitHub commit objects.
+- Corrected Amethyst attribution: Nostr apps and the broader feature set belong to 1.13.0; NIP-29 host-relay authentication and authenticated Blossom retry behavior belong to 1.13.1.
+- Updated Code Call from 0.2.66 to the latest in-window release, 0.2.68, and linked the individual releases supporting multi-session routing, sender verification, relay inbox behavior, and attachment handling.
+- Corrected FIPS status: OpenWrt PR #126 is merged; FreeBSD PR #129 remains open. The digest, heading, and body now preserve that distinction.
+- Anchored Nostrology figures to the July 29 publication review and corrected the live relay-table count from 34,427 to 34,430; the profile-distribution and top-relay counts matched the live payload.
+- Corrected open-proposal tense for BUD-02 PR #110 and the active NIP/NAP drafts.
+- Corrected the Cashu specification commit date and the NIP-29 subgroup commit date from July 17/15 to July 16, based on GitHub author timestamps.
 
-## Attribution and scope
+## Final regression
 
-The late Bray and Buzz stories fall inside the issue window, directly affect Nostr signing, relay authentication/search, Blossom testing, and identity behavior, and cite primary sources. Bitcoin-only and host-only material remains excluded.
+The post-edit factual reviewer returned PASS at 16:17:44 UTC after rechecking all 131 external links, 52 pull requests, the release attributions, specification states, historical commits, and the Nostrology snapshot. The post-edit prose reviewer found two heading/body attribution mismatches, both corrected. Its final re-review returned PASS at 16:20:40 UTC with no remaining material factual, grammatical, technical-clarity, source-status, or headline/body issue.
 
-GATE: PASS (34/34 NIP files and 52/52 PR API records verified; release attribution audit complete at 2026-07-29T14:35Z)
+GATE: PASS (post-edit factual and prose regressions passed at 2026-07-29T16:20:40Z)

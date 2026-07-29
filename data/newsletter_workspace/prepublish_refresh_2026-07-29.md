@@ -171,6 +171,22 @@ The user-requested final aggregate refresh ran from 15:17 through 15:34 UTC. `sc
 
 Final validation passed: style, paragraph links, month-end history, continuity, 3 topic-backlink unit tests, 14 publish tests, production build, 25-topic/34-backlink validation against minified HTML, canonical publish payload generation with `--force`, and `git diff --check`.
 
+## User-requested 15:49 UTC full-content audit
+
+Publication automation was paused before the 16:00 tick. Three independent reviewers then rechecked the complete newsletter against live primary sources and the Compass prose rules. Their substantiated findings were applied:
+
+- Amethyst's Nostr-app launch and broad feature set are attributed to 1.13.0; only the authenticated NIP-29/Blossom follow-up is attributed to 1.13.1.
+- Code Call now leads with the latest in-window release, 0.2.68, and directly links the individual weekly releases supporting the routing and attachment claims.
+- The FIPS digest, heading, and body distinguish merged OpenWrt PR #126 from open FreeBSD PR #129.
+- Nostrology's live relay-table snapshot is anchored to July 29 and corrected from 34,427 to 34,430 distinct relay URL entries.
+- BUD and NIP proposal consequences use conditional tense; ambiguous and unsupported generalizations were removed.
+- GitHub author timestamps corrected the 2024 Cashu commit and 2026 NIP-29 subgroup commit to July 16.
+- The addressable-discovery explanation now distinguishes the original web URL from the corresponding well-known lookup.
+
+The resulting candidate passes 131/131 external links, 37/37 cited NIP files, 27/27 GitHub release links, style, paragraph-link, history, continuity, three backlink tests, four publishing tests, Shaka 100/100, and the ten-language production build. The changed Mosaico heading exposed one stale NIP-29 backlink; it was repaired and the final rendered check passes 25 topic pages and 34 production-minified backlinks.
+
+The post-edit factual regression returned PASS at 16:17:44 UTC. The prose regression found two remaining headline/body version-attribution mismatches in Code Call and Nostur; both headings were corrected, and a final complete prose re-review returned PASS at 16:20:40 UTC. No unresolved factual or prose finding remains.
+
 ## Git and publication gate
 
 Final parent verification against the minified production build found that `check_topic_backlinks.py` accepted only quoted HTML `id` attributes, while Hugo emits unquoted IDs under minification. A regression test reproduced the false stale-fragment failures before the implementation changed. The checker now accepts quoted and unquoted IDs; all three unit tests pass, and the checker validates 25 topic pages with 34 backlinks directly against `public/en/newsletters/2026-07-29-newsletter/index.html`. The second GitHub refresh contained zero project releases, merged PRs, or commits after the original refresh cutoff once timestamps were normalized to UTC.
@@ -189,4 +205,4 @@ PASS: 25 topic pages have Primary sources blocks and 34 rendered newsletter back
 - Translation task `t_d6185011` and podcast task `t_dec07541` remain `todo`.
 - No publication action occurred. The recovery PR remains parked for the 16:00 UTC publication gate.
 
-GATE: PASS (final 15:17 UTC run completed 8/8 source families with 0 failures; no material post-cutoff change required prose edits; all mechanical, publish-payload, production-build, and CI gates pass; PR #118 remains the publication target; ended 2026-07-29T15:36:55Z)
+GATE: PASS (user-requested full-content audit, corrections, post-edit regressions, and all local validation completed at 2026-07-29T16:20:40Z; PR #118 CI, merge, deployment, signing, broadcast, and relay recovery remain publication-stage gates)

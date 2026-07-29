@@ -79,7 +79,7 @@ That makes migration and forking possible, but not automatic. The same group id 
 - [Newsletter #27: NIP updates and protocol spec work](/en/newsletters/2026-06-17-newsletter/#nip-updates-and-protocol-spec-work)
 - [Newsletter #31: Open: NIP-29 message pinning with kind:9010 and kind:39005](/en/newsletters/2026-07-15-newsletter/#open-nip-29-message-pinning-with-kind9010-and-kind39005)
 - [Newsletter #32: News](/en/newsletters/2026-07-22-newsletter/#nostrord-v230-ships-group-moderation-mute-lists-and-onion-relays)
-- [Newsletter #33: Mosaico 0.1.2](/en/newsletters/2026-07-29-newsletter/#mosaico-012-gives-coding-agents-a-shared-nostr-coordination-fabric)
+- [Newsletter #33: Mosaico 0.1.2](/en/newsletters/2026-07-29-newsletter/#mosaico-012-lets-coding-agents-share-status-over-nostr)
 - [Newsletter #33: Tagged releases](/en/newsletters/2026-07-29-newsletter/#tagged-releases)
 - [Newsletter #33: Unreleased app/client changes](/en/newsletters/2026-07-29-newsletter/#in-development)
 - [Newsletter #33: Six Years of Nostr Julys](/en/newsletters/2026-07-29-newsletter/#six-years-of-nostr-julys)

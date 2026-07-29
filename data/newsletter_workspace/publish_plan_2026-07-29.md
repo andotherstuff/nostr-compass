@@ -20,7 +20,11 @@ Clock authorization: automatic publication at 16:00 UTC, provided the final refr
 - Targeted outreach dry-run receipts cover seven deduplicated recipients added during the publication-day refresh. The publication worker must send only these targeted plans after the 16:00 gate and must not resend the full issue campaign.
 - No merge of PR #118, Amber invocation, signing, broadcast, translation, or podcast work occurred during refresh.
 
-## 16:00 UTC plan
+## Final audit hold
+
+The user requested another complete factual and prose validation at 15:49 UTC. Publication automation was paused before 16:00. The full audit found and corrected release attribution, current-release coverage, open-versus-merged status, one live data count, two historical dates, proposal tense, source precision, prose clarity, and two final heading/body attribution mismatches. Both post-edit reviewers now pass, along with all local mechanical and production-build gates.
+
+## Publication plan after the hold clears
 
 1. Confirm `prepublish_refresh_2026-07-29.md` ends in evidence-bearing `GATE: PASS`, PR #118 remains clean with successful CI, and no hold exists.
 2. Mark PR #118 ready and squash-merge it into `main`.
@@ -32,4 +36,4 @@ Clock authorization: automatic publication at 16:00 UTC, provided the final refr
 8. Recover both event IDs from independent configured relays and record the publish log.
 9. Complete parent task `t_ed0f1dbf` only after deployment and relay proof, promoting translation and podcast prep.
 
-GATE: PASS (final 8/8 source refresh and local publication validation passed at 2026-07-29T15:36:55Z; the 16:00 worker must still reverify PR #118 CI, merge, deployment, Amber, broadcast, and independent relay-recovery gates)
+GATE: PASS (full audit and local gates passed at 2026-07-29T16:20:40Z; publication cron remains paused until the evidence commit is pushed and PR #118 CI passes)

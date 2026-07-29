@@ -28,13 +28,13 @@ After last week's Armada and Buzz workspace coverage, [Buzz Desktop 0.5.0](https
 
 Cordn, a private group-messaging client, now gives Android users Nostr identity onboarding, profile links through [NIP-05 (Mapping Nostr Keys to DNS-Based Internet Identifiers)](/en/topics/nip-05/), and verified links that open Cordn destinations in the app. The [0.2.1 release published July 24](https://github.com/Cordn-msg/cordn-web/releases/tag/v0.2.1) introduces that native line alongside the existing web client. Messages use [MLS](/en/topics/mls/), a group-encryption protocol, with coordinator-assisted delivery, so groups retain ordered encrypted conversations without requiring an email address or phone number.
 
-### Nostur 1.30.1 tightens sharing, threads, and duplicate-post protection
+### Nostur 1.30.1 fixes threads and duplicate posts after 1.30.0 expands sharing
 
 [Nostur 1.30.1](https://github.com/nostur-com/nostur-ios-public/releases/tag/1.30.1), a Nostr client for iPhone, iPad, and Mac, lets people work through nested reply threads without the expansion and collapse failures that disrupted the new layout. It also prevents the same draft from publishing twice, including when media-upload callbacks repeat. The release follows [1.30.0](https://github.com/nostur-com/nostur-ios-public/releases/tag/1.30.0), which added disappearing direct messages and a share-sheet route for sending media into Nostr, so the app now pairs new messaging and publishing paths with fixes to their everyday thread and posting flows.
 
 ### Formstr Drive 0.0.2 pairs Nostr file metadata with Blossom blobs
 
-[Formstr Drive 0.0.2](https://github.com/formstr-hq/formstr-drive/releases/tag/v0.0.2), a Nostr-native file manager, gives users in-app previews and the option to open office documents in Nostr Docs. Underneath, it adds chunked [Blossom](/en/topics/blossom/) storage, the blob-server layer for Nostr media, plus deletion that removes the remote blob when a user removes a file. A local relay keeps the app's Nostr metadata close at hand while Blossom holds the file data, separating file organization from the large bytes themselves.
+[Formstr Drive 0.0.2](https://github.com/formstr-hq/formstr-drive/releases/tag/v0.0.2), a Nostr-native file manager, gives users in-app previews and the option to open office documents in Nostr Docs. Underneath, it stores large files as chunked [Blossom](/en/topics/blossom/) blobs and deletes the remote blob when a user removes a file. A local relay keeps the app's Nostr metadata close at hand while Blossom holds the file data, separating file organization from the large bytes themselves.
 
 ### NoorNote 1.3.1
 
@@ -62,10 +62,10 @@ For Swift applications, [swift-nostr 0.7.0](https://github.com/yysskk/swift-nost
 
 ### Ditto 2.34.2
 
-[Ditto 2.34.2](https://gitlab.com/soapbox-pub/ditto/-/releases/v2.34.2), a customizable Nostr social client, renders user statuses as cards in feeds, detail pages, and quote embeds, including custom emoji, expiry, and optional link previews. Zaps with comments now appear as replies beneath the referenced post. The release also retains the optional profile globe button from 2.34.1 for owners who publish a [NIP-5A (website manifest)](/en/topics/nip-5a/) root site, and fixes homepage navigation, live-stream search, external-link handling, and broken custom emoji.
+[Ditto 2.34.2](https://gitlab.com/soapbox-pub/ditto/-/releases/v2.34.2), a customizable Nostr social client, renders user statuses as cards in feeds, detail pages, and quote embeds, including custom emoji, expiry, and optional link previews. Zaps with comments now appear as replies beneath the referenced post. The release also retains the [optional profile globe button from 2.34.1](https://gitlab.com/soapbox-pub/ditto/-/releases/v2.34.1) for owners who publish a [NIP-5A (website manifest)](/en/topics/nip-5a/) root site, and fixes homepage navigation, live-stream search, external-link handling, and broken custom emoji.
 
 ### Earthly 0.0.9
 
 [Earthly 0.0.9](https://github.com/zeSchlausKwab/earthly/releases/tag/v0.0.9), a collaborative map editor built on Nostr, now keeps likes visible when a map entity drawer closes, reopens, or refreshes. Its [NIP-57 (Lightning zaps)](/en/topics/nip-57/) flow sends valid zap-request JSON so Lightning providers can publish verified receipts to publicly reachable relays, including during local development. Generated invoices remain visible across entity-surface changes, and the app shows confirmation after a verified receipt arrives.
 
-GATE: PENDING REVIEW
+GATE: PASS

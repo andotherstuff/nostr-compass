@@ -1,23 +1,24 @@
-# Newsletter #33 consolidated refresh review
+# Newsletter #33 consolidated publication review
 
-Generated: 2026-07-29T14:35:31Z
+Generated: 2026-07-29T16:20:40Z
 Target: `content/en/newsletters/2026-07-29-newsletter.md`
 Review PR: https://github.com/andotherstuff/nostr-compass/pull/118
-State: incident-recovery update PR, open and draft; publication remains parked until 16:00 UTC.
+State: publication held after 16:00 UTC for the user-requested final factual/prose audit.
 
-## Five required gates
+## Required gates
 
-1. Links: PASS, 124/124 external URLs reachable and 40/40 internal references resolve.
-2. Claims: PASS, 34/34 NIP files and 52/52 PR API records verified; corrected Amethyst/Kairos attribution and added live-verified Bray/Buzz releases.
-3. Prose/style/history: PASS, Shaka 100/100 at 4,675 words; style, paragraph-link, month-end, and intro scans pass.
-4. Rendered topic backlinks: PASS, 25 topic pages with Primary sources blocks and 34 rendered backlinks.
-5. Continuity: PASS against all prior issues; #30-#32 read in full; Bray and Buzz cite distinct in-window sources and user/protocol impact.
+1. Links: PASS, 131/131 unique external URLs reachable; 25 internal topic targets resolve.
+2. Claims: PASS. The post-edit factual reviewer rechecked the complete revised candidate against live primary sources and returned PASS.
+3. Prose/style/history: PASS after correcting two final heading/body version-attribution mismatches. The final prose re-review returned PASS; Shaka is 100/100 at 4,715 words, and style, paragraph-link, month-end, and continuity checks pass.
+4. Rendered topic backlinks: PASS, 25 topic pages with Primary sources blocks and 34 production-minified backlinks after repairing the revised Mosaico anchor.
+5. Continuity: PASS against prior issues, with distinct primary sources for every repeated project.
 
 ## Build and publishing-safety checks
 
-- `npm run build`: PASS, Hugo built all 10 languages and Pagefind indexed 2,170 pages.
-- `bun test tests/publish_mentions.test.ts`: 4 passed, 0 failed.
-- `bun scripts/publish.ts <newsletter> --force`: 28 valid resolved mentions, 2 documented missing identities, 0 invalid identities.
-- Targeted outreach: seven unique recipients across the two dry-run plans, 0 DMs sent. The refresh did not invoke Amber, sign, broadcast, merge, deploy intentionally, mark ready, or complete the Kanban parent.
+- `npm run build`: PASS after the final heading corrections; Hugo built all 10 languages and Pagefind indexed 2,170 pages and 166,752 words.
+- Backlink unit suite: 3 passed, 0 failed.
+- Publishing mention suite: 4 passed, 0 failed.
+- Canonical no-inject payload generation with `--force`: PASS; 28 verified project identities and two documented unresolved identities (`pakstr`, `swift-nostr`).
+- No merge, intentional deployment, Amber invocation, signing, broadcast, translation, or podcast work occurred during this audit.
 
-GATE: PASS (five evidence-backed reviews, production build, mention tests, and dry-run outreach all passed at 2026-07-29T14:35:31Z)
+GATE: PASS (all factual, prose, link, history, continuity, topic-backlink, test, payload, and production-build gates passed at 2026-07-29T16:20:40Z)
