@@ -2,7 +2,7 @@
 title: "Nostr Compass #33"
 date: 2026-07-29
 publishDate: 2026-07-29
-draft: true
+draft: false
 type: newsletters
 description: "Amethyst 1.13.0 ships Nostr apps, Mosaico coordinates coding agents, and Nostrology maps NIP-65 relay-list concentration."
 ---
