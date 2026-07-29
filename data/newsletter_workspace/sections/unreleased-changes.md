@@ -1,5 +1,13 @@
 ## In Development
 
+### Keep adds kind-scoped NIP-44 v3 signing and tightens approval policy
+
+Keep merged five Android signer changes that carry [NIP-44 (Encrypted Payloads)](/en/topics/nip-44/) v3 encrypt and decrypt requests through both [NIP-55 (Android Signer Application)](/en/topics/nip-55/) transports and its [NIP-46 (Nostr Connect)](/en/topics/nip-46/) bunker. [PRs #451](https://github.com/privkeyio/keep-android/pull/451), [#452](https://github.com/privkeyio/keep-android/pull/452), and [#453](https://github.com/privkeyio/keep-android/pull/453) keep v3 grants separate from v2, scope them by event kind, reject missing or invalid kinds, and preserve approval requests opened from notifications. [PRs #454](https://github.com/privkeyio/keep-android/pull/454) and [#455](https://github.com/privkeyio/keep-android/pull/455) stop treating the Basic signing policy as Auto and move the global selection into the core-owned encrypted store. The Keep maintainers merged all five changes after the latest tagged Android release.
+
+### Routstrd changes its default network bind after an unauthenticated exposure
+
+Routstrd [PR #56](https://github.com/Routstr/routstrd/pull/56) changes the local Nostr inference router's default bind address from all network interfaces to `127.0.0.1`. The former default exposed unauthenticated wallet balance, history, unlock, send, refund, API-key, provider, client, usage, and daemon-stop endpoints to any host that could reach the port. Operators can still configure a non-local bind explicitly, but the merged change makes a fresh deployment local-only by default and has not yet appeared in a tagged release.
+
 ### Imwald Android clarifies offline publishing status
 
 Imwald Android, an Android Nostr client, now treats acknowledgement from a local relay as a completed publish only when every configured target is local. Its [offline-publishing and outbox fix](https://git.imwald.eu/silberengel/imwald-android/commit/f4de9f61df35110c77d2e5f99d764c0df176962b) keeps remote delivery pending when a local relay has accepted the event but configured remote relays have not, so the publish report distinguishes device-local storage from relay delivery.
@@ -28,4 +36,4 @@ Wired, a browser-based Nostr client, now follows feed roots, replies, and refere
 
 The browser also preserves relay hints on referenced events and uses them only for still-missing context, restoring conversations that configured relays do not carry ([PR #145](https://github.com/smolgrrr/Wired/pull/145), [PR #144](https://github.com/smolgrrr/Wired/pull/144)). Incomplete retrieval is kept distinct from a completed snapshot, so a partial response does not overwrite the prior cached view.
 
-GATE: PASS (Stage 7 revised-draft review: all five evidence-bearing gates pass 2026-07-29T05:28:27Z)
+GATE: PASS (prepublish refresh: five review gates PASS at 2026-07-29T14:00:03Z; 113/113 external URLs 200, claims/style/topics/continuity verified)

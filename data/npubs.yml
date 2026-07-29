@@ -871,6 +871,35 @@ WhisperHash maintainer:
   npub: npub1t6m495kynns7xjmgz8yt6krrw4r8tac0mvr3f25f9r35ke72ap3su4qycp
   mention_only: true
 
+# Kairos Zapstore releases are signed by LWB's relay-backed personal key.
+Kairos: npub1vjxq75czca0nswp2f5kgtfyzhynuccdjs29q098rd3kv09k7s6nq39hh7v
+LWB maintainer:
+  npub: npub1vjxq75czca0nswp2f5kgtfyzhynuccdjs29q098rd3kv09k7s6nq39hh7v
+  mention_only: true
+
+# Shosho's developer-signed Zapstore publisher account; no separate
+# maintainer identity was established from primary evidence.
+Shosho publisher:
+  npub: npub1sh0spghk4yvy2d2v35kelw45qq4msk6zykaw4ds047e9slzs8r4qr7q2xa
+  mention_only: true
+
+# Keep's existing verified key belongs to maintainer wksantiago.
+wksantiago maintainer:
+  npub: npub1h3fzzzeq60acjvnyvw34rpn5clkaueteffmkt3ln4ygekg9lcm0qhw96sj
+  mention_only: true
+
+# Routstrd uses the verified Routstr project account; no separate maintainer
+# identity was established from primary evidence.
+Routstrd project account:
+  npub: npub130mznv74rxs032peqym6g3wqavh472623mt3z5w73xq9r6qqdufs7ql29s
+  mention_only: true
+
+# Mill's discussion event is signed by 0ceanSlim's relay-backed key.
+Mill: npub1zmc6qyqdfnllhnzzxr5wpepfpnzcf8q6m3jdveflmgruqvd3qa9sjv7f60
+0ceanSlim maintainer:
+  npub: npub1zmc6qyqdfnllhnzzxr5wpepfpnzcf8q6m3jdveflmgruqvd3qa9sjv7f60
+  mention_only: true
+
 # Heading alias needed by automated H3 mention extraction.
 lawallet-nwc: npub1ek4262k6nv3l9axh403w2e66pzl2pqhhnjrhgv2wpzx2akak285scxv4pd
 

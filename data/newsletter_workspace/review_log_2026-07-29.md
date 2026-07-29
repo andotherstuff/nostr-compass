@@ -32,3 +32,18 @@ State: unpublished (`draft: true`)
 - Marmot/MDK remains on the explicit `no_dm` list.
 
 GATE: PASS (all five evidence-bearing review artifacts pass after the Nostrology edit; generated 2026-07-29T05:28:27Z)
+
+## Publication-day refresh review
+
+Reviewed: 2026-07-29T13:46:49Z through 2026-07-29T14:00:03Z
+State: incident-recovery update after PR #117 merged early; no merge, deployment, signing, broadcast, or Kanban completion performed by the refresh job.
+
+- PASS: LinkCheck performed content-bearing GETs for 113 unique external URLs, with 113 HTTP 200 responses; 23 internal content paths, 44 PR URLs, 21 release URLs, 23 directly version-labelled URLs, and 35 distinct live NIP identifiers passed.
+- PASS: ClaimCheck live-verified the late Amethyst, GitWorkshop, Kairos, Shosho, NoorNote, MDK, Ditto, Keep, Routstrd, and Mill claims, including merged versus untagged wording and the corrected local Kairos-to-Astraea handoff.
+- PASS: ProseStyle ran all three required scripts, found zero banned phrases, em dashes, prohibited comparison structures, rhetorical questions, or passive-voice violations, and retained all six month-end history years.
+- PASS: TopicCoverage rendered the issue and verified 23 topic pages with Primary sources blocks and 32 backlinks, including exact NIP-09 and NIP-49 anchors.
+- PASS: Continuity compared the issue against all 32 prior English issues, read the three immediate predecessors in full, and verified distinct primary sources and substantive impact for 16 repeated project headers.
+- PASS: `npm run build` completed the Hugo production build and Pagefind indexed 2,170 pages across 10 languages at 2026-07-29T14:01Z.
+- PASS: `git diff --check` and `bun test publish/outreach-scope.test.ts` completed with zero failures.
+
+GATE: PASS (five evidence-bearing publication-day review gates plus production build passed; final verification 2026-07-29T14:00:03Z)

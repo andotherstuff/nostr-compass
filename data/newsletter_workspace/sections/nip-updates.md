@@ -8,6 +8,10 @@ Two specification changes merged this week. [NIP-34 commit 6d2979b](https://gith
 
 [PR #2425](https://github.com/nostr-protocol/nips/pull/2425) would let NIP-B0 bookmarks retain non-HTTP schemes such as `nostr:` alongside web URLs. That keeps native Nostr identifiers, payment requests, and other application schemes intact inside the same private or public bookmark lists that already carry web addresses.
 
+### Mill implements a draft for cloud-account key backup
+
+Mill [announced](https://primal.net/e/6362d9b00662fa64200530f8a29ae547521bac0a1e3c9379ef9086eac7d2030b) an implemented [cloud-account key-backup draft](https://github.com/0ceanSlim/nostr-mill/blob/main/docs/nip-cloud-key-backup.md) that combines a Google OIDC account identifier with a high-entropy passphrase to derive a disposable backup key. Its [reference implementation](https://github.com/0ceanSlim/nostr-mill/blob/main/src/nipbackup.js) encrypts the user's real key as a [NIP-49 (Private Key Encryption)](/en/topics/nip-49/) `ncryptsec`, then stores it in a provisional parameterized-replaceable kind `30049` event on configured relays. The project [merged the flow to main](https://github.com/0ceanSlim/nostr-mill/commit/eeb4b9114d02114b703a6823ad36ca8063b224da), but no post-v1.0.0 release includes it and the feature stays disabled unless an operator supplies dedicated `backupRelays`. The draft pins a versioned relay set whose concrete purpose-run endpoints remain provisional and warns that published ciphertext remains available for offline passphrase guessing. The design depends on a high-entropy passphrase, and readers should treat it as an implemented experiment.
+
 ### BUDs: Blossom servers may identify unknown uploads from their bytes
 
 [BUD-02 PR #110](https://github.com/hzrd149/blossom/pull/110) now recommends server-side MIME detection when an uploader omits `Content-Type` or sends `application/octet-stream`. A Blossom server would inspect the first bytes with a maintained file-type library, preserve a specific client-supplied type, and fall back to the generic binary type when detection fails. That keeps images, audio, video, and agent-produced files renderable without making byte sniffing mandatory for every upload.
@@ -34,4 +38,4 @@ The [Gamma Markets specification repository](https://github.com/GammaMarkets/mar
 
 [NWC PR #2](https://github.com/nostr-wallet-connect/nwc/pull/2) proposes optional `pay` and `receive` methods for BIP-321 payment URIs. A wallet service can advertise support, choose one compatible BOLT11 invoice or BOLT12 offer from a URI, reject a mismatched Bitcoin network before payment, and report which instruction type it used. The proposal stays outside the NWC core so wallets without BIP-321 or BOLT12 support do not have to implement it.
 
-GATE: PASS (Stage 7 revised-draft review: all five evidence-bearing gates pass 2026-07-29T05:28:27Z)
+GATE: PASS (prepublish refresh: five review gates PASS at 2026-07-29T14:00:03Z; 113/113 external URLs 200, claims/style/topics/continuity verified)

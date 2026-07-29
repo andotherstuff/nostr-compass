@@ -1,12 +1,12 @@
 ## Top Stories
 
-### Amethyst 1.13.0 ships Nostr apps, collaboration, and new payment paths
+### Amethyst 1.13.1 ships Nostr apps, collaboration, and new payment paths
 
-[Amethyst 1.13.0](https://github.com/vitorpamplona/amethyst/releases/tag/v1.13.0), the July 28 release of the Android and multiplatform Nostr client, opens NIP-5D napplets and NIP-5A nsites inside an isolated, keyless browser process. A consent-gated `window.nostr` bridge can sign and use selected capabilities through the active account, while per-site and per-account permission screens let users review or revoke those grants. Favorite apps can stay pinned in the bottom bar without sharing cookies, login state, or grants across accounts.
+[Amethyst 1.13.1](https://github.com/vitorpamplona/amethyst/releases/tag/v1.13.1), the July 29 follow-up to 1.13.0 for the Android and multiplatform Nostr client, opens napplets and NIP-5A nsites inside an isolated, keyless browser process. A consent-gated `window.nostr` bridge can sign and use selected capabilities through the active account, while per-site and per-account permission screens let users review or revoke those grants. Favorite apps can stay pinned in the bottom bar without sharing cookies, login state, or grants across accounts.
 
-The same [Amethyst release](https://github.com/vitorpamplona/amethyst/releases/tag/v1.13.0) adds Git repository trees, issues, and pull requests alongside Concord communities, NIP-29 relay groups, Buzz group chat, wiki pages, and RSS feeds. Those surfaces turn the release into a collaboration update, not only a social-feed refresh: a user can move between code, community, and publishing views under the same Nostr identity.
+The same [Amethyst release](https://github.com/vitorpamplona/amethyst/releases/tag/v1.13.1) adds Git repository trees, issues, and pull requests alongside Concord communities, NIP-29 relay groups, Buzz group chat, wiki pages, and RSS feeds. Those surfaces let a user move between code, community, publishing, and social views under the same Nostr identity.
 
-Payments and identity also widened in [version 1.13.0](https://github.com/vitorpamplona/amethyst/releases/tag/v1.13.0). Amethyst can create and pay BOLT12 offers, starts remote-signer accounts automatically, adds Blossom fallback servers, and expands Web of Trust controls for badges, communities, and relay groups. The release notes also record a large accessibility, translation, desktop, performance, and stability pass.
+Payments and identity also widened in [version 1.13.1](https://github.com/vitorpamplona/amethyst/releases/tag/v1.13.1). Amethyst can create and pay BOLT12 offers, starts remote-signer accounts automatically, adds Blossom fallback servers, and expands Web of Trust controls for badges, communities, and relay groups. The follow-up adds a [CORD-02 dissolution seal](https://github.com/vitorpamplona/amethyst/pull/3767), kind `9008` [group and channel deletion](https://github.com/vitorpamplona/amethyst/pull/3779), [NIP-29 host-relay authentication](https://github.com/vitorpamplona/amethyst/pull/3788), and authenticated [BUD-01 retries](https://github.com/vitorpamplona/amethyst/pull/3789) for gated Blossom downloads. The release notes also record a large accessibility, translation, desktop, performance, and stability pass.
 
 ### Code Call 0.2.66 keeps several remote work sessions moving from a phone
 
@@ -14,7 +14,7 @@ Payments and identity also widened in [version 1.13.0](https://github.com/vitorp
 
 ### GitWorkshop coordinates maintainers and keeps repository sync independent
 
-[GitWorkshop's July 27 signed release](https://primal.net/e/869e01f9a74d98f468a66f3b83865d198a82cc718c1db36324398b1b88a17c60) adds Android login through [NIP-55 (Android Signer Application)](/en/topics/nip-55/) to the browser-based [NIP-34 (`git` stuff)](/en/topics/nip-34/) forge. Its [source repository](https://github.com/DanConwayDev/gitworkshop) now coordinates lead maintainers recursively, preserves each maintainer's relay hints, and keeps repository synchronization independent from invitation acceptance. Cross-repository work-item references connect related work across repositories, while GRASP copies repository data to selected Git endpoints without coupling that transfer to invitation delivery.
+[GitWorkshop's July 27 signed release](https://primal.net/e/869e01f9a74d98f468a66f3b83865d198a82cc718c1db36324398b1b88a17c60) adds Android login through [NIP-55 (Android Signer Application)](/en/topics/nip-55/) to the browser-based [NIP-34 (`git` stuff)](/en/topics/nip-34/) forge. Its [source repository](https://github.com/DanConwayDev/gitworkshop) now coordinates lead maintainers recursively, preserves each maintainer's relay hints, and keeps repository synchronization independent from invitation acceptance. Cross-repository work-item references connect related work across repositories, while GRASP copies repository data to selected Git endpoints without coupling that transfer to invitation delivery. The developer-signed [3.1.1 update](https://primal.net/e/01d0939e9960cb82f1f7aba6f1900af2c61ce384e38352221bf9d5878116ae2d) repairs Android signer intent delivery, recursive maintainer resolution, and path-preserving repository links.
 
 ### Mosaico 0.1.2 gives coding agents a shared Nostr coordination fabric
 
@@ -28,4 +28,4 @@ Named Codex profile discovery and Goose's Top Of Mind view expose the fabric ins
 
 The same [Nostrology dataset](https://dev.nostrolo.gy/relays) shows overlapping concentration around `relay.momostr.pink` at 298,859 profiles, `relay.damus.io` at 287,181, `nos.lol` at 279,468, and `relay.primal.net` at 225,336. Those counts measure published routing preferences, not availability: the raw table retains malformed URLs, local addresses, and unreachable endpoints, while the [NIP-65 specification](https://github.com/nostr-protocol/nips/blob/master/65.md) defines routing metadata and does not test relay health. The observatory makes adoption and data-quality problems visible without treating a listed relay as a live one.
 
-GATE: PASS (Stage 7 revised-draft review: all five evidence-bearing gates pass 2026-07-29T05:28:27Z)
+GATE: PASS (prepublish refresh: five review gates PASS at 2026-07-29T14:00:03Z; 113/113 external URLs 200, claims/style/topics/continuity verified)
