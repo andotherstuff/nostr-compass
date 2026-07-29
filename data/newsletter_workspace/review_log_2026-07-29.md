@@ -1,34 +1,24 @@
-# Newsletter #33 consolidated review log
+# Newsletter #33 consolidated publication review
 
-Generated: 2026-07-29T05:28:27Z
+Generated: 2026-07-29T16:20:40Z
 Target: `content/en/newsletters/2026-07-29-newsletter.md`
-State: unpublished (`draft: true`)
+Review PR: https://github.com/andotherstuff/nostr-compass/pull/118
+State: publication held after 16:00 UTC for the user-requested final factual/prose audit.
 
-## Editorial gates
+## Required gates
 
-- PASS: LinkCheck resolved all 90 external URLs and verified the rendered topic backlinks.
-- PASS: ClaimCheck reproduced every Nostrology number from the live page and retained the prior PR, NIP, release, commit, and relay-event checks.
-- PASS: ProseStyle scored 100/100 with zero violations; every prose paragraph carries a repository or primary-source link.
-- PASS: TopicCoverage updated NIP-65 and resolved 30 rendered backlinks across 21 referenced topic pages.
-- PASS: Continuity found no duplicate Nostrology coverage and confirmed the NIP-65 item adds a distinct source and current adoption evidence.
-- PASS: Amethyst 1.13.0, Mosaico 0.1.2, the seven-family specification sweep, Sovereign Engineering discovery, and `Six Years of Nostr Julys` remain intact.
+1. Links: PASS, 131/131 unique external URLs reachable; 25 internal topic targets resolve.
+2. Claims: PASS. The post-edit factual reviewer rechecked the complete revised candidate against live primary sources and returned PASS.
+3. Prose/style/history: PASS after correcting two final heading/body version-attribution mismatches. The final prose re-review returned PASS; Shaka is 100/100 at 4,715 words, and style, paragraph-link, month-end, and continuity checks pass.
+4. Rendered topic backlinks: PASS, 25 topic pages with Primary sources blocks and 34 production-minified backlinks after repairing the revised Mosaico anchor.
+5. Continuity: PASS against prior issues, with distinct primary sources for every repeated project.
 
-## Mechanical evidence
+## Build and publishing-safety checks
 
-- PASS: `scripts/check_newsletter_style.py`.
-- PASS: `scripts/check_newsletter_paragraph_links.py`.
-- PASS: `scripts/check_month_end_history.py`.
-- PASS: `scripts/check_newsletter_continuity.py --history-dir content/en/newsletters`.
-- PASS: Hugo draft/future render and `scripts/check_topic_backlinks.py`.
-- PASS: Bun production build and Pagefind indexing.
-- PASS: `git diff --check`.
+- `npm run build`: PASS after the final heading corrections; Hugo built all 10 languages and Pagefind indexed 2,170 pages and 166,752 words.
+- Backlink unit suite: 3 passed, 0 failed.
+- Publishing mention suite: 4 passed, 0 failed.
+- Canonical no-inject payload generation with `--force`: PASS; 28 verified project identities and two documented unresolved identities (`pakstr`, `swift-nostr`).
+- No merge, intentional deployment, Amber invocation, signing, broadcast, translation, or podcast work occurred during this audit.
 
-## Outreach readiness
-
-- Publish preview resolves 21 project identities.
-- Nostrology resolves to WhisperHash through source attribution, a Sovereign Engineering interview, a relay-backed kind `0` profile, and `_@whisperhash.com` NIP-05. No separate project npub was found, so project and maintainer aliases share one deduplicated recipient.
-- After PR #117 was updated, the targeted dry run selected that one shared recipient. The real NIP-17 send produced event `4ebb50feb1c5c72cbc322b9fc2ad1cd15ff91394a1b229173f176e5acd8d6f5a`, accepted by 4 of 9 relays. Independent readback found the exact event on `wss://nos.lol`, `wss://relay.primal.net`, and `wss://relay.snort.social`.
-- pakstr and swift-nostr remain unresolved after the current source checks; no npub was guessed.
-- Marmot/MDK remains on the explicit `no_dm` list.
-
-GATE: PASS (all five evidence-bearing review artifacts pass after the Nostrology edit; generated 2026-07-29T05:28:27Z)
+GATE: PASS (all factual, prose, link, history, continuity, topic-backlink, test, payload, and production-build gates passed at 2026-07-29T16:20:40Z)

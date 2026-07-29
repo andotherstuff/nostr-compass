@@ -60,6 +60,7 @@ The format also carries a one-byte flag describing whether the key has ever been
 - [Newsletter #13: NIP Deep Dive](/en/newsletters/2026-03-11-newsletter/#nip-deep-dive-nip-49-private-key-encryption)
 - [Newsletter #31: Nostr WoT 0.3.86 hardens key backups and signing prompts](/en/newsletters/2026-07-15-newsletter/#nostr-wot-0386-hardens-key-backups-and-signing-prompts)
 - [Newsletter #31: Nostr Docs adopts a NIP-49 signer with multi-account and QR pairing](/en/newsletters/2026-07-15-newsletter/#nostr-docs-adopts-a-nip-49-signer-with-multi-account-and-qr-pairing)
+- [Newsletter #33: Mill implements a draft for cloud-account key backup](/en/newsletters/2026-07-29-newsletter/#mill-implements-a-draft-for-cloud-account-key-backup)
 
 **See also:**
 - [NIP-46: Nostr Connect](/en/topics/nip-46/)

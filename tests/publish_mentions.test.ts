@@ -9,6 +9,7 @@ const npubs = {
   nostur: { npub: "npub1nostur", mention_only: false },
   "swift-nostr": { npub: "npub1swiftnostr", mention_only: false },
   "lawallet-nwc": { npub: "npub1lawalletnwc", mention_only: false },
+  mill: { npub: "npub1mill", mention_only: false },
 };
 
 describe("publish mention extraction", () => {
@@ -99,6 +100,24 @@ Text.
     const result = extractMentions(body, npubs);
 
     expect(result.found.map((entry) => entry.name)).toEqual(["lawallet-nwc", "swift-nostr"]);
+    expect(result.missing).toEqual([]);
+  });
+
+  test("includes an exact curated project heading from protocol work", () => {
+    const body = `## Protocol Work
+
+### Mill implements a draft for cloud-account key backup
+
+Text.
+
+### BUDs: Blossom servers may identify unknown uploads
+
+Text.
+`;
+
+    const result = extractMentions(body, npubs);
+
+    expect(result.found.map((entry) => entry.name)).toEqual(["Mill"]);
     expect(result.missing).toEqual([]);
   });
 });

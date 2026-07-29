@@ -173,6 +173,10 @@ export function extractMentions(
     "In Development",
     "New Projects",
   ]);
+  const protocolProjectSections = new Set([
+    "Protocol Work",
+    "Protocol and Spec Work",
+  ]);
 
   let linkSection = "";
   const applicationLines: string[] = [];
@@ -246,7 +250,7 @@ export function extractMentions(
       continue;
     }
     const h3 = line.match(/^###\s+(.+)$/);
-    if (!h3 || !projectSections.has(currentSection)) continue;
+    if (!h3 || (!projectSections.has(currentSection) && !protocolProjectSections.has(currentSection))) continue;
     const fullHeader = h3[1].trim();
     if (/^NIP-/.test(fullHeader)) continue;
     // Extract name before action verb, version, or colon
@@ -262,6 +266,13 @@ export function extractMentions(
         if (words.length > 4 && /^[A-Z]/.test(words[0])) {
           // Take capitalized prefix (e.g. "OpenSats" from "OpenSats Sixteenth Wave...")
           name = words[0];
+        }
+        // Protocol sections mostly contain spec subjects. Keep only headings
+        // that resolve exactly to a curated project identity so a concrete
+        // implementation such as Mill receives outreach without treating
+        // generic NIP/BUD/NAP headings as projects.
+        if (protocolProjectSections.has(currentSection) && !npubs[name.toLowerCase()]) {
+          continue;
         }
         addIfValid(name, true);
       }
