@@ -55,10 +55,16 @@ NIP-57 underpins the zap-goal system specified in [NIP-75](/en/topics/nip-75/). 
 
 Zap splits, defined in an appendix to the NIP, let a recipient publish a kind `0` profile with multiple weighted `zap` tags so a single zap payment is divided among several pubkeys atomically. [Amethyst](https://github.com/vitorpamplona/amethyst), [Damus](https://github.com/damus-io/damus), and [noStrudel](https://github.com/hzrd149/nostrudel) implement split-paying end-to-end.
 
+## Current Implementation and Proposal Work
+
+[Earthly 0.0.9](https://github.com/zeSchlausKwab/earthly/releases/tag/v0.0.9) repaired zap-request construction and receipt handling for collaborative map entities. Separately, [PR #2421](https://github.com/nostr-protocol/nips/pull/2421) proposes BOLT12 zaps with signed intent events and payer proofs, allowing clients to verify settlement without a recipient-operated receipt publisher.
+
 ---
 
 **Primary sources:**
 - [NIP-57 Specification](https://github.com/nostr-protocol/nips/blob/master/57.md)
+- [PR #2421](https://github.com/nostr-protocol/nips/pull/2421) - BOLT12 zap proposal
+- [Earthly 0.0.9](https://github.com/zeSchlausKwab/earthly/releases/tag/v0.0.9) - Client implementation fixes
 
 **Mentioned in:**
 - [Newsletter #1: News](/en/newsletters/2025-12-17-newsletter/#news)
@@ -68,6 +74,8 @@ Zap splits, defined in an appendix to the NIP, let a recipient publish a kind `0
 - [Newsletter #19: NIP Deep Dive](/en/newsletters/2026-04-22-newsletter/#nip-deep-dive-nip-57-zaps)
 - [Newsletter #27: Amethyst v1.12.0 ships Cashu wallets, nutzaps, a CLINK driver, and Tor self-heal](/en/newsletters/2026-06-17-newsletter/#amethyst-v1-12-0-ships-cashu-wallets-nutzaps-a-clink-driver-and-tor-self-heal)
 - [Newsletter #31: Wired and TAO add NIP-57 creator revenue sharing](/en/newsletters/2026-07-15-newsletter/#wired-and-tao-add-nip-57-creator-revenue-sharing)
+- [Newsletter #33: Tagged releases](/en/newsletters/2026-07-29-newsletter/#tagged-releases)
+- [Newsletter #33: Protocol work and NIP updates](/en/newsletters/2026-07-29-newsletter/#protocol-and-spec-work)
 
 **See also:**
 - [NIP-47: Nostr Wallet Connect](/en/topics/nip-47/)

@@ -34,7 +34,8 @@ source "$SCRIPT_DIR/nostr_common.sh"
 # Configuration
 DEFAULT_DAYS=7
 OUTPUT_DIR="$PROJECT_ROOT/data/nip34_repos"
-TRACKED_FILE="$PROJECT_ROOT/data/nip34_tracked.yml"
+DEFAULT_TRACKED_FILE="$PROJECT_ROOT/data/nip34_tracked.yml"
+TRACKED_FILE="$DEFAULT_TRACKED_FILE"
 
 # NIP-34 specific relays
 # - relay.ngit.dev: primary NIP-34 / ngit ecosystem relay
@@ -80,8 +81,12 @@ while [[ $# -gt 0 ]]; do
             MODE="discover"
             shift
             ;;
+        --tracked-file)
+            TRACKED_FILE="$2"
+            shift 2
+            ;;
         -h|--help)
-            echo "Usage: $0 [--since-days N] [--track-only] [--discover-only]"
+            echo "Usage: $0 [--since-days N] [--track-only] [--discover-only] [--tracked-file PATH]"
             echo ""
             echo "Fetch NIP-34 repository data from Nostr relays."
             echo ""
@@ -92,6 +97,7 @@ while [[ $# -gt 0 ]]; do
             echo ""
             echo "Options:"
             print_since_days_help "$DEFAULT_DAYS"
+            echo "  --tracked-file PATH  Override data/nip34_tracked.yml"
             echo "  -h, --help        Show this help message"
             exit 0
             ;;

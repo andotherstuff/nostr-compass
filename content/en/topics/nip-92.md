@@ -35,6 +35,8 @@ The most immediate benefit is better rendering before download. If `dim` is pres
 
 NIP-92 also lets clients keep the post itself as the source of truth. The URL remains in `content`, so older clients still show a plain link, while newer clients can upgrade the same note into a richer media card.
 
+[algia 0.0.133](https://github.com/mattn/algia/releases/tag/v0.0.133) implements this pattern for command-line image posts, adding the uploaded URL to event content and a matching `imeta` tag to the event.
+
 ## Interop Notes
 
 NIP-92 is inline metadata, not a separate media object format. If a client needs a reusable file record with its own event, [NIP-94: File Metadata](/en/topics/nip-94/) is the better fit.
@@ -55,11 +57,13 @@ NIP-92 is inline metadata, not a separate media object format. If a client needs
 **Primary sources:**
 - [NIP-92 Specification](https://github.com/nostr-protocol/nips/blob/master/92.md)
 - [Primal Android PR #718](https://github.com/PrimalHQ/primal-android-app/pull/718) - A concrete client implementation for dimensions and aspect-ratio handling
+- [algia 0.0.133](https://github.com/mattn/algia/releases/tag/v0.0.133) - Command-line image upload with matching `imeta` tags
 
 **Mentioned in:**
 - [Newsletter #3: December Recap](/en/newsletters/2025-12-31-newsletter/#december-recap-five-years-of-nostr-decembers)
 - [Newsletter #6: News](/en/newsletters/2026-01-21-newsletter/#news)
 - [Newsletter #24: Amethyst floating-point dims and Deep Dive](/en/newsletters/2026-05-28-newsletter/#nip-deep-dive-nip-92-media-attachments-via-imeta)
+- [Newsletter #33: Tagged releases](/en/newsletters/2026-07-29-newsletter/#tagged-releases)
 
 **See also:**
 - [NIP-94: File Metadata](/en/topics/nip-94/)

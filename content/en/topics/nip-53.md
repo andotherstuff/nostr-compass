@@ -89,6 +89,8 @@ The Nostr live-activity surface is intentionally thin: NIP-53 advertises the act
 - [Amethyst PR #2469](https://github.com/vitorpamplona/amethyst/pull/2469) - live stream goal header, top-zappers leaderboard, and one-tap zap
 - [Amethyst PR #2486](https://github.com/vitorpamplona/amethyst/pull/2486) - dedicated Live Streams feed screen
 - [Amethyst PR #2491](https://github.com/vitorpamplona/amethyst/pull/2491) - NIP-53 proof of agreement and event builders
+- [NIP-53 introduction commit](https://github.com/nostr-protocol/nips/commit/141197c564d97073f0293e3b2f367f0b6b3619c2)
+- [NoorNote 1.3.0](https://github.com/77elements/noornote/releases/tag/v1.3.0) - live-activity cards across client surfaces
 
 **Mentioned in:**
 
@@ -97,6 +99,7 @@ The Nostr live-activity surface is intentionally thin: NIP-53 advertises the act
 - [Newsletter #19 (2026-04-22): Amethyst ships Marmot MIP compliance, NIP-72 communities, zap goals, and MoQ audio rooms](/en/newsletters/2026-04-22-newsletter/#amethyst-ships-marmot-mip-compliance-nip-72-communities-zap-goals-and-moq-audio-rooms)
 - [Newsletter #19 (2026-04-22): NoorNote v0.8.4 adds Scheduled Posts and live stream zapping](/en/newsletters/2026-04-22-newsletter/#noornote-v084-adds-scheduled-posts-and-live-stream-zapping)
 - [Newsletter #20 (2026-04-29): Amethyst advances Nests audio rooms with MoQ interop testing](/en/newsletters/2026-04-29-newsletter/#amethyst-advances-nests-audio-rooms-with-moq-interop-testing)
+- [Newsletter #33: Six Years of Nostr Julys](/en/newsletters/2026-07-29-newsletter/#six-years-of-nostr-julys)
 
 **See also:**
 

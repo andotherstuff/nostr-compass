@@ -26,6 +26,8 @@ The protocol remains experimental, but it now has multiple implementations and a
 
 Recent work has focused on hardening and interop. Audit-driven fixes landed in early 2026, and MIP-03 introduced deterministic commit resolution so clients can converge when concurrent group state changes race across relays.
 
+[MDK 0.9.9](https://github.com/marmot-protocol/mdk/releases/tag/v0.9.9) preserves manual chat-pin order, adds terminal group disbanding, and exposes richer reply and ambient group context to agent integrations.
+
 In April 2026, Amethyst brought its embedded MDK into line with the MIP-01 and MIP-05 wire formats: [PR #2462](https://github.com/vitorpamplona/amethyst/pull/2462) added VarInt encoding of TLS-style length prefixes and round-trip validation against MDK test vectors, [PR #2435](https://github.com/vitorpamplona/amethyst/pull/2435) added MIP-00 KeyPackage Relay List support, and [PR #2436](https://github.com/vitorpamplona/amethyst/pull/2436) closed remaining admin-gate and media-handling gaps flagged by cross-client testing against White Noise. [PR #2466](https://github.com/vitorpamplona/amethyst/pull/2466) corrected MLS commit framing so encrypted welcome bytes match mdk-core output, and [PR #2471](https://github.com/vitorpamplona/amethyst/pull/2471) fixed an outer-layer decryption bug that caused state divergence between co-admins. Follow-up [PR #2493](https://github.com/vitorpamplona/amethyst/pull/2493) adds comprehensive MLS commit cryptography validation, and [PR #2488](https://github.com/vitorpamplona/amethyst/pull/2488) ships `amy`, a CLI interface for Marmot and MLS group operations driven from Amethyst's implementation.
 
 MDK landed [PR #261](https://github.com/marmot-protocol/mdk/pull/261) to compute a group's `RequiredCapabilities` as the LCD of invitee capabilities (unblocking mixed-version invites between Amethyst and White Noise), [PR #262](https://github.com/marmot-protocol/mdk/pull/262) to parse invitee key packages before persisting the creator's signer, [PR #264](https://github.com/marmot-protocol/mdk/pull/264) to converge the SelfUpdate wire format across implementations, and [PR #265](https://github.com/marmot-protocol/mdk/pull/265) to expose a `group_required_proposals` accessor.
@@ -38,6 +40,7 @@ MDK landed [PR #261](https://github.com/marmot-protocol/mdk/pull/261) to compute
 - [Marmot Protocol Repository](https://github.com/marmot-protocol/marmot)
 - [MLS Protocol](https://messaginglayersecurity.rocks/)
 - [Marmot Development Kit (MDK)](https://github.com/marmot-protocol/mdk)
+- [MDK 0.9.9](https://github.com/marmot-protocol/mdk/releases/tag/v0.9.9) - Pinned-chat ordering, terminal group disbanding, and agent context
 - [marmot-ts](https://github.com/marmot-protocol/marmot-ts)
 - [whitenoise-rs](https://github.com/marmot-protocol/whitenoise-rs)
 - [White Noise client](https://github.com/marmot-protocol/whitenoise)
@@ -58,6 +61,7 @@ MDK landed [PR #261](https://github.com/marmot-protocol/mdk/pull/261) to compute
 - [Newsletter #27: ZapBook builds 4 through 27 ship multi-account, Marmot key publication, and circle re-invitations](/en/newsletters/2026-06-17-newsletter/#zapbook-builds-4-through-27-ship-multi-account-marmot-key-publication-and-circle-re-invitations)
 - [Newsletter #31: Vector v0.4.0 moves Group Chats from Marmot to Concord, and Amethyst ships its own Concord client days later](/en/newsletters/2026-07-15-newsletter/#vector-v040-moves-group-chats-from-marmot-to-concord-and-amethyst-ships-its-own-concord-client-days-later)
 - [Newsletter #31: Bitcoin-Safe reaches Flathub, spotlighting its Nostr Sync & Chat plugin](/en/newsletters/2026-07-15-newsletter/#bitcoin-safe-reaches-flathub-spotlighting-its-nostr-sync--chat-plugin)
+- [Newsletter #33: Tagged releases](/en/newsletters/2026-07-29-newsletter/#tagged-releases)
 
 **See also:**
 - [MLS (Message Layer Security)](/en/topics/mls/)

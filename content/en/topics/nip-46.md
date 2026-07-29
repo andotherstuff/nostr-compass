@@ -43,6 +43,7 @@ The `switch_relays` method exists so the signer can move the session to a differ
 
 **Primary sources:**
 - [NIP-46 Specification](https://github.com/nostr-protocol/nips/blob/master/46.md)
+- [swift-nostr 0.7.0](https://github.com/yysskk/swift-nostr/releases/tag/0.7.0) - remote signer API coverage
 
 **Mentioned in:**
 - [Newsletter #1: Notable Code Changes](/en/newsletters/2025-12-17-newsletter/#amethyst-android)
@@ -56,6 +57,7 @@ The `switch_relays` method exists so the signer can move the session to a differ
 - [Newsletter #31: Vector v0.4.0 moves Group Chats from Marmot to Concord, and Amethyst ships its own Concord client days later](/en/newsletters/2026-07-15-newsletter/#vector-v040-moves-group-chats-from-marmot-to-concord-and-amethyst-ships-its-own-concord-client-days-later)
 - [Newsletter #31: n_cord v1.1 adds NSEC Bunker support](/en/newsletters/2026-07-15-newsletter/#n_cord-v11-adds-nsec-bunker-support)
 - [Newsletter #32: News](/en/newsletters/2026-07-22-newsletter/#zapstore-110-makes-the-device-key-portable-and-adds-background-auto-updates)
+- [Newsletter #33: Tagged releases](/en/newsletters/2026-07-29-newsletter/#tagged-releases)
 
 **See also:**
 - [NIP-55: Android Signer](/en/topics/nip-55/)

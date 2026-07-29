@@ -62,11 +62,13 @@ That flexibility also explains why current marketplace projects favor it. The sp
 - [NIP-99 Specification](https://github.com/nostr-protocol/nips/blob/master/99.md)
 - [Shopstr PR #234](https://github.com/shopstr-eng/shopstr/pull/234) - MCP commerce endpoints on top of NIP-99 listings
 - [Milk Market PR #10](https://github.com/shopstr-eng/milk-market/pull/10) - Subscription and multi-merchant checkout on top of marketplace listings
+- [Initial classified-listing draft](https://github.com/nostr-protocol/nips/commit/451c06a3c572a13afe45c1d80616f8e6dd9bb1de)
 
 **Mentioned in:**
 - [Newsletter #13: Shopstr and Milk Market Open MCP Commerce Surfaces](/en/newsletters/2026-03-11-newsletter/#shopstr-and-milk-market-open-mcp-commerce-surfaces)
 - [Newsletter #31: Conduit Mono rebuilds the merchant orders inbox around ephemeral guest checkout](/en/newsletters/2026-07-15-newsletter/#conduit-mono-rebuilds-the-merchant-orders-inbox-around-ephemeral-guest-checkout)
 - [Newsletter #31: NIP Deep Dive: NIP-99 and the Gamma Markets commerce extension](/en/newsletters/2026-07-15-newsletter/#nip-deep-dive-nip-99-and-the-gamma-markets-commerce-extension)
+- [Newsletter #33: Six Years of Nostr Julys](/en/newsletters/2026-07-29-newsletter/#six-years-of-nostr-julys)
 
 **See also:**
 - [NIP-15: Marketplace Offers](/en/topics/nip-15/)

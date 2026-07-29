@@ -55,11 +55,15 @@ Most major clients support NIP-05 verification:
 **Primary sources:**
 - [NIP-05 Specification](https://github.com/nostr-protocol/nips/blob/master/05.md)
 - [PR #2208](https://github.com/nostr-protocol/nips/pull/2208) - lowercase requirement for names and hex keys
+- [nostr-tools NIP-05 commit](https://github.com/nbd-wtf/nostr-tools/commit/1ce00bd3b6909f78f212a7a172cf845b55280599)
+- [Cordn repository](https://github.com/Cordn-msg/cordn-web) - Android onboarding and NIP-05 profile links
 
 **Mentioned in:**
 - [Newsletter #8: NIP Updates](/en/newsletters/2026-02-04-newsletter/#nip-updates)
 - [Newsletter #13: Amethyst](/en/newsletters/2026-03-11-newsletter/#amethyst)
 - [Newsletter #27: Amethyst v1.12.0 ships Cashu wallets, nutzaps, a CLINK driver, and Tor self-heal](/en/newsletters/2026-06-17-newsletter/#amethyst-v1-12-0-ships-cashu-wallets-nutzaps-a-clink-driver-and-tor-self-heal)
+- [Newsletter #33: Lead stories](/en/newsletters/2026-07-29-newsletter/#top-stories)
+- [Newsletter #33: Six Years of Nostr Julys](/en/newsletters/2026-07-29-newsletter/#six-years-of-nostr-julys)
 
 **See also:**
 - [NIP-01: Basic Protocol](/en/topics/nip-01/)

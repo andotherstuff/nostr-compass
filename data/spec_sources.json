@@ -1,0 +1,39 @@
+{
+  "spec_families": [
+    {
+      "id": "nip",
+      "name": "Nostr Implementation Possibilities (NIPs)",
+      "repo": "nostr-protocol/nips"
+    },
+    {
+      "id": "bud",
+      "name": "Blossom Upgrade Documents (BUDs)",
+      "repo": "hzrd149/blossom"
+    },
+    {
+      "id": "nap",
+      "name": "Napplet Application Proposals (NAPs)",
+      "repo": "napplet/naps"
+    },
+    {
+      "id": "marmot",
+      "name": "Marmot Improvement Proposals (MIPs)",
+      "repo": "marmot-protocol/marmot"
+    },
+    {
+      "id": "gamma",
+      "name": "Gamma Markets",
+      "repo": "GammaMarkets/market-spec"
+    },
+    {
+      "id": "concord",
+      "name": "Concord (CORD specs)",
+      "repo": "concord-protocol/concord"
+    },
+    {
+      "id": "nwc",
+      "name": "Nostr Wallet Connect",
+      "repo": "nostr-wallet-connect/nwc"
+    }
+  ]
+}

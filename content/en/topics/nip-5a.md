@@ -41,6 +41,7 @@ Root sites use the npub as the subdomain. Named sites use a 50-character base36 
 
 - [nsite](https://github.com/lez/nsite) - Host server that resolves NIP-5A manifests and serves files
 - [nsite-manager](https://github.com/hzrd149/nsite-manager) - UI for building and publishing site manifests
+- [Ditto](https://gitlab.com/soapbox-pub/ditto) - Opens an author's NIP-5A root site from their profile
 
 ---
 
@@ -49,11 +50,13 @@ Root sites use the npub as the subdomain. Named sites use a 50-character base36 
 - [PR #1538](https://github.com/nostr-protocol/nips/pull/1538) - Original proposal and merge
 - [nsite](https://github.com/lez/nsite) - Reference host implementation
 - [nsite-manager](https://github.com/hzrd149/nsite-manager) - Publishing and management UI
+- [Ditto 2.34.1](https://gitlab.com/soapbox-pub/ditto/-/releases/v2.34.1) - Profile link to an author's root site
 
 **Mentioned in:**
 - [Newsletter #16: NIP-5A merges](/en/newsletters/2026-04-01-newsletter/#nip-5a-merges-bringing-static-websites-to-nostr)
 - [Newsletter #16: NIP Deep Dive](/en/newsletters/2026-04-01-newsletter/#nip-deep-dive-nip-5a-static-websites)
 - [Newsletter #19: NIP-5D applets proposal](/en/newsletters/2026-04-22-newsletter/#nip-updates)
+- [Newsletter #33: Tagged releases](/en/newsletters/2026-07-29-newsletter/#tagged-releases)
 
 **See also:**
 - [Blossom](/en/topics/blossom/)

@@ -63,16 +63,22 @@ Avoid listing too many relays. When you list ten or fifteen relays, every client
 
 Mix general-purpose relays with any specialized relays you use. For instance, you might list a popular general relay like `wss://relay.damus.io`, a relay focused on your geographic region, and a relay for a specific community you participate in.
 
+## Observed Adoption
+
+[Nostrology's relay observatory](https://dev.nostrolo.gy/relays) aggregates each profile's latest kind `10002` event and separates relay entries by read, write, or combined use. Its sortable table and distribution charts expose both relay concentration and the long tail of published relay URLs. NIP-65 records preferences and does not probe endpoints, so these counts do not establish whether a listed relay is reachable or compliant.
+
 ---
 
 **Primary sources:**
 - [NIP-65 Specification](https://github.com/nostr-protocol/nips/blob/master/65.md)
+- [Nostrology relay observatory](https://dev.nostrolo.gy/relays) - Aggregated kind `10002` relay-list adoption and role counts
 
 **Mentioned in:**
 - [Newsletter #5: NIP Deep Dive](/en/newsletters/2026-01-13-newsletter/#nip-65-relay-list-metadata)
 - [Newsletter #12: Outbox Model Benchmarks](/en/newsletters/2026-03-04-newsletter/)
 - [Newsletter #19: Wisp inbox-relay broadcasting](/en/newsletters/2026-04-22-newsletter/#wisp-v0180-beta-adds-normie-mode-for-you-feed-and-nip-29-group-config)
 - [Newsletter #32: Tagged releases](/en/newsletters/2026-07-22-newsletter/#amber-v630-groups-bunker-signing-approvals-and-adds-expert-list-support)
+- [Newsletter #33: Nostrology relay-list adoption](/en/newsletters/2026-07-29-newsletter/#nostrology-maps-relay-list-concentration-from-published-nip-65-events)
 
 **See also:**
 - [NIP-11: Relay Information](/en/topics/nip-11/)

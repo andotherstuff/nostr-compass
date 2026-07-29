@@ -46,10 +46,12 @@ In mixed environments, clients still need graceful fallback behavior because not
 - [Negentropy Protocol Repository](https://github.com/hoytech/negentropy)
 - [Damus PR #3536](https://github.com/damus-io/damus/pull/3536)
 - [Damus PR #3547](https://github.com/damus-io/damus/pull/3547)
+- [Amethyst PR #3747](https://github.com/vitorpamplona/amethyst/pull/3747) - Recover from relay refusals during NIP-77 reconciliation
 
 **Mentioned in:**
 - [Newsletter #7: Damus ships negentropy for reliable DM syncing](/en/newsletters/2026-01-28-newsletter/#damus-ships-negentropy-for-reliable-dm-syncing)
 - [Newsletter #12](/en/newsletters/2026-03-04-newsletter/)
+- [Newsletter #33: Amethyst recovers stalled syncs](/en/newsletters/2026-07-29-newsletter/#amethyst-recovers-stalled-syncs-and-remembers-navigation-per-account)
 
 **See also:**
 - [NIP-01: Basic Protocol Flow](/en/topics/nip-01/)
