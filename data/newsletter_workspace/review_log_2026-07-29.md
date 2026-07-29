@@ -27,6 +27,7 @@ State: unpublished (`draft: true`)
 
 - Publish preview resolves 21 project identities.
 - Nostrology resolves to WhisperHash through source attribution, a Sovereign Engineering interview, a relay-backed kind `0` profile, and `_@whisperhash.com` NIP-05. No separate project npub was found, so project and maintainer aliases share one deduplicated recipient.
+- After PR #117 was updated, the targeted dry run selected that one shared recipient. The real NIP-17 send produced event `4ebb50feb1c5c72cbc322b9fc2ad1cd15ff91394a1b229173f176e5acd8d6f5a`, accepted by 4 of 9 relays. Independent readback found the exact event on `wss://nos.lol`, `wss://relay.primal.net`, and `wss://relay.snort.social`.
 - pakstr and swift-nostr remain unresolved after the current source checks; no npub was guessed.
 - Marmot/MDK remains on the explicit `no_dm` list.
 
