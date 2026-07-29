@@ -1,7 +1,7 @@
 # Nostr Compass pre-publication refresh, 2026-07-29
 
 Start UTC: 2026-07-29T13:05:27Z
-End UTC: 2026-07-29T14:51:18Z
+End UTC: 2026-07-29T15:36:55Z
 Target: `content/en/newsletters/2026-07-29-newsletter.md`
 Mode: publication-day incident-recovery update
 
@@ -140,7 +140,7 @@ PASS: month-end history title, years, depth, and source links are valid
 python3 scripts/check_newsletter_continuity.py content/en/newsletters/2026-07-29-newsletter.md --history-dir content/en/newsletters
 PASS: repeated projects each cite a distinct primary source
 
-python3 scripts/check_topic_backlinks.py content/en/newsletters/2026-07-29-newsletter.md --rendered-html /tmp/compass-review-public/en/newsletters/2026-07-29-newsletter/index.html
+python3 scripts/check_topic_backlinks.py content/en/newsletters/2026-07-29-newsletter.md --rendered-html public/en/newsletters/2026-07-29-newsletter/index.html
 PASS: 25 topic pages have Primary sources blocks and 34 rendered newsletter backlinks
 
 bun test tests/publish_mentions.test.ts
@@ -152,9 +152,24 @@ PASS
 
 ## Build and outreach
 
-- `npm run build`: PASS at 2026-07-29T14:35Z. Hugo built all ten languages; Pagefind indexed 2,170 pages and 166,752 words.
+- `npm run build`: PASS again at 2026-07-29T15:36Z. Hugo built all ten languages; Pagefind indexed 2,170 pages and 166,752 words.
 - Targeted outreach dry runs: PASS. Seven unique NIP-17 recipients were planned: the original Kairos/LWB, Mill/0ceanSlim, Routstrd, Shosho, and Keep/wksantiago group, plus de-duplicated Bray/Darren and Buzz Desktop/Block recipients. Receipt: `data/newsletter_workspace/outreach_refresh_2026-07-29.md` and ignored plan JSON files under `publish/out/`.
 - No real outreach DM was signed or sent because this refresh job may not invoke Amber. The 16:00 publication worker must review the targeted plan, avoid resending the full issue campaign, and perform any approved targeted send before publication.
+
+## Final 15:17 UTC update run
+
+The user-requested final aggregate refresh ran from 15:17 through 15:34 UTC. `scripts/fetch_all.sh --since-days 8` completed **8/8 source families, 0 failed, 0 skipped**, and reported every family 0 hours old. Coverage-history and non-GitHub aggregation then exited 0.
+
+- GitHub projects: 150 active repositories, 189 releases, 1,092 merged PRs, 693 open PRs, and 4,011 commits. No release, merged PR, or commit occurred after the previous 14:51 cutoff.
+- Direct Nostr/NIP discussions: 2 NIP documents, 0 direct notes, 0 community records; no post-cutoff event.
+- Nostr Recap: 17 events; no post-cutoff event.
+- Shakespeare apps: 61 submissions, 55 unique apps, 0 new in-window apps.
+- NIP-34: 23 tracked and 184 discovered repositories, 0 in-window patches, 58 in-window issues. One new `microfips-upstream` kind 30617 announcement appeared at 14:44:59 UTC, with an empty description and no patch or issue evidence. NIP-34 hosting alone does not establish newsletter scope, and the current FIPS section already covers its substantive primary-source changes, so no prose was added.
+- Zapstore: fresh eight-day relay result completed. No post-cutoff signed release passed the editorial gate. Same-day re-fetches mutate the persistent publisher-seen baseline, so the second run's `new_apps` field is not used to retract the earlier verified launch decisions.
+- Heartbeats: OpenSats and Sovereign Engineering completed with the same FIPS project tag and no post-cutoff event.
+- Specifications: NIPs now list 16 active PRs. PR #2424 received a use-case discussion comment at 15:04 UTC but its kind 10045 proposal did not change and is already covered. PR #2419 entered the fresh snapshot because of a 13:24 concept-ACK review; its sole specification commit predates the issue window. No newsletter text changed.
+
+Final validation passed: style, paragraph links, month-end history, continuity, 3 topic-backlink unit tests, 14 publish tests, production build, 25-topic/34-backlink validation against minified HTML, canonical publish payload generation with `--force`, and `git diff --check`.
 
 ## Git and publication gate
 
@@ -174,4 +189,4 @@ PASS: 25 topic pages have Primary sources blocks and 34 rendered newsletter back
 - Translation task `t_d6185011` and podcast task `t_dec07541` remain `todo`.
 - No publication action occurred. The recovery PR remains parked for the 16:00 UTC publication gate.
 
-GATE: PASS (all eight source families refreshed with successful retries; material late changes primary-source verified; five review gates, production-minified backlink validation, and production build passed; draft PR #118 remains parked; ended 2026-07-29T14:51:18Z)
+GATE: PASS (final 15:17 UTC run completed 8/8 source families with 0 failures; no material post-cutoff change required prose edits; all mechanical, publish-payload, production-build, and CI gates pass; PR #118 remains the publication target; ended 2026-07-29T15:36:55Z)
