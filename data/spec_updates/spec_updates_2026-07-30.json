@@ -1,0 +1,417 @@
+{
+  "generated_at": "2026-07-29T13:16:17.448389+00:00",
+  "window": {
+    "since": "2026-07-22T00:00:00Z",
+    "until": "2026-07-30T00:00:00Z"
+  },
+  "families": [
+    {
+      "id": "nip",
+      "name": "Nostr Implementation Possibilities (NIPs)",
+      "repo": "nostr-protocol/nips",
+      "status": "active",
+      "window": {
+        "since": "2026-07-22T00:00:00Z",
+        "until": "2026-07-30T00:00:00Z"
+      },
+      "commits": [
+        {
+          "sha": "6d2979b3f503a8539c983efbcdcf901bbcf9ed23",
+          "date": "2026-07-26T20:42:03Z",
+          "title": "nip34: drop GRASP hosting instructions from pull request description (#2423)",
+          "url": "https://github.com/nostr-protocol/nips/commit/6d2979b3f503a8539c983efbcdcf901bbcf9ed23"
+        },
+        {
+          "sha": "396c584d8fb8f5a96cf7b31edbde26f836780e84",
+          "date": "2026-07-26T09:40:19Z",
+          "title": "nip15: `try 99 instead` to `try NIP-99 instead` (#2422)",
+          "url": "https://github.com/nostr-protocol/nips/commit/396c584d8fb8f5a96cf7b31edbde26f836780e84"
+        },
+        {
+          "sha": "db5fe3de8c5d1443b634c9bbf66ecb004f337057",
+          "date": "2026-07-22T16:18:46Z",
+          "title": "nip29: clarify group relay migration and forks.",
+          "url": "https://github.com/nostr-protocol/nips/commit/db5fe3de8c5d1443b634c9bbf66ecb004f337057"
+        }
+      ],
+      "pull_requests": [
+        {
+          "number": 2357,
+          "title": "nip50: add autocomplete:true/false search extension",
+          "state": "merged",
+          "created_at": "2026-05-24T21:34:26Z",
+          "updated_at": "2026-07-28T16:37:59Z",
+          "merged_at": "2026-06-06T20:24:34Z",
+          "url": "https://github.com/nostr-protocol/nips/pull/2357"
+        },
+        {
+          "number": 2309,
+          "title": "NIP-TPLD: Transient Private Location Data",
+          "state": "open",
+          "created_at": "2026-04-09T21:31:52Z",
+          "updated_at": "2026-07-28T15:52:56Z",
+          "merged_at": null,
+          "url": "https://github.com/nostr-protocol/nips/pull/2309"
+        },
+        {
+          "number": 2421,
+          "title": "Add BOLT12 zaps",
+          "state": "open",
+          "created_at": "2026-07-23T18:01:50Z",
+          "updated_at": "2026-07-28T13:57:08Z",
+          "merged_at": null,
+          "url": "https://github.com/nostr-protocol/nips/pull/2421"
+        },
+        {
+          "number": 2425,
+          "title": "NIP-B0: Fix URI scheme ambiguity",
+          "state": "open",
+          "created_at": "2026-07-28T02:43:15Z",
+          "updated_at": "2026-07-28T16:40:03Z",
+          "merged_at": null,
+          "url": "https://github.com/nostr-protocol/nips/pull/2425"
+        },
+        {
+          "number": 2424,
+          "title": "Add NIP-A1: Key Set Declaration (kind 10045)",
+          "state": "open",
+          "created_at": "2026-07-27T20:09:32Z",
+          "updated_at": "2026-07-27T20:09:32Z",
+          "merged_at": null,
+          "url": "https://github.com/nostr-protocol/nips/pull/2424"
+        },
+        {
+          "number": 357,
+          "title": "NIP-82: Medical Data",
+          "state": "open",
+          "created_at": "2023-03-13T00:50:34Z",
+          "updated_at": "2026-07-27T19:46:57Z",
+          "merged_at": null,
+          "url": "https://github.com/nostr-protocol/nips/pull/357"
+        },
+        {
+          "number": 2399,
+          "title": "NIP-59: relays should reject kind 13 seal events",
+          "state": "open",
+          "created_at": "2026-06-28T22:50:37Z",
+          "updated_at": "2026-07-27T11:08:27Z",
+          "merged_at": null,
+          "url": "https://github.com/nostr-protocol/nips/pull/2399"
+        },
+        {
+          "number": 2328,
+          "title": "NIP-AB: Device Pairing",
+          "state": "open",
+          "created_at": "2026-04-28T16:11:56Z",
+          "updated_at": "2026-07-27T01:22:28Z",
+          "merged_at": null,
+          "url": "https://github.com/nostr-protocol/nips/pull/2328"
+        },
+        {
+          "number": 2423,
+          "title": "nip34: drop GRASP hosting instructions from pull request description",
+          "state": "merged",
+          "created_at": "2026-07-26T09:51:40Z",
+          "updated_at": "2026-07-26T20:42:03Z",
+          "merged_at": "2026-07-26T20:42:03Z",
+          "url": "https://github.com/nostr-protocol/nips/pull/2423"
+        },
+        {
+          "number": 2422,
+          "title": "nip15: `try 99 instead` to `try NIP-99 instead`",
+          "state": "merged",
+          "created_at": "2026-07-26T08:37:49Z",
+          "updated_at": "2026-07-26T09:40:19Z",
+          "merged_at": "2026-07-26T09:40:19Z",
+          "url": "https://github.com/nostr-protocol/nips/pull/2422"
+        },
+        {
+          "number": 2303,
+          "title": "NIP-5D: nostr web applets",
+          "state": "open",
+          "created_at": "2026-04-05T20:55:25Z",
+          "updated_at": "2026-07-24T10:12:26Z",
+          "merged_at": null,
+          "url": "https://github.com/nostr-protocol/nips/pull/2303"
+        },
+        {
+          "number": 2252,
+          "title": "NIP-91: AND operator for filters",
+          "state": "open",
+          "created_at": "2026-03-05T14:13:03Z",
+          "updated_at": "2026-07-24T08:57:27Z",
+          "merged_at": null,
+          "url": "https://github.com/nostr-protocol/nips/pull/2252"
+        },
+        {
+          "number": 2411,
+          "title": "NIP-DA: Permissioned Private Data Sharing (Scoped Data Grants)",
+          "state": "open",
+          "created_at": "2026-07-10T19:16:00Z",
+          "updated_at": "2026-07-23T02:02:15Z",
+          "merged_at": null,
+          "url": "https://github.com/nostr-protocol/nips/pull/2411"
+        },
+        {
+          "number": 2194,
+          "title": "Add NIP 9a for push notifications",
+          "state": "open",
+          "created_at": "2026-01-21T02:12:18Z",
+          "updated_at": "2026-07-22T23:46:02Z",
+          "merged_at": null,
+          "url": "https://github.com/nostr-protocol/nips/pull/2194"
+        },
+        {
+          "number": 2204,
+          "title": "NIP58 - Badge Event \"Request\" and \"Denial\"",
+          "state": "open",
+          "created_at": "2026-01-28T23:11:59Z",
+          "updated_at": "2026-07-22T23:33:58Z",
+          "merged_at": null,
+          "url": "https://github.com/nostr-protocol/nips/pull/2204"
+        }
+      ]
+    },
+    {
+      "id": "bud",
+      "name": "Blossom Upgrade Documents (BUDs)",
+      "repo": "hzrd149/blossom",
+      "status": "active",
+      "window": {
+        "since": "2026-07-22T00:00:00Z",
+        "until": "2026-07-30T00:00:00Z"
+      },
+      "commits": [],
+      "pull_requests": [
+        {
+          "number": 110,
+          "title": "BUD-02: Recommend server-side MIME type detection from magic bytes",
+          "state": "open",
+          "created_at": "2026-07-02T12:03:24Z",
+          "updated_at": "2026-07-25T19:56:13Z",
+          "merged_at": null,
+          "url": "https://github.com/hzrd149/blossom/pull/110"
+        }
+      ]
+    },
+    {
+      "id": "nap",
+      "name": "Napplet Application Proposals (NAPs)",
+      "repo": "napplet/naps",
+      "status": "active",
+      "window": {
+        "since": "2026-07-22T00:00:00Z",
+        "until": "2026-07-30T00:00:00Z"
+      },
+      "commits": [
+        {
+          "sha": "5ac0490461ca6fec2f0d2e45b4835cf9bc08de24",
+          "date": "2026-07-24T10:01:21Z",
+          "title": "docs: define convention URI transposition (#90)",
+          "url": "https://github.com/napplet/naps/commit/5ac0490461ca6fec2f0d2e45b4835cf9bc08de24"
+        },
+        {
+          "sha": "111bea78eb5d0bc9b838eb52ac70a110c92254a7",
+          "date": "2026-07-24T10:00:06Z",
+          "title": "NAP-INC: Separate topic identity from message data (#89)",
+          "url": "https://github.com/napplet/naps/commit/111bea78eb5d0bc9b838eb52ac70a110c92254a7"
+        },
+        {
+          "sha": "6461e4b37c29dc09a20dff35d9515889c4433874",
+          "date": "2026-07-22T22:58:58Z",
+          "title": "NAP: Remove numbered protocol track (#87)",
+          "url": "https://github.com/napplet/naps/commit/6461e4b37c29dc09a20dff35d9515889c4433874"
+        }
+      ],
+      "pull_requests": [
+        {
+          "number": 94,
+          "title": "NAP-CAPTURE: define shell-mediated microphone recording",
+          "state": "open",
+          "created_at": "2026-07-28T16:42:15Z",
+          "updated_at": "2026-07-29T01:51:14Z",
+          "merged_at": null,
+          "url": "https://github.com/napplet/naps/pull/94"
+        },
+        {
+          "number": 88,
+          "title": "NAP-FS: define policy-bound virtual filesystem access",
+          "state": "open",
+          "created_at": "2026-07-22T11:20:03Z",
+          "updated_at": "2026-07-27T17:35:42Z",
+          "merged_at": null,
+          "url": "https://github.com/napplet/naps/pull/88"
+        },
+        {
+          "number": 90,
+          "title": "docs: Define convention URI transposition",
+          "state": "merged",
+          "created_at": "2026-07-23T14:45:17Z",
+          "updated_at": "2026-07-24T10:01:22Z",
+          "merged_at": "2026-07-24T10:01:21Z",
+          "url": "https://github.com/napplet/naps/pull/90"
+        },
+        {
+          "number": 89,
+          "title": "NAP-INC: Separate topic identity from message data",
+          "state": "merged",
+          "created_at": "2026-07-23T12:51:36Z",
+          "updated_at": "2026-07-24T10:00:07Z",
+          "merged_at": "2026-07-24T10:00:07Z",
+          "url": "https://github.com/napplet/naps/pull/89"
+        },
+        {
+          "number": 92,
+          "title": "NAP-INC: Define symmetric channel handles",
+          "state": "merged",
+          "created_at": "2026-07-23T16:06:34Z",
+          "updated_at": "2026-07-24T09:59:52Z",
+          "merged_at": "2026-07-24T09:59:52Z",
+          "url": "https://github.com/napplet/naps/pull/92"
+        },
+        {
+          "number": 80,
+          "title": "NAP-RESOURCE: Sandboxed resource fetching (https / blossom / htree / nostr / data)",
+          "state": "open",
+          "created_at": "2026-07-03T10:58:35Z",
+          "updated_at": "2026-07-24T08:33:08Z",
+          "merged_at": null,
+          "url": "https://github.com/napplet/naps/pull/80"
+        },
+        {
+          "number": 55,
+          "title": "NAP-INTENT: Define archetype contract discovery",
+          "state": "closed",
+          "created_at": "2026-06-21T01:12:39Z",
+          "updated_at": "2026-07-23T14:54:32Z",
+          "merged_at": null,
+          "url": "https://github.com/napplet/naps/pull/55"
+        },
+        {
+          "number": 91,
+          "title": "NAP-INTENT: Accept lifecycle-independent convention delivery",
+          "state": "open",
+          "created_at": "2026-07-23T14:54:02Z",
+          "updated_at": "2026-07-23T14:54:02Z",
+          "merged_at": null,
+          "url": "https://github.com/napplet/naps/pull/91"
+        },
+        {
+          "number": 87,
+          "title": "NAP: Remove numbered protocol track",
+          "state": "merged",
+          "created_at": "2026-07-21T15:34:41Z",
+          "updated_at": "2026-07-22T22:58:58Z",
+          "merged_at": "2026-07-22T22:58:58Z",
+          "url": "https://github.com/napplet/naps/pull/87"
+        }
+      ]
+    },
+    {
+      "id": "marmot",
+      "name": "Marmot Improvement Proposals (MIPs)",
+      "repo": "marmot-protocol/marmot",
+      "status": "active",
+      "window": {
+        "since": "2026-07-22T00:00:00Z",
+        "until": "2026-07-30T00:00:00Z"
+      },
+      "commits": [
+        {
+          "sha": "4fc48c0f9a15bee13c30c161b89deedc24cb65a2",
+          "date": "2026-07-28T11:24:21Z",
+          "title": "Specify terminal MLS group disbanding (#409)",
+          "url": "https://github.com/marmot-protocol/marmot/commit/4fc48c0f9a15bee13c30c161b89deedc24cb65a2"
+        },
+        {
+          "sha": "dedeaf429a6f52a4f1c62f3e992be012dab61b7b",
+          "date": "2026-07-23T12:31:06Z",
+          "title": "Specify push owner proof signing",
+          "url": "https://github.com/marmot-protocol/marmot/commit/dedeaf429a6f52a4f1c62f3e992be012dab61b7b"
+        },
+        {
+          "sha": "625f8aae8096a17c6b11fde08ec8c2d582568619",
+          "date": "2026-07-23T11:23:49Z",
+          "title": "Resolve the Marmot spec issue sweep (#408)",
+          "url": "https://github.com/marmot-protocol/marmot/commit/625f8aae8096a17c6b11fde08ec8c2d582568619"
+        }
+      ],
+      "pull_requests": [
+        {
+          "number": 409,
+          "title": "Specify terminal MLS group disbanding",
+          "state": "merged",
+          "created_at": "2026-07-28T09:08:14Z",
+          "updated_at": "2026-07-28T11:24:23Z",
+          "merged_at": "2026-07-28T11:24:21Z",
+          "url": "https://github.com/marmot-protocol/marmot/pull/409"
+        },
+        {
+          "number": 408,
+          "title": "Resolve the Marmot spec issue sweep",
+          "state": "merged",
+          "created_at": "2026-07-22T19:52:36Z",
+          "updated_at": "2026-07-23T11:23:52Z",
+          "merged_at": "2026-07-23T11:23:50Z",
+          "url": "https://github.com/marmot-protocol/marmot/pull/408"
+        }
+      ]
+    },
+    {
+      "id": "gamma",
+      "name": "Gamma Markets",
+      "repo": "GammaMarkets/market-spec",
+      "status": "quiet",
+      "window": {
+        "since": "2026-07-22T00:00:00Z",
+        "until": "2026-07-30T00:00:00Z"
+      },
+      "commits": [],
+      "pull_requests": []
+    },
+    {
+      "id": "concord",
+      "name": "Concord (CORD specs)",
+      "repo": "concord-protocol/concord",
+      "status": "active",
+      "window": {
+        "since": "2026-07-22T00:00:00Z",
+        "until": "2026-07-30T00:00:00Z"
+      },
+      "commits": [],
+      "pull_requests": [
+        {
+          "number": 12,
+          "title": "Draft split read/write planes",
+          "state": "open",
+          "created_at": "2026-07-10T16:07:45Z",
+          "updated_at": "2026-07-25T21:44:40Z",
+          "merged_at": null,
+          "url": "https://github.com/concord-protocol/concord/pull/12"
+        }
+      ]
+    },
+    {
+      "id": "nwc",
+      "name": "Nostr Wallet Connect",
+      "repo": "nostr-wallet-connect/nwc",
+      "status": "active",
+      "window": {
+        "since": "2026-07-22T00:00:00Z",
+        "until": "2026-07-30T00:00:00Z"
+      },
+      "commits": [],
+      "pull_requests": [
+        {
+          "number": 2,
+          "title": "Add BIP-321 payment methods",
+          "state": "open",
+          "created_at": "2026-07-23T22:05:56Z",
+          "updated_at": "2026-07-25T03:27:00Z",
+          "merged_at": null,
+          "url": "https://github.com/nostr-wallet-connect/nwc/pull/2"
+        }
+      ]
+    }
+  ]
+}

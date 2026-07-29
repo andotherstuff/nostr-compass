@@ -56,3 +56,12 @@ User request: Research `https://dev.nostrolo.gy/relays` and add it to the curren
 - Both `https://dev.nostrolo.gy/relays` and the NIP-65 specification returned HTTP 200 during verification.
 - Resolve both new-project and maintainer identities before pre-publication outreach. For Nostrology, the project source attribution, Sovereign Engineering interview, relay-backed kind `0` profile, and `_@whisperhash.com` NIP-05 all resolve to WhisperHash's `npub1t6m495kynns7xjmgz8yt6krrw4r8tac0mvr3f25f9r35ke72ap3su4qycp`; no distinct project npub was found, so the shared pubkey must receive one deduplicated DM.
 - Whenever a genuinely new project enters an unpublished draft, update the review PR and send the standard review/podcast DM to the verified project and maintainer identities after a targeted dry run. Honor `no_dm`, never guess an identity, and verify event IDs plus relay acceptances.
+
+## Mandatory publication-day refresh additions
+
+Primary-source verification after the first refresh pass found two in-window releases that must survive any resumed Stage 5 or Stage 6 run:
+
+- [Bray 2.3.0](https://github.com/forgesworn/bray/releases/tag/v2.3.0), with merged [PR #75](https://github.com/forgesworn/bray/pull/75), [PR #76](https://github.com/forgesworn/bray/pull/76), and [PR #77](https://github.com/forgesworn/bray/pull/77). The bounded story is arbitrary-event NIP-59 wrapping through NIP-46, NIP-42 test-relay authentication, NIP-77 request ergonomics, and an authorized in-memory Blossom test endpoint. The release is distinct from Newsletter #31's Bray 1.34.0 coverage. Bray's repository links `forgesworn.dev`; its primary NIP-05 document maps `_` and `darren` to the same verified key, so the project and maintainer aliases share one de-duplicated outreach recipient.
+- [Buzz Desktop 0.5.0](https://github.com/block/buzz/releases/tag/v0.5.0), with use-limited invites, structured relay search filters, native join-policy retrieval, persona-rename identity republishing, and a NIP-44 security dependency update. Frame it as continuity from Newsletter #32's Armada/Buzz coverage. `Buzz` and `block` share the existing verified project key and must produce one de-duplicated targeted outreach recipient.
+
+Also preserve the source-attribution corrections from the publication-day audit: Amethyst 1.13.0 owns the broad app, browser, Git, payment, and identity feature set; Amethyst 1.13.1 owns only its July 29 follow-up changes. The intro remains a feature digest with no version, PR, event-kind, or incidental NIP numbers.

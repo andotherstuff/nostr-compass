@@ -1,14 +1,14 @@
 # Nostr Compass pre-publication refresh, 2026-07-29
 
 Start UTC: 2026-07-29T13:05:27Z
-End UTC: 2026-07-29T14:12:36Z
+End UTC: 2026-07-29T14:35:31Z
 Target: `content/en/newsletters/2026-07-29-newsletter.md`
 Mode: publication-day incident-recovery update
 
 ## Preconditions and incident state
 
 - Wednesday/date gate: PASS, target `2026-07-29`.
-- GitHub authentication, Hugo 0.123.7 extended, Bun 1.3.14, Bunx 1.3.14, and nak 0.18.7 passed preflight.
+- GitHub authentication, Hugo 0.123.7 extended, Bun 1.3.14, Bunx 1.3.14, and nak 0.18.3 passed preflight.
 - Git refs were fetched without resetting, cleaning, deleting, or rewriting worktree data.
 - Original PR [#117](https://github.com/andotherstuff/nostr-compass/pull/117) merged early at 2026-07-29T12:45:34Z as commit `4fd0ebedc662760c3d3d128f0315810b54d4dc6a`.
 - Recovery branch: `newsletter/2026-07-29-update`, created from `origin/main` without history rewriting or force-push.
@@ -71,9 +71,9 @@ Publication-day comparison used cutoff `2026-07-28T14:08:55.638055Z`, the prior 
 
 Included or updated after primary-source verification:
 
-- Amethyst 1.13.1 and merged PRs #3767, #3779, #3788, and #3789.
+- Amethyst 1.13.0 and 1.13.1, with the broad feature set attributed to 1.13.0 and only the July 29 follow-up attributed to 1.13.1.
 - GitWorkshop developer-signed 3.1.1 Android signer repair.
-- Kairos signed 0.1.0 launch and 0.1.1 reminders/local Astraea integration.
+- Kairos signed 0.1.0 launch and 0.1.1 reminders/local Astraea instruction.
 - Shosho 1.0.0 marketplace and live-streaming update.
 - NoorNote 1.3.1 with 1.3.0 claims separated by release.
 - MDK 0.9.10 and merged PRs #1157, #1159, and #1167.
@@ -81,8 +81,10 @@ Included or updated after primary-source verification:
 - Keep merged, untagged PRs #451 through #455.
 - Routstrd merged, untagged PR #56.
 - Mill's merged but unreleased cloud-account key-backup draft, explicitly labeled provisional.
+- Bray 2.3.0 and merged PRs #75-77, covering arbitrary-event gift wrapping through NIP-46, NIP-42 relay tests, NIP-77 request behavior, and an authorized Blossom test endpoint.
+- Buzz Desktop 0.5.0 and merged PRs #3141, #2871, #2862, and #2607, framed as a distinct follow-up to Newsletter #32's Armada/Buzz workspace coverage.
 
-No additional material item passed the late gate from Nostr Recap, Shakespeare, NIP-34, heartbeats, or the remaining specification and Zapstore candidates. The current issue already contained the week's material NIP, BUD, NAP, MIP, CORD, and NWC changes; Gamma had no public change.
+No further material item passed the late gate from Nostr Recap, Shakespeare, NIP-34, heartbeats, or the remaining specification and Zapstore candidates. The current issue already contained the week's material NIP, BUD, NAP, MIP, CORD, and NWC changes; Gamma had no public change.
 
 ## Files changed for the update PR
 
@@ -92,10 +94,17 @@ Editorial and evidence files:
 - `content/en/topics/nip-09.md`
 - `content/en/topics/nip-49.md`
 - `data/newsletter_workspace/review_log_2026-07-29.md`
+- `data/newsletter_workspace/review_{links,claims,prose,topics,continuity}_2026-07-29.md`
+- `data/newsletter_workspace/human_overrides_2026-07-29.md`
 - `data/newsletter_workspace/sections/{lead-stories,tagged-releases,unreleased-changes,protocol-work,nip-updates,history}.md`
 - `data/npubs.yml`
 - `data/newsletter_workspace/outreach_refresh_2026-07-29.md`
 - `data/newsletter_workspace/prepublish_refresh_2026-07-29.md`
+- `data/newsletter_workspace/incident_2026-07-29_early_merge.md`
+- `data/heartbeats/heartbeat_2026-07-21_2026-07-29.json`
+- `data/spec_updates/spec_updates_2026-07-30.json`
+
+Ignored runtime evidence is preserved under `logs/prepublish_refresh_2026-07-29/` and `publish/out/`; these paths are excluded from Git by repository policy.
 
 Outreach extraction fix and regression coverage:
 
@@ -110,11 +119,11 @@ Unrelated tracked/untracked files were preserved and not staged.
 
 ## Five review gates
 
-1. **Links and NIPs, PASS at 2026-07-29T13:51:36Z.** Content-bearing GETs returned 200 for 113/113 unique external URLs; 23/23 internal content paths, 44/44 PR URLs, 21/21 release URLs, 23/23 version-labelled URLs, and 35/35 distinct NIP identifiers passed.
-2. **Claims, PASS at 2026-07-29T13:58:06Z.** Live GitHub, GitLab, repository, signed Zapstore, and relay evidence verified every publication-day addition, including release/PR state and corrected Kairos, NoorNote, and Mill attribution.
-3. **Prose/style/history, PASS at 2026-07-29T13:55:40Z.** `check_newsletter_style.py`, `check_newsletter_paragraph_links.py`, and `check_month_end_history.py` passed; manual scan found zero em dashes, banned fillers, comparison flourishes, rhetorical questions, or passive-voice violations.
-4. **Rendered topics/backlinks, PASS at 2026-07-29T13:55:01Z.** `check_topic_backlinks.py` verified 23 topic pages with Primary sources blocks and 32 backlinks, including exact Kairos/NIP-09 and Mill/NIP-49 anchors.
-5. **Continuity, PASS at 2026-07-29T14:00:03Z.** `check_newsletter_continuity.py` passed across all 32 prior English issues; the three immediate predecessors were read in full and 16 repeated headers had distinct primary sources plus substantive impact.
+1. **Links, PASS at 2026-07-29T14:35:31Z.** Content-bearing checks passed for 124/124 unique external URLs; all 40 internal references covering 25 unique targets resolve.
+2. **Claims, PASS at 2026-07-29T14:35:31Z.** Live APIs verified 34/34 NIP files and 52/52 PR records, comprising 43 merged and 9 open PRs. Amethyst, Kairos, Bray, Buzz, NoorNote, and Mill attribution was checked against primary release, repository, signed Zapstore, and relay evidence.
+3. **Prose/style/history, PASS at 2026-07-29T14:35:31Z.** Shaka scored 100/100 on 4,675 words; `check_newsletter_style.py`, `check_newsletter_paragraph_links.py`, and `check_month_end_history.py` passed; the opening digest has no visible version, PR, event-kind, or incidental NIP identifiers.
+4. **Rendered topics/backlinks, PASS at 2026-07-29T14:35:31Z.** `check_topic_backlinks.py` verified 25 topic pages with Primary sources blocks and 34 rendered backlinks after repairing the Kairos/NIP-09 heading anchor.
+5. **Continuity, PASS at 2026-07-29T14:35:31Z.** `check_newsletter_continuity.py` passed across all prior English issues; the three immediate predecessors were read in full, and Bray/Buzz use distinct release/PR sources with substantive new impact.
 
 Final mechanical commands:
 
@@ -132,10 +141,10 @@ python3 scripts/check_newsletter_continuity.py content/en/newsletters/2026-07-29
 PASS: repeated projects each cite a distinct primary source
 
 python3 scripts/check_topic_backlinks.py content/en/newsletters/2026-07-29-newsletter.md --rendered-html /tmp/compass-review-public/en/newsletters/2026-07-29-newsletter/index.html
-PASS: 23 topic pages have Primary sources blocks and 32 rendered newsletter backlinks
+PASS: 25 topic pages have Primary sources blocks and 34 rendered newsletter backlinks
 
-bun test tests/publish_mentions.test.ts publish/outreach-scope.test.ts
-7 pass, 0 fail
+bun test tests/publish_mentions.test.ts
+4 pass, 0 fail
 
 git diff --check
 PASS
@@ -143,8 +152,8 @@ PASS
 
 ## Build and outreach
 
-- `npm run build`: PASS at 2026-07-29T14:01Z. Hugo built all ten languages; Pagefind indexed 2,170 pages and 166,745 words.
-- Targeted outreach dry run: PASS. Five de-duplicated NIP-17 recipients were planned for Kairos/LWB, Mill/0ceanSlim, Routstrd, Shosho, and Keep/wksantiago. Receipt: `data/newsletter_workspace/outreach_refresh_2026-07-29.md` and ignored plan JSON under `publish/out/`.
+- `npm run build`: PASS at 2026-07-29T14:35Z. Hugo built all ten languages; Pagefind indexed 2,170 pages and 166,752 words.
+- Targeted outreach dry runs: PASS. Seven unique NIP-17 recipients were planned: the original Kairos/LWB, Mill/0ceanSlim, Routstrd, Shosho, and Keep/wksantiago group, plus de-duplicated Bray/Darren and Buzz Desktop/Block recipients. Receipt: `data/newsletter_workspace/outreach_refresh_2026-07-29.md` and ignored plan JSON files under `publish/out/`.
 - No real outreach DM was signed or sent because this refresh job may not invoke Amber. The 16:00 publication worker must review the targeted plan, avoid resending the full issue campaign, and perform any approved targeted send before publication.
 
 ## Git and publication gate
@@ -155,4 +164,4 @@ PASS
 - Translation task `t_d6185011` and podcast task `t_dec07541` remain `todo`.
 - No publication action occurred. The recovery PR remains parked for the 16:00 UTC publication gate.
 
-GATE: PASS (all eight source families refreshed with successful retries; material late changes primary-source verified; five review gates and production build passed; draft PR #118 remains parked; ended 2026-07-29T14:12:36Z)
+GATE: PASS (all eight source families refreshed with successful retries; material late changes primary-source verified; five review gates and production build passed; draft PR #118 remains parked; ended 2026-07-29T14:35:31Z)

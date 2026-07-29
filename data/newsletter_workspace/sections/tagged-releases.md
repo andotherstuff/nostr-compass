@@ -1,8 +1,16 @@
 ## Tagged Releases
 
-### Kairos 0.1.1 adds reminders and a local Astraea handoff
+### Kairos 0.1.1 adds reminders and a local Astraea instruction
 
-[Kairos 0.1.1](https://primal.net/e/ffb054280008dc3ba488d5d3a2cbfec6c4123489a874683545a29a466682fd90) adds due-date reminders, a versioned local handoff to Astraea, and stricter relay and URL handling. The [0.1.0 signed release](https://primal.net/e/6e02430844abdabf5421bbf5745a09ef2870e4ade93f56627ee14ba8db58a00a) introduced the [offline-first task manager](https://github.com/Lwb89dev/kairos), whose optional sync layer writes [NIP-44 (Encrypted Payloads)](/en/topics/nip-44/)-encrypted records to user-selected relays. Kairos uses deterministic task coordinates and encrypted tombstones with [NIP-09 (Event Deletion Request)](/en/topics/nip-09/) deletion requests, while local-only tasks never leave the device.
+[Kairos 0.1.1](https://primal.net/e/ffb054280008dc3ba488d5d3a2cbfec6c4123489a874683545a29a466682fd90) adds due-date reminders, an explicit local instruction to Astraea, and stricter relay and URL handling. The [0.1.0 signed release](https://primal.net/e/6e02430844abdabf5421bbf5745a09ef2870e4ade93f56627ee14ba8db58a00a) introduced the [offline-first task manager](https://github.com/Lwb89dev/kairos), whose optional sync layer writes [NIP-44 (Encrypted Payloads)](/en/topics/nip-44/)-encrypted records to user-selected relays. Kairos uses deterministic task coordinates and encrypted tombstones with [NIP-09 (Event Deletion Request)](/en/topics/nip-09/) deletion requests, while local-only tasks never leave the device.
+
+### Bray 2.3.0 gives its CLI general gift wrapping and a local Blossom test surface
+
+[Bray 2.3.0](https://github.com/forgesworn/bray/releases/tag/v2.3.0), a Nostr SDK and command-line toolkit, can gift-wrap and unwrap arbitrary events through [NIP-59 (Gift Wrap)](/en/topics/nip-59/), with signing routed through [NIP-46 (Nostr Connect)](/en/topics/nip-46/) when a bunker holds the key. [PR #75](https://github.com/forgesworn/bray/pull/75) also gives the bundled test relay [NIP-42 (Authentication of clients to relays)](/en/topics/nip-42/) challenges and exposes the remaining Blossom client commands. [PR #77](https://github.com/forgesworn/bray/pull/77) adds an in-memory BUD-01/02 server whose signed authorization binds each upload or deletion to one blob, while [PR #76](https://github.com/forgesworn/bray/pull/76) adds named event kinds, shorthand tags, and [NIP-77](/en/topics/nip-77/) ID-reconciliation flags that avoid downloading events a caller already holds.
+
+### Buzz Desktop 0.5.0 tightens invitations, search, and relay identity updates
+
+After last week's Armada and Buzz workspace coverage, [Buzz Desktop 0.5.0](https://github.com/block/buzz/releases/tag/v0.5.0) adds use-limited invite links ([PR #3141](https://github.com/block/buzz/pull/3141)) and search filters for author, channel, and time bounds ([PR #2871](https://github.com/block/buzz/pull/2871)). [PR #2862](https://github.com/block/buzz/pull/2862) retrieves join policies through the desktop app's native network layer, and [PR #2607](https://github.com/block/buzz/pull/2607) republishes an agent's identity record after a persona rename reaches the relay. The release also updates its Nostr dependency for a [NIP-44 remote-denial-of-service advisory](https://github.com/block/buzz/pull/3135) and repairs local-storage recovery, thread positioning, relay reconnection, and Linux and Windows runtime paths.
 
 ### Shosho 1.0.0 expands its live-streaming marketplace
 
@@ -60,4 +68,4 @@ For Swift applications, [swift-nostr 0.7.0](https://github.com/yysskk/swift-nost
 
 [Earthly 0.0.9](https://github.com/zeSchlausKwab/earthly/releases/tag/v0.0.9), a collaborative map editor built on Nostr, now keeps likes visible when a map entity drawer closes, reopens, or refreshes. Its [NIP-57 (Lightning zaps)](/en/topics/nip-57/) flow sends valid zap-request JSON so Lightning providers can publish verified receipts to publicly reachable relays, including during local development. Generated invoices remain visible across entity-surface changes, and the app shows confirmation after a verified receipt arrives.
 
-GATE: PASS (prepublish refresh: five review gates PASS at 2026-07-29T14:00:03Z; 113/113 external URLs 200, claims/style/topics/continuity verified)
+GATE: PENDING REVIEW

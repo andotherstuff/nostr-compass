@@ -787,7 +787,7 @@ Form*:
 # n_cord: no verified npub found
 # Nostr WoT: no verified npub found
 # Kehto: no verified npub found
-# Bray: no verified npub found
+
 # Cambium: no verified npub found
 # Earthly: no verified npub found
 # lnbits: no verified npub found
@@ -898,6 +898,20 @@ Routstrd project account:
 Mill: npub1zmc6qyqdfnllhnzzxr5wpepfpnzcf8q6m3jdveflmgruqvd3qa9sjv7f60
 0ceanSlim maintainer:
   npub: npub1zmc6qyqdfnllhnzzxr5wpepfpnzcf8q6m3jdveflmgruqvd3qa9sjv7f60
+  mention_only: true
+
+# Bray's repository links forgesworn.dev as its project site. The site's
+# NIP-05 document maps both `_` and `darren` to this key, so project and
+# maintainer aliases share one de-duplicated recipient.
+Bray: npub1mgvlrnf5hm9yf0n5mf9nqmvarhvxkc6remu5ec3vf8r0txqkuk7su0e7q2
+Darren maintainer:
+  npub: npub1mgvlrnf5hm9yf0n5mf9nqmvarhvxkc6remu5ec3vf8r0txqkuk7su0e7q2
+  mention_only: true
+
+# Buzz Desktop and its block maintainer share the already-verified project key.
+Buzz Desktop: npub16l0ck0s5zened29dsaqtqm6z0t4fmk2mwtszw64fz7fppcnls8mss3yj9s
+block maintainer:
+  npub: npub16l0ck0s5zened29dsaqtqm6z0t4fmk2mwtszw64fz7fppcnls8mss3yj9s
   mention_only: true
 
 # Heading alias needed by automated H3 mention extraction.

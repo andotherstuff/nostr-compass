@@ -1,12 +1,15 @@
-# TopicCoverage Review: Newsletter 2026-07-29
+# Newsletter #33 topic and rendered-backlink review
 
-Run: 2026-07-29T05:28:27Z
+Generated: 2026-07-29T14:35:31Z
+Target: `content/en/newsletters/2026-07-29-newsletter.md`
 
-- Linked Nostrology's first NIP-65 mention to `content/en/topics/nip-65.md`.
-- Added an Observed Adoption section to the NIP-65 topic page, with the live Nostrology observatory as a primary source and an explicit metadata-versus-liveness boundary.
-- Added the Newsletter #33 Nostrology backlink to the NIP-65 topic page.
-- Rendered the unpublished newsletter with Hugo and ran `scripts/check_topic_backlinks.py` against the generated HTML.
-- Result: 21 referenced topic pages contain Primary sources blocks and all 30 rendered newsletter backlinks resolve.
-- No new topic page is required.
+## Execution
 
-GATE: PASS (NIP-65 topic updated; 21/21 topic pages have Primary sources and 30/30 rendered backlinks resolve; ran 2026-07-29T05:28:27Z)
+1. Removed `/tmp/compass-review-public`.
+2. Ran `hugo --buildDrafts --buildFuture --destination /tmp/compass-review-public`.
+3. Confirmed the rendered issue exists at `/tmp/compass-review-public/en/newsletters/2026-07-29-newsletter/index.html`.
+4. Ran `python3 scripts/check_topic_backlinks.py <newsletter> --rendered-html <rendered issue>`.
+
+The audit initially detected the Kairos heading change as a stale NIP-09 backlink. `content/en/topics/nip-09.md` now uses the rendered `local-astraea-instruction` anchor, and the complete rerun passed.
+
+GATE: PASS (25 referenced topic pages contain Primary sources blocks and 34 rendered Newsletter #33 backlinks resolve, ran 2026-07-29T14:35Z)

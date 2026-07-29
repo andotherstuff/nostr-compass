@@ -6,7 +6,7 @@ Keep merged five Android signer changes that carry [NIP-44 (Encrypted Payloads)]
 
 ### Routstrd changes its default network bind after an unauthenticated exposure
 
-Routstrd [PR #56](https://github.com/Routstr/routstrd/pull/56) changes the local Nostr inference router's default bind address from all network interfaces to `127.0.0.1`. The former default exposed unauthenticated wallet balance, history, unlock, send, refund, API-key, provider, client, usage, and daemon-stop endpoints to any host that could reach the port. Operators can still configure a non-local bind explicitly, but the merged change makes a fresh deployment local-only by default and has not yet appeared in a tagged release.
+Routstrd [PR #56](https://github.com/Routstr/routstrd/pull/56) changes the local Nostr inference router's default bind address from all network interfaces to `127.0.0.1`. The former default exposed unauthenticated wallet balance, history, access, send, refund, API-key, provider, client, usage, and daemon-stop endpoints to any host that could reach the port. Operators can still configure a non-local bind explicitly, but the merged change makes a fresh deployment local-only by default and has not yet appeared in a tagged release.
 
 ### Imwald Android clarifies offline publishing status
 
@@ -36,4 +36,4 @@ Wired, a browser-based Nostr client, now follows feed roots, replies, and refere
 
 The browser also preserves relay hints on referenced events and uses them only for still-missing context, restoring conversations that configured relays do not carry ([PR #145](https://github.com/smolgrrr/Wired/pull/145), [PR #144](https://github.com/smolgrrr/Wired/pull/144)). Incomplete retrieval is kept distinct from a completed snapshot, so a partial response does not overwrite the prior cached view.
 
-GATE: PASS (prepublish refresh: five review gates PASS at 2026-07-29T14:00:03Z; 113/113 external URLs 200, claims/style/topics/continuity verified)
+GATE: PENDING REVIEW

@@ -1,12 +1,18 @@
-# ProseStyle Review: Newsletter 2026-07-29
+# Newsletter #33 prose and style review
 
-Run: 2026-07-29T05:28:27Z
+Generated: 2026-07-29T14:35:31Z
+Target: `content/en/newsletters/2026-07-29-newsletter.md`
 
-- Ran `/home/vibe/.bun/bin/bun run /home/vibe/shaka/src/index.ts scan content/en/newsletters/2026-07-29-newsletter.md`.
-- Result: 100/100 PASS, 4,017 words, 0 cardinal sins, 0 banned words, 0 banned constructions, 0 AI tells, 0 dash violations, 0 rhythm issues, and 0 hedging violations.
-- Ran `scripts/check_newsletter_style.py`: no banned Compass filler phrases.
-- Ran `scripts/check_newsletter_paragraph_links.py`: every prose paragraph links to a repository or primary source.
-- Ran `scripts/check_month_end_history.py`: title, year coverage, depth, and source-link requirements pass.
-- Manually confirmed the Nostrology item uses flowing prose, explains that the relay counts overlap, and does not present NIP-65 metadata as relay-health testing.
+## Mechanical execution
 
-GATE: PASS (Shaka 100/100 with 0 violations; Compass style, paragraph-source, and month-end checks pass; ran 2026-07-29T05:28:27Z)
+- `/opt/data/.bun/bin/bun run /opt/data/vibe-home/shaka/src/index.ts scan <newsletter>`: 100/100, 4,675 words, 0 slop violations, 0 banned words, 0 dash violations, 0 rhythm issues, 0 hedging hits.
+- `python3 scripts/check_newsletter_style.py <newsletter>`: PASS, no banned Compass filler phrases.
+- `python3 scripts/check_newsletter_paragraph_links.py <newsletter>`: PASS, every prose paragraph links to a repository or primary source.
+- `python3 scripts/check_month_end_history.py <newsletter>`: PASS, title, all six years, depth, and source links valid.
+- Intro-only visible-text scan: 0 version, PR, event-kind, or incidental NIP identifiers.
+
+## Editorial review
+
+The Amethyst lead separates the July 28 and July 29 release attribution. Bray and Buzz use bounded three-sentence release summaries. The Buzz paragraph explicitly frames its distinct update after Newsletter #32, while Bray cites a new release after Newsletter #31. No em dashes, hype, rhetorical questions, comparison flourishes, or unlinked prose claims remain.
+
+GATE: PASS (Shaka 100/100; style, paragraph-link, month-end, and intro scans all PASS at 2026-07-29T14:35Z)

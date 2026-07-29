@@ -1,11 +1,17 @@
-# LinkCheck Review: Newsletter 2026-07-29
+# Newsletter #33 link review
 
-Run: 2026-07-29T05:28:27Z
+Generated: 2026-07-29T14:35:31Z
+Target: `content/en/newsletters/2026-07-29-newsletter.md`
 
-- Checked all 90 distinct external URLs from the revised assembled newsletter with bounded concurrent GET requests and up to three attempts: 90 resolved, 0 failed, 0 soft 403/429 results.
-- Confirmed the new Nostrology relay page and the NIP-65 specification both return HTTP 200.
-- Rendered the draft with Hugo and ran `scripts/check_topic_backlinks.py` against the generated Newsletter #33 HTML.
-- Confirmed 21 referenced topic pages contain Primary sources blocks and 30 rendered newsletter backlinks resolve.
-- Confirmed the canonical five H2 sections remain in order and no `GATE:` or serialized line-number artifacts entered the newsletter.
+## Execution
 
-GATE: PASS (90/90 external URLs resolved; 21/21 topic pages have Primary sources and 30/30 rendered backlinks resolve; ran 2026-07-29T05:28:27Z)
+- Parsed 182 Markdown links: 124 unique external URLs and 40 internal references covering 25 unique internal targets.
+- Probed every external URL with `curl -L --max-time 30 --connect-timeout 8 --retry 2`; accepted 2xx/3xx plus expected 401/403/405/429 responses.
+- Verified every `/en/...` content target exists on disk: 0 missing.
+- Ran `git diff --check`: PASS.
+
+## Result
+
+External failures: 0/124. Internal missing targets: 0/40. Every PR, release, commit, Nostr event, and specification mention in the edited prose remains directly linked.
+
+GATE: PASS (124/124 external URLs reachable, 40/40 internal references resolve, ran 2026-07-29T14:35Z)
