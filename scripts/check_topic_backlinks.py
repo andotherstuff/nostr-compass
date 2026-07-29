@@ -8,7 +8,7 @@ import re
 from pathlib import Path
 
 TOPIC_RE = re.compile(r"\]\(/en/topics/([^/)]+)/?\)")
-ID_RE = re.compile(r"\bid=[\"']([^\"']+)[\"']")
+ID_RE = re.compile(r"\bid=(?:[\"']([^\"']+)[\"']|([^\s>]+))")
 PRIMARY_RE = re.compile(r"(?mi)^(?:##\s+Primary sources\s*$|\*\*Primary sources:\*\*\s*$)")
 
 
@@ -16,7 +16,7 @@ def review(newsletter: Path, topic_dir: Path, rendered_html: Path) -> tuple[list
     text = newsletter.read_text()
     slugs = sorted(set(TOPIC_RE.findall(text)))
     issue_slug = newsletter.stem
-    ids = set(ID_RE.findall(rendered_html.read_text()))
+    ids = {quoted or unquoted for quoted, unquoted in ID_RE.findall(rendered_html.read_text())}
     findings: list[str] = []
     backlink_count = 0
 

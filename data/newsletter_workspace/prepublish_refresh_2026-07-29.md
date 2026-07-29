@@ -1,7 +1,7 @@
 # Nostr Compass pre-publication refresh, 2026-07-29
 
 Start UTC: 2026-07-29T13:05:27Z
-End UTC: 2026-07-29T14:35:31Z
+End UTC: 2026-07-29T14:51:18Z
 Target: `content/en/newsletters/2026-07-29-newsletter.md`
 Mode: publication-day incident-recovery update
 
@@ -158,10 +158,20 @@ PASS
 
 ## Git and publication gate
 
+Final parent verification against the minified production build found that `check_topic_backlinks.py` accepted only quoted HTML `id` attributes, while Hugo emits unquoted IDs under minification. A regression test reproduced the false stale-fragment failures before the implementation changed. The checker now accepts quoted and unquoted IDs; all three unit tests pass, and the checker validates 25 topic pages with 34 backlinks directly against `public/en/newsletters/2026-07-29-newsletter/index.html`. The second GitHub refresh contained zero project releases, merged PRs, or commits after the original refresh cutoff once timestamps were normalized to UTC.
+
+```text
+python3 -m unittest tests.test_check_topic_backlinks -v
+3 tests, PASS
+
+python3 scripts/check_topic_backlinks.py content/en/newsletters/2026-07-29-newsletter.md --rendered-html public/en/newsletters/2026-07-29-newsletter/index.html
+PASS: 25 topic pages have Primary sources blocks and 34 rendered newsletter backlinks
+```
+
 - First update commit: `9d3d365` (`Refresh Newsletter #33 for publication day`), pushed without force to `origin/newsletter/2026-07-29-update`.
 - Draft update PR: https://github.com/andotherstuff/nostr-compass/pull/118, OPEN/DRAFT/CLEAN.
 - Parent Kanban task: `t_ed0f1dbf`, remains `blocked`.
 - Translation task `t_d6185011` and podcast task `t_dec07541` remain `todo`.
 - No publication action occurred. The recovery PR remains parked for the 16:00 UTC publication gate.
 
-GATE: PASS (all eight source families refreshed with successful retries; material late changes primary-source verified; five review gates and production build passed; draft PR #118 remains parked; ended 2026-07-29T14:35:31Z)
+GATE: PASS (all eight source families refreshed with successful retries; material late changes primary-source verified; five review gates, production-minified backlink validation, and production build passed; draft PR #118 remains parked; ended 2026-07-29T14:51:18Z)
