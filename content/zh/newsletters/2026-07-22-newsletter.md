@@ -5,16 +5,16 @@ translationOf: /en/newsletters/2026-07-22-newsletter.md
 translationDate: 2026-07-22
 draft: false
 type: newsletters
-description: "IndieSats 放弃发布者角色，转型为开放的 Nostr 音乐基础设施重新上线；Nostrord v2.3.0 在一周内五个 NIP-29 规范 PR 合并之际推出客户端侧实现；Zapstore 1.1.0 让设备密钥可移植并带来后台自动更新；收藏关注集 list kind 合并后立即重新编号；Iris 生态一周内推出 pubsub 库、浏览器 FIPS 运行时和 nostr-social-graph 2.0。"
+description: "IndieSats 放弃发布者角色，转型为开放的 Nostr 音乐基础设施重新上线；Nostrord v2.3.0 在一周内五个 NIP-29 规范 PR 合并之际推出客户端侧实现；Zapstore 1.1.0 让设备密钥可移植并带来后台自动更新；收藏关注集 list kind 合并后立即重新编号；Iris 项目一周内推出 pubsub 库、浏览器 FIPS 运行时和 nostr-social-graph 2.0。"
 ---
 
 欢迎回到 Nostr Compass，您的每周 Nostr 指南。
 
-**本周：**[IndieSats](#indiesats-drops-its-publisher-role-and-relaunches-as-open-nostr-music-infrastructure) 卸下密钥托管、白名单和强制收入抽成三重角色，以开放 relay、播放器和发现层的形态重新上线，艺术家从此用自己的密钥发布作品。[Nostrord v2.3.0](#nostrord-v230-ships-group-moderation-mute-lists-and-onion-relays) 在五个 [NIP-29 规范 PR 合并](#protocol-work-and-nip-updates)的同一周落地群组管理、静音列表和 onion relay。[Zapstore 1.1.0](#zapstore-110-makes-the-device-key-portable-and-adds-background-auto-updates) 引入可通过 Amber 备份的可移植加密设备密钥，以及可选开启的后台自动更新。[收藏关注集 list kind](#the-favorite-follow-sets-list-kind-merges-and-immediately-moves-house) 合并后数天内又开启了重新编号的 PR。而 [Iris 生态](#the-iris-ecosystem-ships-a-pubsub-library-a-browser-fips-runtime-and-a-social-graph-20-in-one-week) 在一周内同时推出 nostr-pubsub、fips-ts 浏览器运行时和 nostr-social-graph 2.0.0。
+**本周：**[IndieSats](#indiesats-drops-its-publisher-role-and-relaunches-as-open-nostr-music-infrastructure) 终止密钥托管、白名单和强制收入抽成，以开放 relay、播放器和发现层的形态重新上线，艺术家改用自己的密钥发布作品。[Nostrord v2.3.0](#nostrord-v230-ships-group-moderation-mute-lists-and-onion-relays) 在五个 [NIP-29 规范 PR 合并](#protocol-work-and-nip-updates)的同一周落地群组管理、静音列表和 onion relay。[Zapstore 1.1.0](#zapstore-110-makes-the-device-key-portable-and-adds-background-auto-updates) 引入可通过 Amber 备份的可移植加密设备密钥，以及可选开启的后台自动更新。[收藏关注集 list kind](#the-favorite-follow-sets-list-kind-merges-and-immediately-moves-house) 合并后数天内便开启重新编号 PR。[Iris 项目](#the-iris-projects-ship-a-pubsub-library-a-browser-fips-runtime-and-a-social-graph-20-in-one-week) 则在一周内同时推出 nostr-pubsub、fips-ts 浏览器运行时和 nostr-social-graph 2.0.0。
 
-打标签的发布带来：[Amber v6.3.0](#amber-v630-groups-bunker-signing-approvals-and-adds-expert-list-support) 将 bunker 签名审批分组处理，[Wisp v1.2.0](#wisp-v120-adds-a-multi-account-switcher-and-collapsible-reply-threads) 加入多账户切换器，[Sonar v0.1-alpha.11](#sonar-v01-alpha11-continues-the-alpha-line) 延续 alpha 线，以及新项目 [ClipRelay v0.1.2](#cliprelay-v012-new-project-syncs-clipboards-across-devices-over-nostr-relays) 通过 Nostr relay 跨设备同步剪贴板。
+打标签的发布带来：[Amber v6.3.0](#amber-v630-groups-bunker-signing-approvals-and-adds-expert-list-support) 将 bunker 签名审批分组处理，[Armada v0.37.0](#armada-v0370-opens-buzz-workspaces-from-a-second-client) 为 Buzz 工作区带来第二个客户端，[Divine Mobile 1.0.17](#divine-mobile-1017-hardens-relay-security-and-dm-delivery) 加入持久可靠的 NIP-17 投递并严格验证 TLS，以及 [nak v0.20.2](#nak-v0202-adds-nip-34-pull-request-workflows) 加入 NIP-34 pull request 命令。
 
-在未发布的一侧，[nostream](#nostream-merges-seven-prs-without-cutting-a-release) 合并了本期 Deep Dive 所讲解的访问控制栈，[Amethyst](#amethyst-lands-v1130-pre-release-qa-on-napplet-isolation-and-concord-authority) 在 81 个合并的 PR 中完成了 v1.13.0 预发布 QA。
+在未发布的一侧，[Snort](#snort-rewrites-query-synchronization-around-eose-proven-coverage) 记录经 EOSE 证实的缓存覆盖范围，[Shopstr](#shopstr-binds-payment-validation-to-signed-receipts-and-server-side-prices) 修补两处支付完整性缺口，[Mostr](#mostr-bridges-activitypub-private-chats-and-nostr-dms) 在 ActivityPub 私聊与 Nostr DM 之间架起桥梁，[nostream](#nostream-merges-eight-prs-without-cutting-a-release) 合并了本期 Deep Dive 所讲解的访问控制栈，而 [Amethyst](#amethyst-lands-v1130-pre-release-qa-on-napplet-isolation-and-concord-authority) 本周合并 88 个 PR，并在 Desktop 上完整实现 NIP-88 投票。
 
 NIPs 仓库本周合并了五个 PR，包括 [NIP-29 集群](#protocol-work-and-nip-updates)和 [kind:10011 收藏关注集](#the-favorite-follow-sets-list-kind-merges-and-immediately-moves-house)，并就 [NIP-47 精简](#protocol-work-and-nip-updates)和[可信 relay 断言](#protocol-work-and-nip-updates)开启讨论。本期 Deep Dive 讲解 [NIP-42 与 NIP-43，这一对 relay 访问控制规范](#nip-deep-dive-nip-42-and-nip-43)。
 
@@ -24,7 +24,7 @@ NIPs 仓库本周合并了五个 PR，包括 [NIP-29 集群](#protocol-work-and-
 
 ### IndieSats 放弃发布者角色，转型为开放的 Nostr 音乐基础设施重新上线
 
-[IndieSats](https://zapstore.dev) 是一个基于 Nostr 的音乐平台，直到本周一直扮演着发布者的角色：它为艺术家托管密钥、运营白名单，并强制抽取 2% 的收入分成。在 [7 月 20 日发布的转型公告](https://njump.me/nevent1qqsr4awwnfndnnz77zanjxarw6nd0uld0ckayxp2navz0u9tzzwfweqpzamhxue69uhhyetvv9ujuurjd9kkzmpwdejhgtczyquwq70hxz22lzytw65rnnjewg0lj8a74khxa8h9j47q38pdnqy3kqcyqqqqqqgz8083u)中，该项目一次性卸下了全部三重角色。重新上线的平台改为三件开放基础设施：一个开放 relay、一个播放器和一个发现层，艺术家用自己的 Nostr 身份发布音乐，而不再使用平台托管的身份。收入分成变为可选开启，不再强制；平台现在还会响应 [NIP-09](/zh/topics/nip-09/) kind:5 删除请求，让艺术家可以移除自己的作品。在一个总是谈论协议取代平台的领域里，这是一个平台主动将自身拆解为协议组件的真实案例。
+[IndieSats](https://zapstore.dev) 是一个基于 Nostr 的音乐平台，直到本周一直扮演发布者角色：它为艺术家托管密钥、运营白名单，并强制抽取 2% 的收入分成。在 [7 月 20 日发布的转型公告](https://njump.me/nevent1qqsr4awwnfndnnz77zanjxarw6nd0uld0ckayxp2navz0u9tzzwfweqpzamhxue69uhhyetvv9ujuurjd9kkzmpwdejhgtczyquwq70hxz22lzytw65rnnjewg0lj8a74khxa8h9j47q38pdnqy3kqcyqqqqqqgz8083u)中，该项目一次性终止了全部三项职能。重新上线的平台由三项开放基础设施组成：一个开放 relay、一个播放器和一个发现层。艺术家现在通过自己的 Nostr 个人资料发布音乐。曲目层面的 2% 平台分成仍为可选项，艺术家发布时默认勾选，也可以取消勾选以保留全部付款；平台还会响应 [NIP-09](/zh/topics/nip-09/) kind:5 删除请求，让艺术家移除自己的作品。[7 月 21 日发布的 v1.1.5 更新](https://zapstore.dev/apps/com.indiesats.app)将曲目发布改为 Amethyst 和其他 Nostr 音乐客户端所预期的 event 格式，并让 relay 投递成为明确步骤。在一个通常讨论协议如何取代平台的领域里，这是平台主动将自身拆解为协议组件的真实案例。
 
 ### Nostrord v2.3.0 带来群组管理、静音列表和 onion relay
 
@@ -36,9 +36,9 @@ NIPs 仓库本周合并了五个 PR，包括 [NIP-29 集群](#protocol-work-and-
 
 ### 收藏关注集 list kind 合并后立即搬家
 
-一场规范协调的故事在一周之内上演。[PR #2413](https://github.com/nostr-protocol/nips/pull/2413) 于 7 月 15 日合并，在 [NIP-51](/zh/topics/nip-51/)（列表）下为收藏关注集标准化了一个可替换的 list kind：一个专用的 kind，让客户端可以发布用户策展的关注账户集合，而不必让通用 list kind 超载。数天之内人们发现分配的 kind:10011 已在别处被占用，因此后续 [PR #2417](https://github.com/nostr-protocol/nips/pull/2417) 现已开启，将该列表重新编号为 kind:10021。目前还没有任何东西基于已合并的 kind 发布，这正是重新编号代价最低的时刻；一旦客户端开始发布 kind:10011 event，解开这个冲突的代价就会很高。构建列表消费功能的开发者在该 PR 解决之前应跟踪重新编号的 PR，而不是已合并的文本。
+一场规范协调的故事在一周之内上演。[PR #2413](https://github.com/nostr-protocol/nips/pull/2413) 于 7 月 15 日合并，在 [NIP-51](/zh/topics/nip-51/)（列表）下为收藏关注集标准化了一个可替换的 list kind：一个专用于用户策展关注账户集合的 kind。数天之内人们发现分配的 kind:10011 已在别处被占用，因此后续 [PR #2417](https://github.com/nostr-protocol/nips/pull/2417) 现已开启，将该列表重新编号为 kind:10021。目前还没有任何东西基于已合并的 kind 发布，这正是重新编号代价最低的时刻；一旦客户端开始发布 kind:10011 event，解开这个冲突的代价就会很高。构建列表消费功能的开发者在该 PR 解决之前应跟踪重新编号的 PR，而不是已合并的文本。
 
-### Iris 生态一周内推出 pubsub 库、浏览器 FIPS 运行时和社交图谱 2.0
+### Iris 项目一周内推出 pubsub 库、浏览器 FIPS 运行时和社交图谱 2.0
 
 来自 Iris 轨道的三个发布一同落地，而且彼此咬合。[nostr-pubsub](https://github.com/mmalmi/nostr-pubsub) 是一个面向 Nostr event 的传输中立发布/订阅库；其[首批被追踪的发布 v0.1.3 至 v0.5.2](https://github.com/mmalmi/nostr-pubsub/releases) 提供了一个基于 nostr-tools SimplePool 构建的浏览器 relay 载体、在传输边界上的 event 验证（无效签名永远不会到达订阅者），以及有界的历史查询。[fips-ts](https://github.com/mmalmi/fips-ts) 将 [FIPS](/zh/topics/fips/)——此前只有 Rust 实现的 Noise-over-secp256k1 对等传输——以 TypeScript 运行时的形式带入浏览器：[0.0.24 至 0.0.30 版本](https://github.com/mmalmi/fips-ts/releases)加入了 WebRTC datachannel 载体、基于 Nostr 的对等节点发现信令、最近对等节点缓存，以及用于浏览器存储的 IndexedDB 适配器，且该运行时与参考 Rust 实现线路兼容。第三件 [nostr-social-graph v2.0.0](https://github.com/mmalmi/nostr-social-graph/releases/tag/v2.0.0) 是社交图谱库的大版本：面向 Nostr 身份图谱的签名名册操作、从规范三字段 URI 引导的设备审批流程，以及带 Rust 与 TypeScript 共享测试向量的 FIPS 传输身份侧面。将它们串联起来的是 [Iris Stack](https://stack.iris.to/)——该项目把这些库与 Blossom、Hashtree 和加密消息整合在一起的集成实验室。合在一起，一个 Web 应用现在可以通过 Nostr 发现对等节点、向它们打开加密的 FIPS 通道，并维护一份签名的社交图谱，全部使用 TypeScript。
 
@@ -48,15 +48,23 @@ NIPs 仓库本周合并了五个 PR，包括 [NIP-29 集群](#protocol-work-and-
 
 ### Amber v6.3.0 将 bunker 签名审批分组并加入 Expert List 支持
 
-[Amber](https://github.com/greenart7c3/Amber) 是一款 Android [NIP-46](/zh/topics/nip-46/) 远程签名器。[v6.3.0](https://github.com/greenart7c3/Amber/releases/tag/v6.3.0) 为 bunker 签名加入分组的多请求审批，让一批待处理的签名请求可以一起审阅和批准，而不再是一次弹一个提示。该版本还加入对 Expert List（kind 12022）和 Expert Pack（kind 32022）event 的支持、在屏幕上隐藏敏感内容的隐私模式，以及一项调整：在获取账户个人资料元数据之前先获取其 [NIP-65](/zh/topics/nip-65/) relay 列表，让签名流程从用户的实际 relay 集合出发。这延续了 2026-07-08 期刊报道的 v6.2.x 线。
+[Amber](https://github.com/greenart7c3/Amber) 是一款 Android [NIP-46](/zh/topics/nip-46/) 远程签名器。[v6.3.0](https://github.com/greenart7c3/Amber/releases/tag/v6.3.0) 加入分组的多请求审批，让用户可以一次审阅并批准一批 bunker 签名。该版本还加入对 Expert List（kind 12022）和 Expert Pack（kind 32022）event 的支持、在屏幕上隐藏敏感内容的隐私模式，以及一项调整：在获取账户个人资料元数据之前先获取其 [NIP-65](/zh/topics/nip-65/) relay 列表，让签名流程从用户的实际 relay 集合出发。这延续了 2026-07-08 期刊报道的 v6.2.x 线。
 
 ### Nostrord v2.2.0 后续
 
 鉴于 [v2.3.0](#nostrord-v230-ships-group-moderation-mute-lists-and-onion-relays) 已是本期新闻部分的头条，打标签发布栏只补充头条未提及的内容：v2.3.0 紧随 #31 报道过的 v2.2.0 DM 控制功能，这是该客户端连续第二周的发布。
 
+### Armada v0.37.0 从第二个客户端打开 Buzz 工作区
+
+[Armada](https://gitlab.com/soapbox-pub/armada) 是一款 Discord 风格的 Nostr 客户端，其发布的 [v0.37.0](https://gitlab.com/soapbox-pub/armada/-/commit/7a0d0ade51fb8a7bafa4513d2881d275bb2c7dde) 支持将 Buzz relay 作为增强型 [NIP-29](/zh/topics/nip-29/) 工作区模式，并通过 relay 的 [NIP-11](/zh/topics/nip-11/) 元数据检测该模式。客户端将 Buzz 论坛帖子和评论渲染为 kind 45001 和 45003，把编辑与删除整合进信息流时间线，并加入在线状态、工作流、任务、huddle 和共享画布界面。其 Projects 工作区直接从 relay 读取 [NIP-34](/zh/topics/nip-34/) 仓库公告、patch、pull request、issue 和状态 event（[实现 commit](https://gitlab.com/soapbox-pub/armada/-/commit/7d5603a3e21d564301d667113d28de4407d6f642)），从而为 Buzz 工作区的对话和仓库工作提供第二个客户端。
+
 ### Wisp v1.2.0 加入多账户切换器和可折叠回复串
 
 [Wisp](https://github.com/barrydeen/wisp) 是一款内置钱包支持的隐私导向 Nostr 客户端。[v1.2.0](https://github.com/barrydeen/wisp/releases/tag/v1.2.0) 加入无需重新登录即可在个人资料之间切换的多账户切换器、面向长对话的可折叠回复串、打开前剥离笔记链接中的跟踪参数，以及钱包交易历史视图。该版本是 2026-07-08 期刊报道的 Wisp 更新的后续。
+
+### Divine Mobile 1.0.17 强化 relay 安全与 DM 投递
+
+[Divine Mobile](https://github.com/divinevideo/divine-mobile) 是一款 Nostr 短视频客户端，其发布的 [1.0.17](https://github.com/divinevideo/divine-mobile/releases/tag/1.0.17) 带来可持久保存的定格动画编辑器，并收紧多条 Nostr 路径。私信现在会等待 relay 的 `OK` 响应，通过持久队列重试，并按照收件人的 kind 10050 inbox relay 列表路由（[PR #6046](https://github.com/divinevideo/divine-mobile/pull/6046)）；NIP-46 配对会保留 `auth_url` challenge，作为可恢复的签名器步骤（[PR #6151](https://github.com/divinevideo/divine-mobile/pull/6151)）。[PR #6278](https://github.com/divinevideo/divine-mobile/pull/6278) 从生产环境的 relay WebSocket 以及用于 NIP-96 上传、LNURL 和 zap 的 HTTP 请求中移除宽松的证书接受逻辑，在 debug 回环连接之外恢复平台 TLS 验证。中断的上传也可以从服务器最后确认的 offset 继续，因此发布过程转入后台后不再从零开始。
 
 ### ClipRelay v0.1.2（新项目）通过 Nostr relay 跨设备同步剪贴板
 
@@ -66,25 +74,41 @@ NIPs 仓库本周合并了五个 PR，包括 [NIP-29 集群](#protocol-work-and-
 
 上周的头条 [Sonar](https://github.com/hedwig-corp/bitchat-to-sonar) 发布了 [v0.1-alpha.11](https://github.com/hedwig-corp/bitchat-to-sonar/releases/tag/v0.1-alpha.11)，内容包括 Rust 网格链路引擎的工作、BLE 与网格修复，以及 relay 诊断；这是 #31 报道的 alpha 线的增量后续。
 
+### nak v0.20.2 加入 NIP-34 pull request 工作流
+
+[nak](https://github.com/fiatjaf/nak) 是一款 Nostr 命令行工具，其发布的 [v0.20.2](https://github.com/fiatjaf/nak/releases/tag/v0.20.2) 加入创建、拉取和合并 [NIP-34](/zh/topics/nip-34/) pull request 的命令，也可拉取单个 patch，并允许在不重写仓库公告的情况下 push。[包含 11 个 commit 的版本差异](https://github.com/fiatjaf/nak/compare/v0.20.1...v0.20.2)还加入 [NIP-29](/zh/topics/nip-29/) parent group 处理、查询更多 outbox relay、允许配置 relay 连接超时，并修复仅存在默认 `--sec` 值时的 bunker 选择。
+
 ### 本周的较小发布
 
-三个较小的发布各值一行：Nostr 通话应用 [noscall v0.6.0](https://github.com/sanah9/noscall/releases/tag/v0.6.0-release) 将推送通知迁移到 UnifiedPush，让通话信令脱离 Google 的推送基础设施；使用 Nostr 做信令的网格 VPN [nostr-vpn v4.1.1](https://github.com/mmalmi/nostr-vpn/releases/tag/v4.1.1) 在 Zapstore 发布了更新；此外还有两款新应用在那里首秀：StableKraft，一个 Nostr 加 Lightning 的音乐与播客聚合器；以及 Hakari，一个为体重记录应用提供的加密 Nostr 备份。
+四个较小的发布各值一行：Nostr 通话应用 [noscall v0.6.0](https://github.com/sanah9/noscall/releases/tag/v0.6.0-release) 将推送通知迁移到 UnifiedPush，让通话信令脱离 Google 的推送基础设施；使用 Nostr 做信令的网格 VPN [nostr-vpn v4.1.3](https://github.com/mmalmi/nostr-vpn/releases/tag/v4.1.3) 统一了各平台的出口 DNS 策略，现在会在 WireGuard 或私有出口会话结束后恢复原有路由和 DNS 状态；本刊四月报道过的 Nostr 加 Lightning 音乐与播客聚合器 [StableKraft v1.3.0](https://github.com/ChadFarrow/stablekraft-app/releases/tag/v1.3.0) 加入 Android 原生锁屏和耳机控制，以及限定于播放期间的 wake lock，让音频在 Doze 模式下继续播放；Zapstore 新应用 Hakari 则通过加密 Nostr event 备份体重记录器。
 
 ### Amethyst 围绕 napplet 隔离与 Concord 权限完成 v1.13.0 预发布 QA
 
-[Amethyst](https://github.com/vitorpamplona/amethyst) 本周在 v1.13.0 发布前合并了 81 个 PR。[PR #3650](https://github.com/vitorpamplona/amethyst/pull/3650) 是一次预发布 QA 过检，覆盖 napplet 账户隔离、Concord 权限修复以及约 30 项其他修复，更多 v1.13.0 筹备 PR 持续落地至 07-21。这延续了 #31 对 Amethyst 洁净室 Concord 客户端实现的报道，在该工作打标签发布之前收紧其权限与隔离行为。
+[Amethyst](https://github.com/vitorpamplona/amethyst) 本周在 v1.13.0 发布前合并了 88 个 PR。[PR #3650](https://github.com/vitorpamplona/amethyst/pull/3650) 是一次预发布 QA 过检，覆盖 napplet 账户隔离、Concord 权限修复以及约 30 项其他修复。临近截止时加入的工作包括 Desktop 上完整的 [NIP-88](https://github.com/nostr-protocol/nips/blob/master/88.md) 投票渲染、创建、投票、按声明 relay 计票和 kind 1068 搜索（[PR #3664](https://github.com/vitorpamplona/amethyst/pull/3664)）；NIP-50 搜索现在按 BM25 相关性排序结果，而大型 tag watcher 改用有界合并（[PR #3663](https://github.com/vitorpamplona/amethyst/pull/3663)）。另一轮 relay store 优化会按实测成本选择查询索引，加入 tag-author-kind 索引，并在每次 fanout 中只序列化每个 live event 一次（[PR #3660](https://github.com/vitorpamplona/amethyst/pull/3660)）；报告的 benchmark 显示，一种查询从 149 毫秒降至 4 毫秒，一种常见 DM room 查询从 14.2 毫秒降至 0.66 毫秒。
 
 ---
 
 ## 未发布的变更
 
-### nostream 合并七个 PR 但并未发布版本
+### Snort 围绕经 EOSE 证实的覆盖范围重写查询同步
 
-TypeScript relay 实现 [nostream](https://github.com/Cameri/nostream) 本周合并了七个 PR，但并未发布版本。领衔的一对是 [PR #702](https://github.com/Cameri/nostream/pull/702) 和 [PR #676](https://github.com/Cameri/nostream/pull/676)，两者合起来为 relay 运营者提供了一套可用的「认证加成员资格」访问控制栈；本期 NIP Deep Dive 正好讲解这套握手。
+[Snort](https://github.com/v0l/snort) 是一款 Web Nostr 客户端，它在 [commit 8a62770](https://github.com/v0l/snort/commit/8a627700d8a5af9527cb68655d844dd14a3ac79d) 中重写了查询与缓存同步路径。客户端现在会记录哪些查询窗口已经到达 EOSE，利用这些 watermark 跳过已覆盖的缓存范围，将 event 分发集中到一个 relay pool listener 后面，并且只向 NIP-11 文档声明支持 [NIP-50](/zh/topics/nip-50/) 的 relay 发送搜索 filter。后续修复会串行化并发 watermark 更新并纠正包含端点的时间线边界，而 [commit 9d1721b](https://github.com/v0l/snort/commit/9d1721b8b5696a6f96f462170c469c232cabe672) 为分块 follows feed 恢复 live subscription，让页面加载后到达的 event 不会冻结在缓存窗口之外。
 
-### FIPS v0.4.1 收紧 Iris 生态赖以构建的传输层
+### Shopstr 将支付验证绑定到签名收据和服务端价格
 
-[jmcorgan/fips](https://github.com/jmcorgan/fips) 发布了 [v0.4.1](https://github.com/jmcorgan/fips/releases/tag/v0.4.1)，这是一个维护性版本，内容包括为 antipoison 状态设上限、修复收敛与 MTU 处理，以及降低 CPU 占用。单看它本身只是管线工作，但本周它是连接组织：本期新闻部分 Iris 生态集群中的浏览器 TypeScript 运行时 [fips-ts](https://github.com/mmalmi/fips-ts) 与这个 Rust 传输层线路兼容，因此这里的修复会直接传导到浏览器运行时所互操作的对象上。
+[Shopstr](https://github.com/shopstr-eng/shopstr) 是一款 Nostr 市场客户端，它修补了两处支付完整性缺口。[PR #552](https://github.com/shopstr-eng/shopstr/pull/552) 要求 Zapsnag 在将付款视为购买之前，逐项验证每份 kind 9735 收据的签名、签名者、内嵌 zap 请求、收款人与商品 tag、BOLT11 金额，以及可选 preimage 是否匹配 invoice payment hash。[PR #449](https://github.com/shopstr-eng/shopstr/pull/449) 将 Cashu quote 创建移到 Shopstr API 路由之后，由服务端解析 listing 并重新计算价格，因此浏览器中被修改的金额无法决定 mint invoice。
+
+### Mostr 连接 ActivityPub 私聊与 Nostr DM
+
+[Mostr](https://gitlab.com/soapbox-pub/mostr) 是一座 ActivityPub 到 Nostr 的桥梁，现在可以双向传递一对一 Pleroma ChatMessage object 和加密 Nostr DM（[commit 36ee547](https://gitlab.com/soapbox-pub/mostr/-/commit/36ee547035f9287029f71656c472fe029a7ab31b)）。ActivityPub 私聊会变成发给 Nostr 收件人的 kind 4 event，而发送给已桥接 Fediverse 用户的 kind 4 消息会被解密并作为 ChatMessage object 联邦转发。该桥只允许这些 event 通过配置好的 DM relay，并以 [NIP-42](/zh/topics/nip-42/) 设限，同时使用单独的 relay 密钥进行认证。这条互操作路径使用旧版 [NIP-04](/zh/topics/nip-04/) 加密，NIP-17 gift wrapping 尚未纳入该实现。
+
+### nostream 合并八个 PR 但并未发布版本
+
+TypeScript relay 实现 [nostream](https://github.com/Cameri/nostream) 本周合并了八个 PR，但并未发布版本。领衔的一对是 [PR #702](https://github.com/Cameri/nostream/pull/702) 和 [PR #676](https://github.com/Cameri/nostream/pull/676)，两者合起来为 relay 运营者提供了一套可用的「认证加成员资格」访问控制栈；本期 NIP Deep Dive 正好讲解这套握手。[PR #694](https://github.com/Cameri/nostream/pull/694) 修复了通用 `#e`、`#p`、`#g` 等 tag filter 可能按每个匹配 tag row 各返回一份 event 的问题，从而减少单个 subscription 内的重复协议流量。
+
+### FIPS v0.4.1 收紧 Iris 传输层
+
+[jmcorgan/fips](https://github.com/jmcorgan/fips) 发布了 [v0.4.1](https://github.com/jmcorgan/fips/releases/tag/v0.4.1)，这是一个维护性版本，内容包括为 antipoison 状态设上限、修复收敛与 MTU 处理，以及降低 CPU 占用。Iris 项目集群中的浏览器 TypeScript 运行时 [fips-ts](https://github.com/mmalmi/fips-ts) 与这个 Rust 传输层线路兼容，因此这里的修复会直接改善浏览器互操作性。
 
 ---
 
@@ -102,7 +126,7 @@ TypeScript relay 实现 [nostream](https://github.com/Cameri/nostream) 本周合
 
 - **[NIP-51](/zh/topics/nip-51/)（列表）：收藏关注集，kind:10011**（[PR #2413](https://github.com/nostr-protocol/nips/pull/2413)，合并于 2026-07-15）：NIP-51 定义了标准 list kind，分为可替换的 `kind:10000` 系列列表（每个用户一份）和可寻址的 `kind:30000` 系列集合（每个用户多份，以 `d` tag 为键）。该 PR 新增 `kind:10011`「收藏关注集」，一个标准可替换列表，其 `a` tag 指向 `kind:30000` 关注集。它与 `kind:10012`（relay 信息流，承载引用 `kind:30002` relay 集合的 `a` tag）互为镜像：新 kind 让用户可以收藏具名关注集——比如自己或他人发布的策展 pubkey 合集——并让客户端将其呈现出来以供一键关注或切换信息流。请注意该 kind 编号已存在争议：见下方的开放重编号 PR。
 
-- **[NIP-46](/zh/topics/nip-46/)（Nostr Connect）：静默超时指引**（[PR #2375](https://github.com/nostr-protocol/nips/pull/2375)，合并于 2026-07-15）：NIP-46 是远程签名协议，客户端通过 relay 向签名器（bunker）发送加密的 JSON-RPC 风格请求并等待加密响应。合并的变更是一句线路行为规定：以未知或不支持的方法发起的请求必须（MUST）以错误回复。此前，收到未实现方法的签名器可以永远不响应，让客户端一直挂起直到自身超时触发，且无法区分「不支持的方法」与「签名器离线」。强制的错误回复让客户端可以快速失败并向用户展示有意义的信息，而不是无限空转。
+- **[NIP-46](/zh/topics/nip-46/)（Nostr Connect）：静默超时指引**（[PR #2375](https://github.com/nostr-protocol/nips/pull/2375)，合并于 2026-07-15）：NIP-46 是远程签名协议，客户端通过 relay 向签名器（bunker）发送加密的 JSON-RPC 风格请求并等待加密响应。合并的变更是一句线路行为规定：以未知或不支持的方法发起的请求必须（MUST）以错误回复。此前，收到未实现方法的签名器可以永远不响应，让客户端一直挂起直到自身超时触发，且无法区分「不支持的方法」与「签名器离线」。强制的错误回复让客户端可以在本地超时之前快速失败，并展示有意义的错误信息。
 
 **开放的 PR 与讨论：**
 
@@ -124,7 +148,7 @@ TypeScript relay 实现 [nostream](https://github.com/Cameri/nostream) 本周合
 
 ### NIP-42：客户端向 relay 的认证
 
-[NIP-42](/zh/topics/nip-42/) 回答一个问题：这条连接上是谁？想要门控读取或写入的 relay 会发送一条携带挑战字符串的 `AUTH` 消息——在连接建立时，或在某个请求需要认证时按需发送。客户端以自己的 `AUTH` 消息回复，其中包含一个签名的临时 event，kind 22242，relay 则以 `OK` 消息作答，就如同这个认证 event 是一次普通写入。认证后的会话在连接存续期间保持有效，且客户端可以在一条连接上通过一系列 `AUTH` 消息认证多个 pubkey，relay 将每一个都视为已认证。
+[NIP-42](/zh/topics/nip-42/) 回答一个问题：这条连接上是谁？想要门控读取或写入的 relay 会发送一条携带 challenge 字符串的 `AUTH` 消息，可以在连接建立时发送，也可以在请求需要认证时按需发送。客户端以自己的 `AUTH` 消息回复，其中包含一个签名的临时 event，kind 22242，relay 则以 `OK` 消息作答，就如同这个认证 event 是一次普通写入。认证在连接存续期间保持有效。一系列 `AUTH` 消息可以在一条连接上认证多个 pubkey。
 
 签名的认证 event 如下所示：
 
@@ -168,11 +192,11 @@ TypeScript relay 实现 [nostream](https://github.com/Cameri/nostream) 本周合
 }
 ```
 
-`pubkey` 是请求准入的用户，kind 28934 将该 event 标记为加入请求。`-` tag 是 [NIP-70](/zh/topics/nip-70/) 受保护 event 标记，告诉 relay 不要从作者之外的任何人处接受该 event。`claim` tag 承载用户在带外获得的邀请码，`created_at` 必须是现在（前后几分钟之内），因此旧请求无法被重放。relay 以 `OK` 消息回应 claim，对过期或无效邀请码等失败情况复用 NIP-42 的 `restricted:` 前缀，随后应更新其 kind 13534 列表，并可发布 kind 8000 的加入成员 event。成员资格被刻意设计为不从单个 event 推导：规范称 relay 签名的列表不应被视为详尽或权威，客户端在判断某人当前是否是成员时应同时参考 relay 的 kind 13534 和成员自己的 event。客户端只能向在其 NIP-11 文档的 `supported_nips` 部分宣告支持该 NIP 的 relay 发送加入、邀请或退出请求，而 [nostream 的 PR #676](https://github.com/Cameri/nostream/pull/676) 正是将这些请求 kind 转化为实际成员资格变更的 relay 侧机制。
+`pubkey` 是请求准入的用户，kind 28934 将该 event 标记为加入请求。`-` tag 是 [NIP-70](/zh/topics/nip-70/) 受保护 event 标记，告诉 relay 只接受作者本人提交的该 event。`claim` tag 承载在带外获得的邀请码，`created_at` 必须是现在（前后几分钟之内），因此旧请求无法被重放。relay 以 `OK` 消息回应 claim，对过期或无效邀请码等失败情况复用 NIP-42 的 `restricted:` 前缀，更新 kind 13534 列表，并可发布 kind 8000 的加入成员 event。成员资格被刻意设计为不从单个 event 推导：规范将 relay 签名的列表视为一项输入，客户端在判断某人当前是否是成员时应同时参考 relay 的 kind 13534 和成员自己的 event。客户端只能向在其 NIP-11 文档的 `supported_nips` 部分宣告支持该 NIP 的 relay 发送加入、邀请或退出请求，而 [nostream 的 PR #676](https://github.com/Cameri/nostream/pull/676) 正是将这些请求 kind 转化为实际成员资格变更的 relay 侧机制。
 
 ### 历史
 
-NIP-42 是两者中年长得多的一位。它于 2023 年 1 月 2 日通过 [commit c80be21c](https://github.com/nostr-protocol/nips/commit/c80be21c) 进入 NIPs 仓库，在该提交中 fiatjaf 大幅简化了 semisol 起草的早期 relay 认证 NIP，将一套更复杂的挑战方案折叠为规范沿用至今的单个签名临时 event。NIP-43 到来得晚得多：2025 年 10 月 30 日，hodlbod 的 [PR #1079](https://github.com/nostr-protocol/nips/pull/1079) 合并，加入了直接构建在 NIP-42 `restricted:` 前缀之上的 relay 访问元数据与请求。这两年半的间隔反映了在成员资格层获得标准之前，生态在临时白名单上运营付费与私有 relay 的时间有多长。
+NIP-42 是两者中年长得多的一位。它于 2023 年 1 月 2 日通过 [commit c80be21c](https://github.com/nostr-protocol/nips/commit/c80be21c) 进入 NIPs 仓库，在该提交中 fiatjaf 大幅简化了 semisol 起草的早期 relay 认证 NIP，将一套更复杂的 challenge 方案折叠为规范沿用至今的单个签名临时 event。NIP-43 到来得晚得多：2025 年 10 月 30 日，hodlbod 的 [PR #1079](https://github.com/nostr-protocol/nips/pull/1079) 合并，加入了直接构建在 NIP-42 `restricted:` 前缀之上的 relay 访问元数据与请求。这两年半的间隔反映了在成员资格层获得标准之前，付费和私有 relay 运营者使用临时白名单的时间有多长。
 
 ### 实现情况
 
