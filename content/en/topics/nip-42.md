@@ -45,6 +45,7 @@ Combined with [NIP-11](/en/topics/nip-11/) metadata, clients can discover whethe
 
 **Primary sources:**
 - [NIP-42 Specification](https://github.com/nostr-protocol/nips/blob/master/42.md) - Authentication of clients to relays
+- [algia 0.0.133](https://github.com/mattn/algia/releases/tag/v0.0.133) - relay pre-authentication
 
 **Mentioned in:**
 - [Newsletter #6: Relay Information Documents](/en/newsletters/2026-01-21-newsletter/#relay-information-documents-get-formalized)
@@ -53,6 +54,8 @@ Combined with [NIP-11](/en/topics/nip-11/) metadata, clients can discover whethe
 - [Newsletter #13: Relay AUTH Starts Reaching Real Apps](/en/newsletters/2026-03-11-newsletter/#relay-auth-starts-reaching-real-apps)
 - [Newsletter #27: Citrine v3.0.0 ships Negentropy, NIP-42 AUTH, and onion-relay filtering](/en/newsletters/2026-06-17-newsletter/#citrine-v300-ships-negentropy-nip-42-auth-and-onion-relay-filtering)
 - [Newsletter #32: NIP Deep Dive](/en/newsletters/2026-07-22-newsletter/#nip-deep-dive-nip-42-and-nip-43)
+- [Newsletter #33: Tagged releases](/en/newsletters/2026-07-29-newsletter/#tagged-releases)
+- [Newsletter #33: Unreleased app/client changes](/en/newsletters/2026-07-29-newsletter/#in-development)
 
 **See also:**
 - [NIP-11: Relay Information Document](/en/topics/nip-11/)

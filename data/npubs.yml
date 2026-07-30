@@ -221,7 +221,23 @@ Blossom:
 # --- Other tools ---
 Jumble: npub17n4cuc4d6y6qh89dekvxrenfkt5s0n49xns00uavjaxpr36c55dq87fyh9
 Formstr: npub1qu7dsd44275lms4x9snnwvnnmgx926nsppmr7lcw9dlj36n4fltqgs7p98
+Formstr Drive: npub1qu7dsd44275lms4x9snnwvnnmgx926nsppmr7lcw9dlj36n4fltqgs7p98
 Calendar by Form*: npub1qu7dsd44275lms4x9snnwvnnmgx926nsppmr7lcw9dlj36n4fltqgs7p98
+Code Call: npub19at4nqjjymca2lh3v546vcg5ktun3al4c5xu2pts3ewckv0y70ys0gupzr
+Earthly: npub1dmmh0futyszl4445mv4xrygkgsgj8vpu79yx3qyy9qxmz4pemtzqlqmc87
+Hanami: npub1m2jphmdkskgnvwl5gplksl9e0zwv2sldqf9mwlpz6tyymz84g9fsqr3wgu
+Imwald Android: npub1l5sga6xg72phsz5422ykujprejwud075ggrr3z2hwyrfgr7eylqstegx9z
+Mafrend: npub19jvs7ry26263w3l6h4hst46t0fsukcmyhhmmshh8rsavfqd95xnsa5guks
+
+# [dev:pablof7z]
+Mosaico:
+  npub: npub1l2vyh47mk2p0qlsku7hg0vn29faehy9hy34ygaclpn66ukqp3afqutajft
+  mention_only: true
+
+# [dev:mattn]
+algia:
+  npub: npub1937vv2nf06360qn9y8el6d8sevnndy7tuh5nzre4gj05xc32tnwqauhaj6
+  mention_only: true
 # [dev:abh3po]
 Pollerama:
   npub: npub1cgd35mxmy37vhkfcmjckk9dylguz6q8l67cj6h9m45tj5rx569cql9kfex
@@ -771,7 +787,7 @@ Form*:
 # n_cord: no verified npub found
 # Nostr WoT: no verified npub found
 # Kehto: no verified npub found
-# Bray: no verified npub found
+
 # Cambium: no verified npub found
 # Earthly: no verified npub found
 # lnbits: no verified npub found
@@ -827,3 +843,81 @@ jmcorgan: npub19wavu4f7l6l43h24jyskn7fvzy37kcfp67aqjtmv2qgy4lp34nhsda8p6k
 # GitHub profiles, web search all negative):
 # frnandu (Keep/FROST, NIP-47 PR #2419): no verified npub found
 # Letdown2491 (Signet, Trusted Relay Assertions PR #2418): no verified npub found
+
+# =============================================================================
+# Newsletter #33 additions (verified 2026-07-28)
+# =============================================================================
+# Keep one project/maintainer group per blank-line-delimited block so
+# publish/dm-outreach.ts can augment project accounts without cross-pairing.
+# Amethyst project account + lead maintainer
+Amethyst project: npub142gywvjkq0dv6nupggyn2euhx4nduwc7yz5f24ah9rpmunr2s39se3xrj0
+vitorpamplona maintainer:
+  npub: npub1gcxzte5zlkncx26j68ez60fzkvtkm9e0vrwdcvsjakxf9mu9qewqlfnj5z
+  mention_only: true
+
+# Ditto project account + maintainer
+Ditto project: npub10qdp2fc9ta6vraczxrcs8prqnv69fru2k6s2dj48gqjcylulmtjsg9arpj
+alexgleason maintainer:
+  npub: npub1q3sle0kvfsehgsuexttt3ugjd8xdklxfwwkh559wxckmzddywnws6cd26p
+  mention_only: true
+
+# Nostrology is operated by WhisperHash. No separate project key was found;
+# the project source link, Sovereign Engineering interview, relay-backed kind
+# 0 profile, and whisperhash.com NIP-05 all resolve to this same verified key.
+Nostrology:
+  npub: npub1t6m495kynns7xjmgz8yt6krrw4r8tac0mvr3f25f9r35ke72ap3su4qycp
+  mention_only: true
+WhisperHash maintainer:
+  npub: npub1t6m495kynns7xjmgz8yt6krrw4r8tac0mvr3f25f9r35ke72ap3su4qycp
+  mention_only: true
+
+# Kairos Zapstore releases are signed by LWB's relay-backed personal key.
+Kairos: npub1vjxq75czca0nswp2f5kgtfyzhynuccdjs29q098rd3kv09k7s6nq39hh7v
+LWB maintainer:
+  npub: npub1vjxq75czca0nswp2f5kgtfyzhynuccdjs29q098rd3kv09k7s6nq39hh7v
+  mention_only: true
+
+# Shosho's developer-signed Zapstore publisher account; no separate
+# maintainer identity was established from primary evidence.
+Shosho publisher:
+  npub: npub1sh0spghk4yvy2d2v35kelw45qq4msk6zykaw4ds047e9slzs8r4qr7q2xa
+  mention_only: true
+
+# Keep's existing verified key belongs to maintainer wksantiago.
+wksantiago maintainer:
+  npub: npub1h3fzzzeq60acjvnyvw34rpn5clkaueteffmkt3ln4ygekg9lcm0qhw96sj
+  mention_only: true
+
+# Routstrd uses the verified Routstr project account; no separate maintainer
+# identity was established from primary evidence.
+Routstrd project account:
+  npub: npub130mznv74rxs032peqym6g3wqavh472623mt3z5w73xq9r6qqdufs7ql29s
+  mention_only: true
+
+# Mill's discussion event is signed by 0ceanSlim's relay-backed key.
+Mill: npub1zmc6qyqdfnllhnzzxr5wpepfpnzcf8q6m3jdveflmgruqvd3qa9sjv7f60
+0ceanSlim maintainer:
+  npub: npub1zmc6qyqdfnllhnzzxr5wpepfpnzcf8q6m3jdveflmgruqvd3qa9sjv7f60
+  mention_only: true
+
+# Bray's repository links forgesworn.dev as its project site. The site's
+# NIP-05 document maps both `_` and `darren` to this key, so project and
+# maintainer aliases share one de-duplicated recipient.
+Bray: npub1mgvlrnf5hm9yf0n5mf9nqmvarhvxkc6remu5ec3vf8r0txqkuk7su0e7q2
+Darren maintainer:
+  npub: npub1mgvlrnf5hm9yf0n5mf9nqmvarhvxkc6remu5ec3vf8r0txqkuk7su0e7q2
+  mention_only: true
+
+# Buzz Desktop and its block maintainer share the already-verified project key.
+Buzz Desktop: npub16l0ck0s5zened29dsaqtqm6z0t4fmk2mwtszw64fz7fppcnls8mss3yj9s
+block maintainer:
+  npub: npub16l0ck0s5zened29dsaqtqm6z0t4fmk2mwtszw64fz7fppcnls8mss3yj9s
+  mention_only: true
+
+# Heading alias needed by automated H3 mention extraction.
+lawallet-nwc: npub1ek4262k6nv3l9axh403w2e66pzl2pqhhnjrhgv2wpzx2akak285scxv4pd
+
+# No verified public Nostr identity found after repository, profile, NIP-05,
+# relay-search, and project-site checks. Never guess an npub.
+# swift-nostr / yysskk: no verified npub found
+# pakstr / ado: no verified npub found

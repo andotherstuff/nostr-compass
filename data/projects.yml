@@ -1207,6 +1207,34 @@ social_clients:
     status: active
     priority: low
 
+  - name: Mafrend
+    description: Map-based Nostr social network for exploring places and chatting with people around destinations
+    platforms: [ android ]
+    repo: https://github.com/DestBro/mafrend-zapstore
+    website: https://mafrend.com
+    maintainer: npub19jvs7ry26263w3l6h4hst46t0fsukcmyhhmmshh8rsavfqd95xnsa5guks
+    status: active
+    priority: low
+    notes: Early alpha distributed exclusively through Zapstore; main application repository is private
+
+  - name: Imwald Android
+    description: Android Nostr client for notes, threads, wiki pages, long-form publications, profiles, and hidden-service relays
+    platforms: [ android ]
+    repo: https://git.imwald.eu/silberengel/imwald-android
+    website: https://jumble.imwald.eu
+    maintainer: silberengel
+    status: active
+    priority: medium
+    notes: Jumble companion with Amber and NIP-46 login, Tor/I2P relay proxies, Blossom uploads, and offline content rendering
+
+  - name: Hanami
+    description: Android companion for a Blossom server with a NIP-55 signer bridge and NIP-98 authenticated sessions
+    platforms: [ android ]
+    repo: https://github.com/Letdown2491/hanami-android
+    status: active
+    priority: medium
+    notes: Origin-locked WebView client for Hanami's Blossom file-management surface; uses NIP-55 signing and NIP-98 authentication for server sessions
+
 longform_clients:
   - name: Habla
     description: Long-form content publishing (NIP-23)
@@ -2108,6 +2136,15 @@ marketplaces:
     priority: medium
     notes: Implementation library for market-spec consumers
 
+  - name: Colabonate Protocol
+    description: Draft protocol for Nostr-transported marketplace offers, trade workflows, reputation, and governance with Bitcoin payments
+    repo: https://github.com/Colabonate/Colabonate_Protocol
+    website: http://www.colabonate.com
+    maintainer: Colabonate
+    status: active
+    priority: low
+    notes: Specification-only repository at v0.1.1-draft; defines custom event kinds 30017-30026
+
 
 shops:
   - name: BTC Recharge
@@ -2145,6 +2182,16 @@ devtools:
     maintainer: DanConwayDev
     status: active
     priority: high
+
+  - name: Mosaico
+    description: Nostr-backed shared-awareness fabric for coding-agent sessions
+    platforms: [ cli, linux, macos ]
+    repo: https://github.com/pablof7z/mosaico
+    website: https://pablof7z.github.io/mosaico/
+    maintainer: pablof7z
+    status: active
+    priority: high
+    notes: NIP-29 and NMP coordination fabric; supports Claude Code, Codex, Goose, Hermes, OpenCode, and Grok
 
   - name: ZapStore
     description: Permissionless app store for Android
@@ -3367,6 +3414,15 @@ devtools:
     status: active
     priority: low
     notes: Create/sign/fetch events, NIP-44 encrypt/decrypt, NIP-19 encode/decode, NIP-42 relay auth, live subscription trigger; vendored schnorr/bech32 crypto, no runtime deps; from the Coracle team
+
+  - name: llama.garden
+    description: Nostr-announced BitTorrent catalog and seeding tools for decentralized distribution of large language model weights
+    platforms: [ web, cli ]
+    repo: https://github.com/etemiz/llama.garden
+    maintainer: etemiz
+    status: active
+    priority: low
+    notes: Publishes model torrents and viewer releases as Nostr events, verifies signatures client-side, and uses Blossom for viewer distribution
 
 signers:
   - name: Amber

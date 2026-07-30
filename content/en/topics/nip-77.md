@@ -35,10 +35,12 @@ This is especially useful for:
 **Primary sources:**
 - [NIP-77 Specification](https://github.com/nostr-protocol/nips/blob/master/77.md)
 - [Negentropy protocol](https://github.com/hoytech/negentropy)
+- [Amethyst PR #3747](https://github.com/vitorpamplona/amethyst/pull/3747) - closes a refusal-stalled reconciliation path
 
 **Mentioned in:**
-- [Newsletter #22: Citrine v3.0.0-pre1](/en/newsletters/2026-05-14-newsletter/#citrine-v300-pre1-lands-built-in-tor-and-relay-aggregation)
+- [Newsletter #22: Citrine v3.0.0-pre1](/en/newsletters/2026-05-13-newsletter/#citrine-v300-pre1-lands-built-in-tor-and-relay-aggregation)
 - [Newsletter #27: Citrine v3.0.0 ships Negentropy, NIP-42 AUTH, and onion-relay filtering](/en/newsletters/2026-06-17-newsletter/#citrine-v300-ships-negentropy-nip-42-auth-and-onion-relay-filtering)
+- [Newsletter #33: Unreleased app/client changes](/en/newsletters/2026-07-29-newsletter/#in-development)
 
 **See also:**
 - [Negentropy](/en/topics/negentropy/)

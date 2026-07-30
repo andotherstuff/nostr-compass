@@ -54,6 +54,8 @@ NIP-17 also defines inbox relay lists for private messaging. Clients can publish
 **Primary sources:**
 - [NIP-17 Specification](https://github.com/nostr-protocol/nips/blob/master/17.md)
 - [PR #2098](https://github.com/nostr-protocol/nips/pull/2098) - wording cleanup and reaction support update
+- [Nostur 1.30.1](https://github.com/nostur-com/nostur-ios-public/releases/tag/1.30.1) - disappearing direct-message behavior
+- [Code Call 0.2.66](https://github.com/tidley/nostr-codex-phone/releases/tag/v0.2.66) - encrypted remote-work requests and replies
 
 **Mentioned in:**
 - [Newsletter #1: NIP Updates](/en/newsletters/2025-12-17-newsletter/#nip-updates)
@@ -65,6 +67,7 @@ NIP-17 also defines inbox relay lists for private messaging. Clients can publish
 - [Newsletter #19: NipLock password manager](/en/newsletters/2026-04-22-newsletter/#niplock-ships-a-nip-17-based-password-manager)
 - [Newsletter #27: Signet v1.11.0 patches a NIP-17 admin-command signature bypass](/en/newsletters/2026-06-17-newsletter/#signet-v1110-patches-a-nip-17-admin-command-signature-bypass)
 - [Newsletter #31: Bitcoin-Safe reaches Flathub, spotlighting its Nostr Sync & Chat plugin](/en/newsletters/2026-07-15-newsletter/#bitcoin-safe-reaches-flathub-spotlighting-its-nostr-sync--chat-plugin)
+- [Newsletter #33: Lead stories](/en/newsletters/2026-07-29-newsletter/#top-stories)
 
 **See also:**
 - [NIP-04: Encrypted Direct Messages (Deprecated)](/en/topics/nip-04/)

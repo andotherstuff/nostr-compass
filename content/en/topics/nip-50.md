@@ -52,6 +52,8 @@ Structured filters work well when you already know the author, kind, or tag you 
 **Mentioned in:**
 - [Newsletter #3: December Recap](/en/newsletters/2025-12-31-newsletter/#december-recap-five-years-of-nostr-decembers)
 - [Newsletter #4: NIP Updates](/en/newsletters/2026-01-07-newsletter/#nip-updates)
+- [Newsletter #32: Snort and Amethyst search updates](/en/newsletters/2026-07-22-newsletter/#snort-rewrites-query-synchronization-around-eose-proven-coverage)
+- [Newsletter #33: Tagged releases](/en/newsletters/2026-07-29-newsletter/#tagged-releases)
 
 **See also:**
 - [NIP-11: Relay Information](/en/topics/nip-11/)

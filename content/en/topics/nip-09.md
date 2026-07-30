@@ -34,6 +34,7 @@ Another practical issue is references. Users and apps may still hold the deleted
 - [Newsletter #11: NIP-60 Deep Dive](/en/newsletters/2026-02-25-newsletter/#nip-deep-dive-nip-60-cashu-wallet)
 - [Newsletter #12: News](/en/newsletters/2026-03-04-newsletter/#news)
 - [Newsletter #32: News](/en/newsletters/2026-07-22-newsletter/#indiesats-drops-its-publisher-role-and-relaunches-as-open-nostr-music-infrastructure)
+- [Newsletter #33: Kairos 0.1.1 adds reminders and a local Astraea instruction](/en/newsletters/2026-07-29-newsletter/#kairos-011-adds-reminders-and-a-local-astraea-instruction)
 
 **See also:**
 - [NIP-01: Basic Protocol](/en/topics/nip-01/)
