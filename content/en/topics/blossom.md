@@ -39,11 +39,15 @@ That split lets clients implement the minimum needed for basic interoperability,
 - [BUD-01: Server requirements and blob retrieval](https://github.com/hzrd149/blossom/blob/master/buds/01.md)
 - [BUD-02: Blob upload and management](https://github.com/hzrd149/blossom/blob/master/buds/02.md)
 - [Local Blossom Cache guide](https://github.com/hzrd149/blossom/blob/master/implementations/local-blossom-cache.md)
+- [Hanami for Android](https://github.com/Letdown2491/hanami-android) - NIP-55 signer bridge and NIP-98 Blossom sessions
+- [Formstr Drive 0.0.2](https://github.com/formstr-hq/formstr-drive/releases/tag/v0.0.2) - chunked Blossom storage and authenticated deletion
+- [Code Call 0.2.66](https://github.com/tidley/nostr-codex-phone/releases/tag/v0.2.66) - encrypted Blossom attachments for remote work sessions
 
 **Mentioned in:**
 - [Newsletter #1: News](/en/newsletters/2025-12-17-newsletter/#news)
 - [Newsletter #2: Notable Code Changes](/en/newsletters/2025-12-24-newsletter/#notable-code-and-documentation-changes)
 - [Newsletter #10: Blossom local cache layer emerges](/en/newsletters/2026-02-18-newsletter/#blossom-local-cache-layer-emerges)
+- [Newsletter #33: Lead stories](/en/newsletters/2026-07-29-newsletter/#top-stories)
 
 **See also:**
 - [BUD-03: User Server List](/en/topics/bud-03/)

@@ -1,49 +1,71 @@
-## Tagged releases
+## Tagged Releases
 
-### n_cord v1.1 adds NSEC Bunker support
+### Kairos 0.1.1 adds reminders and a local Astraea instruction
 
-[n_cord](https://github.com/0n4t3/n_cord) is a Nostr-powered chat client inspired by Discord and IRC. [v1.1](https://github.com/0n4t3/n_cord/releases/tag/v1.1) adds [NIP-46](/en/topics/nip-46/) NSEC Bunker support alongside a reply-handling bug fix, a real signer-interoperability addition rather than routine maintenance.
+[Kairos 0.1.1](https://primal.net/e/ffb054280008dc3ba488d5d3a2cbfec6c4123489a874683545a29a466682fd90) adds due-date reminders, an explicit local instruction to Astraea, and stricter relay and URL handling. The [0.1.0 signed release](https://primal.net/e/6e02430844abdabf5421bbf5745a09ef2870e4ade93f56627ee14ba8db58a00a) introduced the [offline-first task manager](https://github.com/Lwb89dev/kairos), whose optional sync layer writes [NIP-44 (Encrypted Payloads)](/en/topics/nip-44/)-encrypted records to user-selected relays. Kairos uses deterministic task coordinates and encrypted tombstones with [NIP-09 (Event Deletion Request)](/en/topics/nip-09/) deletion requests, while local-only tasks never leave the device.
 
-### cdk v0.17.3 adds NIP-47 wallet-service support across cdk, cdk-nwc, and cdk-ffi
+### Bray 2.3.0 gives its CLI general gift wrapping and a local Blossom test surface
 
-[cdk](https://github.com/cashubtc/cdk) is a Cashu development kit; this release is Bitcoin/Lightning-only in most respects, but [v0.17.3](https://github.com/cashubtc/cdk/releases/tag/v0.17.3) adds [NIP-47](/en/topics/nip-47/) (Nostr Wallet Connect) service support with a dedicated NWC service crate, wallet integration, FFI bindings for `cdk-ffi`, and end-to-end test coverage, giving Cashu wallets built on cdk a standard Nostr Wallet Connect surface.
+[Bray 2.3.0](https://github.com/forgesworn/bray/releases/tag/v2.3.0), a Nostr SDK and command-line toolkit, can gift-wrap and unwrap arbitrary events through [NIP-59 (Gift Wrap)](/en/topics/nip-59/), with signing routed through [NIP-46 (Nostr Connect)](/en/topics/nip-46/) when a bunker holds the key. [PR #75](https://github.com/forgesworn/bray/pull/75) also gives the bundled test relay [NIP-42 (Authentication of clients to relays)](/en/topics/nip-42/) challenges and exposes the remaining Blossom client commands. [PR #77](https://github.com/forgesworn/bray/pull/77) adds an in-memory BUD-01/02 server whose signed authorization binds each upload or deletion to one blob, while [PR #76](https://github.com/forgesworn/bray/pull/76) adds named event kinds, shorthand tags, and [NIP-77](/en/topics/nip-77/) ID-reconciliation flags that avoid downloading events a caller already holds.
 
-### Coop Mobile v0.2.4 improves Nostr Connect and adds ncryptsec1 import
+### Buzz Desktop 0.5.0 tightens invitations, search, and relay identity updates
 
-[Coop Mobile](https://git.reya.su/reya/coop-mobile) is a [NIP-17](/en/topics/nip-17/) private-messaging client for mobile platforms. [v0.2.4](https://git.reya.su/reya/coop-mobile/releases/tag/v0.2.4) improves its [NIP-46](/en/topics/nip-46/) Nostr Connect flow, fixes a loading indicator that stuck permanently on some connections, and adds import support for the [NIP-49](/en/topics/nip-49/) `ncryptsec1` encrypted key format alongside a redesigned identity-import screen.
+After last week's Armada and Buzz workspace coverage, [Buzz Desktop 0.5.0](https://github.com/block/buzz/releases/tag/v0.5.0) adds use-limited invite links ([PR #3141](https://github.com/block/buzz/pull/3141)) and search filters for author, channel, and time bounds ([PR #2871](https://github.com/block/buzz/pull/2871)). [PR #2862](https://github.com/block/buzz/pull/2862) retrieves join policies through the desktop app's native network layer, and [PR #2607](https://github.com/block/buzz/pull/2607) republishes an agent's identity record after a persona rename reaches the relay. The release also updates its Nostr dependency for a [NIP-44 remote-denial-of-service advisory](https://github.com/block/buzz/pull/3135) and repairs local-storage recovery, thread positioning, relay reconnection, and Linux and Windows runtime paths.
 
-### Nmail v0.14.0 ships on macOS with scheduled send and push notifications
+### Shosho 1.0.0 expands its live-streaming marketplace
 
-[Nmail](https://github.com/nogringo/nostr-mail-client) is a mail client built on Nostr; [v0.14.0](https://github.com/nogringo/nostr-mail-client/releases/tag/v0.14.0) brings the app to macOS, adds scheduled send with a dedicated Scheduled mailbox for queued messages, and adds push notifications. The release also switches address-book Nostr identifier resolution to NDK's [NIP-05](/en/topics/nip-05/) resolver in place of a bespoke implementation.
+[Shosho 1.0.0](https://github.com/r0d8lsh0p/shosho-releases/releases/tag/v1.0.0) redesigns the live-streaming marketplace around creators, live sessions, clips, and products that users can find through configurable relay search. A unified notification feed now collects mentions, reactions, reposts, and zaps and supports replies without leaving the feed. Viewers can publish clips from live streams or replays, while the release also improves threaded chat, clip replies, profile loading, and network usage.
 
-### Nostrord v2.2.0 adds a DM master toggle and richer direct messages
+### Mafrend v1.0 previews place-based Nostr chat on Android
 
-[Nostrord](https://github.com/nostrord/nostrord) is a [NIP-29](/en/topics/nip-29/) relay-based group-chat client for Android, iOS, web, and desktop. [v2.2.0](https://github.com/nostrord/nostrord/releases/tag/v2.2.0) adds a master toggle to disable all direct-message features at once ([PR #175](https://github.com/nostrord/nostrord/pull/175)) and ships "richer direct messages" ([PR #186](https://github.com/nostrord/nostrord/pull/186)), continuing from #30's coverage of the release folding the relay pool and detecting zombie WebSockets.
+[Mafrend v1.0](https://github.com/DestBro/mafrend-zapstore/releases/tag/v1.0) is the first public Android alpha of a planned place-based Nostr chat app. Its [project page](https://mafrend.com) labels the feature set as still in active development and describes each map location as a dedicated chat room for conversations around a place. A public release repository carries the installable Zapstore package while the main app remains private.
 
-### Nostr WoT 0.3.86 hardens key backups and signing prompts
+### Hanami 0.1.0 gives Blossom servers a signer-mediated Android path
 
-[Nostr WoT](https://github.com/nostr-wot/nostr-wot-extension) is a browser extension pairing a Nostr identity with a Lightning wallet. [v0.3.86](https://github.com/nostr-wot/nostr-wot-extension/releases/tag/v0.3.86) moves encrypted-key backups to the standard [NIP-49](/en/topics/nip-49/) format, makes signing prompts show the full event and all tags instead of a summary, verifies relay data against its signature, and stops exposing the active identity when switching accounts. The extension also drops the unused `scripting` browser permission.
+[Hanami 0.1.0](https://github.com/Letdown2491/hanami-android/releases/tag/v0.1.0), an Android companion for [Blossom](/en/topics/blossom/) servers, lets people sign in, upload, and download from a phone. The app uses [NIP-55 (Android Signer Application)](/en/topics/nip-55/) for approval-mediated signing and a native [NIP-98 (HTTP Auth)](/en/topics/nip-98/) handshake for the server session. Hanami locks its web shell and signing bridge to the chosen server origin, keeping credentials with the signer while the server's existing web interface supplies the application experience. The first public release requires Android 8 or later, a reachable Hanami server, and a compatible signer app.
 
-### Keep Android v1.1.8 adds first-run FROST onboarding
+### Cordn launches its Nostr-identity group chat on Android
 
-[Keep](https://github.com/privkeyio/keep-android) is an Android signer built on threshold FROST key shares. [v1.1.8](https://github.com/privkeyio/keep-android/releases/tag/v1.1.8) adds a first-run flow that explains FROST key shares and lets a new user pick a signing policy of Manual, Basic, or Auto before the first signature request arrives, shipping the tagged form of the onboarding work #30 covered as unreleased.
+Cordn, a private group-messaging client, now gives Android users Nostr identity onboarding, profile links through [NIP-05 (Mapping Nostr Keys to DNS-Based Internet Identifiers)](/en/topics/nip-05/), and verified links that open Cordn destinations in the app. The [0.2.1 release published July 24](https://github.com/Cordn-msg/cordn-web/releases/tag/v0.2.1) introduces that native line alongside the existing web client. Messages use [MLS](/en/topics/mls/), a group-encryption protocol, with coordinator-assisted delivery, so groups retain ordered encrypted conversations without requiring an email address or phone number.
 
-### Noscall v0.6.0 adds a Cashu wallet and relay-based push notifications
+### Nostur 1.30.1 fixes threads and duplicate posts after 1.30.0 expands sharing
 
-[Noscall](https://github.com/sanah9/noscall) is a secure audio- and video-calling app built on Nostr. [v0.6.0](https://github.com/sanah9/noscall/releases/tag/v0.6.0-release) adds an account-scoped Cashu wallet with multi-mint balances, ecash send and receive, and Lightning pay and receive with quote persistence. The release also migrates Android push notifications off Firebase Cloud Messaging to a Nostr-relay-based delivery path through UnifiedPush, and improves iOS VoIP and APNs push reliability during login retries.
+[Nostur 1.30.1](https://github.com/nostur-com/nostur-ios-public/releases/tag/1.30.1), a Nostr client for iPhone, iPad, and Mac, lets people work through nested reply threads without the expansion and collapse failures that disrupted the new layout. It also prevents the same draft from publishing twice, including when media-upload callbacks repeat. The release follows [1.30.0](https://github.com/nostur-com/nostur-ios-public/releases/tag/1.30.0), which added disappearing direct messages and a share-sheet route for sending media into Nostr, so the app now pairs new messaging and publishing paths with fixes to their everyday thread and posting flows.
 
-### Kubo ships tablet mode and group-chat photos
+### Formstr Drive 0.0.2 pairs Nostr file metadata with Blossom blobs
 
-[Kubo](https://github.com/JeroenOnNostr/kubo) is a child-safe Nostr video platform with Web-of-Trust feed curation, not covered since 2026-06-24. [kubo-v2026.07.05](https://github.com/JeroenOnNostr/kubo/releases/tag/kubo-v2026.07.05) adds an opt-in tablet grid layout for the child feed and support for attaching photos to group-chat messages, plus fixes for the sign-up button hiding behind the on-screen keyboard on Android.
+[Formstr Drive 0.0.2](https://github.com/formstr-hq/formstr-drive/releases/tag/v0.0.2), a Nostr-native file manager, gives users in-app previews and the option to open office documents in Nostr Docs. Underneath, it stores large files as chunked [Blossom](/en/topics/blossom/) blobs and deletes the remote blob when a user removes a file. A local relay keeps the app's Nostr metadata close at hand while Blossom holds the file data, separating file organization from the large bytes themselves.
 
-### Nostr Codex Phone v0.2.9 adds git/diff/read-file helper requests
+### NoorNote 1.3.1
 
-[Nostr Codex Phone](https://github.com/tidley/nostr-codex-phone) is a mobile control surface for a local coding-assistant worker communicating over encrypted Nostr DMs, which launched in #29. [v0.2.9](https://github.com/tidley/nostr-codex-phone/releases/tag/v0.2.9) adds mobile OpenCode tool actions including git, diff, read-file, status, and history helper requests, session pin and search improvements, and a task-stop control, alongside an encrypted [Blossom](/en/topics/blossom/) upload wrapper that shipped in the preceding v0.2.8.
+[NoorNote 1.3.1](https://github.com/77elements/noornote/releases/tag/v1.3.1), a Nostr client for web, desktop, and Android, adds disappearing-message timers and configures working default DM relays for newly created accounts. It filters global articles without cover images and routes repost notifications into the article reader. The preceding [1.3.0 release](https://github.com/77elements/noornote/releases/tag/v1.3.0) added [NIP-53 (live activities)](/en/topics/nip-53/) cards, [NIP-68 (Picture-first feeds)](/en/topics/nip-68/) person tags, a [NIP-78 (application-data)](/en/topics/nip-78/) soft mute, and relay-seen status for notes.
 
-### GitWorkshop v3.0.3 fixes newly announced refs in the repo explorer
+### algia 0.0.133
 
-[GitWorkshop](https://github.com/DanConwayDev/gitworkshop) is a git-over-Nostr web UI for browsing and reviewing NIP-34 repositories. [v3.0.3](https://github.com/DanConwayDev/gitworkshop/releases/tag/v3.0.3) fixes the branches, tags, commits, and code-browsing views failing to resolve a ref that a repo announces after the explorer has already loaded it, alongside CI workflow-timing cleanup, confirmed directly against the tag and commit history.
+[algia 0.0.133](https://github.com/mattn/algia/releases/tag/v0.0.133), a Go command-line client for Nostr, follows [0.0.132](https://github.com/mattn/algia/releases/tag/v0.0.132), which added [NIP-29 (Relay-based Groups)](/en/topics/nip-29/) listing, timelines, posting, reactions, deletions, and join and leave flows. The same release added [NIP-42 (Authentication of clients to relays)](/en/topics/nip-42/) pre-authentication for relays configured to require it. Version 0.0.133 then added local-image uploads to regular, channel, and group posting commands, attaching the resulting URLs and [NIP-92 (Media Attachments)](/en/topics/nip-92/) tags to each event. Image-only posts work as well, and group posts target the group's relay media store by default while other posts use configured file servers.
 
-### Bitcoin-Safe reaches Flathub, spotlighting its Nostr Sync & Chat plugin
+### swift-nostr 0.7.0
 
-[Bitcoin-Safe](https://bitcoin-safe.org) is a self-custody Bitcoin wallet built around hardware-signer workflows. The project [shipped a Flathub package](https://flathub.org/apps/org.bitcoin_safe.BitcoinSafe) this week, its first listing in a mainstream Linux app store. The Flathub release puts Bitcoin-Safe's Sync & Chat plugin in front of a wider audience: the plugin uses [NIP-17](/en/topics/nip-17/) direct messages, via the project's own [bitcoin-nostr-chat](https://github.com/andreasgriffin/bitcoin-nostr-chat) library, to synchronize wallet labels between a user's devices and to send and receive PSBTs for remote multisig co-signing between trusted participants. The Nostr layer itself shipped earlier, in [2.0.0](https://github.com/andreasgriffin/bitcoin-safe/releases/tag/2.0.0) (2026-06-29), which redesigned transaction signing around a "Share via Chat & Sync" connection type alongside QR, USB, and Bluetooth; this week's news is the Flathub reach rather than new protocol work. Whether the project eventually moves this messaging layer onto [Marmot](/en/topics/marmot/) (MLS-over-Nostr) instead of individually-wrapped NIP-17 DMs is worth watching as group-signing setups grow past two or three participants.
+For Swift applications, [swift-nostr 0.7.0](https://github.com/yysskk/swift-nostr/releases/tag/0.7.0), a Nostr library for Apple platforms, lets one [NIP-46 remote signer](/en/topics/nip-46/) drive every client feature through its signing abstraction. The release adds [NIP-98 (HTTP Auth)](/en/topics/nip-98/) and [NIP-29 (Relay-based Groups)](/en/topics/nip-29/) support, including group joining, posting, and moderation flows. It also validates [NIP-44 (Encrypted Payloads, Versioned)](/en/topics/nip-44/) padding against the official vectors, rejecting payloads that carry a valid MAC over noncanonical padding.
+
+### lawallet-nwc 2.0.0
+
+[LaWallet NWC 2.0.0](https://github.com/lawalletio/lawallet-nwc/releases/tag/v2.0.0), a Nostr-connected wallet and [NIP-47 (Nostr Wallet Connect)](/en/topics/nip-47/) service, adds passkey login that derives the Nostr signing key in the browser with the WebAuthn PRF extension. The server never receives that secret, and the same passkey can recover the same key on another synced device. Accounts can now link and merge multiple Nostr pubkeys, while the optional listener service relays wallet-connect events and retries webhook delivery after an unreachable endpoint.
+
+### MDK 0.9.10
+
+[MDK 0.9.10](https://github.com/marmot-protocol/mdk/releases/tag/v0.9.10), the Rust implementation of the [Marmot protocol](/en/topics/marmot/), retains pending sends while a transport is inactive and [supervises relay-notification forwarding](https://github.com/marmot-protocol/mdk/pull/1157) so inbound delivery recovers after lag, panic, or closure. [PR #1159](https://github.com/marmot-protocol/mdk/pull/1159) adds durable, paginated conversation history and full reply context for local agents, and [PR #1167](https://github.com/marmot-protocol/mdk/pull/1167) republishes the current signed KeyPackage event instead of generating a replacement. The release also preserves manual chat ordering, supports terminal group disbanding, and expands Web of Trust-ranked search, relay policy APIs, and language bindings.
+
+### pakstr 0.3.1
+
+[pakstr 0.3.1](https://git.nostrdev.com/stuff/pakstr/releases/tag/v0.3.1) lets web teams packaging a Nostr client for Android supply runtime configuration and an API proxy without rebuilding the app shell. Its [same-day release series](https://git.nostrdev.com/stuff/pakstr/releases) added an Amber signer bridge, [NIP-44 (encrypted payloads)](/en/topics/nip-44/) encryption and decryption, and corrected Android permission injection before the 0.3.x runtime-configuration work. The scaffold keeps bundled web assets local while deployment-specific settings arrive at runtime, and the proxy gives the wrapped app a controlled route for API requests alongside its ordinary relay connections.
+
+### Ditto 2.34.2
+
+[Ditto 2.34.2](https://gitlab.com/soapbox-pub/ditto/-/releases/v2.34.2), a customizable Nostr social client, renders user statuses as cards in feeds, detail pages, and quote embeds, including custom emoji, expiry, and optional link previews. Zaps with comments now appear as replies beneath the referenced post. The release also retains the [optional profile globe button from 2.34.1](https://gitlab.com/soapbox-pub/ditto/-/releases/v2.34.1) for owners who publish a [NIP-5A (website manifest)](/en/topics/nip-5a/) root site, and fixes homepage navigation, live-stream search, external-link handling, and broken custom emoji.
+
+### Earthly 0.0.9
+
+[Earthly 0.0.9](https://github.com/zeSchlausKwab/earthly/releases/tag/v0.0.9), a collaborative map editor built on Nostr, now keeps likes visible when a map entity drawer closes, reopens, or refreshes. Its [NIP-57 (Lightning zaps)](/en/topics/nip-57/) flow sends valid zap-request JSON so Lightning providers can publish verified receipts to publicly reachable relays, including during local development. Generated invoices remain visible across entity-surface changes, and the app shows confirmation after a verified receipt arrives.
+
+GATE: PASS

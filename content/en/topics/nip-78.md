@@ -45,6 +45,8 @@ NIP-78 deliberately leaves the content format open — applications choose their
 
 - [Tamagostrich](https://github.com/Negr087/tamagostrich) — pet state sync across devices via `tamagostrich-pet-state` kind:30078 events
 - [Wisp](https://github.com/barrydeen/wisp-android) — kind:30078 wallet backup and cross-device security settings sync; outbox subscriptions merged into a single REQ using NIP-78 author filter
+- [NoorNote](https://github.com/77elements/noornote) — encrypted soft-mute synchronization
+- [Amethyst](https://github.com/vitorpamplona/amethyst) — per-account bottom-bar state synchronized between devices
 - [NosPress](https://github.com/nostrapps/nospress) — CMS orchestration state stored in NIP-78 events
 - Several Nostr client settings sync implementations (Amethyst, others)
 
@@ -53,10 +55,14 @@ NIP-78 deliberately leaves the content format open — applications choose their
 **Primary sources:**
 - [NIP-78 Specification](https://github.com/nostr-protocol/nips/blob/master/78.md)
 - [Tamagostrich](https://github.com/Negr087/tamagostrich) — production implementation
+- [NoorNote 1.3.0](https://github.com/77elements/noornote/releases/tag/v1.3.0) — encrypted soft-mute synchronization
+- [Amethyst PR #3755](https://github.com/vitorpamplona/amethyst/pull/3755) — per-account synced navigation state
 
 **Mentioned in:**
-- [Newsletter #22: NIP-78 Deep Dive](/en/newsletters/2026-05-14-newsletter/#nip-deep-dive-nip-78-app-specific-data)
-- [Newsletter #22: Tamagostrich](/en/newsletters/2026-05-14-newsletter/#tamagostrich-launches-a-decentralized-nip-78-tamagotchi-with-sats-rewards)
+- [Newsletter #22: NIP-78 Deep Dive](/en/newsletters/2026-05-13-newsletter/#nip-deep-dive-nip-78-app-specific-data)
+- [Newsletter #22: Tamagostrich](/en/newsletters/2026-05-13-newsletter/#tamagostrich-launches-a-decentralized-nip-78-tamagotchi-with-sats-rewards)
+- [Newsletter #33: Tagged releases](/en/newsletters/2026-07-29-newsletter/#tagged-releases)
+- [Newsletter #33: Unreleased app/client changes](/en/newsletters/2026-07-29-newsletter/#in-development)
 
 **See also:**
 - [NIP-51: Lists](/en/topics/nip-51/)

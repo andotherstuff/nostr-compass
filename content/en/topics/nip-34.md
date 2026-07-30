@@ -40,7 +40,7 @@ The canonical ngit repository announcement looks like this:
 
 Patches use kind `1617` and carry the output of `git format-patch` in the `content` field. Each patch references the target repository through an `a` tag of the form `30617:<maintainer-pubkey>:<d-tag>`. Patch series use a `t` tag of `root` for the cover letter and chain follow-ups with [NIP-10](/en/topics/nip-10/) `e` reply tags. For maintainers who want stable commit IDs after applying a patch, the patch can include `commit`, `parent-commit`, `committer`, and `commit-pgp-sig` tags so the resulting commit hash matches the proposer's machine. The 60 KB rule of thumb is the dividing line: anything below that limit ships as a patch event, while larger changesets go out as pull requests with a separate branch tip.
 
-Pull requests use kind `1618` and carry markdown text in the content body. A PR points to a branch tip with a `c` tag (current commit ID), a `clone` tag listing where the commit can be fetched, an optional `branch-name` suggestion, and an optional `merge-base` tag for the most recent common ancestor with the target branch. Before signing the PR event, clients SHOULD push the branch tip to `refs/nostr/<event-id>` on every clone URL the user can write to, including any GRASP server identified by the `clone`/`relays` tag pattern. If the user lacks write access to the listed clone URLs, the client MAY publish a `personal-fork` repository announcement that lists alternative GRASP servers (such as those in the user's GRASP list) and pushes there instead. Updates to the branch tip are published as kind `1619` PR Update events that reference the original PR through capital-letter `E` and `P` tags, matching [NIP-22](/en/topics/nip-22/) reply conventions.
+Pull requests use kind `1618` and carry markdown text in the content body. An `a` tag identifies the target repository, an `r` tag carries that repository's earliest unique commit, and `c` plus `clone` tags identify the proposed branch tip and at least one location where it can be fetched. Optional `branch-name` and `merge-base` tags give maintainers additional integration context. Updates to the branch tip use kind `1619` PR Update events that reference the original PR through capital-letter `E` and `P` tags, matching [NIP-22](/en/topics/nip-22/) reply conventions. [PR #2423](https://github.com/nostr-protocol/nips/pull/2423) removed GRASP-specific push and fallback instructions from this section in July 2026, leaving hosting policy to clients and git servers while NIP-34 defines the pull-request event semantics.
 
 Issues use kind `1621` with markdown content and an optional `subject` tag for display. Replies to any NIP-34 thread (issues, patches, and pull requests alike) follow standard [NIP-22](/en/topics/nip-22/) comment threading. Status events let the issue/patch author or a maintainer move a thread between Open (`1630`), Applied/Merged or Resolved (`1631`), Closed (`1632`), and Draft (`1633`). The most recent valid status event by `created_at` wins. When a `1631` is published, the maintainer can include `merge-commit` with the resulting commit ID and `applied-as-commits` listing every commit that landed in the target branch, plus `q` tags for each accepted patch revision. That payload gives clients enough information to display merge state without an external API call: the patch is checked off, the merge commit is linkable, and downstream tooling can verify the commits in any clone of the repository.
 
@@ -99,6 +99,8 @@ NIP-34 splits discovery from transport. The repository data can still live on or
 - [PR #997 (original NIP-34 merge, March 2024)](https://github.com/nostr-protocol/nips/pull/997) - over 130 comments and 44 days of discussion
 - [PR #2130 (git-related follow lists)](https://github.com/nostr-protocol/nips/pull/2130) - kind `30000` follow sets with `git-repos` and `git-issues` `d` tags
 - [PR #2312 (`nostr://` clone URL scheme)](https://github.com/nostr-protocol/nips/pull/2312) - three URL forms, RFC 3986 percent-encoding, `d` tag tightening
+- [PR #2423 (pull-request semantics)](https://github.com/nostr-protocol/nips/pull/2423) - removes GRASP-specific hosting guidance from the pull-request definition
+- [GitWorkshop July 27 release](https://primal.net/e/869e01f9a74d98f468a66f3b83865d198a82cc718c1db36324398b1b88a17c60) - maintainer coordination and independent repository synchronization
 
 **Mentioned in:**
 
@@ -115,6 +117,8 @@ NIP-34 splits discovery from transport. The repository data can still live on or
 - [Newsletter #20 (2026-04-29): April 2026: NIP-34 hardening, badges, and adoption-focused grants](/en/newsletters/2026-04-29-newsletter/#april-2026-nip-34-hardening-badges-and-adoption-focused-grants)
 - [Newsletter #31 (2026-07-15): GitWorkshop v3.0.3 fixes newly announced refs in the repo explorer](/en/newsletters/2026-07-15-newsletter/#gitworkshop-v303-fixes-newly-announced-refs-in-the-repo-explorer)
 - [Newsletter #32 (2026-07-22): Armada and nak add NIP-34 workspace and CLI support](/en/newsletters/2026-07-22-newsletter/#armada-v0370-opens-buzz-workspaces-from-a-second-client)
+- [Newsletter #33: Lead stories](/en/newsletters/2026-07-29-newsletter/#top-stories)
+- [Newsletter #33: Protocol work and NIP updates](/en/newsletters/2026-07-29-newsletter/#protocol-and-spec-work)
 
 **See also:**
 

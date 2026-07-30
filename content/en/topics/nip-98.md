@@ -47,8 +47,13 @@ Blossom servers use NIP-98 to authenticate file uploads and deletions, tying sto
 
 **Primary sources:**
 - [NIP-98 Specification](https://github.com/nostr-protocol/nips/blob/master/98.md) - HTTP Auth
+- [Hanami for Android](https://github.com/Letdown2491/hanami-android) - native kind 27235 session handshake
+- [Formstr Drive 0.0.2](https://github.com/formstr-hq/formstr-drive/releases/tag/v0.0.2) - authenticated file deletion
+- [swift-nostr 0.7.0](https://github.com/yysskk/swift-nostr/releases/tag/0.7.0) - Swift HTTP-authentication support
+- [Zap Cooking PR #599](https://github.com/zapcooking/frontend/pull/599) - scanner authentication bound to the request body
 
 **Mentioned in:**
 - [Newsletter #15](/en/newsletters/2026-03-25-newsletter/)
-- [Newsletter #22: NIP-98 Deep Dive](/en/newsletters/2026-05-14-newsletter/#nip-deep-dive-nip-98-http-auth)
+- [Newsletter #22: NIP-98 Deep Dive](/en/newsletters/2026-05-13-newsletter/#nip-deep-dive-nip-98-http-auth)
 - [Newsletter #31: NIP Deep Dive, NIP-99 and Gamma Markets (Shopstr's NIP-98 auth parser test coverage)](/en/newsletters/2026-07-15-newsletter/#nip-deep-dive-nip-99-and-the-gamma-markets-commerce-extension)
+- [Newsletter #33: Lead stories](/en/newsletters/2026-07-29-newsletter/#top-stories)

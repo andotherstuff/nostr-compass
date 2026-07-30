@@ -50,6 +50,8 @@ Recent spec changes moved hashtags out of generic bookmarks and into interest se
 
 **Primary sources:**
 - [NIP-51 Specification](https://github.com/nostr-protocol/nips/blob/master/51.md)
+- [Favorite follow sets PR #2413](https://github.com/nostr-protocol/nips/pull/2413)
+- [Kind-collision renumbering PR #2417](https://github.com/nostr-protocol/nips/pull/2417)
 
 **Mentioned in:**
 - [Newsletter #1: NIP Updates](/en/newsletters/2025-12-17-newsletter/#nip-updates)
@@ -58,6 +60,7 @@ Recent spec changes moved hashtags out of generic bookmarks and into interest se
 - [Newsletter #8: njump Adds NIP-51 Support](/en/newsletters/2026-02-04-newsletter/#njump)
 - [Newsletter #27: Citrine v3.0.0 ships Negentropy, NIP-42 AUTH, and onion-relay filtering](/en/newsletters/2026-06-17-newsletter/#citrine-v3-0-0-ships-negentropy-nip-42-auth-and-onion-relay-filtering)
 - [Newsletter #32: News](/en/newsletters/2026-07-22-newsletter/#the-favorite-follow-sets-list-kind-merges-and-immediately-moves-house)
+- [Newsletter #33: Six Years of Nostr Julys](/en/newsletters/2026-07-29-newsletter/#six-years-of-nostr-julys)
 
 **See also:**
 - [NIP-02: Follow List](/en/topics/nip-02/)

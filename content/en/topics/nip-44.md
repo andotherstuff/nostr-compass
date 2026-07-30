@@ -63,6 +63,10 @@ NIP-44 revision 3 was merged in December 2023 following an independent Cure53 se
 - [NIP-44 Specification](https://github.com/nostr-protocol/nips/blob/master/44.md)
 - [NIP-44 Reference Implementations](https://github.com/paulmillr/nip44)
 - [Cure53 Audit Report](https://cure53.de/audit-report_nip44-implementations.pdf)
+- [swift-nostr 0.7.0](https://github.com/yysskk/swift-nostr/releases/tag/0.7.0) - strict NIP-44 test vectors
+- [pakstr 0.3.1](https://git.nostrdev.com/stuff/pakstr/releases/tag/v0.3.1) - Android encryption support
+- [Device pairing PR #2328](https://github.com/nostr-protocol/nips/pull/2328) - encrypted one-time device transfer channel
+- [Private location PR #2309](https://github.com/nostr-protocol/nips/pull/2309) - recipient-specific encrypted location payloads
 
 **Mentioned in:**
 - [Newsletter #4: NIP Deep Dive](/en/newsletters/2026-01-07-newsletter/#nip-44-versioned-encryption)
@@ -73,6 +77,7 @@ NIP-44 revision 3 was merged in December 2023 following an independent Cure53 se
 - [Newsletter #19: nostter NIP-44 migration](/en/newsletters/2026-04-22-newsletter/#nostter-adds-nip-44-encryption-across-people-lists-bookmarks-and-mutes)
 - [Newsletter #19: nowhere encrypts Nostr traffic](/en/newsletters/2026-04-22-newsletter/#nowhere-encodes-full-websites-into-url-fragments-and-routes-orders-through-nostr)
 - [Newsletter #27: Signet v1.11.0 patches a NIP-17 admin-command signature bypass](/en/newsletters/2026-06-17-newsletter/#signet-v1-11-0-patches-a-nip-17-admin-command-signature-bypass)
+- [Newsletter #33: Tagged releases](/en/newsletters/2026-07-29-newsletter/#tagged-releases)
 
 **See also:**
 - [NIP-04: Encrypted Direct Messages (deprecated)](/en/topics/nip-04/)

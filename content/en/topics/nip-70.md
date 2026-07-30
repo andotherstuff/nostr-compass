@@ -53,11 +53,13 @@ That is why follow-up work matters. [PR #2251](https://github.com/nostr-protocol
 - [PR #1030](https://github.com/nostr-protocol/nips/pull/1030) - Added NIP-70 to the NIPs repository
 - [PR #2251](https://github.com/nostr-protocol/nips/pull/2251) - Reject reposts that embed protected events
 - [strfry PR #156](https://github.com/hoytech/strfry/pull/156) - Relay implementation for NIP-42 auth and protected events
+- [Protected-event commit](https://github.com/nostr-protocol/nips/commit/ae1906ec7943a6bd756f05d2cd2fb2a041398921)
 
 **Mentioned in:**
 - [Newsletter #13: NIP Updates](/en/newsletters/2026-03-11-newsletter/#nip-updates)
 - [Newsletter #13: NIP Deep Dive](/en/newsletters/2026-03-11-newsletter/#nip-deep-dive-nip-70-protected-events)
 - [Newsletter #23: NIP Updates](/en/newsletters/2026-05-21-newsletter/#nip-updates)
+- [Newsletter #33: Six Years of Nostr Julys](/en/newsletters/2026-07-29-newsletter/#six-years-of-nostr-julys)
 
 **See also:**
 - [NIP-42: Client Authentication](/en/topics/nip-42/)

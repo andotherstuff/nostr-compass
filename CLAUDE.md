@@ -283,7 +283,8 @@ compass-publish <N> --stage sign
 - Client key: `~/.config/compass-publish/client_key` (never rotate)
 - Author: see `publish/config/author.json`
 - Relays: see `publish/config/relays.json`
-- Input file: `/tmp/<N>publish.md` (5 blocks: title, 21-word TLDR, banner URL, announcement, body)
+- Input file: `/tmp/<N>publish.md` (4 blocks: title, 21-word TLDR, banner URL, body)
+- Kind 1 text is generated mechanically from the newsletter body before the first horizontal rule or H2. The pipeline drops the generic welcome line, adds a short editorial intro, keeps the dense opening digest and inline npub mentions, removes markdown link wrappers, then appends the article naddr.
 
 **Before publishing:** check `publish/published.json` — if the issue is already there, do not publish again.
 

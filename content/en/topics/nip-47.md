@@ -37,6 +37,9 @@ NIP-44 is now the preferred encryption mode. The spec still documents NIP-04 fal
 - [NIP-47 Specification](https://github.com/nostr-protocol/nips/blob/master/47.md)
 - [PR #1913: Hold Invoice Support](https://github.com/nostr-protocol/nips/pull/1913)
 - [PR #2210: Simplification](https://github.com/nostr-protocol/nips/pull/2210)
+- [NIP-44 negotiation commit](https://github.com/nostr-protocol/nips/commit/f30a43bd37e08516923b96dd0d860122c9ffe04e)
+- [Transaction-state commit](https://github.com/nostr-protocol/nips/commit/0595d438aaa163dd33ed00748026698a411a0861)
+- [LaWallet NWC 2.0.0](https://github.com/lawalletio/lawallet-nwc/releases/tag/v2.0.0) - passkey-derived Nostr keys and a standalone NWC relay bridge
 
 **Mentioned in:**
 - [Newsletter #1: News](/en/newsletters/2025-12-17-newsletter/#news)
@@ -49,6 +52,8 @@ NIP-44 is now the preferred encryption mode. The spec still documents NIP-04 fal
 - [Newsletter #27: Alby Hub v1.23.0 fixes NIP-47 publish for deleted apps and switches Bitrefill to NWC](/en/newsletters/2026-06-17-newsletter/#alby-hub-v1230-fixes-nip-47-publish-for-deleted-apps-and-switches-bitrefill-to-nwc)
 - [Newsletter #31: cdk v0.17.3 adds NIP-47 wallet-service support across cdk, cdk-nwc, and cdk-ffi](/en/newsletters/2026-07-15-newsletter/#cdk-v0173-adds-nip-47-wallet-service-support-across-cdk-cdk-nwc-and-cdk-ffi)
 - [Newsletter #32: NIP Updates](/en/newsletters/2026-07-22-newsletter/#protocol-work-and-nip-updates)
+- [Newsletter #33: Tagged releases](/en/newsletters/2026-07-29-newsletter/#tagged-releases)
+- [Newsletter #33: Six Years of Nostr Julys](/en/newsletters/2026-07-29-newsletter/#six-years-of-nostr-julys)
 
 **See also:**
 - [NIP-57: Zaps](/en/topics/nip-57/)

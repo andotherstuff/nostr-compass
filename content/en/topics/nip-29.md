@@ -46,6 +46,7 @@ That makes migration and forking possible, but not automatic. The same group id 
 
 - [Flotilla](https://gitea.coracle.social/coracle/flotilla) is hodlbod's primary NIP-29 client; [1.7.3](https://gitea.coracle.social/coracle/flotilla/src/tag/1.7.3) and [1.7.4](https://gitea.coracle.social/coracle/flotilla/src/tag/1.7.4) shipped kind-9 wrapping, polls, [NIP-46](/en/topics/nip-46/) login via the Aegis URL scheme, native share support for space invites, room mentions, mobile clipboard image paste, and drafts. [1.8.0](https://gitea.coracle.social/coracle/flotilla/src/tag/1.8.0) added video in calls, email rendering, and improved space search.
 - [Wisp](https://github.com/barrydeen/wisp) added NIP-29 group configuration for flags, invites, roles, and AUTH prompts in [PR #471](https://github.com/barrydeen/wisp/pull/471) and hardened AUTH sequencing before group `9021`, `9007`, and `9009` events in [PR #478](https://github.com/barrydeen/wisp/pull/478).
+- [Mosaico](https://github.com/pablof7z/mosaico) uses NIP-29 groups as a shared-awareness fabric for coding-agent sessions, carrying presence, status, channels, and direct mentions across supported agent harnesses.
 
 ---
 
@@ -57,8 +58,13 @@ That makes migration and forking possible, but not automatic. The same group id 
 - [PR #2310](https://github.com/nostr-protocol/nips/pull/2310) - Kind-9 wrapping for non-chat content
 - [PR #2319](https://github.com/nostr-protocol/nips/pull/2319) - Subgroups spec
 - [PR #2316](https://github.com/nostr-protocol/nips/pull/2316) - Explicit role permissions on kind 39003
+- [PR #2379](https://github.com/nostr-protocol/nips/pull/2379) - Ordered group message pinning
+- [PR #2416](https://github.com/nostr-protocol/nips/pull/2416) - Addressable events in group pin lists
 - [Flotilla 1.7.4](https://gitea.coracle.social/coracle/flotilla/src/tag/1.7.4)
 - [Wisp PR #471](https://github.com/barrydeen/wisp/pull/471) - NIP-29 group configuration
+- [algia 0.0.133](https://github.com/mattn/algia/releases/tag/v0.0.133) - group posting and membership flows
+- [Citrine PR #178](https://github.com/greenart7c3/Citrine/pull/178) - Android relay group administration through Amber
+- [Mosaico 0.1.2](https://github.com/pablof7z/mosaico/releases/tag/v0.1.2) - shared-awareness fabric for coding-agent sessions
 
 **Mentioned in:**
 - [Newsletter #2: NIP Updates](/en/newsletters/2025-12-24-newsletter/#nip-updates)
@@ -69,10 +75,14 @@ That makes migration and forking possible, but not automatic. The same group id 
 - [Newsletter #19: Flotilla 1.7.3/1.7.4](/en/newsletters/2026-04-22-newsletter/#flotilla-173-and-174-add-kind-9-wrapping-for-richer-nip-29-rooms)
 - [Newsletter #19: Wisp NIP-29 config](/en/newsletters/2026-04-22-newsletter/#wisp-v0180-beta-adds-normie-mode-for-you-feed-and-nip-29-group-config)
 - [Newsletter #19: NIP Updates (subgroups, role permissions)](/en/newsletters/2026-04-22-newsletter/#nip-updates)
-- [Newsletter #22: Flotilla 1.8.0](/en/newsletters/2026-05-14-newsletter/#flotilla-180-ships-video-calls-email-rendering-and-room-mentions)
+- [Newsletter #22: Flotilla 1.8.0](/en/newsletters/2026-05-13-newsletter/#flotilla-180-ships-video-calls-email-rendering-and-room-mentions)
 - [Newsletter #27: NIP updates and protocol spec work](/en/newsletters/2026-06-17-newsletter/#nip-updates-and-protocol-spec-work)
 - [Newsletter #31: Open: NIP-29 message pinning with kind:9010 and kind:39005](/en/newsletters/2026-07-15-newsletter/#open-nip-29-message-pinning-with-kind9010-and-kind39005)
 - [Newsletter #32: News](/en/newsletters/2026-07-22-newsletter/#nostrord-v230-ships-group-moderation-mute-lists-and-onion-relays)
+- [Newsletter #33: Mosaico 0.1.2](/en/newsletters/2026-07-29-newsletter/#mosaico-012-lets-coding-agents-share-status-over-nostr)
+- [Newsletter #33: Tagged releases](/en/newsletters/2026-07-29-newsletter/#tagged-releases)
+- [Newsletter #33: Unreleased app/client changes](/en/newsletters/2026-07-29-newsletter/#in-development)
+- [Newsletter #33: Six Years of Nostr Julys](/en/newsletters/2026-07-29-newsletter/#six-years-of-nostr-julys)
 
 **See also:**
 - [NIP-11: Relay Information Document](/en/topics/nip-11/)
