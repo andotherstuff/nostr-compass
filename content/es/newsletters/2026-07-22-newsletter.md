@@ -2,7 +2,7 @@
 title: 'Nostr Compass #32'
 date: 2026-07-22
 translationOf: /en/newsletters/2026-07-22-newsletter.md
-translationDate: 2026-07-22
+translationDate: 2026-07-30
 draft: false
 type: newsletters
 description: "IndieSats abandona su papel de editor y se relanza como infraestructura abierta de música en Nostr, Nostrord v2.3.0 entrega el lado cliente de una semana de cinco PRs de la spec NIP-29, Zapstore 1.1.0 hace portátil la clave del dispositivo y trae actualizaciones automáticas en segundo plano, los favorite follow sets se fusionan y renumeran de inmediato, y el ecosistema Iris entrega una biblioteca pubsub, un runtime FIPS para el navegador y nostr-social-graph 2.0."

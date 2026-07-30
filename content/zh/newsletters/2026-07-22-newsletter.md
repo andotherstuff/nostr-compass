@@ -2,7 +2,7 @@
 title: 'Nostr Compass #32'
 date: 2026-07-22
 translationOf: /en/newsletters/2026-07-22-newsletter.md
-translationDate: 2026-07-22
+translationDate: 2026-07-30
 draft: false
 type: newsletters
 description: "IndieSats 放弃发布者角色，转型为开放的 Nostr 音乐基础设施重新上线；Nostrord v2.3.0 在一周内五个 NIP-29 规范 PR 合并之际推出客户端侧实现；Zapstore 1.1.0 让设备密钥可移植并带来后台自动更新；收藏关注集 list kind 合并后立即重新编号；Iris 项目一周内推出 pubsub 库、浏览器 FIPS 运行时和 nostr-social-graph 2.0。"

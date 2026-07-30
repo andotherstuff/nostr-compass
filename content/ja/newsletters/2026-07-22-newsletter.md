@@ -2,7 +2,7 @@
 title: 'Nostr Compass #32'
 date: 2026-07-22
 translationOf: /en/newsletters/2026-07-22-newsletter.md
-translationDate: 2026-07-22
+translationDate: 2026-07-30
 draft: false
 type: newsletters
 ---
