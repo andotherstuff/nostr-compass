@@ -9,11 +9,11 @@ type: newsletters
 
 Nostr Compass へようこそ。毎週お届けする Nostr のガイドです。
 
-**今週:** [IndieSats](#indiesats-drops-its-publisher-role-and-relaunches-as-open-nostr-music-infrastructure) は鍵のカストディ、ホワイトリスト、そして強制的な収益分配を廃止し、アーティストが自身の鍵で公開するオープンな relay、プレイヤー、発見レイヤーとして再ローンチしました。[Nostrord v2.3.0](#nostrord-v230-ships-group-moderation-mute-lists-and-onion-relays) は 5 件の [NIP-29 仕様 PR がマージされた](#protocol-work-and-nip-updates)のと同じ週に、グループモデレーション、ミュートリスト、onion relay を搭載しました。[Zapstore 1.1.0](#zapstore-110-makes-the-device-key-portable-and-adds-background-auto-updates) は Amber バックアップに対応したポータブルな暗号化デバイス鍵と、オプトインのバックグラウンド自動更新を導入しました。[お気に入りフォローセットのリスト kind](#the-favorite-follow-sets-list-kind-merges-and-immediately-moves-house) はマージされ、数日以内にリナンバリング PR がオープンしました。そして [Iris エコシステム](#the-iris-ecosystem-ships-a-pubsub-library-a-browser-fips-runtime-and-a-social-graph-20-in-one-week)は 1 週間で nostr-pubsub、ブラウザ向け fips-ts ランタイム、nostr-social-graph 2.0.0 を出荷しました。
+**今週:** [IndieSats](#indiesats-drops-its-publisher-role-and-relaunches-as-open-nostr-music-infrastructure) は鍵の管理、ホワイトリスト、必須の収益分配を廃止し、アーティストが自分の鍵で公開できるオープンな relay、プレイヤー、ディスカバリーレイヤーとして再出発しました。[Nostrord v2.3.0](#nostrord-v230-ships-group-moderation-mute-lists-and-onion-relays) は、5 件の [NIP-29 仕様 PR がマージされた](#protocol-work-and-nip-updates)のと同じ週に、グループモデレーション、ミュートリスト、onion relay を実装しました。[Zapstore 1.1.0](#zapstore-110-makes-the-device-key-portable-and-adds-background-auto-updates) は、Amber でバックアップできるポータブルな暗号化デバイス鍵と、オプトインのバックグラウンド自動更新を導入しました。[お気に入りフォローセットのリスト kind](#the-favorite-follow-sets-list-kind-merges-and-immediately-moves-house) はマージされ、その数日後には番号変更の PR がオープンしました。また、[Iris プロジェクト群](#the-iris-projects-ship-a-pubsub-library-a-browser-fips-runtime-and-a-social-graph-20-in-one-week)は 1 週間で nostr-pubsub、ブラウザ向け fips-ts ランタイム、nostr-social-graph 2.0.0 をリリースしました。
 
-タグ付きリリースには、[Amber v6.3.0](#amber-v630-groups-bunker-signing-approvals-and-adds-expert-list-support) の bunker 署名承認のグループ化、[Wisp v1.2.0](#wisp-v120-adds-a-multi-account-switcher-and-collapsible-reply-threads) のマルチアカウントスイッチャー、アルファラインを継続する [Sonar v0.1-alpha.11](#sonar-v01-alpha11-continues-the-alpha-line)、そして Nostr relay 経由でクリップボードを同期する新プロジェクト [ClipRelay v0.1.2](#cliprelay-v012-new-project-syncs-clipboards-across-devices-over-nostr-relays) が含まれます。
+タグ付きリリースでは、[Amber v6.3.0](#amber-v630-groups-bunker-signing-approvals-and-adds-expert-list-support) が bunker 署名承認をグループ化し、[Armada v0.37.0](#armada-v0370-opens-buzz-workspaces-from-a-second-client) が Buzz ワークスペースに対応する 2 つ目のクライアントとなり、[Divine Mobile 1.0.17](#divine-mobile-1017-hardens-relay-security-and-dm-delivery) が NIP-17 の確実な配信と厳格な TLS 検証を追加し、[nak v0.20.2](#nak-v0202-adds-nip-34-pull-request-workflows) が NIP-34 pull request 用コマンドを導入しました。
 
-未リリースの側では、[nostream](#nostream-merges-seven-prs-without-cutting-a-release) が今週の Deep Dive で取り上げるアクセス制御スタックをマージし、[Amethyst](#amethyst-lands-v1130-pre-release-qa-on-napplet-isolation-and-concord-authority) は 81 件のマージ済み PR にわたり v1.13.0 プレリリース QA を着地させました。
+未リリースの変更では、[Snort](#snort-rewrites-query-synchronization-around-eose-proven-coverage) が EOSE で証明されたキャッシュ範囲を記録し、[Shopstr](#shopstr-binds-payment-validation-to-signed-receipts-and-server-side-prices) が決済の完全性に関する 2 つの欠陥を解消し、[Mostr](#mostr-bridges-activitypub-private-chats-and-nostr-dms) が ActivityPub のプライベートチャットと Nostr DM を橋渡ししました。[nostream](#nostream-merges-eight-prs-without-cutting-a-release) は今週の Deep Dive で取り上げるアクセス制御スタックをマージし、[Amethyst](#amethyst-lands-v1130-pre-release-qa-on-napplet-isolation-and-concord-authority) は Desktop での完全な NIP-88 投票対応を含む 88 件の PR をマージしました。
 
 NIPs リポジトリは今週 5 件の PR をマージしました。[NIP-29 クラスター](#protocol-work-and-nip-updates)と [kind:10011 お気に入りフォローセット](#the-favorite-follow-sets-list-kind-merges-and-immediately-moves-house)を含み、[NIP-47 の簡素化](#protocol-work-and-nip-updates)と[信頼済み relay アサーション](#protocol-work-and-nip-updates)についての議論が始まっています。Deep Dive では [NIP-42 と NIP-43、relay アクセス制御のペア](#nip-deep-dive-nip-42-and-nip-43)を取り上げます。
 
@@ -23,7 +23,7 @@ NIPs リポジトリは今週 5 件の PR をマージしました。[NIP-29 ク
 
 ### IndieSats がパブリッシャーの役割を手放し、オープンな Nostr 音楽インフラとして再ローンチ
 
-[IndieSats](https://zapstore.dev) は Nostr ベースの音楽プラットフォームで、今週まではパブリッシャーとして機能していました。アーティストの鍵を預かり、ホワイトリストを運用し、収益から強制的に 2% を徴収していました。[7 月 20 日に公開されたピボット発表](https://njump.me/nevent1qqsr4awwnfndnnz77zanjxarw6nd0uld0ckayxp2navz0u9tzzwfweqpzamhxue69uhhyetvv9ujuurjd9kkzmpwdejhgtczyquwq70hxz22lzytw65rnnjewg0lj8a74khxa8h9j47q38pdnqy3kqcyqqqqqqgz8083u)で、プロジェクトはこれら 3 つの役割をすべて一度に手放しました。再ローンチされたプラットフォームは、オープンな relay、プレイヤー、発見レイヤーという 3 つのオープンインフラとなり、アーティストはプラットフォームがカストディするアイデンティティではなく、自身の Nostr プロフィールで音楽を公開します。収益分配はオプトインとなり強制ではなくなり、プラットフォームは [NIP-09](/ja/topics/nip-09/) の kind:5 削除リクエストを尊重するため、アーティストは自分の作品を削除できます。プロトコルがプラットフォームに置き換わることがよく語られるこの分野で、これはプラットフォームが自発的にプロトコルの部品へと解体していく生きた事例です。
+[IndieSats](https://zapstore.dev) は Nostr ベースの音楽プラットフォームで、今週まではパブリッシャーとしてアーティストの鍵を預かり、ホワイトリストを運用し、収益の 2% を必須で受け取っていました。[7 月 20 日に公開された方針転換の発表](https://njump.me/nevent1qqsr4awwnfndnnz77zanjxarw6nd0uld0ckayxp2navz0u9tzzwfweqpzamhxue69uhhyetvv9ujuurjd9kkzmpwdejhgtczyquwq70hxz22lzytw65rnnjewg0lj8a74khxa8h9j47q38pdnqy3kqcyqqqqqqgz8083u)で、プロジェクトはこれら 3 つの役割を同時に廃止しました。再出発したプラットフォームは、オープンな relay、プレイヤー、ディスカバリーレイヤーという 3 つのオープンインフラで構成され、アーティストは自分の Nostr プロフィールで音楽を公開します。トラックごとの 2% のプラットフォーム分配は任意ですが、公開時にはデフォルトで選択されており、アーティストはこれを解除して支払いの全額を受け取れます。また、プラットフォームは [NIP-09](/ja/topics/nip-09/) の kind:5 削除リクエストに従うため、アーティストは作品を削除できます。[7 月 21 日公開の v1.1.5 更新](https://zapstore.dev/apps/com.indiesats.app)では、トラック公開を Amethyst などの Nostr 音楽クライアントが想定する event 形式に変更し、relay への配信を明示的にしました。プロトコルがプラットフォームに置き換わると語られがちな分野で、これはプラットフォームが自らをプロトコルの構成要素へと分解した実例です。
 
 ### Nostrord v2.3.0 がグループモデレーション、ミュートリスト、onion relay を出荷
 
@@ -31,13 +31,13 @@ Android、iOS、web、デスクトップ向けのグループチャットクラ�
 
 ### Zapstore 1.1.0 がデバイス鍵をポータブル化し、バックグラウンド自動更新を追加
 
-[Zapstore](https://github.com/zapstore/zapstore) は Nostr ネイティブなアプリストアで、リリースは開発者の鍵で署名され、中央の運営者がそれを保証することはありません。3 月上旬以来ここで取り上げる最初のリリースとなる [バージョン 1.1.0](https://github.com/zapstore/zapstore/releases/tag/1.1.0) は、従来型アプリストアとの最大の 2 つのギャップを埋めます。1 つ目は更新です。オプトインのバックグラウンド自動更新が Wi-Fi 経由でダウンロードし、サイレントまたはステージングでインストールするため、ストアを手動で往復しなくてもアプリが最新に保たれます。2 つ目はアイデンティティの継続性です。デバイス鍵がポータブルかつ暗号化され、Android 署名者インターフェースである [NIP-55](/ja/topics/nip-55/) 経由で [Amber](https://github.com/greenart7c3/Amber) によるバックアップが可能になったため、ユーザーは携帯電話を移行しても未知のデバイスとしてやり直す必要がなくなりました。このリリースはまた、アプリカタログをデバイス署名の kind:10067 event として relay 上に移し、オーバーフローメニューからの [NIP-56](/ja/topics/nip-56/) 検証済みレポートを追加してユーザーが問題のあるアプリを他のクライアントが利用できる形で報告できるようにし、インストールが進行する前にリリースに添付された C1 プルーフを検証することで、開発者が署名したものとデバイスが実行するものの結びつきを強化しています。
+[Zapstore](https://github.com/zapstore/zapstore) は Nostr ネイティブなアプリストアで、リリースは開発者の鍵で署名され、中央の運営者がその正当性を保証することはありません。3 月上旬以来ここで取り上げる最初のリリースとなる [バージョン 1.1.0](https://github.com/zapstore/zapstore/releases/tag/1.1.0) は、従来型アプリストアとの最大の 2 つの隔たりを埋めます。更新については、オプトインのバックグラウンドダウンロードが Wi-Fi 経由で動作し、サイレントまたは段階的にインストールするため、ストアを手動で開かなくてもアプリを最新に保てます。アイデンティティの継続性は、[Amber](https://github.com/greenart7c3/Amber) に Android の署名者インターフェースである [NIP-55](/ja/topics/nip-55/) を介してバックアップできるポータブルな暗号化デバイス鍵によって実現し、端末を移行してもデバイスアイデンティティを維持できます。バージョン 1.1.0 はさらに、アプリカタログをデバイス署名の kind:10067 event として relay 上へ移し、オーバーフローメニューに [NIP-56](/ja/topics/nip-56/) の検証済み報告機能を追加して、問題のあるアプリを他のクライアントも利用できる形で報告できるようにしました。また、インストール前にリリースへ添付された C1 proof を検証し、開発者が署名した内容とデバイスが実行する内容の結び付きを強化しています。
 
 ### お気に入りフォローセットのリスト kind がマージされ、即座に引っ越し
 
 1 週間の中で仕様調整の物語が展開されました。[PR #2413](https://github.com/nostr-protocol/nips/pull/2413) は 7 月 15 日にマージされ、[NIP-51](/ja/topics/nip-51/)(リスト)の下でお気に入りフォローセットのための置き換え可能なリスト kind を標準化しました。クライアントが汎用リスト kind を濫用する代わりに、ユーザーの厳選したフォローアカウントのセットを公開できる専用 kind です。数日のうちに、割り当てられた kind:10011 がすでに他で使用されていることが判明し、フォローアップの [PR #2417](https://github.com/nostr-protocol/nips/pull/2417) がオープンしてリストを kind:10021 にリナンバリングしようとしています。マージされた kind に対してまだ何も出荷されていないため、リナンバリングするには今が安価なタイミングです。クライアントが kind:10011 event を公開し始めたら、衝突を解消するコストは高くなります。リスト消費機能を構築する開発者は、解決するまではマージされたテキストではなくリナンバリング PR を追跡すべきです。
 
-### Iris エコシステムが 1 週間で pubsub ライブラリ、ブラウザ FIPS ランタイム、ソーシャルグラフ 2.0 を出荷
+### Iris プロジェクト群が 1 週間で pubsub ライブラリ、ブラウザ FIPS ランタイム、ソーシャルグラフ 2.0 をリリース
 
 Iris 圏からの 3 つのリリースが同時に着地し、それらは相互に噛み合っています。[nostr-pubsub](https://github.com/mmalmi/nostr-pubsub) は Nostr event 向けのトランスポート中立な publish/subscribe ライブラリです。[v0.1.3 から v0.5.2 までの最初の追跡リリース](https://github.com/mmalmi/nostr-pubsub/releases)は、nostr-tools の SimplePool 上に構築されたブラウザ relay キャリア、無効な署名がサブスクライバーに到達しないようトランスポート境界でのイベント検証、そして上限付きの履歴クエリを提供します。[fips-ts](https://github.com/mmalmi/fips-ts) は、以前は Rust スタックとして利用可能だった Noise-over-secp256k1 ピアトランスポートである [FIPS](/ja/topics/fips/) を TypeScript ランタイムとしてブラウザにもたらします。リリース [0.0.24 から 0.0.30](https://github.com/mmalmi/fips-ts/releases) は WebRTC データチャネルキャリア、ピア発見のための Nostr ベースのシグナリング、最近のピアのキャッシュ、ブラウザストレージ向けの IndexedDB アダプターを追加し、このランタイムはリファレンスの Rust 実装とワイヤー互換です。3 つ目の [nostr-social-graph v2.0.0](https://github.com/mmalmi/nostr-social-graph/releases/tag/v2.0.0) はソーシャルグラフライブラリのメジャーバージョンで、Nostr アイデンティティグラフ向けの署名済みロースター操作、正規の 3 フィールド URI からブートストラップされるデバイス承認フロー、共有の Rust と TypeScript テストベクトルを備えた FIPS トランスポートアイデンティティファセットを提供します。つなぎとなる枠組みは [Iris Stack](https://stack.iris.to/) で、Blossom、Hashtree、暗号化メッセージングとともにこれらのライブラリを結びつけるプロジェクトの統合ラボです。全体として、web アプリは今や Nostr 経由でピアを発見し、暗号化された FIPS チャネルを開き、署名済みソーシャルグラフを維持でき、すべて TypeScript で実現できます。
 
@@ -53,9 +53,17 @@ Iris 圏からの 3 つのリリースが同時に着地し、それらは相互
 
 [v2.3.0](#nostrord-v230-ships-group-moderation-mute-lists-and-onion-relays) が今週のニュースセクションをリードしているため、タグ付きリリースの枠ではリード記事が扱わない部分だけを記します。v2.3.0 は #31 で取り上げた v2.2.0 の DM コントロールに続くもので、このクライアントにとって 2 週連続のリリースとなりました。
 
+### Armada v0.37.0 が Buzz ワークスペースを 2 つ目のクライアントから利用可能に
+
+[Armada](https://gitlab.com/soapbox-pub/armada) は Discord 風の Nostr クライアントです。[v0.37.0](https://gitlab.com/soapbox-pub/armada/-/commit/7a0d0ade51fb8a7bafa4513d2881d275bb2c7dde) では、拡張 [NIP-29](/ja/topics/nip-29/) ワークスペースモードとして Buzz relay に対応し、その機能を relay の [NIP-11](/ja/topics/nip-11/) メタデータから検出します。クライアントは Buzz のフォーラム投稿とコメントを kind 45001 と 45003 として表示し、編集と削除をストリームのタイムラインへ反映するほか、プレゼンス、ワークフロー、ジョブ、ハドル、共有キャンバスの各画面を追加します。Projects ワークスペースは、[NIP-34](/ja/topics/nip-34/) のリポジトリ告知、patch、pull request、issue、ステータス event を relay から直接読み取ります（[実装 commit](https://gitlab.com/soapbox-pub/armada/-/commit/7d5603a3e21d564301d667113d28de4407d6f642)）。これにより、Buzz ワークスペースは会話とリポジトリ作業の両方に対応する 2 つ目のクライアントを得ました。
+
 ### Wisp v1.2.0 がマルチアカウントスイッチャーと折りたたみ可能な返信スレッドを追加
 
 [Wisp](https://github.com/barrydeen/wisp) はウォレット機能を内蔵したプライバシー指向の Nostr クライアントです。[v1.2.0](https://github.com/barrydeen/wisp/releases/tag/v1.2.0) は再ログインなしでプロフィール間を移動できるマルチアカウントスイッチャー、長い会話向けの折りたたみ可能な返信スレッド、ノートリンクが開かれる前のトラッキングパラメータの除去、そしてウォレットの取引履歴ビューを追加します。このリリースは 2026-07-08 号で取り上げた Wisp の更新に続くものです。
+
+### Divine Mobile 1.0.17 が relay の安全性と DM 配信を強化
+
+Nostr の短編動画クライアント [Divine Mobile](https://github.com/divinevideo/divine-mobile) は、永続的なストップモーションエディターと Nostr 経路の強化を含む [1.0.17](https://github.com/divinevideo/divine-mobile/releases/tag/1.0.17) をリリースしました。ダイレクトメッセージは relay の `OK` 応答を待ち、永続キューから再試行し、受信者の kind 10050 inbox relay リストを経由するようになりました（[PR #6046](https://github.com/divinevideo/divine-mobile/pull/6046)）。NIP-46 のペアリングでは、`auth_url` challenge を復旧可能な署名手順として保持します（[PR #6151](https://github.com/divinevideo/divine-mobile/pull/6151)）。[PR #6278](https://github.com/divinevideo/divine-mobile/pull/6278) は、本番環境の relay WebSocket と、NIP-96 upload、LNURL、zap に使う HTTP request から寛容な証明書受け入れを削除し、debug 用 loopback 接続以外ではプラットフォームの TLS 検証を復元しました。中断した upload はサーバーが最後に確認した offset から再開できるため、公開処理がバックグラウンドへ移っても最初からやり直す必要がありません。
 
 ### ClipRelay v0.1.2(新プロジェクト)が Nostr relay 経由でデバイス間のクリップボードを同期
 
@@ -65,25 +73,41 @@ Iris 圏からの 3 つのリリースが同時に着地し、それらは相互
 
 先週のリードストーリー [Sonar](https://github.com/hedwig-corp/bitchat-to-sonar) は、[v0.1-alpha.11](https://github.com/hedwig-corp/bitchat-to-sonar/releases/tag/v0.1-alpha.11) をカットしました。Rust メッシュリンクエンジン、BLE とメッシュの修正、relay 診断への取り組みが含まれ、#31 で取り上げたアルファラインへの増分的なフォローアップです。
 
+### nak v0.20.2 が NIP-34 pull request のワークフローを追加
+
+Nostr のコマンドラインツール [nak](https://github.com/fiatjaf/nak) は、[v0.20.2](https://github.com/fiatjaf/nak/releases/tag/v0.20.2) をリリースしました。[NIP-34](/ja/topics/nip-34/) の pull request を作成、取得、マージするコマンドと、個別の patch を取得するコマンドを追加し、リポジトリ告知を書き換えずに push することも可能です。[11 commit のリリース差分](https://github.com/fiatjaf/nak/compare/v0.20.1...v0.20.2)には、[NIP-29](/ja/topics/nip-29/) の親グループ処理、より多くの outbox relay への問い合わせ、relay 接続 timeout の設定機能、デフォルトの `--sec` 値しかない場合の bunker 選択修正も含まれます。
+
 ### 今週の小規模ローンチ
 
-3 つの小規模リリースにそれぞれ 1 行の価値があります。Nostr 通話アプリ [noscall v0.6.0](https://github.com/sanah9/noscall/releases/tag/v0.6.0-release) はプッシュ通知を UnifiedPush に移行し、通話シグナリングを Google のプッシュインフラから切り離しました。シグナリングに Nostr を使うメッシュ VPN [nostr-vpn v4.1.1](https://github.com/mmalmi/nostr-vpn/releases/tag/v4.1.1) は Zapstore でアップデートを出荷しました。そして 2 つの新しいアプリもそこでデビューしました。Nostr と Lightning を組み合わせた音楽・ポッドキャストアグリゲーター StableKraft と、体重ロガー向けの暗号化 Nostr バックアップ Hakari です。
+4 つの小規模リリースもそれぞれ紹介します。Nostr 通話アプリ [noscall v0.6.0](https://github.com/sanah9/noscall/releases/tag/v0.6.0-release) は push notification を UnifiedPush へ移行し、通話シグナリングを Google の push インフラから切り離しました。Nostr をシグナリングに使う mesh VPN [nostr-vpn v4.1.3](https://github.com/mmalmi/nostr-vpn/releases/tag/v4.1.3) は、プラットフォーム間で exit DNS policy を統一し、WireGuard または private exit の session 終了後に元の route と DNS 状態を復元するようになりました。4 月に取り上げた Nostr と Lightning の音楽・podcast aggregator [StableKraft v1.3.0](https://github.com/ChadFarrow/stablekraft-app/releases/tag/v1.3.0) は、Android の lock screen と headset のネイティブ操作、および再生中だけ有効になる wake lock を追加し、Doze 中も音声再生を継続できるようにしました。Zapstore の新アプリ Hakari は、体重記録を暗号化された Nostr event でバックアップします。
 
 ### Amethyst が napplet 分離と Concord 権限の v1.13.0 プレリリース QA を着地
 
-[Amethyst](https://github.com/vitorpamplona/amethyst) は v1.13.0 リリースに先立ち、今週 81 件の PR をマージしました。[PR #3650](https://github.com/vitorpamplona/amethyst/pull/3650) は napplet のアカウント分離、Concord 権限の修正、その他約 30 件の修正をカバーするプレリリース QA パスで、07-21 までさらなる v1.13.0 準備 PR が着地しています。これは Amethyst のクリーンルーム版 Concord クライアント実装に関する #31 のカバレッジを継続するもので、タグ付きで出荷される前にその作業の権限と分離の振る舞いを強化しています。
+[Amethyst](https://github.com/vitorpamplona/amethyst) は v1.13.0 のリリースに先立ち、今週 88 件の PR をマージしました。[PR #3650](https://github.com/vitorpamplona/amethyst/pull/3650) は、napplet のアカウント分離、Concord の権限修正、その他約 30 件の修正を含むリリース前 QA です。期間末の作業では、Desktop に [NIP-88](https://github.com/nostr-protocol/nips/blob/master/88.md) の投票表示、作成、投票、宣言された relay に基づく集計、kind 1068 検索をすべて追加しました（[PR #3664](https://github.com/vitorpamplona/amethyst/pull/3664)）。NIP-50 検索は BM25 の関連度で結果を順位付けし、大規模な tag watcher は上限付き merge を使うようになりました（[PR #3663](https://github.com/vitorpamplona/amethyst/pull/3663)）。別の relay store 改修では、測定した cost に基づいて query index を選び、tag-author-kind index を追加し、fanout ごとに live event を 1 回だけ serialize します（[PR #3660](https://github.com/vitorpamplona/amethyst/pull/3660)）。報告された benchmark では、ある query が 149 ms から 4 ms に、一般的な DM room query が 14.2 ms から 0.66 ms に短縮されました。
 
 ---
 
 ## 未リリースの変更
 
-### nostream がリリースをカットせずに 7 件の PR をマージ
+### Snort が EOSE で証明された範囲を軸に query 同期を書き換え
 
-TypeScript relay 実装 [nostream](https://github.com/Cameri/nostream) は今週、リリースをカットせずに 7 件の PR をマージしました。目玉のペアは [PR #702](https://github.com/Cameri/nostream/pull/702) と [PR #676](https://github.com/Cameri/nostream/pull/676) で、これらが組み合わさって relay 運営者に動作する認証プラスメンバーシップのアクセス制御スタックを提供します。今週の NIP Deep Dive ではまさにそのハンドシェイクを解説します。
+Web Nostr クライアント [Snort](https://github.com/v0l/snort) は、[commit 8a62770](https://github.com/v0l/snort/commit/8a627700d8a5af9527cb68655d844dd14a3ac79d) で query と cache 同期の経路を書き換えました。クライアントは、どの query window が EOSE に達したかを記録し、その watermark を使って既に網羅した cache 範囲を読み飛ばし、event dispatch を 1 つの relay pool listener に集約し、NIP-11 document で [NIP-50](/ja/topics/nip-50/) 対応を示す relay にだけ search filter を送ります。その後の修正では、同時に行われる watermark 更新を直列化し、timeline の包含境界を修正しました。[commit 9d1721b](https://github.com/v0l/snort/commit/9d1721b8b5696a6f96f462170c469c232cabe672) は、分割された follow feed への live subscription を復元し、ページ読込後に届いた event が cache window の外で止まらないようにしています。
+
+### Shopstr が決済検証を署名済み receipt とサーバー側の価格に結び付け
+
+Nostr marketplace クライアント [Shopstr](https://github.com/shopstr-eng/shopstr) は、決済の完全性に関する 2 つの欠陥を解消しました。[PR #552](https://github.com/shopstr-eng/shopstr/pull/552) では、Zapsnag が kind 9735 receipt を購入として扱う前に、その署名、署名者、埋め込まれた zap request、受取人と商品 tag、BOLT11 の金額、任意の preimage を invoice の payment hash と照合します。[PR #449](https://github.com/shopstr-eng/shopstr/pull/449) は Cashu quote の作成を Shopstr API route の背後へ移し、listing を解決して価格をサーバー側で再計算するため、ブラウザで変更された金額から mint invoice が決まることはありません。
+
+### Mostr が ActivityPub のプライベートチャットと Nostr DM を橋渡し
+
+ActivityPub と Nostr の bridge である [Mostr](https://gitlab.com/soapbox-pub/mostr) は、1 対 1 の Pleroma ChatMessage object と暗号化された Nostr DM を双方向に転送するようになりました（[commit 36ee547](https://gitlab.com/soapbox-pub/mostr/-/commit/36ee547035f9287029f71656c472fe029a7ab31b)）。ActivityPub のプライベートチャットは Nostr の受信者宛ての kind 4 event になり、bridge された Fediverse user 宛ての kind 4 message は復号され、ChatMessage object として federation へ送られます。bridge はこれらの event を [NIP-42](/ja/topics/nip-42/) で制限された設定済み DM relay に限定し、別の relay key で認証します。この相互運用経路は従来の [NIP-04](/ja/topics/nip-04/) 暗号化を使い、NIP-17 の gift wrapping は今回の実装に含まれません。
+
+### nostream がリリースを行わずに 8 件の PR をマージ
+
+TypeScript relay 実装の [nostream](https://github.com/Cameri/nostream) は今週、リリースを行わずに 8 件の PR をマージしました。中心となる [PR #702](https://github.com/Cameri/nostream/pull/702) と [PR #676](https://github.com/Cameri/nostream/pull/676) は、relay 運営者が利用できる認証とメンバーシップのアクセス制御 stack を組み合わせて実装しました。今週の NIP Deep Dive では、その handshake を詳しく解説します。[PR #694](https://github.com/Cameri/nostream/pull/694) は、汎用の `#e`、`#p`、`#g` などの tag filter が一致した tag row ごとに同じ event を返す問題を修正し、1 つの subscription 内で重複して流れる protocol traffic を減らしました。
 
 ### FIPS v0.4.1 が Iris エコシステムの基盤となるトランスポートを強化
 
-[jmcorgan/fips](https://github.com/jmcorgan/fips) は [v0.4.1](https://github.com/jmcorgan/fips/releases/tag/v0.4.1) を出荷しました。antipoison 状態に上限を設け、収束と MTU 処理を修正し、CPU 使用率を削減するメンテナンスリリースです。単体ではこれは配管工事ですが、今週は結合組織です。本号のニュースセクションの Iris エコシステムクラスターからのブラウザ TypeScript ランタイム [fips-ts](https://github.com/mmalmi/fips-ts) はこの Rust トランスポートとワイヤー互換であるため、ここでの修正はブラウザランタイムが相互運用するものに直接伝播します。
+[jmcorgan/fips](https://github.com/jmcorgan/fips) は、antipoison state に上限を設け、収束と MTU 処理を修正し、CPU 使用量を削減するメンテナンスリリース [v0.4.1](https://github.com/jmcorgan/fips/releases/tag/v0.4.1) を公開しました。Iris プロジェクト群のブラウザ向け TypeScript runtime [fips-ts](https://github.com/mmalmi/fips-ts) はこの Rust transport と wire 互換であるため、ここでの修正はブラウザとの相互運用性へ直接反映されます。
 
 ---
 
