@@ -1,6 +1,6 @@
 ## Six Years of Nostr Julys
 
-This July history follows recurring Nostr problems: readable identifiers, relay filtering, portable application data, privacy, and interoperability. It begins with [the first NIP-05 implementation](https://github.com/nbd-wtf/nostr-tools/commit/1ce00bd3b6909f78f212a7a172cf845b55280599) and ends with [this month's addressable-discovery merge](https://github.com/nostr-protocol/nips/commit/2f4b09335c54a993d483bc220195e3f4a33df1ec), then examines the July changes that developed those themes.
+This July history follows recurring Nostr problems: readable identifiers, relay filtering, portable application data, privacy, and interoperability. Across six years, each layer turns a narrow fix into shared infrastructure: names become profiles, filters become application contracts, and relay-carried state expands from notes to live rooms and groups. It begins with [the first NIP-05 implementation](https://github.com/nbd-wtf/nostr-tools/commit/1ce00bd3b6909f78f212a7a172cf845b55280599) and ends with [this month's addressable-discovery merge](https://github.com/nostr-protocol/nips/commit/2f4b09335c54a993d483bc220195e3f4a33df1ec), then examines the July changes that developed those themes.
 
 ### July 2021
 

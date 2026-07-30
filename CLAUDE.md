@@ -167,29 +167,43 @@ NEVER write "the NIP-34 tracker was quiet this week" without first running that 
 
 ### Month-end history rule (CRITICAL — check BEFORE selecting deep dives)
 
-The LAST newsletter of each calendar month replaces the two NIP deep dives with a comprehensive historical retrospective titled `## N Years of Nostr [Month]s` covering that month's milestones since November 2020.
+The final weekly newsletter of each calendar month replaces both NIP deep dives with a researched historical retrospective. The title is `## N Years of Nostr [Month plural]`, where `N` counts 2021 through the issue year inclusive (for 2026: `Six Years`). Never call this section “NIP Deep Dive.”
 
-**Detection (run before drafting):** if the next Wednesday after this newsletter's date falls in a different calendar month, this is the last newsletter of the month — DO HISTORY, NOT DEEP DIVES.
+**Detection (run before drafting):** add seven days to the planned newsletter date. If that date falls in a different calendar month, this is the final weekly issue — DO HISTORY, NOT DEEP DIVES. Do not assume a Wednesday publication day.
 
 ```bash
-# Compute next Wednesday after the newsletter date YYYY-MM-DD:
-date -d "$(date -d "YYYY-MM-DD +7 days" +%Y-%m-%d)" +"%Y-%m"
-# Compare to newsletter's month. If different → month-end → history section.
+ISSUE_DATE=YYYY-MM-DD
+[ "$(date -d "$ISSUE_DATE +7 days" +%Y-%m)" != "$(date -d "$ISSUE_DATE" +%Y-%m)" ] && echo HISTORY
 ```
 
-**History section requirements:**
-- One subsection per year (e.g. `### May 2021`, `### May 2022`, ... up through the current year)
-- Each year covers the most important events in that month: protocol milestones (NIP proposals/merges), client launches, key project releases, ecosystem-defining events, controversies
-- Source every claim — link to the actual NIP PR, release tag, blog post, or Nostr event
-- The retrospective REPLACES both NIP Deep Dive sections; do NOT include either
+**Repeatable research pass (mandatory):**
 
-**History completed (do not repeat, do not re-summarize):**
-- #3 (2025-12-31): "December Recap: Five Years of Nostr Decembers"
-- #7 (2026-01-28): "Five Years of Nostr Januaries"
-- #12 (2026-03-04): "Five Years of Nostr Februaries" (catch-up; #11 missed the rule and shipped deep dives instead)
-- #15 (2026-03-25): "Five Years of Nostr Marches"
-- #20 (2026-04-29): "Six Nostr Aprils"
-- #24 (2026-05-28): "Six Years of Nostr Mays"
+1. Run the configured repository sweep before writing. It gathers same-month commit candidates across every prior year; it is discovery, not proof:
+   ```bash
+   python3 scripts/fetch_monthly_history.py --month M --through-year YYYY
+   ```
+2. Read every earlier history section (`grep -nE '^## .*Years of Nostr|^## Six Nostr' content/en/newsletters/*.md`) before selecting an arc. Record repeated milestones and source URLs so the new section does not retell them without a new reason.
+3. For each year, select a small number of milestones that explain a stage change: early protocol primitives, relay/client expansion, product adoption, payments/media/privacy, or mature interoperability. Search beyond the configured repositories for launches, grants, Nostr events, and ecosystem-defining controversies.
+4. Open every selected primary source. Verify the human date, repository identity, release/merge state, and what actually changed. A candidate filename or commit title is never sufficient evidence.
+5. Write the cross-year arc first, then write each year as at least two connected prose paragraphs: what changed, why it mattered at that stage, and what it enabled next. A chronological inventory of commits is a failure even when every fact is correct.
+6. Run `python3 scripts/check_month_end_history.py <newsletter>` and preserve the output in the review log. The checker enforces final-week detection, canonical title, every year, minimum depth, linked prose paragraphs, and progression language; a human reviewer still decides whether the narrative is genuinely interesting.
+
+**History section requirements:**
+- One subsection per year, from 2021 through the issue year (for example `### May 2021` through `### May 2026`).
+- At least two substantive prose paragraphs per year. Do not use bullets or compress a year into a semicolon-separated laundry list.
+- Every prose paragraph contains an external primary-source link: commit, pull request, release, repository, first-party announcement, or Nostr event.
+- The introduction states the month’s progressive arc; each year explains how that stage differs from the previous one and what it made possible next.
+- Prefer a few consequential milestones over exhaustive activity counts. Protocol chronology supports the story; it is not the story by itself.
+- The retrospective replaces both NIP Deep Dive sections; do not include either.
+
+**History completed (read for continuity; do not mechanically reuse):**
+- #3 (2025-12-31): “December Recap: Five Years of Nostr Decembers”
+- #7 (2026-01-28): “Six Years of Nostr Januaries”
+- #12 (2026-03-04): “Six Years of Nostr Februaries” (catch-up; #11 missed the rule)
+- #15 (2026-03-25): “Six Years of Nostr Marches”
+- #20 (2026-04-29): “Six Years of Nostr Aprils”
+- #24 (2026-05-28): “Six Years of Nostr Mays”
+- #28 (2026-06-24): “Six Years of Nostr Junes”
 
 Common mistakes the structure prevents:
 - Skipping the month-end history rule and shipping deep dives instead (this happened in #11)
