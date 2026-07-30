@@ -1,0 +1,21 @@
+{
+  "repositories": [
+    {"repo": "nostr-protocol/nips", "focus": "protocol specifications and interoperability"},
+    {"repo": "nbd-wtf/nostr-tools", "focus": "early JavaScript protocol primitives"},
+    {"repo": "fiatjaf/go-nostr", "focus": "Go protocol tooling and relay/client infrastructure"},
+    {"repo": "rust-nostr/nostr", "focus": "Rust protocol tooling and SDK maturity"},
+    {"repo": "scsibug/nostr-rs-relay", "focus": "relay implementation and operations"},
+    {"repo": "damus-io/damus", "focus": "consumer-client growth and iOS"},
+    {"repo": "vitorpamplona/amethyst", "focus": "Android client and protocol adoption"},
+    {"repo": "nostr-dev-kit/ndk", "focus": "application SDK and developer tooling"},
+    {"repo": "hzrd149/blossom", "focus": "media storage specifications"},
+    {"repo": "nostr-wallet-connect/nwc", "focus": "wallet interoperability"},
+    {"repo": "marmot-protocol/marmot", "focus": "private-group specifications"}
+  ],
+  "instructions": [
+    "Treat fetched activity as candidate discovery, not publication-ready claims.",
+    "Verify every selected milestone against the linked commit, pull request, release, repository, or Nostr event.",
+    "Search outside this repository list for launches, grants, relay events, and ecosystem milestones.",
+    "Prefer milestones that explain a change in Nostr's technical or product stage over raw activity volume."
+  ]
+}
