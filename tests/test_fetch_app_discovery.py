@@ -334,6 +334,58 @@ clients:
             [{"relation": "latest", "address": f"35128:{'a' * 64}:reader-site", "relay": "wss://nos.lol"}],
         )
 
+    def test_nip89_discovery_ignores_malformed_metadata_and_unsafe_handlers(self):
+        mod = load_module()
+        malformed = {
+            "id": "malformed",
+            "pubkey": "a" * 64,
+            "kind": 31990,
+            "created_at": 100,
+            "content": '{"name":{"nested":true},"website":["https://bad.example"]}',
+            "tags": [["d", "bad"], ["k", "1"]],
+            "_relay": "wss://nos.lol",
+        }
+        non_string_content = {
+            "id": "non-string-content",
+            "pubkey": "c" * 64,
+            "kind": 31990,
+            "created_at": 100,
+            "content": {"name": "Not valid NIP-01 content"},
+            "tags": [["d", "bad-content"], ["k", "1"]],
+            "_relay": "wss://nos.lol",
+        }
+        safe = {
+            "id": "safe",
+            "pubkey": "b" * 64,
+            "kind": 31990,
+            "created_at": 101,
+            "content": '{"name":"Reader","website":"https://reader.example"}',
+            "tags": [
+                ["d", "reader"],
+                ["k", "1"],
+                ["web", "javascript:alert(1)"],
+                ["web", "https://reader.example/<bech32>"],
+                ["ios", "reader://event/<bech32>"],
+                ["ios", {"not": "a string"}],
+            ],
+            "_relay": "wss://nos.lol",
+        }
+
+        candidates = mod.nip89_candidates(
+            [malformed, non_string_content, safe],
+            {"repos": {}, "websites": {}, "names": {}},
+        )
+
+        self.assertEqual(len(candidates), 1)
+        self.assertEqual(candidates[0]["name"], "Reader")
+        self.assertEqual(
+            candidates[0]["platform_handlers"],
+            [
+                {"platform": "web", "template": "https://reader.example/<bech32>"},
+                {"platform": "ios", "template": "reader://event/<bech32>"},
+            ],
+        )
+
     def test_build_report_marks_partial_sources_without_promoting_candidates(self):
         mod = load_module()
         report = mod.build_report(
@@ -422,7 +474,7 @@ clients:
                 ["repository", "https://github.com/example/reader.git"],
                 ["url", "https://reader.example/"],
             ],
-            "content": "Reads signed Nostr events from user-selected relays.",
+            "content": {"unexpected": "object"},
             "_relay": "wss://relay.zapstore.dev",
         }
 

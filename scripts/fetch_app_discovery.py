@@ -13,8 +13,8 @@ from pathlib import Path
 from urllib.parse import urlsplit, urlunsplit
 
 
-def normalize_url(value: str | None) -> str:
-    if not value:
+def normalize_url(value: object) -> str:
+    if not isinstance(value, str) or not value:
         return ""
     value = value.strip().strip('"\'')
     if not value or any(character.isspace() or ord(character) < 32 or ord(character) == 127 for character in value):
@@ -162,10 +162,20 @@ def github_candidates(
 
 
 def tag_values(event: dict, name: str) -> list[str]:
-    return [tag[1] for tag in event.get("tags", []) if len(tag) >= 2 and tag[0] == name and tag[1]]
+    return [
+        tag[1]
+        for tag in event.get("tags", [])
+        if isinstance(tag, list)
+        and len(tag) >= 2
+        and tag[0] == name
+        and isinstance(tag[1], str)
+        and tag[1]
+    ]
 
 
-def parse_metadata(content: str) -> dict:
+def parse_metadata(content: object) -> dict:
+    if not isinstance(content, str):
+        return {}
     try:
         value = json.loads(content or "{}")
     except json.JSONDecodeError:
@@ -184,8 +194,8 @@ NOSTR_LISTING_PATTERNS = (
 )
 
 
-def has_nostr_listing_signal(name: str, summary: str, content: str) -> bool:
-    text = " ".join((name, summary, content)).casefold()
+def has_nostr_listing_signal(name: object, summary: object, content: object) -> bool:
+    text = " ".join(value if isinstance(value, str) else "" for value in (name, summary, content)).casefold()
     text = re.sub(r"\b(?:no|without)\s+(?:nostr|relay)\b", "", text)
     return any(re.search(pattern, text) for pattern in NOSTR_LISTING_PATTERNS)
 
@@ -207,11 +217,12 @@ def zapstore_candidates(events: list[dict], tracked: dict[str, dict[str, str]]) 
         latest = sorted(latest_versions, key=lambda event: event.get("id", ""))[-1]
         name = (tag_values(latest, "name") or [app_id])[0].strip()
         summary = (tag_values(latest, "summary") or [""])[0].strip()
+        content = latest.get("content") if isinstance(latest.get("content"), str) else ""
         repository = normalize_url((tag_values(latest, "repository") or [""])[0])
         website = normalize_url((tag_values(latest, "url") or [""])[0])
         if not name or not (repository or website):
             continue
-        if not has_nostr_listing_signal(name, summary, latest.get("content") or ""):
+        if not has_nostr_listing_signal(name, summary, content):
             continue
         if repository and repository.casefold() in tracked["repos"]:
             continue
@@ -229,7 +240,7 @@ def zapstore_candidates(events: list[dict], tracked: dict[str, dict[str, str]]) 
         candidates.append(
             {
                 "name": name,
-                "description": summary or latest.get("content") or "",
+                "description": summary or content,
                 "repository": repository,
                 "website": website,
                 "pubkeys": [pubkey],
@@ -294,6 +305,19 @@ def nsite_references(event: dict) -> list[dict[str, str]]:
     return references
 
 
+def is_safe_handler_template(platform: str, value: object) -> bool:
+    if not isinstance(value, str) or not value:
+        return False
+    if any(character.isspace() or ord(character) < 32 or ord(character) == 127 for character in value):
+        return False
+    if platform == "web":
+        return bool(normalize_url(value))
+    scheme_match = re.match(r"^([A-Za-z][A-Za-z0-9+.-]*):", value)
+    if not scheme_match:
+        return False
+    return scheme_match.group(1).casefold() not in {"data", "file", "javascript", "vbscript"}
+
+
 def nip89_candidates(events: list[dict], tracked: dict[str, dict[str, str]]) -> list[dict]:
     grouped: dict[tuple[str, str], list[dict]] = {}
     for event in events:
@@ -320,13 +344,27 @@ def nip89_candidates(events: list[dict], tracked: dict[str, dict[str, str]]) -> 
             continue
 
         metadata = parse_metadata(latest.get("content", ""))
-        name = metadata.get("name") or metadata.get("display_name") or metadata.get("displayName") or ""
+        name = next(
+            (
+                value.strip()
+                for value in (
+                    metadata.get("name"),
+                    metadata.get("display_name"),
+                    metadata.get("displayName"),
+                )
+                if isinstance(value, str) and value.strip()
+            ),
+            "",
+        )
         repository = normalize_url(metadata.get("repository") or metadata.get("repo") or metadata.get("github"))
         website = normalize_url(metadata.get("website") or metadata.get("url"))
         platform_tags = [
             {"platform": tag[0], "template": tag[1]}
             for tag in latest.get("tags", [])
-            if len(tag) >= 2 and tag[0] in {"web", "ios", "android"} and tag[1]
+            if isinstance(tag, list)
+            and len(tag) >= 2
+            and tag[0] in {"web", "ios", "android"}
+            and is_safe_handler_template(tag[0], tag[1])
         ]
         if not name or not (repository or website or platform_tags):
             continue
