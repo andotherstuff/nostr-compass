@@ -170,7 +170,7 @@ Mill は[発表](https://primal.net/e/6362d9b00662fa64200530f8a29ae547521bac0a1e
 
 [BUD-02 PR #110](https://github.com/hzrd149/blossom/pull/110) は、アップロード元が `Content-Type` を省略するか `application/octet-stream` を送る場合に、サーバー側で MIME を検出することを推奨する提案です。Blossom サーバーは、保守されているファイル形式ライブラリで先頭バイトを検査し、クライアントが指定した具体的な形式は保持し、検出に失敗した場合は汎用バイナリ形式へフォールバックします。これにより、すべてのアップロードでバイト判定を必須にせず、画像、音声、動画、エージェントが生成したファイルを表示可能な状態に保てます。
 
-### NAPs：取得およびファイルシステムの契約が進展する中、番号付き系列を規約へ置き換え
+### NAPs：キャプチャおよびファイルシステムの契約が進展する中、番号付き系列を規約へ置き換え
 
 [PR #87](https://github.com/napplet/naps/pull/87) は番号付きの napplet 間プロトコル系列を削除し、実行時機能を名前付き契約のもとに置きます。一方、アプリケーションメッセージは `napplet:<archetype>/<intent>` 形式の規約 URI に集約されます。マージ済みの[トピックアイデンティティ変更](https://github.com/napplet/naps/pull/89)は、問い合わせ文字列を含まない安定した規約パスを、メッセージごとのペイロードデータから分離します。[PR #90](https://github.com/napplet/naps/pull/90) は、その転置規則を検出およびハンドラーメタデータに適用します。
 
@@ -220,7 +220,7 @@ relay ポリシーとソーシャルな反応も続きました。元の [NIP-22
 
 7 月 4 日、[NIP-29 commit c60ca88](https://github.com/nostr-protocol/nips/commit/c60ca888efbdc9b8fa4bbfbace372409d0b2161a) は、グループを作成するための `kind:9007` relay モデレーション操作を追加しました。6 日後、[NIP-70](https://github.com/nostr-protocol/nips/commit/ae1906ec7943a6bd756f05d2cd2fb2a041398921) は保護された event を定義しました。`-` tag は、event の認証済み作成者からの公開だけを受け入れるよう relay に指示します。一方の変更は relay に明示的なグループ状態遷移を与え、もう一方は、それ自体は有効な署名済み event を第三者が relay へ再送することを作成者が防げるようにしました。
 
-7 月 16 日、1 件の [Cashu 仕様 commit](https://github.com/nostr-protocol/nips/commit/506b38916ab67a37b2d98b46b62cf0c0c5fde5a4) が NIP-60 ウォレットと NIP-61 nutzap の両方を導入しました。NIP-60 はウォレットメタデータを kind `37375`、未使用 proof を暗号化された kind `7375` event、任意の取引履歴を kind `7376` に置きました。NIP-61 は、受取人の kind `10019` にある mint と relay の設定を、P2PK ロック付き kind `7337` nutzap と組み合わせました。ウォレット状態と bearer token は relay を通じて移動できるようになりましたが、引き換えは引き続き Cashu mint の proof と、二重請求を慎重に防ぐ処理に依存しました。
+7 月 16 日、1 件の [Cashu 仕様 commit](https://github.com/nostr-protocol/nips/commit/506b38916ab67a37b2d98b46b62cf0c0c5fde5a4) が NIP-60 ウォレットと NIP-61 nutzap の両方を導入しました。NIP-60 はウォレットメタデータを kind `37375`、未使用 proof を暗号化された kind `7375` event、任意の取引履歴を kind `7376` に置きました。NIP-61 は、受取人の kind `10019` にある mint と relay の設定を、P2PK ロック付き kind `7337` nutzap と組み合わせました。ウォレット状態と bearer token は relay を通じて移動できるようになりましたが、引き換えは引き続き Cashu mint の proof と、二重引き換えを慎重に防ぐ処理に依存しました。
 
 7 月後半の 2 件の編集は、決定論的な状態を厳密にしました。[NIP-01 commit 9c54549](https://github.com/nostr-protocol/nips/commit/9c54549f1842245b842d8a66f3bade744da24189) は、`created_at` timestamp が同じ場合、event ID を次の比較基準とするよう求めました。これにより、クライアントは同一の結果集合を同じ順序で並べられます。[NIP-09 削除のマージ](https://github.com/nostr-protocol/nips/commit/722ac7a58695a365be0dbb6eccb33ccd7890a8c7)は、kind `5` の要求が event ID またはアドレス指定可能な座標を対象にできることと、relay が削除すべき kind を示す `k` tag を含めるべきことを明確にしました。どちらの変更も、いずれも正しい 2 つの実装の間に相違が生じ得る範囲を狭めました。
 
