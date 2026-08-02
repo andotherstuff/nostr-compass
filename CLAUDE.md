@@ -276,7 +276,33 @@ Use `git reset --soft $(git merge-base HEAD origin/main)` to collapse everything
 
 ## Publishing to Nostr
 
-**NEVER ask for an nsec. NEVER use `nak` directly. Always use the pipeline.**
+### Identity resolution and attribution
+
+- Run `bun run check:npubs` before preparing mentions or outreach. Invalid
+  Bech32 keys, contradictory project/person roles, and incomplete unresolved
+  records are blockers.
+- Resolve an unknown identity in this order: project-controlled website or
+  repository; official NIP-05; npub.world; exact signed kind-0/profile queries
+  with read-only `nak`; then broader web search. A matching display name alone
+  never proves ownership. If the project/role binding remains uncertain, ask
+  the editor and record the negative research under `unresolved` in
+  `data/npubs.yml`.
+- A `project` identity is controlled by one project. An `organization` identity
+  represents an organization and must not be described as a project's own
+  account. A `maintainer`, `lead-developer`, or `individual` identity is
+  personal and prose must name the person and role. Never render a personal
+  key as though it were the project's key.
+- Default inline attribution uses a verified project key. Use a personal key
+  only where the prose credits that person, or label it explicitly as
+  `maintainer`/`lead developer`/`individual`. Researched unresolved projects
+  stay untagged.
+- Outreach must consume `mentions.outreachRecipients` from `scripts/publish.ts`;
+  that list applies `outreach: false` and the normalized `no_dm` list before
+  send/idempotency checks. When project and maintainer keys differ, retain both
+  roles in the dry run and receipt; collapse only identical pubkeys. Never infer
+  relationships from YAML adjacency, comments, or alias order.
+
+**NEVER ask for an nsec. NEVER use `nak` to sign or publish. Always use the pipeline for publication.** Read-only `nak` queries are permitted only for public identity research.
 
 ```bash
 # Full pipeline (all stages: parse → sign → announce-sign → broadcast → merge)

@@ -24,6 +24,17 @@ import { readFileSync, readdirSync } from "fs";
 import { join, resolve, dirname } from "path";
 import { fileURLToPath } from "url";
 import { parse as parseYaml } from "yaml";
+import {
+  formatNpubMention,
+  isOutreachAllowed,
+  loadNoDmFromText,
+  loadValidatedNpubMapFromText,
+  loadUnresolvedFromText,
+  type NpubEntry,
+  type NpubMap,
+  type UnresolvedIdentity,
+  type UnresolvedIdentityMap,
+} from "./lib/npub-database";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -38,43 +49,16 @@ const BANNER_IMAGE =
 // Load npubs database
 // ---------------------------------------------------------------------------
 
-export interface NpubEntry {
-  npub: string;
-  mention_only: boolean; // true = dev account, keep project name + append npub
-}
-
-export interface NpubMap {
-  [name: string]: NpubEntry; // lowercased name -> entry
-}
-
 function loadNpubs(): NpubMap {
-  const raw = readFileSync(NPUBS_FILE, "utf-8");
+  return loadValidatedNpubMapFromText(readFileSync(NPUBS_FILE, "utf-8"));
+}
 
-  // Parse the YAML file; commented-out entries are not parsed
-  const parsed = parseYaml(raw);
-  if (!parsed || typeof parsed !== "object") return {};
+function loadUnresolvedIdentities(): UnresolvedIdentityMap {
+  return loadUnresolvedFromText(readFileSync(NPUBS_FILE, "utf-8"));
+}
 
-  const map: NpubMap = {};
-  for (const [key, value] of Object.entries(parsed)) {
-    if (typeof value === "string" && value.startsWith("npub1")) {
-      // Simple string value = project account (replace name with npub)
-      map[key.toLowerCase()] = { npub: value, mention_only: false };
-    } else if (
-      value &&
-      typeof value === "object" &&
-      "npub" in (value as Record<string, unknown>)
-    ) {
-      // Object value = may have mention_only flag
-      const obj = value as { npub: string; mention_only?: boolean };
-      if (typeof obj.npub === "string" && obj.npub.startsWith("npub1")) {
-        map[key.toLowerCase()] = {
-          npub: obj.npub,
-          mention_only: obj.mention_only === true,
-        };
-      }
-    }
-  }
-  return map;
+function loadNoDmNpubs(): Set<string> {
+  return loadNoDmFromText(readFileSync(NPUBS_FILE, "utf-8"));
 }
 
 // ---------------------------------------------------------------------------
@@ -158,31 +142,38 @@ function simplifyFooter(body: string): string {
 
 export function extractMentions(
   body: string,
-  npubs: NpubMap
+  npubs: NpubMap,
+  unresolvedIdentities: UnresolvedIdentityMap = {},
+  noDm: Set<string> = new Set(),
 ): {
-  found: { name: string; npub: string; mention_only: boolean }[];
+  found: Array<{ name: string } & NpubEntry>;
+  outreachRecipients: Array<{ name: string } & NpubEntry>;
+  unresolved: Array<{ name: string; record: UnresolvedIdentity }>;
   missing: string[];
   mentionString: string;
 } {
   const mentionedNames = new Set<string>();
 
   const projectSections = new Set([
-    "Top Stories",
-    "Tagged Releases",
-    "Shipping This Week",
-    "In Development",
-    "New Projects",
+    "top stories",
+    "lead stories",
+    "tagged releases",
+    "shipping this week",
+    "in development",
+    "unreleased changes",
+    "new projects",
   ]);
   const protocolProjectSections = new Set([
-    "Protocol Work",
-    "Protocol and Spec Work",
+    "protocol work",
+    "protocol and spec work",
+    "protocol work and nip updates",
   ]);
 
   let linkSection = "";
   const applicationLines: string[] = [];
   for (const line of body.split("\n")) {
     const h2 = line.match(/^##\s+(.+)$/);
-    if (h2) linkSection = h2[1].trim();
+    if (h2) linkSection = h2[1].trim().toLocaleLowerCase();
     if (projectSections.has(linkSection)) applicationLines.push(line);
   }
   const applicationBody = applicationLines.join("\n");
@@ -190,6 +181,12 @@ export function extractMentions(
   // Helper: clean a candidate name and decide whether to keep it
   function addIfValid(text: string, fromApplicationHeading = false) {
     text = text.trim();
+    // GitHub link labels often use owner/repository; identity records are keyed
+    // by the project/repository name rather than the owner prefix.
+    if (/^[A-Za-z0-9_.-]+\/[A-Za-z0-9_.-]+$/.test(text)) {
+      const parts = text.split("/");
+      text = parts[parts.length - 1] || text;
+    }
     // Skip very short names (noise like "Mi", "Go", etc.)
     if (text.length < 3) return;
     // Skip NIP refs, PR numbers, version strings, commit hashes, kind descriptions
@@ -246,7 +243,7 @@ export function extractMentions(
   for (const line of body.split("\n")) {
     const h2 = line.match(/^##\s+(.+)$/);
     if (h2) {
-      currentSection = h2[1].trim();
+      currentSection = h2[1].trim().toLocaleLowerCase();
       continue;
     }
     const h3 = line.match(/^###\s+(.+)$/);
@@ -255,7 +252,7 @@ export function extractMentions(
     if (/^NIP-/.test(fullHeader)) continue;
     // Extract name before action verb, version, or colon
     const nameMatch = fullHeader.match(
-      /^(.+?)(?:\s+(?:Ships?|Adds?|Implements?|Releases?|Merges?|Launches?|Fixes?|Receives?|Recovers?|Remembers?|Keeps?|Tightens?|Pairs?|Gives?|Lets?|Clarifies?|Schedules?|Binds?|Turns?|Enables?|Expands?|Extracts?|Gets?|Updates?|Introduces?|Reaches?|Begins?|Gains?|Supports?|Drops?|Brings?|Rolls?|Publishes?|Integrates?|Migrates?|Moves?|Coordinates?|Opens?)\b|\s+v\d|\s+\d+\.\d|:|$)/i
+      /^(.+?)(?:\s+(?:Ships?|Adds?|Implements?|Releases?|Merges?|Launches?|Fixes?|Receives?|Recovers?|Remembers?|Keeps?|Tightens?|Pairs?|Gives?|Lets?|Clarifies?|Schedules?|Binds?|Turns?|Enables?|Expands?|Extracts?|Gets?|Updates?|Introduces?|Reaches?|Begins?|Gains?|Supports?|Drops?|Brings?|Rolls?|Publishes?|Integrates?|Migrates?|Moves?|Coordinates?|Opens?|Polishes?|Extends?)\b|\s+v\d|\s+\d+\.\d|:|$)/i
     );
     if (nameMatch) {
       let name = nameMatch[1].trim();
@@ -290,33 +287,62 @@ export function extractMentions(
     normalized.add(name);
   }
 
-  // 5. Match against npubs database
-  const found: { name: string; npub: string; mention_only: boolean }[] = [];
+  // 5. Match against npubs database. When aliases share a pubkey, choose the
+  // strongest explicit semantic record rather than whichever alias appeared first.
+  const foundByNpub = new Map<string, { name: string } & NpubEntry>();
+  const unresolved: Array<{ name: string; record: UnresolvedIdentity }> = [];
   const missing: string[] = [];
-  const seenNpubs = new Set<string>();
+  const identityPriority = (entry: NpubEntry): number => {
+    if (entry.legacy) return entry.mention_only ? 20 : 10;
+    switch (entry.identity_type) {
+      case "project": return 150;
+      case "organization": return 140;
+      case "lead-developer": return 130;
+      case "maintainer": return 120;
+      case "individual": return 110;
+    }
+  };
+  const identityAliases: Record<string, string> = {
+    "21meetup 1.1.0": "21meetup",
+    "applesauce signers": "applesauce",
+    "bitcredit core": "bitcredit",
+    "mdk workspace": "mdk",
+    "nymchat 1.0.1": "nymchat",
+    "primal-android": "primal android",
+    "swift-nostr": "swift-nostr-client",
+    "zap cooking's frontend": "zap cooking",
+  };
 
   for (const name of normalized) {
     const lower = name.toLowerCase();
-    const entry = npubs[lower];
+    const lookupName = npubs[lower] ? lower : (identityAliases[lower] ?? lower);
+    const entry = npubs[lookupName];
 
     if (entry) {
-      if (!seenNpubs.has(entry.npub)) {
-        seenNpubs.add(entry.npub);
-        found.push({ name, npub: entry.npub, mention_only: entry.mention_only });
+      const candidate = { name, ...entry };
+      const existing = foundByNpub.get(entry.npub);
+      if (!existing || identityPriority(candidate) > identityPriority(existing)) {
+        foundByNpub.set(entry.npub, candidate);
       }
+    } else if (unresolvedIdentities[lookupName]) {
+      unresolved.push({ name, record: unresolvedIdentities[lookupName] });
     } else {
       missing.push(name);
     }
   }
 
+  const found = [...foundByNpub.values()];
+
   // Sort found by name for stable output
   found.sort((a, b) => a.name.localeCompare(b.name));
+  unresolved.sort((a, b) => a.name.localeCompare(b.name));
   missing.sort();
 
   // Build mention string: "nostr:npub1... nostr:npub2..."
   const mentionString = found.map((f) => `nostr:${f.npub}`).join(" ");
+  const outreachRecipients = found.filter((entry) => isOutreachAllowed(entry, noDm));
 
-  return { found, missing, mentionString };
+  return { found, outreachRecipients, unresolved, missing, mentionString };
 }
 
 // ---------------------------------------------------------------------------
@@ -330,11 +356,11 @@ export function extractMentions(
  * the display name). Placing it next to a markdown link keeps the human-
  * readable name visible while notifying the project/dev.
  *
- * Two modes based on npub type:
- * - Project account (mention_only=false):
+ * Identity-aware rendering:
+ * - Dedicated project or individual account:
  *     `[ProjectName](url) nostr:npub1...`
- * - Dev account (mention_only=true):
- *     `[ProjectName](url) (nostr:npub1...)`
+ * - Personal maintainer/lead-developer account:
+ *     `[ProjectName](url) (maintainer Person: nostr:npub1...)`
  *
  * Algorithm:
  * 1. For each project with a known npub, find the FIRST markdown link
@@ -348,7 +374,7 @@ export function extractMentions(
  */
 function injectNpubMentions(
   body: string,
-  found: { name: string; npub: string; mention_only: boolean }[]
+  found: Array<{ name: string } & NpubEntry>
 ): string {
   // Sort by name length descending to avoid partial matches
   // (e.g. "Primal Android" before "Primal")
@@ -358,14 +384,13 @@ function injectNpubMentions(
   // Split body into lines for line-level analysis
   let lines = body.split("\n");
 
-  for (const { name, npub, mention_only } of sorted) {
+  for (const entry of sorted) {
+    const { name, npub } = entry;
     // Skip if we already injected this npub (deduplicate aliases)
     if (injected.has(npub)) continue;
 
     const escaped = name.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-    const npubTag = mention_only
-      ? ` (nostr:${npub})`
-      : ` nostr:${npub}`;
+    const npubTag = formatNpubMention(entry);
 
     // --- Strategy 1: Find first markdown link containing the name ---
     // Match: [text containing Name](url)
@@ -499,7 +524,9 @@ function main() {
 
   // Load npubs and extract mentions
   const npubs = loadNpubs();
-  const mentions = extractMentions(body, npubs);
+  const unresolvedIdentities = loadUnresolvedIdentities();
+  const noDm = loadNoDmNpubs();
+  const mentions = extractMentions(body, npubs, unresolvedIdentities, noDm);
 
   // Inject nostr:npub tags into body text (NIP-27: after first link per project)
   if (!noInject) {
@@ -509,10 +536,19 @@ function main() {
   // Report found mentions on stderr
   if (mentions.found.length > 0) {
     console.error(`[publish] Found npubs for ${mentions.found.length} projects:`);
-    for (const { name, npub, mention_only } of mentions.found) {
-      const tag = mention_only ? "[dev]" : "[project]";
+    for (const { name, npub, identity_type } of mentions.found) {
+      const tag = `[${identity_type}]`;
       console.error(`  + ${tag} ${name} -> ${npub.slice(0, 20)}...`);
     }
+  }
+
+  if (mentions.unresolved.length > 0) {
+    console.error("");
+    console.error(`[publish] RESEARCHED UNRESOLVED identities for ${mentions.unresolved.length} projects:`);
+    for (const { name, record } of mentions.unresolved) {
+      console.error(`  - ${name} (checked ${record.checked_at}): ${record.reason}`);
+    }
+    console.error("[publish] Leave these projects untagged and out of outreach unless new primary evidence is found.");
   }
 
   // Warn about missing npubs on stderr
@@ -524,7 +560,8 @@ function main() {
     }
     console.error("");
     console.error("[publish] Add missing npubs to data/npubs.yml and re-run.");
-    console.error("[publish] Lookup: njump.me, nostr.band, or project docs.");
+    console.error("[publish] Research: primary project site/repository, npub.world, then exact NAK relay queries.");
+    console.error("[publish] If ownership or role remains unclear, add an unresolved record and ask the editor.");
     console.error("[publish] Use --force to skip this check.");
   }
 
@@ -536,6 +573,8 @@ function main() {
     body,
     mentions: {
       found: mentions.found,
+      outreachRecipients: mentions.outreachRecipients,
+      unresolved: mentions.unresolved,
       missing: mentions.missing,
       mentionString: mentions.mentionString,
     },

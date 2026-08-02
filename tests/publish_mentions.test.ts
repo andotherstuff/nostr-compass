@@ -1,15 +1,27 @@
 import { describe, expect, test } from "bun:test";
 import { extractMentions } from "../scripts/publish";
+import type { NpubMap } from "../scripts/lib/npub-database";
 
-const npubs = {
-  mosaico: { npub: "npub1mosaico", mention_only: false },
-  amethyst: { npub: "npub1amethyst", mention_only: false },
-  gitworkshop: { npub: "npub1gitworkshop", mention_only: false },
-  fips: { npub: "npub1fips", mention_only: false },
-  nostur: { npub: "npub1nostur", mention_only: false },
-  "swift-nostr": { npub: "npub1swiftnostr", mention_only: false },
-  "lawallet-nwc": { npub: "npub1lawalletnwc", mention_only: false },
-  mill: { npub: "npub1mill", mention_only: false },
+function project(npub: string) {
+  return {
+    npub,
+    identity_type: "project" as const,
+    evidence: [],
+    outreach: true,
+    mention_only: false,
+    legacy: false,
+  };
+}
+
+const npubs: NpubMap = {
+  mosaico: project("npub1mosaico"),
+  amethyst: project("npub1amethyst"),
+  gitworkshop: project("npub1gitworkshop"),
+  fips: project("npub1fips"),
+  nostur: project("npub1nostur"),
+  "swift-nostr": project("npub1swiftnostr"),
+  "lawallet-nwc": project("npub1lawalletnwc"),
+  mill: project("npub1mill"),
 };
 
 describe("publish mention extraction", () => {
@@ -119,5 +131,73 @@ Text.
 
     expect(result.found.map((entry) => entry.name)).toEqual(["Mill"]);
     expect(result.missing).toEqual([]);
+  });
+
+  test("separates researched unresolved identities from unknown missing names", () => {
+    const body = `## Tagged Releases
+
+### Granary v11.0 adds NIP-71 support
+
+Text.
+`;
+    const result = extractMentions(body, npubs, {
+      granary: {
+        checked_at: "2026-08-02",
+        reason: "No verified identity.",
+        sources: ["https://github.com/snarfed/granary"],
+      },
+    });
+
+    expect(result.unresolved.map((entry) => entry.name)).toEqual(["Granary"]);
+    expect(result.missing).toEqual([]);
+  });
+
+  test("alias order cannot downgrade a project representative to an unlabeled individual", () => {
+    const shared = "npub1shared";
+    const identities: NpubMap = {
+      keep: {
+        ...project(shared),
+        identity_type: "maintainer",
+        person: "wksantiago",
+        mention_only: true,
+      },
+      wksantiago: {
+        ...project(shared),
+        identity_type: "individual",
+      },
+    };
+    const body = `## In Development
+
+### wksantiago updates signing
+
+Text.
+
+### Keep updates signing
+
+Text.
+`;
+    const result = extractMentions(body, identities);
+    expect(result.found).toHaveLength(1);
+    expect(result.found[0].name).toBe("Keep");
+    expect(result.found[0].identity_type).toBe("maintainer");
+  });
+
+  test("publishing exposes only outreach-eligible resolved recipients", () => {
+    const marmot = project("npub1marmot");
+    const sirius = { ...project("npub1sirius"), outreach: false };
+    const identities: NpubMap = { marmot, sirius };
+    const body = `## In Development
+
+### Marmot updates messaging
+
+Text.
+
+### Sirius updates signing
+
+Text.
+`;
+    const result = extractMentions(body, identities, {}, new Set(["npub1marmot"]));
+    expect(result.found.map((entry) => entry.name)).toEqual(["Marmot", "Sirius"]);
+    expect(result.outreachRecipients).toEqual([]);
   });
 });
