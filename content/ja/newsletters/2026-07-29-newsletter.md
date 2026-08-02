@@ -3,7 +3,7 @@ title: "Nostr Compass #33"
 date: 2026-07-29
 publishDate: 2026-07-29
 translationOf: /en/newsletters/2026-07-29-newsletter.md
-translationDate: 2026-07-29
+translationDate: 2026-08-02
 draft: false
 type: newsletters
 description: "Amethyst 1.13.1 は、1.13.0 で Nostr アプリを導入した後、認証付きのグループおよび Blossom アクセスを追加。Mosaico はコーディングエージェントの状態を Nostr 上で共有し、Nostrology は NIP-65 relay リストの集中度を可視化。"
@@ -194,7 +194,7 @@ Mill は[発表](https://primal.net/e/6362d9b00662fa64200530f8a29ae547521bac0a1e
 
 ## Nostr の 6 年間の 7 月
 
-この 7 月の歴史では、読みやすい識別子、relay の絞り込み、移植可能なアプリケーションデータ、プライバシー、相互運用性という、Nostr が繰り返し向き合ってきた問題をたどります。[最初の NIP-05 実装](https://github.com/nbd-wtf/nostr-tools/commit/1ce00bd3b6909f78f212a7a172cf845b55280599)から始まり、[今月のアドレス指定可能な検出機能のマージ](https://github.com/nostr-protocol/nips/commit/2f4b09335c54a993d483bc220195e3f4a33df1ec)で終えた後、それらのテーマを発展させた各年 7 月の変更を検討します。
+この 7 月の歴史では、読みやすい識別子、relay の絞り込み、移植可能なアプリケーションデータ、プライバシー、相互運用性という、Nostr が繰り返し向き合ってきた問題をたどります。6 年を通じて、各レイヤーは限定的な修正を共有インフラへと発展させてきました。名前はプロフィールに、フィルターはアプリケーションの契約に変わり、relay が運ぶ状態はノートからライブルームやグループへと広がっています。[最初の NIP-05 実装](https://github.com/nbd-wtf/nostr-tools/commit/1ce00bd3b6909f78f212a7a172cf845b55280599)から始まり、[今月のアドレス指定可能な検出機能のマージ](https://github.com/nostr-protocol/nips/commit/2f4b09335c54a993d483bc220195e3f4a33df1ec)で終えた後、それらのテーマを発展させた各年 7 月の変更を検討します。
 
 ### 2021 年 7 月
 
