@@ -65,6 +65,7 @@ data/nostr_nip_discussions/*.json
 data/nostr_recap/*.json
 data/shakespeare_apps/*.json
 data/zapstore_releases/
+data/app_discovery/
 data/april_history/
 data/non_github_sources_*.json
 data/coverage_history.json
