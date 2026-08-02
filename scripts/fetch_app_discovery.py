@@ -495,6 +495,24 @@ def merge_candidates(candidates: list[dict]) -> list[dict]:
     return sorted(merged.values(), key=lambda candidate: (candidate.get("name", "").casefold(), candidate_key(candidate)))
 
 
+def filter_protocol_updates(
+    candidates: list[dict],
+    seen_protocol_events: dict[str, str],
+) -> tuple[list[dict], dict[str, str]]:
+    updated = dict(seen_protocol_events)
+    fresh: list[dict] = []
+    for candidate in candidates:
+        address = candidate.get("address")
+        event_id = candidate.get("event_id")
+        if not isinstance(address, str) or not address or not isinstance(event_id, str) or not event_id:
+            continue
+        if seen_protocol_events.get(address) == event_id:
+            continue
+        updated[address] = event_id
+        fresh.append(candidate)
+    return fresh, updated
+
+
 def build_report(
     *,
     since: str,
@@ -506,6 +524,7 @@ def build_report(
     source_errors: dict[str, list[str]],
     zapstore_events: list[dict] | None = None,
     signature_rejections: dict[str, list[str]] | None = None,
+    seen_protocol_events: dict[str, str] | None = None,
 ) -> dict:
     since_dt = parse_iso8601(since)
     github, updated_seen = github_candidates(
@@ -517,6 +536,8 @@ def build_report(
     )
     nip89 = nip89_candidates(nip89_events, tracked)
     zapstore = zapstore_candidates(zapstore_events or [], tracked)
+    nip89, updated_protocol_events = filter_protocol_updates(nip89, seen_protocol_events or {})
+    zapstore, updated_protocol_events = filter_protocol_updates(zapstore, updated_protocol_events)
     candidates = merge_candidates(github + nip89 + zapstore)
     signature_rejections = signature_rejections or {}
     return {
@@ -547,6 +568,7 @@ def build_report(
         "review_policy": "candidate-only; never auto-add to projects.yml",
         "candidates": candidates,
         "_updated_seen_repositories": sorted(updated_seen),
+        "_updated_seen_protocol_events": updated_protocol_events,
     }
 
 
@@ -680,7 +702,14 @@ def query_relay_kind(
                 event = json.loads(line)
             except json.JSONDecodeError:
                 continue
-            if isinstance(event, dict) and event.get("id") and event.get("kind") == kind:
+            if (
+                isinstance(event, dict)
+                and isinstance(event.get("id"), str)
+                and event.get("id")
+                and event.get("kind") == kind
+                and isinstance(event.get("created_at"), int)
+                and not isinstance(event.get("created_at"), bool)
+            ):
                 event["_relay"] = relay
                 page.append(event)
         events.extend(page)
@@ -796,9 +825,16 @@ def main() -> int:
     first_run = not args.state_file.exists()
     if first_run:
         seen_repos: set[str] = set()
+        seen_protocol_events: dict[str, str] = {}
     else:
         state = json.loads(args.state_file.read_text())
         seen_repos = set(state.get("repositories", []))
+        raw_protocol_events = state.get("protocol_events", {})
+        seen_protocol_events = {
+            address: event_id
+            for address, event_id in raw_protocol_events.items()
+            if isinstance(address, str) and isinstance(event_id, str)
+        } if isinstance(raw_protocol_events, dict) else {}
 
     report = build_report(
         since=since_dt.isoformat(),
@@ -810,8 +846,10 @@ def main() -> int:
         first_run=first_run,
         source_errors=source_errors,
         signature_rejections=signature_rejections,
+        seen_protocol_events=seen_protocol_events,
     )
     updated_seen = report.pop("_updated_seen_repositories")
+    updated_protocol_events = report.pop("_updated_seen_protocol_events")
     report["period"]["through"] = today.isoformat()
     report["period"]["days"] = args.since_days
 
@@ -821,7 +859,11 @@ def main() -> int:
     args.state_file.parent.mkdir(parents=True, exist_ok=True)
     args.state_file.write_text(
         json.dumps(
-            {"updated_at": datetime.now(timezone.utc).isoformat(), "repositories": updated_seen},
+            {
+                "updated_at": datetime.now(timezone.utc).isoformat(),
+                "repositories": updated_seen,
+                "protocol_events": updated_protocol_events,
+            },
             indent=2,
             sort_keys=True,
         )

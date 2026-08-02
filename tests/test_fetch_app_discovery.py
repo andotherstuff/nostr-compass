@@ -162,6 +162,16 @@ clients:
         self.assertIn("page=2", run.call_args_list[1].args[0])
         self.assertTrue(any("incomplete_results" in warning for warning in warnings))
 
+    def test_relay_query_drops_malformed_created_at_before_pagination(self):
+        mod = load_module()
+        malformed = {"id": "a" * 64, "kind": 31990, "created_at": "not-a-timestamp"}
+        response = subprocess.CompletedProcess([], 0, stdout=json.dumps(malformed) + "\n", stderr="")
+
+        with mock.patch.object(mod.subprocess, "run", return_value=response):
+            events = mod.query_relay_kind("wss://relay.example", 31990, 0, page_size=1, max_pages=1)
+
+        self.assertEqual(events, [])
+
     def test_github_candidates_require_explicit_nostr_application_signal(self):
         mod = load_module()
         base = {
@@ -403,6 +413,52 @@ clients:
         self.assertEqual(report["source_status"]["github"], "ok")
         self.assertEqual(report["source_status"]["nip89"], "partial")
         self.assertEqual(report["review_policy"], "candidate-only; never auto-add to projects.yml")
+
+    def test_protocol_candidates_emit_once_and_reemit_on_replacement(self):
+        mod = load_module()
+        base = {
+            "pubkey": "a" * 64,
+            "kind": 31990,
+            "created_at": 100,
+            "content": '{"name":"Reader","website":"https://reader.example"}',
+            "tags": [["d", "reader"], ["k", "1"]],
+            "_relay": "wss://nos.lol",
+        }
+
+        first = mod.build_report(
+            since="2026-07-25T00:00:00+00:00",
+            github_items=[],
+            nip89_events=[{**base, "id": "1" * 64}],
+            tracked={"repos": {}, "websites": {}, "names": {}},
+            seen_repos=set(),
+            first_run=True,
+            source_errors={},
+            seen_protocol_events={},
+        )
+        unchanged = mod.build_report(
+            since="2026-07-25T00:00:00+00:00",
+            github_items=[],
+            nip89_events=[{**base, "id": "1" * 64}],
+            tracked={"repos": {}, "websites": {}, "names": {}},
+            seen_repos=set(),
+            first_run=False,
+            source_errors={},
+            seen_protocol_events=first["_updated_seen_protocol_events"],
+        )
+        replacement = mod.build_report(
+            since="2026-07-25T00:00:00+00:00",
+            github_items=[],
+            nip89_events=[{**base, "id": "2" * 64, "created_at": 101}],
+            tracked={"repos": {}, "websites": {}, "names": {}},
+            seen_repos=set(),
+            first_run=False,
+            source_errors={},
+            seen_protocol_events=first["_updated_seen_protocol_events"],
+        )
+
+        self.assertEqual(first["summary"]["candidate_count"], 1)
+        self.assertEqual(unchanged["summary"]["candidate_count"], 0)
+        self.assertEqual(replacement["summary"]["candidate_count"], 1)
 
     def test_merge_candidates_combines_protocol_and_github_evidence(self):
         mod = load_module()
