@@ -2,32 +2,88 @@
 # Maps project/person names to their Nostr npubs
 # Used by scripts/publish.ts to generate nostr:npub1... mentions
 #
-# Lookup is case-insensitive
-# One npub per entry; deduplicated by value before building mention strings
+# Identity lookup is case-insensitive and deduplicated by npub.
 #
-# To add entries: look up npubs via njump.me, nostr.band, or ask the project maintainer
+# Before adding an identity, research the project's primary website/repository,
+# npub.world, and signed relay profiles with NAK. Never infer an npub from a
+# similar display name. If ownership or role remains unclear, leave the entry
+# commented as unresolved and ask a maintainer or the editor.
 #
 # --- Never DM (read by publish/dm-outreach.ts) ---
-# npubs listed here are never sent a weekly outreach DM, even when
-# scripts/publish.ts resolves them as a genuine mention in that week's
-# newsletter. Use this for accounts that should not receive outreach
-# solicitation, as distinct from being excluded from the npub lookup itself.
+# npubs listed here are never sent outreach even when scripts/publish.ts resolves
+# them as a genuine mention. `outreach: false` additionally marks an entry such
+# as an unmonitored organizational signing key as unsuitable for DMs.
 no_dm:
   - npub1marm0t9qkmv8lq7pe7vdx60ed8fl2d876a2ytk3ade208dlyfweqg5r6m9  # Marmot protocol/MDK - this chat, the bunker signing, and the DM transport itself all run over Marmot; never solicit outreach to it
+  - npub1xdhnr9mrv47kkrn95k6cwecearydeh8e895990n3acntwvmgk2dsdeeycm  # Sirius Business Ltd repository-signing identity; no monitored outreach inbox verified
+
+# Researched projects without a defensible active project/maintainer identity.
+# These remain visible to validation and workflow reporting, but never become
+# mentions or outreach recipients.
+unresolved:
+  Granary:
+    checked_at: 2026-08-02
+    reason: No project identity or Ryan Barrett npub is bound by a primary source.
+    sources:
+      - https://github.com/snarfed/granary
+  Heartwood:
+    checked_at: 2026-08-02
+    reason: Repository identities and example npubs do not bind a public key to Heartwood or its current maintainer.
+    sources:
+      - https://github.com/forgesworn/heartwood
+  Napplet Toolchain:
+    checked_at: 2026-08-02
+    reason: The historical sandwich.farm key is not bound to Napplet by the canonical repositories or site.
+    sources:
+      - https://github.com/napplet/web
+      - https://github.com/napplet/napplet
+      - https://napplet.run/
+  Nostr Applet Protocol:
+    checked_at: 2026-08-02
+    reason: No NAP project account or maintainer npub is bound by a primary source.
+    sources:
+      - https://github.com/napplet/naps
+      - https://napplet.run/
+  keep-android:
+    checked_at: 2026-08-02
+    reason: Candidate personal keys for the maintainer are not bound to PrivKey or keep-android by a primary source.
+    sources:
+      - https://github.com/privkeyio/keep-android
+  swift-nostr-client:
+    checked_at: 2026-08-02
+    reason: No project account or Yusuke Morishita npub is bound by the repository, maintainer site, or profile.
+    sources:
+      - https://github.com/yysskk/swift-nostr-client
+      - https://yusuke.ca/
+  nsite:
+    checked_at: 2026-08-02
+    reason: No project or maintainer npub was verified; the previous value failed its Bech32 checksum.
+    sources:
+      - https://github.com/lez/nsite
+  Dart NDK:
+    checked_at: 2026-08-02
+    reason: No project or maintainer npub was verified; the previous vanity value decoded to 33 bytes and the repository linked by the project site is unavailable.
+    sources:
+      - https://dart-nostr.com/
+  pakstr:
+    checked_at: 2026-07-29
+    reason: No project account or ado maintainer npub was bound after repository, profile, NIP-05, relay, and site checks.
+    sources:
+      - https://git.nostrdev.com/stuff/pakstr
 #
-# Two formats:
-#   String value (project account):  ProjectName: npub1...
-#     -> Replaces "ProjectName" with nostr:npub in body (renders as project name)
-#   Object value (dev account):      ProjectName:
-#                                       npub: npub1...
-#                                       mention_only: true
-#     -> Keeps "ProjectName" in body, appends (nostr:npub) after it
-#        Renders as "ProjectName (devname)" so readers see both
+# New and corrected records use the typed object format:
+#   ProjectName:
+#     npub: npub1...
+#     identity_type: project | organization | maintainer | lead-developer | individual
+#     person: Person Name          # required for maintainer/lead-developer
+#     display_name: Organization   # required for organization
+#     outreach: false              # optional; defaults true
+#     evidence: [https://primary.example/source]
 #
-# Legend:
-#   [project]  = dedicated project account (string format)
-#   [dev:name] = uses developer's personal npub (object format, mention_only)
-#   commented  = no verified npub found
+# Dedicated project identities render directly. Organization and personal
+# identities retain the project name and add an explicit role label, e.g.
+# `(maintainer Tim Bouma: nostr:npub...)`. Legacy string/mention_only records
+# remain readable but `bun run check:npubs` reports them for migration.
 
 # =============================================================================
 # Nostr Compass
@@ -150,7 +206,6 @@ Amber:
 Frostr: npub17uvdffljczhlpjfvfj0q30dmh4ugh8wlzm8u6w64y2v4ts7fqsqqj28tr4
 # aliases for Frostr
 Frost2x: npub17uvdffljczhlpjfvfj0q30dmh4ugh8wlzm8u6w64y2v4ts7fqsqqj28tr4
-Igloo desktop: npub17uvdffljczhlpjfvfj0q30dmh4ugh8wlzm8u6w64y2v4ts7fqsqqj28tr4
 Igloo Desktop: npub17uvdffljczhlpjfvfj0q30dmh4ugh8wlzm8u6w64y2v4ts7fqsqqj28tr4
 Igloo for Android: npub17uvdffljczhlpjfvfj0q30dmh4ugh8wlzm8u6w64y2v4ts7fqsqqj28tr4
 Igloo for iOS: npub17uvdffljczhlpjfvfj0q30dmh4ugh8wlzm8u6w64y2v4ts7fqsqqj28tr4
@@ -399,30 +454,58 @@ Igloo: npub17uvdffljczhlpjfvfj0q30dmh4ugh8wlzm8u6w64y2v4ts7fqsqqj28tr4
 Igloo Signer: npub17uvdffljczhlpjfvfj0q30dmh4ugh8wlzm8u6w64y2v4ts7fqsqqj28tr4
 Schemata: npub1g5qtwz2nh9q0mnw555kv787kh6lysds95522gzptre3qpvz9p20s83m80d
 Nymchat: npub16jdfqgazrkapk0yrqm9rdxlnys7ck39c7zmdzxtxqlmmpxg04r0sd733sv
-YakiHonne: npub1yzvxlwp7wawed5vgefwfmugvumtp8c8t0etk3g8sky4n0ndvyxfslnm9n4
-YakiHonne Mobile: npub1yzvxlwp7wawed5vgefwfmugvumtp8c8t0etk3g8sky4n0ndvyxfslnm9n4
+# Dedicated project account verified through YakiHonne's NIP-05 and signed profile.
+YakiHonne:
+  npub: npub1yzvxlwp7wawed5vgefwfmugvumtp8c8t0etk3g8sky4n0ndvyxesnxrf8q
+  identity_type: project
+  evidence:
+    - "https://yakihonne.com/.well-known/nostr.json?name=_"
+    - https://njump.me/nevent1qgszpxr0hql8whvk6xyv5hya7yxwd4snur4hu4mg5rctz2ehekkzrvcpp4mhxue69uhkummn9ekx7mqpz4mhxue69uhhyetvv9ujumn0wd68ytnwv46qqg8k2qt22pwjh6jluf2mgkzj4vt8vaahcqjf7jela7ggngxzpk4dqvd4ryw9
+YakiHonne Mobile:
+  npub: npub1yzvxlwp7wawed5vgefwfmugvumtp8c8t0etk3g8sky4n0ndvyxesnxrf8q
+  identity_type: project
+  evidence:
+    - "https://yakihonne.com/.well-known/nostr.json?name=_"
+# The canonical Nostr repository is signed by Sirius Business Ltd. This is an
+# organizational code identity, not Martti Malmi's personal account, and is not
+# assumed to be a monitored DM inbox.
 Nostr VPN:
-  npub: npub1klgggm0e8jmjzde5sswx0ger4fzmkfjqy9erdsq79fqsz80kzlzsz9ky7h
-  mention_only: true
+  npub: npub1xdhnr9mrv47kkrn95k6cwecearydeh8e895990n3acntwvmgk2dsdeeycm
+  identity_type: organization
+  display_name: Sirius Business Ltd
+  outreach: false
+  evidence:
+    - https://github.com/mmalmi/nostr-vpn#readme
+    - https://njump.me/nevent1qgsrxme3ja3k2lttpej6tdv8vuv73jxumnunj6zjhec7uf4hxd5t9xcpp4mhxue69uhkummn9ekx7mqpz4mhxue69uhhyetvv9ujumn0wd68ytnwv46qqgxpje403wcptsnlgsp7fgx8frtaa93sla58h8fqenjwxfnzplaszsnx7gx2
 Hashtree:
-  npub: npub1klgggm0e8jmjzde5sswx0ger4fzmkfjqy9erdsq79fqsz80kzlzsz9ky7h
-  mention_only: true
-nsite:
-  npub: npub1lez7kezu34ntcpe3xyshkmz8wnyhvmad0aulqez47rfscu4zxmrspm7u08
-  mention_only: true
+  npub: npub1xdhnr9mrv47kkrn95k6cwecearydeh8e895990n3acntwvmgk2dsdeeycm
+  identity_type: organization
+  display_name: Sirius Business Ltd
+  outreach: false
+  evidence:
+    - https://github.com/mmalmi/nostr-vpn#readme
+# nsite: no project or maintainer npub verified after GitHub, web, npub.world,
+# and relay research on 2026-08-02. Do not restore the checksum-invalid value.
 Nostr-Doc: npub1qu7dsd44275lms4x9snnwvnnmgx926nsppmr7lcw9dlj36n4fltqgs7p98
 Nalgorithm:
   npub: npub1m2mvvpjugwdehtaskrcl7ksvdqnnhnjur9v6g9v266nss504q7mqvlr8p9
   mention_only: true
-Dart NDK:
-  npub: npub1relaystr0ng75ecpd8av2v35kwf3a86vlrr3c4gs02p3gvy57haaqgt3a6p
-  mention_only: true
+# Dart NDK: no project or maintainer npub verified after GitHub, project-site,
+# npub.world, and relay research on 2026-08-02. The old vanity value decoded to
+# 33 bytes and was not a valid Nostr public key.
 Vertex:
-  npub: npub176phtjylv0t6wv2d7mc6z50w3rr90k4g5eyauhwmhrcga8kh3wpqrgvgup
-  mention_only: true
+  npub: npub1kpt95rv4q3mcz8e4lamwtxq7men6jprf49l7asfac9lnv2gda0lqdknhmz
+  identity_type: project
+  evidence:
+    - https://vertexlab.io/docs/verification/
+    - https://npub.world/npub1kpt95rv4q3mcz8e4lamwtxq7men6jprf49l7asfac9lnv2gda0lqdknhmz
+    - https://njump.me/nevent1qgstq4j6pk2sgaupru6l7ah9nq0dueafq356jllwcy7uzlek9yx7hlspp4mhxue69uhkummn9ekx7mqpz4mhxue69uhhyetvv9ujumn0wd68ytnwv46qqgxt5a46g23mz2d8hrshrrs7mpm4y8jgflg9c964mj93exe8qt7wwqlhhcsv
 Vertex Lab:
-  npub: npub176phtjylv0t6wv2d7mc6z50w3rr90k4g5eyauhwmhrcga8kh3wpqrgvgup
-  mention_only: true
+  npub: npub1kpt95rv4q3mcz8e4lamwtxq7men6jprf49l7asfac9lnv2gda0lqdknhmz
+  identity_type: project
+  evidence:
+    - https://vertexlab.io/docs/verification/
+    - https://npub.world/npub1kpt95rv4q3mcz8e4lamwtxq7men6jprf49l7asfac9lnv2gda0lqdknhmz
 Branta: npub16ndruwfg7dsdhnp3w8zvqrg0r2rn3wucnttgrg5acm2lhqpkepkqncr9qr
 Vertex Lab relay: npub1kpt95rv4q3mcz8e4lamwtxq7men6jprf49l7asfac9lnv2gda0lqdknhmz
 
@@ -487,7 +570,13 @@ Quartz:
 # =============================================================================
 # Podcast Guests
 # =============================================================================
-Tim Bouma: npub1q6mcr8tlr3l4gus3sfnw6772s7zae6hqncmw5wj27ejud5wcxf7q0nx7d5
+Tim Bouma:
+  npub: npub1q6mcr8tlr3l4gus3sfnw6772s7zae6hqncmw5wj27ejud5wcxf7q0nx7d5
+  identity_type: individual
+  person: Tim Bouma
+  evidence:
+    - https://github.com/trbouma
+    - https://njump.me/nevent1qgsqddupn4l3cl65wggcyehd009g0pwuatsfudh28f90vewx68vrylqpp4mhxue69uhkummn9ekx7mqqyqtfkymmr77cjn39ajgehndtykz665tyj3gvckuz3y2n9s0mfsugsdheaza
 Pete Marcano: npub1marcan0laywmjprf4m8d34dr8m724a6jxxa56a5wwygcgj23q7nskfwmfg
 Vinny: npub19ma2w9dmk3kat0nt0k5dwuqzvmg3va9ezwup0zkakhpwv0vcwvcsg8axkl
 calvadev: npub16dhgpql60vmd4mnydjut87vla23a38j689jssaqlqqlzrtqtd0kqex0nkq
@@ -496,7 +585,13 @@ Vincenzo: npub1szgdn7q6g9huf8a4zd980khntyk2mwqa7s5rlqye6v3y3w7gs4zspmv73y
 elsat: npub1zafcms4xya5ap9zr7xxr0jlrtrattwlesytn2s42030lzu0dwlzqpd26k5
 JeffG: npub1zuuajd7u3sx8xu92yav9jwxpr839cs0kc3q6t56vd5u9q033xmhsk6c2uc
 Fmar: npub1wf4pufsucer5va8g9p0rj5dnhvfeh6d8w0g6eayaep5dhps6rsgs43dgh9
-Pip: npub1plpngahkx2pudue7enq3su2cl0uy2f6gzm83j62rg2r6y3ehp9sqluct7p
+Pip:
+  npub: npub176p7sup477k5738qhxx0hk2n0cty2k5je5uvalzvkvwmw4tltmeqw7vgup
+  identity_type: individual
+  person: pip
+  evidence:
+    - "https://vertexlab.io/.well-known/nostr.json?name=pip"
+    - https://njump.me/nevent1qgs0dqlgwq6l0t20gnstnr8mm9fhu9j9t2fv6wxwl3xtx8dh24l4auspp4mhxue69uhkummn9ekx7mqpz4mhxue69uhhyetvv9ujumn0wd68ytnwv46qqgyj8u6krhgtg6mlxnjsmhklf7r7gvemzeeuge6s8599020yf38kyun0kq2s
 Sondre: npub1zl3g38a6qypp6py2z07shggg45cu8qex992xpss7d8zrl28mu52s4cjajh
 
 # --- Newsletter #17 additions ---
@@ -872,7 +967,13 @@ WhisperHash maintainer:
   mention_only: true
 
 # Kairos Zapstore releases are signed by LWB's relay-backed personal key.
-Kairos: npub1vjxq75czca0nswp2f5kgtfyzhynuccdjs29q098rd3kv09k7s6nq39hh7v
+Kairos:
+  npub: npub1vjxq75czca0nswp2f5kgtfyzhynuccdjs29q098rd3kv09k7s6nq39hh7v
+  identity_type: maintainer
+  person: LWB
+  evidence:
+    - https://github.com/Lwb89dev/kairos
+    - https://njump.me/nevent1qgsxfrq02vpvwhec8q4y6ty95jptjf7vvxeg9zs8jn3kcmx8jm0gdfspzemhxue69uhhyetvv9ujuurjd9kkzmpwdejhgqpqdcpyxzzy40dt74pph06hgksfau58pe9dayl4vcn7u9963k6c5q9qkxjmtu
 LWB maintainer:
   npub: npub1vjxq75czca0nswp2f5kgtfyzhynuccdjs29q098rd3kv09k7s6nq39hh7v
   mention_only: true
@@ -892,10 +993,19 @@ wksantiago maintainer:
 # identity was established from primary evidence.
 Routstrd project account:
   npub: npub130mznv74rxs032peqym6g3wqavh472623mt3z5w73xq9r6qqdufs7ql29s
-  mention_only: true
+  identity_type: project
+  evidence:
+    - https://github.com/Routstr/routstrd
+    - https://npub.world/npub130mznv74rxs032peqym6g3wqavh472623mt3z5w73xq9r6qqdufs7ql29s
 
 # Mill's discussion event is signed by 0ceanSlim's relay-backed key.
-Mill: npub1zmc6qyqdfnllhnzzxr5wpepfpnzcf8q6m3jdveflmgruqvd3qa9sjv7f60
+Mill:
+  npub: npub1zmc6qyqdfnllhnzzxr5wpepfpnzcf8q6m3jdveflmgruqvd3qa9sjv7f60
+  identity_type: maintainer
+  person: 0ceanSlim
+  evidence:
+    - https://github.com/0ceanSlim/nostr-mill
+    - https://njump.me/nevent1qgspdudqzqx5ellme3prp68qus5se3vynsddcexkv5la5p7qxxcswjcpzemhxue69uhhyetvv9ujuurjd9kkzmpwdejhgqpqvd3dnvqxvtaxggq9xru29xh9gafphtq2rc7fx700jzrw437jqv9sw8zh2t
 0ceanSlim maintainer:
   npub: npub1zmc6qyqdfnllhnzzxr5wpepfpnzcf8q6m3jdveflmgruqvd3qa9sjv7f60
   mention_only: true
@@ -917,7 +1027,49 @@ block maintainer:
 # Heading alias needed by automated H3 mention extraction.
 lawallet-nwc: npub1ek4262k6nv3l9axh403w2e66pzl2pqhhnjrhgv2wpzx2akak285scxv4pd
 
-# No verified public Nostr identity found after repository, profile, NIP-05,
-# relay-search, and project-site checks. Never guess an npub.
-# swift-nostr / yysskk: no verified npub found
-# pakstr / ado: no verified npub found
+# =============================================================================
+# Identity audit additions (verified 2026-08-02)
+# =============================================================================
+21Meetup:
+  npub: npub1rl4wlgapxcapk0p3242kqcw7az584sjxgssuwh38u2gatk0cwewsudjz85
+  identity_type: project
+  evidence:
+    - https://github.com/21Koblenz/einundzwanzig-meetup-website/blob/main/social.html
+    - https://njump.me/nevent1qgspl6h05wsnvwsm8sc424tqv80w32r6cfryggw8tcn79yw4m8u8vhgpp4mhxue69uhkummn9ekx7mqqyq3uszr2d30tt8l39t25uh5zngl3gm3putuls6xv84ca98thpu8827m9m85
+
+Deepmarks:
+  npub: npub199zwj9d6w88slsvlthdqfr8q2w58cq0aw3utz7fnpgt7mjjvut6qc80sqk
+  identity_type: project
+  evidence:
+    - https://github.com/ostermayer/deepmarks-public/blob/main/docs/nostr.md
+    - https://github.com/ostermayer/deepmarks-public/blob/main/frontend/static/.well-known/nostr.json
+    - https://njump.me/nevent1qgszj38fzka8rnc0cx04mksy3ns982ruq87hg7930yes59ldefxw9aqpp4mhxue69uhkummn9ekx7mqqyruyjrchuewej5r4vy4aurys2h89kdwvejyas9yss4uxzsawrq9rqleh382
+
+# Newsletter #30 links mattn/nostr-relay. GitHub's verified social account points
+# to this same npub, so it is a maintainer identity, not a relay project account.
+Nostr-relay:
+  npub: npub1937vv2nf06360qn9y8el6d8sevnndy7tuh5nzre4gj05xc32tnwqauhaj6
+  identity_type: maintainer
+  person: Yasuhiro Matsumoto (mattn)
+  evidence:
+    - https://github.com/mattn/nostr-relay
+    - https://github.com/mattn
+    - https://njump.compile-error.net/npub1937vv2nf06360qn9y8el6d8sevnndy7tuh5nzre4gj05xc32tnwqauhaj6
+
+OpenETR:
+  npub: npub1q6mcr8tlr3l4gus3sfnw6772s7zae6hqncmw5wj27ejud5wcxf7q0nx7d5
+  identity_type: lead-developer
+  person: Tim Bouma
+  evidence:
+    - https://github.com/trbouma/openetr
+    - https://trbouma.github.io/openetr/
+    - https://njump.me/nevent1qgsqddupn4l3cl65wggcyehd009g0pwuatsfudh28f90vewx68vrylqpp4mhxue69uhkummn9ekx7mqqyqtfkymmr77cjn39ajgehndtykz665tyj3gvckuz3y2n9s0mfsugsdheaza
+
+SafeBox:
+  npub: npub1q6mcr8tlr3l4gus3sfnw6772s7zae6hqncmw5wj27ejud5wcxf7q0nx7d5
+  identity_type: lead-developer
+  person: Tim Bouma
+  evidence:
+    - https://github.com/trbouma/safebox
+    - https://github.com/trbouma
+    - https://njump.me/nevent1qgsqddupn4l3cl65wggcyehd009g0pwuatsfudh28f90vewx68vrylqpp4mhxue69uhkummn9ekx7mqqyqtfkymmr77cjn39ajgehndtykz665tyj3gvckuz3y2n9s0mfsugsdheaza

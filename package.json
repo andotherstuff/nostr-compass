@@ -1,8 +1,10 @@
 {
   "scripts": {
-    "build": "bash scripts/build-site.sh"
+    "build": "bash scripts/build-site.sh",
+    "check:npubs": "bun scripts/check_npubs.ts data/npubs.yml"
   },
   "dependencies": {
+    "nostr-tools": "^2.24.1",
     "yaml": "^2.9.0"
   },
   "devDependencies": {
