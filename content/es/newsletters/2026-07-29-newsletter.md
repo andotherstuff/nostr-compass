@@ -3,7 +3,7 @@ title: "Nostr Compass #33"
 date: 2026-07-29
 publishDate: 2026-07-29
 translationOf: /en/newsletters/2026-07-29-newsletter.md
-translationDate: 2026-07-29
+translationDate: 2026-08-02
 draft: false
 type: newsletters
 description: "Amethyst 1.13.1 añade acceso autenticado a grupos y a Blossom después de que 1.13.0 introdujera las aplicaciones Nostr; Mosaico comparte el estado de agentes de programación mediante Nostr, y Nostrology cartografía la concentración de listas de relays NIP-65."
@@ -194,7 +194,7 @@ El [PR #2 de NWC](https://github.com/nostr-wallet-connect/nwc/pull/2) propone m�
 
 ## Seis julios en la historia de Nostr
 
-Este recorrido histórico por los julios de Nostr aborda problemas recurrentes: identificadores legibles, filtrado de relays, datos portátiles de aplicaciones, privacidad e interoperabilidad. Comienza con [la primera implementación de NIP-05](https://github.com/nbd-wtf/nostr-tools/commit/1ce00bd3b6909f78f212a7a172cf845b55280599) y termina con [la integración del descubrimiento direccionable de este mes](https://github.com/nostr-protocol/nips/commit/2f4b09335c54a993d483bc220195e3f4a33df1ec), y después examina los cambios de julio que desarrollaron esos temas.
+Este recorrido histórico por los julios de Nostr aborda problemas recurrentes: identificadores legibles, filtrado de relays, datos portátiles de aplicaciones, privacidad e interoperabilidad. A lo largo de seis años, cada capa transforma una solución puntual en infraestructura compartida: los nombres se convierten en perfiles, los filtros en contratos de aplicación y el estado transportado por relays se expande de las notas a las salas y los grupos en directo. Comienza con [la primera implementación de NIP-05](https://github.com/nbd-wtf/nostr-tools/commit/1ce00bd3b6909f78f212a7a172cf845b55280599) y termina con [la integración del descubrimiento direccionable de este mes](https://github.com/nostr-protocol/nips/commit/2f4b09335c54a993d483bc220195e3f4a33df1ec), y después examina los cambios de julio que desarrollaron esos temas.
 
 ### Julio de 2021
 
