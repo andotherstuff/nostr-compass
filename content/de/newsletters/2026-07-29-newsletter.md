@@ -3,7 +3,7 @@ title: "Nostr Compass #33"
 date: 2026-07-29
 publishDate: 2026-07-29
 translationOf: /en/newsletters/2026-07-29-newsletter.md
-translationDate: 2026-07-29
+translationDate: 2026-08-02
 draft: false
 type: newsletters
 description: "Amethyst 1.13.1 ergänzt authentifizierten Zugriff auf Gruppen und Blossom, nachdem 1.13.0 Nostr-Apps eingeführt hatte; Mosaico teilt den Status von Coding-Agenten über Nostr, und Nostrology kartiert die Konzentration von NIP-65-relay-Listen."
@@ -194,7 +194,7 @@ Das [Spezifikations-Repository von Gamma Markets](https://github.com/GammaMarket
 
 ## Sechs Jahre Nostr im Juli
 
-Diese Juli-Chronik verfolgt wiederkehrende Probleme von Nostr: lesbare Kennungen, relay-Filterung, portable Anwendungsdaten, Datenschutz und Interoperabilität. Sie beginnt mit [der ersten Implementierung von NIP-05](https://github.com/nbd-wtf/nostr-tools/commit/1ce00bd3b6909f78f212a7a172cf845b55280599) und endet mit [dem Merge dieses Monats zur adressierbaren Erkennung](https://github.com/nostr-protocol/nips/commit/2f4b09335c54a993d483bc220195e3f4a33df1ec). Anschließend untersucht sie die Änderungen im Juli, die diese Themen weiterentwickelt haben.
+Diese Juli-Chronik verfolgt wiederkehrende Probleme von Nostr: lesbare Kennungen, relay-Filterung, portable Anwendungsdaten, Datenschutz und Interoperabilität. Über sechs Jahre hinweg verwandelt jede Schicht eine punktuelle Korrektur in gemeinsam genutzte Infrastruktur: Namen werden zu Profilen, Filter zu Anwendungsverträgen, und der über relays transportierte Zustand weitet sich von Notizen auf Live-Räume und Gruppen aus. Sie beginnt mit [der ersten Implementierung von NIP-05](https://github.com/nbd-wtf/nostr-tools/commit/1ce00bd3b6909f78f212a7a172cf845b55280599) und endet mit [dem Merge dieses Monats zur adressierbaren Erkennung](https://github.com/nostr-protocol/nips/commit/2f4b09335c54a993d483bc220195e3f4a33df1ec). Anschließend untersucht sie die Änderungen im Juli, die diese Themen weiterentwickelt haben.
 
 ### Juli 2021
 
