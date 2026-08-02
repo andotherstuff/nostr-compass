@@ -64,7 +64,7 @@ Nostr SDK 与命令行工具包 [Bray 2.3.0](https://github.com/forgesworn/bray/
 
 ### Mafrend v1.0 预览 Android 上基于地点的 Nostr 聊天
 
-[Mafrend v1.0](https://github.com/DestBro/mafrend-zapstore/releases/tag/v1.0) 是一款计划以地点为基础的 Nostr 聊天应用，其首个公开 Android alpha 版本。它的[项目页面](https://mafrend.com)将这组功能标为仍在积极开发，并把每个地图位置描述为围绕某个地点展开对话的专用聊天室。公开发布仓库提供可安装的 Zapstore 软件包，而主应用仍保持私有。
+[Mafrend v1.0](https://github.com/DestBro/mafrend-zapstore/releases/tag/v1.0) 是计划中的基于地点的 Nostr 聊天应用的首个公开 Android alpha 版本。它的[项目页面](https://mafrend.com)将这组功能标为仍在积极开发，并把每个地图位置描述为围绕某个地点展开对话的专用聊天室。公开发布仓库提供可安装的 Zapstore 软件包，而主应用仍保持私有。
 
 ### Hanami 0.1.0 为 Blossom server 提供经签名器中介的 Android 路径
 
@@ -100,7 +100,7 @@ Go 语言 Nostr 命令行客户端 [algia 0.0.133](https://github.com/mattn/algi
 
 ### MDK 0.9.10
 
-[MDK 0.9.10](https://github.com/marmot-protocol/mdk/releases/tag/v0.9.10) 是 [Marmot 协议](/zh/topics/marmot/)的 Rust 实现，会在 transport 未启用期间保留待发送内容，并[监控 relay 通知转发](https://github.com/marmot-protocol/mdk/pull/1157)，让入站投递在 lag、panic 或关闭后恢复。[PR #1159](https://github.com/marmot-protocol/mdk/pull/1159) 为本地代理加入持久、可分页的对话历史和完整回复上下文，[PR #1167](https://github.com/marmot-protocol/mdk/pull/1167) 则重新发布当前已签名的 KeyPackage event，而不生成替代品。该版本还保留手动聊天排序、支持群组最终解散，并扩展按 Web of Trust 排名的搜索、relay 策略 API 和语言绑定。
+[MDK 0.9.10](https://github.com/marmot-protocol/mdk/releases/tag/v0.9.10) 是 [Marmot 协议](/zh/topics/marmot/)的 Rust 实现，会在 transport 处于非活动状态期间保留待发送内容，并[监控 relay 通知转发](https://github.com/marmot-protocol/mdk/pull/1157)，让入站投递在 lag、panic 或关闭后恢复。[PR #1159](https://github.com/marmot-protocol/mdk/pull/1159) 为本地代理加入持久、可分页的对话历史和完整回复上下文，[PR #1167](https://github.com/marmot-protocol/mdk/pull/1167) 则重新发布当前已签名的 KeyPackage event，而不生成替代品。该版本还保留手动聊天排序、支持将群组解散为终止状态，并扩展按 Web of Trust 排名的搜索、relay 策略 API 和语言绑定。
 
 ### pakstr 0.3.1
 
@@ -164,7 +164,7 @@ Android 托管的 Nostr relay Citrine 现在可以把已存储的 event 发送�
 
 ### Mill 实现云账户密钥备份草案
 
-Mill [宣布](https://primal.net/e/6362d9b00662fa64200530f8a29ae547521bac0a1e3c9379ef9086eac7d2030b)已经实现一份[云账户密钥备份草案](https://github.com/0ceanSlim/nostr-mill/blob/main/docs/nip-cloud-key-backup.md)，该草案把 Google OIDC 账户标识符与高熵 passphrase 组合起来，派生一次性备份密钥。其[参考实现](https://github.com/0ceanSlim/nostr-mill/blob/main/src/nipbackup.js)把用户的真实密钥加密为 [NIP-49（私钥加密）](/zh/topics/nip-49/) `ncryptsec`，再将其存入已配置 relay 上一个临时的参数化可替换 kind `30049` event。项目已[把备份流程合并到 main](https://github.com/0ceanSlim/nostr-mill/commit/eeb4b9114d02114b703a6823ad36ca8063b224da)，但 v1.0.0 之后没有任何版本包含该功能；除非运营者提供专用 `backupRelays`，备份流程仍保持禁用。带版本的 relay 集合仍属临时设计，草案也警告已发布的 ciphertext 会继续存在，可供离线猜测 passphrase。读者应把这项设计视为一项依赖高熵 passphrase 的已实现实验。
+Mill [宣布](https://primal.net/e/6362d9b00662fa64200530f8a29ae547521bac0a1e3c9379ef9086eac7d2030b)已经实现一份[云账户密钥备份草案](https://github.com/0ceanSlim/nostr-mill/blob/main/docs/nip-cloud-key-backup.md)，该草案把 Google OIDC 账户标识符与高熵 passphrase 组合起来，派生可丢弃的备份密钥。其[参考实现](https://github.com/0ceanSlim/nostr-mill/blob/main/src/nipbackup.js)把用户的真实密钥加密为 [NIP-49（私钥加密）](/zh/topics/nip-49/) `ncryptsec`，再将其存入已配置 relay 上一个暂定为 kind `30049` 的参数化可替换 event。项目已[把备份流程合并到 main](https://github.com/0ceanSlim/nostr-mill/commit/eeb4b9114d02114b703a6823ad36ca8063b224da)，但 v1.0.0 之后没有任何版本包含该功能；除非运营者提供专用 `backupRelays`，备份流程仍保持禁用。带版本的 relay 集合仍属临时设计，草案也警告已发布的 ciphertext 会继续存在，可供离线猜测 passphrase。读者应把这项设计视为一项依赖高熵 passphrase 的已实现实验。
 
 ### BUDs：Blossom server 可以根据字节识别未知上传内容
 
@@ -212,7 +212,7 @@ Mill [宣布](https://primal.net/e/6362d9b00662fa64200530f8a29ae547521bac0a1e3c9
 
 2023 年 7 月把协调推进到短 note 之外。[NIP-37 密钥丢失草案](https://github.com/nostr-protocol/nips/commit/e057fa01ca3928a32bdc0e9a44c27f946f267041)探索不可逆的密钥退役、社交恢复 threshold 和预先承诺的替代密钥，同时明确拒绝把结果称作通用密钥轮换。五天后，[NIP-53](https://github.com/nostr-protocol/nips/commit/141197c564d97073f0293e3b2f367f0b6b3619c2) 引入可寻址的 kind `30311` 直播活动与 kind `1311` 聊天消息，为 stream、stage 和直播房间提供一套共享 event 模型，用来表达 host、参与者、状态与对话。
 
-应用也开始宣传工作与商务活动。首份 [Data Vending Machine 草案](https://github.com/nostr-protocol/nips/commit/67e950a2009e81df1b8c91b0a2ade0596e83f168)描述了 kind `68001` 工作请求、kind `68002` 结果、bid、到期、chaining，以及为转录、摘要和翻译等任务竞争的 provider。7 月 13 日，[分类信息草案](https://github.com/nostr-protocol/nips/commit/451c06a3c572a13afe45c1d80616f8e6dd9bb1de)加入可寻址的 kind `30402` offer，带有标题、摘要、价格、位置和状态元数据。这些草案后来成为 NIP-90 和 NIP-99，但它们在当年七月的形态已经把请求或 listing 与展示它的 server 分开。
+应用也开始发布工作与商业信息。首份 [Data Vending Machine 草案](https://github.com/nostr-protocol/nips/commit/67e950a2009e81df1b8c91b0a2ade0596e83f168)描述了 kind `68001` 工作请求、kind `68002` 结果、bid、到期、chaining，以及为转录、摘要和翻译等任务竞争的 provider。7 月 13 日，[分类信息草案](https://github.com/nostr-protocol/nips/commit/451c06a3c572a13afe45c1d80616f8e6dd9bb1de)加入可寻址的 kind `30402` offer，带有标题、摘要、价格、位置和状态元数据。这些草案后来成为 NIP-90 和 NIP-99，但它们在当年七月的形态已经把请求或 listing 与展示它的 server 分开。
 
 支付路由也变得可组合。7 月 31 日的 [NIP-57 zap 分配合并](https://github.com/nostr-protocol/nips/commit/5d63b1570c490007252b10e757f7f68ef1f4b717)把单个 `zap` 目标改为包含收款人 pubkey 和 relay hint 的加权列表。客户端可以在协作者之间分配一个 zap，在存在部分权重时省略未加权的收款人，并在支付前展示分配方案。该变更标准化了加权 zap 收款人和 relay hint 的签名 event 表示，让兼容客户端可以在支付前呈现分配方案。
 
@@ -230,7 +230,7 @@ Ecash 发现于 7 月 16 日获得自己的社交目录。[NIP-87 commit 1afb6da
 
 一周后，一份草案为语音消息规定可移植的 Nostr event 记录。首个 [NIP-A0 commit](https://github.com/nostr-protocol/nips/commit/e50f37a527ace39cc3057827d52295c6b6de1112) 把 kind `1222` 分配给语音消息根 event，把 kind `1244` 分配给回复，并携带音频 URL 与媒体元数据。7 月 27 日的[格式后续变更](https://github.com/nostr-protocol/nips/commit/4984b057c20397eae919ee5e463bc8a5d3fb2dc0)建议在 Ogg 容器中使用 Opus，并标准化压缩波形。客户端无需就单一录音器、host 或波形表示达成一致，也能交换短音频。
 
-随后，私密消息与钱包连接加入协议状态，用于读取跟踪、加密选择和支付进度。[NIP-17 commit 3d76da3](https://github.com/nostr-protocol/nips/commit/3d76da368e157934e056d95b3b3d8d6eaa105b09) 定义一个可替换的 kind `30016` 记录，其有序 `seen` tag 让客户端可以区分已读消息和可能错过的间隙。7 月 31 日，[NIP-47 加密协商](https://github.com/nostr-protocol/nips/commit/f30a43bd37e08516923b96dd0d860122c9ffe04e)让钱包服务可以宣告 NIP-44 v2 或旧版 NIP-04，而[交易状态 commit](https://github.com/nostr-protocol/nips/commit/0595d438aaa163dd33ed00748026698a411a0861)加入 `pending`、`settled`、`accepted`、`expired` 和 `failed` 状态。投递、加密与支付进度成为明确的协议数据，不再由本地推断。
+随后，私密消息与钱包连接加入协议状态，用于已读状态跟踪、加密选择和支付进度。[NIP-17 commit 3d76da3](https://github.com/nostr-protocol/nips/commit/3d76da368e157934e056d95b3b3d8d6eaa105b09) 定义一个可替换的 kind `30016` 记录，其有序 `seen` tag 让客户端可以区分已读消息和可能错过的间隙。7 月 31 日，[NIP-47 加密协商](https://github.com/nostr-protocol/nips/commit/f30a43bd37e08516923b96dd0d860122c9ffe04e)让钱包服务可以宣告 NIP-44 v2 或旧版 NIP-04，而[交易状态 commit](https://github.com/nostr-protocol/nips/commit/0595d438aaa163dd33ed00748026698a411a0861)加入 `pending`、`settled`、`accepted`、`expired` 和 `failed` 状态。投递、加密与支付进度成为明确的协议数据，不再由本地推断。
 
 ### 2026 年 7 月
 
@@ -238,7 +238,7 @@ Ecash 发现于 7 月 16 日获得自己的社交目录。[NIP-87 commit 1afb6da
 
 NIP-29 随后从扁平的 relay 群组发展为结构化空间。7 月 16 日的[子群组 commit](https://github.com/nostr-protocol/nips/commit/223ddb3b0c282f2a133adb9f4a9c098a31b36937)加入父级与有序子级关系；相邻 commit 加入邀请码后缀、banner、有序 pin 快照和可寻址 event pin。7 月 22 日的[迁移与分叉澄清](https://github.com/nostr-protocol/nips/commit/db5fe3de8c5d1443b634c9bbf66ecb004f337057)定义元数据何时会把群组合法迁移到另一个 relay，以及仍然活跃的 branch 何时成为独立 fork。群组标识符保持简单，层级、展示和 relay 变更则成为明确状态。
 
-两项较小的编辑澄清了实现边界。[NIP-46 commit f0af204](https://github.com/nostr-protocol/nips/commit/f0af20484c5e0d12e2d1936f87c5a6681a08daff) 要求远程签名器对未知或不受支持的方法返回错误，避免客户端只能静默等待超时。[NIP-34 commit 6d2979b](https://github.com/nostr-protocol/nips/commit/6d2979b3f503a8539c983efbcdcf901bbcf9ed23) 从 pull request event 描述中移除 GRASP 专用托管说明。一项让调用者获得终止响应；另一项防止可移植 git event 悄然继承某一种 server 协议。
+两项较小的编辑澄清了实现边界。[NIP-46 commit f0af204](https://github.com/nostr-protocol/nips/commit/f0af20484c5e0d12e2d1936f87c5a6681a08daff) 要求远程签名器对未知或不受支持的方法返回错误，避免客户端只能静默等待超时。[NIP-34 commit 6d2979b](https://github.com/nostr-protocol/nips/commit/6d2979b3f503a8539c983efbcdcf901bbcf9ed23) 从 pull request event 描述中移除 GRASP 专用托管说明。一项让调用者获得明确的最终响应；另一项防止可移植 git event 悄然继承某一种 server 协议。
 
 ---
 
