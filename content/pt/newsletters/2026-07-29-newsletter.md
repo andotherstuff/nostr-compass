@@ -5,7 +5,7 @@ publishDate: 2026-07-29
 draft: false
 type: newsletters
 translationOf: /en/newsletters/2026-07-29-newsletter.md
-translationDate: 2026-07-29
+translationDate: 2026-08-02
 description: "Amethyst 1.13.1 adiciona acesso autenticado a grupos e ao Blossom depois que a 1.13.0 introduziu aplicativos Nostr; Mosaico compartilha o status de agentes de programação pelo Nostr, e Nostrology mapeia a concentração das listas de relays do NIP-65."
 ---
 
@@ -194,7 +194,7 @@ O [PR #2 do NWC](https://github.com/nostr-wallet-connect/nwc/pull/2) propõe mé
 
 ## Seis anos de julhos do Nostr
 
-Esta história de julho acompanha problemas recorrentes do Nostr: identificadores legíveis, filtragem de relays, dados portáteis de aplicativos, privacidade e interoperabilidade. Ela começa com [a primeira implementação do NIP-05](https://github.com/nbd-wtf/nostr-tools/commit/1ce00bd3b6909f78f212a7a172cf845b55280599) e termina com [a incorporação da descoberta endereçável deste mês](https://github.com/nostr-protocol/nips/commit/2f4b09335c54a993d483bc220195e3f4a33df1ec), examinando em seguida as mudanças de julho que desenvolveram esses temas.
+Esta história de julho acompanha problemas recorrentes do Nostr: identificadores legíveis, filtragem de relays, dados portáteis de aplicativos, privacidade e interoperabilidade. Ao longo de seis anos, cada camada transforma uma correção pontual em infraestrutura compartilhada: os nomes se tornam perfis, os filtros se tornam contratos de aplicativos e o estado transportado por relays se expande de notas para salas e grupos ao vivo. Ela começa com [a primeira implementação do NIP-05](https://github.com/nbd-wtf/nostr-tools/commit/1ce00bd3b6909f78f212a7a172cf845b55280599) e termina com [a incorporação da descoberta endereçável deste mês](https://github.com/nostr-protocol/nips/commit/2f4b09335c54a993d483bc220195e3f4a33df1ec), examinando em seguida as mudanças de julho que desenvolveram esses temas.
 
 ### Julho de 2021
 
