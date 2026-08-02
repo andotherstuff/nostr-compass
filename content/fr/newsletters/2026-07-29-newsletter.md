@@ -3,7 +3,7 @@ title: "Nostr Compass #33"
 date: 2026-07-29
 publishDate: 2026-07-29
 translationOf: /en/newsletters/2026-07-29-newsletter.md
-translationDate: 2026-07-29
+translationDate: 2026-08-02
 draft: false
 type: newsletters
 description: "Amethyst 1.13.1 ajoute un accès authentifié aux groupes et à Blossom après l'introduction des applications Nostr dans la version 1.13.0 ; Mosaico partage le statut des agents de programmation sur Nostr, tandis que Nostrology cartographie la concentration des listes de relays NIP-65."
@@ -194,7 +194,7 @@ La [PR NWC #2](https://github.com/nostr-wallet-connect/nwc/pull/2) propose des m
 
 ## Six mois de juillet dans l'histoire de Nostr
 
-Ce parcours historique des mois de juillet suit des problèmes récurrents de Nostr : des identifiants lisibles, le filtrage par les relays, des données d'application portables, la confidentialité et l'interopérabilité. Il commence par [la première implémentation de NIP-05](https://github.com/nbd-wtf/nostr-tools/commit/1ce00bd3b6909f78f212a7a172cf845b55280599) et s'achève avec [la fusion de la découverte adressable de ce mois](https://github.com/nostr-protocol/nips/commit/2f4b09335c54a993d483bc220195e3f4a33df1ec), puis examine les changements de juillet qui ont fait évoluer ces problématiques.
+Ce parcours historique des mois de juillet suit des problèmes récurrents de Nostr : des identifiants lisibles, le filtrage par les relays, des données d'application portables, la confidentialité et l'interopérabilité. Sur six ans, chaque couche transforme une correction ponctuelle en infrastructure partagée : les noms deviennent des profils, les filtres des contrats d'application et l'état acheminé par les relays s'étend des notes aux salons en direct et aux groupes. Il commence par [la première implémentation de NIP-05](https://github.com/nbd-wtf/nostr-tools/commit/1ce00bd3b6909f78f212a7a172cf845b55280599) et s'achève avec [la fusion de la découverte adressable de ce mois](https://github.com/nostr-protocol/nips/commit/2f4b09335c54a993d483bc220195e3f4a33df1ec), puis examine les changements de juillet qui ont fait évoluer ces problématiques.
 
 ### Juillet 2021
 
