@@ -92,7 +92,7 @@ Nostr용 Go command-line 클라이언트 [algia 0.0.133](https://github.com/matt
 
 ### swift-nostr 0.7.0
 
-Apple 플랫폼의 Swift 애플리케이션용 Nostr 라이브러리 [swift-nostr 0.7.0](https://github.com/yysskk/swift-nostr/releases/tag/0.7.0)은 하나의 [NIP-46 원격 서명자](/ko/topics/nip-46/)가 signing abstraction을 통해 모든 클라이언트 기능을 구동할 수 있게 합니다. 이 릴리스는 그룹 가입, posting, moderation 흐름을 포함한 [NIP-98(HTTP 인증)](/ko/topics/nip-98/) 및 [NIP-29(Relay 기반 그룹)](/ko/topics/nip-29/) 지원을 추가합니다. 또한 공식 vector에 따라 [NIP-44(암호화된 Payload, 버전 적용)](/ko/topics/nip-44/) padding을 검증해, 비표준 padding에 대해 유효한 MAC을 담은 payload를 거부합니다.
+Apple 플랫폼의 Swift 애플리케이션용 Nostr 라이브러리 [swift-nostr 0.7.0](https://github.com/yysskk/swift-nostr/releases/tag/0.7.0)은 하나의 [NIP-46 원격 서명자](/ko/topics/nip-46/)가 signing abstraction을 통해 모든 클라이언트 기능을 구동할 수 있게 합니다. 이 릴리스는 그룹 가입, posting, moderation 흐름을 포함한 [NIP-98(HTTP 인증)](/ko/topics/nip-98/) 및 [NIP-29(Relay 기반 그룹)](/ko/topics/nip-29/) 지원을 추가합니다. 또한 공식 vector에 따라 [NIP-44(버전 관리형 암호화 페이로드)](/ko/topics/nip-44/) padding을 검증해, 비표준 padding에 대해 유효한 MAC을 담은 payload를 거부합니다.
 
 ### lawallet-nwc 2.0.0
 
@@ -130,7 +130,7 @@ Android Nostr 클라이언트 Imwald Android는 이제 설정된 모든 target�
 
 ### FIPS가 OpenWrt 접근 레이어를 추가하고 FreeBSD 포트는 계속 검토 중이다
 
-Nostr 네이티브 Free Internetworking Peering System은 이제 [병합된 PR #126](https://github.com/jmcorgan/fips/pull/126)을 통해 OpenWrt router가 개방형 `!FIPS` 접근 network를 노출할 수 있게 합니다. 병행하는 아직 열린 [FreeBSD PR #129](https://github.com/jmcorgan/fips/pull/129)는 daemon, TUN data path, `.fips` 이름 해석, service management, native package build의 포팅을 제안합니다. OpenWrt 병합은 현재 접근 범위를 넓히고, FreeBSD 작업은 이를 또 다른 범용 운영체제로 확장하게 됩니다.
+Nostr 네이티브 Free Internetworking Peering System은 이제 [병합된 PR #126](https://github.com/jmcorgan/fips/pull/126)을 통해 OpenWrt router가 개방형 `!FIPS` 접근 network를 노출할 수 있게 합니다. 병행하는 아직 열린 [FreeBSD PR #129](https://github.com/jmcorgan/fips/pull/129)는 daemon, TUN data path, `.fips` 이름 해석, service management, native package build의 포팅을 제안합니다. OpenWrt 병합은 현재 접근 범위를 넓히고, FreeBSD 작업은 병합될 경우 이를 또 다른 범용 운영체제로 확장할 것입니다.
 
 7월 26일의 [FIPS 프로젝트 업데이트](https://primal.net/e/d0afe733f75e909341ab7f39834883968df097472238a474df3a3346c5d38f51)는 공개 UDP overlay에 300개 넘는 node가 있고 더 넓은 mesh는 2,000개 node에 근접한다고 보고했습니다. [FIPS 저장소](https://github.com/jmcorgan/fips)는 같은 주에 동시 network 테스트, rekey 연속성, hop limit 동작, firewall 검사, NAT lab 격리를 강화했습니다. 저장소 작업은 network가 성장하는 동안 운영자가 이러한 동작을 재현 가능하게 검사할 수 있게 합니다.
 
@@ -160,7 +160,7 @@ Android에서 호스팅되는 Nostr relay Citrine은 이제 저장한 이벤트�
 
 [PR #2424](https://github.com/nostr-protocol/nips/pull/2424)는 상호적인 `kind:10045` key set 선언을 제안합니다. 상호성 요건은 한 신원이 다른 키를 일방적으로 연결하는 것을 막게 됩니다. [PR #2421](https://github.com/nostr-protocol/nips/pull/2421)은 수신자가 운영하는 receipt server에 의존하지 않고도 클라이언트가 target, amount, offer, 정산된 payment를 기준으로 검증할 수 있는 BOLT12 zap intent와 payer proof를 제안합니다.
 
-[PR #2425](https://github.com/nostr-protocol/nips/pull/2425)는 NIP-B0 bookmark가 web URL과 함께 `nostr:` 같은 비 HTTP scheme을 유지할 수 있게 합니다. 이 변경은 이미 web address를 담는 같은 비공개 또는 공개 bookmark 리스트 안에 네이티브 Nostr 식별자, payment request, 다른 application scheme을 온전히 보존합니다.
+[PR #2425](https://github.com/nostr-protocol/nips/pull/2425)는 NIP-B0 bookmark가 web URL과 함께 `nostr:` 같은 비 HTTP scheme을 유지할 수 있도록 제안합니다. 이 변경이 채택되면 이미 web address를 담는 같은 비공개 또는 공개 bookmark 리스트 안에 네이티브 Nostr 식별자, payment request, 다른 application scheme이 온전히 보존됩니다.
 
 ### Mill이 cloud 계정 키 backup 초안을 구현하다
 
