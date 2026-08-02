@@ -14,9 +14,10 @@
 #   4. fetch_shakespeare_apps.sh      (Soapbox MiniApps submissions)
 #   5. fetch_nip34_repos.sh           (NIP-34 git repos from relays)
 #   6. fetch_zapstore_releases.sh     (Zapstore developer-signed app releases)
-#   7. fetch_heartbeats.sh            (OpenSats + Sovereign Engineering grantee activity)
-#   8. fetch_monthly_history.py       (history candidates; final weekly issue only)
-#   9. fetch_spec_updates.py          (NIP, BUD, NAP, Marmot, Gamma, Concord, NWC specs)
+#   7. fetch_app_discovery.py          (candidate-only GitHub + NIP-89 + Zapstore listings)
+#   8. fetch_heartbeats.sh             (OpenSats + Sovereign Engineering grantee activity)
+#   9. fetch_monthly_history.py        (history candidates; final weekly issue only)
+#  10. fetch_spec_updates.py           (NIP, BUD, NAP, Marmot, Gamma, Concord, NWC specs)
 #
 # Prerequisites:
 #   - Python 3 + requirements.txt (for GitHub fetcher)
@@ -86,7 +87,7 @@ FAILED=0
 SKIPPED=0
 
 # 1. GitHub project updates (Python)
-echo "[1/9] GitHub project updates..."
+echo "[1/10] GitHub project updates..."
 if command -v python3 &>/dev/null; then
     cd "$PROJECT_ROOT"
     if python3 scripts/fetch_project_updates.py $SINCE_ARG $VERBOSE; then
@@ -102,7 +103,7 @@ fi
 echo ""
 
 # 2. NIP discussions (Nostr relay via nak)
-echo "[2/9] NIP discussions from relays..."
+echo "[2/10] NIP discussions from relays..."
 if command -v nak &>/dev/null; then
     if "$SCRIPT_DIR/fetch_nostr_nip_discussions.sh" $SINCE_ARG; then
         echo "  Done."
@@ -117,7 +118,7 @@ fi
 echo ""
 
 # 3. Nostr Recap weekly summaries (Nostr relay via nak)
-echo "[3/9] Nostr Recap summaries..."
+echo "[3/10] Nostr Recap summaries..."
 if command -v nak &>/dev/null; then
     if "$SCRIPT_DIR/fetch_nostr_recap.sh" $SINCE_ARG; then
         echo "  Done."
@@ -132,7 +133,7 @@ fi
 echo ""
 
 # 4. Shakespeare Apps / Soapbox MiniApps (Nostr relay via nak)
-echo "[4/9] Shakespeare Apps (Soapbox MiniApps)..."
+echo "[4/10] Shakespeare Apps (Soapbox MiniApps)..."
 if command -v nak &>/dev/null; then
     if "$SCRIPT_DIR/fetch_shakespeare_apps.sh" $SINCE_ARG; then
         echo "  Done."
@@ -147,7 +148,7 @@ fi
 echo ""
 
 # 5. NIP-34 git repos (Nostr relay via nak)
-echo "[5/9] NIP-34 git repos..."
+echo "[5/10] NIP-34 git repos..."
 if command -v nak &>/dev/null; then
     if "$SCRIPT_DIR/fetch_nip34_repos.sh" $SINCE_ARG; then
         echo "  Done."
@@ -162,7 +163,7 @@ fi
 echo ""
 
 # 6. Zapstore developer-signed releases (Nostr relay via nak)
-echo "[6/9] Zapstore releases..."
+echo "[6/10] Zapstore releases..."
 if command -v nak &>/dev/null; then
     if "$SCRIPT_DIR/fetch_zapstore_releases.sh" $SINCE_ARG; then
         echo "  Done."
@@ -176,8 +177,24 @@ else
 fi
 echo ""
 
-# 7. Grantee heartbeat feeds (OpenSats nostr/general funds + Sovereign Engineering note)
-echo "[7/9] Grantee heartbeat feeds (OpenSats / Sovereign Engineering)..."
+# 7. Untracked application candidates (GitHub + NIP-89 handlers + Zapstore listings)
+echo "[7/10] Untracked Nostr application discovery..."
+if command -v python3 &>/dev/null && command -v gh &>/dev/null && command -v nak &>/dev/null; then
+    cd "$PROJECT_ROOT"
+    if python3 scripts/fetch_app_discovery.py $SINCE_ARG; then
+        echo "  Done."
+    else
+        echo "  WARNING: application discovery failed (exit code $?) — soft-fail, continuing"
+        FAILED=$((FAILED + 1))
+    fi
+else
+    echo "  SKIPPED: python3, gh, or nak not found"
+    SKIPPED=$((SKIPPED + 1))
+fi
+echo ""
+
+# 8. Grantee heartbeat feeds (OpenSats nostr/general funds + Sovereign Engineering note)
+echo "[8/10] Grantee heartbeat feeds (OpenSats / Sovereign Engineering)..."
 if "$SCRIPT_DIR/fetch_heartbeats.sh" "$HB_SINCE" "$HB_UNTIL"; then
     echo "  Done."
 else
@@ -186,11 +203,11 @@ else
 fi
 echo ""
 
-# 8. Same-calendar-month history candidates (final weekly issue only)
+# 9. Same-calendar-month history candidates (final weekly issue only)
 ISSUE_MONTH="$(date -d "$NEWSLETTER_DATE" +%m)"
 ISSUE_YEAR="$(date -d "$NEWSLETTER_DATE" +%Y)"
 NEXT_WEEK_MONTH="$(date -d "$NEWSLETTER_DATE +7 days" +%m)"
-echo "[8/9] Month-end history candidates..."
+echo "[9/10] Month-end history candidates..."
 if [ "$ISSUE_MONTH" != "$NEXT_WEEK_MONTH" ]; then
     if python3 "$SCRIPT_DIR/fetch_monthly_history.py" \
         --month "$((10#$ISSUE_MONTH))" \
@@ -206,8 +223,8 @@ else
 fi
 echo ""
 
-# 9. Protocol/spec-family activity (GitHub)
-echo "[9/9] Specification families (NIP / BUD / NAP / Marmot / Gamma / Concord / NWC)..."
+# 10. Protocol/spec-family activity (GitHub)
+echo "[10/10] Specification families (NIP / BUD / NAP / Marmot / Gamma / Concord / NWC)..."
 if command -v python3 &>/dev/null && command -v gh &>/dev/null; then
     cd "$PROJECT_ROOT"
     SPEC_ARGS=()
@@ -230,14 +247,14 @@ echo ""
 echo "==========================================="
 echo "  Collection Summary"
 echo "==========================================="
-echo "  Completed: $((9 - FAILED - SKIPPED))/9"
+echo "  Completed: $((10 - FAILED - SKIPPED))/10"
 echo "  Failed:    $FAILED"
 echo "  Skipped:   $SKIPPED"
 echo ""
 
 # Show data freshness
 echo "Data freshness:"
-for dir in project_updates nostr_nip_discussions nostr_recap shakespeare_apps nip34_repos zapstore_releases heartbeats spec_updates; do
+for dir in project_updates nostr_nip_discussions nostr_recap shakespeare_apps nip34_repos zapstore_releases app_discovery heartbeats spec_updates; do
     latest=$(ls -t "$PROJECT_ROOT/data/$dir"/*.json 2>/dev/null | head -1)
     if [ -n "$latest" ]; then
         age_hours=$(( ($(date +%s) - $(stat -c %Y "$latest")) / 3600 ))

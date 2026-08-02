@@ -110,6 +110,24 @@ In scope:
 
 The NIP-34 tracker (`data/nip34_tracked.yml`) MUST only track repositories whose subject matter is itself Nostr-relevant. NIP-34 repos for Bitcoin-only tools are visible in the discovery output but never promoted into `nip34_tracked.yml` and never written into newsletter prose. If a NIP-34 repo's project description names a Bitcoin-only protocol (CoinJoin, PayJoin, BIP-352 silent payments outside a Nostr context, etc.) and the project does not also implement a Nostr surface, the repo fails this gate.
 
+### New-application discovery is candidate-only (CRITICAL)
+
+`scripts/fetch_app_discovery.py` adds three candidate streams beyond the tracked-repository, release, NIP-34, Shakespeare, and heartbeat fetchers:
+
+- paginated GitHub searches for active `nostr`-topic repositories and recently created repositories with `nostr` in the name or description;
+- recent NIP-89 kind 31990 application-handler descriptors recovered from several public relays; and
+- recent Zapstore kind 32267 app listings, including developer-signed listings that do not yet have a kind 30063 release in the issue window.
+
+The script writes `data/app_discovery/discovery_YYYY-MM-DD.json`, excludes canonical repo/website/name matches already in `data/projects.yml`, and persists `seen_repos.json` so the weekly active-repository query does not repeat its baseline forever. Every GitHub result requires explicit Nostr plus application/tooling metadata; libraries and SDKs do not qualify on those labels alone. NIP-89 records require a stable `d` identifier, supported non-DVM kinds, and usable identity/location evidence. Zapstore listings require a stable app ID, canonical location, and an explicit Nostr protocol surface. Relay events are signature-verified, relay and source provenance is retained, unsafe URLs are rejected, GitHub truncation/incomplete-result warnings and partial source failures are reported, and independent records merge only when their canonical repository or website matches.
+
+Relay multiplicity is transport-availability evidence only: `relay_status: multi-relay` does not confirm reputation, ownership, or product legitimacy, and every candidate's `evidence_status` remains `unconfirmed` pending Triage. NIP-89 `latest`/`next` kind 35128 nsite references are retained as optional corroboration pointers, not fetched as a broad discovery source. Kind 31989 recommendations are intentionally excluded because Compass has no explicit trusted-author/follow-graph set; a global recommendation sweep would be sybil-prone and could never be a standalone approval signal.
+
+Every output row remains `candidate-only; never auto-add to projects.yml`. Forge topics and descriptions are self-asserted. A signed kind 31990 or 32267 event proves only that a key published the descriptor. Triage must open the product and repository, verify concrete Nostr relay behavior, establish canonical ownership, apply the per-item Nostr-surface gate, and record a GREEN/MAYBE/SKIP reason. Cross-source agreement raises confidence but does not replace verification.
+
+### Pre-intake link-queue enrichment (CRITICAL)
+
+Once the current issue is fully published, preserve each user-submitted future link verbatim in `data/newsletter_workspace/link_queue.md`, then immediately add a dated `Prep (verified YYYY-MM-DD):` block. Resolve the canonical repository from project-owned links or redirects, check whether it is an existing project/rebrand/component, and resolve a dedicated project npub or personal maintainer npub only from primary evidence plus a relay-backed kind 0 profile. Record exact evidence URLs, identity type, and obvious scope/continuity flags. Never guess a key, start the newsletter pipeline, write prose, or auto-add the project at queue time. Tuesday Intake revalidates stale/conflicting fields instead of repeating completed prep.
+
 ### Per-PR Nostr-surface gate (CRITICAL — applies to EVERY project)
 
 **Compass is a Nostr newsletter. Every PR, release item, or feature mentioned MUST touch a Nostr surface.** A project being broadly Nostr-aware (e.g. Zeus has NWC, Alby Extension has NIP-07) does NOT make every change in that project newsletter material. Each item is gated individually.
