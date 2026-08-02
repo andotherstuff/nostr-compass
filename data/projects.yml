@@ -830,7 +830,7 @@ social_clients:
     maintainer: i2dor
     status: beta
     priority: low
-    notes: Derives BIP-352 Silent Payment addresses from any Nostr keypair (NSP); publishes and discovers SP addresses via NIP-352 (kind:30352); NWC zaps; local ECDH scanning via native host; scan key never leaves device
+    notes: Derives BIP-352 Silent Payment addresses from Nostr keypairs; publishes and discovers addresses through the proposed NIP-352 kind 30352; NWC zaps; local ECDH scanning through a native host keeps the scan key off the extension
 
   - name: OpenDiscord
     description: Discord-style server/channel client with voice lobbies built on Nostr
@@ -5061,13 +5061,13 @@ wallets:
     notes: Browser-based Lightning, shutting down end of 2024
 
   - name: Bitcoin-Safe
-    description: Free & OpenSource desktop software for managing your cold storage wallets
-    platforms: [ macOS, Win, Linux ]
+    description: Free and open-source desktop wallet for managing Bitcoin cold storage
+    platforms: [ macos, windows, linux ]
     repo: https://github.com/andreasgriffin/bitcoin-safe
     website: https://bitcoin-safe.org
     status: active
     priority: medium
-    notes: Label sync, signer chat, and remote multisig PSBT signing over NIP-17; exploring Marmot for future group chat
+    notes: Uses NIP-17 for encrypted label synchronization, multisig chat, and PSBT sharing between trusted devices; exploring Marmot for future group chat
 
   - name: Zeus
     description: Mobile Bitcoin/Lightning wallet
