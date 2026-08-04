@@ -1030,6 +1030,11 @@ def _repo_key(project: dict) -> str:
     return f"{host}/{project['owner']}/{project['repo']}"
 
 
+def _completed_repo_keys(existing: dict) -> set[str]:
+    """Return durable successes, including repos that had no recent activity."""
+    return set(existing.get("projects", {})) | set(existing.get("fetched_repos", []))
+
+
 async def run(args, projects: list[dict]):
     now = datetime.now(timezone.utc)
     since_dt = now - timedelta(days=args.since_days)
@@ -1043,7 +1048,7 @@ async def run(args, projects: list[dict]):
         existing = load_existing_data(output_path)
         if existing:
             all_projects = existing.get("projects", {})
-            already_fetched = set(all_projects.keys())
+            already_fetched = _completed_repo_keys(existing)
             if already_fetched:
                 print(
                     f"Resuming: {len(already_fetched)} repos already fetched (use --fresh to restart)"
@@ -1068,8 +1073,11 @@ async def run(args, projects: list[dict]):
     )
     sys.stdout.flush()
 
+    fetched_repos = set(already_fetched)
+
     def save_progress():
-        with open(output_path, "w") as f:
+        temp_path = output_path.with_suffix(output_path.suffix + ".tmp")
+        with open(temp_path, "w") as f:
             json.dump(
                 {
                     "generated_at": datetime.now(timezone.utc).isoformat(),
@@ -1080,10 +1088,17 @@ async def run(args, projects: list[dict]):
                     },
                     "summary": calculate_summary(all_projects),
                     "projects": all_projects,
+                    # Activity-only project data cannot represent successful
+                    # no-activity fetches. Keep a separate completion journal
+                    # so restarts do not spend API quota fetching them again.
+                    "fetched_repos": sorted(fetched_repos),
                 },
                 f,
                 indent=2,
             )
+            f.flush()
+            os.fsync(f.fileno())
+        temp_path.replace(output_path)
 
     # SIGINT handler
     interrupted = False
@@ -1108,9 +1123,16 @@ async def run(args, projects: list[dict]):
         nonlocal interrupted
         if interrupted:
             return
-        tasks = [fetch_repo(client, p, since_ts, args.compact) for p in batch]
-        results = await asyncio.gather(*tasks, return_exceptions=True)
-        for project, result in zip(batch, results):
+        async def fetch_one(project):
+            try:
+                return project, await fetch_repo(client, project, since_ts, args.compact)
+            except Exception as exc:
+                return project, exc
+
+        tasks = [asyncio.create_task(fetch_one(project)) for project in batch]
+        unsaved = 0
+        for task in asyncio.as_completed(tasks):
+            project, result = await task
             repo_key = _repo_key(project)
             completed[0] += 1
             if isinstance(result, Exception):
@@ -1123,6 +1145,7 @@ async def run(args, projects: list[dict]):
                     print(f"  [{completed[0]}/{total}] {project['name']}: error")
             elif result is not None:
                 all_projects[repo_key] = result
+                fetched_repos.add(repo_key)
                 r = len(result["releases"])
                 m = len(result["merged_prs"])
                 o = len(result["open_prs"])
@@ -1131,9 +1154,15 @@ async def run(args, projects: list[dict]):
                     f"  [{completed[0]}/{total}] {project['name']}: {r}r {m}m {o}o {c}c"
                 )
             else:
+                fetched_repos.add(repo_key)
                 if args.verbose:
                     print(f"  [{completed[0]}/{total}] {project['name']}: no activity")
-        save_progress()
+            unsaved += 1
+            if unsaved >= 5:
+                save_progress()
+                unsaved = 0
+        if unsaved:
+            save_progress()
 
     # GitHub batch
     if github_projects:
