@@ -11,6 +11,12 @@ Finding = namedtuple("Finding", "line phrase")
 BANNED_PHRASES = (
     "join Shipping This Week with",
     "developer-signed release expands the browser",
+    "has been added to Compass's",
+    "has been added to the tracker",
+    "so later releases",
+    "found via",
+    "discovered through",
+    "surfaced on",
 )
 
 

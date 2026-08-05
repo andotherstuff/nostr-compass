@@ -15,7 +15,7 @@ Welcome back to [Nostr Compass](https://github.com/andotherstuff/nostr-compass),
 
 ### nostr-mill 1.6.0 puts signing consent and account recovery in the browser
 
-[nostr-mill 1.6.0](https://github.com/0ceanSlim/nostr-mill/releases/tag/v1.6.0) is an embeddable browser account picker and signer. It now asks for consent by event kind and shows decoded content and tags before signing, with time-limited grants and a permissions manager. Its optional Google onboarding stores a PIN-encrypted key in the user's Drive app-data folder, supports multiple identities, and can export a [NIP-49](/en/topics/nip-49/) (encrypted private-key format) `ncryptsec`.
+[nostr-mill 1.6.0](https://github.com/0ceanSlim/nostr-mill/releases/tag/v1.6.0) is an embeddable browser account picker and signer. It now asks for consent by event kind and shows decoded content and tags before signing, with time-limited grants and a permissions manager. The release also fixes a first-session bug that let categories configured to prompt every time sign without asking. Its optional Google onboarding can import an existing `nsec`, stores the key encrypted in the user's Drive app-data folder, supports multiple identities, and can export a [NIP-49](/en/topics/nip-49/) (encrypted private-key format) `ncryptsec`.
 
 The [experimental relay backup](https://github.com/0ceanSlim/nostr-mill/releases/tag/v1.6.0) derives a strong recovery phrase with scrypt and HKDF, wraps the key as `ncryptsec`, verifies fetched events, and requires a relay quorum before recovery. [NIP-55](/en/topics/nip-55/) (Android signer intents) login now uses Amber's clipboard return path, and [NIP-46](/en/topics/nip-46/) (relay-mediated remote signing) connections are quiet by default. Branding controls and responsive permission screens round out the release without changing existing integrations unless an operator opts in.
 
@@ -23,11 +23,11 @@ The [experimental relay backup](https://github.com/0ceanSlim/nostr-mill/releases
 
 [nostrord 2.5.0](https://github.com/nostrord/nostrord/releases/tag/v2.5.0) is a cross-platform client for relay-hosted communities. It now derives a [NIP-29](/en/topics/nip-29/) (relay-managed groups) identity from both group ID and host relay, scopes membership and admin badges the same way, accepts group `naddr` deep links, and synchronizes private-group threads across devices.
 
-The [release](https://github.com/nostrord/nostrord/releases/tag/v2.5.0) also adds a [NIP-56](/en/topics/nip-56/) (report events) moderation inbox, Amber login through NIP-55, rate-limit backoff for NIP-46 signer traffic, [NIP-84](/en/topics/nip-84/) (portable highlights) rendering, and media uploads through Blossom or [NIP-96](/en/topics/nip-96/) (HTTP file storage). Thread replies gain richer content and admin deletion, while desktop keychain and mobile keyboard fixes keep those protocol features usable.
+The [release](https://github.com/nostrord/nostrord/releases/tag/v2.5.0) also adds a [NIP-56](/en/topics/nip-56/) (report events) moderation inbox, Amber login through NIP-55, rate-limit backoff for NIP-46 signer traffic, [NIP-84](/en/topics/nip-84/) (portable highlights) rendering with retries for unresolved references, and media uploads through Blossom or [NIP-96](/en/topics/nip-96/) (HTTP file storage). Google login now backs up the key before account creation and confirms disconnects. Thread replies gain richer content and admin deletion, while desktop keychain and mobile keyboard fixes keep those protocol features usable.
 
 ### Primal Android 3.5.25 updates remote signing and follow-list filtering
 
-[Primal Android 3.5.25](https://github.com/PrimalHQ/primal-android-app/releases/tag/3.5.25) is a mobile Nostr client with feeds, search, and remote signing. It updates its remote signer for current protocol behavior, adds a follow mute list, opens search from Explore, repairs stalled relay connections automatically, rejects invalid follow-list entries, and refreshes fallback relay URLs. Feed prefetching, lower memory use, and a 100 MB cache ceiling reduce the cost of keeping those feeds current.
+[Primal Android 3.5.25](https://github.com/PrimalHQ/primal-android-app/releases/tag/3.5.25) is a mobile Nostr client with feeds, search, and remote signing. It updates its remote signer for current protocol behavior, adds a follow mute list, opens search from Explore, repairs stalled relay connections automatically, exposes request timeouts in the interface, rejects invalid follow-list entries, and refreshes fallback relay URLs. Feed prefetching, lower memory use, and a 100 MB cache ceiling reduce the cost of keeping those feeds current. Single-image notes now use the full content width, and profile controls and media preloading receive smaller interaction and ordering fixes.
 
 ### Nostur 1.30.2 expands private replies and media in direct messages
 
@@ -43,20 +43,20 @@ The [release](https://github.com/nostrord/nostrord/releases/tag/v2.5.0) also add
 
 ### Sandstr lets newcomers test-drive Nostr clients with mock data
 
-[Sandstr](https://sandstr.app/) provides interactive browser simulations of Nostr clients so a newcomer can compare their interfaces before installing one or creating a keypair. The August 3 launch from [Swarmstr creator ptrio42](https://github.com/ptrio42/swarmstr.com) includes reference-verified reproductions of Damus, Amethyst, Primal, Snort, YakiHonne, Coracle, and Wisp, plus clearly labeled early previews of Gossip, Keychat, and Olas. Everything runs locally against mock data, so the simulations do not generate keys, connect to relays, or impersonate the projects they demonstrate. Each simulation links onward to the real client's website and source repository, making Sandstr an onboarding and interface-comparison tool rather than another Nostr client. It shows how feeds, profiles, threads, direct messages, search, zaps, and relay controls feel without asking a first-time user to make an identity or security decision up front.
+[Sandstr](https://sandstr.app/) provides interactive browser simulations of Nostr clients so a newcomer can compare their interfaces before installing one or creating a keypair. Its August 3 launch includes reference-verified reproductions of Damus, Amethyst, Primal, Snort, YakiHonne, Coracle, and Wisp, plus clearly labeled early previews of Gossip, Keychat, and Olas. Everything runs locally against mock data, so the simulations do not generate keys or connect to relays. Each simulation links onward to the real client's website and source repository, making Sandstr an onboarding and interface-comparison tool rather than another Nostr client. It shows how feeds, profiles, threads, direct messages, search, zaps, and relay controls feel without asking a first-time user to make an identity or security decision up front.
 
 
 ### mineracks signer pairs a browser extension with a desktop bunker
 
 [mineracks signer](https://github.com/mineracks/mineracks-signer) provides two signing surfaces from the same project. Its browser extension implements [NIP-07](/en/topics/nip-07/) so web applications can request signatures without receiving the private key, while the desktop application exposes a [NIP-46](/en/topics/nip-46/) remote signer for clients that communicate through relays.
 
-The project's [desktop 0.1.0 release](https://github.com/mineracks/mineracks-signer/releases/tag/desktop-v0.1.0) stores key material using NIP-49 encrypted-key encoding. The same codebase therefore supports local browser signing and relay-mediated desktop signing without exposing an unencrypted key to either client.
+The project's [desktop 0.1.0 release](https://github.com/mineracks/mineracks-signer/releases/tag/desktop-v0.1.0) stores key material using NIP-49 encrypted-key encoding and keeps the decrypted key inside the Rust process rather than passing it to the interface. Each request shows the calling application and requested action, while per-application auto-approval is optional and revocable. The first desktop build supports Apple Silicon but not Intel Macs.
 
 ## Releases
 
 ### Jumble 26.8.1 adds proof-of-work controls and comment previews
 
-[Jumble 26.8.1](https://github.com/CodyTseng/jumble/releases/tag/v26.8.1) is a web and desktop Nostr client. It remembers proof-of-work difficulty for publishing, displays verified-work badges, and previews linked comments above external content. Reaction notifications now discard unsupported event kinds, relay disconnect notices are less noisy, default relays were refreshed, and a media-autoplay conflict was fixed.
+[Jumble 26.8.1](https://github.com/CodyTseng/jumble/releases/tag/v26.8.1) is a web and desktop Nostr client. It remembers proof-of-work difficulty for publishing, displays verified-work badges, previews linked comments above external content, saves images from the full-screen viewer, and expands long profile biographies on demand. Reaction notifications now discard unsupported event kinds, relay disconnect notices are less noisy, default relays were refreshed, and a media-autoplay conflict was fixed.
 
 ### nostr-calendar 2.1.0 restores private-form signer binding
 
@@ -74,27 +74,27 @@ The project's [desktop 0.1.0 release](https://github.com/mineracks/mineracks-sig
 
 ### NMP ties relay admission to declarations and broadens group queries
 
-NMP [PR #1254](https://github.com/pablof7z/nmp/pull/1254) makes relay admission follow the owner of the declaration that authorizes it, keeping the permission decision attached to signed Nostr state. [PR #1255](https://github.com/pablof7z/nmp/pull/1255) generalizes [NIP-29](/en/topics/nip-29/) group queries instead of assuming one narrow lookup shape. Both changes are merged but have not yet appeared in a tagged release.
+[NMP](https://github.com/pablof7z/nmp) is a TypeScript toolkit for building Nostr applications and relay-backed group interfaces. [PR #1254](https://github.com/pablof7z/nmp/pull/1254) makes relay admission follow the owner of the declaration that authorizes it, keeping the permission decision attached to signed Nostr state. [PR #1255](https://github.com/pablof7z/nmp/pull/1255) generalizes [NIP-29](/en/topics/nip-29/) relay-managed group queries instead of assuming one narrow lookup shape. Both changes are merged but have not yet appeared in a tagged release.
 
 ### Mosaico derives managed-group identity from relay records
 
-Mosaico [PR #758](https://github.com/pablof7z/mosaico/pull/758) derives a managed group's identity from the relay that hosts its authoritative records. [PR #757](https://github.com/pablof7z/mosaico/pull/757) observes the group's published record when resolving administration state. This keeps two similarly named groups on different relays distinct and gives clients a relay-backed source for their management metadata.
+[Mosaico](https://github.com/pablof7z/mosaico) is a Nostr client for browsing and administering relay-managed communities. [PR #758](https://github.com/pablof7z/mosaico/pull/758) derives a managed group's identity from the relay that hosts its authoritative records. [PR #757](https://github.com/pablof7z/mosaico/pull/757) observes the group's published record when resolving administration state. This keeps two similarly named groups on different relays distinct and gives clients a relay-backed source for their management metadata.
 
 ### Divine isolates slow relays during multi-relay queries
 
-Divine [PR #6673](https://github.com/divinevideo/divine-mobile/pull/6673) gives each relay query its own timeout instead of letting one stalled connection consume the timeout budget for an entire request. Results from responsive relays can therefore arrive while the slow endpoint is abandoned independently. The change improves retrieval without treating one relay as authoritative for the combined result.
+[Divine](https://github.com/divinevideo/divine-mobile) is a mobile short-video client that publishes and retrieves videos over Nostr. [PR #6673](https://github.com/divinevideo/divine-mobile/pull/6673) gives each relay query its own timeout instead of letting one stalled connection consume the timeout budget for an entire request. Results from responsive relays can therefore arrive while the slow endpoint is abandoned independently. The change improves retrieval without treating one relay as authoritative for the combined result.
 
 ### rust-nostr hardens encryption, hashes, and reconciliation
 
-rust-nostr [PR #1421](https://github.com/rust-nostr/nostr/pull/1421) reduces allocation in its [NIP-44](/en/topics/nip-44/) encryption path, while [PR #1423](https://github.com/rust-nostr/nostr/pull/1423) introduces typed hashes that make incompatible digest values harder to mix accidentally. [Commit 21e31c2](https://github.com/rust-nostr/nostr/commit/21e31c28da3dfadedb5fa6e58c712647f16e5f69) prevents a malformed [NIP-77](/en/topics/nip-77/) Negentropy message from disconnecting the local relay. The merged work tightens both encrypted payload handling and set-reconciliation failure behavior before the next release.
+[rust-nostr](https://github.com/rust-nostr/nostr) is a Rust library and toolkit for Nostr clients, relays, and protocol implementations. [PR #1421](https://github.com/rust-nostr/nostr/pull/1421) reduces allocation in its [NIP-44](/en/topics/nip-44/) versioned-encryption path, while [PR #1423](https://github.com/rust-nostr/nostr/pull/1423) introduces typed hashes that make incompatible digest values harder to mix accidentally. [Commit 21e31c2](https://github.com/rust-nostr/nostr/commit/21e31c28da3dfadedb5fa6e58c712647f16e5f69) prevents a malformed [NIP-77](/en/topics/nip-77/) Negentropy set-reconciliation message from disconnecting the local relay. The merged work tightens both encrypted payload handling and reconciliation failure behavior before the next release.
 
 ### Zeus serializes NWC payments before charging spending budgets
 
-Zeus [PR #4305](https://github.com/ZeusLN/zeus/pull/4305) counts pending payments against a [NIP-47](/en/topics/nip-47/) Nostr Wallet Connect budget instead of waiting for settlement. [PR #4303](https://github.com/ZeusLN/zeus/pull/4303) serializes payment handling so concurrent requests cannot race through the same authorization limit. The merged pair closes a budget-enforcement gap on the wallet's Nostr control surface.
+[Zeus](https://github.com/ZeusLN/zeus) is a mobile Bitcoin and Lightning wallet that can expose wallet operations through Nostr Wallet Connect. [PR #4305](https://github.com/ZeusLN/zeus/pull/4305) counts pending payments against a [NIP-47](/en/topics/nip-47/) Nostr Wallet Connect budget instead of waiting for settlement. [PR #4303](https://github.com/ZeusLN/zeus/pull/4303) serializes payment handling so concurrent requests cannot race through the same authorization limit. The merged pair closes a budget-enforcement gap on the wallet's Nostr control surface.
 
 ### Nostr Components shares one relay connection attempt
 
-Nostr Components [PR #105](https://github.com/saiy2k/nostr-components/pull/105) lets components mounted at the same time share an in-flight relay connection attempt. Each consumer still receives the resulting connection, but concurrent mounts no longer open duplicate sockets while the first handshake is pending. The change reduces avoidable relay load in applications assembled from several independent components.
+[Nostr Components](https://github.com/saiy2k/nostr-components) is a reusable web-component library for adding Nostr data and interactions to applications. [PR #105](https://github.com/saiy2k/nostr-components/pull/105) lets components mounted at the same time share an in-flight relay connection attempt. Each consumer still receives the resulting connection, but concurrent mounts no longer open duplicate sockets while the first handshake is pending. The change reduces avoidable relay load in applications assembled from several independent components.
 
 ## NIP Updates and Protocol Spec Work
 
