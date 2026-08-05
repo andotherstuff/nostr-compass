@@ -38,6 +38,7 @@ Attribution tags are more important than they look. A `p` tag with an `author` o
 **Mentioned in:**
 - [Newsletter #10: Releases](/en/newsletters/2026-02-18-newsletter/#prism-share-anything-to-nostr-from-android)
 - [Newsletter #33: Unreleased app/client changes](/en/newsletters/2026-07-29-newsletter/#in-development)
+- [Newsletter #34: NIP Deep Dive](/en/newsletters/2026-08-05-newsletter/#highlights-nip-84)
 
 **See also:**
 - [NIP-94: File Metadata](/en/topics/nip-94/)

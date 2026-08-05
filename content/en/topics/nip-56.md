@@ -39,6 +39,7 @@ Additional classification can be added with NIP-32 `l` and `L` tags, which is us
 **Mentioned in:**
 - [Newsletter #10: Project Updates](/en/newsletters/2026-02-18-newsletter/#notedeck-android-app-store-prep)
 - [Newsletter #32: News](/en/newsletters/2026-07-22-newsletter/#zapstore-110-makes-the-device-key-portable-and-adds-background-auto-updates)
+- [Newsletter #34: nostrord moderation inbox](/en/newsletters/2026-08-05-newsletter/#nostrord-250-gives-relay-groups-stable-relay-specific-identities)
 
 **See also:**
 - [NIP-22: Comment](/en/topics/nip-22/)

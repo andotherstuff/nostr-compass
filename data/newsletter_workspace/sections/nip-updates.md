@@ -1,41 +1,67 @@
-## Protocol and Spec Work
+## NIP Deep Dive
 
-### NIPs: NIP-34 hosting boundary, group migration, and three live drafts
+### Search Capability (NIP-50)
 
-Two specification changes merged this week. [NIP-34 commit 6d2979b](https://github.com/nostr-protocol/nips/commit/6d2979b3f503a8539c983efbcdcf901bbcf9ed23) removes GRASP hosting instructions from the `kind:1618` pull-request description, leaving hosting and fallback behavior outside the event contract. [NIP-29 commit db5fe3d](https://github.com/nostr-protocol/nips/commit/db5fe3de8c5d1443b634c9bbf66ecb004f337057) defines how relay-group metadata migrates to another relay and how clients distinguish a valid move from a fork that continues independently.
+[NIP-50](/en/topics/nip-50/), defined in the [primary specification](https://github.com/nostr-protocol/nips/blob/master/50.md), adds an optional search filter for relays. Ordinary Nostr filters work when a client already knows an author, event kind, identifier, or tag; NIP-50 addresses discovery when the input is a human query such as `best nostr apps`.
 
-[PR #2424](https://github.com/nostr-protocol/nips/pull/2424) proposes mutual `kind:10045` key-set declarations. The reciprocal requirement would prevent one identity from attaching another key unilaterally. [PR #2421](https://github.com/nostr-protocol/nips/pull/2421) proposes BOLT12 zap intents and payer proofs that clients can validate against the target, amount, offer, and settled payment without depending on a recipient-operated receipt server.
+The [NIP-50 wire format](https://github.com/nostr-protocol/nips/blob/master/50.md#search-filter-field) adds a `search` string to a normal filter inside a `REQ` message. A request can combine that field with `kinds`, `authors`, `ids`, tag filters, and `limit`, and one REQ can carry several independent filters. A supporting relay should match primarily against event `content`, may use other fields when the event kind makes that useful, and should sort by its own relevance score before applying `limit`. That order differs from the usual newest-first event stream.
 
-[PR #2425](https://github.com/nostr-protocol/nips/pull/2425) would let NIP-B0 bookmarks retain non-HTTP schemes such as `nostr:` alongside web URLs. That would keep native Nostr identifiers, payment requests, and other application schemes intact inside the same private or public bookmark lists that already carry web addresses.
+The query string can include the specification's [`key:value` extensions](https://github.com/nostr-protocol/nips/blob/master/50.md#extensions). It names `include:spam`, `domain:`, `language:`, `sentiment:`, and `nsfw:`; a relay should ignore extensions it does not implement. Clients discover declared support through the relay's [NIP-11](/en/topics/nip-11/) `supported_nips` field, but they may still send the filter elsewhere if they are prepared to reject unrelated responses.
 
-### Mill implements a draft for cloud-account key backup
+The [NIP-50 specification](https://github.com/nostr-protocol/nips/blob/master/50.md) deliberately does not standardize tokenization, stemming, ranking, language detection, sentiment analysis, or spam classification. Two compliant relays can return different events and different ordering for the same query. That makes the relay an index and ranking provider, not a source of truth. The specification recommends querying several supporting relays, checking whether returned events satisfy the client's use case, and dropping relays whose results have poor precision.
 
-Mill [announced](https://primal.net/e/6362d9b00662fa64200530f8a29ae547521bac0a1e3c9379ef9086eac7d2030b) an implemented [cloud-account key-backup draft](https://github.com/0ceanSlim/nostr-mill/blob/main/docs/nip-cloud-key-backup.md) that combines a Google OIDC account identifier with a high-entropy passphrase to derive a disposable backup key. Its [reference implementation](https://github.com/0ceanSlim/nostr-mill/blob/main/src/nipbackup.js) encrypts the user's real key as a [NIP-49 (Private Key Encryption)](/en/topics/nip-49/) `ncryptsec`, then stores it in a provisional parameterized-replaceable kind `30049` event on configured relays. The project [merged the backup flow to main](https://github.com/0ceanSlim/nostr-mill/commit/eeb4b9114d02114b703a6823ad36ca8063b224da), but no post-v1.0.0 release includes it, and the backup flow remains disabled unless an operator supplies dedicated `backupRelays`. A versioned relay set remains provisional, and the draft warns that published ciphertext remains available for offline passphrase guessing. Readers should treat the design as an implemented experiment that depends on a high-entropy passphrase.
+This differs from exact [NIP-01 filtering](https://github.com/nostr-protocol/nips/blob/master/01.md). An `authors` or `#t` filter has deterministic matching semantics that a client can verify directly, while a search match may depend on an index and an opaque score. NIP-50 retains NIP-01's signed event envelope and relay transport, but accepts variation in recall and ordering to make open-ended retrieval possible.
 
-### BUDs: Blossom servers may identify unknown uploads from their bytes
+The event below is an illustrative search result using the [seven NIP-01 event fields](https://github.com/nostr-protocol/nips/blob/master/01.md#events-and-signatures). The repeated hexadecimal values are placeholders rather than a valid signature.
 
-[BUD-02 PR #110](https://github.com/hzrd149/blossom/pull/110) proposes recommending server-side MIME detection when an uploader omits `Content-Type` or sends `application/octet-stream`. A Blossom server would inspect the first bytes with a maintained file-type library, preserve a specific client-supplied type, and fall back to the generic binary type when detection fails. That would keep images, audio, video, and agent-produced files renderable without making byte sniffing mandatory for every upload.
+```json
+{
+  "id": "0000000000000000000000000000000000000000000000000000000000000000",
+  "pubkey": "1111111111111111111111111111111111111111111111111111111111111111",
+  "created_at": 1785888000,
+  "kind": 1,
+  "tags": [["t", "nostr"]],
+  "content": "A comparison of Nostr search relays and their indexes.",
+  "sig": "22222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222"
+}
+```
 
-### NAPs: conventions replace numbered tracks as capture and filesystem contracts develop
+Current clients use the same filter in different discovery surfaces. [Nostria](https://github.com/nostria-app/nostria/blob/d291c2ab091c60c36f99c90241e2fd9da1b0c4bc/src/app/services/relays/search-relay.ts) sends NIP-50 searches to dedicated search relays, [Ditto](https://github.com/soapbox-pub/ditto/blob/04adb2d242ab6f5807fd27ae3e0cb9beab091641/src/hooks/useSearchEvents.ts) searches events through its relay pool, and [NoorNote](https://github.com/77elements/noornote/blob/bf1f9b431552497dc1779ea0d8fed2c3c28e6070/src/services/orchestration/SearchOrchestrator.ts) coordinates relay-backed searches for long-form reading. Their different result handling reflects the latitude NIP-50 leaves to relays and clients.
 
-[PR #87](https://github.com/napplet/naps/pull/87) removes the numbered cross-napplet protocol track and keeps runtime capabilities under named contracts while application messages converge on `napplet:<archetype>/<intent>` convention URIs. The merged [topic-identity change](https://github.com/napplet/naps/pull/89) separates a stable, queryless convention path from per-message payload data, and [PR #90](https://github.com/napplet/naps/pull/90) applies that transposition rule to discovery and handler metadata.
+### Highlights (NIP-84)
 
-Two NAP drafts extend the trusted shell boundary. [NAP-CAPTURE PR #94](https://github.com/napplet/naps/pull/94) keeps microphone consent, platform permission, limits, retention, and teardown in the runtime while returning a bounded media artifact to a sandboxed napplet. [NAP-FS PR #88](https://github.com/napplet/naps/pull/88) is the parallel virtual-filesystem proposal, with policy-bound handles instead of unrestricted host paths.
+[NIP-84](/en/topics/nip-84/), defined by its [primary specification](https://github.com/nostr-protocol/nips/blob/master/84.md), assigns kind `9802` to a highlight. It turns a selected passage, or a reference to non-text media, into a signed event that can move between reading, social, and annotation clients.
 
-### Marmot: the specification defines a terminal group state
+The [event's `content`](https://github.com/nostr-protocol/nips/blob/master/84.md#format) contains the selected text and may be empty when the source is audio, video, or another non-text medium. A highlight points to a Nostr source with an `a` tag for an addressable event or an `e` tag for an ordinary event; an `r` tag identifies a web URL. URL-producing clients should remove tracking and other non-useful query parameters before publishing so cosmetic URL variants do not fragment references to the same source.
 
-[Marmot PR #409](https://github.com/marmot-protocol/marmot/pull/409) adds an authenticated, irreversible `Disbanded` state because MLS itself has no group-deletion operation. An authorized admin commit moves a group out of `Active`, blocks old branches, messages, and Welcomes from reviving it, and gives existing groups an explicit compatibility path before they can disband. The preceding [specification issue sweep](https://github.com/marmot-protocol/marmot/pull/408) also reconciled group-state authority, convergence, key packages, acknowledgements, media rules, registry language, and 200 tracked specification issues.
+Optional [`p` tags](https://github.com/nostr-protocol/nips/blob/master/84.md#attribution) attribute the source to one or more Nostr pubkeys. Their fourth value may identify a role such as `author` or `editor`, and a `context` tag can preserve surrounding text when the selection alone would be unclear. A quote highlight adds a `comment` tag instead of publishing a second kind `1` note: the source `r` tag receives the `source` marker, while pubkeys or URLs mentioned in the comment carry `mention`, letting renderers distinguish attribution from the user's response.
 
-### Gamma Markets: no public specification changes landed
+The [kind `9802` definition](https://github.com/nostr-protocol/nips/blob/master/84.md) makes a highlight a regular event rather than a replaceable one. Repeating or correcting a selection creates another signed event, and removing one relies on the normal deletion-request flow and relay retention policy. The specification does not define byte offsets, selectors, or a canonical document snapshot, so a client may be unable to relocate a passage after its web source changes. Public highlights also reveal reading interests; private annotation requires a separate encryption and sharing design.
 
-The [Gamma Markets specification repository](https://github.com/GammaMarkets/market-spec) recorded no public commits or pull-request activity from July 21 through July 28. Its published order, settlement, and market-data documents remain the current baseline; this no-change entry keeps Gamma visible in the weekly specification sweep.
+NIP-84 differs from a [NIP-23 long-form event](https://github.com/nostr-protocol/nips/blob/master/23.md), which publishes an entire article as kind `30023`; a highlight quotes or points into material that may remain elsewhere. It also differs from a [NIP-51 bookmark set](https://github.com/nostr-protocol/nips/blob/master/51.md), which stores a replaceable collection of references. NIP-84 makes each selection independently signed, attributable, discoverable, and discussable.
 
-### Concord: read and write capabilities may split inside one plane
+This illustrative highlight contains the [seven NIP-01 event fields](https://github.com/nostr-protocol/nips/blob/master/01.md#events-and-signatures). Its identifier and signature are placeholders.
 
-[Concord PR #12](https://github.com/concord-protocol/concord/pull/12) remains an open draft for planes whose readers should not all be writers. It moves the Control Plane toward separate read and write stream capabilities and sketches restricted-write channels, invites, and rekey scopes. The write key is a spam gate in the draft, while signed inner actors and roster checks continue to carry authority.
+```json
+{
+  "id": "3333333333333333333333333333333333333333333333333333333333333333",
+  "pubkey": "4444444444444444444444444444444444444444444444444444444444444444",
+  "created_at": 1785888000,
+  "kind": 9802,
+  "tags": [
+    ["a", "30023:6666666666666666666666666666666666666666666666666666666666666666:relay-search", "wss://relay.example"],
+    ["p", "6666666666666666666666666666666666666666666666666666666666666666", "wss://relay.example", "author"],
+    ["context", "Search relays are indexes whose ranking policies can differ."]
+  ],
+  "content": "ranking policies can differ",
+  "sig": "55555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555"
+}
+```
 
-### NWC: one wallet method can choose between BOLT11 and BOLT12
+The format already crosses client boundaries. [nostrord 2.5.0](https://github.com/nostrord/nostrord/releases/tag/v2.5.0) added NIP-84 rendering this week, [NoorNote](https://github.com/77elements/noornote/blob/bf1f9b431552497dc1779ea0d8fed2c3c28e6070/src/components/ui/note-rendering/HighlightRenderer.ts) renders highlight events in its long-form client, and [Ditto](https://github.com/soapbox-pub/ditto/blob/04adb2d242ab6f5807fd27ae3e0cb9beab091641/src/hooks/useCreateHighlight.ts) publishes them from selected content. Those implementations cover reading, creation, and social rendering without requiring one service to own the annotation.
 
-[NWC PR #2](https://github.com/nostr-wallet-connect/nwc/pull/2) proposes optional `pay` and `receive` methods for BIP-321 payment URIs. A wallet service can advertise support, choose one compatible BOLT11 invoice or BOLT12 offer from a URI, reject a mismatched Bitcoin network before payment, and report which instruction type it used. The proposal stays outside the NWC core so wallets without BIP-321 or BOLT12 support do not have to implement it.
+---
+
+Send a NIP-17 DM to share a project or news item through the [Nostr Compass project](https://github.com/andotherstuff/nostr-compass).
 
 GATE: PASS
