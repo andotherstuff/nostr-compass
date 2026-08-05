@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
-"""Flag repeated project coverage that lacks a new primary source.
+"""Flag repeated newsletter coverage that lacks a new primary source.
 
 This is an editorial gate, not a prose scorer. A project repeated from the
 prior issue must cite a new release, pull request, commit, or other primary
-source in its own section. Reusing the same primary-source URL is also a
-blocking duplicate. The reviewer decides whether a distinct source carries
-enough substance to keep the item.
+source in its own section. Reusing the same primary-source URL anywhere in
+the issue is also a blocking duplicate, including protocol items under generic
+family headings. Reuse is allowed only when the paragraph explicitly states a
+material status transition, such as an open proposal that has now merged.
 """
 
 from __future__ import annotations
@@ -22,6 +23,12 @@ LINK_LABEL_RE = re.compile(r"\[([^\]]+)\]\([^\)]+\)")
 PRIMARY_URL_RE = re.compile(
     r"(?:https?://[^\s)]+/(?:releases(?:/tag)?|pull|commit|merge_requests|-/commit)(?:/[^\s)]*)?"
     r"|https?://primal\.net/e/[0-9a-f]+)"
+)
+STATUS_TRANSITION_RE = re.compile(
+    r"\b(?:covered|reported|described|introduced|proposed)\b.{0,100}"
+    r"\b(?:previously|last week|last issue|in the [A-Z][a-z]+ \d{1,2} issue)\b.{0,160}"
+    r"\b(?:has now|now|since)\b.{0,80}\b(?:merged|closed|released|shipped|adopted)\b",
+    re.IGNORECASE | re.DOTALL,
 )
 
 
@@ -85,6 +92,25 @@ def primary_urls(markdown: str) -> set[str]:
     return {url.rstrip(".,") for url in PRIMARY_URL_RE.findall(markdown)}
 
 
+def paragraphs(markdown: str) -> list[str]:
+    """Return blocks so any status-transition exemption remains local."""
+    return [block.strip() for block in re.split(r"\n\s*\n", markdown) if block.strip()]
+
+
+def repeated_sources(current: str, previous_sources: set[str]) -> list[Finding]:
+    """Catch reused primary URLs even below generic protocol headings."""
+    findings: list[Finding] = []
+    for paragraph in paragraphs(current):
+        reused = primary_urls(paragraph) & previous_sources
+        if not reused or STATUS_TRANSITION_RE.search(paragraph):
+            continue
+        for url in sorted(reused):
+            findings.append(
+                Finding(url, "primary source already covered without a stated status change")
+            )
+    return findings
+
+
 def review_history(current: str, previous_issues: list[str]) -> list[Finding]:
     """Review against all earlier issues, not only the immediately prior one."""
     previous_projects: set[str] = set()
@@ -97,7 +123,7 @@ def review_history(current: str, previous_issues: list[str]) -> list[Finding]:
         )
         previous_sources.update(primary_urls(previous))
 
-    findings: list[Finding] = []
+    findings: list[Finding] = repeated_sources(current, previous_sources)
     for heading, body in sections(current):
         project = heading_project(heading, previous_projects)
         if not project or project not in previous_projects:
@@ -106,8 +132,8 @@ def review_history(current: str, previous_issues: list[str]) -> list[Finding]:
         if not current_sources:
             findings.append(Finding(project, "no new primary source"))
             continue
-        if current_sources & previous_sources:
-            findings.append(Finding(project, "primary source already covered"))
+        # Exact URL reuse is handled globally above, including protocol-family
+        # sections whose headings are not project names.
     return findings
 
 
@@ -138,7 +164,7 @@ def main() -> int:
         else review_history(args.current.read_text(), previous_text)
     )
     if not findings:
-        print("PASS: repeated projects each cite a distinct primary source")
+        print("PASS: repeated topics use new sources or state a material status change")
         return 0
 
     for finding in findings:

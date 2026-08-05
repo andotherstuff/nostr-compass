@@ -45,6 +45,11 @@ class NewsletterStyleTests(unittest.TestCase):
         findings = checker.review("The project was discovered through the weekly feed.")
         self.assertEqual("discovered through", findings[0].phrase)
 
+    def test_flags_internal_selection_commentary(self):
+        checker = load_module()
+        findings = checker.review("Eleven versioned releases made the final scope cut.")
+        self.assertEqual("made the final scope cut", findings[0].phrase)
+
 
 if __name__ == "__main__":
     unittest.main()

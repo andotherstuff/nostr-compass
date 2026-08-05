@@ -17,6 +17,7 @@ BANNED_PHRASES = (
     "found via",
     "discovered through",
     "surfaced on",
+    "made the final scope cut",
 )
 
 

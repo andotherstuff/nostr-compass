@@ -9,7 +9,7 @@ description: "Sandstr offers mock-data tours of Nostr clients, nostr-mill adds p
 
 Welcome back to [Nostr Compass](https://github.com/andotherstuff/nostr-compass), your weekly guide to Nostr.
 
-**This week:** [Sandstr](https://sandstr.app/) lets newcomers explore simulated Nostr clients without creating keys or installing an app. [nostr-mill](https://github.com/0ceanSlim/nostr-mill) adds per-event signer consent and cross-client key recovery, while [nostrord](https://github.com/nostrord/nostrord) expands relay-hosted groups, signers, moderation, uploads, and highlights. Eleven versioned releases made the final scope cut. Protocol work spans Nostr event formats, wallet connections, relay discovery, napplets, Marmot, and Concord; the deep dives explain relay-assisted search and portable highlights.
+**This week:** [Sandstr](https://sandstr.app/) lets newcomers explore simulated Nostr clients without creating keys or installing an app. [nostr-mill](https://github.com/0ceanSlim/nostr-mill) adds per-event signer consent and cross-client key recovery, while [nostrord](https://github.com/nostrord/nostrord) expands relay-hosted groups, signers, moderation, uploads, and highlights. Protocol work spans Nostr event formats, wallet connections, relay discovery, napplets, Marmot, and Concord; the deep dives explain relay-assisted search and portable highlights.
 
 ## Top Stories
 
