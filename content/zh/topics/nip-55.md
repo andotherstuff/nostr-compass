@@ -47,6 +47,7 @@ NIP-55 把 keys 保留在设备端，但它仍然依赖 Android 的 app 边界�
 - [Newsletter #4：NIP Updates](/zh/newsletters/2026-01-07-newsletter/)
 - [Newsletter #11：NIP Deep Dive](/zh/newsletters/2026-02-25-newsletter/)
 - [Newsletter #13：Samizdat v1.0.0-alpha](/en/newsletters/2026-03-11-newsletter/)
+- [周刊 #34:nostr-mill 和 nostrord 签名器更新](/zh/newsletters/2026-08-05-newsletter/#top-stories)
 
 **另请参阅：**
 - [NIP-46：Nostr Connect](/zh/topics/nip-46/)

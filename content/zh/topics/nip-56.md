@@ -40,6 +40,7 @@ Blob 举报使用 `x` 标签附带 blob 哈希值，还可以包含指向托管�
 
 **提及于：**
 - [第10期周刊：项目更新](/zh/newsletters/2026-02-18-newsletter/#notedeck-android-app-store-prep)
+- [周刊 #34:nostrord 审核收件箱](/zh/newsletters/2026-08-05-newsletter/#nostrord-250-gives-relay-groups-stable-relay-specific-identities)
 
 **另请参阅：**
 - [NIP-22：评论](/zh/topics/nip-22/)
