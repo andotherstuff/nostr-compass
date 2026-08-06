@@ -63,6 +63,7 @@ NIP-94는 여러 저장 backend에서 동작합니다. 파일은 [NIP-96: HTTP F
 **언급된 뉴스레터:**
 - [Newsletter #3: December Recap](/en/newsletters/2025-12-31-newsletter/)
 - [Newsletter #14: NIP Deep Dive](/ko/newsletters/2026-03-18-newsletter/)
+- [뉴스레터 #34: Napplet 업로드 계약](/ko/newsletters/2026-08-05-newsletter/#napplet-host-capabilities)
 
 **같이 보기:**
 - [NIP-92: 미디어 첨부](/ko/topics/nip-92/)

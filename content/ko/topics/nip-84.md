@@ -37,6 +37,7 @@ NIP-84는 하이라이트된 구절을 주변 논의와 분리한다. 클라이�
 
 **언급된 뉴스레터:**
 - [Newsletter #10: 릴리스](/en/newsletters/2026-02-18-newsletter/#prism-share-anything-to-nostr-from-android)
+- [뉴스레터 #34: NIP 심층 분석](/ko/newsletters/2026-08-05-newsletter/#highlights-nip-84)
 
 **같이 보기:**
 - [NIP-94: 파일 메타데이터](/ko/topics/nip-94/)

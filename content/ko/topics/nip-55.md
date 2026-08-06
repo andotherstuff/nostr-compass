@@ -47,6 +47,7 @@ Android 웹 앱에서는 NIP-55가 NIP-46보다 덜 편리합니다. browser 기
 - [Newsletter #4: NIP Updates](/ko/newsletters/2026-01-07-newsletter/)
 - [Newsletter #11: NIP Deep Dive](/ko/newsletters/2026-02-25-newsletter/)
 - [Newsletter #13: Samizdat v1.0.0-alpha](/en/newsletters/2026-03-11-newsletter/)
+- [뉴스레터 #34: nostr-mill과 nostrord 서명자 업데이트](/ko/newsletters/2026-08-05-newsletter/#top-stories)
 
 **같이 보기:**
 - [NIP-46: Nostr Connect](/ko/topics/nip-46/)

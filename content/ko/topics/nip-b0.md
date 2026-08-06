@@ -56,6 +56,7 @@ NIP-B0은 웹 북마크를 일급 Nostr 이벤트로 게시하는 매개변수�
 **언급된 곳:**
 - [Newsletter #24: deepmarks NIP-B0 bookmarks with curator-monetized publishing](/ko/newsletters/2026-05-28-newsletter/#deepmarks-nip-b0-bookmarks-with-curator-monetized-publishing)
 - [Newsletter #27: Also shipped](/ko/newsletters/2026-06-17-newsletter/#also-shipped)
+- [뉴스레터 #34: URI 명확화](/ko/newsletters/2026-08-05-newsletter/#nostr-event-formats-and-discovery)
 
 **참고:**
 - [NIP-57: Lightning Zaps](/ko/topics/nip-57/)

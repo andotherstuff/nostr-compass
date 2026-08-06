@@ -43,6 +43,7 @@ NIP-40은 릴레이에 이벤트를 언제 삭제해야 하는지 알려주는 �
 **언급된 뉴스레터:**
 - [뉴스레터 #1: 뉴스](/en/newsletters/2025-12-17-newsletter/)
 - [뉴스레터 #3: 주요 코드 변경사항](/en/newsletters/2025-12-31-newsletter/)
+- [뉴스레터 #34: Concord 사라지는 메시지](/ko/newsletters/2026-08-05-newsletter/#concord-community-planes)
 
 **같이 보기:**
 - [NIP-01: 기본 프로토콜](/ko/topics/nip-01/)

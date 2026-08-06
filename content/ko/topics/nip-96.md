@@ -44,6 +44,7 @@ Kind 10096 서버 선호 이벤트는 Blossom 서버 선택에도 여전히 유�
 
 **언급된 뉴스레터:**
 - [Newsletter #9: NIP Deep Dive](/en/newsletters/2026-02-11-newsletter/#nip-deep-dive-nip-96-http-file-storage-and-the-transition-to-blossom)
+- [뉴스레터 #34: nostrord 미디어 업로드](/ko/newsletters/2026-08-05-newsletter/#nostrord-250-gives-relay-groups-stable-relay-specific-identities)
 
 **같이 보기:**
 - [Blossom Protocol](/ko/topics/blossom/)
