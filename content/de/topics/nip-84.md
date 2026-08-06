@@ -38,6 +38,7 @@ Attribution-Tags sind wichtiger, als es auf den ersten Blick scheint. Ein `p`-Ta
 
 **Erwähnt in:**
 - [Newsletter #10: Releases](/de/newsletters/2026-02-18-newsletter/#prism-share-anything-to-nostr-from-android)
+- [Newsletter #34: NIP Deep Dive](/de/newsletters/2026-08-05-newsletter/#highlights-nip-84)
 
 **Siehe auch:**
 - [NIP-94: File Metadata](/de/topics/nip-94/)

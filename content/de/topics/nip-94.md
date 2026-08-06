@@ -63,6 +63,7 @@ NIP-94 funktioniert über verschiedene Storage-Backends hinweg. Eine Datei kann 
 **Erwähnt in:**
 - [Newsletter #3: December Recap](/de/newsletters/2025-12-31-newsletter/)
 - [Newsletter #14: NIP Deep Dive](/de/newsletters/2026-03-18-newsletter/)
+- [Newsletter #34: Napplet-Upload-Vertrag](/de/newsletters/2026-08-05-newsletter/#napplet-host-capabilities)
 
 **Siehe auch:**
 - [NIP-92: Media Attachments](/de/topics/nip-92/)

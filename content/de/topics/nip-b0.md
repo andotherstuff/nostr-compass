@@ -56,6 +56,7 @@ Da jedes Lesezeichen ein erstklassiges event ist, kann jeder Nostr-Client einen 
 **Erwähnt in:**
 - [Newsletter #24: deepmarks NIP-B0-Lesezeichen mit kurator-monetarisierter Veröffentlichung](/de/newsletters/2026-05-28-newsletter/#deepmarks-nip-b0-bookmarks-with-curator-monetized-publishing)
 - [Newsletter #27: Ebenfalls veröffentlicht](/de/newsletters/2026-06-17-newsletter/#also-shipped)
+- [Newsletter #34: URI-Klarstellung](/de/newsletters/2026-08-05-newsletter/#nostr-event-formats-and-discovery)
 
 **Siehe auch:**
 - [NIP-57: Lightning Zaps](/de/topics/nip-57/)

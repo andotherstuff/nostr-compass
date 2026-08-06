@@ -44,6 +44,7 @@ Expiration ist ein Hinweis zur Aufbewahrung und kein Widerrufssystem. Es hilft d
 **Erwähnt in:**
 - [Newsletter #1: News](/en/newsletters/2025-12-17-newsletter/)
 - [Newsletter #3: Notable Code Changes](/en/newsletters/2025-12-31-newsletter/)
+- [Newsletter #34: Concord-Nachrichten mit Ablauf](/de/newsletters/2026-08-05-newsletter/#concord-community-planes)
 
 **Siehe auch:**
 - [NIP-01: Basic Protocol](/de/topics/nip-01/)
