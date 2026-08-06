@@ -56,6 +56,7 @@ Parce que chaque signet est un événement de première classe, tout client Nost
 **Mentionné dans :**
 - [Newsletter #24 : signets NIP-B0 deepmarks avec publication monétisée par le curateur](/fr/newsletters/2026-05-28-newsletter/#deepmarks-nip-b0-bookmarks-with-curator-monetized-publishing)
 - [Newsletter #27 : Également livré](/fr/newsletters/2026-06-17-newsletter/#also-shipped)
+- [Newsletter #34 : clarification d'URI](/fr/newsletters/2026-08-05-newsletter/#nostr-event-formats-and-discovery)
 
 **Voir aussi :**
 - [NIP-57 : Zaps Lightning](/fr/topics/nip-57/)
