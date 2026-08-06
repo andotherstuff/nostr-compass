@@ -37,6 +37,7 @@ I tag di attribuzione sono più importanti di quanto sembri. Un tag `p` con ruol
 
 **Menzionato in:**
 - [Newsletter #10: Releases](/en/newsletters/2026-02-18-newsletter/#prism-share-anything-to-nostr-from-android)
+- [Newsletter #34: approfondimento NIP](/it/newsletters/2026-08-05-newsletter/#highlights-nip-84)
 
 **Vedi anche:**
 - [NIP-94: File Metadata](/it/topics/nip-94/)

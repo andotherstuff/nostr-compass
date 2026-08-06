@@ -45,6 +45,7 @@ Per le web app su Android, NIP-55 è meno ergonomico di NIP-46. I flussi basati 
 - [Newsletter #3: December Recap](/en/newsletters/2025-12-31-newsletter/)
 - [Newsletter #7: NIP Updates](/it/newsletters/2026-01-07-newsletter/)
 - [Newsletter #11: NIP Deep Dive](/it/newsletters/2026-02-25-newsletter/)
+- [Newsletter #34: aggiornamenti del firmatario in nostr-mill e nostrord](/it/newsletters/2026-08-05-newsletter/#top-stories)
 
 **Vedi anche:**
 - [NIP-46: Nostr Connect](/it/topics/nip-46/)
