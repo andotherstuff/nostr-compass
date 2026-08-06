@@ -63,6 +63,7 @@ NIP-94 funciona entre backends de almacenamiento. Un archivo puede subirse a tra
 **Mencionado en:**
 - [Newsletter #3: December Recap](/es/newsletters/2025-12-31-newsletter/)
 - [Newsletter #14: NIP Deep Dive](/es/newsletters/2026-03-18-newsletter/)
+- [Boletín #34: contrato de subida de napplets](/es/newsletters/2026-08-05-newsletter/#napplet-host-capabilities)
 
 **Ver también:**
 - [NIP-92: Media Attachments](/es/topics/nip-92/)

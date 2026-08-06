@@ -45,6 +45,7 @@ Los eventos kind 10096 de preferencia de servidor siguen siendo útiles para la 
 
 **Mencionado en:**
 - [Newsletter #9: NIP Deep Dive](/en/newsletters/2026-02-11-newsletter/#nip-deep-dive-nip-96-http-file-storage-and-the-transition-to-blossom)
+- [Boletín #34: subidas de medios de nostrord](/es/newsletters/2026-08-05-newsletter/#nostrord-250-gives-relay-groups-stable-relay-specific-identities)
 
 **Ver también:**
 - [Blossom Protocol](/es/topics/blossom/)

@@ -47,6 +47,7 @@ Para aplicaciones web en Android, NIP-55 es menos ergonómico que NIP-46. Los fl
 - [Boletín #7: Actualizaciones de NIP](/es/newsletters/2026-01-07-newsletter/)
 - [Boletín #11: NIP Deep Dive](/es/newsletters/2026-02-25-newsletter/)
 - [Boletín #13: Samizdat v1.0.0-alpha](/en/newsletters/2026-03-11-newsletter/)
+- [Boletín #34: actualizaciones del firmante en nostr-mill y nostrord](/es/newsletters/2026-08-05-newsletter/#top-stories)
 
 **Ver también:**
 - [NIP-46: Nostr Connect](/es/topics/nip-46/)

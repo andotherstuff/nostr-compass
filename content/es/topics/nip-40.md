@@ -44,6 +44,7 @@ La expiración es una indicación de retención, no un sistema de revocación. A
 **Mencionado en:**
 - [Newsletter #1: Noticias](/en/newsletters/2025-12-17-newsletter/)
 - [Newsletter #3: Cambios Notables de Código](/en/newsletters/2025-12-31-newsletter/)
+- [Boletín #34: mensajes que desaparecen en Concord](/es/newsletters/2026-08-05-newsletter/#concord-community-planes)
 
 **Ver también:**
 - [NIP-01: Protocolo Básico](/es/topics/nip-01/)

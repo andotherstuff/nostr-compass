@@ -38,6 +38,7 @@ Las etiquetas de atribución son más importantes de lo que parecen. Una etiquet
 
 **Mencionado en:**
 - [Newsletter #10: Lanzamientos](/en/newsletters/2026-02-18-newsletter/#prism-share-anything-to-nostr-from-android)
+- [Boletín #34: análisis en profundidad de NIPs](/es/newsletters/2026-08-05-newsletter/#highlights-nip-84)
 
 **Ver también:**
 - [NIP-94: Metadatos de Archivos](/es/topics/nip-94/)

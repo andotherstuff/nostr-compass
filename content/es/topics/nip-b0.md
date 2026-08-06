@@ -56,6 +56,7 @@ Debido a que cada marcador es un evento de primera clase, cualquier cliente de N
 **Mencionado en:**
 - [Boletín #24: Marcadores NIP-B0 de deepmarks con publicación monetizada por el curador](/es/newsletters/2026-05-28-newsletter/#deepmarks-nip-b0-bookmarks-with-curator-monetized-publishing)
 - [Boletín #27: También lanzado](/es/newsletters/2026-06-17-newsletter/#also-shipped)
+- [Boletín #34: aclaración de URI](/es/newsletters/2026-08-05-newsletter/#nostr-event-formats-and-discovery)
 
 **Véase también:**
 - [NIP-57: Zaps Lightning](/es/topics/nip-57/)
