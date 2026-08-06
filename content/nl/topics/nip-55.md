@@ -47,6 +47,7 @@ Voor webapps op Android is NIP-55 minder praktisch dan NIP-46. Browsergebaseerde
 - [Newsletter #4: NIP Updates](/nl/newsletters/2026-01-07-newsletter/)
 - [Newsletter #11: NIP Deep Dive](/nl/newsletters/2026-02-25-newsletter/)
 - [Newsletter #13: Samizdat v1.0.0-alpha](/en/newsletters/2026-03-11-newsletter/)
+- [Newsletter #34: signer-updates in nostr-mill en nostrord](/nl/newsletters/2026-08-05-newsletter/#top-stories)
 
 **Zie ook:**
 - [NIP-46: Nostr Connect](/nl/topics/nip-46/)
