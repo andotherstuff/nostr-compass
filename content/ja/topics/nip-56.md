@@ -36,6 +36,7 @@ NIP-56はkind 1984イベントを使用した報告メカニズムを定義し�
 
 **言及されているニュースレター：**
 - [ニュースレター#10：プロジェクトアップデート](/ja/newsletters/2026-02-18-newsletter/#notedeck：androidアプリストアの準備)
+- [ニュースレター #34: nostrordモデレーション受信箱](/ja/newsletters/2026-08-05-newsletter/#nostrord-250-gives-relay-groups-stable-relay-specific-identities)
 
 **関連項目：**
 - [NIP-22: コメント](/ja/topics/nip-22/)

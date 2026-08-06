@@ -39,6 +39,7 @@ Kind 10096サーバー設定イベントはBlossomサーバー選択に引き続
 
 **言及先：**
 - [ニュースレター #9：NIPディープダイブ](/ja/newsletters/2026-02-11-newsletter/#nipディープダイブnip-96httpファイルストレージとblossomへの移行)
+- [ニュースレター #34: nostrordメディアアップロード](/ja/newsletters/2026-08-05-newsletter/#nostrord-250-gives-relay-groups-stable-relay-specific-identities)
 
 **関連項目：**
 - [Blossomプロトコル](/ja/topics/blossom/)

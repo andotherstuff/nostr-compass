@@ -56,6 +56,7 @@ NIP-B0は、WebブックマークをファーストクラスのNostrイベント
 **Mentioned in:**
 - [Newsletter #24: deepmarks NIP-B0 bookmarks with curator-monetized publishing](/ja/newsletters/2026-05-28-newsletter/#deepmarks-nip-b0-bookmarks-with-curator-monetized-publishing)
 - [Newsletter #27: Also shipped](/ja/newsletters/2026-06-17-newsletter/#also-shipped)
+- [ニュースレター #34: URI明確化](/ja/newsletters/2026-08-05-newsletter/#nostr-event-formats-and-discovery)
 
 **See also:**
 - [NIP-57: Lightning Zaps](/ja/topics/nip-57/)

@@ -47,6 +47,7 @@ Android上のweb appにとっては、NIP-55はNIP-46より使い勝手が落ち
 - [Newsletter #4: NIP Updates](/ja/newsletters/2026-01-07-newsletter/)
 - [Newsletter #11: NIP Deep Dive](/ja/newsletters/2026-02-25-newsletter/)
 - [Newsletter #13: Samizdat v1.0.0-alpha](/en/newsletters/2026-03-11-newsletter/)
+- [ニュースレター #34: nostr-millとnostrordの署名者アップデート](/ja/newsletters/2026-08-05-newsletter/#top-stories)
 
 **See also:**
 - [NIP-46: Nostr Connect](/ja/topics/nip-46/)

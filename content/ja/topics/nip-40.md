@@ -44,6 +44,7 @@ expirationは保持期間のヒントであり、取り消しの仕組みでは�
 **言及箇所:**
 - [Newsletter #1: News](/en/newsletters/2025-12-17-newsletter/)
 - [Newsletter #3: Notable Code Changes](/en/newsletters/2025-12-31-newsletter/)
+- [ニュースレター #34: Concordの消えるメッセージ](/ja/newsletters/2026-08-05-newsletter/#concord-community-planes)
 
 **関連項目:**
 - [NIP-01: Basic Protocol](/ja/topics/nip-01/)

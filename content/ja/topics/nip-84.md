@@ -38,6 +38,7 @@ attribution tagは見た目以上に重要です。`author`や`editor` roleを�
 
 **言及箇所:**
 - [Newsletter #10: Releases](/en/newsletters/2026-02-18-newsletter/#prism-share-anything-to-nostr-from-android)
+- [ニュースレター #34: NIPディープダイブ](/ja/newsletters/2026-08-05-newsletter/#highlights-nip-84)
 
 **関連項目:**
 - [NIP-94: File Metadata](/ja/topics/nip-94/)
