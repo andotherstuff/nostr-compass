@@ -1073,3 +1073,64 @@ SafeBox:
     - https://github.com/trbouma/safebox
     - https://github.com/trbouma
     - https://njump.me/nevent1qgsqddupn4l3cl65wggcyehd009g0pwuatsfudh28f90vewx68vrylqpp4mhxue69uhkummn9ekx7mqqyqtfkymmr77cjn39ajgehndtykz665tyj3gvckuz3y2n9s0mfsugsdheaza
+
+# Newsletter #34 additions, round 2 (NIP-05 verified 2026-08-06)
+Chama:
+  npub: npub1m7nypkfk259h5h0dqwj9px0pqq7nz0cs7gjdhr7g793wspskeavqrljsln
+  identity_type: project
+  evidence:
+    - https://github.com/jesuspirate/chama
+    - NIP-05 chama@primal.net verified 2026-08-06
+
+mineracks:
+  npub: npub12r5zunqwnccf8dhy5jvx6wspynxrruy5t4yr4n7jqvxzqykwc7nqqe8g4s
+  identity_type: maintainer
+  person: Piers
+  evidence:
+    - https://github.com/mineracks/mineracks-signer
+    - NIP-05 piers@mineracks.com verified 2026-08-06
+
+mineracks signer:
+  npub: npub12r5zunqwnccf8dhy5jvx6wspynxrruy5t4yr4n7jqvxzqykwc7nqqe8g4s
+  identity_type: maintainer
+  person: Piers
+  evidence:
+    - https://github.com/mineracks/mineracks-signer
+
+Nostr Components:
+  npub: npub1qsvv5ttv6mrlh38q8ydmw3gzwq360mdu8re2vr7rk68sqmhmsh4svhsft3
+  identity_type: maintainer
+  person: saiy2k
+  evidence:
+    - https://github.com/saiy2k/nostr-components
+    - NIP-05 saiy2k@iris.to verified 2026-08-06
+
+saiy2k dev:
+  npub: npub1qsvv5ttv6mrlh38q8ydmw3gzwq360mdu8re2vr7rk68sqmhmsh4svhsft3
+  identity_type: maintainer
+  person: saiy2k
+  evidence:
+    - https://github.com/saiy2k/nostr-components
+
+nosvelte:
+  npub: npub12gtrhfv04634qsyfm6l3m7a06l04qta6yefkuwezwcw6z4qe5nvqddy5qj
+  identity_type: maintainer
+  person: akiomik
+  evidence:
+    - https://github.com/akiomik/nosvelte
+    - npub provided directly by user 2026-08-06
+
+akiomik dev:
+  npub: npub12gtrhfv04634qsyfm6l3m7a06l04qta6yefkuwezwcw6z4qe5nvqddy5qj
+  identity_type: maintainer
+  person: akiomik
+  evidence:
+    - https://github.com/akiomik/nosvelte
+
+Alex Gleason dev:
+  npub: npub1q3sle0kvfsehgsuexttt3ugjd8xdklxfwwkh559wxckmzddywnws6cd26p
+  identity_type: lead-developer
+  person: Alex Gleason
+  evidence:
+    - https://github.com/soapbox-pub/ditto
+    - NIP-05 alex@gleasonator.com verified 2026-08-06
