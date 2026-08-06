@@ -2,7 +2,7 @@
 title: "Nostr Compass #34"
 date: 2026-08-05
 publishDate: 2026-08-05
-draft: true
+draft: false
 type: newsletters
 description: "Sandstr offers mock-data tours of Nostr clients, nostr-mill adds per-event signing consent, and nostrord expands relay-hosted groups. Deep dives cover relay search and portable highlights."
 ---
