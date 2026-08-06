@@ -76,6 +76,7 @@ Zap splits, defined in an appendix to the NIP, let a recipient publish a kind `0
 - [Newsletter #31: Wired and TAO add NIP-57 creator revenue sharing](/en/newsletters/2026-07-15-newsletter/#wired-and-tao-add-nip-57-creator-revenue-sharing)
 - [Newsletter #33: Tagged releases](/en/newsletters/2026-07-29-newsletter/#tagged-releases)
 - [Newsletter #33: Protocol work and NIP updates](/en/newsletters/2026-07-29-newsletter/#protocol-and-spec-work)
+- [Newsletter #34: BOLT12 zap proposal](/en/newsletters/2026-08-05-newsletter/#payments-and-wallet-connections)
 
 **See also:**
 - [NIP-47: Nostr Wallet Connect](/en/topics/nip-47/)

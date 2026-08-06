@@ -24,6 +24,18 @@ These are AI-tell phrases that announce what is about to be said instead of sayi
 
 Replacement: state the claim directly. If a tradeoff is worth flagging, name the tradeoff. If something is one to watch, name the specific reason a reader should watch it.
 
+Tracker, fetcher, outreach, discovery, and workflow commentary is never publishable prose. Describe what the project does and what changed for users or implementers. `scripts/check_newsletter_style.py` is a blocking gate, not an advisory pass.
+
+### Mandatory editorial completeness and durable handoff
+
+- At a project's first mention in the issue, include a short human description of what the project is or does. A repository name alone is not sufficient context.
+- Audit every tagged release against its complete primary release notes. Cover every material user-facing, protocol-facing, security, privacy, reliability, data-loss, and interoperability change. Routine dependency, build, translation, and cosmetic churn may be omitted. Preserve the audit in the issue workspace before review.
+- In `NIP Updates and Protocol Spec Work`, group entries by protocol family and give each changed PR or commit its own paragraph. Mention only specifications with an in-window change; never add quiet-status filler.
+- Give every NIP or protocol identifier a short plain-language description at first mention.
+- A NIP Deep Dive may cover only a merged specification with verified use in multiple independent applications. End each deep dive with a non-exhaustive implementation paragraph linking at least three current clients or tools whose source or release notes prove support.
+- A promised rewrite or follow-up that will outlive the current turn must be a durable Kanban task subscribed to the requesting Marmot channel before it is described as queued. Do not report completion until the remote PR head contains the intended commit and the required checks pass.
+- Keep review PRs in draft state and never merge without explicit user approval.
+
 ### Banned hyperbole (release/feature superlatives)
 
 Never use:

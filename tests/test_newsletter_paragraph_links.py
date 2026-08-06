@@ -40,6 +40,15 @@ The fix is in a [self-hosted commit](https://git.example.org/team/app/commit/abc
 
         self.assertEqual([], checker.review(markdown))
 
+    def test_accepts_first_party_product_homepage(self):
+        checker = load_module()
+        markdown = """## News
+
+[Sandstr](https://sandstr.app/) runs client simulations against local mock data.
+"""
+
+        self.assertEqual([], checker.review(markdown))
+
     def test_ignores_headings_lists_and_code_blocks(self):
         checker = load_module()
         markdown = """## News\n\n- status line without a repository\n\n```json\n{\"kind\": 1}\n```\n"""

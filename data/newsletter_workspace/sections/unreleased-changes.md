@@ -1,39 +1,27 @@
-## In Development
+## Unreleased Changes
 
-### Keep adds kind-scoped NIP-44 v3 signing and tightens approval policy
+### NMP ties relay admission to declarations and broadens group queries
 
-Keep merged five Android signer changes that carry [NIP-44 (Encrypted Payloads)](/en/topics/nip-44/) v3 encrypt and decrypt requests through both [NIP-55 (Android Signer Application)](/en/topics/nip-55/) transports and its [NIP-46 (Nostr Connect)](/en/topics/nip-46/) bunker. [PRs #451](https://github.com/privkeyio/keep-android/pull/451), [#452](https://github.com/privkeyio/keep-android/pull/452), and [#453](https://github.com/privkeyio/keep-android/pull/453) keep v3 grants separate from v2, scope them by event kind, reject missing or invalid kinds, and preserve approval requests opened from notifications. [PRs #454](https://github.com/privkeyio/keep-android/pull/454) and [#455](https://github.com/privkeyio/keep-android/pull/455) stop treating the Basic signing policy as Auto and move the global selection into the core-owned encrypted store. The Keep maintainers merged all five changes after the latest tagged Android release.
+NMP [PR #1254](https://github.com/pablof7z/nmp/pull/1254) makes relay admission follow the owner of the declaration that authorizes it, keeping the permission decision attached to signed Nostr state. [PR #1255](https://github.com/pablof7z/nmp/pull/1255) generalizes [NIP-29](/en/topics/nip-29/) group queries instead of assuming one narrow lookup shape. Both changes are merged but have not yet appeared in a tagged release.
 
-### Routstrd changes its default network bind after an unauthenticated exposure
+### Mosaico derives managed-group identity from relay records
 
-Routstrd [PR #56](https://github.com/Routstr/routstrd/pull/56) changes the local Nostr inference router's default bind address from all network interfaces to `127.0.0.1`. The former default exposed unauthenticated wallet balance, history, access, send, refund, API-key, provider, client, usage, and daemon-stop endpoints to any host that could reach the port. Operators can still configure a non-local bind explicitly, but the merged change makes a fresh deployment local-only by default and has not yet appeared in a tagged release.
+Mosaico [PR #758](https://github.com/pablof7z/mosaico/pull/758) derives a managed group's identity from the relay that hosts its authoritative records. [PR #757](https://github.com/pablof7z/mosaico/pull/757) observes the group's published record when resolving administration state. This keeps two similarly named groups on different relays distinct and gives clients a relay-backed source for their management metadata.
 
-### Imwald Android clarifies offline publishing status
+### Divine isolates slow relays during multi-relay queries
 
-Imwald Android, an Android Nostr client, now treats acknowledgement from a local relay as a completed publish only when every configured target is local. Its [offline-publishing and outbox fix](https://git.imwald.eu/silberengel/imwald-android/commit/f4de9f61df35110c77d2e5f99d764c0df176962b) keeps remote delivery pending when a local relay has accepted the event but configured remote relays have not, so the publish report distinguishes device-local storage from relay delivery.
+Divine [PR #6673](https://github.com/divinevideo/divine-mobile/pull/6673) gives each relay query its own timeout instead of letting one stalled connection consume the timeout budget for an entire request. Results from responsive relays can therefore arrive while the slow endpoint is abandoned independently. The change improves retrieval without treating one relay as authoritative for the combined result.
 
-### FIPS adds an OpenWrt access layer; a FreeBSD port remains under review
+### rust-nostr hardens encryption, hashes, and reconciliation
 
-The Nostr-native Free Internetworking Peering System now lets an OpenWrt router expose an open `!FIPS` access network through [merged PR #126](https://github.com/jmcorgan/fips/pull/126). The parallel, still-open [FreeBSD PR #129](https://github.com/jmcorgan/fips/pull/129) proposes porting the daemon, TUN data path, `.fips` name resolution, service management, and native package build. The OpenWrt merge broadens access today, while the FreeBSD work would extend it to another general-purpose operating system.
+rust-nostr [PR #1421](https://github.com/rust-nostr/nostr/pull/1421) reduces allocation in its [NIP-44](/en/topics/nip-44/) encryption path, while [PR #1423](https://github.com/rust-nostr/nostr/pull/1423) introduces typed hashes that make incompatible digest values harder to mix accidentally. [Commit 21e31c2](https://github.com/rust-nostr/nostr/commit/21e31c28da3dfadedb5fa6e58c712647f16e5f69) prevents a malformed [NIP-77](/en/topics/nip-77/) Negentropy message from disconnecting the local relay. The merged work tightens both encrypted payload handling and set-reconciliation failure behavior before the next release.
 
-A July 26 [FIPS project update](https://primal.net/e/d0afe733f75e909341ab7f39834883968df097472238a474df3a3346c5d38f51) reported more than 300 nodes on its public UDP overlay and a broader mesh approaching 2,000 nodes. The [FIPS repository](https://github.com/jmcorgan/fips) spent the same week hardening concurrent network tests, rekey continuity, hop-limit behavior, firewall checks, and NAT-lab isolation. The repository work gives operators reproducible checks for those behaviors as the network grows.
+### Zeus serializes NWC payments before charging spending budgets
 
-### Zap Cooking schedules posts and binds scanner requests
+Zeus [PR #4305](https://github.com/ZeusLN/zeus/pull/4305) counts pending payments against a [NIP-47](/en/topics/nip-47/) Nostr Wallet Connect budget instead of waiting for settlement. [PR #4303](https://github.com/ZeusLN/zeus/pull/4303) serializes payment handling so concurrent requests cannot race through the same authorization limit. The merged pair closes a budget-enforcement gap on the wallet's Nostr control surface.
 
-Zap Cooking, a Nostr recipe-sharing and meal-planning app, can now retain a scheduled post in encrypted storage and publish it when due through a periodic relay sweep ([PR #566](https://github.com/zapcooking/frontend/pull/566), [PR #569](https://github.com/zapcooking/frontend/pull/569)). That gives users a scheduled-publishing path without leaving unsigned post content exposed in the scheduler's database.
+### Nostr Components shares one relay connection attempt
 
-Its fridge scanner now authenticates the exact request body with [NIP-98](/en/topics/nip-98/) HTTP authentication, so membership checks rely on the key that signed the scan request instead of a pubkey supplied in its body ([PR #599](https://github.com/zapcooking/frontend/pull/599)).
-
-### Citrine turns an Android device into a manageable relay
-
-Citrine, an Android-hosted Nostr relay, can now send events it has stored to external relays, giving an operator a way to rebroadcast local history ([PR #179](https://github.com/greenart7c3/Citrine/pull/179)). It also adds [NIP-86 (Relay Management API)](/en/topics/nip-86/) commands so compatible clients can administer the relay ([PR #150](https://github.com/greenart7c3/Citrine/pull/150)).
-
-Group operators can administer [NIP-29](/en/topics/nip-29/) relay-based groups through Amber signing in [PR #178](https://github.com/greenart7c3/Citrine/pull/178), while [PR #174](https://github.com/greenart7c3/Citrine/pull/174) keeps Tor-backed relay configuration and lifecycle state aligned through restarts.
-
-### Wired recovers complete conversations in the browser
-
-Wired, a browser-based Nostr client, now follows feed roots, replies, and referenced events to completion instead of stopping at fixed breadth or result limits ([PR #148](https://github.com/smolgrrr/Wired/pull/148), [PR #147](https://github.com/smolgrrr/Wired/pull/147), [PR #146](https://github.com/smolgrrr/Wired/pull/146)). Users can therefore recover deeper threads and feed context when the relevant events are available from their relays.
-
-The browser also preserves relay hints on referenced events and uses them only for still-missing context, restoring conversations that configured relays do not carry ([PR #145](https://github.com/smolgrrr/Wired/pull/145), [PR #144](https://github.com/smolgrrr/Wired/pull/144)). Incomplete retrieval is kept distinct from a completed snapshot, so a partial response does not overwrite the prior cached view.
+Nostr Components [PR #105](https://github.com/saiy2k/nostr-components/pull/105) lets components mounted at the same time share an in-flight relay connection attempt. Each consumer still receives the resulting connection, but concurrent mounts no longer open duplicate sockets while the first handshake is pending. The change reduces avoidable relay load in applications assembled from several independent components.
 
 GATE: PASS

@@ -78,7 +78,37 @@ class ContinuityCheckTests(unittest.TestCase):
 
         findings = checker.review_history(current, [older])
 
-        self.assertIn(checker.Finding("Example App", "primary source already covered"), findings)
+        self.assertIn(
+            checker.Finding(
+                release,
+                "primary source already covered without a stated status change",
+            ),
+            findings,
+        )
+
+    def test_review_history_catches_reused_protocol_pr_under_generic_heading(self):
+        checker = load_module()
+        pull = "https://github.com/nostr-protocol/nips/pull/2424"
+        older = f"""### Protocol proposals\n\n[NIP PR #2424]({pull}) proposes mutual key declarations.\n"""
+        current = f"""### Nostr event formats and discovery\n\n[NIP PR #2424]({pull}) proposes mutual key declarations.\n"""
+
+        findings = checker.review_history(current, [older])
+
+        self.assertIn(
+            checker.Finding(
+                pull,
+                "primary source already covered without a stated status change",
+            ),
+            findings,
+        )
+
+    def test_allows_reused_protocol_pr_with_explicit_merge_transition(self):
+        checker = load_module()
+        pull = "https://github.com/nostr-protocol/nips/pull/2425"
+        older = f"""### Protocol proposals\n\n[NIP PR #2425]({pull}) proposes URI handling.\n"""
+        current = f"""### Nostr event formats\n\n[NIP PR #2425]({pull}), covered as a proposal last week, has now merged its URI clarification.\n"""
+
+        self.assertEqual([], checker.review_history(current, [older]))
 
 
 if __name__ == "__main__":

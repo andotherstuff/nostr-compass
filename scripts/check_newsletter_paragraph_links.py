@@ -17,7 +17,10 @@ REPOSITORY_URL_RE = re.compile(
     r"codeberg\.org/[^/\s)]+/[^/\s)]+|"
     r"git\.nostrdev\.com/[^/\s)]+/[^/\s)]+|"
     r"gitworkshop\.dev/[^\s)]+|"
-    r"[^/\s)]+/[^\s)]+/(?:commit|pull|merge_requests|releases|issues)/[^\s)]+"
+    r"[^/\s)]+/[^\s)]+/(?:commit|pull|merge_requests|releases|issues)/[^\s)]+|"
+    # A first-party homepage can be the only primary source for a newly
+    # launched hosted application whose source repository is private.
+    r"[^/\s)]+\.[a-z]{2,}/?(?:[?#][^\s)]*)?"
     r")",
     re.IGNORECASE,
 )

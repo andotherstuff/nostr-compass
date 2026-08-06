@@ -511,6 +511,15 @@ social_clients:
     status: active
     priority: low
 
+  - name: Sandstr
+    description: Educational browser simulations of Nostr clients using local mock data, with no keys, signup, installation, or relay connections
+    platforms: [ web ]
+    website: https://sandstr.app
+    maintainer: ptrio42
+    status: active
+    priority: low
+    notes: Seven reference-verified client reproductions and three clearly labeled early previews at launch; interface-comparison and onboarding tool, not a Nostr client
+
   - name: Brezn
     description: PWA client for local networking using geohash - like CB radio for
       the internet

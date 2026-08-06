@@ -50,6 +50,7 @@ For web apps on Android, NIP-55 is less ergonomic than NIP-46. Browser-based flo
 - [Newsletter #27: NIP deep dive: NIP-55 (Android Signer Application)](/en/newsletters/2026-06-17-newsletter/#nip-deep-dive-nip-55-android-signer-application)
 - [Newsletter #31: Cambium v0.3.2 pairs with Heartwood as a keyless NIP-55 signer](/en/newsletters/2026-07-15-newsletter/#cambium-v032-pairs-with-heartwood-as-a-keyless-nip-55-signer)
 - [Newsletter #33: Lead stories](/en/newsletters/2026-07-29-newsletter/#top-stories)
+- [Newsletter #34: nostr-mill and nostrord signer updates](/en/newsletters/2026-08-05-newsletter/#top-stories)
 
 **See also:**
 - [NIP-46: Nostr Connect](/en/topics/nip-46/)
