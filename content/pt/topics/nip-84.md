@@ -38,6 +38,7 @@ Atribuição tags são mais importantes do que parecem. Um `p` tag com uma funç
 
 **Mencionado em:**
 - [Boletim Informativo nº 10: Lançamentos](/pt/newsletters/2026-02-18-newsletter/#prism-share-anything-to-nostr-from-android)
+- [Newsletter #34: mergulho profundo em NIPs](/pt/newsletters/2026-08-05-newsletter/#highlights-nip-84)
 
 **Veja também:**
 - [NIP-94: Metadados do arquivo](/pt/topics/nip-94/)

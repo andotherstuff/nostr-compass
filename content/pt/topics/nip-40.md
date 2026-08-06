@@ -44,6 +44,7 @@ A expiração é uma dica de retenção, não um sistema de revogação. Ajuda a
 **Mencionado em:**
 - [Boletim informativo nº 1: Notícias](/pt/newsletters/2025-12-17-newsletter/)
 - [Boletim informativo nº 3: Mudanças notáveis no código](/pt/newsletters/2025-12-31-newsletter/)
+- [Newsletter #34: menções em mensagens que desaparecem do Concord](/pt/newsletters/2026-08-05-newsletter/#concord-community-planes)
 
 **Veja também:**
 - [NIP-01: Protocolo Básico](/pt/topics/nip-01/)

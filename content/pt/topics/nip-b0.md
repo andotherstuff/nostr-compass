@@ -56,6 +56,7 @@ Como cada favorito é um evento de primeira classe, qualquer cliente Nostr pode 
 **Mencionado em:**
 - [Newsletter #24: favoritos deepmarks NIP-B0 com publicação monetizada por curador](/pt/newsletters/2026-05-28-newsletter/#deepmarks-nip-b0-bookmarks-with-curator-monetized-publishing)
 - [Newsletter #27: Também lançado](/pt/newsletters/2026-06-17-newsletter/#also-shipped)
+- [Newsletter #34: esclarecimento de URI](/pt/newsletters/2026-08-05-newsletter/#nostr-event-formats-and-discovery)
 
 **Veja também:**
 - [NIP-57: Zaps Lightning](/pt/topics/nip-57/)
