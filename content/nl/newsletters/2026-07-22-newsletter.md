@@ -152,22 +152,7 @@ Een relay draaien die niet voor iedereen open is betekende vroeger alles zelf ui
 
 [NIP-42](/nl/topics/nip-42/) beantwoordt één vraag: wie zit er op deze verbinding? Een relay dat lees- of schrijfrechten wil begrenzen stuurt een `AUTH`-bericht met een challenge-string, bij het verbinden of op verzoek wanneer een aanvraag authenticatie vereist. Een client antwoordt met zijn eigen `AUTH`-bericht met een ondertekend efemeer event, kind 22242, en het relay antwoordt met een `OK`-bericht precies alsof het auth-event een gewone schrijfbewerking was. De authenticatie geldt vervolgens voor de duur van de verbinding. Een reeks `AUTH`-berichten kan meerdere pubkeys op één verbinding authenticeren.
 
-Hier is het ondertekende auth-event:
-
-```json
-{
-  "id": "4ef6f2c0b1a84c9a3d0f9c58e2a1b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0",
-  "pubkey": "c308e1f882c1f1dff2a43d4294239ddeec04e575f2d1aad1fa21ea7684e61fb5",
-  "created_at": 1753195800,
-  "kind": 22242,
-  "tags": [
-    ["relay", "wss://relay.example.com/"],
-    ["challenge", "challengestringhere"]
-  ],
-  "content": "",
-  "sig": "8b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1"
-}
-```
+Het ondertekende auth-event is een compact object: een `pubkey`, een `created_at`, kind 22242, een `relay`-tag, een `challenge`-tag, lege `content` en een `sig` over de event-`id`. Omdat kind 22242 ephemeral is — relays mogen het nooit opslaan of uitzenden — bestaat er geen gepubliceerd voorbeeld om in te bedden; de veldoorloop hieronder dekt wat het bevat.
 
 De `pubkey` is de identiteit die wordt bewezen, aangezien het relay de `sig` over het event-`id` ertegen verifieert. Kind 22242 zit in het efemere bereik: het event is een credential op verbindingsniveau, en relays mogen het nooit opslaan of naar andere clients uitzenden. Een `relay`-tag bindt de handtekening aan één relay-URL zodat een onderschept auth-event niet tegen een ander relay kan worden afgespeeld, terwijl de `challenge`-tag hem bindt aan de specifieke challenge-string die op deze verbinding is uitgegeven en later afspelen blokkeert. De `created_at` moet dicht bij de huidige tijd liggen, binnen een venster van ongeveer tien minuten, zodat een verouderd auth-event vanzelf verloopt. Een leeg `content`-veld bevestigt dat niets wordt gepubliceerd.
 
@@ -177,22 +162,7 @@ De specificatie definieert ook twee machineleesbare voorvoegsels die begrenzing 
 
 [NIP-43](/nl/topics/nip-43/) beantwoordt de vervolgvraag: nu het relay weet wie je bent, wat mag je doen? Waar NIP-42 een handshake op een live verbinding is, is NIP-43 een set gepubliceerde events die de lidmaatschapsstatus beschrijven en gebruikers laten vragen die te wijzigen. Aan de relaykant toont een kind 13534-event, ondertekend door de pubkey in het `self`-veld van het [NIP-11](/nl/topics/nip-11/)-document van het relay, één `member`-tag per pubkey, met optionele rolargumenten die verwijzen naar roldefinities gepubliceerd als kind 33534. Kind 8000 kondigt een toegevoegd lid aan en kind 8001 kondigt een verwijdering aan, beide ondertekend door dezelfde relaysleutel met een `p`-tag voor het betrokken lid. Aan de gebruikerskant is kind 28934 een deelnameverzoek dat een uitnodigingscode draagt in een `claim`-tag, is kind 28935 een efemeer uitnodigingscode-event dat het relay ter plaatse genereert wanneer een gebruiker een claim aanvraagt, en is kind 28936 een vertrekverzoek.
 
-Een deelnameverzoek ziet er zo uit:
-
-```json
-{
-  "id": "9f0e1d2c3b4a59687a6b5c4d3e2f1098a7b6c5d4e3f2019a8b7c6d5e4f3021a9b8",
-  "pubkey": "ee1d336e13779e4d4c527b988429d96de16088f958cbf6c074676ac9cfd9c958",
-  "created_at": 1753195900,
-  "kind": 28934,
-  "tags": [
-    ["-"],
-    ["claim", "invite-code-from-operator"]
-  ],
-  "content": "",
-  "sig": "1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2"
-}
-```
+Een deelnameverzoek is een vergelijkbaar klein object, en nog geen enkele publieke relay implementeert NIP-43, dus er is geen echt kind 28934-event om in te bedden; de veldoorloop hieronder dekt wat het bevat.
 
 De `pubkey` is de gebruiker die om toelating vraagt, en kind 28934 markeert het event als deelnameverzoek. De `-`-tag is de [NIP-70](/nl/topics/nip-70/)-markering voor beschermde events, die relays vertelt dit event van niemand anders dan de auteur te accepteren. De `claim`-tag draagt de uitnodigingscode die de gebruiker out-of-band heeft verkregen, en `created_at` moet nu zijn, plus of min een paar minuten, zodat een oud verzoek niet kan worden afgespeeld. Het relay beantwoordt de claim met een `OK`-bericht, waarbij het het NIP-42-`restricted:`-voorvoegsel hergebruikt voor mislukkingen zoals een verlopen of ongeldige code, en zou vervolgens zijn kind 13534-lijst moeten bijwerken en kan een kind 8000-lid-toevoegingsevent publiceren. Lidmaatschap wordt bewust niet uit één enkel event afgeleid: de specificatie zegt dat de door het relay ondertekende lijst niet als exhaustief of gezaghebbend moet worden beschouwd, en een client die bepaalt of iemand momenteel lid is zou zowel het kind 13534 van het relay als de eigen events van het lid moeten raadplegen. Clients mogen deelname-, uitnodigings- of vertrekverzoeken alleen sturen naar relays die deze NIP adverteren in de `supported_nips`-sectie van hun NIP-11-document, en [nostreams PR #676](https://github.com/Cameri/nostream/pull/676) is de relay-side-machinerie die die verzoek-kinds omzet in daadwerkelijke lidmaatschapswijzigingen.
 

@@ -149,22 +149,7 @@ Faire tourner un relay qui n'est pas ouvert à tous signifiait autrefois tout in
 
 [NIP-42](/fr/topics/nip-42/) répond à une question : qui est sur cette connexion ? Un relay qui veut contrôler les lectures ou les écritures envoie un message `AUTH` portant une chaîne de défi, au moment de la connexion ou à la demande quand une requête nécessite une authentification. Le client répond avec son propre message `AUTH` contenant un event éphémère signé, kind 22242, et le relay répond avec un message `OK` exactement comme si l'event d'authentification était une écriture ordinaire. L'authentification reste ensuite valable pendant toute la durée de la connexion. Une séquence de messages `AUTH` peut authentifier plusieurs pubkeys sur une même connexion.
 
-L'event d'authentification signé ressemble à ceci :
-
-```json
-{
-  "id": "4ef6f2c0b1a84c9a3d0f9c58e2a1b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0",
-  "pubkey": "c308e1f882c1f1dff2a43d4294239ddeec04e575f2d1aad1fa21ea7684e61fb5",
-  "created_at": 1753195800,
-  "kind": 22242,
-  "tags": [
-    ["relay", "wss://relay.example.com/"],
-    ["challenge", "challengestringhere"]
-  ],
-  "content": "",
-  "sig": "8b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1"
-}
-```
+L'event d'authentification signé est un objet compact : un `pubkey`, un `created_at`, kind 22242, un tag `relay`, un tag `challenge`, un `content` vide et une `sig` sur l'`id` de l'event. kind 22242 étant éphémère — les relais ne doivent jamais le stocker ni le diffuser — aucun exemple publié n'existe à intégrer ; le tour des champs ci-dessous couvre ce qu'il contient.
 
 Le `pubkey` est l'identité qui est prouvée, puisque le relay vérifie la `sig` sur l'`id` de l'event par rapport à lui. Le `kind` 22242 se situe dans la plage éphémère : l'event est un justificatif au niveau de la connexion, et les relays ne doivent jamais le stocker ni le diffuser à d'autres clients. Le tag `relay` lie la signature à une URL de relay afin qu'un event d'authentification capturé ne puisse pas être rejoué contre un relay différent, et le tag `challenge` le lie à la chaîne de défi spécifique que le relay a émise sur cette connexion, bloquant le rejeu d'une authentification capturée sur une connexion ultérieure. Le `created_at` doit être proche de l'heure actuelle, dans une fenêtre d'environ dix minutes, de sorte qu'un event d'authentification périmé expire de lui-même. Le champ `content` est vide ; rien n'est publié.
 
@@ -174,22 +159,7 @@ La spécification définit aussi deux préfixes lisibles par machine qui rendent
 
 [NIP-43](/fr/topics/nip-43/) répond à la question suivante : maintenant que le relay sait qui vous êtes, qu'êtes-vous autorisé à faire ? Là où NIP-42 est une poignée de main sur une connexion active, NIP-43 est un ensemble d'events publiés qui décrivent l'état d'appartenance et permettent aux utilisateurs de demander à le changer. Côté relay, un event kind 13534, signé par le pubkey du champ `self` du [NIP-11](/fr/topics/nip-11/) du relay, liste un tag `member` par pubkey, avec des arguments de rôle optionnels pointant vers des définitions de rôles publiées en kind 33534. Kind 8000 annonce l'ajout d'un membre et kind 8001 annonce un retrait, tous deux signés par la même clé de relay avec un tag `p` pour le membre concerné. Côté utilisateur, kind 28934 est une demande d'adhésion portant un code d'invitation dans un tag `claim`, kind 28935 est un event de code d'invitation éphémère que le relay génère à la volée quand un utilisateur demande un claim, et kind 28936 est une demande de départ.
 
-Une demande d'adhésion ressemble à ceci :
-
-```json
-{
-  "id": "9f0e1d2c3b4a59687a6b5c4d3e2f1098a7b6c5d4e3f2019a8b7c6d5e4f3021a9b8",
-  "pubkey": "ee1d336e13779e4d4c527b988429d96de16088f958cbf6c074676ac9cfd9c958",
-  "created_at": 1753195900,
-  "kind": 28934,
-  "tags": [
-    ["-"],
-    ["claim", "invite-code-from-operator"]
-  ],
-  "content": "",
-  "sig": "1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2"
-}
-```
+Une demande d'adhésion est un objet tout aussi petit, et aucun relais public n'implémente encore NIP-43, donc il n'existe aucun event kind 28934 réel à intégrer ; le tour des champs ci-dessous couvre ce qu'il contient.
 
 Le `pubkey` est l'utilisateur qui demande l'admission, et kind 28934 marque l'event comme une demande d'adhésion. Son tag `-` est le marqueur d'event protégé de [NIP-70](/fr/topics/nip-70/), indiquant aux relays de n'accepter l'event que de son auteur. Un tag `claim` porte le code d'invitation obtenu hors bande, et `created_at` doit correspondre à l'heure actuelle, à quelques minutes près, afin qu'une ancienne demande ne puisse pas être rejouée. Les relays répondent à la demande avec un message `OK`, réutilisent le préfixe `restricted:` de NIP-42 pour les échecs tels qu'un code expiré ou invalide, mettent à jour la liste kind 13534 et peuvent publier un event kind 8000 d'ajout de membre. L'appartenance n'est volontairement pas déduite d'un seul event : la spécification considère la liste signée par le relay comme une source parmi d'autres, et un client qui détermine si une personne est membre doit consulter à la fois le kind 13534 du relay et les propres events du membre. Les clients ne doivent envoyer de demandes d'adhésion, d'invitation ou de départ qu'aux relays qui annoncent ce NIP dans la section `supported_nips` de leur document NIP-11, et la [PR #676 de nostream](https://github.com/Cameri/nostream/pull/676) fournit le mécanisme côté relay qui transforme ces kinds de requêtes en changements d'appartenance réels.
 
