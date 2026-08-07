@@ -146,17 +146,17 @@ De [NIP-50-specificatie](https://github.com/nostr-protocol/nips/blob/master/50.m
 
 Dit verschilt van exact [NIP-01-filteren](https://github.com/nostr-protocol/nips/blob/master/01.md). Een `authors`- of `#t`-filter heeft deterministische match-semantiek die een client direct kan verifiëren, terwijl een zoekmatch kan afhangen van een index en een opake score. NIP-50 behoudt de ondertekende event-envelop en het relay-transport van NIP-01, maar accepteert variatie in recall en volgorde om openvormig ophalen mogelijk te maken.
 
-Het onderstaande event is een illustratief zoekresultaat met de [zeven NIP-01-eventvelden](https://github.com/nostr-protocol/nips/blob/master/01.md#events-and-signatures). De herhaalde hexadecimale waarden zijn placeholders en geen geldige handtekening.
+Het onderstaande event is een echt zoekresultaat dat een NIP-50-zoekrelay heeft teruggegeven voor een relay-discovery-query, met de [zeven NIP-01-eventvelden](https://github.com/nostr-protocol/nips/blob/master/01.md#events-and-signatures) en een geldige handtekening.
 
 ```json
 {
-  "id": "0000000000000000000000000000000000000000000000000000000000000000",
-  "pubkey": "1111111111111111111111111111111111111111111111111111111111111111",
-  "created_at": 1785888000,
+  "id": "2943d6b43bcbf0ee4a8b4cac912111be0309607b8bb435ae40529989bea7f6c5",
+  "pubkey": "3bf0c63fcb93463407af97a5e5ee64fa883d107ef9e558472c4eb9aaaefa459d",
+  "created_at": 1785771175,
   "kind": 1,
-  "tags": [["t", "nostr"]],
-  "content": "A comparison of Nostr search relays and their indexes.",
-  "sig": "22222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222"
+  "tags": [],
+  "content": "I've been working on a customizable client (mostly relay feeds, but a ton of other things and subtle details too). It's called Hallway for reasons I don't remember and it's a fork of Fevela which is a fork of Jumble, but very rewritten for speed and simplicity...",
+  "sig": "5b058b89dab9bd09d81bdc10eff95536125b87fbcbbc97f08d835c1272b2a3190cc3d340e42f54acb0d7e0e4b00355ab91292d0305c84a2d73b538319c0da12c"
 }
 ```
 
@@ -174,21 +174,22 @@ De [kind `9802`-definitie](https://github.com/nostr-protocol/nips/blob/master/84
 
 NIP-84 verschilt van een [NIP-23-longform-event](https://github.com/nostr-protocol/nips/blob/master/23.md), dat een heel artikel publiceert als kind `30023`; een highlight citeert of wijst in materiaal dat elders kan blijven. Hij verschilt ook van een [NIP-51-bladwijzersets](https://github.com/nostr-protocol/nips/blob/master/51.md), die een vervangbare verzameling verwijzingen opslaat. NIP-84 maakt elke selectie onafhankelijk ondertekend, toeschrijfbaar, vindbaar en bespreekbaar.
 
-Deze illustratieve highlight bevat de [zeven NIP-01-eventvelden](https://github.com/nostr-protocol/nips/blob/master/01.md#events-and-signatures). Zijn identificatie en handtekening zijn placeholders.
+De onderstaande highlight is een echt kind-`9802`-event, gepubliceerd vanuit Primals iOS-client en teruggevonden op publieke relays. Het draagt de [zeven NIP-01-eventvelden](https://github.com/nostr-protocol/nips/blob/master/01.md#events-and-signatures) met een geldige handtekening, een `a`-tag die naar een [NIP-23-longform-event](https://github.com/nostr-protocol/nips/blob/master/23.md) wijst, een `p`-tag die de auteur van het artikel vermeldt, en een `context`-tag met de omringende passage.
 
 ```json
 {
-  "id": "3333333333333333333333333333333333333333333333333333333333333333",
-  "pubkey": "4444444444444444444444444444444444444444444444444444444444444444",
-  "created_at": 1785888000,
+  "id": "0d57c07cfdfe8ec00711e2af88a666b61fc35c167b90b02dfb5db7ffba7b794a",
+  "pubkey": "07367baec8e73c076b14e47fba3b0d5c014d559d7986a7172a79a8a64419d7c2",
+  "created_at": 1785797755,
   "kind": 9802,
   "tags": [
-    ["a", "30023:6666666666666666666666666666666666666666666666666666666666666666:relay-search", "wss://relay.example"],
-    ["p", "6666666666666666666666666666666666666666666666666666666666666666", "wss://relay.example", "author"],
-    ["context", "Search relays are indexes whose ranking policies can differ."]
+    ["context", "Quantum computers will break secp256k1 which nostr relies on for its public private key pair. This means that given an npub, a quantum computer will be able to derive your nsec, read all your encrypted data and sign events as you."],
+    ["alt", "This is a highlight created in https://primal.net iOS application"],
+    ["a", "30023:1ec454734dcbf6fe54901ce25c0c7c6bca5edd89443416761fadc321d38df139:nostr-quantum-preparation"],
+    ["p", "1ec454734dcbf6fe54901ce25c0c7c6bca5edd89443416761fadc321d38df139", "", "mention"]
   ],
-  "content": "ranking policies can differ",
-  "sig": "55555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555"
+  "content": "Quantum computers will break secp256k1 which nostr relies on for its public private key pair. This means that given an npub, a quantum computer will b",
+  "sig": "219f3c1e572d1a087d667dc0d3a5443c77c0db3a5d42ce4e630604901ac63d2c879a86269d81e220bb77fd48b1579adafc333075e53c6eb0a108791fdd4a1622"
 }
 ```
 
