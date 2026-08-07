@@ -56,6 +56,7 @@ NIP-B0 定义了一个参数化可替换事件（kind 39701），将网页书签
 **Mentioned in:**
 - [Newsletter #24: deepmarks NIP-B0 bookmarks with curator-monetized publishing](/zh/newsletters/2026-05-28-newsletter/#deepmarks-nip-b0-bookmarks-with-curator-monetized-publishing)
 - [Newsletter #27: Also shipped](/zh/newsletters/2026-06-17-newsletter/#also-shipped)
+- [周刊 #34:URI 澄清](/zh/newsletters/2026-08-05-newsletter/#nostr-event-formats-and-discovery)
 
 **See also:**
 - [NIP-57: Lightning Zaps](/zh/topics/nip-57/)

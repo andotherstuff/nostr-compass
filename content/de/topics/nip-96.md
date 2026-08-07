@@ -45,6 +45,7 @@ Kind-10096-Events für Server-Präferenzen bleiben auch für die Auswahl von Blo
 
 **Erwähnt in:**
 - [Newsletter #9: NIP Deep Dive](/de/newsletters/2026-02-11-newsletter/#nip-deep-dive-nip-96-http-dateispeicherung-and-the-transition-to-blossom)
+- [Newsletter #34: nostrord-Medien-Uploads](/de/newsletters/2026-08-05-newsletter/#nostrord-250-gives-relay-groups-stable-relay-specific-identities)
 
 **Siehe auch:**
 - [Blossom Protocol](/de/topics/blossom/)

@@ -38,8 +38,9 @@ Zusatzliche Klassifikation kann uber NIP-32-`l`- und `L`-Tags hinzugefugt werden
 **Primarquellen:**
 - [NIP-56 Specification](https://github.com/nostr-protocol/nips/blob/master/56.md)
 
-**Erwahnt in:**
+**Erwähnt in:**
 - [Newsletter #10: Project Updates](/en/newsletters/2026-02-18-newsletter/#notedeck-android-app-store-prep)
+- [Newsletter #34: nostrord-Moderations-Posteingang](/de/newsletters/2026-08-05-newsletter/#nostrord-250-gives-relay-groups-stable-relay-specific-identities)
 
 **Siehe auch:**
 - [NIP-22: Comment](/de/topics/nip-22/)

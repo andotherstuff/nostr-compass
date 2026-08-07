@@ -61,6 +61,7 @@ NIP-94 funziona attraverso backend di storage diversi. Un file può essere caric
 
 **Menzionato in:**
 - [Newsletter #3: December Recap](/en/newsletters/2025-12-31-newsletter/)
+- [Newsletter #34: contratto di caricamento dei napplets](/it/newsletters/2026-08-05-newsletter/#napplet-host-capabilities)
 
 **Vedi anche:**
 - [NIP-92: Media Attachments](/it/topics/nip-92/)

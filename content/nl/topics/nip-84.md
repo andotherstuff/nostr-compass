@@ -38,6 +38,7 @@ Attributietags zijn belangrijker dan ze lijken. Een `p`-tag met een rol als `aut
 
 **Vermeld in:**
 - [Nieuwsbrief #10: Releases](/en/newsletters/2026-02-18-newsletter/#prism-share-anything-to-nostr-from-android)
+- [Newsletter #34: NIP Deep Dive](/nl/newsletters/2026-08-05-newsletter/#highlights-nip-84)
 
 **Zie ook:**
 - [NIP-94: File Metadata](/nl/topics/nip-94/)

@@ -40,6 +40,7 @@ Se puede agregar clasificación adicional con etiquetas `l` y `L` de NIP-32, lo 
 
 **Mencionado en:**
 - [Boletín #10: Actualizaciones de proyectos](/en/newsletters/2026-02-18-newsletter/#notedeck-android-app-store-prep)
+- [Boletín #34: bandeja de moderación de nostrord](/es/newsletters/2026-08-05-newsletter/#nostrord-250-gives-relay-groups-stable-relay-specific-identities)
 
 **Ver también:**
 - [NIP-22: Comment](/es/topics/nip-22/)

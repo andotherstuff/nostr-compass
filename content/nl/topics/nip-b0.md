@@ -56,6 +56,7 @@ Omdat elke bookmark een first-class event is, kan elke Nostr-client een feed van
 **Genoemd in:**
 - [Newsletter #24: deepmarks NIP-B0 bookmarks with curator-monetized publishing](/nl/newsletters/2026-05-28-newsletter/#deepmarks-nip-b0-bookmarks-with-curator-monetized-publishing)
 - [Newsletter #27: Also shipped](/nl/newsletters/2026-06-17-newsletter/#also-shipped)
+- [Newsletter #34: URI-verheldering](/nl/newsletters/2026-08-05-newsletter/#nostr-event-formats-and-discovery)
 
 **Zie ook:**
 - [NIP-57: Lightning Zaps](/nl/topics/nip-57/)

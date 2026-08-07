@@ -44,6 +44,7 @@ NIP-40 定义了一个过期标签，用于告知中继何时应该删除事件�
 **提及于：**
 - [Newsletter #1：新闻](/zh/newsletters/2025-12-17-newsletter/)
 - [Newsletter #3：重要代码变更](/zh/newsletters/2025-12-31-newsletter/)
+- [周刊 #34:Concord 消失消息](/zh/newsletters/2026-08-05-newsletter/#concord-community-planes)
 
 **另请参阅：**
 - [NIP-01：基础协议](/zh/topics/nip-01/)

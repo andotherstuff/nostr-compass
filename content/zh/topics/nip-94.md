@@ -63,6 +63,7 @@ NIP-94 可以跨不同存储后端工作。文件既可以通过 [NIP-96：HTTP 
 **提及于：**
 - [Newsletter #3：December Recap](/en/newsletters/2025-12-31-newsletter/)
 - [Newsletter #14：NIP Deep Dive](/zh/newsletters/2026-03-18-newsletter/)
+- [周刊 #34:Napplet 上传合约](/zh/newsletters/2026-08-05-newsletter/#napplet-host-capabilities)
 
 **另请参阅：**
 - [NIP-92：媒体附件](/zh/topics/nip-92/)

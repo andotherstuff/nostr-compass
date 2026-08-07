@@ -40,6 +40,7 @@ Une classification supplémentaire peut être ajoutée avec les tags `l` et `L` 
 
 **Mentionné dans :**
 - [Newsletter #10 : Mises à jour des projets](/en/newsletters/2026-02-18-newsletter/#notedeck-android-app-store-prep)
+- [Newsletter #34 : boîte de réception de modération de nostrord](/fr/newsletters/2026-08-05-newsletter/#nostrord-250-gives-relay-groups-stable-relay-specific-identities)
 
 **Voir aussi :**
 - [NIP-22 : Commentaire](/fr/topics/nip-22/)

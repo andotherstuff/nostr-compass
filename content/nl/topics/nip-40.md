@@ -44,6 +44,7 @@ Expiration is een bewaarrichtlijn, geen herroepingssysteem. Het helpt relaygedra
 **Vermeld in:**
 - [Nieuwsbrief #1: Nieuws](/en/newsletters/2025-12-17-newsletter/)
 - [Nieuwsbrief #3: Opmerkelijke codewijzigingen](/en/newsletters/2025-12-31-newsletter/)
+- [Newsletter #34: verdwijnende berichten van Concord](/nl/newsletters/2026-08-05-newsletter/#concord-community-planes)
 
 **Zie ook:**
 - [NIP-01: Basisprotocol](/nl/topics/nip-01/)

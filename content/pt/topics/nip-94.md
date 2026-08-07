@@ -63,6 +63,7 @@ A NIP-94 funciona em diferentes backends de armazenamento. Um arquivo pode ser e
 **Mencionado em:**
 - [Newsletter #3: Recapitulação de dezembro](/pt/newsletters/2025-12-31-newsletter/)
 - [Newsletter #14: NIP Deep Dive](/pt/newsletters/2026-03-18-newsletter/)
+- [Newsletter #34: contrato de upload de napplets](/pt/newsletters/2026-08-05-newsletter/#napplet-host-capabilities)
 
 **Veja também:**
 - [NIP-92: Media Attachments](/pt/topics/nip-92/)

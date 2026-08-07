@@ -38,6 +38,7 @@ Les tags d'attribution sont plus importants qu'il n'y paraît. Un tag `p` avec u
 
 **Mentionné dans :**
 - [Newsletter #10 : Releases](/en/newsletters/2026-02-18-newsletter/#prism-share-anything-to-nostr-from-android)
+- [Newsletter #34 : analyse approfondie de NIP](/fr/newsletters/2026-08-05-newsletter/#highlights-nip-84)
 
 **Voir aussi :**
 - [NIP-94 : File Metadata](/fr/topics/nip-94/)

@@ -38,6 +38,7 @@ NIP-84 将高亮段落与周围的讨论分离。客户端可以将选中的文�
 
 **提及于：**
 - [Newsletter #10：版本发布](/zh/newsletters/2026-02-18-newsletter/#prism-share-anything-to-nostr-from-android)
+- [周刊 #34:NIP 深度解析](/zh/newsletters/2026-08-05-newsletter/#highlights-nip-84)
 
 **另请参阅：**
 - [NIP-94：文件元数据](/zh/topics/nip-94/)

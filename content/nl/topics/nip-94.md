@@ -63,6 +63,7 @@ NIP-94 werkt over storage backends heen. Een bestand kan worden geüpload via [N
 **Vermeld in:**
 - [Newsletter #3: December Recap](/en/newsletters/2025-12-31-newsletter/)
 - [Newsletter #14: NIP Deep Dive](/nl/newsletters/2026-03-18-newsletter/)
+- [Newsletter #34: napplet-uploadcontract](/nl/newsletters/2026-08-05-newsletter/#napplet-host-capabilities)
 
 **Zie ook:**
 - [NIP-92: Mediabijlagen](/nl/topics/nip-92/)

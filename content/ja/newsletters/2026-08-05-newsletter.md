@@ -1,0 +1,200 @@
+---
+title: "Nostr Compass #34"
+date: 2026-08-05
+publishDate: 2026-08-05
+translationOf: /en/newsletters/2026-08-05-newsletter.md
+translationDate: 2026-08-06
+draft: false
+type: newsletters
+description: "SandstrはモックデータでNostrクライアントのツアーを提供し、nostr-millはイベントごとの署名同意を追加し、nostrordはリレーホスト型グループを拡張します。ディープダイブではリレー検索とポータブルハイライトを取り上げます。"
+---
+
+[Nostr Compass](https://github.com/andotherstuff/nostr-compass)へようこそ。Nostrのウィークリーガイドです。
+
+**今週:** [Sandstr](https://sandstr.app/)は、鍵を作成したりアプリをインストールしたりせずに、新規ユーザーがシミュレートされたNostrクライアントを探索できるようにします。[nostr-mill](https://github.com/0ceanSlim/nostr-mill)はイベントごとの署名者同意とクライアント間の鍵リカバリを追加し、[nostrord](https://github.com/nostrord/nostrord)はリレーホスト型グループ、署名者、モデレーション、アップロード、ハイライトを拡張します。プロトコル作業は、Nostrイベントフォーマット、ウォレット接続、リレーディスカバリ、napplet、Marmot、Concordにまたがり、ディープダイブではリレー支援検索とポータブルハイライトを解説します。
+
+## トップストーリー
+
+### nostr-mill 1.6.0は署名同意とアカウントリカバリをブラウザにもたらす
+
+[nostr-mill 1.6.0](https://github.com/0ceanSlim/nostr-mill/releases/tag/v1.6.0)は、埋め込み可能なブラウザアカウントピッカー兼署名者です。イベントkindごとに同意を求め、署名前にデコードされたコンテンツとタグを表示し、期間限定の許可とパーミッションマネージャーを備えています。このリリースでは、毎回確認するよう設定されたカテゴリが確認なしで署名できてしまう初回セッションのバグも修正されました。オプションのGoogleオンボーディングは既存の`nsec`をインポートでき、鍵はユーザーのDriveアプリデータフォルダに暗号化して保存され、複数のIDをサポートし、[NIP-49](/ja/topics/nip-49/)(暗号化秘密鍵フォーマット)の`ncryptsec`をエクスポートできます。
+
+[実験的なリレーバックアップ](https://github.com/0ceanSlim/nostr-mill/releases/tag/v1.6.0)は、scryptとHKDFで強固なリカバリフレーズを導出し、鍵を`ncryptsec`としてラップし、取得したイベントを検証し、リカバリ前にリレーのクォーラムを要求します。[NIP-55](/ja/topics/nip-55/)(Android署名者インテント)ログインはAmberのクリップボードリターンパスを使用するようになり、[NIP-46](/ja/topics/nip-46/)(リレー仲介リモート署名)接続はデフォルトで静粛になりました。ブランディングコントロールとレスポンシブなパーミッション画面がリリースを締めくくり、オペレーターがオプトインしない限り既存の統合は変更されません。
+
+### nostrord 2.5.0はリレーグループに安定したリレー固有のIDを与える
+
+[nostrord 2.5.0](https://github.com/nostrord/nostrord/releases/tag/v2.5.0)は、リレーホスト型コミュニティ向けのクロスプラットフォームクライアントです。グループIDとホストリレーの両方から[NIP-29](/ja/topics/nip-29/)(リレー管理グループ)IDを導出し、メンバーシップと管理者バッジを同様にスコープし、グループの`naddr`ディープリンクを受け入れ、プライベートグループのスレッドをデバイス間で同期するようになりました。
+
+この[リリース](https://github.com/nostrord/nostrord/releases/tag/v2.5.0)ではさらに、[NIP-56](/ja/topics/nip-56/)(通報イベント)モデレーション受信箱、NIP-55経由のAmberログイン、NIP-46署名者トラフィックのレート制限バックオフ、未解決参照の再試行を備えた[NIP-84](/ja/topics/nip-84/)(ポータブルハイライト)レンダリング、Blossomまたは[NIP-96](/ja/topics/nip-96/)(HTTPファイルストレージ)経由のメディアアップロードが追加されました。Googleログインはアカウント作成前に鍵をバックアップし、切断を確認するようになりました。スレッド返信はよりリッチなコンテンツと管理者による削除を獲得し、デスクトップキーチェーンとモバイルキーボードの修正がこれらのプロトコル機能を使いやすい状態に保ちます。
+
+### Primal Android 3.5.25はリモート署名とフォローリストフィルタリングを更新
+
+[Primal Android 3.5.25](https://github.com/PrimalHQ/primal-android-app/releases/tag/3.5.25)は、フィード、検索、リモート署名を備えたモバイルNostrクライアントです。リモート署名者を現在のプロトコル動作に合わせて更新し、フォローミュートリストを追加し、Exploreから検索を開き、停滞したリレー接続を自動的に修復し、リクエストタイムアウトをインターフェースに公開し、無効なフォローリストエントリを拒否し、フォールバックリレーURLを更新します。フィードのプリフェッチ、メモリ使用量の削減、100 MBのキャッシュ上限により、これらのフィードを最新に保つコストが削減されます。単一画像のノートはコンテンツの全幅を使用するようになり、プロフィールコントロールとメディアプリロードは小さなインタラクションと順序付けの修正を受けました。
+
+### Nostur 1.30.2はダイレクトメッセージのプライベート返信とメディアを拡張
+
+[Nostur 1.30.2](https://github.com/nostur-com/nostur-ios-public/releases/tag/527)は、Appleプラットフォーム向けNostrクライアントです。プライベート返信アクションを常に公開し、制限とクリアコントロール付きの会話ごとのDMメディアキャッシュを追加し、投稿とチャットでの名前とタグ補完を改善し、ライブチャットで参照メッセージを表示し、チャット通知にルームタイトルを含めます。フィードページネーションとネスト返信の修正は、取得と会話レンダリングの退行に対処します。
+
+### Chama 5.7.0はアービターレコードとキャッシュされた取引リカバリを追加
+
+[Chama 5.7.0](https://github.com/jesuspirate/chama/releases/tag/v5.7.0)は、署名されたNostrイベントチェーンを通じてピア取引と仲裁を調整します。アービターのロック額、ボンドの任期、資金調達アウトポイントを表示し、不在のアービターをバックアップが置き換えたときを記録し、両当事者の署名を必要とする休眠kind `38136`障害証明を定義します。明示的な修復は、不完全なリレー履歴を耐久性のあるデバイスキャッシュに対して再試行し、回復されたイベントを再公開します。失敗した公開は次の接続のためにキューに入れられます。このリリースでは、著者のkind `38113`イベントを支払い記録として扱うことで、デバイス間でのアービタープレミアム支払いの重複も防止されます。
+
+### Auditable Voting 0.1.165は委任投票用紙の配信を復元
+
+[Auditable Voting 0.1.165](https://github.com/tidley/auditable-voting/releases/tag/v0.1.165)は、有権者の資格情報を投票用紙の内容から分離しながら検証可能な投票を実施します。認証された委任配信とコントロールDMバックフィルを通じて委任ブラインド投票用紙の発行を復元し、ブラインド資格情報のダイレクトメッセージを設定されたプライベートリレーに保持し、監査プロキシを0.1.52に更新します。
+
+### Sandstrは新規ユーザーがモックデータでNostrクライアントを試せるようにする
+
+[Sandstr](https://sandstr.app/)は、新規ユーザーがクライアントをインストールしたり鍵ペアを作成したりする前に、インターフェースを比較できるよう、Nostrクライアントのインタラクティブなブラウザシミュレーションを提供します。8月3日のローンチには、Damus、Amethyst、Primal、Snort、YakiHonne、Coracle、Wispの参照検証済み複製に加え、Gossip、Keychat、Olasの明確にラベル付けされた初期プレビューが含まれます。すべてがモックデータに対してローカルで実行されるため、シミュレーションは鍵を生成したりリレーに接続したりしません。各シミュレーションは実際のクライアントのウェブサイトとソースリポジトリにリンクしており、Sandstrを別のNostrクライアントではなく、オンボーディングとインターフェース比較のツールにしています。フィード、プロフィール、スレッド、ダイレクトメッセージ、検索、zap、リレーコントロールの使い心地を、初めてのユーザーに事前にIDやセキュリティの決定を求めることなく示します。
+
+
+### mineracks signerはブラウザ拡張とデスクトップバンカーを組み合わせる
+
+[mineracks signer](https://github.com/mineracks/mineracks-signer)は、同じプロジェクトから2つの署名面を提供します。そのブラウザ拡張は[NIP-07](/ja/topics/nip-07/)を実装し、ウェブアプリケーションが秘密鍵を受け取らずに署名を要求できるようにし、デスクトップアプリケーションはリレーを介して通信するクライアント向けの[NIP-46](/ja/topics/nip-46/)リモート署名者を公開します。
+
+プロジェクトの[デスクトップ0.1.0リリース](https://github.com/mineracks/mineracks-signer/releases/tag/desktop-v0.1.0)は、鍵素材をNIP-49暗号化鍵エンコーディングで保存し、復号された鍵をインターフェースに渡すのではなくRustプロセス内に保持します。各リクエストは呼び出し元アプリケーションと要求されたアクションを表示し、アプリケーションごとの自動承認はオプションで取り消し可能です。最初のデスクトップビルドはApple Siliconをサポートしますが、Intel Macはサポートしません。
+
+## リリース
+
+### Jumble 26.8.1はプルーフオブワークコントロールとコメントプレビューを追加
+
+[Jumble 26.8.1](https://github.com/CodyTseng/jumble/releases/tag/v26.8.1)は、ウェブおよびデスクトップNostrクライアントです。公開時のプルーフオブワーク難易度を記憶し、検証済みワークバッジを表示し、外部コンテンツの上にリンクされたコメントをプレビューし、フルスクリーンビューアから画像を保存し、長いプロフィール略歴をオンデマンドで展開します。リアクション通知はサポートされていないイベントkindを破棄し、リレー切断通知はより静かになり、デフォルトリレーが更新され、メディア自動再生の競合が修正されました。
+
+### nostr-calendar 2.1.0はプライベートフォームの署名者バインディングを復元
+
+[nostr-calendar 2.1.0](https://github.com/formstr-hq/nostr-calendar/releases/tag/v2.1.0)は、カレンダー、イベント、フォームレスポンスをNostrデータとして公開します。プライベートフォーム送信をアクティブな署名者にバインドし、意図的な重複イベントをリレーに保存し、リレーフェッチを修正し、カレンダー日付をローカル時間で解析し、アプリ通知とiOSクライアントを追加します。署名者の修正により、古いIDが使用不可能な暗号化レスポンスを生成するのを防ぎます。
+
+### Manent 2.0.0は保存されたノートのタグ付けと検索を追加
+
+[Manent 2.0.0](https://github.com/dtonon/manent/releases/tag/v2.0.0)は、署名されたNostrノートの個人アーカイブです。ローカルタグと検索を追加し、読者が署名されたコンテンツを変更せずに保存されたイベントを整理・取得できるようにします。
+
+### nosvelte 0.6.1はEOSE後に空のサブスクリプションを閉じる
+
+[nosvelte 0.6.1](https://github.com/akiomik/nosvelte/releases/tag/v0.6.1)は、リレーデータ用のリアクティブなSvelteコンポーネントとフックを提供します。空の検索はEnd of Stored Eventsで解決されるようになり、キャンセルは基礎となる`REQ`を閉じ、再試行は古いエラーをクリアし、リストフックは文書化された空の値を返します。また、`d`タグがどこに現れてもアドレサブルイベントを認識し、取って代わられたメタデータと記事を置き換え、イベントIDでリアクションを重複排除し、リレーの最初のバッチからすべてのイベントを保持します。
+
+## 未リリースの変更
+
+### NMPはリレー許可を宣言に結びつけ、グループクエリを拡大
+
+[NMP](https://github.com/pablof7z/nmp)は、Nostrアプリケーションとリレーバックアップ型グループインターフェースを構築するためのTypeScriptツールキットです。[PR #1254](https://github.com/pablof7z/nmp/pull/1254)は、リレー許可をそれを承認する宣言の所有者に従わせ、パーミッション決定を署名されたNostr状態に結びつけたままにします。[PR #1255](https://github.com/pablof7z/nmp/pull/1255)は、1つの狭い検索形状を仮定する代わりに、[NIP-29](/ja/topics/nip-29/)リレー管理グループクエリを一般化します。両方の変更はマージされていますが、タグ付きリリースにはまだ登場していません。
+
+### Mosaicoはリレーレコードから管理グループIDを導出
+
+[Mosaico](https://github.com/pablof7z/mosaico)は、リレー管理コミュニティを閲覧・管理するためのNostrクライアントです。[PR #758](https://github.com/pablof7z/mosaico/pull/758)は、管理グループのIDをその権威あるレコードをホストするリレーから導出します。[PR #757](https://github.com/pablof7z/mosaico/pull/757)は、管理状態を解決するときにグループの公開レコードを監視します。これにより、異なるリレー上の同様の名前を持つ2つのグループが区別され、クライアントは管理メタデータのリレーバックアップされたソースを得ます。
+
+### Divineはマルチリレークエリ中に遅いリレーを分離
+
+[Divine](https://github.com/divinevideo/divine-mobile)は、Nostr経由で動画を公開・取得するモバイルショートビデオクライアントです。[PR #6673](https://github.com/divinevideo/divine-mobile/pull/6673)は、1つの停滞した接続がリクエスト全体のタイムアウト予算を消費するのではなく、各リレークエリに独自のタイムアウトを与えます。応答性の高いリレーからの結果は、遅いエンドポイントが独立して放棄される間に到着できます。この変更は、1つのリレーを結合結果の権威として扱うことなく、取得を改善します。
+
+### rust-nostrは暗号化、ハッシュ、調停を強化
+
+[rust-nostr](https://github.com/rust-nostr/nostr)は、Nostrクライアント、リレー、プロトコル実装向けのRustライブラリ兼ツールキットです。[PR #1421](https://github.com/rust-nostr/nostr/pull/1421)は[NIP-44](/ja/topics/nip-44/)バージョン付き暗号化パスのアロケーションを削減し、[PR #1423](https://github.com/rust-nostr/nostr/pull/1423)は互換性のないダイジェスト値を誤って混ぜにくくする型付きハッシュを導入します。[コミット21e31c2](https://github.com/rust-nostr/nostr/commit/21e31c28da3dfadedb5fa6e58c712647f16e5f69)は、不正な形式の[NIP-77](/ja/topics/nip-77/)Negentropyセット調停メッセージがローカルリレーを切断するのを防ぎます。マージされた作業は、次のリリース前に暗号化ペイロード処理と調停失敗動作の両方を強化します。
+
+### Zeusは支出予算に課金する前にNWC支払いを直列化
+
+[Zeus](https://github.com/ZeusLN/zeus)は、Nostr Wallet Connectを通じてウォレット操作を公開できるモバイルBitcoinおよびLightningウォレットです。[PR #4305](https://github.com/ZeusLN/zeus/pull/4305)は、決済を待つのではなく、保留中の支払いを[NIP-47](/ja/topics/nip-47/)Nostr Wallet Connect予算に計上します。[PR #4303](https://github.com/ZeusLN/zeus/pull/4303)は、同時リクエストが同じ認可制限を競争して通過できないよう、支払い処理を直列化します。マージされたペアは、ウォレットのNostrコントロール面上の予算執行ギャップを閉じます。
+
+### Nostr Componentsは1つのリレー接続試行を共有
+
+[Nostr Components](https://github.com/saiy2k/nostr-components)は、アプリケーションにNostrデータとインタラクションを追加するための再利用可能なウェブコンポーネントライブラリです。[PR #105](https://github.com/saiy2k/nostr-components/pull/105)は、同時にマウントされたコンポーネントが進行中のリレー接続試行を共有できるようにします。各コンシューマーは結果の接続を受け取り続けますが、同時マウントは最初のハンドシェイクが保留中の間、重複したソケットを開かなくなります。この変更は、複数の独立したコンポーネントから組み立てられたアプリケーションでの回避可能なリレー負荷を削減します。
+
+## NIPアップデートとプロトコル仕様作業
+
+### Nostrイベントフォーマットとディスカバリ
+
+[NIP PR #2430](https://github.com/nostr-protocol/nips/pull/2430)は、ステッカーパックをアドレサブルなkind `30031`定義として、ユーザーのインストール済みパックを置き換え可能なkind `10031`として提案します。各ステッカータグはショートコード、SHA-256ハッシュ、MIMEタイプを持ち、画像は[NIP-B7](https://github.com/nostr-protocol/nips/blob/master/B7.md)(Blossomブロブストレージ)サーバーに残ります。オープンドラフトは、画像バイトをイベントに入れずにパックのIDとインストールを標準化します。
+
+[NIP PR #2429](https://github.com/nostr-protocol/nips/pull/2429)は、kind `31436`アドレサブルGopherドキュメントを提案します。各イベントは1つのUTF-8テキストまたはメニューノードを保持し、1つのpubkeyの下で署名されたノードは、任意のリレーバックアップされたRFC 1436ブリッジが提供できるgopherholeを形成します。オープンな提案は、公開を1つのGopherホスト名に結びつけるのではなく、通常のアドレサブルイベントストレージを使用します。
+
+[NIP PR #2428](https://github.com/nostr-protocol/nips/pull/2428)は、エポックチケット制のプライベートグループを提案します。グループはエポック間でメンバーシップ資格情報をローテーションし、クライアントは参加するために現在のエポックのチケットを提示します。ドラフトは、永続的なベアラートークンを生涯メンバーシップとして扱うようリレーに求めることなく、プライベートチャットを対象としています。
+
+先週提案として取り上げた[NIP PR #2425](https://github.com/nostr-protocol/nips/pull/2425)は、[NIP-B0](/ja/topics/nip-b0/)(アドレサブルウェブブックマーク)へのURI明確化をマージしました。ブックマークが`d`タグにターゲットを保存するとき、省略されたHTTPSプレフィックスと明示的なURIスキームを区別し、クライアントが曖昧な宛先を再構築するのを防ぎます。
+
+### 支払いとウォレット接続
+
+7月22日号で提案として取り上げた[NIP PR #2419](https://github.com/nostr-protocol/nips/pull/2419)は、より小さな[NIP-47](/ja/topics/nip-47/)(Nostr Wallet Connect)コアをマージしました。接続URI、暗号化リレートランスポート、機能ディスカバリ、暗号化ネゴシエーション、共通メソッドはNIPに残り、通知、保留請求書、keysend、トランザクション履歴、メタデータ、ディープリンクペアリングは専用の拡張リポジトリに移動します。既存の接続は互換性を保ち、ウォレットはオプションのコントラクトを独立して実装できます。
+
+先週提案として取り上げた[NWC PR #2](https://github.com/nostr-wallet-connect/nwc/pull/2)は、その拡張リポジトリにBIP-321支払いメソッドをマージしました。BIP-321は、さまざまなレールを運べる共通のBitcoin支払いURIを提供するため、NWC呼び出し元は基礎となる命令タイプごとに新しいコアRPCを追加せずに支払いを要求または送信できます。
+
+### Nappletホスト機能
+
+[NAP PR #95](https://github.com/napplet/naps/pull/95)は、Nostr分散型サンドボックスアプリケーションのカタログディスカバリを提案します。nappletはホストにどのアプリケーションと機能が利用可能かを尋ね、ホストは完全なローカル環境を公開する代わりにポリシーでフィルタリングされたメタデータを返します。このコントラクトは、ディスカバリ中に実行権限を付与せずに起動決定をサポートします。
+
+[NAP PR #33](https://github.com/napplet/naps/pull/33)は、シェル仲介のファイルおよびブロブアップロードを提案します。nappletはバイトとインテントを供給し、ホストはNIP-96またはBlossomレールを選択し、認可に署名し、進行状況を報告し、URL、ハッシュ、MIMEデータ、添付可能な[NIP-94](/ja/topics/nip-94/)(ファイルメタデータ)タグを返します。ストレージ資格情報とHTTP権限はnappletに入りません。
+
+### Marmot暗号化グループ
+
+[Marmot PR #410](https://github.com/marmot-protocol/marmot/pull/410)は、収束ルールと遅延入力ルールをマージしました。クライアントは、現在のエポック依存関係を欠くオブジェクトと古いまたは無効な入力を区別し、リソース拒否後の再フェッチの対象として保持し、別のコミットが復号コンテキストを変更したときに再試行します。ドメイン分離された状態コミットメントは、本番ワイヤーフィールドを追加せずに、適合テストに共有の収束オラクルを提供します。
+
+### Concordコミュニティプレーン
+
+[Concord PR #14](https://github.com/concord-protocol/concord/pull/14)は、CORD-08消えるメッセージをマージしました。1つのコミュニティメタデータ値が有効期間を設定し、チャットルーマーと暗号化ラップは[NIP-40](/ja/topics/nip-40/)(イベント有効期限)タグを持ち、削除イベントとkind `1740`タイマー通知は免除されます。署名されたタイマーはコミュニティ状態と共に移動しますが、リレー削除は暗号的消去保証ではなく保持リクエストのままです。
+
+[Concord PR #13](https://github.com/concord-protocol/concord/pull/13)は、CORD-04にローテーション耐性のあるピン留めをマージしました。各チャンネルはコントロールプレーン上に1つの全置換ピンリストを持ち、エントリは元の署名されたシールに加えてメッセージごとのNIP-44拡張鍵を持ち、新しいメンバーが古いエポック鍵を受け取らずに著者と平文を検証できます。プライベートリストはチャンネルエポックに封印されたままにでき、キャップはリストサイズを制限し、著者の削除はコントロールプレーンチェーンをフォークせずにピンを削除します。
+
+## NIPディープダイブ
+
+### 検索機能(NIP-50)
+
+[プライマリ仕様](https://github.com/nostr-protocol/nips/blob/master/50.md)で定義されている[NIP-50](/ja/topics/nip-50/)は、リレー向けのオプションの検索フィルターを追加します。クライアントがすでに著者、イベントkind、識別子、タグを知っている場合、通常のNostrフィルターは機能します。NIP-50は、入力が`best nostr apps`のような人間のクエリである場合のディスカバリに対処します。
+
+[NIP-50ワイヤーフォーマット](https://github.com/nostr-protocol/nips/blob/master/50.md#search-filter-field)は、`REQ`メッセージ内の通常のフィルターに`search`文字列を追加します。リクエストはそのフィールドを`kinds`、`authors`、`ids`、タグフィルター、`limit`と組み合わせることができ、1つのREQは複数の独立したフィルターを運ぶことができます。サポートするリレーは主にイベントの`content`に対してマッチし、イベントkindが有用な場合は他のフィールドを使用でき、`limit`を適用する前に独自の関連性スコアでソートする必要があります。その順序は、通常の新しい順のイベントストリームとは異なります。
+
+クエリ文字列には、仕様の[`key:value`拡張](https://github.com/nostr-protocol/nips/blob/master/50.md#extensions)を含めることができます。`include:spam`、`domain:`、`language:`、`sentiment:`、`nsfw:`が挙げられ、リレーは実装していない拡張を無視する必要があります。クライアントはリレーの[NIP-11](/ja/topics/nip-11/)`supported_nips`フィールドを通じて宣言されたサポートを発見しますが、無関係なレスポンスを拒否する準備ができていれば、他の場所にフィルターを送信できます。
+
+[NIP-50仕様](https://github.com/nostr-protocol/nips/blob/master/50.md)は、トークン化、ステミング、ランキング、言語検出、センチメント分析、スパム分類を意図的に標準化していません。2つの準拠リレーは同じクエリに対して異なるイベントと異なる順序を返すことができます。これにより、リレーは真実の源ではなく、インデックスとランキングのプロバイダーになります。仕様は、複数のサポートリレーにクエリを実行し、返されたイベントがクライアントのユースケースを満たすかどうかを確認し、精度の低い結果を返すリレーを落とすことを推奨しています。
+
+これは正確な[NIP-01フィルタリング](https://github.com/nostr-protocol/nips/blob/master/01.md)とは異なります。`authors`または`#t`フィルターには、クライアントが直接検証できる決定的なマッチングセマンティクスがありますが、検索マッチはインデックスと不透明なスコアに依存する可能性があります。NIP-50はNIP-01の署名されたイベントエンベロープとリレートランスポートを保持しますが、オープンエンドな取得を可能にするためにリコールと順序付けの変動を受け入れます。
+
+以下のイベントは、[7つのNIP-01イベントフィールド](https://github.com/nostr-protocol/nips/blob/master/01.md#events-and-signatures)を使用した例示的な検索結果です。繰り返される16進値は有効な署名ではなくプレースホルダーです。
+
+```json
+{
+  "id": "2943d6b43bcbf0ee4a8b4cac912111be0309607b8bb435ae40529989bea7f6c5",
+  "pubkey": "3bf0c63fcb93463407af97a5e5ee64fa883d107ef9e558472c4eb9aaaefa459d",
+  "created_at": 1785771175,
+  "kind": 1,
+  "tags": [],
+  "content": "I've been working on a customizable client (mostly relay feeds, but a ton of other things and subtle details too). It's called Hallway for reasons I don't remember and it's a fork of Fevela which is a fork of Jumble, but very rewritten for speed and simplicity...",
+  "sig": "5b058b89dab9bd09d81bdc10eff95536125b87fbcbbc97f08d835c1272b2a3190cc3d340e42f54acb0d7e0e4b00355ab91292d0305c84a2d73b538319c0da12c"
+}
+```
+
+現在のクライアントは、異なるディスカバリ面で同じフィルターを使用しています。[Nostria](https://github.com/nostria-app/nostria/blob/d291c2ab091c60c36f99c90241e2fd9da1b0c4bc/src/app/services/relays/search-relay.ts)は専用の検索リレーにNIP-50検索を送信し、[Ditto](https://github.com/soapbox-pub/ditto/blob/04adb2d242ab6f5807fd27ae3e0cb9beab091641/src/hooks/useSearchEvents.ts)はリレープールを通じてイベントを検索し、[NoorNote](https://github.com/77elements/noornote/blob/bf1f9b431552497dc1779ea0d8fed2c3c28e6070/src/services/orchestration/SearchOrchestrator.ts)は長文読書用のリレーバックアップされた検索を調整します。それらの異なる結果処理は、NIP-50がリレーとクライアントに残す自由度を反映しています。
+
+### ハイライト(NIP-84)
+
+[プライマリ仕様](https://github.com/nostr-protocol/nips/blob/master/84.md)で定義されている[NIP-84](/ja/topics/nip-84/)は、ハイライトにkind `9802`を割り当てます。選択された一節、または非テキストメディアへの参照を、読書、ソーシャル、注釈クライアント間で移動できる署名されたイベントに変えます。
+
+[イベントの`content`](https://github.com/nostr-protocol/nips/blob/master/84.md#format)には選択されたテキストが含まれ、ソースが音声、動画、またはその他の非テキストメディアの場合は空になることがあります。ハイライトはアドレサブルイベントには`a`タグ、通常のイベントには`e`タグでNostrソースを指し、`r`タグはウェブURLを識別します。URLを生成するクライアントは、公開前にトラッキングやその他の有用でないクエリパラメータを削除し、表面的なURLバリアントが同じソースへの参照を断片化しないようにする必要があります。
+
+オプションの[`p`タグ](https://github.com/nostr-protocol/nips/blob/master/84.md#attribution)は、ソースを1つ以上のNostr pubkeyに帰属させます。その4番目の値は`author`や`editor`などの役割を識別でき、`context`タグは選択だけでは不明確な場合に周囲のテキストを保存できます。引用ハイライトは2番目のkind `1`ノートを公開する代わりに`comment`タグを追加します。ソースの`r`タグは`source`マーカーを受け取り、コメント内で言及されたpubkeyやURLは`mention`を持ち、レンダラーが帰属とユーザーのレスポンスを区別できるようにします。
+
+[kind `9802`定義](https://github.com/nostr-protocol/nips/blob/master/84.md)は、ハイライトを置き換え可能なイベントではなく通常のイベントにします。選択を繰り返したり修正したりすると別の署名されたイベントが作成され、削除するには通常の削除リクエストフローとリレー保持ポリシーに依存します。仕様はバイトオフセット、セレクター、正規のドキュメントスナップショットを定義していないため、クライアントはウェブソースが変更された後に一節を再配置できない場合があります。公開ハイライトは読書の興味も明らかにし、プライベート注釈には別の暗号化と共有設計が必要です。
+
+NIP-84は、記事全体をkind `30023`として公開する[NIP-23長文イベント](https://github.com/nostr-protocol/nips/blob/master/23.md)とは異なり、ハイライトは他の場所に残る可能性のある素材を引用または指します。また、置き換え可能な参照コレクションを保存する[NIP-51ブックマークセット](https://github.com/nostr-protocol/nips/blob/master/51.md)とも異なります。NIP-84は、各選択を独立して署名、帰属、発見、議論可能にします。
+
+この例示的なハイライトには、[7つのNIP-01イベントフィールド](https://github.com/nostr-protocol/nips/blob/master/01.md#events-and-signatures)が含まれています。その識別子と署名はプレースホルダーです。
+
+```json
+{
+  "id": "0d57c07cfdfe8ec00711e2af88a666b61fc35c167b90b02dfb5db7ffba7b794a",
+  "pubkey": "07367baec8e73c076b14e47fba3b0d5c014d559d7986a7172a79a8a64419d7c2",
+  "created_at": 1785797755,
+  "kind": 9802,
+  "tags": [
+    ["context", "Quantum computers will break secp256k1 which nostr relies on for its public private key pair. This means that given an npub, a quantum computer will be able to derive your nsec, read all your encrypted data and sign events as you."],
+    ["alt", "This is a highlight created in https://primal.net iOS application"],
+    ["a", "30023:1ec454734dcbf6fe54901ce25c0c7c6bca5edd89443416761fadc321d38df139:nostr-quantum-preparation"],
+    ["p", "1ec454734dcbf6fe54901ce25c0c7c6bca5edd89443416761fadc321d38df139", "", "mention"]
+  ],
+  "content": "Quantum computers will break secp256k1 which nostr relies on for its public private key pair. This means that given an npub, a quantum computer will b",
+  "sig": "219f3c1e572d1a087d667dc0d3a5443c77c0db3a5d42ce4e630604901ac63d2c879a86269d81e220bb77fd48b1579adafc333075e53c6eb0a108791fdd4a1622"
+}
+```
+
+このフォーマットはすでにクライアントの境界を越えています。[nostrord 2.5.0](https://github.com/nostrord/nostrord/releases/tag/v2.5.0)は今週NIP-84レンダリングを追加し、[NoorNote](https://github.com/77elements/noornote/blob/bf1f9b431552497dc1779ea0d8fed2c3c28e6070/src/components/ui/note-rendering/HighlightRenderer.ts)は長文クライアントでハイライトイベントをレンダリングし、[Ditto](https://github.com/soapbox-pub/ditto/blob/04adb2d242ab6f5807fd27ae3e0cb9beab091641/src/hooks/useCreateHighlight.ts)は選択されたコンテンツからそれらを公開します。これらの実装は、1つのサービスが注釈を所有することを要求せずに、読書、作成、ソーシャルレンダリングをカバーしています。
+
+---
+
+[Nostr Compassプロジェクト](https://github.com/andotherstuff/nostr-compass)を通じてプロジェクトやニュースを共有するには、NIP-17 DMを送信してください。

@@ -63,6 +63,7 @@ NIP-94 fonctionne avec différents backends de stockage. Un fichier peut être t
 **Mentionné dans :**
 - [Newsletter #3: Récapitulatif de Décembre](/en/newsletters/2025-12-31-newsletter/)
 - [Newsletter #14 : deep dive NIP](/fr/newsletters/2026-03-18-newsletter/)
+- [Newsletter #34 : contrat de téléversement des napplets](/fr/newsletters/2026-08-05-newsletter/#napplet-host-capabilities)
 
 **Voir aussi :**
 - [NIP-92: Media Attachments](/fr/topics/nip-92/)

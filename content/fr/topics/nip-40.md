@@ -44,6 +44,7 @@ L'expiration est une indication de rétention, pas un système de révocation. E
 **Mentionné dans :**
 - [Newsletter #1 : Actualités](/en/newsletters/2025-12-17-newsletter/)
 - [Newsletter #3 : Changements de code notables](/en/newsletters/2025-12-31-newsletter/)
+- [Newsletter #34 : messages éphémères de Concord](/fr/newsletters/2026-08-05-newsletter/#concord-community-planes)
 
 **Voir aussi :**
 - [NIP-01 : Protocole de base](/fr/topics/nip-01/)

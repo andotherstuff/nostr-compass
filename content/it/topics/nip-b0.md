@@ -56,6 +56,7 @@ Poiché ogni segnalibro è un evento di prima classe, qualsiasi client Nostr pu�
 **Menzionato in:**
 - [Newsletter #24: deepmarks NIP-B0 bookmarks with curator-monetized publishing](/it/newsletters/2026-05-28-newsletter/#deepmarks-nip-b0-bookmarks-with-curator-monetized-publishing)
 - [Newsletter #27: Also shipped](/it/newsletters/2026-06-17-newsletter/#also-shipped)
+- [Newsletter #34: chiarimento sugli URI](/it/newsletters/2026-08-05-newsletter/#nostr-event-formats-and-discovery)
 
 **Vedi anche:**
 - [NIP-57: Lightning Zaps](/it/topics/nip-57/)

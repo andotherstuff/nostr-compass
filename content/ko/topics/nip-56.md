@@ -39,6 +39,7 @@ NIP-32 `l` 및 `L` 태그로 추가 분류를 할 수 있으며, 이는 클라�
 
 **언급된 뉴스레터:**
 - [뉴스레터 #10: 프로젝트 업데이트](/en/newsletters/2026-02-18-newsletter/#notedeck-android-app-store-prep)
+- [뉴스레터 #34: nostrord 모더레이션 받은 편지함](/ko/newsletters/2026-08-05-newsletter/#nostrord-250-gives-relay-groups-stable-relay-specific-identities)
 
 **같이 보기:**
 - [NIP-22: 댓글](/ko/topics/nip-22/)

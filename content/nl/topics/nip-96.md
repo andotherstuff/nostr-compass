@@ -45,6 +45,7 @@ Kind 10096 server preference events blijven bruikbaar voor selectie van Blossom-
 
 **Vermeld in:**
 - [Newsletter #9: NIP Deep Dive](/en/newsletters/2026-02-11-newsletter/#nip-deep-dive-nip-96-http-file-storage-and-the-transition-to-blossom)
+- [Newsletter #34: nostrord-media-uploads](/nl/newsletters/2026-08-05-newsletter/#nostrord-250-gives-relay-groups-stable-relay-specific-identities)
 
 **Zie ook:**
 - [Blossom Protocol](/nl/topics/blossom/)

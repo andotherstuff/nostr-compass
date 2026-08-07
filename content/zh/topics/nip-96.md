@@ -45,6 +45,7 @@ Kind 10096 服务器偏好事件对于 Blossom 服务器选择仍然有用。NIP
 
 **提及于：**
 - [Newsletter #9：NIP 深度解析](/zh/newsletters/2026-02-11-newsletter/#nip-deep-dive-nip-96-http-file-storage-and-the-transition-to-blossom)
+- [周刊 #34:nostrord 媒体上传](/zh/newsletters/2026-08-05-newsletter/#nostrord-250-gives-relay-groups-stable-relay-specific-identities)
 
 **另请参阅：**
 - [Blossom 协议](/zh/topics/blossom/)

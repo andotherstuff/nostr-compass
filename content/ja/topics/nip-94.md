@@ -63,6 +63,7 @@ NIP-94はstorage backendをまたいで機能します。ファイルは[NIP-96:
 **Mentioned in:**
 - [Newsletter #3: December Recap](/en/newsletters/2025-12-31-newsletter/)
 - [Newsletter #14: NIP Deep Dive](/ja/newsletters/2026-03-18-newsletter/)
+- [ニュースレター #34: Nappletアップロードコントラクト](/ja/newsletters/2026-08-05-newsletter/#napplet-host-capabilities)
 
 **See also:**
 - [NIP-92: Media Attachments](/ja/topics/nip-92/)
