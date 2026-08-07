@@ -69,15 +69,17 @@ def check_file(path: str) -> list[str]:
 
         eid, pk, sig = str(ev.get("id", "")), str(ev.get("pubkey", "")), str(ev.get("sig", ""))
 
-        if eid and not HEX64.match(eid):
-            problems.append(f"{label}: id is not 64-char lowercase hex ({eid[:24]}…)")
-        if pk and not HEX64.match(pk):
-            problems.append(f"{label}: pubkey is not 64-char lowercase hex ({pk[:24]}…)")
-        if sig and not HEX128.match(sig):
-            problems.append(f"{label}: sig is not 128-char lowercase hex ({sig[:24]}…)")
+        # Validate format unconditionally: a present-but-empty or non-string field is
+        # still a fabricated example, and `if eid and ...` would silently skip it.
+        if not HEX64.match(eid):
+            problems.append(f"{label}: id is not 64-char lowercase hex ({eid[:24]!r}…)")
+        if not HEX64.match(pk):
+            problems.append(f"{label}: pubkey is not 64-char lowercase hex ({pk[:24]!r}…)")
+        if not HEX128.match(sig):
+            problems.append(f"{label}: sig is not 128-char lowercase hex ({sig[:24]!r}…)")
 
         for name, value in (("id", eid), ("pubkey", pk), ("sig", sig)):
-            if low_entropy(value):
+            if value and low_entropy(value):
                 problems.append(
                     f"{label}: {name} looks like placeholder data (repeated/low-entropy hex: {value[:16]}…)"
                 )
