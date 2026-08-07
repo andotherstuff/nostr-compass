@@ -56,9 +56,17 @@ def check_file(path: str) -> list[str]:
         line_no = text[: match.start()].count("\n") + 1
         try:
             ev = json.loads(block)
-        except json.JSONDecodeError:
+        except json.JSONDecodeError as exc:
+            # A broken JSON block inside a ```json fence is a defect, not a non-event:
+            # it would slip past every structural check below and render as garbage.
+            problems.append(f"{path}:{line_no}: fenced json block does not parse ({exc.msg})")
             continue
-        if not isinstance(ev, dict) or "kind" not in ev or "pubkey" not in ev:
+        # Classify as a Nostr event if it carries any strong event marker, so that a
+        # fabricated example missing `kind` or `pubkey` still gets its fields checked
+        # rather than being silently skipped.
+        if not isinstance(ev, dict):
+            continue
+        if not any(m in ev for m in ("id", "pubkey", "sig")):
             continue
 
         label = f"{path}:{line_no} (kind {ev.get('kind')})"
@@ -66,6 +74,18 @@ def check_file(path: str) -> list[str]:
         for field in ("id", "pubkey", "created_at", "kind", "tags", "content", "sig"):
             if field not in ev:
                 problems.append(f"{label}: missing required NIP-01 field '{field}'")
+
+        # NIP-01 field types: kind is int, created_at is int, tags is a list of
+        # string lists, content is a string. Wrong types are a fabricated example.
+        if "kind" in ev and not isinstance(ev["kind"], int):
+            problems.append(f"{label}: kind is not an integer ({ev['kind']!r})")
+        if "tags" in ev and not (
+            isinstance(ev["tags"], list)
+            and all(isinstance(t, list) and all(isinstance(x, str) for x in t) for t in ev["tags"])
+        ):
+            problems.append(f"{label}: tags is not a list of string lists")
+        if "content" in ev and not isinstance(ev["content"], str):
+            problems.append(f"{label}: content is not a string")
 
         eid, pk, sig = str(ev.get("id", "")), str(ev.get("pubkey", "")), str(ev.get("sig", ""))
 
@@ -85,8 +105,8 @@ def check_file(path: str) -> list[str]:
                 )
 
         ts = ev.get("created_at")
-        if isinstance(ts, int) and not (MIN_TS <= ts <= now + 86400):
-            problems.append(f"{label}: created_at {ts} is not a plausible unix timestamp")
+        if "created_at" in ev and not (isinstance(ts, int) and MIN_TS <= ts <= now + 86400):
+            problems.append(f"{label}: created_at {ts!r} is not a plausible integer unix timestamp")
 
         # Prose immediately above the block must not admit placeholder status.
         start_line = line_no - 2  # 0-indexed line of the opening fence
