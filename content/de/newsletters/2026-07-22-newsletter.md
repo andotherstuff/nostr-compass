@@ -151,22 +151,7 @@ Ein Relay zu betreiben, das nicht für alle offen ist, bedeutete früher, alles 
 
 [NIP-42](/de/topics/nip-42/) beantwortet eine Frage: Wer ist auf dieser Verbindung? Ein Relay, das Lese- oder Schreibzugriffe beschränken will, sendet beim Verbindungsaufbau oder bei Bedarf, wenn eine Anfrage Authentifizierung erfordert, eine `AUTH`-Nachricht mit einem Challenge-String. Ein Client antwortet mit seiner eigenen `AUTH`-Nachricht, die ein signiertes ephemeres Event des kind 22242 enthält, und das Relay antwortet mit einer `OK`-Nachricht, genau als wäre das Auth-Event ein gewöhnlicher Schreibvorgang. Die Authentifizierung gilt dann für die Dauer der Verbindung. Eine Folge von `AUTH`-Nachrichten kann mehrere pubkeys auf einer Verbindung authentifizieren.
 
-Das signierte Auth-Event sieht so aus:
-
-```json
-{
-  "id": "4ef6f2c0b1a84c9a3d0f9c58e2a1b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0",
-  "pubkey": "c308e1f882c1f1dff2a43d4294239ddeec04e575f2d1aad1fa21ea7684e61fb5",
-  "created_at": 1753195800,
-  "kind": 22242,
-  "tags": [
-    ["relay", "wss://relay.example.com/"],
-    ["challenge", "challengestringhere"]
-  ],
-  "content": "",
-  "sig": "8b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1"
-}
-```
+Das signierte Auth-Event ist ein kompaktes Objekt aus `pubkey`, `created_at`, kind 22242, einem `relay`-Tag, einem `challenge`-Tag, leerem `content` und einer `sig` über der Event-`id`. Da kind 22242 ephemer ist — Relays dürfen es niemals speichern oder broadcasten — existiert kein veröffentlichtes Beispiel, das sich einbetten ließe; der Feldweg unten deckt ab, was es trägt.
 
 Der `pubkey` ist die zu beweisende Identität, da das Relay die `sig` über der Event-`id` gegen ihn verifiziert. Kind 22242 liegt im ephemeren Bereich: Das Event ist ein Berechtigungsnachweis auf Verbindungsebene, den Relays niemals speichern oder an andere Clients broadcasten dürfen. Ein `relay`-Tag bindet die Signatur an eine Relay-URL, sodass ein erbeutetes Auth-Event nicht gegen ein anderes Relay wiedergegeben werden kann, während das `challenge`-Tag es an den konkreten Challenge-String dieser Verbindung bindet und eine spätere Wiedergabe verhindert. Sein `created_at` muss nahe an der aktuellen Zeit liegen, innerhalb eines Fensters von ungefähr zehn Minuten, sodass ein veraltetes Auth-Event von selbst abläuft. Ein leeres `content`-Feld bestätigt, dass nichts veröffentlicht wird.
 
@@ -176,22 +161,7 @@ Die Spec definiert außerdem zwei maschinenlesbare Präfixe, die Gating für Cli
 
 [NIP-43](/de/topics/nip-43/) beantwortet die Folgefrage: Jetzt, wo das Relay weiß, wer du bist — was darfst du tun? Wo NIP-42 ein Handshake auf einer bestehenden Verbindung ist, ist NIP-43 ein Satz veröffentlichter Events, die den Mitgliedschaftsstatus beschreiben und Nutzern erlauben, dessen Änderung zu beantragen. Auf der Relay-Seite listet ein kind-13534-Event, signiert vom Pubkey im `self`-Feld des [NIP-11](/de/topics/nip-11/)-Dokuments des Relays, ein `member`-Tag pro Pubkey, mit optionalen Rollenargumenten, die auf als kind 33534 veröffentlichte Rollendefinitionen zeigen. Kind 8000 kündigt das Hinzufügen eines Mitglieds an und kind 8001 das Entfernen, beide signiert vom selben Relay-Schlüssel mit einem `p`-Tag für das betroffene Mitglied. Auf der Nutzerseite ist kind 28934 eine Beitrittsanfrage, die einen Einladungscode in einem `claim`-Tag trägt, kind 28935 ist ein ephemeres Invite-Code-Event, das das Relay on-the-fly erzeugt, wenn ein Nutzer einen Claim anfordert, und kind 28936 ist eine Austrittsanfrage.
 
-Eine Beitrittsanfrage sieht so aus:
-
-```json
-{
-  "id": "9f0e1d2c3b4a59687a6b5c4d3e2f1098a7b6c5d4e3f2019a8b7c6d5e4f3021a9b8",
-  "pubkey": "ee1d336e13779e4d4c527b988429d96de16088f958cbf6c074676ac9cfd9c958",
-  "created_at": 1753195900,
-  "kind": 28934,
-  "tags": [
-    ["-"],
-    ["claim", "invite-code-from-operator"]
-  ],
-  "content": "",
-  "sig": "1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2"
-}
-```
+Eine Beitrittsanfrage ist ein ähnlich kleines Objekt, und bislang implementiert kein öffentliches Relay NIP-43, sodass es kein echtes kind-28934-Event zum Einbetten gibt; der Feldweg unten deckt ab, was es trägt.
 
 Der `pubkey` ist der Nutzer, der um Aufnahme bittet, und kind 28934 markiert das Event als Beitrittsanfrage. Sein `-`-Tag ist der [NIP-70](/de/topics/nip-70/)-Protected-Event-Marker und weist Relays an, das Event nur von seinem Autor anzunehmen. Ein `claim`-Tag trägt den out-of-band erhaltenen Einladungscode, und `created_at` muss innerhalb weniger Minuten um die aktuelle Zeit liegen, damit eine alte Anfrage nicht wiedergegeben werden kann. Relays beantworten den Claim mit einer `OK`-Nachricht, verwenden das NIP-42-Präfix `restricted:` für Fehler wie einen abgelaufenen oder ungültigen Code, aktualisieren die kind:13534-Liste und können ein kind:8000-Add-Member-Event veröffentlichen. Mitgliedschaft wird bewusst nicht aus einem einzelnen Event abgeleitet: Die Spec behandelt die vom Relay signierte Liste als eine Eingabe, und ein Client sollte sowohl kind:13534 des Relays als auch die eigenen Events des Mitglieds heranziehen, um dessen aktuellen Mitgliedschaftsstatus zu bestimmen. Clients dürfen Join-, Invite- oder Leave-Anfragen nur an Relays senden, die dieses NIP im Abschnitt `supported_nips` ihres NIP-11-Dokuments ausweisen; [nostreams PR #676](https://github.com/Cameri/nostream/pull/676) ist die Relay-seitige Maschinerie, die aus diesen Request-Kinds tatsächliche Mitgliedschaftsänderungen macht.
 

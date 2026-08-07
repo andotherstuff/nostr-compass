@@ -150,22 +150,7 @@ TypeScript relay 实现 [nostream](https://github.com/Cameri/nostream) 本周合
 
 [NIP-42](/zh/topics/nip-42/) 回答一个问题：这条连接上是谁？想要门控读取或写入的 relay 会发送一条携带 challenge 字符串的 `AUTH` 消息，可以在连接建立时发送，也可以在请求需要认证时按需发送。客户端以自己的 `AUTH` 消息回复，其中包含一个签名的临时 event，kind 22242，relay 则以 `OK` 消息作答，就如同这个认证 event 是一次普通写入。认证在连接存续期间保持有效。一系列 `AUTH` 消息可以在一条连接上认证多个 pubkey。
 
-签名的认证 event 如下所示：
-
-```json
-{
-  "id": "4ef6f2c0b1a84c9a3d0f9c58e2a1b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0",
-  "pubkey": "c308e1f882c1f1dff2a43d4294239ddeec04e575f2d1aad1fa21ea7684e61fb5",
-  "created_at": 1753195800,
-  "kind": 22242,
-  "tags": [
-    ["relay", "wss://relay.example.com/"],
-    ["challenge", "challengestringhere"]
-  ],
-  "content": "",
-  "sig": "8b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1"
-}
-```
+签名的认证 event 是一个紧凑的对象：一个 `pubkey`、一个 `created_at`、kind 22242、一个 `relay` 标签、一个 `challenge` 标签、空的 `content`，以及对该 event 的 `id` 的 `sig`。由于 kind 22242 是临时的——中继绝不能存储或广播它——因此不存在可嵌入的已发布示例；下面的字段说明涵盖了它所携带的内容。
 
 `pubkey` 是被证明的身份，因为 relay 会根据它验证 event `id` 上的 `sig`。`kind` 22242 位于临时范围：该 event 是连接级凭据，relay 绝不能存储它或将其广播给其他客户端。`relay` tag 将签名绑定到一个 relay URL，使被截获的认证 event 无法对另一个 relay 重放；`challenge` tag 将其绑定到 relay 在这条连接上签发的特定挑战字符串，阻止被截获的认证在之后的连接上重放。`created_at` 必须接近当前时间，大致在十分钟窗口之内，因此陈旧的认证 event 会自行过期。`content` 字段为空；没有任何内容被发布。
 
@@ -175,22 +160,7 @@ TypeScript relay 实现 [nostream](https://github.com/Cameri/nostream) 本周合
 
 [NIP-43](/zh/topics/nip-43/) 回答后续问题：既然 relay 知道你是谁了，你被允许做什么？NIP-42 是在一条活跃连接上的握手，NIP-43 则是一组描述成员资格状态并让用户请求变更它的已发布 event。在 relay 一侧，由 relay 的 [NIP-11](/zh/topics/nip-11/) `self` 字段中的 pubkey 签名的 kind 13534 event，为每个 pubkey 列出一个 `member` tag，并可选地带有指向以 kind 33534 发布的角色定义的角色参数。Kind 8000 宣告一名成员被加入，kind 8001 宣告一次移除，两者都由同一把 relay 密钥签名，并以 `p` tag 标明受影响的成员。在用户一侧，kind 28934 是携带 `claim` tag 中邀请码的加入请求，kind 28935 是用户请求 claim 时 relay 即时生成的临时邀请码 event，kind 28936 是退出请求。
 
-一个加入请求如下所示：
-
-```json
-{
-  "id": "9f0e1d2c3b4a59687a6b5c4d3e2f1098a7b6c5d4e3f2019a8b7c6d5e4f3021a9b8",
-  "pubkey": "ee1d336e13779e4d4c527b988429d96de16088f958cbf6c074676ac9cfd9c958",
-  "created_at": 1753195900,
-  "kind": 28934,
-  "tags": [
-    ["-"],
-    ["claim", "invite-code-from-operator"]
-  ],
-  "content": "",
-  "sig": "1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2"
-}
-```
+加入请求也是一个类似的小对象，而且目前还没有任何公共中继实现 NIP-43，因此没有可嵌入的真实 kind 28934 event；下面的字段说明涵盖了它所携带的内容。
 
 `pubkey` 是请求准入的用户，kind 28934 将该 event 标记为加入请求。`-` tag 是 [NIP-70](/zh/topics/nip-70/) 受保护 event 标记，告诉 relay 只接受作者本人提交的该 event。`claim` tag 承载在带外获得的邀请码，`created_at` 必须是现在（前后几分钟之内），因此旧请求无法被重放。relay 以 `OK` 消息回应 claim，对过期或无效邀请码等失败情况复用 NIP-42 的 `restricted:` 前缀，更新 kind 13534 列表，并可发布 kind 8000 的加入成员 event。成员资格被刻意设计为不从单个 event 推导：规范将 relay 签名的列表视为一项输入，客户端在判断某人当前是否是成员时应同时参考 relay 的 kind 13534 和成员自己的 event。客户端只能向在其 NIP-11 文档的 `supported_nips` 部分宣告支持该 NIP 的 relay 发送加入、邀请或退出请求，而 [nostream 的 PR #676](https://github.com/Cameri/nostream/pull/676) 正是将这些请求 kind 转化为实际成员资格变更的 relay 侧机制。
 

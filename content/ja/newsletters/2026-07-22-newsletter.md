@@ -149,22 +149,7 @@ TypeScript relay 実装の [nostream](https://github.com/Cameri/nostream) は今
 
 [NIP-42](/ja/topics/nip-42/) は 1 つの問いに答えます。この接続にいるのは誰か? 読み取りや書き込みをゲートしたい relay は、接続時またはリクエストが認証を必要とする際にオンデマンドで、チャレンジ文字列を運ぶ `AUTH` メッセージを送信します。クライアントは署名済みの一時 event、kind 22242 を含む自身の `AUTH` メッセージで応答し、relay は認証 event が通常の書き込みであるかのように正確に `OK` メッセージで応えます。認証されたセッションは接続の間保持され、クライアントは一連の `AUTH` メッセージで 1 つの接続上で複数の pubkey を認証でき、それぞれを relay は認証済みとして扱います。
 
-署名済みの認証 event は次のようになります:
-
-```json
-{
-  "id": "4ef6f2c0b1a84c9a3d0f9c58e2a1b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0",
-  "pubkey": "c308e1f882c1f1dff2a43d4294239ddeec04e575f2d1aad1fa21ea7684e61fb5",
-  "created_at": 1753195800,
-  "kind": 22242,
-  "tags": [
-    ["relay", "wss://relay.example.com/"],
-    ["challenge", "challengestringhere"]
-  ],
-  "content": "",
-  "sig": "8b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1"
-}
-```
+署名済みの認証 event はコンパクトなオブジェクトです: `pubkey`、`created_at`、kind 22242、`relay` タグ、`challenge` タグ、空の `content`、そして event の `id` に対する `sig` です。kind 22242 はエフェメラル — リレーは保存もブロードキャストもしてはならない — ため、埋め込める公開済みの例は存在しません。以下のフィールド解説がその内容をカバーします。
 
 `pubkey` は証明されるアイデンティティで、relay は event `id` に対する `sig` をそれに照らして検証します。kind 22242 は一時的な範囲にあり、この event は接続レベルのクレデンシャルであり、relay はそれを保存したり他のクライアントにブロードキャストしたりしてはいけません。`relay` tag は署名を 1 つの relay URL に束縛し、キャプチャされた認証 event が別の relay に対してリプレイされるのを防ぎ、`challenge` tag はそれをこの接続で relay が発行した特定のチャレンジ文字列に束縛し、後の接続でのキャプチャされた認証のリプレイをブロックします。`created_at` は現在時刻に近く、おおよそ 10 分のウィンドウ内でなければならず、古い認証 event は自然に失効します。`content` フィールドは空で、何も公開されていません。
 
@@ -174,22 +159,7 @@ TypeScript relay 実装の [nostream](https://github.com/Cameri/nostream) は今
 
 [NIP-43](/ja/topics/nip-43/) は続く問いに答えます。relay があなたが誰かを知った今、あなたは何を許されているか? NIP-42 がライブ接続上のハンドシェイクであるのに対し、NIP-43 はメンバーシップ状態を記述し、ユーザーがその変更を求めることを可能にする公開 event のセットです。relay 側では、relay の [NIP-11](/ja/topics/nip-11/) `self` フィールドの pubkey によって署名された kind 13534 event が、pubkey ごとに 1 つの `member` tag をリストし、オプションのロール引数は kind 33534 として公開されたロール定義を指します。kind 8000 はメンバーの追加を、kind 8001 は削除を告知し、どちらも影響を受けるメンバーの `p` tag とともに同じ relay 鍵で署名されます。ユーザー側では、kind 28934 は `claim` tag に招待コードを運ぶ参加リクエスト、kind 28935 はユーザーがクレームを要求したときに relay がその場で生成する一時的な招待コード event、kind 28936 は脱退リクエストです。
 
-参加リクエストは次のようになります:
-
-```json
-{
-  "id": "9f0e1d2c3b4a59687a6b5c4d3e2f1098a7b6c5d4e3f2019a8b7c6d5e4f3021a9b8",
-  "pubkey": "ee1d336e13779e4d4c527b988429d96de16088f958cbf6c074676ac9cfd9c958",
-  "created_at": 1753195900,
-  "kind": 28934,
-  "tags": [
-    ["-"],
-    ["claim", "invite-code-from-operator"]
-  ],
-  "content": "",
-  "sig": "1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2"
-}
-```
+参加リクエストも同様に小さなオブジェクトですが、NIP-43 を実装する公開リレーはまだないため、埋め込める実際の kind 28934 event は存在しません。以下のフィールド解説がその内容をカバーします。
 
 `pubkey` は参加を求めるユーザーで、kind 28934 がこの event を参加リクエストとして示します。`-` tag は [NIP-70](/ja/topics/nip-70/) の保護された event マーカーで、relay にこの event を作者以外から受け付けないよう伝えます。`claim` tag はユーザーが帯域外で入手した招待コードを運び、`created_at` は現在時刻から数分以内でなければならず、古いリクエストはリプレイできません。relay はクレームに `OK` メッセージで応答し、期限切れや無効なコードなどの失敗には NIP-42 の `restricted:` プレフィックスを再利用し、その後 kind 13534 リストを更新し、kind 8000 のメンバー追加 event を公開することができます。メンバーシップは意図的に単一の event から導出されません。仕様は relay 署名のリストを網羅的または権威的と見なすべきではないと述べ、誰かが現在メンバーかどうかを判断するクライアントは relay の kind 13534 とメンバー自身の event の両方を参照すべきです。クライアントは参加、招待、脱退リクエストを、NIP-11 ドキュメントの `supported_nips` セクションでこの NIP を広告する relay にのみ送信しなければならず、[nostream の PR #676](https://github.com/Cameri/nostream/pull/676) はこれらのリクエスト kind を実際のメンバーシップ変更に変える relay 側の仕組みです。
 

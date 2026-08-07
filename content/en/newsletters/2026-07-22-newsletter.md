@@ -149,22 +149,7 @@ Running a relay that is not open to everyone used to mean inventing everything y
 
 [NIP-42](/en/topics/nip-42/) answers one question: who is on this connection? A relay that wants to gate reads or writes sends an `AUTH` message carrying a challenge string, at connect time or on demand when a request needs authentication. A client replies with its own `AUTH` message containing a signed ephemeral event, kind 22242, and the relay answers with an `OK` message exactly as if the auth event were an ordinary write. Authentication then holds for the duration of the connection. A sequence of `AUTH` messages can authenticate several pubkeys on one connection.
 
-Here is the signed auth event:
-
-```json
-{
-  "id": "4ef6f2c0b1a84c9a3d0f9c58e2a1b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0",
-  "pubkey": "c308e1f882c1f1dff2a43d4294239ddeec04e575f2d1aad1fa21ea7684e61fb5",
-  "created_at": 1753195800,
-  "kind": 22242,
-  "tags": [
-    ["relay", "wss://relay.example.com/"],
-    ["challenge", "challengestringhere"]
-  ],
-  "content": "",
-  "sig": "8b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1"
-}
-```
+The signed auth event is a compact object: a `pubkey`, a `created_at`, kind 22242, a `relay` tag, a `challenge` tag, empty `content`, and a `sig` over the event `id`. Because kind 22242 is ephemeral — relays must never store or broadcast it — no published example exists to embed; the field walk below covers what it carries.
 
 The `pubkey` is the identity being proved, since the relay verifies the `sig` over the event `id` against it. Kind 22242 sits in the ephemeral range: the event is a connection-level credential, and relays must never store it or broadcast it to other clients. A `relay` tag binds the signature to one relay URL so a captured auth event cannot be replayed against a different relay, while the `challenge` tag binds it to the specific challenge string issued on this connection and blocks later replay. Its `created_at` must be close to the current time, within roughly a ten-minute window, so a stale auth event expires on its own. An empty `content` field confirms that nothing is being published.
 
@@ -174,22 +159,7 @@ The spec also defines two machine-readable prefixes that make gating visible to 
 
 [NIP-43](/en/topics/nip-43/) answers the follow-up question: now that the relay knows who you are, what are you allowed to do? Where NIP-42 is a handshake on a live connection, NIP-43 is a set of published events that describe membership state and let users ask to change it. On the relay side, a kind 13534 event, signed by the pubkey in the relay's [NIP-11](/en/topics/nip-11/) `self` field, lists one `member` tag per pubkey, with optional role arguments pointing at role definitions published as kind 33534. Kind 8000 announces a member being added and kind 8001 announces a removal, both signed by the same relay key with a `p` tag for the affected member. On the user side, kind 28934 is a join request carrying an invite code in a `claim` tag, kind 28935 is an ephemeral invite-code event the relay generates on the fly when a user requests a claim, and kind 28936 is a leave request.
 
-A join request looks like this:
-
-```json
-{
-  "id": "9f0e1d2c3b4a59687a6b5c4d3e2f1098a7b6c5d4e3f2019a8b7c6d5e4f3021a9b8",
-  "pubkey": "ee1d336e13779e4d4c527b988429d96de16088f958cbf6c074676ac9cfd9c958",
-  "created_at": 1753195900,
-  "kind": 28934,
-  "tags": [
-    ["-"],
-    ["claim", "invite-code-from-operator"]
-  ],
-  "content": "",
-  "sig": "1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2"
-}
-```
+A join request is a similarly small object, and no public relay implements NIP-43 yet, so there is no real kind 28934 event to embed; the field walk below covers what it carries.
 
 The `pubkey` is the user asking for admission, and kind 28934 marks the event as a join request. Its `-` tag is the [NIP-70](/en/topics/nip-70/) protected-event marker, telling relays to accept the event only from its author. A `claim` tag carries the invite code obtained out of band, and `created_at` must be now, plus or minus a few minutes, so an old request cannot be replayed. Relays answer the claim with an `OK` message, reuse the NIP-42 `restricted:` prefix for failures such as an expired or invalid code, update the kind 13534 list, and may publish a kind 8000 add-member event. Membership is deliberately not derived from a single event: the spec treats the relay-signed list as one input, and a client deciding whether someone is currently a member should consult both the relay's kind 13534 and the member's own events. Clients must only send join, invite, or leave requests to relays that advertise this NIP in the `supported_nips` section of their NIP-11 document, and [nostream's PR #676](https://github.com/Cameri/nostream/pull/676) is the relay-side machinery that turns those request kinds into actual membership changes.
 
