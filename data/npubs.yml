@@ -1074,13 +1074,56 @@ SafeBox:
     - https://github.com/trbouma
     - https://njump.me/nevent1qgsqddupn4l3cl65wggcyehd009g0pwuatsfudh28f90vewx68vrylqpp4mhxue69uhkummn9ekx7mqqyqtfkymmr77cjn39ajgehndtykz665tyj3gvckuz3y2n9s0mfsugsdheaza
 
+# Newsletter #35 additions
+Safebox Acorn:
+  npub: npub1q6mcr8tlr3l4gus3sfnw6772s7zae6hqncmw5wj27ejud5wcxf7q0nx7d5
+  identity_type: maintainer
+  person: Tim Bouma
+  mention_only: true
+  evidence:
+    - https://github.com/trbouma/safebox-acorn
+    - https://github.com/trbouma
+    - https://getsafebox.app/.well-known/nostr.json?name=trbouma
+
+Divine Mobile:
+  npub: npub1wmr34t36fy03m8hvgl96zl3znndyzyaqhwmwdtshwmtkg03fetaqhjg240
+  identity_type: maintainer
+  person: rabble
+  evidence:
+    - https://github.com/divinevideo/divine-mobile
+    - https://nos.social/.well-known/nostr.json?name=rabble
+
+cln-nip47:
+  npub: npub1kuemsj7xryp0uje36dr53scn9mxxh8ema90hw9snu46633n9n2hqp3drjt
+  identity_type: maintainer
+  person: daywalker
+  evidence:
+    - https://github.com/daywalker90/cln-nip47
+    - https://github.com/daywalker90
+    - https://noserver4u.de/.well-known/nostr.json?name=daywalker
+
+nostr-double-ratchet TypeScript:
+  npub: npub1xdhnr9mrv47kkrn95k6cwecearydeh8e895990n3acntwvmgk2dsdeeycm
+  identity_type: project
+  evidence:
+    - https://github.com/irislib/nostr-double-ratchet
+
+nostr-wot-extension:
+  npub: npub1gxdhmu9swqduwhr6zptjy4ya693zp3ql28nemy4hd97kuufyrqdqwe5zfk
+  identity_type: maintainer
+  person: Leon Acosta
+  evidence:
+    - https://github.com/nostr-wot/nostr-wot-extension
+    - https://nostr-wot.com
+    - https://hodl.ar/.well-known/nostr.json?name=leon
+
 # Newsletter #34 additions, round 2 (NIP-05 verified 2026-08-06)
 Chama:
   npub: npub1m7nypkfk259h5h0dqwj9px0pqq7nz0cs7gjdhr7g793wspskeavqrljsln
   identity_type: project
   evidence:
     - https://github.com/jesuspirate/chama
-    - NIP-05 chama@primal.net verified 2026-08-06
+    - https://primal.net/.well-known/nostr.json?name=chama
 
 mineracks:
   npub: npub12r5zunqwnccf8dhy5jvx6wspynxrruy5t4yr4n7jqvxzqykwc7nqqe8g4s
@@ -1088,7 +1131,7 @@ mineracks:
   person: Piers
   evidence:
     - https://github.com/mineracks/mineracks-signer
-    - NIP-05 piers@mineracks.com verified 2026-08-06
+    - https://mineracks.com/.well-known/nostr.json?name=piers
 
 mineracks signer:
   npub: npub12r5zunqwnccf8dhy5jvx6wspynxrruy5t4yr4n7jqvxzqykwc7nqqe8g4s
@@ -1103,7 +1146,7 @@ Nostr Components:
   person: saiy2k
   evidence:
     - https://github.com/saiy2k/nostr-components
-    - NIP-05 saiy2k@iris.to verified 2026-08-06
+    - https://iris.to/.well-known/nostr.json?name=saiy2k
 
 saiy2k dev:
   npub: npub1qsvv5ttv6mrlh38q8ydmw3gzwq360mdu8re2vr7rk68sqmhmsh4svhsft3
@@ -1118,7 +1161,6 @@ nosvelte:
   person: akiomik
   evidence:
     - https://github.com/akiomik/nosvelte
-    - npub provided directly by user 2026-08-06
 
 akiomik dev:
   npub: npub12gtrhfv04634qsyfm6l3m7a06l04qta6yefkuwezwcw6z4qe5nvqddy5qj
@@ -1133,4 +1175,4 @@ Alex Gleason dev:
   person: Alex Gleason
   evidence:
     - https://github.com/soapbox-pub/ditto
-    - NIP-05 alex@gleasonator.com verified 2026-08-06
+    - https://gleasonator.com/.well-known/nostr.json?name=alex

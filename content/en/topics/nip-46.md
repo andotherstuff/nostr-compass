@@ -58,6 +58,7 @@ The `switch_relays` method exists so the signer can move the session to a differ
 - [Newsletter #31: n_cord v1.1 adds NSEC Bunker support](/en/newsletters/2026-07-15-newsletter/#n_cord-v11-adds-nsec-bunker-support)
 - [Newsletter #32: News](/en/newsletters/2026-07-22-newsletter/#zapstore-110-makes-the-device-key-portable-and-adds-background-auto-updates)
 - [Newsletter #33: Tagged releases](/en/newsletters/2026-07-29-newsletter/#tagged-releases)
+- [Newsletter #35: Tagged releases](/en/newsletters/2026-08-12-newsletter/#tagged-releases)
 
 **See also:**
 - [NIP-55: Android Signer](/en/topics/nip-55/)

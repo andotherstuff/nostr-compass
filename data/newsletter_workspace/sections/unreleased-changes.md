@@ -1,27 +1,17 @@
-## Unreleased Changes
+## In Development
 
-### NMP ties relay admission to declarations and broadens group queries
+### nostrord keeps group muting synchronized between devices
 
-NMP [PR #1254](https://github.com/pablof7z/nmp/pull/1254) makes relay admission follow the owner of the declaration that authorizes it, keeping the permission decision attached to signed Nostr state. [PR #1255](https://github.com/pablof7z/nmp/pull/1255) generalizes [NIP-29](/en/topics/nip-29/) group queries instead of assuming one narrow lookup shape. Both changes are merged but have not yet appeared in a tagged release.
+[nostrord](https://github.com/nostrord/nostrord) is a cross-platform client for relay-managed communities. [PR #250](https://github.com/nostrord/nostrord/pull/250) stores each account's per-group mute choices in a self-encrypted [NIP-78](/en/topics/nip-78/) (application-specific data) kind `30078` event, so a setting made on one device can follow the user to another without revealing the group list to the relay. The replaceable record uses newest-event ordering, listens for live changes, and rolls the interface back when signing or publication fails instead of leaving local state out of sync. Muted groups also stop contributing visible unread totals while retaining their unread position for the next visit.
 
-### Mosaico derives managed-group identity from relay records
+### Amethyst completes Concord's invite lifecycle
 
-Mosaico [PR #758](https://github.com/pablof7z/mosaico/pull/758) derives a managed group's identity from the relay that hosts its authoritative records. [PR #757](https://github.com/pablof7z/mosaico/pull/757) observes the group's published record when resolving administration state. This keeps two similarly named groups on different relays distinct and gives clients a relay-backed source for their management metadata.
+[Amethyst](https://github.com/vitorpamplona/amethyst) is an Android Nostr client whose encrypted-community support implements the Concord protocol. [PR #3888](https://github.com/vitorpamplona/amethyst/pull/3888) lets invite links survive a community refounding by reissuing their bundles at the same addressable coordinates, while a ban check prevents a removed member from using that recovery path. It also implements the encrypted CORD-05 invite list on both the app and `amy` command-line client, adds per-link revocation tombstones, and requires relay confirmation before deleting the only stored signing key that can retire a link. The same work gives `amy` the control-key delivery, refounding, rekeying, and stranded-member recovery paths needed to follow later community epochs.
 
-### Divine isolates slow relays during multi-relay queries
+### Buzz carries each community's appearance across desktop and mobile
 
-Divine [PR #6673](https://github.com/divinevideo/divine-mobile/pull/6673) gives each relay query its own timeout instead of letting one stalled connection consume the timeout budget for an entire request. Results from responsive relays can therefore arrive while the slow endpoint is abandoned independently. The change improves retrieval without treating one relay as authoritative for the combined result.
+[Buzz](https://github.com/block/buzz) is a Nostr-based community workspace with desktop and mobile clients. Merged desktop [PR #3653](https://github.com/block/buzz/pull/3653) and mobile [PR #3767](https://github.com/block/buzz/pull/3767) store each community's theme, accent, and system-mode choice as an encrypted NIP-78 record on that community's relay. Both clients share the same versioned payload and keep identity-scoped local caches, so changing communities or accounts cannot apply the wrong appearance while the relay is unavailable. Replacement ordering, guarded writes, and resubscription after a closed connection let the two clients converge again after reconnecting.
 
-### rust-nostr hardens encryption, hashes, and reconciliation
+[Buzz Desktop 0.5.10](https://github.com/block/buzz/releases/tag/desktop-v0.5.10) followed before the issue cutoff with a performance and reliability pass. It removes regressions introduced after 0.5.9, accelerates channel loading, bounds initial timeline retention, coalesces read-state persistence, preserves fresh channel timelines, and stops the relay ingest worker from crashing on reactions to project events. It also adds sending a thread message to a channel and narrows desktop search to the intended scope.
 
-rust-nostr [PR #1421](https://github.com/rust-nostr/nostr/pull/1421) reduces allocation in its [NIP-44](/en/topics/nip-44/) encryption path, while [PR #1423](https://github.com/rust-nostr/nostr/pull/1423) introduces typed hashes that make incompatible digest values harder to mix accidentally. [Commit 21e31c2](https://github.com/rust-nostr/nostr/commit/21e31c28da3dfadedb5fa6e58c712647f16e5f69) prevents a malformed [NIP-77](/en/topics/nip-77/) Negentropy message from disconnecting the local relay. The merged work tightens both encrypted payload handling and set-reconciliation failure behavior before the next release.
-
-### Zeus serializes NWC payments before charging spending budgets
-
-Zeus [PR #4305](https://github.com/ZeusLN/zeus/pull/4305) counts pending payments against a [NIP-47](/en/topics/nip-47/) Nostr Wallet Connect budget instead of waiting for settlement. [PR #4303](https://github.com/ZeusLN/zeus/pull/4303) serializes payment handling so concurrent requests cannot race through the same authorization limit. The merged pair closes a budget-enforcement gap on the wallet's Nostr control surface.
-
-### Nostr Components shares one relay connection attempt
-
-Nostr Components [PR #105](https://github.com/saiy2k/nostr-components/pull/105) lets components mounted at the same time share an in-flight relay connection attempt. Each consumer still receives the resulting connection, but concurrent mounts no longer open duplicate sockets while the first handshake is pending. The change reduces avoidable relay load in applications assembled from several independent components.
-
-GATE: PASS
+GATE: PASS (final-delta claims, continuity, 73/73 live links, prose/style, topic-backlink, and production-build gates passed at 2026-08-12T15:45Z)

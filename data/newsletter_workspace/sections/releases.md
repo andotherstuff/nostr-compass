@@ -1,33 +1,31 @@
-## Tagged releases
+## Releases
 
+### Mostro Core 0.14.2 changes the encrypted chat envelope
 
-### Amber v6.3.0 groups bunker signing approvals and adds Expert List support
+[Mostro Core](https://github.com/MostroP2P/mostro-core) is the Rust library of shared types and peer-to-peer functions used by the Mostro exchange daemon and its clients. [Version 0.14.2](https://github.com/MostroP2P/mostro-core/releases/tag/v0.14.2) replaces gift-wrapped chat messages with kind 14 envelopes that use separate conversation-encryption and signing keys derived from the peers' shared secret. The new reader validates the author, signature, recipient, timestamp, and content size, while legacy gift-wrap helpers remain available so clients can read both formats during migration.
 
-[Amber](https://github.com/greenart7c3/Amber) is an Android [NIP-46](/en/topics/nip-46/) remote signer. [v6.3.0](https://github.com/greenart7c3/Amber/releases/tag/v6.3.0) adds grouped multi-request approval for bunker signing so a batch of pending signature requests can be reviewed and approved together instead of one prompt at a time. The release also adds support for Expert List (kind 12022) and Expert Pack (kind 32022) events, a privacy mode that hides sensitive content on screen, and a change to fetch an account's [NIP-65](/en/topics/nip-65/) relay list before its profile metadata so signer flows start from the user's actual relay set. This follows the v6.2.x line covered in the 2026-07-08 issue.
+### LaWallet NWC 2.3.0 adds Nostr notifications and zap receipts
 
-### Nostrord v2.2.0 follow-up
+[LaWallet NWC](https://github.com/lawalletio/lawallet-nwc) is an open-source Lightning Address platform that connects wallets through [Nostr Wallet Connect](/en/topics/nip-47/). [Version 2.3.0](https://github.com/lawalletio/lawallet-nwc/releases/tag/v2.3.0) lets each wallet send received and forwarded notifications as configurable Nostr events, including a recipient `p` tag, selected relays, templated content, and optional [NIP-44](/en/topics/nip-44/) encryption; retries reuse the same signed event ID. It also accepts zap requests and publishes signed [NIP-57](/en/topics/nip-57/) kind 9735 receipts after settlement, while a new address capability view shows whether the resolved address supports NIP-05, NIP-57, and related Lightning Address protocols.
 
-With [v2.3.0](#nostrord-v230-ships-group-moderation-mute-lists-and-onion-relays) leading this week's News section, the tagged-release slot notes only what the lead does not: v2.3.0 follows v2.2.0's DM controls covered in #31, making this the client's second consecutive weekly release.
+### nostr-double-ratchet TypeScript 0.0.166 binds public invites to session keys
 
-### Wisp v1.2.0 adds a multi-account switcher and collapsible reply threads
+[nostr-double-ratchet](https://github.com/irislib/nostr-double-ratchet) provides TypeScript and Rust primitives for end-to-end encrypted direct and group messaging over Nostr relays. [TypeScript 0.0.166](https://github.com/irislib/nostr-double-ratchet/releases/tag/nostr-double-ratchet-ts-v0.0.166) requires an invite response to prove ownership of its session key, preventing a reusable public invite from binding one Nostr identity to another party's session. The release also rejects malformed rumor fields and tightens payload validation; existing sessions continue to work, but an updated inviter rejects proofless responses from older invitees.
 
-[Wisp](https://github.com/barrydeen/wisp) is a privacy-oriented Nostr client with built-in wallet support. [v1.2.0](https://github.com/barrydeen/wisp/releases/tag/v1.2.0) adds a multi-account switcher for moving between profiles without re-login, collapsible reply threads for long conversations, stripping of tracking parameters from note links before they open, and a wallet transaction-history view. The release follows the Wisp update covered in the 2026-07-08 issue.
+### cln-nip47 0.2.0 expands and isolates NWC requests
 
-### ClipRelay v0.1.2 (new project) syncs clipboards across devices over Nostr relays
+[cln-nip47](https://github.com/daywalker90/cln-nip47) is a Core Lightning plugin that exposes a node to wallets through [Nostr Wallet Connect](/en/topics/nip-47/). [Version 0.2.0](https://github.com/daywalker90/cln-nip47/releases/tag/v0.2.0) adds NWC methods to create, cancel, and settle hold invoices plus a `hold_invoice_accepted` notification, and it advertises the method set that the connected node actually supports. Transaction-list responses now stop at 500 entries and about 128 kB, request events are deduplicated by event ID, and one client's failed notification no longer prevents delivery to other clients. The release also removes the two multi-payment methods that are no longer part of the NWC specification.
 
-[ClipRelay](https://github.com/tajava2006/cliprelay) is a newly launched cross-platform app (Android, macOS, Windows, Linux) that syncs your clipboard across your own devices: copy on one machine, paste on another. All traffic moves through Nostr relays as [NIP-44](/en/topics/nip-44/) encrypted events addressed to yourself, so there is no server to run and no account to create; the private key stays outside the app. [v0.1.2](https://github.com/tajava2006/cliprelay/releases) fixes a subtle sync failure where a machine waking from sleep kept publishing but silently stopped receiving, and tightens the relay-status indicators that previously reported dead subscriptions as healthy. This is ClipRelay's first appearance in the newsletter.
+### ClipRelay 0.1.3 restores relay and signer connections after idle periods
 
-### Sonar v0.1-alpha.11 continues the alpha line
+[ClipRelay](https://github.com/tajava2006/cliprelay) synchronizes a user's clipboard between devices through Nostr relays, encrypting the content to the same identity with [NIP-44](/en/topics/nip-44/). The matching [desktop](https://github.com/tajava2006/cliprelay/releases/tag/desktop/v0.1.3) and [Android](https://github.com/tajava2006/cliprelay/releases/tag/android/v0.1.3) 0.1.3 releases add a text box for sending typed text directly to another device's clipboard. They also test liveness with real relay round trips after idle periods, escalating from resubscription to socket replacement and a rebuilt connection pool, while stalled [NIP-46](/en/topics/nip-46/) signer calls now time out and rebuild automatically.
 
-[Sonar](https://github.com/hedwig-corp/bitchat-to-sonar), last week's lead story, cut [v0.1-alpha.11](https://github.com/hedwig-corp/bitchat-to-sonar/releases/tag/v0.1-alpha.11) with work on the Rust mesh link engine, BLE and mesh fixes, and relay diagnostics; an incremental follow-up to the alpha line covered in #31.
+### NoorNote 1.3.2 moves article discovery into the social graph
 
-### The week's smaller launches
+[NoorNote](https://github.com/77elements/noornote) is a Nostr client for social posts, encrypted messages, long-form articles, and other event types across web, desktop, and Android. [Version 1.3.2](https://github.com/77elements/noornote/releases/tag/v1.3.2) replaces its flat global article feed with discovery drawn from first-, second-, and third-degree contacts, giving readers an article timeline rooted in their follow graph. It also collapses bursts of replayed direct messages from unknown senders into one rolling notification instead of producing a stack of toasts as relay history arrives.
 
-Three smaller releases deserve one line each: [noscall v0.6.0](https://github.com/sanah9/noscall/releases/tag/v0.6.0-release), the Nostr calling app, migrated its push notifications to UnifiedPush, keeping call signaling off Google's push infrastructure; [nostr-vpn v4.1.1](https://github.com/mmalmi/nostr-vpn/releases/tag/v4.1.1), a mesh VPN that uses Nostr for signaling, shipped an update on Zapstore; and two new apps debuted there as well: StableKraft, a Nostr-plus-Lightning music and podcast aggregator, and Hakari, an encrypted Nostr backup for a weight logger.
+### Bray 2.4.0 adds a compact remote-signing dialect
 
-### Amethyst lands v1.13.0 pre-release QA on napplet isolation and Concord authority
+[Bray](https://github.com/forgesworn/bray) is a Nostr MCP server that gives software agents and people tools for relay access, identity, publishing, and remote signing. [Version 2.4.0](https://github.com/forgesworn/bray/releases/tag/v2.4.0) accepts a signing request whose event is an object as well as the stringified form used by [NIP-46](/en/topics/nip-46/), and adds `sign_event_compact`, which returns only the event ID, signature, public key, and timestamp. That smaller request and response format reduces memory use for constrained hardware signers, while the standard `sign_event` flow remains unchanged and both dialects produce a signature over the received event's ID.
 
-[Amethyst](https://github.com/vitorpamplona/amethyst) merged 81 PRs this week ahead of its v1.13.0 release. [PR #3650](https://github.com/vitorpamplona/amethyst/pull/3650) is a pre-release QA pass covering napplet account isolation, Concord authority fixes, and around 30 other fixes, with further v1.13.0 prep PRs landing through 07-21. This continues #31's coverage of Amethyst's clean-room Concord client implementation, tightening the authority and isolation behavior of that work before it ships tagged.
-
-
-GATE: PASS
+GATE: PASS: seven approved tagged releases are present; all release links, complete primary notes, tag comparisons, and linked PR claims were verified, and every paragraph is limited to Nostr-facing behavior.
