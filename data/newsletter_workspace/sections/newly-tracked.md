@@ -16,4 +16,8 @@
 
 Three more launches are worth a mention this week. [echoes](https://github.com/Lwb89dev/echoes) is an offline-first, end-to-end encrypted notes app that syncs privately over Nostr. [Dispatch](https://github.com/freecritter/dispatch) is a local-first travel organizer where every save is [NIP-44](/en/topics/nip-44/)-encrypted and backed up over Nostr under a dedicated, unlinkable key, and its [v0.3.0](https://github.com/freecritter/dispatch) release adds Amber [NIP-55](/en/topics/nip-55/) login so the app never touches the user's private key directly. [Linky](https://github.com/hynek-jina/linky) combines Nostr contacts and DMs with Lightning and Cashu payments in a single progressive web app.
 
+### Pact brings mutually consented agent bonds to Nostr
+
+[Pact](https://github.com/bobodread876/pact), newly discovered this week, is an early-stage relationship layer for software agents built on MATE.md and a draft NIP-BD transport. Its signed, mutually consented bonds are held by the agents' own keys and can be published over Nostr, while private bonds use [NIP-59](/en/topics/nip-59/) gift wrapping. The monorepo includes an MCP server, TypeScript SDK, command-line client, self-hostable daemon, and web interface. Its latest repository activity predates this issue's weekly window, so this is a discovery note rather than a claim of a new release.
+
 GATE: PASS

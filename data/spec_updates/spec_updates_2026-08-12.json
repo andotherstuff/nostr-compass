@@ -1,0 +1,418 @@
+{
+  "generated_at": "2026-08-11T15:44:07.380169+00:00",
+  "window": {
+    "since": "2026-08-04T00:00:00Z",
+    "until": "2026-08-12T00:00:00Z"
+  },
+  "families": [
+    {
+      "id": "nip",
+      "name": "Nostr Implementation Possibilities (NIPs)",
+      "repo": "nostr-protocol/nips",
+      "status": "active",
+      "window": {
+        "since": "2026-08-04T00:00:00Z",
+        "until": "2026-08-12T00:00:00Z"
+      },
+      "commits": [
+        {
+          "sha": "656cecc7c0a815b6a2b218d3b5d6f078b3f4dbab",
+          "date": "2026-08-08T23:01:22Z",
+          "title": "nip29: add \"previous\" tag example.",
+          "url": "https://github.com/nostr-protocol/nips/commit/656cecc7c0a815b6a2b218d3b5d6f078b3f4dbab"
+        }
+      ],
+      "pull_requests": [
+        {
+          "number": 2434,
+          "title": "NIP-XX: Post-Quantum Identity Keys",
+          "state": "open",
+          "created_at": "2026-08-11T13:13:55Z",
+          "updated_at": "2026-08-11T14:12:55Z",
+          "merged_at": null,
+          "url": "https://github.com/nostr-protocol/nips/pull/2434"
+        },
+        {
+          "number": 1813,
+          "title": "Nostr Double Ratchet",
+          "state": "open",
+          "created_at": "2025-02-27T18:48:53Z",
+          "updated_at": "2026-08-10T20:20:33Z",
+          "merged_at": null,
+          "url": "https://github.com/nostr-protocol/nips/pull/1813"
+        },
+        {
+          "number": 2378,
+          "title": "NIP-90 & NIP-100: Sovereign Agent Protocol \u2014 Passports + Identity Network",
+          "state": "closed",
+          "created_at": "2026-06-11T17:50:17Z",
+          "updated_at": "2026-08-09T18:52:01Z",
+          "merged_at": null,
+          "url": "https://github.com/nostr-protocol/nips/pull/2378"
+        },
+        {
+          "number": 2303,
+          "title": "NIP-5D: nostr web applets",
+          "state": "open",
+          "created_at": "2026-04-05T20:55:25Z",
+          "updated_at": "2026-08-09T14:26:22Z",
+          "merged_at": null,
+          "url": "https://github.com/nostr-protocol/nips/pull/2303"
+        },
+        {
+          "number": 2433,
+          "title": "nip42: clarify auth-required vs restricted when a pubkey is missing",
+          "state": "closed",
+          "created_at": "2026-08-07T14:12:41Z",
+          "updated_at": "2026-08-07T16:47:42Z",
+          "merged_at": null,
+          "url": "https://github.com/nostr-protocol/nips/pull/2433"
+        },
+        {
+          "number": 2429,
+          "title": "NIP-XX: Gopherkind documents (kind 31436)",
+          "state": "open",
+          "created_at": "2026-08-03T11:53:43Z",
+          "updated_at": "2026-08-07T10:00:04Z",
+          "merged_at": null,
+          "url": "https://github.com/nostr-protocol/nips/pull/2429"
+        },
+        {
+          "number": 2431,
+          "title": "NIP-07: let clients pin the user key",
+          "state": "open",
+          "created_at": "2026-08-05T17:36:02Z",
+          "updated_at": "2026-08-05T19:45:59Z",
+          "merged_at": null,
+          "url": "https://github.com/nostr-protocol/nips/pull/2431"
+        },
+        {
+          "number": 2421,
+          "title": "Add BOLT12 zaps",
+          "state": "open",
+          "created_at": "2026-07-23T18:01:50Z",
+          "updated_at": "2026-08-04T23:40:18Z",
+          "merged_at": null,
+          "url": "https://github.com/nostr-protocol/nips/pull/2421"
+        },
+        {
+          "number": 2428,
+          "title": "NIP-171: Epoch-Ticketed Private Groups",
+          "state": "open",
+          "created_at": "2026-07-31T07:19:26Z",
+          "updated_at": "2026-08-04T18:37:32Z",
+          "merged_at": null,
+          "url": "https://github.com/nostr-protocol/nips/pull/2428"
+        },
+        {
+          "number": 1975,
+          "title": "Add NIP-XX: Nostr Internet Radio",
+          "state": "open",
+          "created_at": "2025-07-17T16:33:48Z",
+          "updated_at": "2026-08-04T16:29:52Z",
+          "merged_at": null,
+          "url": "https://github.com/nostr-protocol/nips/pull/1975"
+        }
+      ]
+    },
+    {
+      "id": "bud",
+      "name": "Blossom Upgrade Documents (BUDs)",
+      "repo": "hzrd149/blossom",
+      "status": "quiet",
+      "window": {
+        "since": "2026-08-04T00:00:00Z",
+        "until": "2026-08-12T00:00:00Z"
+      },
+      "commits": [],
+      "pull_requests": []
+    },
+    {
+      "id": "nap",
+      "name": "Napplet Application Proposals (NAPs)",
+      "repo": "napplet/naps",
+      "status": "active",
+      "window": {
+        "since": "2026-08-04T00:00:00Z",
+        "until": "2026-08-12T00:00:00Z"
+      },
+      "commits": [
+        {
+          "sha": "c0f7dd14460622fc3a9870ea57a538474cf776fa",
+          "date": "2026-08-07T23:35:11Z",
+          "title": "Update maintainer merge criteria in README (#96)",
+          "url": "https://github.com/napplet/naps/commit/c0f7dd14460622fc3a9870ea57a538474cf776fa"
+        }
+      ],
+      "pull_requests": [
+        {
+          "number": 91,
+          "title": "NAP-INTENT: Accept lifecycle-independent convention delivery",
+          "state": "open",
+          "created_at": "2026-07-23T14:54:02Z",
+          "updated_at": "2026-08-09T21:37:27Z",
+          "merged_at": null,
+          "url": "https://github.com/napplet/naps/pull/91"
+        },
+        {
+          "number": 96,
+          "title": "Update maintainer merge criteria in README",
+          "state": "merged",
+          "created_at": "2026-08-07T23:35:01Z",
+          "updated_at": "2026-08-07T23:35:11Z",
+          "merged_at": "2026-08-07T23:35:11Z",
+          "url": "https://github.com/napplet/naps/pull/96"
+        },
+        {
+          "number": 69,
+          "title": "NAP-COUNT: Define runtime-mediated filter counts",
+          "state": "open",
+          "created_at": "2026-06-23T03:04:04Z",
+          "updated_at": "2026-08-07T22:58:52Z",
+          "merged_at": null,
+          "url": "https://github.com/napplet/naps/pull/69"
+        },
+        {
+          "number": 68,
+          "title": "NAP-LISTS: Define safe NIP-51 list mutations",
+          "state": "open",
+          "created_at": "2026-06-22T15:33:05Z",
+          "updated_at": "2026-08-07T22:58:52Z",
+          "merged_at": null,
+          "url": "https://github.com/napplet/naps/pull/68"
+        },
+        {
+          "number": 67,
+          "title": "NAP-COMMON: Define common social actions",
+          "state": "open",
+          "created_at": "2026-06-22T00:35:19Z",
+          "updated_at": "2026-08-07T22:58:51Z",
+          "merged_at": null,
+          "url": "https://github.com/napplet/naps/pull/67"
+        },
+        {
+          "number": 62,
+          "title": "NAP-BLE: Define portable BLE GATT access",
+          "state": "open",
+          "created_at": "2026-06-21T15:42:12Z",
+          "updated_at": "2026-08-07T22:58:50Z",
+          "merged_at": null,
+          "url": "https://github.com/napplet/naps/pull/62"
+        },
+        {
+          "number": 61,
+          "title": "NAP-SERIAL: define portable serial access",
+          "state": "open",
+          "created_at": "2026-06-21T15:10:32Z",
+          "updated_at": "2026-08-07T22:58:50Z",
+          "merged_at": null,
+          "url": "https://github.com/napplet/naps/pull/61"
+        },
+        {
+          "number": 74,
+          "title": "NAP-DM: Define generic runtime direct messages",
+          "state": "open",
+          "created_at": "2026-06-26T12:11:05Z",
+          "updated_at": "2026-08-07T22:57:32Z",
+          "merged_at": null,
+          "url": "https://github.com/napplet/naps/pull/74"
+        },
+        {
+          "number": 80,
+          "title": "NAP-RESOURCE: Sandboxed resource fetching (https / blossom / htree / nostr / data)",
+          "state": "open",
+          "created_at": "2026-07-03T10:58:35Z",
+          "updated_at": "2026-08-07T22:57:21Z",
+          "merged_at": null,
+          "url": "https://github.com/napplet/naps/pull/80"
+        },
+        {
+          "number": 88,
+          "title": "NAP-FS: define policy-bound virtual filesystem access",
+          "state": "open",
+          "created_at": "2026-07-22T11:20:03Z",
+          "updated_at": "2026-08-07T22:56:55Z",
+          "merged_at": null,
+          "url": "https://github.com/napplet/naps/pull/88"
+        },
+        {
+          "number": 94,
+          "title": "NAP-CAPTURE: define shell-mediated microphone recording",
+          "state": "open",
+          "created_at": "2026-07-28T16:42:15Z",
+          "updated_at": "2026-08-07T12:27:45Z",
+          "merged_at": null,
+          "url": "https://github.com/napplet/naps/pull/94"
+        },
+        {
+          "number": 95,
+          "title": "NAP-CATALOG: Define runtime napplet discovery",
+          "state": "open",
+          "created_at": "2026-08-04T10:22:39Z",
+          "updated_at": "2026-08-04T10:22:39Z",
+          "merged_at": null,
+          "url": "https://github.com/napplet/naps/pull/95"
+        }
+      ]
+    },
+    {
+      "id": "marmot",
+      "name": "Marmot Improvement Proposals (MIPs)",
+      "repo": "marmot-protocol/marmot",
+      "status": "quiet",
+      "window": {
+        "since": "2026-08-04T00:00:00Z",
+        "until": "2026-08-12T00:00:00Z"
+      },
+      "commits": [],
+      "pull_requests": []
+    },
+    {
+      "id": "gamma",
+      "name": "Gamma Markets",
+      "repo": "GammaMarkets/market-spec",
+      "status": "quiet",
+      "window": {
+        "since": "2026-08-04T00:00:00Z",
+        "until": "2026-08-12T00:00:00Z"
+      },
+      "commits": [],
+      "pull_requests": []
+    },
+    {
+      "id": "concord",
+      "name": "Concord (CORD specs)",
+      "repo": "concord-protocol/concord",
+      "status": "active",
+      "window": {
+        "since": "2026-08-04T00:00:00Z",
+        "until": "2026-08-12T00:00:00Z"
+      },
+      "commits": [
+        {
+          "sha": "54be0c255bda556373219909ba485d3f5a3e87ff",
+          "date": "2026-08-06T23:34:54Z",
+          "title": "Merge pull request #15 from concord-protocol/control-key",
+          "url": "https://github.com/concord-protocol/concord/commit/54be0c255bda556373219909ba485d3f5a3e87ff"
+        },
+        {
+          "sha": "bbc67b6579174d19da1a0c50e741e1bdf000c693",
+          "date": "2026-08-06T22:34:20Z",
+          "title": "Review: control_root syncs in the Community List; staff bit list is normative",
+          "url": "https://github.com/concord-protocol/concord/commit/bbc67b6579174d19da1a0c50e741e1bdf000c693"
+        },
+        {
+          "sha": "96f0647d774bccfa383673c6f2f3588f7574abaa",
+          "date": "2026-08-06T05:12:08Z",
+          "title": "CORD-02 \u00a72: staff-held control_root write-gates the Control Plane",
+          "url": "https://github.com/concord-protocol/concord/commit/96f0647d774bccfa383673c6f2f3588f7574abaa"
+        },
+        {
+          "sha": "4efdd8096b86fa4646259b3f4c449a9254925e99",
+          "date": "2026-08-04T20:36:46Z",
+          "title": "Merge pull request #13 from concord-protocol/jskitty/pinning",
+          "url": "https://github.com/concord-protocol/concord/commit/4efdd8096b86fa4646259b3f4c449a9254925e99"
+        },
+        {
+          "sha": "475ebcc9dd8279e5fd168b6f89085124de747861",
+          "date": "2026-08-04T14:14:11Z",
+          "title": "Merge pull request #14 from concord-protocol/cord08",
+          "url": "https://github.com/concord-protocol/concord/commit/475ebcc9dd8279e5fd168b6f89085124de747861"
+        },
+        {
+          "sha": "93fbecf3b76915ac91c2e5bb925342d32338efdd",
+          "date": "2026-08-04T04:53:15Z",
+          "title": "Add CORD-08: Disappearing Messages",
+          "url": "https://github.com/concord-protocol/concord/commit/93fbecf3b76915ac91c2e5bb925342d32338efdd"
+        }
+      ],
+      "pull_requests": [
+        {
+          "number": 18,
+          "title": "Sharded Community List, with optimised content",
+          "state": "open",
+          "created_at": "2026-08-11T14:35:51Z",
+          "updated_at": "2026-08-11T14:35:51Z",
+          "merged_at": null,
+          "url": "https://github.com/concord-protocol/concord/pull/18"
+        },
+        {
+          "number": 16,
+          "title": "Add CORD-09: Blinded Mention Locators",
+          "state": "open",
+          "created_at": "2026-08-07T22:57:11Z",
+          "updated_at": "2026-08-10T00:21:01Z",
+          "merged_at": null,
+          "url": "https://github.com/concord-protocol/concord/pull/16"
+        },
+        {
+          "number": 17,
+          "title": "Add Community Signals (vsk 12) with the pause signal_id",
+          "state": "open",
+          "created_at": "2026-08-09T20:27:28Z",
+          "updated_at": "2026-08-09T20:27:28Z",
+          "merged_at": null,
+          "url": "https://github.com/concord-protocol/concord/pull/17"
+        },
+        {
+          "number": 15,
+          "title": "CORD-02 \u00a72: staff-held control_root write-gates the Control Plane",
+          "state": "merged",
+          "created_at": "2026-08-06T06:32:42Z",
+          "updated_at": "2026-08-07T00:06:08Z",
+          "merged_at": "2026-08-06T23:34:54Z",
+          "url": "https://github.com/concord-protocol/concord/pull/15"
+        },
+        {
+          "number": 12,
+          "title": "Draft split read/write planes",
+          "state": "closed",
+          "created_at": "2026-07-10T16:07:45Z",
+          "updated_at": "2026-08-06T23:51:06Z",
+          "merged_at": null,
+          "url": "https://github.com/concord-protocol/concord/pull/12"
+        },
+        {
+          "number": 14,
+          "title": "Add CORD-08: Disappearing Messages",
+          "state": "merged",
+          "created_at": "2026-08-04T05:02:07Z",
+          "updated_at": "2026-08-04T23:53:31Z",
+          "merged_at": "2026-08-04T14:14:11Z",
+          "url": "https://github.com/concord-protocol/concord/pull/14"
+        },
+        {
+          "number": 13,
+          "title": "CORD-04 \u00a77: provable, rotation-proof message pinning",
+          "state": "merged",
+          "created_at": "2026-08-03T21:32:26Z",
+          "updated_at": "2026-08-04T23:53:06Z",
+          "merged_at": "2026-08-04T20:36:47Z",
+          "url": "https://github.com/concord-protocol/concord/pull/13"
+        }
+      ]
+    },
+    {
+      "id": "nwc",
+      "name": "Nostr Wallet Connect",
+      "repo": "nostr-wallet-connect/nwc",
+      "status": "active",
+      "window": {
+        "since": "2026-08-04T00:00:00Z",
+        "until": "2026-08-12T00:00:00Z"
+      },
+      "commits": [],
+      "pull_requests": [
+        {
+          "number": 2,
+          "title": "Add BIP-321 payment methods",
+          "state": "merged",
+          "created_at": "2026-07-23T22:05:56Z",
+          "updated_at": "2026-08-07T19:10:02Z",
+          "merged_at": "2026-08-02T09:30:37Z",
+          "url": "https://github.com/nostr-wallet-connect/nwc/pull/2"
+        }
+      ]
+    }
+  ]
+}

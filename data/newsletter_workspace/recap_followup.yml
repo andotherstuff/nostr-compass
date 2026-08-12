@@ -1,0 +1,10 @@
+- event_id: a0c8d00142502b65e2e89962b6f8b9f79708ff4a8348b5b78eb6d660d3d99224
+  project: Obelisk
+  recap_created_at: 1785917520
+  candidate_urls:
+    - https://www.youtube.com/watch?v=9JMbrT5sNHU
+  first_seen: 2026-08-12
+  last_checked: 2026-08-12
+  status: pending
+  reason: Recap supplied only a third-party video mention; canonical repository, project-controlled product surface, ownership, and a current material change remain unverified.
+  primary_sources: []

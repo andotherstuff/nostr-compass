@@ -52,6 +52,7 @@ Relays may choose not to store wrapped events for long because they are not publ
 - [Newsletter #12: Open PRs](/en/newsletters/2026-03-04-newsletter/#open-prs-and-project-updates)
 - [Newsletter #31: Amethyst ships a clean-room Concord implementation](/en/newsletters/2026-07-15-newsletter/#amethyst-ships-a-clean-room-concord-implementation-for-end-to-end-encrypted-communities)
 - [Newsletter #33: Protocol work and NIP updates](/en/newsletters/2026-07-29-newsletter/#protocol-and-spec-work)
+- [Newsletter #35: Pact brings mutually consented agent bonds to Nostr](/en/newsletters/2026-08-12-newsletter/#pact-brings-mutually-consented-agent-bonds-to-nostr)
 
 **See also:**
 - [NIP-17: Private Direct Messages](/en/topics/nip-17/)

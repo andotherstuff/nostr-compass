@@ -54,6 +54,7 @@ NIP-44 is now the preferred encryption mode. The spec still documents NIP-04 fal
 - [Newsletter #32: NIP Updates](/en/newsletters/2026-07-22-newsletter/#protocol-work-and-nip-updates)
 - [Newsletter #33: Tagged releases](/en/newsletters/2026-07-29-newsletter/#tagged-releases)
 - [Newsletter #33: Six Years of Nostr Julys](/en/newsletters/2026-07-29-newsletter/#six-years-of-nostr-julys)
+- [Newsletter #35: Tagged releases](/en/newsletters/2026-08-12-newsletter/#tagged-releases)
 
 **See also:**
 - [NIP-57: Zaps](/en/topics/nip-57/)

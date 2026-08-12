@@ -63,6 +63,7 @@ NIP-78 deliberately leaves the content format open — applications choose their
 - [Newsletter #22: Tamagostrich](/en/newsletters/2026-05-13-newsletter/#tamagostrich-launches-a-decentralized-nip-78-tamagotchi-with-sats-rewards)
 - [Newsletter #33: Tagged releases](/en/newsletters/2026-07-29-newsletter/#tagged-releases)
 - [Newsletter #33: Unreleased app/client changes](/en/newsletters/2026-07-29-newsletter/#in-development)
+- [Newsletter #35: In Development](/en/newsletters/2026-08-12-newsletter/#in-development)
 
 **See also:**
 - [NIP-51: Lists](/en/topics/nip-51/)

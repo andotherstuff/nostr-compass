@@ -3433,6 +3433,16 @@ devtools:
     priority: low
     notes: Publishes model torrents and viewer releases as Nostr events, verifies signatures client-side, and uses Blossom for viewer distribution
 
+  - name: Safebox Acorn
+    description: Installable protocol-first Python component for portable Nostr keys, private records, funds, relay-backed availability, and recovery
+    platforms: [ python, cli ]
+    repo: https://github.com/trbouma/safebox-acorn
+    website: https://trbouma.github.io/safebox-acorn/
+    maintainer: trbouma
+    status: active
+    priority: medium
+    notes: Standalone Acorn component extracted from the existing Safebox project
+
 signers:
   - name: Amber
     description: Android event signer
@@ -4591,8 +4601,8 @@ libraries:
   - name: nostr-double-ratchet
     description: Signal-style secure private messaging channels for Nostr
     language: javascript
-    repo: https://github.com/mmalmi/nostr-double-ratchet
-    maintainer: mmalmi
+    repo: https://github.com/irislib/nostr-double-ratchet
+    maintainer: irislib
     status: active
     priority: medium
 
@@ -6324,3 +6334,12 @@ protocols:
     status: alpha
     priority: medium
     notes: For short-lived MLS groups, demos, and operator-controlled coordination without provisioning a backend; companion to existing Cordn tracking
+
+  - name: Pact
+    description: Agent-owned relationship layer for mutually consented, persistent bonds transported over Nostr
+    platforms: [ cli, web, server ]
+    repo: https://github.com/bobodread876/pact
+    maintainer: bobodread876
+    status: alpha
+    priority: medium
+    notes: Early-stage MATE.md runtime using Nostr transport, NIP-59 private bonds, MCP, SDK, CLI, and self-hosted pactd

@@ -1,35 +1,27 @@
-## NIP Updates and Protocol Spec Work
+## Protocol and Spec Work
 
-### Nostr event formats and discovery
+### NIPs
 
-[NIP PR #2430](https://github.com/nostr-protocol/nips/pull/2430) proposes sticker packs as addressable kind `30031` definitions and a user's installed packs as replaceable kind `10031`. Each sticker tag carries a shortcode, SHA-256 hash, and MIME type; the image remains on a [NIP-B7](https://github.com/nostr-protocol/nips/blob/master/B7.md) (Blossom blob storage) server. The open draft therefore standardizes pack identity and installation without placing image bytes in events.
+[NIPs PR #2435](https://github.com/nostr-protocol/nips/pull/2435) is an open amendment to NIP-34, which standardizes git repository collaboration through Nostr events. It adds an optional `b` tag to a pull-request event so the author can name a target branch other than the repository's default. The proposal matches support already implemented in ngit and GitWorkshop, but has not entered the specification.
 
-[NIP PR #2429](https://github.com/nostr-protocol/nips/pull/2429) proposes kind `31436` addressable Gopher documents. Each event holds one UTF-8 text or menu node, and signed nodes under one pubkey form a gopherhole that any relay-backed RFC 1436 bridge can serve. The open proposal uses ordinary addressable-event storage rather than binding the publication to one Gopher hostname.
+[NIPs PR #2434](https://github.com/nostr-protocol/nips/pull/2434) is an open proposal for post-quantum identity keys. It derives post-quantum encryption and signing keys beside the existing secp256k1 key from a NIP-06 mnemonic key-derivation seed, then binds the public keys to the Nostr identity with a kind `10203` attestation. The draft limits its claim to protecting the confidentiality of earlier messages if secp256k1 is later broken; it does not replace today's event signatures.
 
-[NIP PR #2428](https://github.com/nostr-protocol/nips/pull/2428) proposes epoch-ticketed private groups. A group rotates membership credentials between epochs, and clients present the ticket for the current epoch to participate. The draft targets private chat without asking a relay to treat a permanent bearer token as lifetime membership.
+[NIPs PR #2431](https://github.com/nostr-protocol/nips/pull/2431) is an open NIP-07 amendment for browser signers. A client could attach the public key it expects to signing or encryption requests, requiring the signer to use that account or reject the call. This would keep a page from silently continuing under a different identity after the user switches accounts in the signer.
 
-[NIP PR #2425](https://github.com/nostr-protocol/nips/pull/2425), covered as a proposal last week, has now merged a URI clarification into [NIP-B0](/en/topics/nip-b0/) (addressable web bookmarks). It distinguishes omitted HTTPS prefixes from explicit URI schemes when a bookmark stores its target in the `d` tag, preventing clients from reconstructing an ambiguous destination.
+[NIPs PR #1813](https://github.com/nostr-protocol/nips/pull/1813) remains an open double-ratchet proposal after substantive work during the window. It specifies forward-secret encrypted conversations whose keys advance with messages, with an implementation already available in the nostr-double-ratchet library and Iris. It is still a draft, not a merged NIP.
 
-### Payments and wallet connections
+[NIPs PR #2433](https://github.com/nostr-protocol/nips/pull/2433) opened and closed without merging during the window. It proposed clarifying NIP-42 relay errors so `auth-required` would mean another authentication could change the result, while `restricted` would mean it could not. The distinction addressed connections authenticated for one key but still missing authorization for another; the closed status means the wording did not enter the specification.
 
-[NIP PR #2419](https://github.com/nostr-protocol/nips/pull/2419), covered as a proposal in the July 22 issue, has now merged a smaller [NIP-47](/en/topics/nip-47/) (Nostr Wallet Connect) core. Connection URIs, encrypted relay transport, capability discovery, encryption negotiation, and common methods stay in the NIP; notifications, hold invoices, keysend, transaction history, metadata, and deep-link pairing move to a dedicated extension repository. Existing connections remain compatible while wallets can implement optional contracts independently.
+[NIPs PR #2378](https://github.com/nostr-protocol/nips/pull/2378), which was covered previously while still proposed, has now closed without merging. Its proposed agent passports, discovery, task, marketplace, invoice, and connection events therefore remain outside the NIP set.
 
-[NWC PR #2](https://github.com/nostr-wallet-connect/nwc/pull/2), covered as a proposal last week, has now merged BIP-321 payment methods into that extension repository. BIP-321 provides a common Bitcoin payment URI that can carry different rails, so NWC callers can request or send a payment without adding a new core RPC for each underlying instruction type.
+[NIPs commit 656cecc](https://github.com/nostr-protocol/nips/commit/656cecc7c0a815b6a2b218d3b5d6f078b3f4dbab) merged a documentation-only correction to NIP-29. It adds a `previous` tag to the group metadata example, showing how a replacement event can identify the event it supersedes. This clarifies an example and does not introduce a new protocol feature.
 
-### Napplet host capabilities
+### Concord and CORDs
 
-[NAP PR #95](https://github.com/napplet/naps/pull/95) proposes catalog discovery for Nostr-distributed sandbox applications. A napplet asks its host which applications and capabilities are available, and the host returns policy-filtered metadata instead of exposing its full local environment. The contract supports launch decisions without granting execution authority during discovery.
+[CORD PR #18](https://github.com/concord-protocol/concord/pull/18) would shard encrypted Community Lists across kind `33302` events, remove the 50-membership limit, and prune retired entries to stay within relay limits. Two other open proposals add [private mention locators](https://github.com/concord-protocol/concord/pull/16) and a [pause signal](https://github.com/concord-protocol/concord/pull/17) that suspends chat without discarding messages.
 
-[NAP PR #33](https://github.com/napplet/naps/pull/33) proposes shell-mediated file and blob uploads. A napplet supplies bytes and intent; the host selects a NIP-96 or Blossom rail, signs authorization, reports progress, and returns URLs, hashes, MIME data, and ready-to-attach [NIP-94](/en/topics/nip-94/) (file metadata) tags. Storage credentials and HTTP authority never enter the napplet.
+[CORD-02 PR #15](https://github.com/concord-protocol/concord/pull/15) merged on August 6 and restricts writes to a community's control plane. Owners and staff hold a new `control_root` signing secret, while all members retain the derived public key and read key needed to verify and decrypt moderation state. The write key is a spam barrier, not a substitute for the inner actor signatures and roster checks that establish authority.
 
-### Marmot encrypted groups
+[CORD PR #12](https://github.com/concord-protocol/concord/pull/12), covered previously as an open draft, has now closed without merging. Its control-plane portion was superseded by the narrower merged CORD-02 amendment above, while restricted-write channels and the other draft material did not enter the specification.
 
-[Marmot PR #410](https://github.com/marmot-protocol/marmot/pull/410) merged convergence and deferred-input rules. Clients distinguish an object that lacks a current epoch dependency from stale or invalid input, keep it eligible for refetch after resource refusal, and retry when another commit changes the decryption context. A domain-separated state commitment gives conformance tests a shared convergence oracle without adding a production wire field.
-
-### Concord community planes
-
-[Concord PR #14](https://github.com/concord-protocol/concord/pull/14) merged CORD-08 disappearing messages. One community metadata value sets the lifetime; chat rumors and encrypted wraps carry a [NIP-40](/en/topics/nip-40/) (event expiration) tag, while deletion events and the kind `1740` timer notice are exempt. The signed timer travels with community state, though relay deletion remains a retention request rather than a cryptographic erasure guarantee.
-
-[Concord PR #13](https://github.com/concord-protocol/concord/pull/13) merged rotation-proof pinning into CORD-04. Each channel has one replace-entire pin list on the control plane; entries carry the original signed seal plus per-message NIP-44 expansion keys, allowing a new member to verify the author and plaintext without receiving an old epoch key. Private lists can remain sealed to a channel epoch, caps bound list size, and author deletions remove pins without forking the control-plane chain.
-
-GATE: PASS
+GATE: PASS (final-delta claims, continuity, 73/73 live links, prose/style, topic-backlink, and production-build gates passed at 2026-08-12T15:45Z)

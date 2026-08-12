@@ -1,67 +1,27 @@
-## NIP Deep Dive
+## Protocol and Spec Work
 
-### Search Capability (NIP-50)
+### NIPs
 
-[NIP-50](/en/topics/nip-50/), defined in the [primary specification](https://github.com/nostr-protocol/nips/blob/master/50.md), adds an optional search filter for relays. Ordinary Nostr filters work when a client already knows an author, event kind, identifier, or tag; NIP-50 addresses discovery when the input is a human query such as `best nostr apps`.
+[NIPs PR #2435](https://github.com/nostr-protocol/nips/pull/2435) is an open amendment to NIP-34, which standardizes git repository collaboration through Nostr events. It adds an optional `b` tag to a pull-request event so the author can name a target branch other than the repository's default. The proposal matches support already implemented in ngit and GitWorkshop, but has not entered the specification.
 
-The [NIP-50 wire format](https://github.com/nostr-protocol/nips/blob/master/50.md#search-filter-field) adds a `search` string to a normal filter inside a `REQ` message. A request can combine that field with `kinds`, `authors`, `ids`, tag filters, and `limit`, and one REQ can carry several independent filters. A supporting relay should match primarily against event `content`, may use other fields when the event kind makes that useful, and should sort by its own relevance score before applying `limit`. That order differs from the usual newest-first event stream.
+[NIPs PR #2434](https://github.com/nostr-protocol/nips/pull/2434) is an open proposal for post-quantum identity keys. It derives post-quantum encryption and signing keys beside the existing secp256k1 key from a NIP-06 mnemonic key-derivation seed, then binds the public keys to the Nostr identity with a kind `10203` attestation. The draft limits its claim to protecting the confidentiality of earlier messages if secp256k1 is later broken; it does not replace today's event signatures.
 
-The query string can include the specification's [`key:value` extensions](https://github.com/nostr-protocol/nips/blob/master/50.md#extensions). It names `include:spam`, `domain:`, `language:`, `sentiment:`, and `nsfw:`; a relay should ignore extensions it does not implement. Clients discover declared support through the relay's [NIP-11](/en/topics/nip-11/) `supported_nips` field, but they may still send the filter elsewhere if they are prepared to reject unrelated responses.
+[NIPs PR #2431](https://github.com/nostr-protocol/nips/pull/2431) is an open NIP-07 amendment for browser signers. A client could attach the public key it expects to signing or encryption requests, requiring the signer to use that account or reject the call. This would keep a page from silently continuing under a different identity after the user switches accounts in the signer.
 
-The [NIP-50 specification](https://github.com/nostr-protocol/nips/blob/master/50.md) deliberately does not standardize tokenization, stemming, ranking, language detection, sentiment analysis, or spam classification. Two compliant relays can return different events and different ordering for the same query. That makes the relay an index and ranking provider, not a source of truth. The specification recommends querying several supporting relays, checking whether returned events satisfy the client's use case, and dropping relays whose results have poor precision.
+[NIPs PR #1813](https://github.com/nostr-protocol/nips/pull/1813) remains an open double-ratchet proposal after substantive work during the window. It specifies forward-secret encrypted conversations whose keys advance with messages, with an implementation already available in the nostr-double-ratchet library and Iris. It is still a draft, not a merged NIP.
 
-This differs from exact [NIP-01 filtering](https://github.com/nostr-protocol/nips/blob/master/01.md). An `authors` or `#t` filter has deterministic matching semantics that a client can verify directly, while a search match may depend on an index and an opaque score. NIP-50 retains NIP-01's signed event envelope and relay transport, but accepts variation in recall and ordering to make open-ended retrieval possible.
+[NIPs PR #2433](https://github.com/nostr-protocol/nips/pull/2433) opened and closed without merging during the window. It proposed clarifying NIP-42 relay errors so `auth-required` would mean another authentication could change the result, while `restricted` would mean it could not. The distinction addressed connections authenticated for one key but still missing authorization for another; the closed status means the wording did not enter the specification.
 
-The event below is an illustrative search result using the [seven NIP-01 event fields](https://github.com/nostr-protocol/nips/blob/master/01.md#events-and-signatures). The repeated hexadecimal values are placeholders rather than a valid signature.
+[NIPs PR #2378](https://github.com/nostr-protocol/nips/pull/2378), which was covered previously while still proposed, has now closed without merging. Its proposed agent passports, discovery, task, marketplace, invoice, and connection events therefore remain outside the NIP set.
 
-```json
-{
-  "id": "0000000000000000000000000000000000000000000000000000000000000000",
-  "pubkey": "1111111111111111111111111111111111111111111111111111111111111111",
-  "created_at": 1785888000,
-  "kind": 1,
-  "tags": [["t", "nostr"]],
-  "content": "A comparison of Nostr search relays and their indexes.",
-  "sig": "22222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222"
-}
-```
+[NIPs commit 656cecc](https://github.com/nostr-protocol/nips/commit/656cecc7c0a815b6a2b218d3b5d6f078b3f4dbab) merged a documentation-only correction to NIP-29. It adds a `previous` tag to the group metadata example, showing how a replacement event can identify the event it supersedes. This clarifies an example and does not introduce a new protocol feature.
 
-Current clients use the same filter in different discovery surfaces. [Nostria](https://github.com/nostria-app/nostria/blob/d291c2ab091c60c36f99c90241e2fd9da1b0c4bc/src/app/services/relays/search-relay.ts) sends NIP-50 searches to dedicated search relays, [Ditto](https://github.com/soapbox-pub/ditto/blob/04adb2d242ab6f5807fd27ae3e0cb9beab091641/src/hooks/useSearchEvents.ts) searches events through its relay pool, and [NoorNote](https://github.com/77elements/noornote/blob/bf1f9b431552497dc1779ea0d8fed2c3c28e6070/src/services/orchestration/SearchOrchestrator.ts) coordinates relay-backed searches for long-form reading. Their different result handling reflects the latitude NIP-50 leaves to relays and clients.
+### Concord and CORDs
 
-### Highlights (NIP-84)
+[CORD PR #18](https://github.com/concord-protocol/concord/pull/18) would shard encrypted Community Lists across kind `33302` events, remove the 50-membership limit, and prune retired entries to stay within relay limits. Two other open proposals add [private mention locators](https://github.com/concord-protocol/concord/pull/16) and a [pause signal](https://github.com/concord-protocol/concord/pull/17) that suspends chat without discarding messages.
 
-[NIP-84](/en/topics/nip-84/), defined by its [primary specification](https://github.com/nostr-protocol/nips/blob/master/84.md), assigns kind `9802` to a highlight. It turns a selected passage, or a reference to non-text media, into a signed event that can move between reading, social, and annotation clients.
+[CORD-02 PR #15](https://github.com/concord-protocol/concord/pull/15) merged on August 6 and restricts writes to a community's control plane. Owners and staff hold a new `control_root` signing secret, while all members retain the derived public key and read key needed to verify and decrypt moderation state. The write key is a spam barrier, not a substitute for the inner actor signatures and roster checks that establish authority.
 
-The [event's `content`](https://github.com/nostr-protocol/nips/blob/master/84.md#format) contains the selected text and may be empty when the source is audio, video, or another non-text medium. A highlight points to a Nostr source with an `a` tag for an addressable event or an `e` tag for an ordinary event; an `r` tag identifies a web URL. URL-producing clients should remove tracking and other non-useful query parameters before publishing so cosmetic URL variants do not fragment references to the same source.
+[CORD PR #12](https://github.com/concord-protocol/concord/pull/12), covered previously as an open draft, has now closed without merging. Its control-plane portion was superseded by the narrower merged CORD-02 amendment above, while restricted-write channels and the other draft material did not enter the specification.
 
-Optional [`p` tags](https://github.com/nostr-protocol/nips/blob/master/84.md#attribution) attribute the source to one or more Nostr pubkeys. Their fourth value may identify a role such as `author` or `editor`, and a `context` tag can preserve surrounding text when the selection alone would be unclear. A quote highlight adds a `comment` tag instead of publishing a second kind `1` note: the source `r` tag receives the `source` marker, while pubkeys or URLs mentioned in the comment carry `mention`, letting renderers distinguish attribution from the user's response.
-
-The [kind `9802` definition](https://github.com/nostr-protocol/nips/blob/master/84.md) makes a highlight a regular event rather than a replaceable one. Repeating or correcting a selection creates another signed event, and removing one relies on the normal deletion-request flow and relay retention policy. The specification does not define byte offsets, selectors, or a canonical document snapshot, so a client may be unable to relocate a passage after its web source changes. Public highlights also reveal reading interests; private annotation requires a separate encryption and sharing design.
-
-NIP-84 differs from a [NIP-23 long-form event](https://github.com/nostr-protocol/nips/blob/master/23.md), which publishes an entire article as kind `30023`; a highlight quotes or points into material that may remain elsewhere. It also differs from a [NIP-51 bookmark set](https://github.com/nostr-protocol/nips/blob/master/51.md), which stores a replaceable collection of references. NIP-84 makes each selection independently signed, attributable, discoverable, and discussable.
-
-This illustrative highlight contains the [seven NIP-01 event fields](https://github.com/nostr-protocol/nips/blob/master/01.md#events-and-signatures). Its identifier and signature are placeholders.
-
-```json
-{
-  "id": "3333333333333333333333333333333333333333333333333333333333333333",
-  "pubkey": "4444444444444444444444444444444444444444444444444444444444444444",
-  "created_at": 1785888000,
-  "kind": 9802,
-  "tags": [
-    ["a", "30023:6666666666666666666666666666666666666666666666666666666666666666:relay-search", "wss://relay.example"],
-    ["p", "6666666666666666666666666666666666666666666666666666666666666666", "wss://relay.example", "author"],
-    ["context", "Search relays are indexes whose ranking policies can differ."]
-  ],
-  "content": "ranking policies can differ",
-  "sig": "55555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555"
-}
-```
-
-The format already crosses client boundaries. [nostrord 2.5.0](https://github.com/nostrord/nostrord/releases/tag/v2.5.0) added NIP-84 rendering this week, [NoorNote](https://github.com/77elements/noornote/blob/bf1f9b431552497dc1779ea0d8fed2c3c28e6070/src/components/ui/note-rendering/HighlightRenderer.ts) renders highlight events in its long-form client, and [Ditto](https://github.com/soapbox-pub/ditto/blob/04adb2d242ab6f5807fd27ae3e0cb9beab091641/src/hooks/useCreateHighlight.ts) publishes them from selected content. Those implementations cover reading, creation, and social rendering without requiring one service to own the annotation.
-
----
-
-Send a NIP-17 DM to share a project or news item through the [Nostr Compass project](https://github.com/andotherstuff/nostr-compass).
-
-GATE: PASS
+GATE: PASS (final-delta claims, continuity, 73/73 live links, prose/style, topic-backlink, and production-build gates passed at 2026-08-12T15:45Z)
