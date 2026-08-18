@@ -161,6 +161,12 @@ export function extractMentions(
     "shipping this week",
     "in development",
     "unreleased changes",
+    // The archive uses "Newly Discovered" as the launch/first-mention heading;
+    // "new projects" was the older wording. Only "new projects" was listed
+    // here, so every project introduced under the current heading was silently
+    // dropped from nostr: mentions and from the outreach recipient list. Pact
+    // in #35 and Glow, nwc-kit and Nail in #36 all landed in that hole.
+    "newly discovered",
     "new projects",
   ]);
   const protocolProjectSections = new Set([
