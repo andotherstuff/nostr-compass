@@ -172,6 +172,167 @@ clients:
 
         self.assertEqual(events, [])
 
+    def test_tracked_owners_are_derived_from_project_repositories(self):
+        mod = load_module()
+        tracked = mod.parse_projects_index(
+            """
+projects:
+  - name: Formstr
+    repo: https://github.com/formstr-hq/nostr-forms
+  - name: Calendar
+    repo: https://github.com/Formstr-HQ/nostr-calendar/
+  - name: Amethyst
+    repo: https://github.com/vitorpamplona/amethyst
+  - name: ngit
+    repo: https://codeberg.org/DanConwayDev/ngit-cli
+"""
+        )
+        self.assertEqual(
+            mod.tracked_github_owners(tracked),
+            ["formstr-hq", "vitorpamplona"],
+        )
+        self.assertEqual(mod.tracked_github_owners({}), [])
+
+    def test_owner_repository_walk_stops_at_the_window_edge(self):
+        mod = load_module()
+        page = [
+            {"full_name": "formstr-hq/nail", "pushed_at": "2026-08-18T15:15:20Z"},
+            {"full_name": "formstr-hq/a-fork", "pushed_at": "2026-08-17T00:00:00Z", "fork": True},
+            {"full_name": "formstr-hq/retired", "pushed_at": "2026-08-16T00:00:00Z", "archived": True},
+            {"full_name": "formstr-hq/stale", "pushed_at": "2026-06-01T00:00:00Z"},
+            {"full_name": "formstr-hq/never-reached", "pushed_at": "2026-08-18T00:00:00Z"},
+        ]
+        completed = subprocess.CompletedProcess([], 0, stdout=json.dumps(page), stderr="")
+        with mock.patch.object(mod.subprocess, "run", return_value=completed) as runner:
+            items = mod.fetch_owner_repositories("formstr-hq", "2026-08-10")
+        self.assertEqual([item["full_name"] for item in items], ["formstr-hq/nail"])
+        self.assertEqual(items[0]["_discovery_sources"], ["github_owner_sibling"])
+        # Sorted by push time, so one page is enough to leave the window.
+        self.assertEqual(runner.call_count, 1)
+
+    def test_owner_sweep_records_a_failing_owner_without_aborting_the_rest(self):
+        mod = load_module()
+        def fake(owner, since_day, **kwargs):
+            if owner == "broken":
+                raise RuntimeError("gh exited 1")
+            return [{"full_name": f"{owner}/repo", "_discovery_sources": ["github_owner_sibling"]}]
+
+        warnings: list[str] = []
+        with mock.patch.object(mod, "fetch_owner_repositories", side_effect=fake):
+            items = mod.fetch_owner_siblings(["alpha", "broken", "zeta"], "2026-08-10", warnings=warnings)
+        self.assertEqual([item["full_name"] for item in items], ["alpha/repo", "zeta/repo"])
+        self.assertEqual(len(warnings), 1)
+        self.assertIn("broken", warnings[0])
+
+    def test_search_queries_sweep_activity_as_well_as_creation(self):
+        mod = load_module()
+        sources = [source for _, source in mod.github_search_queries("2026-08-10")]
+        self.assertIn("github_text_active", sources)
+        activity_query = next(
+            query for query, source in mod.github_search_queries("2026-08-10") if source == "github_text_active"
+        )
+        self.assertIn("pushed:>=2026-08-10", activity_query)
+        self.assertNotIn("created:", activity_query)
+
+    def test_owner_sibling_capping_is_reported_rather_than_silent(self):
+        mod = load_module()
+        tracked = {
+            "repos": {
+                f"https://github.com/owner{index:04d}/repo": "Project"
+                for index in range(mod.OWNER_SIBLING_OWNER_LIMIT + 3)
+            },
+            "websites": {},
+            "names": {},
+        }
+        with mock.patch.object(mod, "run_github_search", return_value=[]), mock.patch.object(
+            mod, "fetch_owner_siblings", return_value=[]
+        ):
+            _, errors = mod.fetch_github_discovery("2026-08-10", tracked)
+        capped = [error for error in errors if error.startswith("github_owner_sibling: capped")]
+        self.assertEqual(len(capped), 1)
+        self.assertIn("not swept:", capped[0])
+
+    def test_owner_sweep_runs_for_every_tracked_owner_under_the_cap(self):
+        mod = load_module()
+        tracked = {
+            "repos": {
+                "https://github.com/formstr-hq/nostr-forms": "Formstr",
+                "https://github.com/vitorpamplona/amethyst": "Amethyst",
+            },
+            "websites": {},
+            "names": {},
+        }
+        with mock.patch.object(mod, "run_github_search", return_value=[]), mock.patch.object(
+            mod, "fetch_owner_siblings", return_value=[]
+        ) as sweep:
+            _, errors = mod.fetch_github_discovery("2026-08-10", tracked)
+        sweep.assert_called_once()
+        self.assertEqual(sweep.call_args.args[0], ["formstr-hq", "vitorpamplona"])
+        self.assertEqual([error for error in errors if "capped" in error], [])
+
+    def test_owner_sibling_surfaces_untagged_long_lived_repo(self):
+        """Regression: formstr-hq/nail was invisible to every pre-existing stream.
+
+        It carries no topics, so `topic:nostr pushed:>=` missed it; it was created
+        months before the window, so `nostr in:name,description created:>=` missed
+        it; and its description named no application noun, so the explicit-signal
+        gate would have dropped it even if a query had returned it. Its owner
+        already has tracked projects, which is the evidence the sweep now uses.
+        """
+        mod = load_module()
+        nail = {
+            "full_name": "formstr-hq/nail",
+            "html_url": "https://github.com/formstr-hq/nail",
+            "description": "Nostr Email Bridge",
+            "created_at": "2026-02-25T13:54:58Z",
+            "pushed_at": "2026-08-18T15:15:20Z",
+            "homepage": "",
+            "stargazers_count": 0,
+            "topics": [],
+            "_discovery_sources": ["github_owner_sibling"],
+        }
+        tracked = {
+            "repos": {"https://github.com/formstr-hq/nostr-forms": "Formstr"},
+            "websites": {},
+            "names": {"formstr": "Formstr"},
+        }
+        since = datetime(2026, 8, 10, tzinfo=timezone.utc)
+
+        candidates, _ = mod.github_candidates([nail], tracked, set(), since, first_run=True)
+        self.assertEqual([candidate["repository"] for candidate in candidates], ["https://github.com/formstr-hq/nail"])
+        self.assertIn("github_owner_sibling", candidates[0]["source_types"])
+        self.assertEqual(candidates[0]["evidence_status"], "unconfirmed")
+        self.assertEqual(candidates[0]["evidence_level"], "candidate-only")
+        self.assertTrue(any("sibling repository" in flag for flag in candidates[0]["review_flags"]))
+
+        # The same record arriving from a text sweep still has to earn its place.
+        text_sourced = {**nail, "_discovery_sources": ["github_text_active"]}
+        text_candidates, _ = mod.github_candidates([text_sourced], tracked, set(), since, first_run=True)
+        self.assertEqual(text_candidates, [])
+
+    def test_owner_sibling_does_not_resurface_a_tracked_repository(self):
+        mod = load_module()
+        tracked = {
+            "repos": {"https://github.com/formstr-hq/nail": "Nail"},
+            "websites": {},
+            "names": {"nail": "Nail"},
+        }
+        nail = {
+            "full_name": "formstr-hq/nail",
+            "html_url": "https://github.com/formstr-hq/nail",
+            "description": "Nostr Email Bridge",
+            "created_at": "2026-02-25T13:54:58Z",
+            "pushed_at": "2026-08-18T15:15:20Z",
+            "homepage": "",
+            "stargazers_count": 0,
+            "topics": [],
+            "_discovery_sources": ["github_owner_sibling"],
+        }
+        candidates, _ = mod.github_candidates(
+            [nail], tracked, set(), datetime(2026, 8, 10, tzinfo=timezone.utc), first_run=True
+        )
+        self.assertEqual(candidates, [])
+
     def test_github_candidates_require_explicit_nostr_application_signal(self):
         mod = load_module()
         base = {
