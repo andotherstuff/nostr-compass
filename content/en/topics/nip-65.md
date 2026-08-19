@@ -79,6 +79,7 @@ Mix general-purpose relays with any specialized relays you use. For instance, yo
 - [Newsletter #19: Wisp inbox-relay broadcasting](/en/newsletters/2026-04-22-newsletter/#wisp-v0180-beta-adds-normie-mode-for-you-feed-and-nip-29-group-config)
 - [Newsletter #32: Tagged releases](/en/newsletters/2026-07-22-newsletter/#amber-v630-groups-bunker-signing-approvals-and-adds-expert-list-support)
 - [Newsletter #33: Nostrology relay-list adoption](/en/newsletters/2026-07-29-newsletter/#nostrology-maps-relay-list-concentration-from-published-nip-65-events)
+- [Newsletter #36: Nail brings email onto Nostr as gift-wrapped events](/en/newsletters/2026-08-19-newsletter/#nail-brings-email-onto-nostr-as-gift-wrapped-events)
 
 **See also:**
 - [NIP-11: Relay Information](/en/topics/nip-11/)

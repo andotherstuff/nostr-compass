@@ -68,6 +68,7 @@ NIP-17 also defines inbox relay lists for private messaging. Clients can publish
 - [Newsletter #27: Signet v1.11.0 patches a NIP-17 admin-command signature bypass](/en/newsletters/2026-06-17-newsletter/#signet-v1110-patches-a-nip-17-admin-command-signature-bypass)
 - [Newsletter #31: Bitcoin-Safe reaches Flathub, spotlighting its Nostr Sync & Chat plugin](/en/newsletters/2026-07-15-newsletter/#bitcoin-safe-reaches-flathub-spotlighting-its-nostr-sync--chat-plugin)
 - [Newsletter #33: Lead stories](/en/newsletters/2026-07-29-newsletter/#top-stories)
+- [Newsletter #36: NIPs](/en/newsletters/2026-08-19-newsletter/#nips)
 
 **See also:**
 - [NIP-04: Encrypted Direct Messages (Deprecated)](/en/topics/nip-04/)

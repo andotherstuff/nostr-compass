@@ -1465,6 +1465,16 @@ messaging_clients:
     priority: high
     notes: Supports NIP-04, NIP-17, NIP-29 groups, and Cashu ecash
 
+  - name: Nail
+    description: Nostr mail bridge and web client that carries email as gift-wrapped Nostr events
+    platforms: [ web, self-hosted ]
+    repo: https://github.com/formstr-hq/nail
+    website: https://mailstr.app
+    maintainer: formstr-hq
+    status: beta
+    priority: medium
+    notes: Formstr-team project; kind 1301 mail rumors inside NIP-59 gift wraps, NIP-05 npub@domain addressing, NIP-98 bridge auth, Blossom for attachments over 60 kB
+
   - name: White Noise
     description: MLS-based secure messaging client
     platforms: [ ios, android ]
@@ -5051,6 +5061,16 @@ libraries:
     notes: Transport plumbing; Nostr-surface gate applies at triage; submitted via link queue 2026-07-16
 
 wallets:
+  - name: Glow
+    description: Self-custodial mobile and web Bitcoin wallet built on the Breez SDK
+    platforms: [ web, ios, android ]
+    repo: https://github.com/breez/glow-web
+    website: https://breez.technology/glow/
+    maintainer: breez
+    status: active
+    priority: medium
+    notes: Uses Nostr relays to store and retrieve passkey-derived wallet labels; track only Nostr-relevant changes
+
   - name: Alby Hub
     description: Self-custodial Lightning node with NWC
     platforms: [ web, self-hosted ]

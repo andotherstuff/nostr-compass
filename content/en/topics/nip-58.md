@@ -107,6 +107,7 @@ Clients also have latitude in presentation. The spec explicitly allows them to s
 - [Newsletter #7: Five Years of Nostr Januarys](/en/newsletters/2026-01-28-newsletter/)
 - [Newsletter #12: Five Years of Nostr Februaries](/en/newsletters/2026-03-04-newsletter/)
 - [Newsletter #31: Vector v0.4.1 adds NIP-58 badges](/en/newsletters/2026-07-15-newsletter/#vector-v040-moves-group-chats-from-marmot-to-concord-and-amethyst-ships-its-own-concord-client-days-later)
+- [Newsletter #36: Divine Mobile 1.0.20: minting a badge without leaving the app](/en/newsletters/2026-08-19-newsletter/#divine-mobile-1020-minting-a-badge-without-leaving-the-app)
 
 **See also:**
 - [NIP-51: Lists](/en/topics/nip-51/)
