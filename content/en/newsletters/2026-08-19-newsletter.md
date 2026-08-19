@@ -2,7 +2,7 @@
 title: "Nostr Compass #36"
 date: 2026-08-19
 publishDate: 2026-08-19
-draft: true
+draft: false
 type: newsletters
 description: "A signer security week across Amber and Cambium, a mail bridge launch, relay features on a phone, encrypted community moderation, and protocol work on threads, encrypted files, and patches."
 ---
