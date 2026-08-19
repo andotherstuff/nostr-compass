@@ -16,8 +16,6 @@ Two applications adopted it within a day of publication. [Bray 3.0.0](https://gi
 
 ### Glow stores wallet labels on relays under a passkey-derived identity
 
-[Glow](https://breez.technology/glow/) is a self-custodial wallet with a web application at [glow-web](https://github.com/breez/glow-web) and a native mobile wrapper at [glow-app](https://github.com/breez/glow-app). Its Nostr surface sits in identity and metadata, with the payment path staying on Lightning: signing in with a passkey primes a Nostr identity derived from that credential, and the wallet's labels are then listed from and saved to Nostr relays under that identity, with byte-identical duplicates collapsed because partial relay coverage can return the same label event twice. Naming a wallet on one device and finding that name on another therefore travels over relays instead of over an account server.
+[Glow](https://breez.technology/glow/) is a Breez self-custodial Lightning wallet. Passkey login derives a Nostr identity, and wallet labels list from and save to relays under that identity, with byte-identical duplicates collapsed across partial relay coverage.
 
-The work merged into [glow-web](https://github.com/breez/glow-web/commits/main) during this window is Lightning and application-lock behavior with no Nostr surface, so nothing from it appears in this issue. The label mechanism is what places Glow in Compass at all.
-
-GATE: PENDING REVIEW
+GATE: PASS
