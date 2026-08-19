@@ -61,6 +61,7 @@ Recent spec changes moved hashtags out of generic bookmarks and into interest se
 - [Newsletter #27: Citrine v3.0.0 ships Negentropy, NIP-42 AUTH, and onion-relay filtering](/en/newsletters/2026-06-17-newsletter/#citrine-v3-0-0-ships-negentropy-nip-42-auth-and-onion-relay-filtering)
 - [Newsletter #32: News](/en/newsletters/2026-07-22-newsletter/#the-favorite-follow-sets-list-kind-merges-and-immediately-moves-house)
 - [Newsletter #33: Six Years of Nostr Julys](/en/newsletters/2026-07-29-newsletter/#six-years-of-nostr-julys)
+- [Newsletter #36: Nostter adds bookmark lists, profile badges, and Blossom uploads](/en/newsletters/2026-08-19-newsletter/#nostter-adds-bookmark-lists-profile-badges-and-blossom-uploads)
 
 **See also:**
 - [NIP-02: Follow List](/en/topics/nip-02/)

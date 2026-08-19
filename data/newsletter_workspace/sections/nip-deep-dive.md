@@ -1,67 +1,71 @@
 ## NIP Deep Dive
 
-### Event Deletion Requests (NIP-09)
+### Badges (NIP-58)
 
-[NIP-09](/en/topics/nip-09/), defined by the [primary specification](https://github.com/nostr-protocol/nips/blob/master/09.md), gives an event author a signed way to ask relays and clients to stop serving one or more of that author's events. It does not erase every copy. It carries the author's intent through the same relay network that distributed the original event.
+[NIP-58](/en/topics/nip-58/), defined by its [primary specification](https://github.com/nostr-protocol/nips/blob/master/58.md), gives one Nostr identity a way to award a named token to another, and gives the recipient control over whether it appears on their profile. The problem it addresses is that any statement about a person on Nostr is otherwise just a note: there is no structure that says who issued a claim, what the claim is called, what it looks like, or whether the subject accepted it. Badges give that claim three separate signed events with three separate authors' intentions encoded in them.
 
-The request is an ordinary signed kind `5` event. Its tags contain one or more `e` references to specific event IDs or `a` references to addressable-event coordinates, and the [NIP-09 tag rules](https://github.com/nostr-protocol/nips/blob/master/09.md#event-deletion-request) say it should include a `k` tag for each referenced event kind. The optional `content` can explain the reason. For an `a` reference, a relay should remove every version at that coordinate whose timestamp is no later than the request's `created_at`, which prevents an old deletion request from suppressing a later replacement.
+The [mechanics](https://github.com/nostr-protocol/nips/blob/master/58.md) are built from an addressable definition, an award, and a display list. A badge definition is a kind `30009` event published by the issuer, addressable through its `d` tag, so the issuer can revise the badge's `name`, `description`, `image`, and `thumb` tags later without changing the identifier anything else points at. The award is a kind `8` event published by the same issuer, carrying an `a` tag holding the `30009:<issuer-pubkey>:<d-identifier>` coordinate of the definition and one or more `p` tags naming recipients. The display list is a kind `30008` event published by the recipient with the fixed `d` value `profile_badges`, listing `a` and `e` tag pairs where the `a` tag is the definition coordinate and the `e` tag is the specific award event. Those pairs are ordered and are read as pairs: an `a` tag whose matching award is absent, or an `e` tag whose matching definition is absent, is ignored, so a half-referenced badge silently does not render.
 
-[Authorship is the security boundary](https://github.com/nostr-protocol/nips/blob/master/09.md#relay-behavior). A relay should stop publishing a referenced event only when its `pubkey` matches the deletion request's `pubkey`, and a client must perform that check before hiding an event. A relay may not possess the referenced event and therefore may be unable to validate the relationship when accepting the request, so clients cannot treat relay acceptance as proof that the deletion was authorized. The specification also asks relays to retain the kind `5` request because another client may already hold the original event and encounter the request later.
+The design tradeoffs are visible in what the [specification](https://github.com/nostr-protocol/nips/blob/master/58.md) refuses to do. There is no revocation mechanism and no expiry, so an award is a permanent statement by the issuer about a moment in time, and an issuer who changes their mind can only change the definition the award points at. There is no transfer, so a badge cannot circulate as a token. There is no notion of a trusted issuer registry, which pushes the entire trust question to the client and the reader: a badge is worth exactly what its issuer's public key is worth to the person looking at it. The specification also grants clients latitude to display fewer badges than the recipient listed and to choose which image size to render, which keeps a profile from becoming a wall of graphics chosen entirely by third parties.
 
-Here is a [signed kind `5` event](https://primal.net/e/6f39fd3d0d593d97dd093f21fabe8f78895579d6979a6ecf14e169bd85bb0943):
+The closest adjacent specification is [NIP-51](/en/topics/nip-51/), the [list specification](https://github.com/nostr-protocol/nips/blob/master/51.md), and comparing the two shows why badges need three events instead of one. A list is a single author curating references; the author of the list is the author of the claim. A badge splits authorship in half, with the issuer signing that the award happened and the recipient signing that they accept its display. Neither party can produce the visible result alone, which is what separates a badge from a self-applied label.
 
-```json
-{
-  "id": "6f39fd3d0d593d97dd093f21fabe8f78895579d6979a6ecf14e169bd85bb0943",
-  "pubkey": "5877220aaae6e54a6f974602d5995c0fe24a3ea7ddabd8644bec795b9da00743",
-  "created_at": 1786465675,
-  "kind": 5,
-  "tags": [
-    ["e", "f3d47f8b813928c5baf7ac993846be0220dc37a2e7c7b128fb49a4b92711f131"],
-    ["k", "30091"],
-    ["a", "30091:5877220aaae6e54a6f974602d5995c0fe24a3ea7ddabd8644bec795b9da00743:survey:0ad5cebc-608b-47d7-97fd-9e6c47787199"],
-    ["t", "nostr-survey"]
-  ],
-  "content": "Public survey summary deleted during privacy refresh",
-  "sig": "846be83b038dc5f91af0c9d03a4ac81aff9bc4cfde7d85c849fa2fdae890f75cc444a4072f45aa18883b0b3871e15381b220182d6e366892f0c9c6f9c0557244"
-}
-```
-
-Deletion remains a cooperative policy, not revocation of a signed object. A relay, cache, screenshot, or offline client can preserve the original bytes, and deleting the kind `5` request itself does not undo it. Clients may hide the target, mark it as disowned, or display the request reason, but should tell users that universal deletion cannot be guaranteed. This differs from [NIP-40](https://github.com/nostr-protocol/nips/blob/master/40.md), where an `expiration` tag asks relays to stop storing an event after a time chosen when the event is published. NIP-09 handles a later author decision and can point to already-distributed events.
-
-Current implementations apply that policy at different layers. [Divine PR #6623](https://github.com/divinevideo/divine-mobile/pull/6623) removes deleted videos from the client's event store, [strfry PR #251](https://github.com/hoytech/strfry/pull/251) extends valid deletion requests to gift-wrap recipients, and [Amethyst](https://github.com/vitorpamplona/amethyst/blob/278ddd27904dc721e54ffaca8803307d154f2e1d/README.md) declares NIP-09 support in its client. [nostrord's group client](https://github.com/nostrord/nostrord/blob/862855e8e7130f509c458c6b4d36a3bd660f16d8/composeApp/src/commonMain/kotlin/org/nostr/nostrord/network/NostrGroupClient.kt) supplies another current implementation path.
-
-### Reporting (NIP-56)
-
-[NIP-56](/en/topics/nip-56/), defined by the [primary specification](https://github.com/nostr-protocol/nips/blob/master/56.md), standardizes a signed report about an account, event, or referenced blob. It separates the report signal from the moderation decision, allowing each client or relay to choose which reporters it trusts and what response fits its policy.
-
-A report uses kind `1984` and must identify the reported account in a `p` tag. Reporting a note also requires an `e` tag for the event ID. The third value of the tag carries one of the specified categories: `nudity`, `malware`, `profanity`, `illegal`, `spam`, `impersonation`, or `other`. A report about a blob can use its hash in an `x` tag, an `e` tag for the event that referenced the blob, and an optional `server` tag for a location. Optional `L` and `l` tags from [NIP-32](https://github.com/nostr-protocol/nips/blob/master/32.md) can add a namespaced label when the fixed category list is not precise enough.
-
-[The event proves only that one key made an allegation](https://github.com/nostr-protocol/nips/blob/master/56.md#reporting). The reported content does not become false, illegal, or removable merely because a valid kind `1984` exists, and an open relay cannot safely count anonymous reports as votes. The specification advises against automatic relay moderation because reports are easy to game, while allowing relay administrators to act on reports from moderators they already trust. A client can instead weight reports through a user's social graph, for example by blurring content after several trusted contacts flag the same account.
-
-Here is a [signed kind `1984` event](https://primal.net/e/17301ea66066d34af9ba0b6957ed9d9d8854b9436939e682e21e7a5a8768e4b2):
+A live kind `8` award recovered from [nos.lol](https://nos.lol) and [relay.primal.net](https://relay.primal.net) this week:
 
 ```json
 {
-  "id": "17301ea66066d34af9ba0b6957ed9d9d8854b9436939e682e21e7a5a8768e4b2",
-  "pubkey": "1ff02fb5cdc633c1be55368ab655490ec25d2f5dc2e364d4703bc3196d99eab1",
-  "created_at": 1786465319,
-  "kind": 1984,
+  "id": "08504dec368939bd63849a349cab83dea0ac199a852129dbf68cf35fe5c64e96",
+  "pubkey": "bef514bd58c8ceea4beb9e6b84a8d983935f7be26f49e14df68098f1ba64156e",
+  "created_at": 1787051248,
+  "kind": 8,
   "tags": [
-    ["p", "3a72b02cc05ee07310dc580874b6a9ca8271c6518b90655bd2e98003c9601e68", "impersonation"]
+    ["a", "30009:bef514bd58c8ceea4beb9e6b84a8d983935f7be26f49e14df68098f1ba64156e:blocks_orange_league"],
+    ["p", "92dfa05d915196a7a09152fa3f57871debfd422e1d278ac5af266a70c3350b1f", "wss://relay.damus.io"]
   ],
-  "content": "",
-  "sig": "6362e415410feb19e0505654a4660e8456b6b2aec5ae39173a0429a6a8e5fa1381c9488198ca2982db43ee8198af056f2a25537705c763784062056d0ab2eb1a"
+  "content": "Badge awarded!",
+  "sig": "5bf0218dfec5e56b47339b0b4b992cceedd2e18798fb3d47cafea51850c00827f66251e4a3e08190370e04a5e1d4d092eeb441141b7219acdd18b80290a022f8"
 }
 ```
 
-[NIP-56 and NIP-09 solve different problems](https://github.com/nostr-protocol/nips/tree/master). A kind `1984` report can target somebody else's account or event, but confers no deletion authority. A kind `5` request expresses the original author's intent and is valid only against that author's own events. Neither guarantees removal: NIP-56 deliberately delegates action to local moderation policy, while NIP-09 depends on relays and clients honoring an authenticated request.
+Current implementations cover issuance, display, and reading. [Divine Mobile 1.0.20](https://github.com/divinevideo/divine-mobile/releases/tag/1.0.20) mints and awards a badge inside the app and explains an earned badge when a reader taps it, [Nostter PR #2281](https://github.com/SnowCait/nostter/pull/2281) updates profile badge handling in a web client, and [Amethyst](https://github.com/vitorpamplona/amethyst) publishes award events carrying its own client tag, one of which appears in relay data alongside the example above.
 
-Implementations expose those choices in different products. [Divine PR #6591](https://github.com/divinevideo/divine-mobile/pull/6591) corrects report delivery in a short-video client, [Conduit PR #250](https://github.com/Conduit-BTC/conduit-mono/pull/250) reads reports as bounded context for marketplace participants, and [nostrord's NIP-56 module](https://github.com/nostrord/nostrord/blob/862855e8e7130f509c458c6b4d36a3bd660f16d8/composeApp/src/commonMain/kotlin/org/nostr/nostrord/nostr/Nip56.kt) publishes and processes report events. [Amethyst](https://github.com/vitorpamplona/amethyst/blob/278ddd27904dc721e54ffaca8803307d154f2e1d/README.md#nip-support) also lists current NIP-56 support.
+### Comments (NIP-22)
 
+[NIP-22](/en/topics/nip-22/), defined by its [primary specification](https://github.com/nostr-protocol/nips/blob/master/22.md), provides a general comment event for replying to things that are not short text notes. Short-note threading already had [NIP-10](/en/topics/nip-10/), whose tag conventions grew around kind `1` and its reply chains. NIP-22 exists because a video, an article, a calendar event, a wiki page, or a URL needs a reply structure that identifies what kind of thing is being replied to, and that works when the target is addressable, or is an external resource with no Nostr event at all.
+
+The [mechanics](https://github.com/nostr-protocol/nips/blob/master/22.md) turn on a case distinction. A comment is a kind `1111` event that carries two sets of tags: uppercase tags describing the root of the discussion and lowercase tags describing the immediate parent. `E`, `A`, and `I` name a root event, a root addressable coordinate, or a root external identifier, `K` names the root's kind, and `P` names the root author. The lowercase `e`, `a`, `i`, `k`, and `p` name the same facts about the parent, which is the root itself for a top-level comment and another kind `1111` comment for a nested reply. Splitting them means a client can fetch an entire discussion with one filter on the uppercase root tags, without walking the reply chain, while still rendering nesting correctly from the lowercase parent tags. The `I` and `i` variants carry external identifiers in the [NIP-73](/en/topics/nip-73/) format, which is what lets a comment thread attach to a web page, a podcast episode, or a book.
+
+The tradeoffs are mostly about what NIP-22 declines to absorb. The [specification](https://github.com/nostr-protocol/nips/blob/master/22.md) states that comments must not be used to reply to kind `1` notes, which keeps two threading models from competing over the same objects and leaves NIP-10 in place where it already works. Nesting is permitted but the root stays fixed, so a deep thread never loses its anchor even when intermediate events are unavailable. The kind tags are the load-bearing part: a client that fetches a comment without its target can still tell what it is looking at from `K` and `k`, and decide whether it can render that kind at all. What the specification does not provide is any ordering or moderation model, so display order, collapsing, and hiding are entirely client policy.
+
+Compared to [NIP-10](https://github.com/nostr-protocol/nips/blob/master/10.md), the difference lies in typing. NIP-10 assumes the target is a note and encodes position in a thread; NIP-22 encodes the target's identity and kind explicitly and assumes nothing else about it. That explicit typing is why the newer proposals in this issue reach for kind `1111`: a comment already carries a machine-readable statement about what it is attached to.
+
+A live kind `1111` comment recovered from [nos.lol](https://nos.lol) and [relay.primal.net](https://relay.primal.net) this week, replying to another comment under a video:
+
+```json
+{
+  "id": "c8d335f8bfea58ecd1a943d6000fb2045f4bddf4a36c67df53eb661671f7ab45",
+  "pubkey": "3e911baba55ae247339cf805dd6ff49ad2cd6bee84ac44e088ce66450c49104f",
+  "created_at": 1787062681,
+  "kind": 1111,
+  "tags": [
+    ["E", "1c492f2bac17b79d66934a340fa43d8d30d0aea4c9fa329346c05573ef912d70", "", "482d024b8acfde50e7429e5ac561d764f3a53a8b4fb0b6975369d9f0926ef839"],
+    ["A", "34236:482d024b8acfde50e7429e5ac561d764f3a53a8b4fb0b6975369d9f0926ef839:e64ba9ea157b1a315caff51dbca656ed73ce817d4494e3966adf24055a86f5c5", ""],
+    ["K", "34236"],
+    ["P", "482d024b8acfde50e7429e5ac561d764f3a53a8b4fb0b6975369d9f0926ef839"],
+    ["e", "7a14723b9ef999e74b1757a0fb74942cb6c121138d4ddafe096a57a67ed0a442", "", "8b69e548402afa997343d73e8088224a440f256350f6257b61acc4bb1fa4af4f"],
+    ["k", "1111"],
+    ["p", "8b69e548402afa997343d73e8088224a440f256350f6257b61acc4bb1fa4af4f"],
+    ["client", "Divine", "31990:d95aa8fc0eff8e488952495b8064991d27fb96ed8652f12cdedc5a4e8b5ae540:divine-mobile", "wss://relay.divine.video"]
+  ],
+  "content": "niiice",
+  "sig": "a5517fdea07647efa7ab1730fbea8df882690bba667e93ea5aeba4a73be6a49af1ee17c045535483650caf41dbbcb0897d5803fa39b59f395fd6f9bb193bb789"
+}
+```
+
+The uppercase tags hold the video and its author while the lowercase `e` and `k` point at the parent comment, which is the shape the specification describes. Implementations reading and writing kind `1111` include [Divine Mobile](https://github.com/divinevideo/divine-mobile), whose client tag appears in the event above, [Amethyst](https://github.com/vitorpamplona/amethyst), whose comments appear in the same relay results, and [nostrord](https://github.com/nostrord/nostrord/pull/274), which renders thread posts as forum posts this week. The proposed patch format in [NIPs PR #2438](https://github.com/nostr-protocol/nips/pull/2438) builds on the same kind.
 
 ---
 
 Send a NIP-17 DM to share a project or news item through the [Nostr Compass project](https://github.com/andotherstuff/nostr-compass).
 
-GATE: PASS (final-delta claims, continuity, 73/73 live links, prose/style, topic-backlink, and production-build gates passed at 2026-08-12T15:45Z)
+GATE: PENDING REVIEW

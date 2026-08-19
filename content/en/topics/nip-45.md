@@ -63,6 +63,7 @@ Follower counts, reaction counts, and reply counts are the main use cases. Witho
 - [Newsletter #9: NIP Updates](/en/newsletters/2026-02-11-newsletter/#nip-updates)
 - [Newsletter #12: Five Years of Nostr Februaries](/en/newsletters/2026-03-04-newsletter/)
 - [Newsletter #19: nostream NIP-45 support](/en/newsletters/2026-04-22-newsletter/#nostream-merges-53-prs-for-nip-45-nip-62-compression-and-query-hardening)
+- [Newsletter #36: Nostria starts publishing podcasts and asks relays to count](/en/newsletters/2026-08-19-newsletter/#nostria-starts-publishing-podcasts-and-asks-relays-to-count)
 
 **See also:**
 - [NIP-11: Relay Information Document](/en/topics/nip-11/)

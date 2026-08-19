@@ -57,6 +57,7 @@ Root sites use the npub as the subdomain. Named sites use a 50-character base36 
 - [Newsletter #16: NIP Deep Dive](/en/newsletters/2026-04-01-newsletter/#nip-deep-dive-nip-5a-static-websites)
 - [Newsletter #19: NIP-5D applets proposal](/en/newsletters/2026-04-22-newsletter/#nip-updates)
 - [Newsletter #33: Tagged releases](/en/newsletters/2026-07-29-newsletter/#tagged-releases)
+- [Newsletter #36: Citrine 3.1.0 turns a phone relay into a group host and a site host](/en/newsletters/2026-08-19-newsletter/#citrine-310-turns-a-phone-relay-into-a-group-host-and-a-site-host)
 
 **See also:**
 - [Blossom](/en/topics/blossom/)

@@ -52,6 +52,7 @@ Another practical benefit is resilience. A raw `nostr:nevent...` or `nostr:naddr
 **Mentioned in:**
 
 - [Newsletter #8 (2026-02-04)](/en/newsletters/2026-02-04-newsletter/) - nostr-tools fix for hashtag parsing after newlines
+- [Newsletter #36: NIPs](/en/newsletters/2026-08-19-newsletter/#nips)
 
 **See also:**
 - [NIP-18: Reposts](/en/topics/nip-18/)

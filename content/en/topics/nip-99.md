@@ -69,6 +69,7 @@ That flexibility also explains why current marketplace projects favor it. The sp
 - [Newsletter #31: Conduit Mono rebuilds the merchant orders inbox around ephemeral guest checkout](/en/newsletters/2026-07-15-newsletter/#conduit-mono-rebuilds-the-merchant-orders-inbox-around-ephemeral-guest-checkout)
 - [Newsletter #31: NIP Deep Dive: NIP-99 and the Gamma Markets commerce extension](/en/newsletters/2026-07-15-newsletter/#nip-deep-dive-nip-99-and-the-gamma-markets-commerce-extension)
 - [Newsletter #33: Six Years of Nostr Julys](/en/newsletters/2026-07-29-newsletter/#six-years-of-nostr-julys)
+- [Newsletter #36: Audio tracks proposal keeps sales in NIP-99](/en/newsletters/2026-08-19-newsletter/#nips)
 
 **See also:**
 - [NIP-15: Marketplace Offers](/en/topics/nip-15/)

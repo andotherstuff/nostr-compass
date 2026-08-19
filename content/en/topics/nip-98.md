@@ -57,3 +57,4 @@ Blossom servers use NIP-98 to authenticate file uploads and deletions, tying sto
 - [Newsletter #22: NIP-98 Deep Dive](/en/newsletters/2026-05-13-newsletter/#nip-deep-dive-nip-98-http-auth)
 - [Newsletter #31: NIP Deep Dive, NIP-99 and Gamma Markets (Shopstr's NIP-98 auth parser test coverage)](/en/newsletters/2026-07-15-newsletter/#nip-deep-dive-nip-99-and-the-gamma-markets-commerce-extension)
 - [Newsletter #33: Lead stories](/en/newsletters/2026-07-29-newsletter/#top-stories)
+- [Newsletter #36: Zap Cooking binds admin routes to signed requests and encrypts stored wallet connections](/en/newsletters/2026-08-19-newsletter/#zap-cooking-binds-admin-routes-to-signed-requests-and-encrypts-stored-wallet-connections)

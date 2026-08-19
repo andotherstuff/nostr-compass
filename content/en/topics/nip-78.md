@@ -64,6 +64,7 @@ NIP-78 deliberately leaves the content format open — applications choose their
 - [Newsletter #33: Tagged releases](/en/newsletters/2026-07-29-newsletter/#tagged-releases)
 - [Newsletter #33: Unreleased app/client changes](/en/newsletters/2026-07-29-newsletter/#in-development)
 - [Newsletter #35: In Development](/en/newsletters/2026-08-12-newsletter/#in-development)
+- [Newsletter #36: Nail brings email onto Nostr as gift-wrapped events](/en/newsletters/2026-08-19-newsletter/#nail-brings-email-onto-nostr-as-gift-wrapped-events)
 
 **See also:**
 - [NIP-51: Lists](/en/topics/nip-51/)

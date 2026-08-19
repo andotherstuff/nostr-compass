@@ -48,6 +48,7 @@ That split lets clients implement the minimum needed for basic interoperability,
 - [Newsletter #2: Notable Code Changes](/en/newsletters/2025-12-24-newsletter/#notable-code-and-documentation-changes)
 - [Newsletter #10: Blossom local cache layer emerges](/en/newsletters/2026-02-18-newsletter/#blossom-local-cache-layer-emerges)
 - [Newsletter #33: Lead stories](/en/newsletters/2026-07-29-newsletter/#top-stories)
+- [Newsletter #36: Morganite 0.0.4: verifying a blob before it is cached](/en/newsletters/2026-08-19-newsletter/#morganite-004-verifying-a-blob-before-it-is-cached)
 
 **See also:**
 - [BUD-03: User Server List](/en/topics/bud-03/)

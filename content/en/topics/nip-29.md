@@ -83,6 +83,7 @@ That makes migration and forking possible, but not automatic. The same group id 
 - [Newsletter #33: Tagged releases](/en/newsletters/2026-07-29-newsletter/#tagged-releases)
 - [Newsletter #33: Unreleased app/client changes](/en/newsletters/2026-07-29-newsletter/#in-development)
 - [Newsletter #33: Six Years of Nostr Julys](/en/newsletters/2026-07-29-newsletter/#six-years-of-nostr-julys)
+- [Newsletter #36: Citrine 3.1.0 turns a phone relay into a group host and a site host](/en/newsletters/2026-08-19-newsletter/#citrine-310-turns-a-phone-relay-into-a-group-host-and-a-site-host)
 
 **See also:**
 - [NIP-11: Relay Information Document](/en/topics/nip-11/)

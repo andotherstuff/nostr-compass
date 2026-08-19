@@ -21,6 +21,24 @@ no_dm:
 # These remain visible to validation and workflow reporting, but never become
 # mentions or outreach recipients.
 unresolved:
+  Concord:
+    checked_at: 2026-08-18
+    reason: The concord-protocol repositories publish no project account, and no NIP-05 document was reachable for a Concord-controlled domain. Vector and Armada are covered under their own verified identities.
+    sources:
+      - https://github.com/concord-protocol/concord
+  Glow:
+    checked_at: 2026-08-18
+    reason: breez.technology serves no /.well-known/nostr.json and neither glow-web nor glow-app binds a project or maintainer key. The wallet derives a per-user Nostr identity from a passkey, which is not a project account.
+    sources:
+      - https://github.com/breez/glow-web
+      - https://github.com/breez/glow-app
+      - https://breez.technology/glow/
+  Nostter:
+    checked_at: 2026-08-18
+    reason: The three npubs in the README credit UI, logo, and illustration contributors, not the maintainer. nostter.app's NIP-05 document is behind an interstitial that returns HTML instead of JSON, so no key is bound to SnowCait or to Nostter by a primary source.
+    sources:
+      - https://github.com/SnowCait/nostter
+      - https://nostter.app/
   Granary:
     checked_at: 2026-08-02
     reason: No project identity or Ryan Barrett npub is bound by a primary source.
@@ -1176,3 +1194,36 @@ Alex Gleason dev:
   evidence:
     - https://github.com/soapbox-pub/ditto
     - https://gleasonator.com/.well-known/nostr.json?name=alex
+
+# =============================================================================
+# Newsletter #36 additions (verified 2026-08-18)
+# =============================================================================
+
+# Cambium's README publishes the forgesworn key directly, and forgesworn.dev's
+# NIP-05 document maps both `_` and `darren` to the same key already bound to
+# Bray. Cambium, Bark, Toll Booth, and nwc-kit ship from that one project site,
+# so every alias below de-duplicates to a single outreach recipient.
+Cambium: npub1mgvlrnf5hm9yf0n5mf9nqmvarhvxkc6remu5ec3vf8r0txqkuk7su0e7q2
+Bark: npub1mgvlrnf5hm9yf0n5mf9nqmvarhvxkc6remu5ec3vf8r0txqkuk7su0e7q2
+Toll Booth: npub1mgvlrnf5hm9yf0n5mf9nqmvarhvxkc6remu5ec3vf8r0txqkuk7su0e7q2
+nwc-kit: npub1mgvlrnf5hm9yf0n5mf9nqmvarhvxkc6remu5ec3vf8r0txqkuk7su0e7q2
+
+# NYM's README contact section names 21 Million LLC as operator and Luxas as
+# lead developer, linking that role to this key. Recorded as a personal
+# lead-developer identity, not as a project account.
+NYM:
+  npub: npub16jdfqgazrkapk0yrqm9rdxlnys7ck39c7zmdzxtxqlmmpxg04r0sd733sv
+  identity_type: lead-developer
+  person: Luxas
+  evidence:
+    - https://github.com/Spl0itable/NYM
+Luxas lead developer:
+  npub: npub16jdfqgazrkapk0yrqm9rdxlnys7ck39c7zmdzxtxqlmmpxg04r0sd733sv
+  mention_only: true
+
+# Nail is a Formstr-team repository under the same GitHub organisation as
+# nostr-forms, nostr-calendar and formstr-drive, all of which already resolve to
+# the verified Formstr project key. mailstr.app serves the deployment's own
+# `_smtp` bridge record; that key signs bridge seals and is not a contact
+# identity, so outreach stays on the Formstr project key.
+Nail: npub1qu7dsd44275lms4x9snnwvnnmgx926nsppmr7lcw9dlj36n4fltqgs7p98

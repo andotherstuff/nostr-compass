@@ -36,6 +36,7 @@ Provider discovery is outside the request/response loop itself. The spec points 
 - [Newsletter #11: NIP-AC DVM Agent Coordination](/en/newsletters/2026-02-25-newsletter/#nip-updates)
 - [Newsletter #19: Forgesworn toll-booth-dvm](/en/newsletters/2026-04-22-newsletter/#forgesworn-publishes-a-29-repo-cryptographic-toolkit-for-nostr)
 - [Newsletter #19: Agent Reputation Attestations proposal](/en/newsletters/2026-04-22-newsletter/#nip-updates)
+- [Newsletter #36: nostream traps NIP-90 job requests](/en/newsletters/2026-08-19-newsletter/#nostream-adds-a-relay-monitor-and-mints-invite-codes)
 
 **See also:**
 - [NIP-89: Recommended Application Handlers](/en/topics/nip-89/)

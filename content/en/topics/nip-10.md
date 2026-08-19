@@ -73,6 +73,7 @@ Sort results by `created_at` and use `reply` markers to build the tree structure
 
 **Mentioned in:**
 - [Newsletter #2: NIP Deep Dive](/en/newsletters/2025-12-24-newsletter/#nip-10-text-note-threading)
+- [Newsletter #36: Comments (NIP-22)](/en/newsletters/2026-08-19-newsletter/#comments-nip-22)
 
 **See also:**
 - [NIP-01: Basic Protocol](/en/topics/nip-01/)

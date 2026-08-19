@@ -55,6 +55,7 @@ NIP-44 is now the preferred encryption mode. The spec still documents NIP-04 fal
 - [Newsletter #33: Tagged releases](/en/newsletters/2026-07-29-newsletter/#tagged-releases)
 - [Newsletter #33: Six Years of Nostr Julys](/en/newsletters/2026-07-29-newsletter/#six-years-of-nostr-julys)
 - [Newsletter #35: Tagged releases](/en/newsletters/2026-08-12-newsletter/#tagged-releases)
+- [Newsletter #36: Bray 3.0.0 and Toll Booth 6.0.0 move to a shared wallet-connect library](/en/newsletters/2026-08-19-newsletter/#bray-300-and-toll-booth-600-move-to-a-shared-wallet-connect-library)
 
 **See also:**
 - [NIP-57: Zaps](/en/topics/nip-57/)
