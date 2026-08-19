@@ -66,9 +66,9 @@ description: "AmberとCambiumにわたる署名者セキュリティの一週間
 [バージョン0.9.13](https://github.com/marmot-protocol/mdk/releases/tag/v0.9.13)は8月18日にストレージフォーマットv2([PR #1421](https://github.com/marmot-protocol/mdk/pull/1421))、移行レール、ライブアカウントスナップショットを置くデルタ書き込み([PR #1435](https://github.com/marmot-protocol/mdk/pull/1435))、より高速な招待キャッチアップ([PR #1444](https://github.com/marmot-protocol/mdk/pull/1444))、macOSバインディング([PR #1402](https://github.com/marmot-protocol/mdk/pull/1402))とともに着地しました。[バージョン0.9.14](https://github.com/marmot-protocol/mdk/releases/tag/v0.9.14)は8月19日にグループ作成の磨き込み: 事前アップロード創設画像([PR #1498](https://github.com/marmot-protocol/mdk/pull/1498))、KeyPackageバッチング([PR #1494](https://github.com/marmot-protocol/mdk/pull/1494))、アトミック初期メッセージ保持([PR #1497](https://github.com/marmot-protocol/mdk/pull/1497))、アカウント所有リレーでのプロフィール公開([PR #1495](https://github.com/marmot-protocol/mdk/pull/1495))が続きました。[MarmotKit 0.9.14](https://github.com/marmot-protocol/mdk/releases/tag/marmotkit-v0.9.14)と[wn-agent 0.9.14](https://github.com/marmot-protocol/mdk/releases/tag/wn-agent-v0.9.14)はコアクレートとともに出荷します。
 ### Divine Mobile 1.0.20: アプリを離れずにバッジをミント
 
-[Divine Mobile](https://github.com/divinevideo/divine-mobile)はNostr経由で動画を公開・取得するショート動画クライアントです。[バージョン1.0.20](https://github.com/divinevideo/divine-mobile/releases/tag/v1.0.20)はユーザーが[NIP-58](/ja/topics/nip-58/)バッジ（本号最初のディープダイブで説明する署名付与イベント）をミントし、アプリを離れずに誰かに渡せます。プロフィールのバッジをタップすると獲得条件が説明され、定義イベントと付与イベントが別保存されるため通常未実装になりがちな仕様部分です。
+[Divine Mobile](https://github.com/divinevideo/divine-mobile)はNostr経由で動画を公開・取得するショート動画クライアントです。[バージョン1.0.20](https://github.com/divinevideo/divine-mobile/releases/tag/1.0.20)はユーザーが[NIP-58](/ja/topics/nip-58/)バッジ（本号最初のディープダイブで説明する署名付与イベント）をミントし、アプリを離れずに誰かに渡せます。プロフィールのバッジをタップすると獲得条件が説明され、定義イベントと付与イベントが別保存されるため通常未実装になりがちな仕様部分です。
 
-[リリース](https://github.com/divinevideo/divine-mobile/releases/tag/v1.0.20)の残りはクライアント作業です: ライトテーマ、ストップモーションエディタのクロップ・回転・反転、レコーダーから1タップの下書き、動画に対するキャプションタイミング、視聴済み素材を下げる優先度のフィード、エディタ・レコーダー・プロフィールタブのスクリーンリーダー対応、低モーション処理、アカウント設定でのDivineメールとパスワード管理およびアカウントリンク・解除。削除動画はローカル状態を残し、ブックマークは永続化します。[先週の1.0.19](/ja/newsletters/2026-08-12-newsletter/#divine-mobile-1019-tightens-accounts-private-messages-and-publishing)はアカウント分離とDM検証を強化しました。バッジ発行はその上の新しい公開面です。
+[リリース](https://github.com/divinevideo/divine-mobile/releases/tag/1.0.20)の残りはクライアント作業です: ライトテーマ、ストップモーションエディタのクロップ・回転・反転、レコーダーから1タップの下書き、動画に対するキャプションタイミング、視聴済み素材を下げる優先度のフィード、エディタ・レコーダー・プロフィールタブのスクリーンリーダー対応、低モーション処理、アカウント設定でのDivineメールとパスワード管理およびアカウントリンク・解除。削除動画はローカル状態を残し、ブックマークは永続化します。[先週の1.0.19](/ja/newsletters/2026-08-12-newsletter/#divine-mobile-1019-tightens-accounts-private-messages-and-publishing)はアカウント分離とDM検証を強化しました。バッジ発行はその上の新しい公開面です。
 
 ### ClipRelay 0.2.0: カメラで署名者をペアリング
 
@@ -212,7 +212,7 @@ Toll Boothパッチが3件続きました: [6.0.1](https://github.com/forgesworn
 }
 ```
 
-現在の実装は発行、表示、読取をカバーします。[Divine Mobile 1.0.20](https://github.com/divinevideo/divine-mobile/releases/tag/v1.0.20)はアプリ内でバッジをミント・付与し、読者がタップした獲得バッジを説明し、[Nostter PR #2281](https://github.com/SnowCait/nostter/pull/2281)はWebクライアントのプロフィールバッジ処理を更新し、[Amethyst](https://github.com/vitorpamplona/amethyst)は自身のクライアントタグ付き付与イベントを公開 — 上例と並ぶリレーデータに1件現れます。
+現在の実装は発行、表示、読取をカバーします。[Divine Mobile 1.0.20](https://github.com/divinevideo/divine-mobile/releases/tag/1.0.20)はアプリ内でバッジをミント・付与し、読者がタップした獲得バッジを説明し、[Nostter PR #2281](https://github.com/SnowCait/nostter/pull/2281)はWebクライアントのプロフィールバッジ処理を更新し、[Amethyst](https://github.com/vitorpamplona/amethyst)は自身のクライアントタグ付き付与イベントを公開 — 上例と並ぶリレーデータに1件現れます。
 
 ### コメント (NIP-22)
 

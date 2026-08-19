@@ -67,9 +67,9 @@ description: "Amber 与 Cambium 的签名器安全加固、邮件桥接上线、
 
 ### Divine Mobile 1.0.20：应用内铸造徽章
 
-[Divine Mobile](https://github.com/divinevideo/divine-mobile) 是通过 Nostr 发布与检索短视频的客户端。[1.0.20 版](https://github.com/divinevideo/divine-mobile/releases/tag/v1.0.20) 允许用户铸造 [NIP-58](/zh/topics/nip-58/) 徽章（本期首个深度解析所述已签名授予事件）并转赠他人，无需离开应用。点击个人资料上的徽章会说明获得条件——规范中定义事件与授予事件分存，这部分通常无人实现。
+[Divine Mobile](https://github.com/divinevideo/divine-mobile) 是通过 Nostr 发布与检索短视频的客户端。[1.0.20 版](https://github.com/divinevideo/divine-mobile/releases/tag/1.0.20) 允许用户铸造 [NIP-58](/zh/topics/nip-58/) 徽章（本期首个深度解析所述已签名授予事件）并转赠他人，无需离开应用。点击个人资料上的徽章会说明获得条件——规范中定义事件与授予事件分存，这部分通常无人实现。
 
-[该版本](https://github.com/divinevideo/divine-mobile/releases/tag/v1.0.20) 其余为客户端工作：浅色主题、定格编辑器裁剪旋转翻转、录制器一键草稿、字幕与视频时间轴对齐、降低已观看素材优先级的信息流、编辑器/录制器/个人资料标签的屏幕阅读器支持、减少动效处理，以及管理 Divine 邮箱密码与账户关联/解绑的账户设置。已删视频现会离开本地状态，书签持久化。[上周 1.0.19 版](/zh/newsletters/2026-08-12-newsletter/#divine-mobile-1019-tightens-accounts-private-messages-and-publishing) 加固账户隔离与私信校验；徽章签发是在其上的新发布面。
+[该版本](https://github.com/divinevideo/divine-mobile/releases/tag/1.0.20) 其余为客户端工作：浅色主题、定格编辑器裁剪旋转翻转、录制器一键草稿、字幕与视频时间轴对齐、降低已观看素材优先级的信息流、编辑器/录制器/个人资料标签的屏幕阅读器支持、减少动效处理，以及管理 Divine 邮箱密码与账户关联/解绑的账户设置。已删视频现会离开本地状态，书签持久化。[上周 1.0.19 版](/zh/newsletters/2026-08-12-newsletter/#divine-mobile-1019-tightens-accounts-private-messages-and-publishing) 加固账户隔离与私信校验；徽章签发是在其上的新发布面。
 
 ### ClipRelay 0.2.0：用相机配对签名器
 
@@ -214,7 +214,7 @@ Toll Booth 随后三个补丁：[6.0.1 版](https://github.com/forgesworn/toll-b
 }
 ```
 
-当前实现覆盖签发、展示与读取。[Divine Mobile 1.0.20 版](https://github.com/divinevideo/divine-mobile/releases/tag/v1.0.20) 在应用内铸造并授予徽章，读者点击时解释已获得徽章；[Nostter PR #2281](https://github.com/SnowCait/nostter/pull/2281) 更新 Web 客户端个人资料徽章处理；[Amethyst](https://github.com/vitorpamplona/amethyst) 发布携带自有客户端标签的授予事件，其中一例与上例同现于中继数据。
+当前实现覆盖签发、展示与读取。[Divine Mobile 1.0.20 版](https://github.com/divinevideo/divine-mobile/releases/tag/1.0.20) 在应用内铸造并授予徽章，读者点击时解释已获得徽章；[Nostter PR #2281](https://github.com/SnowCait/nostter/pull/2281) 更新 Web 客户端个人资料徽章处理；[Amethyst](https://github.com/vitorpamplona/amethyst) 发布携带自有客户端标签的授予事件，其中一例与上例同现于中继数据。
 
 ### 评论（NIP-22）
 

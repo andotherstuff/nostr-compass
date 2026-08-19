@@ -69,9 +69,9 @@ description: "Amber와 Cambium을 아우른 서명자 보안 주간, 메일 브�
 
 ### Divine Mobile 1.0.20: 앱을 떠나지 않고 배지 발행
 
-[Divine Mobile](https://github.com/divinevideo/divine-mobile)은 Nostr를 통해 동영상을 게시하고 가져오는 숏폼 클라이언트입니다. [버전 1.0.20](https://github.com/divinevideo/divine-mobile/releases/tag/v1.0.20)은 사용자가 [NIP-58](/ko/topics/nip-58/)(배지) 배지, 즉 이번 호의 첫 심층 분석에 나온 서명된 수여 이벤트를 발행해 다른 사람에게 넘길 수 있게 합니다. 프로필의 배지를 탭하면 획득 조건을 설명하는데, 정의 이벤트와 수여 이벤트가 따로 저장되기 때문에 보통 구현되지 않는 사양 부분입니다.
+[Divine Mobile](https://github.com/divinevideo/divine-mobile)은 Nostr를 통해 동영상을 게시하고 가져오는 숏폼 클라이언트입니다. [버전 1.0.20](https://github.com/divinevideo/divine-mobile/releases/tag/1.0.20)은 사용자가 [NIP-58](/ko/topics/nip-58/)(배지) 배지, 즉 이번 호의 첫 심층 분석에 나온 서명된 수여 이벤트를 발행해 다른 사람에게 넘길 수 있게 합니다. 프로필의 배지를 탭하면 획득 조건을 설명하는데, 정의 이벤트와 수여 이벤트가 따로 저장되기 때문에 보통 구현되지 않는 사양 부분입니다.
 
-[릴리스](https://github.com/divinevideo/divine-mobile/releases/tag/v1.0.20)의 나머지는 클라이언트 작업입니다. 라이트 테마, 스톱모션 편집기의 자르기·회전·뒤집기, 녹화기에서 한 탭으로 가는 초안, 동영상 대비 캡션 타이밍, 이미 본 material을 낮추는 피드, 편집기·녹화기·프로필 탭의 스크린 리더 지원, 모션 감소 처리, Divine 이메일·비밀번호 관리와 계정 연결/해제 설정. 삭제된 동영상은 로컬 상태를 남기고 북마크는 유지됩니다. [지난주 1.0.19](/ko/newsletters/2026-08-12-newsletter/#divine-mobile-1019-tightens-accounts-private-messages-and-publishing)는 계정 격리와 DM 검증을 강화했고, 배지 발행은 그 위의 새 게시 표면입니다.
+[릴리스](https://github.com/divinevideo/divine-mobile/releases/tag/1.0.20)의 나머지는 클라이언트 작업입니다. 라이트 테마, 스톱모션 편집기의 자르기·회전·뒤집기, 녹화기에서 한 탭으로 가는 초안, 동영상 대비 캡션 타이밍, 이미 본 material을 낮추는 피드, 편집기·녹화기·프로필 탭의 스크린 리더 지원, 모션 감소 처리, Divine 이메일·비밀번호 관리와 계정 연결/해제 설정. 삭제된 동영상은 로컬 상태를 남기고 북마크는 유지됩니다. [지난주 1.0.19](/ko/newsletters/2026-08-12-newsletter/#divine-mobile-1019-tightens-accounts-private-messages-and-publishing)는 계정 격리와 DM 검증을 강화했고, 배지 발행은 그 위의 새 게시 표면입니다.
 
 ### ClipRelay 0.2.0: 카메라로 서명자 페어링
 
@@ -218,7 +218,7 @@ Toll Booth 패치 세 개가 이어졌습니다. [6.0.1](https://github.com/forg
 }
 ```
 
-현재 구현은 발행, 표시, 읽기를 다룹니다. [Divine Mobile 1.0.20](https://github.com/divinevideo/divine-mobile/releases/tag/v1.0.20)은 앱 안에서 배지를 발행·수여하고 독자가 탭하면 획득 조건을 설명하며, [Nostter PR #2281](https://github.com/SnowCait/nostter/pull/2281)은 웹 클라이언트 프로필 배지 처리를 갱신하고, [Amethyst](https://github.com/vitorpamplona/amethyst)는 자체 client tag를 담은 수여 이벤트를 게시하며 위 예시와 같은 릴레이 데이터에 나타납니다.
+현재 구현은 발행, 표시, 읽기를 다룹니다. [Divine Mobile 1.0.20](https://github.com/divinevideo/divine-mobile/releases/tag/1.0.20)은 앱 안에서 배지를 발행·수여하고 독자가 탭하면 획득 조건을 설명하며, [Nostter PR #2281](https://github.com/SnowCait/nostter/pull/2281)은 웹 클라이언트 프로필 배지 처리를 갱신하고, [Amethyst](https://github.com/vitorpamplona/amethyst)는 자체 client tag를 담은 수여 이벤트를 게시하며 위 예시와 같은 릴레이 데이터에 나타납니다.
 
 ### 댓글 (NIP-22)
 
