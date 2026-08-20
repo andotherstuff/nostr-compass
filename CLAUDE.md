@@ -124,11 +124,16 @@ The NIP-34 tracker (`data/nip34_tracked.yml`) MUST only track repositories whose
 
 ### New-application discovery is candidate-only (CRITICAL)
 
-`scripts/fetch_app_discovery.py` adds three candidate streams beyond the tracked-repository, release, NIP-34, Shakespeare, and heartbeat fetchers:
+`scripts/fetch_app_discovery.py` adds four candidate streams beyond the tracked-repository, release, NIP-34, Shakespeare, and heartbeat fetchers:
 
-- paginated GitHub searches for active `nostr`-topic repositories and recently created repositories with `nostr` in the name or description;
+- paginated GitHub searches for active `nostr`-topic repositories, recently created repositories with `nostr` in the name or description, and repositories with `nostr` in the name or description *pushed* inside the window regardless of creation date;
+- an owner sweep: for every distinct GitHub owner that already has a repository in `data/projects.yml`, the repositories that owner pushed inside the window and Compass does not track yet;
 - recent NIP-89 kind 31990 application-handler descriptors recovered from several public relays; and
 - recent Zapstore kind 32267 app listings, including developer-signed listings that do not yet have a kind 30063 release in the issue window.
+
+**The owner sweep exists because per-repository tracking has an owner-shaped blind spot.** Newsletter #36 missed `formstr-hq/nail`, a Nostr email bridge from a team with five already-tracked repositories, on all three of the older streams at once: it carries no topics, so the `topic:nostr` query skipped it; it was created five months before the window, so the `created:>=` query skipped it; and its description, "Nostr Email Bridge", named no recognised application noun, so the explicit-signal gate would have dropped it anyway. An owner that already ships a tracked Nostr project is evidence in its own right, so a sibling repository is admitted on that provenance without having to advertise itself in its forge blurb. It still arrives as `evidence_status: unconfirmed` with a `sibling repository of an owner that already has a tracked project` review flag, and Triage still has to open it and establish a real Nostr surface before it can be written up.
+
+The owner sweep runs on the core REST listing (`users/<owner>/repos?sort=pushed`), not the search API, because one search per owner would exhaust the 30-per-minute search budget. Owners past `OWNER_SIBLING_OWNER_LIMIT` are named in `source_errors`, never dropped quietly.
 
 The script writes `data/app_discovery/discovery_YYYY-MM-DD.json`, excludes canonical repo/website/name matches already in `data/projects.yml`, and persists `seen_repos.json` so the weekly active-repository query does not repeat its baseline forever. Every GitHub result requires explicit Nostr plus application/tooling metadata; libraries and SDKs do not qualify on those labels alone. NIP-89 records require a stable `d` identifier, supported non-DVM kinds, and usable identity/location evidence. Zapstore listings require a stable app ID, canonical location, and an explicit Nostr protocol surface. Relay events are signature-verified, relay and source provenance is retained, unsafe URLs are rejected, GitHub truncation/incomplete-result warnings and partial source failures are reported, and independent records merge only when their canonical repository or website matches.
 
