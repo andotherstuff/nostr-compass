@@ -11,17 +11,17 @@ description: "Amber 与 Cambium 的签名器安全加固、邮件桥接上线、
 
 欢迎回到 [Nostr Compass](https://nostrcompass.org)，您的 Nostr 每周指南。
 
-**本周：** [Amber](https://github.com/greenart7c3/Amber) 加固中继认证并加密存储密钥，[Cambium](https://github.com/forgesworn/cambium) 在中继认证负载下为网站签名，[Citrine](https://github.com/greenart7c3/Citrine) 在手机中继上托管群组与静态站点，[Vector](https://github.com/VectorPrivacy/Vector) 在垃圾信息冲击下排队审核并跨设备同步静音，[Sonar](https://github.com/hedwig-corp/bitchat-to-sonar) 为网状网格消息添加线程回复，[Nostria](https://github.com/nostria-app/nostria) 发布播客，[Nail](https://github.com/formstr-hq/nail) 将邮件桥接为 gift-wrap 事件。版本发布涵盖 MDK 群组状态、徽章铸造、二维码签名器配对、Android 浏览器签名与共享钱包连接。协议工作涉及评论补丁、加密文件元数据、线程格式、Marmot 重启保证与 Concord 成员列表。深度解析：徽章与评论。
+**本周：** [Amber](https://github.com/greenart7c3/Amber) 加固中继认证并加密已存储的敏感凭据，[Cambium](https://github.com/forgesworn/cambium) 在中继认证负载下为网站签名，[Citrine](https://github.com/greenart7c3/Citrine) 在手机中继上托管群组与静态站点，[Vector](https://github.com/VectorPrivacy/Vector) 在垃圾信息冲击下排队审核并跨设备同步静音，[Sonar](https://github.com/hedwig-corp/bitchat-to-sonar) 为网状网格消息添加线程回复，[Nostria](https://github.com/nostria-app/nostria) 发布播客，[Nail](https://github.com/formstr-hq/nail) 将邮件桥接为 gift-wrap 事件。版本发布涵盖 MDK 群组状态、徽章铸造、二维码签名器配对、Android 浏览器签名与共享钱包连接。协议工作涉及评论补丁、加密文件元数据、线程格式、Marmot 重启保证与 Concord 成员列表。深度解析：徽章与评论。
 
 ## 头条新闻
 
-### Amber 6.5.0 修复中继认证混淆代理并加密存储密钥
+### Amber 6.5.0 修复中继认证混淆代理并加密已存储的敏感凭据
 
-[Amber](https://github.com/greenart7c3/Amber) 是一款 Android [NIP-55](/zh/topics/nip-55/) 与 [NIP-46](/zh/topics/nip-46/) 签名器。[6.5.0 版](https://github.com/greenart7c3/Amber/releases/tag/v6.5.0) 修复四项已披露漏洞：[中继认证中的混淆代理](https://github.com/greenart7c3/Amber/security/advisories/GHSA-vx4h-56qj-wcp7) 曾允许任意调用者为用户从未批准的中继获取 kind `22242` [NIP-42](/zh/topics/nip-42/) 事件；[NIP-46 重放缺口](https://github.com/greenart7c3/Amber/security/advisories/GHSA-h9fv-9247-3582)；[明文连接密钥与本地密钥](https://github.com/greenart7c3/Amber/security/advisories/GHSA-5fjp-ghh8-wch8) 现于静态存储中采用信封加密；以及涵盖八项加固的[批次](https://github.com/greenart7c3/Amber/security/advisories/GHSA-8844-q5vh-9j8f)：解密前校验调用方授权、权限解析失败即关闭、明文 `ws://` 警告、安全二维码界面、日志脱敏、登出时惰性清零密钥，以及可选的未锁设备 Keystore 使用。
+[Amber](https://github.com/greenart7c3/Amber) 是一款 Android [NIP-55](/zh/topics/nip-55/) 与 [NIP-46](/zh/topics/nip-46/) 签名器。[6.5.0 版](https://github.com/greenart7c3/Amber/releases/tag/v6.5.0) 修复四项已披露漏洞：[中继认证中的混淆代理](https://github.com/greenart7c3/Amber/security/advisories/GHSA-vx4h-56qj-wcp7) 曾允许任意调用者为用户从未批准的中继获取 kind `22242` [NIP-42](/zh/topics/nip-42/) 事件；[NIP-46 重放缺口](https://github.com/greenart7c3/Amber/security/advisories/GHSA-h9fv-9247-3582)；[明文连接凭据与本地密钥](https://github.com/greenart7c3/Amber/security/advisories/GHSA-5fjp-ghh8-wch8) 现于静态存储中采用信封加密；以及涵盖八项加固的[批次](https://github.com/greenart7c3/Amber/security/advisories/GHSA-8844-q5vh-9j8f)：解密前校验调用方授权、权限解析失败即关闭、明文 `ws://` 警告、安全二维码界面、日志脱敏、登出时惰性清零密钥，以及可选的未锁设备 Keystore 使用。
 
 [6.5.1 版](https://github.com/greenart7c3/Amber/releases/tag/v6.5.1) 在切换未锁设备要求后 Keystore 密钥轮换时重新加密已存 NIP-46 密钥，并修复权限编辑器崩溃。[6.5.2 版](https://github.com/greenart7c3/Amber/releases/tag/v6.5.2) 停止解密应用列表从不渲染的列、缓存 Keystore 句柄、启动时预热账户缓存，并对中继状态通知去抖。
 
-[上周 6.4.0 版](/zh/newsletters/2026-08-12-newsletter/#amber-640-makes-every-grouped-signing-decision-explicit) 使分组签名决策显式化；6.5.x 改变的是 Amber 究竟会授权什么。
+[上周 6.4.0 版](/en/newsletters/2026-08-12-newsletter/#amber-640-makes-every-grouped-signing-decision-explicit) 使分组签名决策显式化；6.5.x 改变的是 Amber 究竟会授权什么。
 
 ### Cambium 0.4.0 为网站签名并消化中继认证突发流量
 
@@ -31,7 +31,7 @@ description: "Amber 与 Cambium 的签名器安全加固、邮件桥接上线、
 
 [0.3.6 版](https://github.com/forgesworn/cambium/releases/tag/v0.3.6) 修复与遵循规范的签名器配对。Cambium 旧版 rust-nostr 仅接受字面字符串 `ack` 作为 NIP-46 `connect` 调用的结果，因此若签名器按当前规范回显 bunker URI 密钥（Heartwood 固件即如此），配对会以意外响应错误结束。从 rust-nostr 0.44.2 升至 0.44.8 后两种形式均可接受，已在实机硬件与仍回答 `ack` 的 `nak bunker` 上验证。
 
-0.4.1 至 0.4.3 版聚焦负载下的准入控制。[0.4.1 版](https://github.com/forgesworn/cambium/releases/tag/v0.4.1) 为反应、发帖、删除与加密预留队列槽位，优先于中继认证与后台解密；限制排队调用数，调用方超时后丢弃，过载时返回终端不可用结果而非弹出前台签名界面。[0.4.2 版](https://github.com/forgesworn/cambium/releases/tag/v0.4.2) 在下一请求前丢弃已超时或长期空闲的 NIP-46 会话，并允许多个相同 kind `22242` 认证事件并发共享一次硬件签名。[0.4.3 版](https://github.com/forgesworn/cambium/releases/tag/v0.4.3) 每个身份最多向硬件 worker 准入一个 distinct 认证挑战，内部从不重试认证，超时后开启每身份 60 秒冷却，同时仍对精确缓存副本作答。发布说明中的测量来自 GrapheneOS 手机驱动 [Amethyst](https://github.com/vitorpamplona/amethyst)：冷启动突发产生 33 次即时过载响应与 13 次完成请求且无签名器超时；认证突发期间的新登录在批准后 1.254 秒返回。
+0.4.1 至 0.4.3 版聚焦负载下的准入控制。[0.4.1 版](https://github.com/forgesworn/cambium/releases/tag/v0.4.1) 为反应、发帖、删除与加密预留队列槽位，优先于中继认证与后台解密；限制排队调用数，调用方超时后丢弃，过载时返回终端不可用结果而非弹出前台签名界面。[0.4.2 版](https://github.com/forgesworn/cambium/releases/tag/v0.4.2) 在下一请求前丢弃已超时或长期空闲的 NIP-46 会话，并允许多个相同 kind `22242` 认证事件并发共享一次硬件签名。[0.4.3 版](https://github.com/forgesworn/cambium/releases/tag/v0.4.3) 每个身份最多向硬件 worker 准入一个不同的认证挑战，内部从不重试认证，超时后开启每身份 60 秒冷却，同时仍对精确缓存副本作答。发布说明中的测量来自 GrapheneOS 手机驱动 [Amethyst](https://github.com/vitorpamplona/amethyst)：冷启动突发产生 33 次即时过载响应与 13 次完成请求且无签名器超时；认证突发期间的新登录在批准后 1.254 秒返回。
 
 ### Citrine 3.1.0 将手机中继变为群组主机与站点主机
 
@@ -55,7 +55,7 @@ description: "Amber 与 Cambium 的签名器安全加固、邮件桥接上线、
 
 ### Nostria 开始发布播客并请求中继计数
 
-[Nostria](https://github.com/nostria-app/nostria) 是 Web 客户端。[4.1.70 版](https://github.com/nostria-app/nostria/releases/tag/v4.1.70) 与 [4.1.71 版](https://github.com/nostria-app/nostria/releases/tag/v4.1.71) 为高级订阅者增加播客发布，单集为已签名 Nostr 事件。[4.1.69 版](https://github.com/nostria-app/nostria/releases/tag/v4.1.69) 在信息流中使用 [NIP-45](/zh/topics/nip-45/) `COUNT` 统计反应、回复与 zap 总数，并完成本地化。[上周 4.1.67 版](/zh/newsletters/2026-08-12-newsletter/#nostria-4167-expands-encrypted-community-administration) 扩展了加密社区管理。
+[Nostria](https://github.com/nostria-app/nostria) 是 Web 客户端。[4.1.70 版](https://github.com/nostria-app/nostria/releases/tag/v4.1.70) 与 [4.1.71 版](https://github.com/nostria-app/nostria/releases/tag/v4.1.71) 为高级订阅者增加播客发布，单集为已签名 Nostr 事件。[4.1.69 版](https://github.com/nostria-app/nostria/releases/tag/v4.1.69) 在信息流中使用 [NIP-45](/zh/topics/nip-45/) `COUNT` 统计反应、回复与 zap 总数，并完成本地化。[上周 4.1.67 版](/en/newsletters/2026-08-12-newsletter/#nostria-4167-expands-encrypted-community-administration) 扩展了加密社区管理。
 
 ## 版本发布
 
@@ -63,19 +63,19 @@ description: "Amber 与 Cambium 的签名器安全加固、邮件桥接上线、
 
 [MDK](https://github.com/marmot-protocol/mdk) 是 [Marmot](https://github.com/marmot-protocol/marmot)（经 Nostr 传输的加密群组消息协议）的 Rust 开发套件。[0.9.12 版](https://github.com/marmot-protocol/mdk/releases/tag/v0.9.12) 使多条群组状态路径失败即关闭而非猜测：缺失分叉锚点现为硬错误（[PR #1329](https://github.com/marmot-protocol/mdk/pull/1329)）；离开提案原子持久化，崩溃不会留下半应用 departure（[PR #1360](https://github.com/marmot-protocol/mdk/pull/1360)）；事件重放拒绝在无 manifest 的换行分隔 JSON 流上猜测格式（[PR #1140](https://github.com/marmot-protocol/mdk/pull/1140)）。收敛测试同期扩大：保留历史跨路由恢复（[PR #1350](https://github.com/marmot-protocol/mdk/pull/1350)）、跨适配器收敛保证（[PR #1372](https://github.com/marmot-protocol/mdk/pull/1372)）与泛化孤立收敛活动（[PR #1357](https://github.com/marmot-protocol/mdk/pull/1357)）。中继拒绝诊断得以保留而非坍缩为通用失败（[PR #1361](https://github.com/marmot-protocol/mdk/pull/1361)）。
 
-[0.9.13 版](https://github.com/marmot-protocol/mdk/releases/tag/v0.9.13) 于 8 月 18 日落地，含存储格式 v2（[PR #1421](https://github.com/marmot-protocol/mdk/pull/1421)）、迁移轨道，以及增量写入取代 live 账户快照（[PR #1435](https://github.com/marmot-protocol/mdk/pull/1435)），外加更快邀请追赶（[PR #1444](https://github.com/marmot-protocol/mdk/pull/1444)）与 macOS 绑定（[PR #1402](https://github.com/marmot-protocol/mdk/pull/1402)）。[0.9.14 版](https://github.com/marmot-protocol/mdk/releases/tag/v0.9.14) 于 8 月 19 日跟进群组创建打磨：预上传创始图像（[PR #1498](https://github.com/marmot-protocol/mdk/pull/1498)）、KeyPackage 批处理（[PR #1494](https://github.com/marmot-protocol/mdk/pull/1494)）、原子初始消息保留（[PR #1497](https://github.com/marmot-protocol/mdk/pull/1497)），以及随账户自有中继发布个人资料（[PR #1495](https://github.com/marmot-protocol/mdk/pull/1495)）。[MarmotKit 0.9.14](https://github.com/marmot-protocol/mdk/releases/tag/marmotkit-v0.9.14) 与 [wn-agent 0.9.14](https://github.com/marmot-protocol/mdk/releases/tag/wn-agent-v0.9.14) 随核心 crate 一并发布。
+[0.9.13 版](https://github.com/marmot-protocol/mdk/releases/tag/v0.9.13) 于 8 月 18 日落地，含存储格式 v2（[PR #1421](https://github.com/marmot-protocol/mdk/pull/1421)）、迁移轨道，以及增量写入取代实时账户快照（[PR #1435](https://github.com/marmot-protocol/mdk/pull/1435)），外加更快邀请追赶（[PR #1444](https://github.com/marmot-protocol/mdk/pull/1444)）与 macOS 绑定（[PR #1402](https://github.com/marmot-protocol/mdk/pull/1402)）。[0.9.14 版](https://github.com/marmot-protocol/mdk/releases/tag/v0.9.14) 于 8 月 19 日跟进群组创建打磨：预上传创始图像（[PR #1498](https://github.com/marmot-protocol/mdk/pull/1498)）、KeyPackage 批处理（[PR #1494](https://github.com/marmot-protocol/mdk/pull/1494)）、原子初始消息保留（[PR #1497](https://github.com/marmot-protocol/mdk/pull/1497)），以及随账户自有中继发布个人资料（[PR #1495](https://github.com/marmot-protocol/mdk/pull/1495)）。[MarmotKit 0.9.14](https://github.com/marmot-protocol/mdk/releases/tag/marmotkit-v0.9.14) 与 [wn-agent 0.9.14](https://github.com/marmot-protocol/mdk/releases/tag/wn-agent-v0.9.14) 随核心 crate 一并发布。
 
-### Divine Mobile 1.0.20：应用内铸造徽章
+### Divine Mobile 1.0.20：应用内创建并授予徽章
 
-[Divine Mobile](https://github.com/divinevideo/divine-mobile) 是通过 Nostr 发布与检索短视频的客户端。[1.0.20 版](https://github.com/divinevideo/divine-mobile/releases/tag/1.0.20) 允许用户铸造 [NIP-58](/zh/topics/nip-58/) 徽章（本期首个深度解析所述已签名授予事件）并转赠他人，无需离开应用。点击个人资料上的徽章会说明获得条件——规范中定义事件与授予事件分存，这部分通常无人实现。
+[Divine Mobile](https://github.com/divinevideo/divine-mobile) 是通过 Nostr 发布与检索短视频的客户端。[1.0.20 版](https://github.com/divinevideo/divine-mobile/releases/tag/1.0.20) 允许用户创建 [NIP-58](/zh/topics/nip-58/) 徽章（本期首个深度解析所述已签名授予事件）并授予他人，无需离开应用。点击个人资料上的徽章会说明获得条件——规范中定义事件与授予事件分存，这部分通常无人实现。
 
-[该版本](https://github.com/divinevideo/divine-mobile/releases/tag/1.0.20) 其余为客户端工作：浅色主题、定格编辑器裁剪旋转翻转、录制器一键草稿、字幕与视频时间轴对齐、降低已观看素材优先级的信息流、编辑器/录制器/个人资料标签的屏幕阅读器支持、减少动效处理，以及管理 Divine 邮箱密码与账户关联/解绑的账户设置。已删视频现会离开本地状态，书签持久化。[上周 1.0.19 版](/zh/newsletters/2026-08-12-newsletter/#divine-mobile-1019-tightens-accounts-private-messages-and-publishing) 加固账户隔离与私信校验；徽章签发是在其上的新发布面。
+[该版本](https://github.com/divinevideo/divine-mobile/releases/tag/1.0.20) 其余为客户端工作：浅色主题、定格编辑器裁剪旋转翻转、录制器一键草稿、字幕与视频时间轴对齐、降低已观看素材优先级的信息流、编辑器/录制器/个人资料标签的屏幕阅读器支持、减少动效处理，以及管理 Divine 邮箱密码与账户关联/解绑的账户设置。已删视频现会离开本地状态，书签持久化。[上周 1.0.19 版](/en/newsletters/2026-08-12-newsletter/#divine-mobile-1019-tightens-accounts-private-messages-and-publishing) 加固账户隔离与私信校验；徽章签发是在其上的新发布面。
 
 ### ClipRelay 0.2.0：用相机配对签名器
 
 [ClipRelay](https://github.com/tajava2006/cliprelay) 经 Nostr 在设备间同步剪贴板。[Android 0.2.0 版](https://github.com/tajava2006/cliprelay/releases/tag/android%2Fv0.2.0) 增加 `nostrconnect://` 二维码登录，用户可用另一手机上的签名器应用登录；增加相机扫描 bunker URL，避免经消息应用粘贴含密钥字符串的习惯。bunker 连接现 60 秒超时而非挂起，Amber 登录失败后的重试按钮可用。[桌面 0.2.0 版](https://github.com/tajava2006/cliprelay/releases/tag/desktop%2Fv0.2.0) 携带超时与登录标签修复。
 
-[0.1.4 版](https://github.com/tajava2006/cliprelay/releases/tag/android%2Fv0.1.4) 增加敏感剪贴板同步（短中继过期）、固定签名器会话中继，以及要求真实往返而非本地合成 `EOSE` 的存活探测。[上周 0.1.3 版](/zh/newsletters/2026-08-12-newsletter/#cliprelay-013-restores-relay-and-signer-connections-after-idle-periods) 在空闲期后恢复连接。
+[0.1.4 版](https://github.com/tajava2006/cliprelay/releases/tag/android%2Fv0.1.4) 增加敏感剪贴板同步（短中继过期）、固定签名器会话中继，以及要求真实往返而非本地合成 `EOSE` 的存活探测。[上周 0.1.3 版](/en/newsletters/2026-08-12-newsletter/#cliprelay-013-restores-relay-and-signer-connections-after-idle-periods) 在空闲期后恢复连接。
 
 ### Bark 1.3.9：可在 Android 上运行的浏览器签名器
 
@@ -93,7 +93,7 @@ Toll Booth 随后三个补丁：[6.0.1 版](https://github.com/forgesworn/toll-b
 
 [NoorNote](https://github.com/77elements/noornote) 是面向桌面、Web 与 Android 的 Nostr 客户端。[1.3.4 版](https://github.com/77elements/noornote/releases/tag/v1.3.4) 以插件形式增加加密 Armada 与 Concord 社区：用户经邀请链接加入，在设置中查看已加入社区并接收活动通知。同一版本增加隐藏外部引用帖的控制——引用网页段落的 highlight 笔记可全局或按作者隐藏，其转帖一并隐藏，用户自己的 highlight 仍可见。个人资料解析亦已修复，不再渲染为截断公钥或匿名占位符。
 
-[1.3.5 版](https://github.com/77elements/noornote/releases/tag/v1.3.5) 为长笔记增加展开器并修正 Armada 邀请链接输入布局。[上周 1.3.2 版](/zh/newsletters/2026-08-12-newsletter/#noornote-132-moves-article-discovery-into-the-social-graph) 将文章发现移入社交图谱；社区成员资格是独立界面。
+[1.3.5 版](https://github.com/77elements/noornote/releases/tag/v1.3.5) 为长笔记增加展开器并修正 Armada 邀请链接输入布局。[上周 1.3.2 版](/en/newsletters/2026-08-12-newsletter/#noornote-132-moves-article-discovery-into-the-social-graph) 将文章发现移入社交图谱；社区成员资格是独立界面。
 
 ### Mostro 将争议聊天移出 gift wrap
 
@@ -115,7 +115,7 @@ Toll Booth 随后三个补丁：[6.0.1 版](https://github.com/forgesworn/toll-b
 
 邮件本身是 Nostr 事件。客户端 [constants](https://github.com/formstr-hq/nail/blob/main/client/src/lib/nostr/constants.ts) 定义 kind `1301` 邮件 rumor，封装在 kind `1059` [NIP-59](/zh/topics/nip-59/) gift wrap 内，消息经与私密私信相同的元数据隐藏信封送达收件人。投递中继来自 kind `10050` [NIP-17](/zh/topics/nip-17/) 收件箱列表，其后为 kind `10002` [NIP-65](/zh/topics/nip-65/) 中继列表；文件夹为 `mail` 命名空间下 kind `1985` [NIP-32](https://github.com/nostr-protocol/nips/blob/master/32.md) 标签；客户端设置存于 kind `30078` [NIP-78](/zh/topics/nip-78/) 应用数据事件。超过 60,000 字节的附件走 [Blossom](/zh/topics/blossom/) 而非写入事件，因 [NIP-44](/zh/topics/nip-44/) 将加密明文上限定为 65,535 字节。地址为域名下的 npub；无 NIP-05 记录的本地域名视为不存在的邮箱。
 
-桥接半部是与 [mailcow](https://github.com/mailcow/mailcow-dockerized) 部署并存、无需 patch 的 Node LMTP 服务器：Postfix 将匹配域名路由至桥接，桥接经 SMTP 注入回复。该设计迫使邮件桥最难问题——`From` 头证明什么——给出诚实答案。Nail [receive 路径](https://github.com/formstr-hq/nail/blob/main/client/src/lib/mail/receive.ts) 将每封邮件分为四种来源状态之一：配置的桥接已密封且拒绝转发其未在上游验证的发件人；用户自行密封；地址 NIP-05 记录解析至密封密钥；或无任何内容 corroborate 头信息。末一种情况下界面回退至密封公钥——事件能实际证明的唯一身份。桥接 API 调用以 [NIP-98](/zh/topics/nip-98/) 签名 HTTP 事件认证。
+桥接半部是与 [mailcow](https://github.com/mailcow/mailcow-dockerized) 部署并存、无需 patch 的 Node LMTP 服务器：Postfix 将匹配域名路由至桥接，桥接经 SMTP 注入回复。该设计迫使邮件桥最难问题——`From` 头证明什么——给出诚实答案。Nail [receive 路径](https://github.com/formstr-hq/nail/blob/main/client/src/lib/mail/receive.ts) 将每封邮件分为四种来源状态之一：配置的桥接已密封且拒绝转发其未在上游验证的发件人；用户自行密封；地址 NIP-05 记录解析至密封密钥；或没有任何内容能佐证头信息。末一种情况下界面回退至密封公钥——事件能实际证明的唯一身份。桥接 API 调用以 [NIP-98](/zh/topics/nip-98/) 签名 HTTP 事件认证。
 
 ### Glow 在 passkey 衍生身份下将钱包标签存于中继
 
@@ -135,9 +135,9 @@ Toll Booth 随后三个补丁：[6.0.1 版](https://github.com/forgesworn/toll-b
 
 群组身份在同一批次收紧：群组标识符现仅在其中继内唯一（[PR #269](https://github.com/nostrord/nostrord/pull/269)），两中继上相同标识符视为两群组（[PR #272](https://github.com/nostrord/nostrord/pull/272)），线程帖渲染为论坛帖（[PR #274](https://github.com/nostrord/nostrord/pull/274)）。产生重复 kind `22242` 签名提示的连接抖动亦已停止（[PR #268](https://github.com/nostrord/nostrord/pull/268)）——与 Cambium 本周三个版本所应对的签名器压力同类。
 
-### nostream 增加中继监控并铸造邀请码
+### nostream 增加中继监控器并创建邀请码
 
-[nostream](https://github.com/cameri/nostream) 是 TypeScript 中继实现。它合并发布 [NIP-66](/zh/topics/nip-66/) 中继监控事件（发现规范：监控者向其他中继公告存活与能力数据）的集群 worker 与探测调度器（[PR #724](https://github.com/cameri/nostream/pull/724)），含设置 schema 与默认值（[PR #689](https://github.com/cameri/nostream/pull/689)）及集成测试（[PR #733](https://github.com/cameri/nostream/pull/733)）。命令行工具现铸造 [NIP-43](/zh/topics/nip-43/) 邀请码（门禁准入的中继访问元数据方案）（[PR #732](https://github.com/cameri/nostream/pull/732)）；中继终于在支持列表中公告 [NIP-13](/zh/topics/nip-13/) 工作量证明（[PR #680](https://github.com/cameri/nostream/pull/680)）——其实现已久却未公告。数据自动售货机作业亦获持久化迁移与仓库（[PR #727](https://github.com/cameri/nostream/pull/727)）；中继现捕获 [NIP-90](/zh/topics/nip-90/)（数据自动售货机作业请求）并经作业仓库记录（[PR #729](https://github.com/cameri/nostream/pull/729)）。
+[nostream](https://github.com/cameri/nostream) 是 TypeScript 中继实现。它合并发布 [NIP-66](/zh/topics/nip-66/) 中继监控事件（发现规范：监控器公告其他中继的存活与能力数据）的集群 worker 与探测调度器（[PR #724](https://github.com/cameri/nostream/pull/724)），含设置模式与默认值（[PR #689](https://github.com/cameri/nostream/pull/689)）及集成测试（[PR #733](https://github.com/cameri/nostream/pull/733)）。命令行工具现创建 [NIP-43](/zh/topics/nip-43/) 邀请码（门禁准入的中继访问元数据方案）（[PR #732](https://github.com/cameri/nostream/pull/732)）；中继终于在支持列表中公告 [NIP-13](/zh/topics/nip-13/) 工作量证明（[PR #680](https://github.com/cameri/nostream/pull/680)）——其实现已久却未公告。数据自动售货机作业亦获持久化迁移与仓库（[PR #727](https://github.com/cameri/nostream/pull/727)）；中继现捕获 [NIP-90](/zh/topics/nip-90/)（数据自动售货机作业请求）并经作业仓库记录（[PR #729](https://github.com/cameri/nostream/pull/729)）。
 
 ### rust-nostr 修复 gift-wrap 标识符并拒绝受保护转帖
 
@@ -159,13 +159,13 @@ Toll Booth 随后三个补丁：[6.0.1 版](https://github.com/forgesworn/toll-b
 
 ### NIPs
 
-本窗口内无 PR 合并入 [nostr-protocol/nips](https://github.com/nostr-protocol/nips)。上期结束后开启六项提案，其中三项于 8 月 18 日草案首次 circulated 后开启。
+本窗口内无 PR 合并入 [nostr-protocol/nips](https://github.com/nostr-protocol/nips)。上期结束后开启六项提案，其中三项于 8 月 18 日草案首次传阅后开启。
 
 [NIPs PR #2438](https://github.com/nostr-protocol/nips/pull/2438) 提案 NIP-9A：基于评论的补丁。补丁为 kind `1111` 评论，以被补丁事件为父，`content` 以字面标签 `PATCH` 开头，后接补丁行。以数字开头的行按 `<index> -<deleted> +<inserted> <inserted characters>` 编辑目标 `content`，按 Unicode 字符而非字节计数；以 `t` 开头的行替换人类可读标签如 `title`、`description`、`subject` 或 `picture`。设计刻意向后兼容：不理解格式的客户端将补丁显示为普通带标签评论；理解的客户端应用补丁并隐藏评论。提案命名 kind `1`、`11`、`1111`、`24` 与 `1621` 为可补丁对象，并要求读写双方拒绝过大、过多或远晚于原事件发布的补丁——明确试图避免功能成为不可变事件的通用编辑通道。
 
-[NIPs PR #2437](https://github.com/nostr-protocol/nips/pull/2437) 为 [NIP-94](https://github.com/nostr-protocol/nips/blob/master/94.md)（在 kind `1063` 事件中描述已上传文件的文件元数据规范）提案文件加密。新增三个可选标签：`encryption-algorithm`（仅列 `aes-gcm`）、十六进制 `decryption-key` 与 `decryption-nonce`。标签语义相应偏移：`m` 描述加密前 MIME 类型，`x` 持加密文件哈希，`ox` 持原文件哈希；任何 `thumb`、`image` 与 `fallback` 源以相同密钥与 nonce 加密。 stated 目的是公开 Blossom 运营者托管字节时无法知晓内容；作者将变更框定为把 [NIP-17](/zh/topics/nip-17/) 私信加密属性复制进文件元数据，使相同处理在 `imeta` 标签内生效。
+[NIPs PR #2437](https://github.com/nostr-protocol/nips/pull/2437) 为 [NIP-94](https://github.com/nostr-protocol/nips/blob/master/94.md)（在 kind `1063` 事件中描述已上传文件的文件元数据规范）提案文件加密。新增三个可选标签：`encryption-algorithm`（仅列 `aes-gcm`）、十六进制 `decryption-key` 与 `decryption-nonce`。标签语义相应偏移：`m` 描述加密前 MIME 类型，`x` 持加密文件哈希，`ox` 持原文件哈希；任何 `thumb`、`image` 与 `fallback` 源以相同密钥与 nonce 加密。其目标是公开 Blossom 运营者托管字节时无法知晓内容；作者将变更框定为把 [NIP-17](/zh/topics/nip-17/) 私信加密属性复制进文件元数据，使相同处理在 `imeta` 标签内生效。
 
-[NIPs PR #2436](https://github.com/nostr-protocol/nips/pull/2436) 修订 NIP-7D——基于 kind `11` 线程事件、[NIP-22](/zh/topics/nip-22/) kind `1111` 评论为回复的论坛线程规范。增加格式章节：线程帖可像 kind `1` 笔记一样格式化，含内联图片、链接与 [NIP-27](/zh/topics/nip-27/) 引用；亦可支持语法无歧义的轻量标记语言 Djot。作者论点是未指定格式会默许 eventual Markdown 实现；PR 指向 squalk 作为现有 Djot 实现。
+[NIPs PR #2436](https://github.com/nostr-protocol/nips/pull/2436) 修订 NIP-7D——基于 kind `11` 线程事件、[NIP-22](/zh/topics/nip-22/) kind `1111` 评论为回复的论坛线程规范。增加格式章节：线程帖可像 kind `1` 笔记一样格式化，含内联图片、链接与 [NIP-27](/zh/topics/nip-27/) 引用；亦可支持语法无歧义的轻量标记语言 Djot。作者论点是未指定格式会最终默许 Markdown 实现；PR 指向 squalk 作为现有 Djot 实现。
 
 [NIPs PR #2439](https://github.com/nostr-protocol/nips/pull/2439) 向 [NIP-86](/zh/topics/nip-86/)（中继管理命令）增加 `assign` 与 `unassign` 方法，中继管理员可在不共享主密钥的情况下向另一公钥授予管理权限。
 
@@ -173,15 +173,15 @@ Toll Booth 随后三个补丁：[6.0.1 版](https://github.com/forgesworn/toll-b
 
 ### Marmot
 
-[Marmot PR #416](https://github.com/marmot-protocol/marmot/pull/416) 于 8 月 13 日合并，为协议核心增加持久性与重启合约。已采用文档已定义确定性收敛、保留候选父材料、先发布后应用排序与缺失历史失败即关闭，却缺少一条明确规则说明进程在它们之间接缝被中断时发生什么。变更定义可恢复逻辑事实、重启等价、发布与收敛中断边界、观察者原子转换、缺失或损坏材料处理与应用效果恢复，并为每项增加崩溃与重启一致性场景。事务、日志、快照、重放策略、调度器与存储格式仍实现定义，并声明无需线编码变更。其 foreclosed 的具体失败是：外部已接受发布却未本地确认，或部分应用选定分支，重启后产生实现依赖的协议结果。
+[Marmot PR #416](https://github.com/marmot-protocol/marmot/pull/416) 于 8 月 13 日合并，为协议核心增加持久性与重启合约。已采用文档已定义确定性收敛、保留候选父材料、先发布后应用排序与缺失历史失败即关闭，却缺少一条明确规则说明进程在它们之间接缝被中断时发生什么。变更定义可恢复逻辑事实、重启等价、发布与收敛中断边界、观察者原子转换、缺失或损坏材料处理与应用效果恢复，并为每项增加崩溃与重启一致性场景。事务、日志、快照、重放策略、调度器与存储格式仍实现定义，并声明无需线编码变更。它明确排除的具体失败是：外部已接受发布却未本地确认，或部分应用选定分支，重启后产生实现依赖的协议结果。
 
 ### Concord 与 CORDs
 
-[Concord PR #18](https://github.com/concord-protocol/concord/pull/18)（上周期刊曾作为开放提案报道）已于 8 月 15 日合并。它将加密社区列表分片至 kind `33302` 事件，移除五十成员上限，并 prune 退役条目以保持列表在中继大小限制内。Vector 本周发布说明记录该变更的客户端一半，含平局解析与停止重发未变数据的决定。
+[Concord PR #18](https://github.com/concord-protocol/concord/pull/18)（上周期刊曾作为开放提案报道）已于 8 月 15 日合并。它将加密社区列表分片至 kind `33302` 事件，移除五十成员上限，并清理退役条目以保持列表在中继大小限制内。Vector 本周发布说明记录该变更的客户端一半，含平局解析与停止重发未变数据的决定。
 
-[Concord PR #22](https://github.com/concord-protocol/concord/pull/22) 提案社区拥有的音视频 broker。CORD-02 元数据实体将在 relays 旁携带可选 `av_brokers` 列表，像该实体其余部分一样按 edition 演进；CORD-07 rendezvous 将从该列表抽取，或社区未发布时从成员自有 broker 抽取，按现有 room-keyed 平局排序。presence 上的 broker 标签仍可读且对报告残余分裂有用；提案将其从路由降级的论点直接：在其上路由让 fellow 成员不可信输入压过社区自身指令。
+[Concord PR #22](https://github.com/concord-protocol/concord/pull/22) 提案社区拥有的音视频代理。CORD-02 元数据实体将在中继旁携带可选 `av_brokers` 列表，像该实体其余部分一样按版本演进；CORD-07 会合逻辑将从该列表抽取，或社区未发布时从成员自有代理抽取，按现有以房间为键的平局排序。在线状态上的代理标签仍可读，且对报告残余分裂有用；提案将其从路由降级的论点直接：经它路由会让其他成员的不可信输入压过社区自身指令。
 
-[Concord PR #23](https://github.com/concord-protocol/concord/pull/23) 将现有实现行为在 CORD-05 中规范化。持久化 join 前，所有者 genesis 元数据 edition 必须在交付密钥下打开，旋转平面锚定于 compaction 对。PR  upfront 声明这从未是 live 漏洞：Vector bundle 接受已拒绝交付 root 无法打开所有者 genesis 的 bundle，且从不停放已持有社区的邀请；Armada 已丢弃会移动已持有社区 base 的任何 bundle。缺口是规范未要求任一行为，遵循规范的客户端本可发布 vulnerable 版本。
+[Concord PR #23](https://github.com/concord-protocol/concord/pull/23) 将现有实现行为在 CORD-05 中规范化。持久化加入操作前，所有者的创世元数据版本必须能由交付密钥打开，旋转平面锚定于压缩对。PR 预先声明这从未是实际存在的漏洞：Vector 的数据包接收逻辑已拒绝交付根无法打开所有者创世数据的数据包，且从不停放已持有社区的邀请；Armada 已丢弃会移动已持有社区基线的任何数据包。缺口是规范未要求任一行为，遵循规范的客户端本可发布存在漏洞的版本。
 
 [Blossom 升级文档](https://github.com/hzrd149/blossom)、[Napplet 应用提案](https://github.com/napplet/naps) 与 [Gamma Markets 规范](https://github.com/GammaMarkets/market-spec) 本窗口无变更记录。
 
@@ -193,11 +193,11 @@ Toll Booth 随后三个补丁：[6.0.1 版](https://github.com/forgesworn/toll-b
 
 [机制](https://github.com/nostr-protocol/nips/blob/master/58.md) 由可寻址定义、授予与展示列表构成。徽章定义是签发者发布的 kind `30009` 事件，经 `d` 标签可寻址，签发者可稍后修订 `name`、`description`、`image` 与 `thumb` 标签而不改变其他引用使用的标识符。授予是同一签发者发布的 kind `8` 事件，携带指向 `30009:<issuer-pubkey>:<d-identifier>` 定义坐标的 `a` 标签与一个或多个命名接收方的 `p` 标签。展示列表是接收方发布的 kind `30008` 事件，`d` 固定为 `profile_badges`，列出 `a` 与 `e` 标签对——`a` 为定义坐标，`e` 为具体授予事件。这些对有序且成对读取：缺少匹配授予的 `a` 或缺少匹配定义的 `e` 被忽略，半引用徽章静默不渲染。
 
-[规范](https://github.com/nostr-protocol/nips/blob/master/58.md) 拒绝做什么，设计权衡即在其中可见。无撤销机制与过期，授予是签发者关于某时刻的永久陈述；签发者改主意只能改授予指向的定义。无转让，徽章不能作为 token 流通。无可信签发者 registry 概念，信任问题完全推给客户端与读者：徽章价值恰等于签发者公钥对观看者的价值。规范还赋予客户端展示少于接收方所列徽章、选择渲染哪张图片的自由度，避免个人资料成为第三方全选图形墙。
+[规范](https://github.com/nostr-protocol/nips/blob/master/58.md) 拒绝做什么，设计权衡即在其中可见。无撤销机制与过期，授予是签发者关于某时刻的永久陈述；签发者改主意只能改授予指向的定义。无转让，徽章不能作为 token 流通。无可信签发者注册表概念，信任问题完全推给客户端与读者：徽章价值恰等于签发者公钥对观看者的价值。规范还赋予客户端展示少于接收方所列徽章、选择渲染哪张图片的自由度，避免个人资料成为第三方全选图形墙。
 
 最近邻规范是 [NIP-51](/zh/topics/nip-51/)（[列表规范](https://github.com/nostr-protocol/nips/blob/master/51.md)）；对比二者可见徽章为何需要三个事件而非一个。列表是单一作者策展引用；列表作者即声明作者。徽章将署名一分为二：签发者签名授予发生，接收方签名接受展示。任一方无法单独产生可见结果——这正是徽章与自贴标签的区别。
 
-本周从 [nos.lol](https://nos.lol) 与 [relay.primal.net](https://relay.primal.net) 恢复的 live kind `8` 授予：
+本周从 [nos.lol](https://nos.lol) 与 [relay.primal.net](https://relay.primal.net) 实际恢复的 kind `8` 授予：
 
 ```json
 {
@@ -214,19 +214,19 @@ Toll Booth 随后三个补丁：[6.0.1 版](https://github.com/forgesworn/toll-b
 }
 ```
 
-当前实现覆盖签发、展示与读取。[Divine Mobile 1.0.20 版](https://github.com/divinevideo/divine-mobile/releases/tag/1.0.20) 在应用内铸造并授予徽章，读者点击时解释已获得徽章；[Nostter PR #2281](https://github.com/SnowCait/nostter/pull/2281) 更新 Web 客户端个人资料徽章处理；[Amethyst](https://github.com/vitorpamplona/amethyst) 发布携带自有客户端标签的授予事件，其中一例与上例同现于中继数据。
+当前实现覆盖签发、展示与读取。[Divine Mobile 1.0.20 版](https://github.com/divinevideo/divine-mobile/releases/tag/1.0.20) 在应用内创建并授予徽章，读者点击时解释已获得徽章；[Nostter PR #2281](https://github.com/SnowCait/nostter/pull/2281) 更新 Web 客户端个人资料徽章处理；[Amethyst](https://github.com/vitorpamplona/amethyst) 发布携带自有客户端标签的授予事件，其中一例与上例同现于中继数据。
 
 ### 评论（NIP-22）
 
 [NIP-22](/zh/topics/nip-22/) 由其[主规范](https://github.com/nostr-protocol/nips/blob/master/22.md)定义，为回复非短文本笔记的对象提供通用评论事件。短笔记线程已有 [NIP-10](/zh/topics/nip-10/)，其标签约定围绕 kind `1` 与回复链生长。NIP-22 存在是因为视频、文章、日历事件、wiki 页或 URL 需要识别被回复对象 kind 的回复结构，且在被回复对象为可寻址或完全无 Nostr 事件的外部资源时仍有效。
 
-[机制](https://github.com/nostr-protocol/nips/blob/master/22.md) 取决于大小写区分。评论是 kind `1111` 事件，携带两组标签：大写标签描述讨论根，小写标签描述直接父对象。`E`、`A` 与 `I` 命名根事件、根可寻址坐标或根外部标识符；`K` 命名根 kind；`P` 命名根作者。小写 `e`、`a`、`i`、`k` 与 `p` 命名关于父对象的相同事实——顶层评论的父即根本身，嵌套回复的父为另一 kind `1111` 评论。分离它们意味着客户端可用一条大写根标签 filter 抓取整段讨论，无需遍历回复链，同时仍从小写父标签正确渲染嵌套。`I` 与 `i` 变体以 [NIP-73](/zh/topics/nip-73/) 格式携带外部标识符——这正是评论线程可附着网页、播客单集或书籍的原因。
+[机制](https://github.com/nostr-protocol/nips/blob/master/22.md) 取决于大小写区分。评论是 kind `1111` 事件，携带两组标签：大写标签描述讨论根，小写标签描述直接父对象。`E`、`A` 与 `I` 命名根事件、根可寻址坐标或根外部标识符；`K` 命名根 kind；`P` 命名根作者。小写 `e`、`a`、`i`、`k` 与 `p` 命名关于父对象的相同事实——顶层评论的父即根本身，嵌套回复的父为另一 kind `1111` 评论。分离它们意味着客户端可用一条大写根标签过滤器抓取整段讨论，无需遍历回复链，同时仍从小写父标签正确渲染嵌套。`I` 与 `i` 变体以 [NIP-73](/zh/topics/nip-73/) 格式携带外部标识符——这正是评论线程可附着网页、播客单集或书籍的原因。
 
-权衡 mostly 关于 NIP-22 拒绝吸收什么。[规范](https://github.com/nostr-protocol/nips/blob/master/22.md) 声明评论不得用于回复 kind `1` 笔记——避免两种线程模型在同一对象上竞争，NIP-10 在已有效处保留。允许嵌套但根固定，深线程即使中间事件不可用也不丢失锚点。kind 标签是 load-bearing 部分：抓取评论却无目标的客户端仍可从 `K` 与 `k` 知晓在看什么，并决定是否能渲染该 kind。规范未提供任何排序或审核模型，显示顺序、折叠与隐藏完全是客户端策略。
+权衡主要在于 NIP-22 拒绝吸收什么。[规范](https://github.com/nostr-protocol/nips/blob/master/22.md) 声明评论不得用于回复 kind `1` 笔记——避免两种线程模型在同一对象上竞争，NIP-10 在已有效处保留。允许嵌套但根固定，深线程即使中间事件不可用也不丢失锚点。kind 标签是关键部分：抓取评论却无目标的客户端仍可从 `K` 与 `k` 知晓在看什么，并决定是否能渲染该 kind。规范未提供任何排序或审核模型，显示顺序、折叠与隐藏完全是客户端策略。
 
-与 [NIP-10](https://github.com/nostr-protocol/nips/blob/master/10.md) 相比，差异在 typing。NIP-10 假设目标是笔记并编码线程位置；NIP-22 显式编码目标身份与 kind，对其余不作假设。这种显式 typing 正是本期较新提案转向 kind `1111` 的原因：评论已携带关于附着对象的机器可读陈述。
+与 [NIP-10](https://github.com/nostr-protocol/nips/blob/master/10.md) 相比，差异在类型标注。NIP-10 假设目标是笔记并编码线程位置；NIP-22 显式编码目标身份与 kind，对其余不作假设。这种显式类型标注正是本期较新提案转向 kind `1111` 的原因：评论已携带关于附着对象的机器可读陈述。
 
-本周从 [nos.lol](https://nos.lol) 与 [relay.primal.net](https://relay.primal.net) 恢复的 live kind `1111` 评论，在视频下回复另一评论：
+本周从 [nos.lol](https://nos.lol) 与 [relay.primal.net](https://relay.primal.net) 实际恢复的 kind `1111` 评论，在视频下回复另一评论：
 
 ```json
 {

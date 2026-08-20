@@ -21,7 +21,7 @@ description: "Amber와 Cambium을 아우른 서명자 보안 주간, 메일 브�
 
 [버전 6.5.1](https://github.com/greenart7c3/Amber/releases/tag/v6.5.1)은 잠금 해제 기기 요구 토글 후 Keystore 키가 회전할 때 저장된 NIP-46 비밀을 재암호화하고 권한 편집기 충돌을 수정합니다. [버전 6.5.2](https://github.com/greenart7c3/Amber/releases/tag/v6.5.2)는 애플리케이션 목록이 렌더링하지 않는 열의 복호화를 중단하고, Keystore 핸들을 캐시하며, 시작 시 계정 캐시를 워밍하고, 릴레이 상태 알림을 디바운스합니다.
 
-[지난주 6.4.0](/ko/newsletters/2026-08-12-newsletter/#amber-640-makes-every-grouped-signing-decision-explicit)은 그룹화된 서명 결정을 명시적으로 만들었고, 6.5.x는 Amber가 무엇을 승인할지 자체를 바꿉니다.
+[지난주 6.4.0](/en/newsletters/2026-08-12-newsletter/#amber-640-makes-every-grouped-signing-decision-explicit)은 그룹화된 서명 결정을 명시적으로 만들었고, 6.5.x는 Amber가 무엇을 승인할지 자체를 바꿉니다.
 
 
 ### Cambium 0.4.0, 웹사이트용 서명과 릴레이 인증 폭주 처리
@@ -46,9 +46,9 @@ description: "Amber와 Cambium을 아우른 서명자 보안 주간, 메일 브�
 
 [Vector](https://github.com/VectorPrivacy/Vector)는 데스크톱 및 Android [Concord](https://github.com/concord-protocol/concord) 메신저입니다. [버전 0.4.2](https://github.com/VectorPrivacy/Vector/releases/tag/v0.4.2)는 부하 아래 중재에 초점을 맞춥니다.
 
-빠른 차단이 서로를 덮어쓰던 것이 이제 큐에 쌓이고 겹쳐 하나의 작업으로 정리되어, 계정 물결을 차단할 때 계정당 키 회전 한 번이면 됩니다. 이미 해산된 커뮤니티 초대를 수락하면 이유를 설명하고 사용자가 소유한 모든 기기에서 초대를 제거하며, 사용자가 소유한 커뮤니티를 해산하면 모든 기기의 커뮤니티 목록에서 지워집니다. 이 수정은 [버전 0.4.3](https://github.com/VectorPrivacy/Vector/releases/tag/v0.4.3)에 도착했습니다. 백그라운드 따라잡기 중 도착한 커뮤니티 메시지는 방금 보낸 것처럼 알림을 울리지 않고, 타이핑 표시는 보낸 시점부터 만료되어 지연된 신호가 채널에 남지 않습니다.
+빠른 차단이 서로를 덮어쓰던 것이 이제 큐에 쌓이고 겹쳐 하나의 작업으로 정리되어, 계정 물결 전체를 차단할 때 키 회전 한 번이면 됩니다. 이미 해산된 커뮤니티 초대를 수락하면 이유를 설명하고 사용자가 소유한 모든 기기에서 초대를 제거하며, 사용자가 소유한 커뮤니티를 해산하면 모든 기기의 커뮤니티 목록에서 지워집니다. 이 수정은 [버전 0.4.3](https://github.com/VectorPrivacy/Vector/releases/tag/v0.4.3)에 도착했습니다. 백그라운드 따라잡기 중 도착한 커뮤니티 메시지는 방금 보낸 것처럼 알림을 울리지 않고, 타이핑 표시는 보낸 시점부터 만료되어 지연된 신호가 채널에 남지 않습니다.
 
-[Concord](https://github.com/concord-protocol/concord)가 정의한 샤arded 커뮤니티 목록은 다른 Concord 클라이언트 Armada와 교차 검토를 받았습니다. 이름 변경이 더 이상 목록을 부풀리지 않고, 동점은 두 클라이언트에서 동일하게 해결되며, 변경 없는 데이터는 릴레이에 다시 게시되지 않습니다. 뮤트도 DM 경로 밖으로 이동했습니다. 사용자는 메시지 기록 없이 커뮤니티에서 바로 뮤트할 수 있고, 뮤트는 채널과 DM의 알림과 배지에 적용되며 메시지 자체는 보입니다. 고정 메시지는 클릭 가능한 링크가 있는 공유 채널 표면이 되었고, 고정 메시지 편집은 나타나는 곳마다 따라갑니다. 차단 목록, 뮤트, 닉네임이 사용자 기기 간 동기화되고, 고정 채팅도 마찬가지입니다. 버전 0.4.3은 다른 Nostr 클라이언트가 같은 신원으로 로그인 중일 때 Vector가 타이핑 중임을 알리지 않게 하고, x64와 ARM64 Windows 모두 15%에서 멈추던 Tor 부트스트랩을 풉니다.
+[Concord](https://github.com/concord-protocol/concord)가 정의한 샤딩된 커뮤니티 목록은 다른 Concord 클라이언트 Armada와 교차 검토를 받았습니다. 이름 변경이 더 이상 목록을 부풀리지 않고, 동점은 두 클라이언트에서 동일하게 해결되며, 변경 없는 데이터는 릴레이에 다시 게시되지 않습니다. 뮤트도 DM 경로 밖으로 이동했습니다. 사용자는 메시지 기록 없이 커뮤니티에서 바로 뮤트할 수 있고, 뮤트는 채널과 DM의 알림과 배지에 적용되며 메시지 자체는 보입니다. 고정 메시지는 클릭 가능한 링크가 있는 공유 채널 표면이 되었고, 고정 메시지 편집은 나타나는 곳마다 따라갑니다. 차단 목록, 뮤트, 닉네임이 사용자 기기 간 동기화되고, 고정 채팅도 마찬가지입니다. 버전 0.4.3은 다른 Nostr 클라이언트가 같은 신원으로 로그인 중일 때 Vector가 타이핑 중임을 알리지 않게 하고, x64와 ARM64 Windows 모두 15%에서 멈추던 Tor 부트스트랩을 풉니다.
 
 ### Sonar, NIP-C7로 메시 메신저에 스레드 답글
 
@@ -56,7 +56,7 @@ description: "Amber와 Cambium을 아우른 서명자 보안 주간, 메일 브�
 
 ### Nostria, 팟캐스트 게시 시작과 릴레이 COUNT 요청
 
-[Nostria](https://github.com/nostria-app/nostria)는 웹 클라이언트입니다. [버전 4.1.70](https://github.com/nostria-app/nostria/releases/tag/v4.1.70)과 [4.1.71](https://github.com/nostria-app/nostria/releases/tag/v4.1.71)은 프리미엄 구독자용 팟캐스트 게시를 추가하며, 에피소드는 서명된 Nostr 이벤트입니다. [버전 4.1.69](https://github.com/nostria-app/nostria/releases/tag/v4.1.69)는 피드에서 [NIP-45](/ko/topics/nip-45/)(COUNT) `COUNT`로 반응, 답글, zap 합계를 쓰고 현지화를 완료합니다. [지난주 4.1.67](/ko/newsletters/2026-08-12-newsletter/#nostria-4167-expands-encrypted-community-administration)은 암호화 커뮤니티 관리를 확장했습니다.
+[Nostria](https://github.com/nostria-app/nostria)는 웹 클라이언트입니다. [버전 4.1.70](https://github.com/nostria-app/nostria/releases/tag/v4.1.70)과 [4.1.71](https://github.com/nostria-app/nostria/releases/tag/v4.1.71)은 프리미엄 구독자용 팟캐스트 게시를 추가하며, 에피소드는 서명된 Nostr 이벤트입니다. [버전 4.1.69](https://github.com/nostria-app/nostria/releases/tag/v4.1.69)는 피드에서 [NIP-45](/ko/topics/nip-45/)(COUNT) `COUNT`로 반응, 답글, zap 합계를 쓰고 현지화를 완료합니다. [지난주 4.1.67](/en/newsletters/2026-08-12-newsletter/#nostria-4167-expands-encrypted-community-administration)은 암호화 커뮤니티 관리를 확장했습니다.
 
 ## 태그 릴리스
 
@@ -69,15 +69,15 @@ description: "Amber와 Cambium을 아우른 서명자 보안 주간, 메일 브�
 
 ### Divine Mobile 1.0.20: 앱을 떠나지 않고 배지 발행
 
-[Divine Mobile](https://github.com/divinevideo/divine-mobile)은 Nostr를 통해 동영상을 게시하고 가져오는 숏폼 클라이언트입니다. [버전 1.0.20](https://github.com/divinevideo/divine-mobile/releases/tag/1.0.20)은 사용자가 [NIP-58](/ko/topics/nip-58/)(배지) 배지, 즉 이번 호의 첫 심층 분석에 나온 서명된 수여 이벤트를 발행해 다른 사람에게 넘길 수 있게 합니다. 프로필의 배지를 탭하면 획득 조건을 설명하는데, 정의 이벤트와 수여 이벤트가 따로 저장되기 때문에 보통 구현되지 않는 사양 부분입니다.
+[Divine Mobile](https://github.com/divinevideo/divine-mobile)은 Nostr를 통해 동영상을 게시하고 가져오는 숏폼 클라이언트입니다. [버전 1.0.20](https://github.com/divinevideo/divine-mobile/releases/tag/1.0.20)은 사용자가 [NIP-58](/ko/topics/nip-58/)(배지) 배지, 즉 이번 호의 첫 심층 분석에 나온 서명된 수여 이벤트를 발행해 다른 사람에게 수여할 수 있게 합니다. 프로필의 배지를 탭하면 획득 조건을 설명하는데, 정의 이벤트와 수여 이벤트가 따로 저장되기 때문에 보통 구현되지 않는 사양 부분입니다.
 
-[릴리스](https://github.com/divinevideo/divine-mobile/releases/tag/1.0.20)의 나머지는 클라이언트 작업입니다. 라이트 테마, 스톱모션 편집기의 자르기·회전·뒤집기, 녹화기에서 한 탭으로 가는 초안, 동영상 대비 캡션 타이밍, 이미 본 material을 낮추는 피드, 편집기·녹화기·프로필 탭의 스크린 리더 지원, 모션 감소 처리, Divine 이메일·비밀번호 관리와 계정 연결/해제 설정. 삭제된 동영상은 로컬 상태를 남기고 북마크는 유지됩니다. [지난주 1.0.19](/ko/newsletters/2026-08-12-newsletter/#divine-mobile-1019-tightens-accounts-private-messages-and-publishing)는 계정 격리와 DM 검증을 강화했고, 배지 발행은 그 위의 새 게시 표면입니다.
+[릴리스](https://github.com/divinevideo/divine-mobile/releases/tag/1.0.20)의 나머지는 클라이언트 작업입니다. 라이트 테마, 스톱모션 편집기의 자르기·회전·뒤집기, 녹화기에서 한 탭으로 가는 초안, 동영상 대비 캡션 타이밍, 이미 본 콘텐츠의 우선순위를 낮추는 피드, 편집기·녹화기·프로필 탭의 스크린 리더 지원, 모션 감소 처리, Divine 이메일·비밀번호 관리와 계정 연결/해제 설정. 삭제된 동영상은 이제 로컬 상태에서 제거되고 북마크는 유지됩니다. [지난주 1.0.19](/en/newsletters/2026-08-12-newsletter/#divine-mobile-1019-tightens-accounts-private-messages-and-publishing)는 계정 격리와 DM 검증을 강화했고, 배지 발행은 그 위의 새 게시 표면입니다.
 
 ### ClipRelay 0.2.0: 카메라로 서명자 페어링
 
 [ClipRelay](https://github.com/tajava2006/cliprelay)는 Nostr 위에서 기기 간 클립보드를 동기화합니다. [Android 버전 0.2.0](https://github.com/tajava2006/cliprelay/releases/tag/android%2Fv0.2.0)은 `nostrconnect://` QR 로그인을 추가해 다른 휴대폰의 서명자 앱으로 로그인할 수 있고, bunker URL 카메라 스캔을 추가해 비밀 문자열을 메신저에 붙여 넣는 습관을 없앱니다. bunker 연결은 60초 후 타임아웃되고, Amber 로그인 실패 후 재시도 버튼이 동작합니다. [데스크톱 버전 0.2.0](https://github.com/tajava2006/cliprelay/releases/tag/desktop%2Fv0.2.0)은 타임아웃과 로그인 탭 수정을 담습니다.
 
-[버전 0.1.4](https://github.com/tajava2006/cliprelay/releases/tag/android%2Fv0.1.4)는 짧은 릴레이 만료가 있는 민감 클립보드 동기화, 고정 서명자 세션 릴레이, 로컬 합성 `EOSE` 대신 실제 왕복을 요구하는 생존 프로브를 추가했습니다. [지난주 0.1.3](/ko/newsletters/2026-08-12-newsletter/#cliprelay-013-restores-relay-and-signer-connections-after-idle-periods)은 유휴 후 연결을 복구했습니다.
+[버전 0.1.4](https://github.com/tajava2006/cliprelay/releases/tag/android%2Fv0.1.4)는 짧은 릴레이 만료가 있는 민감 클립보드 동기화, 고정 서명자 세션 릴레이, 로컬 합성 `EOSE` 대신 실제 왕복을 요구하는 생존 프로브를 추가했습니다. [지난주 0.1.3](/en/newsletters/2026-08-12-newsletter/#cliprelay-013-restores-relay-and-signer-connections-after-idle-periods)은 유휴 후 연결을 복구했습니다.
 
 ### Bark 1.3.9: Android에서 동작하는 브라우저 서명자
 
@@ -95,7 +95,7 @@ Toll Booth 패치 세 개가 이어졌습니다. [6.0.1](https://github.com/forg
 
 [NoorNote](https://github.com/77elements/noornote)는 데스크톱, 웹, Android용 Nostr 클라이언트입니다. [버전 1.3.4](https://github.com/77elements/noornote/releases/tag/v1.3.4)는 암호화 Armada 및 Concord 커뮤니티를 애드온으로 추가합니다. 사용자는 초대 링크로 가입하고, 설정에 가입한 커뮤니티 목록을 보고, 활동 알림을 받습니다. 같은 릴리스는 외부 인용 게시, 즉 웹 기사 단락을 인용하는 하이라이트 노트를 전역 또는 작성자별로 숨기는 제어를 추가하며, 그 repost도 숨기고 사용자 자신의 하이라이트는 보입니다. 프로필 해석도 복구되어 프로필이 잘린 공개 키나 익명 placeholder로 렌더링되지 않습니다.
 
-[버전 1.3.5](https://github.com/77elements/noornote/releases/tag/v1.3.5)는 긴 노트용 펼치기와 Armada 초대 링크 입력 레이아웃을 고칩니다. [지난주 1.3.2](/ko/newsletters/2026-08-12-newsletter/#noornote-132-moves-article-discovery-into-the-social-graph)는 기사 발견을 소셜 그래프로 옮겼고, 커뮤니티 멤버십은 별도 표면입니다.
+[버전 1.3.5](https://github.com/77elements/noornote/releases/tag/v1.3.5)는 긴 노트용 펼치기와 Armada 초대 링크 입력 레이아웃을 고칩니다. [지난주 1.3.2](/en/newsletters/2026-08-12-newsletter/#noornote-132-moves-article-discovery-into-the-social-graph)는 기사 발견을 소셜 그래프로 옮겼고, 커뮤니티 멤버십은 별도 표면입니다.
 
 ### Mostro, 분쟁 채팅을 gift wrap에서 이전
 
@@ -134,7 +134,7 @@ Toll Booth 패치 세 개가 이어졌습니다. [6.0.1](https://github.com/forg
 
 ### nostrord, 미병합 암호화 키 제안 구현
 
-[nostrord](https://github.com/nostrord/nostrord)는 릴레이 범위 그룹 중심 Nostr 채팅 클라이언트입니다. Compass가 [7월 15일 호](/ko/newsletters/2026-07-15-newsletter/)에서 마지막으로 설명한 미병합 NIP-4e, 즉 메시지 암호화를 신원 키에서 분리하는 제안 구현을 병합했습니다. 계정이 자체 kind `10044` 암호화 키를 공표하고, 개인 절반을 로컬에 보관하며, 수신 DM을 프로세스 내에서 복호화해 bunker나 브라우저 확장을 읽기 경로에서 완전히 빼냅니다([PR #261](https://github.com/nostrord/nostrord/pull/261)). kind `4454`와 `4455` 기기 페어링이 그 키를 두 번째 기기로 옮기고, self-archive가 새 키를 향한 기록을 다시 게시합니다. 전송은 먼저 공표된 키를 향했([PR #247](https://github.com/nostrord/nostrord/pull/247))고, 후속이 협상은 성공했지만 키를 넘기지 않던 페어링을 고쳤습니다([PR #271](https://github.com/nostrord/nostrord/pull/271)). PR은 공개 제안과 다른 지점에서 배포된 Jumble 구현을 따른다고 밝혀, 이 사양의 동작 정의가 문서가 아니라 출하 코드에 있다고 둡니다.
+[nostrord](https://github.com/nostrord/nostrord)는 릴레이 범위 그룹 중심 Nostr 채팅 클라이언트입니다. Compass가 [7월 15일 호](/ko/newsletters/2026-07-15-newsletter/)에서 마지막으로 설명한 미병합 NIP-4e, 즉 메시지 암호화를 신원 키에서 분리하는 제안 구현을 병합했습니다. 계정이 자체 kind `10044` 암호화 키를 공표하고, 개인 절반을 로컬에 보관하며, 수신 DM을 프로세스 내에서 복호화해 bunker나 브라우저 확장을 읽기 경로에서 완전히 빼냅니다([PR #261](https://github.com/nostrord/nostrord/pull/261)). kind `4454`와 `4455` 기기 페어링이 그 키를 두 번째 기기로 옮기고, self-archive가 새 키를 향한 기록을 다시 게시합니다. 전송은 먼저 공표된 키를 향했([PR #247](https://github.com/nostrord/nostrord/pull/247))고, 후속 PR은 협상에 성공했지만 키를 넘기지 않던 페어링을 고쳤습니다([PR #271](https://github.com/nostrord/nostrord/pull/271)). PR은 공개 제안과 다른 지점에서 배포된 Jumble 구현을 따른다고 밝혀, 이 사양의 동작 정의가 문서가 아니라 출하 코드에 있다고 둡니다.
 
 같은 배치에서 그룹 신원도 조였습니다. 그룹 식별자는 이제 릴레이 내에서만 고유([PR #269](https://github.com/nostrord/nostrord/pull/269))해, 두 릴레이의 같은 식별자는 두 그룹으로 취급([PR #272](https://github.com/nostrord/nostrord/pull/272))되고, 스레드 게시는 포럼 게시로 렌더링([PR #274](https://github.com/nostrord/nostrord/pull/274))됩니다. kind `22242` 서명 프롬프트를 반복 생성하던 연결 churn도 멈췄([PR #268](https://github.com/nostrord/nostrord/pull/268))으며, 이번 주 Cambium이 세 릴리스에 쓴 것과 같은 클래스의 서명자 압박입니다.
 
@@ -163,13 +163,13 @@ Toll Booth 패치 세 개가 이어졌습니다. [6.0.1](https://github.com/forg
 ### NIPs
 
 
-이 기간 [nostr-protocol/nips](https://github.com/nostr-protocol/nips)에 병합된 PR은 없습니다. 이전 호 종료 후 여섯 제안이 열렸고, 그중 세 개는 초안이 처음 돌던 8월 18일 이후입니다.
+이 기간 [nostr-protocol/nips](https://github.com/nostr-protocol/nips)에 병합된 PR은 없습니다. 이전 호 종료 후 여섯 제안이 열렸고, 그중 세 개는 초안이 처음 배포된 뒤인 8월 18일에 열렸습니다.
 
 [NIPs PR #2438](https://github.com/nostr-protocol/nips/pull/2438)은 NIP-9A, 댓글 기반 패치를 제안합니다. 패치는 패치 대상을 부모로 참조하는 kind `1111` 댓글이며 `content`는 문자열 `PATCH`로 시작한 뒤 패치 줄이 이어집니다. 숫자로 시작하는 줄은 `<index> -<deleted> +<inserted> <inserted characters>` 형태로 대상 `content`를 편집하며, 바이트가 아니라 유니코드 문자로 셉니다. `t`로 시작하는 줄은 `title`, `description`, `subject`, `picture` 같은 사람이 읽는 태그를 교체합니다. 설계는 의도적으로 하위 호환입니다. 형식을 이해하지 못하는 클라이언트는 패치를 일반 라벨 댓글로 보여 주고, 이해하는 클라이언트는 패치를 적용하고 댓글을 숨깁니다. 제안은 kind `1`, `11`, `1111`, `24`, `1621`을 패치 가능으로 이름 짓고, 작성자와 독자 모두 너무 크거나 많거나 원본 이벤트 훨씬 뒤에 게시된 패치를 거부하도록 요청해, 불변 이벤트의 일반 편집 채널이 되지 않게 합니다.
 
 [NIPs PR #2437](https://github.com/nostr-protocol/nips/pull/2437)은 [NIP-94](https://github.com/nostr-protocol/nips/blob/master/94.md), kind `1063` 이벤트로 업로드 파일을 설명하는 파일 메타데이터 사양에 파일 암호화를 제안합니다. `encryption-algorithm`(나열된 값은 `aes-gcm`만), hex `decryption-key`, `decryption-nonce` 세 optional 태그를 추가합니다. 태그 의미도 따라 바뀝니다. `m`은 암호화 전 MIME, `x`는 암호화 파일 해시, `ox`는 원본 해시이며, `thumb`, `image`, `fallback` 소스도 같은 키·nonce로 암호화됩니다. 목적은 공개 Blossom 운영자가 바이트 내용을 알 수 없게 하는 것이고, 저자는 [NIP-17](/ko/topics/nip-17/) DM 암호화 속성을 파일 메타데이터에 복사해 `imeta` 태그 안에서도 같은 처리가 되게 합니다.
 
-[NIPs PR #2436](https://github.com/nostr-protocol/nips/pull/2436)은 [NIP-22](/ko/topics/nip-22/)(댓글) kind `1111` 답글이 있는 [NIP-7D](https://github.com/nostr-protocol/nips/blob/master/7D.md) 포럼 스레드 사양을 수정합니다. 스레드 게시를 kind `1` 노트처럼 인라인 이미지, 링크, [NIP-27](/ko/topics/nip-27/) 참조로 서식할 수 있다고 서식 절을 추가하고, 모호한 문법의 경량 마크업 Djot도 지원할 수 있다고 합니다. 서식을 명시하지 않으면 결국 Markdown이 기본이 될 것이라는 논지이며, PR은 squalk를 기존 Djot 구현으로 가리킵니다.
+[NIPs PR #2436](https://github.com/nostr-protocol/nips/pull/2436)은 [NIP-22](/ko/topics/nip-22/)(댓글) kind `1111` 답글이 있는 [NIP-7D](https://github.com/nostr-protocol/nips/blob/master/7D.md) 포럼 스레드 사양을 수정합니다. 스레드 게시를 kind `1` 노트처럼 인라인 이미지, 링크, [NIP-27](/ko/topics/nip-27/) 참조로 서식할 수 있다고 서식 절을 추가하고, 모호하지 않은 문법의 경량 마크업 언어 Djot도 지원할 수 있다고 합니다. 서식을 명시하지 않으면 결국 Markdown이 기본이 될 것이라는 논지이며, PR은 squalk를 기존 Djot 구현으로 가리킵니다.
 
 [NIPs PR #2439](https://github.com/nostr-protocol/nips/pull/2439)은 [NIP-86](/ko/topics/nip-86/)에 `assign`·`unassign` 메서드를 추가해, 릴레이 관리자가 마스터 키를 공유하지 않고 다른 pubkey에 admin 권한을 부여할 수 있게 합니다.
 
@@ -181,7 +181,7 @@ Toll Booth 패치 세 개가 이어졌습니다. [6.0.1](https://github.com/forg
 
 ### Concord와 CORDs
 
-[Concord PR #18](https://github.com/concord-protocol/concord/pull/18)은 지난주 호에서 열린 제안으로 다뤘으며 8월 15일 병합되었습니다. 암호화 커뮤니티 목록을 kind `33302` 이벤트로 샤arding하고, 50 멤버십 한도를 없애며, 은퇴 항목을 pruning해 목록이 릴레이 크기 한도 안에 머물게 합니다. Vector 이번 주 릴리스 노트는 동점 해결과 변경 없는 데이터 재게시 중단을 포함한 클라이언트 측 변경을 기록합니다.
+[Concord PR #18](https://github.com/concord-protocol/concord/pull/18)은 지난주 호에서 열린 제안으로 다뤘으며 8월 15일 병합되었습니다. 암호화 커뮤니티 목록을 kind `33302` 이벤트로 샤딩하고, 50 멤버십 한도를 없애며, 은퇴 항목을 pruning해 목록이 릴레이 크기 한도 안에 머물게 합니다. Vector 이번 주 릴리스 노트는 동점 해결과 변경 없는 데이터 재게시 중단을 포함한 클라이언트 측 변경을 기록합니다.
 
 [Concord PR #22](https://github.com/concord-protocol/concord/pull/22)는 커뮤니티 소유 AV broker를 제안합니다. CORD-02 메타데이터 entity가 relay 옆 optional `av_brokers` 목록을 carry하고 entity의 나머지처럼 edition으로 진화하며, CORD-07 rendezvous는 그 목록에서, 커뮤니티가 none을 게시하면 멤버 broker에서, 기존 room-keyed tie-break 순으로 뽑습니다. presence의 broker 태그는 잔여 split 보고에 여전히 읽히고 유용하며, 라우팅에서 강등하는 논지는 직접적입니다. broker로 라우팅하면 동료 멤버의 신뢰할 수 없는 입력이 커뮤니티 지시보다 우선합니다.
 

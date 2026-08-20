@@ -21,7 +21,7 @@ description: "AmberとCambiumにわたる署名者セキュリティの一週間
 
 [バージョン6.5.1](https://github.com/greenart7c3/Amber/releases/tag/v6.5.1)は、ロック解除デバイス要件の切り替え後にKeystore鍵がローテーションした際に保存済みNIP-46シークレットを再暗号化し、権限エディタのクラッシュを修正します。[バージョン6.5.2](https://github.com/greenart7c3/Amber/releases/tag/v6.5.2)はアプリケーション一覧が描画しない列の復号を停止し、Keystoreハンドルをキャッシュし、起動時にアカウントキャッシュをウォームアップし、リレーステータス通知をデバウンスします。
 
-[先週の6.4.0](/ja/newsletters/2026-08-12-newsletter/#amber-640-makes-every-grouped-signing-decision-explicit)はグループ化署名決定を明示的にしました。6.5.xはAmberがそもそも何を承認するかを変えます。
+[先週の6.4.0](/en/newsletters/2026-08-12-newsletter/#amber-640-makes-every-grouped-signing-decision-explicit)はグループ化署名決定を明示的にしました。6.5.xはAmberがそもそも何を承認するかを変えます。
 
 ### Cambium 0.4.0はWebサイト向け署名とリレー認証バーストの軽減
 
@@ -55,7 +55,7 @@ description: "AmberとCambiumにわたる署名者セキュリティの一週間
 
 ### Nostriaはポッドキャスト公開を開始しリレーにカウントを依頼
 
-[Nostria](https://github.com/nostria-app/nostria)はWebクライアントです。[バージョン4.1.70](https://github.com/nostria-app/nostria/releases/tag/v4.1.70)と[4.1.71](https://github.com/nostria-app/nostria/releases/tag/v4.1.71)はプレミアム加入者向けポッドキャスト公開を追加し、エピソードは署名済みNostrイベントです。[バージョン4.1.69](https://github.com/nostria-app/nostria/releases/tag/v4.1.69)はフィードで[NIP-45](/ja/topics/nip-45/) `COUNT`をリアクション、返信、zap合計に使い、ローカライゼーションを完了します。[先週の4.1.67](/ja/newsletters/2026-08-12-newsletter/#nostria-4167-expands-encrypted-community-administration)は暗号化コミュニティ管理を拡張しました。
+[Nostria](https://github.com/nostria-app/nostria)はWebクライアントです。[バージョン4.1.70](https://github.com/nostria-app/nostria/releases/tag/v4.1.70)と[4.1.71](https://github.com/nostria-app/nostria/releases/tag/v4.1.71)はプレミアム加入者向けポッドキャスト公開を追加し、エピソードは署名済みNostrイベントです。[バージョン4.1.69](https://github.com/nostria-app/nostria/releases/tag/v4.1.69)はフィードで[NIP-45](/ja/topics/nip-45/) `COUNT`をリアクション、返信、zap合計に使い、ローカライゼーションを完了します。[先週の4.1.67](/en/newsletters/2026-08-12-newsletter/#nostria-4167-expands-encrypted-community-administration)は暗号化コミュニティ管理を拡張しました。
 
 ## タグ付きリリース
 
@@ -64,17 +64,17 @@ description: "AmberとCambiumにわたる署名者セキュリティの一週間
 [MDK](https://github.com/marmot-protocol/mdk)は[Marmot](https://github.com/marmot-protocol/marmot)向けRust開発キットで、MarmotはNostr上で運ばれる暗号化グループメッセージングプロトコルです。[バージョン0.9.12](https://github.com/marmot-protocol/mdk/releases/tag/v0.9.12)は複数のグループ状態パスを推測ではなくフェイルクローズにします。欠落フォークアンカーはハードエラー([PR #1329](https://github.com/marmot-protocol/mdk/pull/1329))、leave提案はアトミックに永続化されクラッシュが半適用の退出を残せません([PR #1360](https://github.com/marmot-protocol/mdk/pull/1360))、インシデントリプレイはマニフェストなし改行区切りJSONストリームのフォーマットを推測しません([PR #1140](https://github.com/marmot-protocol/mdk/pull/1140))。収束テストも同時に拡大し、保持履歴クロスルートリカバリ([PR #1350](https://github.com/marmot-protocol/mdk/pull/1350))、クロスアダプター収束保証([PR #1372](https://github.com/marmot-protocol/mdk/pull/1372))、一般化孤立収束キャンペーン([PR #1357](https://github.com/marmot-protocol/mdk/pull/1357))を含みます。リレー拒否診断は汎用失敗に潰されず保持されます([PR #1361](https://github.com/marmot-protocol/mdk/pull/1361))。
 
 [バージョン0.9.13](https://github.com/marmot-protocol/mdk/releases/tag/v0.9.13)は8月18日にストレージフォーマットv2([PR #1421](https://github.com/marmot-protocol/mdk/pull/1421))、移行レール、ライブアカウントスナップショットを置くデルタ書き込み([PR #1435](https://github.com/marmot-protocol/mdk/pull/1435))、より高速な招待キャッチアップ([PR #1444](https://github.com/marmot-protocol/mdk/pull/1444))、macOSバインディング([PR #1402](https://github.com/marmot-protocol/mdk/pull/1402))とともに着地しました。[バージョン0.9.14](https://github.com/marmot-protocol/mdk/releases/tag/v0.9.14)は8月19日にグループ作成の磨き込み: 事前アップロード創設画像([PR #1498](https://github.com/marmot-protocol/mdk/pull/1498))、KeyPackageバッチング([PR #1494](https://github.com/marmot-protocol/mdk/pull/1494))、アトミック初期メッセージ保持([PR #1497](https://github.com/marmot-protocol/mdk/pull/1497))、アカウント所有リレーでのプロフィール公開([PR #1495](https://github.com/marmot-protocol/mdk/pull/1495))が続きました。[MarmotKit 0.9.14](https://github.com/marmot-protocol/mdk/releases/tag/marmotkit-v0.9.14)と[wn-agent 0.9.14](https://github.com/marmot-protocol/mdk/releases/tag/wn-agent-v0.9.14)はコアクレートとともに出荷します。
-### Divine Mobile 1.0.20: アプリを離れずにバッジをミント
+### Divine Mobile 1.0.20: アプリを離れずにバッジを作成・付与
 
-[Divine Mobile](https://github.com/divinevideo/divine-mobile)はNostr経由で動画を公開・取得するショート動画クライアントです。[バージョン1.0.20](https://github.com/divinevideo/divine-mobile/releases/tag/1.0.20)はユーザーが[NIP-58](/ja/topics/nip-58/)バッジ（本号最初のディープダイブで説明する署名付与イベント）をミントし、アプリを離れずに誰かに渡せます。プロフィールのバッジをタップすると獲得条件が説明され、定義イベントと付与イベントが別保存されるため通常未実装になりがちな仕様部分です。
+[Divine Mobile](https://github.com/divinevideo/divine-mobile)はNostr経由で動画を公開・取得するショート動画クライアントです。[バージョン1.0.20](https://github.com/divinevideo/divine-mobile/releases/tag/1.0.20)はユーザーが[NIP-58](/ja/topics/nip-58/)バッジ（本号最初のディープダイブで説明する署名付与イベント）を作成し、アプリを離れずに誰かへ付与できます。プロフィールのバッジをタップすると獲得条件が説明され、定義イベントと付与イベントが別保存されるため通常未実装になりがちな仕様部分です。
 
-[リリース](https://github.com/divinevideo/divine-mobile/releases/tag/1.0.20)の残りはクライアント作業です: ライトテーマ、ストップモーションエディタのクロップ・回転・反転、レコーダーから1タップの下書き、動画に対するキャプションタイミング、視聴済み素材を下げる優先度のフィード、エディタ・レコーダー・プロフィールタブのスクリーンリーダー対応、低モーション処理、アカウント設定でのDivineメールとパスワード管理およびアカウントリンク・解除。削除動画はローカル状態を残し、ブックマークは永続化します。[先週の1.0.19](/ja/newsletters/2026-08-12-newsletter/#divine-mobile-1019-tightens-accounts-private-messages-and-publishing)はアカウント分離とDM検証を強化しました。バッジ発行はその上の新しい公開面です。
+[リリース](https://github.com/divinevideo/divine-mobile/releases/tag/1.0.20)の残りはクライアント作業です: ライトテーマ、ストップモーションエディタのクロップ・回転・反転、レコーダーから1タップの下書き、動画に対するキャプションタイミング、視聴済み素材を下げる優先度のフィード、エディタ・レコーダー・プロフィールタブのスクリーンリーダー対応、低モーション処理、アカウント設定でのDivineメールとパスワード管理およびアカウントリンク・解除。削除動画はローカル状態から取り除かれ、ブックマークは永続化します。[先週の1.0.19](/en/newsletters/2026-08-12-newsletter/#divine-mobile-1019-tightens-accounts-private-messages-and-publishing)はアカウント分離とDM検証を強化しました。バッジ発行はその上の新しい公開面です。
 
 ### ClipRelay 0.2.0: カメラで署名者をペアリング
 
 [ClipRelay](https://github.com/tajava2006/cliprelay)はNostr経由でデバイス間クリップボードを同期します。[Androidバージョン0.2.0](https://github.com/tajava2006/cliprelay/releases/tag/android%2Fv0.2.0)は`nostrconnect://` QRログインを追加し、別スマートフォンの署名者アプリでサインインでき、bunker URLのカメラスキャンを追加し、シークレット含有文字列をメッセンジャー経由で貼る習慣を取り除きます。Bunker接続はハングせず60秒でタイムアウトし、Amberログイン失敗後の再試行ボタンが動作します。[デスクトップバージョン0.2.0](https://github.com/tajava2006/cliprelay/releases/tag/desktop%2Fv0.2.0)はタイムアウトとログインタブ修正を引き継ぎます。
 
-[バージョン0.1.4](https://github.com/tajava2006/cliprelay/releases/tag/android%2Fv0.1.4)は短いリレー有効期限付き機密クリップボード同期、ピン留め署名者セッションリレー、ローカル合成`EOSE`ではなく実ラウンドトリップを要求する生存プローブを追加しました。[先週の0.1.3](/ja/newsletters/2026-08-12-newsletter/#cliprelay-013-restores-relay-and-signer-connections-after-idle-periods)はアイドル後の接続を復元しました。
+[バージョン0.1.4](https://github.com/tajava2006/cliprelay/releases/tag/android%2Fv0.1.4)は短いリレー有効期限付き機密クリップボード同期、ピン留め署名者セッションリレー、ローカル合成`EOSE`ではなく実ラウンドトリップを要求する生存プローブを追加しました。[先週の0.1.3](/en/newsletters/2026-08-12-newsletter/#cliprelay-013-restores-relay-and-signer-connections-after-idle-periods)はアイドル後の接続を復元しました。
 
 ### Bark 1.3.9: Androidで動くブラウザ署名者
 
@@ -92,7 +92,7 @@ Toll Boothパッチが3件続きました: [6.0.1](https://github.com/forgesworn
 
 [NoorNote](https://github.com/77elements/noornote)はデスクトップ、Web、Android向けNostrクライアントです。[バージョン1.3.4](https://github.com/77elements/noornote/releases/tag/v1.3.4)は暗号化ArmadaおよびConcordコミュニティをアドオンとして追加します: ユーザーは招待リンクで参加し、設定に参加コミュニティ一覧が表示され、アクティビティ通知を受け取ります。同リリースは外部引用投稿（Web記事段落を引用するハイライトノート）をグローバルまたは作者ごとに非表示にする制御を追加し、そのリポストも非表示にしつつユーザー自身のハイライトは表示を維持します。プロフィール解決も修復され、プロフィールは切り詰め公開鍵や匿名プレースホルダーとして描画されなくなりました。
 
-[バージョン1.3.5](https://github.com/77elements/noornote/releases/tag/v1.3.5)は長文ノート用エクスパンダーとArmada招待リンク入力のレイアウト修正を追加します。[先週の1.3.2](/ja/newsletters/2026-08-12-newsletter/#noornote-132-moves-article-discovery-into-the-social-graph)は記事発見をソーシャルグラフへ移しました。コミュニティメンバーシップは別面です。
+[バージョン1.3.5](https://github.com/77elements/noornote/releases/tag/v1.3.5)は長文ノート用エクスパンダーとArmada招待リンク入力のレイアウト修正を追加します。[先週の1.3.2](/en/newsletters/2026-08-12-newsletter/#noornote-132-moves-article-discovery-into-the-social-graph)は記事発見をソーシャルグラフへ移しました。コミュニティメンバーシップは別面です。
 
 ### Mostroは紛争チャットをギフトラップから移行
 
@@ -163,7 +163,7 @@ Toll Boothパッチが3件続きました: [6.0.1](https://github.com/forgesworn
 
 [NIPs PR #2437](https://github.com/nostr-protocol/nips/pull/2437)は[NIP-94](https://github.com/nostr-protocol/nips/blob/master/94.md)（kind `1063`イベントでアップロードファイルを記述するファイルメタデータ仕様）向けファイル暗号化を提案します。3つのオプションタグを追加: `encryption-algorithm`（列挙は`aes-gcm`のみ）、16進`decryption-key`と`decryption-nonce`。タグ意味はそれに合わせてシフトし、`m`は暗号化前MIME、`x`は暗号化ファイルハッシュ、`ox`は原本ハッシュ、任意の`thumb`、`image`、`fallback`ソースも同一鍵・nonceで暗号化。目的は公開Blossomオペレーターがバイト内容を判別できないことで、作者は[NIP-17](/ja/topics/nip-17/) DM暗号化特性をファイルメタデータへコピーし、`imeta`タグ内でも同処理が動くと位置づけます。
 
-[NIPs PR #2436](https://github.com/nostr-protocol/nips/pull/2436)はNIP-7D（[NIP-22](/ja/topics/nip-22/) kind `1111`コメントを返信とするkind `11`スレッドイベント上のフォーラムスレッド仕様）を修正します。スレッド投稿をkind `1`ノート同様にインライン画像、リンク、[NIP-27](/ja/topics/nip-27/)参照でフォーマット可能とする節を追加し、曖昧文法の軽量マークアップDjotもサポート可能とします。論点はフォーマット未指定が eventual なMarkdownデフォルト実装を招くことで、PRは既存Djot実装squalkを指します。
+[NIPs PR #2436](https://github.com/nostr-protocol/nips/pull/2436)はNIP-7D（[NIP-22](/ja/topics/nip-22/) kind `1111`コメントを返信とするkind `11`スレッドイベント上のフォーラムスレッド仕様）を修正します。スレッド投稿をkind `1`ノート同様にインライン画像、リンク、[NIP-27](/ja/topics/nip-27/)参照でフォーマット可能とする節を追加し、曖昧さのない文法を持つ軽量マークアップ言語Djotもサポート可能とします。論点はフォーマット未指定が最終的にMarkdownをデフォルト実装として招くことで、PRは既存Djot実装squalkを指します。
 
 [NIPs PR #2439](https://github.com/nostr-protocol/nips/pull/2439)は[NIP-86](/ja/topics/nip-86/)（リレー管理コマンド）に`assign`と`unassign`メソッドを追加し、リレー管理者がマスター鍵を共有せず別pubkeyに管理権限を付与できます。
 
