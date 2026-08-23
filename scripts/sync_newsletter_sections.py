@@ -15,6 +15,14 @@ CANONICAL = (
     ("## Protocol and Spec Work", "protocol-work.md"),
 )
 
+# Present in some issues and absent in others, so it cannot join CANONICAL
+# without failing every draft that has no launches that week. It still has to
+# round-trip: a resumed Assembly rebuilds the draft from sections/, and until
+# now that path silently dropped every newly launched project in the issue.
+OPTIONAL = (
+    ("## Newly Discovered", "newly-discovered.md"),
+)
+
 
 def split_sections(markdown: str) -> dict[str, str]:
     matches = list(re.finditer(r"(?m)^##\s+.+$", markdown))
@@ -38,6 +46,14 @@ def synchronize(markdown: str, output_dir: Path) -> list[Path]:
         path = output_dir / filename
         path.write_text(sections[heading] + "\n\nGATE: PENDING REVIEW\n")
         written.append(path)
+
+    for heading, filename in OPTIONAL:
+        path = output_dir / filename
+        if heading in sections:
+            path.write_text(sections[heading] + "\n\nGATE: PENDING REVIEW\n")
+            written.append(path)
+        else:
+            path.unlink(missing_ok=True)
 
     protocol = sections["## Protocol and Spec Work"]
     legacy_protocol = output_dir / "nip-updates.md"

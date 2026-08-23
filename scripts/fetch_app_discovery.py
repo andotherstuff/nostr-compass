@@ -77,15 +77,27 @@ def parse_iso8601(value: str) -> datetime:
 APPLICATION_SIGNALS = {
     "app",
     "application",
+    "board",
     "bot",
+    "bridge",
     "browser",
     "chat",
     "client",
+    "dashboard",
+    "editor",
+    "email",
     "extension",
     "feed",
+    "forum",
+    "gateway",
+    "inbox",
+    "mail",
     "market",
+    "messenger",
     "mobile",
+    "proxy",
     "pwa",
+    "reader",
     "relay",
     "signer",
     "social",
@@ -115,16 +127,26 @@ def github_candidates(
     since: datetime,
     *,
     first_run: bool,
+    seen_owner_siblings: set[str] | None = None,
 ) -> tuple[list[dict], set[str]]:
     candidates: list[dict] = []
     updated_seen = {normalize_url(repo) for repo in seen_repos if repo}
+    updated_owner_siblings = seen_owner_siblings if seen_owner_siblings is not None else set()
+    normalized_owner_siblings = {normalize_url(repo) for repo in updated_owner_siblings if repo}
+    updated_owner_siblings.clear()
+    updated_owner_siblings.update(normalized_owner_siblings)
     for item in items:
         repository = normalize_url(item.get("html_url"))
         if not repository:
             continue
         homepage = normalize_url(item.get("homepage"))
         discovery_sources = item.get("_discovery_sources") or ["github_topic_active"]
-        if not has_explicit_nostr_application_signal(item):
+        is_owner_sibling = "github_owner_sibling" in discovery_sources
+        # A repository under an owner that already has a tracked project is
+        # admitted on that provenance alone. Requiring the forge blurb to
+        # advertise itself is what hid formstr-hq/nail, whose description
+        # ("Nostr Email Bridge") named no recognised application noun.
+        if not is_owner_sibling and not has_explicit_nostr_application_signal(item):
             continue
         if repository.casefold() in tracked["repos"] or (
             homepage and homepage.casefold() in tracked["websites"]
@@ -134,10 +156,22 @@ def github_candidates(
         is_new = created_at >= since
         first_seen = repository not in updated_seen
         updated_seen.add(repository)
-        if not is_new and (first_run or not first_seen):
+        if is_owner_sibling:
+            # Keep owner-sibling discovery independent from the legacy active-
+            # repository baseline. A repository may already be in seen_repos
+            # because a topic/text query observed it before the owner sweep
+            # existed; it still deserves one owner-provenance review. Thereafter
+            # the dedicated set prevents it from reappearing every overlapping
+            # weekly window.
+            if repository in updated_owner_siblings:
+                continue
+            updated_owner_siblings.add(repository)
+        elif not is_new and (first_run or not first_seen):
             continue
         source_types = discovery_sources
-        if is_new:
+        if is_owner_sibling:
+            pass
+        elif is_new:
             source_types = ["github_topic_new" if source == "github_topic_active" else source for source in source_types]
         else:
             source_types = ["github_topic_first_seen"]
@@ -154,7 +188,14 @@ def github_candidates(
                 "source_types": sorted(set(source_types)),
                 "evidence_status": "unconfirmed",
                 "evidence_level": "candidate-only",
-                "review_flags": ["self-asserted forge metadata; verify Nostr behavior before tracking"],
+                "review_flags": (
+                    [
+                        "sibling repository of an owner that already has a tracked project",
+                        "owner provenance is not a Nostr-surface claim; verify behavior before tracking",
+                    ]
+                    if is_owner_sibling
+                    else ["self-asserted forge metadata; verify Nostr behavior before tracking"]
+                ),
             }
         )
     candidates.sort(key=lambda candidate: (candidate["created_at"] or "", candidate["repository"]), reverse=True)
@@ -525,14 +566,17 @@ def build_report(
     zapstore_events: list[dict] | None = None,
     signature_rejections: dict[str, list[str]] | None = None,
     seen_protocol_events: dict[str, str] | None = None,
+    seen_owner_siblings: set[str] | None = None,
 ) -> dict:
     since_dt = parse_iso8601(since)
+    updated_owner_siblings = set(seen_owner_siblings or set())
     github, updated_seen = github_candidates(
         github_items,
         tracked,
         seen_repos,
         since_dt,
         first_run=first_run,
+        seen_owner_siblings=updated_owner_siblings,
     )
     nip89 = nip89_candidates(nip89_events, tracked)
     zapstore = zapstore_candidates(zapstore_events or [], tracked)
@@ -561,6 +605,10 @@ def build_report(
                 "zapstore": len({event.get("id") for event in (zapstore_events or []) if event.get("id")}),
             },
             "github_candidates": len(github),
+            "owner_sibling_candidates": len(
+                [candidate for candidate in github if "github_owner_sibling" in (candidate.get("source_types") or [])]
+            ),
+            "tracked_owners_swept": min(len(tracked_github_owners(tracked)), OWNER_SIBLING_OWNER_LIMIT),
             "nip89_candidates": len(nip89),
             "zapstore_listing_candidates": len(zapstore),
             "candidate_count": len(candidates),
@@ -568,6 +616,7 @@ def build_report(
         "review_policy": "candidate-only; never auto-add to projects.yml",
         "candidates": candidates,
         "_updated_seen_repositories": sorted(updated_seen),
+        "_updated_seen_owner_siblings": sorted(updated_owner_siblings),
         "_updated_seen_protocol_events": updated_protocol_events,
     }
 
@@ -651,13 +700,109 @@ def github_search_queries(since_day: str) -> list[tuple[str, str]]:
     return [
         (f"topic:nostr pushed:>={since_day} archived:false fork:false", "github_topic_active"),
         (f"nostr in:name,description created:>={since_day} archived:false fork:false", "github_text_new"),
+        # created:>= only ever sees brand-new repositories. A repository created
+        # months ago that starts shipping this week is equally newsworthy, so
+        # sweep on activity as well as on creation.
+        (f"nostr in:name,description pushed:>={since_day} archived:false fork:false", "github_text_active"),
     ]
 
 
-def fetch_github_discovery(since_day: str) -> tuple[list[dict], list[str]]:
+# Backstop only. The sweep runs on the 5000/hour core REST budget, so the
+# current tracked-owner count sits comfortably inside it; exceeding this is
+# reported, never silently truncated.
+OWNER_SIBLING_OWNER_LIMIT = 800
+
+
+def tracked_github_owners(tracked: dict[str, dict[str, str]]) -> list[str]:
+    """Distinct GitHub owners that already have at least one tracked repository."""
+    owners: set[str] = set()
+    for repository in tracked.get("repos", {}):
+        match = re.match(r"^https?://(?:www\.)?github\.com/([^/]+)/[^/]+", repository)
+        if match:
+            owners.add(match.group(1).casefold())
+    return sorted(owners)
+
+
+def fetch_owner_repositories(
+    owner: str,
+    since_day: str,
+    *,
+    max_pages: int = 3,
+    warnings: list[str] | None = None,
+) -> list[dict]:
+    """Repositories for one owner pushed on or after since_day, newest first.
+
+    Uses the core REST listing rather than the search API: search costs 30
+    requests per minute and cannot express "everything this owner touched"
+    without one query per owner, while this endpoint sorts by push time so the
+    walk stops as soon as it leaves the window.
+    """
+    collected: list[dict] = []
+    for page in range(1, max_pages + 1):
+        command = [
+            "gh",
+            "api",
+            f"users/{owner}/repos?sort=pushed&direction=desc&type=public&per_page=100&page={page}",
+        ]
+        proc = subprocess.run(command, check=False, capture_output=True, text=True, timeout=60)
+        if proc.returncode != 0:
+            raise RuntimeError(proc.stderr.strip() or f"gh exited {proc.returncode}")
+        payload = json.loads(proc.stdout)
+        if not isinstance(payload, list) or not payload:
+            break
+        stop = False
+        for item in payload:
+            pushed_at = item.get("pushed_at") or ""
+            if pushed_at[:10] < since_day:
+                stop = True
+                break
+            if item.get("private") or item.get("fork") or item.get("archived"):
+                continue
+            item["_discovery_sources"] = ["github_owner_sibling"]
+            collected.append(item)
+        if stop or len(payload) < 100:
+            break
+        if page == max_pages and warnings is not None:
+            warnings.append(
+                f"github_owner_sibling: {owner}: capped at {max_pages * 100} repositories while still inside window"
+            )
+    return collected
+
+
+def fetch_owner_siblings(
+    owners: list[str],
+    since_day: str,
+    *,
+    warnings: list[str],
+) -> list[dict]:
+    """Sweep every tracked owner for repositories Compass does not track yet."""
+    items: list[dict] = []
+    for owner in owners:
+        try:
+            items.extend(fetch_owner_repositories(owner, since_day, warnings=warnings))
+        except (RuntimeError, subprocess.TimeoutExpired, json.JSONDecodeError) as exc:
+            warnings.append(f"github_owner_sibling: {owner}: {exc}")
+    return items
+
+
+def fetch_github_discovery(
+    since_day: str,
+    tracked: dict[str, dict[str, str]] | None = None,
+) -> tuple[list[dict], list[str]]:
     queries = github_search_queries(since_day)
-    results: list[list[dict]] = []
     errors: list[str] = []
+    owners = tracked_github_owners(tracked or {})
+    if len(owners) > OWNER_SIBLING_OWNER_LIMIT:
+        # Never truncate silently: a dropped owner is a project the sweep did
+        # not look at, and the report has to say so.
+        errors.append(
+            f"github_owner_sibling: capped at {OWNER_SIBLING_OWNER_LIMIT} of {len(owners)} tracked owners; "
+            f"not swept: {', '.join(owners[OWNER_SIBLING_OWNER_LIMIT:])}"
+        )
+        owners = owners[:OWNER_SIBLING_OWNER_LIMIT]
+    results: list[list[dict]] = []
+    if owners:
+        results.append(fetch_owner_siblings(owners, since_day, warnings=errors))
     for query, source in queries:
         query_warnings: list[str] = []
         try:
@@ -788,11 +933,13 @@ def main() -> int:
     since_dt = datetime.combine(since_day, time.min, timezone.utc)
     source_errors: dict[str, list[str]] = {}
 
+    tracked = parse_projects_index(args.projects_file.read_text())
+
     if args.github_fixture:
         github_items = load_json_list(args.github_fixture)
         github_errors: list[str] = []
     else:
-        github_items, github_errors = fetch_github_discovery(since_day.isoformat())
+        github_items, github_errors = fetch_github_discovery(since_day.isoformat(), tracked)
     if github_errors:
         source_errors["github"] = github_errors
 
@@ -821,15 +968,21 @@ def main() -> int:
         "zapstore": zapstore_rejections,
     }
 
-    tracked = parse_projects_index(args.projects_file.read_text())
     first_run = not args.state_file.exists()
     if first_run:
         seen_repos: set[str] = set()
+        seen_owner_siblings: set[str] = set()
         seen_protocol_events: dict[str, str] = {}
     else:
         state = json.loads(args.state_file.read_text())
         seen_repos = set(state.get("repositories", []))
         raw_protocol_events = state.get("protocol_events", {})
+        raw_owner_siblings = state.get("owner_sibling_repositories", [])
+        seen_owner_siblings = {
+            repository
+            for repository in raw_owner_siblings
+            if isinstance(repository, str) and normalize_url(repository)
+        } if isinstance(raw_owner_siblings, list) else set()
         seen_protocol_events = {
             address: event_id
             for address, event_id in raw_protocol_events.items()
@@ -847,8 +1000,10 @@ def main() -> int:
         source_errors=source_errors,
         signature_rejections=signature_rejections,
         seen_protocol_events=seen_protocol_events,
+        seen_owner_siblings=seen_owner_siblings,
     )
     updated_seen = report.pop("_updated_seen_repositories")
+    updated_owner_siblings = report.pop("_updated_seen_owner_siblings")
     updated_protocol_events = report.pop("_updated_seen_protocol_events")
     report["period"]["through"] = today.isoformat()
     report["period"]["days"] = args.since_days
@@ -862,6 +1017,7 @@ def main() -> int:
             {
                 "updated_at": datetime.now(timezone.utc).isoformat(),
                 "repositories": updated_seen,
+                "owner_sibling_repositories": updated_owner_siblings,
                 "protocol_events": updated_protocol_events,
             },
             indent=2,
