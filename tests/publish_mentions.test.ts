@@ -22,6 +22,7 @@ const npubs: NpubMap = {
   "swift-nostr": project("npub1swiftnostr"),
   "lawallet-nwc": project("npub1lawalletnwc"),
   mill: project("npub1mill"),
+  nail: project("npub1nail"),
 };
 
 describe("publish mention extraction", () => {
@@ -112,6 +113,24 @@ Text.
     const result = extractMentions(body, npubs);
 
     expect(result.found.map((entry) => entry.name)).toEqual(["lawallet-nwc", "swift-nostr"]);
+    expect(result.missing).toEqual([]);
+  });
+
+  test("includes projects introduced under Newly Discovered", () => {
+    const body = `## Newly Discovered
+
+### Nail bridges Nostr and email
+
+Text.
+
+## Protocol and Spec Work
+
+### Protocol update
+`;
+
+    const result = extractMentions(body, npubs);
+
+    expect(result.found.map((entry) => entry.name)).toEqual(["Nail"]);
     expect(result.missing).toEqual([]);
   });
 

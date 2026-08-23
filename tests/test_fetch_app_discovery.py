@@ -94,6 +94,7 @@ class AppDiscoveryTests(unittest.TestCase):
             self.assertNotIn("_updated_seen_repositories", report)
             seen = json.loads(state.read_text())
             self.assertEqual(seen["repositories"], ["https://github.com/trbouma/safebox-acorn"])
+            self.assertEqual(seen["owner_sibling_repositories"], [])
 
     def test_normalize_url_rejects_unsafe_or_relative_values(self):
         mod = load_module()
@@ -207,8 +208,29 @@ projects:
             items = mod.fetch_owner_repositories("formstr-hq", "2026-08-10")
         self.assertEqual([item["full_name"] for item in items], ["formstr-hq/nail"])
         self.assertEqual(items[0]["_discovery_sources"], ["github_owner_sibling"])
+        self.assertIn("type=public", runner.call_args.args[0][2])
         # Sorted by push time, so one page is enough to leave the window.
         self.assertEqual(runner.call_count, 1)
+
+    def test_owner_repository_walk_reports_page_cap_and_skips_private_repositories(self):
+        mod = load_module()
+        page = [
+            {
+                "full_name": f"example/repo-{index}",
+                "pushed_at": "2026-08-18T00:00:00Z",
+                "private": index == 0,
+            }
+            for index in range(100)
+        ]
+        completed = subprocess.CompletedProcess([], 0, stdout=json.dumps(page), stderr="")
+        warnings: list[str] = []
+        with mock.patch.object(mod.subprocess, "run", return_value=completed) as runner:
+            items = mod.fetch_owner_repositories("example", "2026-08-10", max_pages=2, warnings=warnings)
+
+        self.assertEqual(runner.call_count, 2)
+        self.assertNotIn("example/repo-0", {item["full_name"] for item in items})
+        self.assertEqual(len(warnings), 1)
+        self.assertIn("capped at 200 repositories", warnings[0])
 
     def test_owner_sweep_records_a_failing_owner_without_aborting_the_rest(self):
         mod = load_module()
@@ -251,6 +273,16 @@ projects:
         capped = [error for error in errors if error.startswith("github_owner_sibling: capped")]
         self.assertEqual(len(capped), 1)
         self.assertIn("not swept:", capped[0])
+        report = mod.build_report(
+            since="2026-08-10T00:00:00+00:00",
+            github_items=[],
+            nip89_events=[],
+            tracked=tracked,
+            seen_repos=set(),
+            first_run=True,
+            source_errors={"github": errors},
+        )
+        self.assertEqual(report["summary"]["tracked_owners_swept"], mod.OWNER_SIBLING_OWNER_LIMIT)
 
     def test_owner_sweep_runs_for_every_tracked_owner_under_the_cap(self):
         mod = load_module()
@@ -305,10 +337,41 @@ projects:
         self.assertEqual(candidates[0]["evidence_level"], "candidate-only")
         self.assertTrue(any("sibling repository" in flag for flag in candidates[0]["review_flags"]))
 
-        # The same record arriving from a text sweep still has to earn its place.
+        # The broadened current signal list lets the new text-active stream find
+        # Nail after the first-run baseline. Owner provenance remains necessary
+        # for siblings whose metadata never names Nostr or an application noun.
         text_sourced = {**nail, "_discovery_sources": ["github_text_active"]}
-        text_candidates, _ = mod.github_candidates([text_sourced], tracked, set(), since, first_run=True)
-        self.assertEqual(text_candidates, [])
+        text_candidates, _ = mod.github_candidates([text_sourced], tracked, set(), since, first_run=False)
+        self.assertEqual([candidate["repository"] for candidate in text_candidates], [nail["html_url"]])
+
+    def test_owner_sibling_is_emitted_once_independently_of_legacy_seen_repos(self):
+        mod = load_module()
+        nail = {
+            "full_name": "formstr-hq/nail",
+            "html_url": "https://github.com/formstr-hq/nail",
+            "description": "Nostr Email Bridge",
+            "created_at": "2026-02-25T13:54:58Z",
+            "pushed_at": "2026-08-18T15:15:20Z",
+            "homepage": "",
+            "stargazers_count": 0,
+            "topics": [],
+            "_discovery_sources": ["github_owner_sibling"],
+        }
+        tracked = {"repos": {}, "websites": {}, "names": {}}
+        legacy_seen = {nail["html_url"]}
+        owner_seen: set[str] = set()
+        since = datetime(2026, 8, 10, tzinfo=timezone.utc)
+
+        first, _ = mod.github_candidates(
+            [nail], tracked, legacy_seen, since, first_run=False, seen_owner_siblings=owner_seen
+        )
+        second, _ = mod.github_candidates(
+            [nail], tracked, legacy_seen, since, first_run=False, seen_owner_siblings=owner_seen
+        )
+
+        self.assertEqual([candidate["repository"] for candidate in first], [nail["html_url"]])
+        self.assertEqual(second, [])
+        self.assertEqual(owner_seen, {nail["html_url"]})
 
     def test_owner_sibling_does_not_resurface_a_tracked_repository(self):
         mod = load_module()
