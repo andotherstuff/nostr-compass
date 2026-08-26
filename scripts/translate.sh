@@ -244,16 +244,105 @@ cmd_commit() {
   echo "committed $(lang_name "$lang") — checkpoint saved ($(git rev-parse --short HEAD))"
 }
 
+# BACKLOG: every issue whose English newsletter has no translation yet.
+#
+# Translations used to stall silently. #35's PR sat open for six days while #36's
+# merged ahead of it, and #37 had none at all until it was chased by hand. Four
+# issues from June and July are still untranslated. A gap that nothing reports is
+# a gap that grows, so `backlog` makes the whole set visible in one command.
+cmd_backlog() {
+  local en missing=0
+  echo "Untranslated issues (English present, at least one language missing)"
+  echo ""
+  for en in content/en/newsletters/*-newsletter.md; do
+    local date; date="$(basename "$en" | sed 's/-newsletter.md//')"
+    [ "$date" = "_index" ] && continue
+    local gaps=()
+    for lang in "${LANGS[@]}"; do
+      [ -f "content/$lang/newsletters/$date-newsletter.md" ] || gaps+=("$lang")
+    done
+    if [ ${#gaps[@]} -gt 0 ]; then
+      printf "  %s  missing: %s\n" "$date" "$(echo "${gaps[@]}" | tr ' ' ',')"
+      missing=$((missing+1))
+    fi
+  done
+  echo ""
+  if [ "$missing" -eq 0 ]; then
+    echo "No gaps: every English issue is translated into all ${#LANGS[@]} languages."
+  else
+    echo "$missing issue(s) need translation."
+  fi
+}
+
+# SHIP: push the translation branch, open the PR, and merge it once checks pass.
+#
+# The generation step needs an agent, but nothing after it does. Leaving the
+# merge to a human is what turned a finished translation into a six-day-old open
+# PR. This blocks on the build check rather than merging blind.
+cmd_ship() {
+  local date="${1:?usage: translate.sh ship <YYYY-MM-DD> [--no-merge]}"
+  local no_merge="${2:-}"
+  local branch="translate/$date"
+  # Titles appear as "Nostr Compass #37", 'Nostr Compass #27', and unquoted.
+  local n; n="$(grep -m1 -oE "^title: *['\"]?Nostr Compass #[0-9]+" "$(en_newsletter "$date")" | grep -oE '[0-9]+$')"
+  [ -n "$n" ] || die "cannot read issue number from $(en_newsletter "$date")"
+
+  local lang
+  for lang in "${LANGS[@]}"; do
+    cmd_verify "$lang" "$date" >/dev/null || die "verify failed for $lang — refusing to ship an incomplete set"
+  done
+  echo "all ${#LANGS[@]} languages verified"
+
+  git push -q --force-with-lease -u origin "$branch" || die "push failed for $branch"
+
+  local pr
+  pr="$(gh pr list --head "$branch" --state open --json number --jq '.[0].number // empty')"
+  if [ -z "$pr" ]; then
+    gh pr create \
+      --title "Add translations for Newsletter #$n and topic pages" \
+      --body "$(printf 'Translations for Newsletter #%s (%s).\n\nLanguages: %s\n\nGenerated and verified by `scripts/translate.sh`: every language passes the encoding, link-leak, and native-script checks, and all referenced topic pages are present.\n' \
+        "$n" "$date" "$(echo "${LANGS[@]}" | tr ' ' ',' | sed 's/,/, /g')")" \
+      >/dev/null || die "gh pr create failed"
+    pr="$(gh pr list --head "$branch" --state open --json number --jq '.[0].number // empty')"
+  fi
+  [ -n "$pr" ] || die "could not determine PR number for $branch"
+  echo "translation PR #$pr"
+
+  if [ "$no_merge" = "--no-merge" ]; then
+    echo "--no-merge: leaving PR #$pr open"
+    return 0
+  fi
+
+  # Wait for the build check. Merging before CI is how a broken translation
+  # would reach the website.
+  local waited=0 conclusion=""
+  while [ "$waited" -lt 900 ]; do
+    conclusion="$(gh pr view "$pr" --json statusCheckRollup \
+      --jq '[.statusCheckRollup[] | select(.name=="build")] | .[0].conclusion // ""')"
+    [ -n "$conclusion" ] && break
+    sleep 20; waited=$((waited+20))
+  done
+  if [ "$conclusion" != "SUCCESS" ]; then
+    die "build check on PR #$pr is '${conclusion:-pending}' after ${waited}s — not merging"
+  fi
+  gh pr merge "$pr" --squash || die "merge failed for PR #$pr"
+  echo "merged PR #$pr"
+}
+
 case "${1:-}" in
   status) shift; cmd_status "$@" ;;
   verify) shift; cmd_verify "$@" ;;
   commit) shift; cmd_commit "$@" ;;
+  backlog) shift; cmd_backlog "$@" ;;
+  ship) shift; cmd_ship "$@" ;;
   *) cat <<EOF
 translate.sh — durable, resumable newsletter translation driver
 
   status <YYYY-MM-DD>          what is missing, per language (safe to run anytime)
   verify <lang> <YYYY-MM-DD>   check one language: files, links, encoding
   commit <lang> <YYYY-MM-DD>   verify then commit one language (a checkpoint)
+  ship <YYYY-MM-DD>            verify all, push, open the PR, merge when the build passes
+  backlog                      every English issue still missing a translation
 
 Languages: ${LANGS[*]}
 
