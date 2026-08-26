@@ -65,6 +65,7 @@ Most major clients support NIP-05 verification:
 - [Newsletter #33: Lead stories](/en/newsletters/2026-07-29-newsletter/#top-stories)
 - [Newsletter #33: Six Years of Nostr Julys](/en/newsletters/2026-07-29-newsletter/#six-years-of-nostr-julys)
 - [Newsletter #36: Nostter adds bookmark lists, profile badges, and Blossom uploads](/en/newsletters/2026-08-19-newsletter/#nostter-adds-bookmark-lists-profile-badges-and-blossom-uploads)
+- [Newsletter #37: NoorNote v1.3.6: profile statuses and classified listings](/en/newsletters/2026-08-26-newsletter/#noornote-v136-profile-statuses-and-classified-listings)
 
 **See also:**
 - [NIP-01: Basic Protocol](/en/topics/nip-01/)

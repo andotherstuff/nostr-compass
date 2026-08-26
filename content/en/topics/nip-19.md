@@ -53,6 +53,7 @@ Another practical distinction is stability. `note` points to one immutable event
 - [Newsletter #4: Relay Hint Support](/en/newsletters/2026-01-07-newsletter/)
 - [Newsletter #8: Damus iOS](/en/newsletters/2026-02-04-newsletter/#damus-ios)
 - [Newsletter #11: notecrumbs](/en/newsletters/2026-02-25-newsletter/)
+- [Newsletter #37: August 2023](/en/newsletters/2026-08-26-newsletter/#august-2023)
 
 **See also:**
 - [NIP-01: Basic Protocol](/en/topics/nip-01/)

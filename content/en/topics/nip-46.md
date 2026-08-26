@@ -46,6 +46,7 @@ The `switch_relays` method exists so the signer can move the session to a differ
 - [swift-nostr 0.7.0](https://github.com/yysskk/swift-nostr/releases/tag/0.7.0) - remote signer API coverage
 
 **Mentioned in:**
+- [Newsletter #37: Shopstr keeps remote-signer and wallet secrets out of browser storage](/en/newsletters/2026-08-26-newsletter/#shopstr-keeps-remote-signer-and-wallet-secrets-out-of-browser-storage)
 - [Newsletter #1: Notable Code Changes](/en/newsletters/2025-12-17-newsletter/#amethyst-android)
 - [Newsletter #3: December Recap](/en/newsletters/2025-12-31-newsletter/#december-recap-five-years-of-nostr-decembers)
 - [Newsletter #4: Primal Android Becomes a Full Signing Hub](/en/newsletters/2026-01-07-newsletter/#primal-android-becomes-a-full-signing-hub)

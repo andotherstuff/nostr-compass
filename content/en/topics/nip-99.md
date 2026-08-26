@@ -65,6 +65,7 @@ That flexibility also explains why current marketplace projects favor it. The sp
 - [Initial classified-listing draft](https://github.com/nostr-protocol/nips/commit/451c06a3c572a13afe45c1d80616f8e6dd9bb1de)
 
 **Mentioned in:**
+- [Newsletter #37: Shopstr keeps remote-signer and wallet secrets out of browser storage](/en/newsletters/2026-08-26-newsletter/#shopstr-keeps-remote-signer-and-wallet-secrets-out-of-browser-storage)
 - [Newsletter #13: Shopstr and Milk Market Open MCP Commerce Surfaces](/en/newsletters/2026-03-11-newsletter/#shopstr-and-milk-market-open-mcp-commerce-surfaces)
 - [Newsletter #31: Conduit Mono rebuilds the merchant orders inbox around ephemeral guest checkout](/en/newsletters/2026-07-15-newsletter/#conduit-mono-rebuilds-the-merchant-orders-inbox-around-ephemeral-guest-checkout)
 - [Newsletter #31: NIP Deep Dive: NIP-99 and the Gamma Markets commerce extension](/en/newsletters/2026-07-15-newsletter/#nip-deep-dive-nip-99-and-the-gamma-markets-commerce-extension)

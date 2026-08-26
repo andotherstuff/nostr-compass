@@ -69,6 +69,7 @@ NIP-44 revision 3 was merged in December 2023 following an independent Cure53 se
 - [Private location PR #2309](https://github.com/nostr-protocol/nips/pull/2309) - recipient-specific encrypted location payloads
 
 **Mentioned in:**
+- [Newsletter #37: Infans encrypts family tracking and co-parent sync over Nostr](/en/newsletters/2026-08-26-newsletter/#infans-encrypts-family-tracking-and-co-parent-sync-over-nostr)
 - [Newsletter #4: NIP Deep Dive](/en/newsletters/2026-01-07-newsletter/#nip-44-versioned-encryption)
 - [Newsletter #3: December 2023](/en/newsletters/2025-12-31-newsletter/#december-2023-ecosystem-maturation)
 - [Newsletter #3: December 2024](/en/newsletters/2025-12-31-newsletter/#december-2024-protocol-advancement)

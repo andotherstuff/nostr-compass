@@ -62,6 +62,7 @@ MDK landed [PR #261](https://github.com/marmot-protocol/mdk/pull/261) to compute
 - [Newsletter #31: Vector v0.4.0 moves Group Chats from Marmot to Concord, and Amethyst ships its own Concord client days later](/en/newsletters/2026-07-15-newsletter/#vector-v040-moves-group-chats-from-marmot-to-concord-and-amethyst-ships-its-own-concord-client-days-later)
 - [Newsletter #31: Bitcoin-Safe reaches Flathub, spotlighting its Nostr Sync & Chat plugin](/en/newsletters/2026-07-15-newsletter/#bitcoin-safe-reaches-flathub-spotlighting-its-nostr-sync--chat-plugin)
 - [Newsletter #33: Tagged releases](/en/newsletters/2026-07-29-newsletter/#tagged-releases)
+- [Newsletter #37: Heterodyne specifies portable personas and encrypted social communication](/en/newsletters/2026-08-26-newsletter/#heterodyne-specifies-portable-personas-and-encrypted-social-communication)
 
 **See also:**
 - [MLS (Message Layer Security)](/en/topics/mls/)

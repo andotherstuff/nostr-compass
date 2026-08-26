@@ -11,6 +11,9 @@ from pathlib import Path
 
 DATE_RE = re.compile(r"(?m)^date:\s*(\d{4}-\d{2}-\d{2})\s*$")
 HISTORY_RE = re.compile(r"(?m)^##\s+([A-Za-z]+|\d+) Years of Nostr ([A-Za-z]+)\s*$")
+ARCHIVE_HISTORY_RE = re.compile(
+    r"(?m)^##\s+(?:December Recap:\s+)?([A-Za-z]+|\d+) Years of Nostr ([A-Za-z]+)\s*$"
+)
 YEAR_RE = re.compile(r"(?m)^###\s+([A-Za-z]+)\s+(20\d{2})(?::[^\n]+)?\s*$")
 URL_RE = re.compile(r"https?://[^)\]\s>]+")
 PROGRESSION_RE = re.compile(
@@ -64,8 +67,10 @@ def prose_paragraphs(markdown: str) -> list[str]:
     return paragraphs
 
 
-def extract_history(markdown: str) -> tuple[re.Match[str] | None, str]:
-    match = HISTORY_RE.search(markdown)
+def extract_history(
+    markdown: str, pattern: re.Pattern[str] = HISTORY_RE
+) -> tuple[re.Match[str] | None, str]:
+    match = pattern.search(markdown)
     if not match:
         return None, ""
     remainder = markdown[match.end():]
@@ -161,16 +166,57 @@ def review(markdown: str) -> list[str]:
     return findings
 
 
+def review_archive_baseline(markdown: str) -> list[str]:
+    """Validate published pre-contract history without rewriting immutable editions."""
+    findings: list[str] = []
+    try:
+        issue_date = parse_issue_date(markdown)
+    except ValueError as exc:
+        return [str(exc)]
+    if issue_date >= date(2026, 1, 1):
+        return review(markdown)
+    history_match, history = extract_history(markdown, ARCHIVE_HISTORY_RE)
+    if not history_match:
+        return ["published archive has no machine-readable history title"]
+    year_matches = list(YEAR_RE.finditer(history))
+    years = [int(match.group(2)) for match in year_matches]
+    if not years or years != sorted(set(years)):
+        findings.append(f"published archive years are missing, duplicated, or unordered: {years}")
+    all_h3 = list(re.finditer(r"(?m)^###\s+[^\n]+$", history))
+    for match in year_matches:
+        year = int(match.group(2))
+        next_heading = next((heading.start() for heading in all_h3 if heading.start() > match.start()), len(history))
+        paragraphs = prose_paragraphs(history[match.end():next_heading])
+        if not paragraphs:
+            findings.append(f"published archive year {year} has no prose")
+        for paragraph_index, paragraph in enumerate(paragraphs, 1):
+            if not URL_RE.search(paragraph):
+                findings.append(f"published archive year {year} paragraph {paragraph_index} lacks a source")
+    if len(history.split()) < 500:
+        findings.append("published archive history is too short for baseline validation")
+    return findings
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("newsletter", type=Path)
+    parser.add_argument(
+        "--archive-baseline",
+        action="store_true",
+        help="apply the published pre-2026 baseline without weakening the current contract",
+    )
     args = parser.parse_args()
-    findings = review(args.newsletter.read_text())
+    findings = (
+        review_archive_baseline(args.newsletter.read_text())
+        if args.archive_baseline
+        else review(args.newsletter.read_text())
+    )
     if findings:
         for finding in findings:
             print(f"FAIL: {finding}")
         return 1
-    print("PASS: month-end history title, yearly depth, sourcing, and progressive narrative are valid")
+    label = "published archive baseline" if args.archive_baseline else "month-end history"
+    print(f"PASS: {label} title, yearly depth, sourcing, and progressive narrative are valid")
     return 0
 
 

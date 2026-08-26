@@ -69,6 +69,7 @@ NIP-17 also defines inbox relay lists for private messaging. Clients can publish
 - [Newsletter #31: Bitcoin-Safe reaches Flathub, spotlighting its Nostr Sync & Chat plugin](/en/newsletters/2026-07-15-newsletter/#bitcoin-safe-reaches-flathub-spotlighting-its-nostr-sync--chat-plugin)
 - [Newsletter #33: Lead stories](/en/newsletters/2026-07-29-newsletter/#top-stories)
 - [Newsletter #36: NIPs](/en/newsletters/2026-08-19-newsletter/#nips)
+- [Newsletter #37: nostr-tools binds gift-wrap rumors to their seals](/en/newsletters/2026-08-26-newsletter/#nostr-tools-binds-gift-wrap-rumors-to-their-seals)
 
 **See also:**
 - [NIP-04: Encrypted Direct Messages (Deprecated)](/en/topics/nip-04/)

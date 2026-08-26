@@ -69,6 +69,7 @@ Two details cause many implementation bugs. First, clients should treat relay re
 - [Newsletter #19: NIP-67 EOSE completeness hint proposal](/en/newsletters/2026-04-22-newsletter/#nip-updates)
 - [Newsletter #27: Clave 1.0 ships to the App Store](/en/newsletters/2026-06-17-newsletter/#clave-1-0-ships-to-the-app-store-with-push-woken-background-signing)
 - [Newsletter #33: Six Years of Nostr Julys](/en/newsletters/2026-07-29-newsletter/#six-years-of-nostr-julys)
+- [Newsletter #37: August 2023](/en/newsletters/2026-08-26-newsletter/#august-2023)
 
 **See also:**
 - [NIP-19: Bech32-Encoded Entities](/en/topics/nip-19/)

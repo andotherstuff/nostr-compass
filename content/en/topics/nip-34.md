@@ -104,6 +104,7 @@ NIP-34 splits discovery from transport. The repository data can still live on or
 - [GitWorkshop July 27 release](https://primal.net/e/869e01f9a74d98f468a66f3b83865d198a82cc718c1db36324398b1b88a17c60) - maintainer coordination and independent repository synchronization
 
 **Mentioned in:**
+- [Newsletter #37: Postr launches as a small Android composer](/en/newsletters/2026-08-26-newsletter/#postr-launches-as-a-small-android-composer)
 
 - [Newsletter #8 (2026-02-04): Notedeck adds NIP-34 viewer](/en/newsletters/2026-02-04-newsletter/#notedeck)
 - [Newsletter #9 (2026-02-11): Notedeck Ships Dashboard and Agentium](/en/newsletters/2026-02-11-newsletter/#notedeck-ships-dashboard-and-agentium)

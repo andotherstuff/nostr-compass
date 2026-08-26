@@ -23,34 +23,31 @@ class SyncNewsletterSectionsTests(unittest.TestCase):
 
 Top.
 
-## Tagged Releases
+## Releases
 
 Releases.
 
-## In Development
+## Unreleased Changes
 
 Development.
 
-## Protocol and Spec Work
+## NIP Updates and Protocol Spec Work
 
 Protocol.
 """
 
-    def test_newly_discovered_round_trips_when_present(self):
+    def test_newly_discovered_is_folded_into_top_stories_not_round_tripped(self):
         newsletter = self.canonical.replace(
-            "## Protocol and Spec Work",
-            "## Newly Discovered\n\n### Nail bridges Nostr and email\n\nCandidate.\n\n## Protocol and Spec Work",
+            "## NIP Updates and Protocol Spec Work",
+            "## Newly Discovered\n\n### Nail bridges Nostr and email\n\nCandidate.\n\n## NIP Updates and Protocol Spec Work",
         )
         with tempfile.TemporaryDirectory() as tmp:
             output = Path(tmp)
             written = self.mod.synchronize(newsletter, output)
             path = output / "newly-discovered.md"
 
-            self.assertIn(path, written)
-            self.assertEqual(
-                path.read_text(),
-                "## Newly Discovered\n\n### Nail bridges Nostr and email\n\nCandidate.\n\nGATE: PENDING REVIEW\n",
-            )
+            self.assertNotIn(path, written)
+            self.assertFalse(path.exists())
 
     def test_absent_newly_discovered_removes_stale_optional_artifact(self):
         with tempfile.TemporaryDirectory() as tmp:

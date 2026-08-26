@@ -88,6 +88,20 @@ unresolved:
     reason: No project account or ado maintainer npub was bound after repository, profile, NIP-05, relay, and site checks.
     sources:
       - https://git.nostrdev.com/stuff/pakstr
+
+  Heterodyne:
+    checked_at: 2026-08-25
+    reason: The Radicle project metadata and canonical GitHub mirror identify Liam Helmer but do not bind a Nostr public key to the protocol or maintainer.
+    sources:
+      - https://radicle.network/nodes/iris.radicle.network/rad%3Az2zX5XvPiggGJvCn8DPkp1hRNGA5
+      - https://github.com/HeterodyneNetwork/HeterodyneProtocol
+
+  Radicle:
+    checked_at: 2026-08-26
+    reason: Radicle is mentioned as one of Heterodyne's protocol dependencies, but its project site and Heterodyne source do not bind a dedicated Radicle Nostr identity suitable for outreach.
+    sources:
+      - https://radicle.xyz
+      - https://radicle.network/nodes/iris.radicle.network/rad%3Az2zX5XvPiggGJvCn8DPkp1hRNGA5
 #
 # New and corrected records use the typed object format:
 #   ProjectName:
@@ -112,6 +126,7 @@ Nostr Compass: npub1wav4fae3gyfy3xj298kxj2mj8phavz7vavps34przq02j7w902qq902923
 LaWallet NWC: npub1ek4262k6nv3l9axh403w2e66pzl2pqhhnjrhgv2wpzx2akak285scxv4pd
 Mostro Core: npub1m0str0d7z2ww8rdh20t2n9lx520xjwhaq24p68umqp06wwrwtsnqen40un
 Routstr Core: npub130mznv74rxs032peqym6g3wqavh472623mt3z5w73xq9r6qqdufs7ql29s
+Routstr SDK: npub130mznv74rxs032peqym6g3wqavh472623mt3z5w73xq9r6qqdufs7ql29s
 Kubo: npub1kdstrkmhv0yx8pdqcf9ed8l26752gqprx68twg7qp5nsd7qtegnsr3nsze
 whitenoise: npub1whtn0s68y3cs98zysa4nxrfzss5g5snhndv35tk5m2sudsr7ltms48r3ec
 GitWorkshop.dev: npub15qydau2hjma6ngxkl2cyar74wzyjshvl65za5k5rl69264ar2exs5cyejr
@@ -1227,3 +1242,31 @@ Luxas lead developer:
 # `_smtp` bridge record; that key signs bridge seals and is not a contact
 # identity, so outreach stays on the Formstr project key.
 Nail: npub1qu7dsd44275lms4x9snnwvnnmgx926nsppmr7lcw9dlj36n4fltqgs7p98
+
+# =============================================================================
+# Newsletter #37 additions (verified 2026-08-25)
+# =============================================================================
+
+Postr:
+  npub: npub1qwkd5wzftcxquuhtkcg0xn9ed7evksluuppf7qdmdh34ywe9uncs5uqfvl
+  identity_type: project
+  evidence:
+    - https://gitworkshop.dev/npub1qwkd5wzftcxquuhtkcg0xn9ed7evksluuppf7qdmdh34ywe9uncs5uqfvl/relay.ngit.dev/postr
+    - https://relay.ngit.dev/npub1qwkd5wzftcxquuhtkcg0xn9ed7evksluuppf7qdmdh34ywe9uncs5uqfvl/postr.git
+
+Infans:
+  npub: npub1vkd8fak0h37z2tzcmy699wwe2a0rd3ry4fj5f33h2gnuj9n2dmvs7u9g2t
+  identity_type: maintainer
+  person: Turkey
+  evidence:
+    - https://github.com/TurkeyNostr/infans
+    - https://nostrplebs.com/.well-known/nostr.json?name=turkey
+
+walls.rip Ghost Chat:
+  npub: npub10hqclu8wc4mhqjem300cep0rpc7f2uunn5h2lcxrx8wp3vmcrq0quj4fln
+  identity_type: maintainer
+  person: XBToshi
+  evidence:
+    - https://github.com/KYC-rip/walls-rip
+    - https://kyc.rip/.well-known/nostr.json?name=XBToshi
+    - https://njump.me/nevent1qqsrt4qvqfpcwt0q7y0x0z3tk0ra743svv5lanqvfxxe5jd3eam73dgam93v5

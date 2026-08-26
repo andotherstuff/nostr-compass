@@ -12,6 +12,34 @@ from pathlib import Path
 from typing import Any
 
 
+def validate_config(config: dict[str, Any]) -> None:
+    """Fail closed when the versioned registry cannot cover the editorial brief."""
+    if not isinstance(config.get("registry_version"), int) or config["registry_version"] < 2:
+        raise ValueError("monthly history registry_version must be an integer >= 2")
+    required = config.get("required_categories")
+    if not isinstance(required, list) or not required or not all(isinstance(item, str) for item in required):
+        raise ValueError("monthly history required_categories must be a non-empty string list")
+    repositories = config.get("repositories")
+    if not isinstance(repositories, list) or not repositories:
+        raise ValueError("monthly history repositories must be a non-empty list")
+    repos = [source.get("repo") for source in repositories]
+    duplicates = sorted({repo for repo in repos if repos.count(repo) > 1})
+    if duplicates:
+        raise ValueError(f"duplicate repositories in monthly history registry: {duplicates}")
+    for source in repositories:
+        missing = [key for key in ("repo", "category", "focus") if not source.get(key)]
+        if missing:
+            raise ValueError(f"monthly history source missing {missing}: {source!r}")
+    covered = {source["category"] for source in repositories}
+    missing_categories = sorted(set(required) - covered)
+    unknown_categories = sorted(covered - set(required))
+    if missing_categories or unknown_categories:
+        raise ValueError(
+            "monthly history category mismatch: "
+            f"missing={missing_categories}, unknown={unknown_categories}"
+        )
+
+
 def month_windows(month: int, start_year: int, through_year: int) -> list[tuple[int, str, str]]:
     windows = []
     for year in range(start_year, through_year + 1):
@@ -65,6 +93,7 @@ def gh_commits(repo: str, since: str, until: str) -> list[dict[str, str]]:
 
 
 def collect(config: dict[str, Any], month: int, start_year: int, through_year: int) -> dict[str, Any]:
+    validate_config(config)
     repositories = []
     for source in config["repositories"]:
         yearly = []
@@ -76,12 +105,19 @@ def collect(config: dict[str, Any], month: int, start_year: int, through_year: i
                 yearly.append({"year": year, "commits": [], "error": str(exc)})
         repositories.append({**source, "years": yearly})
     return {
+        "registry_version": config["registry_version"],
         "month": month,
         "month_name": calendar.month_name[month],
         "start_year": start_year,
         "through_year": through_year,
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "repositories": repositories,
+        "category_coverage": {
+            category: [
+                source["repo"] for source in config["repositories"] if source["category"] == category
+            ]
+            for category in config["required_categories"]
+        },
         "instructions": config.get("instructions", []),
     }
 

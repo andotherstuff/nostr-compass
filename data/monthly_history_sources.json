@@ -1,16 +1,29 @@
 {
+  "registry_version": 2,
+  "required_categories": [
+    "protocol_specs",
+    "clients_products",
+    "infrastructure_relays_tooling",
+    "privacy_security",
+    "interoperability",
+    "storage_media",
+    "ecosystem_funding_community"
+  ],
   "repositories": [
-    {"repo": "nostr-protocol/nips", "focus": "protocol specifications and interoperability"},
-    {"repo": "nbd-wtf/nostr-tools", "focus": "early JavaScript protocol primitives"},
-    {"repo": "fiatjaf/go-nostr", "focus": "Go protocol tooling and relay/client infrastructure"},
-    {"repo": "rust-nostr/nostr", "focus": "Rust protocol tooling and SDK maturity"},
-    {"repo": "scsibug/nostr-rs-relay", "focus": "relay implementation and operations"},
-    {"repo": "damus-io/damus", "focus": "consumer-client growth and iOS"},
-    {"repo": "vitorpamplona/amethyst", "focus": "Android client and protocol adoption"},
-    {"repo": "nostr-dev-kit/ndk", "focus": "application SDK and developer tooling"},
-    {"repo": "hzrd149/blossom", "focus": "media storage specifications"},
-    {"repo": "nostr-wallet-connect/nwc", "focus": "wallet interoperability"},
-    {"repo": "marmot-protocol/marmot", "focus": "private-group specifications"}
+    {"repo": "nostr-protocol/nips", "category": "protocol_specs", "focus": "protocol specifications and wire-format interoperability"},
+    {"repo": "damus-io/damus", "category": "clients_products", "focus": "consumer-client growth and iOS product adoption"},
+    {"repo": "vitorpamplona/amethyst", "category": "clients_products", "focus": "Android client and protocol adoption"},
+    {"repo": "v0l/snort", "category": "clients_products", "focus": "web-client product behavior and protocol adoption"},
+    {"repo": "nbd-wtf/go-nostr", "category": "infrastructure_relays_tooling", "focus": "Go protocol tooling and relay/client infrastructure"},
+    {"repo": "scsibug/nostr-rs-relay", "category": "infrastructure_relays_tooling", "focus": "relay implementation and operations"},
+    {"repo": "fiatjaf/strfry", "category": "infrastructure_relays_tooling", "focus": "high-performance relay implementation and operations"},
+    {"repo": "marmot-protocol/marmot", "category": "privacy_security", "focus": "private-group security and MLS-over-Nostr design"},
+    {"repo": "nostrdevkit/nostr", "category": "interoperability", "focus": "Rust protocol tooling and SDK maturity"},
+    {"repo": "nostr-dev-kit/ndk", "category": "interoperability", "focus": "application SDK and cross-client developer tooling"},
+    {"repo": "nbd-wtf/nostr-tools", "category": "interoperability", "focus": "JavaScript protocol primitives and identifier compatibility"},
+    {"repo": "nostr-wallet-connect/nwc", "category": "interoperability", "focus": "wallet and application interoperability"},
+    {"repo": "hzrd149/blossom", "category": "storage_media", "focus": "media storage specifications and server tooling"},
+    {"repo": "OpenSats/website", "category": "ecosystem_funding_community", "focus": "first-party grant and ecosystem funding announcements"}
   ],
   "instructions": [
     "Treat fetched activity as candidate discovery, not publication-ready claims.",
