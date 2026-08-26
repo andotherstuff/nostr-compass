@@ -326,7 +326,7 @@ cmd_ship() {
   fi
   [ -n "$pr" ] || die "could not determine PR number for $branch"
   echo "translation PR #$pr"
-  notify "$(printf '**Nostr Compass #%s — Translation PR opened**\n- [#%s](https://github.com/andotherstuff/nostr-compass/pull/%s) covers all %s languages for %s.\n- Waiting on the build check before merge.' \
+  notify "$(printf '**Nostr Compass issue %s — Translation PR opened**\n- [#%s](https://github.com/andotherstuff/nostr-compass/pull/%s) covers all %s languages for %s.\n- Waiting on the build check before merge.' \
     "$n" "$pr" "$pr" "${#LANGS[@]}" "$date")"
 
   if [ "$no_merge" = "--no-merge" ]; then
@@ -344,13 +344,13 @@ cmd_ship() {
     sleep 20; waited=$((waited+20))
   done
   if [ "$conclusion" != "SUCCESS" ]; then
-    notify "$(printf '**Nostr Compass #%s — Translation PR opened**\n- [#%s](https://github.com/andotherstuff/nostr-compass/pull/%s) is NOT merged: build check is \`%s\` after %ss.\n- Needs a look.' \
+    notify "$(printf '**Nostr Compass issue %s — Translation PR opened**\n- [#%s](https://github.com/andotherstuff/nostr-compass/pull/%s) is NOT merged: build check is \`%s\` after %ss.\n- Needs a look.' \
       "$n" "$pr" "$pr" "${conclusion:-pending}" "$waited")"
     die "build check on PR #$pr is '${conclusion:-pending}' after ${waited}s — not merging"
   fi
   gh pr merge "$pr" --squash || die "merge failed for PR #$pr"
   echo "merged PR #$pr"
-  notify "$(printf '**Nostr Compass #%s — Translations merged**\n- [#%s](https://github.com/andotherstuff/nostr-compass/pull/%s) merged after a passing build.\n- All %s languages are live for %s.' \
+  notify "$(printf '**Nostr Compass issue %s — Translations merged**\n- [#%s](https://github.com/andotherstuff/nostr-compass/pull/%s) merged after a passing build.\n- All %s languages are live for %s.' \
     "$n" "$pr" "$pr" "${#LANGS[@]}" "$date")"
 }
 
