@@ -1244,6 +1244,25 @@ social_clients:
     priority: medium
     notes: Origin-locked WebView client for Hanami's Blossom file-management surface; uses NIP-55 signing and NIP-98 authentication for server sessions
 
+  - name: Infans
+    description: Privacy-first Android baby tracker with encrypted Nostr backup and co-parent synchronization
+    platforms: [ android ]
+    repo: https://github.com/TurkeyNostr/infans
+    maintainer: TurkeyNostr
+    status: alpha
+    priority: medium
+    notes: Offline-first Room storage; encrypts backup and partner-sync payloads with NIP-44 and publishes them as kind 30078 events; submitted via link queue 2026-08-23
+
+  - name: Postr
+    description: Minimal Android Nostr composer with Amber signing, relay publishing, attachments, drafts, and readback
+    platforms: [ android ]
+    repo: https://relay.ngit.dev/npub1qwkd5wzftcxquuhtkcg0xn9ed7evksluuppf7qdmdh34ywe9uncs5uqfvl/postr.git
+    website: https://gitworkshop.dev/npub1qwkd5wzftcxquuhtkcg0xn9ed7evksluuppf7qdmdh34ywe9uncs5uqfvl/relay.ngit.dev/postr
+    maintainer: npub1qwkd5wzftcxquuhtkcg0xn9ed7evksluuppf7qdmdh34ywe9uncs5uqfvl
+    status: alpha
+    priority: medium
+    notes: NIP-34 repository announced 2026-08-22; initial 1.0.0 release keeps private keys in Amber and publishes signed notes to user relays
+
 longform_clients:
   - name: Habla
     description: Long-form content publishing (NIP-23)
@@ -1464,6 +1483,16 @@ messaging_clients:
     status: active
     priority: high
     notes: Supports NIP-04, NIP-17, NIP-29 groups, and Cashu ecash
+
+  - name: walls.rip Ghost Chat
+    description: PGP-encrypted browser and desktop chat carried as app-specific kind 1 events over Nostr relays
+    platforms: [ web, windows, macos, linux ]
+    repo: https://github.com/KYC-rip/walls-rip
+    website: https://walls.rip/comms
+    maintainer: XBToshi
+    status: maintained
+    priority: low
+    notes: OpenPGP Curve25519 payloads; ephemeral Nostr signing keys; stable recipient-fingerprint room tags; not NIP-17 interoperable
 
   - name: Nail
     description: Nostr mail bridge and web client that carries email as gift-wrapped Nostr events
@@ -3452,6 +3481,15 @@ devtools:
     status: active
     priority: medium
     notes: Standalone Acorn component extracted from the existing Safebox project
+
+  - name: pakstr
+    description: CLI and build toolkit for packaging web applications as signed Android apps and publishing them through Nostr, Blossom, and Zapstore
+    platforms: [ cli, android ]
+    repo: https://git.nostrdev.com/stuff/pakstr
+    maintainer: stuff
+    status: active
+    priority: medium
+    notes: Uses NIP-07/NIP-46 signing surfaces; added automatic release versioning, Zapstore publisher validation and metadata, and corrected Blossom authorization in the 2026-08-18 to 2026-08-25 issue window
 
 signers:
   - name: Amber
@@ -6363,3 +6401,12 @@ protocols:
     status: alpha
     priority: medium
     notes: Early-stage MATE.md runtime using Nostr transport, NIP-59 private bonds, MCP, SDK, CLI, and self-hosted pactd
+
+  - name: Heterodyne
+    description: Specification-first decentralized protocol family for portable identity, authenticated communication, own-device control, and social interaction
+    repo: https://github.com/HeterodyneNetwork/HeterodyneProtocol
+    website: https://radicle.network/nodes/iris.radicle.network/rad%3Az2zX5XvPiggGJvCn8DPkp1hRNGA5
+    maintainer: liamhelmer
+    status: alpha
+    priority: medium
+    notes: Composes Nostr signed events, Radicle-backed durable storage, Marmot encrypted conversations, KERI identity, and conformance vectors; Radicle RID rad:z2zX5XvPiggGJvCn8DPkp1hRNGA5; submitted via link queue 2026-08-20

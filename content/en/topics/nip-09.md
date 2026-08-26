@@ -36,6 +36,7 @@ Another practical issue is references. Users and apps may still hold the deleted
 - [Newsletter #32: News](/en/newsletters/2026-07-22-newsletter/#indiesats-drops-its-publisher-role-and-relaunches-as-open-nostr-music-infrastructure)
 - [Newsletter #33: Kairos 0.1.1 adds reminders and a local Astraea instruction](/en/newsletters/2026-07-29-newsletter/#kairos-011-adds-reminders-and-a-local-astraea-instruction)
 - [Newsletter #35: Event Deletion Requests deep dive](/en/newsletters/2026-08-12-newsletter/#event-deletion-requests-nip-09)
+- [Newsletter #37: August 2021](/en/newsletters/2026-08-26-newsletter/#august-2021)
 
 **See also:**
 - [NIP-01: Basic Protocol](/en/topics/nip-01/)

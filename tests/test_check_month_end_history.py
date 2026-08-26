@@ -44,7 +44,37 @@ date: {date}
 """
 
 
-class MonthEndHistoryTest(unittest.TestCase):
+class CheckMonthEndHistoryTest(unittest.TestCase):
+    def test_archived_december_recap_title_remains_machine_readable(self):
+        checker = load_module()
+        markdown = "## December Recap: Five Years of Nostr Decembers\n\n### December 2021\n"
+        match, history = checker.extract_history(markdown, checker.ARCHIVE_HISTORY_RE)
+        self.assertIsNotNone(match)
+        self.assertEqual("Five", match.group(1))
+        self.assertEqual("Decembers", match.group(2))
+        self.assertIn("### December 2021", history)
+
+    def test_archive_baseline_accepts_pre_contract_year_span_but_not_unsourced_prose(self):
+        checker = load_module()
+        archived = good_issue("2025-12-31").replace(
+            "## Six Years of Nostr Julys",
+            "## December Recap: Six Years of Nostr Decembers",
+        ).replace("### July ", "### December ")
+        self.assertEqual([], checker.review_archive_baseline(archived))
+        unsourced = archived.replace(
+            "[source A](https://github.com/example/project/commit/2021aaa)",
+            "source A",
+        )
+        self.assertTrue(any("lacks a source" in item for item in checker.review_archive_baseline(unsourced)))
+
+    def test_current_contract_rejects_legacy_recap_prefix(self):
+        checker = load_module()
+        current = good_issue().replace(
+            "## Six Years of Nostr Julys",
+            "## December Recap: Six Years of Nostr Julys",
+        )
+        self.assertTrue(any("missing exact" in item for item in checker.review(current)))
+
     def test_last_weekly_issue_is_detected_independent_of_weekday(self):
         checker = load_module()
         self.assertTrue(checker.is_final_weekly_issue(checker.parse_issue_date("---\ndate: 2026-05-28\n---")))

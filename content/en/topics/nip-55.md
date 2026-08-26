@@ -40,6 +40,7 @@ For web apps on Android, NIP-55 is less ergonomic than NIP-46. Browser-based flo
 - [GitWorkshop July 27 release](https://primal.net/e/869e01f9a74d98f468a66f3b83865d198a82cc718c1db36324398b1b88a17c60) - Android signer login for repository collaboration
 
 **Mentioned in:**
+- [Newsletter #37: Postr launches as a small Android composer](/en/newsletters/2026-08-26-newsletter/#postr-launches-as-a-small-android-composer)
 - [Newsletter #1: Releases](/en/newsletters/2025-12-17-newsletter/#releases)
 - [Newsletter #2: News](/en/newsletters/2025-12-24-newsletter/#news)
 - [Newsletter #2: NIP Updates](/en/newsletters/2025-12-24-newsletter/#nip-updates)

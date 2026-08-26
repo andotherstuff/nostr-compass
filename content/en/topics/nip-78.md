@@ -59,6 +59,7 @@ NIP-78 deliberately leaves the content format open — applications choose their
 - [Amethyst PR #3755](https://github.com/vitorpamplona/amethyst/pull/3755) — per-account synced navigation state
 
 **Mentioned in:**
+- [Newsletter #37: Infans encrypts family tracking and co-parent sync over Nostr](/en/newsletters/2026-08-26-newsletter/#infans-encrypts-family-tracking-and-co-parent-sync-over-nostr)
 - [Newsletter #22: NIP-78 Deep Dive](/en/newsletters/2026-05-13-newsletter/#nip-deep-dive-nip-78-app-specific-data)
 - [Newsletter #22: Tamagostrich](/en/newsletters/2026-05-13-newsletter/#tamagostrich-launches-a-decentralized-nip-78-tamagotchi-with-sats-rewards)
 - [Newsletter #33: Tagged releases](/en/newsletters/2026-07-29-newsletter/#tagged-releases)

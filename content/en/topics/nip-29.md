@@ -84,6 +84,7 @@ That makes migration and forking possible, but not automatic. The same group id 
 - [Newsletter #33: Unreleased app/client changes](/en/newsletters/2026-07-29-newsletter/#in-development)
 - [Newsletter #33: Six Years of Nostr Julys](/en/newsletters/2026-07-29-newsletter/#six-years-of-nostr-julys)
 - [Newsletter #36: Citrine 3.1.0 turns a phone relay into a group host and a site host](/en/newsletters/2026-08-19-newsletter/#citrine-310-turns-a-phone-relay-into-a-group-host-and-a-site-host)
+- [Newsletter #37: nostrord v2.9.0: relay-scoped group state and media](/en/newsletters/2026-08-26-newsletter/#nostrord-v290-relay-scoped-group-state-and-media)
 
 **See also:**
 - [NIP-11: Relay Information Document](/en/topics/nip-11/)

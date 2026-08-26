@@ -66,6 +66,7 @@ This is also why NIP-85 builds on NIP-73. Trusted Assertions can rate not only u
 - [PR #2205](https://github.com/nostr-protocol/nips/pull/2205) - Adds ISO 3166 country and subdivision codes
 
 **Mentioned in:**
+- [Newsletter #37: August 2025](/en/newsletters/2026-08-26-newsletter/#august-2025)
 - [Newsletter #8: NIP Updates](/en/newsletters/2026-02-04-newsletter/#nip-updates)
 - [Newsletter #10: NIP-85 Deep Dive](/en/newsletters/2026-02-18-newsletter/#nip-deep-dive-nip-85-trusted-assertions)
 - [Newsletter #36: Comments (NIP-22)](/en/newsletters/2026-08-19-newsletter/#comments-nip-22)

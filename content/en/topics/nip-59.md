@@ -45,6 +45,7 @@ Relays may choose not to store wrapped events for long because they are not publ
 - [PR #2399](https://github.com/nostr-protocol/nips/pull/2399) - proposal to reject standalone seals
 
 **Mentioned in:**
+- [Newsletter #37: nostr-tools binds gift-wrap rumors to their seals](/en/newsletters/2026-08-26-newsletter/#nostr-tools-binds-gift-wrap-rumors-to-their-seals)
 - [Newsletter #8: NIP Deep Dive](/en/newsletters/2026-02-04-newsletter/#nip-deep-dive-nip-59-gift-wrap)
 - [Newsletter #1: News](/en/newsletters/2025-12-17-newsletter/#news)
 - [Newsletter #1: NIP Updates](/en/newsletters/2025-12-17-newsletter/#nip-updates)

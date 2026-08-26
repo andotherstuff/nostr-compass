@@ -1,0 +1,412 @@
+{
+  "generated_at": "2026-08-25T14:52:20.861056+00:00",
+  "window": {
+    "since": "2026-08-18T00:00:00Z",
+    "until": "2026-08-26T00:00:00Z"
+  },
+  "families": [
+    {
+      "id": "nip",
+      "name": "Nostr Implementation Possibilities (NIPs)",
+      "repo": "nostr-protocol/nips",
+      "status": "active",
+      "window": {
+        "since": "2026-08-18T00:00:00Z",
+        "until": "2026-08-26T00:00:00Z"
+      },
+      "commits": [
+        {
+          "sha": "735a25e44b8e7a01539864f2a2dcf3e728977fd3",
+          "date": "2026-08-25T10:58:34Z",
+          "title": "Add event kind 1111 (NIP-22) to NIP-30 (#2448)",
+          "url": "https://github.com/nostr-protocol/nips/commit/735a25e44b8e7a01539864f2a2dcf3e728977fd3"
+        },
+        {
+          "sha": "13664fb18a3ce5fa48a849de012ab789d82eb254",
+          "date": "2026-08-24T16:54:49Z",
+          "title": "Use kind 1111 replies to kind 1 notes (#2250) (#2358)",
+          "url": "https://github.com/nostr-protocol/nips/commit/13664fb18a3ce5fa48a849de012ab789d82eb254"
+        }
+      ],
+      "pull_requests": [
+        {
+          "number": 2364,
+          "title": "NIP-PIP:Perfect IP Packets",
+          "state": "closed",
+          "created_at": "2026-06-01T20:06:18Z",
+          "updated_at": "2026-08-25T12:28:39Z",
+          "merged_at": null,
+          "url": "https://github.com/nostr-protocol/nips/pull/2364"
+        },
+        {
+          "number": 2448,
+          "title": "Add event kind 1111 (NIP-22) to NIP-30",
+          "state": "merged",
+          "created_at": "2026-08-25T08:26:13Z",
+          "updated_at": "2026-08-25T10:58:35Z",
+          "merged_at": "2026-08-25T10:58:35Z",
+          "url": "https://github.com/nostr-protocol/nips/pull/2448"
+        },
+        {
+          "number": 2447,
+          "title": "NIP-10: kind 1 replies SHOULD be kind 1111",
+          "state": "open",
+          "created_at": "2026-08-24T17:20:19Z",
+          "updated_at": "2026-08-24T17:54:30Z",
+          "merged_at": null,
+          "url": "https://github.com/nostr-protocol/nips/pull/2447"
+        },
+        {
+          "number": 2358,
+          "title": "Use kind 1111 replies to kind 1 notes (#2250)",
+          "state": "merged",
+          "created_at": "2026-05-25T14:20:49Z",
+          "updated_at": "2026-08-24T16:54:49Z",
+          "merged_at": "2026-08-24T16:54:49Z",
+          "url": "https://github.com/nostr-protocol/nips/pull/2358"
+        },
+        {
+          "number": 2445,
+          "title": "NIP-100: Sovereign Agent Identity Network (SNIN) \u2014 agent passports, discovery, tasks, marketplace, invoices",
+          "state": "open",
+          "created_at": "2026-08-23T07:06:29Z",
+          "updated_at": "2026-08-23T07:06:29Z",
+          "merged_at": null,
+          "url": "https://github.com/nostr-protocol/nips/pull/2445"
+        },
+        {
+          "number": 2303,
+          "title": "NIP-5D: nostr web applets",
+          "state": "open",
+          "created_at": "2026-04-05T20:55:25Z",
+          "updated_at": "2026-08-22T15:09:51Z",
+          "merged_at": null,
+          "url": "https://github.com/nostr-protocol/nips/pull/2303"
+        },
+        {
+          "number": 2444,
+          "title": "NIP-47 max fee on pay_invoice",
+          "state": "open",
+          "created_at": "2026-08-21T12:07:39Z",
+          "updated_at": "2026-08-21T12:07:55Z",
+          "merged_at": null,
+          "url": "https://github.com/nostr-protocol/nips/pull/2444"
+        },
+        {
+          "number": 2421,
+          "title": "Add BOLT12 zaps",
+          "state": "open",
+          "created_at": "2026-07-23T18:01:50Z",
+          "updated_at": "2026-08-20T13:28:24Z",
+          "merged_at": null,
+          "url": "https://github.com/nostr-protocol/nips/pull/2421"
+        },
+        {
+          "number": 2442,
+          "title": "Add audio tracks and releases NIP",
+          "state": "open",
+          "created_at": "2026-08-18T18:47:47Z",
+          "updated_at": "2026-08-19T21:13:34Z",
+          "merged_at": null,
+          "url": "https://github.com/nostr-protocol/nips/pull/2442"
+        },
+        {
+          "number": 1465,
+          "title": "nostr verified podcast nip",
+          "state": "open",
+          "created_at": "2024-08-31T15:47:24Z",
+          "updated_at": "2026-08-19T20:07:15Z",
+          "merged_at": null,
+          "url": "https://github.com/nostr-protocol/nips/pull/1465"
+        },
+        {
+          "number": 2438,
+          "title": "NIP-7A: comment-based patches",
+          "state": "open",
+          "created_at": "2026-08-18T12:33:26Z",
+          "updated_at": "2026-08-19T19:05:36Z",
+          "merged_at": null,
+          "url": "https://github.com/nostr-protocol/nips/pull/2438"
+        },
+        {
+          "number": 2290,
+          "title": "[NIP-55] - document rejected field for intent-based signer responses",
+          "state": "closed",
+          "created_at": "2026-03-27T09:58:43Z",
+          "updated_at": "2026-08-19T13:32:38Z",
+          "merged_at": null,
+          "url": "https://github.com/nostr-protocol/nips/pull/2290"
+        },
+        {
+          "number": 2324,
+          "title": "NIP-34: optional multi-maintainer support",
+          "state": "open",
+          "created_at": "2026-04-25T13:13:51Z",
+          "updated_at": "2026-08-19T11:30:48Z",
+          "merged_at": null,
+          "url": "https://github.com/nostr-protocol/nips/pull/2324"
+        },
+        {
+          "number": 2441,
+          "title": "Relays as groups",
+          "state": "open",
+          "created_at": "2026-08-18T17:52:57Z",
+          "updated_at": "2026-08-18T18:02:36Z",
+          "merged_at": null,
+          "url": "https://github.com/nostr-protocol/nips/pull/2441"
+        },
+        {
+          "number": 2408,
+          "title": "Add claim management to nip 86",
+          "state": "open",
+          "created_at": "2026-07-03T18:41:31Z",
+          "updated_at": "2026-08-18T18:01:06Z",
+          "merged_at": null,
+          "url": "https://github.com/nostr-protocol/nips/pull/2408"
+        },
+        {
+          "number": 2439,
+          "title": "Add assign/unassign method to nip 86",
+          "state": "open",
+          "created_at": "2026-08-18T16:43:38Z",
+          "updated_at": "2026-08-18T17:53:08Z",
+          "merged_at": null,
+          "url": "https://github.com/nostr-protocol/nips/pull/2439"
+        },
+        {
+          "number": 2440,
+          "title": "Decouple nip 29 roles and permissions",
+          "state": "open",
+          "created_at": "2026-08-18T17:52:03Z",
+          "updated_at": "2026-08-18T17:52:03Z",
+          "merged_at": null,
+          "url": "https://github.com/nostr-protocol/nips/pull/2440"
+        },
+        {
+          "number": 1682,
+          "title": "Add nip for delegated aggregate signature verification",
+          "state": "closed",
+          "created_at": "2025-01-13T21:40:19Z",
+          "updated_at": "2026-08-18T17:48:30Z",
+          "merged_at": null,
+          "url": "https://github.com/nostr-protocol/nips/pull/1682"
+        },
+        {
+          "number": 1737,
+          "title": "Expand NIP 03 to include relay and user notaries",
+          "state": "closed",
+          "created_at": "2025-02-03T21:35:55Z",
+          "updated_at": "2026-08-18T17:48:02Z",
+          "merged_at": null,
+          "url": "https://github.com/nostr-protocol/nips/pull/1737"
+        },
+        {
+          "number": 1947,
+          "title": "Add encryption support to NIPs 92 and 94",
+          "state": "closed",
+          "created_at": "2025-06-03T17:16:24Z",
+          "updated_at": "2026-08-18T17:47:48Z",
+          "merged_at": null,
+          "url": "https://github.com/nostr-protocol/nips/pull/1947"
+        },
+        {
+          "number": 2194,
+          "title": "Add NIP 9a for push notifications",
+          "state": "open",
+          "created_at": "2026-01-21T02:12:18Z",
+          "updated_at": "2026-08-18T17:46:49Z",
+          "merged_at": null,
+          "url": "https://github.com/nostr-protocol/nips/pull/2194"
+        },
+        {
+          "number": 2218,
+          "title": "Stringify supported nips",
+          "state": "open",
+          "created_at": "2026-02-11T02:02:50Z",
+          "updated_at": "2026-08-18T17:46:08Z",
+          "merged_at": null,
+          "url": "https://github.com/nostr-protocol/nips/pull/2218"
+        },
+        {
+          "number": 2316,
+          "title": "NIP-29: define explicit role permissions and access schema on kind 39003",
+          "state": "open",
+          "created_at": "2026-04-14T20:28:25Z",
+          "updated_at": "2026-08-18T17:27:28Z",
+          "merged_at": null,
+          "url": "https://github.com/nostr-protocol/nips/pull/2316"
+        },
+        {
+          "number": 2252,
+          "title": "NIP-91: AND operator for filters",
+          "state": "open",
+          "created_at": "2026-03-05T14:13:03Z",
+          "updated_at": "2026-08-18T16:54:56Z",
+          "merged_at": null,
+          "url": "https://github.com/nostr-protocol/nips/pull/2252"
+        },
+        {
+          "number": 1043,
+          "title": "Add audio track NIP",
+          "state": "closed",
+          "created_at": "2024-02-12T22:53:47Z",
+          "updated_at": "2026-08-18T15:33:39Z",
+          "merged_at": null,
+          "url": "https://github.com/nostr-protocol/nips/pull/1043"
+        },
+        {
+          "number": 2108,
+          "title": "Nip 101: UPlanet",
+          "state": "open",
+          "created_at": "2025-11-01T02:59:13Z",
+          "updated_at": "2026-08-18T01:02:13Z",
+          "merged_at": null,
+          "url": "https://github.com/nostr-protocol/nips/pull/2108"
+        }
+      ]
+    },
+    {
+      "id": "bud",
+      "name": "Blossom Upgrade Documents (BUDs)",
+      "repo": "hzrd149/blossom",
+      "status": "quiet",
+      "window": {
+        "since": "2026-08-18T00:00:00Z",
+        "until": "2026-08-26T00:00:00Z"
+      },
+      "commits": [],
+      "pull_requests": []
+    },
+    {
+      "id": "nap",
+      "name": "Napplet Application Proposals (NAPs)",
+      "repo": "napplet/naps",
+      "status": "active",
+      "window": {
+        "since": "2026-08-18T00:00:00Z",
+        "until": "2026-08-26T00:00:00Z"
+      },
+      "commits": [
+        {
+          "sha": "a040914b4bbd3a5cd8a14b0f316a723c968ebfb2",
+          "date": "2026-08-20T16:15:48Z",
+          "title": "Register NAP-DISPLAY while it is drafted (#98)",
+          "url": "https://github.com/napplet/naps/commit/a040914b4bbd3a5cd8a14b0f316a723c968ebfb2"
+        }
+      ],
+      "pull_requests": [
+        {
+          "number": 98,
+          "title": "NAP-DISPLAY: register the draft interface",
+          "state": "merged",
+          "created_at": "2026-08-20T13:50:58Z",
+          "updated_at": "2026-08-20T16:15:49Z",
+          "merged_at": "2026-08-20T16:15:49Z",
+          "url": "https://github.com/napplet/naps/pull/98"
+        },
+        {
+          "number": 97,
+          "title": "NAP-DISPLAY: add runtime-controlled pixel displays",
+          "state": "open",
+          "created_at": "2026-08-20T13:49:59Z",
+          "updated_at": "2026-08-20T13:50:12Z",
+          "merged_at": null,
+          "url": "https://github.com/napplet/naps/pull/97"
+        }
+      ]
+    },
+    {
+      "id": "marmot",
+      "name": "Marmot Improvement Proposals (MIPs)",
+      "repo": "marmot-protocol/marmot",
+      "status": "active",
+      "window": {
+        "since": "2026-08-18T00:00:00Z",
+        "until": "2026-08-26T00:00:00Z"
+      },
+      "commits": [],
+      "pull_requests": [
+        {
+          "number": 417,
+          "title": "Multi-device and account sync: replace withdrawn draft with same-account enrollment baseline",
+          "state": "open",
+          "created_at": "2026-08-23T12:42:17Z",
+          "updated_at": "2026-08-25T12:08:39Z",
+          "merged_at": null,
+          "url": "https://github.com/marmot-protocol/marmot/pull/417"
+        }
+      ]
+    },
+    {
+      "id": "gamma",
+      "name": "Gamma Markets",
+      "repo": "GammaMarkets/market-spec",
+      "status": "quiet",
+      "window": {
+        "since": "2026-08-18T00:00:00Z",
+        "until": "2026-08-26T00:00:00Z"
+      },
+      "commits": [],
+      "pull_requests": []
+    },
+    {
+      "id": "concord",
+      "name": "Concord (CORD specs)",
+      "repo": "concord-protocol/concord",
+      "status": "quiet",
+      "window": {
+        "since": "2026-08-18T00:00:00Z",
+        "until": "2026-08-26T00:00:00Z"
+      },
+      "commits": [],
+      "pull_requests": []
+    },
+    {
+      "id": "nwc",
+      "name": "Nostr Wallet Connect",
+      "repo": "nostr-wallet-connect/nwc",
+      "status": "active",
+      "window": {
+        "since": "2026-08-18T00:00:00Z",
+        "until": "2026-08-26T00:00:00Z"
+      },
+      "commits": [
+        {
+          "sha": "ea75ea82677cb5e0e742bda4a5c12fb601481a4c",
+          "date": "2026-08-21T12:12:16Z",
+          "title": "NWC-321: add optional max_fee to pay method",
+          "url": "https://github.com/nostr-wallet-connect/nwc/commit/ea75ea82677cb5e0e742bda4a5c12fb601481a4c"
+        }
+      ],
+      "pull_requests": [
+        {
+          "number": 5,
+          "title": "lookup_payment & bolt12",
+          "state": "open",
+          "created_at": "2026-08-21T16:29:43Z",
+          "updated_at": "2026-08-23T11:10:17Z",
+          "merged_at": null,
+          "url": "https://github.com/nostr-wallet-connect/nwc/pull/5"
+        },
+        {
+          "number": 4,
+          "title": "NWC 05: add optional total_count to list_transactions response",
+          "state": "open",
+          "created_at": "2026-08-21T08:50:22Z",
+          "updated_at": "2026-08-21T08:57:53Z",
+          "merged_at": null,
+          "url": "https://github.com/nostr-wallet-connect/nwc/pull/4"
+        },
+        {
+          "number": 3,
+          "title": "NWC-08 client initiated connection",
+          "state": "open",
+          "created_at": "2026-08-18T19:15:45Z",
+          "updated_at": "2026-08-20T15:08:23Z",
+          "merged_at": null,
+          "url": "https://github.com/nostr-wallet-connect/nwc/pull/3"
+        }
+      ]
+    }
+  ]
+}

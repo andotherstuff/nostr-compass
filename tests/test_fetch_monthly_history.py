@@ -1,4 +1,5 @@
 import importlib.util
+import json
 from datetime import date
 from pathlib import Path
 import unittest
@@ -16,6 +17,68 @@ def load_module():
 
 
 class FetchMonthlyHistoryTest(unittest.TestCase):
+    def test_versioned_registry_covers_every_historical_research_domain(self):
+        fetcher = load_module()
+        config_path = Path(__file__).parents[1] / "data" / "monthly_history_sources.json"
+        config = json.loads(config_path.read_text())
+        fetcher.validate_config(config)
+        categories = {source["category"] for source in config["repositories"]}
+        self.assertEqual(set(config["required_categories"]), categories)
+        self.assertGreaterEqual(config["registry_version"], 2)
+
+    def test_registry_validation_rejects_missing_domain_and_duplicate_repo(self):
+        fetcher = load_module()
+        config = {
+            "registry_version": 2,
+            "required_categories": ["protocol_specs", "clients_products"],
+            "repositories": [
+                {"repo": "org/repo", "category": "protocol_specs", "focus": "spec"},
+                {"repo": "org/repo", "category": "protocol_specs", "focus": "duplicate"},
+            ],
+        }
+        with self.assertRaisesRegex(ValueError, "duplicate repositories"):
+            fetcher.validate_config(config)
+
+    def test_registry_validation_rejects_missing_and_unknown_categories(self):
+        fetcher = load_module()
+        missing = {
+            "registry_version": 2,
+            "required_categories": ["protocol_specs", "clients_products"],
+            "repositories": [
+                {"repo": "org/spec", "category": "protocol_specs", "focus": "spec"},
+            ],
+        }
+        with self.assertRaisesRegex(ValueError, "category mismatch"):
+            fetcher.validate_config(missing)
+        unknown = {
+            "registry_version": 2,
+            "required_categories": ["protocol_specs"],
+            "repositories": [
+                {"repo": "org/spec", "category": "protocol_specs", "focus": "spec"},
+                {"repo": "org/other", "category": "unknown", "focus": "other"},
+            ],
+        }
+        with self.assertRaisesRegex(ValueError, "category mismatch"):
+            fetcher.validate_config(unknown)
+
+    def test_collect_preserves_registry_version_and_category_coverage(self):
+        fetcher = load_module()
+        config = {
+            "registry_version": 2,
+            "required_categories": ["protocol_specs", "clients_products"],
+            "repositories": [
+                {"repo": "org/spec", "category": "protocol_specs", "focus": "spec"},
+                {"repo": "org/client", "category": "clients_products", "focus": "client"},
+            ],
+        }
+        with patch.object(fetcher, "gh_commits", return_value=[]):
+            report = fetcher.collect(config, 8, 2021, 2021)
+        self.assertEqual(2, report["registry_version"])
+        self.assertEqual(
+            {"protocol_specs": ["org/spec"], "clients_products": ["org/client"]},
+            report["category_coverage"],
+        )
+
     def test_month_windows_cover_same_month_across_years(self):
         fetcher = load_module()
         windows = fetcher.month_windows(2, 2021, 2024)
