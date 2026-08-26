@@ -30,6 +30,22 @@ cd "$REPO_ROOT" || exit 1
 
 die() { echo "error: $*" >&2; exit 1; }
 
+# NOTIFY: announce a finished step on the Compass Marmot channel.
+#
+# The owner asked to hear about every completed step, not just the end of a run.
+# A translation commit, a PR opening, and a merge are each a finished step. This
+# is best-effort by design: a messaging failure must never fail a translation.
+NOTIFY_TARGET="${COMPASS_NOTIFY_TARGET:-marmot:Compass Newsletter}"
+notify() {
+  [ "${COMPASS_NOTIFY:-1}" = "0" ] && return 0
+  command -v hermes >/dev/null 2>&1 || return 0
+  hermes send --to "$NOTIFY_TARGET" --quiet "$1" >/dev/null 2>&1 || \
+    echo "  warn notify failed (continuing)" >&2
+  return 0
+}
+
+
+
 lang_name() {
   case "$1" in
     es) echo "Spanish" ;; pt) echo "Portuguese" ;; de) echo "German" ;;
@@ -241,7 +257,10 @@ cmd_commit() {
 
   local n; n="$(basename "$(en_newsletter "$date")" | sed 's/-newsletter.md//')"
   git commit -q -m "Add $(lang_name "$lang") translation for Newsletter $date and topic pages"
-  echo "committed $(lang_name "$lang") — checkpoint saved ($(git rev-parse --short HEAD))"
+  local sha; sha="$(git rev-parse --short HEAD)"
+  echo "committed $(lang_name "$lang") — checkpoint saved ($sha)"
+  notify "$(printf '**Nostr Compass %s — Language translated (%s)**\n- Verified and committed as \`%s\`.\n- Run \`translate.sh status %s\` for the remaining languages.' \
+    "$date" "$(lang_name "$lang")" "$sha" "$date")"
 }
 
 # BACKLOG: every issue whose English newsletter has no translation yet.
@@ -307,6 +326,8 @@ cmd_ship() {
   fi
   [ -n "$pr" ] || die "could not determine PR number for $branch"
   echo "translation PR #$pr"
+  notify "$(printf '**Nostr Compass #%s — Translation PR opened**\n- [#%s](https://github.com/andotherstuff/nostr-compass/pull/%s) covers all %s languages for %s.\n- Waiting on the build check before merge.' \
+    "$n" "$pr" "$pr" "${#LANGS[@]}" "$date")"
 
   if [ "$no_merge" = "--no-merge" ]; then
     echo "--no-merge: leaving PR #$pr open"
@@ -323,10 +344,50 @@ cmd_ship() {
     sleep 20; waited=$((waited+20))
   done
   if [ "$conclusion" != "SUCCESS" ]; then
+    notify "$(printf '**Nostr Compass #%s — Translation PR opened**\n- [#%s](https://github.com/andotherstuff/nostr-compass/pull/%s) is NOT merged: build check is \`%s\` after %ss.\n- Needs a look.' \
+      "$n" "$pr" "$pr" "${conclusion:-pending}" "$waited")"
     die "build check on PR #$pr is '${conclusion:-pending}' after ${waited}s — not merging"
   fi
   gh pr merge "$pr" --squash || die "merge failed for PR #$pr"
   echo "merged PR #$pr"
+  notify "$(printf '**Nostr Compass #%s — Translations merged**\n- [#%s](https://github.com/andotherstuff/nostr-compass/pull/%s) merged after a passing build.\n- All %s languages are live for %s.' \
+    "$n" "$pr" "$pr" "${#LANGS[@]}" "$date")"
+}
+
+# NEXT: the single oldest issue still needing translation, or nothing.
+#
+# This is the hook the automation drives. `backlog` is for humans; `next` is
+# machine-readable so a cron can loop until it prints nothing. #35 stalled and
+# four June/July issues were never translated because no scheduled step ever
+# asked "what is still missing?".
+cmd_next() {
+  local en date lang
+  for en in content/en/newsletters/*-newsletter.md; do
+    date="$(basename "$en" | sed 's/-newsletter.md//')"
+    [ "$date" = "_index" ] && continue
+    # Only translate what is actually published: a draft issue is not ready.
+    grep -qE '^draft: *false' "$en" || continue
+    for lang in "${LANGS[@]}"; do
+      if [ ! -f "content/$lang/newsletters/$date-newsletter.md" ]; then
+        echo "$date"
+        return 0
+      fi
+    done
+  done
+  return 0
+}
+
+# REPORT-BACKLOG: announce the current gap on the Marmot channel.
+cmd_report_backlog() {
+  local body; body="$(cmd_backlog)"
+  local count; count="$(echo "$body" | sed -n 's/^\([0-9]\+\) issue(s) need translation.$/\1/p')"
+  if [ -z "$count" ]; then
+    notify "$(printf '**Compass translations — Translation backlog**\n- No gaps: every published English issue is translated into all %s languages.' "${#LANGS[@]}")"
+  else
+    local list; list="$(echo "$body" | sed -n 's/^  \([0-9-]\+\)  missing: \(.*\)$/- \1 missing \2/p')"
+    notify "$(printf '**Compass translations — Translation backlog**\n%s\n- %s issue(s) outstanding.' "$list" "$count")"
+  fi
+  echo "$body"
 }
 
 case "${1:-}" in
@@ -334,6 +395,8 @@ case "${1:-}" in
   verify) shift; cmd_verify "$@" ;;
   commit) shift; cmd_commit "$@" ;;
   backlog) shift; cmd_backlog "$@" ;;
+  next) shift; cmd_next "$@" ;;
+  report-backlog) shift; cmd_report_backlog "$@" ;;
   ship) shift; cmd_ship "$@" ;;
   *) cat <<EOF
 translate.sh — durable, resumable newsletter translation driver
@@ -343,6 +406,8 @@ translate.sh — durable, resumable newsletter translation driver
   commit <lang> <YYYY-MM-DD>   verify then commit one language (a checkpoint)
   ship <YYYY-MM-DD>            verify all, push, open the PR, merge when the build passes
   backlog                      every English issue still missing a translation
+  next                         oldest published issue still needing translation (empty = none)
+  report-backlog               print the backlog and announce it on Marmot
 
 Languages: ${LANGS[*]}
 
