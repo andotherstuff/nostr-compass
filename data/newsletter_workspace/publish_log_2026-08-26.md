@@ -27,33 +27,34 @@ Deployed page: https://nostrcompass.org/en/newsletters/2026-08-26-newsletter/
   - Created at `1787763754` (`2026-08-26T17:02:34Z`)
 - Article: https://njump.me/naddr1qvzqqqr4gupzqa6e2nmnzsgjfzdy520vdy4hywr06c9ue6crpr2zxyq749uu275qqyxhwumn8ghj7mn0wvhxcmmvqyt8wumn8ghj7un9d3shjtnswf5k6ctv9ehx2aqprpmhxue69uhhyetvv9ujuumwdae8gtnnda3kjctvqy2hwumn8ghj7un9d3shjtnwdaehgu3wdejhgqqddejhwumvv468getj95enwd439wn
 - Announcement: https://njump.me/nevent1qqs0t9vy9ycuz9hrkplflegdyjds9xtfpq34lpkl93ymrlp404mxsdcpp4mhxue69uhkummn9ekx7mqpzemhxue69uhhyetvv9ujuurjd9kkzmpwdejhgq3qwav4fae3gyfy3xj298kxj2mj8phavz7vavps34przq02j7w902qq9uz5dq
+- Pipeline ledger: `publish/published.json` records issue 37; signed events and receipts are under `publish/out/37/`.
 
-Both signed events were recovered from public relays and archived to the untracked local store
-at `data/newsletter_workspace/published/2026-08-26_30023.json` and
-`data/newsletter_workspace/published/2026-08-26_1.json`. Both pass `nak verify`.
+### Broadcast fan-out
 
-Independent exact-ID readback after broadcast:
+`publish/config/relays.json` configures twelve targets. Both events received `OK`
+from eleven of them. `wss://relay.snort.social` failed at the WebSocket handshake
+(`Expected 101 status code`) for the article and the announcement, so the relay was
+unreachable during the run rather than rejecting either event. It remains one of the
+four `naddr` hint relays, so that hint will not resolve there until the event is
+rebroadcast.
 
-| Relay | kind 30023 | kind 1 |
-|-------|-----------|--------|
-| `wss://relay.primal.net` | exact | exact |
-| `wss://nos.lol` | exact | exact |
-| `wss://ditto.pub/relay` | exact | exact |
-| `wss://relay.nostr.net` | exact | exact |
-| `wss://nostr.mom` | exact | exact |
-| `wss://relay.mostr.pub` | exact | exact |
-| `wss://nostr-pub.wellorder.net` | exact | not returned |
+`wss://sendit.nosflare.com` is a write-only NIP-66 blaster; its `OK` counts as
+fan-out acceptance and is excluded from readback evidence.
 
-Six relays returned both events by exact ID and a seventh returned the article. The
-`naddr` relay hints (`nos.lol`, `relay.primal.net`, `relay.snort.social`,
-`relay.nostr.net`) match the hint set used for #35.
+### Independent readback
 
-## Open item
+Every one of the ten durable configured relays that accepted the broadcast returned
+both events by exact ID on an independent query:
 
-`data/compass_relays.txt` is absent from the repository. `PublishAgent.md` names it as the
-single source of truth for the broadcast set and requires a fail-fast when it is missing, so
-the configured target list for this publication could not be read from the repository and was
-reconstructed from post-broadcast relay evidence instead. The file needs to be committed
-before the next publication.
+`wss://nos.lol`, `wss://relay.primal.net`, `wss://relay.nostr.net`,
+`wss://nostr.mom`, `wss://offchain.pub`, `wss://nostr.data.haus`,
+`wss://relay.mostr.pub`, `wss://wot.nostr.party`, `wss://nostr.oxtr.dev`,
+`wss://relay.nostr.com`.
 
-GATE: PASS (PR #139 merged; GitHub Pages deploy passed; canonical page HTTP 200 with issue title; kind 30023 and kind 1 both recovered by exact ID from six independent relays and archived with valid signatures)
+The signed events were also archived to the untracked local store at
+`data/newsletter_workspace/published/2026-08-26_30023.json` and
+`data/newsletter_workspace/published/2026-08-26_1.json`; both are byte-identical to
+`publish/out/37/event.json` and `publish/out/37/announcement.json` and both pass
+`nak verify`.
+
+GATE: PASS (PR #139 merged; GitHub Pages deploy passed; canonical page HTTP 200 with issue title; both events accepted by 11/12 configured relays and recovered by exact ID from all 10 durable accepting relays)
