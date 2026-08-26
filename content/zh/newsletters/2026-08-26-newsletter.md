@@ -35,7 +35,7 @@ description: "Shopstr 与 Routstr 加固已存储的敏感凭据与来自中继�
 
 ### pakstr 0.13.0 至 0.15.0 让 Zapstore 发布过程显式化
 
-在七月的 [0.3.1 打包与 Amber 相关工作](/zh/newsletters/2026-07-29-newsletter/#pakstr-031)之后，[pakstr](https://git.nostrdev.com/stuff/pakstr) 是一个把一整个 web 资源目录变成已签名 Android APK、并用 Nostr 密钥发布到 Zapstore 的命令行工具。[0.13.0](https://git.nostrdev.com/stuff/pakstr/releases/tag/v0.13.0) 增加了自动的发布版本号。随后的 0.13.1 至 0.13.3 修复 Blossom 发布：[授权改用 base64url](https://git.nostrdev.com/stuff/pakstr/releases/tag/v0.13.1)、[上传带上 Content-Digest](https://git.nostrdev.com/stuff/pakstr/releases/tag/v0.13.2)，以及[在 Blossom 上传之前先发布 Zapstore 应用事件](https://git.nostrdev.com/stuff/pakstr/releases/tag/v0.13.3)。
+在七月的 [0.3.1 打包与 Amber 相关工作](/en/newsletters/2026-07-29-newsletter/#pakstr-031)之后，[pakstr](https://git.nostrdev.com/stuff/pakstr) 是一个把一整个 web 资源目录变成已签名 Android APK、并用 Nostr 密钥发布到 Zapstore 的命令行工具。[0.13.0](https://git.nostrdev.com/stuff/pakstr/releases/tag/v0.13.0) 增加了自动的发布版本号。随后的 0.13.1 至 0.13.3 修复 Blossom 发布：[授权改用 base64url](https://git.nostrdev.com/stuff/pakstr/releases/tag/v0.13.1)、[上传带上 Content-Digest](https://git.nostrdev.com/stuff/pakstr/releases/tag/v0.13.2)，以及[在 Blossom 上传之前先发布 Zapstore 应用事件](https://git.nostrdev.com/stuff/pakstr/releases/tag/v0.13.3)。
 
 [0.14.0](https://git.nostrdev.com/stuff/pakstr/releases/tag/v0.14.0) 在发布继续之前校验 Zapstore 发布者。[0.15.0](https://git.nostrdev.com/stuff/pakstr/releases/tag/v0.15.0) 把上架元数据写入 kind 32267 应用事件，并把发布说明放进 kind 30063 发布事件的 content，这样打包应用的 Zapstore 记录就能带上名称、摘要与说明，而不需要另做一次手工上架。
 
@@ -55,7 +55,7 @@ description: "Shopstr 与 Routstr 加固已存储的敏感凭据与来自中继�
 
 ### NoorNote v1.3.6：个人资料状态与分类信息
 
-[NoorNote](https://github.com/77elements/noornote) 是一个面向桌面、web 与 Android 的 Nostr 客户端。在 [1.3.4 加入加密社区加入流程](/zh/newsletters/2026-08-19-newsletter/#noornote-134-joining-encrypted-communities-from-an-invite-link)一周之后，[版本 1.3.6](https://github.com/77elements/noornote/releases/tag/v1.3.6) 在个人资料的 [NIP-05](/zh/topics/nip-05/)（域名验证）名称下方显示 [NIP-38](/zh/topics/nip-38/)（用户状态）：这是可选带过期时间的 kind `30315` 可寻址事件，承载一行通用状态或音乐状态。点击那一行会设置查看者自己的状态。
+[NoorNote](https://github.com/77elements/noornote) 是一个面向桌面、web 与 Android 的 Nostr 客户端。在 [1.3.4 加入加密社区加入流程](/en/newsletters/2026-08-19-newsletter/#noornote-134-joining-encrypted-communities-from-an-invite-link)一周之后，[版本 1.3.6](https://github.com/77elements/noornote/releases/tag/v1.3.6) 在个人资料的 [NIP-05](/zh/topics/nip-05/)（域名验证）名称下方显示 [NIP-38](/zh/topics/nip-38/)（用户状态）：这是可选带过期时间的 kind `30315` 可寻址事件，承载一行通用状态或音乐状态。点击那一行会设置查看者自己的状态。
 
 来自 [NIP-99](/zh/topics/nip-99/)（kind `30402` 市场报价）的[分类信息](https://github.com/77elements/noornote/releases/tag/v1.3.6)现在会在整个应用中渲染，因此市场插件只在买卖时才需要。个人资料上的私密昵称备注也会以警示橙色显示，配上实心备注图标与橙色头像圈。
 
@@ -63,13 +63,13 @@ description: "Shopstr 与 Routstr 加固已存储的敏感凭据与来自中继�
 
 在某台主机上退出一个 [NIP-29](/zh/topics/nip-29/)（中继托管群组）群组，此前会在所有其他中继上抑制同一个群组 id，因为面向中继托管社区的跨平台客户端 [nostrord](https://github.com/nostrord/nostrord) 用裸 id 作为退出与删除标记的键。[按中继限定的退出与删除标记](https://github.com/nostrord/nostrord/pull/253)把这些抑制留在产生它们的主机上，因此在两个中继上共用一个 id 的群组不会再被成对退出或丢弃。中继因为你已是成员而拒绝的加入请求，现在算作成功并清除本地标记；这在此前是一个吸收态：自愈清掉了一个槽位，而冷启动又恢复了另一个。
 
-[版本 2.9.0](https://github.com/nostrord/nostrord/releases/tag/v2.9.0) 也会渲染其他客户端写成 `![alt](url)` 的 [markdown 图片嵌入](https://github.com/nostrord/nostrord/pull/254)，而不是在已识别出的 URL 周围显示 markdown 标点。私信支持了 [NIP-17](/zh/topics/nip-17/)（gift wrap 私信）的 [kind `15` 文件 rumor](https://github.com/nostrord/nostrord/pull/275)，因此从 Jumble 发来的加密附件会被下载、解密并显示，发出的附件也会在上传前加密。这个 tag 现在真正带上了[上周报道的 NIP-4e 加密密钥工作](/zh/newsletters/2026-08-19-newsletter/#nostrord-implements-an-unmerged-encryption-key-proposal)。该提案仍未合并，nostrord 表示在与草案不一致的地方，其实现遵循 Jumble 已上线的行为。
+[版本 2.9.0](https://github.com/nostrord/nostrord/releases/tag/v2.9.0) 也会渲染其他客户端写成 `![alt](url)` 的 [markdown 图片嵌入](https://github.com/nostrord/nostrord/pull/254)，而不是在已识别出的 URL 周围显示 markdown 标点。私信支持了 [NIP-17](/zh/topics/nip-17/)（gift wrap 私信）的 [kind `15` 文件 rumor](https://github.com/nostrord/nostrord/pull/275)，因此从 Jumble 发来的加密附件会被下载、解密并显示，发出的附件也会在上传前加密。这个 tag 现在真正带上了[上周报道的 NIP-4e 加密密钥工作](/en/newsletters/2026-08-19-newsletter/#nostrord-implements-an-unmerged-encryption-key-proposal)。该提案仍未合并，nostrord 表示在与草案不一致的地方，其实现遵循 Jumble 已上线的行为。
 
 ## 未发布的变更
 
 ### Shopstr 把远程签名器与钱包的敏感凭据挪出浏览器存储
 
-[Shopstr](https://github.com/shopstr-eng/shopstr) 是面向 [NIP-99](/zh/topics/nip-99/) 分类信息的 web 市场。在[上月的支付完整性工作](/zh/newsletters/2026-07-22-newsletter/#shopstr-binds-payment-validation-to-signed-receipts-and-server-side-prices)之后，它[不再把序列化的 bunker 签名器凭据写入 `localStorage`](https://github.com/shopstr-eng/shopstr/pull/437)。此前 [NIP-46](/zh/topics/nip-46/)（远程签名）的 bunker 载荷里含有仍然有效的 `bunker://` URL 与生成的应用私钥，因此 Shopstr 源上的任何脚本都能接续远程签名会话。现在 bunker 数据只在当前会话的运行内存中，遗留的 bunker 载荷一旦被发现就会移除，非 bunker 类型的签名器保持原有存储行为。
+[Shopstr](https://github.com/shopstr-eng/shopstr) 是面向 [NIP-99](/zh/topics/nip-99/) 分类信息的 web 市场。在[上月的支付完整性工作](/en/newsletters/2026-07-22-newsletter/#shopstr-binds-payment-validation-to-signed-receipts-and-server-side-prices)之后，它[不再把序列化的 bunker 签名器凭据写入 `localStorage`](https://github.com/shopstr-eng/shopstr/pull/437)。此前 [NIP-46](/zh/topics/nip-46/)（远程签名）的 bunker 载荷里含有仍然有效的 `bunker://` URL 与生成的应用私钥，因此 Shopstr 源上的任何脚本都能接续远程签名会话。现在 bunker 数据只在当前会话的运行内存中，遗留的 bunker 载荷一旦被发现就会移除，非 bunker 类型的签名器保持原有存储行为。
 
 对应的 [NWC 变更](https://github.com/shopstr-eng/shopstr/pull/436)对 [NIP-47](/zh/topics/nip-47/)（wallet connect）凭据做了同样处理。Shopstr 此前把完整的 `nostr+walletconnect://` 字符串，包括用于钱包操作的密钥，当作普通浏览器数据保存，并在结账时复用。现在连接字符串与钱包元数据只留在内存中，读取本地数据时会删除更早的存储副本。在活动会话期间已经运行在 Shopstr 源上的脚本，仍然能看到内存中的这些值。
 
@@ -101,7 +101,7 @@ Android Nostr 客户端 [Amethyst](https://github.com/vitorpamplona/amethyst) [�
 
 ### NIP
 
-Snort 与 Ditto 现在把 [NIP-22](/zh/topics/nip-22/)（评论线程）用于普通文本回复，在保留兼容路径的同时收敛到 kind 1111；这并不等于确立了协议范围内唯一的回复 kind。在[六月的修订](/zh/newsletters/2026-06-24-newsletter/#kind-1111-as-reply-to-kind-1-notes)移除了禁止对 kind 1 笔记使用 NIP-22 的条文之后，对 [NIP-30](/zh/topics/nip-30/)（自定义表情）的一次[已合并补充](https://github.com/nostr-protocol/nips/pull/2448)把 kind `1111` 列入了可以携带 `emoji` tag 的事件，`content` 中的短代码由该 tag 解析。web 端 Nostr 客户端 [Snort](https://github.com/v0l/snort) 现在[把每条回复都写成 kind 1111](https://github.com/v0l/snort/commit/420ed60e2ff43bd373f2583e171a77002ec9f3a0)，通过大写的 `E`/`A` 根作用域 tag 加载这些评论，同时仍为较早的笔记保留一条可选的 [NIP-10](/zh/topics/nip-10/)（kind 1 回复 tag）路径。同时兼作 Mastodon 服务器与 Nostr 中继的 [Ditto](https://github.com/soapbox-pub/ditto) [把每条回复都发布为 NIP-22 评论](https://github.com/soapbox-pub/ditto/commit/8a0ffc6e3a5d9202ffc452fa0de8ae33b5883384)，文本用 kind `1111`、语音用 kind `1244`，同时继续渲染既有的 kind 1 回复。只理解 NIP-10 的客户端看不到新形式。顶层帖子仍是 kind 1。
+Snort 与 Ditto 现在把 [NIP-22](/zh/topics/nip-22/)（评论线程）用于普通文本回复，在保留兼容路径的同时收敛到 kind 1111；这并不等于确立了协议范围内唯一的回复 kind。在[六月的修订](/en/newsletters/2026-06-24-newsletter/#kind-1111-as-reply-to-kind-1-notes)移除了禁止对 kind 1 笔记使用 NIP-22 的条文之后，对 [NIP-30](/zh/topics/nip-30/)（自定义表情）的一次[已合并补充](https://github.com/nostr-protocol/nips/pull/2448)把 kind `1111` 列入了可以携带 `emoji` tag 的事件，`content` 中的短代码由该 tag 解析。web 端 Nostr 客户端 [Snort](https://github.com/v0l/snort) 现在[把每条回复都写成 kind 1111](https://github.com/v0l/snort/commit/420ed60e2ff43bd373f2583e171a77002ec9f3a0)，通过大写的 `E`/`A` 根作用域 tag 加载这些评论，同时仍为较早的笔记保留一条可选的 [NIP-10](/zh/topics/nip-10/)（kind 1 回复 tag）路径。同时兼作 Mastodon 服务器与 Nostr 中继的 [Ditto](https://github.com/soapbox-pub/ditto) [把每条回复都发布为 NIP-22 评论](https://github.com/soapbox-pub/ditto/commit/8a0ffc6e3a5d9202ffc452fa0de8ae33b5883384)，文本用 kind `1111`、语音用 kind `1244`，同时继续渲染既有的 kind 1 回复。只理解 NIP-10 的客户端看不到新形式。顶层帖子仍是 kind 1。
 
 [NIP-47](/zh/topics/nip-47/)（Nostr Wallet Connect）的 `pay_invoice` 请求目前没有标准方式让客户端指定路由费用上限。一份[关于费用上限的开放提案](https://github.com/nostr-protocol/nips/pull/2444)为 `pay_invoice` 增加了以毫聪为单位的可选参数 `max_fee`。遵守该预算的钱包禁止（MUST NOT）发送路由成本超过 `amount + max_fee` 的支付，并且必须（MUST）返回 `FEE_LIMIT_EXCEEDED`，其定义是既未扣款也未尝试支付。支持该特性的实现必须（MUST）在响应中包含 `fees_paid`，以便客户端对账。不支持费用上限的实现会忽略这个未知参数，客户端应当把缺失的 `fees_paid` 字段视为上限可能未被执行的信号。该变更不新增事件 kind，在合并前仍是提案。
 
@@ -165,7 +165,7 @@ Snort 与 Ditto 现在把 [NIP-22](/zh/topics/nip-22/)（评论线程）用于�
 
 ### 2026 年八月
 
-这个八月把评论线程带进了那些写普通回复的客户端。后来被合并的[六月修订](/zh/newsletters/2026-06-24-newsletter/#kind-1111-as-reply-to-kind-1-notes)删掉了那条告诉客户端不要在短笔记上使用 NIP-22 评论的条文。接着 [NIP-30](/zh/topics/nip-30/)（自定义表情）[把 kind 1111 加了进来](https://github.com/nostr-protocol/nips/pull/2448)，与笔记、回应和用户状态并列，因此评论也能携带那些 kind 早已使用的表情 tag。规范工作是许可。客户端工作是落地。
+这个八月把评论线程带进了那些写普通回复的客户端。后来被合并的[六月修订](/en/newsletters/2026-06-24-newsletter/#kind-1111-as-reply-to-kind-1-notes)删掉了那条告诉客户端不要在短笔记上使用 NIP-22 评论的条文。接着 [NIP-30](/zh/topics/nip-30/)（自定义表情）[把 kind 1111 加了进来](https://github.com/nostr-protocol/nips/pull/2448)，与笔记、回应和用户状态并列，因此评论也能携带那些 kind 早已使用的表情 tag。规范工作是许可。客户端工作是落地。
 
 web 客户端 [Snort](https://github.com/v0l/snort/commit/420ed60e2ff43bd373f2583e171a77002ec9f3a0)现在默认为 kind 1 目标发布 NIP-22 评论，通过大写 `E`/`A` 根 tag 订阅线程，并在通知中接受 kind 1111。社区 web 客户端 [Ditto](https://github.com/soapbox-pub/ditto/commit/8a0ffc6e3a5d9202ffc452fa0de8ae33b5883384)把每条回复都发布为 NIP-22 评论，文本用 kind 1111、语音用 1244，包括对 kind 1 笔记的回复，同时仍然读取 [NIP-10](/zh/topics/nip-10/)（笔记串联）回复。六年间的转变就体现在这些默认值上：2022 年一般化了回应，2023 与 2024 年为坐标定名，2025 年把回应指向网络之外，2026 年则让评论成为面向这些同样目标的共用回复事件。
 

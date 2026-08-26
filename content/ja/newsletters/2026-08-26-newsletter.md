@@ -35,7 +35,7 @@ description: "ShopstrとRoutstrが保存された秘密情報とrelay由来の�
 
 ### pakstr 0.13.0から0.15.0がZapstore公開を明示化
 
-7月の[0.3.1におけるパッケージングとAmber対応](/ja/newsletters/2026-07-29-newsletter/#pakstr-031)を経て、[pakstr](https://git.nostrdev.com/stuff/pakstr)はwebアセットのフォルダを署名済みAndroid APKに変換し、Nostr鍵でZapstoreへ公開するCLIです。[0.13.0](https://git.nostrdev.com/stuff/pakstr/releases/tag/v0.13.0)はリリースの自動バージョニングを追加します。0.13.1から0.13.3の後続版はBlossom公開を修復します。[認可がbase64urlを使うようになり](https://git.nostrdev.com/stuff/pakstr/releases/tag/v0.13.1)、[アップロードがContent-Digestを持ち](https://git.nostrdev.com/stuff/pakstr/releases/tag/v0.13.2)、[Zapstoreのapplicationイベントがアップロードより前に公開されます](https://git.nostrdev.com/stuff/pakstr/releases/tag/v0.13.3)。
+7月の[0.3.1におけるパッケージングとAmber対応](/en/newsletters/2026-07-29-newsletter/#pakstr-031)を経て、[pakstr](https://git.nostrdev.com/stuff/pakstr)はwebアセットのフォルダを署名済みAndroid APKに変換し、Nostr鍵でZapstoreへ公開するCLIです。[0.13.0](https://git.nostrdev.com/stuff/pakstr/releases/tag/v0.13.0)はリリースの自動バージョニングを追加します。0.13.1から0.13.3の後続版はBlossom公開を修復します。[認可がbase64urlを使うようになり](https://git.nostrdev.com/stuff/pakstr/releases/tag/v0.13.1)、[アップロードがContent-Digestを持ち](https://git.nostrdev.com/stuff/pakstr/releases/tag/v0.13.2)、[Zapstoreのapplicationイベントがアップロードより前に公開されます](https://git.nostrdev.com/stuff/pakstr/releases/tag/v0.13.3)。
 
 [0.14.0](https://git.nostrdev.com/stuff/pakstr/releases/tag/v0.14.0)は公開処理を進める前にZapstoreの発行者を検証します。[0.15.0](https://git.nostrdev.com/stuff/pakstr/releases/tag/v0.15.0)は掲載メタデータをkind 32267のapplicationイベントに書き込み、リリースノートをkind 30063のreleaseイベントの`content`に入れます。これによりパッケージ化したアプリのZapstore掲載は、別途の手作業なしに名称、概要、ノートを持てます。
 
@@ -55,7 +55,7 @@ description: "ShopstrとRoutstrが保存された秘密情報とrelay由来の�
 
 ### NoorNote v1.3.6: プロフィールステータスとclassified listing
 
-[NoorNote](https://github.com/77elements/noornote)はデスクトップ、web、Android向けのNostrクライアントです。[1.3.4が暗号化されたコミュニティ参加を追加](/ja/newsletters/2026-08-19-newsletter/#noornote-134-joining-encrypted-communities-from-an-invite-link)した1週間後、[バージョン1.3.6](https://github.com/77elements/noornote/releases/tag/v1.3.6)はプロフィールの[NIP-05](/ja/topics/nip-05/)（ドメイン検証済み）名の下に[NIP-38](/ja/topics/nip-38/)（ユーザーステータス）を表示します。これは1行の一般ステータスまたは音楽ステータスを持つ、任意で期限切れになるkind `30315`のaddressableイベントです。その行をクリックすると閲覧者自身のステータスが設定されます。
+[NoorNote](https://github.com/77elements/noornote)はデスクトップ、web、Android向けのNostrクライアントです。[1.3.4が暗号化されたコミュニティ参加を追加](/en/newsletters/2026-08-19-newsletter/#noornote-134-joining-encrypted-communities-from-an-invite-link)した1週間後、[バージョン1.3.6](https://github.com/77elements/noornote/releases/tag/v1.3.6)はプロフィールの[NIP-05](/ja/topics/nip-05/)（ドメイン検証済み）名の下に[NIP-38](/ja/topics/nip-38/)（ユーザーステータス）を表示します。これは1行の一般ステータスまたは音楽ステータスを持つ、任意で期限切れになるkind `30315`のaddressableイベントです。その行をクリックすると閲覧者自身のステータスが設定されます。
 
 [NIP-99](/ja/topics/nip-99/)（kind `30402`のマーケットプレイス出品）の[classified listing](https://github.com/77elements/noornote/releases/tag/v1.3.6)がアプリ全体で描画されるようになったため、マーケットプレイスのアドオンは売買のときだけ必要になりました。プロフィール上の非公開のpetnameメモも警告色のオレンジで表示され、塗りつぶしのメモアイコンとオレンジのアバターリングが付きます。
 
@@ -63,13 +63,13 @@ description: "ShopstrとRoutstrが保存された秘密情報とrelay由来の�
 
 あるホストで[NIP-29](/ja/topics/nip-29/)（relay管理グループ）のグループを退出すると、以前は他のすべてのrelayで同じグループidが抑止されていました。[nostrord](https://github.com/nostrord/nostrord)、relayホスト型コミュニティ向けのクロスプラットフォームクライアントが、退出と削除のマーカーを素のidでキー付けしていたためです。[relay単位にスコープされた退出・削除マーカー](https://github.com/nostrord/nostrord/pull/253)は、その抑止を生成したホストに留めるので、2つのrelayでidを共有するグループが対で退出・破棄されることはなくなりました。すでにメンバーであるためにrelayが拒否する参加は成功として扱われ、ローカルのマーカーを消去します。これは以前は吸収状態でした。自己修復が一方のスロットを消す一方で、コールドスタートがもう一方を復元していたのです。
 
-[バージョン2.9.0](https://github.com/nostrord/nostrord/releases/tag/v2.9.0)は、他のクライアントが`![alt](url)`と書く[markdownの画像埋め込み](https://github.com/nostrord/nostrord/pull/254)も描画するようになり、すでに検出済みのURLの周りにmarkdownの記号を表示しなくなりました。ダイレクトメッセージは[NIP-17](/ja/topics/nip-17/)（gift wrapされた非公開DM）の[kind `15`ファイルrumor](https://github.com/nostrord/nostrord/pull/275)に対応したので、Jumbleから送られた暗号化添付がダウンロード、復号、表示され、送信する添付はアップロード前に暗号化されます。このタグは[先週取り上げたNIP-4e暗号鍵の作業](/ja/newsletters/2026-08-19-newsletter/#nostrord-implements-an-unmerged-encryption-key-proposal)を実際に出荷します。提案は未マージのままで、nostrordはドラフトと異なる部分では実運用のJumbleの挙動に従うと述べています。
+[バージョン2.9.0](https://github.com/nostrord/nostrord/releases/tag/v2.9.0)は、他のクライアントが`![alt](url)`と書く[markdownの画像埋め込み](https://github.com/nostrord/nostrord/pull/254)も描画するようになり、すでに検出済みのURLの周りにmarkdownの記号を表示しなくなりました。ダイレクトメッセージは[NIP-17](/ja/topics/nip-17/)（gift wrapされた非公開DM）の[kind `15`ファイルrumor](https://github.com/nostrord/nostrord/pull/275)に対応したので、Jumbleから送られた暗号化添付がダウンロード、復号、表示され、送信する添付はアップロード前に暗号化されます。このタグは[先週取り上げたNIP-4e暗号鍵の作業](/en/newsletters/2026-08-19-newsletter/#nostrord-implements-an-unmerged-encryption-key-proposal)を実際に出荷します。提案は未マージのままで、nostrordはドラフトと異なる部分では実運用のJumbleの挙動に従うと述べています。
 
 ## 未リリースの変更
 
 ### Shopstrがリモートsignerとwalletの秘密情報をブラウザストレージの外に保つ
 
-[Shopstr](https://github.com/shopstr-eng/shopstr)は[NIP-99](/ja/topics/nip-99/) classified listing向けのwebマーケットプレイスです。[先月の支払い整合性の作業](/ja/newsletters/2026-07-22-newsletter/#shopstr-binds-payment-validation-to-signed-receipts-and-server-side-prices)に続き、[シリアライズしたbunker signerの秘密情報を`localStorage`に書き込むのをやめました](https://github.com/shopstr-eng/shopstr/pull/437)。[NIP-46](/ja/topics/nip-46/)（リモート署名）のbunkerペイロードには稼働中の`bunker://` URLと生成されたアプリ秘密鍵が含まれていたため、Shopstrのoriginで動く任意のスクリプトがリモート署名セッションを再開できました。bunkerデータは現在のセッションのあいだメモリ上に留まり、残っていたbunkerペイロードは見つかった時点で削除され、bunker以外のsignerタイプは以前の保存挙動を保ちます。
+[Shopstr](https://github.com/shopstr-eng/shopstr)は[NIP-99](/ja/topics/nip-99/) classified listing向けのwebマーケットプレイスです。[先月の支払い整合性の作業](/en/newsletters/2026-07-22-newsletter/#shopstr-binds-payment-validation-to-signed-receipts-and-server-side-prices)に続き、[シリアライズしたbunker signerの秘密情報を`localStorage`に書き込むのをやめました](https://github.com/shopstr-eng/shopstr/pull/437)。[NIP-46](/ja/topics/nip-46/)（リモート署名）のbunkerペイロードには稼働中の`bunker://` URLと生成されたアプリ秘密鍵が含まれていたため、Shopstrのoriginで動く任意のスクリプトがリモート署名セッションを再開できました。bunkerデータは現在のセッションのあいだメモリ上に留まり、残っていたbunkerペイロードは見つかった時点で削除され、bunker以外のsignerタイプは以前の保存挙動を保ちます。
 
 対応する[NWCの変更](https://github.com/shopstr-eng/shopstr/pull/436)は[NIP-47](/ja/topics/nip-47/)（wallet connect）の資格情報に同じ処理を行います。Shopstrはwallet操作に使う秘密を含む`nostr+walletconnect://`文字列全体を通常のブラウザデータとして保存し、決済時に再利用していました。接続文字列とwalletメタデータは現在メモリ上に留まり、古い保存済みコピーはローカルデータの読み取り時に削除されます。アクティブなセッション中にすでにShopstrのoriginで動いているスクリプトは、メモリ上のそれらの値を依然として見ることができます。
 
@@ -101,7 +101,7 @@ description: "ShopstrとRoutstrが保存された秘密情報とrelay由来の�
 
 ### NIP
 
-SnortとDittoは通常のテキスト返信に[NIP-22](/ja/topics/nip-22/)（コメントスレッド）を使うようになり、互換経路を保ちながらkind 1111に収束しています。これはprotocol全体で単一の返信kindを定めるものではありません。[6月の修正](/ja/newsletters/2026-06-24-newsletter/#kind-1111-as-reply-to-kind-1-notes)がkind 1ノートに対してNIP-22を使う禁止を取り除いた後、[NIP-30](/ja/topics/nip-30/)（カスタム絵文字）への[マージ済みの追記](https://github.com/nostr-protocol/nips/pull/2448)がkind `1111`を`emoji` tagを持てるイベントの一覧に加え、`content`内のショートコードがそのtagで解決されるようになりました。[Snort](https://github.com/v0l/snort)、webのNostrクライアントは、[すべての返信をkind 1111として書き](https://github.com/v0l/snort/commit/420ed60e2ff43bd373f2583e171a77002ec9f3a0)、大文字の`E`/`A` root scope tagを通じてそのコメントを読み込み、古いノートに対しては任意で[NIP-10](/ja/topics/nip-10/)（kind 1返信tag）経路も受け入れます。[Ditto](https://github.com/soapbox-pub/ditto)、MastodonサーバーとNostr relayを兼ねる実装は、[すべての返信をNIP-22コメントとして公開](https://github.com/soapbox-pub/ditto/commit/8a0ffc6e3a5d9202ffc452fa0de8ae33b5883384)し、テキストはkind `1111`、音声はkind `1244`とし、既存のkind 1返信も引き続き描画します。NIP-10しか理解しないクライアントは新しい形式を見られません。トップレベルの投稿はkind 1のままです。
+SnortとDittoは通常のテキスト返信に[NIP-22](/ja/topics/nip-22/)（コメントスレッド）を使うようになり、互換経路を保ちながらkind 1111に収束しています。これはprotocol全体で単一の返信kindを定めるものではありません。[6月の修正](/en/newsletters/2026-06-24-newsletter/#kind-1111-as-reply-to-kind-1-notes)がkind 1ノートに対してNIP-22を使う禁止を取り除いた後、[NIP-30](/ja/topics/nip-30/)（カスタム絵文字）への[マージ済みの追記](https://github.com/nostr-protocol/nips/pull/2448)がkind `1111`を`emoji` tagを持てるイベントの一覧に加え、`content`内のショートコードがそのtagで解決されるようになりました。[Snort](https://github.com/v0l/snort)、webのNostrクライアントは、[すべての返信をkind 1111として書き](https://github.com/v0l/snort/commit/420ed60e2ff43bd373f2583e171a77002ec9f3a0)、大文字の`E`/`A` root scope tagを通じてそのコメントを読み込み、古いノートに対しては任意で[NIP-10](/ja/topics/nip-10/)（kind 1返信tag）経路も受け入れます。[Ditto](https://github.com/soapbox-pub/ditto)、MastodonサーバーとNostr relayを兼ねる実装は、[すべての返信をNIP-22コメントとして公開](https://github.com/soapbox-pub/ditto/commit/8a0ffc6e3a5d9202ffc452fa0de8ae33b5883384)し、テキストはkind `1111`、音声はkind `1244`とし、既存のkind 1返信も引き続き描画します。NIP-10しか理解しないクライアントは新しい形式を見られません。トップレベルの投稿はkind 1のままです。
 
 [NIP-47](/ja/topics/nip-47/)（Nostr Wallet Connect）の`pay_invoice`リクエストには、クライアントがルーティング手数料の上限を指定する標準的な手段が今のところありません。[手数料上限のオープンな提案](https://github.com/nostr-protocol/nips/pull/2444)は、`pay_invoice`にミリサトシ単位の任意パラメータ`max_fee`を追加します。この予算を尊重するwalletは、ルーティング費用が`amount + max_fee`を超える支払いを送ってはならず（MUST NOT）、引き落としも支払い試行もない状態として定義される`FEE_LIMIT_EXCEEDED`を返さなければなりません（MUST）。対応する実装はクライアントが照合できるよう応答に`fees_paid`を含めなければなりません（MUST）。手数料上限に未対応の実装は未知のパラメータを無視し、クライアントは`fees_paid`フィールドの欠落を上限が適用されていない可能性のしるしとして扱うべきです。この変更はイベントkindを追加せず、マージされるまで提案のままです。
 
@@ -165,7 +165,7 @@ relayソフトウェアもtagの規則をストレージの挙動に落とし込
 
 ### 2026年8月
 
-この8月は、通常の返信を書くクライアントにコメントスレッドを持ち込みました。後にマージされた[6月の修正](/ja/newsletters/2026-06-24-newsletter/#kind-1111-as-reply-to-kind-1-notes)は、短いノートにNIP-22コメントを使わないようクライアントに伝えていた行を削除しました。続いて[NIP-30](/ja/topics/nip-30/)（カスタム絵文字）が[kind 1111を追加](https://github.com/nostr-protocol/nips/pull/2448)し、ノート、リアクション、ユーザーステータスと並べたので、コメントもそれらのkindが既に使っていた同じ絵文字tagを持てます。仕様の作業は許可です。クライアントの作業は展開です。
+この8月は、通常の返信を書くクライアントにコメントスレッドを持ち込みました。後にマージされた[6月の修正](/en/newsletters/2026-06-24-newsletter/#kind-1111-as-reply-to-kind-1-notes)は、短いノートにNIP-22コメントを使わないようクライアントに伝えていた行を削除しました。続いて[NIP-30](/ja/topics/nip-30/)（カスタム絵文字）が[kind 1111を追加](https://github.com/nostr-protocol/nips/pull/2448)し、ノート、リアクション、ユーザーステータスと並べたので、コメントもそれらのkindが既に使っていた同じ絵文字tagを持てます。仕様の作業は許可です。クライアントの作業は展開です。
 
 webクライアントの[Snort](https://github.com/v0l/snort/commit/420ed60e2ff43bd373f2583e171a77002ec9f3a0)は、kind 1の対象に対して既定でNIP-22コメントを公開し、大文字の`E`/`A` root tagでスレッドを購読し、通知でkind 1111を受け入れます。コミュニティ向けwebクライアントの[Ditto](https://github.com/soapbox-pub/ditto/commit/8a0ffc6e3a5d9202ffc452fa0de8ae33b5883384)は、kind 1ノートへの返信も含めてすべての返信をNIP-22コメントとして公開し、テキストはkind 1111、音声は1244としつつ、[NIP-10](/ja/topics/nip-10/)（ノートのスレッド化）の返信も読み続けます。6年間の移り変わりはこれらの既定に現れています。2022年はリアクションを一般化し、2023年と2024年は座標を名付け、2025年はリアクションをネットワーク外へ向け、2026年はコメントをそれら同じ対象に対する共通の返信イベントにしました。
 
