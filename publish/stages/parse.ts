@@ -3,7 +3,7 @@
 // the 21-word TL;DR, validates the banner image URL against the pinned
 // config, parses an optional 5th "Tags:" block. Writes out/{N}/metadata.json.
 //
-// The /tmp/{N}publish.md format is the output of ~/compass/scripts/publish.ts:
+// The /tmp/{N}publish.md format is the output of scripts/publish.ts:
 //
 //   Nostr Compass #N
 //   <blank>
@@ -148,7 +148,7 @@ export async function parseIssue(issue: number): Promise<CompassMetadata> {
     raw = await readFile(sourcePath, "utf8");
   } catch {
     throw new Error(
-      `Could not read ${sourcePath}. Generate it first with: bun ~/compass/scripts/publish.ts`,
+      `Could not read ${sourcePath}. Generate it first with: bun scripts/publish.ts`,
     );
   }
   const cover = JSON.parse(await readFile(COVER_PATH, "utf8")) as { banner_url: string };

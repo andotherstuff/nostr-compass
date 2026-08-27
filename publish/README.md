@@ -22,7 +22,7 @@ Hugo deploy publishes the newsletter to the website.
 
 ## Source format
 
-Compass uses the prepared output of `~/compass/scripts/publish.ts`, written
+Compass uses the prepared output of `scripts/publish.ts`, written
 to `/tmp/{N}publish.md`. The file is structured as four blocks separated by
 blank lines:
 
@@ -142,7 +142,7 @@ working tree lives somewhere else, such as a per-issue worktree.
 
 ```bash
 # Add this to your .bashrc once:
-alias compass-publish='COMPASS_PUBLISH_INVOCATION=manual bun ~/compass/publish/publish.ts'
+alias compass-publish='COMPASS_PUBLISH_INVOCATION=manual bun publish/publish.ts'
 
 # Then for a publish:
 compass-publish 27                                                # dry-run: stops before broadcast
