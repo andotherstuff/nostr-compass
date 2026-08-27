@@ -1,0 +1,4 @@
+{
+  "_comment": "Banner image URL pinned for every Compass newsletter. The parse stage verifies that the image URL block in /tmp/{N}publish.md matches this value before the pipeline can proceed. Update only if the brand image legitimately changes.",
+  "banner_url": "https://image.nostr.build/fbf98ad0d8f84fd6b60fd920c0364df3549ea7a2e0ca16a159202a2cd87b8baf.png"
+}
