@@ -3,7 +3,7 @@
 #
 # WHY THIS EXISTS
 # ---------------
-# Translation used to run as a detached background process (`nohup hermes chat &`).
+# Translation used to run as a detached background process.
 # That has no durability: a gateway restart, an API timeout, or an OOM killed the run
 # with no status, no checkpoint, and no way to resume. Newsletter #31's translation
 # died this way twice and had to be reconstructed by hand.
@@ -30,17 +30,65 @@ cd "$REPO_ROOT" || exit 1
 
 die() { echo "error: $*" >&2; exit 1; }
 
-# NOTIFY: announce a finished step on the Compass Marmot channel.
+# NOTIFY: announce a finished step on the configured channel.
 #
 # The owner asked to hear about every completed step, not just the end of a run.
 # A translation commit, a PR opening, and a merge are each a finished step. This
 # is best-effort by design: a messaging failure must never fail a translation.
-NOTIFY_TARGET="${COMPASS_NOTIFY_TARGET:-marmot:Compass Newsletter}"
+#
+# Transport and target come from publish/config/notify.json, which is gitignored
+# because it is host wiring; publish/lib/notify.ts reads the same file, so the
+# two emitters cannot drift. command is argv with {target} and {body}
+# placeholders. With nothing configured, notification is skipped silently.
+# Translation runs in a per-issue worktree, where publish/config/notify.json is
+# absent because it is gitignored. The shared checkout is the worktree's git
+# common dir parent, so the config resolves without depending on an env var.
+resolve_notify_config() {
+  if [ -n "${COMPASS_NOTIFY_CONFIG:-}" ]; then printf '%s\n' "$COMPASS_NOTIFY_CONFIG"; return; fi
+  if [ -f "$REPO_ROOT/publish/config/notify.json" ]; then
+    printf '%s\n' "$REPO_ROOT/publish/config/notify.json"; return
+  fi
+  local common shared
+  common="$(git -C "$REPO_ROOT" rev-parse --path-format=absolute --git-common-dir 2>/dev/null)" || return 0
+  shared="$(dirname "$common")"
+  [ -f "$shared/publish/config/notify.json" ] && printf '%s\n' "$shared/publish/config/notify.json"
+  return 0
+}
+NOTIFY_CONFIG="$(resolve_notify_config)"
 notify() {
   [ "${COMPASS_NOTIFY:-1}" = "0" ] && return 0
-  command -v hermes >/dev/null 2>&1 || return 0
-  hermes send --to "$NOTIFY_TARGET" --quiet "$1" >/dev/null 2>&1 || \
+  COMPASS_NOTIFY_TARGET="${COMPASS_NOTIFY_TARGET:-}" \
+  COMPASS_NOTIFY_COMMAND="${COMPASS_NOTIFY_COMMAND:-}" \
+  python3 - "$NOTIFY_CONFIG" "$1" <<'PYNOTIFY' 2>/dev/null || \
     echo "  warn notify failed (continuing)" >&2
+import json, os, subprocess, sys
+
+config_path, body = sys.argv[1], sys.argv[2]
+try:
+    cfg = json.load(open(config_path, encoding="utf-8"))
+except (OSError, ValueError):
+    cfg = {}
+
+target = os.environ.get("COMPASS_NOTIFY_TARGET") or cfg.get("target")
+raw = os.environ.get("COMPASS_NOTIFY_COMMAND")
+command = None
+if raw:
+    try:
+        parsed = json.loads(raw)
+        if isinstance(parsed, list) and all(isinstance(a, str) for a in parsed):
+            command = parsed
+    except ValueError:
+        pass
+command = command or cfg.get("command")
+
+if not cfg.get("enabled", False) and not os.environ.get("COMPASS_NOTIFY_TARGET"):
+    sys.exit(0)
+if not target or not command:
+    sys.exit(0)
+
+argv = [a.replace("{target}", target).replace("{body}", body) for a in command]
+subprocess.run(argv, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, check=True)
+PYNOTIFY
   return 0
 }
 
