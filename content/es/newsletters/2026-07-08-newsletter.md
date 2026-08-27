@@ -129,7 +129,7 @@ El segundo frente es el rendimiento del relay. Se aplaza el dispatch posterior a
 
 ### Divine Video conecta la verificación de firmas del relay y extrae NostrConnect
 
-La [app móvil de Divine Video](https://github.com/divinevideo/divine-mobile) integró 97 PR. La [PR #5774](https://github.com/divinevideo/divine-mobile/pull/5774) verifica firmas de eventos entrantes; la [PR #5828](https://github.com/divinevideo/divine-mobile/pull/5828) cifra el token push FCM en el evento de baja kind 3080; y la [PR #5831](https://github.com/divinevideo/divine-mobile/pull/5831) fragmenta la REQ de borrado kind 5 para usuarios con mucho historial. La [PR #5826](https://github.com/divinevideo/divine-mobile/pull/5826) extrae `NostrConnectCoordinator` para el flujo `nostrconnect://`, preparando la refactorización de auth del [issue #4741](https://github.com/divinevideo/divine-mobile/issues/4741). La [PR #5709](https://github.com/divinevideo/divine-mobile/pull/5709) mapea reposts kind 16 cuando falta `notification_type`.
+La [app móvil de Divine Video](https://github.com/divinevideo/divine-mobile) integró 97 PR. La [PR #5774](https://github.com/divinevideo/divine-mobile/pull/5774) verifica firmas de eventos entrantes; la [PR #5828](https://github.com/divinevideo/divine-mobile/pull/5828) cifra el token push FCM en el evento de baja kind 3080; y la [PR #5831](https://github.com/divinevideo/divine-mobile/pull/5831) fragmenta la REQ de borrado kind 5 para usuarios con mucho historial. La [PR #5826](https://github.com/divinevideo/divine-mobile/pull/5826) extrae `NostrConnectCoordinator` para el flujo `nostrconnect://`, limpiando la ruta del firmante remoto [NIP-46](/es/topics/nip-46/) y preparando la refactorización de auth del [issue #4741](https://github.com/divinevideo/divine-mobile/issues/4741). La [PR #5709](https://github.com/divinevideo/divine-mobile/pull/5709) mapea reposts kind 16 cuando falta `notification_type`.
 
 ### Zap Cooking corrige el login bunker NIP-46 y añade búsqueda de recetas NIP-50
 
@@ -137,7 +137,7 @@ El [frontend de Zap Cooking](https://github.com/zapcooking/frontend) integró 18
 
 ### swift-nostr-client v0.6.0 avanza hacia una primera versión estable
 
-[yysskk/swift-nostr-client](https://github.com/yysskk/swift-nostr-client) publicó [v0.6.0](https://github.com/yysskk/swift-nostr-client/releases/tag/v0.6.0) junto a 30 PR. La biblioteca se acerca a una API estable para clientes Swift que no enlazan MDK ni MarmotKit.
+[yysskk/swift-nostr-client](https://github.com/yysskk/swift-nostr-client) publicó [v0.6.0](https://github.com/yysskk/swift-nostr-client/releases/tag/0.6.0) junto a 30 PR. La biblioteca se acerca a una API estable para clientes Swift que no enlazan MDK ni MarmotKit.
 
 ### Nostr Applet Protocol (NAPS) endurece el routing y fanout de NAP-OUTBOX
 
@@ -153,7 +153,7 @@ Los paquetes Napplet pasan de un SDK útil a un toolchain más cohesionado: sopo
 
 ### Wisp añade selector multicuentas y tests del parser de Blossom
 
-[Wisp](https://github.com/barrydeen/wisp) integró 9 PR. La [PR #604](https://github.com/barrydeen/wisp/pull/604) añade selector multicuentas con cancelación explícita. La [PR #613](https://github.com/barrydeen/wisp/pull/613) prueba `Blossom.parseServerList`. La [PR #574](https://github.com/barrydeen/wisp/pull/574) rehace la hoja de zap para iOS; la [PR #605](https://github.com/barrydeen/wisp/pull/605) convierte el historial en una hoja deslizable; la [PR #611](https://github.com/barrydeen/wisp/pull/611) reconoce hashtags Unicode; la [PR #609](https://github.com/barrydeen/wisp/pull/609) mantiene la paginación del feed y muestra galerías inline; y la [PR #603](https://github.com/barrydeen/wisp/pull/603) conserva líneas vacías antes de perfiles y hashtags inline.
+[Wisp](https://github.com/barrydeen/wisp) integró 9 PR. La [PR #604](https://github.com/barrydeen/wisp/pull/604) añade selector multicuentas con cancelación explícita. La [PR #613](https://github.com/barrydeen/wisp/pull/613) prueba `Blossom.parseServerList` y endurece el parser de listas de servidores [Blossom](/es/topics/blossom/). La [PR #574](https://github.com/barrydeen/wisp/pull/574) rehace la hoja de zap para iOS; la [PR #605](https://github.com/barrydeen/wisp/pull/605) convierte el historial en una hoja deslizable; la [PR #611](https://github.com/barrydeen/wisp/pull/611) reconoce hashtags Unicode; la [PR #609](https://github.com/barrydeen/wisp/pull/609) mantiene la paginación del feed y muestra galerías inline; y la [PR #603](https://github.com/barrydeen/wisp/pull/603) conserva líneas vacías antes de perfiles y hashtags inline.
 
 ### TAO y Wired elevan la señal PoW a 21 bits y muestran raíces con PoW reciente
 
