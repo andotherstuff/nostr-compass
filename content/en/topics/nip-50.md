@@ -57,3 +57,4 @@ Structured filters work well when you already know the author, kind, or tag you 
 
 **See also:**
 - [NIP-11: Relay Information](/en/topics/nip-11/)
+- [Newsletter #37: Also shipped](/en/newsletters/2026-08-26-newsletter/#also-shipped)
