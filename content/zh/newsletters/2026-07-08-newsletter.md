@@ -115,25 +115,25 @@ Mostro 是通过 Nostr 事件运行订单簿、托管和争议解决的点对点
 
 ### Amethyst 本周加固 negentropy 同步并加入 NIP-50 搜索
 
-Amethyst [主分支](https://github.com/vitorpamplona/amethyst)围绕三个主题合并 43 个 PR。最大的一组是 geode-to-strfry 边界上的 negentropy 同步：此前 refused-window 故障会把客户端推入窗口分裂风暴，如今可干净退避（[PR #3480](https://github.com/vitorpamplona/amethyst/pull/3480)）；`negentropyKmp` 升至 v1.1.1（[PR #3475](https://github.com/vitorpamplona/amethyst/pull/3475)）；加入百万事件 geode-to-strfry 基准与 strfry 对等镜像（[PR #3478](https://github.com/vitorpamplona/amethyst/pull/3478)）；生产基准进入 CI 矩阵，并有更广泛同步优化。无锁并发集合取代每中继一个 mutex 的模式，UDP socket 线程问题也得到修复。
+Amethyst [主分支](https://github.com/vitorpamplona/amethyst)围绕三个主题合并 43 个 PR。最大的一组是 geode-to-strfry 边界上的 negentropy 同步：此前 refused-window 故障会把客户端推入窗口分裂风暴，如今可干净退避（[PR #3480](https://github.com/vitorpamplona/amethyst/pull/3480)）；`negentropyKmp` 升至 v1.1.1（[PR #3475](https://github.com/vitorpamplona/amethyst/pull/3475)）；加入百万事件 geode-to-strfry 基准与 strfry 对等镜像（[PR #3478](https://github.com/vitorpamplona/amethyst/pull/3478)）；生产基准进入 CI 矩阵，并有更广泛同步优化（[PR #3458](https://github.com/vitorpamplona/amethyst/pull/3458)、[PR #3466](https://github.com/vitorpamplona/amethyst/pull/3466)）。无锁并发集合取代每中继一个 mutex 的模式，UDP socket 线程问题也得到修复（[PR #3459](https://github.com/vitorpamplona/amethyst/pull/3459)）。
 
 第二条线是 [NIP-50](/zh/topics/nip-50/) 全文搜索基础设施。新的 `SearchableEvent` 接口让事件直接携带索引元数据（[PR #3452](https://github.com/vitorpamplona/amethyst/pull/3452)）；查询 SQLite FTS 前会移除 NIP-50 搜索扩展，避免本地引擎被服务端扩展语法卡住（[PR #3464](https://github.com/vitorpamplona/amethyst/pull/3464)）；默认搜索中继也得到集中管理（[PR #3446](https://github.com/vitorpamplona/amethyst/pull/3446)）。
 
-第三条线是垂直领域协议集成：Android 客户端支持 Birdstar 鸟类检测事件 kind 2473（[PR #3473](https://github.com/vitorpamplona/amethyst/pull/3473)），PS1 记忆卡存档可作为 kind 38192 签名事件发布（[PR #3482](https://github.com/vitorpamplona/amethyst/pull/3482)）。此外，compose-signature 设置可自动为帖子追加自定义文本；桌面通知以原生 OS toast 和共享 filter 重新设计；Messages 列加入隐私锁；`NostrServer.ingest` 加入每次提交可跳过验证的本地写入路径；OpenTimestamps 校验路径的 `equals`/`hashCode` 契约也得到修复。
+第三条线是垂直领域协议集成：Android 客户端支持 Birdstar 鸟类检测事件 kind 2473（[PR #3473](https://github.com/vitorpamplona/amethyst/pull/3473)），PS1 记忆卡存档可作为 kind 38192 签名事件发布（[PR #3482](https://github.com/vitorpamplona/amethyst/pull/3482)）。此外，compose-signature 设置可自动为帖子追加自定义文本；桌面通知以原生 OS toast 和共享 filter 重新设计；Messages 列加入隐私锁；`NostrServer.ingest` 加入每次提交可跳过验证的本地写入路径；OpenTimestamps 校验路径的 `equals`/`hashCode` 契约也得到修复。相关 PR 分别为 [#3450](https://github.com/vitorpamplona/amethyst/pull/3450)、[#3457](https://github.com/vitorpamplona/amethyst/pull/3457)、[#3432](https://github.com/vitorpamplona/amethyst/pull/3432)、[#3469](https://github.com/vitorpamplona/amethyst/pull/3469) 与 [#3477](https://github.com/vitorpamplona/amethyst/pull/3477)。
 
 ### Buzz 加入加密 agent telemetry 事件并批处理 relay hot path
 
-[Buzz](https://github.com/block/buzz)（原名 Sprout）在 7 月 1 日至 7 日合并 123 个 PR。第一条主线是 agent telemetry 新事件类型：[PR #1441](https://github.com/block/buzz/pull/1441) 将 NIP-AM 持久加密 agent turn 指标定义为 kind 44200，以用户自有中继归档的签名事件保存指标。随后加入本地归档、原子 remove-kind 路径，并贯穿 emit 路径传递模型名，让下游 reader 能区分每个 turn 来自哪个模型。
+[Buzz](https://github.com/block/buzz)（原名 Sprout）在 7 月 1 日至 7 日合并 123 个 PR。第一条主线是 agent telemetry 新事件类型：[PR #1441](https://github.com/block/buzz/pull/1441) 将 NIP-AM 持久加密 agent turn 指标定义为 kind 44200，以用户自有中继归档的签名事件保存指标。随后加入本地归档（[PR #1555](https://github.com/block/buzz/pull/1555)）、原子 remove-kind 路径（[PR #1562](https://github.com/block/buzz/pull/1562)），并贯穿 emit 路径传递模型名（[PR #1564](https://github.com/block/buzz/pull/1564)），让下游 reader 能区分每个 turn 来自哪个模型。
 
-第二条主线是中继性能。post-commit dispatch 延迟执行并避免一次 verify clone；ingest 和 fan-out 的数据库往返被批处理，相比此前 tip，测得 p99 ack 降低 7% 至 16%，p999 尾部降低 29% 至 53%；多 filter 查询以有界并发执行；出站 WebSocket 数据帧批量发送。性能之外，管理员可配置、由中继经 [NIP-11](/zh/topics/nip-11/) 提供的每社区 workspace 图标扩展了 NIP-11 信息文档；agent 所有者可通过 kind 5 事件及桌面、移动界面删除 agent 消息；中继加入 OpenTelemetry tracing；git 仓库名称注册表迁移到 Postgres。
+第二条主线是中继性能。post-commit dispatch 延迟执行并避免一次 verify clone；ingest 和 fan-out 的数据库往返被批处理，相比此前 tip，测得 p99 ack 降低 7% 至 16%，p999 尾部降低 29% 至 53%；多 filter 查询以有界并发执行；出站 WebSocket 数据帧批量发送。性能之外，管理员可配置、由中继经 [NIP-11](/zh/topics/nip-11/) 提供的每社区 workspace 图标扩展了 NIP-11 信息文档；agent 所有者可通过 kind 5 事件及桌面、移动界面删除 agent 消息；中继加入 OpenTelemetry tracing；git 仓库名称注册表迁移到 Postgres。相关 PR 为 [#1453](https://github.com/block/buzz/pull/1453)、[#1454](https://github.com/block/buzz/pull/1454)、[#1457](https://github.com/block/buzz/pull/1457)、[#1464](https://github.com/block/buzz/pull/1464)、[#1463](https://github.com/block/buzz/pull/1463)、[#1519](https://github.com/block/buzz/pull/1519)、[#1398](https://github.com/block/buzz/pull/1398) 与 [#1432](https://github.com/block/buzz/pull/1432)。
 
 ### Divine Video 接入中继签名校验并抽取 NostrConnect
 
-Divine Video 的[移动应用](https://github.com/divinevideo/divine-mobile)在窗口内合并 97 个 PR，Nostr 相关主线是信任边界加固与认证清理。[PR #5774](https://github.com/divinevideo/divine-mobile/pull/5774) 校验入站中继事件签名，关闭一类“信任中继”漏洞；[PR #5828](https://github.com/divinevideo/divine-mobile/pull/5828) 在 kind 3080 注销事件中加密 FCM push token，避免退订时设备 token 明文出现在中继；[PR #5831](https://github.com/divinevideo/divine-mobile/pull/5831) 对 kind 5 删除 REQ 分块，避免删除历史很大的用户撑爆中继 frame。认证方面，[PR #5826](https://github.com/divinevideo/divine-mobile/pull/5826) 为 `nostrconnect://` 流程抽取 `NostrConnectCoordinator`，清理 [NIP-46](/zh/topics/nip-46/) 客户端发起的 bunker 路径。[PR #5709](https://github.com/divinevideo/divine-mobile/pull/5709) 在缺少 `notification_type` 时映射 kind 16 repost，使发送客户端省略提示时仍能正确显示通知。
+Divine Video 的[移动应用](https://github.com/divinevideo/divine-mobile)在窗口内合并 97 个 PR，Nostr 相关主线是信任边界加固与认证清理。[PR #5774](https://github.com/divinevideo/divine-mobile/pull/5774) 校验入站中继事件签名，关闭一类“信任中继”漏洞；[PR #5828](https://github.com/divinevideo/divine-mobile/pull/5828) 在 kind 3080 注销事件中加密 FCM push token，避免退订时设备 token 明文出现在中继；[PR #5831](https://github.com/divinevideo/divine-mobile/pull/5831) 对 kind 5 删除 REQ 分块，避免删除历史很大的用户撑爆中继 frame。认证方面，[PR #5826](https://github.com/divinevideo/divine-mobile/pull/5826) 为 `nostrconnect://` 流程抽取 `NostrConnectCoordinator`，清理 [NIP-46](/zh/topics/nip-46/) 客户端发起的 bunker 路径，为 [issue #4741](https://github.com/divinevideo/divine-mobile/issues/4741) 跟踪的认证重构铺路。[PR #5709](https://github.com/divinevideo/divine-mobile/pull/5709) 在缺少 `notification_type` 时映射 kind 16 repost，使发送客户端省略提示时仍能正确显示通知。
 
 ### Zap Cooking 修复 NIP-46 bunker 登录并加入 NIP-50 食谱搜索
 
-[Zap Cooking 前端](https://github.com/zapcooking/frontend)围绕 Nostr 认证失败恢复合并 18 个 PR。[PR #503](https://github.com/zapcooking/frontend/pull/503) 通过明确 connect 握手、authUrl 处理和错误展示修复 bunker 登录，外部签名器连接失败不再卡死。[PR #495](https://github.com/zapcooking/frontend/pull/495) 为食谱提取端点的图片和文本上传加入 NIP-98 认证，使上传可归属到 pubkey。另一条线通过 nostrarchives 搜索中继后端加入 NIP-50 全文食谱搜索（[PR #483](https://github.com/zapcooking/frontend/pull/483)）。引用笔记内容与媒体、链接预览、标签尺寸、多词搜索和服务端社交预览卡也得到改进。
+[Zap Cooking 前端](https://github.com/zapcooking/frontend)围绕 Nostr 认证失败恢复合并 18 个 PR。[PR #503](https://github.com/zapcooking/frontend/pull/503) 通过明确 connect 握手、authUrl 处理和错误展示修复 bunker 登录，外部签名器连接失败不再卡死。[PR #495](https://github.com/zapcooking/frontend/pull/495) 为食谱提取端点的图片和文本上传加入 NIP-98 认证，使上传可归属到 pubkey。另一条线通过 nostrarchives 搜索中继后端加入 NIP-50 全文食谱搜索（[PR #483](https://github.com/zapcooking/frontend/pull/483)）。引用笔记内容与媒体、链接预览、标签尺寸、多词搜索和服务端社交预览卡也得到改进（[PR #491](https://github.com/zapcooking/frontend/pull/491)、[PR #492](https://github.com/zapcooking/frontend/pull/492)、[PR #482](https://github.com/zapcooking/frontend/pull/482)、[PR #494](https://github.com/zapcooking/frontend/pull/494)）。
 
 ### swift-nostr-client v0.6.0
 
@@ -151,11 +151,11 @@ Napplet 的软件包则从“实用 SDK”走向更紧密的协议工具链。�
 
 ### Wisp 改进多账户、Blossom 与 iOS 交互
 
-[Wisp](https://github.com/barrydeen/wisp) 合并 9 个 PR：新增多账户切换器及添加账户流程的明确取消路径；为 `Blossom.parseServerList` 加入单元测试，收紧 [Blossom](/zh/topics/blossom/) server-list parser；重写 iOS zap 面板并加入 instant-zap 设置；将交易历史改为上滑底部面板；支持含非 ASCII Unicode 字母的 hashtag；保持个人资料笔记 feed 分页并内联显示 gallery 媒体；保留内联 profile 与 hashtag 片段前的空行。
+[Wisp](https://github.com/barrydeen/wisp) 合并 9 个 PR：新增多账户切换器及添加账户流程的明确取消路径；为 `Blossom.parseServerList` 加入单元测试，收紧 [Blossom](/zh/topics/blossom/) server-list parser；重写 iOS zap 面板并加入 instant-zap 设置；将交易历史改为上滑底部面板；支持含非 ASCII Unicode 字母的 hashtag；保持个人资料笔记 feed 分页并内联显示 gallery 媒体；保留内联 profile 与 hashtag 片段前的空行。对应 PR 为 [#604](https://github.com/barrydeen/wisp/pull/604)、[#613](https://github.com/barrydeen/wisp/pull/613)、[#574](https://github.com/barrydeen/wisp/pull/574)、[#605](https://github.com/barrydeen/wisp/pull/605)、[#611](https://github.com/barrydeen/wisp/pull/611)、[#609](https://github.com/barrydeen/wisp/pull/609) 与 [#603](https://github.com/barrydeen/wisp/pull/603)。
 
 ### TAO 与 Wired 将默认工作量证明提高到 21 位
 
-[smolgrrr/TAO](https://github.com/smolgrrr/TAO) 与 [smolgrrr/Wired](https://github.com/smolgrrr/Wired) 在两个仓库合入相同的 13 个 PR。[PR #84](https://github.com/smolgrrr/TAO/pull/84) 将默认帖子 signal 的 PoW 目标提高到 21 个前导零位；[PR #80](https://github.com/smolgrrr/TAO/pull/80) 从新鲜 PoW 活动中呈现 feed root，让客户端按近期 NIP-13 工作量为时间线排序，取代原来的事件年龄排序。另有自定义 emoji picker 恢复和视频首帧预览。这是本周第二个把 NIP-13 作为用户内容一级过滤器的 Nostr 客户端，与 Bitchat 的频道级 PoW 相呼应。
+[smolgrrr/TAO](https://github.com/smolgrrr/TAO) 与 [smolgrrr/Wired](https://github.com/smolgrrr/Wired) 在两个仓库合入相同的 13 个 PR。[PR #84](https://github.com/smolgrrr/TAO/pull/84) 将默认帖子 signal 的 PoW 目标提高到 21 个前导零位；[PR #80](https://github.com/smolgrrr/TAO/pull/80) 从新鲜 PoW 活动中呈现 feed root，让客户端按近期 NIP-13 工作量为时间线排序，取代原来的事件年龄排序。另有自定义 emoji picker 恢复（[PR #75](https://github.com/smolgrrr/TAO/pull/75)）和视频首帧预览（[PR #65](https://github.com/smolgrrr/TAO/pull/65)）。这是本周第二个把 NIP-13 作为用户内容一级过滤器的 Nostr 客户端，与 Bitchat 的频道级 PoW 相呼应。
 
 ### Keep Android v1.1.5 与 v1.1.6
 
@@ -170,6 +170,8 @@ Napplet 的软件包则从“实用 SDK”走向更紧密的协议工具链。�
 [SafeBox](https://github.com/trbouma/safebox) 是 Nostr 上的私密可携数据保险库，将 [NIP-47](/zh/topics/nip-47/) Nostr Wallet Connect、nAuth、nembed 以及经中继、QR 与 NFC 传递记录整合为可由运营者部署的服务。7 月 6 日发布的 [2026 年 7 月进展报告](https://github.com/trbouma/safebox/blob/main/docs/PROGRESS-REPORT-2026-07.md)将 Phase 3 标记为大致完成：自 4 月报告后提交 49 次，仓库累计 1,136 次，Phase 3 的四项工程承诺大多完成。下一步是范围受控的 pilot；报告还披露，一家受 NDA 约束的电信提供方正在研究 SafeBox 健康记录试点。
 
 此前 Phase 3 的 Nostr 工作包括：对会变更状态的 NWC 动作排队以避免 proof 竞争；Lightning melt 失败后先保护 proof 再返回；长期 NWC listener 主动刷新，避免超过 idle threshold 后静默停滞；LNURL callback 使用规范 origin 及明确 JSON、CORS 响应。QR 与 NFC 记录交换形成统一流程规范，覆盖接收者展示、发送者展示与跨设备展示模式，并通过 Open Quantum Safe 库改善 KEM 处理和重放保护。窗口内 commit [`6866dae`](https://github.com/trbouma/safebox/commit/6866dae) 加入 [FreeBSD jail 部署与 liboqs 构建手册](https://github.com/trbouma/safebox/blob/main/docs/devops/freebsd-jail-from-scratch.md)及 [FreeBSD appliance 规范](https://github.com/trbouma/safebox/blob/main/docs/devops/SAFEBOX-FREEBSD-APPLIANCE-SPEC.md)，记录 ZFS 快照、jail 隔离、`rc.d` 服务管理、主机级反向代理和 FreeBSD/ARM 回滚流程。
+
+同一作者还拆分出 [OpenETR](https://github.com/trbouma/openetr)，把 SafeBox 的记录模型用于电子可转让记录。窗口内提交 [`ea612a9`](https://github.com/trbouma/openetr/commit/ea612a9)、[`ca153a3`](https://github.com/trbouma/openetr/commit/ca153a3) 与 [`ba84b61`](https://github.com/trbouma/openetr/commit/ba84b61) 分别推进基础结构、Nostr 承载流程与项目文档。
 
 ---
 
