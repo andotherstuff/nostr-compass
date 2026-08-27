@@ -1,0 +1,168 @@
+"""Tests for scripts/build_release_digest.py.
+
+The regression these guard is concrete: Nail shipped v0.1.0 inside Newsletter
+#37's window, was present in both the GitHub and Zapstore fetches, and appeared
+in no downstream artifact because the fetch summary reported only aggregates.
+"""
+from __future__ import annotations
+
+import importlib.util
+import unittest
+from pathlib import Path
+
+SCRIPT = Path(__file__).resolve().parent.parent / "scripts" / "build_release_digest.py"
+spec = importlib.util.spec_from_file_location("build_release_digest", SCRIPT)
+assert spec and spec.loader
+digest_mod = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(digest_mod)
+
+
+def updates(projects: dict) -> dict:
+    return {"period": {"start": "2026-08-18", "end": "2026-08-26"}, "projects": projects}
+
+
+def project(name, tag, published, releases=None, prs=0):
+    return {
+        "name": name,
+        "releases": releases or [{"tag": tag, "published_at": published, "url": f"https://x/{tag}", "body": "notes"}],
+        "merged_prs": [{"number": i} for i in range(prs)],
+    }
+
+
+class TestNormalizeRepo(unittest.TestCase):
+    def test_collapses_url_forms_to_one_key(self):
+        forms = [
+            "formstr-hq/nail",
+            "github.com/formstr-hq/nail",
+            "https://github.com/formstr-hq/nail",
+            "https://github.com/formstr-hq/nail.git",
+            "GitHub.com/Formstr-HQ/Nail",
+        ]
+        keys = {digest_mod.normalize_repo(f) for f in forms}
+        self.assertEqual(keys, {"formstr-hq/nail"})
+
+
+class TestCoverageMatching(unittest.TestCase):
+    def test_matches_coverage_history_keyed_by_repo_url(self):
+        # coverage_history.json keys are `github.com/owner/repo`; updates keys are
+        # `owner/repo`. Comparing project NAMES across the two matched nothing and
+        # flagged all 40 projects NEVER-COVERED on this script's first run.
+        coverage = {"projects": {"github.com/formstr-hq/nail": {"last_mention_date": "2026-08-19"}}}
+        covered = digest_mod.covered_repos(coverage)
+        self.assertIn("formstr-hq/nail", covered)
+        self.assertEqual(covered["formstr-hq/nail"], "2026-08-19")
+
+    def test_absent_coverage_means_no_flags_rather_than_all_flags(self):
+        d = digest_mod.build(updates({"a/b": project("A", "v1.0.0", "2026-08-20")}), None, None)
+        self.assertFalse(d["coverage_history_available"])
+        self.assertFalse(d["projects"][0]["never_covered"])
+
+
+class TestFirstReleaseDetection(unittest.TestCase):
+    def test_debut_style_tags_are_flagged(self):
+        for tag in ("v0.1.0", "0.1.0", "v0.0.1", "v0.2.0"):
+            self.assertTrue(digest_mod.looks_like_first_release(tag, 1), tag)
+
+    def test_mature_tags_are_not_flagged(self):
+        for tag in ("v1.12.0", "v3.1.50", "2.21.1"):
+            self.assertFalse(digest_mod.looks_like_first_release(tag, 1), tag)
+
+    def test_many_releases_in_window_is_not_a_debut(self):
+        self.assertFalse(digest_mod.looks_like_first_release("v0.1.0", 7))
+
+
+class TestNailRegression(unittest.TestCase):
+    """The exact shape that was lost from Newsletter #37."""
+
+    def setUp(self):
+        self.coverage = {
+            "projects": {
+                "github.com/formstr-hq/nail": {"last_mention_date": "2026-08-19"},
+                "github.com/vitorpamplona/amethyst": {"last_mention_date": "2026-08-19"},
+            }
+        }
+        self.zapstore = {
+            "releases": [
+                {"tracked_project": "Nail", "app_id": "com.formstr.mail", "version": "1.0"}
+            ]
+        }
+        self.updates = updates(
+            {
+                "formstr-hq/nail": project("Nail", "v0.1.0", "2026-08-23", prs=5),
+                "vitorpamplona/amethyst": project("Amethyst", "v1.12.9", "2026-08-20", prs=40),
+            }
+        )
+
+    def test_nail_ranks_first(self):
+        d = digest_mod.build(self.updates, self.zapstore, self.coverage)
+        self.assertEqual(d["projects"][0]["project"], "Nail")
+
+    def test_nail_carries_every_signal(self):
+        d = digest_mod.build(self.updates, self.zapstore, self.coverage)
+        nail = d["projects"][0]
+        self.assertTrue(nail["possible_first_release"])
+        self.assertTrue(nail["recent_followup"], "introduced in #36, released during #37")
+        self.assertEqual(nail["last_covered"], "2026-08-19")
+        self.assertEqual(nail["zapstore_listing"][0]["app_id"], "com.formstr.mail")
+
+    def test_release_is_named_in_the_markdown(self):
+        d = digest_mod.build(self.updates, self.zapstore, self.coverage)
+        md = digest_mod.render_markdown(d)
+        # The whole point: the tag and URL appear as text, not as a count.
+        self.assertIn("v0.1.0", md)
+        self.assertIn("formstr-hq/nail", md)
+        self.assertIn("FOLLOW-UP", md)
+
+    def test_every_project_gets_a_decision_slot(self):
+        d = digest_mod.build(self.updates, self.zapstore, self.coverage)
+        md = digest_mod.render_markdown(d)
+        self.assertEqual(md.count("Triage decision:"), len(d["projects"]))
+
+
+class TestFollowUpWindow(unittest.TestCase):
+    def test_stale_coverage_is_not_a_followup(self):
+        coverage = {"projects": {"github.com/a/b": {"last_mention_date": "2026-01-01"}}}
+        d = digest_mod.build(updates({"a/b": project("A", "v0.1.0", "2026-08-20")}), None, coverage)
+        self.assertFalse(d["projects"][0]["recent_followup"])
+
+    def test_release_before_coverage_is_not_a_followup(self):
+        # Negative gap: the release predates the mention, so the mention already
+        # covered it. Flagging it would send triage after old news.
+        coverage = {"projects": {"github.com/a/b": {"last_mention_date": "2026-08-26"}}}
+        d = digest_mod.build(updates({"a/b": project("A", "v0.1.0", "2026-08-20")}), None, coverage)
+        self.assertFalse(d["projects"][0]["recent_followup"])
+
+    def test_unparseable_dates_do_not_crash(self):
+        coverage = {"projects": {"github.com/a/b": {"last_mention_date": "not-a-date"}}}
+        d = digest_mod.build(updates({"a/b": project("A", "v0.1.0", "2026-08-20")}), None, coverage)
+        self.assertFalse(d["projects"][0]["recent_followup"])
+
+
+class TestOutputHygiene(unittest.TestCase):
+    def test_projects_without_releases_are_omitted(self):
+        d = digest_mod.build(
+            updates({"a/b": {"name": "Quiet", "releases": [], "merged_prs": []}}), None, None
+        )
+        self.assertEqual(d["release_bearing_projects"], 0)
+
+    def test_empty_release_notes_are_called_out(self):
+        u = updates(
+            {"a/b": {"name": "A", "releases": [{"tag": "v0.1.0", "published_at": "2026-08-20", "url": "", "body": ""}], "merged_prs": []}}
+        )
+        md = digest_mod.render_markdown(digest_mod.build(u, None, None))
+        self.assertIn("empty release notes", md)
+
+    def test_deterministic_across_runs(self):
+        u = updates(
+            {
+                "a/b": project("A", "v0.1.0", "2026-08-20"),
+                "c/d": project("C", "v2.0.0", "2026-08-21"),
+            }
+        )
+        first = digest_mod.render_markdown(digest_mod.build(u, None, None))
+        second = digest_mod.render_markdown(digest_mod.build(u, None, None))
+        self.assertEqual(first, second)
+
+
+if __name__ == "__main__":
+    unittest.main()

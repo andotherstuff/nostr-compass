@@ -91,7 +91,26 @@ START_DATE=$(calc_start_date "$SINCE_DAYS")
 END_DATE=$(get_today)
 OUTPUT_FILE="$OUTPUT_DIR/zapstore_${END_DATE}.json"
 SINCE_TIMESTAMP=$(calc_since_timestamp "$SINCE_DAYS")
-SEEN_FILE="$OUTPUT_DIR/publishers_seen.yml"
+# Persistent newness state must OUTLIVE the working tree.
+#
+# WHY: every newsletter runs in a fresh worktree created from origin/main, and
+# `data/zapstore_releases/` is gitignored (.gitignore line 67). The seen file
+# therefore never existed at run time, the fresh-install guard fired on every
+# single run, and 100% of Zapstore releases were flagged first_run/new_app=false.
+# Newsletter #37 discarded 622 Nostr-relevant releases this way, including
+# Nail's own `com.formstr.mail` listing and Mostro Mobile v1.4.0.
+#
+# COMPASS_STATE_DIR keeps the baseline on the host, outside any worktree. The
+# in-repo path stays as a read-only fallback so an existing worktree's state can
+# still be migrated by scripts/migrate_discovery_state.py.
+COMPASS_STATE_DIR="${COMPASS_STATE_DIR:-/opt/data/compass-state}"
+mkdir -p "$COMPASS_STATE_DIR/zapstore_releases" 2>/dev/null || true
+SEEN_FILE="${COMPASS_ZAPSTORE_SEEN_FILE:-$COMPASS_STATE_DIR/zapstore_releases/publishers_seen.yml}"
+LEGACY_SEEN_FILE="$OUTPUT_DIR/publishers_seen.yml"
+if [ ! -f "$SEEN_FILE" ] && [ -f "$LEGACY_SEEN_FILE" ]; then
+    echo "  Adopting legacy in-worktree seen file into $COMPASS_STATE_DIR" >&2
+    cp "$LEGACY_SEEN_FILE" "$SEEN_FILE" 2>/dev/null || true
+fi
 PROJECTS_FILE="$PROJECT_ROOT/data/projects.yml"
 
 # Relays
@@ -565,6 +584,7 @@ save_output() {
               updates: ([$releases[] | select(.update and .nostr_relevant)] | length),
               sanity_demoted: ([$releases[] | select(.sanity_demoted)] | length),
               first_run_baseline: ([$releases[] | select(.first_run)] | length),
+              baseline_suppressed_nostr_relevant: ([$releases[] | select(.first_run and .nostr_relevant)] | length),
               tracked_in_projects_yml: ([$releases[] | select(.tracked_project != null)] | length),
               candidates_for_projects_yml: ([$releases[] | select(.nostr_relevant and .tracked_project == null)] | length)
             },
@@ -573,6 +593,21 @@ save_output() {
        ' "$JOINED_FILE" > "$OUTPUT_FILE"
 
     echo "Output saved to: $OUTPUT_FILE" >&2
+
+    # Distinguish "nothing shipped" from "everything suppressed". Newsletter #37
+    # got a 0-release run and a 1313-release run hours apart, and both read as a
+    # quiet week because neither said which it was.
+    local total suppressed relevant
+    total=$(jq '.summary.total_releases' "$OUTPUT_FILE")
+    relevant=$(jq '.summary.nostr_relevant' "$OUTPUT_FILE")
+    suppressed=$(jq '.summary.baseline_suppressed_nostr_relevant' "$OUTPUT_FILE")
+    if [ "$total" = "0" ]; then
+        echo "ZAPSTORE_STATUS=empty-window (0 releases returned; relay degradation cannot be ruled out — do NOT claim a quiet week)" >&2
+    elif [ "$suppressed" -gt 0 ]; then
+        echo "ZAPSTORE_STATUS=baseline-suppressed ($suppressed of $relevant Nostr-relevant releases unclassified; new_app signal unavailable this run)" >&2
+    else
+        echo "ZAPSTORE_STATUS=classified ($relevant Nostr-relevant releases with usable new_app/update flags)" >&2
+    fi
 }
 
 print_summary() {
@@ -595,6 +630,12 @@ print_summary() {
         "Tracked in projects.yml: \(.summary.tracked_in_projects_yml)",
         "Candidates for projects.yml: \(.summary.candidates_for_projects_yml)",
         "",
+        (if .summary.baseline_suppressed_nostr_relevant > 0 then
+           "!! BASELINE SUPPRESSION: \(.summary.baseline_suppressed_nostr_relevant) Nostr-relevant releases were flagged first_run and carry NO new_app/update signal.",
+           "!! This run cannot support any 'new app' or 'quiet week' claim. Treat the release list as unclassified candidates.",
+           "!! If this fires every week the baseline is not persisting; run scripts/migrate_discovery_state.py and check COMPASS_STATE_DIR.",
+           ""
+         else empty end),
         "Nostr-relevant releases (top 20):",
         (.releases | map(select(.nostr_relevant))[:20] | .[]
           | "  - \(.app_name) v\(.version) (\(if .new_app then "NEW" elif .update then "update" else "?" end))\(if .tracked_project then " [tracked: \(.tracked_project)]" else "" end) [\(.nostr_match_reason)]")

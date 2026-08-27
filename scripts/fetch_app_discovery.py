@@ -9,6 +9,7 @@ import json
 import re
 import subprocess
 from datetime import date, datetime, time, timedelta, timezone
+import os
 from pathlib import Path
 from urllib.parse import urlsplit, urlunsplit
 
@@ -918,7 +919,22 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--today", help="UTC date override for reproducible runs (YYYY-MM-DD)")
     parser.add_argument("--projects-file", type=Path, default=root / "data/projects.yml")
     parser.add_argument("--output-dir", type=Path, default=root / "data/app_discovery")
-    parser.add_argument("--state-file", type=Path, default=root / "data/app_discovery/seen_repos.json")
+    # Persistent baseline must outlive the working tree. `data/app_discovery/`
+    # is gitignored, and every newsletter runs in a fresh worktree from
+    # origin/main, so this file never existed at run time: first_run fired on
+    # every run and nothing was deduped against a baseline. Newsletter #37's
+    # triage was handed 603 candidates including 561 owner-siblings, which is
+    # not reviewable, so real launches were buried rather than surfaced.
+    default_state_dir = Path(
+        os.environ.get("COMPASS_STATE_DIR", "/opt/data/compass-state")
+    ) / "app_discovery"
+    parser.add_argument(
+        "--state-file",
+        type=Path,
+        default=default_state_dir / "seen_repos.json",
+        help="Persistent discovery baseline. Defaults under COMPASS_STATE_DIR so it "
+        "survives the per-issue worktree.",
+    )
     parser.add_argument("--relay", action="append", dest="relays")
     parser.add_argument("--github-fixture", type=Path)
     parser.add_argument("--nip89-fixture", type=Path)
