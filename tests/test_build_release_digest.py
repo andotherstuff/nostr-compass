@@ -229,3 +229,99 @@ class TestOutputHygiene(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class TestSuppressionRule(unittest.TestCase):
+    """Recency alone must never suppress a project.
+
+    The owner's rule: skip only when a project was covered in the previous issue
+    AND shipped nothing exciting. #37 dropped Nail v0.1.0 on recency alone.
+    """
+
+    RECENT = {"projects": {"github.com/a/b": {"last_mention_date": "2026-08-19"}}}
+
+    def entry_for(self, tag, body, prs=0, coverage=None):
+        u = updates(
+            {
+                "a/b": {
+                    "name": "A",
+                    "releases": [
+                        {"tag": tag, "published_at": "2026-08-23", "url": "u", "body": body}
+                    ],
+                    "merged_prs": [{"number": i, "title": "chore: bump"} for i in range(prs)],
+                }
+            }
+        )
+        d = digest_mod.build(u, None, coverage if coverage is not None else self.RECENT)
+        return d["projects"][0]
+
+    def test_recent_plus_substance_is_never_suppressible(self):
+        e = self.entry_for("v0.1.0", "Add android app to mailstr; Zapstore publish config")
+        self.assertTrue(e["recent_followup"])
+        self.assertTrue(e["substance_signals"])
+        self.assertFalse(e["suppression_allowed"])
+
+    def test_recent_with_no_substance_is_suppressible(self):
+        # A bare compare link carries nothing a reader can use.
+        e = self.entry_for(
+            "v0.3.46",
+            "**Full Changelog**: https://github.com/x/y/compare/v0.3.44...v0.3.46",
+        )
+        self.assertTrue(e["recent_followup"])
+        self.assertEqual(e["substance_signals"], [])
+        self.assertTrue(e["suppression_allowed"])
+
+    def test_never_covered_is_never_suppressible_even_without_substance(self):
+        e = self.entry_for("v9.9.9", "", coverage={"projects": {}})
+        self.assertFalse(e["recent_followup"])
+        self.assertFalse(e["suppression_allowed"])
+
+    def test_messaging_features_count_as_substance(self):
+        # NYM v3.75.543 was wrongly suppressible before these patterns existed.
+        e = self.entry_for(
+            "v3.75.543",
+            "New: message threads in channels, PMs, and group chats\nHotfix: post-quantum encrypted PMs",
+        )
+        self.assertIn("messaging-feature", e["substance_signals"])
+        self.assertIn("encryption", e["substance_signals"])
+        self.assertFalse(e["suppression_allowed"])
+
+    def test_boilerplate_alone_is_not_documented_change(self):
+        body = "## What's Changed\n**Full Changelog**: https://github.com/x/y/compare/a...b"
+        self.assertLess(digest_mod.documented_change_chars([{"body": body}]), 120)
+
+    def test_real_notes_count_as_documented_change(self):
+        body = "### Features\n\n- accept LUD-25 bearer notes in an X-LNURLcash header, wiring the rails adapter through the new header parser and covering it with integration tests\n"
+        self.assertGreaterEqual(digest_mod.documented_change_chars([{"body": body}]), 120)
+
+    def test_suppressible_entries_sort_last(self):
+        u = updates(
+            {
+                "a/b": {
+                    "name": "Quiet",
+                    "releases": [{"tag": "v1.2.3", "published_at": "2026-08-23", "url": "", "body": "**Full Changelog**: https://x/y"}],
+                    "merged_prs": [],
+                },
+                "c/d": {
+                    "name": "Loud",
+                    "releases": [{"tag": "v0.1.0", "published_at": "2026-08-23", "url": "", "body": "Adds android app and relay support"}],
+                    "merged_prs": [],
+                },
+            }
+        )
+        cov = {
+            "projects": {
+                "github.com/a/b": {"last_mention_date": "2026-08-19"},
+                "github.com/c/d": {"last_mention_date": "2026-08-19"},
+            }
+        }
+        d = digest_mod.build(u, None, cov)
+        self.assertEqual(d["projects"][0]["project"], "Loud")
+        self.assertEqual(d["projects"][-1]["project"], "Quiet")
+
+    def test_markdown_states_when_a_skip_is_defensible(self):
+        e = self.entry_for("v0.3.46", "**Full Changelog**: https://x/y/compare/a...b")
+        d = {"projects": [e], "total_releases": 1, "release_bearing_projects": 1,
+             "coverage_history_available": True, "zapstore_apps": 0, "zapstore_only": []}
+        md = digest_mod.render_markdown(d)
+        self.assertIn("a skip is defensible", md)

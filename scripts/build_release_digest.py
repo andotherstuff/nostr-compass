@@ -124,6 +124,67 @@ SEMVER = re.compile(r"^v?0+\.(0+\.)?(\d+)")
 # release from it is a follow-up rather than a re-introduction.
 FOLLOWUP_WINDOW_DAYS = 21
 
+# Recency alone must never suppress a project. Suppression requires BOTH that it
+# was covered in the previous issue AND that nothing substantive shipped since.
+# Newsletter #37 dropped Nail v0.1.0 — an Android app, a key-free notifier crate
+# and a Zapstore listing — on recency alone, so "substantive" is computed from
+# the release notes and PR titles rather than left to a judgement call.
+SUBSTANCE_PATTERNS: list[tuple[str, str]] = [
+    ("new-platform", r"\b(android|ios|iphone|ipad|desktop|linux|macos|windows|web ?app|mobile)\b"),
+    ("app-store-listing", r"\b(zapstore|f-?droid|play store|app ?store|testflight|apk)\b"),
+    ("protocol-surface", r"\b(nip-?[0-9a-f]{1,3}|kind ?[0-9]{1,5}|bud-?[0-9]+|nap-?[a-z0-9]+|relay|gift ?wrap|npub|nsec|naddr|nevent|signer|bunker)\b"),
+    ("security", r"\b(cve-|ghsa-|advisor|vulnerab|exploit|confused deputy|bypass|leak|forge[ds]?)\b"),
+    ("first-release", r"^v?0+\.(0+\.)?\d+$"),
+    ("new-component", r"\b(crate|library|sdk|plugin|daemon|bridge|worker|service|module|rewrite|rebuild|redesign)\b"),
+    ("data-integrity", r"\b(data ?loss|corrupt|migration|backup|recover|restore|dedupl)\b"),
+    # Added after NYM v3.75.543 was wrongly marked suppressible: it shipped
+    # "message threads in channels, PMs, and group chats" plus post-quantum
+    # encrypted PMs, and none of the patterns above matched that language.
+    ("messaging-feature", r"\b(thread(s|ed|ing)?|channel|group ?chat|direct ?message|\bpms?\b|feed|notification|mention|reaction|search)\b"),
+    ("encryption", r"\b(encrypt|decrypt|cipher|post-?quantum|key ?rotation|forward ?secrec)\b"),
+    ("explicit-new-marker", r"(^|\n)\s*[-*#]*\s*(new|feature|added|adds)\s*[:\-]"),
+]
+
+# A bare "Full Changelog: <compare url>" carries no information a reader can
+# use, so it is not evidence of substance. Anything beyond that is.
+_BOILERPLATE = re.compile(
+    r"(\*\*full changelog\*\*.*|## what.s changed|## new contributors|"
+    r"\*\*reproducible build\*\*.*|https?://\S+)",
+    re.I,
+)
+
+
+def documented_change_chars(releases: list[dict]) -> int:
+    """Characters of release notes left after stripping boilerplate and URLs."""
+    total = 0
+    for r in releases:
+        body = (r.get("body") or "")
+        total += len(_BOILERPLATE.sub("", body).strip())
+    return total
+
+
+def substance_signals(releases: list[dict], pr_titles: list[str], tag: str | None) -> list[str]:
+    """Concrete markers that a release shipped something worth telling readers.
+
+    Reads the release notes and merged-PR titles the fetch already captured. A
+    hit is a reason to look, never a claim for prose: Triage still has to open
+    the release and verify what changed.
+    """
+    haystack = " ".join(
+        [r.get("body") or "" for r in releases] + list(pr_titles)
+    ).lower()
+    found: list[str] = []
+    for label, pattern in SUBSTANCE_PATTERNS:
+        if label == "first-release":
+            if tag and re.match(pattern, tag.strip(), re.I):
+                found.append(label)
+            continue
+        if re.search(pattern, haystack, re.I):
+            found.append(label)
+    if documented_change_chars(releases) >= 120:
+        found.append("documented-changes")
+    return found
+
 
 def looks_like_first_release(tag: str | None, release_count_in_window: int) -> bool:
     """A 0.0.x / 0.1.0 / v1.0 tag with no prior coverage reads as a debut.
@@ -150,6 +211,10 @@ def rank(entry: dict) -> tuple[int, str]:
         score -= 5
     if entry["recent_followup"]:
         score -= 25
+    if entry["substance_signals"]:
+        score -= 10 * min(len(entry["substance_signals"]), 3)
+    if entry["suppression_allowed"]:
+        score += 40
     return (score, entry["project"].lower())
 
 
@@ -223,6 +288,10 @@ def build(updates: dict, zapstore: dict | None, coverage: dict | None) -> dict:
                 }
             )
         rels.sort(key=lambda x: x["published_at"])
+        pr_titles = [
+            p.get("title") or "" for p in (proj.get("merged_prs") or []) if isinstance(p, dict)
+        ]
+        signals = substance_signals(releases, pr_titles, rels[0]["tag"])
         entry = {
             "project": str(name),
             "repo": repo_key,
@@ -235,6 +304,10 @@ def build(updates: dict, zapstore: dict | None, coverage: dict | None) -> dict:
             "last_covered": covered.get(normalize_repo(repo_key)) or None,
             "recent_followup": False,  # filled in below, needs the window end date
             "possible_first_release": looks_like_first_release(rels[0]["tag"], len(rels)),
+            "substance_signals": signals,
+            # True only when the project is recently covered AND nothing
+            # substantive shipped. Anything else must be written up.
+            "suppression_allowed": False,
             "zapstore_listing": zap[:3],
         }
         # A project covered within FOLLOWUP_WINDOW_DAYS that now ships a release
@@ -246,6 +319,7 @@ def build(updates: dict, zapstore: dict | None, coverage: dict | None) -> dict:
             gap = days_between(last, newest_release)
             if gap is not None and 0 <= gap <= FOLLOWUP_WINDOW_DAYS:
                 entry["recent_followup"] = True
+        entry["suppression_allowed"] = bool(entry["recent_followup"]) and not signals
         entries.append(entry)
 
     entries.sort(key=rank)
@@ -301,6 +375,10 @@ def render_markdown(digest: dict) -> str:
             flags.append("**POSSIBLE-FIRST-RELEASE**")
         if e["recent_followup"]:
             flags.append(f"**FOLLOW-UP** (last covered {e['last_covered']})")
+        if e["substance_signals"]:
+            flags.append("substance: " + ", ".join(e["substance_signals"]))
+        if e["suppression_allowed"]:
+            flags.append("_recently covered, no substance markers — a skip is defensible_")
         if e["zapstore_listing"]:
             ids = ", ".join(
                 f"`{z['app_id']}`" + (f" v{z['version']}" if z.get("version") else "")
