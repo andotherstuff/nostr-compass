@@ -153,14 +153,55 @@ def rank(entry: dict) -> tuple[int, str]:
     return (score, entry["project"].lower())
 
 
+def zapstore_apps(zapstore: dict | None) -> list[dict]:
+    """Per-app view of the Zapstore feed.
+
+    Prefers the `apps` rollup the fetcher emits; falls back to computing it from
+    `releases` so older artifacts still work. Per-release counts are unusable for
+    review: #37 reported 622 Nostr-relevant releases, of which 476 were
+    PosterChan CI builds and 60 were Boris. The real figure was 48 apps.
+    """
+    if not zapstore:
+        return []
+    apps = zapstore.get("apps")
+    if isinstance(apps, list) and apps:
+        return apps
+    grouped: dict[str, list[dict]] = {}
+    for rel in zapstore.get("releases", []):
+        if rel.get("nostr_relevant") and rel.get("app_id"):
+            grouped.setdefault(rel["app_id"], []).append(rel)
+    out = []
+    for app_id, rows in grouped.items():
+        # release_created_at, not published_at: published_at is null on every
+        # Zapstore row, so sorting on it yields arbitrary "latest" versions.
+        rows.sort(key=lambda r: r.get("release_created_at") or 0)
+        tracked = next((r.get("tracked_project") for r in rows if r.get("tracked_project")), None)
+        out.append(
+            {
+                "app_id": app_id,
+                "app_name": rows[0].get("app_name"),
+                "tracked_project": tracked,
+                "release_count": len(rows),
+                "latest_version": rows[-1].get("version"),
+                "latest_at": rows[-1].get("release_created_at_iso"),
+                "new_app": any(r.get("new_app") for r in rows),
+                "baseline_suppressed": all(r.get("first_run") for r in rows),
+            }
+        )
+    out.sort(key=lambda a: (0 if a.get("tracked_project") else 1, -a.get("release_count", 0)))
+    return out
+
+
 def build(updates: dict, zapstore: dict | None, coverage: dict | None) -> dict:
     covered = covered_repos(coverage)
+    apps = zapstore_apps(zapstore)
     zap_by_project: dict[str, list[dict]] = {}
-    if zapstore:
-        for rel in zapstore.get("releases", []):
-            tp = rel.get("tracked_project")
-            if isinstance(tp, str):
-                zap_by_project.setdefault(tp.strip().lower(), []).append(rel)
+    for app in apps:
+        tp = app.get("tracked_project")
+        if isinstance(tp, str):
+            zap_by_project.setdefault(tp.strip().lower(), []).append(
+                {"app_id": app.get("app_id"), "version": app.get("latest_version")}
+            )
 
     entries: list[dict] = []
     for repo_key, proj in (updates.get("projects") or {}).items():
@@ -194,9 +235,7 @@ def build(updates: dict, zapstore: dict | None, coverage: dict | None) -> dict:
             "last_covered": covered.get(normalize_repo(repo_key)) or None,
             "recent_followup": False,  # filled in below, needs the window end date
             "possible_first_release": looks_like_first_release(rels[0]["tag"], len(rels)),
-            "zapstore_listing": [
-                {"app_id": z.get("app_id"), "version": z.get("version")} for z in zap[:3]
-            ],
+            "zapstore_listing": zap[:3],
         }
         # A project covered within FOLLOWUP_WINDOW_DAYS that now ships a release
         # is the highest-value miss: the reader already met it, and the release
@@ -210,11 +249,23 @@ def build(updates: dict, zapstore: dict | None, coverage: dict | None) -> dict:
         entries.append(entry)
 
     entries.sort(key=rank)
+    # A tracked project can ship on Zapstore without cutting a GitHub release.
+    # Six did inside #37's window (Imwald 0.4.0, Nostria 4.1.72, Flotilla 1.9.1,
+    # Deepmarks 2.2.13, Surveil 0.1.8, Treasures 2.10.1) and a GitHub-only sweep
+    # could not see any of them.
+    named = {e["project"].strip().lower() for e in entries}
+    zapstore_only = [
+        a for a in apps if (a.get("tracked_project") or "").strip().lower() not in named
+    ]
+    zapstore_only.sort(key=lambda a: (0 if a.get("tracked_project") else 1, a.get("app_id") or ""))
+
     return {
         "period": updates.get("period"),
         "release_bearing_projects": len(entries),
         "total_releases": sum(e["release_count"] for e in entries),
         "coverage_history_available": bool(covered),
+        "zapstore_apps": len(apps),
+        "zapstore_only": zapstore_only,
         "projects": entries,
     }
 
@@ -272,6 +323,33 @@ def render_markdown(digest: dict) -> str:
         if e["merged_prs"]:
             out.append(f"  - {e['merged_prs']} merged PRs in window")
         out.append("  - Triage decision: __________ (write up / skip + reason)")
+
+    zo = digest.get("zapstore_only") or []
+    shown = [a for a in zo if a.get("tracked_project") or a.get("new_app")]
+    if shown:
+        tracked_n = sum(1 for a in shown if a.get("tracked_project"))
+        out.append("")
+        out.append("## Zapstore releases with no GitHub release in window")
+        out.append("")
+        out.append(
+            f"{len(shown)} of {digest.get('zapstore_apps', 0)} Zapstore apps shipped without a "
+            f"matching GitHub release, {tracked_n} of them tracked projects. A GitHub-only sweep "
+            "cannot see these."
+        )
+        out.append("")
+        for a in shown:
+            label = a.get("app_name") or a.get("app_id")
+            line = f"- **{label}** `{a.get('app_id')}` {a.get('latest_version') or '?'}"
+            if a.get("latest_at"):
+                line += f" ({str(a['latest_at'])[:10]})"
+            if a.get("tracked_project"):
+                line += f" — tracked: {a['tracked_project']}"
+            if a.get("new_app"):
+                line += " — **NEW-APP**"
+            if a.get("baseline_suppressed"):
+                line += " — unclassified (baseline suppressed this run)"
+            out.append(line)
+            out.append("  - Triage decision: __________ (write up / skip + reason)")
     out.append("")
     return "\n".join(out)
 
