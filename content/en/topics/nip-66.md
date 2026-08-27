@@ -59,3 +59,4 @@ NIP-66 does not create a single authoritative monitor. Multiple monitors can pub
 - [NIP-11: Relay Information Document](/en/topics/nip-11/)
 - [NIP-65: Relay List Metadata](/en/topics/nip-65/)
 - [Trusted Relay Assertions](/en/topics/trusted-relay-assertions/)
+- [Newsletter #37: Also shipped](/en/newsletters/2026-08-26-newsletter/#also-shipped)

@@ -47,7 +47,7 @@ Legacy clients and signers still expose NIP-04 encrypt/decrypt methods because o
 - [NIP-04 Specification](https://github.com/nostr-protocol/nips/blob/master/04.md)
 
 **Mentioned in:**
-- [Newsletter #4: NIP Deep Dive](/en/newsletters/2026-01-07-newsletter/#nip-04-encrypted-direct-messages-legacy)
+- [Newsletter #4: NIP Deep Dive](/en/newsletters/2026-01-07-newsletter/#nip-deep-dive-nip-04-and-nip-44)
 - [Newsletter #3: December Recap](/en/newsletters/2025-12-31-newsletter/#december-recap-five-years-of-nostr-decembers)
 - [Newsletter #19: nostter NIP-44 migration](/en/newsletters/2026-04-22-newsletter/#nostter-adds-nip-44-encryption-across-people-lists-bookmarks-and-mutes)
 - [Newsletter #32: Mostr bridges ActivityPub private chats and Nostr DMs](/en/newsletters/2026-07-22-newsletter/#mostr-bridges-activitypub-private-chats-and-nostr-dms)
@@ -56,3 +56,4 @@ Legacy clients and signers still expose NIP-04 encrypt/decrypt methods because o
 - [NIP-44: Encrypted Payloads](/en/topics/nip-44/)
 - [NIP-17: Private Direct Messages](/en/topics/nip-17/)
 - [NIP-59: Gift Wrap](/en/topics/nip-59/)
+- [Newsletter #37: diVine 1.0.22](/en/newsletters/2026-08-26-newsletter/#divine-1022-relay-and-signer-lifecycles-that-end-when-the-session-does)
