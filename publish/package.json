@@ -1,0 +1,16 @@
+{
+  "name": "compass-publish",
+  "version": "0.1.0",
+  "description": "Manual-invocation publishing pipeline for Compass newsletters (NIP-23 long-form via NIP-46 bunker).",
+  "type": "module",
+  "scripts": {
+    "publish": "bun publish.ts",
+    "test": "bun test"
+  },
+  "dependencies": {
+    "nostr-tools": "^2.23.9",
+    "ws": "^8.18.0"
+  },
+  "private": true,
+  "license": "MIT"
+}

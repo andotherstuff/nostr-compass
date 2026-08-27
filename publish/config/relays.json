@@ -1,0 +1,17 @@
+{
+  "_comment": "Compass publication fan-out. The first four entries are durable read/write relays used as naddr/nevent hints. The final sendit.nosflare.com entry is a write-only NIP-66 blaster: count its OK receipt as fan-out acceptance, never as persistent readback evidence.",
+  "relays": [
+    "wss://nos.lol",
+    "wss://relay.primal.net",
+    "wss://relay.snort.social",
+    "wss://relay.nostr.net",
+    "wss://nostr.mom",
+    "wss://offchain.pub",
+    "wss://nostr.data.haus",
+    "wss://relay.mostr.pub",
+    "wss://wot.nostr.party",
+    "wss://nostr.oxtr.dev",
+    "wss://relay.nostr.com",
+    "wss://sendit.nosflare.com"
+  ]
+}

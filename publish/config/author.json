@@ -1,0 +1,5 @@
+{
+  "_comment": "Compass author identity. pubkey_hex is verified by bunker preflight before any signature is consumed. If the bunker signs with a different pubkey, the pipeline refuses to proceed.",
+  "npub": "npub1wav4fae3gyfy3xj298kxj2mj8phavz7vavps34przq02j7w902qq902923",
+  "pubkey_hex": "775954f7314112489a4a29ec692b72386fd60bcceb0308d423101ea979c57a80"
+}

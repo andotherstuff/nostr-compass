@@ -1,0 +1,6 @@
+{
+  "_comment": "Copy to notify.json (gitignored) to enable milestone notifications. The pipeline posts one message per finished step: draft parsed, article signed, announcement signed, broadcast accepted, PR merged, site deployed, log recorded, outreach sent, each language translated, translations merged. command is argv; {target} and {body} are substituted. COMPASS_NOTIFY=0 silences a run, COMPASS_NOTIFY_TARGET overrides target, COMPASS_NOTIFY_COMMAND overrides command with a JSON array. With no command configured, notification is skipped.",
+  "enabled": false,
+  "command": ["your-message-cli", "send", "--to", "{target}", "{body}"],
+  "target": ""
+}
