@@ -18,7 +18,9 @@ Deployed page: https://nostrcompass.org/en/newsletters/2026-08-26-newsletter/
 
 ## Nostr publication
 
-- Kind 30023 event ID: `4bfd7f91186fdcf81af57d3c585e80102372d9a62d03ba199ce170d8316a9980`
+- **Replaced after first publication.** The addressable event was re-signed and rebroadcast at 2026-08-27T07:29:30Z on the same `d` tag, so the event id below differs from the one recorded at first publication. `published_at` is preserved.
+
+- Kind 30023 event ID: `aafccc73d40aa9c1cee8839cbc6459a28f999ea3ba99f261f665ba1bfc7586df`
   - `d` tag `newsletter-37`, `published_at` `1787763698` (2026-08-26T17:01:38Z)
   - Banner image https://image.nostr.build/fbf98ad0d8f84fd6b60fd920c0364df3549ea7a2e0ca16a159202a2cd87b8baf.png
 - Kind 1 event ID: `f595842931c116e3b07e9fe50d249b02996908235f86df2c49b1fc357d766837`
