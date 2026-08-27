@@ -135,11 +135,48 @@ The NIP-34 tracker (`data/nip34_tracked.yml`) MUST only track repositories whose
 
 The owner sweep runs on the public-only core REST listing (`users/<owner>/repos?sort=pushed&type=public`), not the search API, because one search per owner would exhaust the 30-per-minute search budget. Owners past `OWNER_SIBLING_OWNER_LIMIT` and owner listings that exceed the bounded page walk are named in `source_errors`, never dropped quietly. A dedicated owner-sibling seen set lets every sibling receive one owner-provenance review even if an older query had already baselined it, while preventing repeated candidates in overlapping weekly windows.
 
-The script writes `data/app_discovery/discovery_YYYY-MM-DD.json`, excludes canonical repo/website/name matches already in `data/projects.yml`, and persists `seen_repos.json` so the weekly active-repository query does not repeat its baseline forever. Every GitHub result requires explicit Nostr plus application/tooling metadata; libraries and SDKs do not qualify on those labels alone. NIP-89 records require a stable `d` identifier, supported non-DVM kinds, and usable identity/location evidence. Zapstore listings require a stable app ID, canonical location, and an explicit Nostr protocol surface. Relay events are signature-verified, relay and source provenance is retained, unsafe URLs are rejected, GitHub truncation/incomplete-result warnings and partial source failures are reported, and independent records merge only when their canonical repository or website matches.
+The script writes `data/app_discovery/discovery_YYYY-MM-DD.json`, excludes canonical repo/website/name matches already in `data/projects.yml`, and persists `seen_repos.json` so the weekly active-repository query does not repeat its baseline forever.
+
+**Discovery baseline state lives outside the worktree (CRITICAL).** `seen_repos.json` and Zapstore's `publishers_seen.yml` resolve under `COMPASS_STATE_DIR` (default `/opt/data/compass-state/`), not under `data/`. They must, because `data/app_discovery/` and `data/zapstore_releases/` are gitignored and every issue runs in a fresh worktree from `origin/main`: for months the baselines never existed at run time. The consequences ran in both directions and both destroyed signal.
+
+- Zapstore's fresh-install guard fired every week, flagging every release `first_run: true` / `new_app: false`. Newsletter #37 discarded 622 Nostr-relevant releases this way, including `com.formstr.mail` (Nail's own listing) and Mostro Mobile v1.4.0.
+- App discovery's `first_run` fired every week, so nothing deduped against a baseline. The #37 fetch produced 603 candidates including 561 owner-siblings; the very next run, with the state file present, produced 14 candidates including 10 owner-siblings. Same window, 43× less noise.
+
+Run `python3 scripts/migrate_discovery_state.py` after adding a worktree or moving state; it takes the union across every worktree, because each accumulated a different partial baseline (five worktrees held five, from 6 to 778 repositories). Union is the safe direction: it can only suppress a stale "new" flag, never invent one. Never point these files back inside `data/`.
+
+Every GitHub result requires explicit Nostr plus application/tooling metadata; libraries and SDKs do not qualify on those labels alone. NIP-89 records require a stable `d` identifier, supported non-DVM kinds, and usable identity/location evidence. Zapstore listings require a stable app ID, canonical location, and an explicit Nostr protocol surface. Relay events are signature-verified, relay and source provenance is retained, unsafe URLs are rejected, GitHub truncation/incomplete-result warnings and partial source failures are reported, and independent records merge only when their canonical repository or website matches.
 
 Relay multiplicity is transport-availability evidence only: `relay_status: multi-relay` does not confirm reputation, ownership, or product legitimacy, and every candidate's `evidence_status` remains `unconfirmed` pending Triage. NIP-89 `latest`/`next` kind 35128 nsite references are retained as optional corroboration pointers, not fetched as a broad discovery source. Kind 31989 recommendations are intentionally excluded because Compass has no explicit trusted-author/follow-graph set; a global recommendation sweep would be sybil-prone and could never be a standalone approval signal.
 
 Every output row remains `candidate-only; never auto-add to projects.yml`. Forge topics and descriptions are self-asserted. A signed kind 31990 or 32267 event proves only that a key published the descriptor. Triage must open the product and repository, verify concrete Nostr relay behavior, establish canonical ownership, apply the per-item Nostr-surface gate, and record a GREEN/MAYBE/SKIP reason. Cross-source agreement raises confidence but does not replace verification.
+
+### Every discovered release must be named and triaged (CRITICAL)
+
+Stage 3 reads the Stage 2 summary, not the raw JSON. While that summary carried only aggregates, a release could exist in the data and in no downstream artifact. Newsletter #37 lost `formstr-hq/nail` v0.1.0 exactly this way: the release was in `updates_*.json` with a full changelog, its app was in the Zapstore feed as `com.formstr.mail`, Nail had been introduced in #36 the week before, and it was named in none of `fetch_2026-08-26.md`, `triage_2026-08-26.md`, `selection_review_2026-08-26.md`, or the published issue. Two independent discovery sources caught it and the aggregate summary hid both.
+
+Two artifacts now close that loop, and `scripts/fetch_all.sh` builds the first automatically:
+
+```bash
+# Written by fetch_all.sh; names every release in the window.
+data/newsletter_workspace/release_digest_<date>.md
+data/project_updates/release_digest_<date>.json
+
+# Blocking gate; run before the Triage gate passes.
+python3 scripts/check_triage_coverage.py \
+  --digest data/project_updates/release_digest_<date>.json \
+  --triage data/newsletter_workspace/triage_<date>.md \
+  --also data/newsletter_workspace/selection_review_<date>.md
+```
+
+The digest ranks by signal rather than alphabetically. Three flags lead:
+
+- **FOLLOW-UP** — the project was covered within the last 21 days and has now shipped a release. The reader already met it and the release is the payoff. This is the Nail shape, and it ranks first.
+- **POSSIBLE-FIRST-RELEASE** — a `0.x` tag with few releases in window. A debut is inherently newsworthy and was previously ranked no differently from a patch bump. It is a review hint, never a claim in prose: verify the release history before calling anything a first release.
+- **NEVER-COVERED** — no prior mention in any published issue, so there is no back-reference to lean on.
+
+The gate fails when a flagged release is named nowhere. **Skipping a release is a legitimate editorial choice; skipping it silently is not.** Record the skip and the reason in triage and the gate passes. Run against #37's real artifacts the gate reports 23 untriaged high-signal releases, Nail first, alongside Zeus v13.2.0, Marmot MDK v0.9.15, Chama v6.0.1 and diVine 1.0.22.
+
+A project-family mention does not satisfy a specific release. #37 discussed Marmot's same-account-enrollment spec PR five times and never mentioned MDK v0.9.14/v0.9.15 shipping, so the gate still flags MDK. Name the repo or the tag to record the decision.
 
 ### Pre-intake link-queue enrichment (CRITICAL)
 

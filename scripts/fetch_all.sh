@@ -252,6 +252,35 @@ echo "  Failed:    $FAILED"
 echo "  Skipped:   $SKIPPED"
 echo ""
 
+# Release digest — MANDATORY post-pass.
+#
+# Stage 3 reads the fetch summary, not the raw JSON. When the summary carried
+# only aggregates ("100 releases, 146 active repos"), a release could exist in
+# the data and in no downstream artifact. Newsletter #37 lost Nail v0.1.0 that
+# way: present in project_updates AND in the Zapstore feed, named nowhere.
+#
+# This names every release so a drop is a recorded editorial decision.
+echo "==========================================="
+echo "  Release digest (names every release)"
+echo "==========================================="
+LATEST_UPDATES=$(ls -t "$PROJECT_ROOT/data/project_updates"/updates_*.json 2>/dev/null | head -1)
+LATEST_ZAPSTORE=$(ls -t "$PROJECT_ROOT/data/zapstore_releases"/zapstore_*.json 2>/dev/null | head -1)
+DIGEST_MD="$PROJECT_ROOT/data/newsletter_workspace/release_digest_${NEWSLETTER_DATE:-$(date -u +%F)}.md"
+DIGEST_JSON="$PROJECT_ROOT/data/project_updates/release_digest_${NEWSLETTER_DATE:-$(date -u +%F)}.json"
+if [ -n "$LATEST_UPDATES" ] && command -v python3 >/dev/null 2>&1; then
+    if python3 "$SCRIPT_DIR/build_release_digest.py"         --updates "$LATEST_UPDATES"         ${LATEST_ZAPSTORE:+--zapstore "$LATEST_ZAPSTORE"}         --out "$DIGEST_MD"         --json-out "$DIGEST_JSON"; then
+        echo "  Digest: $DIGEST_MD"
+        echo "  Triage MUST record a write-up-or-skip decision for every project listed."
+    else
+        echo "  FAILED to build the release digest. Stage 3 cannot enumerate releases without it."
+        FAILED=$((FAILED + 1))
+    fi
+else
+    echo "  SKIPPED: no updates_*.json found or python3 missing — Stage 3 has no release enumeration."
+    SKIPPED=$((SKIPPED + 1))
+fi
+echo ""
+
 # Show data freshness
 echo "Data freshness:"
 for dir in project_updates nostr_nip_discussions nostr_recap shakespeare_apps nip34_repos zapstore_releases app_discovery heartbeats spec_updates; do
