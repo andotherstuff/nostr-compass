@@ -200,7 +200,7 @@ Nostr DM via the Amber bunker, asking for a PR review and inviting them to
 Thursday's podcast recording:
 
 ```bash
-cd ~/compass/publish
+cd "$COMPASS_DIR/publish"
 export PATH="$HOME/.bun/bin:$HOME/go/bin:$HOME/.local/bin:$PATH"   # bun/nak not always on PATH
 COMPASS_PUBLISH_INVOCATION=manual bun dm-outreach.ts <issue> \
   --pr-url <newsletter PR URL> \

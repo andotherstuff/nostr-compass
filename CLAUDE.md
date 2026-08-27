@@ -366,14 +366,14 @@ Use `git reset --soft $(git merge-base HEAD origin/main)` to collapse everything
 
 ```bash
 # Full pipeline (all stages: parse → sign → announce-sign → broadcast → merge)
-COMPASS_PUBLISH_INVOCATION=manual bun ~/compass/publish/publish.ts <N> --stage all --really-broadcast --really-merge
+COMPASS_PUBLISH_INVOCATION=manual bun publish/publish.ts <N> --stage all --really-broadcast --really-merge
 
 # Individual stages (run in order)
-COMPASS_PUBLISH_INVOCATION=manual bun ~/compass/publish/publish.ts <N> --stage parse
-COMPASS_PUBLISH_INVOCATION=manual bun ~/compass/publish/publish.ts <N> --stage sign
-COMPASS_PUBLISH_INVOCATION=manual bun ~/compass/publish/publish.ts <N> --stage announce-sign
-COMPASS_PUBLISH_INVOCATION=manual bun ~/compass/publish/publish.ts <N> --stage broadcast --really-broadcast
-COMPASS_PUBLISH_INVOCATION=manual bun ~/compass/publish/publish.ts <N> --stage merge --really-merge
+COMPASS_PUBLISH_INVOCATION=manual bun publish/publish.ts <N> --stage parse
+COMPASS_PUBLISH_INVOCATION=manual bun publish/publish.ts <N> --stage sign
+COMPASS_PUBLISH_INVOCATION=manual bun publish/publish.ts <N> --stage announce-sign
+COMPASS_PUBLISH_INVOCATION=manual bun publish/publish.ts <N> --stage broadcast --really-broadcast
+COMPASS_PUBLISH_INVOCATION=manual bun publish/publish.ts <N> --stage merge --really-merge
 
 # Or use the wrapper (same thing, shorter)
 compass-publish <N>
@@ -398,7 +398,7 @@ compass-publish <N> --stage sign
 - `wss://relay.nsec.app` — only accepts bunker traffic (kind 24133/24135)
 - `wss://relay.towardsliberty.com` — whitelist-restricted
 
-**Sign timeouts → read the error, do NOT immediately rotate the URI.** The pipeline holds a persistent NIP-46 session (one connect per run, every sign is ~350 ms after). Same bunker URI works forever after first pairing. Full writeup: `~/compass/publish/BUNKER.md` (protocol, Amber persistence proof, benchmarks).
+**Sign timeouts → read the error, do NOT immediately rotate the URI.** The pipeline holds a persistent NIP-46 session (one connect per run, every sign is ~350 ms after). Same bunker URI works forever after first pairing. Full writeup: `publish/BUNKER.md` (protocol, Amber persistence proof, benchmarks).
 
 **Cross-project bunker identity registry:** `~/.config/BUNKER_IDENTITIES.md` — compass uses its own identity (`npub1wav4fae...` / `775954f7...`), separate from blog and towardsliberty.
 

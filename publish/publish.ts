@@ -19,7 +19,7 @@ if (process.env.COMPASS_PUBLISH_INVOCATION !== "manual") {
       "This pipeline runs only on explicit operator instruction.",
       "",
       "Recommended alias:",
-      "  alias compass-publish='COMPASS_PUBLISH_INVOCATION=manual bun ~/compass/publish/publish.ts'",
+      "  alias compass-publish='COMPASS_PUBLISH_INVOCATION=manual bun publish/publish.ts'",
     ].join("\n"),
   );
   process.exit(2);
@@ -104,7 +104,7 @@ function usage(): string {
     "  compass-publish <issue> [--stage parse|sign|announce-sign|broadcast|merge|log|all]",
     "                          [--dry-run] [--really-broadcast] [--really-merge] [--no-log-pr]",
     "",
-    "Source file: /tmp/{issue}publish.md (output of ~/compass/scripts/publish.ts).",
+    "Source file: /tmp/{issue}publish.md (output of scripts/publish.ts).",
     "Broadcast is gated by --really-broadcast.",
     "Merge is gated by --really-merge AND a successful broadcast ledger entry.",
     "In --stage all, pass both flags to do the full publish + GitHub merge in one shot.",
