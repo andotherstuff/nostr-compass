@@ -77,38 +77,43 @@ done
 
 RESULTS_FILE="$NOSTR_TEMP_DIR/recap_results.json"
 echo "[]" > "$RESULTS_FILE"
+REJECTED_SIGNATURES=0
+
+fetch_verified_kind() {
+    local kind="$1"
+    local fetched="$NOSTR_TEMP_DIR/kind_${kind}.jsonl"
+    nak req \
+        --kind "$kind" \
+        --author "$RECAP_PUBKEY" \
+        --since "$SINCE_TS" \
+        $RELAY_ARGS 2>/dev/null > "$fetched" || true
+
+    while IFS= read -r event; do
+        [ -n "$event" ] || continue
+        if printf '%s\n' "$event" | nak verify >/dev/null 2>&1; then
+            printf '%s\n' "$event" | jq -c '
+                if .kind == 1 then
+                    {id, pubkey, kind, created_at,
+                     tags: [.tags[] | select(.[0] == "t" or .[0] == "subject" or .[0] == "title" or .[0] == "p")],
+                     content}
+                else
+                    {id, pubkey, kind, created_at,
+                     tags: [.tags[] | select(.[0] == "t" or .[0] == "title" or .[0] == "summary" or .[0] == "d")],
+                     content}
+                end' >> "$NOSTR_TEMP_DIR/raw_results.jsonl"
+        else
+            REJECTED_SIGNATURES=$((REJECTED_SIGNATURES + 1))
+        fi
+    done < "$fetched"
+}
 
 # Strategy 1: Fetch all kind 1 notes from the Nostr Recap author in the time window
 echo "Fetching posts from Nostr Recap author ($RECAP_PUBKEY)..."
-nak req \
-    --kind 1 \
-    --author "$RECAP_PUBKEY" \
-    --since "$SINCE_TS" \
-    $RELAY_ARGS 2>/dev/null | \
-jq -c '{
-    id: .id,
-    pubkey: .pubkey,
-    kind: .kind,
-    created_at: .created_at,
-    tags: [.tags[] | select(.[0] == "t" or .[0] == "subject" or .[0] == "title" or .[0] == "p")],
-    content: .content
-}' >> "$NOSTR_TEMP_DIR/raw_results.jsonl" 2>/dev/null || true
+fetch_verified_kind 1
 
 # Strategy 2: Also fetch long-form articles (kind 30023) from the same author
 echo "Fetching long-form articles from Nostr Recap author..."
-nak req \
-    --kind 30023 \
-    --author "$RECAP_PUBKEY" \
-    --since "$SINCE_TS" \
-    $RELAY_ARGS 2>/dev/null | \
-jq -c '{
-    id: .id,
-    pubkey: .pubkey,
-    kind: .kind,
-    created_at: .created_at,
-    tags: [.tags[] | select(.[0] == "t" or .[0] == "title" or .[0] == "summary" or .[0] == "d")],
-    content: .content
-}' >> "$NOSTR_TEMP_DIR/raw_results.jsonl" 2>/dev/null || true
+fetch_verified_kind 30023
 
 # Deduplicate by event ID
 if [ -f "$NOSTR_TEMP_DIR/raw_results.jsonl" ] && [ -s "$NOSTR_TEMP_DIR/raw_results.jsonl" ]; then
@@ -133,6 +138,7 @@ jq --arg start "$START_DATE" \
    --arg end "$END_DATE" \
    --arg days "$SINCE_DAYS" \
    --arg generated "$(date -u +%Y-%m-%dT%H:%M:%SZ)" \
+   --arg rejected "$REJECTED_SIGNATURES" \
    '{
     generated_at: $generated,
     period: {
@@ -141,7 +147,8 @@ jq --arg start "$START_DATE" \
         days: ($days | tonumber)
     },
     summary: {
-        total_events: length
+        total_events: length,
+        rejected_invalid_signatures: ($rejected | tonumber)
     },
     events: .
 }' "$RESULTS_FILE" > "$OUTPUT_FILE"
@@ -149,3 +156,4 @@ jq --arg start "$START_DATE" \
 echo ""
 echo "Output saved to: $OUTPUT_FILE"
 echo "Events found: $(jq '.summary.total_events' "$OUTPUT_FILE")"
+echo "Invalid signatures rejected: $(jq '.summary.rejected_invalid_signatures' "$OUTPUT_FILE")"
