@@ -60,6 +60,7 @@ import {
 } from "./lib/bunker.ts";
 import { broadcastToRelays, queryNewest } from "./lib/relays.ts";
 import { writeAtomic } from "./lib/safety.ts";
+import { countSentRows } from "./lib/outreach-report.ts";
 import {
   buildOutreachMessage,
   filterRecipients,
@@ -588,7 +589,7 @@ async function main() {
 
   // A dry run is not a finished step, so only a real send is announced.
   if (args.reallySend) {
-    const sent = report.filter((r) => (r as { event_id?: string }).event_id).length;
+    const sent = countSentRows(report);
     await notifyMilestone(
       args.issue,
       "outreach-sent",

@@ -166,21 +166,45 @@ export function renderCommand(command: string[], target: string, body: string): 
   return command.map((arg) => arg.replace("{target}", target).replace("{body}", body));
 }
 
-function send(notifier: Notifier, body: string): Promise<number> {
+export function runDeliveryCommand(
+  command: string[],
+  target: string,
+  body: string,
+  timeoutMs = 15_000,
+): Promise<number> {
   return new Promise((resolve) => {
-    const [cmd, ...args] = renderCommand(notifier.command, notifier.target, body);
+    const [cmd, ...args] = renderCommand(command, target, body);
     const child = spawn(cmd, args, { stdio: ["ignore", "ignore", "pipe"] });
     let stderr = "";
+    let settled = false;
+    const finish = (code: number): void => {
+      if (settled) return;
+      settled = true;
+      clearTimeout(timeout);
+      resolve(code);
+    };
+    const timeout = setTimeout(() => {
+      console.error(`notify: ${cmd} timed out after ${timeoutMs}ms`);
+      child.kill("SIGTERM");
+      const forceKill = setTimeout(() => child.kill("SIGKILL"), 1_000);
+      forceKill.unref();
+      finish(124);
+    }, timeoutMs);
+    timeout.unref();
     child.stderr.on("data", (d) => (stderr += d.toString()));
     child.on("error", (e) => {
       console.error(`notify: ${cmd} failed to start: ${e.message}`);
-      resolve(1);
+      finish(1);
     });
     child.on("close", (code) => {
-      if (code !== 0) console.error(`notify: ${cmd} exit ${code}: ${stderr.trim()}`);
-      resolve(code ?? 1);
+      if (code !== 0 && !settled) console.error(`notify: ${cmd} exit ${code}: ${stderr.trim()}`);
+      finish(code ?? 1);
     });
   });
+}
+
+function send(notifier: Notifier, body: string): Promise<number> {
+  return runDeliveryCommand(notifier.command, notifier.target, body);
 }
 
 /**

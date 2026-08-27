@@ -1,5 +1,5 @@
 import { describe, expect, test } from "bun:test";
-import { prLink, renderCommand, renderMessage, runLink } from "./notify.ts";
+import { prLink, renderCommand, renderMessage, runDeliveryCommand, runLink } from "./notify.ts";
 
 describe("forge references", () => {
   // MARMOT_MESSAGE_MARKDOWN.md § "Linked git-forge refs": every PR number in
@@ -79,5 +79,17 @@ describe("delivery command", () => {
 
   test("leaves an argv with no placeholders untouched", () => {
     expect(renderCommand(["notify-hook"], "t", "b")).toEqual(["notify-hook"]);
+  });
+
+  test("terminates a notifier that does not exit", async () => {
+    const started = Date.now();
+    const code = await runDeliveryCommand(
+      [process.execPath, "-e", "setInterval(() => {}, 1000)"],
+      "target",
+      "body",
+      50,
+    );
+    expect(code).toBe(124);
+    expect(Date.now() - started).toBeLessThan(1_000);
   });
 });
