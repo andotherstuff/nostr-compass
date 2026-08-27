@@ -168,6 +168,10 @@ python3 scripts/check_triage_coverage.py \
   --also data/newsletter_workspace/selection_review_<date>.md
 ```
 
+**Review Zapstore per app, not per release.** The fetcher emits an `apps` rollup and `distinct_nostr_relevant_apps` alongside the raw release list. #37's summary said "622 Nostr-relevant releases", but 476 of those were PosterChan CI builds and 60 were Boris: the real figure was **48 distinct apps, 19 of them tracked**. A reviewer handed 622 skims; 48 with latest versions is a list somebody reads. Zapstore publisher identity is not a relevance signal either — one publisher mirrors 404 unrelated apps (prayer apps, money managers) with a single Nostr-relevant row, so provenance cannot be used the way the GitHub owner sweep uses it.
+
+The digest also carries a **Zapstore releases with no GitHub release in window** section. A tracked project can ship to Zapstore without cutting a GitHub release, and six did inside #37's window — Nostria 4.1.72, Flotilla 1.9.1, Imwald Android 0.4.0, Deepmarks 2.2.13, Surveil 0.1.8 and Treasures 2.10.1 — all invisible to a GitHub-only sweep. Sort Zapstore rows on `release_created_at`; `published_at` is null on every row, so sorting on it returns an arbitrary "latest" version.
+
 The digest ranks by signal rather than alphabetically. Three flags lead:
 
 - **FOLLOW-UP** — the project was covered within the last 21 days and has now shipped a release. The reader already met it and the release is the payoff. This is the Nail shape, and it ranks first.

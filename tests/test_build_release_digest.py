@@ -81,9 +81,18 @@ class TestNailRegression(unittest.TestCase):
                 "github.com/vitorpamplona/amethyst": {"last_mention_date": "2026-08-19"},
             }
         }
+        # A real row matching a tracked project carries nostr_relevant via the
+        # tracked-project-override reason; the rollup requires it.
         self.zapstore = {
             "releases": [
-                {"tracked_project": "Nail", "app_id": "com.formstr.mail", "version": "1.0"}
+                {
+                    "tracked_project": "Nail",
+                    "app_id": "com.formstr.mail",
+                    "version": "1.0",
+                    "nostr_relevant": True,
+                    "release_created_at": 1787700000,
+                    "release_created_at_iso": "2026-08-24T00:00:00Z",
+                }
             ]
         }
         self.updates = updates(
@@ -117,6 +126,60 @@ class TestNailRegression(unittest.TestCase):
         d = digest_mod.build(self.updates, self.zapstore, self.coverage)
         md = digest_mod.render_markdown(d)
         self.assertEqual(md.count("Triage decision:"), len(d["projects"]))
+
+
+class TestZapstoreRollup(unittest.TestCase):
+    def test_prefers_the_fetcher_apps_rollup(self):
+        z = {
+            "apps": [{"app_id": "a.b", "app_name": "A", "tracked_project": "A", "latest_version": "9.9"}],
+            "releases": [{"app_id": "ignored", "nostr_relevant": True}],
+        }
+        apps = digest_mod.zapstore_apps(z)
+        self.assertEqual([a["app_id"] for a in apps], ["a.b"])
+
+    def test_falls_back_to_grouping_releases(self):
+        z = {
+            "releases": [
+                {"app_id": "a.b", "app_name": "A", "version": "1.0", "nostr_relevant": True, "release_created_at": 1},
+                {"app_id": "a.b", "app_name": "A", "version": "1.1", "nostr_relevant": True, "release_created_at": 2},
+            ]
+        }
+        apps = digest_mod.zapstore_apps(z)
+        self.assertEqual(len(apps), 1)
+        self.assertEqual(apps[0]["release_count"], 2)
+        # Sorted on release_created_at, because published_at is null on every row.
+        self.assertEqual(apps[0]["latest_version"], "1.1")
+
+    def test_excludes_apps_that_are_not_nostr_relevant(self):
+        z = {"releases": [{"app_id": "x.y", "nostr_relevant": False, "release_created_at": 1}]}
+        self.assertEqual(digest_mod.zapstore_apps(z), [])
+
+    def test_zapstore_only_tracked_project_is_surfaced(self):
+        # Imwald shipped 0.4.0 on Zapstore inside #37's window with no GitHub
+        # release. A GitHub-only digest could not see it.
+        z = {
+            "apps": [
+                {
+                    "app_id": "eu.imwald.android",
+                    "app_name": "Imwald Android",
+                    "tracked_project": "Imwald Android",
+                    "latest_version": "0.4.0",
+                    "latest_at": "2026-08-25T00:00:00Z",
+                    "release_count": 4,
+                }
+            ]
+        }
+        d = digest_mod.build(updates({"a/b": project("Other", "v1.0.0", "2026-08-20")}), z, None)
+        self.assertEqual(len(d["zapstore_only"]), 1)
+        md = digest_mod.render_markdown(d)
+        self.assertIn("Imwald Android", md)
+        self.assertIn("no GitHub release in window", md)
+
+    def test_zapstore_app_matching_a_github_release_is_not_listed_twice(self):
+        z = {"apps": [{"app_id": "a.b", "app_name": "A", "tracked_project": "A", "latest_version": "1.0"}]}
+        d = digest_mod.build(updates({"a/b": project("A", "v1.0.0", "2026-08-20")}), z, None)
+        self.assertEqual(d["zapstore_only"], [])
+        self.assertEqual(d["projects"][0]["zapstore_listing"][0]["app_id"], "a.b")
 
 
 class TestFollowUpWindow(unittest.TestCase):

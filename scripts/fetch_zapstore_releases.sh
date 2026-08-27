@@ -585,10 +585,32 @@ save_output() {
               sanity_demoted: ([$releases[] | select(.sanity_demoted)] | length),
               first_run_baseline: ([$releases[] | select(.first_run)] | length),
               baseline_suppressed_nostr_relevant: ([$releases[] | select(.first_run and .nostr_relevant)] | length),
+              distinct_nostr_relevant_apps: ([$releases[] | select(.nostr_relevant) | .app_id] | unique | length),
               tracked_in_projects_yml: ([$releases[] | select(.tracked_project != null)] | length),
               candidates_for_projects_yml: ([$releases[] | select(.nostr_relevant and .tracked_project == null)] | length)
             },
-            releases: $releases
+            releases: $releases,
+            # App-level rollup. Per-release counts overstate reviewable signal by
+            # an order of magnitude: #37 reported 622 Nostr-relevant releases, but
+            # 476 came from PosterChan CI builds and 60 from Boris, so the real
+            # figure was 48 distinct apps. A reviewer seeing 622 skims; 48 with
+            # latest versions is a list somebody actually reads.
+            apps: (
+              [$releases[] | select(.nostr_relevant)]
+              | group_by(.app_id)
+              | map(sort_by(.release_created_at // 0) as $s | {
+                  app_id: $s[0].app_id,
+                  app_name: $s[0].app_name,
+                  app_repository: ($s | map(.app_repository) | map(select(. != null and . != "")) | first),
+                  tracked_project: ($s | map(.tracked_project) | map(select(. != null)) | first),
+                  release_count: ($s | length),
+                  latest_version: ($s | last | .version),
+                  latest_at: ($s | last | .release_created_at_iso),
+                  new_app: ($s | any(.new_app == true)),
+                  baseline_suppressed: ($s | all(.first_run == true))
+                })
+              | sort_by([(if .tracked_project then 0 else 1 end), -.release_count])
+            )
           }
        ' "$JOINED_FILE" > "$OUTPUT_FILE"
 
@@ -636,9 +658,15 @@ print_summary() {
            "!! If this fires every week the baseline is not persisting; run scripts/migrate_discovery_state.py and check COMPASS_STATE_DIR.",
            ""
          else empty end),
-        "Nostr-relevant releases (top 20):",
-        (.releases | map(select(.nostr_relevant))[:20] | .[]
-          | "  - \(.app_name) v\(.version) (\(if .new_app then "NEW" elif .update then "update" else "?" end))\(if .tracked_project then " [tracked: \(.tracked_project)]" else "" end) [\(.nostr_match_reason)]")
+        "Distinct Nostr-relevant apps: \(.apps | length)  <-- review this, not the release count",
+        "  tracked in projects.yml: \(.apps | map(select(.tracked_project)) | length)",
+        "",
+        "Nostr-relevant apps (tracked first, latest version):",
+        (.apps[:40] | .[]
+          | "  - \(.app_name // .app_id) \(.latest_version // "?") (\((.latest_at // "?")[0:10]))"
+            + (if .release_count > 1 then " [\(.release_count) releases in window]" else "" end)
+            + (if .tracked_project then " [tracked: \(.tracked_project)]" else "" end)
+            + (if .new_app then " NEW-APP" elif .baseline_suppressed then " unclassified(baseline)" else "" end))
     ' "$OUTPUT_FILE" >&2
     echo "" >&2
 }
