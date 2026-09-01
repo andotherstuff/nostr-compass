@@ -191,42 +191,34 @@ This week: [21-word TLDR]
 - Translations follow within 24-48 hours
 - Separate announcement for translations (optional)
 
-## Outreach: DM every mentioned project + dev (real mechanism, not a suggestion)
+## Outreach: request newsletter review from every mentioned project + dev
 
 This is an actual automated step, not a manual "suggest tagging on Twitter"
 step. Once the newsletter PR is open, run `publish/dm-outreach.ts` to send
 every mentioned project and its main dev a real NIP-17 (or NIP-04 fallback)
-Nostr DM via the Amber bunker, asking for a PR review and inviting them to
-Thursday's podcast recording:
+Nostr DM via the Amber bunker. The message asks only for review on the GitHub
+draft PR. It must not mention a podcast, recording time, recording room, or
+Riverside.
 
 ```bash
 cd "$COMPASS_DIR/publish"
 export PATH="$HOME/.bun/bin:$HOME/go/bin:$HOME/.local/bin:$PATH"   # bun/nak not always on PATH
 COMPASS_PUBLISH_INVOCATION=manual bun dm-outreach.ts <issue> \
-  --pr-url <newsletter PR URL> \
-  --podcast-url <podcast link> \
-  --podcast-time "Thursday at 16:00 UTC"  # dry run: prints the plan, sends nothing
+  --pr-url <newsletter PR URL>  # dry run: prints the plan, sends nothing
 # add --really-send once the plan/recipient list and exact dated time look right
-
-# At 15:00 UTC Thursday, send the one-hour reminder with the published URL.
-# --reminder uses concise reminder copy and writes a separate
-# dm-outreach-<issue>-reminder.json receipt, preserving the review campaign.
-COMPASS_PUBLISH_INVOCATION=manual bun dm-outreach.ts <issue> \
-  --newsletter-url <published newsletter URL> \
-  --podcast-url <podcast link> \
-  --podcast-time "today at 16:00 UTC" \
-  --reminder
-# review the plan, then repeat with --really-send
 
 # If a new project is added after the issue's main outreach campaign, target
 # only that project's verified project/maintainer pair. Repeat with
 # --really-send after reviewing the targeted plan.
 COMPASS_PUBLISH_INVOCATION=manual bun dm-outreach.ts <issue> \
   --pr-url <newsletter PR URL> \
-  --podcast-url <podcast link> \
-  --podcast-time "Thursday at 16:00 UTC" \
   --only '<project>' --only '<maintainer>'
 ```
+
+Podcast outreach is a separate post-publication workflow. It remains disabled
+until the owner defines and approves the new recording setup and message. Never
+reuse the prior Riverside invitation or reminder copy, and never append podcast
+copy to a newsletter-review DM.
 
 How it works (see the file's own header comment for full detail):
 - Recipients are derived automatically every week from `scripts/publish.ts`'s

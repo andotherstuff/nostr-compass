@@ -51,21 +51,13 @@ export type OutreachMessageArgs = {
 };
 
 export function buildOutreachMessage(args: OutreachMessageArgs): string {
-  if (args.rerecord) {
-    if (!args.issue) throw new Error("Re-record outreach requires an issue number.");
-    return `Recording update: we need to re-record Nostr Compass #${args.issue} after a recording failure. We start ${args.podcastTime}. Your project was part of that episode's discussion. Join if you are free: ${args.podcastUrl}`;
+  if (args.reminder || args.rerecord) {
+    throw new Error("Podcast outreach is paused pending the new post-publication setup.");
   }
-  if (args.reminder) {
-    return `Reminder: the Nostr Compass podcast starts ${args.podcastTime}. Your project is part of this week's discussion. Join if you are free: ${args.podcastUrl}`;
+  if (!args.reviewUrl) {
+    throw new Error("Newsletter review outreach requires a GitHub PR URL.");
   }
-
-  return [
-    args.reviewUrl
-      ? `Hey, your project is mentioned in the draft for this week's Nostr Compass newsletter. Could you check the coverage before publication? ${args.reviewUrl}`
-      : `Hey, your project is mentioned in this week's Nostr Compass newsletter, out now: ${args.newsletterUrl}`,
-    "",
-    `We are recording the companion podcast ${args.podcastTime}, where developers can talk through their projects and respond to the coverage. Join if you are free: ${args.podcastUrl}`,
-  ].join("\n");
+  return `Hey, your project is mentioned in the draft for this week's Nostr Compass newsletter. Could you review the coverage on GitHub before publication? ${args.reviewUrl}`;
 }
 
 export function outreachReportSuffix(onlyNames: string[], reminder = false, rerecord = false): string {

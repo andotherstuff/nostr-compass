@@ -2,8 +2,7 @@
 // Compass DM outreach — weekly, reproducible mechanism.
 //
 // MANUAL INVOCATION ONLY (same gate as publish.ts). Run:
-//   COMPASS_PUBLISH_INVOCATION=manual bun dm-outreach.ts <issue> --pr-url <url> \
-//     --podcast-url <url> --podcast-time "Thursday at 16:00 UTC" [--reminder] [--really-send]
+//   COMPASS_PUBLISH_INVOCATION=manual bun dm-outreach.ts <issue> --pr-url <url> [--really-send]
 //
 // What it does, every week, without hand-curating a recipient list:
 //
@@ -132,11 +131,14 @@ function parseArgs(argv: string[]): Args {
     else positional.push(a);
   }
   if (positional.length !== 1) throw new Error("Expected exactly one positional argument: the newsletter issue number.");
-  if (!reviewUrl && !newsletterUrl) throw new Error("Either --pr-url or --newsletter-url is required.");
-  if (reviewUrl && newsletterUrl) throw new Error("Use either --pr-url or --newsletter-url, not both.");
-  if (!podcastUrl) throw new Error("--podcast-url is required.");
-  if (!podcastTime) throw new Error("--podcast-time is required so outreach never sends a stale hardcoded date.");
-  if (reminder && rerecord) throw new Error("Use either --reminder or --rerecord, not both.");
+  if (reminder || rerecord) {
+    throw new Error("Podcast outreach is paused pending explicit reconfiguration after publication.");
+  }
+  if (!reviewUrl) throw new Error("--pr-url is required for review outreach.");
+  if (newsletterUrl) throw new Error("--newsletter-url is reserved for the future post-publication podcast workflow.");
+  if (podcastUrl || podcastTime) {
+    throw new Error("Podcast details are not accepted in newsletter review outreach.");
+  }
   return { issue: parseInt(positional[0], 10), reviewUrl, newsletterUrl, podcastUrl, podcastTime, reminder, rerecord, reallySend, onlyNames };
 }
 

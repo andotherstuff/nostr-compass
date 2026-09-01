@@ -55,7 +55,7 @@ User request: Research `https://dev.nostrolo.gy/relays` and add it to the curren
 - The raw values include malformed URLs, local addresses, and unreachable endpoints, so the page measures published preferences and does not provide NIP-66-style liveness data.
 - Both `https://dev.nostrolo.gy/relays` and the NIP-65 specification returned HTTP 200 during verification.
 - Resolve both new-project and maintainer identities before pre-publication outreach. For Nostrology, the project source attribution, Sovereign Engineering interview, relay-backed kind `0` profile, and `_@whisperhash.com` NIP-05 all resolve to WhisperHash's `npub1t6m495kynns7xjmgz8yt6krrw4r8tac0mvr3f25f9r35ke72ap3su4qycp`; no distinct project npub was found, so the shared pubkey must receive one deduplicated DM.
-- Whenever a genuinely new project enters an unpublished draft, update the review PR and send the standard review/podcast DM to the verified project and maintainer identities after a targeted dry run. Honor `no_dm`, never guess an identity, and verify event IDs plus relay acceptances.
+- **Superseded 2026-09-01:** Whenever a genuinely new project enters an unpublished draft, update the review PR and send only the standard GitHub-review DM to the verified project and maintainer identities after a targeted dry run. Honor `no_dm`, never guess an identity, and verify event IDs plus relay acceptances. Podcast outreach is separate, post-publication, and disabled pending approval of the new setup and message.
 
 ## Mandatory publication-day refresh additions
 
