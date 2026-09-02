@@ -1303,9 +1303,9 @@ Voca:
   npub: npub17h9fn2ny0lycg7kmvxmw6gqdnv2epya9h9excnjw9wvml87nyw8sqy3hpu
   identity_type: project
   evidence:
-    - nostr://npub17h9fn2ny0lycg7kmvxmw6gqdnv2epya9h9excnjw9wvml87nyw8sqy3hpu/relay.ngit.dev/voca
+    - https://gitworkshop.dev/npub17h9fn2ny0lycg7kmvxmw6gqdnv2epya9h9excnjw9wvml87nyw8sqy3hpu/voca
     - https://njump.me/naddr1qq98vmmrvyknzt3s9ccqyg84e2v65erlexz84kmpkmkjqrvmzkgf8fdewfkyun3tnxlel5er3upsgqqqw4rsw0l3en
-    - https://relay.zapstore.dev (kind 32267 application event 5bb516cb29571ee0db367a4cc2cd8e3a73cafd92b15560baaf5f0e2b17475ad7)
+    - https://njump.me/nevent1qqs9hdgkev54w8hqmvm85nxzek8r5u72lkftz4tqh2h47r3tzar444cprpmhxue69uhhyetvv9uju7npwpehgmmjv5hxgetkqgs0tj5e4fj8ljvy0tdkrdhdyqxek9vsjwjmjunvfe8zhxdlnlfj8rcymzps5
 
 # Exact aliases produced by the outreach scope parser; each de-duplicates to the
 # already verified project or maintainer recipient above.
