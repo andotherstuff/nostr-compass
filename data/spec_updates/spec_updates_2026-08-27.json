@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-26T16:46:29.384962+00:00",
+  "generated_at": "2026-08-26T17:47:50.297264+00:00",
   "window": {
     "since": "2026-08-19T00:00:00Z",
     "until": "2026-08-27T00:00:00Z"
@@ -34,7 +34,7 @@
           "title": "docs: Standardize BCP-47 \"lang\" label namespace in NIP-32 and migrate language tags",
           "state": "open",
           "created_at": "2026-08-26T15:39:27Z",
-          "updated_at": "2026-08-26T15:51:34Z",
+          "updated_at": "2026-08-26T17:02:52Z",
           "merged_at": null,
           "url": "https://github.com/nostr-protocol/nips/pull/2451"
         },

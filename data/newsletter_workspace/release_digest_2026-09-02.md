@@ -1,0 +1,235 @@
+# Release digest — every tagged release in the window
+
+Window 2026-08-25 → 2026-09-02. 112 releases across 47 projects.
+
+Triage MUST record a decision for every project below. A release that is neither written up nor given a skip reason is a pipeline defect, not an editorial choice: that is how Nail v0.1.0 was lost from Newsletter #37.
+
+- **Dart NDK** (`relaystr/ndk`) — **POSSIBLE-FIRST-RELEASE** · **FOLLOW-UP** (last covered 2026-08-19) · substance: protocol-surface, encryption, documented-changes
+  - `v0.9.1` 2026-08-27 — https://github.com/relaystr/ndk/releases/tag/v0.9.1
+  - 7 merged PRs in window
+  - Triage decision: __________ (write up / skip + reason)
+- **Mostro** (`MostroP2P/mostro`) — **POSSIBLE-FIRST-RELEASE** · **FOLLOW-UP** (last covered 2026-08-19) · substance: protocol-surface, data-integrity, documented-changes
+  - `v0.18.6` 2026-09-02 — https://github.com/MostroP2P/mostro/releases/tag/v0.18.6
+  - 16 merged PRs in window
+  - Triage decision: __________ (write up / skip + reason)
+- **Marmot Protocol (mdk)** (`marmot-protocol/mdk`) — **FOLLOW-UP** (last covered 2026-08-19) · substance: new-platform, protocol-surface, new-component, data-integrity, messaging-feature, documented-changes
+  - `v0.9.15` 2026-08-25 — https://github.com/marmot-protocol/mdk/releases/tag/v0.9.15
+  - `marmotkit-v0.9.15` 2026-08-25 — https://github.com/marmot-protocol/mdk/releases/tag/marmotkit-v0.9.15
+  - `wn-agent-v0.9.15` 2026-08-25 — https://github.com/marmot-protocol/mdk/releases/tag/wn-agent-v0.9.15
+  - `marmotkit-snapshot-18b63645bcda9eef6263b884687a2af72944278e` 2026-08-26 — https://github.com/marmot-protocol/mdk/releases/tag/marmotkit-snapshot-18b63645bcda9eef6263b884687a2af72944278e
+  - `marmotkit-snapshot-10e57bb989fc370e8fca758b01ba592d4c9648dd` 2026-08-27 — https://github.com/marmot-protocol/mdk/releases/tag/marmotkit-snapshot-10e57bb989fc370e8fca758b01ba592d4c9648dd
+  - `marmotkit-snapshot-79c5b70fa434d5e339d2be02f516e457f4b56766` 2026-08-29 — https://github.com/marmot-protocol/mdk/releases/tag/marmotkit-snapshot-79c5b70fa434d5e339d2be02f516e457f4b56766
+  - `marmotkit-snapshot-ed1f554a1faf286b4e2dfbaf892830e2a9efea1c` 2026-08-31 — https://github.com/marmot-protocol/mdk/releases/tag/marmotkit-snapshot-ed1f554a1faf286b4e2dfbaf892830e2a9efea1c
+  - `v0.9.16` 2026-09-01 — https://github.com/marmot-protocol/mdk/releases/tag/v0.9.16
+  - `marmotkit-v0.9.16` 2026-09-01 — https://github.com/marmot-protocol/mdk/releases/tag/marmotkit-v0.9.16
+  - `marmotc-v0.9.16` 2026-09-01 — https://github.com/marmot-protocol/mdk/releases/tag/marmotc-v0.9.16
+  - `wn-agent-v0.9.16` 2026-09-01 — https://github.com/marmot-protocol/mdk/releases/tag/wn-agent-v0.9.16
+  - 47 merged PRs in window
+  - Triage decision: __________ (write up / skip + reason)
+- **nostr-java** (`tcheeric/nostr-java`) — **FOLLOW-UP** (last covered 2026-08-26) · substance: protocol-surface, new-component, documented-changes
+  - `v2.3.1` 2026-08-31 — https://github.com/tcheeric/nostr-java/releases/tag/v2.3.1
+  - `v2.3.0` 2026-08-31 — https://github.com/tcheeric/nostr-java/releases/tag/v2.3.0
+  - `v2.2.0` 2026-08-31 — https://github.com/tcheeric/nostr-java/releases/tag/v2.2.0
+  - 2 merged PRs in window
+  - Triage decision: __________ (write up / skip + reason)
+- **Vector** (`VectorPrivacy/Vector`) — **FOLLOW-UP** (last covered 2026-08-19) · substance: new-platform, protocol-surface, data-integrity, messaging-feature, explicit-new-marker, documented-changes
+  - `v0.4.4-1` 2026-08-30 — https://github.com/VectorPrivacy/Vector/releases/tag/v0.4.4-1
+  - `v0.4.4` 2026-08-31 — https://github.com/VectorPrivacy/Vector/releases/tag/v0.4.4
+  - `v0.4.4-2` 2026-08-31 — https://github.com/VectorPrivacy/Vector/releases/tag/v0.4.4-2
+  - Triage decision: __________ (write up / skip + reason)
+- **Amber** (`greenart7c3/amber`) — **FOLLOW-UP** (last covered 2026-08-26) · substance: app-store-listing, protocol-surface, messaging-feature, explicit-new-marker, documented-changes
+  - `v6.6.0` 2026-08-31 — https://github.com/greenart7c3/Amber/releases/tag/v6.6.0
+  - Triage decision: __________ (write up / skip + reason)
+- **Buzz** (`block/buzz`) — **FOLLOW-UP** (last covered 2026-08-12) · substance: new-platform, protocol-surface, new-component, data-integrity, messaging-feature, documented-changes
+  - `desktop-v0.5.19` 2026-08-25 — https://github.com/block/buzz/releases/tag/desktop-v0.5.19
+  - `desktop-v0.5.20` 2026-08-26 — https://github.com/block/buzz/releases/tag/desktop-v0.5.20
+  - 106 merged PRs in window
+  - Triage decision: __________ (write up / skip + reason)
+- **Infans** (`TurkeyNostr/infans`) — **FOLLOW-UP** (last covered 2026-08-26) · substance: app-store-listing, protocol-surface, data-integrity, encryption, documented-changes
+  - `v2.3.1` 2026-08-26 — https://github.com/TurkeyNostr/infans/releases/tag/v2.3.1
+  - `v2.4.0` 2026-08-28 — https://github.com/TurkeyNostr/infans/releases/tag/v2.4.0
+  - Triage decision: __________ (write up / skip + reason)
+- **Mostro Mobile** (`MostroP2P/mobile`) — **FOLLOW-UP** (last covered 2026-08-19) · substance: new-platform, app-store-listing, protocol-surface, security, new-component, messaging-feature, encryption, documented-changes
+  - `v1.4.1` 2026-09-01 — https://github.com/MostroP2P/mobile/releases/tag/v1.4.1
+  - 33 merged PRs in window
+  - Triage decision: __________ (write up / skip + reason)
+- **NoorNote** (`77elements/noornote`) — **FOLLOW-UP** (last covered 2026-08-26) · substance: protocol-surface, messaging-feature, explicit-new-marker, documented-changes
+  - `v1.4.1` 2026-08-30 — https://github.com/77elements/noornote/releases/tag/v1.4.1
+  - `v1.4.0` 2026-08-30 — https://github.com/77elements/noornote/releases/tag/v1.4.0
+  - Triage decision: __________ (write up / skip + reason)
+- **Nostrord** (`nostrord/nostrord`) — **FOLLOW-UP** (last covered 2026-08-26) · substance: new-platform, protocol-surface, documented-changes
+  - `v2.10.0` 2026-08-26 — https://github.com/nostrord/nostrord/releases/tag/v2.10.0
+  - `v2.10.1` 2026-08-31 — https://github.com/nostrord/nostrord/releases/tag/v2.10.1
+  - 11 merged PRs in window
+  - Triage decision: __________ (write up / skip + reason)
+- **NYM** (`Spl0itable/NYM`) — **FOLLOW-UP** (last covered 2026-08-19) · substance: messaging-feature, encryption, explicit-new-marker, documented-changes
+  - `v3.74.543` 2026-08-25 — https://github.com/Spl0itable/NYM/releases/tag/v3.74.543
+  - `v3.75.543` 2026-08-26 — https://github.com/Spl0itable/NYM/releases/tag/v3.75.543
+  - Triage decision: __________ (write up / skip + reason)
+- **mostro-core** (`MostroP2P/mostro-core`) — **POSSIBLE-FIRST-RELEASE** · **FOLLOW-UP** (last covered 2026-08-19) · substance: documented-changes
+  - `v0.14.6` 2026-09-01 — https://github.com/MostroP2P/mostro-core/releases/tag/v0.14.6
+  - 1 merged PRs in window
+  - Triage decision: __________ (write up / skip + reason)
+- **Nostr action** (`snow-actions/nostr`) — **NEVER-COVERED** · substance: protocol-surface, new-component, documented-changes
+  - `v2.0.0` 2026-08-25 — https://github.com/snow-actions/nostr/releases/tag/v2.0.0
+  - 4 merged PRs in window
+  - Triage decision: __________ (write up / skip + reason)
+- **nostr-dart** (`anasfik/nostr`) — **NEVER-COVERED** · substance: new-platform, protocol-surface, messaging-feature, encryption, documented-changes
+  - `v11.0.0` 2026-08-26 — https://github.com/anasfik/nostr/releases/tag/v11.0.0
+  - Triage decision: __________ (write up / skip + reason)
+- **FIPS** (`jmcorgan/fips`) — **POSSIBLE-FIRST-RELEASE** · substance: new-platform, app-store-listing, protocol-surface, security, new-component, data-integrity, messaging-feature, documented-changes
+  - `v0.5.0` 2026-08-30 — https://github.com/jmcorgan/fips/releases/tag/v0.5.0
+  - Triage decision: __________ (write up / skip + reason)
+- **Lightning.Pub** (`shocknet/Lightning.Pub`) — **POSSIBLE-FIRST-RELEASE** · substance: first-release, new-component, data-integrity, documented-changes
+  - `v0.0.40` 2026-08-28 — https://github.com/shocknet/Lightning.Pub/releases/tag/v0.0.40
+  - 5 merged PRs in window
+  - Triage decision: __________ (write up / skip + reason)
+- **mesh-llm** (`michaelneale/mesh-llm`) — **POSSIBLE-FIRST-RELEASE** · substance: new-platform, protocol-surface, new-component, data-integrity, explicit-new-marker, documented-changes
+  - `v0.76.0-rc8` 2026-08-29 — https://github.com/Mesh-LLM/mesh-llm/releases/tag/v0.76.0-rc8
+  - `v0.76.0-rc9` 2026-09-02 — https://github.com/Mesh-LLM/mesh-llm/releases/tag/v0.76.0-rc9
+  - 99 merged PRs in window
+  - Triage decision: __________ (write up / skip + reason)
+- **Nostr-Doc** (`formstr-hq/nostr-docs`) — **POSSIBLE-FIRST-RELEASE** · substance: new-platform, protocol-surface, messaging-feature, documented-changes
+  - `0.9.8` 2026-09-01 — https://github.com/formstr-hq/nostr-docs/releases/tag/0.9.8
+  - Triage decision: __________ (write up / skip + reason)
+- **NostrAppShell** (`git.nostrdev.com/stuff/NostrAppShell`) — **NEVER-COVERED** · substance: app-store-listing, documented-changes
+  - `v0.16.0` 2026-08-26 — https://git.nostrdev.com/stuff/pakstr/releases/tag/v0.16.0
+  - `v0.17.0` 2026-08-27 — https://git.nostrdev.com/stuff/pakstr/releases/tag/v0.17.0
+  - `v0.18.1` 2026-08-28 — https://git.nostrdev.com/stuff/pakstr/releases/tag/v0.18.1
+  - `v0.18.0` 2026-08-28 — https://git.nostrdev.com/stuff/pakstr/releases/tag/v0.18.0
+  - `v0.18.2` 2026-09-01 — https://git.nostrdev.com/stuff/pakstr/releases/tag/v0.18.2
+  - 5 merged PRs in window
+  - Triage decision: __________ (write up / skip + reason)
+- **Nostrube** (`flox1an/nostube`) — **NEVER-COVERED** · **POSSIBLE-FIRST-RELEASE** · substance: new-platform
+  - `v0.2.39` 2026-08-28 — https://github.com/flox1an/nostube/releases/tag/v0.2.39
+  - Triage decision: __________ (write up / skip + reason)
+- **Nostur** (`nostur-com/nostur-ios-public`) — **FOLLOW-UP** (last covered 2026-08-05) · substance: messaging-feature, documented-changes
+  - `1.31.0` 2026-08-26 — https://github.com/nostur-com/nostur-ios-public/releases/tag/1.31.0
+  - Triage decision: __________ (write up / skip + reason)
+- **pakstr** (`git.nostrdev.com/stuff/pakstr`) — **NEVER-COVERED** · substance: app-store-listing, documented-changes
+  - `v0.16.0` 2026-08-26 — https://git.nostrdev.com/stuff/pakstr/releases/tag/v0.16.0
+  - `v0.17.0` 2026-08-27 — https://git.nostrdev.com/stuff/pakstr/releases/tag/v0.17.0
+  - `v0.18.1` 2026-08-28 — https://git.nostrdev.com/stuff/pakstr/releases/tag/v0.18.1
+  - `v0.18.0` 2026-08-28 — https://git.nostrdev.com/stuff/pakstr/releases/tag/v0.18.0
+  - `v0.18.2` 2026-09-01 — https://git.nostrdev.com/stuff/pakstr/releases/tag/v0.18.2
+  - 5 merged PRs in window
+  - Triage decision: __________ (write up / skip + reason)
+- **Routstrd** (`routstr/routstrd`) — **POSSIBLE-FIRST-RELEASE** · substance: new-platform, new-component, data-integrity, documented-changes
+  - `v0.4.5` 2026-08-28 — https://github.com/Routstr/routstrd/releases/tag/v0.4.5
+  - 3 merged PRs in window
+  - Triage decision: __________ (write up / skip + reason)
+- **Brezn** (`DaBena/Brezn`) — **NEVER-COVERED** · substance: new-component, documented-changes
+  - `build-130` 2026-08-29 — https://github.com/DaBena/Brezn/releases/tag/build-130
+  - Triage decision: __________ (write up / skip + reason)
+- **ants** (`dergigi/ants`) — **POSSIBLE-FIRST-RELEASE** · substance: messaging-feature, documented-changes
+  - `v0.4.7` 2026-08-28 — https://github.com/dergigi/ants/releases/tag/v0.4.7
+  - 2 merged PRs in window
+  - Triage decision: __________ (write up / skip + reason)
+- **CDK** (`cashubtc/cdk`) — substance: protocol-surface, new-component, data-integrity, messaging-feature, explicit-new-marker, documented-changes
+  - `v0.17.6` 2026-08-26 — https://github.com/cashubtc/cdk/releases/tag/v0.17.6
+  - `v0.18.0-rc.2` 2026-08-30 — https://github.com/cashubtc/cdk/releases/tag/v0.18.0-rc.2 (empty release notes; audit the commit range instead)
+  - `v0.18.0-rc.3` 2026-09-01 — https://github.com/cashubtc/cdk/releases/tag/v0.18.0-rc.3 (empty release notes; audit the commit range instead)
+  - `v0.18.0` 2026-09-02 — https://github.com/cashubtc/cdk/releases/tag/v0.18.0
+  - 21 merged PRs in window
+  - Triage decision: __________ (write up / skip + reason)
+- **mostro-cli** (`MostroP2P/mostro-cli`) — **POSSIBLE-FIRST-RELEASE** · substance: new-component, documented-changes
+  - `v0.16.1` 2026-09-02 — https://github.com/MostroP2P/mostro-cli/releases/tag/v0.16.1
+  - 2 merged PRs in window
+  - Triage decision: __________ (write up / skip + reason)
+- **Napplets - Web Packages** (`napplet/web`) — substance: protocol-surface, data-integrity, documented-changes
+  - `@napplet/skills@0.3.2` 2026-08-26 — https://github.com/napplet/web/releases/tag/%40napplet/skills%400.3.2
+  - `@napplet/shim@0.30.0` 2026-08-26 — https://github.com/napplet/web/releases/tag/%40napplet/shim%400.30.0
+  - `@napplet/sdk@0.28.0` 2026-08-26 — https://github.com/napplet/web/releases/tag/%40napplet/sdk%400.28.0
+  - `@napplet/nap@0.32.0` 2026-08-26 — https://github.com/napplet/web/releases/tag/%40napplet/nap%400.32.0
+  - `@napplet/core@0.32.0` 2026-08-26 — https://github.com/napplet/web/releases/tag/%40napplet/core%400.32.0
+  - `@napplet/conformance@0.17.0` 2026-08-26 — https://github.com/napplet/web/releases/tag/%40napplet/conformance%400.17.0
+  - `@napplet/conformance-cli@0.2.19` 2026-08-26 — https://github.com/napplet/web/releases/tag/%40napplet/conformance-cli%400.2.19
+  - `@napplet/boilerplate@0.3.2` 2026-08-26 — https://github.com/napplet/web/releases/tag/%40napplet/boilerplate%400.3.2
+  - 3 merged PRs in window
+  - Triage decision: __________ (write up / skip + reason)
+- **ngit** (`DanConwayDev/ngit-cli`) — substance: new-platform, app-store-listing, protocol-surface, documented-changes
+  - `v3.0.0-rc.3` 2026-08-29 — https://github.com/DanConwayDev/ngit-cli/releases/tag/v3.0.0-rc.3
+  - `v3.0.0-rc.2` 2026-08-29 — https://github.com/DanConwayDev/ngit-cli/releases/tag/v3.0.0-rc.2
+  - `v3.0.0-rc.1` 2026-08-29 — https://github.com/DanConwayDev/ngit-cli/releases/tag/v3.0.0-rc.1
+  - `v3.0.0-rc.4` 2026-08-31 — https://github.com/DanConwayDev/ngit-cli/releases/tag/v3.0.0-rc.4
+  - `v3.0.0-rc.5` 2026-09-01 — https://github.com/DanConwayDev/ngit-cli/releases/tag/v3.0.0-rc.5
+  - Triage decision: __________ (write up / skip + reason)
+- **rssnotes** (`trinidz/rssnotes`) — **NEVER-COVERED** · **POSSIBLE-FIRST-RELEASE**
+  - `v0.1.6` 2026-08-25 — https://github.com/trinidz/rssnotes/releases/tag/v0.1.6 (empty release notes; audit the commit range instead)
+  - Triage decision: __________ (write up / skip + reason)
+- **Chama** (`jesuspirate/chama`) — substance: new-component, data-integrity, documented-changes
+  - `v6.2.0` 2026-08-31 — https://github.com/jesuspirate/chama/releases/tag/v6.2.0
+  - `v6.1.0` 2026-08-31 — https://github.com/jesuspirate/chama/releases/tag/v6.1.0
+  - Triage decision: __________ (write up / skip + reason)
+- **noble-ciphers** (`paulmillr/noble-ciphers`) — **NEVER-COVERED** · substance: documented-changes
+  - `2.4.0` 2026-08-27 — https://github.com/paulmillr/noble-ciphers/releases/tag/2.4.0
+  - Triage decision: __________ (write up / skip + reason)
+- **nostr-vpn** (`mmalmi/nostr-vpn`) — substance: new-platform, app-store-listing, data-integrity, documented-changes
+  - `v4.1.9` 2026-09-01 — https://github.com/mmalmi/nostr-vpn/releases/tag/v4.1.9
+  - Triage decision: __________ (write up / skip + reason)
+- **Shosho** (`r0d8lsh0p/shosho-releases`) — substance: protocol-surface, new-component, explicit-new-marker, documented-changes
+  - `v1.1.0` 2026-09-01 — https://github.com/r0d8lsh0p/shosho-releases/releases/tag/v1.1.0
+  - Triage decision: __________ (write up / skip + reason)
+- **Zeus** (`ZeusLN/zeus`) — substance: new-platform, app-store-listing, protocol-surface, new-component, data-integrity, messaging-feature, encryption, documented-changes
+  - `v13.2.1-rc1` 2026-08-31 — https://github.com/ZeusLN/zeus/releases/tag/v13.2.1-rc1
+  - `v13.2.1` 2026-09-02 — https://github.com/ZeusLN/zeus/releases/tag/v13.2.1
+  - 22 merged PRs in window
+  - Triage decision: __________ (write up / skip + reason)
+- **Cellibacy** (`git.vanderwarker.family/wellbeing/cellibacy-android`) — **NEVER-COVERED**
+  - `v2.0.5` 2026-08-28 — https://git.vanderwarker.family/wellbeing/cellibacy-android/releases/tag/v2.0.5
+  - `v2.0.6` 2026-08-29 — https://git.vanderwarker.family/wellbeing/cellibacy-android/releases/tag/v2.0.6
+  - Triage decision: __________ (write up / skip + reason)
+- **Feeder** (`spacecowboy/Feeder`) — substance: messaging-feature, documented-changes
+  - `2.23.0` 2026-08-30 — https://github.com/spacecowboy/Feeder/releases/tag/2.23.0
+  - 1 merged PRs in window
+  - Triage decision: __________ (write up / skip + reason)
+- **Holy Fit** (`git.vanderwarker.family/wellbeing/holyfit-android`) — **NEVER-COVERED**
+  - `v2.0.5` 2026-08-28 — https://git.vanderwarker.family/wellbeing/holyfit-android/releases/tag/v2.0.5
+  - Triage decision: __________ (write up / skip + reason)
+- **Jumble** (`CodyTseng/jumble`) — substance: messaging-feature, documented-changes
+  - `v26.8.3` 2026-08-28 — https://github.com/CodyTseng/jumble/releases/tag/v26.8.3
+  - Triage decision: __________ (write up / skip + reason)
+- **Nunlock** (`git.vanderwarker.family/wellbeing/nunlock-android`) — **NEVER-COVERED**
+  - `v2.0.5` 2026-08-28 — https://git.vanderwarker.family/wellbeing/nunlock-android/releases/tag/v2.0.5
+  - Triage decision: __________ (write up / skip + reason)
+- **Saint Stream** (`git.vanderwarker.family/wellbeing/saintstream-android`) — **NEVER-COVERED**
+  - `v2.0.7` 2026-08-28 — https://git.vanderwarker.family/wellbeing/saintstream-android/releases/tag/v2.0.7
+  - Triage decision: __________ (write up / skip + reason)
+- **Sister Charge** (`git.vanderwarker.family/wellbeing/sistercharge-android`) — **NEVER-COVERED**
+  - `v2.0.5` 2026-08-28 — https://git.vanderwarker.family/wellbeing/sistercharge-android/releases/tag/v2.0.5
+  - `v2.0.6` 2026-08-29 — https://git.vanderwarker.family/wellbeing/sistercharge-android/releases/tag/v2.0.6
+  - Triage decision: __________ (write up / skip + reason)
+- **Wisp** (`barrydeen/wisp`) — substance: messaging-feature, documented-changes
+  - `v1.2.2` 2026-09-01 — https://github.com/barrydeen/wisp/releases/tag/v1.2.2
+  - 7 merged PRs in window
+  - Triage decision: __________ (write up / skip + reason)
+- **astraea** (`mouse484/astraea`) — substance: documented-changes
+  - `v5.35.131` 2026-08-25 — https://github.com/mouse484/astraea/releases/tag/v5.35.131
+  - `v5.35.130` 2026-08-25 — https://github.com/mouse484/astraea/releases/tag/v5.35.130
+  - `v5.35.133` 2026-08-26 — https://github.com/mouse484/astraea/releases/tag/v5.35.133
+  - `v5.35.132` 2026-08-26 — https://github.com/mouse484/astraea/releases/tag/v5.35.132
+  - `v5.35.136` 2026-08-27 — https://github.com/mouse484/astraea/releases/tag/v5.35.136
+  - `v5.35.135` 2026-08-27 — https://github.com/mouse484/astraea/releases/tag/v5.35.135
+  - `v5.35.134` 2026-08-27 — https://github.com/mouse484/astraea/releases/tag/v5.35.134
+  - `v5.35.138` 2026-08-28 — https://github.com/mouse484/astraea/releases/tag/v5.35.138
+  - `v5.35.137` 2026-08-28 — https://github.com/mouse484/astraea/releases/tag/v5.35.137
+  - `v5.35.139` 2026-08-29 — https://github.com/mouse484/astraea/releases/tag/v5.35.139
+  - `v5.35.142` 2026-08-30 — https://github.com/mouse484/astraea/releases/tag/v5.35.142
+  - `v5.35.141` 2026-08-30 — https://github.com/mouse484/astraea/releases/tag/v5.35.141
+  - `v5.35.140` 2026-08-30 — https://github.com/mouse484/astraea/releases/tag/v5.35.140
+  - `v5.35.143` 2026-08-31 — https://github.com/mouse484/astraea/releases/tag/v5.35.143
+  - `v5.35.147` 2026-09-01 — https://github.com/mouse484/astraea/releases/tag/v5.35.147
+  - `v5.35.146` 2026-09-01 — https://github.com/mouse484/astraea/releases/tag/v5.35.146
+  - `v5.35.145` 2026-09-01 — https://github.com/mouse484/astraea/releases/tag/v5.35.145
+  - `v5.35.144` 2026-09-01 — https://github.com/mouse484/astraea/releases/tag/v5.35.144
+  - Triage decision: __________ (write up / skip + reason)
+- **earthly** (`moogmodular/earthly`) — substance: documented-changes
+  - `v0.1.6` 2026-08-26 — https://github.com/zeSchlausKwab/earthly/releases/tag/v0.1.6
+  - `v0.1.7` 2026-08-31 — https://github.com/zeSchlausKwab/earthly/releases/tag/v0.1.7
+  - `v0.1.8` 2026-09-01 — https://github.com/zeSchlausKwab/earthly/releases/tag/v0.1.8
+  - 3 merged PRs in window
+  - Triage decision: __________ (write up / skip + reason)
+- **rx-nostr** (`penpenpng/rx-nostr`)
+  - `rx-nostr@3.7.6` 2026-08-31 — https://github.com/penpenpng/rx-nostr/releases/tag/rx-nostr%403.7.6
+  - 1 merged PRs in window
+  - Triage decision: __________ (write up / skip + reason)

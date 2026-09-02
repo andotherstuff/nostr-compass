@@ -31,6 +31,7 @@ NIP-25 is widely implemented by Nostr clients and libraries as part of ordinary 
 **Mentioned in:**
 - [Newsletter #33: Six Years of Nostr Julys](/en/newsletters/2026-07-29-newsletter/#six-years-of-nostr-julys)
 - [Newsletter #37: Marmot](/en/newsletters/2026-08-26-newsletter/#marmot)
+- [Newsletter #38: NIP Deep Dive](/en/newsletters/2026-09-02-newsletter/#nip-deep-dive-reposts-and-reactions)
 
 **See also:**
 - [NIP-01: Basic Protocol](/en/topics/nip-01/)

@@ -61,6 +61,7 @@ That is why follow-up work matters. [PR #2251](https://github.com/nostr-protocol
 - [Newsletter #23: NIP Updates](/en/newsletters/2026-05-21-newsletter/#nip-updates)
 - [Newsletter #33: Six Years of Nostr Julys](/en/newsletters/2026-07-29-newsletter/#six-years-of-nostr-julys)
 - [Newsletter #36: rust-nostr fixes a gift-wrap identifier and rejects protected reposts](/en/newsletters/2026-08-19-newsletter/#rust-nostr-fixes-a-gift-wrap-identifier-and-rejects-protected-reposts)
+- [Newsletter #38: NIP Deep Dive](/en/newsletters/2026-09-02-newsletter/#reposts-nip-18)
 
 **See also:**
 - [NIP-42: Client Authentication](/en/topics/nip-42/)

@@ -54,6 +54,7 @@ Structured filters work well when you already know the author, kind, or tag you 
 - [Newsletter #4: NIP Updates](/en/newsletters/2026-01-07-newsletter/#nip-updates)
 - [Newsletter #32: Snort and Amethyst search updates](/en/newsletters/2026-07-22-newsletter/#snort-rewrites-query-synchronization-around-eose-proven-coverage)
 - [Newsletter #33: Tagged releases](/en/newsletters/2026-07-29-newsletter/#tagged-releases)
+- [Newsletter #38: Amethyst](/en/newsletters/2026-09-02-newsletter/#amethyst-ships-nip-84-highlights-and-fixes-two-relay-facing-failure-paths)
 
 **See also:**
 - [NIP-11: Relay Information](/en/topics/nip-11/)

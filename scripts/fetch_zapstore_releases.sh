@@ -654,7 +654,7 @@ print_summary() {
         "",
         (if .summary.baseline_suppressed_nostr_relevant > 0 then
            "!! BASELINE SUPPRESSION: \(.summary.baseline_suppressed_nostr_relevant) Nostr-relevant releases were flagged first_run and carry NO new_app/update signal.",
-           "!! This run cannot support any 'new app' or 'quiet week' claim. Treat the release list as unclassified candidates.",
+           "!! This run cannot support any new app or quiet week claim. Treat the release list as unclassified candidates.",
            "!! If this fires every week the baseline is not persisting; run scripts/migrate_discovery_state.py and check COMPASS_STATE_DIR.",
            ""
          else empty end),
