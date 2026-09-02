@@ -74,6 +74,7 @@ Mix general-purpose relays with any specialized relays you use. For instance, yo
 - [Nostrology relay observatory](https://dev.nostrolo.gy/relays) - Aggregated kind `10002` relay-list adoption and role counts
 
 **Mentioned in:**
+- [Newsletter #38: Voca 1.0 reads verified Nostr notes and subscriptions aloud on Android](/en/newsletters/2026-09-02-newsletter/#voca-10-reads-verified-nostr-notes-and-subscriptions-aloud-on-android)
 - [Newsletter #37: Postr launches as a small Android composer](/en/newsletters/2026-08-26-newsletter/#postr-launches-as-a-small-android-composer)
 - [Newsletter #5: NIP Deep Dive](/en/newsletters/2026-01-13-newsletter/#nip-65-relay-list-metadata)
 - [Newsletter #12: Outbox Model Benchmarks](/en/newsletters/2026-03-04-newsletter/)

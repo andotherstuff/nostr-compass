@@ -90,6 +90,7 @@ That is why the recommendation flow starts with people you follow. Socially filt
 **Mentioned in:**
 - [Newsletter #4: NIP Deep Dive](/en/newsletters/2026-01-07-newsletter/#nip-44-versioned-encryption)
 - [Newsletter #12: Damus](/en/newsletters/2026-03-04-newsletter/#damus-nip-89-recommended-application-handlers)
+- [Newsletter #38: nostream](/en/newsletters/2026-09-02-newsletter/#nostream-expands-relay-side-dvm-routing-and-authenticated-operation)
 
 **See also:**
 - [NIP-19: Bech32-Encoded Entities](/en/topics/nip-19/)

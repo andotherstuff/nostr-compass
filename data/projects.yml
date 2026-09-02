@@ -5505,6 +5505,15 @@ other:
     priority: medium
     notes: HTTP gateway to Nostr, SEO-friendly
 
+
+  - name: Voca
+    description: Offline Android text-to-speech reader that fetches, signature-verifies, and reads Nostr notes and long-form articles
+    platforms: [ android ]
+    repo: https://njump.me/npub17h9fn2ny0lycg7kmvxmw6gqdnv2epya9h9excnjw9wvml87nyw8sqy3hpu
+    status: active
+    priority: medium
+    notes: 1.0.0 published 2026-08-27 under npub17h9fn2...; NIP-34 repo announcement, Zapstore distribution; read-only verified Nostr fetching with outbox-model relay discovery and npub long-form subscriptions
+
   - name: Npub.pro
     description: Website builder that turns Nostr content into personal websites
     platforms: [ web ]

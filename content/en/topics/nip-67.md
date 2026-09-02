@@ -38,6 +38,7 @@ The proposal is [open as PR #2317](https://github.com/nostr-protocol/nips/pull/2
 - [NIP-01 Specification](https://github.com/nostr-protocol/nips/blob/master/01.md)
 
 **Mentioned in:**
+- [Newsletter #38: NIP Updates](/en/newsletters/2026-09-02-newsletter/#nostr-implementation-possibilities)
 - [Newsletter #19: NIP Updates](/en/newsletters/2026-04-22-newsletter/#nip-updates)
 
 **See also:**

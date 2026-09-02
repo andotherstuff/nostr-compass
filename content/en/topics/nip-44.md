@@ -81,6 +81,7 @@ NIP-44 revision 3 was merged in December 2023 following an independent Cure53 se
 - [Newsletter #33: Tagged releases](/en/newsletters/2026-07-29-newsletter/#tagged-releases)
 - [Newsletter #35: Tagged releases](/en/newsletters/2026-08-12-newsletter/#tagged-releases)
 - [Newsletter #36: nwc-kit keeps a wallet-connect client on one encryption version](/en/newsletters/2026-08-19-newsletter/#nwc-kit-keeps-a-wallet-connect-client-on-one-encryption-version)
+- [Newsletter #38: Mostro](/en/newsletters/2026-09-02-newsletter/#mostro-validates-signed-orders-before-expensive-work-and-preserves-order-audit-events)
 
 **See also:**
 - [NIP-04: Encrypted Direct Messages (deprecated)](/en/topics/nip-04/)

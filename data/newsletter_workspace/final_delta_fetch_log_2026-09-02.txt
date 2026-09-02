@@ -1,0 +1,654 @@
+===========================================
+  Nostr Compass - Data Collection
+===========================================
+
+[1/10] GitHub project updates...
+Loading projects from /opt/data/compass-worktrees/2026-09-02/data/projects.yml...
+Found 721 repos (712 GitHub, 9 Gitea)
+Resuming: 717 repos already fetched (use --fresh to restart)
+
+Fetching updates since 2026-08-25 (0 repos: 0 GitHub, 0 Gitea across 0 host(s))...
+
+
+Output saved to /opt/data/compass-worktrees/2026-09-02/data/project_updates/updates_2026-08-25_2026-09-02.json
+Completed in 0.0s (0 API requests, 0.0 req/s)
+
+============================================================
+UPDATES FROM LAST 8 DAYS
+============================================================
+
+Active repositories: 153
+Releases: 112
+Merged PRs: 763
+Open PRs: 408
+Commits: 2812
+
+----------------------------------------
+REPOSITORIES WITH ACTIVITY:
+----------------------------------------
+  Primal Android: 5 merged PRs, 9 commits
+  Primal Web: 4 open PRs
+  Nostur: 1 releases, 18 commits
+  Primal iOS: 4 merged PRs, 1 open PRs, 8 commits
+  Snort: 2 open PRs
+  Damus: 1 merged PRs, 3 commits
+  Jumble: 1 releases, 5 commits
+  Coracle: 1 merged PRs, 8 commits
+  Nostria: 2 merged PRs, 3 open PRs, 2 commits
+  Notedeck: 1 merged PRs, 40 commits
+  Nostrube: 1 releases, 3 commits
+  Nostter: 20 merged PRs, 1 open PRs, 87 commits
+  Nostr-Doc: 1 releases
+  Pollerama: 4 merged PRs, 4 commits
+  Gittr: 24 commits
+  Amethyst: 42 merged PRs, 5 open PRs, 194 commits
+  Brezn: 1 releases, 4 commits
+  ONOSENDAI: 3 open PRs
+  Grimoire: 28 commits
+  ehagaki: 30 merged PRs, 94 commits
+  astraea: 18 releases, 27 commits
+  nostr-components: 2 open PRs
+  Nostr Read Only Client: 3 commits
+  nostr-wot-extension: 1 open PRs
+  nostui: 6 commits
+  Boris: 1 open PRs
+  Infans: 2 releases, 7 commits
+  0xchat: 1 merged PRs, 2 commits
+  Nail: 1 merged PRs, 2 commits
+  Bitchat: 8 open PRs
+  Wisp: 1 releases, 7 merged PRs, 1 open PRs, 7 commits
+  Nostr Mail Client: 1 merged PRs, 5 commits
+  NYM: 2 releases, 52 commits
+  Cordn: 1 merged PRs, 6 commits
+  Sonar: 1 commits
+  Zemzeme: 1 commits
+  Haven: 5 commits
+  Shosho: 1 releases, 1 commits
+  NosCall: 17 commits
+  Shopstr: 1 open PRs
+  Mostro: 1 releases, 16 merged PRs, 3 open PRs, 19 commits
+  Vector: 3 releases, 115 commits
+  Chama: 2 releases, 33 commits
+  Mostro Mobile: 1 releases, 33 merged PRs, 6 open PRs, 33 commits
+  Milk Market: 1 merged PRs, 1 open PRs, 39 commits
+  diVine: 138 merged PRs, 17 open PRs, 139 commits
+  Buzz: 2 releases, 106 merged PRs, 211 open PRs, 113 commits
+  Meiso: 5 merged PRs, 1 open PRs, 10 commits
+  mostro-cli: 1 releases, 2 merged PRs, 12 commits
+  ZapStore: 1 commits
+  StableKraft: 8 merged PRs, 3 open PRs, 10 commits
+  NoorNote: 2 releases, 45 commits
+  algia: 1 open PRs
+  Nostr Army Knife (nak): 4 merged PRs, 11 commits
+  Mosaico: 10 commits
+  Conduit: 25 merged PRs, 10 open PRs, 116 commits
+  ngit: 5 releases, 133 commits
+  Backyard Explorer: 2 commits
+  Bigbrotr: 1 commits
+  Disgus: 16 open PRs
+  nostr.build: 6 commits
+  nostr-vpn: 1 releases, 161 commits
+  georelays: 27 commits
+  gitnostr (gittr fork): 5 commits
+  homebrew-nostr: 7 commits
+  earthly: 3 releases, 3 merged PRs, 69 commits
+  Nostr action: 1 releases, 4 merged PRs, 12 commits
+  Alby Extension: 1 open PRs
+  Safebox Acorn: 4 commits
+  Amber: 1 releases, 1 open PRs, 7 commits
+  BitBlik: 3 open PRs, 2 commits
+  nos2x-fox: 1 open PRs
+  gittr-helper-tools: 4 commits
+  Bunker46: 1 open PRs
+  Keydex: 4 commits
+  strfry: 1 merged PRs, 7 commits
+  nostream: 7 merged PRs, 1 open PRs, 7 commits
+  nostr-relay-tray: 1 merged PRs, 1 open PRs, 1 commits
+  bcr-relay: 1 open PRs
+  HAVEN: 1 merged PRs, 1 commits
+  SW2: 1 merged PRs, 1 commits
+  Ditto: 26 commits
+  Zapstore Server: 1 open PRs
+  Nostr Spring Boot Starter: 1 merged PRs, 6 commits
+  rssnotes: 1 releases, 1 commits
+  nostr-tools: 2 merged PRs, 2 commits
+  Notra: 3 merged PRs, 3 commits
+  Transpher: 4 commits
+  rx-nostr: 1 releases, 1 merged PRs, 2 commits
+  rust-nostr: 4 open PRs, 1 commits
+  nostr-java: 3 releases, 2 merged PRs, 62 commits
+  Dart NDK: 1 releases, 7 merged PRs, 1 open PRs, 33 commits
+  nostr-relay (library): 1 merged PRs, 1 commits
+  nostr-dart: 1 releases, 5 commits
+  noble-ciphers: 1 releases, 7 commits
+  nosvelte: 10 commits
+  dotnet-mls: 3 commits
+  better-auth-nostr: 1 commits
+  paravel: 108 commits
+  Granary: 11 commits
+  mostro-core: 1 releases, 1 merged PRs, 4 commits
+  nostr: 9 commits
+  nostr.hs: 1 commits
+  nostrdb-rs: 1 open PRs
+  fips-ts: 1 commits
+  fips-tcp: 8 commits
+  nostr-pubsub: 8 commits
+  Nutshell: 3 merged PRs, 2 open PRs, 5 commits
+  Cashu.me: 2 merged PRs, 2 commits
+  Npub.cash: 1 merged PRs, 6 commits
+  Glow: 4 merged PRs, 2 open PRs, 5 commits
+  CDK: 4 releases, 21 merged PRs, 13 open PRs, 33 commits
+  Alby Hub: 3 merged PRs, 3 open PRs, 5 commits
+  Coinos: 1 commits
+  Geyser: 2 merged PRs, 19 commits
+  Zeus: 2 releases, 22 merged PRs, 26 open PRs, 153 commits
+  Lightning.Pub: 1 releases, 5 merged PRs, 2 open PRs, 6 commits
+  shockwallet: 1 merged PRs
+  LNBits: 4 merged PRs, 6 commits
+  cln-nip47: 2 merged PRs, 2 commits
+  lawalletio/lawallet-nwc: 1 open PRs
+  toll-booth: 3 commits
+  TollGate: 1 open PRs
+  routstrd-auth: 1 merged PRs, 1 open PRs, 1 commits
+  Routstrd: 1 releases, 3 merged PRs, 2 open PRs, 11 commits
+  Nostrord: 2 releases, 11 merged PRs, 21 commits
+  Pensieve: 73 commits
+  Totem: 1 open PRs, 1 commits
+  Bitcredit E-Bills: 2 merged PRs, 1 open PRs, 2 commits
+  Hashtree: 2 commits
+  Angor: 4 merged PRs, 4 commits
+  ants: 1 releases, 2 merged PRs, 2 commits
+  FIPS: 1 releases, 40 commits
+  ContextVM SDK: 1 open PRs
+  Zap Cooking: 3 merged PRs, 2 open PRs, 7 commits
+  Feeder: 1 releases, 1 merged PRs, 2 open PRs, 14 commits
+  Tollbooth-DPYC: 4 commits
+  Marmot Protocol: 1 open PRs
+  NIPs: 3 merged PRs, 3 open PRs, 5 commits
+  Auditable Voting: 2 merged PRs, 4 commits
+  Iris Stack: 1 commits
+  Nostr Codex Phone: 3 commits
+  Marmot Protocol (mdk): 11 releases, 47 merged PRs, 9 open PRs, 51 commits
+  mesh-llm: 2 releases, 99 merged PRs, 14 open PRs, 102 commits
+  Kehto - Web Runtime: 7 merged PRs, 12 commits
+  Napplets - Web Packages: 8 releases, 3 merged PRs, 4 commits
+  pakstr: 5 releases, 5 merged PRs, 1 open PRs, 12 commits
+  NostrAppShell: 5 releases, 5 merged PRs, 1 open PRs, 12 commits
+  Nunlock: 1 releases, 4 commits
+  Sister Charge: 2 releases, 3 commits
+  Holy Fit: 1 releases, 5 commits
+  Saint Stream: 1 releases, 3 commits
+  Cellibacy: 2 releases, 6 commits
+
+Done!
+  Done.
+
+[2/10] NIP discussions from relays...
+Fetching NIP discussions from Nostr relays (last 8 days)...
+Since timestamp: 1787669790 (Tue Aug 25 14:56:30 UTC 2026)
+
+Initialized output file: /opt/data/compass-worktrees/2026-09-02/data/nostr_nip_discussions/discussions_2026-08-25_2026-09-02.json
+Fetching custom NIP documents (kind 30817)...
+  Querying wss://relay.damus.io...
+  Querying wss://nos.lol...
+  Querying wss://relay.nostr.band...
+  Querying wss://relay.snort.social...
+  Querying wss://nostr.wine...
+  Querying wss://relay.primal.net...
+  Querying wss://ditto.pub/relay...
+  Found 0 custom NIP documents
+Progress saved to /opt/data/compass-worktrees/2026-09-02/data/nostr_nip_discussions/discussions_2026-08-25_2026-09-02.json
+Fetching long-form NIP articles (kind 30023)...
+  Querying wss://relay.damus.io...
+  Querying wss://nos.lol...
+  Querying wss://relay.nostr.band...
+  Querying wss://relay.snort.social...
+  Querying wss://nostr.wine...
+  Querying wss://relay.primal.net...
+  Querying wss://ditto.pub/relay...
+  Total NIP-related long-form content: 0
+Progress saved to /opt/data/compass-worktrees/2026-09-02/data/nostr_nip_discussions/discussions_2026-08-25_2026-09-02.json
+Fetching notes mentioning NIPs (kind 1)...
+  Querying wss://relay.damus.io...
+  Querying wss://nos.lol...
+  Querying wss://relay.nostr.band...
+  Querying wss://relay.snort.social...
+  Querying wss://nostr.wine...
+  Querying wss://relay.primal.net...
+  Querying wss://ditto.pub/relay...
+  Found 1 notes
+Progress saved to /opt/data/compass-worktrees/2026-09-02/data/nostr_nip_discussions/discussions_2026-08-25_2026-09-02.json
+Fetching community posts (NIP-72)...
+  Querying wss://relay.damus.io...
+  Querying wss://nos.lol...
+  Querying wss://relay.nostr.band...
+  Querying wss://relay.snort.social...
+  Querying wss://nostr.wine...
+  Querying wss://relay.primal.net...
+  Querying wss://ditto.pub/relay...
+  Found 0 community posts
+Progress saved to /opt/data/compass-worktrees/2026-09-02/data/nostr_nip_discussions/discussions_2026-08-25_2026-09-02.json
+
+Final results saved to: /opt/data/compass-worktrees/2026-09-02/data/nostr_nip_discussions/discussions_2026-08-25_2026-09-02.json
+Summary:
+{
+  "nip_documents": 0,
+  "nip_notes": 1,
+  "nip_communities": 0
+}
+  Done.
+
+[3/10] Nostr Recap summaries...
+Fetching Nostr Recap posts from last 8 days...
+  Time range: 2026-08-25 to 2026-09-02
+Fetching posts from Nostr Recap author (cae5b7ea348afefc4c102bb7b125c4928f114739a27b877c6bcfbe5a79280384)...
+Fetching long-form articles from Nostr Recap author...
+Found 18 raw results, deduplicating...
+After dedup: 18 unique events
+
+Output saved to: /opt/data/compass-worktrees/2026-09-02/data/nostr_recap/recap_2026-08-25_2026-09-02.json
+Events found: 18
+  Done.
+
+[4/10] Shakespeare Apps (Soapbox MiniApps)...
+========================================
+Shakespeare App Fetcher
+========================================
+Looking back: 8 days
+Since timestamp: 1787669845 (Tue Aug 25 14:57:25 UTC 2026)
+
+Fetching Shakespeare app submissions (kind 31733)...
+
+  Querying wss://relay.damus.io...
+  Querying wss://nos.lol...
+  Querying wss://relay.nostr.band...
+  Querying wss://relay.snort.social...
+  Querying wss://nostr.wine...
+  Querying wss://relay.primal.net...
+  Querying wss://ditto.pub/relay...
+
+  Found 67 total app submissions
+Progress saved to /opt/data/compass-worktrees/2026-09-02/data/shakespeare_apps/apps_2026-08-25_2026-09-02.json
+
+========================================
+SHAKESPEARE APPS SUMMARY
+========================================
+Total submissions: 67
+Unique apps: 61
+New in last 8 days: 0
+
+Apps:
+  - Agora (https://agora.spot/)
+  - Bitmap (https://bitmap.lat/)
+  - Template: Small Business (https://bizcraft-solutions.shakespeare.wtf/)
+  - Block Cemetery (https://blockcemetery.shakespeare.wtf/)
+  - Bitcoin Mining Block Party (https://blockparty-dashboard.shakespeare.wtf/)
+  - Track your reading journey, discover amazing books, and connect with fellow readers on the decentralized web (https://bookstr.shakespeare.wtf/)
+  - Desert Mountain Brewing Co (https://brewcraft-phoenix.shakespeare.wtf/)
+  - Catallax reference client (https://catallax-reference-client.netlify.app/catallax)
+  - Chorus (https://chorus.community/)
+  - Creator Hub (https://creator-hub.shakespeare.wtf/)
+  - Debt Reaper (https://debt-reaper.shakespeare.wtf/)
+  - Digital-card (https://digital-card.shakespeare.wtf/)
+  - Espy (https://espy.you)
+  - Gleasonator Client (https://gleasonator-dev.shakespeare.wtf/)
+  - Template: Restaurant (https://greenbite-woodlands.shakespeare.wtf/)
+  - Sample: 🎃 Halloween Countdown 🎃 (https://halloween-countdown.shakespeare.wtf/)
+  - Haunted Relay Scanner (https://haunted-forest-scanner.shakespeare.wtf)
+  - Haunted Relay Scanner (https://haunted-forest-scanner.shakespeare.wtf/)
+  - Hexed Notes (https://hexed-notes.shakespeare.wtf/)
+  - heynow (https://heynow.surge.sh/)
+  ... and 41 more
+
+Results saved to: /opt/data/compass-worktrees/2026-09-02/data/shakespeare_apps/apps_2026-08-25_2026-09-02.json
+  Done.
+
+[5/10] NIP-34 git repos...
+Fetching NIP-34 repo data (last 8 days, mode: both)...
+Since timestamp: 1787669851 (Tue Aug 25 14:57:31 UTC 2026)
+Relays: wss://relay.ngit.dev wss://git.nostrhub.io wss://relay.damus.io wss://nos.lol wss://relay.nostr.band
+
+=== Tracking known NIP-34 repos ===
+  Tracked repos: 24 entries
+
+  Fetching repo: nostr-git (canonical pubkey: cdee943cbb19...)
+    Found repo announcement (nostr-git)
+    Patches in period: 0
+    Issues in period: 0
+
+  Fetching repo: gitcitadel (canonical pubkey: fd208ee8c8f2...)
+    Found repo announcement (GitCitadel Project)
+    Patches in period: 0
+    Issues in period: 0
+
+  Fetching repo: teapot (canonical pubkey: 657c9f566a26...)
+    Found repo announcement (teapot)
+    Patches in period: 0
+    Issues in period: 0
+
+  Fetching repo: nostr-dm-agent (canonical pubkey: 6e64b83c1f67...)
+    No repo announcement found
+
+  Fetching repo: nostr-git-repo (canonical pubkey: 40d8f6d79c10...)
+    Found repo announcement (nostr-git-repo)
+    Patches in period: 0
+    Issues in period: 0
+
+  Fetching repo: nostrability (canonical pubkey: 17538dc2a627...)
+    Found repo announcement (nostrability)
+    Patches in period: 0
+    Issues in period: 0
+
+  Fetching repo: nostrability-MCP (canonical pubkey: 17538dc2a627...)
+    Found repo announcement (nostrability-MCP)
+    Patches in period: 0
+    Issues in period: 0
+
+  Fetching repo: borkstr (canonical pubkey: 17538dc2a627...)
+    Found repo announcement (Borkstr Interop Reports)
+    Patches in period: 0
+    Issues in period: 0
+
+  Fetching repo: rummage (canonical pubkey: 17538dc2a627...)
+    Found repo announcement (rummage)
+    Patches in period: 0
+    Issues in period: 0
+
+  Fetching repo: passwd (canonical pubkey: 15249f1f976e...)
+    Found repo announcement (passwd)
+    Patches in period: 0
+    Issues in period: 0
+
+  Fetching repo: schemata (canonical pubkey: 17538dc2a627...)
+    Found repo announcement (schemata)
+    Patches in period: 0
+    Issues in period: 0
+
+  Fetching repo: gitworkshop (canonical pubkey: a008def15796...)
+    Found repo announcement (gitworkshop.dev)
+    Patches in period: 0
+    Issues in period: 1
+
+  Fetching repo: ngit-indexer (canonical pubkey: a008def15796...)
+    Found repo announcement (ngit-indexer)
+    Patches in period: 0
+    Issues in period: 0
+
+  Fetching repo: ngit (canonical pubkey: a34b99f22c79...)
+    Found repo announcement (ngit)
+    Patches in period: 0
+    Issues in period: 0
+
+  Fetching repo: flotilla-budabit (canonical pubkey: d04ecf33a303...)
+    Found repo announcement (flotilla-budabit)
+    Patches in period: 0
+    Issues in period: 1
+
+  Fetching repo: nostr-git-ui (canonical pubkey: d04ecf33a303...)
+    Found repo announcement (nostr-git-ui)
+    Patches in period: 0
+    Issues in period: 0
+
+  Fetching repo: micro-vpn-ansible (canonical pubkey: df0a985eaae5...)
+    Found repo announcement (micro-vpn-ansible)
+    Patches in period: 0
+    Issues in period: 0
+
+  Fetching repo: holyfit-steps-tracker (canonical pubkey: bbfe449b17e6...)
+    Found repo announcement (holyfit_steps_tracker)
+    Patches in period: 0
+    Issues in period: 0
+
+  Fetching repo: Nunlock-Android-App (canonical pubkey: 9f27f7e3592a...)
+    Found repo announcement (Nunlock Android App)
+    Patches in period: 0
+    Issues in period: 0
+
+  Fetching repo: darkmatter-linux (canonical pubkey: 66675158e633...)
+    Found repo announcement (Whitenoise Linux)
+    Patches in period: 0
+    Issues in period: 0
+
+  Fetching repo: vidstr (canonical pubkey: a8d1560d6a64...)
+    Found repo announcement (Vidstr)
+    Patches in period: 0
+    Issues in period: 0
+
+  Fetching repo: verdana (canonical pubkey: 3bf0c63fcb93...)
+    Found repo announcement (verdana)
+    Patches in period: 0
+    Issues in period: 0
+
+  Fetching repo: hallway (canonical pubkey: 3bf0c63fcb93...)
+    Found repo announcement (hallway)
+    Patches in period: 0
+    Issues in period: 0
+
+  Fetching repo: napps (canonical pubkey: 3bf0c63fcb93...)
+    Found repo announcement (napps)
+    Patches in period: 0
+    Issues in period: 0
+
+  Tracked repos found: 23
+
+=== Discovering new NIP-34 repos ===
+  Querying relays for repo announcements...
+    Relays: wss://relay.ngit.dev wss://git.nostrhub.io wss://relay.damus.io wss://nos.lol wss://relay.nostr.band
+  Raw events fetched: 159
+  After dedup: 159
+  After noise filter: 103 (removed 56 noise events)
+  After removing tracked: 103 new repos
+  Discovered repos: 96
+
+  Discovered repos:
+    - nostr-radio-app (nostr-radio-app) - https://relay.ngit.dev/npub10leeq6j8ff497swgt0g2x7lrdukm0yrymmnhj0laytnddnuku3xqkp58zs/nostr-radio-app.git
+    - edufeed-app (edufeed-app) - https://relay.ngit.dev/npub1r30l8j4vmppvq8w23umcyvd3vct4zmfpfkn4c7h2h057rmlfcrmq9xt9ma/edufeed-app.git
+    - setup-ngit (setup-ngit) - https://github.com/DanConwayDev/setup-ngit.git
+    - Noderunners-relay-front (noderunners-relay-front) - https://git.gittr.space/npub1p6xyr6u5vet33r4x724vxmp9uwfllax5zjdgxeujyrtxt90lp74qvah0rm/noderunners-relay-front.git
+    - probe (probe) - http://10.30.141.156:7334/npub14qwnxhp8p3jzrcrnmautl9htkrekjnwv73d53rcl8mu2upncu0zs0sqqfs/probe
+    - triple (triple) - htree://npub1488f3m0g5md0xxtkae0u56adjqg5ktay4nw20layx5fnlh2gewwqfcfzld/triple
+    - nostr-vpn (nostr-vpn) - htree://npub1xdhnr9mrv47kkrn95k6cwecearydeh8e895990n3acntwvmgk2dsdeeycm/nostr-vpn
+    - homelab (homelab) - https://git.vps.satsnode.xyz/npub14eglwk6kfy7d60gncsxcppw9jvkael3e7h5q8p65wuvexjwh6srqrwat0d/homelab.git
+    - AI-coded demo of Ted Nelson's Xanadu project (AI-coded-demo-of-Ted-Nelson-s-Xanadu-project) - https://relay.ngit.dev/npub17g32uxml7y4rf4jwlju6fd58nhzaafdqpa03jptdgd2pjqsfgnwscyj4jt/AI-coded-demo-of-Ted-Nelson-s-Xanadu-project.git
+    - nail (nail) - https://relay.ngit.dev/npub15gkmu50rcuv6mzevmslyllppwmeqxulnqfak0gwud3hfwmau6mvqqnpfvg/nail.git
+    - merchant-routing-engine (merchant-routing-engine) - https://relay.ngit.dev/npub1xtzgnzzu88yfv9es3evykl3ympjz0gc3umy2e6rs3jazruhjyevqe63edh/merchant-routing-engine.git
+    - huszonegy.github.io (huszonegy.github.io) - https://relay.ngit.dev/npub1h0h4pyaajj5r7zu4jn0mx22vkw94avffzpd7hdarjkx56ufzskfqjrtf8e/huszonegy.github.io.git
+    - soapbox.pub (soapbox.pub) - https://relay.ngit.dev/npub18ams6ewn5aj2n3wt2qawzglx9mr4nzksxhvrdc4gzrecw7n5tvjqctp424/soapbox.pub.git
+    - IronSignr (ironsignr) - https://denimroad.feeds.relay.tools/git/025c17544412647d28618bcc1d182feb4768c146047cca84225da66c964e8b2c/ironsignr
+    - conference-loop (conference-loop) - https://git.gittr.space/npub1n2ph08n4pqz4d3jk6n2p35p2f4ldhc5g5tu7dhftfpueajf4rpxqfjhzmc/conference-loop.git
+    - nostr-push (nostr-push) - https://git.nostrhub.io/npub1scvyzz02ayma34hesz62pdrd5nhsmxp74hjq8msmfs9khh3r3drsnw68d8/nostr-push.git
+    - ditto-relay (ditto-relay) - https://git.nostrhub.io/npub1scvyzz02ayma34hesz62pdrd5nhsmxp74hjq8msmfs9khh3r3drsnw68d8/ditto-relay.git
+    - nostr-pubsub (nostr-pubsub) - htree://npub1xdhnr9mrv47kkrn95k6cwecearydeh8e895990n3acntwvmgk2dsdeeycm/nostr-pubsub
+    - fips-tcp (fips-tcp) - htree://npub1xdhnr9mrv47kkrn95k6cwecearydeh8e895990n3acntwvmgk2dsdeeycm/fips-tcp
+    - fips (fips) - htree://npub1xdhnr9mrv47kkrn95k6cwecearydeh8e895990n3acntwvmgk2dsdeeycm/fips
+    - gitnostr (gitnostr) - https://git.gittr.space/npub1n2ph08n4pqz4d3jk6n2p35p2f4ldhc5g5tu7dhftfpueajf4rpxqfjhzmc/gitnostr.git
+    - gittr (gittr) - https://git.gittr.space/npub1n2ph08n4pqz4d3jk6n2p35p2f4ldhc5g5tu7dhftfpueajf4rpxqfjhzmc/gittr.git
+    - Snippets (Snippets) - https://relay.ngit.dev/npub1gmeu0wenescpjpymwmwgnkaedc6vy3aamf5tdtvxxf5z0yll3gdqatwl3v/Snippets.git
+    - hermes-orchestration (hermes-orchestration) - https://relay.ngit.dev/npub1x677kgulh6lqaa8e658f9ts4s0x692wgrhcptw535877wfkuwnsqztaquc/hermes-orchestration.git
+    - esp32-balloon-integration-fresh (esp32-balloon-integration-fresh) - https://relay.ngit.dev/npub1x677kgulh6lqaa8e658f9ts4s0x692wgrhcptw535877wfkuwnsqztaquc/esp32-balloon-integration-fresh.git
+    - worker-dashboard (worker-dashboard) - https://relay.ngit.dev/npub1x677kgulh6lqaa8e658f9ts4s0x692wgrhcptw535877wfkuwnsqztaquc/worker-dashboard.git
+    - torii-continuum (torii-continuum) - https://relay.ngit.dev/npub1x677kgulh6lqaa8e658f9ts4s0x692wgrhcptw535877wfkuwnsqztaquc/torii-continuum.git
+    - tooling-docs (tooling-docs) - https://relay.ngit.dev/npub1x677kgulh6lqaa8e658f9ts4s0x692wgrhcptw535877wfkuwnsqztaquc/tooling-docs.git
+    - tollgate-rs (tollgate-rs) - https://relay.ngit.dev/npub1x677kgulh6lqaa8e658f9ts4s0x692wgrhcptw535877wfkuwnsqztaquc/tollgate-rs.git
+    - tollgate-review-club (tollgate-review-club) - https://relay.ngit.dev/npub1x677kgulh6lqaa8e658f9ts4s0x692wgrhcptw535877wfkuwnsqztaquc/tollgate-review-club.git
+    - tollgate-nostr-daemon (tollgate-nostr-daemon) - https://relay.ngit.dev/npub1x677kgulh6lqaa8e658f9ts4s0x692wgrhcptw535877wfkuwnsqztaquc/tollgate-nostr-daemon.git
+    - tollgate-module-basic-go (tollgate-module-basic-go) - https://relay.ngit.dev/npub1x677kgulh6lqaa8e658f9ts4s0x692wgrhcptw535877wfkuwnsqztaquc/tollgate-module-basic-go.git
+    - power-of-two-distribution (power-of-two-distribution) - https://relay.ngit.dev/npub1x677kgulh6lqaa8e658f9ts4s0x692wgrhcptw535877wfkuwnsqztaquc/power-of-two-distribution.git
+    - OS-migration (OS-migration) - https://relay.ngit.dev/npub1x677kgulh6lqaa8e658f9ts4s0x692wgrhcptw535877wfkuwnsqztaquc/OS-migration.git
+    - openrouter-automation (openrouter-automation) - https://relay.ngit.dev/npub1x677kgulh6lqaa8e658f9ts4s0x692wgrhcptw535877wfkuwnsqztaquc/openrouter-automation.git
+    - multi-wan-bonding-plan (multi-wan-bonding-plan) - https://relay.ngit.dev/npub1x677kgulh6lqaa8e658f9ts4s0x692wgrhcptw535877wfkuwnsqztaquc/multi-wan-bonding-plan.git
+    - microfips (microfips) - https://relay.ngit.dev/npub1x677kgulh6lqaa8e658f9ts4s0x692wgrhcptw535877wfkuwnsqztaquc/microfips.git
+    - gitworkshop-fixes (gitworkshop-fixes) - https://relay.ngit.dev/npub1x677kgulh6lqaa8e658f9ts4s0x692wgrhcptw535877wfkuwnsqztaquc/gitworkshop-fixes.git
+    - fips-exit-node (fips-exit-node) - https://relay.ngit.dev/npub1x677kgulh6lqaa8e658f9ts4s0x692wgrhcptw535877wfkuwnsqztaquc/fips-exit-node.git
+    - fips-exit-e2e (fips-exit-e2e) - https://relay.ngit.dev/npub1x677kgulh6lqaa8e658f9ts4s0x692wgrhcptw535877wfkuwnsqztaquc/fips-exit-e2e.git
+    - fips-design-session-2026-06-29 (fips-design-session-2026-06-29) - https://relay.ngit.dev/npub1x677kgulh6lqaa8e658f9ts4s0x692wgrhcptw535877wfkuwnsqztaquc/fips-design-session-2026-06-29.git
+    - axepool (axepool) - https://relay.ngit.dev/npub1x677kgulh6lqaa8e658f9ts4s0x692wgrhcptw535877wfkuwnsqztaquc/axepool.git
+    - bip39-dice-verify (bip39-dice-verify) - https://relay.ngit.dev/npub1xtzgnzzu88yfv9es3evykl3ympjz0gc3umy2e6rs3jazruhjyevqe63edh/bip39-dice-verify.git
+    - madfree-raffle (madfree-raffle) - https://relay.ngit.dev/npub18weq5jzw27gkhwcuf6gu57alcptjdvh78nlulgpkz8s7pnlxfnnspc00s9/madfree-raffle.git
+    - routstrd-pro (routstrd-pro) - https://relay.ngit.dev/npub1m5tu2t8fynfw46hcm779qtnltt74uc6fzmf6t0l2zxwsy5uutens6mxx2f/routstrd-pro.git
+    - inittest (inittest) - https://gitnostr.com/npub105vh5sugqxrcfv6n2d4dnfq5msguxscetcgl37ul03dnvu8pqcgqtqe3qq/inittest.git
+    - gittr-mcp (gittr-mcp) - https://git.gittr.space/npub1n2ph08n4pqz4d3jk6n2p35p2f4ldhc5g5tu7dhftfpueajf4rpxqfjhzmc/gittr-mcp.git
+    - gittr-helper-tools (gittr-helper-tools) - https://git.gittr.space/npub1n2ph08n4pqz4d3jk6n2p35p2f4ldhc5g5tu7dhftfpueajf4rpxqfjhzmc/gittr-helper-tools.git
+    - tumblr (tumblr) - https://git.nostrhub.io/npub1mwce4c8qa2zn9zw9f372syrc9dsnqmyy3jkcmpqkzaze0slj94dqu6nmwy/tumblr.git
+    - signer (signer) - https://laantungir.net/grasp/npub1f9z5ks7sa50fg7nqwc7l0eh5yxf9vwmeu86wa90l3fd0tantd0tskzpjx8/signer.git
+    - kipina (kipina) - https://relay.ngit.dev/npub1fz5hhsj3sa4jmedtq2hldaqcgzvfyyfuckevhx80rpukjs2ykd3qkxymar/kipina.git
+    - pafrend (pafrend) - https://relay.ngit.dev/npub1fz5hhsj3sa4jmedtq2hldaqcgzvfyyfuckevhx80rpukjs2ykd3qkxymar/pafrend.git
+    - narwal (narwal) - https://ngit.danconwaydev.com/npub19w6s06qgvfy8glfwc5qf5uxvm0staycslfsjj55j8jzhned2spzq8psyzj/narwal.git
+    - pkgz (pkgz) - https://relay.ngit.dev/npub1hs5244d3vle3m5muvmvvjh2qp3jprkpjwhk393gy7cykt50eamrq8f5rx4/pkgz.git
+    - graphene-agent-kit (graphene-agent-kit) - https://relay.ngit.dev/npub1tu8hw9ealehxe08m6xdxaltfrlvka8tle2vvc8z53dem2f6ranmsyt9vf3/graphene-agent-kit.git
+    - MacIntercom (MacIntercom) - https://relay.ngit.dev/npub19ctmsmtf9jtehddhctwmnacwqtnkh0p43tafttrgzdgy0wlppcpq50zf83/MacIntercom.git
+    - nostrdb (nostrdb) - https://relay.ngit.dev/npub1saessfmtu5xwnwh60e0rwnj0e067npv6yxgc7d96algqqart056s5gkuqh/nostrdb.git
+    - bearings (bearings) - https://relay.ngit.dev/npub1cm36yztdjk523e5zrh6x30v3ldrg3jm6amygzsc7gqtjexgmvtqs48a6pg/bearings.git
+    -  (tools-20260812) - http://relay.ngit.dev/npub1kv3kyxfywlksfqnszpsrngggxs294shxjcsyjyf7nefhf4pmtrnqtd79fw/tools-20260812.git
+    - bark-wallet (bark-wallet) - https://relay.ngit.dev/npub1d8g4grgel3wyytlc895sp3sh23clfs3y7etwneuk94sczdpevnsqr9x77u/bark-wallet.git
+    - ohmyvps (ohmyvps) - https://git.gittr.space/npub1alptdev5srcw2hxg03567p4k6xs3lgj7f6545suc0rzp0xw98svse7rg94/ohmyvps.git
+    - buzz-zzub (buzz-zzub) - https://denimroad.feeds.relay.tools/git/8609e3c48d57613a88927a23765acd14d12e497005748b86e208342362f9dc93/buzz-zzub
+    - JamCore (JamCore) - https://relay.ngit.dev/npub1hr4znut0u3pwh4l9jnruq6dqeer55nfzknl34lgy3s8fzzyd6hvqz357gm/JamCore.git
+    - nostr.hs (nostr-hs) - https://relay.ngit.dev/npub1gmeu0wenescpjpymwmwgnkaedc6vy3aamf5tdtvxxf5z0yll3gdqatwl3v/nostr-hs.git
+    - nectr (payblob) - https://relay.ngit.dev/npub1qnw27f2jsqvn05wzpd56m7ykgmepk57p0yrzw8fzc7lfhjkmjmqqmd9r6h/payblob.git
+    - Pebble Privacy (mobileapp) - https://friendly-machines.com/git/mobileapp.git
+    - clix-reborn (clix-reborn) - https://relay.ngit.dev/npub1ccleg2gc69t528w4a8wjn8fyypmaz5ylz538qzj8dpygl8gl8f8s5w8zm0/clix-reborn.git
+    - clix-reconstructed (clix-reconstructed) - https://relay.ngit.dev/npub1ccleg2gc69t528w4a8wjn8fyypmaz5ylz538qzj8dpygl8gl8f8s5w8zm0/clix-reconstructed.git
+    - Voca (voca) - https://relay.ngit.dev/npub17h9fn2ny0lycg7kmvxmw6gqdnv2epya9h9excnjw9wvml87nyw8sqy3hpu/voca.git
+    - astillero (astillero) - https://grasp.sharegap.net/npub1ehhfg09mr8z34wz85ek46a6rww4f7c7jsujxhdvmpqnl5hnrwsqq2szjqv/astillero.git
+    - Amber Sign Publisher (amber-sign-publisher) - https://relay.ngit.dev/npub1kjcrpt4xv2etglzhlj3zekwuykg8n294m2y6ck4zkenp4a2w7ugq2k739s/amber-sign-publisher.git
+    - Vector AUR (vector-aur) - https://relay.ngit.dev/npub10leeq6j8ff497swgt0g2x7lrdukm0yrymmnhj0laytnddnuku3xqkp58zs/vector-aur.git
+    - nostr_core_lib_rust (nostr_core_lib_rust) - https://laantungir.net/grasp/npub1f9z5ks7sa50fg7nqwc7l0eh5yxf9vwmeu86wa90l3fd0tantd0tskzpjx8/nostr_core_lib_rust.git
+    - sovereign_browser_rust (sovereign_browser_rust) - https://laantungir.net/grasp/npub1f9z5ks7sa50fg7nqwc7l0eh5yxf9vwmeu86wa90l3fd0tantd0tskzpjx8/sovereign_browser_rust.git
+    - stackstr (stackstr) - https://relay.ngit.dev/npub1xtzgnzzu88yfv9es3evykl3ympjz0gc3umy2e6rs3jazruhjyevqe63edh/stackstr.git
+    - seoultech-rules (seoultech-rules) - https://relay.ngit.dev/npub1v9e5tvd2me0a36787qrwcxdcnq3trjlt0u65d0ysr7fzv9rs9ejs84wwvj/seoultech-rules.git
+    - murderbot (concord-automod) - https://relay.ngit.dev/npub1g0tlqlgsh8nxyaz7zze0cgq6wnwp0z3s3sc5py6s6p4sg3mczmssqfhyrr/concord-automod.git
+    -  (garbages-1786779327) - http://relay.ngit.dev/npub1y8a0cwu6wu0mfv62ns383y5sxea0dk376d4z6cwerh2e52w44fnseuxa0u/garbages-1786779327.git
+    - NightBloom (NightBloom) - https://ngit.yiff.tech/npub1g0tlqlgsh8nxyaz7zze0cgq6wnwp0z3s3sc5py6s6p4sg3mczmssqfhyrr/NightBloom.git
+    - NIP05-php (NIP05-php) - https://ngit.yiff.tech/npub1g0tlqlgsh8nxyaz7zze0cgq6wnwp0z3s3sc5py6s6p4sg3mczmssqfhyrr/NIP05-php.git
+    - hydrofoil (hydrofoil) - https://relay.ngit.dev/npub1g0tlqlgsh8nxyaz7zze0cgq6wnwp0z3s3sc5py6s6p4sg3mczmssqfhyrr/hydrofoil.git
+    - RCU Website (rcu-website) - https://denimroad.feeds.relay.tools/npub14890n4v42lencplvndx9zcv57ltuvwqjrjjan4v6tamkn5ej5svqvpyqha/rcu-website.git
+    - bloom-check (bloom-check) - https://denimroad.feeds.relay.tools/git/a9caf9d59557f33c07ec9b4c516194f7d7c638121ca5d9d59a5f7769d332a418/bloom-check
+    - x2Nostr (x2Nostr) - https://relay.ngit.dev/npub1gmeu0wenescpjpymwmwgnkaedc6vy3aamf5tdtvxxf5z0yll3gdqatwl3v/x2Nostr.git
+    - Nostr Archive Standards (nas) - https://relay.ngit.dev/npub1manlnflyzyjhgh970t8mmngrdytcp3jrmaa66u846ggg7t20cgqqvyn9tn/nas.git
+    - test (test) - https://gitnostr.com/npub105vh5sugqxrcfv6n2d4dnfq5msguxscetcgl37ul03dnvu8pqcgqtqe3qq/test.git
+    - ddgs (ddgs) - https://git.sharegap.net/cascadia/ddgs.git
+    - ECOMNIX (ECOMNIX) - https://relay.ngit.dev/npub1v7kwpxa6f9hf4sadt3usqwz8wst20jvyj4nxyee6vjka8lyfq0nqgldwta/ECOMNIX.git
+    - iris-chat-rs (iris-chat-rs) - htree://npub1399g0q2gtwjcglyjcg3jw3rcllqhm375pwases5hkvqa56aqe5wsz2eaap/iris-chat-rs
+    - iris-stack (iris-stack) - htree://npub1xdhnr9mrv47kkrn95k6cwecearydeh8e895990n3acntwvmgk2dsdeeycm/iris-stack
+    - iris-drive (iris-drive) - htree://npub1xdhnr9mrv47kkrn95k6cwecearydeh8e895990n3acntwvmgk2dsdeeycm/iris-drive
+    - hashtree (hashtree) - htree://npub1xdhnr9mrv47kkrn95k6cwecearydeh8e895990n3acntwvmgk2dsdeeycm/hashtree
+    - fips-ts (fips-ts) - htree://npub1xdhnr9mrv47kkrn95k6cwecearydeh8e895990n3acntwvmgk2dsdeeycm/fips-ts
+    - blobbi-island (blobbi-island) - https://relay.ngit.dev/npub1e6tnvlr46lv3lwdu80r07kanhk6jcxy5r07w9umgv9kuhu9dl5hsk9gqft/blobbi-island.git
+    - denim-road (denim-road) - https://relay.ngit.dev/npub1jdsqldaw9lnxs5ttf30n2f88wsn4g0ay68wmzzq79uv29us8p36spyh986/denim-road.git
+    - Analysis (Analysis) - htree://npub183zdxreesuc9xarmqtyu9q3ea9k80edvypzamhrq4p3zd3q7zpqsdnh5w5/Analysis
+
+=== Building output ===
+Output saved to: /opt/data/compass-worktrees/2026-09-02/data/nip34_repos/nip34_2026-08-25_2026-09-02.json
+
+Summary:
+{
+  "tracked_repos": 23,
+  "discovered_repos": 96,
+  "total_patches_in_period": 0,
+  "total_issues_in_period": 2
+}
+  Done.
+
+[6/10] Zapstore releases...
+========================================
+Zapstore Release Fetcher
+========================================
+Relay: wss://relay.zapstore.dev
+Looking back: 8 days (since Tue Aug 25 15:01:43 UTC 2026)
+
+Fetching app metadata (kind 32267) from wss://relay.zapstore.dev (paged)...
+  Found 4729 apps
+Fetching releases (kind 30063) since Tue Aug 25 15:01:43 UTC 2026 (paged)...
+  Found 0 releases in window
+  WARNING: zero releases returned. Either nothing was published this week
+           or wss://relay.zapstore.dev is degraded. Investigate before trusting output.
+Joining releases with apps, applying self-signature gate...
+  After self-signature gate: 0 releases
+Cross-referencing repositories with projects.yml...
+  Releases matched to tracked projects: 0
+Applying Nostr-relevance filter (Change A3: strong-keyword OR nostr-in-description)...
+  Nostr-relevant: 0 / 0
+Applying newness gate...
+  new_app (raw): 0 / 0
+  new_app (after sanity): 0 / 0 (demoted 0)
+Output saved to: /opt/data/compass-worktrees/2026-09-02/data/zapstore_releases/zapstore_2026-09-02.json
+ZAPSTORE_STATUS=empty-window (0 releases returned; relay degradation cannot be ruled out — do NOT claim a quiet week)
+
+========================================
+ZAPSTORE RELEASES SUMMARY
+========================================
+jq: error: syntax error, unexpected end of file, expecting QQSTRING_TEXT or QQSTRING_INTERP_START or QQSTRING_END (Unix shell quoting issues?) at <top-level>, line 18:
+           "!! This run cannot support any new            
+jq: error: Possibly unterminated 'if' statement at <top-level>, line 16:
+        (if .summary.baseline_suppressed_nostr_relevant > 0 then         
+jq: 2 compile errors
+  WARNING: Zapstore fetcher failed (exit code 3) — soft-fail, continuing
+
+[7/10] Untracked Nostr application discovery...
+App discovery candidates: 130
+GitHub: 129; NIP-89: 2; Zapstore listings: 0
+Saved: /opt/data/compass-worktrees/2026-09-02/data/app_discovery/discovery_2026-09-02.json
+  Done.
+
+[8/10] Grantee heartbeat feeds (OpenSats / Sovereign Engineering)...
+Fetching OpenSats heartbeat feed...
+Fetching Sovereign Engineering cohorts and tagged Nostr activity...
+SEC SEC-08: 22 archived projects, 1 tagged events
+nostr-fund events in window: 1380 across 61 repos
+general-fund events in window: 2813 across 83 repos
+SEC tagged events in window: 1; project tags: none
+wrote /opt/data/compass-worktrees/2026-09-02/data/heartbeats/heartbeat_2026-08-25_2026-09-02.json
+  Done.
+
+[9/10] Month-end history candidates...
+  SKIPPED: 2026-09-02 is not the final weekly issue of its month
+
+[10/10] Specification families (NIP / BUD / NAP / Marmot / Gamma / Concord / NWC)...
+Traceback (most recent call last):
+  File "/opt/data/compass-worktrees/2026-09-02/scripts/fetch_spec_updates.py", line 126, in <module>
+    raise SystemExit(main())
+                     ~~~~^^
+  File "/opt/data/compass-worktrees/2026-09-02/scripts/fetch_spec_updates.py", line 107, in main
+    families = [fetch_family(family, since, until) for family in config["spec_families"]]
+                ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/data/compass-worktrees/2026-09-02/scripts/fetch_spec_updates.py", line 81, in fetch_family
+    commits = gh_json(f"repos/{repo}/commits?since={since}&until={until}&per_page=100")
+  File "/opt/data/compass-worktrees/2026-09-02/scripts/fetch_spec_updates.py", line 70, in gh_json
+    result = subprocess.run(
+        ["gh", "api", endpoint],
+    ...<2 lines>...
+        capture_output=True,
+    )
+  File "/usr/lib/python3.13/subprocess.py", line 577, in run
+    raise CalledProcessError(retcode, process.args,
+                             output=stdout, stderr=stderr)
+subprocess.CalledProcessError: Command '['gh', 'api', 'repos/nostr-protocol/nips/commits?since=2026-08-26T00:00:00Z&until=2026-09-03T00:00:00Z&per_page=100']' returned non-zero exit status 75.
+  WARNING: specification-family fetcher failed (exit code 1)
+
+===========================================
+  Collection Summary
+===========================================
+  Completed: 7/10
+  Failed:    2
+  Skipped:   1
+
+===========================================
+  Release digest (names every release)
+===========================================
+wrote /opt/data/compass-worktrees/2026-09-02/data/newsletter_workspace/release_digest_2026-09-02.md
+wrote /opt/data/compass-worktrees/2026-09-02/data/project_updates/release_digest_2026-09-02.json
+release digest: 112 releases / 47 projects
+  Digest: /opt/data/compass-worktrees/2026-09-02/data/newsletter_workspace/release_digest_2026-09-02.md
+  Triage MUST record a write-up-or-skip decision for every project listed.
+
+Data freshness:
+  project_updates: 0h old
+  nostr_nip_discussions: 0h old
+  nostr_recap: 0h old
+  shakespeare_apps: 0h old
+  nip34_repos: 0h old
+  zapstore_releases: 0h old
+  app_discovery: 0h old
+  heartbeats: 0h old
+  spec_updates: 163h old

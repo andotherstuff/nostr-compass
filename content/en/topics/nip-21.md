@@ -41,6 +41,7 @@ Support for `nostr:` URIs is broad across the client ecosystem, including the ma
 **Mentioned in:**
 
 - [Newsletter #19: Nostrability migrates to NIP-34](/en/newsletters/2026-04-22-newsletter/#nostrability-migrates-to-nip-34-and-opens-19-per-nip-interop-trackers)
+- [Newsletter #38: NIP Deep Dive](/en/newsletters/2026-09-02-newsletter/#reposts-nip-18)
 
 **See also:**
 

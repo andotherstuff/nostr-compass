@@ -78,11 +78,6 @@ unresolved:
     reason: No project or maintainer npub was verified; the previous value failed its Bech32 checksum.
     sources:
       - https://github.com/lez/nsite
-  Dart NDK:
-    checked_at: 2026-08-02
-    reason: No project or maintainer npub was verified; the previous vanity value decoded to 33 bytes and the repository linked by the project site is unavailable.
-    sources:
-      - https://dart-nostr.com/
   pakstr:
     checked_at: 2026-07-29
     reason: No project account or ado maintainer npub was bound after repository, profile, NIP-05, relay, and site checks.
@@ -788,6 +783,7 @@ Cordn:
 Conduit: npub1nkfqwlz7xkhhdaa3ekz88qqqk7a0ks7jpv9zdsv0u206swxjw9rq0g2svu
 # alias used when the newsletter refers to it as "Conduit Mono"
 Conduit Mono: npub1nkfqwlz7xkhhdaa3ekz88qqqk7a0ks7jpv9zdsv0u206swxjw9rq0g2svu
+Conduit Relay: npub1nkfqwlz7xkhhdaa3ekz88qqqk7a0ks7jpv9zdsv0u206swxjw9rq0g2svu
 
 # Napplet / sandwich.farm dev account
 Napplet:
@@ -1270,3 +1266,48 @@ walls.rip Ghost Chat:
     - https://github.com/KYC-rip/walls-rip
     - https://kyc.rip/.well-known/nostr.json?name=XBToshi
     - https://njump.me/nevent1qqsrt4qvqfpcwt0q7y0x0z3tk0ra743svv5lanqvfxxe5jd3eam73dgam93v5
+
+# =============================================================================
+# Newsletter #38 additions (verified 2026-08-26)
+# =============================================================================
+
+# fmar is the active relaystr/ndk committer, and the relay-recovered profile for
+# this key states "Building dart NDK" with the `_@fmar.dev` NIP-05 identifier.
+NDK for Dart:
+  npub: npub1xpuz4qerklyck9evtg40wgrthq5rce2mumwuuygnxcg6q02lz9ms275ams
+  identity_type: maintainer
+  person: fmar
+  evidence:
+    - https://github.com/relaystr/ndk
+    - https://njump.me/nevent1qqs9y4kkyzwdktf0z3cfvgg3jqc8g8yrlnasxxm8gm52suenxpr3lle8e8cs2
+Dart NDK:
+  npub: npub1xpuz4qerklyck9evtg40wgrthq5rce2mumwuuygnxcg6q02lz9ms275ams
+  mention_only: true
+
+# Ben Arc authored the current Napstr release line in the LNbits repository;
+# his relay-backed profile names LNbits and nostr.com, and benarc@nostr.com
+# resolves to the same key.
+Napstr:
+  npub: npub1c878wu04lfqcl5avfy3p5x83ndpvedaxv0dg7pxthakq3jqdyzcs2n8avm
+  identity_type: maintainer
+  person: Ben Arc
+  evidence:
+    - https://github.com/lnbits/napstr
+    - https://github.com/arcbtc
+    - https://nostr.com/.well-known/nostr.json?name=benarc
+
+
+# Voca's 1.0.0 publication record binds its repository announcement, Zapstore
+# application/release/asset events, release article, and profile to this key.
+Voca:
+  npub: npub17h9fn2ny0lycg7kmvxmw6gqdnv2epya9h9excnjw9wvml87nyw8sqy3hpu
+  identity_type: project
+  evidence:
+    - nostr://npub17h9fn2ny0lycg7kmvxmw6gqdnv2epya9h9excnjw9wvml87nyw8sqy3hpu/relay.ngit.dev/voca
+    - https://njump.me/naddr1qq98vmmrvyknzt3s9ccqyg84e2v65erlexz84kmpkmkjqrvmzkgf8fdewfkyun3tnxlel5er3upsgqqqw4rsw0l3en
+    - https://relay.zapstore.dev (kind 32267 application event 5bb516cb29571ee0db367a4cc2cd8e3a73cafd92b15560baaf5f0e2b17475ad7)
+
+# Exact aliases produced by the outreach scope parser; each de-duplicates to the
+# already verified project or maintainer recipient above.
+Zap: npub1xxdd8eusvdxmaph3fkuu9x2mymhrcc3ghe2l38zv0l4f4nqp659qskkt7a
+nostrord repairs wrapped DMs and shared event links: npub1ktxukd7ny5e3ghqqcn6r6hs7rh4hceaua6n77cl4ym9ye2ufzces7rzc2h

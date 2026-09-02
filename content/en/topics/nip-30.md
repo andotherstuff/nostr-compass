@@ -73,3 +73,4 @@ NIP-30 custom emoji also work in kind 7 reaction events. A reaction with `conten
 - [Newsletter #12: NoorNote v0.5.x](/en/newsletters/2026-03-04-newsletter/#noornote-v05x)
 - [Newsletter #12: NIP Updates](/en/newsletters/2026-03-04-newsletter/#nip-updates)
 - [Newsletter #37: NIPs](/en/newsletters/2026-08-26-newsletter/#nips)
+- [Newsletter #38: NIP Deep Dive](/en/newsletters/2026-09-02-newsletter/#reactions-nip-25)

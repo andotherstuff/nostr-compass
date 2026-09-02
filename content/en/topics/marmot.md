@@ -63,6 +63,7 @@ MDK landed [PR #261](https://github.com/marmot-protocol/mdk/pull/261) to compute
 - [Newsletter #31: Bitcoin-Safe reaches Flathub, spotlighting its Nostr Sync & Chat plugin](/en/newsletters/2026-07-15-newsletter/#bitcoin-safe-reaches-flathub-spotlighting-its-nostr-sync--chat-plugin)
 - [Newsletter #33: Tagged releases](/en/newsletters/2026-07-29-newsletter/#tagged-releases)
 - [Newsletter #37: Heterodyne specifies portable personas and encrypted social communication](/en/newsletters/2026-08-26-newsletter/#heterodyne-specifies-portable-personas-and-encrypted-social-communication)
+- [Newsletter #38: MDK v0.9.15](/en/newsletters/2026-09-02-newsletter/#mdk-v0915-newest-keypackages-membership-activity-and-durable-sends)
 
 **See also:**
 - [MLS (Message Layer Security)](/en/topics/mls/)

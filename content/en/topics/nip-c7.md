@@ -30,6 +30,7 @@ NIP-C7 is focused on where these events should be rendered. Instead of appearing
 
 **Mentioned in:**
 - [Newsletter #18: NIP Updates](/en/newsletters/2026-04-15-newsletter/#nip-updates)
+- [Newsletter #38: Napstr](/en/newsletters/2026-09-02-newsletter/#napstr-publishes-audio-catalogues-on-nostr-and-transfers-files-over-tor)
 
 **See also:**
 - [NIP-29: Relay-based Groups](/en/topics/nip-29/)

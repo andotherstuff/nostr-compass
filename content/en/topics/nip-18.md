@@ -37,6 +37,7 @@ Reposts are more than a UI share button. They are part of how content moves acro
 **Mentioned in:**
 - [Newsletter #1: NIP Updates](/en/newsletters/2025-12-17-newsletter/#nip-updates)
 - [Newsletter #8: News](/en/newsletters/2026-02-04-newsletter/#news)
+- [Newsletter #38: NIP Deep Dive](/en/newsletters/2026-09-02-newsletter/#nip-deep-dive-reposts-and-reactions)
 
 **See also:**
 - [NIP-01: Basic Protocol](/en/topics/nip-01/)

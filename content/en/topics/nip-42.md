@@ -57,6 +57,8 @@ Combined with [NIP-11](/en/topics/nip-11/) metadata, clients can discover whethe
 - [Newsletter #33: Tagged releases](/en/newsletters/2026-07-29-newsletter/#tagged-releases)
 - [Newsletter #33: Unreleased app/client changes](/en/newsletters/2026-07-29-newsletter/#in-development)
 - [Newsletter #36: Amber 6.5.0 closes a relay-auth confused deputy and encrypts stored secrets](/en/newsletters/2026-08-19-newsletter/#amber-650-closes-a-relay-auth-confused-deputy-and-encrypts-stored-secrets)
+- [Newsletter #38: nostream](/en/newsletters/2026-09-02-newsletter/#nostream-expands-relay-side-dvm-routing-and-authenticated-operation)
+- [Newsletter #38: NIP Updates](/en/newsletters/2026-09-02-newsletter/#nostr-implementation-possibilities)
 
 **See also:**
 - [NIP-11: Relay Information Document](/en/topics/nip-11/)

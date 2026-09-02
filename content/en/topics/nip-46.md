@@ -61,6 +61,7 @@ The `switch_relays` method exists so the signer can move the session to a differ
 - [Newsletter #33: Tagged releases](/en/newsletters/2026-07-29-newsletter/#tagged-releases)
 - [Newsletter #35: Tagged releases](/en/newsletters/2026-08-12-newsletter/#tagged-releases)
 - [Newsletter #36: Amber 6.5.0 closes a relay-auth confused deputy and encrypts stored secrets](/en/newsletters/2026-08-19-newsletter/#amber-650-closes-a-relay-auth-confused-deputy-and-encrypts-stored-secrets)
+- [Newsletter #38: Zap Cooking](/en/newsletters/2026-09-02-newsletter/#zap-cooking-scopes-bunker-relays-and-signs-paid-endpoints)
 
 **See also:**
 - [NIP-55: Android Signer](/en/topics/nip-55/)

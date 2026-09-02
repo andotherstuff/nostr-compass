@@ -52,6 +52,7 @@ In mixed environments, clients still need graceful fallback behavior because not
 - [Newsletter #7: Damus ships negentropy for reliable DM syncing](/en/newsletters/2026-01-28-newsletter/#damus-ships-negentropy-for-reliable-dm-syncing)
 - [Newsletter #12](/en/newsletters/2026-03-04-newsletter/)
 - [Newsletter #33: Amethyst recovers stalled syncs](/en/newsletters/2026-07-29-newsletter/#amethyst-recovers-stalled-syncs-and-remembers-navigation-per-account)
+- [Newsletter #38: NDK for Dart](/en/newsletters/2026-09-02-newsletter/#ndk-for-dart-fixes-negentropy-multi-relay-request-lifetimes-and-signature-verification)
 
 **See also:**
 - [NIP-01: Basic Protocol Flow](/en/topics/nip-01/)
