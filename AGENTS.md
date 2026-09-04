@@ -195,7 +195,7 @@ Generate TLDR, social announcements, and email-ready content.
 - Distribution checklist
 - Verified pre-publication Nostr outreach to every mentioned project and maintainer
 
-If a new project is added after the issue's main outreach campaign but before publication, update the open review PR, resolve both the project and maintainer npubs from primary evidence, and run a targeted dry-run plus real send with `publish/dm-outreach.ts --only '<project>' --only '<maintainer>'`. De-duplicate shared pubkeys, apply `data/npubs.yml` `no_dm` exclusions, and verify the separate targeted receipt without re-sending the full issue campaign.
+If a new project is added after the issue's main outreach campaign but before publication, update the open review PR, resolve both the project and maintainer npubs from primary evidence, and run a targeted dry-run plus real send with `publish/dm-outreach.ts --pr-url '<newsletter PR URL>' --only '<project>' --only '<maintainer>'`. De-duplicate shared pubkeys, apply `data/npubs.yml` `no_dm` exclusions, and verify the separate targeted receipt without re-sending the full issue campaign. Newsletter-review DMs contain only the GitHub PR review request. Podcast outreach is separate, post-publication, and disabled until the owner approves the new recording setup and message; never reuse Riverside or append recording copy to review outreach.
 
 If exhaustive primary-source, NIP-50, npub-directory, and relay searches do not verify a project or maintainer npub, always name the unresolved identity and completed search classes in the final owner handoff. Continue outreach to verified recipients under the standing omission policy; the notice is mandatory but is not an approval gate.
 

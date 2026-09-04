@@ -52,33 +52,33 @@ describe("targeted pre-publication outreach", () => {
     expect(outreachReportSuffix([])).toBe("");
   });
 
-  test("builds a one-hour podcast reminder without repeating review copy", () => {
-    expect(
-      buildOutreachMessage({
-        reminder: true,
-        reviewUrl: "",
-        newsletterUrl: "https://nostrcompass.org/en/newsletters/2026-07-29-newsletter/",
-        podcastUrl: "https://riverside.example/studio",
-        podcastTime: "today at 16:00 UTC",
-      }),
-    ).toBe(
-      "Reminder: the Nostr Compass podcast starts today at 16:00 UTC. Your project is part of this week's discussion. Join if you are free: https://riverside.example/studio",
-    );
-  });
-
-  test("builds an explicit recording-failure re-record invitation", () => {
+  test("builds review-only copy with the GitHub PR link", () => {
     expect(
       buildOutreachMessage({
         reminder: false,
-        rerecord: true,
-        issue: 30,
-        reviewUrl: "",
-        newsletterUrl: "https://nostrcompass.org/en/newsletters/2026-07-08-newsletter/",
-        podcastUrl: "https://riverside.example/studio",
-        podcastTime: "today at 15:00 UTC",
+        reviewUrl: "https://github.com/andotherstuff/nostr-compass/pull/147",
+        newsletterUrl: "",
+        podcastUrl: "",
+        podcastTime: "",
       }),
     ).toBe(
-      "Recording update: we need to re-record Nostr Compass #30 after a recording failure. We start today at 15:00 UTC. Your project was part of that episode's discussion. Join if you are free: https://riverside.example/studio",
+      "Hey, your project is mentioned in the draft for this week's Nostr Compass newsletter. Could you review the coverage on GitHub before publication? https://github.com/andotherstuff/nostr-compass/pull/147",
+    );
+  });
+
+  test("rejects legacy podcast and re-record outreach", () => {
+    const base = {
+      issue: 38,
+      reviewUrl: "",
+      newsletterUrl: "https://nostrcompass.org/en/newsletters/2026-09-02-newsletter/",
+      podcastUrl: "https://riverside.example/studio",
+      podcastTime: "Thursday at 16:00 UTC",
+    };
+    expect(() => buildOutreachMessage({ ...base, reminder: true })).toThrow(
+      "Podcast outreach is paused pending the new post-publication setup.",
+    );
+    expect(() => buildOutreachMessage({ ...base, reminder: false, rerecord: true })).toThrow(
+      "Podcast outreach is paused pending the new post-publication setup.",
     );
   });
 });
