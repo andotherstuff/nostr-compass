@@ -1,6 +1,8 @@
 home_intro: "Nostr Compassは、Nostrプロトコルの技術リソースであり、開発者、リレー運営者、ビルダーがプロトコルの進化について最新情報を得られるよう支援します。"
 home_description: "<a href=\"{{.newslettersURL}}\">週刊ニュースレター</a>では、NIP提案、クライアントのアップデート、リレーの開発、注目すべきコード変更を取り上げています。<a href=\"{{.podcastURL}}\">ポッドキャスト</a>では、Nostrを構築している開発者との対話を配信しています。<a href=\"{{.topicsURL}}\">トピックインデックス</a>では、主要な概念を一次情報源へのリンクとともに文書化しています。"
 home_learn_more: "私たちについてもっと知る"
+home_logbook_title: "Logbook"
+home_logbook_description: "Nostr Compassの収録に参加できる、初期段階の非同期音声ポッドキャスト体験をお試しください。"
 recent_newsletters: "最新のニュースレター"
 no_newsletters: "ニュースレターはまだありません。"
 view_more_newsletters: "<a href=\"{{.newslettersURL}}\">ニュースレター</a>をもっと見る。<a href=\"{{.rssURL}}\">RSS</a> | <a href=\"{{.podcastRSSURL}}\" target=\"_blank\" rel=\"noopener\">ポッドキャストRSS</a>で購読。<a href=\"{{.nostrURL}}\">Nostr</a>でフォロー。"

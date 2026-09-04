@@ -11,6 +11,11 @@
 
     <p><a href="{{ "/about/" | relLangURL }}">{{ i18n "home_learn_more" }}</a>.</p>
 
+    <section class="home-logbook" aria-labelledby="home-logbook-heading">
+      <h2 id="home-logbook-heading"><a href="{{ .Site.Params.logbook_url }}">{{ i18n "home_logbook_title" }}</a></h2>
+      <p>{{ i18n "home_logbook_description" }}</p>
+    </section>
+
     <h2>{{ i18n "recent_newsletters" }}</h2>
     {{- $langPrefix := printf "/%s/newsletters/" .Site.Language.Lang -}}
     <ul class="post-list">

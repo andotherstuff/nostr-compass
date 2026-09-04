@@ -1,6 +1,8 @@
 home_intro: "Nostr Compass is a technical resource for the Nostr protocol, helping developers, relay operators, and builders stay current on protocol evolution."
 home_description: "We publish <a href=\"{{.newslettersURL}}\">weekly newsletters</a> covering NIP proposals, client updates, relay developments, and notable code changes. Our <a href=\"{{.podcastURL}}\">podcast</a> features conversations with the developers building Nostr. The <a href=\"{{.topicsURL}}\">topic index</a> documents key concepts with links to primary sources."
 home_learn_more: "Learn more about us"
+home_logbook_title: "Logbook"
+home_logbook_description: "Try our early asynchronous voice-podcast experience for contributing to Nostr Compass recordings."
 recent_newsletters: "Recent Newsletters"
 no_newsletters: "No newsletters found yet."
 view_more_newsletters: "View more <a href=\"{{.newslettersURL}}\">newsletters</a>. Subscribe via <a href=\"{{.rssURL}}\">RSS</a> | <a href=\"{{.podcastRSSURL}}\" target=\"_blank\" rel=\"noopener\">Podcast RSS</a>. Follow us <a href=\"{{.nostrURL}}\">on Nostr</a>."

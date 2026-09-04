@@ -17,6 +17,7 @@ ignoreFiles = ['newsletter_workspace']
   npub = "npub1wav4fae3gyfy3xj298kxj2mj8phavz7vavps34przq02j7w902qq902923"
   github_username = "andotherstuff"
   repository_name = "nostr-compass"
+  logbook_url = "https://npub1wav4fae3gyfy3xj298kxj2mj8phavz7vavps34przq02j7w902qq902923.nsite.lol/#/login"
   author = "Nostr Compass"
   bold = "**"
   # Buttondown newsletter signup - just add your username from buttondown.email/YOUR_USERNAME
