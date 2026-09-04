@@ -1,6 +1,8 @@
 home_intro: "Nostr Compass 是 Nostr 协议的技术资源，帮助开发者、中继运营者和构建者了解协议的最新发展。"
 home_description: "我们发布<a href=\"{{.newslettersURL}}\">每周通讯</a>，涵盖 NIP 提案、客户端更新、中继发展和值得注意的代码更改。我们的<a href=\"{{.podcastURL}}\">播客</a>提供与构建 Nostr 的开发者的对话。<a href=\"{{.topicsURL}}\">主题索引</a>记录关键概念并提供原始资料链接。"
 home_learn_more: "了解更多关于我们"
+home_logbook_title: "Logbook"
+home_logbook_description: "体验我们早期的异步语音播客功能，为 Nostr Compass 的录制贡献内容。"
 recent_newsletters: "最新通讯"
 no_newsletters: "暂无通讯。"
 view_more_newsletters: "查看更多<a href=\"{{.newslettersURL}}\">通讯</a>。通过 <a href=\"{{.rssURL}}\">RSS</a> | <a href=\"{{.podcastRSSURL}}\" target=\"_blank\" rel=\"noopener\">播客 RSS</a> 订阅。在 <a href=\"{{.nostrURL}}\">Nostr</a> 上关注我们。"
