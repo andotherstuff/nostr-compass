@@ -52,10 +52,14 @@ the file matches the configured one and warns on mismatch.
    the 21-word TL;DR, validate the banner URL, parse optional Tags line.
    Writes `out/{N}/metadata.json` and `out/{N}/article.unsigned.json`.
 2. **MERGE PREPARE/COMMIT:** consumes the explicit PR number, head SHA, and base
-   SHA; computes and records the prospective merge tree under the server
-   current-base guard. The mutation pass requires the identical prepared tree,
-   scoped edition authorization, source/feedback/review receipts, and exact-head
-   CI, then merges with the expected-head precondition and verifies the result.
+   SHA; computes and records the prospective merge tree under a race-free
+   current-base guard. Strict server status checks are preferred. When the
+   authenticated publisher lacks repository-admin access to configure them, the
+   pipeline fetches GitHub's exact two-parent prospective merge commit, verifies
+   its base, head, and tree, and fast-forward pushes that immutable commit to the
+   base ref. Git rejects the push if the base advanced. The mutation pass still
+   requires the identical prepared tree, scoped edition authorization,
+   source/feedback/review receipts, and exact-head CI, then verifies the result.
 3. **DEPLOY:** selects the Pages run attributable to the confirmed merge SHA and
    verifies the canonical page serves the expected merged content.
 4. **SIGN:** after deployment confirmation, requests an Amber bunker signature

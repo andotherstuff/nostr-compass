@@ -1,13 +1,15 @@
-// Stage 6: exact-identity merge with server-enforced base currentness.
+// Stage 6: exact-identity merge with race-free base currentness.
 import { spawn } from "node:child_process";
 import { loadJournal, mutateJournal } from "../lib/journal.ts";
 import { assertMergeAuthorized } from "../lib/authorization.ts";
 
 const OUT_DIR = new URL("../out", import.meta.url).pathname;
 const REPO = "andotherstuff/nostr-compass";
+const COMPASS_DIR = process.env.COMPASS_DIR || new URL("../..", import.meta.url).pathname;
 export type PullRequestIdentity = { number: number; head_sha: string; base_sha: string };
 type PRView = { number: number; state: string; mergeable: string; mergeStateStatus: string; headRefOid: string; baseRefOid: string; baseRefName: string; mergeCommit?: { oid: string } | null; potentialMergeCommit?: { oid: string } | null };
 type Runner = (cmd: string, args: string[]) => Promise<{ code: number; stdout: string; stderr: string }>;
+type BaseGuard = { method: "branch-protection-strict" | "git-ref-cas"; base_ref: string; verified_at: string };
 const defaultRun: Runner = (cmd, args) => new Promise((resolve) => {
   const child = spawn(cmd, args, { stdio: ["ignore", "pipe", "pipe"], env: { ...process.env, GH_CACHE_TTL: "0", HERMES_GH_NO_CACHE: "1" } }); let stdout = "", stderr = "";
   child.stdout.on("data", (data) => stdout += data); child.stderr.on("data", (data) => stderr += data);
@@ -32,9 +34,39 @@ async function commitTree(commit: string, run: Runner): Promise<string> {
   if (result.code !== 0 || !/^[0-9a-f]{40}$/.test(tree)) throw new Error(`Cannot verify commit tree for ${commit}: ${result.stderr.trim()}`);
   return tree;
 }
-async function requireServerBaseGuard(baseRef: string, run: Runner): Promise<void> {
-  const result = await run("gh", ["api", `repos/${REPO}/branches/${baseRef}/protection`, "--jq", ".required_status_checks.strict"]);
-  if (result.code !== 0 || result.stdout.trim() !== "true") throw new Error("Refusing merge: server does not enforce strict current-base status checks, so base identity can race the merge");
+async function selectBaseGuard(pr: PRView, run: Runner): Promise<BaseGuard> {
+  const result = await run("gh", ["api", `repos/${REPO}/branches/${pr.baseRefName}/protection`, "--jq", ".required_status_checks.strict"]);
+  if (result.code === 0 && result.stdout.trim() === "true") {
+    return { method: "branch-protection-strict", base_ref: pr.baseRefName, verified_at: new Date().toISOString() };
+  }
+
+  const remote = await run("git", ["-C", COMPASS_DIR, "ls-remote", "--heads", "origin", `refs/heads/${pr.baseRefName}`]);
+  const remoteHead = remote.stdout.trim().split(/\s+/)[0] ?? "";
+  if (remote.code !== 0 || remoteHead !== pr.baseRefOid) {
+    throw new Error("Refusing merge: strict server currentness is unavailable and the remote base is not the pinned base SHA");
+  }
+  return { method: "git-ref-cas", base_ref: pr.baseRefName, verified_at: new Date().toISOString() };
+}
+
+async function mergeWithGitRefCas(pr: PRView, prospectiveTree: string, run: Runner) {
+  const candidate = pr.potentialMergeCommit?.oid;
+  if (!candidate || !/^[0-9a-f]{40}$/.test(candidate)) throw new Error("Git ref CAS merge requires GitHub's prospective merge commit");
+
+  const fetched = await run("git", ["-C", COMPASS_DIR, "fetch", "--no-tags", "--no-write-fetch-head", "origin", `refs/pull/${pr.number}/merge`]);
+  if (fetched.code !== 0) throw new Error(`Cannot fetch the exact prospective merge commit: ${fetched.stderr.trim()}`);
+  const inspected = await run("git", ["-C", COMPASS_DIR, "cat-file", "-p", candidate]);
+  if (inspected.code !== 0) throw new Error(`Cannot inspect the exact prospective merge commit: ${inspected.stderr.trim()}`);
+  const lines = inspected.stdout.split("\n");
+  const tree = lines.find((line) => line.startsWith("tree "))?.slice(5);
+  const parents = lines.filter((line) => line.startsWith("parent ")).map((line) => line.slice(7));
+  if (tree !== prospectiveTree || parents.length !== 2 || parents[0] !== pr.baseRefOid || parents[1] !== pr.headRefOid) {
+    throw new Error("Fetched prospective merge commit does not match the pinned base, head, and tree");
+  }
+
+  const baseRef = `refs/heads/${pr.baseRefName}`;
+  const pushed = await run("git", ["-C", COMPASS_DIR, "push", "origin", `--force-with-lease=${baseRef}:${pr.baseRefOid}`, `${candidate}:${baseRef}`]);
+  if (pushed.code !== 0) throw new Error(`Git ref CAS merge rejected; the base probably advanced: ${pushed.stderr.trim()}`);
+  return pushed;
 }
 
 export async function previewMergeIssue(
@@ -57,7 +89,7 @@ export async function previewMergeIssue(
   if (pr.mergeable !== "MERGEABLE" || pr.mergeStateStatus !== "CLEAN") throw new Error(`PR #${pr.number} is not clean and mergeable`);
   if (!pr.potentialMergeCommit?.oid) throw new Error("GitHub did not provide a prospective merge identity");
   const prospectiveTree = await commitTree(pr.potentialMergeCommit.oid, run);
-  await requireServerBaseGuard(pr.baseRefName, run);
+  await selectBaseGuard(pr, run);
   if (pinned.prospective_tree_sha && pinned.prospective_tree_sha !== prospectiveTree) throw new Error("Current prospective merge tree differs from the journal-pinned review candidate");
   return { state: "open", number: pinned.number, head_sha: pinned.head_sha, base_sha: pinned.base_sha, prospective_tree_sha: prospectiveTree };
 }
@@ -84,11 +116,12 @@ export async function mergeIssue(issue: number, opts: { reallyMerge: boolean; ou
   if (pr.mergeable !== "MERGEABLE" || pr.mergeStateStatus !== "CLEAN") throw new Error(`PR #${pr.number} is not clean and mergeable`);
   if (!pr.potentialMergeCommit?.oid) throw new Error("GitHub did not provide a prospective merge identity");
   const prospectiveTree = await commitTree(pr.potentialMergeCommit.oid, run);
-  await requireServerBaseGuard(pr.baseRefName, run);
+  const baseGuard = await selectBaseGuard(pr, run);
+  if (pinned.base_guard && pinned.base_guard.method !== baseGuard.method) throw new Error("Current base guard differs from the prepared merge guard");
   if (!opts.reallyMerge) {
     await mutateJournal(outDir, issue, (j) => {
       j.pull_request!.prospective_tree_sha = prospectiveTree;
-      j.pull_request!.base_guard = { method: "branch-protection-strict", base_ref: pr.baseRefName, verified_at: new Date().toISOString() };
+      j.pull_request!.base_guard = baseGuard;
       j.effects.merge = { state: "prepared", intent_sha256: `${pinned.number}:${pinned.head_sha}:${pinned.base_sha}:${prospectiveTree}` };
     });
     return "prepared";
@@ -96,10 +129,12 @@ export async function mergeIssue(issue: number, opts: { reallyMerge: boolean; ou
   if (pinned.prospective_tree_sha !== prospectiveTree || journal.effects.merge?.state !== "prepared") throw new Error("merge mutation requires a previously prepared identical prospective tree");
   await assertMergeAuthorized(outDir, issue, prospectiveTree);
   await mutateJournal(outDir, issue, (j) => {
-    j.pull_request!.base_guard = { method: "branch-protection-strict", base_ref: pr.baseRefName, verified_at: new Date().toISOString() };
+    j.pull_request!.base_guard = baseGuard;
   });
   await mutateJournal(outDir, issue, (j) => { j.effects.merge.state = "attempted"; });
-  const merged = await run("gh", ["pr", "merge", String(pinned.number), "--repo", REPO, "--squash", "--delete-branch", "--match-head-commit", pinned.head_sha]);
+  const merged = baseGuard.method === "branch-protection-strict"
+    ? await run("gh", ["pr", "merge", String(pinned.number), "--repo", REPO, "--squash", "--delete-branch", "--match-head-commit", pinned.head_sha])
+    : await mergeWithGitRefCas(pr, prospectiveTree, run);
   try { pr = await viewPR(pinned.number, run); }
   catch (error) {
     await mutateJournal(outDir, issue, (j) => { j.effects.merge.state = "ambiguous"; j.effects.merge.error = `authoritative readback failed: ${(error as Error).message}`; });

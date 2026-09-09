@@ -28,7 +28,7 @@ async function setup() {
 }
 const head = "a".repeat(40), base = "b".repeat(40), merge = "c".repeat(40), potential = "d".repeat(40), tree = "e".repeat(40);
 const view = (state = "OPEN", actualHead = head) => JSON.stringify({ number: 7, state, mergeable: "MERGEABLE", mergeStateStatus: "CLEAN", headRefOid: actualHead, baseRefOid: base, baseRefName: "main", potentialMergeCommit: state === "OPEN" ? { oid: potential } : null, mergeCommit: state === "MERGED" ? { oid: merge } : null });
-function runner(options: { mergedAfter?: boolean; loseReadback?: boolean; strict?: boolean } = {}) {
+function runner(options: { mergedAfter?: boolean; loseReadback?: boolean; strict?: boolean; remoteBase?: string } = {}) {
   let views = 0; const calls: string[][] = [];
   const run = async (_cmd: string, args: string[]) => {
     calls.push(args);
@@ -39,6 +39,10 @@ function runner(options: { mergedAfter?: boolean; loseReadback?: boolean; strict
     }
     if (args[0] === "api" && args[1].includes("/git/commits/")) return { code: 0, stdout: tree + "\n", stderr: "" };
     if (args[0] === "api" && args[1].includes("/protection")) return { code: options.strict === false ? 1 : 0, stdout: options.strict === false ? "" : "true\n", stderr: options.strict === false ? "not found" : "" };
+    if (args.includes("ls-remote")) return { code: 0, stdout: `${options.remoteBase ?? base}\trefs/heads/main\n`, stderr: "" };
+    if (args.includes("fetch")) return { code: 0, stdout: "", stderr: "" };
+    if (args.includes("cat-file")) return { code: 0, stdout: `tree ${tree}\nparent ${base}\nparent ${head}\n\nmerge\n`, stderr: "" };
+    if (args.includes("push")) return { code: 0, stdout: "", stderr: "" };
     if (args[0] === "pr" && args[1] === "merge") return { code: 1, stdout: "", stderr: "connection lost" };
     return { code: 1, stdout: "", stderr: "unexpected" };
   };
@@ -56,10 +60,18 @@ describe("exact PR merge", () => {
     const out = await setup(); await pinPullRequest(out, 1, { number: 7, head_sha: head, base_sha: base });
     await expect(mergeIssue(1, { reallyMerge: true, outDir: out, run: async () => ({ code: 0, stdout: view("OPEN", "f".repeat(40)), stderr: "" }) })).rejects.toThrow("head no longer matches");
   });
-  test("fails closed when the server does not enforce base currentness", async () => {
-    const out = await setup(); await pinPullRequest(out, 1, { number: 7, head_sha: head, base_sha: base }); const { run, calls } = runner({ strict: false });
-    await expect(mergeIssue(1, { reallyMerge: true, outDir: out, run })).rejects.toThrow("server does not enforce");
+  test("uses a fast-forward git ref CAS when strict server protection is unavailable", async () => {
+    const out = await setup(); await pinPullRequest(out, 1, { number: 7, head_sha: head, base_sha: base }); const { run, calls } = runner({ strict: false, mergedAfter: true });
+    expect(await mergeIssue(1, { reallyMerge: true, outDir: out, run })).toBe("confirmed");
     expect(calls.some((args) => args[1] === "merge")).toBe(false);
+    const push = calls.find((args) => args.includes("push"))!;
+    expect(push).toContain(`--force-with-lease=refs/heads/main:${base}`);
+    expect(push).toContain(`${potential}:refs/heads/main`);
+  });
+  test("fails closed when the CAS remote base no longer matches the pinned base", async () => {
+    const out = await setup(); const { run, calls } = runner({ strict: false, remoteBase: "f".repeat(40) });
+    await expect(mergeIssue(1, { reallyMerge: true, outDir: out, run })).rejects.toThrow("remote base is not the pinned base");
+    expect(calls.some((args) => args.includes("push"))).toBe(false);
   });
   test("returns prepared without claiming a merge", async () => {
     const out = await setup(); await pinPullRequest(out, 1, { number: 7, head_sha: head, base_sha: base }); const { run, calls } = runner();
