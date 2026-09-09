@@ -50,6 +50,7 @@ Vector's own [v0.4.0 release notes](https://github.com/VectorPrivacy/Vector/rele
 - [Amethyst PR #3566](https://github.com/vitorpamplona/amethyst/pull/3566)
 
 **Mentioned in:**
+- [Newsletter #39: Plektos makes private events one encrypted channel](/en/newsletters/2026-09-09-newsletter/#plektos-makes-private-events-one-encrypted-channel)
 - [Newsletter #31: Vector v0.4.0 moves Group Chats from Marmot to Concord, and Amethyst ships its own Concord client days later](/en/newsletters/2026-07-15-newsletter/#vector-v040-moves-group-chats-from-marmot-to-concord-and-amethyst-ships-its-own-concord-client-days-later)
 - [Newsletter #31: Amethyst ships a clean-room Concord implementation for end-to-end encrypted communities](/en/newsletters/2026-07-15-newsletter/#amethyst-ships-a-clean-room-concord-implementation-for-end-to-end-encrypted-communities)
 

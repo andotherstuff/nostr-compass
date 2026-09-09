@@ -21,6 +21,23 @@ no_dm:
 # These remain visible to validation and workflow reporting, but never become
 # mentions or outreach recipients.
 unresolved:
+  Wingman App:
+    checked_at: 2026-09-09
+    reason: The canonical repository and OtherStuffAI GitHub profile publish no project or maintainer npub; otherstuff.ai has no NIP-05 document. NIP-50 searches for Wingman App and OtherStuffAI returned unrelated or ambiguous keys, and npub.world lookups were inaccessible, so no candidate could be defensibly bound to this project.
+    sources:
+      - https://github.com/OtherStuffAI/wm-app
+      - https://github.com/OtherStuffAI
+      - https://otherstuff.ai
+      - https://npub.world/Wingman
+      - https://npub.world/OtherStuffAI
+  better-auth-nostr:
+    checked_at: 2026-09-09
+    reason: The canonical repository and Leon Weber's GitHub profile publish no project or maintainer npub. NIP-50 searches found a note about the repository from an unbound key and automated GitHub bridge events from another key, while npub.world lookups were inaccessible; neither candidate is sufficient ownership evidence.
+    sources:
+      - https://github.com/leon-wbr/better-auth-nostr
+      - https://github.com/leon-wbr
+      - https://npub.world/better-auth-nostr
+      - https://npub.world/leon-wbr
   Concord:
     checked_at: 2026-08-18
     reason: The concord-protocol repositories publish no project account, and no NIP-05 document was reachable for a Concord-controlled domain. Vector and Armada are covered under their own verified identities.
@@ -125,6 +142,7 @@ Routstr SDK: npub130mznv74rxs032peqym6g3wqavh472623mt3z5w73xq9r6qqdufs7ql29s
 Kubo: npub1kdstrkmhv0yx8pdqcf9ed8l26752gqprx68twg7qp5nsd7qtegnsr3nsze
 whitenoise: npub1whtn0s68y3cs98zysa4nxrfzss5g5snhndv35tk5m2sudsr7ltms48r3ec
 GitWorkshop.dev: npub15qydau2hjma6ngxkl2cyar74wzyjshvl65za5k5rl69264ar2exs5cyejr
+Signed git workflows: npub15qydau2hjma6ngxkl2cyar74wzyjshvl65za5k5rl69264ar2exs5cyejr
 gnostr: npub15d9enu3v0yxyud4jk0pvxk3kmvrzymjpc6f0eq4ck44vr32qck7smrxq6k
 BitMacro Signer: npub1at83n2trk5kxcyag400crtgps7n0mwcjtfezcappntu083k7fqrqrga4ty
 Ditto: npub10qdp2fc9ta6vraczxrcs8prqnv69fru2k6s2dj48gqjcylulmtjsg9arpj
@@ -183,6 +201,12 @@ Nostria Signer Extension:
   mention_only: true
 
 # --- Dev tools and libraries ---
+fips2go:
+  npub: npub1yptpz34agws3z95dqxgvyhwnhkulav5vueryjpzrl32p57euwteqwha52w
+fips2go exposes an embedded mesh node to chosen Android apps:
+  npub: npub1yptpz34agws3z95dqxgvyhwnhkulav5vueryjpzrl32p57euwteqwha52w
+fr34aky:
+  npub: npub1yptpz34agws3z95dqxgvyhwnhkulav5vueryjpzrl32p57euwteqwha52w
 # [dev:pablof7z]
 NDK:
   npub: npub1l2vyh47mk2p0qlsku7hg0vn29faehy9hy34ygaclpn66ukqp3afqutajft
@@ -350,6 +374,10 @@ Ridestr: npub1mfushgvwvwh8nvtwzu5swvqeq62h530n3mcvnuse6rcpd6h3vy5qegpf33
 Roadstr:
   npub: npub1m2mvvpjugwdehtaskrcl7ksvdqnnhnjur9v6g9v266nss504q7mqvlr8p9
   mention_only: true
+nsite-clay:
+  npub: npub12edc7326qsryw5rw5yw0yh57fmj9r8jf4c8xazz6333w305qgnms9ypvj2
+nsite-clay edits and republishes a single-page site from the browser:
+  npub: npub12edc7326qsryw5rw5yw0yh57fmj9r8jf4c8xazz6333w305qgnms9ypvj2
 # Clawstr: (no project npub; parent org Soapbox exists)
 0xchat: npub1tm99pgz2lth724jeld6gzz6zv48zy6xp4n9xu5uqrwvx9km54qaqkkxn72
 Chachi: npub1gm7gw8q6akeft2pjt270we35vlff0v9g2fene6cxkz2h68q5hl6qls0fte
@@ -1177,6 +1205,14 @@ Nostr Components:
     - https://github.com/saiy2k/nostr-components
     - https://iris.to/.well-known/nostr.json?name=saiy2k
 
+nostr-components:
+  npub: npub1qsvv5ttv6mrlh38q8ydmw3gzwq360mdu8re2vr7rk68sqmhmsh4svhsft3
+  identity_type: maintainer
+  person: saiy2k
+  evidence:
+    - https://github.com/saiy2k/nostr-components
+    - https://iris.to/.well-known/nostr.json?name=saiy2k
+
 saiy2k dev:
   npub: npub1qsvv5ttv6mrlh38q8ydmw3gzwq360mdu8re2vr7rk68sqmhmsh4svhsft3
   identity_type: maintainer
@@ -1306,6 +1342,16 @@ Voca:
     - https://gitworkshop.dev/npub17h9fn2ny0lycg7kmvxmw6gqdnv2epya9h9excnjw9wvml87nyw8sqy3hpu/voca
     - https://njump.me/naddr1qq98vmmrvyknzt3s9ccqyg84e2v65erlexz84kmpkmkjqrvmzkgf8fdewfkyun3tnxlel5er3upsgqqqw4rsw0l3en
     - https://njump.me/nevent1qqs9hdgkev54w8hqmvm85nxzek8r5u72lkftz4tqh2h47r3tzar444cprpmhxue69uhhyetvv9uju7npwpehgmmjv5hxgetkqgs0tj5e4fj8ljvy0tdkrdhdyqxek9vsjwjmjunvfe8zhxdlnlfj8rcymzps5
+
+# The signed NIP-89 handler, public deployment, and repository bind the
+# cal.emre.xyz application to this project key.
+cal.emre.xyz:
+  npub: npub1gmeu0wenescpjpymwmwgnkaedc6vy3aamf5tdtvxxf5z0yll3gdqatwl3v
+  identity_type: project
+  evidence:
+    - https://njump.me/6fead386f0f401c2d8641ef842ccc2ade5abb4e45d61bfd7f3872b43db04cdac
+    - https://github.com/delirehberi/cal.emre.xyz
+    - https://cal.emre.xyz
 
 # Exact aliases produced by the outreach scope parser; each de-duplicates to the
 # already verified project or maintainer recipient above.

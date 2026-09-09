@@ -1,19 +1,13 @@
-## NIP Updates and Protocol Spec Work
+## Protocol and Spec Work
 
 ### Nostr Implementation Possibilities
 
-Two specification merges landed in the core [NIPs repository](https://github.com/nostr-protocol/nips) this week.
+[NIP-01](/en/topics/nip-01/) now clarifies [the `limit: 0` filter](https://github.com/nostr-protocol/nips/pull/2460), merged September 4. A relay MUST return no stored events, MUST send `EOSE` when initial queries complete, and MUST keep the subscription active for new matching events. Clients can open a live-only subscription with one filter field while retaining local history. The clarification records compatible behavior across several relay implementations and public relays.
 
-[NIP-67](/en/topics/nip-67/) defines hints a relay can append to an `EOSE` (end of stored events) message so a client knows whether to keep paginating. The [merged `"auth"` hint](https://github.com/nostr-protocol/nips/pull/2371) adds a third value beside `finish` and `more`: a relay may now signal that additional stored events could become visible if the user authenticates, and it must send the [NIP-42](/en/topics/nip-42/) (relay authentication) `AUTH` challenge before the `EOSE` that carries the hint. The [accompanying NIP-42 addition](https://github.com/nostr-protocol/nips/pull/2371) defines the same flow from the client side, so a client that receives an `EOSE` with `auth` already holds the challenge it needs to answer.
+[NIP-78](/en/topics/nip-78/) gained an [authenticated app-data requirement](https://github.com/nostr-protocol/nips/pull/2458), merged September 3. Relays SHOULD require [NIP-42](/en/topics/nip-42/) authentication for kinds `78` and `30078` and SHOULD serve them only to the authenticated event author. That is a SHOULD, not a confidentiality guarantee: clients cannot treat arbitrary relays as private storage. The merge also discourages custom app-data kinds as generic public interchange.
 
-[NIP-84](/en/topics/nip-84/) (portable highlights, the kind `9802` events Amethyst shipped support for above) [merged a tag-scheme update](https://github.com/nostr-protocol/nips/pull/2454): highlights may now tag their source with structured `i` tags per [NIP-73](/en/topics/nip-73/) (external content identifiers) in addition to `a`/`e` tags for Nostr events and `r` tags for anything else, and quote highlights moved from a MUST to a SHOULD on rendering like a quote repost.
+[NIP-AC](/en/topics/nip-ac/) opened September 4 as an explicitly open [WebRTC-signaling proposal](https://github.com/nostr-protocol/nips/pull/2461). It uses provisional ephemeral kinds for ping, connect requests, offers, answers, and ICE candidates, addressed with `p` and grouped by a session `e` tag; kind `30600` supports discovery. Relays SHOULD broadcast and MUST NOT store those signaling events while peers connect directly. The numbers remain provisional, clients SHOULD use [NIP-65 relay lists](/en/topics/nip-65/), and applications needing confidentiality SHOULD encrypt offer, answer, and candidate content with [NIP-44](/en/topics/nip-44/).
 
-### Nostr Wallet Connect
-
-A `list_transactions` response can report how many transactions match the request, not how many rows the current page returned. [Merged optional `total_count`](https://github.com/nostr-wallet-connect/nwc/pull/4) on NWC-05 (the wallet-history extension) in the [NWC extension repository](https://github.com/nostr-wallet-connect/nwc) adds that field to the response used with [NIP-47](/en/topics/nip-47/) (encrypted remote wallet control over Nostr).
-
-The [commit that adds `total_count`](https://github.com/nostr-wallet-connect/nwc/commit/ff3e49a47d040075edc46ee42fc0e33f10f1ef67) documents it as an optional integer: the total number of transactions matching the request filters.
-
-The [commit that excludes pagination from the count](https://github.com/nostr-wallet-connect/nwc/commit/06315e735f744b1afd3df0b57436fdce8a7bfc2e) states that this total excludes pagination, so it counts all matching transactions across every page.
+writer_model: claude-opus-5 (bounded first-party wrapper run `7eeea05f-c01f-4f4d-a71b-7003fd6d9fa3`)
 
 GATE: PENDING REVIEW

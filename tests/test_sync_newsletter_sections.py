@@ -60,6 +60,25 @@ Protocol.
             self.assertNotIn(stale, written)
             self.assertFalse(stale.exists())
 
+    def test_modern_headings_and_writer_provenance_are_preserved(self):
+        newsletter = self.canonical.replace("## Releases", "## Tagged Releases")
+        newsletter = newsletter.replace("## Unreleased Changes", "## In Development")
+        newsletter = newsletter.replace(
+            "## NIP Updates and Protocol Spec Work", "## Protocol and Spec Work"
+        )
+        with tempfile.TemporaryDirectory() as tmp:
+            output = Path(tmp)
+            lead = output / "lead-stories.md"
+            lead.write_text("old\n\nwriter_model: claude-opus-5\n\nGATE: PASS\n")
+
+            written = self.mod.synchronize(newsletter, output)
+
+            self.assertIn(lead, written)
+            self.assertIn("writer_model: claude-opus-5", lead.read_text())
+            self.assertTrue((output / "tagged-releases.md").exists())
+            self.assertTrue((output / "unreleased-changes.md").exists())
+            self.assertTrue((output / "protocol-work.md").exists())
+
 
 if __name__ == "__main__":
     unittest.main()

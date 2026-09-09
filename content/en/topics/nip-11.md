@@ -55,6 +55,7 @@ The specification has been trimmed over time. Older optional fields such as `sof
 - [nostream PR #557](https://github.com/Cameri/nostream/pull/557) - Complete NIP-11 relay info parity
 
 **Mentioned in:**
+- [Newsletter #39: GRAIN 0.8.0-rc2 closes an acknowledged-but-not-stored path](/en/newsletters/2026-09-09-newsletter/#grain-080-rc2-closes-an-acknowledged-but-not-stored-path)
 - [Newsletter #1: NIP Updates](/en/newsletters/2025-12-17-newsletter/#nip-updates)
 - [Newsletter #13: NIP Updates](/en/newsletters/2026-03-11-newsletter/#nip-updates)
 - [Newsletter #19: NIP Updates (`access_control` proposal)](/en/newsletters/2026-04-22-newsletter/#nip-updates)

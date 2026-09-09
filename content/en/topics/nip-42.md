@@ -48,6 +48,7 @@ Combined with [NIP-11](/en/topics/nip-11/) metadata, clients can discover whethe
 - [algia 0.0.133](https://github.com/mattn/algia/releases/tag/v0.0.133) - relay pre-authentication
 
 **Mentioned in:**
+- [Newsletter #39: Nostr Implementation Possibilities](/en/newsletters/2026-09-09-newsletter/#nostr-implementation-possibilities)
 - [Newsletter #6: Relay Information Documents](/en/newsletters/2026-01-21-newsletter/#relay-information-documents-get-formalized)
 - [Newsletter #9: Marmot Relay Status Testing](/en/newsletters/2026-02-11-newsletter/#nip-70-relay-support-critical-for-encrypted-messaging-security)
 - [Newsletter #10: Nostr MCP Server](/en/newsletters/2026-02-18-newsletter/#nostr-mcp-server)

@@ -1,105 +1,88 @@
-## NIP Deep Dive: Reposts and Reactions
+## NIP Deep Dive: URI Links and References in Event Text
 
-A contact can put an existing note back in front of their followers, and they can attach a compact like, dislike, or emoji without writing a reply. [NIP-18](/en/topics/nip-18/) (reposts) publishes that redistribution as its own signed event. [NIP-25](/en/topics/nip-25/) (reactions) publishes the compact response as a separate signed event. Both remain `draft` `optional` files on the [canonical repost specification](https://github.com/nostr-protocol/nips/blob/master/18.md) and the [canonical reaction specification](https://github.com/nostr-protocol/nips/blob/master/25.md): they are present in the NIPs repository and implemented by clients, while still labeled non-final.
+A Nostr identifier needs a transportable meaning before another application can open it. [NIP-21](/en/topics/nip-21/) puts a [NIP-19](/en/topics/nip-19/) identifier after the `nostr:` URI scheme, giving browsers, operating systems, and applications one dispatchable form. [NIP-27](/en/topics/nip-27/) defines what that same URI means inside readable event `content`. NIP-21 crosses an application boundary; NIP-27 keeps a profile or event reference in signed prose. Neither creates an event kind or changes relay messages; the [two specifications](https://github.com/nostr-protocol/nips/tree/master) define only linking and rendering behavior.
 
-### Reposts (NIP-18)
+### URI dispatch and NIP-19 semantics
 
-Followers receive a signed pointer to a kind 1 text note someone already published when a client writes a kind 6 event. [The repost specification](https://github.com/nostr-protocol/nips/blob/master/18.md) sets `kind` to 6, puts the stringified JSON of that note in `content` (empty `content` is allowed and not recommended), requires an `e` tag whose value is the note's `id` and whose third entry is a relay URL where the note can be fetched, and says the event SHOULD also carry a `p` tag with the original author's `pubkey`. A repost of a [NIP-70](/en/topics/nip-70/) (protected events) event SHOULD keep `content` empty so the protected payload is not copied into the new event.
+[NIP-21's grammar](https://github.com/nostr-protocol/nips/blob/master/21.md) is `nostr:` followed by one NIP-19 bech32 entity. `nsec` is excluded because it encodes a private key. There is no authority, path, or query component, so a conforming link is `nostr:npub1...`, not `nostr://npub1...`. A platform or client may register as the handler; the specification does not choose the installed application or define a web fallback.
 
-A quote is a citation inside some other event, not a kind 6 wrapper. When a client mentions a [NIP-21](/en/topics/nip-21/) (`nostr:` URI) `nevent`, `note`, or `naddr`, it must convert that mention into a `q` tag of the form `["q", "<event-id> or <event-address>", "<relay-url>", "<pubkey-if-a-regular-event>"]`. [Quote-repost tags](https://github.com/nostr-protocol/nips/blob/master/18.md#quote-reposts) keep those citations out of reply threads and let clients pull and count the quotes on a post.
+The prefix tells a client what to decode. `npub` carries a public key and `note` an event id. `nprofile` adds optional relay hints to a profile; `nevent` adds relays, author, and kind to an event id; and `naddr` carries the author, kind, and `d` identifier of an addressable event, with optional relays. These forms use [NIP-19 type-length-value fields](https://github.com/nostr-protocol/nips/blob/master/19.md). Hints narrow discovery but prove neither relay possession nor author control. Every fetched event still needs an id recomputation and signature check.
 
-Kind 6 is reserved for kind 1 notes. A kind 16 generic repost can wrap any event kind other than kind 1. It SHOULD include a `k` tag whose value is the stringified kind of the inner event. When that inner event is replaceable, the generic repost SHOULD add an `a` tag with the `kind:pubkey:d-tag` coordinate; if that `a` tag is absent, the repost targets one specific version and `content` must hold the full JSON string of that version. [The generic-repost rules](https://github.com/nostr-protocol/nips/blob/master/18.md#generic-reposts) keep long-form, addressable, and other non-note events from being published as if they were kind 1.
+The profile form in the [NIP-21 specification](https://github.com/nostr-protocol/nips/blob/master/21.md) is:
 
-The following kind 6 event is a live repost recovered from `wss://relay.damus.io` at assembly time ([open the event](https://njump.me/nevent1qqs88k8xgv2d3d3yymawaa24f22a0kqqvknpur0p05vq9e5r4y74xjspz3mhxue69uhhyetvv9ujuerpd46hxtnfdu7elvca)):
+```
+nostr:npub1sn0wdenkukak0d9dfczzeacvhkrgz92ak56egt7vdgzn8pv2wfqqhrjdv9
+```
+
+[NIP-21](https://github.com/nostr-protocol/nips/blob/master/21.md) also defines HTML bridges: a page serving a Nostr event can put its `naddr` in `<link rel="alternate">`, and a profile can put an `nprofile` in `<link rel="me">` or `<link rel="author">`.
+
+### NIP-27 rendering and optional tags
+
+[NIP-27](https://github.com/nostr-protocol/nips/blob/master/27.md) applies to readable event content such as kind `1` notes and kind `30023` articles. A composer may display `@name`, but publishes `nostr:nprofile1...` in the signed string. A reader scans the URI, decodes its NIP-19 entity, fetches the target, and may render a name, card, preview, or local link. If decoding fails, the URI remains ordinary text. The raw content must not be rewritten: changing it changes the NIP-01 serialization, id, and signature.
+
+Content references and tags have related but distinct jobs. [NIP-27](https://github.com/nostr-protocol/nips/blob/master/27.md) describes optional `p` and `e` tags and the [NIP-18](/en/topics/nip-18/) `q` tag. A client may show a reference without creating a notification or thread relationship; quote discovery should write both the URI and a `q` tag. [Zap Cooking's September 4 implementation](https://github.com/zapcooking/frontend/pull/665) follows that split by retaining the URI while adding relay hints and a matching `p` tag. Adding `p` or `q` does not make the URI private, and NIP-27 has no hidden-mention mode.
+
+The following [kind `1` event](https://njump.me/note1e0my422kylehy2g4ax4d98vsthdvnvy702yq3f6eguedjr0256as200k6a) was recovered from `wss://nos.lol` and verified before inclusion as a concrete NIP-27 reference. Its `content` contains an `naddr` for a version-independent addressable event. Decoding yields kind `30402`, author `91036d...310a`, the workbook's `d` identifier, and a `wss://nos.lol/` hint. The `q`, `p`, `t`, `zap`, and `client` tags are application choices, not NIP-27 requirements.
 
 ```json
 {
-  "kind": 6,
-  "id": "73d8e64314d8b62426faeef5554a95d7d80065a61e0de17d1802e683a93d534a",
-  "pubkey": "a60e79e0edad5100d7543b669e513dbc1c2170e8e9b74fdb8e971afd1e0e6813",
-  "created_at": 1787768621,
+  "id": "cbf64aa95627f3722915e9aad29d905ddac9b09e7a8808a7594732d90deaa6bb",
+  "pubkey": "ed1b999da9a434039d22338c276ffd6e338d609b81e6b1c305a120a982df787d",
+  "created_at": 1788953511,
+  "kind": 1,
   "tags": [
     [
-      "e",
-      "38980cd673ee16609dc87081d9f645c331d5a5a8b5b0d6c8147600ed29447976"
+      "p",
+      "91036dec18ee563c07edaed5eff4b5d631755c76f006734b3787292a5e3c310a",
+      "wss://multiplexer.huszonegy.world/"
     ],
     [
-      "p",
-      "34d2f5274f1958fcd2cb2463dabeaddf8a21f84ace4241da888023bf05cc8095"
+      "t",
+      "archetype"
+    ],
+    [
+      "q",
+      "30402:91036dec18ee563c07edaed5eff4b5d631755c76f006734b3787292a5e3c310a:Archetype-Workbook-Companion-Meet-your-King-Warrioir-Magician-Lover-today-oejbwe",
+      "wss://nos.lol/"
+    ],
+    [
+      "zap",
+      "91036dec18ee563c07edaed5eff4b5d631755c76f006734b3787292a5e3c310a",
+      "wss://multiplexer.huszonegy.world/",
+      "0.9"
+    ],
+    [
+      "zap",
+      "ed1b999da9a434039d22338c276ffd6e338d609b81e6b1c305a120a982df787d",
+      "wss://relay.nostr.band/",
+      "0.1"
     ],
     [
       "client",
-      "Primal iOS"
+      "Amethyst"
     ]
   ],
-  "content": "{\"pubkey\":\"34d2f5274f1958fcd2cb2463dabeaddf8a21f84ace4241da888023bf05cc8095\",\"sig\":\"8c0271f7b438083ce491c391335598e0cbceee0758177cf98f7894531033cb5153704b01009590f3d4e9cdfadd5bbf73fc5eea54186fcbac6d30744e0e6c1cd6\",\"id\":\"38980cd673ee16609dc87081d9f645c331d5a5a8b5b0d6c8147600ed29447976\",\"tags\":[[\"r\",\"https:\/\/stacker.news\/items\/1555439\"],[\"client\",\"Damus\"]],\"created_at\":1787766056,\"content\":\"🚨 Attention CLN (Core Lightning) node runners 🚨\n\nhttps:\/\/stacker.news\/items\/1555439\",\"kind\":1}",
-  "sig": "b6b97fa377cfdb651e2850f65f2ccb12ca0724c0de0fc0e39e9721f850abdfd31f5d5567517a51d988145c2a2de9ae9540b02eecf7352e554022870d5e8c64a5"
+  "content": "You can check, read and use this Workbook already! You can also support and get it for few sats and support us in this project.\n\nI hope it'll help you in your Archetype Journey :)\n\n#archetype\n\nnostr:naddr1qpgyzunrdpjhg7tsv5k4wmmjdd3x7mmt94pk7mtsv9hxjmmw94xk2et594uk7atj949kjmn894tkzunjd9hkju3df4skw6trd9skut2vdamx2u3dw3hkgcte94hk26nzwajszrnhwden5te0dehhxtnvdakz7q3qjypkmmqcaetrcpld4m27la946cch2hrk7qr8xjehsu5j5h3uxy9qxpqqqpmvyqnrm7n",
+  "sig": "aa9592e7c773271b9e9f980c8a7e17fda2ffd5a4483a1789e5dd4c4a83018ac576c5202b21b33b08770dcabe023f93998a41f1a0be4bf00e36cdde611d07915e"
 }
 ```
 
-Its `kind` is 6, the `e` tag points to the reposted note, the `p` tag identifies that note's author, and `content` carries the original kind 1 event as stringified JSON. This relay-recovered event omits the relay hint that the [NIP-18 specification](https://github.com/nostr-protocol/nips/blob/master/18.md) marks as required, illustrating why readers and clients must validate real events and allow for producers that omit fields.
+### Trust, failure behavior, and client implementations
 
-### Reactions (NIP-25)
+A safe reader finds a complete `nostr:` token, validates bech32, decodes NIP-19, rejects `nsec`, ignores unknown TLV types, and leaves malformed or oversized text alone. `npub` and `nprofile` lead to profile queries; `note` and `nevent` identify immutable events; `naddr` selects the latest valid addressable event for its kind, author, and `d` tag. Relay hints reduce search but do not extend trust. Under the [NIP-01 event rules](https://github.com/nostr-protocol/nips/blob/master/01.md), the client verifies a fetched `nevent` id and checks every `naddr` candidate signature before applying addressable-event replacement rules.
 
-A post can collect signed likes, dislikes, and emoji without those marks entering the reply thread. [The reaction specification](https://github.com/nostr-protocol/nips/blob/master/25.md) defines that mark as a kind 7 event whose `content` MUST carry the reaction value. `+` or an empty string MUST be read as a like or upvote. `-` MUST be read as a dislike or downvote. An emoji or a [NIP-30](/en/topics/nip-30/) (custom emoji) shortcode SHOULD NOT be read as a like or dislike, and a client MAY display that emoji on the post.
+Inline previews are a client choice with privacy and resource costs. Fetching every reference reveals the reader's interests and can create a lookup storm, so clients can use a cache, defer fetches until visible, cap concurrency, and require a click for unfamiliar media. Under [NIP-27](https://github.com/nostr-protocol/nips/blob/master/27.md), a preview must remain distinct from the current author's signed text. Failure should be visible as unresolved text or an unavailable card, not silently treated as verified content.
 
-The target is in the tags, not inferred from `content`. There MUST be an `e` tag set to the target event `id`, and that tag SHOULD include a relay hint; extra `e` tags are not recommended, and if they appear the target `id` must be last. There SHOULD be a `p` tag for the target author, last if several `p` tags appear. An addressable target SHOULD also get an `a` tag with `kind:pubkey:d-tag` coordinates. The `e` and `a` tags SHOULD include relay and pubkey hints, the `p` tags SHOULD include relay hints, and a `k` tag MAY carry the stringified kind of the reacted event. [Those tag rules](https://github.com/nostr-protocol/nips/blob/master/25.md#tags) let a client fetch the target and notify its author from the reaction event alone.
+Trust also changes by identifier type. A `nevent` names immutable bytes, so a client can reject a fetched event whose serialized id differs from the requested id. An `naddr` names a replaceable coordinate, so a client must verify each candidate and apply the addressable-event rules before deciding which version to display. A relay hint is useful for the first query in either case, but it is not an endorsement of the relay or of the returned content. [NIP-19's TLV definition](https://github.com/nostr-protocol/nips/blob/master/19.md) supplies the data needed to make those checks explicit.
 
-A client MAY put a single `:shortcode:` in `content` and one `emoji` tag that maps that shortcode to an image URL, following the [custom-emoji reaction rules](https://github.com/nostr-protocol/nips/blob/master/25.md#custom-emoji-reaction). If the target is not a native Nostr event, the reaction MUST be kind 17 and MUST carry [NIP-73](/en/topics/nip-73/) (external content IDs) `k` and `i` tags, as in the [external-content reaction rules](https://github.com/nostr-protocol/nips/blob/master/25.md#external-content-reactions). Kind 17 is a reaction to a website, podcast episode, or other external object. It is not a kind 7 event-to-event reaction and it is not a repost.
+[NIP-21](https://github.com/nostr-protocol/nips/blob/master/21.md) defines a portable link that can be opened from outside Nostr, while NIP-27 makes the same link durable inside signed text. A client that implements only NIP-21 can open a pasted URI but not render embedded references. Full NIP-27 support adds scanning, safe decoding, fetch policy, local rendering, and an explicit choice about notification and quote tags. The shared URI keeps those layers interoperable without forcing clients to present them identically.
 
-The following kind 7 event is a live reaction recovered from `wss://relay.damus.io` at assembly time ([open the event](https://njump.me/nevent1qqsytac63l00k7kyaphkfwqqn94wglmx78v6zhqtytg65w5k957luccpz3mhxue69uhhyetvv9ujuerpd46hxtnfdus63jym)):
-
-```json
-{
-  "kind": 7,
-  "id": "45f71a8fdefb7ac4e86f64b800996ae47f66f1d9a15c0b22d1aa3a962d3dfe63",
-  "pubkey": "0755cc2b972c3cbcae36913109c50b36b3fe110fa38a76dc37d1f01c5305496a",
-  "created_at": 1787768605,
-  "tags": [
-    [
-      "e",
-      "519de32071d71bb2ab8b71a07e03eb9a256b6a59f9b08877b156c80966d5c320"
-    ],
-    [
-      "a",
-      "34236:5ab67f7d7fed4f781008c0ec0d26c8113f9fb46094a8346246c70c75e75db9fb:2ddda68516f4729d3ef55a1eb01fe028253393212493a34816ad8eb79f97a3b7"
-    ],
-    [
-      "p",
-      "5ab67f7d7fed4f781008c0ec0d26c8113f9fb46094a8346246c70c75e75db9fb"
-    ],
-    [
-      "k",
-      "34236"
-    ],
-    [
-      "client",
-      "Divine",
-      "31990:d95aa8fc0eff8e488952495b8064991d27fb96ed8652f12cdedc5a4e8b5ae540:divine-mobile",
-      "wss://relay.divine.video"
-    ]
-  ],
-  "content": "+",
-  "sig": "3c081756c7a73e2ee8aa10fadf3b5009390d5ac9a72078ba03701c42af91022ef275df7cb17724689a23dca4e29ff1a7cd5e3a24135d021983e2726a28b00b1e"
-}
-```
-
-Its `content` is `+`, the conventional like from [NIP-25](https://github.com/nostr-protocol/nips/blob/master/25.md). The `e` tag names the reacted-to event; the `a` tag adds its addressable coordinate; the `p` tag identifies its author; and the optional `k` tag records the target's kind as a string.
-
-### Current client implementations
-
-[Amethyst](https://github.com/vitorpamplona/amethyst), an Android Nostr client, defines the [repost event type](https://github.com/vitorpamplona/amethyst/blob/d06b83bd53c510e589d5ce13d46f6bd1a8206394/quartz/src/commonMain/kotlin/com/vitorpamplona/quartz/nip18Reposts/RepostEvent.kt) and the [reaction event type](https://github.com/vitorpamplona/amethyst/blob/d06b83bd53c510e589d5ce13d46f6bd1a8206394/quartz/src/commonMain/kotlin/com/vitorpamplona/quartz/nip25Reactions/ReactionEvent.kt) in its current protocol layer.
-
-[Snort](https://github.com/v0l/snort), a web Nostr client, implements [NIP-18 helpers that include quote-link tag handling](https://github.com/v0l/snort/blob/8b2e6cb6dc5a5e0b7e052b4ed89a9c5630444e95/packages/system/src/impl/nip18.ts) and [creates NIP-25 event-reaction tags](https://github.com/v0l/snort/blob/8b2e6cb6dc5a5e0b7e052b4ed89a9c5630444e95/packages/system/src/impl/nip25.ts).
-
-[Ditto](https://github.com/soapbox-pub/ditto), a combined Mastodon server and Nostr relay, [publishes kind 16 generic reposts with a `k` tag and an `a` coordinate on addressable targets](https://github.com/soapbox-pub/ditto/blob/570fc4b26e5900ccb4085cfdb2cc86d08cdd9ade/src/components/RepostMenu.tsx) and [applies kind 7 reaction semantics by treating the last `e` tag as the target event](https://github.com/soapbox-pub/ditto/blob/570fc4b26e5900ccb4085cfdb2cc86d08cdd9ade/src/lib/nostrEvents.ts).
-
-### How They Work Together
-
-A kind 6 or kind 16 event redistributes an existing event into the reposter's followers' feeds, either by embedding that event's JSON or by pointing at a replaceable coordinate. A `q` tag marks a quote inside some other event so thread reconstruction can count citations without treating the quoting event as a reply, which is the split drawn in the [quote-repost section](https://github.com/nostr-protocol/nips/blob/master/18.md#quote-reposts). A kind 7 event leaves the original event in place and attaches only the reaction value plus target tags, which is the contract in the [reaction specification](https://github.com/nostr-protocol/nips/blob/master/25.md). Clients that fetch one pubkey therefore see that pubkey's reposts as new kind 6 or 16 events and that pubkey's opinions as kind 7 events on other people's posts.
+[Damus](https://github.com/damus-io/damus) models inline references as typed mentions. Its [mention code](https://github.com/damus-io/damus/blob/2ef636aa07f6bd4f24b72fa998b7397dced56d2a/damus/Core/Nostr/Mentions.swift) maps `npub` and `nprofile` to profile references, `note` and `nevent` to event references, and `naddr` to address references; [NostrLink](https://github.com/damus-io/damus/blob/2ef636aa07f6bd4f24b72fa998b7397dced56d2a/damus/Core/Nostr/NostrLink.swift) routes them to the appropriate destination. [Primal Android](https://github.com/PrimalHQ/primal-android-app) [parses the scheme and pasted forms](https://github.com/PrimalHQ/primal-android-app/blob/36939db97213e7f8eeefaa4adaf125d839fc662e/domain/nostr/src/commonMain/kotlin/net/primal/domain/nostr/utils/NostrUriUtils.kt), validates bech32 and extracts relay hints, then [maps references into note-content models](https://github.com/PrimalHQ/primal-android-app/blob/36939db97213e7f8eeefaa4adaf125d839fc662e/app/src/main/kotlin/net/primal/android/notes/feed/model/NoteNostrUriUi.kt). [Zap Cooking](https://github.com/zapcooking/frontend/pull/665) renders the same references in articles, recipes, editor previews, and print views.
 
 ---
 
 Send a NIP-17 DM to share a project or news item through the [Nostr Compass project](https://github.com/andotherstuff/nostr-compass).
+
+writer_model: claude-opus-5 (bounded first-party fallback candidate; wrapper run `7dee2ec3-0440-4980-a0a5-9dd9ce854a4c`)
 
 GATE: PENDING REVIEW

@@ -1,0 +1,292 @@
+{
+  "generated_at": "2026-09-08T15:14:40.951365+00:00",
+  "window": {
+    "since": "2026-09-01T00:00:00Z",
+    "until": "2026-09-09T00:00:00Z"
+  },
+  "families": [
+    {
+      "id": "nip",
+      "name": "Nostr Implementation Possibilities (NIPs)",
+      "repo": "nostr-protocol/nips",
+      "status": "active",
+      "window": {
+        "since": "2026-09-01T00:00:00Z",
+        "until": "2026-09-09T00:00:00Z"
+      },
+      "commits": [
+        {
+          "sha": "c3fd9af17939316bf6d0d83a5759100f8b0a1bdb",
+          "date": "2026-09-04T04:19:51Z",
+          "title": "Clarify zero limit behavior (#2460)",
+          "url": "https://github.com/nostr-protocol/nips/commit/c3fd9af17939316bf6d0d83a5759100f8b0a1bdb"
+        },
+        {
+          "sha": "6aeea6093786644e892dd2869fa5b642fddd271d",
+          "date": "2026-09-03T20:10:12Z",
+          "title": "NIP-78: require AUTH for kind 30078 (#2458)",
+          "url": "https://github.com/nostr-protocol/nips/commit/6aeea6093786644e892dd2869fa5b642fddd271d"
+        },
+        {
+          "sha": "488b787848fcf1c6c3498c253264b8121b1a9692",
+          "date": "2026-09-01T17:12:31Z",
+          "title": "Add i tags to highlights, clarify that r is whatever (#2454)",
+          "url": "https://github.com/nostr-protocol/nips/commit/488b787848fcf1c6c3498c253264b8121b1a9692"
+        },
+        {
+          "sha": "e65954922b28eff0e04b4e9020a5474f493793d2",
+          "date": "2026-09-01T12:32:55Z",
+          "title": "NIP-67: \"auth\" hint (#2371)",
+          "url": "https://github.com/nostr-protocol/nips/commit/e65954922b28eff0e04b4e9020a5474f493793d2"
+        }
+      ],
+      "pull_requests": [
+        {
+          "number": 1914,
+          "title": "Add A Generic Raitng/Review NIP",
+          "state": "open",
+          "created_at": "2025-05-08T10:18:34Z",
+          "updated_at": "2026-09-08T13:55:10Z",
+          "merged_at": null,
+          "url": "https://github.com/nostr-protocol/nips/pull/1914"
+        },
+        {
+          "number": 2119,
+          "title": "NIP-A3 payto: Payment Targets (RFC-8905)",
+          "state": "merged",
+          "created_at": "2025-11-14T11:27:23Z",
+          "updated_at": "2026-09-08T13:44:45Z",
+          "merged_at": "2026-08-26T18:33:31Z",
+          "url": "https://github.com/nostr-protocol/nips/pull/2119"
+        },
+        {
+          "number": 1816,
+          "title": "Add NIP-101e: Workout Events",
+          "state": "open",
+          "created_at": "2025-03-02T18:50:11Z",
+          "updated_at": "2026-09-07T22:10:48Z",
+          "merged_at": null,
+          "url": "https://github.com/nostr-protocol/nips/pull/1816"
+        },
+        {
+          "number": 2458,
+          "title": "NIP-78: require AUTH for kind 30078",
+          "state": "merged",
+          "created_at": "2026-09-02T18:11:28Z",
+          "updated_at": "2026-09-06T01:51:54Z",
+          "merged_at": "2026-09-03T20:10:12Z",
+          "url": "https://github.com/nostr-protocol/nips/pull/2458"
+        },
+        {
+          "number": 2461,
+          "title": "NIP-AC: WebRTC signaling for p2p connections",
+          "state": "open",
+          "created_at": "2026-09-04T16:22:07Z",
+          "updated_at": "2026-09-05T06:05:46Z",
+          "merged_at": null,
+          "url": "https://github.com/nostr-protocol/nips/pull/2461"
+        },
+        {
+          "number": 2462,
+          "title": "Add slash commands",
+          "state": "open",
+          "created_at": "2026-09-04T18:22:49Z",
+          "updated_at": "2026-09-05T02:59:54Z",
+          "merged_at": null,
+          "url": "https://github.com/nostr-protocol/nips/pull/2462"
+        },
+        {
+          "number": 2418,
+          "title": "NIP-XX: Trusted Relay Assertions",
+          "state": "open",
+          "created_at": "2026-07-18T15:40:15Z",
+          "updated_at": "2026-09-04T17:26:05Z",
+          "merged_at": null,
+          "url": "https://github.com/nostr-protocol/nips/pull/2418"
+        },
+        {
+          "number": 2460,
+          "title": "Clarify zero limit behavior",
+          "state": "merged",
+          "created_at": "2026-09-04T01:56:10Z",
+          "updated_at": "2026-09-04T04:19:51Z",
+          "merged_at": "2026-09-04T04:19:51Z",
+          "url": "https://github.com/nostr-protocol/nips/pull/2460"
+        },
+        {
+          "number": 2457,
+          "title": "NIP-44: note that the pinned vectors predate the extended length prefix",
+          "state": "closed",
+          "created_at": "2026-09-02T15:53:17Z",
+          "updated_at": "2026-09-02T17:29:36Z",
+          "merged_at": null,
+          "url": "https://github.com/nostr-protocol/nips/pull/2457"
+        },
+        {
+          "number": 2456,
+          "title": "NIP-44: update test vectors checksum for the extended length prefix",
+          "state": "open",
+          "created_at": "2026-09-02T15:51:03Z",
+          "updated_at": "2026-09-02T17:28:56Z",
+          "merged_at": null,
+          "url": "https://github.com/nostr-protocol/nips/pull/2456"
+        },
+        {
+          "number": 2454,
+          "title": "Add i tags to highlights, clarify that r is whatever",
+          "state": "merged",
+          "created_at": "2026-09-01T15:27:25Z",
+          "updated_at": "2026-09-01T17:12:50Z",
+          "merged_at": "2026-09-01T17:12:32Z",
+          "url": "https://github.com/nostr-protocol/nips/pull/2454"
+        },
+        {
+          "number": 2371,
+          "title": "NIP-67: \"auth\" hint",
+          "state": "merged",
+          "created_at": "2026-06-06T15:11:33Z",
+          "updated_at": "2026-09-01T12:33:03Z",
+          "merged_at": "2026-09-01T12:32:56Z",
+          "url": "https://github.com/nostr-protocol/nips/pull/2371"
+        },
+        {
+          "number": 2453,
+          "title": "NIP-F5: Population Census",
+          "state": "open",
+          "created_at": "2026-09-01T08:57:06Z",
+          "updated_at": "2026-09-01T09:09:33Z",
+          "merged_at": null,
+          "url": "https://github.com/nostr-protocol/nips/pull/2453"
+        },
+        {
+          "number": 2451,
+          "title": "docs: Standardize BCP-47 \"lang\" label namespace in NIP-32 and migrate language tags",
+          "state": "open",
+          "created_at": "2026-08-26T15:39:27Z",
+          "updated_at": "2026-09-01T06:16:12Z",
+          "merged_at": null,
+          "url": "https://github.com/nostr-protocol/nips/pull/2451"
+        },
+        {
+          "number": 1465,
+          "title": "nostr verified podcast nip",
+          "state": "open",
+          "created_at": "2024-08-31T15:47:24Z",
+          "updated_at": "2026-09-01T03:41:32Z",
+          "merged_at": null,
+          "url": "https://github.com/nostr-protocol/nips/pull/1465"
+        },
+        {
+          "number": 2442,
+          "title": "Add audio tracks and releases NIP",
+          "state": "open",
+          "created_at": "2026-08-18T18:47:47Z",
+          "updated_at": "2026-09-01T03:41:25Z",
+          "merged_at": null,
+          "url": "https://github.com/nostr-protocol/nips/pull/2442"
+        }
+      ]
+    },
+    {
+      "id": "bud",
+      "name": "Blossom Upgrade Documents (BUDs)",
+      "repo": "hzrd149/blossom",
+      "status": "quiet",
+      "window": {
+        "since": "2026-09-01T00:00:00Z",
+        "until": "2026-09-09T00:00:00Z"
+      },
+      "commits": [],
+      "pull_requests": []
+    },
+    {
+      "id": "nap",
+      "name": "Napplet Application Proposals (NAPs)",
+      "repo": "napplet/naps",
+      "status": "quiet",
+      "window": {
+        "since": "2026-09-01T00:00:00Z",
+        "until": "2026-09-09T00:00:00Z"
+      },
+      "commits": [],
+      "pull_requests": []
+    },
+    {
+      "id": "marmot",
+      "name": "Marmot Improvement Proposals (MIPs)",
+      "repo": "marmot-protocol/marmot",
+      "status": "active",
+      "window": {
+        "since": "2026-09-01T00:00:00Z",
+        "until": "2026-09-09T00:00:00Z"
+      },
+      "commits": [],
+      "pull_requests": [
+        {
+          "number": 417,
+          "title": "Multi-device and account sync: replace withdrawn draft with same-account enrollment baseline",
+          "state": "open",
+          "created_at": "2026-08-23T12:42:17Z",
+          "updated_at": "2026-09-05T13:44:31Z",
+          "merged_at": null,
+          "url": "https://github.com/marmot-protocol/marmot/pull/417"
+        },
+        {
+          "number": 419,
+          "title": "Specify consensual history purge V1",
+          "state": "open",
+          "created_at": "2026-08-31T15:23:27Z",
+          "updated_at": "2026-09-01T03:39:05Z",
+          "merged_at": null,
+          "url": "https://github.com/marmot-protocol/marmot/pull/419"
+        }
+      ]
+    },
+    {
+      "id": "gamma",
+      "name": "Gamma Markets",
+      "repo": "GammaMarkets/market-spec",
+      "status": "quiet",
+      "window": {
+        "since": "2026-09-01T00:00:00Z",
+        "until": "2026-09-09T00:00:00Z"
+      },
+      "commits": [],
+      "pull_requests": []
+    },
+    {
+      "id": "concord",
+      "name": "Concord (CORD specs)",
+      "repo": "concord-protocol/concord",
+      "status": "active",
+      "window": {
+        "since": "2026-09-01T00:00:00Z",
+        "until": "2026-09-09T00:00:00Z"
+      },
+      "commits": [],
+      "pull_requests": [
+        {
+          "number": 12,
+          "title": "Draft split read/write planes",
+          "state": "closed",
+          "created_at": "2026-07-10T16:07:45Z",
+          "updated_at": "2026-09-05T15:31:26Z",
+          "merged_at": null,
+          "url": "https://github.com/concord-protocol/concord/pull/12"
+        }
+      ]
+    },
+    {
+      "id": "nwc",
+      "name": "Nostr Wallet Connect",
+      "repo": "nostr-wallet-connect/nwc",
+      "status": "quiet",
+      "window": {
+        "since": "2026-09-01T00:00:00Z",
+        "until": "2026-09-09T00:00:00Z"
+      },
+      "commits": [],
+      "pull_requests": []
+    }
+  ]
+}
