@@ -13,16 +13,16 @@ import { readFile } from "node:fs/promises";
 import { parseIssue } from "./stages/parse.ts";
 import { signArticle } from "./stages/sign.ts";
 import { signAnnouncement } from "./stages/announce.ts";
-import { broadcastIssue } from "./stages/broadcast.ts";
-import { mergeIssue, type PullRequestIdentity } from "./stages/merge.ts";
-import { verifyAndRecordDeployment } from "./stages/deploy.ts";
+import { broadcastIssue, previewBroadcastIssue } from "./stages/broadcast.ts";
+import { mergeIssue, previewMergeIssue, type PullRequestIdentity } from "./stages/merge.ts";
+import { previewDeployment, verifyAndRecordDeployment } from "./stages/deploy.ts";
 import { logIssue } from "./stages/log.ts";
 import { IssueLock, validateNumber } from "./lib/safety.ts";
 import { closeBunker } from "./lib/bunker.ts";
 import { notifyMilestone, prLink } from "./lib/notify.ts";
-import { loadJournal, prepareDeployment } from "./lib/journal.ts";
-import { assertSigningAuthorized, recordEditionAuthorization } from "./lib/authorization.ts";
-import { recordCompositeQuality, recordFeedbackSnapshot, QUALITY_ROLES } from "./lib/gates.ts";
+import { loadJournal, prepareDeployment, sha256 } from "./lib/journal.ts";
+import { assertSigningAuthorized, previewEditionAuthorization, previewJournaledEditionAuthorization, recordEditionAuthorization, type AuthorizationReceipt } from "./lib/authorization.ts";
+import { previewCompositeQuality, previewFeedbackSnapshot, recordCompositeQuality, recordFeedbackSnapshot, QUALITY_ROLES } from "./lib/gates.ts";
 
 const OUT_DIR = process.env.COMPASS_OUT_DIR || join(import.meta.dir, "out");
 
@@ -136,7 +136,7 @@ function usage(): string {
 
 async function runParse(issue: number, dryRun = false): Promise<void> {
   console.log(`[1/6] PARSE         issue=${issue}`);
-  const meta = await parseIssue(issue);
+  const meta = await parseIssue(issue, { outDir: OUT_DIR, persist: !dryRun });
   if (!dryRun) await notifyMilestone(issue, "parsed", [
     `Title "${meta.title}", TLDR ${meta.tldr_word_count} words, body ${meta.body.length} chars.`,
     "Banner verified against config/cover.json.",
@@ -147,16 +147,17 @@ async function runParse(issue: number, dryRun = false): Promise<void> {
   console.log(`              kind:1 source=opening newsletter section`);
   console.log(`              body length=${meta.body.length} chars`);
   console.log(`              tags: ${meta.tags.length === 0 ? "none" : meta.tags.join(", ")}`);
-  console.log(`              wrote out/${issue}/metadata.json`);
+  console.log(dryRun ? "              [dry-run] parsed source is valid; no artifact written" : `              wrote out/${issue}/metadata.json`);
 }
 
 async function runSign(issue: number, dryRun: boolean): Promise<void> {
   console.log(`[2/6] SIGN          issue=${issue}`);
+  const author = JSON.parse(await readFile(join(import.meta.dir, "config/author.json"), "utf8")) as { pubkey_hex: string };
   if (dryRun) {
-    console.log(`              [dry-run] would request bunker signature for kind 30023`);
+    await assertSigningAuthorized(OUT_DIR, issue, 30023, author.pubkey_hex);
+    console.log(`              [dry-run] signer identity and kind 30023 authorization are valid`);
     return;
   }
-  const author = JSON.parse(await readFile(join(import.meta.dir, "config/author.json"), "utf8")) as { pubkey_hex: string };
   await assertSigningAuthorized(OUT_DIR, issue, 30023, author.pubkey_hex);
   await signArticle(issue);
   await notifyMilestone(issue, "signed", ["kind:30023 article signed via the Amber bunker."]);
@@ -164,11 +165,12 @@ async function runSign(issue: number, dryRun: boolean): Promise<void> {
 
 async function runAnnounceSign(issue: number, dryRun: boolean): Promise<void> {
   console.log(`[3/6] ANNOUNCE-SIGN issue=${issue}`);
+  const author = JSON.parse(await readFile(join(import.meta.dir, "config/author.json"), "utf8")) as { pubkey_hex: string };
   if (dryRun) {
-    console.log(`              [dry-run] would request bunker signature for kind:1`);
+    await assertSigningAuthorized(OUT_DIR, issue, 1, author.pubkey_hex);
+    console.log(`              [dry-run] signer identity and kind 1 authorization are valid`);
     return;
   }
-  const author = JSON.parse(await readFile(join(import.meta.dir, "config/author.json"), "utf8")) as { pubkey_hex: string };
   await assertSigningAuthorized(OUT_DIR, issue, 1, author.pubkey_hex);
   await signAnnouncement(issue);
   await notifyMilestone(issue, "announced", ["kind:1 announcement signed and pointing at the article naddr."]);
@@ -214,38 +216,68 @@ async function main() {
     return;
   }
 
-  if (args.dryRun) {
-    console.log(`[dry-run] issue=${args.issue} stage=${args.stage}; zero mutation preview`);
-    console.log("[dry-run] would validate local source, signatures, exact PR/head/base, deployment evidence, and relay floor");
-    return;
-  }
+  if (args.dryRun) console.log(`[dry-run] issue=${args.issue} stage=${args.stage}; executing read-only validation preview`);
 
-  const lock = await IssueLock.acquire(args.issue, OUT_DIR);
+  const lock = args.dryRun ? null : await IssueLock.acquire(args.issue, OUT_DIR);
   try {
-    if ((args.stage === "all" || args.stage === "merge") && args.pageUrl) await prepareDeployment(OUT_DIR, args.issue, args.pageUrl);
+    if ((args.stage === "all" || args.stage === "merge") && args.pageUrl) {
+      if (!/^https:\/\/nostrcompass\.org\//.test(args.pageUrl)) throw new Error("Deployment page URL must be on canonical nostrcompass.org HTTPS origin");
+      if (args.dryRun) console.log(`              [dry-run] canonical deployment route is valid: ${args.pageUrl}`);
+      else await prepareDeployment(OUT_DIR, args.issue, args.pageUrl);
+    }
     if (args.stage === "all" || args.stage === "parse") {
-      await runParse(args.issue);
+      await runParse(args.issue, args.dryRun);
       if (args.stage === "parse") return;
     }
 
-    if (args.authorizationReceipt) await recordEditionAuthorization(OUT_DIR, args.issue, args.authorizationReceipt);
+    let authorizationPreview: AuthorizationReceipt | undefined;
+    if (args.authorizationReceipt) {
+      if (args.dryRun) authorizationPreview = await previewEditionAuthorization(OUT_DIR, args.issue, args.authorizationReceipt);
+      else await recordEditionAuthorization(OUT_DIR, args.issue, args.authorizationReceipt);
+    }
     let receiptState = await loadJournal(OUT_DIR, args.issue);
+    if (!receiptState.source || sha256(await readFile(receiptState.source.path)) !== receiptState.source.sha256) throw new Error("Journal-pinned publication source is missing or changed");
+    if (args.pageUrl && receiptState.deployment_intent && receiptState.deployment_intent.page_url !== args.pageUrl) throw new Error("Deployment route conflicts with the journal-pinned canonical route");
     if (args.qualityReceiptDir) {
       if (!receiptState.source) throw new Error("quality receipt ingestion requires a journaled publication source");
       const receiptPaths = Object.fromEntries(
         QUALITY_ROLES.map((role) => [role, join(args.qualityReceiptDir!, `${role}.json`)]),
       ) as Record<(typeof QUALITY_ROLES)[number], string>;
-      await recordCompositeQuality(OUT_DIR, args.issue, receiptState.source.path, receiptPaths);
-      receiptState = await loadJournal(OUT_DIR, args.issue);
+      if (args.dryRun) await previewCompositeQuality(OUT_DIR, args.issue, receiptState.source.path, receiptPaths);
+      else {
+        await recordCompositeQuality(OUT_DIR, args.issue, receiptState.source.path, receiptPaths);
+        receiptState = await loadJournal(OUT_DIR, args.issue);
+      }
     }
     if (args.feedbackReceipt) {
       if (!receiptState.source) throw new Error("feedback receipt ingestion requires a journaled publication source");
-      await recordFeedbackSnapshot(OUT_DIR, args.issue, receiptState.source.path, args.feedbackReceipt);
+      if (args.dryRun) await previewFeedbackSnapshot(OUT_DIR, args.issue, receiptState.source.path, args.feedbackReceipt);
+      else await recordFeedbackSnapshot(OUT_DIR, args.issue, receiptState.source.path, args.feedbackReceipt);
+    }
+    if (args.dryRun) {
+      receiptState = await loadJournal(OUT_DIR, args.issue);
+      for (const gate of ["quality", "feedback"] as const) {
+        if ((gate === "quality" && args.qualityReceiptDir) || (gate === "feedback" && args.feedbackReceipt)) continue;
+        const effect = receiptState.effects[gate];
+        if (effect?.state !== "confirmed" || effect.event_id !== receiptState.pull_request?.head_sha || !effect.payload_path || !effect.payload_sha256 || sha256(await readFile(effect.payload_path)) !== effect.payload_sha256) throw new Error(`Read-only preview requires valid journaled ${gate} evidence or an explicit receipt input`);
+      }
+      if (!args.authorizationReceipt) {
+        const effect = receiptState.effects.authorization;
+        if (effect?.state !== "confirmed" || !effect.payload_path || !effect.payload_sha256 || sha256(await readFile(effect.payload_path)) !== effect.payload_sha256) throw new Error("Read-only preview requires valid journaled authorization evidence or an explicit receipt input");
+        authorizationPreview = await previewJournaledEditionAuthorization(OUT_DIR, args.issue);
+      }
     }
 
     if (args.stage === "all" || args.stage === "merge") {
       if (args.dryRun) {
-        console.log("[dry-run] would reconcile/merge the exact pinned pull request");
+        const preview = await previewMergeIssue(args.issue, { outDir: OUT_DIR, identity: args.prIdentity });
+        if (!authorizationPreview || authorizationPreview.prospective_tree_sha !== preview.prospective_tree_sha) throw new Error("Read-only preview authorization does not match the exact prospective merge tree");
+        if (new Date() < new Date(authorizationPreview.not_before)) throw new Error("Read-only preview is before the scoped Wednesday publication boundary");
+        console.log(`[dry-run] exact PR #${preview.number} ${preview.state}; head/base/prospective tree and server currentness gate verified`);
+        if (preview.state === "open") {
+          if (args.stage === "all") console.log("[dry-run] merge would run next; deployment, signing, broadcast, and log remain downstream plans");
+          return;
+        }
       } else if (args.stage === "all" && !args.reallyMerge) {
         console.log("");
         console.log("Stopping before merge: pass --really-merge to merge the exact pinned GitHub PR.");
@@ -256,14 +288,26 @@ async function main() {
       if (args.stage === "merge") return;
       const state = await loadJournal(OUT_DIR, args.issue);
       if (state.effects.deploy?.state !== "confirmed") {
+        if (args.dryRun) {
+          const evidence = await previewDeployment(args.issue, { outDir: OUT_DIR });
+          console.log(`[dry-run] exact deployment is externally verifiable at ${evidence.page_url}; journal reconciliation would run next`);
+          return;
+        }
         console.log("Merge is confirmed; stopping cleanly until exact Pages and served-content verification completes.");
         console.log(`Resume with: compass-publish ${args.issue} --stage deploy`);
         return;
       }
+      if (args.dryRun) {
+        const evidence = await previewDeployment(args.issue, { outDir: OUT_DIR });
+        console.log(`[dry-run] deployment run ${evidence.workflow_run_id}, merge tree, and served edition content were reverified`);
+      }
     }
 
     if (args.stage === "deploy") {
-      await runDeploy(args.issue);
+      if (args.dryRun) {
+        const evidence = await previewDeployment(args.issue, { outDir: OUT_DIR });
+        console.log(`[dry-run] deployment run ${evidence.workflow_run_id}, merge tree, and served edition content are valid`);
+      } else await runDeploy(args.issue);
       return;
     }
 
@@ -279,7 +323,8 @@ async function main() {
 
     if (args.stage === "all" || args.stage === "broadcast") {
       if (args.dryRun) {
-        console.log("[dry-run] would broadcast the exact signed payloads");
+        const preview = await previewBroadcastIssue(args.issue, { outDir: OUT_DIR });
+        console.log(`[dry-run] signed payloads and relay floor ${preview.relay_floor}/${preview.durable_relays} are valid; current readbacks article=${preview.article_readbacks}, announcement=${preview.announcement_readbacks}`);
       } else if (args.stage === "all" && !args.reallyBroadcast) {
         console.log("");
         console.log("Stopping before broadcast: pass --really-broadcast after exact deployment confirmation.");
@@ -291,7 +336,11 @@ async function main() {
     }
 
     if (args.stage === "all" || args.stage === "log") {
-      if (args.dryRun) console.log("[dry-run] would generate evidence and create/update its pull request");
+      if (args.dryRun) {
+        const state = await loadJournal(OUT_DIR, args.issue);
+        if (state.effects.article?.state !== "confirmed" || state.effects.announcement?.state !== "confirmed") throw new Error("Publication log preview requires both exact Nostr events to be confirmed");
+        console.log("[dry-run] publication evidence is complete; log projection would be the only remaining write");
+      }
       else await runLog(args.issue, args.logPr);
     }
 
@@ -300,8 +349,8 @@ async function main() {
       console.log("✓ pipeline complete");
     }
   } finally {
-    await closeBunker();
-    await lock.release();
+    if (!args.dryRun) await closeBunker();
+    if (lock) await lock.release();
   }
 }
 

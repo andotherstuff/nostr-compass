@@ -1,5 +1,5 @@
 import { readFile } from "node:fs/promises";
-import { loadJournal, confirmDeployment, sha256 } from "../lib/journal.ts";
+import { loadJournal, confirmDeployment, sha256, type DeploymentEvidence } from "../lib/journal.ts";
 
 const REPO = "andotherstuff/nostr-compass";
 type Runner = (cmd: string, args: string[]) => Promise<{ code: number; stdout: string; stderr: string }>;
@@ -12,7 +12,7 @@ async function defaultRun(cmd: string, args: string[]) {
   return { code, stdout, stderr };
 }
 
-export async function verifyAndRecordDeployment(issue: number, options: { pageUrl?: string; outDir: string; workflow?: string; run?: Runner; fetcher?: Fetcher }): Promise<void> {
+export async function previewDeployment(issue: number, options: { pageUrl?: string; outDir: string; workflow?: string; run?: Runner; fetcher?: Fetcher }): Promise<DeploymentEvidence> {
   const run = options.run ?? defaultRun; const fetcher = options.fetcher ?? fetch;
   const journal = await loadJournal(options.outDir, issue); const pr = journal.pull_request;
   const pageUrl = options.pageUrl ?? journal.deployment_intent?.page_url;
@@ -37,5 +37,10 @@ export async function verifyAndRecordDeployment(issue: number, options: { pageUr
   if (!response.ok) throw new Error(`Served page readback failed with HTTP ${response.status}`);
   const bytes = new Uint8Array(await response.arrayBuffer());
   if (!new TextDecoder().decode(bytes).includes(marker)) throw new Error("Served page does not contain the exact edition marker");
-  await confirmDeployment(options.outDir, issue, { workflow_run_id: matches[0].databaseId, workflow_url: matches[0].url, head_sha: pr.merge_sha, tree_sha: pr.merge_tree_sha, page_url: pageUrl, content_sha256: sha256(bytes), verified_at: new Date().toISOString() });
+  return { workflow_run_id: matches[0].databaseId, workflow_url: matches[0].url, head_sha: pr.merge_sha, tree_sha: pr.merge_tree_sha, page_url: pageUrl, content_sha256: sha256(bytes), verified_at: new Date().toISOString() };
+}
+
+export async function verifyAndRecordDeployment(issue: number, options: { pageUrl?: string; outDir: string; workflow?: string; run?: Runner; fetcher?: Fetcher }): Promise<void> {
+  const evidence = await previewDeployment(issue, options);
+  await confirmDeployment(options.outDir, issue, evidence);
 }

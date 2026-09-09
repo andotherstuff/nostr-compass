@@ -26,6 +26,46 @@ export function relayFloor(configured: number, requested?: number): number {
   return floor;
 }
 
+export async function previewBroadcastIssue(
+  issue: number,
+  options: { outDir?: string; relaysPath?: string; reader?: Reader } = {},
+): Promise<{ relay_floor: number; durable_relays: number; article_readbacks: number; announcement_readbacks: number }> {
+  const outDir = options.outDir ?? DEFAULT_OUT_DIR;
+  const relaysPath = options.relaysPath ?? DEFAULT_RELAYS_PATH;
+  const reader = options.reader ?? relayHasEvent;
+  const issueDir = join(outDir, String(issue));
+  const articlePath = join(issueDir, "event.json"); const announcementPath = join(issueDir, "announcement.json");
+  const articleBytes = await readFile(articlePath); const announcementBytes = await readFile(announcementPath);
+  const article = JSON.parse(articleBytes.toString()) as SignedEvent;
+  const announcement = JSON.parse(announcementBytes.toString()) as SignedEvent;
+  const cfg = JSON.parse(await readFile(relaysPath, "utf8")) as { relays: string[]; relay_floor?: number; readback_exempt_relays?: string[] };
+  if (!Array.isArray(cfg.relays) || cfg.relays.some((relay) => typeof relay !== "string" || !/^wss:\/\//.test(relay))) throw new Error("Relay configuration must contain only WSS relay URLs");
+  const exempt = new Set(cfg.readback_exempt_relays ?? []); const durableRelays = cfg.relays.filter((relay) => !exempt.has(relay));
+  const floor = relayFloor(durableRelays.length, cfg.relay_floor);
+  const journal = await loadJournal(outDir, issue);
+  for (const gate of ["quality", "feedback"] as const) {
+    const evidence = journal.effects[gate];
+    if (evidence?.state !== "confirmed" || !evidence.payload_path || !evidence.payload_sha256 || sha256(await readFile(evidence.payload_path)) !== evidence.payload_sha256) throw new Error(`Refusing broadcast preview before ${gate} exact-head artifact evidence is confirmed`);
+  }
+  if (journal.effects.buttondown?.state !== "confirmed" || !journal.effects.buttondown.event_id) throw new Error("Refusing broadcast preview before explicit Buttondown sent/skipped disposition is confirmed");
+  if (journal.effects.merge?.state !== "confirmed" || !journal.pull_request?.merge_sha) throw new Error("Refusing broadcast preview before the exact pull request merge is confirmed");
+  if (journal.effects.deploy?.state !== "confirmed" || !journal.deployment || journal.deployment.head_sha !== journal.pull_request.merge_sha || journal.deployment.tree_sha !== journal.pull_request.merge_tree_sha || journal.effects.deploy.payload_sha256 !== journal.deployment.content_sha256) throw new Error("Refusing broadcast preview before deployment of the exact merge commit is externally confirmed");
+  for (const [name, event, path, bytes] of [["article", article, articlePath, articleBytes], ["announcement", announcement, announcementPath, announcementBytes]] as const) {
+    const effect = journal.effects[name];
+    if (!effect || effect.event_id !== event.id || effect.payload_path !== path || !effect.payload_sha256 || sha256(bytes) !== effect.payload_sha256) throw new Error(`Signed payload hash mismatch for ${name}`);
+  }
+  const [articleResults, announcementResults] = await Promise.all([
+    Promise.all(durableRelays.map((relay) => reader(relay, article.id))),
+    Promise.all(durableRelays.map((relay) => reader(relay, announcement.id))),
+  ]);
+  return {
+    relay_floor: floor,
+    durable_relays: durableRelays.length,
+    article_readbacks: articleResults.filter(Boolean).length,
+    announcement_readbacks: announcementResults.filter(Boolean).length,
+  };
+}
+
 export async function broadcastIssue(issue: number, reallyBroadcast: boolean, options: { outDir?: string; relaysPath?: string; ledgerPath?: string; broadcaster?: Broadcaster; reader?: Reader; encodeLinks?: boolean } = {}): Promise<{ article_ok: number; announcement_ok: number }> {
   if (!reallyBroadcast) throw new Error("Broadcast is gated. Pass --really-broadcast to enable.");
   const outDir = options.outDir ?? DEFAULT_OUT_DIR;

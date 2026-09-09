@@ -37,6 +37,31 @@ async function requireServerBaseGuard(baseRef: string, run: Runner): Promise<voi
   if (result.code !== 0 || result.stdout.trim() !== "true") throw new Error("Refusing merge: server does not enforce strict current-base status checks, so base identity can race the merge");
 }
 
+export async function previewMergeIssue(
+  issue: number,
+  opts: { outDir?: string; run?: Runner; identity?: PullRequestIdentity } = {},
+): Promise<{ state: "open" | "merged"; number: number; head_sha: string; base_sha: string; prospective_tree_sha: string; merge_sha?: string }> {
+  const outDir = opts.outDir ?? OUT_DIR; const run = opts.run ?? defaultRun;
+  const journal = await loadJournal(outDir, issue); const pinned = journal.pull_request;
+  if (!pinned) throw new Error("No pinned PR number/head/base identity in state.json");
+  if (opts.identity && (opts.identity.number !== pinned.number || opts.identity.head_sha !== pinned.head_sha || opts.identity.base_sha !== pinned.base_sha)) throw new Error("Preview PR identity does not match the journal-pinned identity");
+  const pr = await viewPR(pinned.number, run);
+  if (pr.number !== pinned.number || pr.headRefOid !== pinned.head_sha) throw new Error("PR head no longer matches pinned identity");
+  if (pr.state === "MERGED") {
+    if (!pinned.prospective_tree_sha || !pr.mergeCommit?.oid) throw new Error("Merged PR lacks prospective-tree or merge-commit evidence");
+    const mergeTree = await commitTree(pr.mergeCommit.oid, run);
+    if (mergeTree !== pinned.prospective_tree_sha) throw new Error("Merged tree does not match the pinned prospective tree");
+    return { state: "merged", number: pinned.number, head_sha: pinned.head_sha, base_sha: pinned.base_sha, prospective_tree_sha: mergeTree, merge_sha: pr.mergeCommit.oid };
+  }
+  if (pr.baseRefOid !== pinned.base_sha) throw new Error("PR base no longer matches reviewed base SHA");
+  if (pr.mergeable !== "MERGEABLE" || pr.mergeStateStatus !== "CLEAN") throw new Error(`PR #${pr.number} is not clean and mergeable`);
+  if (!pr.potentialMergeCommit?.oid) throw new Error("GitHub did not provide a prospective merge identity");
+  const prospectiveTree = await commitTree(pr.potentialMergeCommit.oid, run);
+  await requireServerBaseGuard(pr.baseRefName, run);
+  if (pinned.prospective_tree_sha && pinned.prospective_tree_sha !== prospectiveTree) throw new Error("Current prospective merge tree differs from the journal-pinned review candidate");
+  return { state: "open", number: pinned.number, head_sha: pinned.head_sha, base_sha: pinned.base_sha, prospective_tree_sha: prospectiveTree };
+}
+
 export async function mergeIssue(issue: number, opts: { reallyMerge: boolean; outDir?: string; run?: Runner; identity?: PullRequestIdentity }): Promise<"prepared" | "confirmed"> {
   const outDir = opts.outDir ?? OUT_DIR; const run = opts.run ?? defaultRun;
   if (opts.identity) await pinPullRequest(outDir, issue, opts.identity);

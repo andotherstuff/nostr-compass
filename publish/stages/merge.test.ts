@@ -1,11 +1,31 @@
 import { describe, expect, test } from "bun:test";
-import { mkdtemp, writeFile } from "node:fs/promises";
+import { mkdtemp, readFile, writeFile } from "node:fs/promises";
 import { join } from "node:path";
 import { tmpdir } from "node:os";
+import { recordEditionAuthorization } from "../lib/authorization.ts";
 import { loadOrCreateJournal, mutateJournal, prepareDeployment, saveJournal, sha256 } from "../lib/journal.ts";
-import { mergeIssue, pinPullRequest } from "./merge.ts";
+import { mergeIssue, pinPullRequest, previewMergeIssue } from "./merge.ts";
 
-async function setup() { const out = await mkdtemp(join(tmpdir(), "compass-merge-")); const source = join(out, "source.md"), gate = join(out, "gate.json"); await writeFile(source, "source"); await writeFile(gate, "gate"); const journal = await loadOrCreateJournal(out, 1); journal.source = { path: source, sha256: sha256("source") }; journal.pull_request = { number: 7, head_sha: head, base_sha: base, prospective_tree_sha: tree }; journal.effects.merge = { state: "prepared", intent_sha256: `7:${head}:${base}:${tree}` }; for (const name of ["quality", "feedback"]) journal.effects[name] = { state: "confirmed", intent_sha256: name, event_id: head, payload_path: gate, payload_sha256: sha256("gate") }; journal.authorization = { issue: 1, phase_id: "phase", head_sha: head, base_sha: base, prospective_tree_sha: tree, source_sha256: sha256("source"), hold_version: "hold-v1", not_before: "2020-01-01T16:00:00Z", final_feedback_scan_at: "2020-01-01T16:01:00Z", receipt_sha256: "f".repeat(64) }; journal.effects.authorization = { state: "confirmed", intent_sha256: "auth" }; await saveJournal(out, journal); await prepareDeployment(out, 1, "https://nostrcompass.org/en/newsletters/test"); return out; }
+async function setup() {
+  const out = await mkdtemp(join(tmpdir(), "compass-merge-")); const source = join(out, "source.md"), gate = join(out, "gate.json"), authorization = join(out, "authorization.json");
+  await writeFile(source, "source"); await writeFile(gate, "gate");
+  const journal = await loadOrCreateJournal(out, 1);
+  journal.source = { path: source, sha256: sha256("source") };
+  journal.pull_request = { number: 7, head_sha: head, base_sha: base, prospective_tree_sha: tree };
+  journal.effects.merge = { state: "prepared", intent_sha256: `7:${head}:${base}:${tree}` };
+  for (const name of ["quality", "feedback"]) journal.effects[name] = { state: "confirmed", intent_sha256: name, event_id: head, payload_path: gate, payload_sha256: sha256("gate") };
+  await saveJournal(out, journal);
+  await writeFile(authorization, JSON.stringify({
+    schema_version: 1, receipt_type: "edition-authorization", issue: 1, phase_id: "phase",
+    head_sha: head, base_sha: base, prospective_tree_sha: tree, source_sha256: sha256("source"),
+    hold_version: "hold-v1", not_before: "2020-01-01T16:00:00Z", final_feedback_scan_at: "2020-01-01T16:01:00Z",
+    authorized_by: "scheduled-compass-policy", signer_pubkey: "f".repeat(64), purpose: "weekly-publication",
+    allowed_event_kinds: [1, 30023], edition_date: "2020-01-01", final: true,
+  }, null, 2));
+  await recordEditionAuthorization(out, 1, authorization);
+  await prepareDeployment(out, 1, "https://nostrcompass.org/en/newsletters/test");
+  return out;
+}
 const head = "a".repeat(40), base = "b".repeat(40), merge = "c".repeat(40), potential = "d".repeat(40), tree = "e".repeat(40);
 const view = (state = "OPEN", actualHead = head) => JSON.stringify({ number: 7, state, mergeable: "MERGEABLE", mergeStateStatus: "CLEAN", headRefOid: actualHead, baseRefOid: base, baseRefName: "main", potentialMergeCommit: state === "OPEN" ? { oid: potential } : null, mergeCommit: state === "MERGED" ? { oid: merge } : null });
 function runner(options: { mergedAfter?: boolean; loseReadback?: boolean; strict?: boolean } = {}) {
@@ -44,6 +64,19 @@ describe("exact PR merge", () => {
   test("returns prepared without claiming a merge", async () => {
     const out = await setup(); await pinPullRequest(out, 1, { number: 7, head_sha: head, base_sha: base }); const { run, calls } = runner();
     expect(await mergeIssue(1, { reallyMerge: false, outDir: out, run })).toBe("prepared");
+    expect(calls.some((args) => args[1] === "merge")).toBe(false);
+  });
+  test("preview verifies the exact merge candidate without changing the journal", async () => {
+    const out = await setup(); const statePath = join(out, "1", "state.json"); const before = await readFile(statePath, "utf8"); const { run, calls } = runner();
+    const preview = await previewMergeIssue(1, { outDir: out, run });
+    expect(preview.state).toBe("open"); expect(preview.prospective_tree_sha).toBe(tree);
+    expect(calls.some((args) => args[1] === "merge")).toBe(false);
+    expect(await readFile(statePath, "utf8")).toBe(before);
+  });
+  test("refuses merge when the retained authorization receipt bytes change", async () => {
+    const out = await setup(); const { run, calls } = runner();
+    await writeFile(join(out, "authorization.json"), "{}\n");
+    await expect(mergeIssue(1, { reallyMerge: true, outDir: out, run })).rejects.toThrow("authorization receipt bytes changed");
     expect(calls.some((args) => args[1] === "merge")).toBe(false);
   });
   test("persists ambiguity when authoritative post-merge readback fails", async () => {

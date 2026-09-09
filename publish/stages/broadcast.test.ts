@@ -4,7 +4,7 @@ import { mkdtemp, readFile, writeFile } from "node:fs/promises";
 import { join } from "node:path";
 import { tmpdir } from "node:os";
 import { loadOrCreateJournal, saveJournal, sha256 } from "../lib/journal.ts";
-import { broadcastIssue, relayFloor } from "./broadcast.ts";
+import { broadcastIssue, previewBroadcastIssue, relayFloor } from "./broadcast.ts";
 
 const event = (id: string, kind: number) => ({ id, kind, pubkey: "b".repeat(64), sig: "c".repeat(128), created_at: 1, tags: kind === 30023 ? [["d", "newsletter-1"], ["published_at", "1"]] : [], content: "x" });
 async function fixture() {
@@ -35,6 +35,12 @@ describe("broadcast journal", () => {
   test("refuses broadcast without exact deployment evidence", async () => {
     const { root, out } = await fixture(); const statePath = join(out, "1", "state.json"); const state = JSON.parse(await readFile(statePath, "utf8")); delete state.deployment; await writeFile(statePath, JSON.stringify(state));
     await expect(broadcastIssue(1, true, { outDir: out, relaysPath: join(root, "relays.json"), ledgerPath: join(root, "published.json"), reader: async () => true, broadcaster: async () => [] })).rejects.toThrow("deployment");
+  });
+  test("preview checks payloads and live readback without writing receipts", async () => {
+    const { root, out } = await fixture(); const statePath = join(out, "1", "state.json"); const before = await readFile(statePath, "utf8");
+    const preview = await previewBroadcastIssue(1, { outDir: out, relaysPath: join(root, "relays.json"), reader: async () => true });
+    expect(preview).toEqual({ relay_floor: 5, durable_relays: 5, article_readbacks: 5, announcement_readbacks: 5 });
+    expect(await readFile(statePath, "utf8")).toBe(before);
   });
   test("persists receipt progress before a crash and resumes only missing receipts", async () => {
     const { root, out } = await fixture(); let first = true;

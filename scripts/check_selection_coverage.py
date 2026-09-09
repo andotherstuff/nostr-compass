@@ -244,7 +244,14 @@ def main() -> int:
     parser.add_argument("--ledger", type=Path, required=True)
     parser.add_argument("--draft", type=Path, required=True)
     parser.add_argument("--receipt", type=Path)
+    parser.add_argument(
+        "--receipt-stdout",
+        action="store_true",
+        help="emit the complete PASS receipt as JSON without writing a receipt file",
+    )
     args = parser.parse_args()
+    if args.receipt and args.receipt_stdout:
+        parser.error("--receipt and --receipt-stdout are mutually exclusive")
     try:
         errors, receipt = validate(args.manifest, args.ledger, args.draft)
     except (OSError, ValueError) as exc:
@@ -255,6 +262,9 @@ def main() -> int:
         for error in errors:
             print(f"  - {error}")
         return 1
+    if args.receipt_stdout:
+        print(json.dumps(receipt, sort_keys=True))
+        return 0
     if args.receipt:
         args.receipt.parent.mkdir(parents=True, exist_ok=True)
         args.receipt.write_text(json.dumps(receipt, indent=2, sort_keys=True) + "\n")

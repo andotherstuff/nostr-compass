@@ -1,5 +1,4 @@
-import { mkdtemp, readFile, rm } from "node:fs/promises";
-import { tmpdir } from "node:os";
+import { readFile } from "node:fs/promises";
 import { join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { loadJournal, mutateJournal, sha256, stableJson } from "./journal.ts";
@@ -33,30 +32,24 @@ function commonValid(value: any): boolean {
   return value?.schema_version === 1 && /^(PASS|FAIL)$/.test(value.verdict) && /^[0-9a-f]{40}$/.test(value.revision) && hash(value.content_sha256) && hash(value.input_sha256) && typeof value.checker_version === "string" && value.checker_version.length > 0 && typeof value.provider === "string" && value.provider.length > 0 && typeof value.model === "string" && value.model.length > 0 && value.final === true;
 }
 async function selectionCoverageValid(coverage: any): Promise<boolean> {
-  const validationDir = await mkdtemp(join(tmpdir(), "compass-selection-validation-"));
-  const validationReceipt = join(validationDir, "receipt.json");
   const checker = fileURLToPath(new URL("../../scripts/check_selection_coverage.py", import.meta.url));
-  try {
-    const process = Bun.spawn([
-      "python3", checker,
-      "--manifest", coverage.source_manifest_path,
-      "--ledger", coverage.ledger_path,
-      "--draft", coverage.draft_path,
-      "--receipt", validationReceipt,
-    ], { stdout: "pipe", stderr: "pipe" });
-    const [stdout, stderr, exitCode] = await Promise.all([
-      new Response(process.stdout).text(),
-      new Response(process.stderr).text(),
-      process.exited,
-    ]);
-    if (exitCode !== 0) return false;
-    let deterministic: unknown;
-    try { deterministic = JSON.parse(await readFile(validationReceipt, "utf8")); }
-    catch { return false; }
-    return stdout.startsWith("PASS: ") && stderr === "" && stableJson(deterministic) === stableJson(coverage);
-  } finally {
-    await rm(validationDir, { recursive: true, force: true });
-  }
+  const process = Bun.spawn([
+    "python3", checker,
+    "--manifest", coverage.source_manifest_path,
+    "--ledger", coverage.ledger_path,
+    "--draft", coverage.draft_path,
+    "--receipt-stdout",
+  ], { stdout: "pipe", stderr: "pipe" });
+  const [stdout, stderr, exitCode] = await Promise.all([
+    new Response(process.stdout).text(),
+    new Response(process.stderr).text(),
+    process.exited,
+  ]);
+  if (exitCode !== 0 || stderr !== "") return false;
+  let deterministic: unknown;
+  try { deterministic = JSON.parse(stdout); }
+  catch { return false; }
+  return stableJson(deterministic) === stableJson(coverage);
 }
 async function roleEvidenceValid(value: RoleReceipt): Promise<boolean> {
   if (!(hash(value.output_sha256) && Array.isArray(value.checks) && value.checks.length > 0 && value.checks.every((check) => hash(check.command_sha256) && check.exit_code === 0 && hash(check.input_sha256) && hash(check.output_sha256)) && Array.isArray(value.findings) && value.findings.every((finding) => finding.id && finding.anchor && finding.resolution && finding.unresolved === false) && value.unresolved_count === 0)) return false;
@@ -129,7 +122,7 @@ async function roleEvidenceValid(value: RoleReceipt): Promise<boolean> {
   return Boolean(dive?.mode === "regular" && Array.isArray(dive.nips) && dive.nips.length === 2 && new Set(dive.nips.map((item) => item.nip)).size === 2 && dive.nips.every((item) => /^NIP-\d+$/.test(item.nip) && item.merged === true && /^https:\/\//.test(item.spec_url) && /^https:\/\//.test(item.current_activity_url)) && Array.isArray(dive.implementations) && dive.implementations.length >= 3 && new Set(dive.implementations.map((item) => item.name)).size >= 3 && dive.implementations.every((item) => item.name?.trim() && /^https:\/\//.test(item.evidence_url)));
 }
 
-export async function recordCompositeQuality(outDir: string, issue: number, sourcePath: string, receiptPaths: Record<QualityRole, string>): Promise<string> {
+async function validateCompositeQualityInputs(outDir: string, issue: number, sourcePath: string, receiptPaths: Record<QualityRole, string>): Promise<{ head: string; contentHash: string; roleHashes: Record<string, string> }> {
   const journal = await loadJournal(outDir, issue); const head = journal.pull_request?.head_sha; if (!head) throw new Error("quality receipts require a pinned PR head");
   const content = await readFile(sourcePath); const contentHash = sha256(content); const roleHashes: Record<string, string> = {};
   for (const role of QUALITY_ROLES) {
@@ -138,17 +131,35 @@ export async function recordCompositeQuality(outDir: string, issue: number, sour
     if (value.revision !== head || value.content_sha256 !== contentHash) throw new Error(`${role} quality receipt does not match exact head/content`);
     roleHashes[role] = sha256(parsed.raw);
   }
+  return { head, contentHash, roleHashes };
+}
+
+export async function previewCompositeQuality(outDir: string, issue: number, sourcePath: string, receiptPaths: Record<QualityRole, string>): Promise<void> {
+  await validateCompositeQualityInputs(outDir, issue, sourcePath, receiptPaths);
+}
+
+export async function recordCompositeQuality(outDir: string, issue: number, sourcePath: string, receiptPaths: Record<QualityRole, string>): Promise<string> {
+  const { head, contentHash, roleHashes } = await validateCompositeQualityInputs(outDir, issue, sourcePath, receiptPaths);
   const composite = { schema_version: 1, receipt_type: "quality-composite", issue, revision: head, content_sha256: contentHash, roles: roleHashes, verdict: "PASS", final: true };
   const path = join(outDir, String(issue), "quality-composite.json"); const raw = JSON.stringify(composite, null, 2); await writeAtomic(path, raw);
   await mutateJournal(outDir, issue, (current) => { if (current.pull_request?.head_sha !== head || current.source?.sha256 !== contentHash) throw new Error("quality inputs changed before commit"); current.effects.quality = { state: "confirmed", intent_sha256: sha256(stableJson(composite)), payload_path: path, payload_sha256: sha256(raw), event_id: head }; });
   return path;
 }
 
-export async function recordFeedbackSnapshot(outDir: string, issue: number, sourcePath: string, receiptPath: string): Promise<void> {
+async function validateFeedbackSnapshot(outDir: string, issue: number, sourcePath: string, receiptPath: string): Promise<{ head: string; contentHash: string; parsed: { value: FeedbackReceipt; raw: string } }> {
   const journal = await loadJournal(outDir, issue); const head = journal.pull_request?.head_sha; if (!head) throw new Error("feedback receipt requires a pinned PR head"); const contentHash = sha256(await readFile(sourcePath));
   const parsed = await parseFinal<FeedbackReceipt>(receiptPath); const value = parsed.value;
   if (!commonValid(value) || value.receipt_type !== "feedback" || value.verdict !== "PASS" || !Array.isArray(value.holds) || value.holds.length !== 0 || !/^[0-9a-f]{64}$/.test(value.material_feedback_sha256)) throw new Error("invalid final feedback receipt or unresolved hold");
   if (value.revision !== head || value.content_sha256 !== contentHash) throw new Error("feedback receipt does not match exact head/content");
+  return { head, contentHash, parsed };
+}
+
+export async function previewFeedbackSnapshot(outDir: string, issue: number, sourcePath: string, receiptPath: string): Promise<void> {
+  await validateFeedbackSnapshot(outDir, issue, sourcePath, receiptPath);
+}
+
+export async function recordFeedbackSnapshot(outDir: string, issue: number, sourcePath: string, receiptPath: string): Promise<void> {
+  const { head, contentHash, parsed } = await validateFeedbackSnapshot(outDir, issue, sourcePath, receiptPath); const value = parsed.value;
   await mutateJournal(outDir, issue, (current) => { if (current.pull_request?.head_sha !== head || current.source?.sha256 !== contentHash) throw new Error("feedback inputs changed before commit"); current.effects.feedback = { state: "confirmed", intent_sha256: sha256(stableJson(value)), payload_path: receiptPath, payload_sha256: sha256(parsed.raw), event_id: head }; });
 }
 

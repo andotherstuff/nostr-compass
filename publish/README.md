@@ -132,7 +132,7 @@ working tree lives somewhere else, such as a per-issue worktree.
 alias compass-publish='bun publish/publish.ts'
 
 # Then for a publish:
-compass-publish 27 --dry-run                                      # zero-mutation preview
+compass-publish 27 --dry-run                                      # read-only validation and effect plan
 compass-publish 27 --stage merge --pr-number 123 --head-sha <sha> --base-sha <sha> --page-url <url>
 compass-publish 27 --stage merge --really-merge                   # only after the identical prepared candidate passes
 compass-publish 27 --stage deploy                                 # verify attributable production deployment
@@ -149,6 +149,15 @@ The normal scheduled flow prepares the exact merge candidate before 16:00, then
 runs merge, deploy verification, signing, broadcast, relay recovery, and log as
 separate restart-safe effects. Never broadcast first and never infer the PR from
 the checkout's current branch.
+
+`--dry-run` executes the read-only half of each requested stage. It parses the
+real source, validates explicit or already-journaled authorization, quality and
+feedback receipts, rereads the exact PR/head/base/prospective tree and strict
+server currentness rule, verifies attributable deployment content when a merge
+exists, checks signer authorization, and probes both retained event IDs across
+the durable relay set. It takes no issue lock and writes no file, journal,
+GitHub, relay, signer, task, or notification state. A preview stops at the first
+effect whose prerequisite does not yet exist and names the remaining plan.
 
 The positional argument is the newsletter number. The pipeline derives the
 input file from `/tmp/{N}publish.md`.

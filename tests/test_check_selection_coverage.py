@@ -1,6 +1,8 @@
 import hashlib
 import importlib.util
 import json
+import subprocess
+import sys
 import tempfile
 import unittest
 from pathlib import Path
@@ -71,6 +73,27 @@ class SelectionCoverageTests(unittest.TestCase):
         errors, receipt = gate.validate(manifest, ledger, draft)
         self.assertEqual(errors, [])
         self.assertEqual(receipt["qualified_candidate_count"], 2)
+
+    def test_receipt_stdout_returns_the_complete_receipt_without_writing(self):
+        temp, manifest, ledger, draft, _ = self.fixture()
+        self.addCleanup(temp.cleanup)
+        before = sorted(path.name for path in manifest.parent.iterdir())
+        result = subprocess.run(
+            [
+                sys.executable,
+                str(ROOT / "scripts/check_selection_coverage.py"),
+                "--manifest", str(manifest),
+                "--ledger", str(ledger),
+                "--draft", str(draft),
+                "--receipt-stdout",
+            ],
+            check=False,
+            capture_output=True,
+            text=True,
+        )
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertEqual(json.loads(result.stdout)["verdict"], "PASS")
+        self.assertEqual(sorted(path.name for path in manifest.parent.iterdir()), before)
 
     def test_missing_retained_source_fails(self):
         temp, manifest, ledger_path, draft, ledger = self.fixture()

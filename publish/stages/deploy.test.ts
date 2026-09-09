@@ -1,10 +1,10 @@
 import { describe, expect, setDefaultTimeout, test } from "bun:test";
 setDefaultTimeout(20_000);
-import { mkdtemp, writeFile } from "node:fs/promises";
+import { mkdtemp, readFile, writeFile } from "node:fs/promises";
 import { join } from "node:path";
 import { tmpdir } from "node:os";
 import { confirmDeployment, loadJournal, loadOrCreateJournal, prepareDeployment, saveJournal, sha256 } from "../lib/journal.ts";
-import { verifyAndRecordDeployment } from "./deploy.ts";
+import { previewDeployment, verifyAndRecordDeployment } from "./deploy.ts";
 
 const mergeSha = "a".repeat(40), treeSha = "b".repeat(40);
 async function fixture() {
@@ -18,6 +18,12 @@ describe("deployment receipt", () => {
     const run = async (_cmd: string, args: string[]) => args[0] === "run" ? { code: 0, stdout: JSON.stringify([{ databaseId: 99, url: "https://github.test/run/99", headSha: mergeSha, status: "completed", conclusion: "success", event: "push" }]), stderr: "" } : { code: 0, stdout: treeSha, stderr: "" };
     await verifyAndRecordDeployment(42, { outDir: out, pageUrl: "https://nostrcompass.org/en/newsletters/2026-09-09", run, fetcher: async () => new Response(page, { status: 200 }) });
     const journal = await loadJournal(out, 42); expect(journal.deployment?.workflow_run_id).toBe(99); expect(journal.deployment?.content_sha256).toBe(sha256(page)); expect(journal.effects.deploy.state).toBe("confirmed");
+  });
+  test("preview verifies deployment without recording it", async () => {
+    const out = await fixture(); const statePath = join(out, "42", "state.json"); const before = await readFile(statePath, "utf8"); const page = "<html>Nostr Compass #42</html>";
+    const run = async (_cmd: string, args: string[]) => args[0] === "run" ? { code: 0, stdout: JSON.stringify([{ databaseId: 99, url: "https://github.test/run/99", headSha: mergeSha, status: "completed", conclusion: "success", event: "push" }]), stderr: "" } : { code: 0, stdout: treeSha, stderr: "" };
+    const evidence = await previewDeployment(42, { outDir: out, run, fetcher: async () => new Response(page, { status: 200 }) });
+    expect(evidence.workflow_run_id).toBe(99); expect(await readFile(statePath, "utf8")).toBe(before);
   });
   test("rejects forged or mismatched deployment evidence", async () => {
     const out = await fixture();
