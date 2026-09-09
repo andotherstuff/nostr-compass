@@ -1,8 +1,7 @@
 #!/usr/bin/env bun
 // Compass DM outreach — weekly, reproducible mechanism.
 //
-// MANUAL INVOCATION ONLY (same gate as publish.ts). Run:
-//   COMPASS_PUBLISH_INVOCATION=manual bun dm-outreach.ts <issue> --pr-url <url> [--really-send]
+// Every send is bound to a durable per-edition/campaign journal identity.
 //
 // What it does, every week, without hand-curating a recipient list:
 //
@@ -22,12 +21,10 @@
 //    the hard way while building this script: an unscoped pass wrongly
 //    pulled in "HAVEN"'s dev via incidental blank-line adjacency to the
 //    unrelated Marmot alias block).
-// 3. For each unique recipient pubkey: checks for a published NIP-65 relay
-//    list (kind 10002). If found, sends a NIP-17 gift-wrapped DM to their
-//    listed relays (plus the compass default set). If not found, falls back
-//    to a legacy NIP-04 DM to the compass default relay set only, since we
-//    have no way to know where else to deliver it and can't assume their
-//    client supports gift wraps yet.
+// 3. For each unique recipient pubkey: requires a valid published NIP-17 DM
+//    inbox declaration (kind 10050) and sends only to those declared relays.
+//    A missing declaration is an honest capability skip, never a silent
+//    downgrade to legacy NIP-04.
 // 4. Reports exactly who was sent to, via which protocol, and who was
 //    skipped and why.
 //
@@ -39,10 +36,6 @@
 // receive a solicitation DM sent over that same software).
 // Add more entries there rather than hardcoding exclusions in this file.
 
-if (process.env.COMPASS_PUBLISH_INVOCATION !== "manual") {
-  console.error("Refusing to run. Set COMPASS_PUBLISH_INVOCATION=manual.");
-  process.exit(2);
-}
 
 import { readFile } from "node:fs/promises";
 import { join } from "node:path";
@@ -53,15 +46,15 @@ import { encrypt as nip44EncryptLocal, getConversationKey } from "nostr-tools/ni
 import {
   signWithBunker,
   nip44EncryptWithBunker,
-  nip04EncryptWithBunker,
   closeBunker,
   type SignedEvent,
 } from "./lib/bunker.ts";
-import { broadcastToRelays, queryNewest } from "./lib/relays.ts";
+import { broadcastToRelays, relayHasEvent } from "./lib/relays.ts";
+import { resolveNip17Inbox } from "./lib/inbox-relays.ts";
 import { IssueLock, writeAtomic } from "./lib/safety.ts";
 import { countSentRows } from "./lib/outreach-report.ts";
 import { loadJournal } from "./lib/journal.ts";
-import { finishRecipient, markRecipientAttempt, prepareCampaign, recordRecipientReceipt, reuseOrBuildRecipient } from "./lib/outreach-journal.ts";
+import { finishRecipient, markRecipientAttempt, prepareCampaign, recordRecipientReadback, recordRecipientReceipt, reuseOrBuildRecipient } from "./lib/outreach-journal.ts";
 import {
   buildOutreachMessage,
   filterRecipients,
@@ -76,11 +69,10 @@ const { workspaceRoot: COMPASS_ROOT } = resolveOutreachRoots(RUNTIME_ROOT, proce
 const NPUBS_FILE = join(COMPASS_ROOT, "data/npubs.yml");
 const NEWSLETTERS_DIR = join(COMPASS_ROOT, "content/en/newsletters");
 const AUTHOR_PATH = join(RUNTIME_ROOT, "publish/config/author.json");
-const RELAYS_PATH = join(RUNTIME_ROOT, "publish/config/relays.json");
+
 const OUT_DIR = join(RUNTIME_ROOT, "publish/out");
 
-// Well-known relays likely to hold a recipient's kind 10002 relay list, even
-// if we don't yet know their actual inbox relays.
+// Well-known relays likely to hold a recipient's kind 10050 DM inbox list.
 const INDEXER_RELAYS = [
   "wss://relay.damus.io",
   "wss://nos.lol",
@@ -133,14 +125,11 @@ function parseArgs(argv: string[]): Args {
     else positional.push(a);
   }
   if (positional.length !== 1) throw new Error("Expected exactly one positional argument: the newsletter issue number.");
-  if (reminder || rerecord) {
-    throw new Error("Podcast outreach is paused pending explicit reconfiguration after publication.");
-  }
-  if (!reviewUrl) throw new Error("--pr-url is required for review outreach.");
-  if (newsletterUrl) throw new Error("--newsletter-url is reserved for the future post-publication podcast workflow.");
-  if (podcastUrl || podcastTime) {
-    throw new Error("Podcast details are not accepted in newsletter review outreach.");
-  }
+  const podcastCampaign = Boolean(podcastUrl || newsletterUrl);
+  if (podcastTime) throw new Error("Podcast outreach is asynchronous; --podcast-time is not accepted.");
+  if (podcastCampaign && (!newsletterUrl || !podcastUrl)) throw new Error("Podcast campaigns require --newsletter-url and a verified --podcast-url together.");
+  if (!podcastCampaign && !reviewUrl) throw new Error("Review campaigns require --pr-url.");
+  if (reminder || rerecord) throw new Error("Reminder and rerecord sends are not authorized; use a separately journaled correction effect.");
   return { issue: parseInt(positional[0], 10), reviewUrl, newsletterUrl, podcastUrl, podcastTime, reminder, rerecord, reallySend, onlyNames };
 }
 
@@ -409,26 +398,13 @@ async function buildGiftWrap(
   return wrap as SignedEvent;
 }
 
-async function buildNip04Dm(senderHex: string, recipientHex: string, message: string): Promise<SignedEvent> {
-  const content = await nip04EncryptWithBunker(recipientHex, message);
-  return signWithBunker({ kind: 4, content, tags: [["p", recipientHex]], created_at: now() }, senderHex);
-}
 
 // ---------------------------------------------------------------------------
-// Step 6: protocol decision (NIP-65 presence check)
+// Step 6: protocol decision (strict NIP-17 inbox capability check)
 // ---------------------------------------------------------------------------
 
-async function resolveTargetRelays(recipientHex: string, defaultRelays: string[]): Promise<{ protocol: "nip17" | "nip04"; relays: string[] }> {
-  const relayList = await queryNewest(INDEXER_RELAYS, { kinds: [10002], authors: [recipientHex], limit: 1 });
-  if (!relayList) {
-    return { protocol: "nip04", relays: defaultRelays };
-  }
-  const inboxRelays = relayList.tags
-    .filter((t) => t[0] === "r" && (t.length === 2 || t[2] === "write"))
-    .map((t) => t[1])
-    .filter((r) => r.startsWith("wss://") || r.startsWith("ws://"));
-  const relays = [...new Set([...defaultRelays, ...inboxRelays])].slice(0, 12);
-  return { protocol: "nip17", relays };
+export async function resolveTargetRelays(recipientHex: string): Promise<{ protocol: "nip17"; relays: string[] }> {
+  return { protocol: "nip17", relays: await resolveNip17Inbox(recipientHex, INDEXER_RELAYS) };
 }
 
 // ---------------------------------------------------------------------------
@@ -456,7 +432,7 @@ async function execute(args: ReturnType<typeof parseArgs>) {
       : `dm-outreach-${args.issue}${suffix}-plan.json`,
   );
   const author = JSON.parse(await readFile(AUTHOR_PATH, "utf8")) as { npub: string; pubkey_hex: string };
-  const relaysCfg = JSON.parse(await readFile(RELAYS_PATH, "utf8")) as { relays: string[] };
+
 
   console.log(`DM OUTREACH  issue=${args.issue}  reminder=${args.reminder}  rerecord=${args.rerecord}  really_send=${args.reallySend}`);
   console.log(`             sender=${author.npub}`);
@@ -473,8 +449,18 @@ async function execute(args: ReturnType<typeof parseArgs>) {
   }
 
   let { recipients, excludedNoDm } = await buildRecipients(args.issue, found);
-  const campaignIdentity = "review";
+  const podcastCampaign = Boolean(args.podcastUrl);
+  const campaignIdentity = podcastCampaign ? "podcast-invitation" : "review";
   const campaignMessage = buildOutreachMessage(args);
+  if (!args.reallySend) {
+    for (const recipient of recipients) console.log(`  [plan]  nip17  ${recipient.primaryName.padEnd(20)}  ${recipient.npub}`);
+    console.log("Preview complete: zero journal, file, signer, relay, or notification mutation.");
+    return;
+  }
+  const before = await loadJournal(OUT_DIR, args.issue); const obligation = before.effects[`outreach:${campaignIdentity}`];
+  if (obligation?.state !== "confirmed") throw new Error(`Missing journaled ${campaignIdentity} outreach obligation`);
+  if (!podcastCampaign && obligation.event_id !== args.reviewUrl) throw new Error("Review outreach obligation does not match the exact PR URL/head campaign");
+  if (podcastCampaign && (before.effects.podcast_access?.state !== "confirmed" || before.effects.podcast_access.event_id !== before.pull_request?.merge_sha)) throw new Error("Podcast outreach requires signature-verified Logbook access/PWA readiness bound to the merge SHA");
   await prepareCampaign({
     outDir: OUT_DIR,
     issue: args.issue,
@@ -514,16 +500,12 @@ async function execute(args: ReturnType<typeof parseArgs>) {
         report.push({ primaryName: r.primaryName, names: r.names, npub: r.npub, protocol: "skipped", status: "sent", relaysOk: receipts.filter((x) => x.ok).length, relaysTotal: receipts.length, eventId: durable.event_id, reason: "already confirmed; not resent" });
         continue;
       }
-      const { protocol, relays } = await resolveTargetRelays(r.hex, relaysCfg.relays);
-      if (!args.reallySend) {
-        report.push({ primaryName: r.primaryName, names: r.names, npub: r.npub, protocol, status: "planned" });
-        console.log(`  [plan]  ${protocol.padEnd(5)}  ${r.primaryName.padEnd(20)}  ${r.npub}`);
-        continue;
-      }
+      const { protocol, relays } = await resolveTargetRelays(r.hex);
+
       const event = await reuseOrBuildRecipient({
         outDir: OUT_DIR, issue: args.issue, campaign: campaignIdentity, npub: r.npub,
         intent: { protocol, relays, message: campaignMessage, recipient: r.hex, sender: author.pubkey_hex },
-        build: () => protocol === "nip17" ? buildGiftWrap(author.pubkey_hex, r.hex, campaignMessage) : buildNip04Dm(author.pubkey_hex, r.hex, campaignMessage),
+        build: () => buildGiftWrap(author.pubkey_hex, r.hex, campaignMessage),
       });
       await markRecipientAttempt(OUT_DIR, args.issue, campaignIdentity, r.npub);
       let receipts;
@@ -533,10 +515,10 @@ async function execute(args: ReturnType<typeof parseArgs>) {
         await finishRecipient(OUT_DIR, args.issue, campaignIdentity, r.npub, "ambiguous", (error as Error).message);
         throw error;
       }
-      const ok = receipts.filter((x) => x.ok).length;
-      await finishRecipient(OUT_DIR, args.issue, campaignIdentity, r.npub, ok > 0 ? "confirmed" : "failed", ok === 0 ? "no relay accepted the event" : undefined);
-      report.push({ primaryName: r.primaryName, names: r.names, npub: r.npub, protocol, status: ok > 0 ? "sent" : "failed", relaysOk: ok, relaysTotal: relays.length, eventId: event.id, reason: ok === 0 ? "no relay accepted the event" : undefined });
-      console.log(`  [${ok > 0 ? "sent" : "FAIL"}]  ${protocol.padEnd(5)}  ${r.primaryName.padEnd(20)}  ${ok}/${relays.length} relays  ${event.id.slice(0, 12)}`);
+      for (const relay of relays) await recordRecipientReadback(OUT_DIR, args.issue, campaignIdentity, r.npub, relay, await relayHasEvent(relay, event.id));
+      const readbacks = (await loadJournal(OUT_DIR, args.issue)).outreach[campaignIdentity].recipients[r.npub].effect.readbacks ?? {}; const ok = Object.values(readbacks).filter((value) => value.found).length;
+      await finishRecipient(OUT_DIR, args.issue, campaignIdentity, r.npub, ok > 0 ? "confirmed" : "failed", ok === 0 ? "exact gift-wrap event not recovered from any declared inbox relay" : undefined);
+      report.push({ primaryName: r.primaryName, names: r.names, npub: r.npub, protocol, status: ok > 0 ? "sent" : "failed", relaysOk: ok, relaysTotal: relays.length, eventId: event.id, reason: ok === 0 ? "exact event was not recovered" : undefined });
     } catch (e) {
       report.push({ primaryName: r.primaryName, names: r.names, npub: r.npub, protocol: "skipped", status: "failed", reason: (e as Error).message });
       console.log(`  [FAIL]  ${"error".padEnd(5)}  ${r.primaryName.padEnd(20)}  ${(e as Error).message}`);

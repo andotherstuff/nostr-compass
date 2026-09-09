@@ -1,44 +1,32 @@
 #!/usr/bin/env bun
 // Compass newsletter → Nostr publishing pipeline.
 //
-// MANUAL INVOCATION ONLY. This script runs only when COMPASS_PUBLISH_INVOCATION
-// is set to "manual" in the invoking shell. It must not be triggered from
-// cron, file watchers, hooks, slash-commands, or scheduled tasks.
+// Every mutating stage is admitted by the per-edition journal identity and
+// verified effect prerequisites; no shell environment flag grants authority.
 //
-// Broadcast is gated: stage 4 refuses to run without the explicit
-// --really-broadcast flag. Stage 5 merges the newsletter PR so Hugo
-// deploys; it refuses to run unless broadcast recorded at least one
-// successful relay receipt in published.json.
+// Merge and broadcast are independent explicit gates. The safe publication
+// order is merge -> exact deployment confirmation -> Nostr broadcast.
 
-if (process.env.COMPASS_PUBLISH_INVOCATION !== "manual") {
-  console.error(
-    [
-      "Refusing to run.",
-      "",
-      "COMPASS_PUBLISH_INVOCATION must be set to 'manual' in the invoking shell.",
-      "This pipeline runs only on explicit operator instruction.",
-      "",
-      "Recommended alias:",
-      "  alias compass-publish='COMPASS_PUBLISH_INVOCATION=manual bun publish/publish.ts'",
-    ].join("\n"),
-  );
-  process.exit(2);
-}
 
 import { join } from "node:path";
+import { readFile } from "node:fs/promises";
 import { parseIssue } from "./stages/parse.ts";
 import { signArticle } from "./stages/sign.ts";
 import { signAnnouncement } from "./stages/announce.ts";
 import { broadcastIssue } from "./stages/broadcast.ts";
 import { mergeIssue, type PullRequestIdentity } from "./stages/merge.ts";
+import { verifyAndRecordDeployment } from "./stages/deploy.ts";
 import { logIssue } from "./stages/log.ts";
 import { IssueLock, validateNumber } from "./lib/safety.ts";
 import { closeBunker } from "./lib/bunker.ts";
 import { notifyMilestone, prLink } from "./lib/notify.ts";
+import { loadJournal, prepareDeployment } from "./lib/journal.ts";
+import { assertSigningAuthorized, recordEditionAuthorization } from "./lib/authorization.ts";
+import { recordCompositeQuality, recordFeedbackSnapshot, QUALITY_ROLES } from "./lib/gates.ts";
 
-const OUT_DIR = join(import.meta.dir, "out");
+const OUT_DIR = process.env.COMPASS_OUT_DIR || join(import.meta.dir, "out");
 
-type Stage = "parse" | "sign" | "announce-sign" | "broadcast" | "merge" | "log" | "all";
+type Stage = "parse" | "sign" | "announce-sign" | "merge" | "deploy" | "broadcast" | "log" | "all";
 
 const COMPASS_DIR = process.env.COMPASS_DIR || join(import.meta.dir, "..");
 
@@ -50,6 +38,10 @@ type Args = {
   reallyMerge: boolean;
   logPr: boolean;
   prIdentity?: PullRequestIdentity;
+  pageUrl?: string;
+  authorizationReceipt?: string;
+  feedbackReceipt?: string;
+  qualityReceiptDir?: string;
 };
 
 function parseArgs(argv: string[]): Args {
@@ -62,6 +54,10 @@ function parseArgs(argv: string[]): Args {
   let prNumber: number | undefined;
   let headSha: string | undefined;
   let baseSha: string | undefined;
+  let pageUrl: string | undefined;
+  let authorizationReceipt: string | undefined;
+  let feedbackReceipt: string | undefined;
+  let qualityReceiptDir: string | undefined;
 
   for (let i = 2; i < argv.length; i++) {
     const a = argv[i];
@@ -73,6 +69,7 @@ function parseArgs(argv: string[]): Args {
         next !== "announce-sign" &&
         next !== "broadcast" &&
         next !== "merge" &&
+        next !== "deploy" &&
         next !== "log" &&
         next !== "all"
       ) {
@@ -93,6 +90,14 @@ function parseArgs(argv: string[]): Args {
       headSha = argv[++i];
     } else if (a === "--base-sha") {
       baseSha = argv[++i];
+    } else if (a === "--page-url") {
+      pageUrl = argv[++i];
+    } else if (a === "--authorization-receipt") {
+      authorizationReceipt = argv[++i];
+    } else if (a === "--feedback-receipt") {
+      feedbackReceipt = argv[++i];
+    } else if (a === "--quality-receipt-dir") {
+      qualityReceiptDir = argv[++i];
     } else if (a.startsWith("--")) {
       throw new Error(`Unknown flag: ${a}`);
     } else {
@@ -108,29 +113,31 @@ function parseArgs(argv: string[]): Args {
   const supplied = [prNumber !== undefined, headSha !== undefined, baseSha !== undefined];
   if (supplied.some(Boolean) && !supplied.every(Boolean)) throw new Error("--pr-number, --head-sha, and --base-sha must be supplied together");
   const prIdentity = supplied.every(Boolean) ? { number: prNumber!, head_sha: headSha!, base_sha: baseSha! } : undefined;
-  return { issue, stage, dryRun, reallyBroadcast, reallyMerge, logPr, prIdentity };
+  return { issue, stage, dryRun, reallyBroadcast, reallyMerge, logPr, prIdentity, pageUrl, authorizationReceipt, feedbackReceipt, qualityReceiptDir };
 }
 
 function usage(): string {
   return [
     "Usage:",
-    "  compass-publish <issue> [--stage parse|sign|announce-sign|broadcast|merge|log|all]",
+    "  compass-publish <issue> [--stage parse|sign|announce-sign|merge|deploy|broadcast|log|all]",
+    "                          [--page-url https://nostrcompass.org/...] [--quality-receipt-dir DIR]",
+    "                          [--feedback-receipt FILE] [--authorization-receipt FILE]",
     "                          [--dry-run] [--really-broadcast] [--really-merge] [--no-log-pr]",
     "",
     "Source file: /tmp/{issue}publish.md (output of scripts/publish.ts).",
-    "Broadcast is gated by --really-broadcast.",
-    "Merge is gated by --really-merge AND a successful broadcast ledger entry.",
-    "In --stage all, pass both flags to do the full publish + GitHub merge in one shot.",
+    "The --really-* switches confirm execution intent; they do not grant authority.",
+    "Every mutation requires matching byte-hashed receipts and exact identities in state.json.",
+    "Signing and broadcast require exact merge and deployment confirmation.",
     "The log stage records the publication evidence and opens a PR for it; --no-log-pr",
     "writes the log without committing. Milestones post to the target configured",
     "in config/notify.json; COMPASS_NOTIFY=0 silences them.",
   ].join("\n");
 }
 
-async function runParse(issue: number): Promise<void> {
+async function runParse(issue: number, dryRun = false): Promise<void> {
   console.log(`[1/6] PARSE         issue=${issue}`);
   const meta = await parseIssue(issue);
-  await notifyMilestone(issue, "parsed", [
+  if (!dryRun) await notifyMilestone(issue, "parsed", [
     `Title "${meta.title}", TLDR ${meta.tldr_word_count} words, body ${meta.body.length} chars.`,
     "Banner verified against config/cover.json.",
   ]);
@@ -149,6 +156,8 @@ async function runSign(issue: number, dryRun: boolean): Promise<void> {
     console.log(`              [dry-run] would request bunker signature for kind 30023`);
     return;
   }
+  const author = JSON.parse(await readFile(join(import.meta.dir, "config/author.json"), "utf8")) as { pubkey_hex: string };
+  await assertSigningAuthorized(OUT_DIR, issue, 30023, author.pubkey_hex);
   await signArticle(issue);
   await notifyMilestone(issue, "signed", ["kind:30023 article signed via the Amber bunker."]);
 }
@@ -159,6 +168,8 @@ async function runAnnounceSign(issue: number, dryRun: boolean): Promise<void> {
     console.log(`              [dry-run] would request bunker signature for kind:1`);
     return;
   }
+  const author = JSON.parse(await readFile(join(import.meta.dir, "config/author.json"), "utf8")) as { pubkey_hex: string };
+  await assertSigningAuthorized(OUT_DIR, issue, 1, author.pubkey_hex);
   await signAnnouncement(issue);
   await notifyMilestone(issue, "announced", ["kind:1 announcement signed and pointing at the article naddr."]);
 }
@@ -172,12 +183,19 @@ async function runBroadcast(issue: number, reallyBroadcast: boolean): Promise<vo
   ]);
 }
 
-async function runMerge(issue: number, reallyMerge: boolean, identity?: PullRequestIdentity): Promise<void> {
-  console.log(`[5/6] MERGE         issue=${issue}`);
-  await mergeIssue(issue, { reallyMerge, identity });
-  await notifyMilestone(issue, "merged", [
-    "Newsletter PR squash-merged into `main`; the Pages deploy is running.",
+async function runMerge(issue: number, reallyMerge: boolean, identity?: PullRequestIdentity): Promise<"prepared" | "confirmed"> {
+  console.log(`[4/7] MERGE         issue=${issue}`);
+  const result = await mergeIssue(issue, { reallyMerge, identity });
+  if (result === "confirmed" && reallyMerge) await notifyMilestone(issue, "merged", [
+    "Newsletter PR squash-merged into `main`; exact deployment confirmation is still required before broadcast.",
   ]);
+  return result;
+}
+
+async function runDeploy(issue: number): Promise<void> {
+  console.log(`[5/7] DEPLOY        issue=${issue}`);
+  await verifyAndRecordDeployment(issue, { outDir: OUT_DIR });
+  await notifyMilestone(issue, "deployed", ["Exact merge tree is live at the journal-pinned canonical route."]);
 }
 
 async function runLog(issue: number, logPr: boolean): Promise<void> {
@@ -196,11 +214,57 @@ async function main() {
     return;
   }
 
+  if (args.dryRun) {
+    console.log(`[dry-run] issue=${args.issue} stage=${args.stage}; zero mutation preview`);
+    console.log("[dry-run] would validate local source, signatures, exact PR/head/base, deployment evidence, and relay floor");
+    return;
+  }
+
   const lock = await IssueLock.acquire(args.issue, OUT_DIR);
   try {
+    if ((args.stage === "all" || args.stage === "merge") && args.pageUrl) await prepareDeployment(OUT_DIR, args.issue, args.pageUrl);
     if (args.stage === "all" || args.stage === "parse") {
       await runParse(args.issue);
       if (args.stage === "parse") return;
+    }
+
+    if (args.authorizationReceipt) await recordEditionAuthorization(OUT_DIR, args.issue, args.authorizationReceipt);
+    let receiptState = await loadJournal(OUT_DIR, args.issue);
+    if (args.qualityReceiptDir) {
+      if (!receiptState.source) throw new Error("quality receipt ingestion requires a journaled publication source");
+      const receiptPaths = Object.fromEntries(
+        QUALITY_ROLES.map((role) => [role, join(args.qualityReceiptDir!, `${role}.json`)]),
+      ) as Record<(typeof QUALITY_ROLES)[number], string>;
+      await recordCompositeQuality(OUT_DIR, args.issue, receiptState.source.path, receiptPaths);
+      receiptState = await loadJournal(OUT_DIR, args.issue);
+    }
+    if (args.feedbackReceipt) {
+      if (!receiptState.source) throw new Error("feedback receipt ingestion requires a journaled publication source");
+      await recordFeedbackSnapshot(OUT_DIR, args.issue, receiptState.source.path, args.feedbackReceipt);
+    }
+
+    if (args.stage === "all" || args.stage === "merge") {
+      if (args.dryRun) {
+        console.log("[dry-run] would reconcile/merge the exact pinned pull request");
+      } else if (args.stage === "all" && !args.reallyMerge) {
+        console.log("");
+        console.log("Stopping before merge: pass --really-merge to merge the exact pinned GitHub PR.");
+        return;
+      } else {
+        await runMerge(args.issue, args.reallyMerge, args.prIdentity);
+      }
+      if (args.stage === "merge") return;
+      const state = await loadJournal(OUT_DIR, args.issue);
+      if (state.effects.deploy?.state !== "confirmed") {
+        console.log("Merge is confirmed; stopping cleanly until exact Pages and served-content verification completes.");
+        console.log(`Resume with: compass-publish ${args.issue} --stage deploy`);
+        return;
+      }
+    }
+
+    if (args.stage === "deploy") {
+      await runDeploy(args.issue);
+      return;
     }
 
     if (args.stage === "all" || args.stage === "sign") {
@@ -214,29 +278,21 @@ async function main() {
     }
 
     if (args.stage === "all" || args.stage === "broadcast") {
-      if (args.stage === "all" && !args.reallyBroadcast) {
+      if (args.dryRun) {
+        console.log("[dry-run] would broadcast the exact signed payloads");
+      } else if (args.stage === "all" && !args.reallyBroadcast) {
         console.log("");
-        console.log("Stopping before broadcast: pass --really-broadcast to send to relays.");
-        console.log("Signed events are on disk and ready to broadcast when you are.");
+        console.log("Stopping before broadcast: pass --really-broadcast after exact deployment confirmation.");
         return;
+      } else {
+        await runBroadcast(args.issue, args.reallyBroadcast);
       }
-      await runBroadcast(args.issue, args.reallyBroadcast);
       if (args.stage === "broadcast") return;
     }
 
-    if (args.stage === "all" || args.stage === "merge") {
-      if (args.stage === "all" && !args.reallyMerge) {
-        console.log("");
-        console.log("Stopping before merge: pass --really-merge to merge the GitHub PR.");
-        console.log("The newsletter is on Nostr but the website will not update until merged.");
-        return;
-      }
-      await runMerge(args.issue, args.reallyMerge, args.prIdentity);
-      if (args.stage === "merge") return;
-    }
-
     if (args.stage === "all" || args.stage === "log") {
-      await runLog(args.issue, args.logPr);
+      if (args.dryRun) console.log("[dry-run] would generate evidence and create/update its pull request");
+      else await runLog(args.issue, args.logPr);
     }
 
     if (args.stage === "all") {
@@ -255,7 +311,7 @@ main().catch(async (e) => {
   // Surface the halt on the same channel as the successes. A publish that dies
   // silently after broadcast is how #37 ended up on Nostr with no log.
   const issue = Number(process.argv.find((a) => /^\d+$/.test(a)));
-  if (Number.isFinite(issue) && issue > 0) {
+  if (!process.argv.includes("--dry-run") && Number.isFinite(issue) && issue > 0) {
     await notifyMilestone(issue, "failed", [message.split("\n")[0]]);
   }
   process.exit(1);

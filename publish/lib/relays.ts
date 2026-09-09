@@ -99,9 +99,9 @@ const QUERY_TIMEOUT_MS = 6_000;
 // Fetches the newest event matching {kinds, authors} from one relay, closing
 // as soon as EOSE or the timeout fires. Used to check whether a recipient has
 // published a NIP-65 relay list (kind 10002) before deciding NIP-17 vs NIP-04.
-function queryOneRelay(
+export function queryOneRelay(
   relay: string,
-  filter: { kinds: number[]; authors: string[]; limit?: number },
+  filter: { kinds?: number[]; authors?: string[]; ids?: string[]; limit?: number },
 ): Promise<MinimalEvent | undefined> {
   return new Promise((resolve) => {
     let settled = false;
@@ -174,7 +174,7 @@ function queryOneRelay(
 // the newest one seen across all of them (or undefined if none respond).
 export async function queryNewest(
   relays: string[],
-  filter: { kinds: number[]; authors: string[]; limit?: number },
+  filter: { kinds?: number[]; authors?: string[]; ids?: string[]; limit?: number },
 ): Promise<MinimalEvent | undefined> {
   const results = await Promise.all(relays.map((r) => queryOneRelay(r, filter)));
   let best: MinimalEvent | undefined;
@@ -182,4 +182,9 @@ export async function queryNewest(
     if (r && (!best || r.created_at > best.created_at)) best = r;
   }
   return best;
+}
+
+export async function relayHasEvent(relay: string, eventId: string): Promise<boolean> {
+  const event = await queryOneRelay(relay, { ids: [eventId], limit: 1 });
+  return event?.id === eventId;
 }

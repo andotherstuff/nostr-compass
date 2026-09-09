@@ -4,10 +4,6 @@
 // pubkey on success. Refuses to overwrite a previously-set author unless
 // --rotate is passed.
 
-if (process.env.COMPASS_PUBLISH_INVOCATION !== "manual") {
-  console.error("Refusing to run. Set COMPASS_PUBLISH_INVOCATION=manual.");
-  process.exit(2);
-}
 
 import { join } from "node:path";
 import { readFile } from "node:fs/promises";

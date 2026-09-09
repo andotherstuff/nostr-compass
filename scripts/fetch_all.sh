@@ -38,6 +38,7 @@ SINCE_DAYS=""
 SINCE_ABSOLUTE=""
 UNTIL_ABSOLUTE=""
 VERBOSE=""
+PASS_ID=""
 NEWSLETTER_DATE="$(date -u +%F)"
 while [[ $# -gt 0 ]]; do
     case $1 in
@@ -53,6 +54,9 @@ while [[ $# -gt 0 ]]; do
             SINCE_ABSOLUTE="$2"; shift 2 ;;
         --until)
             UNTIL_ABSOLUTE="$2"; shift 2
+            ;;
+        --pass-id)
+            PASS_ID="$2"; shift 2
             ;;
         -v|--verbose)
             VERBOSE="-v"
@@ -75,6 +79,7 @@ while [[ $# -gt 0 ]]; do
             ;;
     esac
 done
+[ -n "$PASS_ID" ] || { echo "--pass-id is required; each collection pass needs a caller-owned immutable identity" >&2; exit 2; }
 
 SINCE_ARG=""
 if [ -n "$SINCE_ABSOLUTE" ] || [ -n "$UNTIL_ABSOLUTE" ]; then
@@ -92,11 +97,12 @@ else
     PROJECT_ARG=""
     RUN_SINCE="$(date -u -d "8 days ago" --iso-8601=seconds)"; RUN_UNTIL="$(date -u --iso-8601=seconds)"
 fi
-MANIFEST="$PROJECT_ROOT/data/source_runs/source_run_${NEWSLETTER_DATE}.json"
+MANIFEST="$PROJECT_ROOT/data/source_runs/source_run_${NEWSLETTER_DATE}_${PASS_ID}.json"
 SOURCE_FAMILIES=(projects nip-discussions nostr-recap shakespeare-apps nip34 zapstore app-discovery heartbeats monthly-history specs)
 MANIFEST_ARGS=()
 for family in "${SOURCE_FAMILIES[@]}"; do MANIFEST_ARGS+=(--expected "$family"); done
-python3 "$SCRIPT_DIR/source_run_manifest.py" create --manifest "$MANIFEST" --since "$RUN_SINCE" --until "$RUN_UNTIL" "${MANIFEST_ARGS[@]}"
+python3 "$SCRIPT_DIR/source_run_manifest.py" create --manifest "$MANIFEST" --pass-id "$PASS_ID" --since "$RUN_SINCE" --until "$RUN_UNTIL" "${MANIFEST_ARGS[@]}"
+export COMPASS_WINDOW_SINCE="$RUN_SINCE" COMPASS_WINDOW_UNTIL="$RUN_UNTIL" COMPASS_SOURCE_PASS_ID="$PASS_ID"
 declare -A SOURCE_EXIT
 for family in "${SOURCE_FAMILIES[@]}"; do SOURCE_EXIT[$family]=127; done
 
@@ -116,7 +122,7 @@ SKIPPED=0
 echo "[1/10] GitHub project updates..."
 if command -v python3 &>/dev/null; then
     cd "$PROJECT_ROOT"
-    if python3 scripts/fetch_project_updates.py $PROJECT_ARG $VERBOSE; then
+    if python3 scripts/fetch_project_updates.py $PROJECT_ARG --fresh $VERBOSE; then
         SOURCE_EXIT[projects]=0
         echo "  Done."
     else
@@ -279,27 +285,31 @@ else
 fi
 echo ""
 
-# Persist one receipt per expected source family. A successful command without
-# an artifact is still a failed required source.
+# Ingest only collector-authored exact-pass receipts. An exit code, mtime, or
+# post-hoc item count is never promoted into pagination/query evidence.
 record_source() {
-    local family="$1" directory="$2" optional="${3:-}"
-    local artifact=""
-    artifact="$(python3 -c 'import pathlib,sys; p=pathlib.Path(sys.argv[1]); xs=list(p.glob("*.json")); print(max(xs,key=lambda x:x.stat().st_mtime) if xs else "")' "$PROJECT_ROOT/data/$directory")"
-    local args=(record --manifest "$MANIFEST" --family "$family" --exit-code "${SOURCE_EXIT[$family]}")
-    [ -n "$artifact" ] && args+=(--artifact "$artifact")
-    [ "$optional" = optional ] && args+=(--optional)
-    python3 "$SCRIPT_DIR/source_run_manifest.py" "${args[@]}"
+    local family="$1" collector="$2" applicability="${3:-required}"
+    local receipt="$PROJECT_ROOT/data/source_runs/collector_${PASS_ID}_${family}.json"
+    if [ "$applicability" = not_applicable ]; then
+        local query; query="$(python3 -c 'import json,sys; print(json.dumps({"family":sys.argv[1],"pass_id":sys.argv[2],"since":sys.argv[3],"until":sys.argv[4]},separators=(",",":")))' "$family" "$PASS_ID" "$RUN_SINCE" "$RUN_UNTIL")"
+        python3 "$SCRIPT_DIR/source_run_manifest.py" record --manifest "$MANIFEST" --pass-id "$PASS_ID" --family "$family" --status not_applicable --collector "$PROJECT_ROOT/$collector" --query-json "$query" --item-count 0 --page-count 0 --include-count 0 --skip-count 0 --skip-evidence-json '[]'
+    elif [ -f "$receipt" ]; then
+        python3 "$SCRIPT_DIR/source_run_manifest.py" ingest --manifest "$MANIFEST" --receipt "$receipt"
+    else
+        echo "Collector $family did not emit exact-pass receipt $receipt" >&2
+        FAILED=$((FAILED + 1))
+    fi
 }
-record_source projects project_updates
-record_source nip-discussions nostr_nip_discussions
-record_source nostr-recap nostr_recap
-record_source shakespeare-apps shakespeare_apps
-record_source nip34 nip34_repos
-record_source zapstore zapstore_releases
-record_source app-discovery app_discovery
-record_source heartbeats heartbeats
-record_source monthly-history monthly_history optional
-record_source specs spec_updates
+record_source projects scripts/fetch_project_updates.py
+record_source nip-discussions scripts/fetch_nostr_nip_discussions.sh
+record_source nostr-recap scripts/fetch_nostr_recap.sh
+record_source shakespeare-apps scripts/fetch_shakespeare_apps.sh
+record_source nip34 scripts/fetch_nip34_repos.sh
+record_source zapstore scripts/fetch_zapstore_releases.sh
+record_source app-discovery scripts/fetch_app_discovery.py
+record_source heartbeats scripts/fetch_heartbeats.sh
+if [ "$ISSUE_MONTH" != "$NEXT_WEEK_MONTH" ]; then record_source monthly-history scripts/fetch_monthly_history.py; else record_source monthly-history scripts/fetch_monthly_history.py not_applicable; fi
+record_source specs scripts/fetch_spec_updates.py
 if ! python3 "$SCRIPT_DIR/source_run_manifest.py" finalize --manifest "$MANIFEST"; then
     echo "Required source evidence is incomplete: $MANIFEST" >&2
     FAILED=$((FAILED + 1))

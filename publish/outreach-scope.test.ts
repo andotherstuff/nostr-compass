@@ -62,23 +62,21 @@ describe("targeted pre-publication outreach", () => {
         podcastTime: "",
       }),
     ).toBe(
-      "Hey, your project is mentioned in the draft for this week's Nostr Compass newsletter. Could you review the coverage on GitHub before publication? https://github.com/andotherstuff/nostr-compass/pull/147",
+      "Your project is mentioned in this week's Nostr Compass draft. Please review the coverage on GitHub before publication: https://github.com/andotherstuff/nostr-compass/pull/147",
     );
   });
 
-  test("rejects legacy podcast and re-record outreach", () => {
+  test("builds asynchronous podcast invitation without an appointment", () => {
     const base = {
       issue: 38,
       reviewUrl: "",
       newsletterUrl: "https://nostrcompass.org/en/newsletters/2026-09-02-newsletter/",
-      podcastUrl: "https://riverside.example/studio",
-      podcastTime: "Thursday at 16:00 UTC",
+      podcastUrl: "https://logbook.example/episode/38#project",
+      podcastTime: "",
     };
-    expect(() => buildOutreachMessage({ ...base, reminder: true })).toThrow(
-      "Podcast outreach is paused pending the new post-publication setup.",
-    );
-    expect(() => buildOutreachMessage({ ...base, reminder: false, rerecord: true })).toThrow(
-      "Podcast outreach is paused pending the new post-publication setup.",
-    );
+    const message = buildOutreachMessage({ ...base, reminder: false });
+    expect(message).toContain("short voice note to the async podcast");
+    expect(message).toContain(base.podcastUrl);
+    expect(message).not.toContain("Thursday");
   });
 });

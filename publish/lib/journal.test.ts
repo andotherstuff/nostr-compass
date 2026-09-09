@@ -45,4 +45,14 @@ describe("publication journal", () => {
     })));
     expect(Object.keys((await loadJournal(outDir, 1)).effects.article.receipts ?? {}).sort()).toEqual(["one", "three", "two"]);
   });
+
+  test("rejects stale snapshots and serializes competing processes", async () => {
+    const outDir = await mkdtemp(join(tmpdir(), "compass-journal-process-")); await loadOrCreateJournal(outDir, 1);
+    const stale = await loadJournal(outDir, 1); await mutateJournal(outDir, 1, (journal) => { journal.effects.first = { state: "prepared", intent_sha256: "first" }; });
+    await expect(saveJournal(outDir, stale)).rejects.toThrow("Stale journal");
+    const modulePath = new URL("./journal.ts", import.meta.url).pathname;
+    const worker = (prefix: string) => Bun.spawn([process.execPath, "-e", `import { mutateJournal } from ${JSON.stringify(modulePath)}; for (let i=0;i<2;i++) await mutateJournal(${JSON.stringify(outDir)},1,j=>{j.effects[${JSON.stringify(prefix)}+i]={state:'prepared',intent_sha256:String(i)}});`], { stdout: "pipe", stderr: "pipe" });
+    const a = worker("a"), b = worker("b"); expect(await a.exited).toBe(0); expect(await b.exited).toBe(0);
+    const effects = (await loadJournal(outDir, 1)).effects; expect(Object.keys(effects).filter((key) => /^[ab]\d+$/.test(key))).toHaveLength(4);
+  });
 });

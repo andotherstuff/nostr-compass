@@ -365,22 +365,26 @@ Use `git reset --soft $(git merge-base HEAD origin/main)` to collapse everything
 **NEVER ask for an nsec. NEVER use `nak` to sign or publish. Always use the pipeline for publication.** Read-only `nak` queries are permitted only for public identity research.
 
 ```bash
-# Full pipeline (all stages: parse → sign → announce-sign → broadcast → merge)
-COMPASS_PUBLISH_INVOCATION=manual bun publish/publish.ts <N> --stage all --really-broadcast --really-merge
+# Full pipeline: parse → merge → verified deploy → sign → broadcast → evidence log
+bun publish/publish.ts <N> --stage all --pr-number <PR> --head-sha <HEAD> --base-sha <BASE> \
+  --page-url https://nostrcompass.org/en/newsletters/<date>-newsletter/ \
+  --quality-receipt-dir <receipts> --feedback-receipt <feedback.json> \
+  --authorization-receipt <edition-authorization.json> --really-merge --really-broadcast
 
 # Individual stages (run in order)
-COMPASS_PUBLISH_INVOCATION=manual bun publish/publish.ts <N> --stage parse
-COMPASS_PUBLISH_INVOCATION=manual bun publish/publish.ts <N> --stage sign
-COMPASS_PUBLISH_INVOCATION=manual bun publish/publish.ts <N> --stage announce-sign
-COMPASS_PUBLISH_INVOCATION=manual bun publish/publish.ts <N> --stage broadcast --really-broadcast
-COMPASS_PUBLISH_INVOCATION=manual bun publish/publish.ts <N> --stage merge --really-merge
+bun publish/publish.ts <N> --stage parse
+bun publish/publish.ts <N> --stage merge --really-merge
+bun publish/publish.ts <N> --stage deploy
+bun publish/publish.ts <N> --stage sign
+bun publish/publish.ts <N> --stage announce-sign
+bun publish/publish.ts <N> --stage broadcast --really-broadcast
 
 # Or use the wrapper (same thing, shorter)
 compass-publish <N>
 compass-publish <N> --stage sign
 ```
 
-**Always pass `--really-merge` with `--really-broadcast`.** Broadcast posts the newsletter to Nostr but leaves the GitHub PR open; the website only updates when the PR is merged and Hugo deploy runs from main. The merge stage refuses to run unless the broadcast ledger shows at least one ok relay, so the two stages are safe to chain. This was the cause of Newsletter #27 being on Nostr but missing from the website for ~19 hours on 2026-06-17.
+`--really-merge` and `--really-broadcast` are execution confirmations, not authority. Every mutation is admitted by the schema-versioned per-edition journal and exact byte-hashed receipts. The pipeline always merges first, verifies the exact Pages deployment, then permits signing and broadcasting; each Nostr event must be recovered independently from at least five durable relays.
 
 **Config:**
 - Bunker URI: `~/.config/compass-publish/bunker.json`
@@ -390,9 +394,9 @@ compass-publish <N> --stage sign
 - Input file: `/tmp/<N>publish.md` (4 blocks: title, 21-word TLDR, banner URL, body)
 - Kind 1 text is generated mechanically from the newsletter body before the first horizontal rule or H2. The pipeline drops the generic welcome line, adds a short editorial intro, keeps the dense opening digest and inline npub mentions, removes markdown link wrappers, then appends the article naddr.
 
-**Before publishing:** check `publish/published.json` — if the issue is already there, do not publish again.
+**Before publishing:** inspect `publish/out/<N>/state.json`. `publish/published.json` is a compatibility projection and never authorizes or suppresses an effect.
 
-**Stale lockfile:** if a run aborts, remove `publish/out/<N>/.lock` before retrying.
+**Interrupted run:** do not remove a lock merely because it is old. The fenced lock owner and journal must prove that recovery is safe; otherwise fail closed.
 
 **Expected relay rejections (not failures):**
 - `wss://relay.nsec.app` — only accepts bunker traffic (kind 24133/24135)

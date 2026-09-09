@@ -212,21 +212,12 @@ function send(notifier: Notifier, body: string): Promise<number> {
  * Never throws: publishing must not depend on the messaging gateway.
  */
 export async function notifyMilestone(
-  issue: number,
-  milestone: Milestone,
-  lines: string[],
-  opts: { key?: string; suffix?: string } = {},
+  _issue: number,
+  _milestone: Milestone,
+  _lines: string[],
+  _opts: { key?: string; suffix?: string } = {},
 ): Promise<boolean> {
-  try {
-    const cfg = await loadConfig();
-    if (!cfg) return false;
-    if (milestone !== "failed" && (await alreadySent(issue, milestone, opts.key))) return false;
-    const code = await send(cfg, renderMessage(issue, milestone, lines, opts.suffix));
-    if (code !== 0) return false;
-    if (milestone !== "failed") await markSent(issue, milestone, opts.key);
-    return true;
-  } catch (e) {
-    console.error(`notify: ${(e as Error).message}`);
-    return false;
-  }
+  // Repository publication code is not a notification producer. The host's
+  // durable outbox/reconciler owns verified delivery and readback.
+  return false;
 }
