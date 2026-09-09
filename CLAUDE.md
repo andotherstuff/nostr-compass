@@ -90,11 +90,11 @@ The audit must return no MISMATCH lines.
 
 Mandatory structure for every deep dive:
 1. **Opening paragraph** — what the spec defines in one sentence, plus the core problem it solves
-2. **Mechanics** — wire format, event kinds, tags, message exchange, encryption layer (whichever apply). Use precise field names, kind numbers, and concrete byte/structure detail.
-3. **Design tradeoffs** — what was rejected, what was made optional, what the spec deliberately punts on, the trust model
+2. **Mechanics** — wire format, event kinds, tags, message exchange, encryption layer, parsing, validation, and rendering behavior (whichever apply). Use precise field names, kind numbers, and concrete byte/structure detail. Explain malformed input and important edge cases.
+3. **Design tradeoffs** — what was rejected, what was made optional, what the spec deliberately punts on, relay selection and hint behavior, plus trust, privacy, security, and resource boundaries
 4. **Comparison to adjacent specs** — when relevant, contrast with the closest NIP that solves a related problem (NIP-57 vs NIP-61, NIP-34 vs traditional git, NIP-46 vs NIP-55)
-5. **Example event** — a full JSON example with all 7 NIP-01 fields (id, pubkey, created_at, kind, tags, content, sig)
-6. **Implementation pointer** — ONE short paragraph linking to this week's substantive implementation, no longer than three sentences
+5. **Example event** — every regular NIP deep dive includes at least one real, relay-recovered JSON event with all 7 NIP-01 fields (`id`, `pubkey`, `created_at`, `kind`, `tags`, `content`, `sig`). A NIP-21-only deep dive may omit an event because the URI also exists outside events. Any deep dive covering NIP-27 must include a full valid event whose `content` contains the `nostr:` reference being explained. Recompute the NIP-01 id and verify the BIP-340 signature.
+6. **Implementation behavior** — explain how at least three current implementations parse, validate, fetch, render, or publish the construct, including meaningful differences and failure behavior. End with ONE short paragraph linking to this week's substantive implementation, no longer than three sentences.
 
 What a deep dive is NOT:
 - A list of this week's PRs by implementation project
@@ -167,6 +167,30 @@ python3 scripts/check_triage_coverage.py \
   --triage data/newsletter_workspace/triage_<date>.md \
   --also data/newsletter_workspace/selection_review_<date>.md
 ```
+
+Release coverage is only the first half of the gate. The finalized source-pass
+manifest also feeds `selection_coverage_<date>.json`. Every source candidate
+retained by a collector maps to one or more stable editorial candidate IDs;
+aggregate recaps must expand into the projects and protocol items they name.
+Each editorial candidate records the four hard-gate results, all five quality
+scores, its primary evidence, and one final disposition. Run:
+
+```bash
+python3 scripts/check_selection_coverage.py \
+  --manifest data/source_runs/source_run_<pass-id>.json \
+  --ledger data/newsletter_workspace/selection_coverage_<date>.json \
+  --draft content/en/newsletters/<date>-newsletter.md \
+  --receipt data/newsletter_workspace/selection_coverage_receipt_<date>.json
+```
+
+This gate has no section or item cap. A candidate passes only with direct
+primary evidence, material in-window progress, a concrete Nostr surface, and
+a distinct continuity delta, followed by at least 8/10 with no
+zero across Nostr significance, user/operator impact, novelty, evidence
+maturity, and explanatory value. Every passing candidate must appear in the
+draft or be folded into a sourced related section. Routine dependency,
+translation, documentation, packaging, version-cadence, and self-asserted work
+remain explicit skips.
 
 **Review Zapstore per app, not per release.** The fetcher emits an `apps` rollup and `distinct_nostr_relevant_apps` alongside the raw release list. #37's summary said "622 Nostr-relevant releases", but 476 of those were PosterChan CI builds and 60 were Boris: the real figure was **48 distinct apps, 19 of them tracked**. A reviewer handed 622 skims; 48 with latest versions is a list somebody reads. Zapstore publisher identity is not a relevance signal either — one publisher mirrors 404 unrelated apps (prayer apps, money managers) with a single Nostr-relevant row, so provenance cannot be used the way the GitHub owner sweep uses it.
 

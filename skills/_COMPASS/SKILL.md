@@ -284,7 +284,7 @@ Stages (each gates on a file in `data/newsletter_workspace/`):
 1. Intake: parse user URLs, verify repos, dedup against `data/projects.yml`, add new entries with correct category and priority. Owned by `agents/IntakeAgent.md`.
 2. Fetch: run `scripts/fetch_all.sh --since-days 8` (project updates, NIP discussions, Nostr Recap, Shakespeare apps, NIP-34 repositories, Zapstore releases, grantee heartbeats, and the NIP/BUD/NAP/Marmot/Gamma/Concord/NWC spec-family sweep) plus `build_coverage_history.py` and `detect_non_github_sources.sh`.
 3. Triage: per-item verdict (GREEN/MAYBE/SKIP) against Nostr Relay Test, So What Test, and scope rule. Owned by `agents/TriageAgent.md`.
-4. Selection: scoring rubric, slot allocation, NIP deep dive rotation or last-Wednesday history mode, and all-history redundancy check via `data/coverage_history.json` plus a full read of the latest three newsletters. User-approval gate. Owned by `agents/NewsletterAgent.md` (select mode).
+4. Selection: reconcile every collector-retained candidate, expand aggregates, apply the hard eligibility gate and 8/10 no-zero quality threshold without item caps, choose section placement, select the NIP deep dive rotation or last-Wednesday history mode, and run all-history redundancy checks via `data/coverage_history.json` plus a full read of the latest three newsletters. User-approval gate. Owned by `agents/NewsletterAgent.md` (select mode).
 5. Section writing: parallel writers per section. Owned by `agents/NewsletterAgent.md` (write mode).
 6. Assembly: concatenate sections into `content/en/newsletters/<date>-newsletter.md` with `draft: true` frontmatter.
 7. Review swarm: five parallel reviewers (LinkChecker, ClaimCheck, ProseReview, TopicAudit, ContinuityValueCheck). The prose gate runs `check_newsletter_style.py` and `check_newsletter_paragraph_links.py`; continuity runs against all prior newsletters. Loop with section writers until all five pass. Owned by `agents/ReviewSwarmAgent.md`.
@@ -332,7 +332,7 @@ A manual `/publish` invocation before 16:00 UTC must stop unless the user explic
 Spawn 9 parallel translation agents (de, es, fr, it, ja, ko, nl, pt, zh), each with adversarial review. Open a `translate/<date>` PR against `andotherstuff/nostr-compass:main`. Owned by `agents/TranslationAgent.md`.
 
 **Edition Types:**
-- Regular: NIP Deep Dive covers two related NIPs not previously covered (the rotation is one-shot; every prior `## NIP Deep Dive` heading under `content/en/newsletters/` is the authoritative record)
+- Regular: NIP Deep Dive covers two related NIPs not previously covered (the rotation is one-shot; every prior `## NIP Deep Dive` heading under `content/en/newsletters/` is the authoritative record). It explains exact mechanics, parsing/rendering, tradeoffs, trust/privacy boundaries, edge cases, adjacent specs, and at least three implementation behaviors. Every regular deep dive uses a real full event; NIP-21-only may omit one; NIP-27 always requires a valid full event with a `nostr:` reference in `content`.
 - Monthly Recap (last Wednesday of month, detected by Orchestrator): `Six Years of Nostr <Month>s` replaces the two NIP deep dives. Never prefix the history title with `NIP Deep Dive`; give every year at least two substantive, primary-source-linked paragraphs.
 
 **Data Sources (read by TriageAgent at Stage 3):**
@@ -370,13 +370,13 @@ Note: Projects like CDK, Cashu.me, Nutshell, eNuts, Bitcoin Connect, Geyser, and
 
 1. **Nostr Relay Test (mandatory gate):** Does this change affect what happens on Nostr relays or what Nostr users experience? If NO, omit regardless of project priority.
 
-2. **Relevance Scoring (0-10):** Every candidate item is scored across Nostr Relevance (0-3), User Impact (0-3), Ecosystem Breadth (0-2), and Novelty (0-2). Minimum score of 5 to include.
+2. **Hard gate plus quality score:** Every retained candidate must have direct primary evidence, material in-window progress, a concrete Nostr surface, and a distinct continuity delta. Progress may be a release, merged implementation, verified launch, or reviewable proposal milestone. Survivors score 0-2 for Nostr significance, user/operator impact, novelty, evidence maturity, and explanatory value. Include at 8/10 with no zero axis.
 
 3. **So What? Test:** If you cannot explain in one sentence why a Nostr developer should care, omit it.
 
 4. **Depth Minimum:** No item gets fewer than 2-3 sentences. One-sentence filler entries are forbidden.
 
-5. **Slot Budgets (guidelines, not hard caps):** News typically 5-7 items, Releases 5-8, Notable Changes 3-5, NIP Updates uncapped. Flex up in busy weeks if items pass all quality gates. Target: 30 minutes max reading time, as short as necessary.
+5. **No item budgets:** Section length follows the qualifying set. Every qualifier appears or is folded into a sourced related section, and no sub-threshold item is added to fill space. Target: 30 minutes reading time when the evidence allows, as short or long as the selected progress requires.
 
 See [NewsletterAgent](agents/NewsletterAgent.md) for the full scoring rubric and agent prompts.
 
@@ -555,7 +555,7 @@ The pipeline is orchestrated across specialized agents with file-based handoffs.
  [3] TriageAgent ── per-item GREEN/MAYBE/SKIP verdicts
         |
         v
- [4] NewsletterAgent (select mode) ── scoring, slot allocation, deep dive picks
+ [4] NewsletterAgent (select mode) ── complete candidate ledger, threshold, placement, deep dive picks
         |          USER APPROVAL GATE
         v
  [5] NewsletterAgent (write mode, parallel section writers)

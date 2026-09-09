@@ -8,14 +8,14 @@ lane: writing
 
 **Role under the orchestrated pipeline:** the writing-domain agent. Two invocation modes:
 
-- **Select mode**: reads triage verdicts from `data/newsletter_workspace/triage_<date>.md`, applies the 0-10 relevance scoring rubric, allocates section slots, picks NIP deep dives that are not in the rotation history, runs the redundancy check against `data/coverage_history.json`, and writes `selection_review_<date>.md` for user approval.
+- **Select mode**: reads triage verdicts from `data/newsletter_workspace/triage_<date>.md`, reconciles every retained source candidate, applies the hard eligibility gate and 0-10 quality rubric, picks NIP deep dives that are not in the rotation history, runs the redundancy check against `data/coverage_history.json`, and writes `selection_review_<date>.md` plus `selection_coverage_<date>.json` for review.
 - **Write mode**: for one section at a time, takes the approved item list and section style rules, and writes `data/newsletter_workspace/sections/<section>.md`. Section writers run in parallel under the Orchestrator.
 
 Select mode is research and preparation, and belongs to the preceding research lane, ignoring this file's `lane: writing` frontmatter. Write mode belongs to the writing lane. Record the model actually selected in the section artifact. Do not perform source discovery, triage, selection, claim verification, or final review on the writing stage.
 
 Pipeline driver, gate management, and stage transitions are owned by `OrchestratorAgent.md`. Review, fact-checking, and prose-quality gates are owned by `ReviewSwarmAgent.md`. Publishing is owned by `PublishAgent.md`. This agent's responsibility is selection and prose.
 
-The detailed scoring rubric, slot budgets, section style rules, and prose conventions below remain authoritative for both modes.
+The detailed eligibility gate, quality threshold, section style rules, and prose conventions below remain authoritative for both modes.
 
 ## Mandatory: verify before citing (added 2026-07-14)
 
@@ -27,7 +27,7 @@ A live model-comparison test on 2026-07-14 (independent select-mode run, same tr
 
 This applies regardless of which model tier is running this agent. Verification is a mechanical step (an API call), not something to trust a larger model to do unprompted — the 2026-07-14 test used Opus and it did not self-verify without this instruction present.
 
-- **Any JSON event example in a NIP Deep Dive must be a real, relay-recovered event — never placeholder data.** When a deep dive includes a full event reference (the JSON block showing the seven NIP-01 fields), fetch a real event of that kind from public relays (`nak req -k <kind> -l 20 wss://relay.damus.io wss://nos.lol wss://relay.nostr.band`, plus `--search` for NIP-50 examples) and embed it verbatim with its true `id`, `pubkey`, `created_at`, `tags`, `content`, and `sig`. Pick an event whose tags actually demonstrate the fields the prose discusses (e.g. for NIP-84, one carrying `a` + `p` + `context`). Placeholder hex (`0000…`, `1111…`, repeated digits), invented signatures, and prose admitting "these are placeholders" are all publication-blocking defects — issue #34 (2026-08-05) shipped both and needed a post-publication correction PR plus a kind 30023 re-broadcast. If no suitable real event can be found after a genuine search, cut the JSON block and keep the prose; never ship a placeholder.
+- **Every regular NIP Deep Dive must use a real, relay-recovered full event — never placeholder data.** Fetch a suitable event from public relays (`nak req -k <kind> -l 20 wss://relay.damus.io wss://nos.lol wss://relay.nostr.band`, plus `--search` for NIP-50 examples) and embed its true `id`, `pubkey`, `created_at`, `kind`, `tags`, `content`, and `sig`. A NIP-21-only deep dive is the explicit exception because its URI is not confined to event content. A NIP-27 deep dive always includes a full event whose `content` contains the `nostr:` reference under discussion. Pick tags that demonstrate the fields in the prose, name the recovery relay, recompute the NIP-01 id, and verify the BIP-340 signature with `scripts/check_newsletter_event_examples.py`. Placeholder or merely illustrative values are publication-blocking defects. If a required real event cannot be found, the deep-dive selection is not ready; select a topic that can be demonstrated accurately.
 
 ## Architecture: Context-Aware Agent Hierarchy
 
@@ -52,7 +52,7 @@ The newsletter pipeline uses **isolated agents with file handoffs** to prevent c
 │  │ ANALYST AGENT                                                │   │
 │  │ Input: Raw JSON (via jq extraction, NOT loaded to context)   │   │
 │  │ Output: data/newsletter_workspace/curated_items.md           │   │
-│  │ Max: 50 items, 2-sentence summaries each                     │   │
+│  │ Every retained candidate, with a stable ID and disposition   │   │
 │  └─────────────────────────────────────────────────────────────┘   │
 │                              ↓                                      │
 │  PHASE 2: Strategy (fresh agent)                                    │
@@ -90,7 +90,7 @@ The newsletter pipeline uses **isolated agents with file handoffs** to prevent c
 | **Never load raw JSON** | Use `jq` to extract summaries via Bash, not Read tool |
 | **Agent isolation** | Each phase spawns fresh agent with clean context |
 | **File handoffs** | Agents write to `data/newsletter_workspace/`, next agent reads |
-| **Summarize early** | Analyst scores items (typically 20-40), filtering out sub-5 scores from 500+ raw events |
+| **Summarize early** | Analyst preserves every stable candidate and compresses its evidence without dropping its disposition |
 | **Parallel writers** | Each section written by isolated agent with only its context |
 | **Lean orchestrator** | NewsletterAgent only coordinates, never holds full data |
 
@@ -100,7 +100,8 @@ All intermediate files go to `data/newsletter_workspace/`:
 
 ```
 data/newsletter_workspace/
-├── curated_items.md          # Phase 1 output (scored items >= 5, typically 20-40)
+├── curated_items.md          # Phase 1 readable output (every candidate scored/dispositioned)
+├── selection_coverage_<date>.json # Machine-checkable source-to-draft ledger
 ├── editorial_plan.md         # Phase 2 output (what to write)
 ├── sections/
 │   ├── news.md               # Phase 3 output
@@ -231,7 +232,7 @@ jq -r '
 For each candidate from either pass, decide one of three outcomes:
 
 1. **tracked-worthy** — Project meets the quality bar below. Add to a Discovery list for the Strategy agent. Surface the candidate for `data/projects.yml` addition.
-2. **one-time mention** — Notable but not tracked-worthy (e.g., experimental, abandoned, fork). May be mentioned once in this issue if it scores >= 5; do not add to projects.yml.
+2. **one-time mention** — Substantive enough for this issue but not durable tracking (for example, an experiment with a verified shipped Nostr behavior). It still needs 8/10 with no zero axis; do not add it to projects.yml.
 3. **skip** — Doesn't pass the quality bar. Note in Omitted Items.
 
 **Quality bar for tracked-worthy:**
@@ -246,17 +247,17 @@ Write the Discovery list to `data/newsletter_workspace/curated_items.md` under a
 ```markdown
 ### Discovery Candidates (untracked, Nostr-relevant)
 
-**Tracked-worthy** (Strategy agent: budget 1 item for newsletter coverage; consider adding to projects.yml):
+**Tracked-worthy** (Strategy agent: include every item that clears the common threshold; consider adding each durable project to projects.yml):
 - [Project Name](repo-url) [source: zapstore | nip34-native] - One-line Nostr surface description - Score: N/10 - Why it qualifies
 
-**One-time mention** (Strategy agent: include only if it strengthens an existing section):
+**Below threshold** (retain the evidence and score; do not publish):
 - [Project Name](repo-url) [source: zapstore | nip34-native] - One-line reason for limited coverage
 
 **Skipped** (with reasons in Omitted Items below):
 - count only here; details in Omitted Items
 ```
 
-The Strategy agent has a Discovery budget of 1 item per issue from the tracked-worthy list (described in Phase 2 below). One slot per week creates a steady path for new projects to enter coverage without overwhelming established work.
+Discovery uses the same eligibility gate and threshold as established projects. There is no quota: include every qualifying candidate and reject every sub-threshold candidate with a specific reason.
 
 ## Nostr Relay Test (MANDATORY)
 
@@ -264,7 +265,7 @@ Before scoring any item, apply this gate:
 **Does this change affect what happens on Nostr relays or what Nostr users experience?**
 
 - YES clearly -> score normally
-- Only tangentially (e.g., internal database upgrade, pure Lightning change) -> must score >= 7 to include
+- Only tangentially (e.g., internal database upgrade, pure Lightning change) -> fail the hard gate
 - NO -> omit regardless of project priority
 
 Examples of FAILING the relay test:
@@ -273,35 +274,32 @@ Examples of FAILING the relay test:
 - Any Lightning/Bitcoin-only change in a wallet that also supports NWC
 - Dependency bumps, CI changes, build system updates
 
-## Relevance Scoring (0-12 with Change B novelty bonus, minimum 5 to include)
+## Hard eligibility and quality scoring (0-10, minimum 8 with no zero)
 
-Score every candidate item across four base dimensions, then add the novelty bonus.
+Every collector-retained source candidate receives a stable ID. Expand recap and
+roundup events into the individual projects or protocol items they name, then
+map every source ID into `selection_coverage_<date>.json`. A candidate advances
+to scoring only when all four hard gates pass:
 
-| Dimension | 0 | 1 | 2 | 3 |
-|-----------|---|---|---|---|
-| **Nostr Relevance** | No Nostr connection | Uses Nostr as transport | Core Nostr feature | NIP merge/new event kind |
-| **User Impact** | Internal/CI only | Merged PR (unreleased) | Shipped improvements | New user-facing capability |
-| **Ecosystem Breadth** | Single low-priority project | Single high-priority project | Affects multiple projects | Sets ecosystem precedent |
-| **Novelty** | Dependency bump/routine | Iteration on existing | Meaningful new capability | First implementation/new concept |
+1. direct primary evidence supports the exact claim;
+2. a release, merged implementation, verified launch, or reviewable proposal milestone provides material progress in the exact reporting window;
+3. the change has a concrete Nostr relay, event, identity, signer, or client surface; and
+4. it adds a distinct delta beyond recent Compass coverage.
 
-**Change B: Coverage-History Novelty Bonus (additive, +2 ceiling, floor of 4 required)**
+Score every survivor from 0 to 2 on five axes:
 
-Look up each project in `data/coverage_history.json` (run `python3 scripts/build_coverage_history.py` first if the file is stale). For the project's repo URL, find the entry under `.projects[<host>/<owner>/<repo>]`.
+| Axis | 0 | 1 | 2 |
+|------|---|---|---|
+| **Nostr significance** | Incidental naming | Narrow implementation detail | Material protocol/client behavior |
+| **User/operator impact** | No observable consequence | Bounded fix or developer benefit | New capability, security, reliability, or interoperability |
+| **Novelty** | Repeated cadence | Meaningful iteration | New concept, first implementation, or major new delta |
+| **Evidence maturity** | Self-asserted/opaque | Merged with limited validation | Released, independently inspectable, or strongly verified |
+| **Explanatory value** | Cannot support useful prose | One concrete lesson | Mechanics/tradeoff useful beyond the project |
 
-| History signal | Bonus |
-|----------------|-------|
-| No entry in coverage_history.json (first-ever mention) | +2 |
-| Entry exists, `last_mention_date` is more than 6 newsletters ago (returning project) | +1 |
-| Entry exists, project is shipping a new feature category (first NIP-XX implementation, first mobile port, first relay test) | +1 |
-| Notable refactor with user-visible behavior change | 0 |
-| Pure version bump or maintenance | 0 |
-
-**Quality floor (REQUIRED to apply bonus):** the item must score 4 or higher on the four base dimensions BEFORE the novelty bonus. Without this floor, novelty turns into a spam vector where every freshly-launched app makes the newsletter regardless of substance.
-
-Examples:
-- Damus patch release (base: 1 nostr + 2 impact + 1 breadth + 0 novelty = 4; in history, last_mention recent; no first-of-kind feature): no bonus, final = 4. Falls below cutoff.
-- First-time Nostr geocaching app launch (base: 2 nostr + 3 impact + 1 breadth + 3 novelty = 9; no history entry): +2 bonus, final = 11. Top of issue.
-- Primal returning after 7 issues with NIP-7D implementation (base: 2 nostr + 3 impact + 2 breadth + 2 novelty = 9; history exists, last_mention 7 issues ago, first NIP-7D for the project): +1 returning + +1 new-category = +2 bonus, final = 11.
+Publish only candidates scoring at least 8/10 with no zero axis. Every passing
+candidate is GREEN and must appear in the draft or be folded into a related
+section with its primary source. Every other candidate is MAYBE or SKIP and
+keeps its exact reason. There are no bonuses, fixed item counts, or section caps.
 
 Coverage history extraction (run as part of Phase 0):
 ```bash
@@ -310,13 +308,11 @@ python3 scripts/build_coverage_history.py
 
 The file is regenerated each run (no incremental updates) to avoid drift. The script self-tests and refuses to write if it parses fewer than 100 distinct projects.
 
-**Auto-demote rules (subtract from total):**
-- Pure Lightning/Bitcoin change with no Nostr integration: -3
-- Covered substantially in last 2 issues: -2
-- No working code/release (announcement only): -1
-- Fork/clone of existing project with minimal changes: -2
-- **Maintenance-only release** (dependency bumps, CI fixes, build tooling, lockfile updates, version bump with no user-visible change): -4
-- **Patch release with single trivial bug fix** and no new behavior: -2
+Items fail the hard gate when they are pure Lightning/Bitcoin work, repeat
+recent coverage without a distinct delta, lack a reviewable in-window delta,
+clone an existing project without a material change, or contain only routine
+maintenance. Do not use negative points to let a failed hard gate back into the
+issue through unrelated strengths.
 
 **How to recognize a maintenance-only release:**
 
@@ -342,26 +338,19 @@ A release is NOT maintenance-only when:
 
 When unsure, write a one-sentence answer to "what could a Nostr user do after this release that they could not do before?" If the honest answer is "nothing different," demote.
 
-**Coverage tiers (after scoring):**
-- 8-10: Feature story candidate (prose paragraph, 3-6 sentences)
-- 5-7: Notable mention candidate (2-3 sentences)
-- 3-4: One-line bullet in Releases only (if it is a release)
-- 0-2: Omit entirely
+**Coverage tier:** 8-10 with no zero axis receives a substantive paragraph.
+Everything else is omitted with a reason. One-line release filler is forbidden.
 
 **The So What? Test:** If you cannot explain in one sentence why a Nostr developer should care about this item, omit it. Do NOT include items just because a project shipped a release. Minor patch releases, single bug fixes, and dependency bumps are not newsletter material.
 
 ## Output: data/newsletter_workspace/curated_items.md
-Write a markdown file with ALL items that score >= 5 (no artificial cap, but expect 20-40 items in a typical week):
+Write a markdown file with every retained candidate and its final score. The selected list contains all and only items scoring at least 8/10 with no zero axis:
 
 ### Feature Candidates (score 8-10)
 - [Project vX.Y.Z](url) - Score: N/10 - 2-sentence summary explaining why it matters
   - Continuity (if any): Nth implementer of NIP-XX / follow-up to PR #M in Newsletter #N / first work in this area in K issues
 
-### Notable Candidates (score 5-7)
-- [Item](url) - Score: N/10 - 1-2 sentence summary
-  - Continuity (if any): same format as above
-
-### NIP Changes (all scoring >= 5)
+### NIP Changes (all scoring >= 8 with no zero axis)
 - NIP-XX: What changed, PR link, score
 
 ### Potential NIP Deep Dive Topics (max 5)
@@ -384,7 +373,7 @@ Leave the continuity note blank when the item is genuinely standalone with no pr
 ")
 ```
 
-**Output:** `data/newsletter_workspace/curated_items.md` (lean file, ~200 lines max)
+**Output:** `data/newsletter_workspace/curated_items.md` (complete but concise; never truncate candidate coverage to meet a line target)
 
 ---
 
@@ -417,22 +406,22 @@ You are the StrategyAgent for Nostr Compass newsletter.
 [paste TLDR extraction output here]
 
 ## Your Job
-Create an editorial plan with STRICT SLOT BUDGETS. Quality over quantity.
+Create an editorial plan from the common hard gate and quality threshold.
 
-## Slot Budgets (recommended ranges, flex for busy weeks)
+## Section treatment
 
-| Section | Typical Range | Treatment |
-|---------|---------------|-----------|
-| **News** | 5-7 | Prose paragraphs, 3-6 sentences each. Only score 8-10 items. |
-| **Releases** | 5-8 | 2-3 sentence descriptions. No one-line filler. |
-| **Notable Changes** | 3-5 | 2-3 sentences each, grouped by project. |
-| **NIP Updates** | uncapped | Bullet list (merged + open PRs). |
-| **NIP Deep Dive** | 2 NIPs | Full treatment (or 1 history section for month-end). |
-| **Discovery (Change C)** | 1 per issue | One tracked-worthy untracked zapstore candidate gets newsletter coverage. Reserves slot under New Projects H2 or rolls into Top Stories if the project warrants it. See Discovery section below. |
+| Section | Treatment |
+|---------|-----------|
+| **News** | Prose paragraphs, 3-6 sentences each, for qualifying high-impact work. |
+| **Releases** | At least 2-3 substantive sentences for every qualifying release. No one-line filler. |
+| **Notable Changes** | At least 2-3 substantive sentences, grouped by project, for qualifying unreleased work. |
+| **NIP Updates** | Only qualifying merged work or reviewable proposal milestones. |
+| **NIP Deep Dive** | Two related NIPs receive full treatment, or one history section replaces them at month-end. |
+| **Discovery (Change C)** | Each tracked-worthy untracked candidate that clears the same gate gets coverage under New Projects or Top Stories. See Discovery section below. |
 
-These are guidelines, not hard caps. In a busy week with many high-scoring items, include them all. In a quiet week, a shorter newsletter is fine. The real constraint is: every item must pass the Nostr Relay Test, score >= 5, and receive at least 2-3 sentences of substantive explanation.
+The selection ledger is authoritative: every candidate first needs primary evidence, material in-window progress, a concrete Nostr surface, and a distinct continuity delta. Survivors score 0-2 on Nostr significance, user/operator impact, novelty, evidence maturity, and explanatory value. Include every candidate scoring at least 8/10 with no zero axis, and include nothing below that threshold. A busy week may be long; a quiet week may be short.
 
-**Target length:** 30 minutes max reading time, as short as necessary. Shorter is better if the week was quiet.
+**Target reading time:** around 30 minutes when the evidence supports it. The qualifying set determines the final length; a quiet issue should remain short.
 
 ## Depth Minimum (NON-NEGOTIABLE)
 
@@ -442,18 +431,18 @@ Every item must answer: **What does this mean for a Nostr developer or user?** I
 
 ## Prior-newsletter exclusion (HARD GATE)
 
-Read the three immediately preceding issues in full and query `data/coverage_history.json` for every selected project before allocating slots. A project covered before is excluded by default. Keep it only when **both** conditions hold:
+Read the three immediately preceding issues in full and query `data/coverage_history.json` for every selected project before choosing section placement. A project covered before is excluded by default. Keep it only when **both** conditions hold:
 
 1. This week's paragraph cites a distinct, directly linked primary source, such as a new release, merged PR, or commit.
 2. That source supports a distinct user-facing or protocol-facing change the prior issue did not already explain.
 
-A sentence that only says a version followed the prior version, calls something an incremental follow-up, or points readers to another section is not coverage. It must be cut, not retained as a one-line continuity marker. A small release with fewer than two substantive sentences of new, reader-relevant information is also cut. Do not spend a slot merely to show that a project remained active.
+A sentence that only says a version followed the prior version, calls something an incremental follow-up, or points readers to another section is not coverage. It must be cut, not retained as a one-line continuity marker. A small release with fewer than two substantive sentences of new, reader-relevant information is also cut. Do not retain an item merely to show that a project remained active.
 
 Run `python3 scripts/check_newsletter_continuity.py content/en/newsletters/<date>-newsletter.md --history-dir content/en/newsletters` after assembly. Any `FAIL` blocks review until the repeated header is removed or rewritten with its own distinct primary source and a verified substantive change. Reusing the same release, PR, commit, or signed-release event URL from an earlier issue is duplicate coverage, not continuity.
 
 ## Editorial Decisions
 1. Check all prior newsletters mechanically and read the last 3 in full. SKIP items already covered unless a distinct primary source supports a distinct substantive change.
-2. Respect the relevance scores from Phase 1 - do not promote low-scoring items
+2. Reconcile every collector-retained source ID through `selection_coverage_<date>.json`. Expand aggregate events into every named project or protocol item. Do not promote low-scoring items and do not drop qualifying ones.
 3. Apply the Nostr Relay Test: does this change affect Nostr relays or Nostr users?
 4. Section assignments (each item in ONE section only)
    - Apps first: lead stories and section headlines favor app/project news. Spec work
@@ -469,9 +458,7 @@ Run `python3 scripts/check_newsletter_continuity.py content/en/newsletters/<date
    - For the final weekly issue of a month, do not write or label a NIP Deep Dive. Replace it with `Six Years of Nostr <Month>s` (for this issue: `Six Years of Nostr Julys`). Read the month-end history sections from earlier issues that year for tone and depth. Give each year at least two substantive paragraphs and multiple primary-source links where the historical record supports them; do not pad a thin year with generic summary.
    - `Protocol and Spec Work` always audits NIPs, BUDs, NAPs, Marmot/MIPs, Gamma Markets, Concord/CORD, and NWC using `data/spec_updates/spec_updates_<date>.json`. Give a family its own paragraph only when a material public change landed in the reporting window; omit quiet families from the newsletter.
 6. Topic pages needed (concepts without existing pages)
-7. **Discovery selection (Change C).** Read the Discovery Candidates section in curated_items.md. Select EXACTLY ONE tracked-worthy candidate for newsletter coverage this issue. The selected candidate appears under `## New Projects` (or `## Top Stories` if substantial). Flag it in the editorial plan so the AssemblerAgent updates `data/projects.yml` in the same PR.
-   - If no tracked-worthy candidate meets the bar this week, skip the slot. Do not stretch a marginal candidate to fill the slot.
-   - One-time mention candidates may appear in a regular section if they fit, but do not count against the Discovery slot.
+7. **Discovery selection (Change C).** Read every Discovery Candidate in curated_items.md. Include every tracked-worthy candidate that clears the common 8/10 no-zero threshold under `## New Projects` (or `## Top Stories` if substantial), and flag each durable project for the AssemblerAgent to add to `data/projects.yml` in the same PR. If none clears the threshold, include none. Never stretch a marginal candidate or impose a one-item ceiling.
 
 ## Output: data/newsletter_workspace/editorial_plan.md
 
@@ -480,7 +467,7 @@ Format:
 Edition type: [Regular / Monthly Recap]
 Estimated reading time: [N minutes]
 
-### News Section (typically 5-7 items, score >= 8)
+### News Section (all qualifying high-impact items)
 1. [Item] - Score: N/10 - Why newsworthy, what angle to take
 2. ...
 
@@ -493,21 +480,21 @@ Primary: NIP-XX - [reason]
 Secondary: NIP-YY - [reason]
 Connection: [how they relate]
 
-### Releases Section (typically 5-8 items, score >= 5)
+### Releases Section (every qualifying release, score >= 8 with no zero axis)
 Each must have enough substance for 2-3 sentences.
 ...
 
-### Notable Changes Section (typically 3-5 items, score >= 5)
+### Notable Changes Section (every qualifying untagged change, score >= 8 with no zero axis)
 Each must have enough substance for 2-3 sentences.
 ...
 
-### Discovery Slot (Change C - exactly 1 or none)
-Selected candidate: [Project Name](repo-url)
+### Discovery selections (Change C - every qualifying candidate or none)
+Selected candidate: [Project Name](repo-url) - Score: N/10
   - Why it qualifies: [one sentence on Nostr surface]
   - Newsletter placement: New Projects (or Top Stories if substantial)
   - projects.yml addition: YES (Assembler must add)
 
-If no candidate qualifies this week, write: "Discovery slot: skipped (no candidate met quality bar)" and explain briefly.
+If no candidate qualifies this week, write: "Discovery selections: none qualified" and explain briefly.
 
 ### Topic Pages Needed
 - [concept] - link to source
@@ -535,15 +522,22 @@ must contain all of the following:
   every receipt back, verifies its hash/family/pass/window/pagination fields,
   and requires one shared pass ID and window across all ten rows. Missing,
   stale, conflicting, capped, or degraded evidence blocks approval.
+- `selection_coverage`: the exact path and SHA-256 of the PASS receipt produced
+  by `scripts/check_selection_coverage.py`. The receipt binds the finalized
+  source pass, complete candidate ledger, and current draft bytes. The
+  publication gate reads the receipt, manifest, ledger, and draft back and
+  rejects a missing candidate, changed input, unexplained GREEN omission,
+  sub-threshold inclusion, or fixed item cap.
 - `practical_assessment`: a concrete reader/developer question, at least two
   evidence-linked alternatives, the selected alternative, rationale,
   supporting primary-source URLs, and an explicit confidence level. Do not
   encode “practical evaluation” as a checkbox or generic promise.
-- `deep_dive`: for a regular issue, a merged `NIP-N` identity, canonical spec
-  URL, current activity evidence, and at least three distinct named client/app
-  implementation evidence URLs. A single implementation, proposal, or stale
-  specification is ineligible. Month-end issues instead use the explicit
-  `monthly-history` disposition with its evidence URL.
+- `deep_dive`: for a regular issue, exactly two distinct merged `NIP-N`
+  identities, each canonical spec URL and current-activity evidence, plus at
+  least three distinct named client/app implementation evidence URLs. A single
+  implementation, proposal, or stale specification is ineligible. Month-end
+  issues instead use the explicit `monthly-history` disposition with its
+  evidence URL.
 - `approved_by` and `approved_at`: identify the completed selection/review
   decision. Review Swarm validates this object; it must not infer or backfill
   missing facts from newsletter prose.
@@ -714,8 +708,13 @@ else:
   - TWO related NIPs, both absent from the running list of past deep dives.
   - Open with THE PROBLEM each NIP solves (the state of the world before it existed).
   - Explain the mechanism: handshake/event flow in prose.
-  - Include exactly ONE real example JSON event per NIP, sourced from the primary spec,
-    with every field and every tag explained in the surrounding prose.
+  - Include at least one real, relay-recovered full NIP-01 JSON event for every
+    regular deep dive and explain every relevant field and tag. A NIP-21-only
+    deep dive may omit it. Any NIP-27 deep dive must show a valid full event whose
+    content contains the `nostr:` reference. Run the cryptographic checker.
+  - Explain parsing, validation, rendering, relay-hint behavior, malformed inputs,
+    privacy and trust boundaries, resource costs, adjacent-spec tensions, and how
+    at least three current implementations behave. This is the bulk of the section.
   - A short history: when the NIP entered the repo and by whom (gh api commits on the
     spec file), plus relevant prior art.
   - An Implementations subsection naming real clients/relays that implement it, each
@@ -883,7 +882,7 @@ Read: data/newsletter_workspace/editorial_plan.md (for topic pages needed)
 6. Validate all internal links exist (check content/en/topics/)
 7. Create any needed topic pages (with Primary sources section!)
 8. Run: `shaka scan content/en/newsletters/YYYY-MM-DD-newsletter.md` **for real, and paste the actual command output** — target score 80+. Cardinal sins, banned words, banned constructions, AI tells, and dash violations must all be 0. Additional banned words beyond anti-slop.md: "ecosystem", "landscape", "robust", "leverage", "straightforward", "seamless", "streamline", "optimize". Additional banned phrases: "rather than", "worth flagging", "worth watching", "worth tracking", "not covered since <date/#N>", "which launched in #N" / "which we covered in #N" as a bare clause, "(GitHub handle x)" attribution parentheticals, any pipeline/process meta-commentary ("added to projects.yml this week", "Discovery-slot budget", "in this window", naming the discovery mechanism). A claimed-passing review that did not actually run the scanner and show real output does not count — Newsletter #31 shipped a draft that was assumed clean and scored 0/100 with 14 violations when actually scanned.
-   - Every NIP Deep Dive must include a real example JSON event, sourced from the primary spec, for each kind it discusses. Verify kind-to-purpose mappings against the primary source before writing.
+   - Every regular NIP Deep Dive must include a real relay-recovered full JSON event. NIP-21-only may omit one; NIP-27 always requires a valid event with a `nostr:` reference in `content`. Run `python3 scripts/check_newsletter_event_examples.py <newsletter>` to verify ids and signatures.
 9. Fix rhythm: avoid 3+ consecutive sentences starting with the same word ("The ... The ... The ..."). Vary openings with "Above that sits," "Alongside," "On the X side," etc.
 10. **Change F mechanical check (HARD FAIL).** For every section under `## Top Stories`, `## Tagged Releases`, `## In Development`, `## New Projects`, `## Protocol and Spec Work`, count consecutive paragraph openings:
     - If 3+ consecutive paragraphs in a section open with the same project name, FAIL the section. Bounce back to the Writer agent.
@@ -892,11 +891,12 @@ Read: data/newsletter_workspace/editorial_plan.md (for topic pages needed)
     - If the entire section opens every paragraph with the same project name (no story-shape variety), FAIL.
     Use the validation script if available, otherwise scan visually. Hard-fail = do not proceed to step 11 until the Writer fixes the violations.
 11. **Change F inline-explainer check.** For every newly-introduced project, NIP, or protocol primitive in the newsletter, verify a one-phrase inline explainer is present on first mention AND a topic-page link is present when one exists. If either is missing, bounce back to the Writer.
-12. **Change C Discovery follow-through.** If the editorial plan's Discovery Slot is populated, add the candidate to `data/projects.yml` in the appropriate category (read existing categories at the top of the file). Include name, description, platforms, repo, website (if any), maintainer (from repo metadata if needed), status (active/beta), priority (medium for newly-discovered, never high on first appearance), and a notes field describing the Nostr surface. Stage the projects.yml change in the same branch as the newsletter.
+12. **Change C Discovery follow-through.** Add every durable qualifying Discovery selection to `data/projects.yml` in the appropriate category (read existing categories at the top of the file). Include name, description, platforms, repo, website (if any), maintainer (from repo metadata if needed), status (active/beta), priority (medium for newly discovered, never high on first appearance), and a notes field describing the Nostr surface. Stage the projects.yml changes in the same branch as the newsletter.
 13. **All-history continuity gate (HARD FAIL).** Run `python3 scripts/check_newsletter_continuity.py content/en/newsletters/YYYY-MM-DD-newsletter.md --history-dir content/en/newsletters`. A failure means a repeated project lacks its own distinct primary source or reuses a source URL already covered. Remove it unless the writer can cite a distinct source and explain a distinct user-facing or protocol-facing change in at least two substantive sentences. Never preserve a version-only or "follow-up" pointer.
 14. Run `python3 scripts/check_newsletter_style.py content/en/newsletters/YYYY-MM-DD-newsletter.md` and `python3 scripts/check_newsletter_paragraph_links.py content/en/newsletters/YYYY-MM-DD-newsletter.md`; either failure blocks assembly.
-15. Run: hugo --quiet (fix any errors)
-16. Write assembly report
+15. Run `python3 scripts/check_selection_coverage.py --manifest <source-pass> --ledger data/newsletter_workspace/selection_coverage_<date>.json --draft content/en/newsletters/YYYY-MM-DD-newsletter.md --receipt data/newsletter_workspace/selection_coverage_receipt_<date>.json`; any missing candidate, unexplained GREEN omission, low-score inclusion, changed draft, or fixed item cap blocks assembly.
+16. Run: hugo --quiet (fix any errors)
+17. Write assembly report
 
 ## Output
 - content/en/newsletters/YYYY-MM-DD-newsletter.md

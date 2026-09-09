@@ -22,7 +22,8 @@ HEADING_RE = re.compile(r"^###\s+(.+)$", re.MULTILINE)
 LINK_LABEL_RE = re.compile(r"\[([^\]]+)\]\([^\)]+\)")
 PRIMARY_URL_RE = re.compile(
     r"(?:https?://[^\s)]+/(?:releases(?:/tag)?|pull|commit|merge_requests|-/commit)(?:/[^\s)]*)?"
-    r"|https?://primal\.net/e/[0-9a-f]+)"
+    r"|https?://primal\.net/e/[0-9a-f]+"
+    r"|https?://(?:www\.)?njump\.me/(?:[0-9a-f]{64}|n(?:event|addr)1[0-9a-z]+))"
 )
 STATUS_TRANSITION_RE = re.compile(
     r"\b(?:covered|reported|described|introduced|proposed)\b.{0,100}"

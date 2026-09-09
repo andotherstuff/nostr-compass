@@ -159,7 +159,7 @@ Comprehensive technical accuracy and link integrity checking.
 /validate path/to/file.md        # Validate specific file
 ```
 
-**Validation Checks (11 total):**
+**Validation Checks (12 total):**
 1. Internal link validation (all `/en/topics/X/` files exist)
 2. NIP number validation (exist in NIPs repo)
 3. External link validation (GitHub URLs return 200)
@@ -168,9 +168,10 @@ Comprehensive technical accuracy and link integrity checking.
 6. Immediate-prior-issue continuity gate (`scripts/check_newsletter_continuity.py` plus manual confirmation of a distinct source and substantive user/protocol impact for every repeated project)
 7. Style compliance (no em dashes, AI buzzwords)
 8. Frontmatter validation (required YAML fields)
-9. JSON event examples (all 7 NIP-01 fields)
-10. Topic page source links (all have "Primary sources" section)
-11. No version-only or low-value follow-up entries
+9. Selection coverage receipt (every retained source candidate reconciled; every qualifying GREEN item present; no fixed item cap)
+10. JSON event examples (all 7 NIP-01 fields, valid id and signature; NIP-21-only exception; `nostr:` content required for NIP-27)
+11. Topic page source links (all have "Primary sources" section)
+12. No version-only or low-value follow-up entries
 
 **Agent:** ValidationAgent ([documentation](skills/_COMPASS/agents/ValidationAgent.md))
 
@@ -488,7 +489,7 @@ Note: Projects like CDK, Cashu.me, Nutshell, eNuts, Bitcoin Connect, Geyser, and
 
 **NIP-34 hosting is delivery, not subject matter.** A Bitcoin-only or otherwise non-Nostr project does not become newsletter material because its source code is hosted on a NIP-34 GRASP server or `relay.ngit.dev`. CoinJoin coordinators (e.g. joinmarket-ng), on-chain mixers, Bitcoin Core forks, hardware-wallet firmware, and similar projects are out of scope regardless of patch volume on `relay.ngit.dev`. Only track NIP-34 repos whose project substance is itself Nostr-relevant (clients, relays, signers, NIP-34 tooling, schemata, etc.).
 
-**Content Curation:** All items are scored 0-10 using a relevance rubric (Nostr Relevance, User Impact, Ecosystem Breadth, Novelty). Minimum score of 5 to include. Items must pass the Nostr Relay Test and the So What? Test. See [NewsletterAgent](skills/_COMPASS/agents/NewsletterAgent.md) for details.
+**Content Curation:** Every collector-retained candidate receives a stable ID and explicit disposition. Candidates must first pass direct-evidence, material-in-window-progress, concrete-Nostr-surface, and continuity-delta gates, then score at least 8/10 with no zero across the five maintained quality axes. In-window progress may be a release, merged implementation, verified launch, or reviewable proposal milestone. Every qualifier is included or sourced inside a related section; every rejection keeps a reason. There are no item or section caps. See [NewsletterAgent](skills/_COMPASS/agents/NewsletterAgent.md) for details.
 
 ---
 

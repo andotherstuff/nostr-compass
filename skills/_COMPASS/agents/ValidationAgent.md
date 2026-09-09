@@ -301,9 +301,18 @@ type: newsletters
 
 ---
 
-### 9. JSON Event Example Validation
+### 9. Selection Coverage Validation
 
-**Purpose:** Verify all NIP-01 fields present in event examples
+Run `scripts/check_selection_coverage.py` with the finalized source manifest,
+selection ledger, and exact draft. Missing source candidates, unexpanded recap
+events, unexplained GREEN omissions, sub-threshold inclusions, a changed draft,
+or a fixed item cap are publication-blocking errors.
+
+---
+
+### 10. JSON Event Example Validation
+
+**Purpose:** Verify every regular deep-dive example is a full, cryptographically valid NIP-01 event, except a NIP-21-only deep dive
 
 **Required fields (7 total):**
 1. `id` (64-char hex)
@@ -316,21 +325,19 @@ type: newsletters
 
 **Method:**
 ```bash
-# Extract JSON blocks
-# Check for all 7 required fields
-# Check for placeholder data (publication-blocking):
+# Check all 7 fields, canonical ids, signatures, and deep-dive scope:
 python3 scripts/check_newsletter_event_examples.py <newsletter.md>
 ```
 
-**Placeholder detection (added 2026-08-06 after issue #34 shipped two):** any event example whose `id`/`pubkey`/`sig` consists of a single repeated hex digit or obvious sequence (`0000…`, `1111…`, `3333…`), whose prose introduces it as "illustrative" / "placeholder" / "not a valid signature", or whose `sig` is not plausible 128-char hex from a real key is a **FAIL**, not a warning. Event examples must be real events recovered from public relays before Writing embeds them (see NewsletterAgent.md). The mechanical check is `scripts/check_newsletter_event_examples.py`; run it on every draft and again after any post-publication edit.
+Placeholder data, a mismatched canonical id, or a failed signature is publication-blocking. NIP-21-only may omit an event; any NIP-27 deep dive requires a full valid event whose `content` contains `nostr:`. Event examples must be real events recovered from public relays before Writing embeds them. Run the checker on every draft and after any correction.
 
 **Severity:** ERROR (violates technical accuracy)
 
-**Action:** Replace with a real relay-recovered event, or remove incomplete example
+**Action:** Replace with a real relay-recovered event. Removal is allowed only for a NIP-21-only deep dive.
 
 ---
 
-### 10. Topic Page Source Links Validation
+### 11. Topic Page Source Links Validation
 
 **Purpose:** Verify topic pages have proper source attribution
 
@@ -365,7 +372,7 @@ done
 
 ---
 
-### 11. Meta-Prose Check (Discovery, Authors, Pubkeys, Process-Meta)
+### 12. Meta-Prose Check (Discovery, Authors, Pubkeys, Process-Meta)
 
 **Purpose:** Catch four classes of meta-prose that must never appear in body text.
 
@@ -389,7 +396,7 @@ grep -nE "reads as a (coordinated|readiness)|coordination pass|version cadence (
 
 ---
 
-### 12. Filler-Opener Check
+### 13. Filler-Opener Check
 
 **Purpose:** Bureaucratic sentence starts that add zero information.
 
@@ -402,7 +409,7 @@ grep -nE "^The project is (a |described)|^The release is |^The tool is |^The sui
 
 ---
 
-### 13. Compass Self-Reference Check
+### 14. Compass Self-Reference Check
 
 **Purpose:** The newsletter must never refer to itself by name in body prose.
 
@@ -416,7 +423,7 @@ grep -nE "\bCompass\b" newsletter.md | grep -vE "^\d+:---|nostr-compass|/en/|tit
 
 ---
 
-### 14. Test-Coverage Mention Check (WARNING)
+### 15. Test-Coverage Mention Check (WARNING)
 
 **Purpose:** Test hygiene is invisible to readers.
 
@@ -429,7 +436,7 @@ grep -nE "\b(regression test|test coverage|E2E workflow|Playwright workflow|asse
 
 ---
 
-### 15. Laundry-List Guard
+### 16. Laundry-List Guard
 
 **Purpose:** Three or more PR links, package names, or version tags in one paragraph is a laundry list.
 
@@ -446,7 +453,7 @@ grep -nE "\`@[a-z-]+/[a-z-]+@[0-9]" newsletter.md | awk -F: '{c[$1]++} END {for(
 
 ---
 
-### 16. Duplicate-Project-Header Check
+### 17. Duplicate-Project-Header Check
 
 **Purpose:** A project appears in at most one header per newsletter.
 

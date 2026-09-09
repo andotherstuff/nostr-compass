@@ -34,6 +34,14 @@ class ContinuityCheckTests(unittest.TestCase):
 
         self.assertEqual([], checker.review(current, previous))
 
+    def test_allows_repeated_project_with_a_new_signed_nostr_event(self):
+        checker = load_module()
+        previous = """### Voca 1.0 reads Nostr events aloud\n\n[Announcement](https://njump.me/naddr1old) describes the release.\n"""
+        event = "a7e0f6ff342d8194afd4f6c99316a7f485592c954d39f61cd7a3e5028010c373"
+        current = f"""### Voca 1.1.1 keeps signed imports\n\nThe [signed release](https://njump.me/{event}) documents the new failure boundary.\n"""
+
+        self.assertEqual([], checker.review(current, previous))
+
     def test_flags_versioned_project_name_in_previous_heading(self):
         checker = load_module()
         previous = """### [Nostrord v2.2.0](https://github.com/nostrord/nostrord/releases/tag/v2.2.0) adds DM controls\n\nThe [release](https://github.com/nostrord/nostrord/releases/tag/v2.2.0) adds controls.\n"""

@@ -117,13 +117,13 @@ Pass the full fetch result set, the intake list, and the durable `data/newslette
 
 Reasons for SKIP follow the Nostr Relay Test, the So What Test, and the scope rule (Bitcoin/Lightning-only items skip unless Nostr-relevant work shipped this week).
 
-Gate fails on: fewer than 8 `GREEN` items (indicates the triage agent was overzealous and the writer would have no material; loop back with that signal).
+Gate fails when a retained source candidate is missing, an aggregate source item was not expanded, a candidate lacks a hard-gate result or provisional score, or a verdict lacks primary evidence. A quiet week with fewer than eight GREEN items is valid and produces a shorter issue.
 
 ### Stage 4: Selection
 
 Owner: the research lane, using NewsletterAgent in "select-only" mode (see `NewsletterAgent.md` section "Selection mode").
 
-The selection agent reads triage verdicts, applies the 0-10 relevance scoring rubric, allocates section slots (News, Tagged Releases, Notable Changes, Protocol and Spec Work, and either a NIP Deep Dive or month-end history), runs an all-history redundancy check plus a full read of the latest three published newsletters, picks the two NIP deep dives that are not in the rotation history (every prior `## NIP Deep Dive` heading under `content/en/newsletters/` is the authoritative record), detects the final weekly issue of the month (the next weekly slot crosses into a new month) and substitutes the established `Six Years of Nostr <Month>s` history section, then spawns four independent selection reviewers. Selection runs on the research lane; do not use the writing lane for this stage.
+The selection agent reads every triage verdict, applies the hard eligibility gate and 0-10 quality threshold, and records source-to-triage-to-selection mappings in `selection_coverage_<date>.json`. It includes every 8/10 no-zero candidate and rejects every item below the threshold, without section caps. It then chooses section placement, runs an all-history redundancy check plus a full read of the latest three published newsletters, picks two NIP deep dives absent from the rotation history, detects the final weekly issue of the month and substitutes the established `Six Years of Nostr <Month>s` history section, then runs four independent selection reviews. Selection runs on the research lane; do not use the writing lane for this stage.
 
 For any project that appeared in a prior issue, Selection must record the distinct primary source and the distinct user-facing or protocol-facing change that warrants renewed coverage. If it cannot state both, or if it reuses the same release/PR/commit/signed-event URL, it puts the item on the SKIP list. A version-only, "incremental follow-up", or cross-reference pointer is not a valid exception and never reaches a section writer.
 
