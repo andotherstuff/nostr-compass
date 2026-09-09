@@ -1,6 +1,6 @@
 # PodcastAgent
 
-**Recommended model:** kimi-k3
+**Runtime model:** selected by the active host lane and recorded honestly; this repository does not pin a provider or model.
 
 **Role:** Podcast preparation and publishing specialist for Nostr Compass
 

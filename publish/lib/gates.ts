@@ -41,10 +41,16 @@ async function roleEvidenceValid(value: RoleReceipt): Promise<boolean> {
     return entry && entry.pass_id && entry.receipt_path && hash(entry.receipt_sha256) && /^(complete|empty_verified|not_applicable)$/.test(entry.status) && !Number.isNaN(+new Date(entry.effective_since)) && !Number.isNaN(+new Date(entry.effective_until)) && new Date(entry.effective_since) < new Date(entry.effective_until);
   })) return false;
   if (new Set([...freshness.values()].map((entry) => entry.pass_id)).size !== 1 || new Set([...freshness.values()].map((entry) => `${entry.effective_since}/${entry.effective_until}`)).size !== 1) return false;
+  const freshnessReceipts = new Map<string, { raw: string; receipt: any }>();
   for (const [family, entry] of freshness) {
     let raw: string, receipt: any;
     try { raw = await readFile(entry.receipt_path, "utf8"); receipt = JSON.parse(raw); } catch { return false; }
-    if (sha256(raw) !== entry.receipt_sha256 || receipt.family !== family || receipt.pass_id !== entry.pass_id || receipt.status !== entry.status || receipt.canonical_query?.since !== entry.effective_since || receipt.canonical_query?.until !== entry.effective_until || receipt.pagination_complete !== true || !Array.isArray(receipt.candidate_ids) || typeof receipt.dispositions !== "object") return false;
+    if (sha256(raw) !== entry.receipt_sha256 || receipt.family !== family || receipt.pass_id !== entry.pass_id || receipt.status !== entry.status || receipt.canonical_query?.family !== family || receipt.canonical_query?.pass_id !== entry.pass_id || receipt.canonical_query?.since !== entry.effective_since || receipt.canonical_query?.until !== entry.effective_until || receipt.pagination_complete !== true || !Array.isArray(receipt.candidate_ids) || new Set(receipt.candidate_ids).size !== receipt.candidate_ids.length || typeof receipt.dispositions !== "object" || receipt.dispositions === null || Array.isArray(receipt.dispositions) || Object.keys(receipt.dispositions).length !== receipt.candidate_ids.length) return false;
+    if (receipt.candidate_ids.some((candidateId: unknown) => typeof candidateId !== "string" || !candidateId || !receipt.dispositions[candidateId as string] || !/^(include|skip)$/.test(receipt.dispositions[candidateId as string].decision) || typeof receipt.dispositions[candidateId as string].reason !== "string" || !receipt.dispositions[candidateId as string].reason.trim())) return false;
+    const includeCount = receipt.candidate_ids.filter((candidateId: string) => receipt.dispositions[candidateId].decision === "include").length;
+    const skipCount = receipt.candidate_ids.length - includeCount;
+    if (receipt.item_count !== receipt.candidate_ids.length || receipt.include_count !== includeCount || receipt.skip_count !== skipCount || !Array.isArray(receipt.skip_evidence) || receipt.skip_evidence.length !== skipCount) return false;
+    freshnessReceipts.set(family, { raw, receipt });
   }
   const coveragePointer = approval.selection_coverage;
   if (!coveragePointer?.receipt_path || !hash(coveragePointer.receipt_sha256)) return false;
@@ -60,8 +66,17 @@ async function roleEvidenceValid(value: RoleReceipt): Promise<boolean> {
   if (manifest?.schema_version !== 2 || manifest.pass_id !== passId || manifest.finalized !== true || !Array.isArray(manifest.expected_families) || new Set(manifest.expected_families).size !== SOURCE_FAMILIES.length || !SOURCE_FAMILIES.every((family) => manifest.expected_families.includes(family)) || typeof manifest.families !== "object" || manifest.families === null || Array.isArray(manifest.families) || new Set(Object.keys(manifest.families)).size !== SOURCE_FAMILIES.length || !SOURCE_FAMILIES.every((family) => Object.hasOwn(manifest.families, family))) return false;
   let retainedSourceCount = 0;
   for (const family of SOURCE_FAMILIES) {
-    const entry = manifest.families[family]; const freshnessEntry = freshness.get(family);
-    if (!entry || entry.pass_id !== passId || entry.status !== freshnessEntry?.status || !Array.isArray(entry.candidate_ids) || new Set(entry.candidate_ids).size !== entry.candidate_ids.length || typeof entry.dispositions !== "object" || entry.dispositions === null || Array.isArray(entry.dispositions) || Object.keys(entry.dispositions).length !== entry.candidate_ids.length) return false;
+    const entry = manifest.families[family]; const freshnessEntry = freshness.get(family); const freshnessReceipt = freshnessReceipts.get(family)?.receipt;
+    if (!entry || !freshnessEntry || !freshnessReceipt || entry.pass_id !== passId || entry.status !== freshnessEntry.status || entry.window?.since !== freshnessEntry.effective_since || entry.window?.until !== freshnessEntry.effective_until || !Array.isArray(entry.candidate_ids) || new Set(entry.candidate_ids).size !== entry.candidate_ids.length || typeof entry.dispositions !== "object" || entry.dispositions === null || Array.isArray(entry.dispositions) || Object.keys(entry.dispositions).length !== entry.candidate_ids.length) return false;
+    if (stableJson(entry.canonical_query) !== stableJson(freshnessReceipt.canonical_query) || entry.pagination_complete !== freshnessReceipt.pagination_complete || entry.item_count !== freshnessReceipt.item_count || entry.page_count !== freshnessReceipt.page_count || entry.include_count !== freshnessReceipt.include_count || entry.skip_count !== freshnessReceipt.skip_count || stableJson(entry.skip_evidence) !== stableJson(freshnessReceipt.skip_evidence) || stableJson(entry.candidate_ids) !== stableJson(freshnessReceipt.candidate_ids) || stableJson(entry.dispositions) !== stableJson(freshnessReceipt.dispositions)) return false;
+    if (entry.collector !== freshnessReceipt.collector_path || !hash(entry.collector_sha256)) return false;
+    try { if (sha256(await readFile(entry.collector)) !== entry.collector_sha256) return false; } catch { return false; }
+    if (entry.status === "not_applicable") {
+      if (entry.artifact_path !== null || entry.artifact_sha256 !== null || freshnessReceipt.artifact_path !== null || freshnessReceipt.artifact_sha256 !== null) return false;
+    } else {
+      if (entry.artifact_path !== freshnessReceipt.artifact_path || entry.artifact_sha256 !== freshnessReceipt.artifact_sha256 || !hash(entry.artifact_sha256)) return false;
+      try { if (sha256(await readFile(entry.artifact_path)) !== entry.artifact_sha256) return false; } catch { return false; }
+    }
     for (const candidateId of entry.candidate_ids) {
       const disposition = entry.dispositions[candidateId];
       if (typeof candidateId !== "string" || !candidateId || !disposition || !/^(include|skip)$/.test(disposition.decision) || typeof disposition.reason !== "string" || !disposition.reason.trim()) return false;

@@ -179,7 +179,7 @@ async function runBroadcast(issue: number, reallyBroadcast: boolean): Promise<vo
   const result = await broadcastIssue(issue, reallyBroadcast);
   await notifyMilestone(issue, "broadcast", [
     `Article accepted by ${result.article_ok} relays, announcement by ${result.announcement_ok}.`,
-    "Website does not update until the merge stage runs.",
+    "Exact merged content and its attributable production deployment were verified before relay delivery.",
   ]);
 }
 
@@ -308,8 +308,8 @@ async function main() {
 main().catch(async (e) => {
   const message = (e as Error).message;
   console.error(`error: ${message}`);
-  // Surface the halt on the same channel as the successes. A publish that dies
-  // silently after broadcast is how #37 ended up on Nostr with no log.
+  // Record the halt hook without sending directly. The host durable outbox
+  // observes workflow state and owns user-facing delivery and retries.
   const issue = Number(process.argv.find((a) => /^\d+$/.test(a)));
   if (!process.argv.includes("--dry-run") && Number.isFinite(issue) && issue > 0) {
     await notifyMilestone(issue, "failed", [message.split("\n")[0]]);

@@ -648,16 +648,16 @@ type: newsletters
 ## Branch/PR Workflow
 
 ### English Content PR
-1. Draft locally first and stop for user review
-2. Create branch/commit/push only after explicit user approval
-3. Create PR only after separate explicit user approval
-4. After PR approval, keep branch history to one clean commit; squash locally and update with `git push --force-with-lease`
-5. Never force-push `main` or `master`
+1. The scheduled workflow creates or updates one draft PR automatically after repository review gates pass.
+2. Apply established editorial policy and recorded owner overrides without waiting for a new approval message. Owner feedback may update the PR; an explicit authenticated hold stops publication.
+3. Keep the prepared publication candidate bound to the recorded PR number, head SHA, base SHA, prospective merge tree, quality receipts, feedback snapshot, and exact-head CI.
+4. Keep branch history to one clean commit when the issue workflow requires it; use `git push --force-with-lease`, never bare `--force`.
+5. Never force-push `main` or `master`.
 
 ### Translation PR (after English is merged)
-1. Draft translations locally first and stop for user review
-2. Create branch/commit/push only after explicit user approval
-3. Create PR only after separate explicit user approval
+1. Translation starts only after verified English publication and uses one owner for the current edition.
+2. Create the translation branch, commit, push, and PR automatically after translation verification passes.
+3. Merge only under the translation workflow's exact-head CI and authority gates; no separate routine owner approval is required.
 
 ### Git Commit Messages
 Follow established patterns:

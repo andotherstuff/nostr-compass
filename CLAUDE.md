@@ -34,7 +34,7 @@ Tracker, fetcher, outreach, discovery, and workflow commentary is never publisha
 - Give every NIP or protocol identifier a short plain-language description at first mention.
 - A NIP Deep Dive may cover only a merged specification with verified use in multiple independent applications. End each deep dive with a non-exhaustive implementation paragraph linking at least three current clients or tools whose source or release notes prove support.
 - A promised rewrite or follow-up that will outlive the current turn must be a durable Kanban task subscribed to the requesting Marmot channel before it is described as queued. Do not report completion until the remote PR head contains the intended commit and the required checks pass.
-- Keep review PRs in draft state and never merge without explicit user approval.
+- Keep review PRs in draft state while editorial work is in progress. The authorized scheduled Compass edition may merge automatically only at or after its scoped Wednesday publication time when the recorded edition authorization, authenticated hold version, source digest, feedback snapshot, review receipts, exact PR/head/base/prospective-tree identity, and exact-head CI all pass. Unrelated manual publication still requires explicit user approval.
 
 ### Banned hyperbole (release/feature superlatives)
 

@@ -10,12 +10,34 @@ const common = { schema_version: 1, verdict: "PASS", revision: "a".repeat(40), c
 async function makeEditorialApproval(out: string) {
   const source_freshness = [];
   const manifestFamilies: Record<string, any> = {};
+  const since = "2026-09-01T16:00:00Z";
+  const until = "2026-09-08T16:00:00Z";
   for (const family of ["projects", "nip-discussions", "nostr-recap", "shakespeare-apps", "nip34", "zapstore", "app-discovery", "heartbeats", "monthly-history", "specs"]) {
-    const status = family === "monthly-history" ? "not_applicable" : "complete";
-    const receipt = { family, pass_id: "pass-1", status, canonical_query: { since: "2026-09-01T16:00:00Z", until: "2026-09-08T16:00:00Z" }, pagination_complete: true, candidate_ids: [], dispositions: {} };
+    const status = family === "monthly-history" ? "not_applicable" : family === "projects" ? "complete" : "empty_verified";
+    const candidate_ids = family === "projects" ? ["repo:noise"] : [];
+    const dispositions = family === "projects" ? { "repo:noise": { decision: "skip", reason: "outside exact source window" } } : {};
+    const skip_evidence = family === "projects" ? [{ candidate_id: "repo:noise", reason: "outside exact source window" }] : [];
+    const collectorPath = join(out, `collector-source-${family}.ts`); const collectorRaw = `collector:${family}`; await writeFile(collectorPath, collectorRaw);
+    const artifactPath = status === "not_applicable" ? null : join(out, `artifact-${family}.json`);
+    const artifactRaw = status === "not_applicable" ? null : JSON.stringify({ family, candidates: candidate_ids });
+    if (artifactPath && artifactRaw !== null) await writeFile(artifactPath, artifactRaw);
+    const canonical_query = { family, pass_id: "pass-1", since, until };
+    const receipt = {
+      pass_id: "pass-1", family, status,
+      artifact_path: artifactPath, artifact_sha256: artifactRaw === null ? null : sha256(artifactRaw),
+      collector_path: collectorPath, canonical_query, pagination_complete: true,
+      item_count: candidate_ids.length, page_count: status === "not_applicable" ? 0 : 1,
+      include_count: 0, skip_count: skip_evidence.length, skip_evidence, candidate_ids, dispositions,
+    };
     const receipt_path = join(out, `collector-${family}.json`); const raw = JSON.stringify(receipt); await writeFile(receipt_path, raw);
-    source_freshness.push({ family, pass_id: "pass-1", effective_since: receipt.canonical_query.since, effective_until: receipt.canonical_query.until, status, receipt_path, receipt_sha256: sha256(raw) });
-    manifestFamilies[family] = { pass_id: "pass-1", status, candidate_ids: [], dispositions: {} };
+    source_freshness.push({ family, pass_id: "pass-1", effective_since: since, effective_until: until, status, receipt_path, receipt_sha256: sha256(raw) });
+    manifestFamilies[family] = {
+      pass_id: "pass-1", status, window: { since, until }, canonical_query, pagination_complete: true,
+      item_count: receipt.item_count, page_count: receipt.page_count, include_count: 0,
+      skip_count: receipt.skip_count, skip_evidence, candidate_ids, dispositions,
+      collector: collectorPath, collector_sha256: sha256(collectorRaw),
+      artifact_path: artifactPath, artifact_sha256: receipt.artifact_sha256,
+    };
   }
   const families = Object.keys(manifestFamilies);
   const sourceManifestPath = join(out, "source-manifest.json"); const sourceManifestRaw = JSON.stringify({ schema_version: 2, pass_id: "pass-1", expected_families: families, families: manifestFamilies, finalized: true }); await writeFile(sourceManifestPath, sourceManifestRaw);
@@ -83,6 +105,39 @@ test("coverage receipt cannot bless an unfinished source manifest", async () => 
 test("coverage receipt counts must match the exact manifest and ledger", async () => {
   const { out, source } = await fixture(); const paths: any = {}; const editorialApproval: any = await makeEditorialApproval(out);
   const coveragePath = editorialApproval.selection_coverage.receipt_path; const coverage = JSON.parse(await Bun.file(coveragePath).text()); coverage.retained_source_candidate_count = 4;
+  const coverageRaw = JSON.stringify(coverage); await writeFile(coveragePath, coverageRaw); editorialApproval.selection_coverage.receipt_sha256 = sha256(coverageRaw);
+  for (const role of QUALITY_ROLES) { paths[role] = join(out, `${role}.json`); await writeFile(paths[role], JSON.stringify({ ...common, receipt_type: "quality-role", role, ...(role === "continuity_value" ? { editorial_approval: editorialApproval } : {}), final: true }, null, 2)); }
+  await expect(recordCompositeQuality(out, 1, source, paths)).rejects.toThrow("continuity_value");
+});
+
+test("manifest cannot remove a maintained source family", async () => {
+  const { out, source } = await fixture(); const paths: any = {}; const editorialApproval: any = await makeEditorialApproval(out);
+  const coveragePath = editorialApproval.selection_coverage.receipt_path; const coverage = JSON.parse(await Bun.file(coveragePath).text());
+  const manifest = JSON.parse(await Bun.file(coverage.source_manifest_path).text());
+  manifest.expected_families = manifest.expected_families.filter((family: string) => family !== "specs");
+  delete manifest.families.specs;
+  const manifestRaw = JSON.stringify(manifest); await writeFile(coverage.source_manifest_path, manifestRaw);
+  coverage.source_manifest_sha256 = sha256(manifestRaw);
+  const ledger = JSON.parse(await Bun.file(coverage.ledger_path).text()); ledger.source_manifest_sha256 = coverage.source_manifest_sha256;
+  const ledgerRaw = JSON.stringify(ledger); await writeFile(coverage.ledger_path, ledgerRaw); coverage.ledger_sha256 = sha256(ledgerRaw);
+  const coverageRaw = JSON.stringify(coverage); await writeFile(coveragePath, coverageRaw); editorialApproval.selection_coverage.receipt_sha256 = sha256(coverageRaw);
+  for (const role of QUALITY_ROLES) { paths[role] = join(out, `${role}.json`); await writeFile(paths[role], JSON.stringify({ ...common, receipt_type: "quality-role", role, ...(role === "continuity_value" ? { editorial_approval: editorialApproval } : {}), final: true }, null, 2)); }
+  await expect(recordCompositeQuality(out, 1, source, paths)).rejects.toThrow("continuity_value");
+});
+
+test("manifest cannot remove a candidate retained by its exact freshness receipt", async () => {
+  const { out, source } = await fixture(); const paths: any = {}; const editorialApproval: any = await makeEditorialApproval(out);
+  const coveragePath = editorialApproval.selection_coverage.receipt_path; const coverage = JSON.parse(await Bun.file(coveragePath).text());
+  const manifest = JSON.parse(await Bun.file(coverage.source_manifest_path).text());
+  manifest.families.projects.candidate_ids = [];
+  manifest.families.projects.dispositions = {};
+  manifest.families.projects.item_count = 0;
+  manifest.families.projects.skip_count = 0;
+  manifest.families.projects.skip_evidence = [];
+  const manifestRaw = JSON.stringify(manifest); await writeFile(coverage.source_manifest_path, manifestRaw);
+  coverage.source_manifest_sha256 = sha256(manifestRaw);
+  const ledger = JSON.parse(await Bun.file(coverage.ledger_path).text()); ledger.source_manifest_sha256 = coverage.source_manifest_sha256;
+  const ledgerRaw = JSON.stringify(ledger); await writeFile(coverage.ledger_path, ledgerRaw); coverage.ledger_sha256 = sha256(ledgerRaw);
   const coverageRaw = JSON.stringify(coverage); await writeFile(coveragePath, coverageRaw); editorialApproval.selection_coverage.receipt_sha256 = sha256(coverageRaw);
   for (const role of QUALITY_ROLES) { paths[role] = join(out, `${role}.json`); await writeFile(paths[role], JSON.stringify({ ...common, receipt_type: "quality-role", role, ...(role === "continuity_value" ? { editorial_approval: editorialApproval } : {}), final: true }, null, 2)); }
   await expect(recordCompositeQuality(out, 1, source, paths)).rejects.toThrow("continuity_value");

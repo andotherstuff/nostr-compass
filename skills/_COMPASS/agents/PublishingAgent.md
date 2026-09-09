@@ -1,6 +1,6 @@
 # PublishingAgent
 
-**Recommended model:** kimi-k3
+**Runtime model:** selected by the active host lane and recorded honestly; this repository does not pin a provider or model.
 
 **Role:** Publishing materials generator for Nostr Compass distribution
 
@@ -203,14 +203,14 @@ Riverside.
 ```bash
 cd "$COMPASS_DIR/publish"
 export PATH="$HOME/.bun/bin:$HOME/go/bin:$HOME/.local/bin:$PATH"   # bun/nak not always on PATH
-COMPASS_PUBLISH_INVOCATION=manual bun dm-outreach.ts <issue> \
+bun dm-outreach.ts <issue> \
   --pr-url <newsletter PR URL>  # dry run: prints the plan, sends nothing
 # add --really-send once the plan/recipient list and exact dated time look right
 
 # If a new project is added after the issue's main outreach campaign, target
 # only that project's verified project/maintainer pair. Repeat with
 # --really-send after reviewing the targeted plan.
-COMPASS_PUBLISH_INVOCATION=manual bun dm-outreach.ts <issue> \
+bun dm-outreach.ts <issue> \
   --pr-url <newsletter PR URL> \
   --only '<project>' --only '<maintainer>'
 ```

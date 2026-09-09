@@ -127,7 +127,7 @@ The selection agent reads every triage verdict, applies the hard eligibility gat
 
 For any project that appeared in a prior issue, Selection must record the distinct primary source and the distinct user-facing or protocol-facing change that warrants renewed coverage. If it cannot state both, or if it reuses the same release/PR/commit/signed-event URL, it puts the item on the SKIP list. A version-only, "incremental follow-up", or cross-reference pointer is not a valid exception and never reaches a section writer.
 
-Gate is human-input optional. The Orchestrator presents `selection_review_<date>.md` to the user and waits for either an explicit OK or feedback. With unlimited review rounds enabled, the agent iterates on user feedback until the user signals approval, then writes `GATE: PASS`.
+Gate is automatic in the scheduled workflow. The Orchestrator applies the established editorial policy and any authenticated owner overrides already recorded for the edition, runs the selection reviews, and writes `GATE: PASS` when those reviews clear. It does not wait for a new owner OK. New authenticated feedback is integrated when available; an explicit authenticated hold still stops downstream publication.
 
 ### Stage 5: Section writing
 
@@ -202,19 +202,21 @@ Write `handoff_<date>.md` containing:
 - Topic pages created or updated this issue
 - Review swarm final scores
 - List of npubs that publish.ts will need (preview from `bun scripts/publish.ts --no-inject path/to/draft.md` shows missing entries)
-- The text "READY FOR HUMAN REVIEW"
+- The text "READY FOR SCHEDULED PUBLICATION REVIEW"
 
 Before surfacing or parking the task, assert all of the following:
-- `handoff_<date>.md` exists and contains `READY FOR HUMAN REVIEW`.
+- `handoff_<date>.md` exists and contains `READY FOR SCHEDULED PUBLICATION REVIEW`.
 - `review_log_<date>.md` exists and ends with `GATE: PASS`.
 - All five individual review artifacts end with `GATE: PASS`.
 - The draft remains `draft: true`; no merge, deployment, signing, or Nostr broadcast occurred.
 
-Create or update `newsletter/<date>`, commit the reviewed draft and topic-page changes, push it, and open a **draft PR** against `andotherstuff/nostr-compass:main`. Run the outreach dry-run, preserve `no_dm` exclusions, send only verified project/maintainer recipients, and record receipts. Surface the draft PR and handoff to the user immediately.
+Create or update `newsletter/<date>`, commit the reviewed draft and topic-page changes, push it, and open a **draft PR** against `andotherstuff/nostr-compass:main`. Run the outreach dry-run, preserve `no_dm` exclusions, send only verified project/maintainer recipients, and record receipts. Enqueue the reviewed-draft milestone through the host durable outbox. Owner review remains welcome but is not a scheduled-flow approval gate; an authenticated hold remains authoritative.
 
-The issue then waits for two Wednesday UTC automation windows:
-1. **14:00 UTC pre-publication refresh:** rerun `scripts/fetch_all.sh --since-days 8`, `build_coverage_history.py`, and `detect_non_github_sources.sh`; inspect GitHub, direct Nostr relay data, NIP-34, Zapstore, heartbeats, and all spec families for material late changes; update the draft PR if needed; rerun every review and build gate. Never merge, deploy, sign, or broadcast in this window.
-2. **16:00 UTC publication:** only when the refresh artifact is evidence-bearing `GATE: PASS`, run PublishAgent. Strip `draft: true`, merge the reviewed PR, wait for deployment, sign and broadcast the kind 30023 and kind 1 events, and verify them.
+The issue then advances through Wednesday UTC automation windows:
+1. **13:00 full refresh:** rerun every applicable source family with one fixed pass window, integrate verified feedback, update the same draft PR and synchronized sections, then rerun review and build gates.
+2. **14:30 broad delta:** query every relevant source family for late material and integrate qualifying changes.
+3. **At or after 15:30 final cutoff query:** perform a real lightweight query, integrate any final verified delta, rescan holds/feedback, prepare `draft: false` and publication metadata in the PR, then bind the prepared quality and CI evidence to the exact PR number, head SHA, base SHA, and prospective merge tree before 16:00.
+4. **At or after 16:00 publication:** take the final fresh feedback/hold snapshot and scoped edition authorization. When those and every prepared exact-candidate receipt pass, merge with the expected-head precondition, verify the attributable production deploy and served content, then sign and broadcast the prepared kind 30023 and kind 1 events and independently recover them from the relay floor.
 
 **Queue note:** if this run is tracked as a task on a work queue, park it as dependency-blocked after the draft PR handoff and leave it blocked while the scheduled refresh and publication steps own the clock gate. Do not mark it done at draft handoff or immediately after merge. PublishAgent closes it only after deployment plus both Nostr broadcasts are independently verified; that final publication proof is what promotes Translation and Podcast Prep. Host wiring lives in `skills/_COMPASS/LOCAL_OPS.md`.
 
@@ -231,11 +233,11 @@ When the user provides feedback after handoff (either directly or via GitHub PR 
 3. Reruns Stage 7 (Review swarm) once the targeted fix is applied
 4. Re-handoffs to the user
 
-The Stage 8 draft PR is opened automatically after all review gates pass. Human feedback can update that PR at any time before 16:00 UTC; every change must be mirrored into the matching section artifact and must rerun Stage 7.
+The Stage 8 draft PR is opened automatically after all review gates pass. Human feedback can update that PR before the final cutoff; every change must be mirrored into the matching section artifact and must rerun Stage 7. No reply is required for the scheduled flow to continue. An authenticated hold remains the stop mechanism.
 
 ## Scheduled publication
 
-At 14:00 UTC Wednesday, the pre-publication refresh cron re-fetches every source and updates the draft PR without merging or signing. At 16:00 UTC Wednesday, the publication cron hands control to `PublishAgent.md` if and only if the refresh gate passes and no explicit hold/cancellation exists. A manual invocation before 16:00 UTC must stop unless the user explicitly overrides the clock gate.
+At 13:00 UTC Wednesday, the full refresh re-fetches every applicable source family. A 14:30 broad delta and a real at-or-after-15:30 cutoff query integrate late material and prepare the exact candidate before 16:00. At or after 16:00 UTC, `PublishAgent.md` may merge only the recorded PR/head/base/prospective-tree candidate when its current quality, feedback, CI, authorization, and hold evidence passes. It then verifies deployment before signing or broadcasting. A manual invocation before 16:00 UTC must stop unless the user explicitly overrides the clock gate.
 
 ## Workspace hygiene
 

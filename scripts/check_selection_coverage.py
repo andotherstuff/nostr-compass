@@ -17,6 +17,18 @@ from pathlib import Path
 from typing import Any
 
 CHECKER_VERSION = "selection-coverage-v1"
+SOURCE_FAMILIES = (
+    "projects",
+    "nip-discussions",
+    "nostr-recap",
+    "shakespeare-apps",
+    "nip34",
+    "zapstore",
+    "app-discovery",
+    "heartbeats",
+    "monthly-history",
+    "specs",
+)
 HARD_GATES = (
     "primary_evidence",
     "in_window_progress",
@@ -51,8 +63,13 @@ def source_universe(manifest: dict[str, Any], errors: list[str]) -> set[str]:
         errors.append("source manifest is not finalized schema version 2")
     families = manifest.get("families")
     expected = manifest.get("expected_families")
-    if not isinstance(families, dict) or not isinstance(expected, list) or set(families) != set(expected):
-        errors.append("source manifest does not contain every expected family")
+    if (
+        not isinstance(families, dict)
+        or not isinstance(expected, list)
+        or tuple(expected) != SOURCE_FAMILIES
+        or set(families) != set(SOURCE_FAMILIES)
+    ):
+        errors.append("source manifest must contain the exact ten maintained source families")
         return set()
     retained: set[str] = set()
     for family in expected:

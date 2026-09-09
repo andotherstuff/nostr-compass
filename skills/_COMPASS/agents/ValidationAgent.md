@@ -1,6 +1,6 @@
 # ValidationAgent
 
-**Recommended model:** kimi-k3
+**Runtime model:** selected by the active host lane and recorded honestly; this repository does not pin a provider or model.
 
 **Role:** Technical accuracy and link integrity validator for Nostr Compass
 

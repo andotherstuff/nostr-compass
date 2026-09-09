@@ -7,7 +7,7 @@ test("dry-run exits before every file, signer, relay, GitHub, and notification m
   const root = await mkdtemp(join(tmpdir(), "compass-zero-mutation-"));
   const out = join(root, "out");
   const result = Bun.spawnSync([process.execPath, join(import.meta.dir, "publish.ts"), "99999", "--stage", "all", "--dry-run", "--really-merge", "--really-broadcast"], {
-    env: { ...process.env, COMPASS_PUBLISH_INVOCATION: "manual", COMPASS_OUT_DIR: out },
+    env: { ...process.env, COMPASS_OUT_DIR: out },
     stdout: "pipe", stderr: "pipe",
   });
   expect(result.exitCode).toBe(0);

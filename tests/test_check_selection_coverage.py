@@ -21,15 +21,18 @@ class SelectionCoverageTests(unittest.TestCase):
         temp = tempfile.TemporaryDirectory()
         root = Path(temp.name)
         manifest_path, ledger_path, draft_path = root / "manifest.json", root / "ledger.json", root / "draft.md"
+        families = {
+            family: {"status": "empty_verified", "candidate_ids": [], "dispositions": {}}
+            for family in gate.SOURCE_FAMILIES
+        }
+        families["projects"] = {"status": "complete", "candidate_ids": ["repo:a", "repo:noise"], "dispositions": {"repo:a": {"decision": "include", "reason": "active exact-window project"}, "repo:noise": {"decision": "skip", "reason": "outside source window"}}}
+        families["nostr-recap"] = {"status": "complete", "candidate_ids": ["event:1"], "dispositions": {"event:1": {"decision": "include", "reason": "signed roundup event"}}}
         manifest = {
             "schema_version": 2,
             "pass_id": "pass-001",
             "finalized": True,
-            "expected_families": ["projects", "recap"],
-            "families": {
-                "projects": {"status": "complete", "candidate_ids": ["repo:a", "repo:noise"], "dispositions": {"repo:a": {"decision": "include", "reason": "active exact-window project"}, "repo:noise": {"decision": "skip", "reason": "outside source window"}}},
-                "recap": {"status": "complete", "candidate_ids": ["event:1"], "dispositions": {"event:1": {"decision": "include", "reason": "signed roundup event"}}},
-            },
+            "expected_families": list(gate.SOURCE_FAMILIES),
+            "families": families,
         }
         manifest_path.write_text(json.dumps(manifest))
         draft_path.write_text("[Alpha](https://example.com/alpha) is useful.\n[Beta](https://example.com/beta) is useful.\n")
@@ -54,7 +57,7 @@ class SelectionCoverageTests(unittest.TestCase):
             "score_axes": list(gate.SCORE_AXES),
             "source_expansion": [
                 {"source_id": "projects:repo:a", "candidate_ids": ["project:alpha"]},
-                {"source_id": "recap:event:1", "candidate_ids": ["project:alpha", "project:beta"]},
+                {"source_id": "nostr-recap:event:1", "candidate_ids": ["project:alpha", "project:beta"]},
             ],
             "candidates": [candidate("project:alpha", "Alpha", "https://example.com/alpha"), candidate("project:beta", "Beta", "https://example.com/beta")],
             "final": True,
@@ -76,6 +79,18 @@ class SelectionCoverageTests(unittest.TestCase):
         ledger_path.write_text(json.dumps(ledger))
         errors, _ = gate.validate(manifest, ledger_path, draft)
         self.assertTrue(any("missing from triage" in error for error in errors))
+
+    def test_missing_maintained_family_fails_even_when_manifest_redefines_expected(self):
+        temp, manifest_path, ledger_path, draft, ledger = self.fixture()
+        self.addCleanup(temp.cleanup)
+        manifest = json.loads(manifest_path.read_text())
+        manifest["expected_families"].remove("specs")
+        del manifest["families"]["specs"]
+        manifest_path.write_text(json.dumps(manifest))
+        ledger["source_manifest_sha256"] = digest(manifest_path)
+        ledger_path.write_text(json.dumps(ledger))
+        errors, _ = gate.validate(manifest_path, ledger_path, draft)
+        self.assertTrue(any("exact ten maintained source families" in error for error in errors))
 
     def test_qualified_green_candidate_cannot_be_dropped(self):
         temp, manifest, ledger_path, draft, ledger = self.fixture()
