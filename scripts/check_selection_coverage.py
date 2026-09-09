@@ -77,6 +77,8 @@ def source_universe(manifest: dict[str, Any], errors: list[str]) -> set[str]:
         status = entry.get("status")
         if status not in {"complete", "empty_verified", "not_applicable"}:
             errors.append(f"source family {family} is {status!r}, so selection cannot claim complete coverage")
+        if family != "monthly-history" and status == "not_applicable":
+            errors.append(f"source family {family} is required and cannot be marked not_applicable")
         ids = entry.get("candidate_ids")
         dispositions = entry.get("dispositions")
         if not isinstance(ids, list) or not isinstance(dispositions, dict) or set(ids) != set(dispositions):

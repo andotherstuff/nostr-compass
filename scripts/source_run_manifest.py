@@ -78,6 +78,38 @@ def load_manifest(path: Path) -> dict:
 def digest_json(value: object) -> str:
     return hashlib.sha256(json.dumps(value, sort_keys=True, separators=(",", ":")).encode()).hexdigest()
 
+
+def _ensure_collector_receipt(manifest_path: Path, family: str, entry: dict) -> Path:
+    """Retain collector-shaped evidence even when a source is inapplicable."""
+    receipt = {
+        "pass_id": entry["pass_id"],
+        "family": family,
+        "status": entry["status"],
+        "artifact_path": entry["artifact_path"],
+        "artifact_sha256": entry["artifact_sha256"],
+        "collector_path": entry["collector"],
+        "canonical_query": entry["canonical_query"],
+        "pagination_complete": entry["pagination_complete"],
+        "item_count": entry["item_count"],
+        "page_count": entry["page_count"],
+        "include_count": entry["include_count"],
+        "skip_count": entry["skip_count"],
+        "skip_evidence": entry["skip_evidence"],
+        "candidate_ids": entry["candidate_ids"],
+        "dispositions": entry["dispositions"],
+    }
+    target = manifest_path.parent / f"collector_{entry['pass_id']}_{family}.json"
+    if target.exists():
+        try:
+            existing = json.loads(target.read_text())
+        except (OSError, json.JSONDecodeError) as exc:
+            raise ValueError(f"invalid immutable collector receipt {target}: {exc}") from exc
+        if existing != receipt:
+            raise ValueError(f"conflicting immutable collector receipt: {target}")
+        return target
+    _atomic_new(target, receipt)
+    return target
+
 def record_family(path: Path, *, pass_id: str, family: str, status: str, artifact: Path | None, collector: Path, query: dict, pagination_complete: bool, item_count: int, page_count: int, include_count: int, skip_count: int, skip_evidence: list[dict], candidate_ids: list[str] | None = None, dispositions: dict[str, dict] | None = None) -> dict:
     manifest = load_manifest(path)
     if manifest.get("finalized"): raise ValueError("source pass is already finalized")
@@ -103,7 +135,9 @@ def record_family(path: Path, *, pass_id: str, family: str, status: str, artifac
     if existing is not None:
         if existing != entry:
             raise ValueError(f"conflicting receipt for source family {family}")
+        _ensure_collector_receipt(path, family, existing)
         return manifest
+    _ensure_collector_receipt(path, family, entry)
     manifest["families"][family] = entry; manifest["observed_families"] = [name for name in manifest["expected_families"] if name in manifest["families"]]
     _atomic_replace(path, manifest); return manifest
 

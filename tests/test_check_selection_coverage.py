@@ -92,6 +92,20 @@ class SelectionCoverageTests(unittest.TestCase):
         errors, _ = gate.validate(manifest_path, ledger_path, draft)
         self.assertTrue(any("exact ten maintained source families" in error for error in errors))
 
+    def test_required_source_family_cannot_be_not_applicable(self):
+        temp, manifest_path, ledger_path, draft, ledger = self.fixture()
+        self.addCleanup(temp.cleanup)
+        manifest = json.loads(manifest_path.read_text())
+        manifest["families"]["projects"] = {"status": "not_applicable", "candidate_ids": [], "dispositions": {}}
+        manifest_path.write_text(json.dumps(manifest))
+        ledger["source_manifest_sha256"] = digest(manifest_path)
+        ledger["source_expansion"] = [
+            row for row in ledger["source_expansion"] if row["source_id"] != "projects:repo:a"
+        ]
+        ledger_path.write_text(json.dumps(ledger))
+        errors, _ = gate.validate(manifest_path, ledger_path, draft)
+        self.assertTrue(any("required and cannot be marked not_applicable" in error for error in errors))
+
     def test_qualified_green_candidate_cannot_be_dropped(self):
         temp, manifest, ledger_path, draft, ledger = self.fixture()
         self.addCleanup(temp.cleanup)

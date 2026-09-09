@@ -14,7 +14,7 @@ The weekly run must execute inside the target-specific worktree returned by `$CO
 
 ## When invoked
 
-The Orchestrator runs once per `/newsletter <links + notes>` invocation. It runs to completion (multiple hours is fine) or halts at a gate with a clear blocker for the human.
+The Orchestrator runs once per `/newsletter <links + notes>` invocation. It runs to completion (multiple hours is fine) or records a failed material gate for durable retry and recovery. Only an authenticated hold or a genuinely owner-exclusive authority decision may wait on the owner.
 
 ## Inputs
 

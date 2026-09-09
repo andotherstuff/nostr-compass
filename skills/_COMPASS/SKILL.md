@@ -276,7 +276,7 @@ enforce these gates before handoff:
 
 ### `/newsletter <links + notes>` — Run the full pipeline
 
-Single Tuesday-morning command. Body of the invocation carries the user's project URLs and editorial notes. The OrchestratorAgent dispatches the eight-stage pipeline and halts at human-review handoff. See `agents/OrchestratorAgent.md`.
+Single Tuesday-morning command. Body of the invocation carries the user's project URLs and editorial notes. The OrchestratorAgent dispatches the eight-stage pipeline and records a review-gated draft without waiting for a new owner approval message. See `agents/OrchestratorAgent.md`.
 
 Stages (each gates on a file in `data/newsletter_workspace/`):
 
@@ -284,7 +284,7 @@ Stages (each gates on a file in `data/newsletter_workspace/`):
 1. Intake: parse user URLs, verify repos, dedup against `data/projects.yml`, add new entries with correct category and priority. Owned by `agents/IntakeAgent.md`.
 2. Fetch: run `scripts/fetch_all.sh --since-days 8` (project updates, NIP discussions, Nostr Recap, Shakespeare apps, NIP-34 repositories, Zapstore releases, grantee heartbeats, and the NIP/BUD/NAP/Marmot/Gamma/Concord/NWC spec-family sweep) plus `build_coverage_history.py` and `detect_non_github_sources.sh`.
 3. Triage: per-item verdict (GREEN/MAYBE/SKIP) against Nostr Relay Test, So What Test, and scope rule. Owned by `agents/TriageAgent.md`.
-4. Selection: reconcile every collector-retained candidate, expand aggregates, apply the hard eligibility gate and 8/10 no-zero quality threshold without item caps, choose section placement, select the NIP deep dive rotation or last-Wednesday history mode, and run all-history redundancy checks via `data/coverage_history.json` plus a full read of the latest three newsletters. User-approval gate. Owned by `agents/NewsletterAgent.md` (select mode).
+4. Selection: reconcile every collector-retained candidate, expand aggregates, apply the hard eligibility gate and 8/10 no-zero quality threshold without item caps, choose section placement, select the NIP deep dive rotation or last-Wednesday history mode, and run all-history redundancy checks via `data/coverage_history.json` plus a full read of the latest three newsletters. Automatic editorial and review gate; an authenticated hold still stops publication. Owned by `agents/NewsletterAgent.md` (select mode).
 5. Section writing: parallel writers per section. Owned by `agents/NewsletterAgent.md` (write mode).
 6. Assembly: concatenate sections into `content/en/newsletters/<date>-newsletter.md` with `draft: true` frontmatter.
 7. Review swarm: five parallel reviewers (LinkChecker, ClaimCheck, ProseReview, TopicAudit, ContinuityValueCheck). The prose gate runs `check_newsletter_style.py` and `check_newsletter_paragraph_links.py`; continuity runs against all prior newsletters. Loop with section writers until all five pass. Owned by `agents/ReviewSwarmAgent.md`.

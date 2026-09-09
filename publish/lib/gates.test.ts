@@ -22,17 +22,18 @@ async function makeEditorialApproval(out: string) {
     const artifactRaw = status === "not_applicable" ? null : JSON.stringify({ family, candidates: candidate_ids });
     if (artifactPath && artifactRaw !== null) await writeFile(artifactPath, artifactRaw);
     const canonical_query = { family, pass_id: "pass-1", since, until };
+    const pagination_complete = status !== "not_applicable";
     const receipt = {
       pass_id: "pass-1", family, status,
       artifact_path: artifactPath, artifact_sha256: artifactRaw === null ? null : sha256(artifactRaw),
-      collector_path: collectorPath, canonical_query, pagination_complete: true,
+      collector_path: collectorPath, canonical_query, pagination_complete,
       item_count: candidate_ids.length, page_count: status === "not_applicable" ? 0 : 1,
       include_count: 0, skip_count: skip_evidence.length, skip_evidence, candidate_ids, dispositions,
     };
     const receipt_path = join(out, `collector-${family}.json`); const raw = JSON.stringify(receipt); await writeFile(receipt_path, raw);
     source_freshness.push({ family, pass_id: "pass-1", effective_since: since, effective_until: until, status, receipt_path, receipt_sha256: sha256(raw) });
     manifestFamilies[family] = {
-      pass_id: "pass-1", status, window: { since, until }, canonical_query, pagination_complete: true,
+      pass_id: "pass-1", status, window: { since, until }, canonical_query, pagination_complete,
       item_count: receipt.item_count, page_count: receipt.page_count, include_count: 0,
       skip_count: receipt.skip_count, skip_evidence, candidate_ids, dispositions,
       collector: collectorPath, collector_sha256: sha256(collectorRaw),
@@ -118,6 +119,24 @@ test("manifest cannot remove a maintained source family", async () => {
   delete manifest.families.specs;
   const manifestRaw = JSON.stringify(manifest); await writeFile(coverage.source_manifest_path, manifestRaw);
   coverage.source_manifest_sha256 = sha256(manifestRaw);
+  const ledger = JSON.parse(await Bun.file(coverage.ledger_path).text()); ledger.source_manifest_sha256 = coverage.source_manifest_sha256;
+  const ledgerRaw = JSON.stringify(ledger); await writeFile(coverage.ledger_path, ledgerRaw); coverage.ledger_sha256 = sha256(ledgerRaw);
+  const coverageRaw = JSON.stringify(coverage); await writeFile(coveragePath, coverageRaw); editorialApproval.selection_coverage.receipt_sha256 = sha256(coverageRaw);
+  for (const role of QUALITY_ROLES) { paths[role] = join(out, `${role}.json`); await writeFile(paths[role], JSON.stringify({ ...common, receipt_type: "quality-role", role, ...(role === "continuity_value" ? { editorial_approval: editorialApproval } : {}), final: true }, null, 2)); }
+  await expect(recordCompositeQuality(out, 1, source, paths)).rejects.toThrow("continuity_value");
+});
+
+test("required source family cannot be declared not applicable", async () => {
+  const { out, source } = await fixture(); const paths: any = {}; const editorialApproval: any = await makeEditorialApproval(out);
+  const freshness = editorialApproval.source_freshness.find((entry: any) => entry.family === "projects");
+  const sourceReceipt = JSON.parse(await Bun.file(freshness.receipt_path).text());
+  Object.assign(sourceReceipt, { status: "not_applicable", artifact_path: null, artifact_sha256: null, pagination_complete: false, item_count: 0, page_count: 0, include_count: 0, skip_count: 0, skip_evidence: [], candidate_ids: [], dispositions: {} });
+  const sourceReceiptRaw = JSON.stringify(sourceReceipt); await writeFile(freshness.receipt_path, sourceReceiptRaw);
+  freshness.status = "not_applicable"; freshness.receipt_sha256 = sha256(sourceReceiptRaw);
+  const coveragePath = editorialApproval.selection_coverage.receipt_path; const coverage = JSON.parse(await Bun.file(coveragePath).text());
+  const manifest = JSON.parse(await Bun.file(coverage.source_manifest_path).text());
+  Object.assign(manifest.families.projects, { status: "not_applicable", artifact_path: null, artifact_sha256: null, pagination_complete: false, item_count: 0, page_count: 0, include_count: 0, skip_count: 0, skip_evidence: [], candidate_ids: [], dispositions: {} });
+  const manifestRaw = JSON.stringify(manifest); await writeFile(coverage.source_manifest_path, manifestRaw); coverage.source_manifest_sha256 = sha256(manifestRaw);
   const ledger = JSON.parse(await Bun.file(coverage.ledger_path).text()); ledger.source_manifest_sha256 = coverage.source_manifest_sha256;
   const ledgerRaw = JSON.stringify(ledger); await writeFile(coverage.ledger_path, ledgerRaw); coverage.ledger_sha256 = sha256(ledgerRaw);
   const coverageRaw = JSON.stringify(coverage); await writeFile(coveragePath, coverageRaw); editorialApproval.selection_coverage.receipt_sha256 = sha256(coverageRaw);

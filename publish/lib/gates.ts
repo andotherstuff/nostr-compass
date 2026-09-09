@@ -35,17 +35,22 @@ async function roleEvidenceValid(value: RoleReceipt): Promise<boolean> {
   if (value.role !== "continuity_value") return value.editorial_approval === undefined;
   const approval = value.editorial_approval;
   if (!approval || !approval.approved_by?.trim() || Number.isNaN(+new Date(approval.approved_at))) return false;
+  const monthlyHistoryMode = approval.deep_dive?.mode === "monthly-history";
   const freshness = new Map(approval.source_freshness?.map((entry) => [entry.family, entry]));
   if (freshness.size !== SOURCE_FAMILIES.length || !SOURCE_FAMILIES.every((family) => {
     const entry = freshness.get(family);
-    return entry && entry.pass_id && entry.receipt_path && hash(entry.receipt_sha256) && /^(complete|empty_verified|not_applicable)$/.test(entry.status) && !Number.isNaN(+new Date(entry.effective_since)) && !Number.isNaN(+new Date(entry.effective_until)) && new Date(entry.effective_since) < new Date(entry.effective_until);
+    const applicable = family === "monthly-history"
+      ? (monthlyHistoryMode ? /^(complete|empty_verified)$/.test(entry?.status ?? "") : entry?.status === "not_applicable")
+      : /^(complete|empty_verified)$/.test(entry?.status ?? "");
+    return entry && applicable && entry.pass_id && entry.receipt_path && hash(entry.receipt_sha256) && !Number.isNaN(+new Date(entry.effective_since)) && !Number.isNaN(+new Date(entry.effective_until)) && new Date(entry.effective_since) < new Date(entry.effective_until);
   })) return false;
   if (new Set([...freshness.values()].map((entry) => entry.pass_id)).size !== 1 || new Set([...freshness.values()].map((entry) => `${entry.effective_since}/${entry.effective_until}`)).size !== 1) return false;
   const freshnessReceipts = new Map<string, { raw: string; receipt: any }>();
   for (const [family, entry] of freshness) {
     let raw: string, receipt: any;
     try { raw = await readFile(entry.receipt_path, "utf8"); receipt = JSON.parse(raw); } catch { return false; }
-    if (sha256(raw) !== entry.receipt_sha256 || receipt.family !== family || receipt.pass_id !== entry.pass_id || receipt.status !== entry.status || receipt.canonical_query?.family !== family || receipt.canonical_query?.pass_id !== entry.pass_id || receipt.canonical_query?.since !== entry.effective_since || receipt.canonical_query?.until !== entry.effective_until || receipt.pagination_complete !== true || !Array.isArray(receipt.candidate_ids) || new Set(receipt.candidate_ids).size !== receipt.candidate_ids.length || typeof receipt.dispositions !== "object" || receipt.dispositions === null || Array.isArray(receipt.dispositions) || Object.keys(receipt.dispositions).length !== receipt.candidate_ids.length) return false;
+    const paginationValid = receipt.status === "not_applicable" ? receipt.pagination_complete === false : receipt.pagination_complete === true;
+    if (sha256(raw) !== entry.receipt_sha256 || receipt.family !== family || receipt.pass_id !== entry.pass_id || receipt.status !== entry.status || receipt.canonical_query?.family !== family || receipt.canonical_query?.pass_id !== entry.pass_id || receipt.canonical_query?.since !== entry.effective_since || receipt.canonical_query?.until !== entry.effective_until || !paginationValid || !Array.isArray(receipt.candidate_ids) || new Set(receipt.candidate_ids).size !== receipt.candidate_ids.length || typeof receipt.dispositions !== "object" || receipt.dispositions === null || Array.isArray(receipt.dispositions) || Object.keys(receipt.dispositions).length !== receipt.candidate_ids.length) return false;
     if (receipt.candidate_ids.some((candidateId: unknown) => typeof candidateId !== "string" || !candidateId || !receipt.dispositions[candidateId as string] || !/^(include|skip)$/.test(receipt.dispositions[candidateId as string].decision) || typeof receipt.dispositions[candidateId as string].reason !== "string" || !receipt.dispositions[candidateId as string].reason.trim())) return false;
     const includeCount = receipt.candidate_ids.filter((candidateId: string) => receipt.dispositions[candidateId].decision === "include").length;
     const skipCount = receipt.candidate_ids.length - includeCount;

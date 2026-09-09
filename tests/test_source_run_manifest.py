@@ -1,4 +1,5 @@
 import importlib.util
+import json
 from pathlib import Path
 from tempfile import TemporaryDirectory
 import unittest
@@ -36,5 +37,9 @@ class SourceRunManifestTests(unittest.TestCase):
         with TemporaryDirectory() as directory:
             root=Path(directory); manifest=root/"m.json"; collector=root/"c.py"; collector.write_text("v"); value=MODULE.create_manifest(manifest,"pass-004","2026-09-01T00:00:00Z","2026-09-02T00:00:00Z",["monthly-history"]); query={"family":"monthly-history","pass_id":"pass-004",**value["window"]}
             MODULE.record_family(manifest,pass_id="pass-004",family="monthly-history",status="not_applicable",artifact=None,collector=collector,query=query,pagination_complete=False,item_count=0,page_count=0,include_count=0,skip_count=0,skip_evidence=[]); self.assertTrue(MODULE.finalize(manifest))
+            receipt = json.loads((root / "collector_pass-004_monthly-history.json").read_text())
+            self.assertEqual(receipt["status"], "not_applicable")
+            self.assertIsNone(receipt["artifact_path"])
+            self.assertFalse(receipt["pagination_complete"])
 
 if __name__ == "__main__": unittest.main()

@@ -642,12 +642,13 @@ def run_github_search(
     query: str,
     source: str,
     *,
-    max_pages: int = 5,
+    max_pages: int = 10,
     warnings: list[str] | None = None,
 ) -> list[dict]:
     items: list[dict] = []
     incomplete_results = False
     total_count = 0
+    reported_total_count = 0
     for page in range(1, max_pages + 1):
         command = [
             "gh",
@@ -671,11 +672,12 @@ def run_github_search(
             raise RuntimeError(proc.stderr.strip() or f"gh exited {proc.returncode}")
         payload = json.loads(proc.stdout)
         incomplete_results = incomplete_results or bool(payload.get("incomplete_results"))
+        reported_total_count = int(payload.get("total_count", len(items)))
         page_items = payload.get("items", [])
         if ACTIVE_WINDOW:
-            total = min(int(payload.get("total_count", len(page_items))), 1000)
+            total = min(reported_total_count, 1000)
             QUERY_PAGES.append(observed_page(source=source, count=len(page_items), cap=100,
-                exhausted=len(items) + len(page_items) >= total or len(page_items) < 100,
+                exhausted=reported_total_count <= 1000 and (len(items) + len(page_items) >= total or len(page_items) < 100),
                 since=ACTIVE_WINDOW[0], until=ACTIVE_WINDOW[1], cursor=str(page)))
         for item in page_items:
             item["_discovery_sources"] = [source]
@@ -686,6 +688,8 @@ def run_github_search(
     if warnings is not None:
         if incomplete_results:
             warnings.append(f"{source}: GitHub search reported incomplete_results")
+        if reported_total_count > 1000:
+            warnings.append(f"{source}: GitHub search reported {reported_total_count} records beyond its 1000-result API ceiling")
         if len(items) < total_count:
             warnings.append(f"{source}: GitHub search truncated at {len(items)} of {total_count} records")
     return items

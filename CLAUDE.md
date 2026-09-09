@@ -288,7 +288,7 @@ ISSUE_DATE=YYYY-MM-DD
 3. For each year, select a small number of milestones that explain a stage change: early protocol primitives, relay/client expansion, product adoption, payments/media/privacy, or mature interoperability. Search beyond the configured repositories for launches, grants, Nostr events, and ecosystem-defining controversies.
 4. Open every selected primary source. Verify the human date, repository identity, release/merge state, and what actually changed. A candidate filename or commit title is never sufficient evidence.
 5. Write the cross-year arc first, then write each year as at least two connected prose paragraphs: what changed, why it mattered at that stage, and what it enabled next. A chronological inventory of commits is a failure even when every fact is correct.
-6. Run `python3 scripts/check_month_end_history.py <newsletter>` and preserve the output in the review log. The checker enforces final-week detection, canonical title, every year, minimum depth, linked prose paragraphs, and progression language; a human reviewer still decides whether the narrative is genuinely interesting.
+6. Run `python3 scripts/check_month_end_history.py <newsletter>` and preserve the output in the review log. The checker enforces final-week detection, canonical title, every year, minimum depth, linked prose paragraphs, and progression language; the continuity/value review role still decides whether the narrative is interesting enough to publish.
 
 **History section requirements:**
 - One subsection per year, from 2021 through the issue year (for example `### May 2021` through `### May 2026`).
