@@ -118,6 +118,8 @@ START_DATE=$(calc_start_date "$SINCE_DAYS")
 END_DATE=$(get_today)
 OUTPUT_FILE="$OUTPUT_DIR/nip34_${START_DATE}_${END_DATE}.json"
 SINCE_TIMESTAMP=$(calc_since_timestamp "$SINCE_DAYS")
+UNTIL_TIMESTAMP=$(calc_until_timestamp)
+QUERY_STARTED_AT=$(date -u +%Y-%m-%dT%H:%M:%SZ)
 
 # Setup temp directory (auto-cleanup on exit)
 setup_temp_dir
@@ -126,6 +128,7 @@ PATCHES_RAW="$NOSTR_TEMP_DIR/patches_raw.jsonl"
 ISSUES_RAW="$NOSTR_TEMP_DIR/issues_raw.jsonl"
 TRACKED_RESULTS="$NOSTR_TEMP_DIR/tracked.json"
 DISCOVERED_RESULTS="$NOSTR_TEMP_DIR/discovered.json"
+PAGES_FILE="$NOSTR_TEMP_DIR/pages.jsonl"
 
 # Initialize empty files
 > "$REPOS_RAW"
@@ -133,6 +136,7 @@ DISCOVERED_RESULTS="$NOSTR_TEMP_DIR/discovered.json"
 > "$ISSUES_RAW"
 echo "[]" > "$TRACKED_RESULTS"
 echo "[]" > "$DISCOVERED_RESULTS"
+: > "$PAGES_FILE"
 
 # Create output directory
 mkdir -p "$OUTPUT_DIR"
@@ -318,7 +322,7 @@ fetch_tracked_repos() {
         repo_event=$(
             timeout "$NAK_TIMEOUT" nak req -k "$KIND_REPO" -t d="$d_tag" --limit 10 \
                 -a "$yml_pubkey" $RELAY_ARGS 2>/dev/null \
-            | jq -s --arg pk "$yml_pubkey" '[.[] | select(.pubkey == $pk)] | sort_by(-.created_at) | .[0] // empty' 2>/dev/null || true
+            | jq -s --arg pk "$yml_pubkey" '[.[] | select(.pubkey == $pk)] | sort_by(-.created_at) | .[0] // empty' 2>/dev/null
         )
 
         if [ -n "$repo_event" ] && [ "$repo_event" != "null" ]; then
@@ -334,22 +338,26 @@ fetch_tracked_repos() {
             local patches
             patches=$(
                 timeout "$NAK_TIMEOUT" nak req -k "$KIND_PATCH" -t a="$a_tag" \
-                    --since "$SINCE_TIMESTAMP" --limit 50 \
+                    --since "$SINCE_TIMESTAMP" --until "$UNTIL_TIMESTAMP" --limit 50 \
                     $RELAY_ARGS 2>/dev/null \
-                | jq -s 'unique_by(.id)' 2>/dev/null || true
+                | jq -s 'unique_by(.id)' 2>/dev/null
             )
             patch_count=$(echo "${patches:-[]}" | jq 'length' 2>/dev/null || echo 0)
+            [ "$patch_count" -lt 50 ] || { echo "tracked patch query reached cap for $name" >&2; return 1; }
+            record_exact_page "$PAGES_FILE" "tracked-patches:$name" "" "$patch_count" 50 true
             echo "    Patches in period: $patch_count" >&2
 
             # Fetch issues (kind 1621) referencing this repo
             local issues
             issues=$(
                 timeout "$NAK_TIMEOUT" nak req -k "$KIND_ISSUE" -t a="$a_tag" \
-                    --since "$SINCE_TIMESTAMP" --limit 50 \
+                    --since "$SINCE_TIMESTAMP" --until "$UNTIL_TIMESTAMP" --limit 50 \
                     $RELAY_ARGS 2>/dev/null \
-                | jq -s 'unique_by(.id)' 2>/dev/null || true
+                | jq -s 'unique_by(.id)' 2>/dev/null
             )
             issue_count=$(echo "${issues:-[]}" | jq 'length' 2>/dev/null || echo 0)
+            [ "$issue_count" -lt 50 ] || { echo "tracked issue query reached cap for $name" >&2; return 1; }
+            record_exact_page "$PAGES_FILE" "tracked-issues:$name" "" "$issue_count" 50 true
             echo "    Issues in period: $issue_count" >&2
 
             # Build patch summaries
@@ -420,12 +428,14 @@ fetch_discovered_repos() {
     echo "  Querying relays for repo announcements..." >&2
     echo "    Relays: ${NIP34_RELAYS[*]}" >&2
 
-    timeout "$NAK_TIMEOUT" nak req -k "$KIND_REPO" --since "$SINCE_TIMESTAMP" --limit 200 \
+    timeout "$NAK_TIMEOUT" nak req -k "$KIND_REPO" --since "$SINCE_TIMESTAMP" --until "$UNTIL_TIMESTAMP" --limit 200 \
         $RELAY_ARGS 2>/dev/null \
-    | jq -c '.' >> "$REPOS_RAW" 2>/dev/null || true
+    | jq -c '.' >> "$REPOS_RAW" 2>/dev/null
 
     local raw_count
     raw_count=$(wc -l < "$REPOS_RAW")
+    [ "$raw_count" -lt 200 ] || { echo "NIP-34 discovery reached its 200-event cap" >&2; return 1; }
+    record_exact_page "$PAGES_FILE" "repo-discovery" "" "$raw_count" 200 true
     echo "  Raw events fetched: $raw_count" >&2
 
     if [ "$raw_count" -eq 0 ]; then
@@ -577,6 +587,22 @@ main() {
     fi
 
     build_output
+
+    if [ -n "${COMPASS_SOURCE_PASS_ID:-}" ]; then
+        local evidence="$NOSTR_TEMP_DIR/source-evidence.json" finished
+        finished=$(date -u +%Y-%m-%dT%H:%M:%SZ)
+        jq -n --arg since "$COMPASS_WINDOW_SINCE" --arg until "$COMPASS_WINDOW_UNTIL" \
+          --arg started "$QUERY_STARTED_AT" --arg finished "$finished" --arg mode "$MODE" \
+          --slurpfile pages "$PAGES_FILE" --rawfile repos "$REPOS_RAW" --slurpfile output "$OUTPUT_FILE" '
+          ([$repos|split("\n")[]|select(length>0)|fromjson.id] +
+           [$output[0].tracked[]?.activity.patches[]?.id,$output[0].tracked[]?.activity.issues[]?.id] | map(select(.!=null)) | unique) as $ids |
+          ([$output[0].discovered[]?.id,$output[0].tracked[]?.activity.patches[]?.id,$output[0].tracked[]?.activity.issues[]?.id] | map(select(.!=null)) | unique) as $included |
+          {effective_since:$since,effective_until:$until,query_started_at:$started,query_finished_at:$finished,
+           canonical_query:{family:"nip34",since:$since,until:$until,mode:$mode,kinds:[30617,1617,1621]},
+           pages:($pages|flatten),failures:[],candidate_ids:$ids,
+           dispositions:($ids|map(. as $id|{key:$id,value:(if ($included|index($id)) then {decision:"include",reason:"retained NIP-34 activity"} else {decision:"skip",reason:"repository announcement rejected by discovery filters"} end)})|from_entries)}' > "$evidence"
+        python3 "$SCRIPT_DIR/source_collector_receipt.py" --family nip34 --artifact "$OUTPUT_FILE" --collector "$0" --evidence "$evidence"
+    fi
 }
 
 main "$@"

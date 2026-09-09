@@ -3,7 +3,6 @@
 # and are never inside this repository.
 .env
 scripts/.env
-publish/config/notify.json
 
 # Build output and caches
 public/

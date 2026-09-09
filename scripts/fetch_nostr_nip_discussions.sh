@@ -70,12 +70,30 @@ START_DATE=$(calc_start_date "$SINCE_DAYS")
 END_DATE=$(get_today)
 OUTPUT_FILE="$OUTPUT_DIR/discussions_${START_DATE}_${END_DATE}.json"
 SINCE_TIMESTAMP=$(calc_since_timestamp "$SINCE_DAYS")
+UNTIL_TIMESTAMP=$(calc_until_timestamp)
+QUERY_STARTED_AT=$(date -u +%Y-%m-%dT%H:%M:%SZ)
 
 # Setup temp directory (auto-cleanup on exit)
 setup_temp_dir
 LONGFORM_FILE="$NOSTR_TEMP_DIR/longform.json"
 NOTES_FILE="$NOSTR_TEMP_DIR/notes.json"
 COMMUNITY_FILE="$NOSTR_TEMP_DIR/community.json"
+RAW_CANDIDATES="$NOSTR_TEMP_DIR/raw-candidates.ndjson"
+PAGES_FILE="$NOSTR_TEMP_DIR/pages.jsonl"
+: > "$RAW_CANDIDATES"
+: > "$PAGES_FILE"
+
+relay_query() {
+    local label="$1" cap="$2" output="$3"
+    shift 3
+    nak req "$@" --since "$SINCE_TIMESTAMP" --until "$UNTIL_TIMESTAMP" --limit "$cap" "${NOSTR_RELAYS[@]}" 2>/dev/null > "$output" || return 1
+    local got exhausted=true
+    got=$(grep -cve '^[[:space:]]*$' "$output" || true)
+    [ "$got" -lt "$cap" ] || exhausted=false
+    record_exact_page "$PAGES_FILE" "$label" "" "$got" "$cap" "$exhausted"
+    [ "$exhausted" = true ] || { echo "$label reached its $cap-event cap" >&2; return 1; }
+    cat "$output" >> "$RAW_CANDIDATES"
+}
 
 # Initialize output file with basic structure
 init_output() {
@@ -137,15 +155,14 @@ fetch_custom_nips() {
 
     echo "[]" > "$LONGFORM_FILE"
 
-    for relay in "${NOSTR_RELAYS[@]}"; do
-        echo "  Querying $relay..." >&2
-        nak req -k 30817 --since "$SINCE_TIMESTAMP" --limit 50 "$relay" 2>/dev/null || true
-    done | jq -s 'unique_by(.id) | map(select(
+    local raw="$NOSTR_TEMP_DIR/custom-nips.ndjson"
+    relay_query custom-nips 500 "$raw" -k 30817
+    jq -s 'unique_by(.id) | map(select(
         .kind == 30817 and
         (.tags | any(.[0] == "client" and .[1] == "nostrhub.io")) and
         (.tags | any(.[0] == "title")) and
         (.tags | any(.[0] == "d"))
-    ))' > "$LONGFORM_FILE"
+    ))' "$raw" > "$LONGFORM_FILE"
 
     local count=$(jq 'length' "$LONGFORM_FILE")
     echo "  Found $count custom NIP documents" >&2
@@ -160,13 +177,12 @@ fetch_nip_articles() {
 
     echo "[]" > "$ARTICLES_FILE"
 
-    for relay in "${NOSTR_RELAYS[@]}"; do
-        echo "  Querying $relay..." >&2
-        nak req -k 30023 --since "$SINCE_TIMESTAMP" --limit 50 -t t=nip "$relay" 2>/dev/null || true
-        nak req -k 30023 --since "$SINCE_TIMESTAMP" --limit 50 -t t=nips "$relay" 2>/dev/null || true
-    done | jq -s 'unique_by(.id) | map(select(
+    local raw_nip="$NOSTR_TEMP_DIR/articles-nip.ndjson" raw_nips="$NOSTR_TEMP_DIR/articles-nips.ndjson"
+    relay_query articles-nip 500 "$raw_nip" -k 30023 -t t=nip
+    relay_query articles-nips 500 "$raw_nips" -k 30023 -t t=nips
+    jq -s 'unique_by(.id) | map(select(
         .content | test("NIP-[0-9]+"; "i")
-    ))' > "$ARTICLES_FILE"
+    ))' "$raw_nip" "$raw_nips" > "$ARTICLES_FILE"
 
     jq -s 'flatten | unique_by(.id)' "$LONGFORM_FILE" "$ARTICLES_FILE" > "$NOSTR_TEMP_DIR/merged.json"
     mv "$NOSTR_TEMP_DIR/merged.json" "$LONGFORM_FILE"
@@ -183,14 +199,13 @@ fetch_nip_notes() {
 
     echo "[]" > "$NOTES_FILE"
 
-    for relay in "${NOSTR_RELAYS[@]}"; do
-        echo "  Querying $relay..." >&2
-        nak req -k 1 --since "$SINCE_TIMESTAMP" --limit 100 -t t=nip "$relay" 2>/dev/null || true
-        nak req -k 1 --since "$SINCE_TIMESTAMP" --limit 100 -t t=nips "$relay" 2>/dev/null || true
-        nak req -k 1 --since "$SINCE_TIMESTAMP" --limit 100 -t t=nostrhub "$relay" 2>/dev/null || true
-    done | jq -s 'unique_by(.id) | map(select(
+    local raw_nip="$NOSTR_TEMP_DIR/notes-nip.ndjson" raw_nips="$NOSTR_TEMP_DIR/notes-nips.ndjson" raw_hub="$NOSTR_TEMP_DIR/notes-hub.ndjson"
+    relay_query notes-nip 1000 "$raw_nip" -k 1 -t t=nip
+    relay_query notes-nips 1000 "$raw_nips" -k 1 -t t=nips
+    relay_query notes-nostrhub 1000 "$raw_hub" -k 1 -t t=nostrhub
+    jq -s 'unique_by(.id) | map(select(
         .content | test("NIP-[0-9]+|nostrhub"; "i")
-    ))' > "$NOTES_FILE"
+    ))' "$raw_nip" "$raw_nips" "$raw_hub" > "$NOTES_FILE"
 
     local count=$(jq 'length' "$NOTES_FILE")
     echo "  Found $count notes" >&2
@@ -204,13 +219,12 @@ fetch_community_posts() {
 
     echo "[]" > "$COMMUNITY_FILE"
 
-    for relay in "${NOSTR_RELAYS[@]}"; do
-        echo "  Querying $relay..." >&2
-        nak req -k 34550 --since "$SINCE_TIMESTAMP" --limit 20 "$relay" 2>/dev/null || true
-    done | jq -s 'unique_by(.id) | map(select(
+    local raw="$NOSTR_TEMP_DIR/community.ndjson"
+    relay_query communities 500 "$raw" -k 34550
+    jq -s 'unique_by(.id) | map(select(
         (.content | test("NIP-[0-9]+"; "i")) or
         (.tags | map(select(.[0] == "d")) | flatten | any(test("^nip"; "i")))
-    ))' > "$COMMUNITY_FILE"
+    ))' "$raw" > "$COMMUNITY_FILE"
 
     local count=$(jq 'length' "$COMMUNITY_FILE")
     echo "  Found $count community posts" >&2
@@ -244,6 +258,21 @@ main() {
     echo "Final results saved to: $OUTPUT_FILE" >&2
     echo "Summary:" >&2
     jq '.summary' "$OUTPUT_FILE" >&2
+
+    if [ -n "${COMPASS_SOURCE_PASS_ID:-}" ]; then
+        local evidence="$NOSTR_TEMP_DIR/source-evidence.json" finished
+        finished=$(date -u +%Y-%m-%dT%H:%M:%SZ)
+        jq -n --arg since "$COMPASS_WINDOW_SINCE" --arg until "$COMPASS_WINDOW_UNTIL" \
+          --arg started "$QUERY_STARTED_AT" --arg finished "$finished" \
+          --slurpfile pages "$PAGES_FILE" --slurpfile raw "$RAW_CANDIDATES" --slurpfile output "$OUTPUT_FILE" '
+          ($raw | flatten | map(.id) | unique) as $ids |
+          ([$output[0].nip_documents[]?.id,$output[0].nip_notes[]?.id,$output[0].nip_communities[]?.id] | unique) as $included |
+          {effective_since:$since,effective_until:$until,query_started_at:$started,query_finished_at:$finished,
+           canonical_query:{family:"nip-discussions",since:$since,until:$until,kinds:[1,30023,30817,34550],relay_count:7},
+           pages:($pages|flatten),failures:[],candidate_ids:$ids,
+           dispositions:($ids | map(. as $id | {key:$id,value:(if ($included|index($id)) then {decision:"include",reason:"matched a NIP discussion content and identity filter"} else {decision:"skip",reason:"did not match the collector NIP discussion filter"} end)}) | from_entries)}' > "$evidence"
+        python3 "$SCRIPT_DIR/source_collector_receipt.py" --family nip-discussions --artifact "$OUTPUT_FILE" --collector "$0" --evidence "$evidence"
+    fi
 }
 
 main "$@"

@@ -44,15 +44,23 @@ Stage 3 of the Orchestrator pipeline, after `fetch_all.sh` and after `build_cove
 
 ## Output
 
-`data/newsletter_workspace/triage_<date>.md` ending with `GATE: PASS` (or `GATE: FAIL` if fewer than 8 GREEN items, see Orchestrator).
+`data/newsletter_workspace/triage_<date>.md` plus the candidate rows in `data/newsletter_workspace/selection_coverage_<date>.json`. The gate passes when every retained source candidate has been expanded and judged; a small number of GREEN items is a valid quiet week.
 
 ## Verdicts
 
 Each item receives one verdict:
 
-- `GREEN`: passes the scope rule, passes the Nostr Relay Test, passes the So What Test, is substantive work (not a version bump or doc fix). Promote to selection.
-- `MAYBE`: passes scope but the substance is borderline. Selection agent decides based on slot budget and competition.
+- `GREEN`: passes all four hard gates and scores at least 8/10 with no zero axis. It must appear in the issue or be folded into a related sourced section.
+- `MAYBE`: passes scope but lacks evidence or scores below the publication threshold. Keep the exact reason and final disposition; competition for space is never the reason.
 - `SKIP`: drops on at least one rule. One-line reason required.
+
+The four hard gates are direct primary evidence, material in-window progress,
+a concrete Nostr surface, and a distinct continuity delta. Progress may be a
+release, merged implementation, verified launch, or reviewable proposal
+milestone. Score each
+survivor 0-2 for Nostr significance, user/operator impact, novelty, evidence
+maturity, and explanatory value. Aggregate source items must be expanded into
+each project or protocol item they name before scoring.
 
 ## Triage gates
 
@@ -282,8 +290,7 @@ GATE: PASS
 
 ## What this agent does not do
 
-- Score items 0-10. That happens in the selection stage where the writer applies the relevance rubric.
-- Allocate section slots. Selection does that.
+- Make the final score or publication choice. Selection confirms the scores and chooses section placement after the common threshold is applied.
 - Pick NIP deep dive topics. Selection does that based on the rotation history in MEMORY.md.
 - Write any prose for the newsletter.
 

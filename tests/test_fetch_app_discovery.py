@@ -163,6 +163,47 @@ clients:
         self.assertIn("page=2", run.call_args_list[1].args[0])
         self.assertTrue(any("incomplete_results" in warning for warning in warnings))
 
+    def test_github_search_walks_beyond_five_pages(self):
+        mod = load_module()
+        responses = []
+        for page in range(7):
+            count = 100 if page < 6 else 9
+            start = page * 100
+            payload = {
+                "total_count": 609,
+                "incomplete_results": False,
+                "items": [
+                    {"full_name": f"example/repo-{index}", "html_url": f"https://github.com/example/repo-{index}"}
+                    for index in range(start, start + count)
+                ],
+            }
+            responses.append(subprocess.CompletedProcess([], 0, stdout=json.dumps(payload), stderr=""))
+
+        warnings = []
+        with mock.patch.object(mod.subprocess, "run", side_effect=responses) as run:
+            items = mod.run_github_search("topic:nostr", "github_topic_active", warnings=warnings)
+
+        self.assertEqual(len(items), 609)
+        self.assertEqual(run.call_count, 7)
+        self.assertFalse(any("truncated" in warning for warning in warnings))
+
+    def test_github_search_reports_api_ceiling_instead_of_claiming_completion(self):
+        mod = load_module()
+        payload = {
+            "total_count": 1200,
+            "incomplete_results": False,
+            "items": [
+                {"full_name": f"example/repo-{index}", "html_url": f"https://github.com/example/repo-{index}"}
+                for index in range(100)
+            ],
+        }
+        responses = [subprocess.CompletedProcess([], 0, stdout=json.dumps(payload), stderr="") for _ in range(10)]
+        warnings = []
+        with mock.patch.object(mod.subprocess, "run", side_effect=responses):
+            mod.run_github_search("topic:nostr", "github_topic_active", warnings=warnings)
+
+        self.assertTrue(any("1000-result API ceiling" in warning for warning in warnings))
+
     def test_relay_query_drops_malformed_created_at_before_pagination(self):
         mod = load_module()
         malformed = {"id": "a" * 64, "kind": 31990, "created_at": "not-a-timestamp"}

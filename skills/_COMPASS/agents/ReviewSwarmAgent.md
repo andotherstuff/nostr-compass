@@ -214,8 +214,10 @@ GATE: PASS | FAIL (proceed to iteration <N+1>)
 ## What this agent does not do
 
 - Rewrite the draft directly. The agent dispatches reviewers and routes fixes to section writers.
-- Authorise publication. The Orchestrator hands off to human review after PASS.
-- Run any tests beyond the four configured reviewers.
+- Authorise publication. The Orchestrator records PASS for the scheduled
+  workflow; executable publication gates still decide whether any side effect
+  may proceed.
+- Run any tests beyond the five configured reviewers.
 - Decide whether a banned phrase is acceptable in context. The ProseReview skill makes that call.
 
 ## Edge cases
@@ -224,7 +226,7 @@ GATE: PASS | FAIL (proceed to iteration <N+1>)
 
 2. **Reviewers contradict each other**. ClaimCheck flags a claim as unsourced, but the source is in a different section. The swarm agent surfaces the contradiction in the consolidated log under `## Cross-reviewer conflicts` and routes both to the writer for resolution.
 
-3. **Same fix appears across iterations**. When iteration N+1 contains the exact same fix as iteration N (the writer applied the change but the reviewer still flagged it), surface this as a stuck loop in the consolidated log with `STUCK: <fix>` and halt the swarm for human review.
+3. **Same fix appears across iterations**. When iteration N+1 contains the exact same fix as iteration N (the writer applied the change but the reviewer still flagged it), surface this as a stuck loop in the consolidated log with `STUCK: <fix>` and keep the material quality gate failed. The Orchestrator retries through the configured recovery route; it does not turn a review loop into an owner-approval request.
 
 4. **A reviewer fails to produce a report**. The swarm waits up to a configurable timeout (default 10 minutes per reviewer), then writes a partial report with `GATE: FAIL — reviewer timeout` and surfaces to the Orchestrator.
 

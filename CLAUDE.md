@@ -34,7 +34,7 @@ Tracker, fetcher, outreach, discovery, and workflow commentary is never publisha
 - Give every NIP or protocol identifier a short plain-language description at first mention.
 - A NIP Deep Dive may cover only a merged specification with verified use in multiple independent applications. End each deep dive with a non-exhaustive implementation paragraph linking at least three current clients or tools whose source or release notes prove support.
 - A promised rewrite or follow-up that will outlive the current turn must be a durable Kanban task subscribed to the requesting Marmot channel before it is described as queued. Do not report completion until the remote PR head contains the intended commit and the required checks pass.
-- Keep review PRs in draft state and never merge without explicit user approval.
+- Keep review PRs in draft state while editorial work is in progress. The authorized scheduled Compass edition may merge automatically only at or after its scoped Wednesday publication time when the recorded edition authorization, authenticated hold version, source digest, feedback snapshot, review receipts, exact PR/head/base/prospective-tree identity, and exact-head CI all pass. Unrelated manual publication still requires explicit user approval.
 
 ### Banned hyperbole (release/feature superlatives)
 
@@ -90,11 +90,11 @@ The audit must return no MISMATCH lines.
 
 Mandatory structure for every deep dive:
 1. **Opening paragraph** — what the spec defines in one sentence, plus the core problem it solves
-2. **Mechanics** — wire format, event kinds, tags, message exchange, encryption layer (whichever apply). Use precise field names, kind numbers, and concrete byte/structure detail.
-3. **Design tradeoffs** — what was rejected, what was made optional, what the spec deliberately punts on, the trust model
+2. **Mechanics** — wire format, event kinds, tags, message exchange, encryption layer, parsing, validation, and rendering behavior (whichever apply). Use precise field names, kind numbers, and concrete byte/structure detail. Explain malformed input and important edge cases.
+3. **Design tradeoffs** — what was rejected, what was made optional, what the spec deliberately punts on, relay selection and hint behavior, plus trust, privacy, security, and resource boundaries
 4. **Comparison to adjacent specs** — when relevant, contrast with the closest NIP that solves a related problem (NIP-57 vs NIP-61, NIP-34 vs traditional git, NIP-46 vs NIP-55)
-5. **Example event** — a full JSON example with all 7 NIP-01 fields (id, pubkey, created_at, kind, tags, content, sig)
-6. **Implementation pointer** — ONE short paragraph linking to this week's substantive implementation, no longer than three sentences
+5. **Example event** — every regular NIP deep dive includes at least one real, relay-recovered JSON event with all 7 NIP-01 fields (`id`, `pubkey`, `created_at`, `kind`, `tags`, `content`, `sig`). A NIP-21-only deep dive may omit an event because the URI also exists outside events. Any deep dive covering NIP-27 must include a full valid event whose `content` contains the `nostr:` reference being explained. Recompute the NIP-01 id and verify the BIP-340 signature.
+6. **Implementation behavior** — explain how at least three current implementations parse, validate, fetch, render, or publish the construct, including meaningful differences and failure behavior. End with ONE short paragraph linking to this week's substantive implementation, no longer than three sentences.
 
 What a deep dive is NOT:
 - A list of this week's PRs by implementation project
@@ -167,6 +167,30 @@ python3 scripts/check_triage_coverage.py \
   --triage data/newsletter_workspace/triage_<date>.md \
   --also data/newsletter_workspace/selection_review_<date>.md
 ```
+
+Release coverage is only the first half of the gate. The finalized source-pass
+manifest also feeds `selection_coverage_<date>.json`. Every source candidate
+retained by a collector maps to one or more stable editorial candidate IDs;
+aggregate recaps must expand into the projects and protocol items they name.
+Each editorial candidate records the four hard-gate results, all five quality
+scores, its primary evidence, and one final disposition. Run:
+
+```bash
+python3 scripts/check_selection_coverage.py \
+  --manifest data/source_runs/source_run_<pass-id>.json \
+  --ledger data/newsletter_workspace/selection_coverage_<date>.json \
+  --draft content/en/newsletters/<date>-newsletter.md \
+  --receipt data/newsletter_workspace/selection_coverage_receipt_<date>.json
+```
+
+This gate has no section or item cap. A candidate passes only with direct
+primary evidence, material in-window progress, a concrete Nostr surface, and
+a distinct continuity delta, followed by at least 8/10 with no
+zero across Nostr significance, user/operator impact, novelty, evidence
+maturity, and explanatory value. Every passing candidate must appear in the
+draft or be folded into a sourced related section. Routine dependency,
+translation, documentation, packaging, version-cadence, and self-asserted work
+remain explicit skips.
 
 **Review Zapstore per app, not per release.** The fetcher emits an `apps` rollup and `distinct_nostr_relevant_apps` alongside the raw release list. #37's summary said "622 Nostr-relevant releases", but 476 of those were PosterChan CI builds and 60 were Boris: the real figure was **48 distinct apps, 19 of them tracked**. A reviewer handed 622 skims; 48 with latest versions is a list somebody reads. Zapstore publisher identity is not a relevance signal either — one publisher mirrors 404 unrelated apps (prayer apps, money managers) with a single Nostr-relevant row, so provenance cannot be used the way the GitHub owner sweep uses it.
 
@@ -264,7 +288,7 @@ ISSUE_DATE=YYYY-MM-DD
 3. For each year, select a small number of milestones that explain a stage change: early protocol primitives, relay/client expansion, product adoption, payments/media/privacy, or mature interoperability. Search beyond the configured repositories for launches, grants, Nostr events, and ecosystem-defining controversies.
 4. Open every selected primary source. Verify the human date, repository identity, release/merge state, and what actually changed. A candidate filename or commit title is never sufficient evidence.
 5. Write the cross-year arc first, then write each year as at least two connected prose paragraphs: what changed, why it mattered at that stage, and what it enabled next. A chronological inventory of commits is a failure even when every fact is correct.
-6. Run `python3 scripts/check_month_end_history.py <newsletter>` and preserve the output in the review log. The checker enforces final-week detection, canonical title, every year, minimum depth, linked prose paragraphs, and progression language; a human reviewer still decides whether the narrative is genuinely interesting.
+6. Run `python3 scripts/check_month_end_history.py <newsletter>` and preserve the output in the review log. The checker enforces final-week detection, canonical title, every year, minimum depth, linked prose paragraphs, and progression language; the continuity/value review role still decides whether the narrative is interesting enough to publish.
 
 **History section requirements:**
 - One subsection per year, from 2021 through the issue year (for example `### May 2021` through `### May 2026`).
@@ -365,22 +389,26 @@ Use `git reset --soft $(git merge-base HEAD origin/main)` to collapse everything
 **NEVER ask for an nsec. NEVER use `nak` to sign or publish. Always use the pipeline for publication.** Read-only `nak` queries are permitted only for public identity research.
 
 ```bash
-# Full pipeline (all stages: parse → sign → announce-sign → broadcast → merge)
-COMPASS_PUBLISH_INVOCATION=manual bun publish/publish.ts <N> --stage all --really-broadcast --really-merge
+# Full pipeline: parse → merge → verified deploy → sign → broadcast → evidence log
+bun publish/publish.ts <N> --stage all --pr-number <PR> --head-sha <HEAD> --base-sha <BASE> \
+  --page-url https://nostrcompass.org/en/newsletters/<date>-newsletter/ \
+  --quality-receipt-dir <receipts> --feedback-receipt <feedback.json> \
+  --authorization-receipt <edition-authorization.json> --really-merge --really-broadcast
 
 # Individual stages (run in order)
-COMPASS_PUBLISH_INVOCATION=manual bun publish/publish.ts <N> --stage parse
-COMPASS_PUBLISH_INVOCATION=manual bun publish/publish.ts <N> --stage sign
-COMPASS_PUBLISH_INVOCATION=manual bun publish/publish.ts <N> --stage announce-sign
-COMPASS_PUBLISH_INVOCATION=manual bun publish/publish.ts <N> --stage broadcast --really-broadcast
-COMPASS_PUBLISH_INVOCATION=manual bun publish/publish.ts <N> --stage merge --really-merge
+bun publish/publish.ts <N> --stage parse
+bun publish/publish.ts <N> --stage merge --really-merge
+bun publish/publish.ts <N> --stage deploy
+bun publish/publish.ts <N> --stage sign
+bun publish/publish.ts <N> --stage announce-sign
+bun publish/publish.ts <N> --stage broadcast --really-broadcast
 
 # Or use the wrapper (same thing, shorter)
 compass-publish <N>
 compass-publish <N> --stage sign
 ```
 
-**Always pass `--really-merge` with `--really-broadcast`.** Broadcast posts the newsletter to Nostr but leaves the GitHub PR open; the website only updates when the PR is merged and Hugo deploy runs from main. The merge stage refuses to run unless the broadcast ledger shows at least one ok relay, so the two stages are safe to chain. This was the cause of Newsletter #27 being on Nostr but missing from the website for ~19 hours on 2026-06-17.
+`--really-merge` and `--really-broadcast` are execution confirmations, not authority. Every mutation is admitted by the schema-versioned per-edition journal and exact byte-hashed receipts. The pipeline always merges first, verifies the exact Pages deployment, then permits signing and broadcasting; each Nostr event must be recovered independently from at least five durable relays.
 
 **Config:**
 - Bunker URI: `~/.config/compass-publish/bunker.json`
@@ -390,9 +418,9 @@ compass-publish <N> --stage sign
 - Input file: `/tmp/<N>publish.md` (4 blocks: title, 21-word TLDR, banner URL, body)
 - Kind 1 text is generated mechanically from the newsletter body before the first horizontal rule or H2. The pipeline drops the generic welcome line, adds a short editorial intro, keeps the dense opening digest and inline npub mentions, removes markdown link wrappers, then appends the article naddr.
 
-**Before publishing:** check `publish/published.json` — if the issue is already there, do not publish again.
+**Before publishing:** inspect `publish/out/<N>/state.json`. `publish/published.json` is a compatibility projection and never authorizes or suppresses an effect.
 
-**Stale lockfile:** if a run aborts, remove `publish/out/<N>/.lock` before retrying.
+**Interrupted run:** do not remove a lock merely because it is old. The fenced lock owner and journal must prove that recovery is safe; otherwise fail closed.
 
 **Expected relay rejections (not failures):**
 - `wss://relay.nsec.app` — only accepts bunker traffic (kind 24133/24135)

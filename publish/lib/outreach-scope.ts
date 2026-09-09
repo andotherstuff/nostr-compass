@@ -51,21 +51,14 @@ export type OutreachMessageArgs = {
 };
 
 export function buildOutreachMessage(args: OutreachMessageArgs): string {
-  if (args.rerecord) {
-    if (!args.issue) throw new Error("Re-record outreach requires an issue number.");
-    return `Recording update: we need to re-record Nostr Compass #${args.issue} after a recording failure. We start ${args.podcastTime}. Your project was part of that episode's discussion. Join if you are free: ${args.podcastUrl}`;
+  if (args.rerecord || args.podcastUrl) {
+    if (!args.newsletterUrl || !args.podcastUrl) throw new Error("Podcast invitation requires the published newsletter and verified asynchronous episode deep link.");
+    return `Your work is featured in Nostr Compass issue ${args.issue}. You're invited to add a short voice note to the async podcast: ${args.podcastUrl}. Open your section, sign in with your Nostr account, and record when convenient. ${args.newsletterUrl}`;
   }
-  if (args.reminder) {
-    return `Reminder: the Nostr Compass podcast starts ${args.podcastTime}. Your project is part of this week's discussion. Join if you are free: ${args.podcastUrl}`;
+  if (!args.reviewUrl) {
+    throw new Error("Newsletter review outreach requires a GitHub PR URL.");
   }
-
-  return [
-    args.reviewUrl
-      ? `Hey, your project is mentioned in the draft for this week's Nostr Compass newsletter. Could you check the coverage before publication? ${args.reviewUrl}`
-      : `Hey, your project is mentioned in this week's Nostr Compass newsletter, out now: ${args.newsletterUrl}`,
-    "",
-    `We are recording the companion podcast ${args.podcastTime}, where developers can talk through their projects and respond to the coverage. Join if you are free: ${args.podcastUrl}`,
-  ].join("\n");
+  return `${args.reminder ? "Reminder: " : ""}Your project is mentioned in this week's Nostr Compass draft. Please review the coverage on GitHub before publication: ${args.reviewUrl}`;
 }
 
 export function outreachReportSuffix(onlyNames: string[], reminder = false, rerecord = false): string {

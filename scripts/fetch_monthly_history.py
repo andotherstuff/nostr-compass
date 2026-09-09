@@ -6,10 +6,16 @@ from __future__ import annotations
 import argparse
 import calendar
 import json
+import os
 import subprocess
+import sys
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
+sys.path.insert(0, str(Path(__file__).parent))
+from source_collector_receipt import emit_receipt, native_evidence, observed_page
+
+QUERY_PAGES: list[dict[str, Any]] = []
 
 
 def validate_config(config: dict[str, Any]) -> None:
@@ -89,6 +95,13 @@ def gh_commits(repo: str, since: str, until: str) -> list[dict[str, str]]:
     if result.returncode:
         raise RuntimeError(result.stderr.strip() or f"gh api failed for {repo}")
     items = [json.loads(line) for line in result.stdout.splitlines() if line.strip()]
+    if os.environ.get("COMPASS_SOURCE_PASS_ID"):
+        pass_since = os.environ["COMPASS_WINDOW_SINCE"]
+        pass_until = os.environ["COMPASS_WINDOW_UNTIL"]
+        chunks = [items[index:index + 100] for index in range(0, len(items), 100)] or [[]]
+        for index, chunk in enumerate(chunks, 1):
+            QUERY_PAGES.append(observed_page(source=f"{repo}:{since}:{until}", count=len(chunk), cap=100,
+                exhausted=index == len(chunks), since=pass_since, until=pass_until, cursor=str(index)))
     return normalize_pages([items])
 
 
@@ -136,6 +149,8 @@ def main() -> int:
     args = parser.parse_args()
     if args.through_year < args.start_year:
         parser.error("--through-year must be >= --start-year")
+    started = datetime.now(timezone.utc).isoformat().replace("+00:00", "Z")
+    QUERY_PAGES.clear()
     config = json.loads(args.config.read_text())
     report = collect(config, args.month, args.start_year, args.through_year)
     output = args.output or (
@@ -148,6 +163,15 @@ def main() -> int:
     output.write_text(json.dumps(report, indent=2) + "\n")
     commits = sum(len(year["commits"]) for repo in report["repositories"] for year in repo["years"])
     errors = sum("error" in year for repo in report["repositories"] for year in repo["years"])
+    if os.environ.get("COMPASS_SOURCE_PASS_ID") and not errors:
+        candidates = [f"{repo['repo']}:{commit['sha']}" for repo in report["repositories"] for year in repo["years"] for commit in year["commits"]]
+        dispositions = {candidate: {"decision": "include", "reason": "commit retained for same-month historical research"} for candidate in candidates}
+        since, until = os.environ["COMPASS_WINDOW_SINCE"], os.environ["COMPASS_WINDOW_UNTIL"]
+        evidence = native_evidence(family="monthly-history", since=since, until=until, started=started,
+            pages=QUERY_PAGES, candidate_ids=candidates, dispositions=dispositions,
+            query={"month": args.month, "start_year": args.start_year, "through_year": args.through_year,
+                   "derived_historical_windows": [list(window) for window in month_windows(args.month, args.start_year, args.through_year)]})
+        emit_receipt(family="monthly-history", artifact=output, collector=Path(__file__), evidence=evidence)
     print(f"{output}: {commits} commit candidates, {errors} source-window errors")
     return 1 if errors else 0
 

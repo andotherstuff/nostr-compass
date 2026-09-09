@@ -85,10 +85,15 @@ START_DATE=$(calc_start_date "$SINCE_DAYS")
 END_DATE=$(get_today)
 OUTPUT_FILE="$OUTPUT_DIR/apps_${START_DATE}_${END_DATE}.json"
 SINCE_TIMESTAMP=$(calc_since_timestamp "$SINCE_DAYS")
+UNTIL_TIMESTAMP=$(calc_until_timestamp)
+QUERY_STARTED_AT=$(date -u +%Y-%m-%dT%H:%M:%SZ)
 
 # Setup temp directory (auto-cleanup on exit)
 setup_temp_dir
 APPS_FILE="$NOSTR_TEMP_DIR/apps.json"
+RAW_APPS_FILE="$NOSTR_TEMP_DIR/apps-raw.json"
+PAGES_FILE="$NOSTR_TEMP_DIR/pages.jsonl"
+: > "$PAGES_FILE"
 
 # Save current progress to output file
 save_progress() {
@@ -144,11 +149,21 @@ fetch_apps() {
     echo "" >&2
 
     echo "[]" > "$APPS_FILE"
+    : > "$NOSTR_TEMP_DIR/apps.ndjson"
 
     for relay in "${NOSTR_RELAYS[@]}"; do
         echo "  Querying $relay..." >&2
-        nak req -k 31733 -t t=soapbox-app-submission --limit 200 "$relay" 2>/dev/null || true
-    done | jq -s 'unique_by(.id)' > "$APPS_FILE"
+        local page="$NOSTR_TEMP_DIR/apps-$(printf '%s' "$relay" | tr -cd '[:alnum:]').ndjson"
+        nak req -k 31733 -t t=soapbox-app-submission --since "$SINCE_TIMESTAMP" --until "$UNTIL_TIMESTAMP" --limit 200 "$relay" 2>/dev/null > "$page" || return 1
+        local got exhausted=true
+        got=$(grep -cve '^[[:space:]]*$' "$page" || true)
+        [ "$got" -lt 200 ] || exhausted=false
+        record_exact_page "$PAGES_FILE" "$relay" "" "$got" 200 "$exhausted"
+        [ "$exhausted" = true ] || { echo "Shakespeare query reached cap on $relay" >&2; return 1; }
+        cat "$page" >> "$NOSTR_TEMP_DIR/apps.ndjson"
+    done
+    jq -s 'unique_by(.id)' "$NOSTR_TEMP_DIR/apps.ndjson" > "$RAW_APPS_FILE"
+    cp "$RAW_APPS_FILE" "$APPS_FILE"
 
     local count=$(jq 'length' "$APPS_FILE")
     echo "" >&2
@@ -220,6 +235,25 @@ main() {
     print_summary
 
     echo "Results saved to: $OUTPUT_FILE" >&2
+
+    if [ -n "${COMPASS_SOURCE_PASS_ID:-}" ]; then
+        local evidence="$NOSTR_TEMP_DIR/source-evidence.json"
+        local finished
+        finished=$(date -u +%Y-%m-%dT%H:%M:%SZ)
+        jq -n --arg since "$COMPASS_WINDOW_SINCE" --arg until "$COMPASS_WINDOW_UNTIL" \
+            --arg started "$QUERY_STARTED_AT" --arg finished "$finished" \
+            --argjson approved "$APPROVED_ONLY" --argjson featured "$FEATURED_ONLY" \
+            --slurpfile pages "$PAGES_FILE" --slurpfile raw "$RAW_APPS_FILE" --slurpfile output "$OUTPUT_FILE" '
+            ($raw[0] | map(.id) | unique) as $ids |
+            ($output[0].apps | map(.id) | unique) as $included |
+            {
+              effective_since:$since,effective_until:$until,query_started_at:$started,query_finished_at:$finished,
+              canonical_query:{family:"shakespeare-apps",since:$since,until:$until,kind:31733,tag:"soapbox-app-submission",limit_per_relay:200,approved_only:$approved,featured_only:$featured},
+              pages:($pages|flatten),failures:[],candidate_ids:$ids,
+              dispositions:($ids | map({key:.,value:(if ($included|index(.)) then {decision:"include",reason:"retained after the requested status filter"} else {decision:"skip",reason:"excluded by the requested approved/featured status filter"} end)}) | from_entries)
+            }' > "$evidence"
+        python3 "$SCRIPT_DIR/source_collector_receipt.py" --family shakespeare-apps --artifact "$OUTPUT_FILE" --collector "$0" --evidence "$evidence"
+    fi
 }
 
 main "$@"

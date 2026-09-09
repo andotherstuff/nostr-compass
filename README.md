@@ -91,15 +91,25 @@ python3 scripts/check_month_end_history.py <file>           # month-end retrospe
 bun run check:npubs                                         # identities and roles
 ```
 
-**Publish.** One command runs parse, sign, announce-sign, broadcast, merge, and
-log:
+**Publish.** Publication is journal-driven: parse and ingest exact-head quality,
+feedback, and Wednesday authorization receipts; merge the pinned PR; verify the
+exact Pages deployment; then sign, broadcast, independently recover both Nostr
+events from at least five durable relays, and project the evidence log:
 
 ```bash
-bun publish/publish.ts <issue> --stage all --really-broadcast --really-merge
+bun publish/publish.ts <issue> --stage all \
+  --pr-number <pr> --head-sha <head> --base-sha <base> \
+  --page-url https://nostrcompass.org/en/newsletters/<date>-newsletter/ \
+  --quality-receipt-dir <review-receipts> --feedback-receipt <feedback.json> \
+  --authorization-receipt <edition-authorization.json> \
+  --really-merge --really-broadcast
 ```
 
-Broadcast and merge belong together: broadcasting alone leaves the issue live on
-Nostr and absent from the website. The `log` stage derives
+The `--really-*` switches confirm an operator intends to execute a prepared
+effect; they grant no authority. `publish/out/<issue>/state.json` must already
+contain matching, byte-hashed receipts and exact identities. Signing is refused
+until merge and deployment are confirmed, and broadcasting is refused until
+both exact signed payloads are retained. The `log` stage derives
 `data/newsletter_workspace/publish_log_<date>.md` from the run's own receipts,
 the matched Pages deploy, and a fresh relay readback, then opens a PR for it.
 See `publish/README.md` for stages and configuration, and `publish/BUNKER.md`

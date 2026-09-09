@@ -50,6 +50,10 @@ check_nostr_requirements() {
 # Returns: YYYY-MM-DD format date
 calc_start_date() {
     local days_ago="$1"
+    if [ -n "${COMPASS_WINDOW_SINCE:-}" ]; then
+        date -u -d "$COMPASS_WINDOW_SINCE" +%Y-%m-%d
+        return
+    fi
     date -d "-${days_ago} days" +%Y-%m-%d 2>/dev/null || date -v-${days_ago}d +%Y-%m-%d
 }
 
@@ -57,11 +61,45 @@ calc_start_date() {
 # Usage: calc_since_timestamp DAYS_AGO
 calc_since_timestamp() {
     local days_ago="$1"
+    if [ -n "${COMPASS_WINDOW_SINCE:-}" ]; then
+        date -u -d "$COMPASS_WINDOW_SINCE" +%s
+        return
+    fi
     echo $(($(date +%s) - (days_ago * 86400)))
+}
+
+# Exclusive upper bound for exact-pass relay queries.
+calc_until_timestamp() {
+    if [ -n "${COMPASS_WINDOW_UNTIL:-}" ]; then
+        # NIP-01 `until` is inclusive; subtract one second to implement the
+        # workflow contract's exclusive upper bound.
+        echo $(($(date -u -d "$COMPASS_WINDOW_UNTIL" +%s) - 1))
+    else
+        date +%s
+    fi
+}
+
+# Persist one page exactly as observed by a bounded relay query.  Receipt
+# validation rejects pages without both pass bounds or a terminal exhausted page.
+record_exact_page() {
+    local file="$1" source="$2" cursor="$3" count="$4" cap="$5" exhausted="$6"
+    [ -n "${COMPASS_SOURCE_PASS_ID:-}" ] || return 0
+    [ -n "${COMPASS_WINDOW_SINCE:-}" ] && [ -n "${COMPASS_WINDOW_UNTIL:-}" ] || {
+        echo "Compass source pass environment is incomplete" >&2
+        return 1
+    }
+    jq -nc --arg source "$source" --arg cursor "$cursor" \
+        --argjson count "$count" --argjson cap "$cap" --argjson exhausted "$exhausted" \
+        --arg since "$COMPASS_WINDOW_SINCE" --arg until "$COMPASS_WINDOW_UNTIL" \
+        '{source:$source,cursor:(if $cursor == "" then null else $cursor end),count:$count,cap:$cap,exhausted:$exhausted,effective_since:$since,effective_until:$until}' >> "$file"
 }
 
 # Get current date in YYYY-MM-DD format
 get_today() {
+    if [ -n "${COMPASS_WINDOW_UNTIL:-}" ]; then
+        date -u -d "$COMPASS_WINDOW_UNTIL" +%Y-%m-%d
+        return
+    fi
     date +%Y-%m-%d
 }
 

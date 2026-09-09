@@ -6,7 +6,7 @@ Repository: `andotherstuff/nostr-compass` on GitHub. Site: https://nostrcompass.
 
 ## Overview
 
-The skill is a multi-agent pipeline kicked off each Tuesday: pre-flight checks, intake of user-submitted project links, parallel data fetch, triage, selection, drafting, multi-round adversarial review, draft-PR handoff, and verified outreach. Wednesday automation then reruns every source family at 14:00 UTC and, only after that refresh passes, merges/deploys/signs/broadcasts at 16:00 UTC before releasing translation and podcast prep.
+The skill is a multi-agent pipeline kicked off each Tuesday: pre-flight checks, intake of user-submitted project links, parallel data fetch, triage, automatic policy-based selection, drafting, multi-round adversarial review, draft-PR handoff, and verified outreach. Wednesday automation runs a 13:00 full refresh, a 14:30 broad delta, and a real at-or-after-15:30 cutoff query. It prepares and verifies the exact publication candidate before 16:00, then merges, verifies deployment, signs, broadcasts, and independently recovers both events before releasing downstream work.
 
 Quality > time. The review loop is uncapped; each iteration must produce concrete fix lists. A draft handed to the user has passed link integrity, claim verification, prose review, and topic-page audit.
 
@@ -27,9 +27,9 @@ Skip the docs renames.
 
 The OrchestratorAgent takes over and runs the full pipeline. See `agents/OrchestratorAgent.md` for the stage-by-stage contract.
 
-The pipeline parks at the review handoff with a draft PR open. The user can review, share it for outside feedback, and run `/newsletter-fix "<feedback>"` before the 16:00 UTC publication window.
+The pipeline keeps one draft PR open for review and feedback. The user can review, share it for outside feedback, run `/newsletter-fix "<feedback>"`, or place an authenticated hold, but the scheduled flow does not wait for a new approval message.
 
-At 14:00 UTC Wednesday the refresh cron reruns GitHub, direct Nostr, NIP-34, Zapstore, heartbeat, and spec-family sources and updates the PR without publishing. At 16:00 UTC the PublishAgent automatically merges, verifies deployment, signs/broadcasts kind 30023 and kind 1, verifies both events, then releases translation and podcast prep. Manual early publication requires an explicit user clock override.
+At 13:00 UTC Wednesday the full refresh reruns every applicable source family and updates the PR without publishing. The 14:30 broad delta and at-or-after-15:30 cutoff query integrate late material and prepare the exact PR/head/base/prospective-tree candidate. At or after 16:00 UTC the PublishAgent automatically merges that candidate when the current authorization, hold, feedback, source, review, and CI gates pass; it verifies deployment before signing/broadcasting kind 30023 and kind 1 and independently recovering both events. Manual early publication requires an explicit user clock override.
 
 ## Installation State
 
@@ -85,7 +85,7 @@ $COMPASS_DIR/
 │   └── nostr_common.sh                  # Shared functions
 └── data/newsletter_workspace/           # Working artifacts for the next newsletter
     ├── triage_YYYY-MM-DD.md             # Source-pointer triage (greenlist/skip verdicts)
-    ├── selection_review_YYYY-MM-DD.md   # Curated section selection awaiting user approval
+    ├── selection_review_YYYY-MM-DD.md   # Policy-reviewed section selection and evidence
     └── sections/                        # Per-section drafts (one file per section)
 ```
 
@@ -93,11 +93,11 @@ $COMPASS_DIR/
 
 The newsletter flow now stages everything through `data/newsletter_workspace/` before prose is written, and consults `data/coverage_history.json` for redundancy checks. **Every fresh `/newsletter` session MUST:**
 
-1. Check `data/newsletter_workspace/selection_review_<latest>.md` — if it exists for the upcoming Wednesday, this is the staging artifact and the user has either approved or is reviewing it. Do NOT overwrite without confirmation.
+1. Check `data/newsletter_workspace/selection_review_<latest>.md` — if it exists for the upcoming Wednesday, this is the staging artifact. Reconcile it against current inputs and recorded owner overrides; do not overwrite it without preserving prior decisions and evidence.
 2. Check `data/newsletter_workspace/triage_<latest>.md` — if present, the user has triaged candidate new sources; honour those verdicts.
 3. Consult `data/coverage_history.json` (regenerate with `python3 scripts/build_coverage_history.py` if older than the most recent newsletter) instead of grepping past markdown for redundancy checks.
 4. Consult `data/non_github_sources_<latest>.json` (regenerate with `bash scripts/detect_non_github_sources.sh`) for Codeberg, Sourcehut, NIP-34, and Zapstore-signed non-GitHub sources.
-5. Drafts go into `data/newsletter_workspace/sections/` one file per section. Only assemble into `content/en/newsletters/YYYY-MM-DD-newsletter.md` after the user signs off on the selection-review and the section drafts.
+5. Drafts go into `data/newsletter_workspace/sections/` one file per section. Assemble into `content/en/newsletters/YYYY-MM-DD-newsletter.md` after automatic selection and section review gates pass. Owner feedback remains eligible until cutoff; no new approval message is required.
 6. The pipeline is human-initiated via the `/newsletter <links + notes>` command. The OrchestratorAgent reads existing workspace files and resumes a partial run, so re-invoking with the same date is safe.
 7. Read pre-enriched `Prep (verified YYYY-MM-DD):` blocks in `link_queue.md` and revalidate only stale or conflicting fields. Canonical repo, tracked-project relationship, and verified project/maintainer npub discovery should happen when the link arrives, not be deferred to Tuesday.
 
@@ -130,7 +130,7 @@ When in doubt, ask: "Could a reader who doesn't care about Bitcoin/Lightning enj
 
 ## Validation Discipline — Three-Round Adversarial Pass (CRITICAL)
 
-After the initial selection-review is written and BEFORE asking for user approval, run at minimum ONE validation pass. For launch-heavy weeks (multiple new projects + multiple NIP merges), run all three rounds with parallel agents.
+After the initial selection-review is written and before advancing automatically, run at minimum ONE validation pass. For launch-heavy weeks (multiple new projects + multiple NIP merges), run all three rounds with parallel agents.
 
 ### Round 0 (mandatory, FIRST) — Previous-newsletter dedup gate
 
@@ -197,7 +197,7 @@ Month-end check: if next Wednesday after this issue's date falls in a different 
 
 ### Write findings to validation log
 
-`data/newsletter_workspace/validation_log_YYYY-MM-DD.md` documents R1+R2+R3 deltas. Update the selection-review with an addendum reflecting all findings. Only THEN ask user for approval.
+`data/newsletter_workspace/validation_log_YYYY-MM-DD.md` documents R1+R2+R3 deltas. Update the selection-review with an addendum reflecting all findings. Only then may the scheduled workflow advance; an authenticated owner hold or policy-changing direction still applies.
 
 ## Data-quality discipline (lessons from #28's 3-round validation)
 
@@ -267,16 +267,16 @@ enforce these gates before handoff:
 - Synchronize the assembled draft and section source files after each feedback
   batch, then rerun continuity, style, paragraph-link, topic-backlink, and full
   production-build gates.
-- Keep every issue PR draft and unmerged until the user explicitly approves
-  that issue for merge. The scheduled publication time and a refresh PASS do
-  not constitute approval; record approval evidence in the handoff or
-  prepublish artifact.
+- Keep every issue PR draft and unmerged until the edition's scoped publication
+  authorization and all time/hold, source, feedback, review, exact
+  PR/head/base/prospective-tree, and CI gates pass. The scheduled Compass flow
+  does not require a new owner approval message; an authenticated hold stops it.
 
 ## Available Commands
 
 ### `/newsletter <links + notes>` — Run the full pipeline
 
-Single Tuesday-morning command. Body of the invocation carries the user's project URLs and editorial notes. The OrchestratorAgent dispatches the eight-stage pipeline and halts at human-review handoff. See `agents/OrchestratorAgent.md`.
+Single Tuesday-morning command. Body of the invocation carries the user's project URLs and editorial notes. The OrchestratorAgent dispatches the eight-stage pipeline and records a review-gated draft without waiting for a new owner approval message. See `agents/OrchestratorAgent.md`.
 
 Stages (each gates on a file in `data/newsletter_workspace/`):
 
@@ -284,13 +284,13 @@ Stages (each gates on a file in `data/newsletter_workspace/`):
 1. Intake: parse user URLs, verify repos, dedup against `data/projects.yml`, add new entries with correct category and priority. Owned by `agents/IntakeAgent.md`.
 2. Fetch: run `scripts/fetch_all.sh --since-days 8` (project updates, NIP discussions, Nostr Recap, Shakespeare apps, NIP-34 repositories, Zapstore releases, grantee heartbeats, and the NIP/BUD/NAP/Marmot/Gamma/Concord/NWC spec-family sweep) plus `build_coverage_history.py` and `detect_non_github_sources.sh`.
 3. Triage: per-item verdict (GREEN/MAYBE/SKIP) against Nostr Relay Test, So What Test, and scope rule. Owned by `agents/TriageAgent.md`.
-4. Selection: scoring rubric, slot allocation, NIP deep dive rotation or last-Wednesday history mode, and all-history redundancy check via `data/coverage_history.json` plus a full read of the latest three newsletters. User-approval gate. Owned by `agents/NewsletterAgent.md` (select mode).
+4. Selection: reconcile every collector-retained candidate, expand aggregates, apply the hard eligibility gate and 8/10 no-zero quality threshold without item caps, choose section placement, select the NIP deep dive rotation or last-Wednesday history mode, and run all-history redundancy checks via `data/coverage_history.json` plus a full read of the latest three newsletters. Automatic editorial and review gate; an authenticated hold still stops publication. Owned by `agents/NewsletterAgent.md` (select mode).
 5. Section writing: parallel writers per section. Owned by `agents/NewsletterAgent.md` (write mode).
 6. Assembly: concatenate sections into `content/en/newsletters/<date>-newsletter.md` with `draft: true` frontmatter.
 7. Review swarm: five parallel reviewers (LinkChecker, ClaimCheck, ProseReview, TopicAudit, ContinuityValueCheck). The prose gate runs `check_newsletter_style.py` and `check_newsletter_paragraph_links.py`; continuity runs against all prior newsletters. Loop with section writers until all five pass. Owned by `agents/ReviewSwarmAgent.md`.
 8. Handoff: write `handoff_<date>.md`, open/update the draft review PR, run verified outreach, surface it to the user, then park the parent task for the Wednesday clock gates.
-9. Wednesday 14:00 UTC refresh: rerun all eight source fetchers (GitHub repos, direct Nostr/NIP discussions, Nostr Recap, Shakespeare apps, NIP-34, Zapstore, heartbeats/Sovereign Engineering, and all spec families), rebuild non-GitHub and coverage data, incorporate material late changes into the draft PR, and rerun review/build gates. Never merge, sign, broadcast, or deploy in this window.
-10. Wednesday 16:00 UTC publication: if `prepublish_refresh_<date>.md` ends in evidence-bearing `GATE: PASS` and no explicit hold exists, merge the reviewed PR, verify deployment, sign/broadcast kind 30023 and kind 1, verify relay recovery, then complete the parent task.
+9. Wednesday 13:00 full refresh: run every applicable source family under one fixed pass window, rebuild non-GitHub and coverage data, incorporate material late changes and verified feedback into the draft PR, and rerun review/build gates. Continue with the 14:30 broad delta and the real at-or-after-15:30 cutoff query; prepare `draft: false` plus exact source, preliminary feedback, quality, PR/head/base/prospective-tree, and CI evidence before 16:00. Never merge, sign, broadcast, or deploy before the publication window.
+10. Wednesday publication at or after 16:00 UTC: take the final fresh feedback/hold snapshot and scoped edition authorization. If those and every prepared exact-candidate receipt pass, merge only the recorded candidate under an expected-head guard, verify its attributable deployment and served content, then sign/broadcast kind 30023 and kind 1, verify relay recovery, and complete the parent task.
 
 ### `/newsletter-fix "<feedback>"` — Iterate on the handed-off draft
 
@@ -307,23 +307,25 @@ When new material comes in before publish:
 3. Add or update any topic pages the new material touches (see "Topic Management" below), and link to them from the newsletter on first mention.
 4. Only write an entry to `link_queue.md` once the current issue has published — from that point forward, new links queue normally for the next issue's Tuesday intake.
 5. If the material introduces a project that was absent from the current draft, resolve both its dedicated project identity and its maintainer identity from primary evidence. Add the verified pair as one blank-line-delimited group in that issue's `data/npubs.yml` additions section. A shared pubkey is sent once and labeled with both aliases; never guess a second project key.
-6. Once the revised draft is visible in the open review PR, dry-run and then send the standard pre-publication review/podcast DM to only the newly added project and maintainer with `publish/dm-outreach.ts --only '<project>' --only '<maintainer>'`. Keep `no_dm` exclusions, preserve the original campaign receipt, and verify the targeted follow-up receipt before reporting success.
+6. Once the revised draft is visible in the open review PR, dry-run and then send the standard pre-publication GitHub-review DM to only the newly added project and maintainer with `publish/dm-outreach.ts --pr-url '<newsletter PR URL>' --only '<project>' --only '<maintainer>'`. Keep `no_dm` exclusions, preserve the original campaign receipt, and verify the targeted follow-up receipt before reporting success. Do not mention podcast recording in this review request. Podcast invitations are a separate post-merge obligation and send only after exact publication plus Logbook episode/access readiness are verified.
 
 This is a one-way door: verified deployment plus both recovered Nostr events decide "update current" vs. "queue for next week," not the frontmatter flag, PR merge state, how far along the week is, or how much rewriting it takes.
 
-### Wednesday publication windows — refresh at 14:00, publish at 16:00 UTC
+### Wednesday publication windows — 13:00 refresh, 14:30 delta, 15:30 cutoff, publish at or after 16:00 UTC
 
-The recurring Wednesday refresh runs at 14:00 UTC. It executes `scripts/fetch_all.sh --since-days 8`, `scripts/build_coverage_history.py`, and `scripts/detect_non_github_sources.sh`; this covers all tracked GitHub repos, direct Nostr relay sources, NIP discussions, Nostr Recap, Shakespeare apps, NIP-34 repositories, Zapstore releases, OpenSats/Sovereign Engineering heartbeats, and the NIP/BUD/NAP/Marmot/Gamma/Concord/NWC spec sweep. It triages only newly discovered material, updates the current draft PR and synchronized section artifacts when a material change exists, reruns all five reviewers and the production build, and writes `prepublish_refresh_<date>.md`. It must not merge, deploy, sign, or broadcast.
+The recurring Wednesday full refresh runs at 13:00 UTC. It executes every applicable collector under one fixed pass window, including tracked GitHub repos, direct Nostr relay sources, NIP discussions, Nostr Recap, Shakespeare apps, NIP-34 repositories, Zapstore releases, app discovery and tracked-owner siblings, OpenSats/Sovereign Engineering heartbeats, monthly history when applicable, and the NIP/BUD/NAP/Marmot/Gamma/Concord/NWC spec sweep. It triages newly discovered material, integrates verified feedback, updates the current draft PR and synchronized section artifacts, reruns all five reviewers and the production build, and writes an evidence-bearing refresh receipt. It must not merge, deploy, sign, or broadcast.
 
-The recurring Wednesday publication runs at 16:00 UTC. It requires the same-day refresh artifact to end with evidence-bearing `GATE: PASS`, requires no explicit hold/cancellation, and follows `agents/PublishAgent.md`. Steps:
+At 14:30 UTC, a broad delta pass starts across every relevant source family. At or after 15:30 UTC, a real lightweight cutoff query captures the final interval; a timestamp-only artifact is insufficient. The workflow integrates qualifying deltas, rescans feedback and holds, prepares `draft: false` plus publication metadata in the same PR, and binds source, quality, preliminary feedback, and CI receipts to the recorded PR number, head SHA, base SHA, and prospective merge tree before 16:00. The final fresh feedback/hold snapshot and scoped edition authorization are taken at or after the publication boundary.
 
-1. Recheck PR state, review evidence, bunker config, npubs, and the strict UTC clock gate
-2. Strip `draft: true` and merge the reviewed PR (or a publication-day update PR if the base issue was already merged during incident recovery)
-3. Wait for and verify Hugo deployment
-4. Build NIP-23 long-form content via `scripts/publish.ts`
-5. Sign and broadcast kind:30023 via Amber to the broad set in `publish/config/relays.json`, including `sendit.nosflare.com` as a write-only NIP-66 blaster; capture naddr and recover the exact event from at least five durable relays
-6. Sign and broadcast kind:1 to the same broad set, and independently recover the exact event from at least five durable relays; blaster acceptance does not count as persistence
-7. Record `publish_log_<date>.md`, then complete the parent task so translation and podcast prep promote
+The recurring Wednesday publication starts at or after 16:00 UTC. It requires current evidence-bearing full-refresh, broad-delta, cutoff, feedback, source, review, and exact-head CI receipts, the scoped edition authorization, and no authenticated hold/cancellation. It follows `agents/PublishAgent.md`. Steps:
+
+1. Recheck the strict UTC clock, authenticated hold version, scoped edition authorization, feedback snapshot, source digest, review evidence, exact-head CI, bunker config, and npubs.
+2. Re-read the recorded PR number and require the expected head SHA, base SHA, and prepared prospective merge tree under the server current-base guard.
+3. Merge with the expected-head precondition and verify the resulting merge tree.
+4. Wait for and verify the Hugo deployment attributable to that merge SHA and the exact served content.
+5. Build the NIP-23 payload via `scripts/publish.ts`, then sign and broadcast kind:30023 via Amber to `publish/config/relays.json`, including `sendit.nosflare.com` only as a write-only NIP-66 blaster; recover the exact event from at least five durable relays.
+6. Sign and broadcast kind:1 to the same broad set and independently recover the exact event from at least five durable relays; blaster acceptance does not count as persistence.
+7. Record `publish_log_<date>.md`, enqueue the durable publication and Logbook-readiness obligations, then complete the parent task so translation and podcast prep promote.
 
 A manual `/publish` invocation before 16:00 UTC must stop unless the user explicitly overrides the clock gate.
 
@@ -332,7 +334,7 @@ A manual `/publish` invocation before 16:00 UTC must stop unless the user explic
 Spawn 9 parallel translation agents (de, es, fr, it, ja, ko, nl, pt, zh), each with adversarial review. Open a `translate/<date>` PR against `andotherstuff/nostr-compass:main`. Owned by `agents/TranslationAgent.md`.
 
 **Edition Types:**
-- Regular: NIP Deep Dive covers two related NIPs not previously covered (the rotation is one-shot; every prior `## NIP Deep Dive` heading under `content/en/newsletters/` is the authoritative record)
+- Regular: NIP Deep Dive covers two related NIPs not previously covered (the rotation is one-shot; every prior `## NIP Deep Dive` heading under `content/en/newsletters/` is the authoritative record). It explains exact mechanics, parsing/rendering, tradeoffs, trust/privacy boundaries, edge cases, adjacent specs, and at least three implementation behaviors. Every regular deep dive uses a real full event; NIP-21-only may omit one; NIP-27 always requires a valid full event with a `nostr:` reference in `content`.
 - Monthly Recap (last Wednesday of month, detected by Orchestrator): `Six Years of Nostr <Month>s` replaces the two NIP deep dives. Never prefix the history title with `NIP Deep Dive`; give every year at least two substantive, primary-source-linked paragraphs.
 
 **Data Sources (read by TriageAgent at Stage 3):**
@@ -370,13 +372,13 @@ Note: Projects like CDK, Cashu.me, Nutshell, eNuts, Bitcoin Connect, Geyser, and
 
 1. **Nostr Relay Test (mandatory gate):** Does this change affect what happens on Nostr relays or what Nostr users experience? If NO, omit regardless of project priority.
 
-2. **Relevance Scoring (0-10):** Every candidate item is scored across Nostr Relevance (0-3), User Impact (0-3), Ecosystem Breadth (0-2), and Novelty (0-2). Minimum score of 5 to include.
+2. **Hard gate plus quality score:** Every retained candidate must have direct primary evidence, material in-window progress, a concrete Nostr surface, and a distinct continuity delta. Progress may be a release, merged implementation, verified launch, or reviewable proposal milestone. Survivors score 0-2 for Nostr significance, user/operator impact, novelty, evidence maturity, and explanatory value. Include at 8/10 with no zero axis.
 
 3. **So What? Test:** If you cannot explain in one sentence why a Nostr developer should care, omit it.
 
 4. **Depth Minimum:** No item gets fewer than 2-3 sentences. One-sentence filler entries are forbidden.
 
-5. **Slot Budgets (guidelines, not hard caps):** News typically 5-7 items, Releases 5-8, Notable Changes 3-5, NIP Updates uncapped. Flex up in busy weeks if items pass all quality gates. Target: 30 minutes max reading time, as short as necessary.
+5. **No item budgets:** Section length follows the qualifying set. Every qualifier appears or is folded into a sourced related section, and no sub-threshold item is added to fill space. Target: 30 minutes reading time when the evidence allows, as short or long as the selected progress requires.
 
 See [NewsletterAgent](agents/NewsletterAgent.md) for the full scoring rubric and agent prompts.
 
@@ -555,8 +557,8 @@ The pipeline is orchestrated across specialized agents with file-based handoffs.
  [3] TriageAgent ── per-item GREEN/MAYBE/SKIP verdicts
         |
         v
- [4] NewsletterAgent (select mode) ── scoring, slot allocation, deep dive picks
-        |          USER APPROVAL GATE
+ [4] NewsletterAgent (select mode) ── complete candidate ledger, threshold, placement, deep dive picks
+        |          AUTOMATIC POLICY + REVIEW GATE; AUTHENTICATED HOLD STOPS
         v
  [5] NewsletterAgent (write mode, parallel section writers)
         |   News / Releases / Notable Changes / NIP Updates / NIP Deep Dive
@@ -568,12 +570,13 @@ The pipeline is orchestrated across specialized agents with file-based handoffs.
         |   LinkChecker / ClaimCheck / ProseReview / TopicAudit
         |   <--- loops back to section writers until all four pass
         v
- [8] Handoff to user
-
-USER: "publish it"
+ [8] Draft PR + verified review outreach
         |
         v
- PublishAgent ── PR merge, NIP-23 broadcast, kind:1 announcement
+ Wed 13:00 full refresh -> 14:30 broad delta -> >=15:30 cutoff
+        |
+        v
+ PublishAgent >=16:00 ── exact candidate merge -> verified deploy -> sign/broadcast/recover
         |
         v
  TranslationAgent ── 9 languages, translation PR

@@ -52,33 +52,31 @@ describe("targeted pre-publication outreach", () => {
     expect(outreachReportSuffix([])).toBe("");
   });
 
-  test("builds a one-hour podcast reminder without repeating review copy", () => {
-    expect(
-      buildOutreachMessage({
-        reminder: true,
-        reviewUrl: "",
-        newsletterUrl: "https://nostrcompass.org/en/newsletters/2026-07-29-newsletter/",
-        podcastUrl: "https://riverside.example/studio",
-        podcastTime: "today at 16:00 UTC",
-      }),
-    ).toBe(
-      "Reminder: the Nostr Compass podcast starts today at 16:00 UTC. Your project is part of this week's discussion. Join if you are free: https://riverside.example/studio",
-    );
-  });
-
-  test("builds an explicit recording-failure re-record invitation", () => {
+  test("builds review-only copy with the GitHub PR link", () => {
     expect(
       buildOutreachMessage({
         reminder: false,
-        rerecord: true,
-        issue: 30,
-        reviewUrl: "",
-        newsletterUrl: "https://nostrcompass.org/en/newsletters/2026-07-08-newsletter/",
-        podcastUrl: "https://riverside.example/studio",
-        podcastTime: "today at 15:00 UTC",
+        reviewUrl: "https://github.com/andotherstuff/nostr-compass/pull/147",
+        newsletterUrl: "",
+        podcastUrl: "",
+        podcastTime: "",
       }),
     ).toBe(
-      "Recording update: we need to re-record Nostr Compass #30 after a recording failure. We start today at 15:00 UTC. Your project was part of that episode's discussion. Join if you are free: https://riverside.example/studio",
+      "Your project is mentioned in this week's Nostr Compass draft. Please review the coverage on GitHub before publication: https://github.com/andotherstuff/nostr-compass/pull/147",
     );
+  });
+
+  test("builds asynchronous podcast invitation without an appointment", () => {
+    const base = {
+      issue: 38,
+      reviewUrl: "",
+      newsletterUrl: "https://nostrcompass.org/en/newsletters/2026-09-02-newsletter/",
+      podcastUrl: "https://logbook.example/episode/38#project",
+      podcastTime: "",
+    };
+    const message = buildOutreachMessage({ ...base, reminder: false });
+    expect(message).toContain("short voice note to the async podcast");
+    expect(message).toContain(base.podcastUrl);
+    expect(message).not.toContain("Thursday");
   });
 });

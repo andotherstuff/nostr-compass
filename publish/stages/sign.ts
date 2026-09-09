@@ -15,6 +15,7 @@
 import { readFile } from "node:fs/promises";
 import { join } from "node:path";
 import { signWithBunker, type SignedEvent, type UnsignedEvent } from "../lib/bunker.ts";
+import { reuseOrSign } from "../lib/journal.ts";
 import { writeAtomic } from "../lib/safety.ts";
 
 const OUT_DIR = join(import.meta.dir, "..", "out");
@@ -107,13 +108,16 @@ export async function signArticle(issue: number): Promise<SignedEvent> {
     JSON.stringify(unsigned, null, 2),
   );
 
-  console.log(`              requesting bunker signature for kind 30023 article (Amber prompt incoming)...`);
-  const signed = await signWithBunker(unsigned, author.pubkey_hex);
-
-  await writeAtomic(
-    join(issueDir, "event.json"),
-    JSON.stringify(signed, null, 2),
-  );
+  console.log(`              requesting bunker signature for kind 30023 article (Amber prompt incoming if no reusable payload exists)...`);
+  const signed = await reuseOrSign({
+    outDir: OUT_DIR,
+    issue,
+    effectName: "article",
+    unsigned,
+    intent: { metadata, pubkey: author.pubkey_hex, firstPublishedAt },
+    payloadFile: join(issueDir, "event.json"),
+    signer: (event) => signWithBunker(event, author.pubkey_hex),
+  });
 
   console.log(`              ✓ signed`);
   console.log(`              event_id: ${signed.id}`);

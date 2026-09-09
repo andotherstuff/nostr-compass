@@ -14,6 +14,7 @@ import { join } from "node:path";
 import { nip19 } from "nostr-tools";
 import { signWithBunker, type SignedEvent, type UnsignedEvent } from "../lib/bunker.ts";
 import { buildAnnouncementContent } from "../lib/announcement.ts";
+import { reuseOrSign } from "../lib/journal.ts";
 import { writeAtomic } from "../lib/safety.ts";
 
 const OUT_DIR = join(import.meta.dir, "..", "out");
@@ -74,13 +75,16 @@ export async function signAnnouncement(issue: number): Promise<SignedEvent> {
 
   console.log(`              composing announcement for "${metadata.title}"`);
   console.log(`              embedding nostr:${naddr.slice(0, 24)}... in content`);
-  console.log(`              requesting bunker signature for kind:1 (Amber prompt incoming)...`);
-  const signed = await signWithBunker(unsigned, author.pubkey_hex);
-
-  await writeAtomic(
-    join(issueDir, "announcement.json"),
-    JSON.stringify(signed, null, 2),
-  );
+  console.log(`              requesting bunker signature for kind:1 (Amber prompt incoming if no reusable payload exists)...`);
+  const signed = await reuseOrSign({
+    outDir: OUT_DIR,
+    issue,
+    effectName: "announcement",
+    unsigned,
+    intent: { article_id: article.id, content, tags, pubkey: author.pubkey_hex },
+    payloadFile: join(issueDir, "announcement.json"),
+    signer: (event) => signWithBunker(event, author.pubkey_hex),
+  });
 
   console.log(`              ✓ signed kind:1 (id ${signed.id.slice(0, 12)}...)`);
   return signed;

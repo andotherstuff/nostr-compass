@@ -35,7 +35,10 @@ source "$SCRIPT_DIR/nostr_common.sh"
 
 # Parse arguments
 SINCE_DAYS=""
+SINCE_ABSOLUTE=""
+UNTIL_ABSOLUTE=""
 VERBOSE=""
+PASS_ID=""
 NEWSLETTER_DATE="$(date -u +%F)"
 while [[ $# -gt 0 ]]; do
     case $1 in
@@ -46,6 +49,14 @@ while [[ $# -gt 0 ]]; do
         --newsletter-date)
             NEWSLETTER_DATE="$2"
             shift 2
+            ;;
+        --since)
+            SINCE_ABSOLUTE="$2"; shift 2 ;;
+        --until)
+            UNTIL_ABSOLUTE="$2"; shift 2
+            ;;
+        --pass-id)
+            PASS_ID="$2"; shift 2
             ;;
         -v|--verbose)
             VERBOSE="-v"
@@ -68,11 +79,36 @@ while [[ $# -gt 0 ]]; do
             ;;
     esac
 done
+[ -n "$PASS_ID" ] || { echo "--pass-id is required; each collection pass needs a caller-owned immutable identity" >&2; exit 2; }
 
 SINCE_ARG=""
-if [ -n "$SINCE_DAYS" ]; then
+if [ -n "$SINCE_ABSOLUTE" ] || [ -n "$UNTIL_ABSOLUTE" ]; then
+    if [ -z "$SINCE_ABSOLUTE" ] || [ -z "$UNTIL_ABSOLUTE" ] || [ -n "$SINCE_DAYS" ]; then
+        echo "--since and --until are required together and cannot be combined with --since-days" >&2; exit 2
+    fi
+    PROJECT_ARG="--since $SINCE_ABSOLUTE --until $UNTIL_ABSOLUTE"
+    SINCE_DAYS="$(python3 -c 'import datetime,sys,math; a=datetime.datetime.fromisoformat(sys.argv[1].replace("Z","+00:00")); b=datetime.datetime.fromisoformat(sys.argv[2].replace("Z","+00:00")); print(max(1,math.ceil((b-a).total_seconds()/86400)))' "$SINCE_ABSOLUTE" "$UNTIL_ABSOLUTE")"
     SINCE_ARG="--since-days $SINCE_DAYS"
+    RUN_SINCE="$SINCE_ABSOLUTE"; RUN_UNTIL="$UNTIL_ABSOLUTE"
+elif [ -n "$SINCE_DAYS" ]; then
+    SINCE_ARG="--since-days $SINCE_DAYS"; PROJECT_ARG="$SINCE_ARG"
+    RUN_SINCE="$(date -u -d "$SINCE_DAYS days ago" --iso-8601=seconds)"; RUN_UNTIL="$(date -u --iso-8601=seconds)"
+else
+    PROJECT_ARG=""
+    RUN_SINCE="$(date -u -d "8 days ago" --iso-8601=seconds)"; RUN_UNTIL="$(date -u --iso-8601=seconds)"
 fi
+MANIFEST="$PROJECT_ROOT/data/source_runs/source_run_${NEWSLETTER_DATE}_${PASS_ID}.json"
+SOURCE_FAMILIES=(projects nip-discussions nostr-recap shakespeare-apps nip34 zapstore app-discovery heartbeats monthly-history specs)
+MANIFEST_ARGS=()
+for family in "${SOURCE_FAMILIES[@]}"; do MANIFEST_ARGS+=(--expected "$family"); done
+python3 "$SCRIPT_DIR/source_run_manifest.py" create --manifest "$MANIFEST" --pass-id "$PASS_ID" --since "$RUN_SINCE" --until "$RUN_UNTIL" "${MANIFEST_ARGS[@]}"
+if python3 "$SCRIPT_DIR/source_run_manifest.py" verify-finalized --manifest "$MANIFEST"; then
+    echo "Exact source pass $PASS_ID is already finalized; retained collector and artifact hashes verified."
+    exit 0
+fi
+export COMPASS_WINDOW_SINCE="$RUN_SINCE" COMPASS_WINDOW_UNTIL="$RUN_UNTIL" COMPASS_SOURCE_PASS_ID="$PASS_ID"
+declare -A SOURCE_EXIT
+for family in "${SOURCE_FAMILIES[@]}"; do SOURCE_EXIT[$family]=127; done
 
 # Absolute window for the heartbeat fetcher (defaults to 8 days back through today)
 HB_SINCE="$(date -u -d "${SINCE_DAYS:-8} days ago" +%F)"
@@ -86,11 +122,24 @@ echo ""
 FAILED=0
 SKIPPED=0
 
+source_done() {
+    local family="$1" receipt="$PROJECT_ROOT/data/source_runs/collector_${PASS_ID}_${family}.json"
+    if [ -f "$receipt" ] && python3 "$SCRIPT_DIR/source_run_manifest.py" ingest --manifest "$MANIFEST" --receipt "$receipt"; then
+        SOURCE_EXIT[$family]=0
+        echo "  Resumed: exact-pass receipt and retained artifact verified."
+        return 0
+    fi
+    return 1
+}
+
 # 1. GitHub project updates (Python)
 echo "[1/10] GitHub project updates..."
-if command -v python3 &>/dev/null; then
+if source_done projects; then
+    :
+elif command -v python3 &>/dev/null; then
     cd "$PROJECT_ROOT"
-    if python3 scripts/fetch_project_updates.py $SINCE_ARG $VERBOSE; then
+    if python3 scripts/fetch_project_updates.py $PROJECT_ARG $VERBOSE; then
+        SOURCE_EXIT[projects]=0
         echo "  Done."
     else
         echo "  WARNING: GitHub fetcher failed (exit code $?)"
@@ -104,8 +153,11 @@ echo ""
 
 # 2. NIP discussions (Nostr relay via nak)
 echo "[2/10] NIP discussions from relays..."
-if command -v nak &>/dev/null; then
+if source_done nip-discussions; then
+    :
+elif command -v nak &>/dev/null; then
     if "$SCRIPT_DIR/fetch_nostr_nip_discussions.sh" $SINCE_ARG; then
+        SOURCE_EXIT[nip-discussions]=0
         echo "  Done."
     else
         echo "  WARNING: NIP discussion fetcher failed (exit code $?)"
@@ -119,8 +171,11 @@ echo ""
 
 # 3. Nostr Recap weekly summaries (Nostr relay via nak)
 echo "[3/10] Nostr Recap summaries..."
-if command -v nak &>/dev/null; then
+if source_done nostr-recap; then
+    :
+elif command -v nak &>/dev/null; then
     if "$SCRIPT_DIR/fetch_nostr_recap.sh" $SINCE_ARG; then
+        SOURCE_EXIT[nostr-recap]=0
         echo "  Done."
     else
         echo "  WARNING: Nostr Recap fetcher failed (exit code $?)"
@@ -134,8 +189,11 @@ echo ""
 
 # 4. Shakespeare Apps / Soapbox MiniApps (Nostr relay via nak)
 echo "[4/10] Shakespeare Apps (Soapbox MiniApps)..."
-if command -v nak &>/dev/null; then
+if source_done shakespeare-apps; then
+    :
+elif command -v nak &>/dev/null; then
     if "$SCRIPT_DIR/fetch_shakespeare_apps.sh" $SINCE_ARG; then
+        SOURCE_EXIT[shakespeare-apps]=0
         echo "  Done."
     else
         echo "  WARNING: Shakespeare Apps fetcher failed (exit code $?)"
@@ -149,8 +207,11 @@ echo ""
 
 # 5. NIP-34 git repos (Nostr relay via nak)
 echo "[5/10] NIP-34 git repos..."
-if command -v nak &>/dev/null; then
+if source_done nip34; then
+    :
+elif command -v nak &>/dev/null; then
     if "$SCRIPT_DIR/fetch_nip34_repos.sh" $SINCE_ARG; then
+        SOURCE_EXIT[nip34]=0
         echo "  Done."
     else
         echo "  WARNING: NIP-34 repo fetcher failed (exit code $?)"
@@ -164,8 +225,11 @@ echo ""
 
 # 6. Zapstore developer-signed releases (Nostr relay via nak)
 echo "[6/10] Zapstore releases..."
-if command -v nak &>/dev/null; then
+if source_done zapstore; then
+    :
+elif command -v nak &>/dev/null; then
     if "$SCRIPT_DIR/fetch_zapstore_releases.sh" $SINCE_ARG; then
+        SOURCE_EXIT[zapstore]=0
         echo "  Done."
     else
         echo "  WARNING: Zapstore fetcher failed (exit code $?) — soft-fail, continuing"
@@ -179,9 +243,12 @@ echo ""
 
 # 7. Untracked application candidates (GitHub + NIP-89 handlers + Zapstore listings)
 echo "[7/10] Untracked Nostr application discovery..."
-if command -v python3 &>/dev/null && command -v gh &>/dev/null && command -v nak &>/dev/null; then
+if source_done app-discovery; then
+    :
+elif command -v python3 &>/dev/null && command -v gh &>/dev/null && command -v nak &>/dev/null; then
     cd "$PROJECT_ROOT"
     if python3 scripts/fetch_app_discovery.py $SINCE_ARG; then
+        SOURCE_EXIT[app-discovery]=0
         echo "  Done."
     else
         echo "  WARNING: application discovery failed (exit code $?) — soft-fail, continuing"
@@ -195,7 +262,10 @@ echo ""
 
 # 8. Grantee heartbeat feeds (OpenSats nostr/general funds + Sovereign Engineering note)
 echo "[8/10] Grantee heartbeat feeds (OpenSats / Sovereign Engineering)..."
-if "$SCRIPT_DIR/fetch_heartbeats.sh" "$HB_SINCE" "$HB_UNTIL"; then
+if source_done heartbeats; then
+    :
+elif "$SCRIPT_DIR/fetch_heartbeats.sh" "$HB_SINCE" "$HB_UNTIL"; then
+    SOURCE_EXIT[heartbeats]=0
     echo "  Done."
 else
     echo "  WARNING: Heartbeat fetcher failed (exit code $?) — soft-fail, continuing"
@@ -208,10 +278,13 @@ ISSUE_MONTH="$(date -d "$NEWSLETTER_DATE" +%m)"
 ISSUE_YEAR="$(date -d "$NEWSLETTER_DATE" +%Y)"
 NEXT_WEEK_MONTH="$(date -d "$NEWSLETTER_DATE +7 days" +%m)"
 echo "[9/10] Month-end history candidates..."
-if [ "$ISSUE_MONTH" != "$NEXT_WEEK_MONTH" ]; then
+if source_done monthly-history; then
+    :
+elif [ "$ISSUE_MONTH" != "$NEXT_WEEK_MONTH" ]; then
     if python3 "$SCRIPT_DIR/fetch_monthly_history.py" \
         --month "$((10#$ISSUE_MONTH))" \
         --through-year "$ISSUE_YEAR"; then
+        SOURCE_EXIT[monthly-history]=0
         echo "  Done."
     else
         echo "  WARNING: monthly history fetcher failed (exit code $?)"
@@ -225,13 +298,16 @@ echo ""
 
 # 10. Protocol/spec-family activity (GitHub)
 echo "[10/10] Specification families (NIP / BUD / NAP / Marmot / Gamma / Concord / NWC)..."
-if command -v python3 &>/dev/null && command -v gh &>/dev/null; then
+if source_done specs; then
+    :
+elif command -v python3 &>/dev/null && command -v gh &>/dev/null; then
     cd "$PROJECT_ROOT"
     SPEC_ARGS=()
     if [ -n "$SINCE_DAYS" ]; then
         SPEC_ARGS+=(--since-days "$SINCE_DAYS")
     fi
     if python3 scripts/fetch_spec_updates.py "${SPEC_ARGS[@]}"; then
+        SOURCE_EXIT[specs]=0
         echo "  Done."
     else
         echo "  WARNING: specification-family fetcher failed (exit code $?)"
@@ -242,6 +318,36 @@ else
     SKIPPED=$((SKIPPED + 1))
 fi
 echo ""
+
+# Ingest only collector-authored exact-pass receipts. An exit code, mtime, or
+# post-hoc item count is never promoted into pagination/query evidence.
+record_source() {
+    local family="$1" collector="$2" applicability="${3:-required}"
+    local receipt="$PROJECT_ROOT/data/source_runs/collector_${PASS_ID}_${family}.json"
+    if [ "$applicability" = not_applicable ]; then
+        local query; query="$(python3 -c 'import json,sys; print(json.dumps({"family":sys.argv[1],"pass_id":sys.argv[2],"since":sys.argv[3],"until":sys.argv[4]},separators=(",",":")))' "$family" "$PASS_ID" "$RUN_SINCE" "$RUN_UNTIL")"
+        python3 "$SCRIPT_DIR/source_run_manifest.py" record --manifest "$MANIFEST" --pass-id "$PASS_ID" --family "$family" --status not_applicable --collector "$PROJECT_ROOT/$collector" --query-json "$query" --item-count 0 --page-count 0 --include-count 0 --skip-count 0 --skip-evidence-json '[]'
+    elif [ -f "$receipt" ]; then
+        python3 "$SCRIPT_DIR/source_run_manifest.py" ingest --manifest "$MANIFEST" --receipt "$receipt"
+    else
+        echo "Collector $family did not emit exact-pass receipt $receipt" >&2
+        FAILED=$((FAILED + 1))
+    fi
+}
+record_source projects scripts/fetch_project_updates.py
+record_source nip-discussions scripts/fetch_nostr_nip_discussions.sh
+record_source nostr-recap scripts/fetch_nostr_recap.sh
+record_source shakespeare-apps scripts/fetch_shakespeare_apps.sh
+record_source nip34 scripts/fetch_nip34_repos.sh
+record_source zapstore scripts/fetch_zapstore_releases.sh
+record_source app-discovery scripts/fetch_app_discovery.py
+record_source heartbeats scripts/fetch_heartbeats.sh
+if [ "$ISSUE_MONTH" != "$NEXT_WEEK_MONTH" ]; then record_source monthly-history scripts/fetch_monthly_history.py; else record_source monthly-history scripts/fetch_monthly_history.py not_applicable; fi
+record_source specs scripts/fetch_spec_updates.py
+if ! python3 "$SCRIPT_DIR/source_run_manifest.py" finalize --manifest "$MANIFEST"; then
+    echo "Required source evidence is incomplete: $MANIFEST" >&2
+    FAILED=$((FAILED + 1))
+fi
 
 # Summary
 echo "==========================================="

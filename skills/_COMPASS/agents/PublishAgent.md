@@ -1,6 +1,6 @@
 ---
 name: PublishAgent
-description: Runs the clock-gated Wednesday 16:00 UTC publish workflow after the 14:00 source refresh passes. Merges the newsletter PR into andotherstuff/nostr-compass main, verifies deployment, builds and signs the NIP-23 long-form event via Amber, broadcasts the kind:30023 article and kind:1 announcement, then releases translation and podcast work.
+description: Runs the clock-gated Wednesday publication after the 13:00 full refresh, 14:30 broad delta, and at-or-after-15:30 cutoff query pass. Merges one exact prepared newsletter candidate, verifies deployment, signs and broadcasts the NIP-23 article and kind:1 announcement, verifies relay recovery, then releases downstream work.
 lane: research
 ---
 
@@ -10,14 +10,14 @@ Owns the publish-time workflow. The recurring publication cron invokes it at 16:
 
 ## When invoked
 
-After the Orchestrator's review handoff and the same-day pre-publication refresh. The PR for the current newsletter is already open on `andotherstuff/nostr-compass`; `data/newsletter_workspace/prepublish_refresh_<date>.md` must end with an evidence-bearing `GATE: PASS`, and there must be no explicit hold/cancellation.
+After the Orchestrator's draft-PR handoff and all same-day refresh passes. The 13:00 full-refresh, 14:30 broad-delta, and real at-or-after-15:30 cutoff receipts must be evidence-bearing PASS records. The prepared candidate must bind the source digest, feedback snapshot, review receipts, and exact-head CI to one recorded PR number, head SHA, base SHA, and prospective merge tree. No authenticated hold or cancellation may exist.
 
 ## Inputs
 
 | Input | Source |
 |-------|--------|
 | Draft path | `content/en/newsletters/<date>-newsletter.md` |
-| PR number | `gh pr list --head newsletter/<date> --json number` |
+| PR identity | Recorded PR number, head SHA, base SHA, and prospective merge tree in the publication journal |
 | Bunker URI | `~/.config/compass-publish/bunker.json` |
 | Client key | `~/.config/compass-publish/client_key` |
 | npub database | `data/npubs.yml` |
@@ -41,14 +41,15 @@ After the Orchestrator's review handoff and the same-day pre-publication refresh
 DATE=<target>
 DRAFT=content/en/newsletters/${DATE}-newsletter.md
 
-# Confirm the current frontmatter state; draft:true is stripped only inside the 16:00 window
+# Confirm the publication-preparation pass already committed draft:false
 grep -E '^draft: ' "$DRAFT"
 
-# Confirm PR exists and is open (or, only for incident recovery, identify an already-merged PR plus an open publication-day update PR)
-gh pr list --head "newsletter/${DATE}" --state open --json number,title,url
+# Read the recorded PR identity; never infer it from the current branch
+jq '{number,head_sha,base_sha,prospective_tree_sha}' "publish/out/<issue>/state.json"
 
-# Confirm the 14:00 refresh completed and passed
+# Confirm the 13:00 full refresh, 14:30 broad delta, and >=15:30 cutoff query passed
 grep -E '^GATE: PASS' "data/newsletter_workspace/prepublish_refresh_${DATE}.md"
+grep -E '^GATE: PASS' "data/newsletter_workspace/final_delta_refresh_${DATE}.md"
 
 # Confirm bunker config is present
 test -f ~/.config/compass-publish/bunker.json
@@ -58,7 +59,7 @@ test -f ~/.config/compass-publish/client_key
 bun scripts/publish.ts --no-inject "$DRAFT" > /dev/null
 ```
 
-Before 16:00 UTC, stop without touching Git, GitHub, Amber, or relays. At or after 16:00 UTC, `draft: true` is expected and is removed in the existing PR branch. When the PR or refresh gate is missing, stale, or failed, halt with a clear blocker; never infer approval from the clock alone when an explicit hold exists.
+Before 16:00 UTC, publication mutation stops after preparing the exact candidate; do not merge, deploy, sign, or broadcast. `draft: false` and final metadata must already be committed and checked before this boundary. At or after 16:00, re-read the recorded identity, authorization, hold version, source, feedback, review, and exact-head CI evidence. Any missing, stale, or mismatched gate halts the edition.
 
 Write `publish_plan_<date>.md`:
 
@@ -85,7 +86,7 @@ Compass author npub: <decoded from bunker config>
 7. Broadcast kind:1
 8. Trigger /translate
 
-GATE: PASS — scheduled 16:00 UTC publication authorized; no explicit hold; refresh and review evidence verified
+GATE: PASS — scheduled publication authorized; no authenticated hold; 13:00/full, 14:30/delta, >=15:30/cutoff, source, feedback, review, exact candidate, and CI evidence verified
 ```
 
 The agent records and surfaces the plan, then proceeds automatically only inside the scheduled 16:00 UTC window. Outside that window it waits for an explicit user override.
@@ -107,28 +108,18 @@ The publish does not proceed while there are unresolved missing npubs that the u
 
 ### Step 3: Merge the PR
 
-```bash
-PR=$(gh pr list --head "newsletter/${DATE}" --state open --json number --jq '.[0].number')
+Run the repository publication entry point with the exact recorded identity and
+the current authorization, feedback, and quality receipts. First call merge
+without mutation so it records the same prospective tree under the server
+current-base guard. Then call merge with `--really-merge`; it uses GitHub's
+expected-head precondition and refuses any PR, head, base, prospective-tree,
+authorization, hold, source, feedback, review, or CI mismatch. Never infer a PR
+from the current branch and never merge through an ad-hoc `gh pr merge` command.
 
-# Ensure draft:true is stripped
-if grep -q '^draft: true' "$DRAFT"; then
-  sed -i 's/^draft: true/draft: false/' "$DRAFT"
-  git add "$DRAFT"
-  git commit -m "Publish Newsletter #${N} (${DATE})"
-  git push origin "newsletter/${DATE}"
-fi
-
-# Merge (squash to keep main history clean)
-gh pr merge "$PR" --squash --delete-branch
-git checkout main
-git pull origin main
-```
-
-The Hugo build runs in GitHub Actions on merge; the agent waits for the deployment workflow to complete:
-
-```bash
-gh run watch --exit-status
-```
+After the merge is authoritatively confirmed, run the deploy stage. It selects
+the Pages run attributable to the recorded merge SHA and verifies the canonical
+page serves the expected content. Poll with bounded one-shot API reads; do not
+use a long-lived `gh run watch` command.
 
 When the deploy workflow fails, the agent halts and surfaces the failure. Publishing to Nostr after a failed deploy would link to a stale or missing page.
 
@@ -136,7 +127,7 @@ When the deploy workflow fails, the agent halts and surfaces the failure. Publis
 
 A successful merge or deployment is not the publication completion signal. Leave the pipeline task blocked while signing, broadcasting, and relay verification are still pending. Do not promote Translation or Podcast Prep here.
 
-If the PR was already merged before the 16:00 window, record the incident and continue only after the clock gate and refresh gate pass; never treat an early merge as authorization to sign early.
+If the PR was already merged before the 16:00 window, record the incident and continue only when the pre-mutation prepared identity and resulting merge tree match and all clock, authorization, hold, refresh, feedback, review, and CI gates pass. Never treat an early merge as authorization to sign early.
 
 ### Step 4: Build the long-form content
 

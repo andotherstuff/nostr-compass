@@ -159,7 +159,7 @@ Comprehensive technical accuracy and link integrity checking.
 /validate path/to/file.md        # Validate specific file
 ```
 
-**Validation Checks (11 total):**
+**Validation Checks (12 total):**
 1. Internal link validation (all `/en/topics/X/` files exist)
 2. NIP number validation (exist in NIPs repo)
 3. External link validation (GitHub URLs return 200)
@@ -168,9 +168,10 @@ Comprehensive technical accuracy and link integrity checking.
 6. Immediate-prior-issue continuity gate (`scripts/check_newsletter_continuity.py` plus manual confirmation of a distinct source and substantive user/protocol impact for every repeated project)
 7. Style compliance (no em dashes, AI buzzwords)
 8. Frontmatter validation (required YAML fields)
-9. JSON event examples (all 7 NIP-01 fields)
-10. Topic page source links (all have "Primary sources" section)
-11. No version-only or low-value follow-up entries
+9. Selection coverage receipt (every retained source candidate reconciled; every qualifying GREEN item present; no fixed item cap)
+10. JSON event examples (all 7 NIP-01 fields, valid id and signature; NIP-21-only exception; `nostr:` content required for NIP-27)
+11. Topic page source links (all have "Primary sources" section)
+12. No version-only or low-value follow-up entries
 
 **Agent:** ValidationAgent ([documentation](skills/_COMPASS/agents/ValidationAgent.md))
 
@@ -195,7 +196,7 @@ Generate TLDR, social announcements, and email-ready content.
 - Distribution checklist
 - Verified pre-publication Nostr outreach to every mentioned project and maintainer
 
-If a new project is added after the issue's main outreach campaign but before publication, update the open review PR, resolve both the project and maintainer npubs from primary evidence, and run a targeted dry-run plus real send with `publish/dm-outreach.ts --only '<project>' --only '<maintainer>'`. De-duplicate shared pubkeys, apply `data/npubs.yml` `no_dm` exclusions, and verify the separate targeted receipt without re-sending the full issue campaign.
+If a new project is added after the issue's main outreach campaign but before publication, update the open review PR, resolve both the project and maintainer npubs from primary evidence, and run a targeted dry-run plus real send with `publish/dm-outreach.ts --pr-url '<newsletter PR URL>' --only '<project>' --only '<maintainer>'`. De-duplicate shared pubkeys, apply `data/npubs.yml` `no_dm` exclusions, and verify the separate targeted receipt without re-sending the full issue campaign. Newsletter-review DMs contain only the GitHub PR review request. Podcast outreach is separate, post-publication, and disabled until the owner approves the new recording setup and message; never reuse Riverside or append recording copy to review outreach.
 
 If exhaustive primary-source, NIP-50, npub-directory, and relay searches do not verify a project or maintainer npub, always name the unresolved identity and completed search classes in the final owner handoff. Continue outreach to verified recipients under the standing omission policy; the notice is mandatory but is not an approval gate.
 
@@ -488,7 +489,7 @@ Note: Projects like CDK, Cashu.me, Nutshell, eNuts, Bitcoin Connect, Geyser, and
 
 **NIP-34 hosting is delivery, not subject matter.** A Bitcoin-only or otherwise non-Nostr project does not become newsletter material because its source code is hosted on a NIP-34 GRASP server or `relay.ngit.dev`. CoinJoin coordinators (e.g. joinmarket-ng), on-chain mixers, Bitcoin Core forks, hardware-wallet firmware, and similar projects are out of scope regardless of patch volume on `relay.ngit.dev`. Only track NIP-34 repos whose project substance is itself Nostr-relevant (clients, relays, signers, NIP-34 tooling, schemata, etc.).
 
-**Content Curation:** All items are scored 0-10 using a relevance rubric (Nostr Relevance, User Impact, Ecosystem Breadth, Novelty). Minimum score of 5 to include. Items must pass the Nostr Relay Test and the So What? Test. See [NewsletterAgent](skills/_COMPASS/agents/NewsletterAgent.md) for details.
+**Content Curation:** Every collector-retained candidate receives a stable ID and explicit disposition. Candidates must first pass direct-evidence, material-in-window-progress, concrete-Nostr-surface, and continuity-delta gates, then score at least 8/10 with no zero across the five maintained quality axes. In-window progress may be a release, merged implementation, verified launch, or reviewable proposal milestone. Every qualifier is included or sourced inside a related section; every rejection keeps a reason. There are no item or section caps. See [NewsletterAgent](skills/_COMPASS/agents/NewsletterAgent.md) for details.
 
 ---
 
@@ -647,16 +648,16 @@ type: newsletters
 ## Branch/PR Workflow
 
 ### English Content PR
-1. Draft locally first and stop for user review
-2. Create branch/commit/push only after explicit user approval
-3. Create PR only after separate explicit user approval
-4. After PR approval, keep branch history to one clean commit; squash locally and update with `git push --force-with-lease`
-5. Never force-push `main` or `master`
+1. The scheduled workflow creates or updates one draft PR automatically after repository review gates pass.
+2. Apply established editorial policy and recorded owner overrides without waiting for a new approval message. Owner feedback may update the PR; an explicit authenticated hold stops publication.
+3. Keep the prepared publication candidate bound to the recorded PR number, head SHA, base SHA, prospective merge tree, quality receipts, feedback snapshot, and exact-head CI.
+4. Keep branch history to one clean commit when the issue workflow requires it; use `git push --force-with-lease`, never bare `--force`.
+5. Never force-push `main` or `master`.
 
 ### Translation PR (after English is merged)
-1. Draft translations locally first and stop for user review
-2. Create branch/commit/push only after explicit user approval
-3. Create PR only after separate explicit user approval
+1. Translation starts only after verified English publication and uses one owner for the current edition.
+2. Create the translation branch, commit, push, and PR automatically after translation verification passes.
+3. Merge only under the translation workflow's exact-head CI and authority gates; no separate routine owner approval is required.
 
 ### Git Commit Messages
 Follow established patterns:

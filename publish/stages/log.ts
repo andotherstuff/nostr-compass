@@ -23,6 +23,7 @@ import { join } from "node:path";
 import { spawn } from "node:child_process";
 import WebSocket from "ws";
 import { writeAtomic } from "../lib/safety.ts";
+import { loadJournal, mutateJournal, sha256, stableJson } from "../lib/journal.ts";
 import { notifyMilestone, prLink, runLink } from "../lib/notify.ts";
 
 const RUNTIME_ROOT = join(import.meta.dir, "..", "..");
@@ -30,7 +31,7 @@ const PUBLISH_ROOT = join(RUNTIME_ROOT, "publish");
 const OUT_DIR = join(PUBLISH_ROOT, "out");
 const RELAYS_PATH = join(PUBLISH_ROOT, "config/relays.json");
 const AUTHOR_PATH = join(PUBLISH_ROOT, "config/author.json");
-const PUBLISHED_LEDGER = join(PUBLISH_ROOT, "published.json");
+
 const REPO = "andotherstuff/nostr-compass";
 
 const READBACK_TIMEOUT_MS = 20_000;
@@ -38,6 +39,25 @@ const READBACK_TIMEOUT_MS = 20_000;
 type RelaysConfig = { relays: string[] };
 type Receipt = { relay: string; ok: boolean; reason?: string; ms: number };
 type Receipts = { article: Receipt[]; announcement: Receipt[] };
+type StoredReceipts = {
+  schema_version: 1;
+  relay_floor: number;
+  acceptance: Receipts;
+  readback: {
+    article: Record<string, { found: boolean; recorded_at: string }>;
+    announcement: Record<string, { found: boolean; recorded_at: string }>;
+  };
+};
+
+export function assertCurrentReceiptSchema(value: unknown): asserts value is StoredReceipts {
+  const stored = value as Partial<StoredReceipts>;
+  if (stored.schema_version !== 1 || !Number.isInteger(stored.relay_floor) || (stored.relay_floor ?? 0) < 5 ||
+      !stored.acceptance || !Array.isArray(stored.acceptance.article) || !Array.isArray(stored.acceptance.announcement) ||
+      !stored.readback || typeof stored.readback.article !== "object" || stored.readback.article === null ||
+      typeof stored.readback.announcement !== "object" || stored.readback.announcement === null) {
+    throw new Error("Unsupported or malformed publication receipt schema");
+  }
+}
 type LedgerEntry = {
   issue: number;
   event_id: string;
@@ -54,7 +74,10 @@ export type ReadbackRow = { relay: string; article: boolean; announcement: boole
 
 function run(cmd: string, args: string[]): Promise<{ code: number; stdout: string; stderr: string }> {
   return new Promise((resolve) => {
-    const child = spawn(cmd, args, { stdio: ["ignore", "pipe", "pipe"] });
+    const child = spawn(cmd, args, {
+      stdio: ["ignore", "pipe", "pipe"],
+      env: { ...process.env, GH_CACHE_TTL: "0", HERMES_GH_NO_CACHE: "1" },
+    });
     let stdout = "";
     let stderr = "";
     child.stdout.on("data", (d) => (stdout += d.toString()));
@@ -361,6 +384,7 @@ export function renderLog(args: {
   naddr: string;
   nevent: string;
   announcementCreatedAt: number | null;
+  relayFloor?: number;
 }): string {
   const {
     issue, date, title, pr, prerequisites, deploy, page, ledger,
@@ -484,10 +508,13 @@ export function renderLog(args: {
     out.push(`- neither event returned by: ${neither.map((r) => `\`${r.relay}\``).join(", ")}`);
   }
   out.push("");
+  const articleBack = durable.filter((row) => row.article).length;
+  const announcementBack = durable.filter((row) => row.announcement).length;
+  const relayFloor = args.relayFloor ?? 1;
   const gate =
-    artOk > 0 && annOk > 0 && bothBack.length > 0
-      ? `GATE: PASS (merge and deploy verified; article accepted by ${artOk}/${configured.length} and announcement by ${annOk}/${configured.length} configured relays; both events recovered by exact id from ${bothBack.length} durable relays)`
-      : `GATE: FAIL (article ok=${artOk}, announcement ok=${annOk}, both-event readback=${bothBack.length}; investigate before treating this issue as published)`;
+    artOk > 0 && annOk > 0 && articleBack >= relayFloor && announcementBack >= relayFloor
+      ? `GATE: PASS (merge and deploy verified; article accepted by ${artOk}/${configured.length} and announcement by ${annOk}/${configured.length} configured relays; exact-id readback article=${articleBack}, announcement=${announcementBack}, floor=${relayFloor})`
+      : `GATE: FAIL (article ok=${artOk}, announcement ok=${annOk}, exact-id readback article=${articleBack}, announcement=${announcementBack}, floor=${relayFloor}; investigate before treating this issue as published)`;
   out.push(
     `The signed events are archived to the untracked local store at ` +
       `\`data/newsletter_workspace/published/${date}_30023.json\` and ` +
@@ -505,22 +532,45 @@ export function renderLog(args: {
  */
 export async function logIssue(
   issue: number,
-  opts: { compassDir: string; openPr: boolean },
+  opts: { compassDir: string; openPr: boolean; outDir?: string; relaysPath?: string; authorPath?: string; pageEvidence?: string; notify?: boolean; commandRunner?: typeof run; logWorktreeRoot?: string },
 ): Promise<number | null> {
-  const issueDir = join(OUT_DIR, String(issue));
+  const outDir = opts.outDir ?? OUT_DIR;
+  const command = opts.commandRunner ?? run;
+  const issueDir = join(outDir, String(issue));
   const metadata = JSON.parse(await readFile(join(issueDir, "metadata.json"), "utf8")) as Metadata;
-  const receipts = JSON.parse(await readFile(join(issueDir, "receipts.json"), "utf8")) as Receipts;
-  const ledger = (JSON.parse(await readFile(PUBLISHED_LEDGER, "utf8")) as LedgerEntry[]).find(
-    (e) => e.issue === issue,
-  );
-  if (!ledger) throw new Error(`No published.json entry for issue ${issue}; broadcast first.`);
-  const { relays: configured } = JSON.parse(await readFile(RELAYS_PATH, "utf8")) as RelaysConfig;
-  const author = JSON.parse(await readFile(AUTHOR_PATH, "utf8")) as { pubkey_hex: string };
+  const stored: unknown = JSON.parse(await readFile(join(issueDir, "receipts.json"), "utf8"));
+  assertCurrentReceiptSchema(stored);
+  const receipts = stored.acceptance;
+  const journal = await loadJournal(outDir, issue);
+  const articleEffect = journal.effects.article, announcementEffect = journal.effects.announcement;
+  if (articleEffect?.state !== "confirmed" || announcementEffect?.state !== "confirmed" || journal.effects.merge?.state !== "confirmed" || journal.effects.deploy?.state !== "confirmed" || !journal.pull_request?.merge_sha || !journal.deployment) throw new Error("Canonical journal does not confirm merge, deployment, and both Nostr events");
+  for (const [name, effect, filename] of [["article", articleEffect, "event.json"], ["announcement", announcementEffect, "announcement.json"]] as const) {
+    const bytes = await readFile(join(issueDir, filename));
+    if (!effect.payload_path || !effect.payload_sha256 || sha256(bytes) !== effect.payload_sha256 || effect.payload_path !== join(issueDir, filename)) throw new Error(`Canonical ${name} payload bytes do not match the journal`);
+  }
+  const article = JSON.parse(await readFile(join(issueDir, "event.json"), "utf8")) as { id: string; created_at: number; tags: string[][] };
+  const announcement = JSON.parse(await readFile(join(issueDir, "announcement.json"), "utf8")) as { id: string; created_at: number };
+  if (article.id !== articleEffect.event_id || announcement.id !== announcementEffect.event_id) throw new Error("Signed event IDs do not match the canonical journal");
+  const ledger: LedgerEntry = {
+    issue, event_id: article.id, announcement_id: announcement.id,
+    first_published_at: Number(article.tags.find((tag) => tag[0] === "published_at")?.[1] ?? article.created_at),
+    last_edited_at: article.created_at,
+    banner_url: article.tags.find((tag) => tag[0] === "image")?.[1] ?? "",
+    relays_ok: Object.entries(stored.readback.article).filter(([, row]) => row.found).map(([relay]) => relay),
+    relays_fail: Object.entries(stored.readback.article).filter(([, row]) => !row.found).map(([relay]) => relay),
+  };
+  const { relays: configured } = JSON.parse(await readFile(opts.relaysPath ?? RELAYS_PATH, "utf8")) as RelaysConfig;
+  const author = JSON.parse(await readFile(opts.authorPath ?? AUTHOR_PATH, "utf8")) as { pubkey_hex: string };
 
   const date = await resolveIssueDate(opts.compassDir, issue);
-  const acceptedDurable = receipts.article
-    .filter((r) => r.ok && !isBlaster(r.relay))
-    .map((r) => r.relay);
+  const readback: ReadbackRow[] = configured.filter((relay) => !isBlaster(relay)).map((relay) => ({
+    relay,
+    article: stored.readback.article[relay]?.found === true,
+    announcement: stored.readback.announcement[relay]?.found === true,
+  }));
+  const articleRecovered = readback.filter((row) => row.article).length;
+  const announcementRecovered = readback.filter((row) => row.announcement).length;
+  if (articleRecovered < stored.relay_floor || announcementRecovered < stored.relay_floor) throw new Error(`Retained readback floor is not met for both events: article=${articleRecovered}, announcement=${announcementRecovered}, floor=${stored.relay_floor}`);
 
   const { nip19 } = await import("nostr-tools");
   const hintRelays = configured.filter((r) => !isBlaster(r)).slice(0, 4);
@@ -545,13 +595,25 @@ export async function logIssue(
     /* the announcement file is optional evidence, not a blocker */
   }
 
-  const [pr, page, readback, prerequisites] = await Promise.all([
-    mergedPr(date),
-    pageStatus(date, metadata.title),
-    readbackAll(acceptedDurable, ledger.event_id, ledger.announcement_id),
-    gateStatus(opts.compassDir, date),
-  ]);
-  const deploy = await deployRunForCommit(pr?.mergeCommit ?? null);
+  const page = opts.pageEvidence ?? await pageStatus(date, metadata.title);
+  const pr = {
+    number: journal.pull_request.number,
+    mergeCommit: journal.pull_request.merge_sha,
+    mergedAt: null,
+  };
+  const deploy = {
+    id: String(journal.deployment.workflow_run_id),
+    conclusion: "success",
+  };
+  const prerequisites = [
+    `- Quality composite: \`${journal.effects.quality?.payload_path ?? "missing"}\` (${journal.effects.quality?.payload_sha256 ?? "missing"})`,
+    `- Feedback snapshot: \`${journal.effects.feedback?.payload_path ?? "missing"}\` (${journal.effects.feedback?.payload_sha256 ?? "missing"})`,
+    `- Edition authorization: \`${journal.effects.authorization?.payload_path ?? "missing"}\` (${journal.effects.authorization?.payload_sha256 ?? "missing"})`,
+  ];
+  for (const gate of ["quality", "feedback", "authorization"] as const) {
+    const effect = journal.effects[gate];
+    if (effect?.state !== "confirmed" || !effect.payload_path || !effect.payload_sha256 || sha256(await readFile(effect.payload_path)) !== effect.payload_sha256) throw new Error(`Canonical ${gate} receipt is missing or changed`);
+  }
 
   const body = renderLog({
     issue,
@@ -568,30 +630,55 @@ export async function logIssue(
     naddr,
     nevent,
     announcementCreatedAt,
+    relayFloor: stored.relay_floor,
   });
 
   const relPath = `data/newsletter_workspace/publish_log_${date}.md`;
-  const absPath = join(opts.compassDir, relPath);
-  const git = (...args: string[]) => run("git", ["-C", opts.compassDir, ...args]);
   const branch = `chore/publish-log-${date}`;
-
-  // Switch branches BEFORE writing. A log left in the tree by an earlier
-  // --no-log-pr run makes `git checkout -B` refuse, which silently skipped the
-  // PR step on the first real run.
+  const projectionIntent = sha256(stableJson({
+    issue, date, branch, body_sha256: sha256(body),
+    receipts_sha256: sha256(await readFile(join(issueDir, "receipts.json"))),
+    article_sha256: articleEffect.payload_sha256,
+    announcement_sha256: announcementEffect.payload_sha256,
+  }));
+  const priorProjection = journal.effects.log_projection;
+  if (priorProjection && priorProjection.intent_sha256 !== projectionIntent) throw new Error("Canonical log projection intent changed after projection started");
+  const logRoot = opts.logWorktreeRoot ?? process.env.COMPASS_LOG_WORKTREE_ROOT ?? join(opts.compassDir, "..", ".compass-log-worktrees");
+  const logDir = join(logRoot, `issue-${issue}`);
+  await mkdir(logRoot, { recursive: true });
   if (opts.openPr) {
-    await git("checkout", "--", relPath);
-    await git("fetch", "origin", "--quiet");
-    const co = await git("checkout", "-B", branch, "origin/main");
-    if (co.code !== 0) throw new Error(`git checkout failed: ${co.stderr.trim()}`);
+    const present = await command("git", ["-C", logDir, "rev-parse", "--is-inside-work-tree"]);
+    if (present.code !== 0) {
+      const fetch = await command("git", ["-C", opts.compassDir, "fetch", "origin", "--quiet"]);
+      if (fetch.code !== 0) throw new Error(`git fetch failed: ${fetch.stderr.trim()}`);
+      const addWorktree = await command("git", ["-C", opts.compassDir, "worktree", "add", "--force", "-B", branch, logDir, "origin/main"]);
+      if (addWorktree.code !== 0) throw new Error(`isolated log worktree creation failed: ${addWorktree.stderr.trim()}`);
+    } else {
+      const fetch = await command("git", ["-C", logDir, "fetch", "origin", "--quiet"]);
+      if (fetch.code !== 0) throw new Error(`isolated log worktree fetch failed: ${fetch.stderr.trim()}`);
+      const checkout = await command("git", ["-C", logDir, "checkout", "-B", branch, "origin/main"]);
+      if (checkout.code !== 0) throw new Error(`isolated log worktree reset failed: ${checkout.stderr.trim()}`);
+    }
   }
-  await mkdir(join(opts.compassDir, "data/newsletter_workspace"), { recursive: true });
+  const projectionRoot = opts.openPr ? logDir : opts.compassDir;
+  const absPath = join(projectionRoot, relPath);
+  const git = (...args: string[]) => command("git", ["-C", projectionRoot, ...args]);
+  await mkdir(join(projectionRoot, "data/newsletter_workspace"), { recursive: true });
   await writeAtomic(absPath, body);
-  console.log(`              wrote ${relPath}`);
+  await mutateJournal(outDir, issue, (current) => {
+    current.effects.log_projection = {
+      state: opts.openPr ? "attempted" : "prepared",
+      intent_sha256: projectionIntent,
+      payload_path: absPath,
+      payload_sha256: sha256(body),
+    };
+  });
+  console.log(`              wrote ${relPath} in ${projectionRoot}`);
 
   // Archive the signed events beside the other publication artifacts. This
   // directory is untracked by repo convention; the copy exists so the exact
   // signed bytes survive independently of publish/out/.
-  const archiveDir = join(opts.compassDir, "data/newsletter_workspace/published");
+  const archiveDir = join(projectionRoot, "data/newsletter_workspace/published");
   await mkdir(archiveDir, { recursive: true });
   for (const [src, dst] of [
     ["event.json", `${date}_30023.json`],
@@ -614,59 +701,69 @@ export async function logIssue(
   const diff = await git("diff", "--cached", "--quiet");
   if (diff.code === 0) {
     console.log("              log already matches main; nothing to push");
+    await mutateJournal(outDir, issue, (current) => {
+      current.effects.log_projection.state = "confirmed";
+      current.effects.log_projection.event_id = "already-on-main";
+    });
     return null;
   }
-  const commit = await git("commit", "-q", "-m", `Add Newsletter #${issue} publication log`);
-  if (commit.code !== 0) throw new Error(`git commit failed: ${commit.stderr.trim()}`);
-  const push = await git("push", "-q", "--force-with-lease", "-u", "origin", branch);
-  if (push.code !== 0) throw new Error(`git push failed: ${push.stderr.trim()}`);
 
-  const existing = await run("gh", [
-    "pr",
-    "list",
-    "--repo",
-    REPO,
-    "--head",
-    branch,
-    "--state",
-    "open",
-    "--json",
-    "number",
-  ]);
+  const markAmbiguous = async (error: Error) => mutateJournal(outDir, issue, (current) => {
+    current.effects.log_projection.state = "ambiguous";
+    current.effects.log_projection.error = error.message;
+  });
+  const findOpenPr = async (): Promise<number | null> => {
+    const result = await command("gh", ["pr", "list", "--repo", REPO, "--head", branch, "--state", "open", "--json", "number,headRefName,url"]);
+    if (result.code !== 0) throw new Error(`exact log PR readback failed: ${result.stderr.trim()}`);
+    let rows: { number: number; headRefName: string; url: string }[];
+    try { rows = JSON.parse(result.stdout); } catch { throw new Error("exact log PR readback returned malformed JSON"); }
+    if (!Array.isArray(rows) || rows.length > 1) throw new Error("exact log PR readback returned an ambiguous result set");
+    if (rows.length === 0) return null;
+    const row = rows[0];
+    if (!Number.isInteger(row.number) || row.headRefName !== branch || row.url !== `https://github.com/${REPO}/pull/${row.number}`) throw new Error("exact log PR readback did not match the projected branch and canonical URL");
+    return row.number;
+  };
+
   let prNumber: number | null = null;
   try {
-    const rows = JSON.parse(existing.stdout) as { number: number }[];
-    if (rows.length > 0) prNumber = rows[0].number;
-  } catch {
-    /* fall through to create */
+    const commit = await git("commit", "-q", "-m", `Add Newsletter #${issue} publication log`);
+    if (commit.code !== 0) throw new Error(`git commit failed: ${commit.stderr.trim()}`);
+    const push = await git("push", "-q", "--force-with-lease", "-u", "origin", branch);
+    if (push.code !== 0) throw new Error(`git push failed: ${push.stderr.trim()}`);
+
+    prNumber = await findOpenPr();
+    if (prNumber === null) {
+      await command("gh", [
+        "pr", "create", "--repo", REPO, "--head", branch,
+        "--title", `Add Newsletter #${issue} publication log`,
+        "--body", `Publication evidence for ${metadata.title}, projected by the publish pipeline's log stage from the schema-versioned per-edition journal, retained receipt bytes, and exact external readbacks.`,
+      ]);
+      // The create response is not evidence: success can lose its response and
+      // failure can happen after GitHub committed the PR. Reconcile by exact
+      // branch readback in either case.
+      prNumber = await findOpenPr();
+    }
+    if (prNumber === null) throw new Error("log projection push completed but exact pull-request identity could not be reconciled");
+  } catch (error) {
+    await markAmbiguous(error as Error);
+    throw error;
   }
-  if (prNumber === null) {
-    const created = await run("gh", [
-      "pr",
-      "create",
-      "--repo",
-      REPO,
-      "--head",
-      branch,
-      "--title",
-      `Add Newsletter #${issue} publication log`,
-      "--body",
-      `Publication evidence for ${metadata.title}, generated by the publish pipeline's log stage from \`publish/out/${issue}/receipts.json\`, \`publish/published.json\`, the GitHub deploy run, and a fresh exact-id relay readback.\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)`,
-    ]);
-    if (created.code !== 0) throw new Error(`gh pr create failed: ${created.stderr.trim()}`);
-    const m = created.stdout.match(/\/pull\/(\d+)/);
-    prNumber = m ? Number(m[1]) : null;
-  }
+
+  await mutateJournal(outDir, issue, (current) => {
+    current.effects.log_projection.state = "confirmed";
+    current.effects.log_projection.event_id = String(prNumber);
+    current.effects.log_projection.error = undefined;
+  });
 
   // Two distinct steps finished here, so both are announced: the deploy landed
   // and the log PR exists.
-  if (deploy !== null) {
+  if (opts.notify !== false && deploy !== null) {
     await notifyMilestone(issue, "deployed", [
       `Deploy ${runLink(deploy.id)} concluded \`${deploy.conclusion}\`.`,
       `Canonical page returned ${page}.`,
     ]);
   }
-  await notifyMilestone(issue, "log-pr-opened", [
+  if (opts.notify !== false) await notifyMilestone(issue, "log-pr-opened", [
     prNumber === null
       ? `Publication log written to \`${relPath}\`.`
       : `Publication log PR ${prLink(prNumber)} opened for \`${relPath}\`.`,
