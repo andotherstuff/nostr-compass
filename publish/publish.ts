@@ -30,7 +30,7 @@ import { parseIssue } from "./stages/parse.ts";
 import { signArticle } from "./stages/sign.ts";
 import { signAnnouncement } from "./stages/announce.ts";
 import { broadcastIssue } from "./stages/broadcast.ts";
-import { mergeIssue } from "./stages/merge.ts";
+import { mergeIssue, type PullRequestIdentity } from "./stages/merge.ts";
 import { logIssue } from "./stages/log.ts";
 import { IssueLock, validateNumber } from "./lib/safety.ts";
 import { closeBunker } from "./lib/bunker.ts";
@@ -49,6 +49,7 @@ type Args = {
   reallyBroadcast: boolean;
   reallyMerge: boolean;
   logPr: boolean;
+  prIdentity?: PullRequestIdentity;
 };
 
 function parseArgs(argv: string[]): Args {
@@ -58,6 +59,9 @@ function parseArgs(argv: string[]): Args {
   let reallyBroadcast = false;
   let reallyMerge = false;
   let logPr = true;
+  let prNumber: number | undefined;
+  let headSha: string | undefined;
+  let baseSha: string | undefined;
 
   for (let i = 2; i < argv.length; i++) {
     const a = argv[i];
@@ -83,6 +87,12 @@ function parseArgs(argv: string[]): Args {
       reallyMerge = true;
     } else if (a === "--no-log-pr") {
       logPr = false;
+    } else if (a === "--pr-number") {
+      prNumber = Number(argv[++i]);
+    } else if (a === "--head-sha") {
+      headSha = argv[++i];
+    } else if (a === "--base-sha") {
+      baseSha = argv[++i];
     } else if (a.startsWith("--")) {
       throw new Error(`Unknown flag: ${a}`);
     } else {
@@ -95,7 +105,10 @@ function parseArgs(argv: string[]): Args {
   }
   const issue = validateNumber(positional[0]);
 
-  return { issue, stage, dryRun, reallyBroadcast, reallyMerge, logPr };
+  const supplied = [prNumber !== undefined, headSha !== undefined, baseSha !== undefined];
+  if (supplied.some(Boolean) && !supplied.every(Boolean)) throw new Error("--pr-number, --head-sha, and --base-sha must be supplied together");
+  const prIdentity = supplied.every(Boolean) ? { number: prNumber!, head_sha: headSha!, base_sha: baseSha! } : undefined;
+  return { issue, stage, dryRun, reallyBroadcast, reallyMerge, logPr, prIdentity };
 }
 
 function usage(): string {
@@ -159,9 +172,9 @@ async function runBroadcast(issue: number, reallyBroadcast: boolean): Promise<vo
   ]);
 }
 
-async function runMerge(issue: number, reallyMerge: boolean): Promise<void> {
+async function runMerge(issue: number, reallyMerge: boolean, identity?: PullRequestIdentity): Promise<void> {
   console.log(`[5/6] MERGE         issue=${issue}`);
-  await mergeIssue(issue, { reallyMerge });
+  await mergeIssue(issue, { reallyMerge, identity });
   await notifyMilestone(issue, "merged", [
     "Newsletter PR squash-merged into `main`; the Pages deploy is running.",
   ]);
@@ -218,7 +231,7 @@ async function main() {
         console.log("The newsletter is on Nostr but the website will not update until merged.");
         return;
       }
-      await runMerge(args.issue, args.reallyMerge);
+      await runMerge(args.issue, args.reallyMerge, args.prIdentity);
       if (args.stage === "merge") return;
     }
 

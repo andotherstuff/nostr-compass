@@ -76,8 +76,13 @@ function sendToRelay(relay: string, event: SignedEvent): Promise<RelayReceipt> {
 export async function broadcastToRelays(
   event: SignedEvent,
   relays: string[],
+  onReceipt?: (receipt: RelayReceipt) => Promise<void> | void,
 ): Promise<RelayReceipt[]> {
-  return Promise.all(relays.map((r) => sendToRelay(r, event)));
+  return Promise.all(relays.map(async (relay) => {
+    const receipt = await sendToRelay(relay, event);
+    await onReceipt?.(receipt);
+    return receipt;
+  }));
 }
 
 export type MinimalEvent = {

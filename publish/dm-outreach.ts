@@ -44,7 +44,7 @@ if (process.env.COMPASS_PUBLISH_INVOCATION !== "manual") {
   process.exit(2);
 }
 
-import { access, readFile } from "node:fs/promises";
+import { readFile } from "node:fs/promises";
 import { join } from "node:path";
 import { spawn } from "node:child_process";
 import { decode } from "nostr-tools/nip19";
@@ -58,8 +58,10 @@ import {
   type SignedEvent,
 } from "./lib/bunker.ts";
 import { broadcastToRelays, queryNewest } from "./lib/relays.ts";
-import { writeAtomic } from "./lib/safety.ts";
+import { IssueLock, writeAtomic } from "./lib/safety.ts";
 import { countSentRows } from "./lib/outreach-report.ts";
+import { loadJournal } from "./lib/journal.ts";
+import { finishRecipient, markRecipientAttempt, prepareCampaign, recordRecipientReceipt, reuseOrBuildRecipient } from "./lib/outreach-journal.ts";
 import {
   buildOutreachMessage,
   filterRecipients,
@@ -445,8 +447,7 @@ type ReportRow = {
   reason?: string;
 };
 
-async function main() {
-  const args = parseArgs(process.argv);
+async function execute(args: ReturnType<typeof parseArgs>) {
   const suffix = outreachReportSuffix(args.onlyNames, args.reminder, args.rerecord);
   const outPath = join(
     OUT_DIR,
@@ -454,14 +455,6 @@ async function main() {
       ? `dm-outreach-${args.issue}${suffix}.json`
       : `dm-outreach-${args.issue}${suffix}-plan.json`,
   );
-  if (args.reallySend) {
-    try {
-      await access(outPath);
-      throw new Error(`Refusing to duplicate a completed campaign: ${outPath.replace(RUNTIME_ROOT + "/", "")}`);
-    } catch (error) {
-      if ((error as NodeJS.ErrnoException).code !== "ENOENT") throw error;
-    }
-  }
   const author = JSON.parse(await readFile(AUTHOR_PATH, "utf8")) as { npub: string; pubkey_hex: string };
   const relaysCfg = JSON.parse(await readFile(RELAYS_PATH, "utf8")) as { relays: string[] };
 
@@ -480,6 +473,15 @@ async function main() {
   }
 
   let { recipients, excludedNoDm } = await buildRecipients(args.issue, found);
+  const campaignIdentity = "review";
+  const campaignMessage = buildOutreachMessage(args);
+  await prepareCampaign({
+    outDir: OUT_DIR,
+    issue: args.issue,
+    identity: campaignIdentity,
+    message: campaignMessage,
+    recipients: recipients.map((recipient) => ({ npub: recipient.npub, names: recipient.names })),
+  });
   if (args.onlyNames.length > 0) {
     const scoped = filterRecipients([...recipients, ...excludedNoDm], args.onlyNames);
     const scopedNpubs = new Set(scoped.map((recipient) => recipient.npub));
@@ -505,47 +507,38 @@ async function main() {
   }));
 
   for (const r of recipients) {
-    const message = buildOutreachMessage(args);
     try {
+      const durable = (await loadJournal(OUT_DIR, args.issue)).outreach[campaignIdentity].recipients[r.npub].effect;
+      if (durable.state === "confirmed") {
+        const receipts = Object.values(durable.receipts ?? {});
+        report.push({ primaryName: r.primaryName, names: r.names, npub: r.npub, protocol: "skipped", status: "sent", relaysOk: receipts.filter((x) => x.ok).length, relaysTotal: receipts.length, eventId: durable.event_id, reason: "already confirmed; not resent" });
+        continue;
+      }
       const { protocol, relays } = await resolveTargetRelays(r.hex, relaysCfg.relays);
-
       if (!args.reallySend) {
         report.push({ primaryName: r.primaryName, names: r.names, npub: r.npub, protocol, status: "planned" });
         console.log(`  [plan]  ${protocol.padEnd(5)}  ${r.primaryName.padEnd(20)}  ${r.npub}`);
         continue;
       }
-
-      const event =
-        protocol === "nip17"
-          ? await buildGiftWrap(author.pubkey_hex, r.hex, message)
-          : await buildNip04Dm(author.pubkey_hex, r.hex, message);
-
-      const receipts = await broadcastToRelays(event, relays);
+      const event = await reuseOrBuildRecipient({
+        outDir: OUT_DIR, issue: args.issue, campaign: campaignIdentity, npub: r.npub,
+        intent: { protocol, relays, message: campaignMessage, recipient: r.hex, sender: author.pubkey_hex },
+        build: () => protocol === "nip17" ? buildGiftWrap(author.pubkey_hex, r.hex, campaignMessage) : buildNip04Dm(author.pubkey_hex, r.hex, campaignMessage),
+      });
+      await markRecipientAttempt(OUT_DIR, args.issue, campaignIdentity, r.npub);
+      let receipts;
+      try {
+        receipts = await broadcastToRelays(event, relays, (receipt) => recordRecipientReceipt(OUT_DIR, args.issue, campaignIdentity, r.npub, receipt));
+      } catch (error) {
+        await finishRecipient(OUT_DIR, args.issue, campaignIdentity, r.npub, "ambiguous", (error as Error).message);
+        throw error;
+      }
       const ok = receipts.filter((x) => x.ok).length;
-
-      report.push({
-        primaryName: r.primaryName,
-        names: r.names,
-        npub: r.npub,
-        protocol,
-        status: ok > 0 ? "sent" : "failed",
-        relaysOk: ok,
-        relaysTotal: relays.length,
-        eventId: event.id,
-        reason: ok === 0 ? "no relay accepted the event" : undefined,
-      });
-      console.log(
-        `  [${ok > 0 ? "sent" : "FAIL"}]  ${protocol.padEnd(5)}  ${r.primaryName.padEnd(20)}  ${ok}/${relays.length} relays  ${event.id.slice(0, 12)}`,
-      );
+      await finishRecipient(OUT_DIR, args.issue, campaignIdentity, r.npub, ok > 0 ? "confirmed" : "failed", ok === 0 ? "no relay accepted the event" : undefined);
+      report.push({ primaryName: r.primaryName, names: r.names, npub: r.npub, protocol, status: ok > 0 ? "sent" : "failed", relaysOk: ok, relaysTotal: relays.length, eventId: event.id, reason: ok === 0 ? "no relay accepted the event" : undefined });
+      console.log(`  [${ok > 0 ? "sent" : "FAIL"}]  ${protocol.padEnd(5)}  ${r.primaryName.padEnd(20)}  ${ok}/${relays.length} relays  ${event.id.slice(0, 12)}`);
     } catch (e) {
-      report.push({
-        primaryName: r.primaryName,
-        names: r.names,
-        npub: r.npub,
-        protocol: "skipped",
-        status: "failed",
-        reason: (e as Error).message,
-      });
+      report.push({ primaryName: r.primaryName, names: r.names, npub: r.npub, protocol: "skipped", status: "failed", reason: (e as Error).message });
       console.log(`  [FAIL]  ${"error".padEnd(5)}  ${r.primaryName.padEnd(20)}  ${(e as Error).message}`);
     }
   }
@@ -602,6 +595,17 @@ async function main() {
       ],
       { key: args.reminder ? "reminder" : args.rerecord ? "rerecord" : "campaign" },
     );
+  }
+}
+
+async function main() {
+  const args = parseArgs(process.argv);
+  if (!args.reallySend) return execute(args);
+  const lock = await IssueLock.acquire(args.issue, OUT_DIR);
+  try {
+    return await execute(args);
+  } finally {
+    await lock.release();
   }
 }
 

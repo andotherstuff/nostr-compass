@@ -1035,12 +1035,54 @@ def _completed_repo_keys(existing: dict) -> set[str]:
     return set(existing.get("projects", {})) | set(existing.get("fetched_repos", []))
 
 
+def parse_absolute_time(value: str) -> datetime:
+    """Parse an absolute RFC3339 timestamp (or UTC YYYY-MM-DD)."""
+    try:
+        parsed = datetime.fromisoformat(value.replace("Z", "+00:00"))
+    except ValueError as exc:
+        raise argparse.ArgumentTypeError(f"invalid absolute time {value!r}: {exc}") from exc
+    if parsed.tzinfo is None:
+        if re.fullmatch(r"\d{4}-\d{2}-\d{2}", value):
+            parsed = parsed.replace(tzinfo=timezone.utc)
+        else:
+            raise argparse.ArgumentTypeError("absolute timestamps must include a timezone")
+    return parsed.astimezone(timezone.utc)
+
+
+def resolve_window(args, now: Optional[datetime] = None) -> tuple[datetime, datetime]:
+    now = now or datetime.now(timezone.utc)
+    if args.since is not None or args.until is not None:
+        if args.since is None or args.until is None:
+            raise ValueError("--since and --until must be supplied together")
+        if args.since_days is not None:
+            raise ValueError("--since-days cannot be combined with --since/--until")
+        if args.since >= args.until:
+            raise ValueError("--since must be earlier than --until")
+        return args.since, args.until
+    return now - timedelta(days=args.since_days), now
+
+
+def _within_until(value: Optional[str], until: datetime) -> bool:
+    if not value:
+        return True
+    return datetime.fromisoformat(value.replace("Z", "+00:00")).astimezone(timezone.utc) <= until
+
+
+def bound_result_until(result: Optional[dict], until: datetime) -> Optional[dict]:
+    if result is None:
+        return None
+    fields = {"releases": "published_at", "merged_prs": "merged_at", "open_prs": "opened_at", "commits": "date"}
+    bounded = dict(result)
+    for family, field in fields.items():
+        bounded[family] = [item for item in result.get(family, []) if _within_until(item.get(field), until)]
+    return bounded if any(bounded.get(family) for family in fields) else None
+
+
 async def run(args, projects: list[dict]):
-    now = datetime.now(timezone.utc)
-    since_dt = now - timedelta(days=args.since_days)
+    since_dt, until_dt = resolve_window(args)
     since_ts = since_dt.isoformat()
 
-    output_path = args.output_dir / get_output_filename(since_dt, now)
+    output_path = args.output_dir / get_output_filename(since_dt, until_dt)
 
     already_fetched = set()
     all_projects = {}
@@ -1083,8 +1125,8 @@ async def run(args, projects: list[dict]):
                     "generated_at": datetime.now(timezone.utc).isoformat(),
                     "period": {
                         "start": since_dt.strftime("%Y-%m-%d"),
-                        "end": now.strftime("%Y-%m-%d"),
-                        "days": args.since_days,
+                        "end": until_dt.isoformat(),
+                        "days": (until_dt - since_dt).total_seconds() / 86400,
                     },
                     "summary": calculate_summary(all_projects),
                     "projects": all_projects,
@@ -1125,7 +1167,8 @@ async def run(args, projects: list[dict]):
             return
         async def fetch_one(project):
             try:
-                return project, await fetch_repo(client, project, since_ts, args.compact)
+                result = await fetch_repo(client, project, since_ts, args.compact)
+                return project, bound_result_until(result, until_dt)
             except Exception as exc:
                 return project, exc
 
@@ -1227,6 +1270,8 @@ def main():
         description="Fetch project updates from GitHub (async)"
     )
     parser.add_argument("--since-days", type=int, default=None)
+    parser.add_argument("--since", type=parse_absolute_time, help="absolute window start (RFC3339 or UTC YYYY-MM-DD)")
+    parser.add_argument("--until", type=parse_absolute_time, help="absolute window end (RFC3339 or UTC YYYY-MM-DD)")
     parser.add_argument("--output-dir", type=Path, default=DEFAULT_OUTPUT_DIR)
     parser.add_argument(
         "--projects-file", type=Path, default=PROJECT_ROOT / "data" / "projects.yml"
@@ -1255,7 +1300,14 @@ def main():
     )
     args.output_dir.mkdir(parents=True, exist_ok=True)
 
-    if args.since_days is None:
+    if args.since is not None or args.until is not None:
+        if args.since is None or args.until is None:
+            parser.error("--since and --until must be supplied together")
+        if args.since_days is not None:
+            parser.error("--since-days cannot be combined with --since/--until")
+        if args.since >= args.until:
+            parser.error("--since must be earlier than --until")
+    elif args.since_days is None:
         last_run = get_last_run_date(args.output_dir)
         if last_run:
             args.since_days = max(1, (datetime.now(timezone.utc) - last_run).days + 1)

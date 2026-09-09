@@ -17,6 +17,7 @@
 
 import { readFile } from "node:fs/promises";
 import { join } from "node:path";
+import { mutateJournal, sha256 } from "../lib/journal.ts";
 import { writeAtomic } from "../lib/safety.ts";
 
 const COVER_PATH = join(import.meta.dir, "..", "config/cover.json");
@@ -158,6 +159,13 @@ export async function parseIssue(issue: number): Promise<CompassMetadata> {
     join(OUT_DIR, String(issue), "metadata.json"),
     JSON.stringify(metadata, null, 2),
   );
+  await mutateJournal(OUT_DIR, issue, (journal) => {
+    const next = { path: sourcePath, sha256: sha256(raw) };
+    if (journal.source && journal.source.sha256 !== next.sha256 && Object.values(journal.effects).some((effect) => ["attempted", "ambiguous", "confirmed"].includes(effect.state))) {
+      throw new Error("Refusing changed publication source after downstream effects started");
+    }
+    journal.source = next;
+  });
 
   return metadata;
 }

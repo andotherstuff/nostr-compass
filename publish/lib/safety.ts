@@ -2,8 +2,9 @@
 // Same primitives as ~/blog/publish/lib/safety.ts, narrowed to Compass's
 // "newsletter number" identifier scheme.
 
-import { writeFile, rename, mkdir, open, stat, unlink } from "node:fs/promises";
+import { writeFile, rename, mkdir, open, stat, unlink, readFile } from "node:fs/promises";
 import { dirname, join } from "node:path";
+import { randomUUID } from "node:crypto";
 
 // Compass newsletters are identified by issue number (positive integer).
 const NUMBER_PATTERN = /^[1-9][0-9]{0,4}$/;
@@ -22,7 +23,7 @@ export async function writeAtomic(
   contents: string | Uint8Array,
 ): Promise<void> {
   await mkdir(dirname(path), { recursive: true });
-  const tmp = `${path}.tmp.${process.pid}.${Date.now()}`;
+  const tmp = `${path}.tmp.${process.pid}.${randomUUID()}`;
   await writeFile(tmp, contents);
   await rename(tmp, path);
 }
@@ -68,7 +69,19 @@ export class IssueLock {
 
 async function isLockStale(path: string): Promise<boolean> {
   try {
-    const s = await stat(path);
+    const [s, raw] = await Promise.all([stat(path), readFile(path, "utf8")]);
+    const match = raw.match(/^pid=([1-9][0-9]*) ts=([1-9][0-9]*)\n$/);
+    // A malformed lock has unknown ownership and therefore fails closed.
+    if (!match) return false;
+    const pid = Number(match[1]);
+    try {
+      process.kill(pid, 0);
+      return false; // age alone never steals from a live local process
+    } catch (error) {
+      const code = (error as NodeJS.ErrnoException).code;
+      if (code === "EPERM") return false; // process exists but is not signalable
+      if (code !== "ESRCH") return false;
+    }
     return Date.now() - s.mtimeMs > 30 * 60 * 1000;
   } catch {
     return false;
