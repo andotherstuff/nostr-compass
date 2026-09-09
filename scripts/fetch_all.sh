@@ -102,6 +102,10 @@ SOURCE_FAMILIES=(projects nip-discussions nostr-recap shakespeare-apps nip34 zap
 MANIFEST_ARGS=()
 for family in "${SOURCE_FAMILIES[@]}"; do MANIFEST_ARGS+=(--expected "$family"); done
 python3 "$SCRIPT_DIR/source_run_manifest.py" create --manifest "$MANIFEST" --pass-id "$PASS_ID" --since "$RUN_SINCE" --until "$RUN_UNTIL" "${MANIFEST_ARGS[@]}"
+if python3 "$SCRIPT_DIR/source_run_manifest.py" verify-finalized --manifest "$MANIFEST"; then
+    echo "Exact source pass $PASS_ID is already finalized; retained collector and artifact hashes verified."
+    exit 0
+fi
 export COMPASS_WINDOW_SINCE="$RUN_SINCE" COMPASS_WINDOW_UNTIL="$RUN_UNTIL" COMPASS_SOURCE_PASS_ID="$PASS_ID"
 declare -A SOURCE_EXIT
 for family in "${SOURCE_FAMILIES[@]}"; do SOURCE_EXIT[$family]=127; done
@@ -118,11 +122,23 @@ echo ""
 FAILED=0
 SKIPPED=0
 
+source_done() {
+    local family="$1" receipt="$PROJECT_ROOT/data/source_runs/collector_${PASS_ID}_${family}.json"
+    if [ -f "$receipt" ] && python3 "$SCRIPT_DIR/source_run_manifest.py" ingest --manifest "$MANIFEST" --receipt "$receipt"; then
+        SOURCE_EXIT[$family]=0
+        echo "  Resumed: exact-pass receipt and retained artifact verified."
+        return 0
+    fi
+    return 1
+}
+
 # 1. GitHub project updates (Python)
 echo "[1/10] GitHub project updates..."
-if command -v python3 &>/dev/null; then
+if source_done projects; then
+    :
+elif command -v python3 &>/dev/null; then
     cd "$PROJECT_ROOT"
-    if python3 scripts/fetch_project_updates.py $PROJECT_ARG --fresh $VERBOSE; then
+    if python3 scripts/fetch_project_updates.py $PROJECT_ARG $VERBOSE; then
         SOURCE_EXIT[projects]=0
         echo "  Done."
     else
@@ -137,7 +153,9 @@ echo ""
 
 # 2. NIP discussions (Nostr relay via nak)
 echo "[2/10] NIP discussions from relays..."
-if command -v nak &>/dev/null; then
+if source_done nip-discussions; then
+    :
+elif command -v nak &>/dev/null; then
     if "$SCRIPT_DIR/fetch_nostr_nip_discussions.sh" $SINCE_ARG; then
         SOURCE_EXIT[nip-discussions]=0
         echo "  Done."
@@ -153,7 +171,9 @@ echo ""
 
 # 3. Nostr Recap weekly summaries (Nostr relay via nak)
 echo "[3/10] Nostr Recap summaries..."
-if command -v nak &>/dev/null; then
+if source_done nostr-recap; then
+    :
+elif command -v nak &>/dev/null; then
     if "$SCRIPT_DIR/fetch_nostr_recap.sh" $SINCE_ARG; then
         SOURCE_EXIT[nostr-recap]=0
         echo "  Done."
@@ -169,7 +189,9 @@ echo ""
 
 # 4. Shakespeare Apps / Soapbox MiniApps (Nostr relay via nak)
 echo "[4/10] Shakespeare Apps (Soapbox MiniApps)..."
-if command -v nak &>/dev/null; then
+if source_done shakespeare-apps; then
+    :
+elif command -v nak &>/dev/null; then
     if "$SCRIPT_DIR/fetch_shakespeare_apps.sh" $SINCE_ARG; then
         SOURCE_EXIT[shakespeare-apps]=0
         echo "  Done."
@@ -185,7 +207,9 @@ echo ""
 
 # 5. NIP-34 git repos (Nostr relay via nak)
 echo "[5/10] NIP-34 git repos..."
-if command -v nak &>/dev/null; then
+if source_done nip34; then
+    :
+elif command -v nak &>/dev/null; then
     if "$SCRIPT_DIR/fetch_nip34_repos.sh" $SINCE_ARG; then
         SOURCE_EXIT[nip34]=0
         echo "  Done."
@@ -201,7 +225,9 @@ echo ""
 
 # 6. Zapstore developer-signed releases (Nostr relay via nak)
 echo "[6/10] Zapstore releases..."
-if command -v nak &>/dev/null; then
+if source_done zapstore; then
+    :
+elif command -v nak &>/dev/null; then
     if "$SCRIPT_DIR/fetch_zapstore_releases.sh" $SINCE_ARG; then
         SOURCE_EXIT[zapstore]=0
         echo "  Done."
@@ -217,7 +243,9 @@ echo ""
 
 # 7. Untracked application candidates (GitHub + NIP-89 handlers + Zapstore listings)
 echo "[7/10] Untracked Nostr application discovery..."
-if command -v python3 &>/dev/null && command -v gh &>/dev/null && command -v nak &>/dev/null; then
+if source_done app-discovery; then
+    :
+elif command -v python3 &>/dev/null && command -v gh &>/dev/null && command -v nak &>/dev/null; then
     cd "$PROJECT_ROOT"
     if python3 scripts/fetch_app_discovery.py $SINCE_ARG; then
         SOURCE_EXIT[app-discovery]=0
@@ -234,7 +262,9 @@ echo ""
 
 # 8. Grantee heartbeat feeds (OpenSats nostr/general funds + Sovereign Engineering note)
 echo "[8/10] Grantee heartbeat feeds (OpenSats / Sovereign Engineering)..."
-if "$SCRIPT_DIR/fetch_heartbeats.sh" "$HB_SINCE" "$HB_UNTIL"; then
+if source_done heartbeats; then
+    :
+elif "$SCRIPT_DIR/fetch_heartbeats.sh" "$HB_SINCE" "$HB_UNTIL"; then
     SOURCE_EXIT[heartbeats]=0
     echo "  Done."
 else
@@ -248,7 +278,9 @@ ISSUE_MONTH="$(date -d "$NEWSLETTER_DATE" +%m)"
 ISSUE_YEAR="$(date -d "$NEWSLETTER_DATE" +%Y)"
 NEXT_WEEK_MONTH="$(date -d "$NEWSLETTER_DATE +7 days" +%m)"
 echo "[9/10] Month-end history candidates..."
-if [ "$ISSUE_MONTH" != "$NEXT_WEEK_MONTH" ]; then
+if source_done monthly-history; then
+    :
+elif [ "$ISSUE_MONTH" != "$NEXT_WEEK_MONTH" ]; then
     if python3 "$SCRIPT_DIR/fetch_monthly_history.py" \
         --month "$((10#$ISSUE_MONTH))" \
         --through-year "$ISSUE_YEAR"; then
@@ -266,7 +298,9 @@ echo ""
 
 # 10. Protocol/spec-family activity (GitHub)
 echo "[10/10] Specification families (NIP / BUD / NAP / Marmot / Gamma / Concord / NWC)..."
-if command -v python3 &>/dev/null && command -v gh &>/dev/null; then
+if source_done specs; then
+    :
+elif command -v python3 &>/dev/null && command -v gh &>/dev/null; then
     cd "$PROJECT_ROOT"
     SPEC_ARGS=()
     if [ -n "$SINCE_DAYS" ]; then

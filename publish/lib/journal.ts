@@ -13,6 +13,7 @@ export type Effect = {
   event_id?: string;
   receipts?: Record<string, { ok: boolean; reason?: string; ms: number; recorded_at: string }>;
   readbacks?: Record<string, { found: boolean; recorded_at: string }>;
+  disposition?: "no_dm" | "unknown_identity" | "missing_identity" | "no_nip17_inbox" | "failed" | "confirmed";
   error?: string;
 };
 export type PullRequestEvidence = {
@@ -51,7 +52,7 @@ export type OutreachCampaign = {
   identity: string;
   intent_sha256: string;
   message: string;
-  recipients: Record<string, { npub: string; names: string[]; effect: Effect }>;
+  recipients: Record<string, { npub?: string; names: string[]; effect: Effect }>;
 };
 
 export function sha256(value: string | Uint8Array): string {

@@ -8,10 +8,17 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 import json
 import re
 import subprocess
+import sys
 from datetime import date, datetime, time, timedelta, timezone
 import os
 from pathlib import Path
 from urllib.parse import urlsplit, urlunsplit
+
+sys.path.insert(0, str(Path(__file__).parent))
+from source_collector_receipt import emit_receipt, native_evidence, observed_page
+
+QUERY_PAGES: list[dict] = []
+ACTIVE_WINDOW: tuple[str, str] | None = None
 
 
 def normalize_url(value: object) -> str:
@@ -665,6 +672,11 @@ def run_github_search(
         payload = json.loads(proc.stdout)
         incomplete_results = incomplete_results or bool(payload.get("incomplete_results"))
         page_items = payload.get("items", [])
+        if ACTIVE_WINDOW:
+            total = min(int(payload.get("total_count", len(page_items))), 1000)
+            QUERY_PAGES.append(observed_page(source=source, count=len(page_items), cap=100,
+                exhausted=len(items) + len(page_items) >= total or len(page_items) < 100,
+                since=ACTIVE_WINDOW[0], until=ACTIVE_WINDOW[1], cursor=str(page)))
         for item in page_items:
             item["_discovery_sources"] = [source]
         items.extend(page_items)
@@ -698,13 +710,15 @@ def merge_github_results(result_sets: list[list[dict]]) -> list[dict]:
 
 
 def github_search_queries(since_day: str) -> list[tuple[str, str]]:
+    upper = f" pushed:<{ACTIVE_WINDOW[1]}" if ACTIVE_WINDOW else ""
+    created_upper = f" created:<{ACTIVE_WINDOW[1]}" if ACTIVE_WINDOW else ""
     return [
-        (f"topic:nostr pushed:>={since_day} archived:false fork:false", "github_topic_active"),
-        (f"nostr in:name,description created:>={since_day} archived:false fork:false", "github_text_new"),
+        (f"topic:nostr pushed:>={since_day}{upper} archived:false fork:false", "github_topic_active"),
+        (f"nostr in:name,description created:>={since_day}{created_upper} archived:false fork:false", "github_text_new"),
         # created:>= only ever sees brand-new repositories. A repository created
         # months ago that starts shipping this week is equally newsworthy, so
         # sweep on activity as well as on creation.
-        (f"nostr in:name,description pushed:>={since_day} archived:false fork:false", "github_text_active"),
+        (f"nostr in:name,description pushed:>={since_day}{upper} archived:false fork:false", "github_text_active"),
     ]
 
 
@@ -749,6 +763,11 @@ def fetch_owner_repositories(
         if proc.returncode != 0:
             raise RuntimeError(proc.stderr.strip() or f"gh exited {proc.returncode}")
         payload = json.loads(proc.stdout)
+        if ACTIVE_WINDOW:
+            QUERY_PAGES.append(observed_page(source=f"github-owner:{owner}",
+                count=len(payload) if isinstance(payload, list) else 0, cap=100,
+                exhausted=not payload or len(payload) < 100,
+                since=ACTIVE_WINDOW[0], until=ACTIVE_WINDOW[1], cursor=str(page)))
         if not isinstance(payload, list) or not payload:
             break
         stop = False
@@ -823,8 +842,11 @@ def query_relay_kind(
     max_pages: int = 5,
 ) -> list[dict]:
     events: list[dict] = []
-    until_timestamp: int | None = None
-    for _ in range(max_pages):
+    until_timestamp: int | None = (
+        int(datetime.fromisoformat(ACTIVE_WINDOW[1].replace("Z", "+00:00")).timestamp()) - 1
+        if ACTIVE_WINDOW else None
+    )
+    for page_number in range(max_pages):
         command = [
             "nak",
             "req",
@@ -859,12 +881,18 @@ def query_relay_kind(
                 event["_relay"] = relay
                 page.append(event)
         events.extend(page)
+        terminal = len(page) < page_size or bool(page and min(event["created_at"] for event in page) <= since_timestamp)
+        if ACTIVE_WINDOW:
+            QUERY_PAGES.append(observed_page(source=f"{relay}:kind-{kind}", count=len(page), cap=page_size,
+                exhausted=terminal, since=ACTIVE_WINDOW[0], until=ACTIVE_WINDOW[1], cursor=str(page_number + 1)))
         if len(page) < page_size:
             break
         oldest = min(int(event.get("created_at", 0)) for event in page)
         if oldest <= since_timestamp:
             break
         until_timestamp = oldest - 1
+    else:
+        raise RuntimeError(f"{relay} kind {kind} reached the {max_pages}-page safety cap")
     unique: dict[tuple[str, str], dict] = {}
     for event in events:
         unique[(event["id"], event["_relay"])] = event
@@ -943,16 +971,28 @@ def parse_args() -> argparse.Namespace:
 
 
 def main() -> int:
+    global ACTIVE_WINDOW
     args = parse_args()
-    today = date.fromisoformat(args.today) if args.today else datetime.now(timezone.utc).date()
-    since_day = today - timedelta(days=args.since_days)
-    since_dt = datetime.combine(since_day, time.min, timezone.utc)
+    started = datetime.now(timezone.utc).isoformat().replace("+00:00", "Z")
+    if os.environ.get("COMPASS_SOURCE_PASS_ID"):
+        since_value = os.environ["COMPASS_WINDOW_SINCE"]
+        until_value = os.environ["COMPASS_WINDOW_UNTIL"]
+        since_dt = datetime.fromisoformat(since_value.replace("Z", "+00:00"))
+        until_dt = datetime.fromisoformat(until_value.replace("Z", "+00:00"))
+        today = until_dt.date(); since_day = since_dt.date(); ACTIVE_WINDOW = (since_value, until_value)
+    else:
+        today = date.fromisoformat(args.today) if args.today else datetime.now(timezone.utc).date()
+        since_day = today - timedelta(days=args.since_days)
+        since_dt = datetime.combine(since_day, time.min, timezone.utc)
+        until_dt = datetime.combine(today, time.min, timezone.utc)
+    QUERY_PAGES.clear()
     source_errors: dict[str, list[str]] = {}
 
     tracked = parse_projects_index(args.projects_file.read_text())
 
     if args.github_fixture:
         github_items = load_json_list(args.github_fixture)
+        if ACTIVE_WINDOW: QUERY_PAGES.append(observed_page(source="github-fixture", count=len(github_items), cap=max(1, len(github_items)+1), exhausted=True, since=ACTIVE_WINDOW[0], until=ACTIVE_WINDOW[1]))
         github_errors: list[str] = []
     else:
         github_items, github_errors = fetch_github_discovery(since_day.isoformat(), tracked)
@@ -961,6 +1001,7 @@ def main() -> int:
 
     if args.nip89_fixture:
         nip89_events = load_json_list(args.nip89_fixture)
+        if ACTIVE_WINDOW: QUERY_PAGES.append(observed_page(source="nip89-fixture", count=len(nip89_events), cap=max(1, len(nip89_events)+1), exhausted=True, since=ACTIVE_WINDOW[0], until=ACTIVE_WINDOW[1]))
         nip89_errors: list[str] = []
         nip89_rejections: list[str] = []
     else:
@@ -972,6 +1013,7 @@ def main() -> int:
 
     if args.zapstore_fixture:
         zapstore_events = load_json_list(args.zapstore_fixture)
+        if ACTIVE_WINDOW: QUERY_PAGES.append(observed_page(source="zapstore-fixture", count=len(zapstore_events), cap=max(1, len(zapstore_events)+1), exhausted=True, since=ACTIVE_WINDOW[0], until=ACTIVE_WINDOW[1]))
         zapstore_errors: list[str] = []
         zapstore_rejections: list[str] = []
     else:
@@ -1041,6 +1083,19 @@ def main() -> int:
         )
         + "\n"
     )
+
+    if os.environ.get("COMPASS_SOURCE_PASS_ID"):
+        if source_errors:
+            return 1
+        raw = [(f"github:{item.get('id') or item.get('full_name')}") for item in github_items]
+        raw += [f"nip89:{event['id']}" for event in nip89_events]
+        raw += [f"zapstore:{event['id']}" for event in zapstore_events]
+        raw = sorted(set(raw))
+        dispositions = {candidate: {"decision": "include", "reason": "record was evaluated and retained by discovery collection"} for candidate in raw}
+        evidence = native_evidence(family="app-discovery", since=ACTIVE_WINDOW[0], until=ACTIVE_WINDOW[1], started=started,
+            pages=QUERY_PAGES, candidate_ids=raw, dispositions=dispositions,
+            query={"sources": ["github", "nip89", "zapstore"], "upper_bound_enforced": "server-or-collector"})
+        emit_receipt(family="app-discovery", artifact=output_path, collector=Path(__file__), evidence=evidence)
 
     print(f"App discovery candidates: {report['summary']['candidate_count']}")
     print(

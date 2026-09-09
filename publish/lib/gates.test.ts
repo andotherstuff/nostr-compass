@@ -7,19 +7,44 @@ import { QUALITY_ROLES, recordButtondownDisposition, recordCompositeQuality, rec
 
 async function fixture() { const out = await mkdtemp(join(tmpdir(), "compass-gates-")); const source = join(out, "source.md"); await writeFile(source, "content"); const journal = await loadOrCreateJournal(out, 1); journal.source = { path: source, sha256: sha256("content") }; journal.pull_request = { number: 1, head_sha: "a".repeat(40), base_sha: "b".repeat(40) }; await saveJournal(out, journal); return { out, source }; }
 const common = { schema_version: 1, verdict: "PASS", revision: "a".repeat(40), content_sha256: sha256("content"), input_sha256: "c".repeat(64), output_sha256: "d".repeat(64), checker_version: "checker-v1", provider: "provider", model: "model", checks: [{ command_sha256: "e".repeat(64), exit_code: 0, input_sha256: "c".repeat(64), output_sha256: "d".repeat(64) }], findings: [], unresolved_count: 0 };
+async function makeEditorialApproval(out: string) {
+  const source_freshness = [];
+  for (const family of ["projects", "nip-discussions", "nostr-recap", "shakespeare-apps", "nip34", "zapstore", "app-discovery", "heartbeats", "monthly-history", "specs"]) {
+    const status = family === "monthly-history" ? "not_applicable" : "complete";
+    const receipt = { family, pass_id: "pass-1", status, canonical_query: { since: "2026-09-01T16:00:00Z", until: "2026-09-08T16:00:00Z" }, pagination_complete: true, candidate_ids: [], dispositions: {} };
+    const receipt_path = join(out, `collector-${family}.json`); const raw = JSON.stringify(receipt); await writeFile(receipt_path, raw);
+    source_freshness.push({ family, pass_id: "pass-1", effective_since: receipt.canonical_query.since, effective_until: receipt.canonical_query.until, status, receipt_path, receipt_sha256: sha256(raw) });
+  }
+  return {
+  source_freshness,
+  practical_assessment: { question: "Which implementation path best fits Compass readers?", alternatives: [{ id: "a", evidence_url: "https://example.com/a" }, { id: "b", evidence_url: "https://example.com/b" }], selected: "a", rationale: "Primary evidence supports the selected interoperable path.", supporting_evidence_urls: ["https://example.com/evidence"], confidence: "high" },
+  deep_dive: { mode: "regular", nip: "NIP-57", merged: true, spec_url: "https://github.com/nostr-protocol/nips/blob/master/57.md", current_activity_url: "https://github.com/nostr-protocol/nips/commits/master/57.md", implementations: [{ name: "A", evidence_url: "https://example.com/impl-a" }, { name: "B", evidence_url: "https://example.com/impl-b" }, { name: "C", evidence_url: "https://example.com/impl-c" }] },
+  approved_by: "selection-review", approved_at: "2026-09-08T17:00:00Z",
+  } as const;
+}
 
 test("five structured role receipts produce a revision/content-bound composite", async () => {
-  const { out, source } = await fixture(); const paths: any = {};
-  for (const role of QUALITY_ROLES) { paths[role] = join(out, `${role}.json`); await writeFile(paths[role], JSON.stringify({ ...common, receipt_type: "quality-role", role, final: true }, null, 2)); }
+  const { out, source } = await fixture(); const paths: any = {}; const editorialApproval = await makeEditorialApproval(out);
+  for (const role of QUALITY_ROLES) { paths[role] = join(out, `${role}.json`); await writeFile(paths[role], JSON.stringify({ ...common, receipt_type: "quality-role", role, ...(role === "continuity_value" ? { editorial_approval: editorialApproval } : {}), final: true }, null, 2)); }
   const composite = await recordCompositeQuality(out, 1, source, paths); expect((await loadJournal(out, 1)).effects.quality.payload_path).toBe(composite);
   await writeFile(source, "changed"); await expect(recordCompositeQuality(out, 1, source, paths)).rejects.toThrow("content");
 });
 
 test("old PASS followed by FAIL cannot satisfy final-position enforcement", async () => {
-  const { out, source } = await fixture(); const paths: any = {};
-  for (const role of QUALITY_ROLES) { paths[role] = join(out, `${role}.json`); await writeFile(paths[role], JSON.stringify({ ...common, receipt_type: "quality-role", role, final: true }, null, 2)); }
+  const { out, source } = await fixture(); const paths: any = {}; const editorialApproval = await makeEditorialApproval(out);
+  for (const role of QUALITY_ROLES) { paths[role] = join(out, `${role}.json`); await writeFile(paths[role], JSON.stringify({ ...common, receipt_type: "quality-role", role, ...(role === "continuity_value" ? { editorial_approval: editorialApproval } : {}), final: true }, null, 2)); }
   await writeFile(paths.links, `${JSON.stringify({ ...common, receipt_type: "quality-role", role: "links", final: true })}\n${JSON.stringify({ ...common, receipt_type: "quality-role", role: "links", verdict: "FAIL", final: true })}`);
   await expect(recordCompositeQuality(out, 1, source, paths)).rejects.toThrow("one structured JSON object");
+});
+
+test("rejects shallow practical selection and a deep dive without three implementations", async () => {
+  const { out, source } = await fixture(); const paths: any = {}; const editorialApproval = await makeEditorialApproval(out);
+  for (const role of QUALITY_ROLES) {
+    const bad = role === "continuity_value" ? { ...editorialApproval, practical_assessment: { ...editorialApproval.practical_assessment, alternatives: [editorialApproval.practical_assessment.alternatives[0]] }, deep_dive: { ...editorialApproval.deep_dive, implementations: editorialApproval.deep_dive.implementations.slice(0, 2) } } : undefined;
+    paths[role] = join(out, `${role}.json`);
+    await writeFile(paths[role], JSON.stringify({ ...common, receipt_type: "quality-role", role, ...(bad ? { editorial_approval: bad } : {}), final: true }, null, 2));
+  }
+  await expect(recordCompositeQuality(out, 1, source, paths)).rejects.toThrow("continuity_value");
 });
 
 test("feedback snapshot binds material feedback and rejects holds", async () => {

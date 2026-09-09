@@ -1,12 +1,20 @@
 import { describe, expect, test } from "bun:test";
-import { gateStatus, isBlaster, matchesIssueTitle, renderLog, resolveIssueDate, selectDeployRun } from "./log.ts";
-import { mkdir, mkdtemp, rm, writeFile } from "node:fs/promises";
+import { assertCurrentReceiptSchema, gateStatus, isBlaster, logIssue, matchesIssueTitle, renderLog, resolveIssueDate, selectDeployRun } from "./log.ts";
+import { mkdir, mkdtemp, readFile, rm, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { spawnSync } from "node:child_process";
+import { loadOrCreateJournal, saveJournal, sha256 } from "../lib/journal.ts";
 
 const run = (cmd: string, args: string[]) =>
   Promise.resolve(spawnSync(cmd, args, { encoding: "utf8" }));
+
+describe("publication receipt schema", () => {
+  const current = { schema_version: 1, relay_floor: 5, acceptance: { article: [], announcement: [] }, readback: { article: {}, announcement: {} } };
+  test("accepts versioned acceptance and independent readback maps", () => expect(() => assertCurrentReceiptSchema(current)).not.toThrow());
+  test("rejects the obsolete article/announcement-only shape", () => expect(() => assertCurrentReceiptSchema({ article: [], announcement: [] })).toThrow("receipt schema"));
+  test("rejects a readback floor below five", () => expect(() => assertCurrentReceiptSchema({ ...current, relay_floor: 4 })).toThrow("receipt schema"));
+});
 
 
 const LEDGER = {
@@ -307,4 +315,94 @@ describe("gateStatus reads the run's worktree", () => {
     expect(lines[1]).toContain("missing");
     await rm(root, { recursive: true, force: true });
   });
+});
+
+describe("log projection restart reconciliation", () => {
+  test("uses an isolated worktree and reconciles an ambiguously created PR after restart", async () => {
+    const root = await mkdtemp(join(tmpdir(), "compass-log-e2e-"));
+    const origin = join(root, "origin.git");
+    const seed = join(root, "seed");
+    const compass = join(root, "compass");
+    const out = join(root, "out");
+    const worktrees = join(root, "log-worktrees");
+    const issue = 41;
+    const git = (cwd: string, ...args: string[]) => spawnSync("git", ["-C", cwd, ...args], { encoding: "utf8" });
+    try {
+      expect(spawnSync("git", ["init", "--bare", "-q", origin], { encoding: "utf8" }).status).toBe(0);
+      await mkdir(join(seed, "content/en/newsletters"), { recursive: true });
+      expect(git(seed, "init", "-q", "-b", "main").status).toBe(0);
+      expect(git(seed, "config", "user.email", "test@example.test").status).toBe(0);
+      expect(git(seed, "config", "user.name", "Test").status).toBe(0);
+      await writeFile(join(seed, "content/en/newsletters/2026-09-09-newsletter.md"), 'title: "Nostr Compass #41"\n');
+      expect(git(seed, "add", "-A").status).toBe(0);
+      expect(git(seed, "commit", "-qm", "main").status).toBe(0);
+      expect(git(seed, "remote", "add", "origin", origin).status).toBe(0);
+      expect(git(seed, "push", "-q", "origin", "main").status).toBe(0);
+      expect(spawnSync("git", ["--git-dir", origin, "symbolic-ref", "HEAD", "refs/heads/main"], { encoding: "utf8" }).status).toBe(0);
+      expect(spawnSync("git", ["clone", "-q", origin, compass], { encoding: "utf8" }).status).toBe(0);
+      expect(git(compass, "config", "user.email", "test@example.test").status).toBe(0);
+      expect(git(compass, "config", "user.name", "Test").status).toBe(0);
+
+      const issueDir = join(out, String(issue));
+      await mkdir(issueDir, { recursive: true });
+      const article = JSON.stringify({ id: "a".repeat(64), pubkey: "b".repeat(64), sig: "c".repeat(128), kind: 30023, created_at: 1, tags: [["d", `newsletter-${issue}`], ["published_at", "1"]], content: "article" });
+      const announcement = JSON.stringify({ id: "d".repeat(64), pubkey: "b".repeat(64), sig: "c".repeat(128), kind: 1, created_at: 2, tags: [], content: "announcement" });
+      await writeFile(join(issueDir, "metadata.json"), JSON.stringify({ title: `Nostr Compass #${issue}` }));
+      await writeFile(join(issueDir, "event.json"), article);
+      await writeFile(join(issueDir, "announcement.json"), announcement);
+      const relays = Array.from({ length: 5 }, (_, i) => `wss://relay-${i}.example`);
+      const accepted = relays.map((relay) => ({ relay, ok: true, ms: 1 }));
+      const found = Object.fromEntries(relays.map((relay) => [relay, { found: true, recorded_at: "2026-09-09T00:00:00Z" }]));
+      await writeFile(join(issueDir, "receipts.json"), JSON.stringify({ schema_version: 1, relay_floor: 5, acceptance: { article: accepted, announcement: accepted }, readback: { article: found, announcement: found } }));
+      const relaysPath = join(root, "relays.json");
+      const authorPath = join(root, "author.json");
+      await writeFile(relaysPath, JSON.stringify({ relays }));
+      await writeFile(authorPath, JSON.stringify({ pubkey_hex: "b".repeat(64) }));
+      const journal = await loadOrCreateJournal(out, issue);
+      journal.pull_request = { number: 10, head_sha: "1".repeat(40), base_sha: "2".repeat(40), merge_sha: "3".repeat(40), merge_tree_sha: "4".repeat(40) };
+      journal.deployment = { workflow_run_id: 12, workflow_url: "https://github.test/run/12", head_sha: "3".repeat(40), tree_sha: "4".repeat(40), page_url: "https://example.test/newsletter", content_sha256: "5".repeat(64), verified_at: "2026-09-09T00:00:00Z" };
+      journal.effects.article = { state: "confirmed", intent_sha256: "article", payload_path: join(issueDir, "event.json"), payload_sha256: sha256(article), event_id: "a".repeat(64) };
+      journal.effects.announcement = { state: "confirmed", intent_sha256: "announcement", payload_path: join(issueDir, "announcement.json"), payload_sha256: sha256(announcement), event_id: "d".repeat(64) };
+      journal.effects.merge = { state: "confirmed", intent_sha256: "merge", event_id: "3".repeat(40) };
+      journal.effects.deploy = { state: "confirmed", intent_sha256: "deploy", payload_sha256: "5".repeat(64), event_id: "12" };
+      for (const gate of ["quality", "feedback", "authorization"] as const) {
+        const path = join(root, `${gate}.txt`); await writeFile(path, "GATE: PASS\n");
+        journal.effects[gate] = { state: "confirmed", intent_sha256: gate, payload_path: path, payload_sha256: sha256("GATE: PASS\n") };
+      }
+      await saveJournal(out, journal);
+      const publicationTruth = JSON.stringify({ article: journal.effects.article, announcement: journal.effects.announcement, merge: journal.effects.merge, deploy: journal.effects.deploy });
+
+      let created = false;
+      let restarted = false;
+      const commandRunner = async (cmd: string, args: string[]) => {
+        if (cmd === "git") {
+          const result = spawnSync(cmd, args, { encoding: "utf8" });
+          return { ...result, code: result.status ?? 1, stdout: result.stdout ?? "", stderr: result.stderr ?? "" };
+        }
+        expect(cmd).toBe("gh");
+        if (args[1] === "create") { created = true; return { status: 1, code: 1, stdout: "", stderr: "response lost", signal: null }; }
+        if (!restarted && created) return { status: 1, code: 1, stdout: "", stderr: "transport lost", signal: null };
+        const row = { number: 77, headRefName: "chore/publish-log-2026-09-09", url: "https://github.com/andotherstuff/nostr-compass/pull/77" };
+        return { status: 0, code: 0, stdout: restarted ? JSON.stringify([row]) : "[]", stderr: "", signal: null };
+      };
+      const options = { compassDir: compass, openPr: true, outDir: out, relaysPath, authorPath, pageEvidence: "HTTP 200 and contained issue title", notify: false, commandRunner, logWorktreeRoot: worktrees };
+      await expect(logIssue(issue, options)).rejects.toThrow("exact log PR readback failed");
+      const ambiguous = JSON.parse(await readFile(join(issueDir, "state.json"), "utf8"));
+      expect(ambiguous.effects.log_projection.state).toBe("ambiguous");
+      expect(JSON.stringify({ article: ambiguous.effects.article, announcement: ambiguous.effects.announcement, merge: ambiguous.effects.merge, deploy: ambiguous.effects.deploy })).toBe(publicationTruth);
+      expect(await readFile(join(compass, "content/en/newsletters/2026-09-09-newsletter.md"), "utf8")).toContain("#41");
+      expect(git(compass, "status", "--porcelain").stdout).toBe("");
+
+      restarted = true;
+      expect(await logIssue(issue, options)).toBe(77);
+      const confirmed = JSON.parse(await readFile(join(issueDir, "state.json"), "utf8"));
+      expect(confirmed.effects.log_projection.state).toBe("confirmed");
+      expect(confirmed.effects.log_projection.event_id).toBe("77");
+      expect(JSON.stringify({ article: confirmed.effects.article, announcement: confirmed.effects.announcement, merge: confirmed.effects.merge, deploy: confirmed.effects.deploy })).toBe(publicationTruth);
+      expect(await readFile(join(worktrees, `issue-${issue}`, "data/newsletter_workspace/publish_log_2026-09-09.md"), "utf8")).toContain("GATE: PASS");
+      expect(git(compass, "status", "--porcelain").stdout).toBe("");
+    } finally {
+      await rm(root, { recursive: true, force: true });
+    }
+  }, 30_000);
 });

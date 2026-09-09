@@ -57,8 +57,10 @@ SINCE_DAYS=$(parse_since_days "$DEFAULT_DAYS" "$@")
 
 # Calculate time range
 SINCE_TS=$(calc_since_timestamp "$SINCE_DAYS")
+UNTIL_TS=$(calc_until_timestamp)
 START_DATE=$(calc_start_date "$SINCE_DAYS")
 END_DATE=$(get_today)
+QUERY_STARTED_AT=$(date -u +%Y-%m-%dT%H:%M:%SZ)
 
 echo "Fetching Nostr Recap posts from last $SINCE_DAYS days..."
 echo "  Time range: $START_DATE to $END_DATE"
@@ -68,6 +70,8 @@ mkdir -p "$OUTPUT_DIR"
 
 # Setup temp directory
 setup_temp_dir
+PAGES_FILE="$NOSTR_TEMP_DIR/pages.jsonl"
+: > "$PAGES_FILE"
 
 # Build relay arguments
 RELAY_ARGS=""
@@ -86,7 +90,19 @@ fetch_verified_kind() {
         --kind "$kind" \
         --author "$RECAP_PUBKEY" \
         --since "$SINCE_TS" \
-        $RELAY_ARGS 2>/dev/null > "$fetched" || true
+        --until "$UNTIL_TS" \
+        --limit 1000 \
+        $RELAY_ARGS 2>/dev/null > "$fetched"
+
+    local page_count
+    page_count=$(grep -cve '^[[:space:]]*$' "$fetched" || true)
+    local exhausted=true
+    [ "$page_count" -lt 1000 ] || exhausted=false
+    record_exact_page "$PAGES_FILE" "recap-kind-$kind" "" "$page_count" 1000 "$exhausted"
+    if [ "$exhausted" != true ]; then
+        echo "Nostr Recap query reached its 1000-event cap; pagination evidence is incomplete" >&2
+        return 1
+    fi
 
     while IFS= read -r event; do
         [ -n "$event" ] || continue
@@ -157,3 +173,19 @@ echo ""
 echo "Output saved to: $OUTPUT_FILE"
 echo "Events found: $(jq '.summary.total_events' "$OUTPUT_FILE")"
 echo "Invalid signatures rejected: $(jq '.summary.rejected_invalid_signatures' "$OUTPUT_FILE")"
+
+if [ -n "${COMPASS_SOURCE_PASS_ID:-}" ]; then
+    EVIDENCE_FILE="$NOSTR_TEMP_DIR/source-evidence.json"
+    QUERY_FINISHED_AT=$(date -u +%Y-%m-%dT%H:%M:%SZ)
+    jq -n --arg since "$COMPASS_WINDOW_SINCE" --arg until "$COMPASS_WINDOW_UNTIL" \
+        --arg started "$QUERY_STARTED_AT" --arg finished "$QUERY_FINISHED_AT" \
+        --arg author "$RECAP_PUBKEY" --slurpfile pages "$PAGES_FILE" --slurpfile artifact "$OUTPUT_FILE" '
+        ($artifact[0].events | map(.id) | unique) as $ids |
+        {
+          effective_since:$since,effective_until:$until,query_started_at:$started,query_finished_at:$finished,
+          canonical_query:{family:"nostr-recap",since:$since,until:$until,author:$author,kinds:[1,30023],limit_per_kind:1000},
+          pages:($pages|flatten),failures:[],candidate_ids:$ids,
+          dispositions:($ids | map({key:.,value:{decision:"include",reason:"valid signed recap event retained in exact-window artifact"}}) | from_entries)
+        }' > "$EVIDENCE_FILE"
+    python3 "$SCRIPT_DIR/source_collector_receipt.py" --family nostr-recap --artifact "$OUTPUT_FILE" --collector "$0" --evidence "$EVIDENCE_FILE"
+fi

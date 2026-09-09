@@ -465,8 +465,14 @@ async function execute(args: ReturnType<typeof parseArgs>) {
     console.log(`             targeted follow-up: ${args.onlyNames.join(", ")}`);
   }
   const recipientManifest = recipients.map((recipient) => ({ npub: recipient.npub, names: recipient.names }));
-  await assertOutreachObligation({ outDir: OUT_DIR, issue: args.issue, campaign: campaignIdentity, prUrl: args.reviewUrl, newsletterUrl: args.newsletterUrl, podcastUrl: args.podcastUrl, recipients: recipientManifest });
-  await prepareCampaign({ outDir: OUT_DIR, issue: args.issue, identity: campaignIdentity, message: campaignMessage, recipients: recipientManifest });
+  const binding = await assertOutreachObligation({ outDir: OUT_DIR, issue: args.issue, campaign: campaignIdentity, prUrl: args.reviewUrl, newsletterUrl: args.newsletterUrl, podcastUrl: args.podcastUrl, recipients: recipientManifest });
+  const campaignRecipients = [
+    ...recipientManifest,
+    ...excludedNoDm.map((recipient) => ({ npub: recipient.npub, names: recipient.names, disposition: "no_dm" as const, reason: "on the no_dm list in data/npubs.yml" })),
+    ...unresolved.map((entry) => ({ key: `identity:${sha256(`unknown:${entry.name}`)}`, names: [entry.name], disposition: "unknown_identity" as const, reason: entry.record.reason })),
+    ...missing.map((name) => ({ key: `identity:${sha256(`missing:${name}`)}`, names: [name], disposition: "missing_identity" as const, reason: "identity is missing from the verified mention registry" })),
+  ];
+  await prepareCampaign({ outDir: OUT_DIR, issue: args.issue, identity: campaignIdentity, message: campaignMessage, recipients: campaignRecipients, binding });
   console.log(`             ${recipients.length} unique recipients after dev-pairing augmentation`);
   if (excludedNoDm.length) {
     console.log(
@@ -493,7 +499,14 @@ async function execute(args: ReturnType<typeof parseArgs>) {
         report.push({ primaryName: r.primaryName, names: r.names, npub: r.npub, protocol: "skipped", status: "sent", relaysOk: receipts.filter((x) => x.ok).length, relaysTotal: receipts.length, eventId: durable.event_id, reason: "already confirmed; not resent" });
         continue;
       }
-      const { protocol, relays } = await resolveTargetRelays(r.hex);
+      let protocol: "nip17";
+      let relays: string[];
+      try {
+        ({ protocol, relays } = await resolveTargetRelays(r.hex));
+      } catch (error) {
+        await finishRecipient(OUT_DIR, args.issue, campaignIdentity, r.npub, "failed", (error as Error).message, "no_nip17_inbox");
+        throw error;
+      }
 
       const event = await reuseOrBuildRecipient({
         outDir: OUT_DIR, issue: args.issue, campaign: campaignIdentity, npub: r.npub,
@@ -526,9 +539,11 @@ async function execute(args: ReturnType<typeof parseArgs>) {
       }
       for (const relay of relays) await recordRecipientReadback(OUT_DIR, args.issue, campaignIdentity, r.npub, relay, await relayHasEvent(relay, event.id));
       const readbacks = (await loadJournal(OUT_DIR, args.issue)).outreach[campaignIdentity].recipients[r.npub].effect.readbacks ?? {}; const ok = Object.values(readbacks).filter((value) => value.found).length;
-      await finishRecipient(OUT_DIR, args.issue, campaignIdentity, r.npub, ok > 0 ? "confirmed" : "failed", ok === 0 ? "exact gift-wrap event not recovered from any declared inbox relay" : undefined);
+      await finishRecipient(OUT_DIR, args.issue, campaignIdentity, r.npub, ok > 0 ? "confirmed" : "failed", ok === 0 ? "exact gift-wrap event not recovered from any declared inbox relay" : undefined, ok === 0 ? "failed" : "confirmed");
       report.push({ primaryName: r.primaryName, names: r.names, npub: r.npub, protocol, status: ok > 0 ? "sent" : "failed", relaysOk: ok, relaysTotal: relays.length, eventId: event.id, reason: ok === 0 ? "exact event was not recovered" : undefined });
     } catch (e) {
+      const effect = (await loadJournal(OUT_DIR, args.issue)).outreach[campaignIdentity].recipients[r.npub].effect;
+      if (!["ambiguous", "confirmed", "failed"].includes(effect.state)) await finishRecipient(OUT_DIR, args.issue, campaignIdentity, r.npub, "failed", (e as Error).message, "failed");
       report.push({ primaryName: r.primaryName, names: r.names, npub: r.npub, protocol: "skipped", status: "failed", reason: (e as Error).message });
       console.log(`  [FAIL]  ${"error".padEnd(5)}  ${r.primaryName.padEnd(20)}  ${(e as Error).message}`);
     }

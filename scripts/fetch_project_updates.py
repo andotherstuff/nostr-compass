@@ -28,6 +28,42 @@ import time
 from datetime import datetime, timezone, timedelta
 from pathlib import Path
 from typing import Optional
+sys.path.insert(0, str(Path(__file__).parent))
+from source_collector_receipt import emit_receipt, native_evidence, observed_page
+
+QUERY_PAGES: list[dict] = []
+QUERY_DISPOSITIONS: dict[str, dict[str, str]] = {}
+ACTIVE_WINDOW: tuple[str, str] | None = None
+
+
+def _observe_response(endpoint: str, response) -> None:
+    if ACTIVE_WINDOW is None:
+        return
+    try:
+        data = response.json()
+    except (ValueError, json.JSONDecodeError):
+        raise RuntimeError(f"invalid JSON from {endpoint}")
+    rows = data if isinstance(data, list) else ([data] if isinstance(data, dict) else [])
+    match = re.search(r"(?:per_page|limit)=(\d+)", endpoint)
+    if isinstance(data, list) and match is None:
+        raise RuntimeError(f"paginated collection endpoint lacks an explicit page cap: {endpoint}")
+    cap = int(match.group(1)) if match else 1  # object endpoints return one identified resource
+    if len(rows) > cap:
+        raise RuntimeError(f"page count exceeds declared cap for {endpoint}")
+    next_link = response.headers.get("link", "")
+    exhausted = 'rel="next"' not in next_link
+    QUERY_PAGES.append(observed_page(source=endpoint.split("?", 1)[0], count=len(rows), cap=cap,
+        exhausted=exhausted, since=ACTIVE_WINDOW[0], until=ACTIVE_WINDOW[1], cursor=endpoint))
+    for index, row in enumerate(rows):
+        raw_id = row.get("id") or row.get("sha") or row.get("number") or index
+        candidate = f"{endpoint.split('?',1)[0]}:{raw_id}"
+        QUERY_DISPOSITIONS[candidate] = {"decision": "include", "reason": "record was evaluated by the exact-window project collector"}
+
+
+def _request_failure(message: str):
+    if ACTIVE_WINDOW:
+        raise RuntimeError(message)
+    return None
 
 try:
     import yaml
@@ -233,7 +269,7 @@ class GitHubClient:
                         f"  Warning: Request failed for {endpoint}: {e}",
                         file=sys.stderr,
                     )
-                return None
+                return _request_failure(f"request failed for {endpoint}: {e}")
 
             await self._check_rate_limit(resp.headers)
 
@@ -256,8 +292,8 @@ class GitHubClient:
                         httpx.TimeoutException,
                         httpx.ConnectError,
                         httpx.RemoteProtocolError,
-                    ):
-                        return None
+                    ) as e:
+                        return _request_failure(f"retry failed for {endpoint}: {e}")
                     await self._check_rate_limit(resp.headers)
                 else:
                     if self.verbose:
@@ -265,7 +301,7 @@ class GitHubClient:
                             f"  Warning: 403 for {endpoint} (no reset header)",
                             file=sys.stderr,
                         )
-                    return None
+                    return _request_failure(f"HTTP 403 without reset for {endpoint}")
 
             if resp.status_code >= 400:
                 if self.verbose:
@@ -273,8 +309,9 @@ class GitHubClient:
                         f"  Warning: HTTP {resp.status_code} for {endpoint}",
                         file=sys.stderr,
                     )
-                return None
+                return _request_failure(f"HTTP {resp.status_code} for {endpoint}")
 
+            _observe_response(endpoint, resp)
             return resp
 
     async def get_json(self, endpoint: str) -> Optional[list | dict]:
@@ -287,7 +324,7 @@ class GitHubClient:
         try:
             return resp.json()
         except (json.JSONDecodeError, ValueError):
-            return None
+            return _request_failure(f"invalid JSON for {endpoint}")
 
     async def get_paginated(
         self, endpoint: str, since_dt: Optional[datetime] = None, stop_check=None
@@ -415,7 +452,7 @@ class GiteaClient:
                         f"  Warning: Gitea request failed for {self.host}{endpoint}: {e}",
                         file=sys.stderr,
                     )
-                return None
+                return _request_failure(f"Gitea request failed for {self.host}{endpoint}: {e}")
 
             if resp.status_code == 404:
                 return resp
@@ -425,7 +462,8 @@ class GiteaClient:
                         f"  Warning: Gitea HTTP {resp.status_code} for {self.host}{endpoint}",
                         file=sys.stderr,
                     )
-                return None
+                return _request_failure(f"Gitea HTTP {resp.status_code} for {self.host}{endpoint}")
+            _observe_response(f"{self.host}{endpoint}", resp)
             return resp
 
     async def get_json(self, endpoint: str) -> Optional[list | dict]:
@@ -437,7 +475,7 @@ class GiteaClient:
         try:
             return resp.json()
         except (json.JSONDecodeError, ValueError):
-            return None
+            return _request_failure(f"invalid Gitea JSON for {self.host}{endpoint}")
 
     @staticmethod
     def _parse_next_link(_link_header: str) -> Optional[str]:
@@ -1079,8 +1117,15 @@ def bound_result_until(result: Optional[dict], until: datetime) -> Optional[dict
 
 
 async def run(args, projects: list[dict]):
+    global ACTIVE_WINDOW
     since_dt, until_dt = resolve_window(args)
     since_ts = since_dt.isoformat()
+    pass_since = since_dt.isoformat().replace("+00:00", "Z")
+    pass_until = until_dt.isoformat().replace("+00:00", "Z")
+    ACTIVE_WINDOW = (pass_since, pass_until) if os.environ.get("COMPASS_SOURCE_PASS_ID") else None
+    QUERY_PAGES.clear()
+    QUERY_DISPOSITIONS.clear()
+    query_started = datetime.now(timezone.utc).isoformat().replace("+00:00", "Z")
 
     output_path = args.output_dir / get_output_filename(since_dt, until_dt)
 
@@ -1091,6 +1136,9 @@ async def run(args, projects: list[dict]):
         if existing:
             all_projects = existing.get("projects", {})
             already_fetched = _completed_repo_keys(existing)
+            evidence = existing.get("_collector_evidence", {})
+            QUERY_PAGES.extend(evidence.get("pages", []))
+            QUERY_DISPOSITIONS.update(evidence.get("dispositions", {}))
             if already_fetched:
                 print(
                     f"Resuming: {len(already_fetched)} repos already fetched (use --fresh to restart)"
@@ -1116,6 +1164,7 @@ async def run(args, projects: list[dict]):
     sys.stdout.flush()
 
     fetched_repos = set(already_fetched)
+    failed_repos: list[str] = []
 
     def save_progress():
         temp_path = output_path.with_suffix(output_path.suffix + ".tmp")
@@ -1134,6 +1183,7 @@ async def run(args, projects: list[dict]):
                     # no-activity fetches. Keep a separate completion journal
                     # so restarts do not spend API quota fetching them again.
                     "fetched_repos": sorted(fetched_repos),
+                    "_collector_evidence": {"pages": QUERY_PAGES, "dispositions": QUERY_DISPOSITIONS},
                 },
                 f,
                 indent=2,
@@ -1179,6 +1229,7 @@ async def run(args, projects: list[dict]):
             repo_key = _repo_key(project)
             completed[0] += 1
             if isinstance(result, Exception):
+                failed_repos.append(repo_key)
                 if args.verbose:
                     print(
                         f"  [{completed[0]}/{total}] {project['name']} ({repo_key}): ERROR - {result}",
@@ -1253,6 +1304,19 @@ async def run(args, projects: list[dict]):
         )
         sys.exit(130)
 
+    if failed_repos:
+        raise RuntimeError(f"partial project collection failed for: {', '.join(sorted(failed_repos))}")
+    if os.environ.get("COMPASS_SOURCE_PASS_ID"):
+        if fetched_repos != {_repo_key(project) for project in projects}:
+            raise RuntimeError("project collection incomplete; refusing exact-pass receipt")
+        evidence = native_evidence(
+            family="projects", since=pass_since, until=pass_until, started=query_started,
+            pages=QUERY_PAGES, candidate_ids=sorted(QUERY_DISPOSITIONS), dispositions=QUERY_DISPOSITIONS,
+            query={"repositories": sorted(_repo_key(project) for project in projects),
+                   "upper_bound_enforced": "collector", "resumable": True},
+        )
+        emit_receipt(family="projects", artifact=output_path, collector=Path(__file__), evidence=evidence)
+
     print_summary(
         {"projects": all_projects, "summary": calculate_summary(all_projects)},
         args.since_days,
@@ -1291,6 +1355,14 @@ def main():
         help=f"Max concurrent requests (default: {DEFAULT_CONCURRENCY})",
     )
     args = parser.parse_args()
+
+    if os.environ.get("COMPASS_SOURCE_PASS_ID"):
+        try:
+            args.since = parse_absolute_time(os.environ["COMPASS_WINDOW_SINCE"])
+            args.until = parse_absolute_time(os.environ["COMPASS_WINDOW_UNTIL"])
+        except KeyError as exc:
+            parser.error(f"incomplete Compass source-pass environment: {exc}")
+        args.since_days = None
 
     filter_projects = (
         [p.strip() for p in args.projects.split(",")] if args.projects else None

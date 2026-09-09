@@ -147,7 +147,9 @@ def fetch_text(url: str) -> str:
 
 
 def query_tagged_events(tags: list[str], since: str, until: str, relays: list[str]) -> list[dict]:
-    cmd = ["nak", "req", "-q", "-k", "1", "-s", since, "-u", until, "-l", "500"]
+    since_epoch = int(datetime.fromisoformat(since.replace("Z", "+00:00")).timestamp())
+    until_epoch = int(datetime.fromisoformat(until.replace("Z", "+00:00")).timestamp()) - 1
+    cmd = ["nak", "req", "-q", "-k", "1", "-s", str(since_epoch), "-u", str(until_epoch), "-l", "500"]
     for tag in tags:
         cmd.extend(["-t", f"t={tag}"])
     cmd.extend(relays)
@@ -162,6 +164,8 @@ def query_tagged_events(tags: list[str], since: str, until: str, relays: list[st
             continue
         if isinstance(event, dict) and event.get("id"):
             events.append(event)
+    if len(events) >= 500:
+        raise RuntimeError("Sovereign Engineering relay query reached its 500-event cap")
     return events
 
 
@@ -180,7 +184,7 @@ def collect(since: str, until: str, relays: list[str]) -> dict:
     tags = ["SovEng", "soveng"]
     if current_tag:
         tags.extend([current_tag, current_tag.lower()])
-    events = query_tagged_events(tags, since, inclusive_until(until), relays)
+    events = query_tagged_events(tags, since, until, relays)
     nostr = normalize_nostr_events(events, index["current_cohort"])
     return {
         "source": f"{BASE_URL}/projects",
@@ -190,6 +194,11 @@ def collect(since: str, until: str, relays: list[str]) -> dict:
             "tags": tags,
             "relays": relays,
             **nostr,
+        },
+        "_collector_evidence": {
+            "pages": [{"source": "sovereign-engineering-tagged-events", "cursor": None,
+                       "count": len(events), "cap": 500, "exhausted": True,
+                       "effective_since": since, "effective_until": until}]
         },
     }
 

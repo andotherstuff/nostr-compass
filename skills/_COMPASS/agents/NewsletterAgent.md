@@ -519,6 +519,39 @@ If no candidate qualifies this week, write: "Discovery slot: skipped (no candida
 
 **Output:** `data/newsletter_workspace/editorial_plan.md`
 
+### Machine-checkable selection approval (required)
+
+Selection must also supply the `editorial_approval` object consumed by the
+`continuity_value.json` quality receipt. A prose selection file alone is not an
+approval artifact. The object is exact-head input to the publication gate and
+must contain all of the following:
+
+- `source_freshness`: exactly one row for each of the ten source families in
+  the same finalized source pass (`projects`, `nip-discussions`, `nostr-recap`,
+  `shakespeare-apps`, `nip34`, `zapstore`, `app-discovery`, `heartbeats`,
+  `monthly-history`, and `specs`). Each row records pass ID, effective
+  start/end, complete/empty/not-applicable status, retained receipt path,
+  and the SHA-256 of that collector's immutable receipt. The validator reads
+  every receipt back, verifies its hash/family/pass/window/pagination fields,
+  and requires one shared pass ID and window across all ten rows. Missing,
+  stale, conflicting, capped, or degraded evidence blocks approval.
+- `practical_assessment`: a concrete reader/developer question, at least two
+  evidence-linked alternatives, the selected alternative, rationale,
+  supporting primary-source URLs, and an explicit confidence level. Do not
+  encode “practical evaluation” as a checkbox or generic promise.
+- `deep_dive`: for a regular issue, a merged `NIP-N` identity, canonical spec
+  URL, current activity evidence, and at least three distinct named client/app
+  implementation evidence URLs. A single implementation, proposal, or stale
+  specification is ineligible. Month-end issues instead use the explicit
+  `monthly-history` disposition with its evidence URL.
+- `approved_by` and `approved_at`: identify the completed selection/review
+  decision. Review Swarm validates this object; it must not infer or backfill
+  missing facts from newsletter prose.
+
+The `publish/lib/gates.ts` validator rejects shallow alternative analysis,
+missing source families, and under-supported Deep Dives before the composite
+quality effect can become confirmed.
+
 ---
 
 ### Phase 3: Writing (Parallel Section Writers - Fresh Contexts)

@@ -91,6 +91,8 @@ START_DATE=$(calc_start_date "$SINCE_DAYS")
 END_DATE=$(get_today)
 OUTPUT_FILE="$OUTPUT_DIR/zapstore_${END_DATE}.json"
 SINCE_TIMESTAMP=$(calc_since_timestamp "$SINCE_DAYS")
+UNTIL_TIMESTAMP=$(calc_until_timestamp)
+QUERY_STARTED_AT=$(date -u +%Y-%m-%dT%H:%M:%SZ)
 # Persistent newness state must OUTLIVE the working tree.
 #
 # WHY: every newsletter runs in a fresh worktree created from origin/main, and
@@ -120,6 +122,8 @@ setup_temp_dir
 APPS_FILE="$NOSTR_TEMP_DIR/apps.json"
 RELEASES_FILE="$NOSTR_TEMP_DIR/releases.json"
 JOINED_FILE="$NOSTR_TEMP_DIR/joined.json"
+PAGES_FILE="$NOSTR_TEMP_DIR/pages.jsonl"
+: > "$PAGES_FILE"
 
 # Change A3: Nostr-relevance uses two signals, with the discrimination
 # coming from WHERE "nostr" appears (description text vs topic tags).
@@ -158,7 +162,7 @@ paged_fetch() {
     local page_size=50
     local page_sleep=2
     local max_pages=200  # 200 * 50 = 10000 events ceiling, far above any real run
-    local until_arg=""
+    local until_arg="--until $UNTIL_TIMESTAMP"
     local page=0
     local total=0
 
@@ -173,10 +177,11 @@ paged_fetch() {
 
     while [ "$page" -lt "$max_pages" ]; do
         local page_file="$NOSTR_TEMP_DIR/page_${kind}_${page}.ndjson"
-        nak req -k "$kind" $since_arg $until_arg --limit "$page_size" "$ZAPSTORE_RELAY" 2>/dev/null > "$page_file" || true
+        nak req -k "$kind" $since_arg $until_arg --limit "$page_size" "$ZAPSTORE_RELAY" 2>/dev/null > "$page_file"
         local got=$(wc -l < "$page_file")
 
         if [ "$got" -eq 0 ]; then
+            if [ -n "$since" ]; then record_exact_page "$PAGES_FILE" "zapstore-kind-$kind" "$page" 0 "$page_size" true; fi
             break
         fi
 
@@ -193,16 +198,25 @@ paged_fetch() {
 
         # Stop if since boundary crossed
         if [ -n "$since" ] && [ "$oldest" -le "$since" ]; then
+            record_exact_page "$PAGES_FILE" "zapstore-kind-$kind" "$page" "$got" "$page_size" true
             break
         fi
 
         # Stop if page wasn't full (relay had nothing more)
         if [ "$got" -lt "$page_size" ]; then
+            if [ -n "$since" ]; then record_exact_page "$PAGES_FILE" "zapstore-kind-$kind" "$page" "$got" "$page_size" true; fi
             break
         fi
 
+        if [ -n "$since" ]; then record_exact_page "$PAGES_FILE" "zapstore-kind-$kind" "$page" "$got" "$page_size" false; fi
+
         sleep "$page_sleep"
     done
+
+    if [ "$page" -ge "$max_pages" ]; then
+        echo "Zapstore kind $kind reached the $max_pages-page safety cap" >&2
+        return 1
+    fi
 
     if [ -s "$accum" ]; then
         jq -s 'unique_by(.id)' "$accum" > "$out"
@@ -694,6 +708,20 @@ main() {
     apply_newness_gate
     save_output
     print_summary
+
+    if [ -n "${COMPASS_SOURCE_PASS_ID:-}" ]; then
+        local evidence="$NOSTR_TEMP_DIR/source-evidence.json" finished
+        finished=$(date -u +%Y-%m-%dT%H:%M:%SZ)
+        jq -n --arg since "$COMPASS_WINDOW_SINCE" --arg until "$COMPASS_WINDOW_UNTIL" \
+          --arg started "$QUERY_STARTED_AT" --arg finished "$finished" \
+          --slurpfile pages "$PAGES_FILE" --slurpfile raw "$RELEASES_FILE" --slurpfile kept "$JOINED_FILE" '
+          ($raw[0]|map(.id)|unique) as $ids | ($kept[0]|map(.release_id)|unique) as $included |
+          {effective_since:$since,effective_until:$until,query_started_at:$started,query_finished_at:$finished,
+           canonical_query:{family:"zapstore",since:$since,until:$until,relay:"wss://relay.zapstore.dev",kind:30063,page_size:50},
+           pages:($pages|flatten),failures:[],candidate_ids:$ids,
+           dispositions:($ids|map(. as $id|{key:$id,value:(if ($included|index($id)) then {decision:"include",reason:"developer-signed release retained after relevance gates"} else {decision:"skip",reason:"release failed app join, signature, or relevance gates"} end)})|from_entries)}' > "$evidence"
+        python3 "$SCRIPT_DIR/source_collector_receipt.py" --family zapstore --artifact "$OUTPUT_FILE" --collector "$0" --evidence "$evidence"
+    fi
 }
 
 main "$@"
