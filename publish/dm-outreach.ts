@@ -51,10 +51,10 @@ import {
 } from "./lib/bunker.ts";
 import { broadcastToRelays, relayHasEvent } from "./lib/relays.ts";
 import { resolveNip17Inbox } from "./lib/inbox-relays.ts";
-import { IssueLock, writeAtomic } from "./lib/safety.ts";
+import { IssueLock, validateNumber, writeAtomic } from "./lib/safety.ts";
 import { countSentRows } from "./lib/outreach-report.ts";
-import { loadJournal } from "./lib/journal.ts";
-import { finishRecipient, markRecipientAttempt, prepareCampaign, recordRecipientReadback, recordRecipientReceipt, reuseOrBuildRecipient } from "./lib/outreach-journal.ts";
+import { loadJournal, sha256 } from "./lib/journal.ts";
+import { assertOutreachObligation, finishRecipient, markRecipientAttempt, prepareCampaign, recordRecipientReadback, recordRecipientReceipt, reuseOrBuildRecipient } from "./lib/outreach-journal.ts";
 import {
   buildOutreachMessage,
   filterRecipients,
@@ -130,7 +130,7 @@ function parseArgs(argv: string[]): Args {
   if (podcastCampaign && (!newsletterUrl || !podcastUrl)) throw new Error("Podcast campaigns require --newsletter-url and a verified --podcast-url together.");
   if (!podcastCampaign && !reviewUrl) throw new Error("Review campaigns require --pr-url.");
   if (reminder || rerecord) throw new Error("Reminder and rerecord sends are not authorized; use a separately journaled correction effect.");
-  return { issue: parseInt(positional[0], 10), reviewUrl, newsletterUrl, podcastUrl, podcastTime, reminder, rerecord, reallySend, onlyNames };
+  return { issue: validateNumber(positional[0]), reviewUrl, newsletterUrl, podcastUrl, podcastTime, reminder, rerecord, reallySend, onlyNames };
 }
 
 // ---------------------------------------------------------------------------
@@ -457,17 +457,6 @@ async function execute(args: ReturnType<typeof parseArgs>) {
     console.log("Preview complete: zero journal, file, signer, relay, or notification mutation.");
     return;
   }
-  const before = await loadJournal(OUT_DIR, args.issue); const obligation = before.effects[`outreach:${campaignIdentity}`];
-  if (obligation?.state !== "confirmed") throw new Error(`Missing journaled ${campaignIdentity} outreach obligation`);
-  if (!podcastCampaign && obligation.event_id !== args.reviewUrl) throw new Error("Review outreach obligation does not match the exact PR URL/head campaign");
-  if (podcastCampaign && (before.effects.podcast_access?.state !== "confirmed" || before.effects.podcast_access.event_id !== before.pull_request?.merge_sha)) throw new Error("Podcast outreach requires signature-verified Logbook access/PWA readiness bound to the merge SHA");
-  await prepareCampaign({
-    outDir: OUT_DIR,
-    issue: args.issue,
-    identity: campaignIdentity,
-    message: campaignMessage,
-    recipients: recipients.map((recipient) => ({ npub: recipient.npub, names: recipient.names })),
-  });
   if (args.onlyNames.length > 0) {
     const scoped = filterRecipients([...recipients, ...excludedNoDm], args.onlyNames);
     const scopedNpubs = new Set(scoped.map((recipient) => recipient.npub));
@@ -475,6 +464,9 @@ async function execute(args: ReturnType<typeof parseArgs>) {
     excludedNoDm = excludedNoDm.filter((recipient) => scopedNpubs.has(recipient.npub));
     console.log(`             targeted follow-up: ${args.onlyNames.join(", ")}`);
   }
+  const recipientManifest = recipients.map((recipient) => ({ npub: recipient.npub, names: recipient.names }));
+  await assertOutreachObligation({ outDir: OUT_DIR, issue: args.issue, campaign: campaignIdentity, prUrl: args.reviewUrl, newsletterUrl: args.newsletterUrl, podcastUrl: args.podcastUrl, recipients: recipientManifest });
+  await prepareCampaign({ outDir: OUT_DIR, issue: args.issue, identity: campaignIdentity, message: campaignMessage, recipients: recipientManifest });
   console.log(`             ${recipients.length} unique recipients after dev-pairing augmentation`);
   if (excludedNoDm.length) {
     console.log(
@@ -496,6 +488,7 @@ async function execute(args: ReturnType<typeof parseArgs>) {
     try {
       const durable = (await loadJournal(OUT_DIR, args.issue)).outreach[campaignIdentity].recipients[r.npub].effect;
       if (durable.state === "confirmed") {
+        if (!durable.payload_path || !durable.payload_sha256 || sha256(await readFile(durable.payload_path)) !== durable.payload_sha256) throw new Error("confirmed outreach payload bytes no longer match the journal");
         const receipts = Object.values(durable.receipts ?? {});
         report.push({ primaryName: r.primaryName, names: r.names, npub: r.npub, protocol: "skipped", status: "sent", relaysOk: receipts.filter((x) => x.ok).length, relaysTotal: receipts.length, eventId: durable.event_id, reason: "already confirmed; not resent" });
         continue;
@@ -507,10 +500,26 @@ async function execute(args: ReturnType<typeof parseArgs>) {
         intent: { protocol, relays, message: campaignMessage, recipient: r.hex, sender: author.pubkey_hex },
         build: () => buildGiftWrap(author.pubkey_hex, r.hex, campaignMessage),
       });
+      const retained = (await loadJournal(OUT_DIR, args.issue)).outreach[campaignIdentity].recipients[r.npub].effect;
+      const missingRelays: string[] = [];
+      if (["attempted", "ambiguous"].includes(retained.state)) {
+        for (const relay of relays) {
+          const found = await relayHasEvent(relay, event.id);
+          await recordRecipientReadback(OUT_DIR, args.issue, campaignIdentity, r.npub, relay, found);
+          if (!found) missingRelays.push(relay);
+        }
+        if (missingRelays.length === 0) {
+          await finishRecipient(OUT_DIR, args.issue, campaignIdentity, r.npub, "confirmed");
+          report.push({ primaryName: r.primaryName, names: r.names, npub: r.npub, protocol, status: "sent", relaysOk: relays.length, relaysTotal: relays.length, eventId: event.id, reason: "exact event recovered from every declared inbox relay; not resent" });
+          continue;
+        }
+      } else {
+        missingRelays.push(...relays);
+      }
       await markRecipientAttempt(OUT_DIR, args.issue, campaignIdentity, r.npub);
       let receipts;
       try {
-        receipts = await broadcastToRelays(event, relays, (receipt) => recordRecipientReceipt(OUT_DIR, args.issue, campaignIdentity, r.npub, receipt));
+        receipts = await broadcastToRelays(event, missingRelays, (receipt) => recordRecipientReceipt(OUT_DIR, args.issue, campaignIdentity, r.npub, receipt));
       } catch (error) {
         await finishRecipient(OUT_DIR, args.issue, campaignIdentity, r.npub, "ambiguous", (error as Error).message);
         throw error;

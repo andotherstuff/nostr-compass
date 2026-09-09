@@ -2,8 +2,49 @@ import { readFile } from "node:fs/promises";
 import { join } from "node:path";
 import type { SignedEvent } from "./bunker.ts";
 import type { RelayReceipt } from "./relays.ts";
-import { mutateJournal, mutateJournalAsync, sha256, stableJson, type OutreachCampaign } from "./journal.ts";
+import { loadJournal, mutateJournal, mutateJournalAsync, sha256, stableJson, type OutreachCampaign } from "./journal.ts";
 import { writeAtomic } from "./safety.ts";
+
+type OutreachObligation = {
+  schema_version: 1;
+  issue: number;
+  campaign: "review" | "podcast-invitation";
+  pr_url: string;
+  pr_number: number;
+  head_sha: string;
+  recipient_manifest_sha256: string;
+  newsletter_url?: string;
+  podcast_url?: string;
+  merge_sha?: string;
+  edition_date?: string;
+  section_target?: string;
+  access_manifest_sha256?: string;
+  access_signature?: string;
+  readiness_receipt_path?: string;
+  readiness_receipt_sha256?: string;
+  final: true;
+};
+
+export async function assertOutreachObligation(args: { outDir: string; issue: number; campaign: "review" | "podcast-invitation"; prUrl?: string; newsletterUrl?: string; podcastUrl?: string; recipients: { npub: string; names: string[] }[] }): Promise<void> {
+  const journal = await loadJournal(args.outDir, args.issue);
+  const effect = journal.effects[`outreach:${args.campaign}`];
+  if (effect?.state !== "confirmed" || !effect.payload_path || !effect.payload_sha256) throw new Error(`Missing journaled ${args.campaign} outreach obligation`);
+  const raw = await readFile(effect.payload_path, "utf8");
+  if (sha256(raw) !== effect.payload_sha256) throw new Error("Outreach obligation bytes changed");
+  let obligation: OutreachObligation;
+  try { obligation = JSON.parse(raw); } catch { throw new Error("Outreach obligation is not valid JSON"); }
+  const manifest = args.recipients
+    .map((recipient) => ({ npub: recipient.npub, names: [...recipient.names].sort() }))
+    .sort((a, b) => a.npub.localeCompare(b.npub));
+  if (obligation.schema_version !== 1 || obligation.final !== true || obligation.issue !== args.issue || obligation.campaign !== args.campaign || obligation.recipient_manifest_sha256 !== sha256(stableJson(manifest)) || obligation.pr_number !== journal.pull_request?.number || obligation.head_sha !== journal.pull_request?.head_sha || obligation.pr_url !== `https://github.com/andotherstuff/nostr-compass/pull/${obligation.pr_number}`) throw new Error("Outreach obligation does not match the exact PR/head/recipient manifest");
+  if (args.campaign === "review") {
+    if (!args.prUrl || obligation.pr_url !== args.prUrl) throw new Error("Review outreach obligation does not match the requested PR URL");
+    return;
+  }
+  if (journal.effects.podcast_access?.state !== "confirmed" || !journal.pull_request?.merge_sha || obligation.merge_sha !== journal.pull_request.merge_sha || obligation.newsletter_url !== args.newsletterUrl || obligation.podcast_url !== args.podcastUrl || !obligation.edition_date || !obligation.section_target || !/^[0-9a-f]{64}$/.test(obligation.access_manifest_sha256 ?? "") || !obligation.access_signature || !obligation.readiness_receipt_path || !/^[0-9a-f]{64}$/.test(obligation.readiness_receipt_sha256 ?? "")) throw new Error("Podcast outreach obligation is not bound to exact publication and Logbook access readiness");
+  const readiness = await readFile(obligation.readiness_receipt_path);
+  if (sha256(readiness) !== obligation.readiness_receipt_sha256 || journal.effects.podcast_access.payload_path !== obligation.readiness_receipt_path || journal.effects.podcast_access.payload_sha256 !== obligation.readiness_receipt_sha256) throw new Error("Podcast access readiness receipt bytes changed");
+}
 
 export async function prepareCampaign(args: { outDir: string; issue: number; identity: string; message: string; recipients: { npub: string; names: string[] }[] }): Promise<OutreachCampaign> {
   const intent = sha256(stableJson({ identity: args.identity, message: args.message }));

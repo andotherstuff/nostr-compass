@@ -95,7 +95,7 @@ export async function broadcastIssue(issue: number, reallyBroadcast: boolean, op
   const finalState = await loadJournal(outDir, issue);
   const articleReadback = Object.entries(finalState.effects.article.readbacks ?? {}).filter(([, receipt]) => receipt.found).map(([relay]) => relay);
   const announcementReadback = Object.entries(finalState.effects.announcement.readbacks ?? {}).filter(([, receipt]) => receipt.found).map(([relay]) => relay);
-  await writeAtomic(join(issueDir, "receipts.json"), JSON.stringify({ relay_floor: floor, acceptance: { article: articleReceipts, announcement: announcementReceipts }, readback: { article: finalState.effects.article.readbacks, announcement: finalState.effects.announcement.readbacks } }, null, 2));
+  await writeAtomic(join(issueDir, "receipts.json"), JSON.stringify({ schema_version: 1, relay_floor: floor, acceptance: { article: articleReceipts, announcement: announcementReceipts }, readback: { article: finalState.effects.article.readbacks, announcement: finalState.effects.announcement.readbacks } }, null, 2));
   const first_published_at = Number(article.tags.find((t) => t[0] === "published_at")?.[1] ?? article.created_at);
   const entry: PublishedEntry = { issue, event_id: article.id, announcement_id: announcement.id, first_published_at, last_edited_at: article.created_at, banner_url: article.tags.find((t) => t[0] === "image")?.[1] ?? "", relays_ok: articleReadback, relays_fail: durableRelays.filter((relay) => !articleReadback.includes(relay)) };
   const ledger = await readLedger(ledgerPath); const idx = ledger.findIndex((e) => e.issue === issue); if (idx >= 0) ledger[idx] = entry; else ledger.push(entry);
