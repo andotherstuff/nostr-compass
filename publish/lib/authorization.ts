@@ -21,6 +21,13 @@ type AuthorizationReceipt = {
   final: true;
 };
 
+async function assertCurrentGateEvidence(journal: Awaited<ReturnType<typeof loadJournal>>, headSha: string, operation: "merge" | "signing"): Promise<void> {
+  for (const gate of ["quality", "feedback"] as const) {
+    const effect = journal.effects[gate];
+    if (effect?.state !== "confirmed" || effect.event_id !== headSha || !effect.payload_path || !effect.payload_sha256 || sha256(await readFile(effect.payload_path)) !== effect.payload_sha256) throw new Error(`${operation} requires current exact-head ${gate} evidence`);
+  }
+}
+
 export async function recordEditionAuthorization(outDir: string, issue: number, receiptPath: string): Promise<void> {
   const raw = await readFile(receiptPath, "utf8");
   if (!/"final"\s*:\s*true\s*}\s*$/.test(raw)) throw new Error("authorization receipt must end with final:true");
@@ -63,10 +70,7 @@ export async function assertMergeAuthorized(outDir: string, issue: number, prosp
   if (now < new Date(auth.not_before) || new Date(auth.not_before).getUTCDay() !== 3 || new Date(auth.not_before).getUTCHours() < 16) throw new Error("merge is not admitted before Wednesday 16:00 UTC");
   if (auth.issue !== issue || auth.head_sha !== pr.head_sha || auth.base_sha !== pr.base_sha || auth.prospective_tree_sha !== prospectiveTree || auth.source_sha256 !== journal.source.sha256) throw new Error("merge authorization identity changed");
   if (sha256(await readFile(journal.source.path)) !== auth.source_sha256) throw new Error("publication source changed after authorization");
-  for (const gate of ["quality", "feedback"] as const) {
-    const effect = journal.effects[gate];
-    if (effect?.state !== "confirmed" || effect.event_id !== pr.head_sha || !effect.payload_path || !effect.payload_sha256 || sha256(await readFile(effect.payload_path)) !== effect.payload_sha256) throw new Error(`merge requires current exact-head ${gate} evidence`);
-  }
+  await assertCurrentGateEvidence(journal, pr.head_sha, "merge");
   if (new Date(auth.final_feedback_scan_at) < new Date(auth.not_before)) throw new Error("final feedback scan predates publication admission");
 }
 
@@ -74,10 +78,15 @@ export async function assertSigningAuthorized(outDir: string, issue: number, kin
   const journal = await loadJournal(outDir, issue), auth = journal.authorization;
   const effect = journal.effects.authorization;
   if (!auth || effect?.state !== "confirmed") throw new Error("signing requires a scoped journaled edition authorization");
-  if (!effect.payload_path || !effect.payload_sha256 || sha256(await readFile(effect.payload_path)) !== effect.payload_sha256 || effect.payload_sha256 !== auth.receipt_sha256) throw new Error("signing authorization receipt bytes changed");
+  if (!effect.payload_path || !effect.payload_sha256) throw new Error("signing authorization receipt bytes changed");
+  const receiptRaw = await readFile(effect.payload_path, "utf8");
+  let receipt: AuthorizationReceipt;
+  try { receipt = JSON.parse(receiptRaw); } catch { throw new Error("signing authorization receipt bytes changed"); }
+  if (sha256(receiptRaw) !== effect.payload_sha256 || effect.payload_sha256 !== auth.receipt_sha256 || effect.intent_sha256 !== sha256(stableJson(receipt)) || receipt.issue !== auth.issue || receipt.phase_id !== auth.phase_id || receipt.head_sha !== auth.head_sha || receipt.base_sha !== auth.base_sha || receipt.prospective_tree_sha !== auth.prospective_tree_sha || receipt.source_sha256 !== auth.source_sha256 || receipt.hold_version !== auth.hold_version || receipt.not_before !== auth.not_before || receipt.final_feedback_scan_at !== auth.final_feedback_scan_at || receipt.signer_pubkey !== auth.signer_pubkey || receipt.purpose !== auth.purpose || receipt.edition_date !== auth.edition_date || stableJson([...new Set(receipt.allowed_event_kinds)].sort((a, b) => a - b)) !== stableJson(auth.allowed_event_kinds)) throw new Error("signing authorization receipt bytes changed or no longer matches the current hold and edition identity");
   if (journal.effects.merge?.state !== "confirmed" || journal.effects.deploy?.state !== "confirmed") throw new Error("signing is not admitted before exact merge and deployment confirmation");
   if (auth.issue !== issue || auth.signer_pubkey !== signerPubkey || auth.purpose !== "weekly-publication" || !auth.allowed_event_kinds.includes(kind)) throw new Error("signing authorization does not cover this signer, purpose, or event kind");
-  if (now < new Date(auth.not_before) || auth.edition_date !== auth.not_before.slice(0, 10) || now.toISOString().slice(0, 10) !== auth.edition_date) throw new Error("signing authorization is not for the current admitted Wednesday occurrence");
+  if (now < new Date(auth.not_before) || auth.edition_date !== auth.not_before.slice(0, 10)) throw new Error("signing authorization is not for the current admitted Wednesday occurrence");
   if (!journal.pull_request || journal.pull_request.head_sha !== auth.head_sha || journal.pull_request.base_sha !== auth.base_sha || journal.pull_request.prospective_tree_sha !== auth.prospective_tree_sha || journal.source?.sha256 !== auth.source_sha256) throw new Error("signing authorization identity changed");
   if (sha256(await readFile(journal.source.path)) !== auth.source_sha256) throw new Error("publication source changed after signing authorization");
+  await assertCurrentGateEvidence(journal, auth.head_sha, "signing");
 }

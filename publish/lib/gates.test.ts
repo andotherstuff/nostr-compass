@@ -162,4 +162,21 @@ test("manifest cannot remove a candidate retained by its exact freshness receipt
   await expect(recordCompositeQuality(out, 1, source, paths)).rejects.toThrow("continuity_value");
 });
 
+test("coverage receipt cannot bless a candidate that fails deterministic selection policy", async () => {
+  const { out, source } = await fixture(); const paths: any = {}; const editorialApproval: any = await makeEditorialApproval(out);
+  const coveragePath = editorialApproval.selection_coverage.receipt_path; const coverage = JSON.parse(await Bun.file(coveragePath).text());
+  const ledger = JSON.parse(await Bun.file(coverage.ledger_path).text());
+  ledger.candidates = [{
+    candidate_id: "bad", name: "Bad", reason: "included despite failing every gate",
+    hard_gate: { primary_evidence: false, in_window_progress: false, nostr_surface: false, continuity_delta: false },
+    scores: { nostr_significance: 0, user_operator_impact: 0, novelty: 0, evidence_maturity: 0, explanatory_value: 0 },
+    triage: "GREEN", final_disposition: "include", primary_sources: [], draft_sources: [],
+  }];
+  const ledgerRaw = JSON.stringify(ledger); await writeFile(coverage.ledger_path, ledgerRaw); coverage.ledger_sha256 = sha256(ledgerRaw);
+  Object.assign(coverage, { editorial_candidate_count: 1, qualified_candidate_count: 1, selected_candidate_count: 1, skipped_candidate_count: 0 });
+  const coverageRaw = JSON.stringify(coverage); await writeFile(coveragePath, coverageRaw); editorialApproval.selection_coverage.receipt_sha256 = sha256(coverageRaw);
+  for (const role of QUALITY_ROLES) { paths[role] = join(out, `${role}.json`); await writeFile(paths[role], JSON.stringify({ ...common, receipt_type: "quality-role", role, ...(role === "continuity_value" ? { editorial_approval: editorialApproval } : {}), final: true }, null, 2)); }
+  await expect(recordCompositeQuality(out, 1, source, paths)).rejects.toThrow("continuity_value");
+});
+
 test("Buttondown is never implicit", async () => { const { out } = await fixture(); await expect(recordButtondownDisposition(out, 1, { status: "skipped", reason: "" })).rejects.toThrow("reason"); await recordButtondownDisposition(out, 1, { status: "skipped", reason: "operator did not authorize email" }); expect((await loadJournal(out, 1)).effects.buttondown.event_id).toBe("skipped"); });

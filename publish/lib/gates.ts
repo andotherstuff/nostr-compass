@@ -1,5 +1,7 @@
-import { readFile } from "node:fs/promises";
+import { mkdtemp, readFile, rm } from "node:fs/promises";
+import { tmpdir } from "node:os";
 import { join } from "node:path";
+import { fileURLToPath } from "node:url";
 import { loadJournal, mutateJournal, sha256, stableJson } from "./journal.ts";
 import { writeAtomic } from "./safety.ts";
 
@@ -29,6 +31,32 @@ async function parseFinal<T>(path: string): Promise<{ value: T; raw: string }> {
 function hash(value: unknown): boolean { return typeof value === "string" && /^[0-9a-f]{64}$/.test(value); }
 function commonValid(value: any): boolean {
   return value?.schema_version === 1 && /^(PASS|FAIL)$/.test(value.verdict) && /^[0-9a-f]{40}$/.test(value.revision) && hash(value.content_sha256) && hash(value.input_sha256) && typeof value.checker_version === "string" && value.checker_version.length > 0 && typeof value.provider === "string" && value.provider.length > 0 && typeof value.model === "string" && value.model.length > 0 && value.final === true;
+}
+async function selectionCoverageValid(coverage: any): Promise<boolean> {
+  const validationDir = await mkdtemp(join(tmpdir(), "compass-selection-validation-"));
+  const validationReceipt = join(validationDir, "receipt.json");
+  const checker = fileURLToPath(new URL("../../scripts/check_selection_coverage.py", import.meta.url));
+  try {
+    const process = Bun.spawn([
+      "python3", checker,
+      "--manifest", coverage.source_manifest_path,
+      "--ledger", coverage.ledger_path,
+      "--draft", coverage.draft_path,
+      "--receipt", validationReceipt,
+    ], { stdout: "pipe", stderr: "pipe" });
+    const [stdout, stderr, exitCode] = await Promise.all([
+      new Response(process.stdout).text(),
+      new Response(process.stderr).text(),
+      process.exited,
+    ]);
+    if (exitCode !== 0) return false;
+    let deterministic: unknown;
+    try { deterministic = JSON.parse(await readFile(validationReceipt, "utf8")); }
+    catch { return false; }
+    return stdout.startsWith("PASS: ") && stderr === "" && stableJson(deterministic) === stableJson(coverage);
+  } finally {
+    await rm(validationDir, { recursive: true, force: true });
+  }
 }
 async function roleEvidenceValid(value: RoleReceipt): Promise<boolean> {
   if (!(hash(value.output_sha256) && Array.isArray(value.checks) && value.checks.length > 0 && value.checks.every((check) => hash(check.command_sha256) && check.exit_code === 0 && hash(check.input_sha256) && hash(check.output_sha256)) && Array.isArray(value.findings) && value.findings.every((finding) => finding.id && finding.anchor && finding.resolution && finding.unresolved === false) && value.unresolved_count === 0)) return false;
@@ -67,7 +95,7 @@ async function roleEvidenceValid(value: RoleReceipt): Promise<boolean> {
     draftRaw = await readFile(coverage.draft_path, "utf8");
   } catch { return false; }
   const passId = [...freshness.values()][0]?.pass_id;
-  if (sha256(coverageRaw) !== coveragePointer.receipt_sha256 || coverage?.schema_version !== 1 || coverage.receipt_type !== "selection-coverage" || coverage.verdict !== "PASS" || coverage.checker_version !== "selection-coverage-v1" || coverage.source_pass_id !== passId || coverage.unresolved_count !== 0 || coverage.final !== true || sha256(manifestRaw) !== coverage.source_manifest_sha256 || sha256(ledgerRaw) !== coverage.ledger_sha256 || sha256(draftRaw) !== coverage.draft_sha256 || coverage.draft_sha256 !== value.content_sha256) return false;
+  if (sha256(coverageRaw) !== coveragePointer.receipt_sha256 || coverage?.schema_version !== 1 || coverage.receipt_type !== "selection-coverage" || coverage.verdict !== "PASS" || coverage.checker_version !== "selection-coverage-v1" || coverage.source_pass_id !== passId || coverage.unresolved_count !== 0 || coverage.final !== true || sha256(manifestRaw) !== coverage.source_manifest_sha256 || sha256(ledgerRaw) !== coverage.ledger_sha256 || sha256(draftRaw) !== coverage.draft_sha256 || coverage.draft_sha256 !== value.content_sha256 || !(await selectionCoverageValid(coverage))) return false;
   if (manifest?.schema_version !== 2 || manifest.pass_id !== passId || manifest.finalized !== true || !Array.isArray(manifest.expected_families) || new Set(manifest.expected_families).size !== SOURCE_FAMILIES.length || !SOURCE_FAMILIES.every((family) => manifest.expected_families.includes(family)) || typeof manifest.families !== "object" || manifest.families === null || Array.isArray(manifest.families) || new Set(Object.keys(manifest.families)).size !== SOURCE_FAMILIES.length || !SOURCE_FAMILIES.every((family) => Object.hasOwn(manifest.families, family))) return false;
   let retainedSourceCount = 0;
   for (const family of SOURCE_FAMILIES) {
