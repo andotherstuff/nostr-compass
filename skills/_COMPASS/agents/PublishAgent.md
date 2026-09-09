@@ -111,10 +111,13 @@ The publish does not proceed while there are unresolved missing npubs that the u
 Run the repository publication entry point with the exact recorded identity and
 the current authorization, feedback, and quality receipts. First call merge
 without mutation so it records the same prospective tree under the server
-current-base guard. Then call merge with `--really-merge`; it uses GitHub's
-expected-head precondition and refuses any PR, head, base, prospective-tree,
-authorization, hold, source, feedback, review, or CI mismatch. Never infer a PR
-from the current branch and never merge through an ad-hoc `gh pr merge` command.
+current-base guard when available. If repository-admin protection is unavailable,
+the pipeline verifies GitHub's exact prospective merge commit and uses a
+fast-forward git-ref compare-and-swap; Git rejects it if the base moved. Then call
+merge with `--really-merge`; either route refuses any PR, head, base,
+prospective-tree, authorization, hold, source, feedback, review, or CI mismatch.
+Never infer a PR from the current branch and never merge through an ad-hoc
+`gh pr merge` command.
 
 After the merge is authoritatively confirmed, run the deploy stage. It selects
 the Pages run attributable to the recorded merge SHA and verifies the canonical

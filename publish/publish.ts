@@ -273,7 +273,7 @@ async function main() {
         const preview = await previewMergeIssue(args.issue, { outDir: OUT_DIR, identity: args.prIdentity });
         if (!authorizationPreview || authorizationPreview.prospective_tree_sha !== preview.prospective_tree_sha) throw new Error("Read-only preview authorization does not match the exact prospective merge tree");
         if (new Date() < new Date(authorizationPreview.not_before)) throw new Error("Read-only preview is before the scoped Wednesday publication boundary");
-        console.log(`[dry-run] exact PR #${preview.number} ${preview.state}; head/base/prospective tree and server currentness gate verified`);
+        console.log(`[dry-run] exact PR #${preview.number} ${preview.state}; head/base/prospective tree and race-free currentness gate verified`);
         if (preview.state === "open") {
           if (args.stage === "all") console.log("[dry-run] merge would run next; deployment, signing, broadcast, and log remain downstream plans");
           return;

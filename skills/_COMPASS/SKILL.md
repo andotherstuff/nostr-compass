@@ -320,8 +320,8 @@ At 14:30 UTC, a broad delta pass starts across every relevant source family. At 
 The recurring Wednesday publication starts at or after 16:00 UTC. It requires current evidence-bearing full-refresh, broad-delta, cutoff, feedback, source, review, and exact-head CI receipts, the scoped edition authorization, and no authenticated hold/cancellation. It follows `agents/PublishAgent.md`. Steps:
 
 1. Recheck the strict UTC clock, authenticated hold version, scoped edition authorization, feedback snapshot, source digest, review evidence, exact-head CI, bunker config, and npubs.
-2. Re-read the recorded PR number and require the expected head SHA, base SHA, and prepared prospective merge tree under the server current-base guard.
-3. Merge with the expected-head precondition and verify the resulting merge tree.
+2. Re-read the recorded PR number and require the expected head SHA, base SHA, and prepared prospective merge tree under the race-free current-base guard.
+3. Prefer strict server status checks; when repository-admin protection is unavailable, use the pipeline's verified fast-forward git-ref compare-and-swap, which rejects a moved base. Verify the resulting merge tree in either case.
 4. Wait for and verify the Hugo deployment attributable to that merge SHA and the exact served content.
 5. Build the NIP-23 payload via `scripts/publish.ts`, then sign and broadcast kind:30023 via Amber to `publish/config/relays.json`, including `sendit.nosflare.com` only as a write-only NIP-66 blaster; recover the exact event from at least five durable relays.
 6. Sign and broadcast kind:1 to the same broad set and independently recover the exact event from at least five durable relays; blaster acceptance does not count as persistence.

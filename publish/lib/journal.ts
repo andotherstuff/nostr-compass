@@ -21,7 +21,7 @@ export type PullRequestEvidence = {
   head_sha: string;
   base_sha: string;
   prospective_tree_sha?: string;
-  base_guard?: { method: "branch-protection-strict"; base_ref: string; verified_at: string };
+  base_guard?: { method: "branch-protection-strict" | "git-ref-cas"; base_ref: string; verified_at: string };
   merge_sha?: string;
   merge_tree_sha?: string;
 };
