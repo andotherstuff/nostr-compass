@@ -109,17 +109,12 @@ signed events to `data/newsletter_workspace/published/<date>_{30023,1}.json`.
 
 ## Milestone notifications
 
-The pipeline posts one line per milestone (broadcast, merged, logged, and any
-halt) to the configured notification target. That target is already the
-single producer for this project's outcomes, so the pipeline posts into it
-instead of adding a second cron producer — AGENTS.md § "One producer owns each
-recurring report".
-
-- config: `config/notify.json` (`enabled`, `target`)
-- `COMPASS_NOTIFY=0` silences a run; `COMPASS_NOTIFY_TARGET` overrides the target
-- each (issue, milestone) sends at most once, tracked in `out/<n>/notified/`
-- a failed send is logged to stderr and never fails the publish
-- forge references are full Markdown links, per `MARMOT_MESSAGE_MARKDOWN.md`
+Repository publication and translation code never sends user-facing milestone
+messages. The host-owned durable outbox/reconciler is the sole notification
+producer. It observes committed workflow state and owns logical identities,
+retries, routing, connector acknowledgement, and delivery readback. This keeps
+publication side effects independent from message transport and prevents a
+repository retry from creating duplicate chat output.
 
 ## Paths
 
@@ -135,7 +130,6 @@ working tree lives somewhere else, such as a per-issue worktree.
 | `config/relays.json` | yes | Relay set for broadcast |
 | `config/author.json` | yes | Author npub + hex pubkey |
 | `config/cover.json` | yes | Pinned banner image URL (verified per publish) |
-| `config/notify.json` | yes | Milestone notification target and on/off switch |
 | `~/.config/compass-publish/bunker.json` | NO | Bunker URI from Amber. Contains a one-time secret. Never commit. |
 
 ## Usage
@@ -154,7 +148,6 @@ compass-publish 27 --stage broadcast --really-broadcast           # post to Nost
 compass-publish 27 --stage merge --really-merge                   # merge PR only (after broadcast)
 compass-publish 27 --stage log                                    # record the publication log, open its PR
 compass-publish 27 --stage log --no-log-pr                        # write the log without committing
-COMPASS_NOTIFY=0 compass-publish 27 --stage log                   # no milestone message
 COMPASS_DIR=/path/to/worktree compass-publish 27 --stage log      # run against another working tree
 ```
 

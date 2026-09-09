@@ -129,8 +129,8 @@ function usage(): string {
     "Every mutation requires matching byte-hashed receipts and exact identities in state.json.",
     "Signing and broadcast require exact merge and deployment confirmation.",
     "The log stage records the publication evidence and opens a PR for it; --no-log-pr",
-    "writes the log without committing. Milestones post to the target configured",
-    "in config/notify.json; COMPASS_NOTIFY=0 silences them.",
+    "writes the log without committing. The host durable outbox/reconciler owns",
+    "milestone notification, retries, routing, and delivery readback.",
   ].join("\n");
 }
 

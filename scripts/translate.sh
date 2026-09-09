@@ -30,70 +30,9 @@ cd "$REPO_ROOT" || exit 1
 
 die() { echo "error: $*" >&2; exit 1; }
 
-# NOTIFY: announce a finished step on the configured channel.
-#
-# The owner asked to hear about every completed step, not just the end of a run.
-# A translation commit, a PR opening, and a merge are each a finished step. This
-# is best-effort by design: a messaging failure must never fail a translation.
-#
-# Transport and target come from publish/config/notify.json, which is gitignored
-# because it is host wiring; publish/lib/notify.ts reads the same file, so the
-# two emitters cannot drift. command is argv with {target} and {body}
-# placeholders. With nothing configured, notification is skipped silently.
-# Translation runs in a per-issue worktree, where publish/config/notify.json is
-# absent because it is gitignored. The shared checkout is the worktree's git
-# common dir parent, so the config resolves without depending on an env var.
-resolve_notify_config() {
-  if [ -n "${COMPASS_NOTIFY_CONFIG:-}" ]; then printf '%s\n' "$COMPASS_NOTIFY_CONFIG"; return; fi
-  if [ -f "$REPO_ROOT/publish/config/notify.json" ]; then
-    printf '%s\n' "$REPO_ROOT/publish/config/notify.json"; return
-  fi
-  local common shared
-  common="$(git -C "$REPO_ROOT" rev-parse --path-format=absolute --git-common-dir 2>/dev/null)" || return 0
-  shared="$(dirname "$common")"
-  [ -f "$shared/publish/config/notify.json" ] && printf '%s\n' "$shared/publish/config/notify.json"
-  return 0
-}
-NOTIFY_CONFIG="$(resolve_notify_config)"
-notify() {
-  [ "${COMPASS_NOTIFY:-1}" = "0" ] && return 0
-  COMPASS_NOTIFY_TARGET="${COMPASS_NOTIFY_TARGET:-}" \
-  COMPASS_NOTIFY_COMMAND="${COMPASS_NOTIFY_COMMAND:-}" \
-  python3 - "$NOTIFY_CONFIG" "$1" <<'PYNOTIFY' 2>/dev/null || \
-    echo "  warn notify failed (continuing)" >&2
-import json, os, subprocess, sys
-
-config_path, body = sys.argv[1], sys.argv[2]
-try:
-    cfg = json.load(open(config_path, encoding="utf-8"))
-except (OSError, ValueError):
-    cfg = {}
-
-target = os.environ.get("COMPASS_NOTIFY_TARGET") or cfg.get("target")
-raw = os.environ.get("COMPASS_NOTIFY_COMMAND")
-command = None
-if raw:
-    try:
-        parsed = json.loads(raw)
-        if isinstance(parsed, list) and all(isinstance(a, str) for a in parsed):
-            command = parsed
-    except ValueError:
-        pass
-command = command or cfg.get("command")
-
-if not cfg.get("enabled", False) and not os.environ.get("COMPASS_NOTIFY_TARGET"):
-    sys.exit(0)
-if not target or not command:
-    sys.exit(0)
-
-argv = [a.replace("{target}", target).replace("{body}", body) for a in command]
-subprocess.run(argv, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, check=True)
-PYNOTIFY
-  return 0
-}
-
-
-
+# User-facing translation milestones are emitted only by the host-owned durable
+# outbox/reconciler after it observes committed workflow state. Repository code
+# intentionally contains no direct message transport.
 lang_name() {
   case "$1" in
     es) echo "Spanish" ;; pt) echo "Portuguese" ;; de) echo "German" ;;
@@ -307,8 +246,6 @@ cmd_commit() {
   git commit -q -m "Add $(lang_name "$lang") translation for Newsletter $date and topic pages"
   local sha; sha="$(git rev-parse --short HEAD)"
   echo "committed $(lang_name "$lang") — checkpoint saved ($sha)"
-  notify "$(printf '**Nostr Compass %s — Language translated (%s)**\n- Verified and committed as \`%s\`.\n- Run \`translate.sh status %s\` for the remaining languages.' \
-    "$date" "$(lang_name "$lang")" "$sha" "$date")"
 }
 
 # BACKLOG: every issue whose English newsletter has no translation yet.
@@ -374,8 +311,6 @@ cmd_ship() {
   fi
   [ -n "$pr" ] || die "could not determine PR number for $branch"
   echo "translation PR #$pr"
-  notify "$(printf '**Nostr Compass issue %s — Translation PR opened**\n- [#%s](https://github.com/andotherstuff/nostr-compass/pull/%s) covers all %s languages for %s.\n- Waiting on the build check before merge.' \
-    "$n" "$pr" "$pr" "${#LANGS[@]}" "$date")"
 
   if [ "$no_merge" = "--no-merge" ]; then
     echo "--no-merge: leaving PR #$pr open"
@@ -392,14 +327,10 @@ cmd_ship() {
     sleep 20; waited=$((waited+20))
   done
   if [ "$conclusion" != "SUCCESS" ]; then
-    notify "$(printf '**Nostr Compass issue %s — Translation PR opened**\n- [#%s](https://github.com/andotherstuff/nostr-compass/pull/%s) is NOT merged: build check is \`%s\` after %ss.\n- Needs a look.' \
-      "$n" "$pr" "$pr" "${conclusion:-pending}" "$waited")"
     die "build check on PR #$pr is '${conclusion:-pending}' after ${waited}s — not merging"
   fi
   gh pr merge "$pr" --squash || die "merge failed for PR #$pr"
   echo "merged PR #$pr"
-  notify "$(printf '**Nostr Compass issue %s — Translations merged**\n- [#%s](https://github.com/andotherstuff/nostr-compass/pull/%s) merged after a passing build.\n- All %s languages are live for %s.' \
-    "$n" "$pr" "$pr" "${#LANGS[@]}" "$date")"
 }
 
 # NEXT: the single oldest issue still needing translation, or nothing.
@@ -425,17 +356,10 @@ cmd_next() {
   return 0
 }
 
-# REPORT-BACKLOG: announce the current gap on the Marmot channel.
+# REPORT-BACKLOG: retain the stable command name, but only print state. The host
+# durable outbox/reconciler owns any user-facing backlog notification.
 cmd_report_backlog() {
-  local body; body="$(cmd_backlog)"
-  local count; count="$(echo "$body" | sed -n 's/^\([0-9]\+\) issue(s) need translation.$/\1/p')"
-  if [ -z "$count" ]; then
-    notify "$(printf '**Compass translations — Translation backlog**\n- No gaps: every published English issue is translated into all %s languages.' "${#LANGS[@]}")"
-  else
-    local list; list="$(echo "$body" | sed -n 's/^  \([0-9-]\+\)  missing: \(.*\)$/- \1 missing \2/p')"
-    notify "$(printf '**Compass translations — Translation backlog**\n%s\n- %s issue(s) outstanding.' "$list" "$count")"
-  fi
-  echo "$body"
+  cmd_backlog
 }
 
 case "${1:-}" in
@@ -455,7 +379,7 @@ translate.sh — durable, resumable newsletter translation driver
   ship <YYYY-MM-DD>            verify all, push, open the PR, merge when the build passes
   backlog                      every English issue still missing a translation
   next                         oldest published issue still needing translation (empty = none)
-  report-backlog               print the backlog and announce it on Marmot
+  report-backlog               print backlog state for the host reconciler
 
 Languages: ${LANGS[*]}
 

@@ -1,9 +1,8 @@
+import { readFile } from "node:fs/promises";
 import { describe, expect, test } from "bun:test";
-import { prLink, renderCommand, renderMessage, runDeliveryCommand, runLink } from "./notify.ts";
+import { notifyMilestone, prLink, renderMessage, runLink } from "./notify.ts";
 
 describe("forge references", () => {
-  // MARMOT_MESSAGE_MARKDOWN.md § "Linked git-forge refs": every PR number in
-  // user-facing text must be a link, never a bare `PR #N`.
   test("renders a PR as a full link", () => {
     expect(prLink(139)).toBe("[#139](https://github.com/andotherstuff/nostr-compass/pull/139)");
   });
@@ -24,13 +23,13 @@ describe("renderMessage", () => {
     expect(out).not.toContain("|");
   });
 
-  test("names the repeated unit in the heading so per-language steps are distinguishable", () => {
+  test("names repeated units in the heading", () => {
     expect(renderMessage(37, "translated-language", ["committed"], "German")).toStartWith(
       "**Nostr Compass issue 37 — Language translated (German)**",
     );
   });
 
-  test("drops blank lines so a missing value cannot emit an empty bullet", () => {
+  test("drops blank lines", () => {
     expect(renderMessage(37, "merged", ["merged", "", "   "])).toBe(
       "**Nostr Compass issue 37 — Newsletter PR merged**\n- merged",
     );
@@ -40,56 +39,35 @@ describe("renderMessage", () => {
     expect(renderMessage(37, "deployed", [])).toBe("**Nostr Compass issue 37 — Website deployed**");
   });
 
-  test("drops the merged label's old wording in favour of the explicit one", () => {
-    expect(renderMessage(37, "merged", [])).toContain("Newsletter PR merged");
-  });
-
-  test("labels each finished step distinctly", () => {
+  test("labels finished steps and failures distinctly", () => {
     expect(renderMessage(37, "log-pr-opened", [])).toContain("Publication log PR opened");
     expect(renderMessage(37, "outreach-sent", [])).toContain("Outreach DMs sent");
     expect(renderMessage(37, "translated", [])).toContain("Translations merged");
-  });
-
-  test("labels a halt distinctly from a success", () => {
-    expect(renderMessage(37, "failed", ["broadcast rejected by every relay"])).toContain(
-      "Publish halted",
-    );
+    expect(renderMessage(37, "failed", [])).toContain("Publish halted");
   });
 });
 
-describe("delivery command", () => {
-  // The transport is configured, not compiled in, so the repo carries no
-  // host-specific messaging command. Placeholders are substituted positionally
-  // so a body containing spaces or newlines stays one argv entry.
-  test("substitutes target and body without splitting either", () => {
-    const argv = renderCommand(
-      ["msg", "send", "--to", "{target}", "--quiet", "{body}"],
-      "group:Compass Newsletter",
-      "Issue 38 broadcast\naccepted by 5 relays",
-    );
-    expect(argv).toEqual([
-      "msg",
-      "send",
-      "--to",
-      "group:Compass Newsletter",
-      "--quiet",
-      "Issue 38 broadcast\naccepted by 5 relays",
-    ]);
+describe("notification ownership", () => {
+  test("repository milestone hook never sends directly", async () => {
+    const previousTarget = process.env.COMPASS_NOTIFY_TARGET;
+    const previousCommand = process.env.COMPASS_NOTIFY_COMMAND;
+    process.env.COMPASS_NOTIFY_TARGET = "marmot:must-not-send";
+    process.env.COMPASS_NOTIFY_COMMAND = JSON.stringify([process.execPath, "-e", "process.exit(99)"]);
+    try {
+      expect(await notifyMilestone(38, "merged", ["must remain host-owned"])).toBe(false);
+    } finally {
+      if (previousTarget === undefined) delete process.env.COMPASS_NOTIFY_TARGET;
+      else process.env.COMPASS_NOTIFY_TARGET = previousTarget;
+      if (previousCommand === undefined) delete process.env.COMPASS_NOTIFY_COMMAND;
+      else process.env.COMPASS_NOTIFY_COMMAND = previousCommand;
+    }
   });
 
-  test("leaves an argv with no placeholders untouched", () => {
-    expect(renderCommand(["notify-hook"], "t", "b")).toEqual(["notify-hook"]);
-  });
-
-  test("terminates a notifier that does not exit", async () => {
-    const started = Date.now();
-    const code = await runDeliveryCommand(
-      [process.execPath, "-e", "setInterval(() => {}, 1000)"],
-      "target",
-      "body",
-      50,
-    );
-    expect(code).toBe(124);
-    expect(Date.now() - started).toBeLessThan(1_000);
+  test("notification module contains no direct transport or runtime notification plumbing", async () => {
+    const source = await readFile(new URL("./notify.ts", import.meta.url), "utf8");
+    expect(source).not.toContain("node:child_process");
+    expect(source).not.toContain("spawn(");
+    expect(source).not.toContain("config/notify.json");
+    expect(source).not.toContain("COMPASS_NOTIFY");
   });
 });
