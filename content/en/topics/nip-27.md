@@ -50,6 +50,7 @@ Another practical benefit is resilience. A raw `nostr:nevent...` or `nostr:naddr
 - [NIP-19 (Bech32 Encoded Entities)](/en/topics/nip-19/) - Defines the encoding formats used in references
 
 **Mentioned in:**
+- [Newsletter #39: NIP Deep Dive: URI Links and References in Event Text](/en/newsletters/2026-09-09-newsletter/#nip-deep-dive-uri-links-and-references-in-event-text)
 
 - [Newsletter #8 (2026-02-04)](/en/newsletters/2026-02-04-newsletter/) - nostr-tools fix for hashtag parsing after newlines
 - [Newsletter #36: NIPs](/en/newsletters/2026-08-19-newsletter/#nips)

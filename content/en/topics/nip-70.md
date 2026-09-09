@@ -56,6 +56,7 @@ That is why follow-up work matters. [PR #2251](https://github.com/nostr-protocol
 - [Protected-event commit](https://github.com/nostr-protocol/nips/commit/ae1906ec7943a6bd756f05d2cd2fb2a041398921)
 
 **Mentioned in:**
+- [Newsletter #39: Shosho ships Livelier's self-hosted streams](/en/newsletters/2026-09-09-newsletter/#shosho-ships-liveliers-self-hosted-streams)
 - [Newsletter #13: NIP Updates](/en/newsletters/2026-03-11-newsletter/#nip-updates)
 - [Newsletter #13: NIP Deep Dive](/en/newsletters/2026-03-11-newsletter/#nip-deep-dive-nip-70-protected-events)
 - [Newsletter #23: NIP Updates](/en/newsletters/2026-05-21-newsletter/#nip-updates)

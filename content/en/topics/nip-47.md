@@ -42,6 +42,7 @@ NIP-44 is now the preferred encryption mode. The spec still documents NIP-04 fal
 - [LaWallet NWC 2.0.0](https://github.com/lawalletio/lawallet-nwc/releases/tag/v2.0.0) - passkey-derived Nostr keys and a standalone NWC relay bridge
 
 **Mentioned in:**
+- [Newsletter #39: Primal Android 3.5.27 checks signer and wallet identity](/en/newsletters/2026-09-09-newsletter/#primal-android-3527-checks-signer-and-wallet-identity)
 - [Newsletter #37: Shopstr keeps remote-signer and wallet secrets out of browser storage](/en/newsletters/2026-08-26-newsletter/#shopstr-keeps-remote-signer-and-wallet-secrets-out-of-browser-storage)
 - [Newsletter #1: News](/en/newsletters/2025-12-17-newsletter/#news)
 - [Newsletter #2: Releases](/en/newsletters/2025-12-24-newsletter/#releases)

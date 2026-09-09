@@ -53,6 +53,7 @@ Blossom servers use NIP-98 to authenticate file uploads and deletions, tying sto
 - [Zap Cooking PR #599](https://github.com/zapcooking/frontend/pull/599) - scanner authentication bound to the request body
 
 **Mentioned in:**
+- [Newsletter #39: Wingman App joins browsing, signing, and files](/en/newsletters/2026-09-09-newsletter/#wingman-app-joins-browsing-signing-and-files)
 - [Newsletter #15](/en/newsletters/2026-03-25-newsletter/)
 - [Newsletter #22: NIP-98 Deep Dive](/en/newsletters/2026-05-13-newsletter/#nip-deep-dive-nip-98-http-auth)
 - [Newsletter #31: NIP Deep Dive, NIP-99 and Gamma Markets (Shopstr's NIP-98 auth parser test coverage)](/en/newsletters/2026-07-15-newsletter/#nip-deep-dive-nip-99-and-the-gamma-markets-commerce-extension)

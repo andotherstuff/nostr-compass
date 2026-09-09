@@ -65,6 +65,7 @@ Two details cause many implementation bugs. First, clients should treat relay re
 - [Deterministic ordering commit](https://github.com/nostr-protocol/nips/commit/9c54549f1842245b842d8a66f3bade744da24189)
 
 **Mentioned in:**
+- [Newsletter #39: Nostr Implementation Possibilities](/en/newsletters/2026-09-09-newsletter/#nostr-implementation-possibilities)
 - [Newsletter #1: NIP Deep Dive](/en/newsletters/2025-12-17-newsletter/#nip-deep-dive-nip-01-and-nip-19)
 - [Newsletter #19: NIP-67 EOSE completeness hint proposal](/en/newsletters/2026-04-22-newsletter/#nip-updates)
 - [Newsletter #27: Clave 1.0 ships to the App Store](/en/newsletters/2026-06-17-newsletter/#clave-1-0-ships-to-the-app-store-with-push-woken-background-signing)

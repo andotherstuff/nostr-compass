@@ -94,6 +94,7 @@ The Nostr live-activity surface is intentionally thin: NIP-53 advertises the act
 
 **Mentioned in:**
 
+- [Newsletter #39: Shosho ships Livelier's self-hosted streams](/en/newsletters/2026-09-09-newsletter/#shosho-ships-liveliers-self-hosted-streams)
 - [Newsletter #18 (2026-04-15): WaveFunc v0.1.0 and v0.1.1 launch Nostr internet radio](/en/newsletters/2026-04-15-newsletter/#wavefunc-v010-and-v011-launch-nostr-internet-radio)
 - [Newsletter #18 (2026-04-15): NIP Updates (NIP-53 changes)](/en/newsletters/2026-04-15-newsletter/#nip-updates)
 - [Newsletter #19 (2026-04-22): Amethyst ships Marmot MIP compliance, NIP-72 communities, zap goals, and MoQ audio rooms](/en/newsletters/2026-04-22-newsletter/#amethyst-ships-marmot-mip-compliance-nip-72-communities-zap-goals-and-moq-audio-rooms)

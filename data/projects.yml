@@ -402,6 +402,16 @@ social_clients:
     priority: medium
     notes: Public and private events, recurring schedules, ICS export
 
+  - name: cal.emre.xyz
+    description: Relay-native NIP-52 availability and appointment booking
+    platforms: [ web ]
+    repo: https://github.com/delirehberi/cal.emre.xyz
+    website: https://cal.emre.xyz
+    maintainer: delirehberi
+    status: active
+    priority: medium
+    notes: Publishes kind 31923 availability and kind 31925 RSVPs; no appointment database
+
   - name: Pollerama
     description: Form*-family Nostr-native polls and feeds client by abh3po; NIP-17 DM sharing for polls, profile editor, themes, emoji picker
     platforms: [ web ]
@@ -438,6 +448,17 @@ social_clients:
     status: beta
     priority: low
     notes: Browser-based ranking plus CLI digest tool, local-first score caching
+
+  - name: Wingman App
+    description: Cross-platform Nostr browser, signer, and file workspace backed by
+      Tower storage
+    platforms: [ desktop, android, ios ]
+    repo: https://github.com/OtherStuffAI/wm-app
+    maintainer: humansinstitute
+    status: alpha
+    priority: medium
+    notes: New in August 2026; embeds Flight Deck, provides local NIP-07/NIP-98
+      signing, and synchronizes Wingman Drive through Tower
 
   - name: Docstr
     description: Collaborative documents platform (Google Docs alternative) on Nostr
@@ -2498,6 +2519,18 @@ devtools:
     status: active
     priority: low
     notes: SEC-04 project
+
+  - name: nsite-clay
+    description: Self-editable single-file nsite that republishes its DOM through
+      Blossom and NIP-5A
+    platforms: [ web ]
+    repo: https://github.com/jooray/nsite-clay
+    website: https://nsite-clay.cypherpunk.today/
+    maintainer: jooray
+    status: beta
+    priority: medium
+    notes: Browser-only publishing flow with generated or imported Nostr keys;
+      launched August 2026
 
   - name: Backyard Explorer
     description: Example search app for window.nostrdb
@@ -5461,6 +5494,16 @@ wallets:
     priority: low
 
 other:
+  - name: fips2go
+    description: Android FIPS mesh node with per-app VPN access and .fips DNS
+    platforms: [ android ]
+    repo: https://github.com/fr34aky/fips2go
+    website: https://zapstore.dev/apps/naddr1qqgx7un89enxjurn9eskuerjda5kgqgcwaehxw309aex2mrp0yh85ctswd6x7un99ejx2aszyqs9vy2xh4p6zygk35qepsja6w7mnl4j3nnyvjgyg079gxnm83e0yqcyqqq8uzclek0pe
+    maintainer: fr34aky
+    status: active
+    priority: medium
+    notes: Signed Zapstore listing; submitted by owner for Newsletter #39
+
   - name: Surveil
     description: Magic The Gathering deck builder on Nostr (kind 37381)
     platforms: [ web, android ]

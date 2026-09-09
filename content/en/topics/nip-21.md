@@ -39,6 +39,7 @@ Support for `nostr:` URIs is broad across the client ecosystem, including the ma
 - [NIP-21 Specification](https://github.com/nostr-protocol/nips/blob/master/21.md)
 
 **Mentioned in:**
+- [Newsletter #39: NIP Deep Dive: URI Links and References in Event Text](/en/newsletters/2026-09-09-newsletter/#nip-deep-dive-uri-links-and-references-in-event-text)
 
 - [Newsletter #19: Nostrability migrates to NIP-34](/en/newsletters/2026-04-22-newsletter/#nostrability-migrates-to-nip-34-and-opens-19-per-nip-interop-trackers)
 - [Newsletter #38: NIP Deep Dive](/en/newsletters/2026-09-02-newsletter/#reposts-nip-18)

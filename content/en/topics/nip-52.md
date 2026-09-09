@@ -86,6 +86,7 @@ NIP-52 does more than describe a meeting. It separates event definition, calenda
 - [Newsletter #10: NIP Deep Dive](/en/newsletters/2026-02-18-newsletter/#nip-deep-dive-nip-52-calendar-events)
 - [Newsletter #13: Calendar by Form* v0.2.0](/en/newsletters/2026-03-11-newsletter/#calendar-by-form-v020)
 - [Newsletter #27: Calendar by Formstr v1.6.1 and v1.6.2 add per-event notifications](/en/newsletters/2026-06-17-newsletter/#calendar-by-formstr-v161-and-v162-add-per-event-notifications)
+- [Newsletter #39: cal.emre.xyz publishes NIP-52 appointment availability](/en/newsletters/2026-09-09-newsletter/#calemrexyz-publishes-nip-52-appointment-availability)
 
 **See also:**
 - [NIP-22: Comment](/en/topics/nip-22/)

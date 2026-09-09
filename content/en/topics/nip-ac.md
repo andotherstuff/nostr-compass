@@ -1,27 +1,26 @@
 ---
-title: "NIP-AC: P2P Voice and Video Calls"
+title: "NIP-AC: WebRTC Signaling"
 date: 2026-04-08
-description: "Defines a protocol for peer-to-peer voice and video calls using Nostr for signaling and WebRTC for media transport."
+description: "An open proposal for WebRTC signaling over Nostr relays."
 ---
 
-NIP-AC proposes a protocol for peer-to-peer voice and video calls over Nostr. The spec uses Nostr events for call signaling (offers, answers, ICE candidates) and WebRTC for the actual media transport, keeping the call setup decentralized while using standard browser APIs for audio and video.
+NIP-AC is an open proposal for exchanging WebRTC signaling over Nostr. Relays carry the connection setup events; media travels directly between peers once WebRTC connects.
 
 ## How It Works
 
-A caller publishes a call offer event containing a WebRTC Session Description Protocol (SDP) offer, tagged with the callee's pubkey. The callee responds with an SDP answer event. Both parties exchange ICE candidate events to negotiate the network path. Once the WebRTC connection is established, media flows directly between peers without relay involvement.
+A peer publishes provisional ephemeral events for pings, connection requests, offers, answers, and ICE candidates. A `p` tag addresses the other peer, while an `e` tag groups messages into a session. A replaceable kind `30600` event advertises discoverable WebRTC endpoints.
 
-The signaling events are encrypted so relays cannot observe who is calling whom. The call state machine handles offer, answer, reject, busy, and hangup transitions.
+Relays SHOULD broadcast the ephemeral signaling events and MUST NOT store them. Applications needing confidentiality SHOULD encrypt offer, answer, and candidate content with [NIP-44](/en/topics/nip-44/). Encryption does not hide all relay-visible metadata, including event authors and recipients.
 
-## Implementations
-
-- [Amethyst](https://github.com/vitorpamplona/amethyst) is building NIP-AC support with a call state machine test suite and stale call offer handling.
+The proposal remains open, and its event numbers are provisional.
 
 ---
 
 **Primary sources:**
-- [NIP-AC PR #2301](https://github.com/nostr-protocol/nips/pull/2301) - P2P Voice and Video Calls over WebRTC
+- [NIP-AC PR #2461](https://github.com/nostr-protocol/nips/pull/2461) - Current open WebRTC-signaling proposal
 
 **Mentioned in:**
+- [Newsletter #39: Nostr Implementation Possibilities](/en/newsletters/2026-09-09-newsletter/#nostr-implementation-possibilities)
 - [Nostr Compass #17 (2026-04-08)](/en/newsletters/2026-04-08-newsletter/)
 
 **See also:**

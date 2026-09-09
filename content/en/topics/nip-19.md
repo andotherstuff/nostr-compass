@@ -47,6 +47,7 @@ Another practical distinction is stability. `note` points to one immutable event
 - [NIP-19 Specification](https://github.com/nostr-protocol/nips/blob/master/19.md)
 
 **Mentioned in:**
+- [Newsletter #39: URI dispatch and NIP-19 semantics](/en/newsletters/2026-09-09-newsletter/#uri-dispatch-and-nip-19-semantics)
 - [Newsletter #1: NIP Deep Dive](/en/newsletters/2025-12-17-newsletter/#nip-19-bech32-encoded-identifiers)
 - [Newsletter #3: December Recap](/en/newsletters/2025-12-31-newsletter/#december-recap-five-years-of-nostr-decembers)
 - [Newsletter #3: Notable Code Changes](/en/newsletters/2025-12-31-newsletter/#damus-ios)
