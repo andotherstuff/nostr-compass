@@ -441,6 +441,46 @@ After show notes are written, generate separately if requested via `/publish`:
 
 ## Guest Coordination
 
+### Weekly asynchronous Logbook invitation
+
+After the English issue is verifiably deployed and both newsletter Nostr
+events pass the durable relay-readback floor, verify that Logbook serves the
+current issue and accepts contributions for its intro and section targets.
+Then run one durable campaign, in this order:
+
+1. Derive participants from the published issue with the same mention resolver
+   and issue-scoped project/maintainer pairing used by newsletter outreach.
+   De-duplicate shared pubkeys and never guess an identity.
+2. Dry-run the podcast mode of `publish/dm-outreach.ts` with the canonical
+   newsletter URL and verified Logbook URL. Review the complete recipient,
+   unresolved-identity, and `no_dm` dispositions, then send once.
+3. Require each successful DM to retain its signed event, relay acceptance, and
+   exact-event readback. A failed or unknown recipient remains explicit and is
+   reconciled without replaying already confirmed recipients.
+4. Publish one separate top-level kind:1 invitation from the Compass identity.
+   The post invites asynchronous voice notes, links the issue and Logbook, and
+   contains both a visible `nostr:npub` mention and a `p` tag for every verified
+   participant. This public post is distinct from the newsletter announcement
+   and from the private DM campaign.
+5. Save the signed invitation plus relay acceptance/readback evidence and report
+   any unresolved identities or failed deliveries. Do not infer a reminder;
+   reminders require fresh owner authorization.
+
+Canonical invitation copy:
+
+```text
+Help record the Nostr Compass #N podcast. Pick the intro or any section from this week's issue and leave a short voice note in Logbook whenever it suits you.
+
+Issue: <canonical newsletter URL>
+Record: <verified Logbook URL>
+
+Participants: <space-separated nostr:npub mentions>
+```
+
+This standing workflow applies to the current edition and future weekly
+editions. It never uses Riverside, sets a recording appointment, or mixes the
+podcast invitation into the pre-publication review DM.
+
 ### Regular Hosts
 **Purpose:** Provide continuity and familiar voices
 

@@ -1,0 +1,158 @@
+{
+  "artifact_path": "/opt/data/compass-worktrees/2026-09-16/data/nostr_nip_discussions/discussions_2026-09-08_2026-09-16.json",
+  "artifact_sha256": "f2669b396224e53687f7cef8991d1a933b87512dbfa516e77091fc09529fadd3",
+  "candidate_ids": [
+    "3a8bd3eb735f5cf7b15d020f3e7c93ddc1aa44bbce81f2ade807a55e2e0603a8",
+    "3eb3abe8fbf90ba841778f791a655e42f7721f212bbef4c670d9496c4a683aac",
+    "41abd0d33fc4ff337102f8d7d104321a7051d1c0b14b6ddd458cfc8153ffe223",
+    "513509c003c54c628662faa167ffad88dc494a2a4c78aa7d5e1be969c18ae561",
+    "59a8bbf52975f367fe4f42a135f11f0ee54caf1a8b4fa697d25b3a291664527d",
+    "5a37b811b691f69fd9b36d42fff960e0e988f03d6c6bd8a8f3cd073c6fa72ae6",
+    "60ff3eeed83585f7e3aa56033414ee2f4be9d8b0e9c0492ba4a2ae39490e7407",
+    "63294a68b0edb6045cd97d7fc97b079b06aff596c9e15c4f1a1957d45908ea43",
+    "847f27f4d80737b20f21dfcef331435b7710953277bc00c6ab42886c090dd9d0",
+    "8e2fe2346c21fbc260969264ccff756065b2d86321494d053b17f199a314e64c",
+    "b27b9216804c3600d40c40f1c607a75754f4205fa8b7e02afb7f1c624b55234b",
+    "cdc27419d5bd821d9246d16294a5aee79824d2dd620a2f662bada653deeebc1c",
+    "deb0359f28863aa9268da7e7c72f5118ad3f1a490a5b12d31c89b942b5d20a3e",
+    "e90263b107a7a68bbce730a0fbd26c84b2b323081ccfbb866df86920172f03d2"
+  ],
+  "canonical_query": {
+    "family": "nip-discussions",
+    "kinds": [
+      1,
+      30023,
+      30817,
+      34550
+    ],
+    "pass_id": "refresh-t_a4ffab29-final5-20260916T1600Z",
+    "relay_count": 7,
+    "since": "2026-09-08T00:00:00Z",
+    "until": "2026-09-16T16:00:00Z"
+  },
+  "collector_path": "/opt/data/compass-worktrees/2026-09-16/scripts/fetch_nostr_nip_discussions.sh",
+  "dispositions": {
+    "3a8bd3eb735f5cf7b15d020f3e7c93ddc1aa44bbce81f2ade807a55e2e0603a8": {
+      "decision": "skip",
+      "reason": "did not match the collector NIP discussion filter"
+    },
+    "3eb3abe8fbf90ba841778f791a655e42f7721f212bbef4c670d9496c4a683aac": {
+      "decision": "skip",
+      "reason": "did not match the collector NIP discussion filter"
+    },
+    "41abd0d33fc4ff337102f8d7d104321a7051d1c0b14b6ddd458cfc8153ffe223": {
+      "decision": "skip",
+      "reason": "did not match the collector NIP discussion filter"
+    },
+    "513509c003c54c628662faa167ffad88dc494a2a4c78aa7d5e1be969c18ae561": {
+      "decision": "skip",
+      "reason": "did not match the collector NIP discussion filter"
+    },
+    "59a8bbf52975f367fe4f42a135f11f0ee54caf1a8b4fa697d25b3a291664527d": {
+      "decision": "skip",
+      "reason": "did not match the collector NIP discussion filter"
+    },
+    "5a37b811b691f69fd9b36d42fff960e0e988f03d6c6bd8a8f3cd073c6fa72ae6": {
+      "decision": "skip",
+      "reason": "did not match the collector NIP discussion filter"
+    },
+    "60ff3eeed83585f7e3aa56033414ee2f4be9d8b0e9c0492ba4a2ae39490e7407": {
+      "decision": "skip",
+      "reason": "did not match the collector NIP discussion filter"
+    },
+    "63294a68b0edb6045cd97d7fc97b079b06aff596c9e15c4f1a1957d45908ea43": {
+      "decision": "skip",
+      "reason": "did not match the collector NIP discussion filter"
+    },
+    "847f27f4d80737b20f21dfcef331435b7710953277bc00c6ab42886c090dd9d0": {
+      "decision": "skip",
+      "reason": "did not match the collector NIP discussion filter"
+    },
+    "8e2fe2346c21fbc260969264ccff756065b2d86321494d053b17f199a314e64c": {
+      "decision": "skip",
+      "reason": "did not match the collector NIP discussion filter"
+    },
+    "b27b9216804c3600d40c40f1c607a75754f4205fa8b7e02afb7f1c624b55234b": {
+      "decision": "skip",
+      "reason": "did not match the collector NIP discussion filter"
+    },
+    "cdc27419d5bd821d9246d16294a5aee79824d2dd620a2f662bada653deeebc1c": {
+      "decision": "skip",
+      "reason": "did not match the collector NIP discussion filter"
+    },
+    "deb0359f28863aa9268da7e7c72f5118ad3f1a490a5b12d31c89b942b5d20a3e": {
+      "decision": "skip",
+      "reason": "did not match the collector NIP discussion filter"
+    },
+    "e90263b107a7a68bbce730a0fbd26c84b2b323081ccfbb866df86920172f03d2": {
+      "decision": "skip",
+      "reason": "did not match the collector NIP discussion filter"
+    }
+  },
+  "family": "nip-discussions",
+  "include_count": 0,
+  "item_count": 14,
+  "page_count": 7,
+  "pagination_complete": true,
+  "pass_id": "refresh-t_a4ffab29-final5-20260916T1600Z",
+  "skip_count": 14,
+  "skip_evidence": [
+    {
+      "candidate_id": "3a8bd3eb735f5cf7b15d020f3e7c93ddc1aa44bbce81f2ade807a55e2e0603a8",
+      "reason": "did not match the collector NIP discussion filter"
+    },
+    {
+      "candidate_id": "3eb3abe8fbf90ba841778f791a655e42f7721f212bbef4c670d9496c4a683aac",
+      "reason": "did not match the collector NIP discussion filter"
+    },
+    {
+      "candidate_id": "41abd0d33fc4ff337102f8d7d104321a7051d1c0b14b6ddd458cfc8153ffe223",
+      "reason": "did not match the collector NIP discussion filter"
+    },
+    {
+      "candidate_id": "513509c003c54c628662faa167ffad88dc494a2a4c78aa7d5e1be969c18ae561",
+      "reason": "did not match the collector NIP discussion filter"
+    },
+    {
+      "candidate_id": "59a8bbf52975f367fe4f42a135f11f0ee54caf1a8b4fa697d25b3a291664527d",
+      "reason": "did not match the collector NIP discussion filter"
+    },
+    {
+      "candidate_id": "5a37b811b691f69fd9b36d42fff960e0e988f03d6c6bd8a8f3cd073c6fa72ae6",
+      "reason": "did not match the collector NIP discussion filter"
+    },
+    {
+      "candidate_id": "60ff3eeed83585f7e3aa56033414ee2f4be9d8b0e9c0492ba4a2ae39490e7407",
+      "reason": "did not match the collector NIP discussion filter"
+    },
+    {
+      "candidate_id": "63294a68b0edb6045cd97d7fc97b079b06aff596c9e15c4f1a1957d45908ea43",
+      "reason": "did not match the collector NIP discussion filter"
+    },
+    {
+      "candidate_id": "847f27f4d80737b20f21dfcef331435b7710953277bc00c6ab42886c090dd9d0",
+      "reason": "did not match the collector NIP discussion filter"
+    },
+    {
+      "candidate_id": "8e2fe2346c21fbc260969264ccff756065b2d86321494d053b17f199a314e64c",
+      "reason": "did not match the collector NIP discussion filter"
+    },
+    {
+      "candidate_id": "b27b9216804c3600d40c40f1c607a75754f4205fa8b7e02afb7f1c624b55234b",
+      "reason": "did not match the collector NIP discussion filter"
+    },
+    {
+      "candidate_id": "cdc27419d5bd821d9246d16294a5aee79824d2dd620a2f662bada653deeebc1c",
+      "reason": "did not match the collector NIP discussion filter"
+    },
+    {
+      "candidate_id": "deb0359f28863aa9268da7e7c72f5118ad3f1a490a5b12d31c89b942b5d20a3e",
+      "reason": "did not match the collector NIP discussion filter"
+    },
+    {
+      "candidate_id": "e90263b107a7a68bbce730a0fbd26c84b2b323081ccfbb866df86920172f03d2",
+      "reason": "did not match the collector NIP discussion filter"
+    }
+  ],
+  "status": "complete"
+}

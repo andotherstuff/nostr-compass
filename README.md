@@ -60,6 +60,29 @@ does not track yet. It finishes by writing
 in the window so a release cannot exist in the data and in no editorial
 artifact.
 
+Use one explicit `--pass-id` with absolute `--since`/`--until` bounds. Before
+starting, inspect REST core, GraphQL, and search separately with `gh api
+rate_limit`. The tracked-project sweep uses roughly 3,650 REST-core requests,
+and app discovery then spends about one more core request for each distinct
+tracked GitHub owner (418 on 2026-09-16), for roughly 4,100 before unrelated
+same-hour traffic. Require enough core budget for both plus the 500-request
+guard reserve. Never run two
+collectors against the same artifact or repeat `--fresh` after an immutable
+receipt exists. Invoke `fetch_all.sh` exactly once per pass; do not run a
+standalone project collector and then replay it through `fetch_all.sh`. Resume
+the pass, use a receipt-producing GraphQL collector for bounded verification,
+or wait for the recorded reset rather than burning the same REST window
+repeatedly. If a receipt/artifact conflict has already made an unfinalized pass
+unusable, abandon it and use one new pass ID over the same frozen window while
+resuming the completed project journal without `--fresh`.
+
+App discovery automatically moves its exhaustively paginated tracked-owner
+sweep to GraphQL when REST core cannot cover all owners plus the reserve and
+the separate GraphQL budget can. If neither bucket can finish, it returns
+`source_errors` and must not satisfy the family gate. Wait for the recorded
+reset and resume that missing family under the same pass/window; do not treat
+partial discovery JSON as a receipt.
+
 Cross-run discovery baselines live under `$COMPASS_STATE_DIR` (default
 `/opt/data/compass-state`), deliberately outside the repository. Each issue is
 drafted in its own worktree, and a baseline stored inside a fresh worktree

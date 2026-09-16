@@ -714,15 +714,19 @@ def merge_github_results(result_sets: list[list[dict]]) -> list[dict]:
 
 
 def github_search_queries(since_day: str) -> list[tuple[str, str]]:
-    upper = f" pushed:<{ACTIVE_WINDOW[1]}" if ACTIVE_WINDOW else ""
-    created_upper = f" created:<{ACTIVE_WINDOW[1]}" if ACTIVE_WINDOW else ""
+    if ACTIVE_WINDOW:
+        pushed_window = f"pushed:{ACTIVE_WINDOW[0]}..{ACTIVE_WINDOW[1]}"
+        created_window = f"created:{ACTIVE_WINDOW[0]}..{ACTIVE_WINDOW[1]}"
+    else:
+        pushed_window = f"pushed:>={since_day}"
+        created_window = f"created:>={since_day}"
     return [
-        (f"topic:nostr pushed:>={since_day}{upper} archived:false fork:false", "github_topic_active"),
-        (f"nostr in:name,description created:>={since_day}{created_upper} archived:false fork:false", "github_text_new"),
+        (f"topic:nostr {pushed_window} archived:false fork:false", "github_topic_active"),
+        (f"nostr in:name,description {created_window} archived:false fork:false", "github_text_new"),
         # created:>= only ever sees brand-new repositories. A repository created
         # months ago that starts shipping this week is equally newsworthy, so
         # sweep on activity as well as on creation.
-        (f"nostr in:name,description pushed:>={since_day}{upper} archived:false fork:false", "github_text_active"),
+        (f"nostr in:name,description {pushed_window} archived:false fork:false", "github_text_active"),
     ]
 
 
@@ -730,6 +734,36 @@ def github_search_queries(since_day: str) -> list[tuple[str, str]]:
 # current tracked-owner count sits comfortably inside it; exceeding this is
 # reported, never silently truncated.
 OWNER_SIBLING_OWNER_LIMIT = 800
+GITHUB_QUOTA_RESERVE = 500
+
+OWNER_REPOSITORIES_QUERY = """
+query($login: String!, $after: String) {
+  repositoryOwner(login: $login) {
+    repositories(
+      first: 100
+      after: $after
+      privacy: PUBLIC
+      orderBy: {field: PUSHED_AT, direction: DESC}
+    ) {
+      nodes {
+        databaseId
+        nameWithOwner
+        url
+        description
+        homepageUrl
+        createdAt
+        pushedAt
+        stargazerCount
+        isPrivate
+        isFork
+        isArchived
+        repositoryTopics(first: 100) { nodes { topic { name } } }
+      }
+      pageInfo { hasNextPage endCursor }
+    }
+  }
+}
+"""
 
 
 def tracked_github_owners(tracked: dict[str, dict[str, str]]) -> list[str]:
@@ -765,14 +799,17 @@ def fetch_owner_repositories(
         ]
         proc = subprocess.run(command, check=False, capture_output=True, text=True, timeout=60)
         if proc.returncode != 0:
+            if "HTTP 404" in proc.stderr:
+                if ACTIVE_WINDOW:
+                    QUERY_PAGES.append(observed_page(source=f"github-owner:{owner}", count=0, cap=100,
+                        exhausted=True, since=ACTIVE_WINDOW[0], until=ACTIVE_WINDOW[1], cursor=str(page)))
+                return []
             raise RuntimeError(proc.stderr.strip() or f"gh exited {proc.returncode}")
         payload = json.loads(proc.stdout)
-        if ACTIVE_WINDOW:
-            QUERY_PAGES.append(observed_page(source=f"github-owner:{owner}",
-                count=len(payload) if isinstance(payload, list) else 0, cap=100,
-                exhausted=not payload or len(payload) < 100,
-                since=ACTIVE_WINDOW[0], until=ACTIVE_WINDOW[1], cursor=str(page)))
         if not isinstance(payload, list) or not payload:
+            if ACTIVE_WINDOW:
+                QUERY_PAGES.append(observed_page(source=f"github-owner:{owner}", count=0, cap=100,
+                    exhausted=True, since=ACTIVE_WINDOW[0], until=ACTIVE_WINDOW[1], cursor=str(page)))
             break
         stop = False
         for item in payload:
@@ -784,6 +821,10 @@ def fetch_owner_repositories(
                 continue
             item["_discovery_sources"] = ["github_owner_sibling"]
             collected.append(item)
+        if ACTIVE_WINDOW:
+            QUERY_PAGES.append(observed_page(source=f"github-owner:{owner}", count=len(payload), cap=100,
+                exhausted=stop or len(payload) < 100,
+                since=ACTIVE_WINDOW[0], until=ACTIVE_WINDOW[1], cursor=str(page)))
         if stop or len(payload) < 100:
             break
         if page == max_pages and warnings is not None:
@@ -793,25 +834,128 @@ def fetch_owner_repositories(
     return collected
 
 
+def graphql_repository_item(node: dict) -> dict:
+    topics = [
+        entry.get("topic", {}).get("name")
+        for entry in ((node.get("repositoryTopics") or {}).get("nodes") or [])
+        if isinstance(entry, dict) and isinstance(entry.get("topic"), dict)
+        and entry.get("topic", {}).get("name")
+    ]
+    return {
+        "id": node.get("databaseId"),
+        "full_name": node.get("nameWithOwner"),
+        "html_url": node.get("url"),
+        "description": node.get("description"),
+        "homepage": node.get("homepageUrl"),
+        "created_at": node.get("createdAt"),
+        "pushed_at": node.get("pushedAt"),
+        "stargazers_count": node.get("stargazerCount", 0),
+        "private": bool(node.get("isPrivate")),
+        "fork": bool(node.get("isFork")),
+        "archived": bool(node.get("isArchived")),
+        "topics": sorted(set(topics)),
+        "_discovery_sources": ["github_owner_sibling"],
+    }
+
+
+def fetch_owner_repositories_graphql(
+    owner: str,
+    since_day: str,
+    *,
+    max_pages: int = 3,
+    warnings: list[str] | None = None,
+) -> list[dict]:
+    """GraphQL equivalent of the owner sweep, used when REST core is tight."""
+    collected: list[dict] = []
+    cursor: str | None = None
+    for page in range(1, max_pages + 1):
+        command = ["gh", "api", "graphql", "-f", f"query={OWNER_REPOSITORIES_QUERY}", "-F", f"login={owner}"]
+        if cursor:
+            command += ["-f", f"after={cursor}"]
+        proc = subprocess.run(command, check=False, capture_output=True, text=True, timeout=60)
+        if proc.returncode != 0:
+            raise RuntimeError(proc.stderr.strip() or f"gh exited {proc.returncode}")
+        payload = json.loads(proc.stdout)
+        repository_owner = ((payload.get("data") or {}).get("repositoryOwner"))
+        repositories = (repository_owner or {}).get("repositories") or {}
+        nodes = repositories.get("nodes") or []
+        page_info = repositories.get("pageInfo") or {}
+        stop = repository_owner is None
+        for node in nodes:
+            if not isinstance(node, dict):
+                continue
+            item = graphql_repository_item(node)
+            pushed_at = item.get("pushed_at") or ""
+            if pushed_at[:10] < since_day:
+                stop = True
+                break
+            if item["private"] or item["fork"] or item["archived"]:
+                continue
+            collected.append(item)
+        has_next = bool(page_info.get("hasNextPage"))
+        if ACTIVE_WINDOW:
+            QUERY_PAGES.append(observed_page(
+                source=f"github-owner-graphql:{owner}", count=len(nodes), cap=100,
+                exhausted=stop or not has_next, since=ACTIVE_WINDOW[0],
+                until=ACTIVE_WINDOW[1], cursor=str(page),
+            ))
+        if stop or not has_next:
+            break
+        cursor = page_info.get("endCursor")
+        if not cursor:
+            raise RuntimeError(f"GraphQL owner sweep for {owner} hasNextPage without endCursor")
+        if page == max_pages and warnings is not None:
+            warnings.append(
+                f"github_owner_sibling_graphql: {owner}: capped at {max_pages * 100} repositories while still inside window"
+            )
+    return collected
+
+
 def fetch_owner_siblings(
     owners: list[str],
     since_day: str,
     *,
     warnings: list[str],
+    use_graphql: bool = False,
 ) -> list[dict]:
     """Sweep every tracked owner for repositories Compass does not track yet."""
     items: list[dict] = []
+    fetcher = fetch_owner_repositories_graphql if use_graphql else fetch_owner_repositories
     for owner in owners:
         try:
-            items.extend(fetch_owner_repositories(owner, since_day, warnings=warnings))
+            items.extend(fetcher(owner, since_day, warnings=warnings))
         except (RuntimeError, subprocess.TimeoutExpired, json.JSONDecodeError) as exc:
             warnings.append(f"github_owner_sibling: {owner}: {exc}")
     return items
 
 
+def github_rate_limits() -> dict[str, dict]:
+    proc = subprocess.run(
+        ["gh", "api", "rate_limit", "--jq", ".resources | {core,graphql,search}"],
+        check=False, capture_output=True, text=True, timeout=30,
+    )
+    if proc.returncode != 0:
+        raise RuntimeError(proc.stderr.strip() or f"gh exited {proc.returncode}")
+    value = json.loads(proc.stdout)
+    if not isinstance(value, dict):
+        raise RuntimeError("GitHub rate-limit response was not an object")
+    return value
+
+
+def use_graphql_owner_sweep(owners: list[str], budgets: dict[str, dict] | None) -> bool:
+    if not budgets:
+        return False
+    core = int((budgets.get("core") or {}).get("remaining", 0) or 0)
+    graphql = int((budgets.get("graphql") or {}).get("remaining", 0) or 0)
+    required = len(owners) + GITHUB_QUOTA_RESERVE
+    return core < required and graphql >= required
+
+
 def fetch_github_discovery(
     since_day: str,
     tracked: dict[str, dict[str, str]] | None = None,
+    *,
+    budgets: dict[str, dict] | None = None,
 ) -> tuple[list[dict], list[str]]:
     queries = github_search_queries(since_day)
     errors: list[str] = []
@@ -826,7 +970,10 @@ def fetch_github_discovery(
         owners = owners[:OWNER_SIBLING_OWNER_LIMIT]
     results: list[list[dict]] = []
     if owners:
-        results.append(fetch_owner_siblings(owners, since_day, warnings=errors))
+        results.append(fetch_owner_siblings(
+            owners, since_day, warnings=errors,
+            use_graphql=use_graphql_owner_sweep(owners, budgets),
+        ))
     for query, source in queries:
         query_warnings: list[str] = []
         try:
@@ -999,7 +1146,14 @@ def main() -> int:
         if ACTIVE_WINDOW: QUERY_PAGES.append(observed_page(source="github-fixture", count=len(github_items), cap=max(1, len(github_items)+1), exhausted=True, since=ACTIVE_WINDOW[0], until=ACTIVE_WINDOW[1]))
         github_errors: list[str] = []
     else:
-        github_items, github_errors = fetch_github_discovery(since_day.isoformat(), tracked)
+        try:
+            budgets = github_rate_limits()
+        except (RuntimeError, subprocess.TimeoutExpired, json.JSONDecodeError) as exc:
+            budgets = None
+            source_errors["github-budget"] = [str(exc)]
+        github_items, github_errors = fetch_github_discovery(
+            since_day.isoformat(), tracked, budgets=budgets
+        )
     if github_errors:
         source_errors["github"] = github_errors
 

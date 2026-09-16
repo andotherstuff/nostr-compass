@@ -137,8 +137,8 @@ function parseArgs(argv: string[]): Args {
 // Step 1: real mentions this issue, via scripts/publish.ts
 // ---------------------------------------------------------------------------
 
-type FoundMention = { name: string; npub: string; mention_only: boolean };
-type UnresolvedMention = {
+export type FoundMention = { name: string; npub: string; mention_only: boolean };
+export type UnresolvedMention = {
   name: string;
   record: { checked_at?: string; reason: string; sources?: string[] };
 };
@@ -286,7 +286,7 @@ async function loadDevPairings(issue: number): Promise<Map<string, Entry[]>> {
 // Step 3: build final recipient list
 // ---------------------------------------------------------------------------
 
-type Recipient = { npub: string; hex: string; names: string[]; primaryName: string };
+export type Recipient = { npub: string; hex: string; names: string[]; primaryName: string };
 
 function decodeNpub(npub: string): string {
   const d = decode(npub);
@@ -354,6 +354,19 @@ async function buildRecipients(
     recipients: recipients.sort((a, b) => a.primaryName.localeCompare(b.primaryName)),
     excludedNoDm: excludedNoDm.sort((a, b) => a.primaryName.localeCompare(b.primaryName)),
   };
+}
+
+export async function resolveIssueParticipants(issue: number): Promise<{
+  newsletterPath: string;
+  recipients: Recipient[];
+  excludedNoDm: Recipient[];
+  unresolved: UnresolvedMention[];
+  missing: string[];
+}> {
+  const newsletterPath = await findNewsletterFile(issue);
+  const { found, unresolved, missing } = await runPublishScript(newsletterPath);
+  const { recipients, excludedNoDm } = await buildRecipients(issue, found);
+  return { newsletterPath, recipients, excludedNoDm, unresolved, missing };
 }
 
 // ---------------------------------------------------------------------------
@@ -437,18 +450,18 @@ async function execute(args: ReturnType<typeof parseArgs>) {
   console.log(`DM OUTREACH  issue=${args.issue}  reminder=${args.reminder}  rerecord=${args.rerecord}  really_send=${args.reallySend}`);
   console.log(`             sender=${author.npub}`);
 
-  const newsletterPath = await findNewsletterFile(args.issue);
+  const { newsletterPath, recipients: resolvedRecipients, excludedNoDm: resolvedNoDm, unresolved, missing } =
+    await resolveIssueParticipants(args.issue);
   console.log(`             newsletter=${newsletterPath}`);
-
-  const { found, unresolved, missing } = await runPublishScript(newsletterPath);
-  console.log(`             found ${found.length} mentioned projects/people via scripts/publish.ts`);
+  console.log(`             resolved ${resolvedRecipients.length + resolvedNoDm.length} mentioned project/maintainer identities via scripts/publish.ts`);
   if (unresolved.length || missing.length) {
     console.log(
       `             identity gate: ${unresolved.length} researched unresolved, ${missing.length} missing`,
     );
   }
 
-  let { recipients, excludedNoDm } = await buildRecipients(args.issue, found);
+  let recipients = resolvedRecipients;
+  let excludedNoDm = resolvedNoDm;
   const podcastCampaign = Boolean(args.podcastUrl);
   const campaignIdentity = podcastCampaign ? "podcast-invitation" : "review";
   const campaignMessage = buildOutreachMessage(args);
@@ -615,11 +628,13 @@ async function main() {
   }
 }
 
-main()
-  .catch((e) => {
-    console.error(`error: ${(e as Error).message}`);
-    process.exitCode = 1;
-  })
-  .finally(async () => {
-    await closeBunker();
-  });
+if (import.meta.main) {
+  main()
+    .catch((e) => {
+      console.error(`error: ${(e as Error).message}`);
+      process.exitCode = 1;
+    })
+    .finally(async () => {
+      await closeBunker();
+    });
+}

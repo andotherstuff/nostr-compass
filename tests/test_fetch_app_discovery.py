@@ -273,6 +273,78 @@ projects:
         self.assertEqual(len(warnings), 1)
         self.assertIn("capped at 200 repositories", warnings[0])
 
+    def test_graphql_owner_repository_walk_maps_fields_and_stops_at_window_edge(self):
+        mod = load_module()
+        payload = {
+            "data": {"repositoryOwner": {"repositories": {
+                "nodes": [
+                    {
+                        "databaseId": 7,
+                        "nameWithOwner": "formstr-hq/nail",
+                        "url": "https://github.com/formstr-hq/nail",
+                        "description": "Nostr Email Bridge",
+                        "homepageUrl": "https://nail.example",
+                        "createdAt": "2026-02-25T13:54:58Z",
+                        "pushedAt": "2026-08-18T15:15:20Z",
+                        "stargazerCount": 3,
+                        "isPrivate": False,
+                        "isFork": False,
+                        "isArchived": False,
+                        "repositoryTopics": {"nodes": [{"topic": {"name": "nostr"}}]},
+                    },
+                    {
+                        "databaseId": 8,
+                        "nameWithOwner": "formstr-hq/stale",
+                        "url": "https://github.com/formstr-hq/stale",
+                        "createdAt": "2026-01-01T00:00:00Z",
+                        "pushedAt": "2026-06-01T00:00:00Z",
+                        "stargazerCount": 0,
+                        "isPrivate": False,
+                        "isFork": False,
+                        "isArchived": False,
+                        "repositoryTopics": {"nodes": []},
+                    },
+                ],
+                "pageInfo": {"hasNextPage": True, "endCursor": "cursor"},
+            }}}
+        }
+        completed = subprocess.CompletedProcess([], 0, stdout=json.dumps(payload), stderr="")
+        with mock.patch.object(mod.subprocess, "run", return_value=completed) as runner:
+            items = mod.fetch_owner_repositories_graphql("formstr-hq", "2026-08-10")
+        self.assertEqual([item["full_name"] for item in items], ["formstr-hq/nail"])
+        self.assertEqual(items[0]["topics"], ["nostr"])
+        self.assertEqual(items[0]["_discovery_sources"], ["github_owner_sibling"])
+        self.assertIn("graphql", runner.call_args.args[0])
+        self.assertEqual(runner.call_count, 1)
+
+    def test_owner_sweep_uses_graphql_when_core_cannot_cover_owners_and_reserve(self):
+        mod = load_module()
+        owners = ["alpha", "zeta"]
+        self.assertTrue(mod.use_graphql_owner_sweep(owners, {
+            "core": {"remaining": 501},
+            "graphql": {"remaining": 5000},
+        }))
+        self.assertFalse(mod.use_graphql_owner_sweep(owners, {
+            "core": {"remaining": 1000},
+            "graphql": {"remaining": 5000},
+        }))
+        self.assertFalse(mod.use_graphql_owner_sweep(owners, {
+            "core": {"remaining": 501},
+            "graphql": {"remaining": 100},
+        }))
+
+        warnings: list[str] = []
+        with mock.patch.object(
+            mod, "fetch_owner_repositories_graphql",
+            return_value=[{"full_name": "alpha/repo"}],
+        ) as graphql_fetch, mock.patch.object(mod, "fetch_owner_repositories") as rest_fetch:
+            items = mod.fetch_owner_siblings(
+                ["alpha"], "2026-08-10", warnings=warnings, use_graphql=True
+            )
+        self.assertEqual(items, [{"full_name": "alpha/repo"}])
+        graphql_fetch.assert_called_once()
+        rest_fetch.assert_not_called()
+
     def test_owner_sweep_records_a_failing_owner_without_aborting_the_rest(self):
         mod = load_module()
         def fake(owner, since_day, **kwargs):

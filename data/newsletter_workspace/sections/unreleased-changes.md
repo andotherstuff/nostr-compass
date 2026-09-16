@@ -1,25 +1,27 @@
 ## In Development
 
-### Zap Cooking renders NIP-27 references with relay hints
+### Nenya marketplace library
 
-[The September 4 merge](https://github.com/zapcooking/frontend/pull/665) makes [Zap Cooking](https://github.com/zapcooking/frontend) render `nostr:npub` and `nostr:nprofile` references in articles, recipes, editor previews, and print views. Invalid identifiers remain text, resolution is non-blocking, and the editor previews the Markdown that will be signed. When relay information exists, a bare `npub` becomes an `nprofile` with outbox relays and a matching `p` tag.
+[Nenya](https://github.com/Erya-Labs/Nenya) is a new library for a non-custodial Nostr marketplace focused on commissioned digital media with Bitcoin settlement. The repository is pre-release, so its event and settlement interfaces may still change.
 
-The same week fixed [author-scoped kind `30023` reads](https://github.com/zapcooking/frontend/commit/6a379c680727bb49074a4ff85f070b404dba97a7), added [verified NIP-50 search relays](https://github.com/zapcooking/frontend/commit/1802e8d7e95ed482209d09e03c834c2d9adfc1ea) with deduplication and stale-query guards, and repaired [NIP-47 wallet calls](https://github.com/zapcooking/frontend/pull/705) after dependency changes broke balances and history.
+Client developers import the [Nenya library](https://github.com/Erya-Labs/Nenya) into Nostr applications to expose compatible listings and transactions. Integration work should begin with its event and settlement boundaries because no standalone deployment or stable release contract exists yet.
 
-### Conduit reconciles signed relay and Blossom preferences
+### GitHub-to-Nostr CI bridging
 
-[Conduit](https://github.com/Conduit-BTC/conduit-mono) merged [Blossom preference editing](https://github.com/Conduit-BTC/conduit-mono/pull/374) on September 2 and [signed preference reconciliation](https://github.com/Conduit-BTC/conduit-mono/pull/397) on September 7. Market and Merchant retain the latest valid kind `10002` relay list and kind `10050` inbox declaration, preserve a usable signed list when a newer event is malformed, distinguish an explicit empty list from an unavailable lookup, and do not replace failed declared relays with code defaults.
+[gh-ngit-ci-bridge](https://github.com/felixfelix-bot/gh-ngit-ci-bridge) is an early bridge that watches GitHub commits associated with configured identities and turns them into signed Nostr build evidence for NIP-34 workflows. The repository is pre-release, and its integration contract may still change.
 
-The [kind `10063` editor](https://github.com/Conduit-BTC/conduit-mono/pull/374) lets a user load, reorder, review, externally sign, publish, and read back an ordered HTTPS media-server list without contacting those servers or inserting an undeclared default.
+The [gh-ngit-ci-bridge repository](https://github.com/felixfelix-bot/gh-ngit-ci-bridge) connects conventional GitHub activity with Nostr-native CI coordination without changing the original forge workflow. Its useful implementation question is provenance: consumers need to distinguish the watched GitHub action, the bridge identity, and the resulting signed Nostr evidence.
 
-### NIP-A3 payment targets reach three clients
+### noscall encrypts voice attachments
 
-From September 1–3, [Amethyst](https://github.com/vitorpamplona/amethyst/pull/4041), [Grimoire](https://github.com/purrgrammer/grimoire/commit/54052506f7a0da06dfc4cf7e969331ee61be7851), and [Pollerama](https://github.com/formstr-hq/nostr-polls/commit/5a015f1d17abecd036f3e10c88d493d23928fa98) implemented NIP-A3 kind `10133` payment targets. Amethyst offers an opt-in handoff only when a compatible target exists and does not turn it into a zap; Grimoire uses a fixed registry before building wallet URIs; Pollerama validates Monero addresses and fetches the author's relay list before querying targets. Each client still needs an allowed payment method, a relay route, and an accurate display.
+[noscall’s encrypted voice-attachment commit](https://github.com/sanah9/noscall/commit/3f0b9ef7cf0fbc6e0dced58240c32bb84ed6fea4) adds a concrete privacy feature for voice communication. The source-verified change supports encrypted voice attachments, reducing the need to expose recorded media as plaintext when attaching it to a call or messaging flow.
 
-### Ditto expands Blossom fallback and live embeds
+### relayer restores notifier fan-out across processes
 
-[Ditto](https://github.com/soapbox-pub/ditto) merged [broad Blossom fallback and mirroring](https://github.com/soapbox-pub/ditto/commit/1e35a0705c28f706eb40d1f99aedef3105cf6f07) on September 6. Avatars, badges, banners, community images, custom emoji, and application icons now try declared servers with the same blob hash; mirror uploads use a standard BUD-11 authorization token. A [September 4 change](https://github.com/soapbox-pub/ditto/commit/e2a29004a65122470179c83d6ded8336a5c10dfa) added compact `kind:30311` live-stream embeds.
+[relayer pull request #167](https://github.com/fiatjaf/relayer/pull/167) has merged a notifier fix for deployments where several relay processes share one database. The patch restores live fan-out across those processes, addressing the case where an event persisted successfully but connected clients on another process did not receive the corresponding live notification.
 
-writer_model: claude-opus-5 (bounded first-party fallback candidate; wrapper run `7dee2ec3-0440-4980-a0a5-9dd9ce854a4c`)
+Taken with the shared-database work in [nostr-relay v0.0.266](https://github.com/mattn/nostr-relay/releases/tag/v0.0.266), the relayer fix gives multi-process operators a clear test target: publish through one process, subscribe through another, and confirm both persistence and immediate delivery. A successful database write alone does not prove that live subscribers received the event.
+
+writer_model: preferred=gemini-3.1-pro, actual=openai-codex/gpt-5.6-sol, receipt=data/newsletter_workspace/writer_receipt_2026-09-16.json
 
 GATE: PENDING REVIEW

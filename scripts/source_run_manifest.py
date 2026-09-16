@@ -117,7 +117,7 @@ def record_family(path: Path, *, pass_id: str, family: str, status: str, artifac
     if family not in manifest["expected_families"]: raise ValueError(f"unexpected source family: {family}")
     if status not in STATUS_VALUES: raise ValueError(f"invalid source status: {status}")
     if not collector.is_file(): raise ValueError("collector must be a readable versioned file")
-    if query.get("since") != manifest["window"]["since"] or query.get("until") != manifest["window"]["until"]: raise ValueError("canonical query is not bound to the exact pass window")
+    if _absolute(str(query.get("since", ""))) != manifest["window"]["since"] or _absolute(str(query.get("until", ""))) != manifest["window"]["until"]: raise ValueError("canonical query is not bound to the exact pass window")
     if query.get("family") != family or query.get("pass_id") != pass_id: raise ValueError("canonical query family/pass identity mismatch")
     if min(item_count, page_count, include_count, skip_count) < 0 or include_count + skip_count < item_count: raise ValueError("invalid item/page/include/skip counts")
     if len(skip_evidence) != skip_count: raise ValueError("skip count must have explicit skip evidence")

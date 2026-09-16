@@ -1,57 +1,101 @@
 ## Tagged Releases
 
-### Vector 0.4.4 makes encrypted-community recovery safer
+### Nail 0.2.0 restores Nostr-to-email subscriptions
 
-[Vector 0.4.4](https://github.com/VectorPrivacy/Vector/releases/tag/v0.4.4) shipped August 31 with community recovery, key-rotation, moderation, and reply-routing fixes. Refounding closes a raided community to the invitation path used by attackers; replacement membership supersedes stale local state; and one unreachable member no longer freezes the roster. Empty rotations are rejected, promotions preserve online members, and operations refuse to run when required members cannot be reached.
+[Nail v0.2.0](https://github.com/formstr-hq/nail/releases/tag/v0.2.0), a service that delivers Nostr messages through email workflows, adds self-healing gift-wrap subscriptions. The change is aimed at restoring Nostr-to-email delivery after subscription failures instead of leaving the bridge silently stalled.
 
-The [release](https://github.com/VectorPrivacy/Vector/releases/tag/v0.4.4) also persists moderator deletions and bans, re-encrypts the guest book after a password change, binds notification replies to their conversation after restart, and uses only verified multiplayer paths. These are recovery controls, not revocation of keys already obtained.
+### Nostr Mail Client 0.15.0 broadens account and relay control
 
-### Primal Android 3.5.27 checks signer and wallet identity
+[Nostr Mail Client v0.15.0](https://github.com/nogringo/nostr-mail-client/releases/tag/v0.15.0) adds one-tap account switching, per-account notifications, web push, and recovery of a missing relay list from a relay, Nostr address, or `nprofile`. It also republishes profiles and relay lists to indexing relays, reconnects when network access returns, and distinguishes a device outage from unreachable mail relays. Those changes tighten account recovery and delivery across desktop, web, and Android clients.
 
-[Primal Android 3.5.27](https://github.com/PrimalHQ/primal-android-app/releases/tag/3.5.27) shipped September 3 after [the signer identity check](https://github.com/PrimalHQ/primal-android-app/pull/1108) and [wallet-request authentication](https://github.com/PrimalHQ/primal-android-app/pull/1105) merged August 31. Local signing rejects a request whose identity does not match the held account, and incoming [NIP-47](/en/topics/nip-47/) requests are authenticated before processing. Zap-poll routing also sends votes to the poll author when the poll appears in a reply.
+### Linky 26.9.17 keeps recovery seeds off its server
 
-### GRAIN 0.8.0-rc2 closes an acknowledged-but-not-stored path
+[Linky v26.9.17](https://github.com/linky-fit/linky/releases/tag/v26.9.17), a contacts, private Nostr messaging, and Lightning/Cashu payments application, fixes a path that sent recovery seeds to Linky's server when users saved them through a password manager. The release also hardens payment-file URL handling and disables Android application backups, reducing the places where wallet and identity recovery material can escape the device.
 
-[GRAIN 0.8.0-rc2](https://github.com/0ceanSlim/grain/releases/tag/v0.8.0-rc2) shipped September 7 after a storage failure allowed `OK` before its asynchronous LMDB database writer noticed full storage capacity. The relay now warns at 80 and 95 percent, refuses new events at 97 percent while leaving deletion room, and reports post-acceptance writer failures. Retention walks oldest-first, teardown handles late messages, and invalid filters no longer discard valid siblings.
+### Calendar by Form* 2.4.0 adds Mailstr guest invitations
 
-The [release](https://github.com/0ceanSlim/grain/releases/tag/v0.8.0-rc2) also corroborates kind `10166` monitor announcements and kind `30166` relay reports, evicts stale reports, keeps configured relays as fallback, and reports live limits and authentication in [NIP-11](/en/topics/nip-11/) instead of static zeros.
+[Calendar by Form* v2.4.0](https://github.com/formstr-hq/nostr-calendar/releases/tag/v2.4.0), a Nostr calendar client, adds Mailstr guest invitations and mobile calendar fixes. The invitation path lets organizers include participants through mail-oriented coordination without requiring an existing calendar account.
 
-### LibreNostr 0.5.0–0.5.2 makes Tor routing fail closed
+### Hessible 0.1.2 speeds encrypted contact and photo sync
 
-[LibreNostr 0.5.0](https://github.com/Lwb89dev/librenostr/releases/tag/v0.5.0) shipped September 7 with an Orbot mode routing relays, zaps, uploads, media, playback, and previews through one SOCKS port, plus a repair for a zap-sheet crash. If Orbot or the proxy is unavailable, connections stop instead of leaking onto a direct route. [Version 0.5.1](https://github.com/Lwb89dev/librenostr/releases/tag/v0.5.1) stops slow [NIP-50](/en/topics/nip-50/) searches delaying local results; [0.5.2](https://github.com/Lwb89dev/librenostr/releases/tag/v0.5.2) replaces recursive thread layout and repairs thread ordering.
+[Hessible 0.1.2](https://github.com/circumspace/hessible), a privacy-focused Android contacts application that stores encrypted contact data on Nostr relays, reduces synchronization overhead and mirrors encrypted contact photos across Blossom servers. The release also makes the application package smaller, while its own release guidance continues to caution users to back up keys and account for varying relay retention.
 
-The [fail-closed behavior](https://github.com/Lwb89dev/librenostr/releases/tag/v0.5.0) applies to every network surface listed by the release, and a restart is required because those clients are long lived. The patch releases preserve that choice while limiting unrelated search, stack-depth, and layout failures.
+### Boris 0.12.5 bounds extraction and strengthens offline reading
 
-### SkateSpots adds an on-device relay path
+[Boris v0.12.5](https://github.com/dergigi/boris/releases/tag/v0.12.5), a reading-list client built around Nostr bookmarks, follows v0.12.4 with bounded content extraction, offline caching, relay-query changes, unsafe-HTML handling, and a fix for nearly invisible text under the Paper White theme. These changes affect both content safety and the reliability of reading saved material without a live network path.
 
-The signed [September 8 Zapstore release](https://zapstore.dev/apps/org.skatespots.app) adds an optional Citrine relay to SkateSpots. Spots, crews, messages, and map data can load locally; posts queue offline; and the phone keeps a local copy. Existing stash and message content stays end-to-end encrypted. Payment checks require invoice amounts and provider-issued zap receipts before granting access or counting contributions.
+### Amethyst 1.15.2 refines media and root-scope replies
 
-The [local relay](https://zapstore.dev/apps/org.skatespots.app) is a storage and continuity option, not a replacement for every remote relay. It lets a skater keep working through a disconnected stretch and then reconcile signed activity later, while the payment changes stop a self-authored receipt from becoming proof of settlement.
+[Amethyst v1.15.2](https://github.com/vitorpamplona/amethyst/releases/tag/v1.15.2), an Android Nostr client, closes a three-release sequence with media fixes, clearer Health Connect permission handling, source-name caching, and dedicated engagement filters for NIP-22 root-scope replies. The release also includes translation and package-metadata updates.
 
-### Whistle 1.8.15 repairs encrypted-group lifecycle recovery
+### LibreNostr 0.5.17 routes feeds through author write relays
 
-[Whistle 1.8.15](https://github.com/sjmcnamara/whistle/releases/tag/v1.8.15) shipped September 3 after an Android lifecycle repair stopped route-level state holders from destroying application-wide relay subscriptions and location updates. Its release notes also describe refreshed connection state after lock or doze and a recovered 501-event backlog in the observed case.
+[LibreNostr 0.5.17](https://primal.net/e/c118efbe649823a3258a6e7663f4d8b52195adbde0481019183792eb5274afd4), a relay-first Android client, now directs feed queries to the NIP-65 write relays of followed authors and defers interaction-count queries until notes enter view. Earlier work in the same release sequence limits concurrent relay queries and closes each relay subscription as soon as that relay answers, reducing self-inflicted request rejection during refreshes.
 
-The [bug](https://github.com/sjmcnamara/whistle/releases/tag/v1.8.15) tied ownership of a long-lived service to a short-lived screen. Keeping the activity-scoped instance alive and checking the socket before a one-shot read makes ordinary Android navigation and background suspension less likely to look like an empty group.
+### Voca 1.2.0 improves speech cancellation and recovery
 
-### TWENTY ONE Companion 1.12.0 separates encrypted DMs from legacy chat
+[Voca 1.2.0](https://njump.me/nevent1qqsfcc5zel49t5zt96ufndumrzc2vzhrk7e2rnwq579gcs8yd9cn4pcflqxt3), an offline-oriented Android text-to-speech reader that can fetch and verify Nostr content, adds distinct cancellation and rendering behavior plus recovery for slow or unreliable speech engines after the 1.0 launch covered in issue #38. It also adds opt-in diagnostics sent with a fresh one-time Nostr key through a NIP-17 private message, with large reports encrypted locally before upload.
 
-[TWENTY ONE Companion 1.12.0](https://github.com/HolgerHatGarKeineNode/twenty-one-companion/releases/tag/v1.12.0) shipped September 5 with [NIP-17](/en/topics/nip-17/) gift-wrapped DMs. The encrypted inbox is separate from older space chat, which remains distinct because those messages were never encrypted and cannot be migrated. PDFs and videos are supported subject to relay policy, and personal hides sync without becoming moderator bans.
+### Postr 1.1.1 adds dictation and publication recovery
 
-The [visible separation](https://github.com/HolgerHatGarKeineNode/twenty-one-companion/releases/tag/v1.12.0) is part of the security model. Calling the old history a secure inbox would misrepresent its provenance, while silently migrating it would suggest encryption that did not exist when it was written.
+[Postr 1.1.1](https://njump.me/nevent1qqszw3dsskfz3u7pqxn4r5ytslrj0e3u26et90rpy9997vtfw3qkr6g9g0f03), a focused Android kind `1` composer, adds dictation and caret-aware mention handling after the launch covered in issue #37. The preceding 1.1.0 release also improves publication recovery by retrying the same signed event after ambiguous outcomes, preventing recovery from creating a duplicate note.
 
-### ZapStore 1.1.2 validates event ids and certificate rotation
+### earthly 0.1.10 repairs map sanitization and authoring
 
-[ZapStore 1.1.2](https://github.com/zapstore/zapstore/releases/tag/1.1.2) shipped September 4 with NIP-01 event-id validation: the client recomputes an incoming event's id and rejects mismatches before using it. The release also identifies packages installed outside ZapStore. On the server, [certificate-hash retention](https://github.com/zapstore/relay/pull/8) preserves repeated `apk_certificate_hash` tags so Android signing-key rotation can retain an approved lineage.
+[earthly v0.1.10](https://github.com/zeSchlausKwab/earthly/releases/tag/v0.1.10), a collaborative Nostr map editor, materially changes map and story authoring while fixing a critical MapLibre attribution-sanitizer flaw through a MapLibre GL JS upgrade. The release also improves WebGL 2 compatibility messaging, mobile controls, geometry editing, selection, and map-presentation controls.
 
-The [event-id check](https://github.com/zapstore/zapstore/releases/tag/1.1.2) prevents a relay or cache from changing tags or content while keeping the old id. The installer-source indicator supplies separate provenance when an Android package with the same application id came from another channel.
+### Routstrd 0.4.10 tightens Nostr request routing
 
-### Amber 6.6.1 keeps signer responses attributable
+[Routstrd v0.4.10](https://github.com/Routstr/routstrd/releases/tag/v0.4.10) replaces a stale stored provider list with the list returned by live discovery. The preceding v0.4.9 release added manual and scheduled client refresh controls, named npubs in the CLI, and graceful daemon restarts that wait for active requests. Together, the releases make provider selection and refresh behavior more explicit for operators of the Nostr-routed service.
 
-[Amber 6.6.1](https://github.com/greenart7c3/Amber/releases/tag/v6.6.1) shipped September 4 after permission parsing was fixed to tolerate a missing optional `kind`, and rejected signing requests began returning their original request id. Calling applications can match a rejection to the submitted operation. The release also updates remote-signer defaults and adds an indexer relay.
+### Whistle 1.9.1 instruments background recovery
 
-Together these [fixes](https://github.com/greenart7c3/Amber/releases/tag/v6.6.1) preserve attribution in both directions: a permission record remains usable when an optional field is absent, and a refusal remains tied to the request that caused it. The relay-default changes affect discovery, but they do not replace the signer's local authorization decision.
+[Whistle 1.9.1](https://primal.net/e/bb3aae325f707b04dffd3b0b4a2d0c48022999fef7a793be3503b4c53e37eba4), an encrypted group location-sharing application built on Nostr, MLS, and Marmot Protocol, adds device-lifecycle instrumentation for iOS background recovery. Version 1.9.0 also introduces per-group sharing pauses and per-group last-event diagnostics, making a stalled group easier to distinguish from a healthy application-wide connection.
 
-writer_model: claude-opus-5 (bounded first-party fallback candidate; wrapper run `7dee2ec3-0440-4980-a0a5-9dd9ce854a4c`)
+### Amber 6.6.4 closes a Tor leak and signer recovery failures
+
+[Amber v6.6.4](https://github.com/greenart7c3/Amber/releases/tag/v6.6.4), an Android Nostr event signer, caps a three-release sequence with a Tor leak correction and fixes around signer relays and recovery. Signer users and application developers should pay particular attention to network-path assumptions and retry behavior, since signer failures can otherwise appear as client publication failures.
+
+### nostr-wot-extension 0.7.0 encrypts wallet cache data
+
+[nostr-wot-extension v0.7.0](https://github.com/nostr-wot/nostr-wot-extension/releases/tag/v0.7.0), a browser extension that manages Nostr identities, signs events, and initiates Lightning payments, encrypts wallet and payment cache data and strengthens vault and account isolation. It also addresses NWC and wallet behavior, payment compatibility, request approvals, account management, backup imports, relay handling, accessibility, and local event decryption.
+
+### Lightning.Pub 0.0.41 improves publication recovery
+
+[Lightning.Pub v0.0.41](https://github.com/shocknet/Lightning.Pub/releases/tag/v0.0.41) adds relay URL, timing, socket-state, and DNS details to Nostr publication failures. It also retries liquidity-provider startup calls, removes abandoned callbacks, and withholds invoice routing until a successful balance response proves the provider is ready. Operators now get a clearer split between relay-connectivity failures and backend-readiness failures.
+
+### Gittr 1.0.0 advances NIP-34 collaboration
+
+[Gittr v1.0.0](https://github.com/arbadacarbaYK/gittr/releases/tag/v1.0.0), a client for Nostr-based Git collaboration, advances NIP-34 clone-source handling, issue and discussion state, mobile usability, and interoperability. The v1.0.0 tag follows v0.3.0 and v0.3.1 from earlier this week, giving integrators a stable version marker for the release sequence.
+
+### GitWorkshop 4.1.0 makes NIP-34 drafts recoverable
+
+[GitWorkshop 4.1.0](https://njump.me/nevent1qqswf45vw8y5metnu8tc2fge0lr7sy8nmuk264kryrd45wqles5kfvqqrtwl3), a Nostr-native client for NIP-34 issues, pull requests, code review, and repository browsing, adds account-scoped local drafts that survive refreshes and browser restarts. It also adds bounded recovery and explicit retry controls across Git reads, relay discovery, repository state, pull-request history, uploads, and release metadata while keeping signing and payment retries manual.
+
+### ngit-ci 0.1.1 publishes signed CI coordination
+
+[ngit-ci 0.1.1](https://njump.me/nevent1qqs2y0p5nxkfqsrqguth3hd4wmmel4p2te8q906ex748q35ug79e6eg9hms4s), a self-hosted coordinator for the proposed NIP-C1 Nostr CI protocol, is its first release published through Nostr. It covers signed workflow coordination, container or microVM execution, logs and artifacts, encrypted repository secrets, NIP-34 maintainer authorization, and signed publication of build results.
+
+### pakstr 0.21.1 advances Nostr application packaging
+
+[pakstr v0.21.1](https://git.nostrdev.com/stuff/pakstr/releases/tag/v0.21.1) continues a five-release sequence for Nostr application packaging and app-shell behavior. NostrAppShell references point to this same pakstr release series, so the package and alias describe one shipped change.
+
+### @elisym/cli 0.30.0 coordinates agent and delegation packages
+
+[@elisym/cli 0.30.0](https://github.com/elisymlabs/elisym/releases/tag/%40elisym/cli%400.30.0) concludes a coordinated CLI, SDK, and MCP release for Nostr-oriented agent delegation. Delegated jobs now wait for completion instead of sleeping for a fixed interval, and the application avoids paying the same delegation capability once per job. Teams using more than one package should keep CLI 0.30.0, SDK 0.36.0, and MCP 0.26.0 on the matched release line.
+
+### Hashtree 0.2.150 advances hash-tree synchronization
+
+[Hashtree v0.2.150](https://github.com/mmalmi/hashtree/releases/tag/v0.2.150) closes a six-release sequence with Android-safe locking for the embedded social graph. Earlier releases in the sequence keep Nostr subscriptions open briefly after an empty EOSE so delayed signed roots can arrive, select the newest valid root for the exact author and tree, and recover retained FIPS routes after transit outages. The result is more predictable mutable-root discovery and synchronization across relays, embedded clients, and intermittent network paths.
+
+### nostr-relay 0.0.266 improves shared-database operation
+
+[nostr-relay v0.0.266](https://github.com/mattn/nostr-relay/releases/tag/v0.0.266), a Nostr relay built on the relayer framework, advances shared-database and Redis behavior across six releases. This work is especially relevant to operators running more than one relay process against common persistence or notification infrastructure.
+
+### fips-tcp 0.2.2 implements FIPS over TCP
+
+[fips-tcp v0.2.2](https://github.com/mmalmi/fips-tcp/releases/tag/fips-tcp-v0.2.2) repairs missing segments after a timed-out flight as acknowledgments advance. Small writes lost during a transit outage recover together instead of waiting through a growing timeout for every segment, while the Rust and TypeScript implementations preserve identical wire bytes, retry bounds, receive-window checks, sequence wrapping, and RTT sampling.
+
+writer_model: preferred=gemini-3.1-pro, actual=openai-codex/gpt-5.6-sol, receipt=data/newsletter_workspace/writer_receipt_2026-09-16.json
 
 GATE: PENDING REVIEW

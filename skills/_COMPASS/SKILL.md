@@ -255,9 +255,12 @@ enforce these gates before handoff:
   represented; release-title summaries are insufficient.
 - Briefly explain what every project does on its first mention in each section,
   and explain every NIP in human terms rather than leaving a bare identifier.
-- Include only spec items with verified in-window activity. Group by protocol
-  family, give each changed PR/commit/spec item its own paragraph, and explain
-  technical behavior, trust/security impact, and maturity in useful detail.
+- Include only spec items with verified in-window activity. Under `Protocol and
+  Spec Work`, give every changed PR, commit, or specification item its own
+  descriptive `###` heading and body paragraph(s), matching the project
+  sections. Never group multiple changes under a protocol-family heading, and
+  never use a generic family name as the item heading. Explain technical
+  behavior, trust/security impact, and maturity in useful detail.
 - Select Deep Dives only from merged NIPs with current implementation evidence.
   Each dive must cite the canonical specification and at least three distinct
   clients or applications that implement or use it.
@@ -282,7 +285,7 @@ Stages (each gates on a file in `data/newsletter_workspace/`):
 
 0. Pre-flight: `git fetch`, open PR check, last-newsletter detection, target-date computation
 1. Intake: parse user URLs, verify repos, dedup against `data/projects.yml`, add new entries with correct category and priority. Owned by `agents/IntakeAgent.md`.
-2. Fetch: run `scripts/fetch_all.sh --since-days 8` (project updates, NIP discussions, Nostr Recap, Shakespeare apps, NIP-34 repositories, Zapstore releases, grantee heartbeats, and the NIP/BUD/NAP/Marmot/Gamma/Concord/NWC spec-family sweep) plus `build_coverage_history.py` and `detect_non_github_sources.sh`.
+2. Fetch: choose one immutable pass ID and absolute UTC window, then run `scripts/fetch_all.sh --pass-id <id> --since <RFC3339> --until <RFC3339> --newsletter-date <date>` (project updates, NIP discussions, Nostr Recap, Shakespeare apps, NIP-34 repositories, Zapstore releases, grantee heartbeats, and the NIP/BUD/NAP/Marmot/Gamma/Concord/NWC spec-family sweep) plus `build_coverage_history.py` and `detect_non_github_sources.sh`. Read the authenticated REST, GraphQL, and search buckets with `gh api rate_limit` before collection. The tracked-project collector uses about 3,650 REST-core requests, and app discovery then lists each distinct tracked owner through REST (418 owners as of 2026-09-16), so budget roughly 4,100 core requests plus the 500-request guard reserve for one complete pass. An app-discovery `source_errors` result or missing immutable receipt is a failed family, never complete evidence.
 3. Triage: per-item verdict (GREEN/MAYBE/SKIP) against Nostr Relay Test, So What Test, and scope rule. Owned by `agents/TriageAgent.md`.
 4. Selection: reconcile every collector-retained candidate, expand aggregates, apply the hard eligibility gate and 8/10 no-zero quality threshold without item caps, choose section placement, select the NIP deep dive rotation or last-Wednesday history mode, and run all-history redundancy checks via `data/coverage_history.json` plus a full read of the latest three newsletters. Automatic editorial and review gate; an authenticated hold still stops publication. Owned by `agents/NewsletterAgent.md` (select mode).
 5. Section writing: parallel writers per section. Owned by `agents/NewsletterAgent.md` (write mode).
@@ -326,6 +329,7 @@ The recurring Wednesday publication starts at or after 16:00 UTC. It requires cu
 5. Build the NIP-23 payload via `scripts/publish.ts`, then sign and broadcast kind:30023 via Amber to `publish/config/relays.json`, including `sendit.nosflare.com` only as a write-only NIP-66 blaster; recover the exact event from at least five durable relays.
 6. Sign and broadcast kind:1 to the same broad set and independently recover the exact event from at least five durable relays; blaster acceptance does not count as persistence.
 7. Record `publish_log_<date>.md`, enqueue the durable publication and Logbook-readiness obligations, then complete the parent task so translation and podcast prep promote.
+8. After exact publication and Logbook issue/access readiness are verified, run the separate podcast campaign: DM every eligible verified issue participant with the asynchronous Logbook voice-note invitation, then publish one top-level kind:1 invitation with a `p` tag and visible `nostr:npub` mention for every verified participant. Persist per-recipient effects, the signed public event, relay acceptances, and exact-event readbacks. `no_dm` applies to DMs, not to truthful public attribution. No reminder campaign is implied.
 
 A manual `/publish` invocation before 16:00 UTC must stop unless the user explicitly overrides the clock gate.
 
@@ -352,6 +356,33 @@ Spawn 9 parallel translation agents (de, es, fr, it, ja, ko, nl, pt, zh), each w
 - `data/spec_updates/spec_updates_*.json` — mandatory weekly status for NIPs, BUDs, NAPs, Marmot/MIPs, Gamma Markets, Concord/CORD, and NWC; quiet families remain explicit
 
 **Fetch error handling:** The Orchestrator's Stage 2 surfaces empty results from each fetcher. When more than two fetchers return empty, Stage 2 halts and surfaces to the user. Single-fetcher failures are logged and the pipeline continues with the available data.
+
+**GitHub quota discipline:** One fixed source window gets one fresh project
+sweep. `fetch_all.sh` owns that invocation and runs exactly once per pass; never
+run a standalone project collector and then replay it through `fetch_all.sh`.
+Before retrying, check both the immutable receipt and live collector
+PIDs; a child collector remains live even if its parent worker exits. Never run
+two collectors against the same dated artifact, and never use `--fresh` after
+the pass receipt exists. Resume a matching pass. If a receipt/artifact conflict
+has already made an unfinalized pass unusable, abandon it and use one new pass
+ID over the same frozen window, resuming its completed project journal without
+`--fresh`; never overwrite or relabel the conflicting receipt. REST
+core, GraphQL, and search have independent budgets: use authenticated `gh api
+graphql` for bounded exact-window verification when REST is constrained, but
+only an exhaustively paginated, artifact-bound collector receipt can satisfy
+the source gate. Do not treat an untouched GraphQL bucket as permission to
+forge or relabel REST evidence.
+
+The REST calculation covers both GitHub consumers in the master pass: roughly
+3,650 calls for tracked projects plus one call per distinct tracked owner in
+app discovery (418 owners as of 2026-09-16). Require enough core remaining for
+both and the 500-call guard reserve before starting. App discovery switches its
+owner sweep to an exhaustively paginated GraphQL query when REST cannot cover
+the owners plus reserve and GraphQL can. If neither bucket can finish, it exits
+with `source_errors` and no receipt. Let it exit, wait for the authoritative
+reset, rerun only that missing family under the same pass/window environment,
+and resume `fetch_all.sh` to ingest receipts. Never accept partial discovery
+JSON as source-gate evidence.
 
 **Web research:** The legacy web-search step is retired. The TriageAgent uses primary sources only (GitHub, Nostr relays, project pages directly). Secondary sources like Nostr Recap are read as discovery aids, not cited in prose.
 

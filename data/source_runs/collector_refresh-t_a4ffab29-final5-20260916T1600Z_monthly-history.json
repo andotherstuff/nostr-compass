@@ -1,0 +1,22 @@
+{
+  "artifact_path": null,
+  "artifact_sha256": null,
+  "candidate_ids": [],
+  "canonical_query": {
+    "family": "monthly-history",
+    "pass_id": "refresh-t_a4ffab29-final5-20260916T1600Z",
+    "since": "2026-09-08T00:00:00Z",
+    "until": "2026-09-16T16:00:00Z"
+  },
+  "collector_path": "/opt/data/compass-worktrees/2026-09-16/scripts/fetch_monthly_history.py",
+  "dispositions": {},
+  "family": "monthly-history",
+  "include_count": 0,
+  "item_count": 0,
+  "page_count": 0,
+  "pagination_complete": false,
+  "pass_id": "refresh-t_a4ffab29-final5-20260916T1600Z",
+  "skip_count": 0,
+  "skip_evidence": [],
+  "status": "not_applicable"
+}

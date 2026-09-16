@@ -215,10 +215,16 @@ bun dm-outreach.ts <issue> \
   --only '<project>' --only '<maintainer>'
 ```
 
-Podcast outreach is a separate post-publication workflow. It remains disabled
-until the owner defines and approves the new recording setup and message. Never
-reuse the prior Riverside invitation or reminder copy, and never append podcast
-copy to a newsletter-review DM.
+Podcast outreach is a separate post-publication workflow. The approved setup is
+an asynchronous Logbook voice-note campaign with no appointment. It starts only
+after the exact newsletter publication and Logbook issue/access readiness are
+verified. Send one invitation DM to every eligible verified issue participant,
+then publish one separate top-level kind:1 invitation that visibly mentions and
+adds a `p` tag for the complete verified participant set. Apply `no_dm` only to
+private outreach; it does not erase truthful public attribution. Persist the DM
+campaign receipt, signed public event, relay acceptances, and exact-event
+readbacks. Never reuse Riverside, append podcast copy to a newsletter-review
+DM, or send a reminder without new owner authorization.
 
 How it works (see the file's own header comment for full detail):
 - Recipients are derived automatically every week from `scripts/publish.ts`'s

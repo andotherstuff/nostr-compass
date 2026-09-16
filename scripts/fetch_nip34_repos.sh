@@ -343,8 +343,8 @@ fetch_tracked_repos() {
                 | jq -s 'unique_by(.id)' 2>/dev/null
             )
             patch_count=$(echo "${patches:-[]}" | jq 'length' 2>/dev/null || echo 0)
-            [ "$patch_count" -lt 50 ] || { echo "tracked patch query reached cap for $name" >&2; return 1; }
-            record_exact_page "$PAGES_FILE" "tracked-patches:$name" "" "$patch_count" 50 true
+            [ "$patch_count" -lt 50 ] || { echo "tracked patch query reached cap for ${yml_name:-$d_tag}" >&2; return 1; }
+            record_exact_page "$PAGES_FILE" "tracked-patches:${yml_name:-$d_tag}" "" "$patch_count" 50 true
             echo "    Patches in period: $patch_count" >&2
 
             # Fetch issues (kind 1621) referencing this repo
@@ -356,8 +356,8 @@ fetch_tracked_repos() {
                 | jq -s 'unique_by(.id)' 2>/dev/null
             )
             issue_count=$(echo "${issues:-[]}" | jq 'length' 2>/dev/null || echo 0)
-            [ "$issue_count" -lt 50 ] || { echo "tracked issue query reached cap for $name" >&2; return 1; }
-            record_exact_page "$PAGES_FILE" "tracked-issues:$name" "" "$issue_count" 50 true
+            [ "$issue_count" -lt 50 ] || { echo "tracked issue query reached cap for ${yml_name:-$d_tag}" >&2; return 1; }
+            record_exact_page "$PAGES_FILE" "tracked-issues:${yml_name:-$d_tag}" "" "$issue_count" 50 true
             echo "    Issues in period: $issue_count" >&2
 
             # Build patch summaries

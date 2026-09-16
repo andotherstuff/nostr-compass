@@ -196,7 +196,7 @@ Generate TLDR, social announcements, and email-ready content.
 - Distribution checklist
 - Verified pre-publication Nostr outreach to every mentioned project and maintainer
 
-If a new project is added after the issue's main outreach campaign but before publication, update the open review PR, resolve both the project and maintainer npubs from primary evidence, and run a targeted dry-run plus real send with `publish/dm-outreach.ts --pr-url '<newsletter PR URL>' --only '<project>' --only '<maintainer>'`. De-duplicate shared pubkeys, apply `data/npubs.yml` `no_dm` exclusions, and verify the separate targeted receipt without re-sending the full issue campaign. Newsletter-review DMs contain only the GitHub PR review request. Podcast outreach is separate, post-publication, and disabled until the owner approves the new recording setup and message; never reuse Riverside or append recording copy to review outreach.
+If a new project is added after the issue's main outreach campaign but before publication, update the open review PR, resolve both the project and maintainer npubs from primary evidence, and run a targeted dry-run plus real send with `publish/dm-outreach.ts --pr-url '<newsletter PR URL>' --only '<project>' --only '<maintainer>'`. De-duplicate shared pubkeys, apply `data/npubs.yml` `no_dm` exclusions, and verify the separate targeted receipt without re-sending the full issue campaign. Newsletter-review DMs contain only the GitHub PR review request. Podcast outreach is a separate post-publication campaign. After the exact article and announcement are recovered and Logbook access is verified, send the asynchronous Logbook invitation by DM to every eligible verified issue participant, then publish one separate top-level kind:1 invitation that tags the complete verified participant set. Never reuse Riverside, add a recording appointment, append podcast copy to review outreach, or send a reminder without new owner authorization.
 
 If exhaustive primary-source, NIP-50, npub-directory, and relay searches do not verify a project or maintainer npub, always name the unresolved identity and completed search classes in the final owner handoff. Continue outreach to verified recipients under the standing omission policy; the notice is mandatory but is not an approval gate.
 
@@ -390,6 +390,52 @@ requests complete, rather than waiting for the slowest request in a whole
 batch. A normal rerun resumes from this journal; `--fresh` deliberately drops
 it and should only be used when a complete refetch is required. This prevents
 worker or gateway restarts from repeatedly consuming the GitHub REST quota.
+
+**GitHub API budget and immutable-pass rule:** Before Stage 2, use the
+authenticated CLI to read every relevant bucket:
+
+```bash
+gh api rate_limit --jq '{core:.resources.core,graphql:.resources.graphql,search:.resources.search}'
+```
+
+The project collector currently consumes the REST `core` bucket and a complete
+725-repository pass can use roughly 3,650 requests. The later app-discovery
+family also lists every distinct tracked GitHub owner through REST core (418
+owners as of 2026-09-16), so one complete `fetch_all.sh` pass needs roughly
+4,100 core requests before unrelated same-hour traffic. Start it only when the
+remaining core budget can finish both collectors with the 500-request guard
+reserve. Do not mistake the untouched GraphQL or search buckets for additional
+REST core capacity. Run at most
+one fresh project sweep for one fixed `--pass-id`, `--since`, and `--until`
+window. Run `fetch_all.sh` exactly once for that pass; never prime it with a
+standalone project collector and then invoke `fetch_all.sh`, because the second
+invocation rewrites nondeterministic artifact metadata after receipt creation.
+Never start a second collector while a matching `fetch_all.sh` or
+`fetch_project_updates.py` PID is live, even when its parent worker has ended.
+Never rerun `--fresh` after that pass emitted an immutable receipt: it rewrites
+the artifact and invalidates the receipt hash. Resume the same pass without
+`--fresh`. If an unfinalized pass already has a conflicting receipt/artifact,
+abandon that pass and run one new pass ID over the same still-frozen window,
+resuming its completed project journal without `--fresh`; never relabel or
+overwrite the conflicting receipt.
+
+REST `core`, GraphQL, and search are separate limits. Use `gh api graphql` for
+bounded current-state or delta verification when core is constrained; do not
+spend REST repeatedly while GraphQL is untouched. A GraphQL check may replace
+the project collector only when it records the same exact window, exhaustive
+pagination, candidate dispositions, artifact hash, and immutable collector
+receipt. Otherwise wait for the documented reset and run exactly one fresh
+REST collector. Browser scraping is never a rate-limit fallback.
+
+App discovery reads both live budgets before its owner sweep. When REST core
+cannot cover every remaining owner plus the reserve but GraphQL can, it uses
+the exhaustively paginated GraphQL owner query and records those pages in the
+same immutable receipt. If neither bucket can cover the sweep, it exits without
+an `app-discovery` receipt. Let the process exit, wait for a recorded reset,
+and rerun only `fetch_app_discovery.py` with the same pass/window environment;
+then resume `fetch_all.sh` so valid receipts are ingested and only missing
+families run. Never accept partial JSON or `source_errors` as complete source
+evidence.
 
 Run `python3 -m unittest tests/test_fetch_project_updates_resume.py` after
 editing the resume/checkpoint path.

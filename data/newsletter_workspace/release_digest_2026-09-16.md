@@ -1,0 +1,275 @@
+# Release digest — every tagged release in the window
+
+Window 2026-09-08 → 2026-09-16T16:00:00+00:00. 141 releases across 44 projects.
+
+Triage MUST record a decision for every project below. A release that is neither written up nor given a skip reason is a pipeline defect, not an editorial choice: that is how Nail v0.1.0 was lost from Newsletter #37.
+
+- **ants** (`dergigi/ants`) — **POSSIBLE-FIRST-RELEASE** · **FOLLOW-UP** (last covered 2026-08-26) · substance: protocol-surface, messaging-feature, explicit-new-marker, documented-changes
+  - `v0.4.8` 2026-09-14 — https://github.com/dergigi/ants/releases/tag/v0.4.8
+  - 6 merged PRs in window
+  - Triage decision: __________ (write up / skip + reason)
+- **fips2go** (`fr34aky/fips2go`) — **NEVER-COVERED** · **POSSIBLE-FIRST-RELEASE** · substance: new-platform, app-store-listing, new-component, encryption, documented-changes · Zapstore: `org.fips.android` v0.4.1
+  - `v0.4.0` 2026-09-10 — https://github.com/fr34aky/fips2go/releases/tag/v0.4.0
+  - `v0.4.1` 2026-09-15 — https://github.com/fr34aky/fips2go/releases/tag/v0.4.1
+  - 12 merged PRs in window
+  - Triage decision: __________ (write up / skip + reason)
+- **Chama** (`jesuspirate/chama`) — **FOLLOW-UP** (last covered 2026-08-26) · substance: new-platform, protocol-surface, messaging-feature, documented-changes · Zapstore: `app.chama.market` v6.4.1
+  - `v6.3.4` 2026-09-09 — https://github.com/jesuspirate/chama/releases/tag/v6.3.4
+  - `v6.4.0` 2026-09-15 — https://github.com/jesuspirate/chama/releases/tag/v6.4.0
+  - `v6.4.1` 2026-09-16 — https://github.com/jesuspirate/chama/releases/tag/v6.4.1
+  - Triage decision: __________ (write up / skip + reason)
+- **NoorNote** (`77elements/noornote`) — **FOLLOW-UP** (last covered 2026-08-26) · substance: messaging-feature, explicit-new-marker, documented-changes · Zapstore: `com.noornote.app` v1.5.5
+  - `v1.5.3` 2026-09-08 — https://github.com/77elements/noornote/releases/tag/v1.5.3
+  - `v1.5.4` 2026-09-11 — https://github.com/77elements/noornote/releases/tag/v1.5.4
+  - `v1.5.5` 2026-09-15 — https://github.com/77elements/noornote/releases/tag/v1.5.5
+  - Triage decision: __________ (write up / skip + reason)
+- **Nutshell** (`cashubtc/nutshell`) — **NEVER-COVERED** · **POSSIBLE-FIRST-RELEASE** · substance: protocol-surface, new-component, data-integrity, documented-changes
+  - `0.21.0` 2026-09-16 — https://github.com/cashubtc/nutshell/releases/tag/0.21.0
+  - 13 merged PRs in window
+  - Triage decision: __________ (write up / skip + reason)
+- **Marmot Protocol (mdk)** (`marmot-protocol/mdk`) — **FOLLOW-UP** (last covered 2026-09-16) · substance: new-platform, protocol-surface, new-component, data-integrity, messaging-feature, explicit-new-marker, documented-changes
+  - `v0.9.20` 2026-09-08 — https://github.com/marmot-protocol/mdk/releases/tag/v0.9.20
+  - `marmotkit-v0.9.20` 2026-09-08 — https://github.com/marmot-protocol/mdk/releases/tag/marmotkit-v0.9.20
+  - `marmotc-v0.9.20` 2026-09-08 — https://github.com/marmot-protocol/mdk/releases/tag/marmotc-v0.9.20
+  - `wn-agent-v0.9.20` 2026-09-08 — https://github.com/marmot-protocol/mdk/releases/tag/wn-agent-v0.9.20
+  - `marmotkit-snapshot-5b7f17f9a0162dcc8c10ba37a41b7f652d4ed154` 2026-09-08 — https://github.com/marmot-protocol/mdk/releases/tag/marmotkit-snapshot-5b7f17f9a0162dcc8c10ba37a41b7f652d4ed154
+  - `marmotkit-snapshot-07c1d27c45ea3715d3d0c34885420d8439408b33` 2026-09-08 — https://github.com/marmot-protocol/mdk/releases/tag/marmotkit-snapshot-07c1d27c45ea3715d3d0c34885420d8439408b33
+  - `v0.9.21` 2026-09-10 — https://github.com/marmot-protocol/mdk/releases/tag/v0.9.21
+  - `marmotkit-v0.9.21` 2026-09-10 — https://github.com/marmot-protocol/mdk/releases/tag/marmotkit-v0.9.21
+  - `marmotc-v0.9.21` 2026-09-10 — https://github.com/marmot-protocol/mdk/releases/tag/marmotc-v0.9.21
+  - `wn-agent-v0.9.21` 2026-09-10 — https://github.com/marmot-protocol/mdk/releases/tag/wn-agent-v0.9.21
+  - `marmotkit-snapshot-117004714d4e0d6687c0bd3d4a16a7a76b1fd205` 2026-09-10 — https://github.com/marmot-protocol/mdk/releases/tag/marmotkit-snapshot-117004714d4e0d6687c0bd3d4a16a7a76b1fd205
+  - `v0.10.0` 2026-09-16 — https://github.com/marmot-protocol/mdk/releases/tag/v0.10.0
+  - `marmotkit-v0.10.0` 2026-09-16 — https://github.com/marmot-protocol/mdk/releases/tag/marmotkit-v0.10.0
+  - `marmotc-v0.10.0` 2026-09-16 — https://github.com/marmot-protocol/mdk/releases/tag/marmotc-v0.10.0
+  - `wn-agent-v0.10.0` 2026-09-16 — https://github.com/marmot-protocol/mdk/releases/tag/wn-agent-v0.10.0
+  - 86 merged PRs in window
+  - Triage decision: __________ (write up / skip + reason)
+- **bark** (`forgesworn/bark`) — **FOLLOW-UP** (last covered 2026-08-19) · substance: new-platform, protocol-surface, explicit-new-marker, documented-changes
+  - `v1.3.11` 2026-09-09 — https://github.com/forgesworn/bark/releases/tag/v1.3.11
+  - `v1.3.10` 2026-09-09 — https://github.com/forgesworn/bark/releases/tag/v1.3.10
+  - Triage decision: __________ (write up / skip + reason)
+- **Nostr Spring Boot Starter** (`theborakompanioni/nostr-spring-boot-starter`) — **NEVER-COVERED** · **POSSIBLE-FIRST-RELEASE** · substance: new-component, documented-changes
+  - `0.6.0` 2026-09-09 — https://github.com/theborakompanioni/nostr-spring-boot-starter/releases/tag/0.6.0
+  - 1 merged PRs in window
+  - Triage decision: __________ (write up / skip + reason)
+- **nostr-vpn** (`mmalmi/nostr-vpn`) — **FOLLOW-UP** (last covered 2026-08-26) · substance: new-platform, app-store-listing, data-integrity, documented-changes
+  - `v4.1.10` 2026-09-10 — https://github.com/mmalmi/nostr-vpn/releases/tag/v4.1.10
+  - `v4.1.12` 2026-09-15 — https://github.com/mmalmi/nostr-vpn/releases/tag/v4.1.12
+  - Triage decision: __________ (write up / skip + reason)
+- **NostrAppShell** (`git.nostrdev.com/stuff/NostrAppShell`) — **NEVER-COVERED** · substance: new-platform, protocol-surface, security, documented-changes
+  - `v0.19.3` 2026-09-09 — https://git.nostrdev.com/stuff/pakstr/releases/tag/v0.19.3
+  - `v0.19.2` 2026-09-09 — https://git.nostrdev.com/stuff/pakstr/releases/tag/v0.19.2
+  - `v0.20.0` 2026-09-10 — https://git.nostrdev.com/stuff/pakstr/releases/tag/v0.20.0
+  - `v0.21.0` 2026-09-14 — https://git.nostrdev.com/stuff/pakstr/releases/tag/v0.21.0
+  - `v0.21.1` 2026-09-16 — https://git.nostrdev.com/stuff/pakstr/releases/tag/v0.21.1
+  - 4 merged PRs in window
+  - Triage decision: __________ (write up / skip + reason)
+- **pakstr** (`git.nostrdev.com/stuff/pakstr`) — **NEVER-COVERED** · substance: new-platform, protocol-surface, security, documented-changes
+  - `v0.19.3` 2026-09-09 — https://git.nostrdev.com/stuff/pakstr/releases/tag/v0.19.3
+  - `v0.19.2` 2026-09-09 — https://git.nostrdev.com/stuff/pakstr/releases/tag/v0.19.2
+  - `v0.20.0` 2026-09-10 — https://git.nostrdev.com/stuff/pakstr/releases/tag/v0.20.0
+  - `v0.21.0` 2026-09-14 — https://git.nostrdev.com/stuff/pakstr/releases/tag/v0.21.0
+  - `v0.21.1` 2026-09-16 — https://git.nostrdev.com/stuff/pakstr/releases/tag/v0.21.1
+  - 4 merged PRs in window
+  - Triage decision: __________ (write up / skip + reason)
+- **@elisym/cli** (`elisymlabs/elisym`) — **FOLLOW-UP** (last covered 2026-09-16) · substance: new-component, documented-changes
+  - `@elisym/sdk@0.35.0` 2026-09-14 — https://github.com/elisymlabs/elisym/releases/tag/%40elisym/sdk%400.35.0
+  - `@elisym/sdk@0.34.0` 2026-09-14 — https://github.com/elisymlabs/elisym/releases/tag/%40elisym/sdk%400.34.0
+  - `@elisym/sdk@0.33.0` 2026-09-14 — https://github.com/elisymlabs/elisym/releases/tag/%40elisym/sdk%400.33.0
+  - `@elisym/mcp@0.25.2` 2026-09-14 — https://github.com/elisymlabs/elisym/releases/tag/%40elisym/mcp%400.25.2
+  - `@elisym/mcp@0.25.1` 2026-09-14 — https://github.com/elisymlabs/elisym/releases/tag/%40elisym/mcp%400.25.1
+  - `@elisym/mcp@0.25.0` 2026-09-14 — https://github.com/elisymlabs/elisym/releases/tag/%40elisym/mcp%400.25.0
+  - `@elisym/mcp@0.24.0` 2026-09-14 — https://github.com/elisymlabs/elisym/releases/tag/%40elisym/mcp%400.24.0
+  - `@elisym/mcp@0.23.0` 2026-09-14 — https://github.com/elisymlabs/elisym/releases/tag/%40elisym/mcp%400.23.0
+  - `@elisym/mcp@0.22.0` 2026-09-14 — https://github.com/elisymlabs/elisym/releases/tag/%40elisym/mcp%400.22.0
+  - `@elisym/cli@0.29.0` 2026-09-14 — https://github.com/elisymlabs/elisym/releases/tag/%40elisym/cli%400.29.0
+  - `@elisym/cli@0.28.0` 2026-09-14 — https://github.com/elisymlabs/elisym/releases/tag/%40elisym/cli%400.28.0
+  - `@elisym/cli@0.27.0` 2026-09-14 — https://github.com/elisymlabs/elisym/releases/tag/%40elisym/cli%400.27.0
+  - `@elisym/sdk@0.36.0` 2026-09-15 — https://github.com/elisymlabs/elisym/releases/tag/%40elisym/sdk%400.36.0
+  - `@elisym/mcp@0.26.0` 2026-09-15 — https://github.com/elisymlabs/elisym/releases/tag/%40elisym/mcp%400.26.0
+  - `@elisym/cli@0.30.0` 2026-09-15 — https://github.com/elisymlabs/elisym/releases/tag/%40elisym/cli%400.30.0
+  - `@elisym/cli@0.31.0` 2026-09-16 — https://github.com/elisymlabs/elisym/releases/tag/%40elisym/cli%400.31.0
+  - 15 merged PRs in window
+  - Triage decision: __________ (write up / skip + reason)
+- **Nail** (`formstr-hq/nail`) — **POSSIBLE-FIRST-RELEASE** · substance: new-platform, app-store-listing, protocol-surface, new-component, documented-changes · Zapstore: `com.formstr.mail` v0.2.0
+  - `v0.2.0` 2026-09-12 — https://github.com/formstr-hq/nail/releases/tag/v0.2.0
+  - 1 merged PRs in window
+  - Triage decision: __________ (write up / skip + reason)
+- **Nostr Mail Client** (`nogringo/nostr-mail-client`) — **POSSIBLE-FIRST-RELEASE** · substance: new-platform, protocol-surface, new-component, data-integrity, messaging-feature, explicit-new-marker, documented-changes · Zapstore: `app.nostrmail.client` v0.15.0
+  - `v0.15.0` 2026-09-14 — https://github.com/nogringo/nostr-mail-client/releases/tag/v0.15.0
+  - Triage decision: __________ (write up / skip + reason)
+- **Nostria** (`nostria-app/nostria`) — **FOLLOW-UP** (last covered 2026-08-19) · substance: new-platform, documented-changes
+  - `v4.1.77` 2026-09-08 — https://github.com/nostria-app/nostria/releases/tag/v4.1.77
+  - `v4.1.76` 2026-09-08 — https://github.com/nostria-app/nostria/releases/tag/v4.1.76
+  - `v4.1.75` 2026-09-08 — https://github.com/nostria-app/nostria/releases/tag/v4.1.75
+  - Triage decision: __________ (write up / skip + reason)
+- **Boris** (`dergigi/boris`) — **POSSIBLE-FIRST-RELEASE** · substance: new-platform, protocol-surface, new-component, explicit-new-marker, documented-changes
+  - `v0.12.4` 2026-09-10 — https://github.com/dergigi/boris/releases/tag/v0.12.4
+  - `v0.12.5` 2026-09-11 — https://github.com/dergigi/boris/releases/tag/v0.12.5
+  - 4 merged PRs in window
+  - Triage decision: __________ (write up / skip + reason)
+- **earthly** (`moogmodular/earthly`) — **POSSIBLE-FIRST-RELEASE** · substance: new-platform, app-store-listing, security, messaging-feature, documented-changes
+  - `v0.1.9` 2026-09-11 — https://github.com/zeSchlausKwab/earthly/releases/tag/v0.1.9
+  - `v0.1.10` 2026-09-13 — https://github.com/zeSchlausKwab/earthly/releases/tag/v0.1.10
+  - 2 merged PRs in window
+  - Triage decision: __________ (write up / skip + reason)
+- **Lightning.Pub** (`shocknet/Lightning.Pub`) — **POSSIBLE-FIRST-RELEASE** · substance: protocol-surface, first-release, documented-changes
+  - `v0.0.41` 2026-09-13 — https://github.com/shocknet/Lightning.Pub/releases/tag/v0.0.41
+  - 2 merged PRs in window
+  - Triage decision: __________ (write up / skip + reason)
+- **nostr-wot-extension** (`nostr-wot/nostr-wot-extension`) — **POSSIBLE-FIRST-RELEASE** · substance: new-platform, protocol-surface, new-component, encryption, documented-changes
+  - `v0.7.0` 2026-09-10 — https://github.com/nostr-wot/nostr-wot-extension/releases/tag/v0.7.0
+  - 4 merged PRs in window
+  - Triage decision: __________ (write up / skip + reason)
+- **NostrDVM** (`believethehype/nostrdvm`) — **NEVER-COVERED** · substance: new-component, documented-changes
+  - `1.1.7` 2026-09-08 — https://github.com/believethehype/nostrdvm/releases/tag/1.1.7
+  - `1.1.6` 2026-09-08 — https://github.com/believethehype/nostrdvm/releases/tag/1.1.6
+  - `1.1.5` 2026-09-08 — https://github.com/believethehype/nostrdvm/releases/tag/1.1.5
+  - `1.1.4` 2026-09-08 — https://github.com/believethehype/nostrdvm/releases/tag/1.1.4
+  - `1.1.8` 2026-09-10 — https://github.com/believethehype/nostrdvm/releases/tag/1.1.8
+  - 9 merged PRs in window
+  - Triage decision: __________ (write up / skip + reason)
+- **Amber** (`greenart7c3/amber`) — substance: app-store-listing, protocol-surface, security, new-component, data-integrity, messaging-feature, documented-changes · Zapstore: `com.greenart7c3.nostrsigner` v6.6.4
+  - `v6.6.3` 2026-09-09 — https://github.com/greenart7c3/Amber/releases/tag/v6.6.3
+  - `v6.6.2` 2026-09-09 — https://github.com/greenart7c3/Amber/releases/tag/v6.6.2
+  - `v6.6.4` 2026-09-14 — https://github.com/greenart7c3/Amber/releases/tag/v6.6.4
+  - 1 merged PRs in window
+  - Triage decision: __________ (write up / skip + reason)
+- **Amethyst** (`vitorpamplona/amethyst`) — substance: new-platform, protocol-surface, messaging-feature, encryption, documented-changes · Zapstore: `com.vitorpamplona.amethyst` v1.15.2
+  - `v1.15.1` 2026-09-11 — https://github.com/vitorpamplona/amethyst/releases/tag/v1.15.1
+  - `v1.15.0` 2026-09-11 — https://github.com/vitorpamplona/amethyst/releases/tag/v1.15.0 (empty release notes; audit the commit range instead)
+  - `v1.15.2` 2026-09-12 — https://github.com/vitorpamplona/amethyst/releases/tag/v1.15.2
+  - 37 merged PRs in window
+  - Triage decision: __________ (write up / skip + reason)
+- **Angor** (`block-core/angor`) — **POSSIBLE-FIRST-RELEASE** · substance: protocol-surface, documented-changes · Zapstore: `io.angor.app` v0.2.35
+  - `v0.2.35` 2026-09-08 — https://github.com/block-core/angor/releases/tag/v0.2.35
+  - 7 merged PRs in window
+  - Triage decision: __________ (write up / skip + reason)
+- **Brezn** (`DaBena/Brezn`) — **NEVER-COVERED** · substance: new-component, documented-changes
+  - `build-131` 2026-09-13 — https://github.com/DaBena/Brezn/releases/tag/build-131
+  - Triage decision: __________ (write up / skip + reason)
+- **Gittr** (`arbadacarbaYK/gittr`) — substance: new-platform, app-store-listing, protocol-surface, security, documented-changes · Zapstore: `space.gittr.app` v1.0.0
+  - `v0.3.0` 2026-09-12 — https://github.com/arbadacarbaYK/gittr/releases/tag/v0.3.0
+  - `v0.3.1` 2026-09-13 — https://github.com/arbadacarbaYK/gittr/releases/tag/v0.3.1
+  - `v1.0.0` 2026-09-14 — https://github.com/arbadacarbaYK/gittr/releases/tag/v1.0.0
+  - Triage decision: __________ (write up / skip + reason)
+- **Calendar by Form*** (`formstr-hq/nostr-calendar`) — substance: new-platform, new-component, documented-changes · Zapstore: `app.formstr.calendar` v2.4.0
+  - `v2.4.0` 2026-09-15 — https://github.com/formstr-hq/nostr-calendar/releases/tag/v2.4.0
+  - 2 merged PRs in window
+  - Triage decision: __________ (write up / skip + reason)
+- **Citrine** (`greenart7c3/Citrine`) — substance: app-store-listing, protocol-surface, security, documented-changes · Zapstore: `com.greenart7c3.citrine` v3.1.1
+  - `v3.1.1` 2026-09-11 — https://github.com/greenart7c3/Citrine/releases/tag/v3.1.1
+  - Triage decision: __________ (write up / skip + reason)
+- **Hashtree** (`mmalmi/hashtree`) — substance: new-platform, protocol-surface, new-component, data-integrity, messaging-feature, documented-changes
+  - `v0.2.145` 2026-09-08 — https://github.com/mmalmi/hashtree/releases/tag/v0.2.145
+  - `v0.2.146` 2026-09-09 — https://github.com/mmalmi/hashtree/releases/tag/v0.2.146
+  - `v0.2.149` 2026-09-10 — https://github.com/mmalmi/hashtree/releases/tag/v0.2.149
+  - `v0.2.148` 2026-09-10 — https://github.com/mmalmi/hashtree/releases/tag/v0.2.148
+  - `v0.2.147` 2026-09-10 — https://github.com/mmalmi/hashtree/releases/tag/v0.2.147
+  - `v0.2.150` 2026-09-11 — https://github.com/mmalmi/hashtree/releases/tag/v0.2.150
+  - Triage decision: __________ (write up / skip + reason)
+- **mesh-llm** (`michaelneale/mesh-llm`) — substance: new-platform, protocol-surface, new-component, data-integrity, documented-changes
+  - `v0.76.0` 2026-09-10 — https://github.com/Mesh-LLM/mesh-llm/releases/tag/v0.76.0
+  - `v0.76.1` 2026-09-12 — https://github.com/Mesh-LLM/mesh-llm/releases/tag/v0.76.1
+  - `v0.76.2` 2026-09-14 — https://github.com/Mesh-LLM/mesh-llm/releases/tag/v0.76.2
+  - 124 merged PRs in window
+  - Triage decision: __________ (write up / skip + reason)
+- **nostr-pubsub** (`mmalmi/nostr-pubsub`) — substance: new-component, data-integrity, encryption, documented-changes
+  - `nostr-pubsub-fips-v0.5.1` 2026-09-09 — https://github.com/mmalmi/nostr-pubsub/releases/tag/nostr-pubsub-fips-v0.5.1
+  - `nostr-pubsub-fips-v0.5.4` 2026-09-10 — https://github.com/mmalmi/nostr-pubsub/releases/tag/nostr-pubsub-fips-v0.5.4
+  - `nostr-pubsub-fips-v0.5.3` 2026-09-10 — https://github.com/mmalmi/nostr-pubsub/releases/tag/nostr-pubsub-fips-v0.5.3
+  - `nostr-pubsub-fips-v0.5.2` 2026-09-10 — https://github.com/mmalmi/nostr-pubsub/releases/tag/nostr-pubsub-fips-v0.5.2
+  - Triage decision: __________ (write up / skip + reason)
+- **nostr-relay** (`mattn/nostr-relay`) — substance: protocol-surface, first-release, documented-changes
+  - `v0.0.260` 2026-09-08 — https://github.com/mattn/nostr-relay/releases/tag/v0.0.260
+  - `v0.0.259` 2026-09-08 — https://github.com/mattn/nostr-relay/releases/tag/v0.0.259
+  - `v0.0.258` 2026-09-08 — https://github.com/mattn/nostr-relay/releases/tag/v0.0.258
+  - `v0.0.263` 2026-09-09 — https://github.com/mattn/nostr-relay/releases/tag/v0.0.263
+  - `v0.0.262` 2026-09-09 — https://github.com/mattn/nostr-relay/releases/tag/v0.0.262
+  - `v0.0.261` 2026-09-09 — https://github.com/mattn/nostr-relay/releases/tag/v0.0.261
+  - `v0.0.264` 2026-09-11 — https://github.com/mattn/nostr-relay/releases/tag/v0.0.264
+  - `v0.0.266` 2026-09-15 — https://github.com/mattn/nostr-relay/releases/tag/v0.0.266
+  - `v0.0.265` 2026-09-15 — https://github.com/mattn/nostr-relay/releases/tag/v0.0.265
+  - 10 merged PRs in window
+  - Triage decision: __________ (write up / skip + reason)
+- **Routstrd** (`routstr/routstrd`) — **POSSIBLE-FIRST-RELEASE** · substance: new-component, documented-changes
+  - `v0.4.9` 2026-09-10 — https://github.com/Routstr/routstrd/releases/tag/v0.4.9
+  - `v0.4.10` 2026-09-11 — https://github.com/Routstr/routstrd/releases/tag/v0.4.10
+  - 11 merged PRs in window
+  - Triage decision: __________ (write up / skip + reason)
+- **Dart NDK** (`relaystr/ndk`) — substance: protocol-surface, documented-changes · Zapstore: `relaystr.ndk.sample` v0.10.0-dev.4
+  - `v0.10.0-dev.1` 2026-09-09 — https://github.com/relaystr/ndk/releases/tag/v0.10.0-dev.1
+  - `v0.10.0-dev.2` 2026-09-11 — https://github.com/relaystr/ndk/releases/tag/v0.10.0-dev.2
+  - `v0.10.0-dev.3` 2026-09-13 — https://github.com/relaystr/ndk/releases/tag/v0.10.0-dev.3
+  - 12 merged PRs in window
+  - Triage decision: __________ (write up / skip + reason)
+- **LNBits** (`lnbits/lnbits`) — substance: protocol-surface, data-integrity, documented-changes
+  - `v1.6.1` 2026-09-10 — https://github.com/lnbits/lnbits/releases/tag/v1.6.1
+  - 12 merged PRs in window
+  - Triage decision: __________ (write up / skip + reason)
+- **Mill (nostr-mill)** (`0ceanSlim/nostr-mill`) — substance: protocol-surface, data-integrity, documented-changes
+  - `v1.7.0` 2026-09-09 — https://github.com/0ceanSlim/nostr-mill/releases/tag/v1.7.0
+  - Triage decision: __________ (write up / skip + reason)
+- **ngit** (`DanConwayDev/ngit-cli`) — substance: app-store-listing, protocol-surface, new-component, data-integrity, messaging-feature, explicit-new-marker, documented-changes
+  - `v3.0.0` 2026-09-08 — https://github.com/DanConwayDev/ngit-cli/releases/tag/v3.0.0
+  - `v3.0.1` 2026-09-10 — https://github.com/DanConwayDev/ngit-cli/releases/tag/v3.0.1
+  - Triage decision: __________ (write up / skip + reason)
+- **nip06-web** (`jaonoctus/nip06-web`) — **NEVER-COVERED** · substance: protocol-surface
+  - `v3.2.1` 2026-09-12 — https://github.com/jaonoctus/nip06-web/releases/tag/v3.2.1
+  - `v3.2.0` 2026-09-12 — https://github.com/jaonoctus/nip06-web/releases/tag/v3.2.0
+  - 1 merged PRs in window
+  - Triage decision: __________ (write up / skip + reason)
+- **Bitcredit E-Bills** (`BitcreditProtocol/Bitcredit-Core`) — **POSSIBLE-FIRST-RELEASE** · substance: documented-changes
+  - `v0.5.15-hotfix1` 2026-09-11 — https://github.com/BitcreditProtocol/Bitcredit-Core/releases/tag/v0.5.15-hotfix1
+  - 7 merged PRs in window
+  - Triage decision: __________ (write up / skip + reason)
+- **fips-tcp** (`mmalmi/fips-tcp`) — substance: new-component, documented-changes
+  - `fips-tcp-v0.2.2` 2026-09-09 — https://github.com/mmalmi/fips-tcp/releases/tag/fips-tcp-v0.2.2
+  - Triage decision: __________ (write up / skip + reason)
+- **astraea** (`mouse484/astraea`) — substance: documented-changes
+  - `v5.35.158` 2026-09-08 — https://github.com/mouse484/astraea/releases/tag/v5.35.158
+  - `v5.35.159` 2026-09-10 — https://github.com/mouse484/astraea/releases/tag/v5.35.159
+  - `v5.35.161` 2026-09-11 — https://github.com/mouse484/astraea/releases/tag/v5.35.161
+  - `v5.35.160` 2026-09-11 — https://github.com/mouse484/astraea/releases/tag/v5.35.160
+  - `v5.35.162` 2026-09-12 — https://github.com/mouse484/astraea/releases/tag/v5.35.162
+  - `v5.35.165` 2026-09-13 — https://github.com/mouse484/astraea/releases/tag/v5.35.165
+  - `v5.35.164` 2026-09-13 — https://github.com/mouse484/astraea/releases/tag/v5.35.164
+  - `v5.35.163` 2026-09-13 — https://github.com/mouse484/astraea/releases/tag/v5.35.163
+  - `v5.35.168` 2026-09-14 — https://github.com/mouse484/astraea/releases/tag/v5.35.168
+  - `v5.35.167` 2026-09-14 — https://github.com/mouse484/astraea/releases/tag/v5.35.167
+  - `v5.35.166` 2026-09-14 — https://github.com/mouse484/astraea/releases/tag/v5.35.166
+  - `v5.35.170` 2026-09-16 — https://github.com/mouse484/astraea/releases/tag/v5.35.170
+  - `v5.35.169` 2026-09-16 — https://github.com/mouse484/astraea/releases/tag/v5.35.169
+  - Triage decision: __________ (write up / skip + reason)
+- **Feeder** (`spacecowboy/Feeder`) — substance: documented-changes · Zapstore: `com.nononsenseapps.feeder.play` v2.23.1
+  - `2.23.1` 2026-09-10 — https://github.com/spacecowboy/Feeder/releases/tag/2.23.1
+  - 1 merged PRs in window
+  - Triage decision: __________ (write up / skip + reason)
+- **Nostr Army Knife (nak)** (`fiatjaf/nak`) — **POSSIBLE-FIRST-RELEASE**
+  - `v0.20.7` 2026-09-16 — https://github.com/fiatjaf/nak/releases/tag/v0.20.7 (empty release notes; audit the commit range instead)
+  - Triage decision: __________ (write up / skip + reason)
+- **relayer** (`fiatjaf/relayer`) — substance: protocol-surface
+  - `v2.2.19` 2026-09-08 — https://github.com/fiatjaf/relayer/releases/tag/v2.2.19 (empty release notes; audit the commit range instead)
+  - `v2.2.21` 2026-09-09 — https://github.com/fiatjaf/relayer/releases/tag/v2.2.21 (empty release notes; audit the commit range instead)
+  - `v2.2.20` 2026-09-09 — https://github.com/fiatjaf/relayer/releases/tag/v2.2.20 (empty release notes; audit the commit range instead)
+  - `v2.3.1` 2026-09-14 — https://github.com/fiatjaf/relayer/releases/tag/v2.3.1 (empty release notes; audit the commit range instead)
+  - `v2.3.0` 2026-09-14 — https://github.com/fiatjaf/relayer/releases/tag/v2.3.0 (empty release notes; audit the commit range instead)
+  - 12 merged PRs in window
+  - Triage decision: __________ (write up / skip + reason)
+- **NYM** (`Spl0itable/NYM`) — **FOLLOW-UP** (last covered 2026-08-26) · _recently covered, no substance markers — a skip is defensible_
+  - `v3.75.545` 2026-09-16 — https://github.com/Spl0itable/NYM/releases/tag/v3.75.545
+  - Triage decision: __________ (write up / skip + reason)
+
+## Zapstore releases with no GitHub release in window
+
+4 of 53 Zapstore apps shipped without a matching GitHub release, 4 of them tracked projects. A GitHub-only sweep cannot see these.
+
+- **WMAPP** `com.wingmanbefree.wingman_app` 0.1.6 (2026-09-14) — tracked: Wingman App
+  - Triage decision: __________ (write up / skip + reason)
+- **Imwald Android** `eu.imwald.android` 0.5.7 (2026-09-16) — tracked: Imwald Android
+  - Triage decision: __________ (write up / skip + reason)
+- **Deepmarks** `org.deepmarks.app` 2.2.14 (2026-09-11) — tracked: deepmarks
+  - Triage decision: __________ (write up / skip + reason)
+- **Flotilla** `social.flotilla` 1.11.0 (2026-09-15) — tracked: Flotilla
+  - Triage decision: __________ (write up / skip + reason)

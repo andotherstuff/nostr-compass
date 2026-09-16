@@ -33,5 +33,7 @@ A long-form event uses kind `30023` with a `d` tag as a unique identifier, allow
 **Mentioned in:**
 - [Newsletter #38: Voca 1.0 reads verified Nostr notes and subscriptions aloud on Android](/en/newsletters/2026-09-02-newsletter/#voca-10-reads-verified-nostr-notes-and-subscriptions-aloud-on-android)
 
+- [Newsletter #40: NIP-23 long-form content deep dive](/en/newsletters/2026-09-16-newsletter/#nip-23-long-form-content)
+
 **See also:**
 - [NIP-01 (Basic Protocol)](/en/topics/nip-01/)

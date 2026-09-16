@@ -16,12 +16,18 @@ Under the proposal, a shell application would load a napplet in a sandboxed ifra
 - **App marketplace**: Distribute interactive web applications through Nostr events
 - **Sandboxed extensions**: Add functionality to Nostr clients through third-party napplets
 
+## Implementations
+
+[Myco v0.7.0](https://github.com/Origami74/myco/releases/tag/v0.7.0) implements a NIP-5D napplet runtime inside its Android FIPS mesh application. Napplets run in sandboxed frames and request user-approved identity, relay, outbox, mesh, picture, and file capabilities through the host. NIP-5D remains an open proposal, so Myco's implementation is current experimental evidence rather than a final interoperability guarantee.
+
 ---
 
 **Primary sources:**
 - [NIP-5D PR #2303](https://github.com/nostr-protocol/nips/pull/2303) - Nostr Web Applets proposal
+- [Myco v0.7.0](https://github.com/Origami74/myco/releases/tag/v0.7.0) - Sandboxed napplet runtime and permission model
 
 **Mentioned in:**
+- [Newsletter #40: Myco 0.7.0](/en/newsletters/2026-09-16-newsletter/#myco-070-runs-napplets-and-file-sharing-over-a-multi-path-fips-mesh)
 - [Newsletter #37: NAPs](/en/newsletters/2026-08-26-newsletter/#naps)
 - [Newsletter #17](/en/newsletters/2026-04-08-newsletter/#nip-updates)
 

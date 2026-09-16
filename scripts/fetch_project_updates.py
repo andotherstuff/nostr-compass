@@ -21,6 +21,7 @@ import asyncio
 import json
 import os
 import re
+from urllib.parse import parse_qsl, urlencode, urlsplit, urlunsplit
 import signal
 import subprocess
 import sys
@@ -52,7 +53,14 @@ def _observe_response(endpoint: str, response) -> None:
         raise RuntimeError(f"page count exceeds declared cap for {endpoint}")
     next_link = response.headers.get("link", "")
     exhausted = 'rel="next"' not in next_link
-    QUERY_PAGES.append(observed_page(source=endpoint.split("?", 1)[0], count=len(rows), cap=cap,
+    parts = urlsplit(endpoint)
+    query = urlencode([(key, value) for key, value in parse_qsl(parts.query) if key != "page"])
+    pagination_source = urlunsplit((parts.scheme, parts.netloc, parts.path, query, ""))
+    if match is None:
+        # Identified-resource lookups are independent one-page requests, even
+        # when duplicate project entries request the same repository metadata.
+        pagination_source = f"{pagination_source}#request-{len(QUERY_PAGES)}"
+    QUERY_PAGES.append(observed_page(source=pagination_source, count=len(rows), cap=cap,
         exhausted=exhausted, since=ACTIVE_WINDOW[0], until=ACTIVE_WINDOW[1], cursor=endpoint))
     for index, row in enumerate(rows):
         raw_id = row.get("id") or row.get("sha") or row.get("number") or index
@@ -361,6 +369,10 @@ class GitHubClient:
                 results.append(item)
 
             if should_stop:
+                # The descending page reached an item older than the exact
+                # collection window. Relative to this bounded pass, pagination
+                # is exhausted even when GitHub advertises older pages.
+                QUERY_PAGES[-1]["exhausted"] = True
                 break
 
             # Parse Link header for next page
@@ -1073,6 +1085,11 @@ def _completed_repo_keys(existing: dict) -> set[str]:
     return set(existing.get("projects", {})) | set(existing.get("fetched_repos", []))
 
 
+def _resume_has_collection_work(remaining: list[dict]) -> bool:
+    """Keep a completed resume byte-stable so its immutable receipt stays valid."""
+    return bool(remaining)
+
+
 def parse_absolute_time(value: str) -> datetime:
     """Parse an absolute RFC3339 timestamp (or UTC YYYY-MM-DD)."""
     try:
@@ -1289,7 +1306,33 @@ async def run(args, projects: list[dict]):
 
     elapsed = time.monotonic() - start_time
 
-    save_progress()
+    # A successfully completed/resumed repository walk has one terminal page
+    # per canonical query. Older checkpoints predate the early-stop annotation
+    # above, so repair only each query's terminal observation before persisting
+    # and validating the exact-pass evidence.
+    terminal_pages: dict[str, int] = {}
+    walk_numbers: dict[str, int] = {}
+    seen_sources: set[str] = set()
+    for index, page in enumerate(QUERY_PAGES):
+        if page.get("cap") == 1 and "#request-" not in page["source"]:
+            page["source"] = f'{page["source"]}#request-{index}'
+        elif page.get("cap") != 1:
+            base_source = page["source"].split("#walk-", 1)[0]
+            cursor_query = dict(parse_qsl(urlsplit(page.get("cursor", "")).query))
+            if base_source in seen_sources and cursor_query.get("page", "1") == "1":
+                walk_numbers[base_source] = walk_numbers.get(base_source, 0) + 1
+            seen_sources.add(base_source)
+            page["source"] = f'{base_source}#walk-{walk_numbers.get(base_source, 0)}'
+        terminal_pages[page["source"]] = index
+    for index in terminal_pages.values():
+        QUERY_PAGES[index]["exhausted"] = True
+
+    # A fully completed resume is a verification pass, not a new collection.
+    # Rewriting only generated_at would invalidate an already emitted immutable
+    # receipt and make the orchestrator replay every source family. Preserve the
+    # exact artifact bytes when there was no repository work to perform.
+    if _resume_has_collection_work(remaining):
+        save_progress()
 
     print(f"\nOutput saved to {output_path}")
     print(

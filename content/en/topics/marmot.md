@@ -65,6 +65,8 @@ MDK landed [PR #261](https://github.com/marmot-protocol/mdk/pull/261) to compute
 - [Newsletter #37: Heterodyne specifies portable personas and encrypted social communication](/en/newsletters/2026-08-26-newsletter/#heterodyne-specifies-portable-personas-and-encrypted-social-communication)
 - [Newsletter #38: MDK v0.9.15](/en/newsletters/2026-09-02-newsletter/#mdk-v0915-newest-keypackages-membership-activity-and-durable-sends)
 
+- [Newsletter #40: Marmot Protocol and MDK 0.10.0](/en/newsletters/2026-09-16-newsletter/#marmot-protocol-and-mdk-reach-v0100)
+
 **See also:**
 - [MLS (Message Layer Security)](/en/topics/mls/)
 - [MIP-05: Privacy-Preserving Push Notifications](/en/topics/mip-05/)
