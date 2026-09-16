@@ -166,6 +166,25 @@ effect whose prerequisite does not yet exist and names the remaining plan.
 The positional argument is the newsletter number. The pipeline derives the
 input file from `/tmp/{N}publish.md`.
 
+After an issue is deployed and both newsletter events pass durable relay
+readback, prepare and publish the Logbook contributor list, send the private
+asynchronous invitations, and publish the separate tagged invitation:
+
+```bash
+bun publish/podcast-access.ts 40 --newsletter-url <canonical-issue-url> --podcast-url <logbook-url>
+bun publish/podcast-access.ts 40 --newsletter-url <canonical-issue-url> --podcast-url <logbook-url> --really-publish
+bun publish/dm-outreach.ts 40 --newsletter-url <canonical-issue-url> --podcast-url <logbook-url>
+bun publish/dm-outreach.ts 40 --newsletter-url <canonical-issue-url> --podcast-url <logbook-url> --really-send
+bun publish/podcast-invite.ts 40 --newsletter-url <canonical-issue-url> --podcast-url <logbook-url>
+bun publish/podcast-invite.ts 40 --newsletter-url <canonical-issue-url> --podcast-url <logbook-url> --really-broadcast
+```
+
+The access stage signs kind 34201 `logbook-wl-<issue>`, verifies exact relay
+readback, and journals the immutable DM obligation. The final public kind:1
+contains both visible `nostr:npub` mentions and `p` tags for the complete
+verified participant set. All three commands are restart-safe and must be run
+in order; no reminder campaign is implied.
+
 ## Safety
 
 - The script refuses to sign unless the bunker's signing pubkey matches

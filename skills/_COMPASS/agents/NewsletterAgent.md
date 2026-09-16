@@ -456,7 +456,7 @@ Run `python3 scripts/check_newsletter_continuity.py content/en/newsletters/<date
      or carries one short follow-up sentence, never a re-narration.
 5. NIP Deep Dive selection (two related NIPs not covered before)
    - For the final weekly issue of a month, do not write or label a NIP Deep Dive. Replace it with `Six Years of Nostr <Month>s` (for this issue: `Six Years of Nostr Julys`). Read the month-end history sections from earlier issues that year for tone and depth. Give each year at least two substantive paragraphs and multiple primary-source links where the historical record supports them; do not pad a thin year with generic summary.
-   - `Protocol and Spec Work` always audits NIPs, BUDs, NAPs, Marmot/MIPs, Gamma Markets, Concord/CORD, and NWC using `data/spec_updates/spec_updates_<date>.json`. Give a family its own paragraph only when a material public change landed in the reporting window; omit quiet families from the newsletter.
+   - `Protocol and Spec Work` always audits NIPs, BUDs, NAPs, Marmot/MIPs, Gamma Markets, Concord/CORD, and NWC using `data/spec_updates/spec_updates_<date>.json`. Give every included changed PR, commit, or specification item its own descriptive `###` heading and body paragraph(s), matching the project sections. Never group multiple changes under a family heading or use only a generic family name as the heading. Omit quiet families from the newsletter.
 6. Topic pages needed (concepts without existing pages)
 7. **Discovery selection (Change C).** Read every Discovery Candidate in curated_items.md. Include every tracked-worthy candidate that clears the common 8/10 no-zero threshold under `## New Projects` (or `## Top Stories` if substantial), and flag each durable project for the AssemblerAgent to add to `data/projects.yml` in the same PR. If none clears the threshold, include none. Never stretch a marginal candidate or impose a one-item ceiling.
 
@@ -1036,6 +1036,12 @@ Version [v1.05.0](https://github.com/vitorpamplona/amethyst/releases/tag/v1.05.0
 
 ### One Project Per Header (NON-NEGOTIABLE)
 **Never group multiple projects under a single section header.** Each project gets its own H3 header even when the body is one short paragraph. Multi-project rollup headers ("Routstr Core, Nostria, NoorNote, and library releases", "Damus, Primal, Zeus, and Alby Hub continue Nostr-touching maintenance") are banned.
+
+The same structure applies to `## Protocol and Spec Work`: every individual
+NIP, BUD, NAP, Marmot/MIP, Gamma, Concord/CORD, NWC, or other specification
+change gets its own descriptive H3. A family-only heading such as `### NIPs
+repository`, `### Marmot Improvement Proposals`, or `### Nostr Wallet Connect`
+is not an item heading, and one H3 may not contain multiple spec PRs or commits.
 
 ✅ CORRECT:
 ```markdown

@@ -30,5 +30,7 @@ The event declares destinations, not a completed payment or a Nostr zap. Clients
 **Mentioned in:**
 - [Newsletter #39: NIP-A3 payment targets reach three clients](/en/newsletters/2026-09-09-newsletter/#nip-a3-payment-targets-reach-three-clients)
 
+- [Newsletter #40: NIP-A3 payment-type clarification merges](/en/newsletters/2026-09-16-newsletter/#nip-a3-clarifies-payment-type-ambiguity)
+
 **See also:**
 - [NIP-47: Nostr Wallet Connect](/en/topics/nip-47/)

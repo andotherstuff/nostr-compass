@@ -95,13 +95,48 @@ Gate fails on: any URL that returns HTTP 4xx/5xx that the agent cannot resolve.
 
 Owner: Orchestrator dispatches in parallel.
 
-Run all fetchers concurrently when possible:
+Choose one caller-owned pass ID and one absolute UTC window. Read the
+authenticated GitHub buckets before starting, then run all fetchers:
 
 ```bash
-bash scripts/fetch_all.sh --since-days 8
+gh api rate_limit --jq '{core:.resources.core,graphql:.resources.graphql,search:.resources.search}'
+bash scripts/fetch_all.sh \
+  --pass-id <immutable-pass-id> \
+  --since <RFC3339-window-start> \
+  --until <RFC3339-window-end> \
+  --newsletter-date <YYYY-MM-DD>
 python3 scripts/build_coverage_history.py
 bash scripts/detect_non_github_sources.sh
 ```
+
+The tracked-project fetch currently uses about 3,650 REST-core requests. App
+discovery later lists every distinct tracked GitHub owner through REST core
+(418 owners as of 2026-09-16), so budget roughly 4,100 core requests before
+unrelated same-hour traffic and retain the 500-request guard reserve. Do not
+start without sufficient core budget for both collectors plus the reserve. Run
+only one fresh project collector per fixed pass. Before any retry,
+verify that no matching `fetch_all.sh` or `fetch_project_updates.py` process is
+still live, including children whose parent worker ended. Resume from the
+completion journal and valid immutable receipts; never rerun `--fresh` after a
+receipt exists, because rewriting the artifact invalidates its hash. Invoke
+`fetch_all.sh` exactly once per pass; never run the standalone project collector
+and then replay it through `fetch_all.sh`. A changed window requires a new pass
+ID. If an unfinalized pass is already unusable because its receipt and artifact
+conflict, abandon it and run one new pass ID over the same frozen window while
+resuming the completed project journal without `--fresh`. REST, GraphQL, and
+search have separate limits;
+prefer authenticated `gh api graphql` for bounded exact-window verification
+when core is constrained, but accept it as source-gate evidence only when the
+query is exhaustively paginated and emits the normal artifact-bound immutable
+receipt.
+
+App discovery switches its owner sweep to exhaustively paginated GraphQL when
+REST cannot cover the owners plus reserve and GraphQL can. If neither bucket
+can finish, it returns `source_errors` without an immutable receipt. Treat that
+family as failed. Let the current process exit, wait for a recorded reset,
+rerun only `fetch_app_discovery.py` under the same pass/window environment, and
+resume `fetch_all.sh` to ingest already-valid receipts. Partial discovery JSON
+is not source-gate evidence.
 
 `fetch_all.sh` already orchestrates project updates, NIP discussions, Nostr Recap, Shakespeare apps, NIP-34 repositories, Zapstore releases, grantee heartbeats, and the mandatory spec-family sweep. Heartbeats include automatic Sovereign Engineering cohort parsing plus relay-backed `#SovEng` and current `#SECxx` discovery. The spec sweep writes `data/spec_updates/spec_updates_<date>.json` for NIPs, BUDs, NAPs, Marmot/MIPs, Gamma Markets, Concord/CORD, and NWC, preserving quiet families as explicit `status: quiet` records. The Orchestrator runs the build_coverage_history and detect_non_github_sources passes after.
 
@@ -144,7 +179,7 @@ For each approved section in the selection review, spawn a section writer with:
 - The section's style rules from `SKILL.md`
 - A pointer to recent newsletters for tone calibration
 
-Each writer outputs `data/newsletter_workspace/sections/<section-slug>.md`. Each section file ends with `GATE: PASS` once the writer has self-checked: every PR linked, every release linked, every NIP linked to its topic page, every prose paragraph linked to a repository or primary source, no em dashes, and no banned phrases from the anti-slop list. `join Shipping This Week with` and `developer-signed release expands the browser` are explicitly banned.
+Each writer outputs `data/newsletter_workspace/sections/<section-slug>.md`. Each section file ends with `GATE: PASS` once the writer has self-checked: every PR linked, every release linked, every NIP linked to its topic page, every prose paragraph linked to a repository or primary source, no em dashes, and no banned phrases from the anti-slop list. Every included change under `Protocol and Spec Work` must also have its own descriptive H3; family-only headings and H3s that group multiple spec PRs or commits fail the stage. `join Shipping This Week with` and `developer-signed release expands the browser` are explicitly banned.
 
 Gate fails on: any section writer reporting an unresolvable source (PR number with no working URL, NIP that doesn't exist in the spec repo).
 

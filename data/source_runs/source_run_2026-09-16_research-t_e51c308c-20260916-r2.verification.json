@@ -1,0 +1,97 @@
+{
+  "expected_families": [
+    "projects",
+    "nip-discussions",
+    "nostr-recap",
+    "shakespeare-apps",
+    "nip34",
+    "zapstore",
+    "app-discovery",
+    "heartbeats",
+    "monthly-history",
+    "specs"
+  ],
+  "family_statuses": {
+    "app-discovery": {
+      "artifact_sha256": "6abaf7e9ca076fab0e882c1c72ad8ef6c60688691ae5def4ea7c918701a12bae",
+      "include_count": 1922,
+      "item_count": 1922,
+      "skip_count": 0,
+      "status": "complete"
+    },
+    "heartbeats": {
+      "artifact_sha256": "af9bf8a2e607837a086c542f11208c019e18a41be06559bed8eb280090aa3ab0",
+      "include_count": 5260,
+      "item_count": 23575,
+      "skip_count": 18315,
+      "status": "complete"
+    },
+    "monthly-history": {
+      "artifact_sha256": null,
+      "include_count": 0,
+      "item_count": 0,
+      "skip_count": 0,
+      "status": "not_applicable"
+    },
+    "nip-discussions": {
+      "artifact_sha256": "210ca729591fc999d6ddc16b18d2170556b55e868d943bac4e7bf8f3e905e8ad",
+      "include_count": 0,
+      "item_count": 13,
+      "skip_count": 13,
+      "status": "complete"
+    },
+    "nip34": {
+      "artifact_sha256": "9c1a41763d0941e90f56bedbde655d20c4b02b54a55ee3d5db7e37e74994f8fa",
+      "include_count": 0,
+      "item_count": 160,
+      "skip_count": 160,
+      "status": "complete"
+    },
+    "nostr-recap": {
+      "artifact_sha256": "f2e8145964cd43f162b696d4c5abe2f05a7c3a367cbec43e43dc9317f491765c",
+      "include_count": 17,
+      "item_count": 17,
+      "skip_count": 0,
+      "status": "complete"
+    },
+    "projects": {
+      "artifact_sha256": "1af1bcf6d29aa70328a2dca91fa95cc5c4e88767fe46f4d010d81b276cb738eb",
+      "include_count": 37255,
+      "item_count": 37255,
+      "skip_count": 0,
+      "status": "complete"
+    },
+    "shakespeare-apps": {
+      "artifact_sha256": "b8282bd474b8bc57347146f6870515e869b7d6ddbd07ae00d8e4bb432ed07219",
+      "include_count": 0,
+      "item_count": 0,
+      "skip_count": 0,
+      "status": "empty_verified"
+    },
+    "specs": {
+      "artifact_sha256": "471221d03a0735177220386404dd53168b1cf4bfea463dd78ffc28062a4e4c6f",
+      "include_count": 23,
+      "item_count": 2093,
+      "skip_count": 2070,
+      "status": "complete"
+    },
+    "zapstore": {
+      "artifact_sha256": "8ac5e45f185b2c77db0ce604e2441c8ec66508773af4374a08f018ebf9c56464",
+      "include_count": 1052,
+      "item_count": 1109,
+      "skip_count": 57,
+      "status": "complete"
+    }
+  },
+  "finalized": true,
+  "manifest_path": "/opt/data/compass-worktrees/2026-09-16/data/source_runs/source_run_2026-09-16_research-t_e51c308c-20260916-r2.json",
+  "manifest_sha256": "24b1987aa13596b81d1511bfc95c408f7fbf1cb975581652cfe3fe31acc2537b",
+  "manifest_size_bytes": 19190589,
+  "pass_id": "research-t_e51c308c-20260916-r2",
+  "schema_version": 1,
+  "verification": "PASS: python3 scripts/source_run_manifest.py verify-finalized --manifest /opt/data/compass-worktrees/2026-09-16/data/source_runs/source_run_2026-09-16_research-t_e51c308c-20260916-r2.json",
+  "window": {
+    "since": "2026-09-08T07:47:26Z",
+    "until": "2026-09-16T07:47:26Z"
+  }
+}

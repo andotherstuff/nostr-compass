@@ -39,5 +39,7 @@ Provider discovery is outside the request/response loop itself. The spec points 
 - [Newsletter #36: nostream traps NIP-90 job requests](/en/newsletters/2026-08-19-newsletter/#nostream-adds-a-relay-monitor-and-mints-invite-codes)
 - [Newsletter #38: nostream](/en/newsletters/2026-09-02-newsletter/#nostream-expands-relay-side-dvm-routing-and-authenticated-operation)
 
+- [Newsletter #40: Optional DVM heartbeat proposal](/en/newsletters/2026-09-16-newsletter/#nip-90-proposes-expiring-dvm-heartbeat-events)
+
 **See also:**
 - [NIP-89: Recommended Application Handlers](/en/topics/nip-89/)

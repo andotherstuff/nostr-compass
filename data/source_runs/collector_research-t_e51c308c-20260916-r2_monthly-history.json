@@ -1,0 +1,22 @@
+{
+  "artifact_path": null,
+  "artifact_sha256": null,
+  "candidate_ids": [],
+  "canonical_query": {
+    "family": "monthly-history",
+    "pass_id": "research-t_e51c308c-20260916-r2",
+    "since": "2026-09-08T07:47:26Z",
+    "until": "2026-09-16T07:47:26Z"
+  },
+  "collector_path": "/opt/data/compass-worktrees/2026-09-16/scripts/fetch_monthly_history.py",
+  "dispositions": {},
+  "family": "monthly-history",
+  "include_count": 0,
+  "item_count": 0,
+  "page_count": 0,
+  "pagination_complete": false,
+  "pass_id": "research-t_e51c308c-20260916-r2",
+  "skip_count": 0,
+  "skip_evidence": [],
+  "status": "not_applicable"
+}

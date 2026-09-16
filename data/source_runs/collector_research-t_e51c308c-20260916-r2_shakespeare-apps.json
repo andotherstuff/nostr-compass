@@ -1,0 +1,27 @@
+{
+  "artifact_path": "/opt/data/compass-worktrees/2026-09-16/data/shakespeare_apps/apps_2026-09-08_2026-09-16.json",
+  "artifact_sha256": "b8282bd474b8bc57347146f6870515e869b7d6ddbd07ae00d8e4bb432ed07219",
+  "candidate_ids": [],
+  "canonical_query": {
+    "approved_only": false,
+    "family": "shakespeare-apps",
+    "featured_only": false,
+    "kind": 31733,
+    "limit_per_relay": 200,
+    "pass_id": "research-t_e51c308c-20260916-r2",
+    "since": "2026-09-08T07:47:26Z",
+    "tag": "soapbox-app-submission",
+    "until": "2026-09-16T07:47:26Z"
+  },
+  "collector_path": "/opt/data/compass-worktrees/2026-09-16/scripts/fetch_shakespeare_apps.sh",
+  "dispositions": {},
+  "family": "shakespeare-apps",
+  "include_count": 0,
+  "item_count": 0,
+  "page_count": 7,
+  "pagination_complete": true,
+  "pass_id": "research-t_e51c308c-20260916-r2",
+  "skip_count": 0,
+  "skip_evidence": [],
+  "status": "empty_verified"
+}

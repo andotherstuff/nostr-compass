@@ -1,0 +1,125 @@
+{
+  "artifact_path": "/opt/data/compass-worktrees/2026-09-16/data/nostr_recap/recap_2026-09-08_2026-09-16.json",
+  "artifact_sha256": "f3b51ceb225b74e21a78adb16e60c49238bfef08b5a986dafde218c340d1bed5",
+  "candidate_ids": [
+    "034227c2d4fa4211f66b6e101c8971c3ed2cb1ae6c8b499ded16e1df6ef3f206",
+    "1c2a959516cb24aed9bebcc8ddb3c1a8078182832405d80ad6a84451f86d856d",
+    "2a9b49b1c8e271c195f5960315383f92ca68cef50b8980d7ca22dcb282894cba",
+    "32a9390f4e54bd06ccdccf62008ddcd8681256208885aec4cc6a30b3a77acf0e",
+    "4e97ccff85fbcfc3d6462a28fabce1e3fdf4ee14ae171bffdeba3baf3638395e",
+    "5ab3dbe3ed0ac2731e6222bfb190fcadf50355f33c1a138e6bc3197646a5edb8",
+    "5b793486245e7dc5d483e9335afde5375f7f65a75042a88562580b4ce75902b4",
+    "63bad9dd97dd5182788c946385504cddefad7dc806abcc9338c56bcd1147a270",
+    "8136f401b9fcbcc369a68cac21ac8b5a9b5ca0ab5e47d4583123843cd7f1bff1",
+    "836e964fc0ba4bda12394a051c567f6c3abf64cb7ef423a85580922f30d1f10b",
+    "88f96692028778c55a2f77ae2b259c4ae19aceed57b08ecba2663d1f51b52ace",
+    "a304e6442f7d57756d97451c851202dd591d002d09fa23501c4d2c7744e1ed49",
+    "a347adf225687a8cadedfe976727be6afef8f49b3f1305b27421553fc7cc4a1b",
+    "a3fb2b260f470e448b8e9bd27f3cd4f8707cc26da8cd342ed0eec8fdce6118fc",
+    "a40085e3d41a48564f92e608e31fbf430e786bd199dbb3a9cf5cb07562884839",
+    "a560a978aa02437afb3fecacd1adeb08e9ead58d63e9efe338ff9b9e0b2aa2f9",
+    "bae440c4553fd86e20dde317109d649f45ab30e2ff223a222343b4e4841d5f42",
+    "c8aac86516be7edb97f78f295041a3511b048ec73b2aefc5f31aa2b58e83f580",
+    "cda858db4417432249a2553f59fa2aa5780271cd785fc44ce9e57ccd1a423252"
+  ],
+  "canonical_query": {
+    "author": "cae5b7ea348afefc4c102bb7b125c4928f114739a27b877c6bcfbe5a79280384",
+    "family": "nostr-recap",
+    "kinds": [
+      1,
+      30023
+    ],
+    "limit_per_kind": 1000,
+    "pass_id": "refresh-t_a4ffab29-final5-20260916T1600Z",
+    "since": "2026-09-08T00:00:00Z",
+    "until": "2026-09-16T16:00:00Z"
+  },
+  "collector_path": "/opt/data/compass-worktrees/2026-09-16/scripts/fetch_nostr_recap.sh",
+  "dispositions": {
+    "034227c2d4fa4211f66b6e101c8971c3ed2cb1ae6c8b499ded16e1df6ef3f206": {
+      "decision": "include",
+      "reason": "valid signed recap event retained in exact-window artifact"
+    },
+    "1c2a959516cb24aed9bebcc8ddb3c1a8078182832405d80ad6a84451f86d856d": {
+      "decision": "include",
+      "reason": "valid signed recap event retained in exact-window artifact"
+    },
+    "2a9b49b1c8e271c195f5960315383f92ca68cef50b8980d7ca22dcb282894cba": {
+      "decision": "include",
+      "reason": "valid signed recap event retained in exact-window artifact"
+    },
+    "32a9390f4e54bd06ccdccf62008ddcd8681256208885aec4cc6a30b3a77acf0e": {
+      "decision": "include",
+      "reason": "valid signed recap event retained in exact-window artifact"
+    },
+    "4e97ccff85fbcfc3d6462a28fabce1e3fdf4ee14ae171bffdeba3baf3638395e": {
+      "decision": "include",
+      "reason": "valid signed recap event retained in exact-window artifact"
+    },
+    "5ab3dbe3ed0ac2731e6222bfb190fcadf50355f33c1a138e6bc3197646a5edb8": {
+      "decision": "include",
+      "reason": "valid signed recap event retained in exact-window artifact"
+    },
+    "5b793486245e7dc5d483e9335afde5375f7f65a75042a88562580b4ce75902b4": {
+      "decision": "include",
+      "reason": "valid signed recap event retained in exact-window artifact"
+    },
+    "63bad9dd97dd5182788c946385504cddefad7dc806abcc9338c56bcd1147a270": {
+      "decision": "include",
+      "reason": "valid signed recap event retained in exact-window artifact"
+    },
+    "8136f401b9fcbcc369a68cac21ac8b5a9b5ca0ab5e47d4583123843cd7f1bff1": {
+      "decision": "include",
+      "reason": "valid signed recap event retained in exact-window artifact"
+    },
+    "836e964fc0ba4bda12394a051c567f6c3abf64cb7ef423a85580922f30d1f10b": {
+      "decision": "include",
+      "reason": "valid signed recap event retained in exact-window artifact"
+    },
+    "88f96692028778c55a2f77ae2b259c4ae19aceed57b08ecba2663d1f51b52ace": {
+      "decision": "include",
+      "reason": "valid signed recap event retained in exact-window artifact"
+    },
+    "a304e6442f7d57756d97451c851202dd591d002d09fa23501c4d2c7744e1ed49": {
+      "decision": "include",
+      "reason": "valid signed recap event retained in exact-window artifact"
+    },
+    "a347adf225687a8cadedfe976727be6afef8f49b3f1305b27421553fc7cc4a1b": {
+      "decision": "include",
+      "reason": "valid signed recap event retained in exact-window artifact"
+    },
+    "a3fb2b260f470e448b8e9bd27f3cd4f8707cc26da8cd342ed0eec8fdce6118fc": {
+      "decision": "include",
+      "reason": "valid signed recap event retained in exact-window artifact"
+    },
+    "a40085e3d41a48564f92e608e31fbf430e786bd199dbb3a9cf5cb07562884839": {
+      "decision": "include",
+      "reason": "valid signed recap event retained in exact-window artifact"
+    },
+    "a560a978aa02437afb3fecacd1adeb08e9ead58d63e9efe338ff9b9e0b2aa2f9": {
+      "decision": "include",
+      "reason": "valid signed recap event retained in exact-window artifact"
+    },
+    "bae440c4553fd86e20dde317109d649f45ab30e2ff223a222343b4e4841d5f42": {
+      "decision": "include",
+      "reason": "valid signed recap event retained in exact-window artifact"
+    },
+    "c8aac86516be7edb97f78f295041a3511b048ec73b2aefc5f31aa2b58e83f580": {
+      "decision": "include",
+      "reason": "valid signed recap event retained in exact-window artifact"
+    },
+    "cda858db4417432249a2553f59fa2aa5780271cd785fc44ce9e57ccd1a423252": {
+      "decision": "include",
+      "reason": "valid signed recap event retained in exact-window artifact"
+    }
+  },
+  "family": "nostr-recap",
+  "include_count": 19,
+  "item_count": 19,
+  "page_count": 2,
+  "pagination_complete": true,
+  "pass_id": "refresh-t_a4ffab29-final5-20260916T1600Z",
+  "skip_count": 0,
+  "skip_evidence": [],
+  "status": "complete"
+}

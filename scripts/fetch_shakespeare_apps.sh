@@ -84,8 +84,13 @@ OUTPUT_DIR="$PROJECT_ROOT/data/shakespeare_apps"
 START_DATE=$(calc_start_date "$SINCE_DAYS")
 END_DATE=$(get_today)
 OUTPUT_FILE="$OUTPUT_DIR/apps_${START_DATE}_${END_DATE}.json"
-SINCE_TIMESTAMP=$(calc_since_timestamp "$SINCE_DAYS")
-UNTIL_TIMESTAMP=$(calc_until_timestamp)
+if [ -n "${COMPASS_WINDOW_SINCE:-}" ] && [ -n "${COMPASS_WINDOW_UNTIL:-}" ]; then
+    SINCE_TIMESTAMP=$(date -u -d "$COMPASS_WINDOW_SINCE" +%s)
+    UNTIL_TIMESTAMP=$(date -u -d "$COMPASS_WINDOW_UNTIL" +%s)
+else
+    SINCE_TIMESTAMP=$(calc_since_timestamp "$SINCE_DAYS")
+    UNTIL_TIMESTAMP=$(calc_until_timestamp)
+fi
 QUERY_STARTED_AT=$(date -u +%Y-%m-%dT%H:%M:%SZ)
 
 # Setup temp directory (auto-cleanup on exit)
@@ -154,11 +159,20 @@ fetch_apps() {
     for relay in "${NOSTR_RELAYS[@]}"; do
         echo "  Querying $relay..." >&2
         local page="$NOSTR_TEMP_DIR/apps-$(printf '%s' "$relay" | tr -cd '[:alnum:]').ndjson"
-        nak req -k 31733 -t t=soapbox-app-submission --since "$SINCE_TIMESTAMP" --until "$UNTIL_TIMESTAMP" --limit 200 "$relay" 2>/dev/null > "$page" || return 1
+        local evidence_relay="$relay"
+        if ! nak req -k 31733 -t t=soapbox-app-submission --since "$SINCE_TIMESTAMP" --until "$UNTIL_TIMESTAMP" --limit 200 "$relay" 2>/dev/null > "$page"; then
+            # Keep the family complete when one public relay is unavailable:
+            # query a known broad fallback rather than silently dropping the
+            # relay slot or failing before the remaining relays are checked.
+            local fallback="wss://relay.primal.net"
+            evidence_relay="$fallback (fallback for $relay)"
+            echo "    $relay unavailable; querying fallback $fallback" >&2
+            nak req -k 31733 -t t=soapbox-app-submission --since "$SINCE_TIMESTAMP" --until "$UNTIL_TIMESTAMP" --limit 200 "$fallback" 2>/dev/null > "$page" || return 1
+        fi
         local got exhausted=true
         got=$(grep -cve '^[[:space:]]*$' "$page" || true)
         [ "$got" -lt 200 ] || exhausted=false
-        record_exact_page "$PAGES_FILE" "$relay" "" "$got" 200 "$exhausted"
+        record_exact_page "$PAGES_FILE" "$evidence_relay" "" "$got" 200 "$exhausted"
         [ "$exhausted" = true ] || { echo "Shakespeare query reached cap on $relay" >&2; return 1; }
         cat "$page" >> "$NOSTR_TEMP_DIR/apps.ndjson"
     done

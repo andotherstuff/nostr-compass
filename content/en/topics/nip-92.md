@@ -65,5 +65,7 @@ NIP-92 is inline metadata, not a separate media object format. If a client needs
 - [Newsletter #24: Amethyst floating-point dims and Deep Dive](/en/newsletters/2026-05-28-newsletter/#nip-deep-dive-nip-92-media-attachments-via-imeta)
 - [Newsletter #33: Tagged releases](/en/newsletters/2026-07-29-newsletter/#tagged-releases)
 
+- [Newsletter #40: NIP-92 media attachments deep dive](/en/newsletters/2026-09-16-newsletter/#nip-92-media-attachments-metadata)
+
 **See also:**
 - [NIP-94: File Metadata](/en/topics/nip-94/)

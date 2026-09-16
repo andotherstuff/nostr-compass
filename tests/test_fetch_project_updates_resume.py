@@ -37,6 +37,12 @@ class ResumeCheckpointTests(unittest.TestCase):
             MODULE._completed_repo_keys(existing), {"successful/repo"}
         )
 
+    def test_completed_resume_does_not_rewrite_immutable_artifact(self):
+        self.assertFalse(MODULE._resume_has_collection_work([]))
+        self.assertTrue(
+            MODULE._resume_has_collection_work([{"owner": "a", "repo": "b"}])
+        )
+
 
 class AbsoluteWindowTests(unittest.TestCase):
     def test_resolves_explicit_absolute_window(self):

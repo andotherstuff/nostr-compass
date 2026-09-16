@@ -62,6 +62,105 @@ class NewsletterStyleTests(unittest.TestCase):
             checker.review("The [relay parser advisory](https://example.com/GHSA-abcd-1234-efgh) is fixed."),
         )
 
+    def test_flags_generic_heading_that_groups_spec_changes(self):
+        checker = load_module()
+        findings = checker.review(
+            """## Protocol and Spec Work
+
+### NIPs repository
+
+[First change](https://github.com/nostr-protocol/nips/pull/2462) adds commands.
+
+[Second change](https://github.com/nostr-protocol/nips/pull/2463) clarifies payments.
+
+## NIP Deep Dive
+"""
+        )
+        self.assertEqual(
+            ["generic_spec_heading", "grouped_spec_changes"],
+            [finding.kind for finding in findings],
+        )
+
+    def test_flags_generic_family_heading_for_one_spec_change(self):
+        checker = load_module()
+        findings = checker.review(
+            """## Protocol and Spec Work
+
+### Marmot Improvement Proposals
+
+[Relay discovery](https://github.com/marmot-protocol/marmot/pull/422) is clarified.
+"""
+        )
+        self.assertEqual(["generic_spec_heading"], [finding.kind for finding in findings])
+
+    def test_flags_shorthand_family_heading_for_one_spec_change(self):
+        checker = load_module()
+        findings = checker.review(
+            """## Protocol and Spec Work
+
+### NWC
+
+[Payment lookup](https://github.com/nostr-wallet-connect/nwc/pull/5) is specified.
+"""
+        )
+        self.assertEqual(["generic_spec_heading"], [finding.kind for finding in findings])
+
+    def test_flags_pr_and_commit_grouped_under_one_heading(self):
+        checker = load_module()
+        findings = checker.review(
+            """## Protocol and Spec Work
+
+### NWC changes wallet connections
+
+[Payment lookup](https://github.com/nostr-wallet-connect/nwc/pull/5) is specified.
+[Connection flow](https://github.com/nostr-wallet-connect/nwc/commit/abcdef1234567) is merged.
+"""
+        )
+        self.assertEqual(["grouped_spec_changes"], [finding.kind for finding in findings])
+
+    def test_flags_spec_change_without_h3(self):
+        checker = load_module()
+        findings = checker.review(
+            """## Protocol and Spec Work
+
+[Payment lookup](https://github.com/nostr-wallet-connect/nwc/pull/5) is specified.
+"""
+        )
+        self.assertEqual(["missing_spec_heading"], [finding.kind for finding in findings])
+
+    def test_accepts_one_descriptive_heading_per_spec_change(self):
+        checker = load_module()
+        findings = checker.review(
+            """## Protocol and Spec Work
+
+### NIP-CD proposes app slash commands
+
+[Slash commands](https://github.com/nostr-protocol/nips/pull/2462) are proposed.
+
+### NIP-A3 clarifies payment target handling
+
+[Payment targets](https://github.com/nostr-protocol/nips/pull/2463) are clarified.
+
+### NWC adds payment lookup and BOLT12
+
+[Payment lookup](https://github.com/nostr-wallet-connect/nwc/pull/5) is specified.
+"""
+        )
+        self.assertEqual([], findings)
+
+    def test_ignores_supporting_implementation_pr_in_spec_item(self):
+        checker = load_module()
+        findings = checker.review(
+            """## Protocol and Spec Work
+
+### NIP-90 proposes expiring DVM heartbeats
+
+[The spec change](https://github.com/nostr-protocol/nips/pull/2465) defines heartbeats.
+[A client implementation](https://github.com/example/dvm-client/pull/42) demonstrates it.
+"""
+        )
+        self.assertEqual([], findings)
+
 
 if __name__ == "__main__":
     unittest.main()

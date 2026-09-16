@@ -71,6 +71,7 @@ This is also why NIP-85 builds on NIP-73. Trusted Assertions can rate not only u
 - [Newsletter #10: NIP-85 Deep Dive](/en/newsletters/2026-02-18-newsletter/#nip-deep-dive-nip-85-trusted-assertions)
 - [Newsletter #36: Comments (NIP-22)](/en/newsletters/2026-08-19-newsletter/#comments-nip-22)
 - [Newsletter #38: NIP Deep Dive](/en/newsletters/2026-09-02-newsletter/#reactions-nip-25)
+- [Newsletter #40: NIP-73 podcast-medium filters](/en/newsletters/2026-09-16-newsletter/#nip-73-proposes-podcast-medium-filters)
 
 **See also:**
 - [NIP-85: Trusted Assertions](/en/topics/nip-85/)

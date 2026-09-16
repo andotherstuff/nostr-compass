@@ -287,9 +287,16 @@ the completion summary.
 
 This final proof, not merge time, promotes Translation and Podcast Prep.
 
-### Step 9: Trigger /translate
+### Step 9: Release translation and podcast outreach
 
 Hand control to the TranslationAgent with the merged English newsletter as input. The translation workflow runs as documented in `TranslationAgent.md` and `SKILL.md` § "Translation".
+
+Release the PodcastAgent only after the exact article and announcement satisfy
+the durable relay-readback floor. PodcastAgent then verifies the current issue
+inside Logbook, sends the separately journaled asynchronous voice-note DM to
+every eligible verified participant, and publishes one separate kind:1 Logbook
+invitation tagging the full verified participant set. Publication does not
+subsume those effects, and a reminder is not authorized by this release.
 
 ## Edge cases
 
