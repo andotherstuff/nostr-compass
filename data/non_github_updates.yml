@@ -89,3 +89,9 @@ other:
   - project: didactyl
     repo: https://git.laantungir.net/laantungir/didactyl
     updates: []
+
+  # RelayKit - Self-hosted orchestration dashboard for deploying Nostr services (relays, Blossom, nsite, etc)
+  # Repo (GRASP/NIP-34): https://grasp.samt.st/npub1yzfm42rzr3dj2h50flpvdl0uzrv22kv2y4ghve804w5xqu6lzqcqkyfxu5/relaykit.git
+  - project: relaykit
+    repo: https://grasp.samt.st/npub1yzfm42rzr3dj2h50flpvdl0uzrv22kv2y4ghve804w5xqu6lzqcqkyfxu5/relaykit.git
+    updates: []

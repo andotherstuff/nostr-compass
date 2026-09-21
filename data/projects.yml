@@ -3524,6 +3524,16 @@ devtools:
     priority: medium
     notes: Uses NIP-07/NIP-46 signing surfaces; added automatic release versioning, Zapstore publisher validation and metadata, and corrected Blossom authorization in the 2026-08-18 to 2026-08-25 issue window
 
+  - name: RelayKit
+    description: Run your own Nostr stack; one command turns any server into relays, Blossom servers, nsites, git hosting, notifications, etc, on your own domains
+    platforms: [ web, server ]
+    repo: https://grasp.samt.st/npub1yzfm42rzr3dj2h50flpvdl0uzrv22kv2y4ghve804w5xqu6lzqcqkyfxu5/relaykit.git
+    website: https://relayk.it
+    maintainer: samthomson
+    status: active
+    priority: medium
+    notes: Canonical repo is NIP-34/GRASP-hosted (grasp.samt.st, owner npub1yzfm42rzr3dj2h50flpvdl0uzrv22kv2y4ghve804w5xqu6lzqcqkyfxu5); GitHub mirror at https://github.com/samthomson/relaykit; releases ship as versioned GHCR images with in-app one-click updates
+
 signers:
   - name: Amber
     description: Android event signer
