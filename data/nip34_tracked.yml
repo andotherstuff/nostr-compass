@@ -184,6 +184,13 @@ tracked_repos:
     in_projects_yml: false
     notes: HTML microapps spec/runtime; companion to napplet ecosystem; same author as verdana and hallway
 
+  - name: RelayKit
+    d_tag: relaykit
+    pubkey: 2093baa8621c5b255e8f4fc2c6fdfc10d8a5598a25517664efaba860735f1030
+    relays: [wss://grasp.samt.st, wss://relay.ngit.dev]
+    in_projects_yml: true
+    notes: Self-hosted orchestration dashboard for deploying Nostr services; hosted on grasp.samt.st (npub1yzfm42rzr3dj2h50flpvdl0uzrv22kv2y4ghve804w5xqu6lzqcqkyfxu5); d_tag assumed from clone path, no kind 30617 visible on tracked relays as of 2026-09-21
+
 # Noise filtering is handled in scripts/fetch_nip34_repos.sh:
 #   - NOISE_PUBKEYS array: known noise pubkeys (hardcoded, with comments)
 #   - filter_noise() function: d_tag patterns, clone URL patterns
