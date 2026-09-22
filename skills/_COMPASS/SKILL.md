@@ -253,8 +253,12 @@ enforce these gates before handoff:
   notes and tag diff. `review_claims_<date>.md` must enumerate the checked
   source and confirm that every substantive user-facing and protocol change is
   represented; release-title summaries are insufficient.
-- Briefly explain what every project does on its first mention in each section,
-  and explain every NIP in human terms rather than leaving a bare identifier.
+- Give every project a self-contained one-sentence summary on its first mention
+  in each section, and give every NIP a self-contained one-sentence plain-
+  language summary of what it enables or standardizes. A short app category,
+  bare identifier, heading, or link label does not satisfy this gate. These
+  summaries introduce the item and do not replace the substantive explanation
+  required for included work.
 - Include only spec items with verified in-window activity. Under `Protocol and
   Spec Work`, give every changed PR, commit, or specification item its own
   descriptive `###` heading and body paragraph(s), matching the project
@@ -310,7 +314,7 @@ When new material comes in before publish:
 3. Add or update any topic pages the new material touches (see "Topic Management" below), and link to them from the newsletter on first mention.
 4. Only write an entry to `link_queue.md` once the current issue has published — from that point forward, new links queue normally for the next issue's Tuesday intake.
 5. If the material introduces a project that was absent from the current draft, resolve both its dedicated project identity and its maintainer identity from primary evidence. Add the verified pair as one blank-line-delimited group in that issue's `data/npubs.yml` additions section. A shared pubkey is sent once and labeled with both aliases; never guess a second project key.
-6. Once the revised draft is visible in the open review PR, dry-run and then send the standard pre-publication GitHub-review DM to only the newly added project and maintainer with `publish/dm-outreach.ts --pr-url '<newsletter PR URL>' --only '<project>' --only '<maintainer>'`. Keep `no_dm` exclusions, preserve the original campaign receipt, and verify the targeted follow-up receipt before reporting success. Do not mention podcast recording in this review request. Podcast invitations are a separate post-merge obligation and send only after exact publication plus Logbook episode/access readiness are verified.
+6. Once the revised draft is visible in the open review PR, dry-run and then send the standard pre-publication GitHub-review DM to only the newly added project and maintainer with `publish/dm-outreach.ts --pr-url '<newsletter PR URL>' --only '<project>' --only '<maintainer>'`. A targeted run uses its own deterministic `review-<targets>` campaign identity and exact PR-head/recipient obligation, so it preserves the immutable initial campaign and cannot resend its recipients. Keep `no_dm` exclusions, preserve the original campaign receipt, and verify the targeted follow-up receipt before reporting success. Do not mention podcast recording in this review request. Podcast invitations are a separate post-merge obligation and send only after exact publication plus Logbook episode/access readiness are verified.
 
 This is a one-way door: verified deployment plus both recovered Nostr events decide "update current" vs. "queue for next week," not the frontmatter flag, PR merge state, how far along the week is, or how much rewriting it takes.
 

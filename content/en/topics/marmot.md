@@ -66,6 +66,7 @@ MDK landed [PR #261](https://github.com/marmot-protocol/mdk/pull/261) to compute
 - [Newsletter #38: MDK v0.9.15](/en/newsletters/2026-09-02-newsletter/#mdk-v0915-newest-keypackages-membership-activity-and-durable-sends)
 
 - [Newsletter #40: Marmot Protocol and MDK 0.10.0](/en/newsletters/2026-09-16-newsletter/#marmot-protocol-and-mdk-reach-v0100)
+- [Newsletter #41: MDK 0.10.4, encrypted polls, and moderation](/en/newsletters/2026-09-23-newsletter/#marmot-protocol-0104-makes-local-sends-durable)
 
 **See also:**
 - [MLS (Message Layer Security)](/en/topics/mls/)

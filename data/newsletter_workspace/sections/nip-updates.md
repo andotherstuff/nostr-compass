@@ -1,40 +1,40 @@
 ## Protocol and Spec Work
 
-### NIP-A3 clarifies payment-type ambiguity
+### NIP-02 clarifies petnames in follow lists
 
-[NIP-A3 (Payment Targets)](/en/topics/nip-a3/) standardizes typed payment targets in `["payto", "<type>", "<address>"]` tags on kind `10133` events. The merged [payment-type clarification](https://github.com/nostr-protocol/nips/pull/2463) adds `bitcoincash` and `tron` to the documented type list and clarifies rendering: clients use a type-specific URI scheme when one exists, otherwise they fall back to `payto://<type>/<address>`.
+[NIP-02 (Follow List)](/en/topics/nip-02/) standardizes the kind `3` event that records whom an account follows and can attach a local petname to each followed key. The [merged petname clarification](https://github.com/nostr-protocol/nips/pull/2472) allows display-safe characters while preserving the field as a user's local label, not a globally verified name.
 
-### NIP-CD proposes addressable slash commands
+### NIP-AC proposes relay-bootstrapped WebRTC signaling
 
-The open [NIP-CD slash-command proposal](https://github.com/nostr-protocol/nips/pull/2462) defines addressable kind `31992` events whose `command`, `title`, `description`, `arg`, scope, and ignore tags advertise executable commands. Invocations begin at the first byte of an event's plaintext content, can target one executor by npub, and deliberately require no special client support. The draft also defines positional argument types and scope filters by event kind, relay, author, or tag; none of this is merged protocol behavior yet.
+[NIP-AC](https://github.com/nostr-protocol/nips/pull/2461) is an open proposal for using signed Nostr events to discover peers and exchange WebRTC offers, answers, and ICE candidates before traffic moves to a direct connection. NIP-59 standardizes gift wrapping that hides an event's sender and metadata inside encrypted envelopes. The proposal covered last week has since shipped a revised draft that keeps relays out of the established data path, uses ordinary `p` and `e` tags for recipients and session correlation, and recommends that gift-wrapping scheme when signaling metadata needs concealment.
 
-### NIP-90 proposes expiring DVM heartbeat events
+### NIP-86 proposes clear and list methods for relay management
 
-[NIP-90 (Data Vending Machines)](/en/topics/nip-90/) defines job requests, results, and feedback for services that perform work over Nostr. An open [DVM heartbeat proposal](https://github.com/nostr-protocol/nips/pull/2465) adds optional kind `11998` events that should carry an `expiration` tag so clients can distinguish a live machine from a stale NIP-89 announcement. The heartbeat sits outside the NIP-90 job-kind range, lets relays discard expired or superseded heartbeats, and leaves existing DVM flows unchanged when a service does not emit it.
+[NIP-86 (Relay Management API)](/en/topics/nip-86/) standardizes authenticated administrative calls for banning, allowing, inspecting, and configuring a relay. [PR #2477](https://github.com/nostr-protocol/nips/pull/2477) proposes methods for clearing pubkeys or events from both allow and ban lists and for listing roles, allowed events, and disallowed kinds, including behavior already present in the khatru relay framework and the go-nostr library.
 
-### NIP-73 proposes podcast-medium filters
+### NIP-69 proposes a stable creation time for trading orders
 
-[NIP-73 (External Content IDs)](/en/topics/nip-73/) standardizes `i` tags for external identifiers and `k` tags for their categories. The open draft [podcast-medium proposal](https://github.com/nostr-protocol/nips/pull/2468) adds optional `podcast:medium:music` and `podcast:medium:podcast` category tags so clients can filter notes by the medium declared in a podcast RSS feed. An absent category continues to imply a podcast feed, though clients should resolve the RSS source when they need to confirm its medium.
+[NIP-69 (Peer-to-Peer Trading)](/en/topics/nip-69/) standardizes addressable order events that let multiple trading applications share buy and sell liquidity. [PR #2476](https://github.com/nostr-protocol/nips/pull/2476) proposes an optional creation-time tag that stays fixed across status updates, so a returned or republished order does not look newly created merely because its event timestamp changed.
 
-### NIP-F5 proposes permissioned FIPS transport for web apps
+### NIP-A3 proposes proof of payment-address ownership
 
-The open [NIP-F5 browser-transport proposal](https://github.com/nostr-protocol/nips/pull/2469) defines an optional `window.fipsTransport` API through which a Nostr web application can request user-approved HTTP or WebSocket access to a FIPS-addressed relay, Blossom server, Git service, or other private endpoint. The host binds each grant to the requesting web origin and target while keeping transport separate from Nostr signing, identity, and service authorization. The proposal also requires explicit consent and scoped permissions, but its address forms and browser contract remain draft behavior.
+[NIP-A3 (Payment Targets)](/en/topics/nip-a3/) lets an account publish portable payment addresses for multiple networks in one replaceable event. [PR #2475](https://github.com/nostr-protocol/nips/pull/2475) proposes an optional signature made by the payment address's own key, giving compatible address types a proof that binds the destination to the Nostr author while treating missing proofs as neutral.
 
-### Marmot clarifies KeyPackage relay discovery
+### BUD-16 proposes deterministic directory manifests
 
-[Marmot](/en/topics/marmot/) carries MLS group state over Nostr events. The open [KeyPackage relay-discovery clarification](https://github.com/marmot-protocol/marmot/pull/422) documents the current sequence: publish kind `10002` relay metadata, fetch the recipient's kind `30443` KeyPackage from write-capable or unmarked destinations, then use kind `10050` separately to find the recipient's Welcome inbox. It also states that read-only NIP-65 entries are not KeyPackage destinations and that the removed kind `10051` list is no longer a discovery step. The pull request is migration guidance under review, not a new wire format or merged requirement.
+[BUD-16](https://github.com/hzrd149/blossom/pull/105) is an open Blossom proposal for grouping content-addressed blobs into named directory trees with reproducible manifest hashes. The draft defines deterministic MessagePack encoding, named links, metadata, optional encryption keys, and `.bdir` path resolution while leaving servers to store ordinary blobs.
 
-### Marmot proposes encrypted group reports and shared moderation
+### Marmot adds encrypted group polls
 
-The open [Marmot moderation specification](https://github.com/marmot-protocol/marmot/pull/423) proposes unsigned inner events carried by the protocol's existing encrypted group transport. Kind `1984` would report a specific message revision, kind `1985` would let administrators dismiss referenced reports without removing the content, and kind `4891` would let an authenticated administrator remove a message and its revisions. The proposal also defines deduplication, shared review visibility, ordering, retention, and authority rules, while keeping author deletion on kind `5` and host-application interfaces outside the wire contract.
+[Marmot Protocol](/en/topics/marmot/) defines interoperable application events inside MLS-encrypted groups carried over Nostr. NIP-88 defines poll questions and signed response events. [Merged MIP work](https://github.com/marmot-protocol/marmot/pull/425) recognizes those polls inside a group while keeping relay selection bound to authenticated group routing and explicitly stating that they are not anonymous or election-grade.
 
-### NWC adds payment lookup and BOLT12 records
+### Marmot merges group reports and admin deletion
 
-[Nostr Wallet Connect](/en/topics/nip-47/) lets applications control a wallet through encrypted requests and responses over Nostr. Covered previously as an open proposal, its payment-lookup work has now merged into the repository. The merged [`lookup_payment` and BOLT12 specification](https://github.com/nostr-wallet-connect/nwc/pull/5) defines payment lookup by transaction ID, invoice, payment hash, or payment-type-specific selectors, and adds draft, optional BOLT12 payment records and states. Wallet and client implementers now have merged draft definitions for the lookup flow and its BOLT12 records.
+[Marmot group moderation](https://github.com/marmot-protocol/marmot/pull/423) defines encrypted report, dismissal, and administrator-deletion events that converge under the group's authenticated state. The proposal covered last week has now merged, fixing a status transition that lets implementations align report review and message removal against the accepted specification.
 
-### NWC adds client-initiated connections
+### NWC-13 proposes connection budget queries
 
-The merged [client-initiated connection flow](https://github.com/nostr-wallet-connect/nwc/pull/3) lets a client generate the connection secret, direct the user through HTTP confirmation or Nostr authorization, negotiate required and optional permissions, and receive the approved connection details. The change gives NWC clients and wallets a repository-hosted draft definition for creating a connection from the client side.
+[Nostr Wallet Connect](/en/topics/nip-47/) lets an application request narrowly scoped wallet operations through encrypted Nostr events. [NWC-13](https://github.com/nostr-wallet-connect/nwc/pull/7) proposes a separate `get_budget` permission and response so an application can inspect used, total, and renewal allowance without receiving permission to read the wallet's balance.
 
 writer_model: preferred=gemini-3.1-pro, actual=openai-codex/gpt-5.6-sol, receipt=data/newsletter_workspace/writer_receipt_2026-09-16.json
 

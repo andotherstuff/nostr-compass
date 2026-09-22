@@ -198,8 +198,14 @@ export function extractMentions(
     // Skip NIP refs, PR numbers, version strings, commit hashes, kind descriptions
     if (/^NIP-|^PR #|^v?\d+\.\d+|^[a-f0-9]{7,}$/.test(text)) return;
     if (/^Kind \d/i.test(text)) return;
-    // Skip bare domain names (foo.com, foo.org, etc.)
-    if (/^[a-z0-9.-]+\.[a-z]{2,}$/.test(text)) return;
+    // Skip bare domain names (foo.com, foo.org, etc.) unless the exact domain
+    // is already a curated resolved or researched-unresolved project identity.
+    // Some projects intentionally use a domain as their canonical name.
+    if (
+      /^[a-z0-9.-]+\.[a-z]{2,}$/.test(text) &&
+      !npubs[text.toLowerCase()] &&
+      !unresolvedIdentities[text.toLowerCase()]
+    ) return;
     // Skip all-lowercase multi-word phrases (descriptions, not project names)
     if (!fromApplicationHeading && /^[a-z]/.test(text) && text.split(/\s+/).length > 1) return;
     // Skip hyphenated repo-style names (marmots-web-chat, etc.)

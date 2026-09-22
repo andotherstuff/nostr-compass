@@ -184,6 +184,13 @@ tracked_repos:
     in_projects_yml: false
     notes: HTML microapps spec/runtime; companion to napplet ecosystem; same author as verdana and hallway
 
+  - name: Threshold Sessions
+    d_tag: threshold
+    pubkey: f6d5cefe216c99769c98d763b3c26294113dafead5dd99d4f3c963e02092242f
+    relays: [wss://relay.ngit.dev]
+    in_projects_yml: true
+    notes: AI coding-session collector that publishes redacted encrypted training-data epochs through Nostr and Blossom; canonical GRASP repository on relay.ngit.dev
+
 # Noise filtering is handled in scripts/fetch_nip34_repos.sh:
 #   - NOISE_PUBKEYS array: known noise pubkeys (hardcoded, with comments)
 #   - filter_noise() function: d_tag patterns, clone URL patterns

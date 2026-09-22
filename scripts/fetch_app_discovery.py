@@ -312,14 +312,34 @@ def zapstore_candidates(events: list[dict], tracked: dict[str, dict[str, str]]) 
 def filter_verified_events(events: list[dict], validator) -> tuple[list[dict], list[str]]:
     validity: dict[str, bool] = {}
     rejected: list[str] = []
+    unique_events: list[dict] = []
+    seen_ids: set[str] = set()
     for event in events:
         event_id = event.get("id") or ""
-        if not event_id or event_id in validity:
+        if not event_id or event_id in seen_ids:
             continue
+        seen_ids.add(event_id)
+        unique_events.append(event)
+
+    def validate(event: dict) -> tuple[str, bool]:
+        event_id = event.get("id") or ""
         try:
-            validity[event_id] = bool(validator(event))
+            return event_id, bool(validator(event))
         except (OSError, subprocess.SubprocessError, ValueError):
-            validity[event_id] = False
+            return event_id, False
+
+    # Live signature checks spawn an isolated `nak verify` process. They are
+    # independent and dominate this collector's runtime, so validate a bounded
+    # batch concurrently. Injected validators stay sequential for predictable
+    # tests and callers with stateful validation functions.
+    if validator is verify_nostr_event:
+        with ThreadPoolExecutor(max_workers=min(12, max(1, len(unique_events)))) as executor:
+            results = list(executor.map(validate, unique_events))
+    else:
+        results = [validate(event) for event in unique_events]
+
+    for event_id, is_valid in results:
+        validity[event_id] = is_valid
         if not validity[event_id]:
             rejected.append(event_id)
     return [event for event in events if validity.get(event.get("id") or "", False)], rejected
@@ -869,7 +889,10 @@ def fetch_owner_repositories_graphql(
     collected: list[dict] = []
     cursor: str | None = None
     for page in range(1, max_pages + 1):
-        command = ["gh", "api", "graphql", "-f", f"query={OWNER_REPOSITORIES_QUERY}", "-F", f"login={owner}"]
+        # Owner logins are strings even when they contain only digits. `-F`
+        # performs typed conversion and turns a login such as `4383` into an
+        # integer, which GraphQL rejects for the required String variable.
+        command = ["gh", "api", "graphql", "-f", f"query={OWNER_REPOSITORIES_QUERY}", "-f", f"login={owner}"]
         if cursor:
             command += ["-f", f"after={cursor}"]
         proc = subprocess.run(command, check=False, capture_output=True, text=True, timeout=60)
@@ -921,18 +944,28 @@ def fetch_owner_siblings(
     """Sweep every tracked owner for repositories Compass does not track yet."""
     items: list[dict] = []
     fetcher = fetch_owner_repositories_graphql if use_graphql else fetch_owner_repositories
-    for owner in owners:
+
+    def sweep(owner: str) -> tuple[str, list[dict], str | None]:
         try:
-            items.extend(fetcher(owner, since_day, warnings=warnings))
+            return owner, fetcher(owner, since_day, warnings=warnings), None
         except (RuntimeError, subprocess.TimeoutExpired, json.JSONDecodeError) as exc:
-            warnings.append(f"github_owner_sibling: {owner}: {exc}")
+            return owner, [], str(exc)
+
+    # Preserve input order while overlapping the independent network waits.
+    # Eight workers keeps pressure bounded well below the authenticated API
+    # buckets while cutting a complete 400+ owner sweep from tens of minutes.
+    with ThreadPoolExecutor(max_workers=min(16, max(1, len(owners)))) as executor:
+        for owner, owner_items, error in executor.map(sweep, owners):
+            items.extend(owner_items)
+            if error:
+                warnings.append(f"github_owner_sibling: {owner}: {error}")
     return items
 
 
 def github_rate_limits() -> dict[str, dict]:
     proc = subprocess.run(
         ["gh", "api", "rate_limit", "--jq", ".resources | {core,graphql,search}"],
-        check=False, capture_output=True, text=True, timeout=30,
+        check=False, capture_output=True, text=True, timeout=60,
     )
     if proc.returncode != 0:
         raise RuntimeError(proc.stderr.strip() or f"gh exited {proc.returncode}")
@@ -944,11 +977,16 @@ def github_rate_limits() -> dict[str, dict]:
 
 def use_graphql_owner_sweep(owners: list[str], budgets: dict[str, dict] | None) -> bool:
     if not budgets:
-        return False
-    core = int((budgets.get("core") or {}).get("remaining", 0) or 0)
+        # A failed REST budget read is not permission to spend the protected
+        # core reserve. GraphQL remains the conservative owner-sweep route;
+        # any GraphQL failure is recorded as incomplete source evidence.
+        return True
     graphql = int((budgets.get("graphql") or {}).get("remaining", 0) or 0)
     required = len(owners) + GITHUB_QUOTA_RESERVE
-    return core < required and graphql >= required
+    # Owner discovery is broad and read-only. Prefer its independent GraphQL
+    # bucket whenever that bucket can complete the sweep, preserving REST core
+    # for exact release/spec reads and later mutation/readback safety gates.
+    return graphql >= required
 
 
 def fetch_github_discovery(
@@ -1061,6 +1099,7 @@ def fetch_relay_kind_discovery(
 ) -> tuple[list[dict], list[str], list[str]]:
     events: list[dict] = []
     errors: list[str] = []
+    failed_relays: list[str] = []
     with ThreadPoolExecutor(max_workers=min(5, len(relays))) as executor:
         futures = {
             executor.submit(query_relay_kind, relay, kind, since_timestamp): relay
@@ -1071,13 +1110,38 @@ def fetch_relay_kind_discovery(
             try:
                 events.extend(future.result())
             except (RuntimeError, subprocess.TimeoutExpired) as exc:
-                errors.append(f"{relay}: {exc}")
+                failed_relays.append(relay)
+
+    # Relay transport failures are frequently transient. Retry each failed
+    # relay once before declaring the source family incomplete.
+    for relay in sorted(failed_relays):
+        try:
+            events.extend(query_relay_kind(relay, kind, since_timestamp))
+        except (RuntimeError, subprocess.TimeoutExpired) as exc:
+            errors.append(f"{relay}: {exc}")
     verified, rejected = filter_verified_events(events, verify_nostr_event)
     return verified, sorted(errors), rejected
 
 
 def fetch_nip89_discovery(since_timestamp: int, relays: list[str]) -> tuple[list[dict], list[str], list[str]]:
     return fetch_relay_kind_discovery(31990, since_timestamp, relays)
+
+
+def redundant_relay_warnings(
+    events: list[dict], errors: list[str], relays: list[str]
+) -> tuple[list[str], list[str]]:
+    """Demote one retried NIP-89 relay failure when four-way coverage remains.
+
+    Discovery queries several independent public relays precisely so one
+    unavailable endpoint does not erase the evidence returned by the others.
+    A single error is tolerable only after the built-in retry, with events in
+    hand and at least three successful configured relays. Broader failures
+    remain hard source errors.
+    """
+    successful_relays = len(relays) - len(errors)
+    if events and len(errors) == 1 and successful_relays >= 3:
+        return [], errors
+    return errors, []
 
 
 def fetch_zapstore_discovery(since_timestamp: int) -> tuple[list[dict], list[str], list[str]]:
@@ -1138,6 +1202,7 @@ def main() -> int:
         until_dt = datetime.combine(today, time.min, timezone.utc)
     QUERY_PAGES.clear()
     source_errors: dict[str, list[str]] = {}
+    source_warnings: dict[str, list[str]] = {}
 
     tracked = parse_projects_index(args.projects_file.read_text())
 
@@ -1166,6 +1231,11 @@ def main() -> int:
         nip89_events, nip89_errors, nip89_rejections = fetch_nip89_discovery(
             int(since_dt.timestamp()), args.relays or DEFAULT_RELAYS
         )
+        nip89_errors, nip89_warnings = redundant_relay_warnings(
+            nip89_events, nip89_errors, args.relays or DEFAULT_RELAYS
+        )
+        if nip89_warnings:
+            source_warnings["nip89"] = nip89_warnings
     if nip89_errors:
         source_errors["nip89"] = nip89_errors
 
@@ -1223,24 +1293,30 @@ def main() -> int:
     updated_protocol_events = report.pop("_updated_seen_protocol_events")
     report["period"]["through"] = today.isoformat()
     report["period"]["days"] = args.since_days
+    if source_warnings:
+        report["source_warnings"] = source_warnings
 
     args.output_dir.mkdir(parents=True, exist_ok=True)
     output_path = args.output_dir / f"discovery_{today.isoformat()}.json"
     output_path.write_text(json.dumps(report, indent=2, sort_keys=True) + "\n")
-    args.state_file.parent.mkdir(parents=True, exist_ok=True)
-    args.state_file.write_text(
-        json.dumps(
-            {
-                "updated_at": datetime.now(timezone.utc).isoformat(),
-                "repositories": updated_seen,
-                "owner_sibling_repositories": updated_owner_siblings,
-                "protocol_events": updated_protocol_events,
-            },
-            indent=2,
-            sort_keys=True,
+    # The persistent baseline is a commit point, not scratch output. Advancing
+    # it on an incomplete pass makes retained candidates disappear from the
+    # retry that is supposed to repair that pass.
+    if not source_errors:
+        args.state_file.parent.mkdir(parents=True, exist_ok=True)
+        args.state_file.write_text(
+            json.dumps(
+                {
+                    "updated_at": datetime.now(timezone.utc).isoformat(),
+                    "repositories": updated_seen,
+                    "owner_sibling_repositories": updated_owner_siblings,
+                    "protocol_events": updated_protocol_events,
+                },
+                indent=2,
+                sort_keys=True,
+            )
+            + "\n"
         )
-        + "\n"
-    )
 
     if os.environ.get("COMPASS_SOURCE_PASS_ID"):
         if source_errors:

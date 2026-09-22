@@ -61,6 +61,7 @@ That does not remove counterparty risk. Payment disputes, fiat fraud, reputation
 - [Newsletter #1: NIP Updates](/en/newsletters/2025-12-17-newsletter/#nip-updates)
 - [Newsletter #1: Releases](/en/newsletters/2025-12-17-newsletter/#releases)
 - [Newsletter #2: News](/en/newsletters/2025-12-24-newsletter/#news)
+- [Newsletter #41: Stable order creation time](/en/newsletters/2026-09-23-newsletter/#nip-69-proposes-a-stable-creation-time-for-trading-orders)
 
 **See also:**
 - [NIP-40: Expiration Timestamp](/en/topics/nip-40/)

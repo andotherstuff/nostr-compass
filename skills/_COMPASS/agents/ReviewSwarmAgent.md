@@ -93,6 +93,14 @@ The ProseReview skill loads the user's anti-slop rules from `~/.config/shaka/use
 
 **Mandatory Compass style and structure check:** before PASS, run `python3 scripts/check_newsletter_style.py "$DRAFT"`. Any GHSA/CVE/advisory slug used as visible link text or bare `one, GHSA-…` enumeration is a hard FAIL. The same command hard-fails `Protocol and Spec Work` when an H3 groups multiple tracked spec PRs/commits, uses only a generic family heading, or leaves a tracked spec change without an H3. Every individual NIP, BUD, NAP, Marmot/MIP, Gamma, Concord/CORD, NWC, or other specification change must have its own descriptive H3, matching project sections. Security prose must use descriptive anchors per Newsletter #35 (`2026-08-12-newsletter.md`, Amber section). Also grep for `\[GHSA-` and `\[CVE-` in the draft; zero matches as link anchors.
 
+**Mandatory explainer inventory:** ProseReview must list every project and every
+NIP in the draft and verify its first mention in each section. Each project must
+have a self-contained one-sentence summary of what it does, and each NIP must
+have a self-contained one-sentence plain-language summary of what it enables or
+standardizes. A category label, heading, bare identifier, or link title does not
+pass. Record the inventory and any fixes in `review_prose_<date>.md`; unresolved
+or omitted summaries are a hard FAIL.
+
 ProseReview output goes into `review_prose_<date>.md`. The fix list format:
 
 ```

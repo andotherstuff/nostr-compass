@@ -61,6 +61,7 @@ NIP-44 is now the preferred encryption mode. The spec still documents NIP-04 fal
 - [Newsletter #38: Amethyst](/en/newsletters/2026-09-02-newsletter/#amethyst-ships-nip-84-highlights-and-fixes-two-relay-facing-failure-paths)
 
 - [Newsletter #40: lookup_payment, BOLT12, and client-initiated connections merge](/en/newsletters/2026-09-16-newsletter/#nwc-adds-payment-lookup-and-bolt12-records)
+- [Newsletter #41: NWC connection budget queries](/en/newsletters/2026-09-23-newsletter/#nwc-13-proposes-connection-budget-queries)
 
 **See also:**
 - [NIP-57: Zaps](/en/topics/nip-57/)

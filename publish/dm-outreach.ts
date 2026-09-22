@@ -60,6 +60,7 @@ import {
   filterRecipients,
   OUTREACH_REPORT_SCHEMA_VERSION,
   outreachReportSuffix,
+  reviewCampaignIdentity,
   resolveOutreachRoots,
 } from "./lib/outreach-scope.ts";
 import { notifyMilestone } from "./lib/notify.ts";
@@ -463,7 +464,7 @@ async function execute(args: ReturnType<typeof parseArgs>) {
   let recipients = resolvedRecipients;
   let excludedNoDm = resolvedNoDm;
   const podcastCampaign = Boolean(args.podcastUrl);
-  const campaignIdentity = podcastCampaign ? "podcast-invitation" : "review";
+  const campaignIdentity = podcastCampaign ? "podcast-invitation" : reviewCampaignIdentity(args.onlyNames);
   const campaignMessage = buildOutreachMessage(args);
   if (!args.reallySend) {
     for (const recipient of recipients) console.log(`  [plan]  nip17  ${recipient.primaryName.padEnd(20)}  ${recipient.npub}`);

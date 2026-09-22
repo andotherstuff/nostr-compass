@@ -64,6 +64,7 @@ The same caution applies to relay hints and petnames. They are optional fields, 
 
 **Mentioned in:**
 - [Newsletter #2: NIP Deep Dive](/en/newsletters/2025-12-24-newsletter/#nip-02-follow-list)
+- [Newsletter #41: Petname clarification](/en/newsletters/2026-09-23-newsletter/#nip-02-clarifies-petnames-in-follow-lists)
 
 **See also:**
 - [NIP-01: Basic Protocol](/en/topics/nip-01/)

@@ -4,6 +4,7 @@ import {
   filterRecipients,
   OUTREACH_REPORT_SCHEMA_VERSION,
   outreachReportSuffix,
+  reviewCampaignIdentity,
   resolveOutreachRoots,
 } from "./lib/outreach-scope.ts";
 
@@ -50,6 +51,10 @@ describe("targeted pre-publication outreach", () => {
     expect(outreachReportSuffix(["Nostrology"], true)).toBe("-nostrology-reminder");
     expect(outreachReportSuffix([], false, true)).toBe("-rerecord");
     expect(outreachReportSuffix([])).toBe("");
+    expect(reviewCampaignIdentity([])).toBe("review");
+    expect(reviewCampaignIdentity(["Nostrology", "WhisperHash maintainer"])).toBe(
+      "review-nostrology-whisperhash-maintainer",
+    );
   });
 
   test("builds review-only copy with the GitHub PR link", () => {

@@ -79,6 +79,7 @@ Zap splits, defined in an appendix to the NIP, let a recipient publish a kind `0
 - [Newsletter #34: BOLT12 zap proposal](/en/newsletters/2026-08-05-newsletter/#payments-and-wallet-connections)
 - [Newsletter #35: Tagged releases](/en/newsletters/2026-08-12-newsletter/#tagged-releases)
 - [Newsletter #36: Audio tracks proposal with zap splits](/en/newsletters/2026-08-19-newsletter/#nips)
+- [Newsletter #41: Lightning Zaps deep dive](/en/newsletters/2026-09-23-newsletter/#nip-57-lightning-zaps)
 
 **See also:**
 - [NIP-47: Nostr Wallet Connect](/en/topics/nip-47/)

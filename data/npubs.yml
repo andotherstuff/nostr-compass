@@ -79,6 +79,13 @@ unresolved:
     sources:
       - https://github.com/napplet/naps
       - https://napplet.run/
+  napplet.soy:
+    checked_at: 2026-09-22
+    reason: The canonical site and repository identify the GitHub maintainer and link the wider Napplet ecosystem, but neither binds a project or maintainer Nostr key. Creator npubs in the live catalog identify individual napplet authors, not the platform maintainer.
+    sources:
+      - https://napplet.soy/
+      - https://napplet.soy/about
+      - https://github.com/zeSchlausKwab/napplet-soy
   keep-android:
     checked_at: 2026-08-02
     reason: Candidate personal keys for the maintainer are not bound to PrivKey or keep-android by a primary source.
@@ -434,6 +441,10 @@ Burrow:
 # [dev:johnathan/jmcorgan]
 FIPS:
   npub: npub19wavu4f7l6l43h24jyskn7fvzy37kcfp67aqjtmv2qgy4lp34nhsda8p6k
+  mention_only: true
+# [dev:WildCitizen7] MintRadar creator; kind-0 profile binds mintradar.org
+MintRadar:
+  npub: npub1zatej55x47xzhnw06yarqr5ugz7y5el8vygcckek24e5qmrtx77qnmd6rg
   mention_only: true
 # [dev:gandlafbtc]
 Nutsack:
@@ -819,6 +830,12 @@ Napplet:
   mention_only: true
 sandwich.farm:
   npub: npub1uac67zc9er54ln0kl6e4qp2y6ta3enfcg7ywnayshvlw9r5w6ehsqq99rx
+  mention_only: true
+
+# threshold training-epoch tool maintainer; the NIP-34 repository address binds
+# the owner key and kind-0 metadata was recovered from nos.lol on 2026-09-22.
+Threshold Sessions:
+  npub: npub17m2ual3pdjvhd8yc6a3m8snzjsgnmtl26hwen48ne937qgyjyshs2zgvse
   mention_only: true
 
 # ntrack / f321x project account
@@ -1357,3 +1374,79 @@ cal.emre.xyz:
 # already verified project or maintainer recipient above.
 Zap: npub1xxdd8eusvdxmaph3fkuu9x2mymhrcc3ghe2l38zv0l4f4nqp659qskkt7a
 nostrord repairs wrapped DMs and shared event links: npub1ktxukd7ny5e3ghqqcn6r6hs7rh4hceaua6n77cl4ym9ye2ufzces7rzc2h
+
+# =============================================================================
+# Newsletter #41 additions (verified 2026-09-22)
+# =============================================================================
+
+Alby Extension:
+  npub: npub1getal6ykt05fsz5nqu4uld09nfj3y3qxmv8crys4aeut53unfvlqr80nfm
+  identity_type: project
+  evidence:
+    - https://github.com/getAlby/lightning-browser-extension
+    - https://getalby.com/.well-known/nostr.json?name=hello
+
+BitBlik:
+  npub: npub1k3g092rlzvn7nftz3jte9pkx63zp705nh78r6hjpjm55fjg7r2cqx8stj3
+  identity_type: project
+  evidence:
+    - https://github.com/bit-blik/bitblik
+    - https://bitblik.app/.well-known/nostr.json?name=_
+
+Dart NDK dev.5:
+  npub: npub1xpuz4qerklyck9evtg40wgrthq5rce2mumwuuygnxcg6q02lz9ms275ams
+  identity_type: maintainer
+  person: fmar
+  evidence:
+    - https://github.com/relaystr/ndk
+
+Marmot Protocol's MDK:
+  npub: npub1marm0t9qkmv8lq7pe7vdx60ed8fl2d876a2ytk3ade208dlyfweqg5r6m9
+  identity_type: project
+  evidence:
+    - https://github.com/marmot-protocol/mdk
+
+Mostro CLI:
+  npub: npub1m0str0d7z2ww8rdh20t2n9lx520xjwhaq24p68umqp06wwrwtsnqen40un
+  identity_type: project
+  evidence:
+    - https://github.com/MostroP2P/mostro-cli
+    - https://mostro.network/
+
+Nostr Mail Client:
+  npub: npub1kg4sdvz3l4fr99n2jdz2vdxe2mpacva87hkdetv76ywacsfq5leqquw5te
+  identity_type: maintainer
+  person: nogringo
+  evidence:
+    - https://github.com/nogringo/nostr-mail-client
+
+Nostr WoT Oracle:
+  npub: npub1gxdhmu9swqduwhr6zptjy4ya693zp3ql28nemy4hd97kuufyrqdqwe5zfk
+  identity_type: maintainer
+  person: Leon Acosta
+  evidence:
+    - https://github.com/nostr-wot/nostr-wot-oracle
+    - https://nostr-wot.com/
+Nostr WoT SDK:
+  npub: npub1gxdhmu9swqduwhr6zptjy4ya693zp3ql28nemy4hd97kuufyrqdqwe5zfk
+  identity_type: maintainer
+  person: Leon Acosta
+  evidence:
+    - https://github.com/nostr-wot/nostr-wot-sdk
+    - https://nostr-wot.com/
+
+fips-initramfs:
+  npub: npub19wavu4f7l6l43h24jyskn7fvzy37kcfp67aqjtmv2qgy4lp34nhsda8p6k
+  identity_type: maintainer
+  person: jcorgan
+  evidence:
+    - https://github.com/jmcorgan/fips-initramfs
+    - https://github.com/jmcorgan/fips-initramfs/releases/tag/v0.1.0
+
+RelayKit:
+  npub: npub1yzfm42rzr3dj2h50flpvdl0uzrv22kv2y4ghve804w5xqu6lzqcqkyfxu5
+  identity_type: maintainer
+  person: sam
+  evidence:
+    - https://github.com/samthomson/relaykit
+    - https://relayk.it
