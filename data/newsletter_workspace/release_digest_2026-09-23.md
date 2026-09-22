@@ -307,3 +307,50 @@ Triage MUST record a decision for every project below. A release that is neither
   - Triage decision: __________ (write up / skip + reason)
 - **DeSent Email** `xyz.desent` 1.0.9 (2026-09-17) — **NEW-APP**
   - Triage decision: __________ (write up / skip + reason)
+
+## Complete Zapstore-only inventory (42/42)
+
+- **WMAPP** (`com.wingmanbefree.wingman_app`) — `0.1.6`; latest `2026-09-14T08:06:29Z`; repository: https://github.com/OtherStuffAI/wm-app; tracked project: Wingman App; new-app flag: `false`.
+- **Imwald Android** (`eu.imwald.android`) — `0.5.10`; latest `2026-09-17T13:27:40Z`; repository: https://git.imwald.eu/silberengel/imwald-android; tracked project: Imwald Android; new-app flag: `false`.
+- **Coracle** (`social.coracle.app`) — `0.6.37`; latest `2026-09-17T16:59:52Z`; repository: https://github.com/coracle-social/coracle/; tracked project: Coracle; new-app flag: `false`.
+- **Flotilla** (`social.flotilla`) — `1.11.0`; latest `2026-09-15T22:31:49Z`; repository: https://gitea.coracle.social/coracle/flotilla; tracked project: Flotilla; new-app flag: `false`.
+- **K.ai** (`ai.alohak.kai`) — `1.7.2`; latest `2026-09-17T20:57:36Z`; repository: https://github.com/ostermayer/k.ai-zapstore; tracked project: none; new-app flag: `false`.
+- **Nymbot - Private AI Assistant** (`ai.nymbot`) — `1.0.6`; latest `2026-09-19T10:00:33Z`; repository: https://github.com/Spl0itable/nymbot; tracked project: none; new-app flag: `false`.
+- **Postr** (`app.postr`) — `1.1.1`; latest `2026-09-14T05:45:08Z`; repository: https://gitworkshop.dev/npub1qwkd5wzftcxquuhtkcg0xn9ed7evksluuppf7qdmdh34ywe9uncs5uqfvl/postr; tracked project: none; new-app flag: `false`.
+- **Roadstr** (`app.roadstr`) — `0.5.9`; latest `2026-09-16T20:08:14Z`; repository: https://github.com/roadstrapp/roadstr-app/; tracked project: none; new-app flag: `false`.
+- **Armada** (`buzz.armada.app`) — `0.60.2`; latest `2026-09-18T10:02:58Z`; repository: https://nostrhub.io/soapbox@ditto.pub/armada; tracked project: none; new-app flag: `false`.
+- **PsstPsst** (`chat.psstpsst.app`) — `0.2.3`; latest `2026-09-21T16:07:37Z`; repository: https://github.com/codytseng/psstpsst; tracked project: none; new-app flag: `false`.
+- **Hessible** (`com.circumspace.contactstr`) — `0.1.2`; latest `2026-09-14T14:33:32Z`; repository: https://github.com/circumspace/hessible; tracked project: none; new-app flag: `false`.
+- **Dark Wisp** (`com.darkwisp.app`) — `1.2.5`; latest `2026-09-21T15:28:13Z`; repository: https://github.com/barrydeen/dark-wisp-android; tracked project: none; new-app flag: `false`.
+- **PCAPdroid** (`com.emanuelef.remote_capture`) — `2.0.2`; latest `2026-09-20T17:12:37Z`; repository: https://github.com/emanuele-f/PCAPdroid; tracked project: none; new-app flag: `false`.
+- **Hisa** (`com.hisa`) — `0.2.5`; latest `2026-09-14T17:56:32Z`; repository: https://github.com/turizspace/hisa; tracked project: none; new-app flag: `false`.
+- **LibreNostr** (`com.librenostr.android`) — `0.5.17`; latest `2026-09-15T20:40:05Z`; repository: https://github.com/Lwb89dev/librenostr; tracked project: none; new-app flag: `false`.
+- **Plaza** (`com.plazabtc.merchant`) — `0.2.3`; latest `2026-09-14T03:12:50Z`; repository: https://github.com/alejandroalejandroalejandrobit/plaza-releases; tracked project: none; new-app flag: `false`.
+- **Receipt Scanner** (`com.receiptscanner.app`) — `0.4.1`; latest `2026-09-15T03:12:56Z`; repository: https://denimroad.feeds.relay.tools/git/f164b01295dd6b17f99281c3cc07ce93d3fb8309fe1183064589541615c7ad2f/receipt-scanner; tracked project: none; new-app flag: `false`.
+- **Voca** (`com.voca.app`) — `1.3.0`; latest `2026-09-17T20:22:03Z`; repository: https://gitworkshop.dev/npub17h9fn2ny0lycg7kmvxmw6gqdnv2epya9h9excnjw9wvml87nyw8sqy3hpu/voca; tracked project: none; new-app flag: `false`.
+- **WalletScrutiny** (`com.walletscrutiny.ng_app`) — `2.0.3`; latest `2026-09-21T13:18:43Z`; repository: https://gitlab.com/walletscrutiny/walletscrutinyandroid; tracked project: none; new-app flag: `true`.
+- **XM Arcade** (`com.xmarcade.app`) — `1.1.2`; latest `2026-09-21T23:38:31Z`; repository: nostr://npub1te6ect9y5n3z9wn6lz0xluc4u8f8ssl730g28elxre96tvwqwvnqgneqew/relay.ngit.dev/XM-Arcade; tracked project: none; new-app flag: `true`.
+- **YakiHonne** (`com.yakihonne.yakihonne`) — `2.0.8`; latest `2026-09-17T08:52:24Z`; repository: https://github.com/YakiHonne/mobile-app; tracked project: none; new-app flag: `false`.
+- **White Noise: Secure Chat** (`dev.ipf.whitenoise.android`) — `2026.9.21`; latest `2026-09-21T16:11:43Z`; repository: https://github.com/marmot-protocol/whitenoise-android; tracked project: none; new-app flag: `true`.
+- **NostrBox Tools** (`dev.nostrbox.tools`) — `1.0.0`; latest `2026-09-21T06:29:00Z`; repository: https://git.nostrdev.com/nostrbox/tools; tracked project: none; new-app flag: `false`.
+- **Shakespeare** (`diy.shakespeare.app`) — `9.16.2`; latest `2026-09-14T05:04:56Z`; repository: https://gitlab.com/soapbox-pub/shakespeare; tracked project: none; new-app flag: `false`.
+- **Bookshelf** (`eu.decentnewsroom.bookshelf`) — `0.1.23`; latest `2026-09-21T19:21:24Z`; repository: https://github.com/decent-newsroom/bookshelf-app; tracked project: none; new-app flag: `false`.
+- **Linky** (`fit.linky.app`) — `26.9.17`; latest `2026-09-16T16:31:35Z`; repository: https://github.com/hynek-jina/linky; tracked project: none; new-app flag: `false`.
+- **Calcifer** (`io.brickberry.calcifer`) — `1.0.1`; latest `2026-09-21T23:28:45Z`; repository: https://gitea.coracle.social/hodlbod/calcifer; tracked project: none; new-app flag: `false`.
+- **coinos v3** (`io.coinos.app`) — `1.6`; latest `2026-09-15T00:39:47Z`; repository: https://github.com/coinos/coinosv3; tracked project: none; new-app flag: `false`.
+- **tendrl** (`io.github.limina1.tendrl`) — `0.14.0`; latest `2026-09-16T19:17:47Z`; repository: https://github.com/limina1/tendrl-engine; tracked project: none; new-app flag: `false`.
+- **ngit** (`ngit`) — `3.0.3`; latest `2026-09-21T20:48:43Z`; repository: nostr://npub15qydau2hjma6ngxkl2cyar74wzyjshvl65za5k5rl69264ar2exs5cyejr/relay.ngit.dev/ngit; tracked project: none; new-app flag: `false`.
+- **ngit-grasp** (`ngit-grasp`) — `3.0.4`; latest `2026-09-21T11:31:27Z`; repository: nostr://npub15qydau2hjma6ngxkl2cyar74wzyjshvl65za5k5rl69264ar2exs5cyejr/relay.ngit.dev/ngit-grasp; tracked project: none; new-app flag: `false`.
+- **Boris** (`org.dergigi.boris`) — `1.6.20`; latest `2026-09-14T23:12:24Z`; repository: https://github.com/dergigi/boris-android; tracked project: none; new-app flag: `false`.
+- **Whistle** (`org.getwhistle.whistle`) — `1.11.1`; latest `2026-09-21T12:01:04Z`; repository: https://github.com/sjmcnamara/whistle; tracked project: none; new-app flag: `false`.
+- **SkateSpots** (`org.skatespots.app`) — `1.4.4`; latest `2026-09-14T03:18:54Z`; repository: naddr1qvzqqqrhnypzqg88e9f588nx7wyz4wt0ura23w3yd4hmztqrkr95utwyvgachjepqyd8wumn8ghj7emfwsh8x6rpddjhxur9v9ex2tnyd9uj7qq22d4kzar92dcx7arnhyhdwn; tracked project: none; new-app flag: `false`.
+- **PosterChan** (`place.poster.app`) — `1.0.2344`; latest `2026-09-22T06:25:23Z`; repository: https://github.com/loblawbob873-svg/posterchanai; tracked project: none; new-app flag: `false`.
+- **Ditto** (`pub.ditto.app`) — `2.39.2`; latest `2026-09-21T01:15:54Z`; repository: https://gitlab.com/soapbox-pub/ditto; tracked project: none; new-app flag: `false`.
+- **Tenna** (`pub.soapbox.tenna`) — `0.10.1`; latest `2026-09-21T19:52:09Z`; repository: https://nostrhub.io/npub1q3sle0kvfsehgsuexttt3ugjd8xdklxfwwkh559wxckmzddywnws6cd26p/tenna; tracked project: none; new-app flag: `false`.
+- **Zzub** (`social.cloudfodder.zzub`) — `0.0.12`; latest `2026-09-16T20:15:10Z`; repository: https://denimroad.feeds.relay.tools/git/8609e3c48d57613a88927a23765acd14d12e497005748b86e208342362f9dc93/buzz-zzub; tracked project: none; new-app flag: `false`.
+- **BuhoGO** (`space.gittr.buhogo`) — `1.9.2`; latest `2026-09-21T18:10:08Z`; repository: https://github.com/Buho-Ecosystem/Buho_go; tracked project: none; new-app flag: `true`.
+- **Iris Chat** (`to.iris.chat`) — `2026.9.22.1`; latest `2026-09-22T08:20:03Z`; repository: https://github.com/irislib/iris-chat-rs; tracked project: none; new-app flag: `false`.
+- **Relay Tools** (`tools.relay.relaytools`) — `1.4.1`; latest `2026-09-14T17:42:41Z`; repository: https://code.relay.tools/opensauce/RelayTools-android; tracked project: none; new-app flag: `false`.
+- **DeSent Email** (`xyz.desent`) — `1.0.9`; latest `2026-09-17T22:14:15Z`; repository: https://github.com/desentofficial/androidapp; tracked project: none; new-app flag: `true`.
+
+GATE: PASS (release digest materialized from `release_digest_2026-09-23.json`; 50/50 tagged projects and 42/42 Zapstore-only candidates named for individual triage; ranked flags preserved)
