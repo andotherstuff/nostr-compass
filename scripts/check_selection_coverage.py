@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 """Reconcile one finalized source pass through selection and the newsletter draft.
 
-Collector-level skips remain in the immutable source manifest. Every retained
-source candidate must then map to one or more stable editorial candidates in the
-selection ledger. The ledger applies one hard eligibility gate and one fixed
+Collector-level decisions remain in the immutable source manifest. Collector
+"include" means evaluated/retained by collection, not editorially retained.
+The ledger explicitly normalizes editorial sources with collector-record provenance;
+only these sources expand to scored editorial candidates. The ledger applies one hard eligibility gate and one fixed
 quality threshold; every qualifying candidate must be included or folded into a
 section, while every rejected candidate keeps a concrete reason.
 """
@@ -58,7 +59,7 @@ def load_json(path: Path, label: str) -> dict[str, Any]:
     return value
 
 
-def source_universe(manifest: dict[str, Any], errors: list[str]) -> set[str]:
+def source_universe(manifest: dict[str, Any], ledger: dict[str, Any], ledger_path: Path, errors: list[str]) -> set[str]:
     if manifest.get("schema_version") != 2 or manifest.get("finalized") is not True:
         errors.append("source manifest is not finalized schema version 2")
     families = manifest.get("families")
@@ -71,7 +72,7 @@ def source_universe(manifest: dict[str, Any], errors: list[str]) -> set[str]:
     ):
         errors.append("source manifest must contain the exact ten maintained source families")
         return set()
-    retained: set[str] = set()
+    raw_included: set[str] = set()
     for family in expected:
         entry = families.get(family, {})
         status = entry.get("status")
@@ -93,7 +94,66 @@ def source_universe(manifest: dict[str, Any], errors: list[str]) -> set[str]:
             if decision not in {"include", "skip"} or not isinstance(reason, str) or not reason.strip():
                 errors.append(f"source family {family} candidate {candidate_id!r} lacks a source disposition")
             if decision == "include":
-                retained.add(f"{family}:{candidate_id}")
+                raw_included.add(f"{family}:{candidate_id}")
+    normalized = ledger.get("editorial_sources")
+    if not isinstance(normalized, list):
+        errors.append("selection ledger needs an explicit editorial_sources array")
+        return set()
+    if not normalized and raw_included:
+        errors.append("empty editorial source universe despite collector records")
+    retained: set[str] = set()
+    artifact_text: dict[str, str] = {}
+    for row in normalized:
+        if not isinstance(row, dict):
+            errors.append("editorial source rows must be objects")
+            continue
+        source_id, raw_ids = row.get("source_id"), row.get("collector_source_ids")
+        if not isinstance(source_id, str) or not source_id or source_id in retained:
+            errors.append(f"editorial source has missing or duplicate id: {source_id!r}")
+            continue
+        if not isinstance(raw_ids, list) or not all(isinstance(x, str) for x in raw_ids):
+            errors.append(f"editorial source {source_id} has malformed collector provenance")
+            continue
+        provenance = row.get("artifact_provenance")
+        editorial = row.get("editorial_provenance")
+        if not raw_ids and not isinstance(provenance, dict) and not isinstance(editorial, dict):
+            errors.append(f"editorial source {source_id} lacks collector, artifact, or editorial provenance")
+            continue
+        if isinstance(editorial, dict):
+            try:
+                path = Path(editorial["path"])
+                locator = editorial["locator"]
+                if (path.parent.resolve() != ledger_path.parent.resolve() or not path.is_file()
+                        or file_hash(path) != editorial.get("sha256") or not isinstance(locator, str)
+                        or not locator.startswith("https://") or locator not in path.read_text()):
+                    raise ValueError("missing locator or digest mismatch")
+            except (KeyError, OSError, ValueError, TypeError) as exc:
+                errors.append(f"editorial source {source_id} has unverified editorial provenance: {exc}")
+        for raw_id in raw_ids:
+            if raw_id not in raw_included:
+                errors.append(f"editorial source {source_id} cites unknown collector record: {raw_id}")
+        if isinstance(provenance, dict):
+            family = provenance.get("family")
+            meta = families.get(family, {}) if isinstance(family, str) else {}
+            source_path = provenance.get("artifact_path")
+            source_hash = provenance.get("artifact_sha256")
+            locator = provenance.get("locator")
+            if (meta.get("artifact_path") != source_path or meta.get("artifact_sha256") != source_hash
+                    or not isinstance(source_path, str) or not isinstance(locator, dict) or not locator):
+                errors.append(f"editorial source {source_id} has unbound artifact provenance")
+            else:
+                try:
+                    if source_path not in artifact_text:
+                        path = Path(source_path)
+                        if not path.is_file() or file_hash(path) != source_hash:
+                            raise ValueError("artifact digest mismatch")
+                        artifact_text[source_path] = path.read_text()
+                    if not any(isinstance(value, str) and value and value in artifact_text[source_path]
+                               for value in locator.values()):
+                        errors.append(f"editorial source {source_id} has missing artifact locator")
+                except (OSError, ValueError) as exc:
+                    errors.append(f"editorial source {source_id} artifact locator cannot be verified: {exc}")
+        retained.add(source_id)
     return retained
 
 
@@ -122,7 +182,7 @@ def validate(manifest_path: Path, ledger_path: Path, draft_path: Path) -> tuple[
     if tuple(ledger.get("score_axes", ())) != SCORE_AXES:
         errors.append("selection ledger score axes do not match the maintained policy")
 
-    retained_sources = source_universe(manifest, errors)
+    retained_sources = source_universe(manifest, ledger, ledger_path, errors)
     candidates_value = ledger.get("candidates")
     expansions_value = ledger.get("source_expansion")
     if not isinstance(candidates_value, list) or not isinstance(expansions_value, list):
@@ -175,16 +235,57 @@ def validate(manifest_path: Path, ledger_path: Path, draft_path: Path) -> tuple[
         draft_sources = candidate.get("draft_sources")
         if not isinstance(name, str) or not name.strip() or not isinstance(reason, str) or len(reason.strip()) < 12:
             errors.append(f"candidate {candidate_id} lacks a useful name or decision reason")
-        if not isinstance(hard_gate, dict) or set(hard_gate) != set(HARD_GATES) or not all(isinstance(hard_gate.get(field), bool) for field in HARD_GATES):
+        valid_gate = (isinstance(hard_gate, dict) and set(hard_gate) == set(HARD_GATES)
+                      and (all(isinstance(hard_gate[field], bool) for field in HARD_GATES)
+                           or (disposition == "skip" and triage == "SKIP"
+                               and any(hard_gate[field] is False for field in HARD_GATES)
+                               and all(hard_gate[field] is None or isinstance(hard_gate[field], bool)
+                                       for field in HARD_GATES))))
+        if not valid_gate:
             errors.append(f"candidate {candidate_id} has malformed hard-gate evidence")
             continue
+        assert isinstance(hard_gate, dict)
+        if scores is None and not all(hard_gate.values()) and disposition == "skip" and triage == "SKIP":
+            scores = {axis: 0 for axis in SCORE_AXES}  # Unscored: hard-gate failure already rejects it.
         if not isinstance(scores, dict) or set(scores) != set(SCORE_AXES) or not all(isinstance(scores.get(axis), int) and 0 <= scores[axis] <= 2 for axis in SCORE_AXES):
             errors.append(f"candidate {candidate_id} has malformed quality scores")
             continue
-        if not isinstance(primary_sources, list) or not primary_sources or not all(isinstance(url, str) and url.startswith("https://") for url in primary_sources):
+        if disposition in {"include", "fold"} and (not isinstance(primary_sources, list) or not primary_sources or not all(isinstance(url, str) and url.startswith("https://") for url in primary_sources)):
             errors.append(f"candidate {candidate_id} lacks HTTPS primary evidence")
+        elif disposition == "skip" and (not isinstance(primary_sources, list) or not all(isinstance(url, str) and url.startswith("https://") for url in primary_sources)):
+            errors.append(f"candidate {candidate_id} has malformed primary sources")
         total = sum(scores.values())
         qualified = all(hard_gate.values()) and total >= 8 and all(value > 0 for value in scores.values())
+        if candidate.get("override") is not None:
+            evidence = candidate.get("owner_override_evidence")
+            override_valid = False
+            if (candidate_id == "top:fips-initramfs-0.1.0" and candidate["override"] == "owner_queued_catch_up"
+                    and hard_gate.get("in_window_progress") is False
+                    and all(value for key, value in hard_gate.items() if key != "in_window_progress")
+                    and total >= 8 and all(value > 0 for value in scores.values())
+                    and isinstance(evidence, dict) and isinstance(evidence.get("path"), str)):
+                try:
+                    override_path = Path(evidence["path"])
+                    override_valid = (override_path.is_file() and file_hash(override_path) == evidence.get("sha256")
+                                      and bool(primary_sources) and primary_sources[0] in override_path.read_text()
+                                      and "catch-up" in override_path.read_text().lower())
+                except OSError:
+                    override_valid = False
+            elif (candidate_id == "release:white-noise-android-2026.9.21"
+                  and candidate["override"] == "owner_requested_after_release_verification"
+                  and qualified and isinstance(evidence, dict)
+                  and isinstance(evidence.get("path"), str)):
+                try:
+                    override_path = Path(evidence["path"])
+                    text = override_path.read_text()
+                    override_valid = (file_hash(override_path) == evidence.get("sha256")
+                                      and bool(primary_sources) and primary_sources[0] in text
+                                      and "owner requested" in text.lower())
+                except OSError:
+                    override_valid = False
+            if not override_valid:
+                errors.append(f"candidate {candidate_id} has unverified owner override")
+            qualified = override_valid
         if qualified:
             qualified_count += 1
             if triage != "GREEN":

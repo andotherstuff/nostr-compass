@@ -44,7 +44,7 @@ Stage 3 of the Orchestrator pipeline, after `fetch_all.sh` and after `build_cove
 
 ## Output
 
-`data/newsletter_workspace/triage_<date>.md` plus the candidate rows in `data/newsletter_workspace/selection_coverage_<date>.json`. The gate passes when every retained source candidate has been expanded and judged; a small number of GREEN items is a valid quiet week.
+`data/newsletter_workspace/triage_<date>.md` plus the candidate rows in `data/newsletter_workspace/selection_coverage_<date>.json`. A collector `include` is an evaluated raw record, not an editorial keep. The gate requires the full family inventories to have explicit decisions and every normalized editorial source to be expanded and judged; a small number of GREEN items is a valid quiet week.
 
 ## Verdicts
 

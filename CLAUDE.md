@@ -169,10 +169,14 @@ python3 scripts/check_triage_coverage.py \
 ```
 
 Release coverage is only the first half of the gate. The finalized source-pass
-manifest also feeds `selection_coverage_<date>.json`. Every source candidate
-retained by a collector maps to one or more stable editorial candidate IDs;
-aggregate recaps must expand into the projects and protocol items they name.
-Each editorial candidate records the four hard-gate results, all five quality
+manifest also feeds `selection_coverage_<date>.json`. A collector `include`
+means a raw record was evaluated; it is not an editorial keep decision. Triage
+the complete exact-window family inventories (including the release digest),
+record write-up-or-skip reasons, then normalize reviewed sources into
+`editorial_sources` with collector, artifact, or editorial provenance. Every
+normalized source maps to one or more stable editorial candidate IDs; aggregate
+recaps expand into the projects and protocol items they name. Each editorial
+candidate records the four hard-gate results, all five quality
 scores, its primary evidence, and one final disposition. Run:
 
 ```bash
