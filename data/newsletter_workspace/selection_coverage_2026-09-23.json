@@ -10,7 +10,7 @@
     "minimum_total": 8,
     "no_zero_axis": true
   },
-  "selected_count": 34,
+  "selected_count": 35,
   "selected": [
     {
       "id": "top:fips2go-0.6.0",
@@ -254,6 +254,31 @@
       "score_total": 9,
       "summary": "The NIP-34 repository documents a working path for normalizing, redacting, encrypting, and publishing coding-session datasets. It makes privacy-preserving training-data exchange over Nostr technically reviewable.",
       "continuity": ""
+    },
+    {
+      "id": "release:white-noise-android-2026.9.21",
+      "name": "White Noise Android 2026.9.21",
+      "section": "tagged_releases",
+      "primary_sources": [
+        "https://github.com/marmot-protocol/whitenoise-android/releases/tag/android-v2026.9.21"
+      ],
+      "hard_gates": {
+        "direct_primary_evidence": true,
+        "material_window_progress": true,
+        "nostr_surface": true,
+        "distinct_from_recent_coverage": true
+      },
+      "score_axes": {
+        "nostr_significance": 2,
+        "user_operator_impact": 2,
+        "novelty": 1,
+        "evidence_maturity": 2,
+        "explanatory_value": 2
+      },
+      "score_total": 9,
+      "summary": "The September 21 Android release improves private Marmot chat delivery and voice tools, and adds shareable profile and invite QR cards. The GitHub release supplies primary evidence beyond the Zapstore listing that the earlier triage skipped.",
+      "continuity": "",
+      "override": "owner_requested_after_release_verification"
     },
     {
       "id": "release:nostr-mail-0.16.0",
@@ -1288,8 +1313,8 @@
       {
         "source_id": "zapstore:dev.ipf.whitenoise.android",
         "name": "White Noise: Secure Chat",
-        "verdict": "skip",
-        "decision_source": "triage_2026-09-23.md#zapstore-only-candidates--4242"
+        "verdict": "selected",
+        "decision_source": "triage_2026-09-23.md#white-noise-release-correction"
       },
       {
         "source_id": "zapstore:dev.nostrbox.tools",

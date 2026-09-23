@@ -1,5 +1,9 @@
 ## Tagged Releases
 
+### White Noise Android 2026.9.21 improves encrypted-chat reliability and sharing
+
+[White Noise Android](https://github.com/marmot-protocol/whitenoise-android/releases/tag/android-v2026.9.21) is a Nostr-based messenger for private Marmot-encrypted group conversations. Its September 21 release improves message delivery, voice dictation, text-to-speech, conversation navigation, account switching, and AMOLED appearance. It also adds shareable profile and invite QR cards and group actions from profiles.
+
 ### Nostr Mail Client 0.16.0 adds per-recipient delivery choices
 
 [Nostr Mail Client](https://github.com/nogringo/nostr-mail-client) is a web, desktop, and Android mail client that exchanges messages through Nostr relays while supporting conventional email delivery. [Version 0.16.0](https://github.com/nogringo/nostr-mail-client/releases/tag/v0.16.0) lets a sender choose SMTP or Nostr delivery for each recipient and strips location, capture time, and device metadata from photos and videos before upload.

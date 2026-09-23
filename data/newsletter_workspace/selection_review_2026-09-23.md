@@ -2,7 +2,7 @@
 
 The provisional Stage 4 source ledger is `selection_coverage_2026-09-23.json`. It is revision-bound to the finalized Tuesday source manifest but intentionally carries `final: false` because this task is limited to Stages 0–4. Stage 5 must rewrite it into the canonical candidate/source-expansion schema, bind it to the assembled draft hash, and pass `scripts/check_selection_coverage.py` after replacing the pre-existing draft deep dives. Scores use five 0–2 axes; every ordinary selected item scores at least 8/10 with no zero. `fips-initramfs` is separately marked as an owner-directed catch-up because its September 6 release falls outside the mechanical window.
 
-## Selected items (34)
+## Selected items (35)
 
 | Section | Item | Score | Primary source | Substance |
 |---|---|---:|---|---|
@@ -16,6 +16,7 @@ The provisional Stage 4 source ledger is `selection_coverage_2026-09-23.json`. I
 | top_stories | napplet.soy | 10 | [primary source](https://github.com/zeSchlausKwab/napplet-soy/releases/tag/soyli-v0.18.2) | The project publishes small sandboxed Nostr programs with a current tagged runtime. It provides a concrete distribution and execution model for app handlers rather than another generic web client. |
 | top_stories | RelayKit | 10 | [in-window 0.3.5 commit](https://github.com/samthomson/relaykit/commit/a6c1a645cd0c4e21e34730ad8c13692e8e3066d5), [source](https://github.com/samthomson/relaykit) | RelayKit packages a self-hosted Nostr stack behind a one-command installation path, while the in-window 0.3.5 work race-proofs self-update across browser tabs. This is a material direction change from the relay-discovery client Compass covered in April and has direct operator value. |
 | top_stories | Threshold Sessions | 9 | [primary source](https://gitworkshop.dev/npub17m2ual3pdjvhd8yc6a3m8snzjsgnmtl26hwen48ne937qgyjyshs2zgvse/relay.ngit.dev/threshold) | The NIP-34 repository documents a working path for normalizing, redacting, encrypting, and publishing coding-session datasets. It makes privacy-preserving training-data exchange over Nostr technically reviewable. |
+| tagged_releases | White Noise Android 2026.9.21 | 9 | [primary release](https://github.com/marmot-protocol/whitenoise-android/releases/tag/android-v2026.9.21) | The released Android messenger improves encrypted-chat delivery, voice tools, and navigation, and adds shareable profile and invite QR cards. The primary release resolves the earlier Zapstore-only evidence gap, and the owner explicitly requested its inclusion. |
 | tagged_releases | Nostr Mail Client 0.16.0 | 8 | [primary source](https://github.com/nogringo/nostr-mail-client/releases/tag/v0.16.0) | The release adds per-recipient delivery choices to a Nostr mail client. Users gain direct control over how each recipient is reached, making the update more than routine maintenance. |
 | tagged_releases | Amber 6.6.5 | 8 | [primary source](https://github.com/greenart7c3/Amber/releases/tag/v6.6.5) | The Android signer separates backup encryption from application permissions. That sharpens the security boundary for key backup and delegated signing. |
 | tagged_releases | Amethyst 1.16.0 | 8 | [primary source](https://github.com/vitorpamplona/amethyst/releases/tag/v1.16.0) | The release fixes the single-flight authorization guarantee for fast Blossom signers. That is a concrete signer-boundary correction documented in the cited release rather than post-release feature work. |
@@ -45,7 +46,7 @@ The provisional Stage 4 source ledger is `selection_coverage_2026-09-23.json`. I
 ## Selection totals
 
 - Top Stories: 10.
-- Tagged Releases: 14.
+- Tagged Releases: 15.
 - Protocol/spec updates: 8.
 - NIP Deep Dives: 2.
 - No fixed section cap was applied. All mechanically eligible candidates scoring at least 8/10 were selected; the one explicit catch-up override is separately identified.
@@ -62,4 +63,4 @@ The provisional Stage 4 source ledger is `selection_coverage_2026-09-23.json`. I
 
 Four cold-reader criteria checked source coverage, archive continuity, scope/editorial value, and protocol/deep-dive eligibility. Corrections replaced mismatched release evidence, removed the duplicated NIP-AC source, and added immutable implementation evidence for both deep dives. A final task-scoped cold read returned zero Stage 4 blockers at 2026-09-22T17:50:20Z.
 
-GATE: PASS (34 selected items scored and source-linked; 50/50 tagged projects and 42/42 Zapstore-only candidates reconciled; all four cold-review criteria cleared; NIP-30 and NIP-71 replace rotation-ineligible NIP-57 and NIP-60)
+GATE: PENDING REVIEW (35 selected items include the owner-requested White Noise Android release; the revised draft and selection ledger need a fresh exact-revision review)

@@ -9,4 +9,8 @@ The 24 project entries were checked against their linked repositories, release n
 
 All nine protocol entries were checked against the linked exact pull request or canonical specification source and retain their correct maturity labels: merged, open proposal, or changed-since-prior-coverage. NIP-30 and NIP-71 cite canonical specifications and history, three immutable implementation sources each, and signed relay events that pass ID and signature validation. No unsupported comparative or first-ever claim remains.
 
-GATE: PASS (24/24 project entries, 9/9 protocol entries, and 2/2 deep dives checked against primary sources)
+## September 23 amendment
+
+The owner requested inclusion of [White Noise Android 2026.9.21](https://github.com/marmot-protocol/whitenoise-android/releases/tag/android-v2026.9.21). The published GitHub release verifies its date and the specific delivery, voice, navigation, appearance, profile-card, invite-card, and group-action claims added to the draft. The SHA-256 and project count above refer to the earlier draft; they do not certify the amended issue or its selection reconciliation.
+
+GATE: PENDING REVIEW (amended draft requires a new exact-hash full claim review and selection reconciliation)

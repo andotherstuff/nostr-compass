@@ -4,12 +4,12 @@ date: 2026-09-23
 publishDate: 2026-09-23
 draft: true
 type: newsletters
-description: "Nostr Compass #41 covers readable FIPS mesh names, remote LUKS unlock over FIPS, MintRadar, Grain's relay release candidate, Marmot Protocol 0.10.4, new web-of-trust tools, napplet.soy, RelayKit, Threshold Sessions, current protocol work, and deep dives into custom emoji and video events."
+description: "Nostr Compass #41 covers readable FIPS mesh names, remote LUKS unlock over FIPS, MintRadar, Grain's relay release candidate, Marmot Protocol 0.10.4, White Noise Android's encrypted-chat release, new web-of-trust tools, napplet.soy, RelayKit, Threshold Sessions, current protocol work, and deep dives into custom emoji and video events."
 ---
 
 Welcome back to [Nostr Compass](https://nostrcompass.org), your weekly guide to Nostr.
 
-**This week:** [fips2go](#fips2go-060-gives-mesh-nodes-readable-names) gives FIPS mesh nodes readable local names, [fips-initramfs](#fips-initramfs-brings-remote-luks-unlock-into-early-boot) brings remote LUKS unlock into early boot, and [MintRadar](#mintradar-makes-cashu-mints-easier-to-compare) makes Cashu mints easier to compare. [Grain 0.8.0-rc4](https://github.com/0ceanSlim/grain/releases/tag/v0.8.0-rc4) turns relay health into an operator dashboard, while [Marmot Protocol's MDK](#marmot-protocol-0104-makes-local-sends-durable) makes local sends and attachment acquisition durable. New projects include [napplet.soy](#nappletsoy-publishes-small-sandboxed-nostr-programs), [RelayKit](#relaykit-installs-a-self-hosted-nostr-stack), and [Threshold Sessions](#threshold-sessions-turn-coding-transcripts-into-private-training-data). Protocol work covers petnames, WebRTC signaling, relay administration, payment-address proofs, Blossom directories, encrypted group moderation, and Nostr Wallet Connect budgets. The deep dives explain [NIP-30 custom emoji](#nip-30-custom-emoji) and [NIP-71 video events](#nip-71-video-events).
+**This week:** [fips2go](#fips2go-060-gives-mesh-nodes-readable-names) gives FIPS mesh nodes readable local names, [fips-initramfs](#fips-initramfs-brings-remote-luks-unlock-into-early-boot) brings remote LUKS unlock into early boot, and [MintRadar](#mintradar-makes-cashu-mints-easier-to-compare) makes Cashu mints easier to compare. [Grain 0.8.0-rc4](https://github.com/0ceanSlim/grain/releases/tag/v0.8.0-rc4) turns relay health into an operator dashboard, while [Marmot Protocol's MDK](#marmot-protocol-0104-makes-local-sends-durable) makes local sends and attachment acquisition durable. [White Noise Android](#white-noise-android-2026921-improves-encrypted-chat-reliability-and-sharing) improves private chat delivery, voice tools, and profile sharing. New projects include [napplet.soy](#nappletsoy-publishes-small-sandboxed-nostr-programs), [RelayKit](#relaykit-installs-a-self-hosted-nostr-stack), and [Threshold Sessions](#threshold-sessions-turn-coding-transcripts-into-private-training-data). Protocol work covers petnames, WebRTC signaling, relay administration, payment-address proofs, Blossom directories, encrypted group moderation, and Nostr Wallet Connect budgets. The deep dives explain [NIP-30 custom emoji](#nip-30-custom-emoji) and [NIP-71 video events](#nip-71-video-events).
 
 ## Top Stories
 
@@ -74,6 +74,10 @@ The [installation site](https://relayk.it) presents the services as one coordina
 Recent [Threshold Sessions source history](https://relay.ngit.dev/npub17m2ual3pdjvhd8yc6a3m8snzjsgnmtl26hwen48ne937qgyjyshs2zgvse/threshold.git) adds timestamp randomization, provenance, extractors, and a ledger for produced epochs. The design lets a contributor preserve auditability and later data use without publishing the readable session transcript to relays.
 
 ## Tagged Releases
+
+### White Noise Android 2026.9.21 improves encrypted-chat reliability and sharing
+
+[White Noise Android](https://github.com/marmot-protocol/whitenoise-android/releases/tag/android-v2026.9.21) is a Nostr-based messenger for private Marmot-encrypted group conversations. Its September 21 release improves message delivery, voice dictation, text-to-speech, conversation navigation, account switching, and AMOLED appearance. It also adds shareable profile and invite QR cards and group actions from profiles.
 
 ### Nostr Mail Client 0.16.0 adds per-recipient delivery choices
 
