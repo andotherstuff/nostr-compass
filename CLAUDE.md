@@ -150,33 +150,41 @@ Relay multiplicity is transport-availability evidence only: `relay_status: multi
 
 Every output row remains `candidate-only; never auto-add to projects.yml`. Forge topics and descriptions are self-asserted. A signed kind 31990 or 32267 event proves only that a key published the descriptor. Triage must open the product and repository, verify concrete Nostr relay behavior, establish canonical ownership, apply the per-item Nostr-surface gate, and record a GREEN/MAYBE/SKIP reason. Cross-source agreement raises confidence but does not replace verification.
 
-### Every discovered release must be named and triaged (CRITICAL)
+### Every release and merged-PR project must be triaged (CRITICAL)
 
 Stage 3 reads the Stage 2 summary, not the raw JSON. While that summary carried only aggregates, a release could exist in the data and in no downstream artifact. Newsletter #37 lost `formstr-hq/nail` v0.1.0 exactly this way: the release was in `updates_*.json` with a full changelog, its app was in the Zapstore feed as `com.formstr.mail`, Nail had been introduced in #36 the week before, and it was named in none of `fetch_2026-08-26.md`, `triage_2026-08-26.md`, `selection_review_2026-08-26.md`, or the published issue. Two independent discovery sources caught it and the aggregate summary hid both.
 
-Two artifacts now close that loop, and `scripts/fetch_all.sh` builds the first automatically:
+The release and merged-PR activity digests close that loop; `scripts/fetch_all.sh` builds both from the exact source pass:
 
 ```bash
 # Written by fetch_all.sh; names every release in the window.
 data/newsletter_workspace/release_digest_<date>.md
 data/project_updates/release_digest_<date>.json
+data/project_updates/activity_digest_<date>.json
 
 # Blocking gate; run before the Triage gate passes.
 python3 scripts/check_triage_coverage.py \
   --digest data/project_updates/release_digest_<date>.json \
   --triage data/newsletter_workspace/triage_<date>.md \
-  --also data/newsletter_workspace/selection_review_<date>.md
+  --strict
+
+# Generate once, complete every project row, then require exact decisions.
+python3 scripts/project_activity_coverage.py --updates <source-pass-project-artifact> \
+  --template data/newsletter_workspace/project_activity_decisions_<date>.json
+python3 scripts/project_activity_coverage.py --updates <source-pass-project-artifact> \
+  --decisions data/newsletter_workspace/project_activity_decisions_<date>.json
 ```
 
-Release coverage is only the first half of the gate. The finalized source-pass
-manifest also feeds `selection_coverage_<date>.json`. A collector `include`
-means a raw record was evaluated; it is not an editorial keep decision. Triage
-the complete exact-window family inventories (including the release digest),
-record write-up-or-skip reasons, then normalize reviewed sources into
-`editorial_sources` with collector, artifact, or editorial provenance. Every
-normalized source maps to one or more stable editorial candidate IDs; aggregate
-recaps expand into the projects and protocol items they name. Each editorial
-candidate records the four hard-gate results, all five quality
+
+Release coverage and complete merged-PR decisions are both required. The finalized source-pass
+manifest feeds `selection_coverage_<date>.json`, binding the exact project-activity decisions
+file and draft. A collector `include` means a raw record was evaluated, not editorial retention.
+Triage the complete exact-window family inventories (including the release digest), record
+write-up-or-skip reasons, then normalize reviewed sources into `editorial_sources` with
+collector, artifact, or editorial provenance. Every normalized source maps to one or more
+stable editorial candidate IDs; aggregate recaps expand into every named project and protocol
+item. Each editorial candidate records the four hard-gate results, all five quality
+
 scores, its primary evidence, and one final disposition. Run:
 
 ```bash

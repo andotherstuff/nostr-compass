@@ -29,6 +29,7 @@ Stage 3 of the Orchestrator pipeline, after `fetch_all.sh` and after `build_cove
 | Source | Path |
 |--------|------|
 | GitHub project updates | `data/project_updates/updates_*.json` (latest) |
+| Exact merged-PR inventory | `data/project_updates/activity_digest_<date>.json` |
 | Nostr NIP discussions | `data/nostr_nip_discussions/discussions_*.json` (latest) |
 | Nostr Recap summaries | `data/nostr_recap/recap_*.json` (latest) |
 | Pending Recap follow-ups | `data/newsletter_workspace/recap_followup.yml` (create if absent) |
@@ -44,7 +45,9 @@ Stage 3 of the Orchestrator pipeline, after `fetch_all.sh` and after `build_cove
 
 ## Output
 
-`data/newsletter_workspace/triage_<date>.md` plus the candidate rows in `data/newsletter_workspace/selection_coverage_<date>.json`. A collector `include` is an evaluated raw record, not an editorial keep. The gate requires the full family inventories to have explicit decisions and every normalized editorial source to be expanded and judged; a small number of GREEN items is a valid quiet week.
+
+`data/newsletter_workspace/triage_<date>.md`, completed `data/newsletter_workspace/project_activity_decisions_<date>.json`, and normalized candidate rows in `data/newsletter_workspace/selection_coverage_<date>.json`. Collector `include` means evaluated raw data, not editorial retention. The gate requires complete family inventories with explicit write-up-or-skip reasons, every normalized editorial source expanded and judged, and every merged-PR project decision bound to the exact updates snapshot; a quiet week can have few GREEN items. Run `python3 scripts/check_triage_coverage.py --digest data/project_updates/release_digest_<date>.json --triage data/newsletter_workspace/triage_<date>.md --strict` for releases. Never overwrite completed decisions or silently drop a project on resume.
+
 
 ## Verdicts
 
