@@ -369,8 +369,8 @@ echo ""
 echo "==========================================="
 echo "  Release digest (names every release)"
 echo "==========================================="
-LATEST_UPDATES=$(ls -t "$PROJECT_ROOT/data/project_updates"/updates_*.json 2>/dev/null | head -1)
-LATEST_ZAPSTORE=$(ls -t "$PROJECT_ROOT/data/zapstore_releases"/zapstore_*.json 2>/dev/null | head -1)
+LATEST_UPDATES=$(jq -r '.families.projects.artifact_path // empty' "$MANIFEST")
+LATEST_ZAPSTORE=$(jq -r '.families.zapstore.artifact_path // empty' "$MANIFEST")
 DIGEST_MD="$PROJECT_ROOT/data/newsletter_workspace/release_digest_${NEWSLETTER_DATE:-$(date -u +%F)}.md"
 DIGEST_JSON="$PROJECT_ROOT/data/project_updates/release_digest_${NEWSLETTER_DATE:-$(date -u +%F)}.json"
 if [ -n "$LATEST_UPDATES" ] && command -v python3 >/dev/null 2>&1; then
@@ -383,6 +383,29 @@ if [ -n "$LATEST_UPDATES" ] && command -v python3 >/dev/null 2>&1; then
     fi
 else
     echo "  SKIPPED: no updates_*.json found or python3 missing — Stage 3 has no release enumeration."
+    SKIPPED=$((SKIPPED + 1))
+fi
+echo ""
+
+# Merged PRs are a separate editorial source, even when a release exists.
+# A release-only digest missed 40 PR-only projects in the 2026-09-23 pass,
+# including several material Nostr changes. Inventory every project, not only
+# repos above an arbitrary PR-count threshold. Stage 3 must write exact
+# decisions and run project_activity_coverage.py before it may pass.
+echo "==========================================="
+echo "  Complete merged-PR activity digest"
+echo "==========================================="
+ACTIVITY_JSON="$PROJECT_ROOT/data/project_updates/activity_digest_${NEWSLETTER_DATE:-$(date -u +%F)}.json"
+if [ -n "$LATEST_UPDATES" ] && command -v python3 >/dev/null 2>&1; then
+    if python3 "$SCRIPT_DIR/project_activity_coverage.py" --updates "$LATEST_UPDATES" --digest "$ACTIVITY_JSON"; then
+        echo "  Digest: $ACTIVITY_JSON"
+        echo "  Triage MUST record an exact include-or-skip decision for every listed project."
+    else
+        echo "  FAILED to build the merged-PR activity digest."
+        FAILED=$((FAILED + 1))
+    fi
+else
+    echo "  SKIPPED: no project updates found; Stage 3 has no merged-PR inventory."
     SKIPPED=$((SKIPPED + 1))
 fi
 echo ""

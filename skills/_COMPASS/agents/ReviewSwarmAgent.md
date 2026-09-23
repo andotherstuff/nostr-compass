@@ -24,6 +24,8 @@ After Stage 6 (Assembly) writes the draft. Receives the draft path and the `<dat
 
 The consolidated log ends with `GATE: PASS` only when all five reviewer reports also end with `GATE: PASS`.
 
+Before that PASS, rerun `python3 scripts/project_activity_coverage.py --updates <finalized-project-updates> --decisions data/newsletter_workspace/project_activity_decisions_<date>.json --draft content/en/newsletters/<date>-newsletter.md` and `python3 scripts/check_selection_coverage.py --manifest <source-pass> --ledger data/newsletter_workspace/selection_coverage_<date>.json --draft content/en/newsletters/<date>-newsletter.md --receipt data/newsletter_workspace/selection_coverage_receipt_<date>.json`. A missing selected PR citation, a skipped project's PR cited in the draft, an unreviewed project, or a stale input/decision hash blocks review. This is a mechanical reconciliation gate, not permission to include maintenance-only work.
+
 The coordinator and all five reviewers MUST run from the review lane. Never run this stage from, or reuse, the Stage 5 writing lane. Record the reviewer model in the consolidated evidence.
 
 ## The five reviewers

@@ -649,6 +649,7 @@ async def fetch_merged_prs(
                     "body": truncate_body(pr.get("body") or ""),
                     "author": author,
                     "merged_at": merged_at,
+                    "base_ref": (pr.get("base") or {}).get("ref"),
                     "url": pr["html_url"],
                     "labels": labels,
                 }

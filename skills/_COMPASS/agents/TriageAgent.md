@@ -29,6 +29,7 @@ Stage 3 of the Orchestrator pipeline, after `fetch_all.sh` and after `build_cove
 | Source | Path |
 |--------|------|
 | GitHub project updates | `data/project_updates/updates_*.json` (latest) |
+| Exact merged-PR inventory | `data/project_updates/activity_digest_<date>.json` |
 | Nostr NIP discussions | `data/nostr_nip_discussions/discussions_*.json` (latest) |
 | Nostr Recap summaries | `data/nostr_recap/recap_*.json` (latest) |
 | Pending Recap follow-ups | `data/newsletter_workspace/recap_followup.yml` (create if absent) |
@@ -44,7 +45,9 @@ Stage 3 of the Orchestrator pipeline, after `fetch_all.sh` and after `build_cove
 
 ## Output
 
-`data/newsletter_workspace/triage_<date>.md` plus the candidate rows in `data/newsletter_workspace/selection_coverage_<date>.json`. The gate passes when every retained source candidate has been expanded and judged; a small number of GREEN items is a valid quiet week.
+`data/newsletter_workspace/triage_<date>.md`, completed `data/newsletter_workspace/project_activity_decisions_<date>.json`, and candidate rows in `data/newsletter_workspace/selection_coverage_<date>.json`. The gate passes when every retained source candidate and every merged-PR project has been judged; a small number of GREEN items is a valid quiet week.
+
+Use `python3 scripts/project_activity_coverage.py --updates <exact-project-updates> --template data/newsletter_workspace/project_activity_decisions_<date>.json` once, then read every PR title in each inventory row. Inspect the diff and live merge/default-branch state for plausible material work. Complete one row per project, listing all reviewed PR URLs, direct primary sources, explicit hard gates, five scores, and a concrete include/skip reason. A hint or PR count does not set the verdict. Pure dependency, CI, typo, and no-behavior refactor clusters are SKIP even when numerous; a single material PR can qualify. For included PRs, record the live default branch and PR base; a feature-branch PR also needs a direct integration source. Run the checker with `--decisions` before Stage 3 PASS. Also run `python3 scripts/check_triage_coverage.py --digest data/project_updates/release_digest_<date>.json --triage data/newsletter_workspace/triage_<date>.md --strict` for releases. Never overwrite a completed decision file or silently drop a project on resume.
 
 ## Verdicts
 

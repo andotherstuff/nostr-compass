@@ -168,17 +168,17 @@ The dedup gate runs BEFORE Round 1. If skipped, the rest of the validation casca
 
 ### Round 1 (mandatory) — Completeness sweep
 
-Enumerate BOTH releases AND high-PR-count projects from `data/project_updates/updates_*.json`:
+Enumerate BOTH releases AND every project with merged PRs from the same immutable project-updates artifact. Do not use a PR-count cutoff: one material PR may be the week's story. Review pre-release PRs too, then fold genuinely release-covered work into that release's decision rather than duplicate it.
 
 ```bash
 UPDATES=$(ls -t data/project_updates/updates_*.json | head -1)
 # Releases this week
 jq -r '.projects | to_entries[] | select(.value.releases | length > 0) | "\(.value.releases | length)\t\(.key)"' "$UPDATES" | sort -rn
-# Projects with >=5 merged PRs (often shipping substantive work without a release tag)
-jq -r '.projects | to_entries[] | select(.value.merged_prs | length >= 5) | "\(.value.merged_prs | length)\t\(.key)"' "$UPDATES" | sort -rn
+# Exact merged-PR inventory, including one-PR projects
+python3 scripts/project_activity_coverage.py --updates "$UPDATES" --digest data/project_updates/activity_digest_<date>.json
 ```
 
-A 0-release / 15-PR week is NOT a slow week. Sample release notes AND merged-PR titles for every project before scoring. Selection-review is incomplete until both lists are walked.
+A 0-release / 15-PR week is NOT a slow week. Read release notes and every merged-PR title, then inspect primary PR evidence for plausible material changes. Before Stage 3 can pass, create the pending activity-decision template with `scripts/project_activity_coverage.py --updates "$UPDATES" --template data/newsletter_workspace/project_activity_decisions_<date>.json`, fill one include/skip decision per inventoried project, and run the same script with `--decisions` against the exact updates. The template's title hint orders review only; it never decides inclusion. A routine maintenance cluster gets a concrete SKIP reason. A material change that passes all four hard gates and 8/10 no-zero gets an include decision and direct PR source, even if it is the project's only PR. Stage 7 reruns the check with `--draft` and the final selection-coverage receipt binds the exact decisions file.
 
 Also enumerate NIP PRs DIRECTLY via gh CLI (the relay scrape is unreliable for spec activity):
 

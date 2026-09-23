@@ -23,11 +23,14 @@ class SelectionCoverageTests(unittest.TestCase):
         temp = tempfile.TemporaryDirectory()
         root = Path(temp.name)
         manifest_path, ledger_path, draft_path = root / "manifest.json", root / "ledger.json", root / "draft.md"
+        updates_path, activity_path = root / "updates.json", root / "activity.json"
+        updates_path.write_text(json.dumps({"period": {"start": "2026-09-14", "end": "2026-09-22"}, "projects": {}}))
+        activity_path.write_text(json.dumps({"schema_version": 1, "updates_sha256": digest(updates_path), "projects": []}))
         families = {
             family: {"status": "empty_verified", "candidate_ids": [], "dispositions": {}}
             for family in gate.SOURCE_FAMILIES
         }
-        families["projects"] = {"status": "complete", "candidate_ids": ["repo:a", "repo:noise"], "dispositions": {"repo:a": {"decision": "include", "reason": "active exact-window project"}, "repo:noise": {"decision": "skip", "reason": "outside source window"}}}
+        families["projects"] = {"status": "complete", "artifact_path": str(updates_path), "artifact_sha256": digest(updates_path), "candidate_ids": ["repo:a", "repo:noise"], "dispositions": {"repo:a": {"decision": "include", "reason": "active exact-window project"}, "repo:noise": {"decision": "skip", "reason": "outside source window"}}}
         families["nostr-recap"] = {"status": "complete", "candidate_ids": ["event:1"], "dispositions": {"event:1": {"decision": "include", "reason": "signed roundup event"}}}
         manifest = {
             "schema_version": 2,
@@ -57,6 +60,7 @@ class SelectionCoverageTests(unittest.TestCase):
             "selection_policy": {"minimum_score": 8, "maximum_score": 10, "require_no_zero_axis": True, "fixed_item_cap": None, "qualified_items_must_publish": True},
             "hard_gate_fields": list(gate.HARD_GATES),
             "score_axes": list(gate.SCORE_AXES),
+            "project_activity_decisions": {"path": str(activity_path), "sha256": digest(activity_path)},
             "source_expansion": [
                 {"source_id": "projects:repo:a", "candidate_ids": ["project:alpha"]},
                 {"source_id": "nostr-recap:event:1", "candidate_ids": ["project:alpha", "project:beta"]},
@@ -152,6 +156,65 @@ class SelectionCoverageTests(unittest.TestCase):
         draft.write_text(draft.read_text() + "changed\n")
         errors, _ = gate.validate(manifest, ledger, draft)
         self.assertTrue(any("exact draft" in error for error in errors))
+
+    def test_missing_project_activity_decisions_block_selection(self):
+        temp, manifest, ledger_path, draft, ledger = self.fixture()
+        self.addCleanup(temp.cleanup)
+        ledger.pop("project_activity_decisions")
+        ledger_path.write_text(json.dumps(ledger))
+        errors, _ = gate.validate(manifest, ledger_path, draft)
+        self.assertTrue(any("project-activity decisions" in error for error in errors))
+
+    def test_new_pr_only_project_cannot_disappear_from_selection(self):
+        temp, manifest_path, ledger_path, draft, ledger = self.fixture()
+        self.addCleanup(temp.cleanup)
+        manifest = json.loads(manifest_path.read_text())
+        updates_path = Path(manifest["families"]["projects"]["artifact_path"])
+        updates_path.write_text(json.dumps({"period": {}, "projects": {"cameri/nostream": {"name": "nostream", "releases": [], "merged_prs": [{"number": 741, "title": "feat: publish relay health events", "merged_at": "2026-09-20T05:05:09Z", "url": "https://github.com/cameri/nostream/pull/741"}]}}}))
+        manifest["families"]["projects"]["artifact_sha256"] = digest(updates_path)
+        manifest_path.write_text(json.dumps(manifest))
+        ledger["source_manifest_sha256"] = digest(manifest_path)
+        ledger_path.write_text(json.dumps(ledger))
+        errors, _ = gate.validate(manifest_path, ledger_path, draft)
+        self.assertTrue(any("not bound to the exact project updates" in error for error in errors))
+
+    def test_selected_pr_requires_an_included_candidate_mapping(self):
+        temp, manifest_path, ledger_path, draft_path, ledger = self.fixture()
+        self.addCleanup(temp.cleanup)
+        manifest = json.loads(manifest_path.read_text())
+        updates_path = Path(manifest["families"]["projects"]["artifact_path"])
+        decisions_path = Path(ledger["project_activity_decisions"]["path"])
+        url = "https://github.com/example/alpha/pull/7"
+        updates_path.write_text(json.dumps({"period": {}, "projects": {"example/alpha": {"releases": [], "merged_prs": [
+            {"number": 7, "title": "feat: signed relay health events", "merged_at": "2026-09-20T05:05:09Z", "base_ref": "main", "url": url}
+        ]}}}))
+        activity = gate.activity_inventory(json.loads(updates_path.read_text()), digest(updates_path))
+        decisions = {
+            "schema_version": 1, "updates_sha256": digest(updates_path), "projects": [{
+                "repo": "example/alpha", "reviewed_pr_urls": [url], "verdict": "include",
+                "reason": "Signed relay health events are a useful new operator-facing capability.",
+                "primary_sources": [url], "selected_pr_urls": [url],
+                "hard_gate": {key: True for key in gate.HARD_GATES},
+                "scores": {key: 2 for key in gate.SCORE_AXES},
+                "branch_checks": [{"url": url, "source_url": url, "base_ref": "main", "default_branch": "main"}],
+            }],
+        }
+        self.assertEqual(gate.validate_activity(activity, decisions, url), [])
+        decisions_path.write_text(json.dumps(decisions))
+        manifest["families"]["projects"]["artifact_sha256"] = digest(updates_path)
+        manifest_path.write_text(json.dumps(manifest))
+        draft_path.write_text(draft_path.read_text() + f"[Relay health]({url})\n")
+        ledger["source_manifest_sha256"] = digest(manifest_path)
+        ledger["draft_sha256"] = digest(draft_path)
+        ledger["project_activity_decisions"]["sha256"] = digest(decisions_path)
+        ledger_path.write_text(json.dumps(ledger))
+        errors, _ = gate.validate(manifest_path, ledger_path, draft_path)
+        self.assertTrue(any("lacks included candidate mapping" in error for error in errors))
+        ledger["candidates"][0]["primary_sources"].append(url)
+        ledger["candidates"][0]["draft_sources"].append(url)
+        ledger_path.write_text(json.dumps(ledger))
+        errors, _ = gate.validate(manifest_path, ledger_path, draft_path)
+        self.assertEqual(errors, [])
 
 
 if __name__ == "__main__":

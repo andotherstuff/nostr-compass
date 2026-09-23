@@ -1,4 +1,5 @@
 import importlib.util
+import asyncio
 from pathlib import Path
 import unittest
 from argparse import Namespace
@@ -55,6 +56,31 @@ class AbsoluteWindowTests(unittest.TestCase):
         result = {"releases": [{"published_at": "2026-09-08T16:00:00Z"}, {"published_at": "2026-09-08T16:00:01Z"}], "merged_prs": [], "open_prs": [], "commits": []}
         bounded = MODULE.bound_result_until(result, until)
         self.assertEqual(len(bounded["releases"]), 1)
+
+
+class MergedPrEvidenceTests(unittest.TestCase):
+    def test_collector_preserves_pr_base_branch_for_editorial_gate(self):
+        class Response:
+            status_code = 200
+            headers = {}
+
+            def json(self):
+                return [{
+                    "id": 7, "number": 7, "title": "feat: relay health", "body": "",
+                    "user": {"login": "alice"}, "merged_at": "2026-09-20T10:00:00Z",
+                    "html_url": "https://github.com/example/repo/pull/7", "labels": [],
+                    "base": {"ref": "feature"},
+                }]
+
+        class Client:
+            async def get(self, _url):
+                return Response()
+
+            def _parse_next_link(self, _header):
+                return None
+
+        rows = asyncio.run(MODULE.fetch_merged_prs(Client(), "example", "repo"))
+        self.assertEqual(rows[0]["base_ref"], "feature")
 
 
 if __name__ == "__main__":
