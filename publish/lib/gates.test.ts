@@ -19,7 +19,7 @@ async function makeEditorialApproval(out: string) {
     const skip_evidence = family === "projects" ? [{ candidate_id: "repo:noise", reason: "outside exact source window" }] : [];
     const collectorPath = join(out, `collector-source-${family}.ts`); const collectorRaw = `collector:${family}`; await writeFile(collectorPath, collectorRaw);
     const artifactPath = status === "not_applicable" ? null : join(out, `artifact-${family}.json`);
-    const artifactRaw = status === "not_applicable" ? null : JSON.stringify({ family, candidates: candidate_ids });
+    const artifactRaw = status === "not_applicable" ? null : JSON.stringify(family === "projects" ? { period: { start: since, end: until }, projects: {} } : { family, candidates: candidate_ids });
     if (artifactPath && artifactRaw !== null) await writeFile(artifactPath, artifactRaw);
     const canonical_query = { family, pass_id: "pass-1", since, until };
     const pagination_complete = status !== "not_applicable";
@@ -42,9 +42,10 @@ async function makeEditorialApproval(out: string) {
   }
   const families = Object.keys(manifestFamilies);
   const sourceManifestPath = join(out, "source-manifest.json"); const sourceManifestRaw = JSON.stringify({ schema_version: 2, pass_id: "pass-1", expected_families: families, families: manifestFamilies, finalized: true }); await writeFile(sourceManifestPath, sourceManifestRaw);
-  const ledgerPath = join(out, "selection-ledger.json"); const ledgerRaw = JSON.stringify({ schema_version: 1, source_pass_id: "pass-1", source_manifest_sha256: sha256(sourceManifestRaw), draft_sha256: sha256("content"), selection_policy: { minimum_score: 8, maximum_score: 10, require_no_zero_axis: true, fixed_item_cap: null, qualified_items_must_publish: true }, hard_gate_fields: ["primary_evidence", "in_window_progress", "nostr_surface", "continuity_delta"], score_axes: ["nostr_significance", "user_operator_impact", "novelty", "evidence_maturity", "explanatory_value"], source_expansion: [], candidates: [], final: true }); await writeFile(ledgerPath, ledgerRaw);
+  const activityPath = join(out, "project-activity-decisions.json"); const activityRaw = JSON.stringify({ schema_version: 1, updates_sha256: manifestFamilies.projects.artifact_sha256, projects: [] }); await writeFile(activityPath, activityRaw);
+  const ledgerPath = join(out, "selection-ledger.json"); const ledgerRaw = JSON.stringify({ schema_version: 1, source_pass_id: "pass-1", source_manifest_sha256: sha256(sourceManifestRaw), draft_sha256: sha256("content"), selection_policy: { minimum_score: 8, maximum_score: 10, require_no_zero_axis: true, fixed_item_cap: null, qualified_items_must_publish: true }, hard_gate_fields: ["primary_evidence", "in_window_progress", "nostr_surface", "continuity_delta"], score_axes: ["nostr_significance", "user_operator_impact", "novelty", "evidence_maturity", "explanatory_value"], project_activity_decisions: { path: activityPath, sha256: sha256(activityRaw) }, source_expansion: [], candidates: [], final: true }); await writeFile(ledgerPath, ledgerRaw);
   const draftPath = join(out, "source.md"); const draftRaw = await Bun.file(draftPath).text();
-  const coverage = { schema_version: 1, receipt_type: "selection-coverage", verdict: "PASS", checker_version: "selection-coverage-v1", source_pass_id: "pass-1", source_manifest_path: sourceManifestPath, source_manifest_sha256: sha256(sourceManifestRaw), ledger_path: ledgerPath, ledger_sha256: sha256(ledgerRaw), draft_path: draftPath, draft_sha256: sha256(draftRaw), retained_source_candidate_count: 0, editorial_candidate_count: 0, qualified_candidate_count: 0, selected_candidate_count: 0, skipped_candidate_count: 0, unresolved_count: 0, final: true };
+  const coverage = { schema_version: 1, receipt_type: "selection-coverage", verdict: "PASS", checker_version: "selection-coverage-v2", source_pass_id: "pass-1", source_manifest_path: sourceManifestPath, source_manifest_sha256: sha256(sourceManifestRaw), ledger_path: ledgerPath, ledger_sha256: sha256(ledgerRaw), draft_path: draftPath, draft_sha256: sha256(draftRaw), retained_source_candidate_count: 0, editorial_candidate_count: 0, qualified_candidate_count: 0, selected_candidate_count: 0, skipped_candidate_count: 0, activity_project_count: 0, activity_pr_count: 0, unresolved_count: 0, final: true };
   const coveragePath = join(out, "selection-coverage-receipt.json"); const coverageRaw = JSON.stringify(coverage); await writeFile(coveragePath, coverageRaw);
   return {
   source_freshness,
@@ -88,6 +89,17 @@ test("feedback snapshot binds material feedback and rejects holds", async () => 
 test("coverage receipt is exact-draft bound and cannot declare an item cap", async () => {
   const { out, source } = await fixture(); const paths: any = {}; const editorialApproval: any = await makeEditorialApproval(out);
   const coveragePath = editorialApproval.selection_coverage.receipt_path; const coverage = JSON.parse(await Bun.file(coveragePath).text()); const ledger = JSON.parse(await Bun.file(coverage.ledger_path).text()); ledger.selection_policy.fixed_item_cap = 12; const ledgerRaw = JSON.stringify(ledger); await writeFile(coverage.ledger_path, ledgerRaw); coverage.ledger_sha256 = sha256(ledgerRaw); const coverageRaw = JSON.stringify(coverage); await writeFile(coveragePath, coverageRaw); editorialApproval.selection_coverage.receipt_sha256 = sha256(coverageRaw);
+  for (const role of QUALITY_ROLES) { paths[role] = join(out, `${role}.json`); await writeFile(paths[role], JSON.stringify({ ...common, receipt_type: "quality-role", role, ...(role === "continuity_value" ? { editorial_approval: editorialApproval } : {}), final: true }, null, 2)); }
+  await expect(recordCompositeQuality(out, 1, source, paths)).rejects.toThrow("continuity_value");
+});
+
+test("publication rejects a selection receipt without exact project-activity decisions", async () => {
+  const { out, source } = await fixture(); const paths: any = {}; const editorialApproval: any = await makeEditorialApproval(out);
+  const coveragePath = editorialApproval.selection_coverage.receipt_path; const coverage = JSON.parse(await Bun.file(coveragePath).text());
+  const ledger = JSON.parse(await Bun.file(coverage.ledger_path).text()); delete ledger.project_activity_decisions;
+  const ledgerRaw = JSON.stringify(ledger); await writeFile(coverage.ledger_path, ledgerRaw);
+  coverage.ledger_sha256 = sha256(ledgerRaw); const coverageRaw = JSON.stringify(coverage); await writeFile(coveragePath, coverageRaw);
+  editorialApproval.selection_coverage.receipt_sha256 = sha256(coverageRaw);
   for (const role of QUALITY_ROLES) { paths[role] = join(out, `${role}.json`); await writeFile(paths[role], JSON.stringify({ ...common, receipt_type: "quality-role", role, ...(role === "continuity_value" ? { editorial_approval: editorialApproval } : {}), final: true }, null, 2)); }
   await expect(recordCompositeQuality(out, 1, source, paths)).rejects.toThrow("continuity_value");
 });
