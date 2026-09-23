@@ -420,22 +420,46 @@ fetch_tracked_repos() {
 # MODE 2: DISCOVER NEW REPOS
 # ============================================================================
 
+# NIP-01 time filters are inclusive. Split a capped interval into overlapping
+# halves, then deduplicate exact event IDs below. The one-second floor fails
+# closed if a single timestamp itself exceeds the relay query cap.
+fetch_repo_discovery_slice() {
+    local slice_since="$1" slice_until="$2" slice_file raw_count midpoint
+    slice_file="$NOSTR_TEMP_DIR/repo-slice-${slice_since}-${slice_until}.jsonl"
+    if ! timeout "$NAK_TIMEOUT" nak req -k "$KIND_REPO" \
+        --since "$slice_since" --until "$slice_until" --limit 200 \
+        $RELAY_ARGS > "$slice_file" 2>/dev/null; then
+        echo "NIP-34 discovery query failed for ${slice_since}..${slice_until}" >&2
+        return 1
+    fi
+    raw_count=$(wc -l < "$slice_file")
+    if [ "$raw_count" -ge 200 ]; then
+        if [ "$slice_until" -le "$((slice_since + 1))" ]; then
+            echo "NIP-34 discovery still capped within one second: ${slice_since}..${slice_until}" >&2
+            return 1
+        fi
+        midpoint=$(((slice_since + slice_until) / 2))
+        fetch_repo_discovery_slice "$slice_since" "$midpoint" || return 1
+        fetch_repo_discovery_slice "$midpoint" "$slice_until" || return 1
+        return 0
+    fi
+    jq -c '.' "$slice_file" >> "$REPOS_RAW"
+    record_exact_page "$PAGES_FILE" "repo-discovery:${slice_since}-${slice_until}" \
+        "${slice_since}:${slice_until}" "$raw_count" 200 true
+}
+
 fetch_discovered_repos() {
     echo "=== Discovering new NIP-34 repos ===" >&2
 
-    # Fetch ALL kind 30617 events from the time window
-    # nak queries all relays in parallel when given multiple relay URLs
+    # Query the full fixed window with bounded adaptive time slices. nak queries
+    # all configured relays in parallel for each slice.
     echo "  Querying relays for repo announcements..." >&2
     echo "    Relays: ${NIP34_RELAYS[*]}" >&2
 
-    timeout "$NAK_TIMEOUT" nak req -k "$KIND_REPO" --since "$SINCE_TIMESTAMP" --until "$UNTIL_TIMESTAMP" --limit 200 \
-        $RELAY_ARGS 2>/dev/null \
-    | jq -c '.' >> "$REPOS_RAW" 2>/dev/null
+    fetch_repo_discovery_slice "$SINCE_TIMESTAMP" "$UNTIL_TIMESTAMP"
 
     local raw_count
     raw_count=$(wc -l < "$REPOS_RAW")
-    [ "$raw_count" -lt 200 ] || { echo "NIP-34 discovery reached its 200-event cap" >&2; return 1; }
-    record_exact_page "$PAGES_FILE" "repo-discovery" "" "$raw_count" 200 true
     echo "  Raw events fetched: $raw_count" >&2
 
     if [ "$raw_count" -eq 0 ]; then
