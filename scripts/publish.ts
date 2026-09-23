@@ -262,6 +262,20 @@ export function extractMentions(
     if (!h3 || (!projectSections.has(currentSection) && !protocolProjectSections.has(currentSection))) continue;
     const fullHeader = h3[1].trim();
     if (/^NIP-/.test(fullHeader)) continue;
+    // Prefer the longest curated identity at the start of an application
+    // heading. The action-verb heuristic cannot know every headline verb;
+    // an unfamiliar one must not turn the whole headline into a project name.
+    if (projectSections.has(currentSection)) {
+      const lowerHeader = fullHeader.toLowerCase();
+      const knownName = [...Object.keys(npubs), ...Object.keys(unresolvedIdentities)]
+        .filter((candidate) => lowerHeader.startsWith(candidate) &&
+          (lowerHeader.length === candidate.length || /[\s:(]/.test(lowerHeader[candidate.length] ?? "")))
+        .sort((left, right) => right.length - left.length)[0];
+      if (knownName) {
+        addIfValid(fullHeader.slice(0, knownName.length), true);
+        continue;
+      }
+    }
     // Extract name before action verb, version, or colon
     const nameMatch = fullHeader.match(
       /^(.+?)(?:\s+(?:Ships?|Adds?|Implements?|Releases?|Merges?|Launches?|Fixes?|Receives?|Recovers?|Remembers?|Keeps?|Tightens?|Pairs?|Gives?|Lets?|Clarifies?|Schedules?|Binds?|Turns?|Enables?|Expands?|Extracts?|Gets?|Updates?|Introduces?|Reaches?|Begins?|Gains?|Supports?|Drops?|Brings?|Rolls?|Publishes?|Integrates?|Migrates?|Moves?|Coordinates?|Opens?|Polishes?|Extends?)\b|\s+v\d|\s+\d+\.\d|:|$)/i

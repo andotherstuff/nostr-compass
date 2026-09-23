@@ -312,6 +312,7 @@ Marmot Protocol Updates: npub1marm0t9qkmv8lq7pe7vdx60ed8fl2d876a2ytk3ade208dlyfw
 Marmot TS: npub1marm0t9qkmv8lq7pe7vdx60ed8fl2d876a2ytk3ade208dlyfweqg5r6m9
 # White Noise (the client app) keeps its own pre-existing npub
 White Noise: npub1whtn0s68y3cs98zysa4nxrfzss5g5snhndv35tk5m2sudsr7ltms48r3ec
+White Noise Android: npub1whtn0s68y3cs98zysa4nxrfzss5g5snhndv35tk5m2sudsr7ltms48r3ec
 
 # --- Media ---
 Wavlake: npub1yfg0d955c2jrj2080ew7pa4xrtj7x7s7umt28wh0zurwmxgpyj9shwv6vg
@@ -433,6 +434,7 @@ Keep:
 # [dev:hardran3] Prism - Android share-to-Nostr tool
 # Prism: (no verified npub - same developer as Aerith)
 ContextVM: npub1dvmcpmefwtnn6dctsj3728n64xhrf06p9yude77echmrkgs5zmyqw33jdm
+ContextVM SDK: npub1dvmcpmefwtnn6dctsj3728n64xhrf06p9yude77echmrkgs5zmyqw33jdm
 Relatr: npub1w5rgyvpunuxa446egx6fahyagm376vrtnm3nx5ec5gdruszvt73spqeu4t
 # [dev:derek ross]
 Burrow:
