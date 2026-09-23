@@ -304,8 +304,9 @@ type: newsletters
 ### 9. Selection Coverage Validation
 
 Run `scripts/check_selection_coverage.py` with the finalized source manifest,
-selection ledger, and exact draft. Missing source candidates, unexpanded recap
-events, unexplained GREEN omissions, sub-threshold inclusions, a changed draft,
+selection ledger, and exact draft. Confirm that full source-family triage accounts
+for evaluated raw collector records; `include` is not an editorial keep.
+Missing normalized editorial sources, unexpanded recap events, unexplained GREEN omissions, sub-threshold inclusions, a changed draft,
 or a fixed item cap are publication-blocking errors.
 
 ---

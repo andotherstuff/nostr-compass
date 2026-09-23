@@ -57,6 +57,10 @@ class SelectionCoverageTests(unittest.TestCase):
             "selection_policy": {"minimum_score": 8, "maximum_score": 10, "require_no_zero_axis": True, "fixed_item_cap": None, "qualified_items_must_publish": True},
             "hard_gate_fields": list(gate.HARD_GATES),
             "score_axes": list(gate.SCORE_AXES),
+            "editorial_sources": [
+                {"source_id": "projects:repo:a", "collector_source_ids": ["projects:repo:a"]},
+                {"source_id": "nostr-recap:event:1", "collector_source_ids": ["nostr-recap:event:1"]},
+            ],
             "source_expansion": [
                 {"source_id": "projects:repo:a", "candidate_ids": ["project:alpha"]},
                 {"source_id": "nostr-recap:event:1", "candidate_ids": ["project:alpha", "project:beta"]},
@@ -94,6 +98,149 @@ class SelectionCoverageTests(unittest.TestCase):
         self.assertEqual(result.returncode, 0, result.stderr)
         self.assertEqual(json.loads(result.stdout)["verdict"], "PASS")
         self.assertEqual(sorted(path.name for path in manifest.parent.iterdir()), before)
+
+    def test_raw_collector_include_does_not_become_editorial_candidate(self):
+        temp, manifest_path, ledger_path, draft, ledger = self.fixture()
+        self.addCleanup(temp.cleanup)
+        manifest = json.loads(manifest_path.read_text())
+        manifest["families"]["projects"]["candidate_ids"].append("repo:raw-evaluated")
+        manifest["families"]["projects"]["dispositions"]["repo:raw-evaluated"] = {
+            "decision": "include", "reason": "record evaluated by collector"
+        }
+        manifest_path.write_text(json.dumps(manifest))
+        ledger["source_manifest_sha256"] = digest(manifest_path)
+        ledger["editorial_sources"] = [
+            {"source_id": "projects:repo:a", "collector_source_ids": ["projects:repo:a"]},
+            {"source_id": "nostr-recap:event:1", "collector_source_ids": ["nostr-recap:event:1"]},
+        ]
+        ledger_path.write_text(json.dumps(ledger))
+        errors, receipt = gate.validate(manifest_path, ledger_path, draft)
+        self.assertEqual(errors, [])
+        self.assertEqual(receipt["retained_source_candidate_count"], 2)
+
+    def test_normalized_source_cannot_cite_unknown_collector_record(self):
+        temp, manifest_path, ledger_path, draft, ledger = self.fixture()
+        self.addCleanup(temp.cleanup)
+        ledger["editorial_sources"] = [
+            {"source_id": "projects:repo:a", "collector_source_ids": ["projects:missing"]},
+            {"source_id": "nostr-recap:event:1", "collector_source_ids": ["nostr-recap:event:1"]},
+        ]
+        ledger_path.write_text(json.dumps(ledger))
+        errors, _ = gate.validate(manifest_path, ledger_path, draft)
+        self.assertTrue(any("unknown collector record" in error for error in errors))
+
+    def test_artifact_locator_is_bound_to_manifest_digest(self):
+        temp, manifest_path, ledger_path, draft, ledger = self.fixture()
+        self.addCleanup(temp.cleanup)
+        artifact = Path(temp.name) / "source.json"
+        artifact.write_text('{"repository": "https://example.com/alpha"}')
+        manifest = json.loads(manifest_path.read_text())
+        manifest["families"]["projects"]["artifact_path"] = str(artifact)
+        manifest["families"]["projects"]["artifact_sha256"] = digest(artifact)
+        manifest_path.write_text(json.dumps(manifest))
+        ledger["source_manifest_sha256"] = digest(manifest_path)
+        ledger["editorial_sources"][0] = {
+            "source_id": "projects:repo:a", "collector_source_ids": [],
+            "artifact_provenance": {"family": "projects", "artifact_path": str(artifact),
+                                    "artifact_sha256": digest(artifact),
+                                    "locator": {"repository": "https://example.com/missing"}},
+        }
+        ledger_path.write_text(json.dumps(ledger))
+        errors, _ = gate.validate(manifest_path, ledger_path, draft)
+        self.assertTrue(any("artifact locator" in error for error in errors))
+        ledger["editorial_sources"][0]["artifact_provenance"]["locator"]["repository"] = "https://example.com/alpha"
+        ledger_path.write_text(json.dumps(ledger))
+        errors, _ = gate.validate(manifest_path, ledger_path, draft)
+        self.assertEqual(errors, [])
+
+    def test_documented_editorial_override_has_exact_primary_url_and_hash(self):
+        temp, manifest_path, ledger_path, draft, ledger = self.fixture()
+        self.addCleanup(temp.cleanup)
+        doc = Path(temp.name) / "selection_review.md"
+        doc.write_text("Source considered: https://example.com/alpha")
+        ledger["editorial_sources"][0] = {
+            "source_id": "projects:repo:a", "collector_source_ids": [],
+            "editorial_provenance": {"path": str(doc), "sha256": digest(doc),
+                                     "locator": "https://example.com/alpha"},
+        }
+        ledger_path.write_text(json.dumps(ledger))
+        errors, _ = gate.validate(manifest_path, ledger_path, draft)
+        self.assertEqual(errors, [])
+        doc.write_text("Source considered: another URL")
+        errors, _ = gate.validate(manifest_path, ledger_path, draft)
+        self.assertTrue(any("editorial provenance" in error for error in errors))
+
+    def test_empty_normalized_universe_cannot_silently_discard_collector_data(self):
+        temp, manifest_path, ledger_path, draft, ledger = self.fixture()
+        self.addCleanup(temp.cleanup)
+        ledger["editorial_sources"] = []
+        ledger["source_expansion"] = []
+        ledger["candidates"] = []
+        ledger_path.write_text(json.dumps(ledger))
+        errors, _ = gate.validate(manifest_path, ledger_path, draft)
+        self.assertTrue(any("empty editorial" in error for error in errors))
+
+    def test_rejected_at_hard_gate_does_not_need_fabricated_quality_scores(self):
+        temp, manifest_path, ledger_path, draft, ledger = self.fixture()
+        self.addCleanup(temp.cleanup)
+        rejected = next(c for c in ledger["candidates"] if c["candidate_id"] == "project:beta")
+        rejected["hard_gate"]["in_window_progress"] = False
+        rejected["triage"] = "SKIP"
+        rejected["final_disposition"] = "skip"
+        rejected["draft_sources"] = []
+        rejected["scores"] = None
+        ledger_path.write_text(json.dumps(ledger))
+        errors, receipt = gate.validate(manifest_path, ledger_path, draft)
+        self.assertEqual(errors, [])
+        self.assertEqual(receipt["skipped_candidate_count"], 1)
+
+    def test_hard_gate_skip_without_primary_url_keeps_artifact_provenance(self):
+        temp, manifest_path, ledger_path, draft, ledger = self.fixture()
+        self.addCleanup(temp.cleanup)
+        rejected = next(c for c in ledger["candidates"] if c["candidate_id"] == "project:beta")
+        rejected["hard_gate"]["in_window_progress"] = False
+        rejected["triage"] = "SKIP"
+        rejected["final_disposition"] = "skip"
+        rejected["scores"] = None
+        rejected["draft_sources"] = []
+        rejected["primary_sources"] = []
+        ledger_path.write_text(json.dumps(ledger))
+        errors, _ = gate.validate(manifest_path, ledger_path, draft)
+        self.assertEqual(errors, [])
+
+    def test_owner_queued_catch_up_requires_exact_explicit_exception(self):
+        temp, manifest_path, ledger_path, draft, ledger = self.fixture()
+        self.addCleanup(temp.cleanup)
+        included = ledger["candidates"][0]
+        included["candidate_id"] = "top:fips-initramfs-0.1.0"
+        ledger["source_expansion"][0]["candidate_ids"] = ["top:fips-initramfs-0.1.0"]
+        ledger["source_expansion"][1]["candidate_ids"][0] = "top:fips-initramfs-0.1.0"
+        override_doc = Path(temp.name) / "human_overrides.md"
+        override_doc.write_text("User queued catch-up: " + included["primary_sources"][0])
+        included["owner_override_evidence"] = {"path": str(override_doc), "sha256": digest(override_doc)}
+        included["hard_gate"]["in_window_progress"] = False
+        included["override"] = "owner_queued_catch_up"
+        ledger_path.write_text(json.dumps(ledger))
+        errors, _ = gate.validate(manifest_path, ledger_path, draft)
+        self.assertEqual(errors, [])
+        included["override"] = "made_up_override"
+        ledger_path.write_text(json.dumps(ledger))
+        errors, _ = gate.validate(manifest_path, ledger_path, draft)
+        self.assertTrue(any("hard gate" in x or "sub-threshold" in x for x in errors))
+
+    def test_skip_records_unassessed_hard_gates_as_null(self):
+        temp, manifest_path, ledger_path, draft, ledger = self.fixture()
+        self.addCleanup(temp.cleanup)
+        rejected = next(c for c in ledger["candidates"] if c["candidate_id"] == "project:beta")
+        rejected["hard_gate"] = dict.fromkeys(gate.HARD_GATES)
+        rejected["hard_gate"]["in_window_progress"] = False
+        rejected["triage"] = "SKIP"
+        rejected["final_disposition"] = "skip"
+        rejected["scores"] = None
+        rejected["draft_sources"] = []
+        ledger_path.write_text(json.dumps(ledger))
+        errors, _ = gate.validate(manifest_path, ledger_path, draft)
+        self.assertEqual(errors, [])
 
     def test_missing_retained_source_fails(self):
         temp, manifest, ledger_path, draft, ledger = self.fixture()

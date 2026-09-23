@@ -276,9 +276,12 @@ Examples of FAILING the relay test:
 
 ## Hard eligibility and quality scoring (0-10, minimum 8 with no zero)
 
-Every collector-retained source candidate receives a stable ID. Expand recap and
-roundup events into the individual projects or protocol items they name, then
-map every source ID into `selection_coverage_<date>.json`. A candidate advances
+Collector `include` means evaluated raw evidence, not an editorial keep. Reconcile
+the full required source-family inventories in triage with explicit write-up-or-skip
+reasons. Give each reviewed editorial source a stable ID and collector, artifact,
+or editorial provenance. Expand recap and roundup events into the individual
+projects or protocol items they name, then map those normalized IDs into
+`selection_coverage_<date>.json`. A candidate advances
 to scoring only when all four hard gates pass:
 
 1. direct primary evidence supports the exact claim;
@@ -442,7 +445,7 @@ Run `python3 scripts/check_newsletter_continuity.py content/en/newsletters/<date
 
 ## Editorial Decisions
 1. Check all prior newsletters mechanically and read the last 3 in full. SKIP items already covered unless a distinct primary source supports a distinct substantive change.
-2. Reconcile every collector-retained source ID through `selection_coverage_<date>.json`. Expand aggregate events into every named project or protocol item. Do not promote low-scoring items and do not drop qualifying ones.
+2. Triage the full exact-window family inventories, including every project in the release digest, with explicit write-up-or-skip reasons. Reconcile every normalized editorial source through `selection_coverage_<date>.json`; raw collector `include` alone does not mean editorial retention. Expand aggregate events into every named project or protocol item. Do not promote low-scoring items or drop qualifying ones.
 3. Apply the Nostr Relay Test: does this change affect Nostr relays or Nostr users?
 4. Section assignments (each item in ONE section only)
    - Apps first: lead stories and section headlines favor app/project news. Spec work
