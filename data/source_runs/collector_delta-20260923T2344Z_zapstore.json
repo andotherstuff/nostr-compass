@@ -1,0 +1,67 @@
+{
+  "artifact_path": "/opt/data/compass-worktrees/2026-09-23/data/zapstore_releases/zapstore_2026-09-23.json",
+  "artifact_sha256": "840bf8a755e1840c90e7b18358e062eca0623717d1f6194e7d7c3dea7e43d729",
+  "candidate_ids": [
+    "13a4c43de32c03fbb18d888025cf9ef01bd4a98877e0dc6545fd14e5dec1d3c0",
+    "30ef95bc82ee88456b6981afb0f88f0133a9657ddf795689a588b695208193b5",
+    "3c5a481a26c404bf987029d01c710985dd817a9ddd0bf675f2bb247c0cf1f5f1",
+    "55a1c289ea6c3b3b56d5eb692bceae4a87d3d789b68882f118b9f9bb59c59ab2",
+    "66953e5f9c2d0c1efaa0bd7ddcf81ca2175c8cc4def57977d193f68cb23dce5d",
+    "a4f16cec210713185fce21946b8ed1f2ddcae2ed10be19ee8d76b3cabe63b97e",
+    "d9ad994bfadc1152b4c77a4fd3eb6be1746eca9d2626008d341bf31d06988872",
+    "e66b7e455a82b4ef7ab063abde39abc542884f4e345956adea3bf7c233837111"
+  ],
+  "canonical_query": {
+    "family": "zapstore",
+    "kind": 30063,
+    "page_size": 50,
+    "pass_id": "delta-20260923T2344Z",
+    "relay": "wss://relay.zapstore.dev",
+    "since": "2026-09-23T20:31:30Z",
+    "until": "2026-09-23T23:44:00Z"
+  },
+  "collector_path": "/opt/data/compass-worktrees/2026-09-23/scripts/fetch_zapstore_releases.sh",
+  "dispositions": {
+    "13a4c43de32c03fbb18d888025cf9ef01bd4a98877e0dc6545fd14e5dec1d3c0": {
+      "decision": "include",
+      "reason": "developer-signed release retained after relevance gates"
+    },
+    "30ef95bc82ee88456b6981afb0f88f0133a9657ddf795689a588b695208193b5": {
+      "decision": "include",
+      "reason": "developer-signed release retained after relevance gates"
+    },
+    "3c5a481a26c404bf987029d01c710985dd817a9ddd0bf675f2bb247c0cf1f5f1": {
+      "decision": "include",
+      "reason": "developer-signed release retained after relevance gates"
+    },
+    "55a1c289ea6c3b3b56d5eb692bceae4a87d3d789b68882f118b9f9bb59c59ab2": {
+      "decision": "include",
+      "reason": "developer-signed release retained after relevance gates"
+    },
+    "66953e5f9c2d0c1efaa0bd7ddcf81ca2175c8cc4def57977d193f68cb23dce5d": {
+      "decision": "include",
+      "reason": "developer-signed release retained after relevance gates"
+    },
+    "a4f16cec210713185fce21946b8ed1f2ddcae2ed10be19ee8d76b3cabe63b97e": {
+      "decision": "include",
+      "reason": "developer-signed release retained after relevance gates"
+    },
+    "d9ad994bfadc1152b4c77a4fd3eb6be1746eca9d2626008d341bf31d06988872": {
+      "decision": "include",
+      "reason": "developer-signed release retained after relevance gates"
+    },
+    "e66b7e455a82b4ef7ab063abde39abc542884f4e345956adea3bf7c233837111": {
+      "decision": "include",
+      "reason": "developer-signed release retained after relevance gates"
+    }
+  },
+  "family": "zapstore",
+  "include_count": 8,
+  "item_count": 8,
+  "page_count": 1,
+  "pagination_complete": true,
+  "pass_id": "delta-20260923T2344Z",
+  "skip_count": 0,
+  "skip_evidence": [],
+  "status": "complete"
+}
