@@ -1,0 +1,120 @@
+{
+  "attempts": [
+    {
+      "attempt": 1,
+      "model": "grok-4.6[effort=high,fast=true]",
+      "outcome": "success",
+      "output_sha256": "b1926f44d45abda02395323b6e04f6c3317e8e71a4c930c800975f9c01e19207",
+      "provider": "cursor",
+      "response_id": null,
+      "routing_attempts": [
+        {
+          "budget_seconds": 120.0,
+          "elapsed_seconds": 52.217,
+          "model": "grok-4.6",
+          "outcome": "success",
+          "provider": "cursor"
+        }
+      ],
+      "started_at": "2026-09-24T01:15:20.095227+00:00",
+      "usage": {}
+    }
+  ],
+  "completed_at": "2026-09-24T01:16:12.312543+00:00",
+  "elapsed_seconds": 52.217,
+  "endpoint": "cursor-acp",
+  "implementation_model": "gpt-6-sol",
+  "implementation_models": [
+    "gpt-6-sol"
+  ],
+  "instructions_sha256": "bd44eb47504e1a026f49acfa9f3ab754d6fcaa13b333b37922ad1aa80b8a9050",
+  "max_attempts": 2,
+  "max_output_tokens": 8000,
+  "requested_model": "grok-4.6",
+  "review_tier": "standard",
+  "routing_chain": [
+    {
+      "model": "grok-4.6",
+      "provider": "cursor"
+    },
+    {
+      "model": "composer-2.5",
+      "provider": "cursor"
+    },
+    {
+      "model": "claude-opus-5",
+      "provider": "claude-code"
+    },
+    {
+      "model": "google/gemini-3.1-pro-preview",
+      "provider": "openrouter"
+    }
+  ],
+  "schema_version": 1,
+  "selected_cost_usd": null,
+  "selected_endpoint": "cursor-acp",
+  "selected_family": "xai",
+  "selected_model": "grok-4.6[effort=high,fast=true]",
+  "selected_provider": "cursor",
+  "snapshots": [
+    {
+      "bytes": 58753,
+      "path": "/opt/data/compass-worktrees/2026-09-23-publish-codex/content/en/newsletters/2026-09-23-newsletter.md",
+      "sha256": "f4bc1da3f1882d52ef863b79ea27f4e3e7e5ccf698a2d7e0630718b0889615a5",
+      "stored_name": "001-f4bc1da3f1882d52-2026-09-23-newsletter.md"
+    },
+    {
+      "bytes": 5239,
+      "path": "/opt/data/compass-worktrees/2026-09-23-publish-codex/data/newsletter_workspace/final_cutoff_review_2026-09-23.md",
+      "sha256": "6b60c4de8f7947c40b73b3c4d4c98ecf43abbe50cf24db7cc58bbe6122f0bef0",
+      "stored_name": "002-6b60c4de8f7947c4-final_cutoff_review_2026-09-23.md"
+    },
+    {
+      "bytes": 10438,
+      "path": "/opt/data/compass-worktrees/2026-09-23-publish-codex/data/newsletter_workspace/source_fact_checks_2026-09-23.md",
+      "sha256": "9d0c2f599f9246f6795715193c4ed0e147edb0e2e84ef64ccebdb9511a21d630",
+      "stored_name": "003-9d0c2f599f9246f6-source_fact_checks_2026-09-23.md"
+    },
+    {
+      "bytes": 8060,
+      "path": "/opt/data/compass-worktrees/2026-09-23-final-cutoff/data/zapstore_releases/zapstore_2026-09-24.json",
+      "sha256": "a8f73cba1ed7b12191cb5a7544fe856611c366a632125816023f16b63b573902",
+      "stored_name": "004-a8f73cba1ed7b121-zapstore_2026-09-24.json"
+    }
+  ],
+  "started_at": "2026-09-24T01:15:20.094835+00:00",
+  "status": "completed",
+  "timeout_scope": "invocation_including_retries_and_cleanup",
+  "timeout_seconds": 600,
+  "tools_enabled": false,
+  "verdict": {
+    "findings": [
+      {
+        "evidence": "Draft In Development: \u201cThis is merged library work after MDK 0.10.4, not part of that tagged release or a measured end-user latency claim,\u201d citing https://github.com/marmot-protocol/mdk/pull/2007. Source memo INCLUDE and fact-check readback: parked-row lineage reclassification and per-row/anchor rewinds after publish confirmation, failure, or join; deferred-sweep ingest and a shared per-group cache invalidated on canonical change; one-row vs eight-row regressions; 681 passed / 5 skipped; merged 2026-09-23T23:59:48Z into master; no new MDK tag or client latency measurement.",
+        "recommendation": "Keep the after-0.10.4 / library-only / no-measured-latency fence if the story is edited later; do not fold this PR into the Marmot 0.10.4 Top Story or any White Noise client claim.",
+        "severity": "note",
+        "title": "MDK #2007 wording matches merged-library facts and stays off the 0.10.4 tag"
+      },
+      {
+        "evidence": "Draft places Table Mesh under Tagged Releases, not Top Stories, and is absent from the lede. Signed release https://primal.net/e/c5c5ad0eba413e18c10e3cd2be607e550ac818a8abaf97ccbf8fa242fbaff15f (zapstore_2026-09-24.json, SHA-256 a8f73cba1ed7b12191cb5a7544fe856611c366a632125816023f16b63b573902) is the first Android release: Bluetooth LE/Wi-Fi local tables, bundled Mensch \u00e4rgere Dich nicht and solo bots, kind 7529 + Blossom fetch with byte-hash verification. Memo INCLUDE reason is that distinctive optional Nostr module path; signed app_content says the Bluetooth mesh was tested in simulation/emulators and asks for real multi-phone reports. Draft: \u201ctested in simulation and emulators, not yet at real multi-phone tables\u201d and \u201cNostr is used to discover and deliver optional games; the actual table session runs locally without an internet connection or account.\u201d",
+        "recommendation": "Retain Tagged Releases INCLUDE; do not elevate to Top Stories. The optional kind-7529/Blossom/hash path is a real first-release Nostr surface, but emulator-only mesh testing and non-core Nostr usage would make Top Story placement unjustified.",
+        "severity": "note",
+        "title": "Table Mesh 0.1.0 INCLUDE is 8/10 at Tagged Releases, not a Top Story"
+      },
+      {
+        "evidence": "Draft Table Mesh: \u201cNostr is used to discover and deliver optional games; the actual table session runs locally without an internet connection or account.\u201d Signed release notes at https://primal.net/e/c5c5ad0eba413e18c10e3cd2be607e550ac818a8abaf97ccbf8fa242fbaff15f: \u201cFind more games on Nostr (kind 7529), downloaded from Blossom and verified byte for byte\u201d / \u201csearches Nostr for game releases (kind 7529) and downloads them from Blossom.\u201d The draft does not say Nostr carries table moves.",
+        "recommendation": "Tighten to \u201cNostr is used to discover optional games, which are fetched from Blossom and hash-checked; the table session itself runs locally and does not carry moves over Nostr.\u201d",
+        "severity": "minor",
+        "title": "Second-paragraph \u201cdeliver\u201d slightly compresses Blossom fetch onto Nostr"
+      },
+      {
+        "evidence": "Source-decision memo GATE: \u201cPENDING \u2014 the specs family hit GitHub's shared core API reserve and must be resumed after reset. The final manifest hash, spec decisions, final draft hash and independent exact-draft review remain required.\u201d Runner scope: this cold read cannot approve publication or the final ten-family sweep.",
+        "recommendation": "Treat this PASS as scoped only to the MDK #2007 and Table Mesh 0.1.0 decisions/wording on this snapshot. Keep final source, PR-head, CI, deployment, signing, and relay gates as separate reviews; do not assume the unreviewed specs family or the rest of the draft is clean.",
+        "severity": "note",
+        "title": "Publication and remaining families/gates are not approved"
+      }
+    ],
+    "summary": "On this immutable snapshot only, the two final-cutoff story decisions and their wording hold: MDK #2007 is described as merged library work after the 0.10.4 tag, matching the captured PR-body facts and inventing neither measured latency nor deployed client behavior; Table Mesh 0.1.0 is a first signed Android release whose Bluetooth/Wi-Fi local play, bundled Mensch \u00e4rgere Dich nicht and bots, kind-7529 discovery, and Blossom byte verification are supported by the signed-store artifact, without implying that Nostr carries table moves or that real multi-phone testing is complete. The optional Nostr distribution path is substantial enough for INCLUDE at Tagged Releases (not Top Stories). This PASS approves only those two story decisions and wording on this input; it does not approve publication or the final ten-family sweep. Final source, PR-head, CI, deployment, signing, and relay gates remain separate, and the unreviewed specs family is still PENDING.",
+    "verdict": "PASS"
+  }
+}

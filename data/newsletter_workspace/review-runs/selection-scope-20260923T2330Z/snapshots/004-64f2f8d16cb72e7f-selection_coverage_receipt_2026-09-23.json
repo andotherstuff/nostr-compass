@@ -1,0 +1,20 @@
+{
+  "checker_version": "selection-coverage-v1",
+  "draft_path": "/opt/data/compass-worktrees/2026-09-23-publish-codex/content/en/newsletters/2026-09-23-newsletter.md",
+  "draft_sha256": "7e820ad9024ac4e8cdaa1089e3b1c7b564f449f8f71ec8629ef76da4569b9c5f",
+  "editorial_candidate_count": 208,
+  "final": true,
+  "ledger_path": "/opt/data/compass-worktrees/2026-09-23-publish-codex/data/newsletter_workspace/selection_coverage_wednesday_2026-09-23.json",
+  "ledger_sha256": "8cfd7dbdfd37aa38fdd8263ecf1dbce60f1035ae844b8318728991f4046bf134",
+  "qualified_candidate_count": 63,
+  "receipt_type": "selection-coverage",
+  "retained_source_candidate_count": 208,
+  "schema_version": 1,
+  "selected_candidate_count": 63,
+  "skipped_candidate_count": 145,
+  "source_manifest_path": "/opt/data/compass-worktrees/2026-09-23-publish-codex/data/source_runs/source_run_2026-09-23_wednesday-2026-09-23-codex-recovery-1.json",
+  "source_manifest_sha256": "bcac650f8267bb5eecd808bd79c7dd31d308d18081176fc138081d6d0adb70c8",
+  "source_pass_id": "wednesday-2026-09-23-codex-recovery-1",
+  "unresolved_count": 0,
+  "verdict": "PASS"
+}

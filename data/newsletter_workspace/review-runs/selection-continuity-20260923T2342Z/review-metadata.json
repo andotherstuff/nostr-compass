@@ -1,0 +1,126 @@
+{
+  "attempts": [
+    {
+      "attempt": 1,
+      "model": "grok-4.6[effort=high,fast=true]",
+      "outcome": "success",
+      "output_sha256": "2e2c9a0ccf898d7be7290788ba7419b800a40b0edf4d74745d5106253c89db9e",
+      "provider": "cursor",
+      "response_id": null,
+      "routing_attempts": [
+        {
+          "budget_seconds": 120.0,
+          "elapsed_seconds": 93.87,
+          "model": "grok-4.6",
+          "outcome": "success",
+          "provider": "cursor"
+        }
+      ],
+      "started_at": "2026-09-23T23:42:08.595579+00:00",
+      "usage": {}
+    }
+  ],
+  "completed_at": "2026-09-23T23:43:42.465786+00:00",
+  "elapsed_seconds": 93.87,
+  "endpoint": "cursor-acp",
+  "implementation_model": "gpt-6-sol",
+  "implementation_models": [
+    "gpt-6-sol"
+  ],
+  "instructions_sha256": "a742defe2e7b28d948cbc78b355d4f7f9a3535a1805330fc7d212d10ee1ddd24",
+  "max_attempts": 2,
+  "max_output_tokens": 8000,
+  "requested_model": "grok-4.6",
+  "review_tier": "standard",
+  "routing_chain": [
+    {
+      "model": "grok-4.6",
+      "provider": "cursor"
+    },
+    {
+      "model": "composer-2.5",
+      "provider": "cursor"
+    },
+    {
+      "model": "claude-opus-5",
+      "provider": "claude-code"
+    },
+    {
+      "model": "google/gemini-3.1-pro-preview",
+      "provider": "openrouter"
+    }
+  ],
+  "schema_version": 1,
+  "selected_cost_usd": null,
+  "selected_endpoint": "cursor-acp",
+  "selected_family": "xai",
+  "selected_model": "grok-4.6[effort=high,fast=true]",
+  "selected_provider": "cursor",
+  "snapshots": [
+    {
+      "bytes": 38274,
+      "path": "/opt/data/compass-worktrees/2026-09-23-publish-codex/content/en/newsletters/2026-09-02-newsletter.md",
+      "sha256": "4fcb7418140a135e26fa1be27cee4a5aa5b72ceb9ca4c79f6a4c459e557bb410",
+      "stored_name": "001-4fcb7418140a135e-2026-09-02-newsletter.md"
+    },
+    {
+      "bytes": 31259,
+      "path": "/opt/data/compass-worktrees/2026-09-23-publish-codex/content/en/newsletters/2026-09-09-newsletter.md",
+      "sha256": "10f7a6397985e3e658c5c00becb556d4c466e1712278c81512fa1845f66cdf9e",
+      "stored_name": "002-10f7a6397985e3e6-2026-09-09-newsletter.md"
+    },
+    {
+      "bytes": 38784,
+      "path": "/opt/data/compass-worktrees/2026-09-23-publish-codex/content/en/newsletters/2026-09-16-newsletter.md",
+      "sha256": "080a48f9b9a0e8ef7b1982dc5b55e86c64eba65caea66c35433a1e6bdce346c7",
+      "stored_name": "003-080a48f9b9a0e8ef-2026-09-16-newsletter.md"
+    },
+    {
+      "bytes": 51046,
+      "path": "/opt/data/compass-worktrees/2026-09-23-publish-codex/content/en/newsletters/2026-09-23-newsletter.md",
+      "sha256": "a0fb9b47b556d9a2ebf60eac01aebfd2238e48e2dc2dc2fa62a71909393bf990",
+      "stored_name": "004-a0fb9b47b556d9a2-2026-09-23-newsletter.md"
+    },
+    {
+      "bytes": 20377,
+      "path": "/opt/data/compass-worktrees/2026-09-23-publish-codex/data/newsletter_workspace/selection_review_2026-09-23.md",
+      "sha256": "63fb59afb36353a5bb2853b68ae5f93129b8f578060d11cfc92d7f95cc85e415",
+      "stored_name": "005-63fb59afb36353a5-selection_review_2026-09-23.md"
+    }
+  ],
+  "started_at": "2026-09-23T23:42:08.594865+00:00",
+  "status": "completed",
+  "timeout_scope": "invocation_including_retries_and_cleanup",
+  "timeout_seconds": 600,
+  "tools_enabled": false,
+  "verdict": {
+    "findings": [
+      {
+        "evidence": "Current heading in #41: 'pakstr 0.21.0\u20130.24.0 hardens Android Nostr signing' presents 0.21.0 bunker pairing as this week's start. Prior issue #40 heading 'pakstr 0.21.1 advances Nostr application packaging' already selected that same 0.21.x sequence ('continues a five-release sequence for Nostr application packaging and app-shell behavior'). New tags 0.22.0, 0.23.0, and 0.24.0 are distinct; 0.21.0 is not.",
+        "recommendation": "Retitle to start at 0.22.0 (or 0.22.0\u20130.23.0), add a one-line back-reference to #40's 0.21.1, and drop the 0.21.0 recap so the item is only the new signer/runtime tags.",
+        "severity": "minor",
+        "title": "pakstr heading reopens last week's 0.21.x series"
+      },
+      {
+        "evidence": "#41 headings 'NIP-30: Custom Emoji' and 'NIP-71: Video Events' do not match prior deep-dive headings: #38 'NIP Deep Dive: Reposts and Reactions' (NIP-18/NIP-25), #39 'NIP Deep Dive: URI Links and References in Event Text' (NIP-21/NIP-27), #40 'NIP Deep Dive: NIP-23 and NIP-92'. #38 mentions NIP-30 only as a reaction-shortcode aside inside NIP-25; that is not a prior NIP-30 dive. NIP-71 is absent from #38\u2013#40.",
+        "recommendation": "Keep NIP-30 and NIP-71. Do not treat the NIP-25 shortcode aside or NIP-71's use of imeta as grounds to swap these dives.",
+        "severity": "note",
+        "title": "NIP-30 and NIP-71 deep dives are not recycled"
+      },
+      {
+        "evidence": "Current heading 'Marmot merges group reports and admin deletion' cites marmot-protocol/marmot/pull/423 and states 'The proposal covered last week has now merged'. Prior #40 heading 'Marmot proposes encrypted group reports and shared moderation' cited the same URL as an open proposal. That is a material status transition.",
+        "recommendation": "Keep the item. Continue to label it as last week's open draft now merged rather than as a new specification.",
+        "severity": "note",
+        "title": "Marmot PR 423 is a merge transition, not a reprint"
+      },
+      {
+        "evidence": "#41 heading 'RelayKit installs a self-hosted Nostr stack' says coverage is 'a changed project direction' versus 'the browser relay-discovery client covered in April' and cites only https://relayk.it and https://github.com/samthomson/relaykit. RelayKit does not appear in #38\u2013#40. A generic repository URL is not a new primary source; the April issue is not in this snapshot.",
+        "recommendation": "No in-window continuity cut. If full-history continuity is required later, cite the in-window 0.3.5 commit from the Stage 4 ledger instead of the bare repo homepage.",
+        "severity": "note",
+        "title": "RelayKit April callback is outside this snapshot"
+      }
+    ],
+    "summary": "Archive continuity was checked only against the three supplied complete issues\u2014Nostr Compass #38 (2026-09-02), #39 (2026-09-09), and #40 (2026-09-16)\u2014and the #41 draft (2026-09-23). The Stage 4 selection memo was used only to identify claimed primary URLs, not as proof of novelty. Within that window, repeated projects (Grain, MDK, Amethyst, Amber, Dart NDK, Nostr Mail Client, Nail, pakstr, nostr-wot-extension, TWENTY ONE Companion, nostream, Divine Mobile, Zap Cooking, Conduit, Mostro, Ditto, NIP-A3, NWC, Marmot PR 423) each carry a new tag, merged PR, signed event, or open-to-merged transition; NIP-30 and NIP-71 do not reuse #38 NIP-18/25, #39 NIP-21/27, or #40 NIP-23/92. Limitations: #38 is truncated mid-nostrord; this snapshot has no issues before #38, so the draft's April RelayKit and January/April deep-dive callbacks cannot be verified here; a project name or generic repository URL was not treated as a new primary source.",
+    "verdict": "PASS"
+  }
+}

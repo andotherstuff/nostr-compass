@@ -1,0 +1,182 @@
+{
+  "https://github.com/0xchat-app/0xchat-app-main/pull/92": {
+    "base_ref": "main",
+    "checked_at": "2026-09-24T00:34:46.995556+00:00",
+    "default_branch": "main",
+    "merge_commit_sha": "3e4841128c7ecec9af82cb01e24b05d9f8623062",
+    "merged_at": "2026-09-14T03:31:41Z",
+    "source_url": "https://github.com/0xchat-app/0xchat-app-main/pull/92",
+    "url": "https://github.com/0xchat-app/0xchat-app-main/pull/92"
+  },
+  "https://github.com/Conduit-BTC/conduit-mono/pull/503": {
+    "base_ref": "main",
+    "checked_at": "2026-09-24T00:34:50.222163+00:00",
+    "default_branch": "main",
+    "merge_commit_sha": "bcef0bfbe26d061e18406bf4cfc56af445c73055",
+    "merged_at": "2026-09-20T01:32:35Z",
+    "source_url": "https://github.com/Conduit-BTC/conduit-mono/pull/503",
+    "url": "https://github.com/Conduit-BTC/conduit-mono/pull/503"
+  },
+  "https://github.com/ContextVM/sdk/pull/100": {
+    "base_ref": "master",
+    "checked_at": "2026-09-24T00:34:56.547620+00:00",
+    "default_branch": "master",
+    "merge_commit_sha": "b1f9f3bf96593709232d1c30c4fb0ff3fc11aa66",
+    "merged_at": "2026-09-20T10:10:53Z",
+    "source_url": "https://github.com/ContextVM/sdk/pull/100",
+    "url": "https://github.com/ContextVM/sdk/pull/100"
+  },
+  "https://github.com/ContextVM/sdk/pull/95": {
+    "base_ref": "master",
+    "checked_at": "2026-09-24T00:34:55.809668+00:00",
+    "default_branch": "master",
+    "merge_commit_sha": "249516ce891703509f6d129b227acc335ca4ebd5",
+    "merged_at": "2026-09-17T14:23:22Z",
+    "source_url": "https://github.com/ContextVM/sdk/pull/95",
+    "url": "https://github.com/ContextVM/sdk/pull/95"
+  },
+  "https://github.com/MostroP2P/mostro/pull/971": {
+    "base_ref": "main",
+    "checked_at": "2026-09-24T00:34:51.530251+00:00",
+    "default_branch": "main",
+    "merge_commit_sha": "b34bdf566fcd3964f885bb60973ba818576a4eea",
+    "merged_at": "2026-09-21T21:02:10Z",
+    "source_url": "https://github.com/MostroP2P/mostro/pull/971",
+    "url": "https://github.com/MostroP2P/mostro/pull/971"
+  },
+  "https://github.com/SnowCait/nostter/pull/2510": {
+    "base_ref": "main",
+    "checked_at": "2026-09-24T00:34:52.599633+00:00",
+    "default_branch": "main",
+    "merge_commit_sha": "3c6d645ac920ec9c4b3c5a497b8850830c052530",
+    "merged_at": "2026-09-20T12:29:56Z",
+    "source_url": "https://github.com/SnowCait/nostter/pull/2510",
+    "url": "https://github.com/SnowCait/nostter/pull/2510"
+  },
+  "https://github.com/SnowCait/nostter/pull/2518": {
+    "base_ref": "main",
+    "checked_at": "2026-09-24T00:34:53.228819+00:00",
+    "default_branch": "main",
+    "merge_commit_sha": "f7106f2eff206371bb2b09d6caa045505f1c19df",
+    "merged_at": "2026-09-21T19:24:36Z",
+    "source_url": "https://github.com/SnowCait/nostter/pull/2518",
+    "url": "https://github.com/SnowCait/nostter/pull/2518"
+  },
+  "https://github.com/block/buzz/pull/7302": {
+    "base_ref": "main",
+    "checked_at": "2026-09-24T00:34:54.562283+00:00",
+    "default_branch": "main",
+    "merge_commit_sha": "77729abfb692b25a0f4ec4a69add86af2e32c0dd",
+    "merged_at": "2026-09-21T18:53:05Z",
+    "source_url": "https://github.com/block/buzz/pull/7302",
+    "url": "https://github.com/block/buzz/pull/7302"
+  },
+  "https://github.com/cameri/nostream/pull/741": {
+    "base_ref": "main",
+    "checked_at": "2026-09-24T00:34:48.211667+00:00",
+    "default_branch": "main",
+    "merge_commit_sha": "afa89993e34e54b0aee65c18918dfd52896c275a",
+    "merged_at": "2026-09-20T05:05:09Z",
+    "source_url": "https://github.com/cameri/nostream/pull/741",
+    "url": "https://github.com/cameri/nostream/pull/741"
+  },
+  "https://github.com/cameri/nostream/pull/779": {
+    "base_ref": "main",
+    "checked_at": "2026-09-24T00:34:48.995172+00:00",
+    "default_branch": "main",
+    "merge_commit_sha": "f6ee3e344556fda031c3c4ab92a329ada24d32da",
+    "merged_at": "2026-09-20T14:50:39Z",
+    "source_url": "https://github.com/cameri/nostream/pull/779",
+    "url": "https://github.com/cameri/nostream/pull/779"
+  },
+  "https://github.com/diegogurpegui/nos2x-fox/pull/67": {
+    "base_ref": "main",
+    "checked_at": "2026-09-24T00:34:58.552595+00:00",
+    "default_branch": "main",
+    "merge_commit_sha": "ac0ec10bcca6adf18199f19d87c7e374db5c3127",
+    "merged_at": "2026-09-21T00:55:24Z",
+    "source_url": "https://github.com/diegogurpegui/nos2x-fox/pull/67",
+    "url": "https://github.com/diegogurpegui/nos2x-fox/pull/67"
+  },
+  "https://github.com/diegogurpegui/nos2x-fox/pull/69": {
+    "base_ref": "main",
+    "checked_at": "2026-09-24T00:34:57.831864+00:00",
+    "default_branch": "main",
+    "merge_commit_sha": "28f0c88b171d9898ea68640587d41cf7fe544866",
+    "merged_at": "2026-09-21T00:21:34Z",
+    "source_url": "https://github.com/diegogurpegui/nos2x-fox/pull/69",
+    "url": "https://github.com/diegogurpegui/nos2x-fox/pull/69"
+  },
+  "https://github.com/divinevideo/divine-mobile/pull/9246": {
+    "base_ref": "main",
+    "checked_at": "2026-09-24T00:34:59.845729+00:00",
+    "default_branch": "main",
+    "merge_commit_sha": "f6abb0594674dfe459faceb8fd1388704ce38d24",
+    "merged_at": "2026-09-16T14:53:35Z",
+    "source_url": "https://github.com/divinevideo/divine-mobile/pull/9246",
+    "url": "https://github.com/divinevideo/divine-mobile/pull/9246"
+  },
+  "https://github.com/divinevideo/divine-mobile/pull/9293": {
+    "base_ref": "main",
+    "checked_at": "2026-09-24T00:35:00.896395+00:00",
+    "default_branch": "main",
+    "merge_commit_sha": "8e69b76422e903d5da7fb6af01d0eda762ed3813",
+    "merged_at": "2026-09-17T16:51:13Z",
+    "source_url": "https://github.com/divinevideo/divine-mobile/pull/9293",
+    "url": "https://github.com/divinevideo/divine-mobile/pull/9293"
+  },
+  "https://github.com/marmot-protocol/marmot/pull/423": {
+    "base_ref": "master",
+    "checked_at": "2026-09-24T00:35:02.149418+00:00",
+    "default_branch": "master",
+    "merge_commit_sha": "27cd32631dfe1043383c5c8d9ae0dbf95d2d95b2",
+    "merged_at": "2026-09-16T16:47:12Z",
+    "source_url": "https://github.com/marmot-protocol/marmot/pull/423",
+    "url": "https://github.com/marmot-protocol/marmot/pull/423"
+  },
+  "https://github.com/marmot-protocol/marmot/pull/425": {
+    "base_ref": "master",
+    "checked_at": "2026-09-24T00:35:02.933555+00:00",
+    "default_branch": "master",
+    "merge_commit_sha": "26fa6a6972d7b4325cb3d105ffdd41a1ceda2bb0",
+    "merged_at": "2026-09-20T19:26:22Z",
+    "source_url": "https://github.com/marmot-protocol/marmot/pull/425",
+    "url": "https://github.com/marmot-protocol/marmot/pull/425"
+  },
+  "https://github.com/nostr-protocol/nips/pull/2472": {
+    "base_ref": "master",
+    "checked_at": "2026-09-24T00:35:04.250616+00:00",
+    "default_branch": "master",
+    "merge_commit_sha": "11cca8f6cf0b65ef4fa6ab97deb2c68db4900847",
+    "merged_at": "2026-09-19T16:42:35Z",
+    "source_url": "https://github.com/nostr-protocol/nips/pull/2472",
+    "url": "https://github.com/nostr-protocol/nips/pull/2472"
+  },
+  "https://github.com/nostr-protocol/nips/pull/2477": {
+    "base_ref": "master",
+    "checked_at": "2026-09-24T00:35:05.001032+00:00",
+    "default_branch": "master",
+    "merge_commit_sha": "5b9920982ae1f4061328c1b09a90360da28d13c8",
+    "merged_at": "2026-09-23T17:16:06Z",
+    "source_url": "https://github.com/nostr-protocol/nips/pull/2477",
+    "url": "https://github.com/nostr-protocol/nips/pull/2477"
+  },
+  "https://github.com/zapcooking/frontend/pull/744": {
+    "base_ref": "main",
+    "checked_at": "2026-09-24T00:35:06.355687+00:00",
+    "default_branch": "main",
+    "merge_commit_sha": "2cb30b68a0c3880a2862ae6742a5fee067a3b3aa",
+    "merged_at": "2026-09-21T01:05:38Z",
+    "source_url": "https://github.com/zapcooking/frontend/pull/744",
+    "url": "https://github.com/zapcooking/frontend/pull/744"
+  },
+  "https://github.com/zapcooking/frontend/pull/746": {
+    "base_ref": "main",
+    "checked_at": "2026-09-24T00:35:07.188810+00:00",
+    "default_branch": "main",
+    "merge_commit_sha": "8a651e9346022fe542b622328de655d458efdd38",
+    "merged_at": "2026-09-21T01:06:05Z",
+    "source_url": "https://github.com/zapcooking/frontend/pull/746",
+    "url": "https://github.com/zapcooking/frontend/pull/746"
+  }
+}

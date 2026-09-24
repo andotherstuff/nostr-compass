@@ -1,0 +1,12 @@
+{
+  "findings": [
+    {
+      "evidence": "Checked ledger selected[] (63) and candidates[] (208 include/skip dispositions), draft sections Top Stories through NIP Deep Dive, triage Wednesday deltas (releases, Zapstore, discovery, White Noise correction, scope-review NoorNote/napplet.soy), source_fact_checks_2026-09-23.md (XM Arcade dec0edda\u2026, Zzub 70c5efee\u2026, pakstr/Amethyst/NoorNote/Dart NDK/NIP-86), and selection_coverage_receipt PASS. Not in packet: full 38-project activity memo, zapstore_2026-09-23.json bodies beyond the two excerpts, or live GitHub note re-read.",
+      "recommendation": "Treat this PASS as ledger-and-draft editorial clearance only; any later collector or note mutation needs a new Stage 4 pass.",
+      "severity": "note",
+      "title": "Review scope and snapshot limits"
+    }
+  ],
+  "summary": "Stage 4 cold review of Compass #41 against the exact Wednesday ledger (selection_coverage_wednesday_2026-09-23.json, sha256 47ef3b5a\u2026; 208 editorial candidates, 63 selected, 145 skipped, 0 unresolved) and the bound assembled draft (2026-09-23-newsletter.md, sha256 a0fb9b47\u2026). Scope: four hard gates, 8/10 no-zero with no item cap, selected-item effect/window/evidence/score justification, skipped items for clear false negatives, tag-bound release prose, and signed-app claims versus supplied notes. All 63 selected items meet \u22658 with no zero axis; the only failed in-window gate is top:fips-initramfs-0.1.0, which is an authenticated catch-up override and is labeled out-of-window in the draft. No skipped candidate in this snapshot has all four gates true and a qualifying score. Release prose keeps NoorNote 1.6.0/1.6.1/1.7.0, Amethyst 1.16.0, Dart NDK dev.4\u2013dev.5, pakstr 0.21\u20130.24, Wisp 1.2.4, Scramble 0.7.0/0.7.2, and in-dev PRs on their own sources. XM Arcade 1.1.3 and Zzub 0.0.15 claims match the fact-checked signed notes. Limits: immutable snapshot only (no live refetch); project_activity_coverage_2026-09-23.md and raw collector JSON were not in the review packet; Armada signed-note body was not excerpted; event-example signatures were not re-verified.",
+  "verdict": "PASS"
+}

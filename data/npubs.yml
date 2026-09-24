@@ -21,6 +21,12 @@ no_dm:
 # These remain visible to validation and workflow reporting, but never become
 # mentions or outreach recipients.
 unresolved:
+  Table Mesh:
+    checked_at: 2026-09-24
+    reason: The developer-signed Zapstore release supplies a publisher key but no project or maintainer profile, repository, or verified monitored inbox. A release-signing key alone is not an outreach identity.
+    sources:
+      - https://zapstore.dev/apps/org.tablemesh.app
+      - https://primal.net/e/c5c5ad0eba413e18c10e3cd2be607e550ac818a8abaf97ccbf8fa242fbaff15f
   Wingman App:
     checked_at: 2026-09-09
     reason: The canonical repository and OtherStuffAI GitHub profile publish no project or maintainer npub; otherstuff.ai has no NIP-05 document. NIP-50 searches for Wingman App and OtherStuffAI returned unrelated or ambiguous keys, and npub.world lookups were inaccessible, so no candidate could be defensibly bound to this project.
@@ -86,6 +92,32 @@ unresolved:
       - https://napplet.soy/
       - https://napplet.soy/about
       - https://github.com/zeSchlausKwab/napplet-soy
+  Scramble:
+    checked_at: 2026-09-23
+    reason: The canonical Scramble repository and README do not bind a public Nostr key to the project or maintainer. The repository's bot-npub.txt explicitly identifies a bot key, not a monitored project or maintainer account; an ambiguous web-search name match is not ownership evidence.
+    sources:
+      - https://github.com/DavidGershony/Scramble
+      - https://github.com/DavidGershony/Scramble/blob/main/bot-npub.txt
+      - https://github.com/DavidGershony
+  Armada:
+    checked_at: 2026-09-23
+    reason: Canonical project and signed app release identify the application, but no public project or maintainer notification npub is bound by its site or repository. A release signer alone is not a verified monitored inbox.
+    sources:
+      - https://armada.buzz/
+      - https://github.com/soapbox-pub/armada
+      - https://primal.net/e/122a06dbab02d207b3aa793b0fedd06fd59d36178a7b9ae5971cfc3b7f3eb6ce
+  XM Arcade:
+    checked_at: 2026-09-23
+    reason: The NIP-34 repository and signed release do not designate the release key as a monitored project or maintainer mention target.
+    sources:
+      - https://gitworkshop.dev/r/xm-arcade
+      - https://primal.net/e/dec0edda9ff464b4b7598032318cb48e17cf496e29d05031d1f1629409039a4c
+  Zzub:
+    checked_at: 2026-09-23
+    reason: The signed app release establishes its publisher, but the listed NIP-34 source URL is unavailable and no monitored project or maintainer key is bound by a primary profile.
+    sources:
+      - https://zapstore.dev/apps/social.cloudfodder.zzub
+      - https://primal.net/e/70c5efeea2e9314329b8951346d83ad0688b74607a108e8bc820caae545196c2
   keep-android:
     checked_at: 2026-08-02
     reason: Candidate personal keys for the maintainer are not bound to PrivKey or keep-android by a primary source.
@@ -275,6 +307,20 @@ Zeus: npub1xnf02f60r9v0e5kty33a404dm79zr7z2eepyrk5gsq3m7pwvsz2sazlpr5
 Alby Hub: npub1getal6ykt05fsz5nqu4uld09nfj3y3qxmv8crys4aeut53unfvlqr80nfm
 eNuts: npub1dx5q2el8nd4eh3eg9t2e25fd7zuqg7zxz6ldkc3uzgh66ss2yc6st288sj
 Bitcredit: npub1eajvs8x67vmzsnwaf9ltfgt59e6acmeztx9shduewvfgwftx8ahsagcd93
+Bitcredit E-Bills: npub1eajvs8x67vmzsnwaf9ltfgt59e6acmeztx9shduewvfgwftx8ahsagcd93
+Bookshelf:
+  npub: npub1ez09adke4vy8udk3y2skwst8q5chjgqzym9lpq4u58zf96zcl7kqyry2lz
+  identity_type: organization
+  display_name: Decent Newsroom
+  outreach: false
+  evidence:
+    - https://nostr.com/nprofile1qqsv38j7kmv6kzr7xmgj9gt8g9ns2vteyqpzdjlss272r3yjapv0ltqpqqjzl855
+TWENTY ONE Companion:
+  npub: npub1pt0kw36ue3w2g4haxq3wgm6a2fhtptmzsjlc2j2vphtcgle72qesgpjyc6
+  identity_type: project
+  outreach: false
+  evidence:
+    - https://github.com/HolgerHatGarKeineNode/twenty-one-companion#readme
 
 # --- App stores and marketplaces ---
 Zapstore: npub10r8xl2njyepcw2zwv3a6dyufj4e4ajx86hz6v4ehu4gnpupxxp7stjt2p8
@@ -388,6 +434,13 @@ nsite-clay edits and republishes a single-page site from the browser:
   npub: npub12edc7326qsryw5rw5yw0yh57fmj9r8jf4c8xazz6333w305qgnms9ypvj2
 # Clawstr: (no project npub; parent org Soapbox exists)
 0xchat: npub1tm99pgz2lth724jeld6gzz6zv48zy6xp4n9xu5uqrwvx9km54qaqkkxn72
+nos2x-fox:
+  npub: npub168nqgewzkamnyh53x0epqrftkv2pdh9gzr6558v4vetzr3w7uxfs63926e
+  identity_type: maintainer
+  person: Diego Gurpegui
+  evidence:
+    - https://github.com/diegogurpegui/nos2x-fox
+    - https://diegogurpegui.com/.well-known/nostr.json
 Chachi: npub1gm7gw8q6akeft2pjt270we35vlff0v9g2fene6cxkz2h68q5hl6qls0fte
 Listr: npub1lstr2kmdthkgfuzne8e4cn2nhr646x8jt25szdj7t4wr6xemtuuq3lczsj
 # [dev:turizspace]

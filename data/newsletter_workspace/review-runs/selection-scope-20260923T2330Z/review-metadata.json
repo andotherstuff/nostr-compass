@@ -1,0 +1,120 @@
+{
+  "attempts": [
+    {
+      "attempt": 1,
+      "model": "grok-4.6[effort=high,fast=true]",
+      "outcome": "success",
+      "output_sha256": "d7bf066cf9c0d929a5c88469a530a2630360dbcb7b06975a04b324af52ec30ae",
+      "provider": "cursor",
+      "response_id": null,
+      "routing_attempts": [
+        {
+          "budget_seconds": 120.0,
+          "elapsed_seconds": 103.344,
+          "model": "grok-4.6",
+          "outcome": "success",
+          "provider": "cursor"
+        }
+      ],
+      "started_at": "2026-09-23T23:28:50.786501+00:00",
+      "usage": {}
+    }
+  ],
+  "completed_at": "2026-09-23T23:30:34.130929+00:00",
+  "elapsed_seconds": 103.344,
+  "endpoint": "cursor-acp",
+  "implementation_model": "gpt-6-sol",
+  "implementation_models": [
+    "gpt-6-sol"
+  ],
+  "instructions_sha256": "9722928fb93c62e5c603daf2c9dfbef4902be63a17394a33ce4b1c6167cccbf5",
+  "max_attempts": 1,
+  "max_output_tokens": 8000,
+  "requested_model": "grok-4.6",
+  "review_tier": "standard",
+  "routing_chain": [
+    {
+      "model": "grok-4.6",
+      "provider": "cursor"
+    },
+    {
+      "model": "composer-2.5",
+      "provider": "cursor"
+    },
+    {
+      "model": "claude-opus-5",
+      "provider": "claude-code"
+    },
+    {
+      "model": "google/gemini-3.1-pro-preview",
+      "provider": "openrouter"
+    }
+  ],
+  "schema_version": 1,
+  "selected_cost_usd": null,
+  "selected_endpoint": "cursor-acp",
+  "selected_family": "xai",
+  "selected_model": "grok-4.6[effort=high,fast=true]",
+  "selected_provider": "cursor",
+  "snapshots": [
+    {
+      "bytes": 432408,
+      "path": "/opt/data/compass-worktrees/2026-09-23-publish-codex/data/newsletter_workspace/selection_coverage_wednesday_2026-09-23.json",
+      "sha256": "8cfd7dbdfd37aa38fdd8263ecf1dbce60f1035ae844b8318728991f4046bf134",
+      "stored_name": "001-8cfd7dbdfd37aa38-selection_coverage_wednesday_2026-09-23.json"
+    },
+    {
+      "bytes": 50803,
+      "path": "/opt/data/compass-worktrees/2026-09-23-publish-codex/content/en/newsletters/2026-09-23-newsletter.md",
+      "sha256": "7e820ad9024ac4e8cdaa1089e3b1c7b564f449f8f71ec8629ef76da4569b9c5f",
+      "stored_name": "002-7e820ad9024ac4e8-2026-09-23-newsletter.md"
+    },
+    {
+      "bytes": 29584,
+      "path": "/opt/data/compass-worktrees/2026-09-23-publish-codex/data/newsletter_workspace/triage_2026-09-23.md",
+      "sha256": "b4f78a2617250e4aaf4d4c0a73ba8d687a3ea410dbad4725c4b5ffcead4e157d",
+      "stored_name": "003-b4f78a2617250e4a-triage_2026-09-23.md"
+    },
+    {
+      "bytes": 1114,
+      "path": "/opt/data/compass-worktrees/2026-09-23-publish-codex/data/newsletter_workspace/selection_coverage_receipt_2026-09-23.json",
+      "sha256": "64f2f8d16cb72e7f90107b461bb85a34a102d4f42e95d06bd2f2ced1c5ecabf5",
+      "stored_name": "004-64f2f8d16cb72e7f-selection_coverage_receipt_2026-09-23.json"
+    }
+  ],
+  "started_at": "2026-09-23T23:28:50.785722+00:00",
+  "status": "completed",
+  "timeout_scope": "invocation_including_retries_and_cleanup",
+  "timeout_seconds": 600,
+  "tools_enabled": false,
+  "verdict": {
+    "findings": [
+      {
+        "evidence": "Source: selection_coverage_wednesday_2026-09-23.json candidate protocol:nip86-pr2477 summary (\u201cThe proposal adds clear and list methods\u2026\u201d) uses the same \u201cproposal\u201d wording the ledger reserves for unmerged items (protocol:nip69-pr2476, protocol:nipa3-pr2475, protocol:bud16-pr105, protocol:nwc13-pr7), while merged items are labeled \u201cmerged\u201d (protocol:nip02-pr2472, protocol:marmot-pr425, protocol:marmot-pr423). Draft \u00a7 Protocol and Spec Work states \u201cPR #2477, merged September 23\u201d. Those two finalized artifacts (ledger final:true, draft SHA 7e820ad9\u2026) disagree on milestone state.",
+        "recommendation": "Reconcile PR #2477 to one state. If unmerged, change the draft to \u201cproposes\u201d like the other open spec items and keep evidence_maturity at 1. If merged inside the window, rewrite the ledger summary to \u201cmerged\u201d and cite the merge evidence.",
+        "severity": "major",
+        "title": "protocol:nip86-pr2477 \u2014 draft asserts a Sept 23 merge the ledger still treats as a proposal"
+      },
+      {
+        "evidence": "Source: selected item release:pakstr-0.21.0-0.24.0 summary (\u201cThe 0.24.0 icon-only change is not presented as the milestone\u201d) and triage line 17 (0.24.0 \u201conly adds Zapstore icon publication\u201d). Draft heading is \u201cpakstr 0.24.0 expands its Android Nostr runtime\u201d, the only draft_sources URL is https://git.nostrdev.com/stuff/pakstr/releases/tag/v0.24.0, and the body still attributes bunker pairing, NIP-98 proxying, and NIP-55 signing to \u201cVersions 0.21.0 through 0.24.0\u201d under that 0.24.0 link.",
+        "recommendation": "Retitle to the 0.21.0\u20130.24.0 series, keep 0.24.0 as the icon-only closer, and point draft_sources at v0.21.0 (or the first tag that introduced the bunker/NIP-98/NIP-55 work), not v0.24.0 alone.",
+        "severity": "major",
+        "title": "release:pakstr-0.21.0-0.24.0 \u2014 0.24.0 heading presents an icon-only tag as the runtime expansion"
+      },
+      {
+        "evidence": "Source: selected item zapstore:com.xmarcade.app and triage Wednesday Zapstore delta note only the primal event https://primal.net/e/dec0edda9ff464b4b7598032318cb48e17cf496e29d05031d1f1629409039a4c for \u201cmini-app post consent \u2026 bound to one run, request, app, account, group, and channel, with expiry and replay protection.\u201d Draft Tagged Releases \u00a7 XM Arcade 1.1.3 then adds \u201cThe update also persists trusted group-key epoch state across restart,\u201d a distinct Nostr-facing effect that does not appear in those notes.",
+        "recommendation": "Delete the group-key epoch sentence, or add primary evidence from the signed 1.1.3 notes that actually states that persistence behavior before keeping the claim.",
+        "severity": "major",
+        "title": "zapstore:com.xmarcade.app \u2014 draft adds a group-key claim outside the signed-app notes"
+      },
+      {
+        "evidence": "Source: selected item zapstore:social.cloudfodder.zzub / triage W-line for Zzub 0.0.15 (primal event 70c5efee\u2026) support only \u201cmobile project boards, review decisions, source browsing, and pull-request diffs.\u201d Draft \u00a7 Zzub 0.0.15 adds status columns, sorting/filtering, threaded comments, and named assignees, which are not in those notes.",
+        "recommendation": "Keep the draft inside the signed 0.0.15 note: boards, review decisions, source browsing, and PR diffs. Drop or quote any extra board UI only if it is in that event.",
+        "severity": "minor",
+        "title": "zapstore:social.cloudfodder.zzub \u2014 board-detail prose exceeds snapshot-visible signed notes"
+      }
+    ],
+    "summary": "Cold Stage 4 review of Compass #41 against the Wednesday ledger (8cfd7dbd\u2026; 63 selected / 208 candidates; window 2026-09-14T00:00:00Z\u20132026-09-23T20:31:30Z), assembled draft (7e820ad9\u2026), triage, and coverage receipt. Checked the four hard gates, the 8/10 no-zero / no-cap rule, skip-vs-qualify decisions, tag-to-prose attribution, and signed-app claim bounds. Limits: no external refetch of GitHub, Zapstore, or PR pages; merge timestamps and release-note text were judged only from snapshot-internal ledger summaries, triage notes, and draft prose. Blocking/major defects: NIP-86 merge status is internally contradictory; pakstr 0.24.0 is presented as the runtime milestone despite the ledger\u2019s icon-only constraint; XM Arcade draft adds a group-key claim absent from the signed-app notes.",
+    "verdict": "FAIL"
+  }
+}

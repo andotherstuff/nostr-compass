@@ -1,0 +1,295 @@
+{
+  "source_generated_at": "2026-09-23T23:45:54.011183+00:00",
+  "period": {
+    "start": "2026-09-23",
+    "end": "2026-09-23T23:44:00+00:00",
+    "days": 0.13368055555555555
+  },
+  "merged_prs": [
+    {
+      "project": "Amethyst",
+      "number": 4189,
+      "title": "fix: address the audit of the Render/Display split — desktop uses the shared dialogs, no blank group messages",
+      "url": "https://github.com/vitorpamplona/amethyst/pull/4189",
+      "merged_at": "2026-09-23T22:42:06Z"
+    },
+    {
+      "project": "Amethyst",
+      "number": 4185,
+      "title": "refactor: Render/Display split, batches 1–3 — shared displays for AccountViewModel-bound composables",
+      "url": "https://github.com/vitorpamplona/amethyst/pull/4185",
+      "merged_at": "2026-09-23T22:04:54Z"
+    },
+    {
+      "project": "Amethyst",
+      "number": 4188,
+      "title": "feat(marmot): optional leaf lifetime on createKeyPackage",
+      "url": "https://github.com/vitorpamplona/amethyst/pull/4188",
+      "merged_at": "2026-09-23T21:13:18Z"
+    },
+    {
+      "project": "Amethyst",
+      "number": 4187,
+      "title": "feat(marmot): caller-chosen group_id and optional required_capabilities",
+      "url": "https://github.com/vitorpamplona/amethyst/pull/4187",
+      "merged_at": "2026-09-23T21:13:02Z"
+    },
+    {
+      "project": "Amethyst",
+      "number": 4184,
+      "title": "feat(marmot): send and return authenticated_data on application messages",
+      "url": "https://github.com/vitorpamplona/amethyst/pull/4184",
+      "merged_at": "2026-09-23T21:12:49Z"
+    },
+    {
+      "project": "Amethyst",
+      "number": 4183,
+      "title": "feat(marmot): Ed25519.keyPairFromSeed",
+      "url": "https://github.com/vitorpamplona/amethyst/pull/4183",
+      "merged_at": "2026-09-23T21:12:34Z"
+    },
+    {
+      "project": "Amethyst",
+      "number": 4182,
+      "title": "fix(marmot): accept extensions every member supports in GCE proposals",
+      "url": "https://github.com/vitorpamplona/amethyst/pull/4182",
+      "merged_at": "2026-09-23T21:12:17Z"
+    },
+    {
+      "project": "Amethyst",
+      "number": 4186,
+      "title": "Implement DECK-0003 (SNO) reader, rasterizer, and Cyberspace bag opening",
+      "url": "https://github.com/vitorpamplona/amethyst/pull/4186",
+      "merged_at": "2026-09-23T21:00:33Z"
+    },
+    {
+      "project": "Nostter",
+      "number": 2584,
+      "title": "Remove the Author followees compatibility projection",
+      "url": "https://github.com/SnowCait/nostter/pull/2584",
+      "merged_at": "2026-09-23T23:31:12Z"
+    },
+    {
+      "project": "Nostter",
+      "number": 2583,
+      "title": "Migrate application callers to auth followees",
+      "url": "https://github.com/SnowCait/nostter/pull/2583",
+      "merged_at": "2026-09-23T23:14:23Z"
+    },
+    {
+      "project": "Nostter",
+      "number": 2582,
+      "title": "Remove the Author pubkey compatibility projection",
+      "url": "https://github.com/SnowCait/nostter/pull/2582",
+      "merged_at": "2026-09-23T23:04:01Z"
+    },
+    {
+      "project": "Nostter",
+      "number": 2581,
+      "title": "Migrate Svelte callers to auth pubkey",
+      "url": "https://github.com/SnowCait/nostter/pull/2581",
+      "merged_at": "2026-09-23T22:46:41Z"
+    },
+    {
+      "project": "Nostter",
+      "number": 2580,
+      "title": "Migrate application callers to auth pubkey",
+      "url": "https://github.com/SnowCait/nostter/pull/2580",
+      "merged_at": "2026-09-23T22:29:40Z"
+    },
+    {
+      "project": "Nostter",
+      "number": 2579,
+      "title": "Remove following pubkeys store projection",
+      "url": "https://github.com/SnowCait/nostter/pull/2579",
+      "merged_at": "2026-09-23T22:07:08Z"
+    },
+    {
+      "project": "Nostter",
+      "number": 2578,
+      "title": "Remove unused rom projection",
+      "url": "https://github.com/SnowCait/nostter/pull/2578",
+      "merged_at": "2026-09-23T21:58:53Z"
+    },
+    {
+      "project": "Nostter",
+      "number": 2577,
+      "title": "Remove npub-specific display restrictions",
+      "url": "https://github.com/SnowCait/nostter/pull/2577",
+      "merged_at": "2026-09-23T21:48:29Z"
+    },
+    {
+      "project": "Nostter",
+      "number": 2576,
+      "title": "Gate remote signer settings on NIP-44 capability",
+      "url": "https://github.com/SnowCait/nostter/pull/2576",
+      "merged_at": "2026-09-23T21:39:30Z"
+    },
+    {
+      "project": "Nostter",
+      "number": 2575,
+      "title": "Gate legacy bookmark actions on signer availability",
+      "url": "https://github.com/SnowCait/nostter/pull/2575",
+      "merged_at": "2026-09-23T21:24:40Z"
+    },
+    {
+      "project": "Nostter",
+      "number": 2574,
+      "title": "Gate private bookmark reads on decryption capability",
+      "url": "https://github.com/SnowCait/nostter/pull/2574",
+      "merged_at": "2026-09-23T21:16:45Z"
+    },
+    {
+      "project": "Nostter",
+      "number": 2573,
+      "title": "Use signer availability for remaining write actions",
+      "url": "https://github.com/SnowCait/nostter/pull/2573",
+      "merged_at": "2026-09-23T21:07:46Z"
+    },
+    {
+      "project": "Nostter",
+      "number": 2572,
+      "title": "Separate profile actions by signing capability",
+      "url": "https://github.com/SnowCait/nostter/pull/2572",
+      "merged_at": "2026-09-23T20:56:01Z"
+    },
+    {
+      "project": "Nostter",
+      "number": 2571,
+      "title": "Use signer availability for write controls",
+      "url": "https://github.com/SnowCait/nostter/pull/2571",
+      "merged_at": "2026-09-23T20:46:53Z"
+    },
+    {
+      "project": "Nostter",
+      "number": 2570,
+      "title": "Use signer availability in the action menu",
+      "url": "https://github.com/SnowCait/nostter/pull/2570",
+      "merged_at": "2026-09-23T20:38:14Z"
+    },
+    {
+      "project": "Buzz",
+      "number": 7844,
+      "title": "feat(agents): humanize uncurated Databricks model ids with a label grammar",
+      "url": "https://github.com/block/buzz/pull/7844",
+      "merged_at": "2026-09-23T21:12:03Z"
+    },
+    {
+      "project": "diVine",
+      "number": 9413,
+      "title": "feat(supporters): show membership and optional profile badges",
+      "url": "https://github.com/divinevideo/divine-mobile/pull/9413",
+      "merged_at": "2026-09-23T23:01:48Z"
+    },
+    {
+      "project": "Mostro",
+      "number": 976,
+      "title": "docs: spec a quality bar for pull requests",
+      "url": "https://github.com/MostroP2P/mostro/pull/976",
+      "merged_at": "2026-09-23T21:11:04Z"
+    },
+    {
+      "project": "Pensieve",
+      "number": 50,
+      "title": "Build bounded archive-confirmed reconciliation inventory",
+      "url": "https://github.com/andotherstuff/pensieve/pull/50",
+      "merged_at": "2026-09-23T20:53:54Z"
+    },
+    {
+      "project": "Pensieve",
+      "number": 49,
+      "title": "Seal the archive independently of optional Parquet publication",
+      "url": "https://github.com/andotherstuff/pensieve/pull/49",
+      "merged_at": "2026-09-23T20:44:01Z"
+    },
+    {
+      "project": "Pensieve",
+      "number": 48,
+      "title": "Connect isolated reconciliation receipts to durable archive completion",
+      "url": "https://github.com/andotherstuff/pensieve/pull/48",
+      "merged_at": "2026-09-23T20:37:14Z"
+    },
+    {
+      "project": "fips2go",
+      "number": 52,
+      "title": "Release 0.7.0",
+      "url": "https://github.com/fr34aky/fips2go/pull/52",
+      "merged_at": "2026-09-23T22:36:46Z"
+    },
+    {
+      "project": "fips2go",
+      "number": 51,
+      "title": "Discover peers via Nostr: a Settings toggle for fips's open policy, capped (fips pin → ae22165)",
+      "url": "https://github.com/fr34aky/fips2go/pull/51",
+      "merged_at": "2026-09-23T22:22:45Z"
+    },
+    {
+      "project": "fips2go",
+      "number": 50,
+      "title": "Three links into the mesh: fallback bootstrap peers, via_nostr on every peer",
+      "url": "https://github.com/fr34aky/fips2go/pull/50",
+      "merged_at": "2026-09-23T21:05:04Z"
+    },
+    {
+      "project": "fips2go",
+      "number": 49,
+      "title": "Release 0.6.1",
+      "url": "https://github.com/fr34aky/fips2go/pull/49",
+      "merged_at": "2026-09-23T20:34:36Z"
+    },
+    {
+      "project": "Angor",
+      "number": 974,
+      "title": "Add indexer retry/backoff + concurrency cap; ease SendFundsTest load",
+      "url": "https://github.com/block-core/angor/pull/974",
+      "merged_at": "2026-09-23T23:39:34Z"
+    },
+    {
+      "project": "Angor",
+      "number": 973,
+      "title": "Fix unguarded /outspends response parsing in MempoolSpaceIndexerApi",
+      "url": "https://github.com/block-core/angor/pull/973",
+      "merged_at": "2026-09-23T22:27:26Z"
+    },
+    {
+      "project": "Marmot Protocol (mdk)",
+      "number": 2008,
+      "title": "Add explicit fenced audit OTLP runtime attempt",
+      "url": "https://github.com/marmot-protocol/mdk/pull/2008",
+      "merged_at": "2026-09-23T22:12:12Z"
+    },
+    {
+      "project": "Heterodyne",
+      "number": 33,
+      "title": "Add optional token custody checker and guidance",
+      "url": "https://github.com/HeterodyneNetwork/HeterodyneProtocol/pull/33",
+      "merged_at": "2026-09-23T21:41:39Z"
+    }
+  ],
+  "releases": [
+    {
+      "name": "v0.7.0",
+      "tag": "v0.7.0",
+      "url": "https://github.com/fr34aky/fips2go/releases/tag/v0.7.0",
+      "published_at": "2026-09-23T22:37:03Z"
+    },
+    {
+      "name": "v0.6.1",
+      "tag": "v0.6.1",
+      "url": "https://github.com/fr34aky/fips2go/releases/tag/v0.6.1",
+      "published_at": "2026-09-23T20:34:57Z"
+    }
+  ],
+  "zapstore_releases": [
+    {
+      "app_id": "social.cloudfodder.zzub",
+      "version": "0.0.16",
+      "release_id": "d9ad994bfadc1152b4c77a4fd3eb6be1746eca9d2626008d341bf31d06988872",
+      "release_created_at_iso": "2026-09-23T21:10:28Z",
+      "url": "https://primal.net/e/d9ad994bfadc1152b4c77a4fd3eb6be1746eca9d2626008d341bf31d06988872"
+    }
+  ],
+  "zapstore_artifact_sha256": "840bf8a755e1840c90e7b18358e062eca0623717d1f6194e7d7c3dea7e43d729",
+  "source_artifact_sha256": "b5ed87d73deb5e6da13f71e5c96e921cd33600555a1c142e1a078433d7206f0f",
+  "source_pass_id": "delta-20260923T2344Z"
+}

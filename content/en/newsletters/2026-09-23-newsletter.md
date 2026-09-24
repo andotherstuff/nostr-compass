@@ -2,28 +2,28 @@
 title: "Nostr Compass #41"
 date: 2026-09-23
 publishDate: 2026-09-23
-draft: true
+draft: false
 type: newsletters
-description: "Nostr Compass #41 covers readable FIPS mesh names, remote LUKS unlock over FIPS, MintRadar, Grain's relay release candidate, Marmot Protocol 0.10.4, White Noise Android's encrypted-chat release, new web-of-trust tools, napplet.soy, RelayKit, Threshold Sessions, current protocol work, and deep dives into custom emoji and video events."
+description: "Nostr Compass #41 covers readable FIPS mesh names, remote opening of encrypted roots over FIPS, MintRadar, Grain's relay release candidate, Marmot Protocol 0.10.4, White Noise Android's encrypted-chat release, new web-of-trust tools, napplet.soy, RelayKit, Threshold Sessions, current protocol work, and deep dives into custom emoji and video events."
 ---
 
 Welcome back to [Nostr Compass](https://nostrcompass.org), your weekly guide to Nostr.
 
-**This week:** [fips2go](#fips2go-060-gives-mesh-nodes-readable-names) gives FIPS mesh nodes readable local names, [fips-initramfs](#fips-initramfs-brings-remote-luks-unlock-into-early-boot) brings remote LUKS unlock into early boot, and [MintRadar](#mintradar-makes-cashu-mints-easier-to-compare) makes Cashu mints easier to compare. [Grain 0.8.0-rc4](https://github.com/0ceanSlim/grain/releases/tag/v0.8.0-rc4) turns relay health into an operator dashboard, while [Marmot Protocol's MDK](#marmot-protocol-0104-makes-local-sends-durable) makes local sends and attachment acquisition durable. [White Noise Android](#white-noise-android-2026921-improves-encrypted-chat-reliability-and-sharing) improves private chat delivery, voice tools, and profile sharing. New projects include [napplet.soy](#nappletsoy-publishes-small-sandboxed-nostr-programs), [RelayKit](#relaykit-installs-a-self-hosted-nostr-stack), and [Threshold Sessions](#threshold-sessions-turn-coding-transcripts-into-private-training-data). Merged work adds [nostream relay health events](#nostream-publishes-relay-health-events), [Zap Cooking image descriptions](#zap-cooking-publishes-image-descriptions-and-blocks-secret-key-searches), and [Conduit Blossom uploads](#conduit-uploads-product-images-through-blossom). Protocol work covers petnames, relay administration, payment-address proofs, Blossom directories, encrypted group moderation, and Nostr Wallet Connect budgets. The deep dives explain [NIP-30 custom emoji](#nip-30-custom-emoji) and [NIP-71 video events](#nip-71-video-events).
+**This week:** [fips2go](#fips2go-070-keeps-the-mesh-connected-through-bootstrap-failures) adds fallback mesh links and opt-in Nostr peer discovery, [fips-initramfs's September 6 catch-up](#fips-initramfs-opens-encrypted-roots-over-fips-before-boot) explains remote opening of encrypted roots, and [MintRadar](#mintradar-makes-cashu-mints-easier-to-compare) makes Cashu mints easier to compare. [Grain 0.8.0-rc4](https://github.com/0ceanSlim/grain/releases/tag/v0.8.0-rc4) turns relay health into an operator dashboard, while [Marmot Protocol's MDK](#marmot-protocol-0104-makes-local-sends-durable) makes local sends and attachment acquisition durable. [White Noise Android](#white-noise-android-2026921-improves-encrypted-chat-reliability-and-sharing) improves private chat delivery, voice tools, and profile sharing. Project spotlights include [napplet.soy](#nappletsoy-publishes-small-sandboxed-nostr-programs), [RelayKit](#relaykit-installs-a-self-hosted-nostr-stack), and [Threshold Sessions](#threshold-sessions-turn-coding-transcripts-into-private-training-data). Merged work closes [0xchat security gaps](#0xchat-merges-fixes-for-signing-message-authentication-and-redirect-flaws) and [nos2x-fox PIN exposure](#nos2x-fox-closes-a-pin-exposure-path), and adds [nostream relay health events](#nostream-publishes-relay-health-events), [Zap Cooking image descriptions](#zap-cooking-publishes-image-descriptions-and-blocks-secret-key-searches), and [Conduit Blossom uploads](#conduit-uploads-product-images-through-blossom). Protocol work covers petnames, relay administration, payment-address proofs, Blossom directories, encrypted group moderation, and Nostr Wallet Connect budgets. The deep dives explain [NIP-30 custom emoji](#nip-30-custom-emoji) and [NIP-71 video events](#nip-71-video-events).
 
 ## Top Stories
 
-### fips2go 0.6.0 gives mesh nodes readable names
+### fips2go 0.7.0 keeps the mesh connected through bootstrap failures
 
-[fips2go](https://github.com/fr34aky/fips2go) is an Android client that lets selected applications reach peers and services over the FIPS encrypted mesh. [Version 0.6.0](https://github.com/fr34aky/fips2go/releases/tag/v0.6.0) adds device-local mesh names, so a user can map a long node key to a name such as `home` and connect through `home.fips` anywhere a hostname is accepted.
+[fips2go](https://github.com/fr34aky/fips2go) is an Android client that lets selected applications reach peers and services over the FIPS encrypted mesh. [Version 0.6.0](https://github.com/fr34aky/fips2go/releases/tag/v0.6.0) added device-local mesh names such as `home.fips`. The subsequent [0.6.1 release](https://github.com/fr34aky/fips2go/releases/tag/v0.6.1) fixes bootstrap address selection on IPv6-only carriers using DNS64/NAT64; its maintainer has not tested that fix on a real DNS64 network.
 
-The [mesh-name resolver](https://github.com/fr34aky/fips2go/releases/tag/v0.6.0) applies additions, removals, and changed mappings to the next lookup without reconnecting the mesh. Names remain local to the phone and outside identity backups, which makes the feature an address book instead of a global naming system; the release also documents that only its ARM64 build received physical-device verification.
+The new [0.7.0 release](https://github.com/fr34aky/fips2go/releases/tag/v0.7.0) connects to three regional bootstrap peers by default instead of relying on one. It can also retry a configured peer at Nostr-advertised endpoints when its static address changes. Optional open discovery adds at most three recent Nostr-announced peers, but remains off by default: the maintainer reports that many public test-mesh announcements no longer answer. The ARM64 build was installed over the previous version and checked on a physical Pixel; the other device architectures have narrower verification.
 
-### fips-initramfs brings remote LUKS unlock into early boot
+### fips-initramfs opens encrypted roots over FIPS before boot
 
-[fips-initramfs](https://github.com/jmcorgan/fips-initramfs) is a Linux initramfs package that starts a FIPS mesh node before normal boot so an operator can remotely unlock a LUKS-encrypted root through its npub-addressed node. The user-submitted [0.1.0 release](https://github.com/jmcorgan/fips-initramfs/releases/tag/v0.1.0), published September 6, packages the mesh client, SSH access, and unlock scripts for systems that need unattended or remote encrypted-root startup.
+[fips-initramfs](https://github.com/jmcorgan/fips-initramfs) is a Linux initramfs package that starts a FIPS mesh node before normal boot so an operator can remotely open a LUKS-encrypted root through its npub-addressed node. The user-submitted [0.1.0 release](https://github.com/jmcorgan/fips-initramfs/releases/tag/v0.1.0), published September 6, packages the mesh client, SSH access, and passphrase-entry scripts for systems that need unattended or remote encrypted-root startup.
 
-The [first release](https://github.com/jmcorgan/fips-initramfs/releases/tag/v0.1.0) documents the security tradeoffs instead of hiding them: the initramfs contains the node key, the passphrase crosses SSH over FIPS, and local console unlock remains available. This is a catch-up item from a prior user submission rather than a release from the current collection window.
+The [first release](https://github.com/jmcorgan/fips-initramfs/releases/tag/v0.1.0) documents the security tradeoffs instead of hiding them: the initramfs contains the node key, the passphrase crosses SSH over FIPS, and local console passphrase entry remains available. This catch-up item came from a prior user submission; its September 6 release falls outside the current collection window.
 
 ### Grain 0.8.0-rc4 turns relay health into an operator dashboard
 
@@ -61,11 +61,13 @@ The [graph 0.3.0 storage migration](https://github.com/nostr-wot/nostr-wot-sdk/r
 
 The [project source](https://github.com/zeSchlausKwab/napplet-soy) keeps network and storage access behind declared capabilities instead of giving each napplet unrestricted browser authority. Its project identity remains unresolved because the canonical site and repository do not bind a project or maintainer npub, so no identity claim is attached here.
 
+The [soyLI 0.20.0 CLI release](https://github.com/zeSchlausKwab/napplet-soy/releases/tag/soyli-v0.20.0) adds bounded NIP-78 helpers for sharing reusable public tracks, puzzles, drawings, and presets, plus structured data on high scores. Writes are scoped to a napplet and player identity with consent and revision checks; linked large assets use Blossom. Website and backend features require a separate deployment, so the CLI tag alone does not prove those public features are live on the site.
+
 ### RelayKit installs a self-hosted Nostr stack
 
-[RelayKit](https://relayk.it) is a one-command installer for a self-hosted Nostr stack that can include relays, Blossom media, nsites, Git services, and notifications. The current project is materially broader than the browser relay-discovery client covered in April, and its [current source repository](https://github.com/samthomson/relaykit) documents the new operator-focused deployment surface.
+[RelayKit](https://relayk.it) is a one-command installer for a self-hosted Nostr stack that can include relays, Blossom media, nsites, Git services, and notifications. RelayKit now packages a broader stack than the browser relay-discovery client covered in April; its [current source repository](https://github.com/samthomson/relaykit) documents the new operator-focused deployment surface.
 
-The [installation site](https://relayk.it) presents the services as one coordinated stack instead of requiring operators to assemble each component independently. This coverage therefore treats RelayKit as a changed project direction, not as its first appearance.
+Its [installation site](https://relayk.it) presents the services as one coordinated stack instead of requiring operators to assemble each component independently. This coverage therefore treats RelayKit as a changed project direction, not as its first appearance.
 
 ### Threshold Sessions turns coding transcripts into private training data
 
@@ -91,11 +93,11 @@ The [release](https://github.com/nogringo/nostr-mail-client/releases/tag/v0.16.0
 
 The [migration path](https://github.com/greenart7c3/Amber/releases/tag/v6.6.5) can still restore older identity-encrypted backups until the next publish replaces them, and the release fixes a restore prompt that disappeared after logout when backup publishing was disabled. Users receive both a tighter permission boundary and a recovery path for existing backups.
 
-### Amethyst 1.16.0 expands video, calendars, and geocaching
+### Amethyst 1.16.0 hardens Blossom signing and adds BOLT12 offers
 
-[Amethyst](https://github.com/vitorpamplona/amethyst) is a feature-rich Android Nostr client with social, media, wallet, and signer integrations. NIP-71 standardizes video events, NIP-51 defines user-curated lists, NIP-CC defines geocache records, and NIP-52 defines calendar events and responses. [Version 1.16.0](https://github.com/vitorpamplona/amethyst/releases/tag/v1.16.0) adds interoperability across those four event families and attaches relay hints to calendar responses.
+[Amethyst](https://github.com/vitorpamplona/amethyst) is an Android Nostr client with media, wallet, and signer integrations. [Version 1.16.0](https://github.com/vitorpamplona/amethyst/releases/tag/v1.16.0) fixes fast Blossom read authorization so concurrent media requests share one in-flight signer operation and recheck the token cache before asking for another signature. The tagged release also restores standard padded Base64 for Blossom auth tokens.
 
-The [release series](https://github.com/vitorpamplona/amethyst/releases/tag/v1.16.0) also adds BOLT12 offers with BOLT11 fallback, improves notification replies and deep links, and keeps QR key material off screen and out of logs. That mix broadens the event types users can act on while tightening sensitive scanner behavior.
+[Version 1.16.0](https://github.com/vitorpamplona/amethyst/releases/tag/v1.16.0) also supports BOLT12 offers in profile payments and the zap picker, with BOLT11 fallback when an offer is refused. Users gain an offer-based payment path while existing invoice-based payments remain available.
 
 ### Alby Extension 3.15.0 hardens website-initiated requests
 
@@ -109,11 +111,13 @@ The [security release](https://github.com/getAlby/lightning-browser-extension/re
 
 The [2.7.1 package](https://github.com/lawalletio/lawallet-nwc/releases/tag/v2.7.1) also aligns StartOS storage and backup layout between sideload and community packages. Operators upgrading the first 2.7.0 sideload need the corrected package before relying on the database volume transition.
 
-### NoorNote 1.6.1 adds encrypted calendars
+### NoorNote 1.6.0–1.7.0 adds calendars and booking
 
 [NoorNote](https://github.com/77elements/noornote) is a Nostr notes application with optional productivity modules and local reminders. [Version 1.6.0](https://github.com/77elements/noornote/releases/tag/v1.6.0) adds public and encrypted calendar events, month, week, and list views, Android reminders, and interactive timeline cards for shared events.
 
-[Version 1.6.1](https://github.com/77elements/noornote/releases/tag/v1.6.1) reorganizes addons into a per-account dashboard and fixes URLs containing `naddr` or `npub` identifiers being misread as cards or mentions. The release turns calendar data into a usable Nostr workflow while repairing identifier parsing in ordinary notes.
+[Version 1.6.1](https://github.com/77elements/noornote/releases/tag/v1.6.1) reorganizes addons into a per-account dashboard and fixes URLs containing `naddr` or `npub` identifiers being misread as cards or mentions. These fixes make addon controls easier to find and keep Nostr identifiers intact inside ordinary links.
+
+[Version 1.7.0](https://github.com/77elements/noornote/releases/tag/v1.7.0) lets an account share available appointment slots and receive bookings and cancellations by direct message. It also imports and exports calendar data as `.ics`, preserves the web NWC wallet connection after IndexedDB eviction, and avoids false mentions in links containing npubs.
 
 ### Citrine 3.2.0 bounds relay-aggregator memory
 
@@ -121,23 +125,25 @@ The [2.7.1 package](https://github.com/lawalletio/lawallet-nwc/releases/tag/v2.7
 
 The [release](https://github.com/greenart7c3/Citrine/releases/tag/v3.2.0) also exposes out-of-memory failures in the in-app log and lets operators hide the event graph. A phone acting as both relay and aggregator now fails more visibly and holds a defined memory boundary.
 
-### Wisp 1.2.5 routes threads through inbox relays
+### Wisp 1.2.4 routes threads through inbox relays
 
 [Wisp](https://github.com/barrydeen/wisp) is a privacy-oriented Nostr client with built-in Cashu and Lightning wallet support. NIP-22 defines generic kind `1111` comments that can reply to many kinds of Nostr content. [Version 1.2.4](https://github.com/barrydeen/wisp/releases/tag/v1.2.4) sends thread and notification reads only to inbox relays, treats those comments as replies, and lets users withdraw their full wallet balance on chain.
 
-[Version 1.2.5](https://github.com/barrydeen/wisp/releases/tag/v1.2.5) packages the follow-up release after those changes. Inbox-only routing reduces unnecessary relay exposure while the comment handling keeps NIP-22 conversations visible in threads, counts, and notifications.
+[Version 1.2.4](https://github.com/barrydeen/wisp/releases/tag/v1.2.4) limits thread reads to inbox relays, reducing unnecessary relay exposure. Its NIP-22 handling keeps comments visible in threads, counts, and notifications.
 
-### nostr-wot-extension 0.8.0 restores opt-in graph queries
+### nostr-wot-extension 0.8.3 adds scoped NWC connections
 
 [nostr-wot-extension](https://github.com/nostr-wot/nostr-wot-extension) is a browser signer and identity extension with wallet payments and local web-of-trust analysis. [Version 0.8.0](https://github.com/nostr-wot/nostr-wot-extension/releases/tag/v0.8.0) restores its experimental web-of-trust API as a menu-only opt-in with local, remote, and hybrid query modes, scalable graph synchronization, mute-aware scoring, and per-account storage controls.
 
 The [release](https://github.com/nostr-wot/nostr-wot-extension/releases/tag/v0.8.0) also requires confirmation before replacing a known follow list with zero or one contact, even when a saved permission or remote signer is present. That guard uses verified relay, signed-event, and synchronized graph history to make destructive follow-list changes harder to approve silently.
 
-### pakstr 0.24.0 expands its Android Nostr runtime
+[Version 0.8.3](https://github.com/nostr-wot/nostr-wot-extension/releases/tag/v0.8.3) creates separate Nostr Wallet Connect connections for applications using its LNbits wallet. Each can have a name, daily spending limit, and expiry, with local secret storage, budget visibility, and revocation. The project's live test covered connection creation, revocation, and a signed `get_info` exchange, not a real payment; browser-store publication is separate from the source release.
 
-[pakstr](https://git.nostrdev.com/stuff/pakstr) is a packaging system and application shell for distributing web applications with native Nostr capabilities. NIP-46 defines remote-signer sessions, NIP-98 defines signed HTTP authentication, and NIP-55 lets Android applications request signatures from an external signer. [Versions 0.21.0 through 0.24.0](https://git.nostrdev.com/stuff/pakstr/releases/tag/v0.24.0) add production bunker pairing, proxied authenticated requests, external signing through a bunker, a persistent Android API endpoint, and Zapstore icons.
+### pakstr 0.22.0–0.24.0 adds Android signer handoff
 
-The [release sequence](https://git.nostrdev.com/stuff/pakstr/releases/tag/v0.24.0) also repairs invalid-relay cleanup and Amber pairing. NostrAppShell entries point to the same package series, so they are one implementation and are covered here once.
+[pakstr](https://git.nostrdev.com/stuff/pakstr) packages web applications with native Nostr capabilities. Last week's issue covered its 0.21.x packaging sequence. The new [0.22.0 release](https://git.nostrdev.com/stuff/pakstr/releases/tag/v0.22.0) adds NIP-55 signing through the NIP-46 bunker, letting an Android application hand signing requests to an external signer. [Version 0.23.0](https://git.nostrdev.com/stuff/pakstr/releases/tag/v0.23.0) then persists the runtime API address across restarts.
+
+[Version 0.24.0](https://git.nostrdev.com/stuff/pakstr/releases/tag/v0.24.0) publishes the Zapstore icon; that cosmetic change is not the signer milestone. NostrAppShell entries point to the same package series, so they are covered here once.
 
 ### Nail 0.2.2 makes mail attachments fail soft
 
@@ -151,11 +157,11 @@ The [application update](https://github.com/formstr-hq/nail/releases/tag/v0.2.2)
 
 The [release](https://github.com/MostroP2P/mostro-cli/releases/tag/v0.16.2) also adds an operator command for cancelling pending orders. Deployments should update client and coordinator expectations together because the old chat transport is no longer a fallback.
 
-### Dart NDK dev.5 adds signed app-update releases
+### Dart NDK dev.4–dev.5 adds signed app updates and hardens relay delivery
 
-[Dart NDK](https://github.com/relaystr/ndk) is a Dart client library for relay connections, signing, caching, wallet operations, and Nostr application state. NIP-82 standardizes signed application-release metadata and downloadable artifacts. [Version 0.10.0-dev.5](https://github.com/relaystr/ndk/releases/tag/v0.10.0-dev.5) adds those application-update events, while the preceding development release makes Cashu quote recovery resumable and lets a broadcast declare the identity to which it may be attributed.
+[Dart NDK](https://github.com/relaystr/ndk) is a Dart client library for relay connections, signing, caching, wallet operations, and Nostr application state. NIP-82 standardizes signed application-release metadata and downloadable artifacts. [Version 0.10.0-dev.4](https://github.com/relaystr/ndk/releases/tag/v0.10.0-dev.4) adds NIP-82 application-update support; [dev.5](https://github.com/relaystr/ndk/releases/tag/v0.10.0-dev.5) makes Cashu quote recovery resumable and lets a broadcast declare the identity to which it may be attributed.
 
-The [development series](https://github.com/relaystr/ndk/releases/tag/v0.10.0-dev.5) also avoids anonymous connections when a broadcast requires authentication and stops waking relays for deliveries parked on a missing identity. The prerelease label still signals migration risk for applications adopting the new broadcast and wallet behavior.
+Across [the dev.5 release](https://github.com/relaystr/ndk/releases/tag/v0.10.0-dev.5), the library avoids anonymous connections when a broadcast requires authentication and stops waking relays for deliveries parked on a missing identity. Applications adopting this prerelease should allow for migration work in their broadcast and wallet integrations.
 
 ### BitBlik 0.11.0 brings disputes into the app
 
@@ -163,7 +169,79 @@ The [development series](https://github.com/relaystr/ndk/releases/tag/v0.10.0-de
 
 The [release](https://github.com/bit-blik/bitblik/releases/tag/v0.11.0) also handles refunds after dispute rulings and preserves wallet state during Neko recovery. Traders can now remain inside the client for the dispute conversation instead of switching to a separate coordinator channel.
 
+### Scramble 0.7.2 changes MLS engines and offers two Android views
+
+[Scramble](https://github.com/DavidGershony/Scramble) is a Nostr-based encrypted group-chat application. Its [0.7.0 release](https://github.com/DavidGershony/Scramble/releases/tag/v0.7.0) replaces the former MLS engine with Dark Matter, restores encryption at rest for group state, and prevents Android cloud backup of the profile database. The migration has an important limit: groups created in 0.6.x do **not** appear after upgrading, although the account key, contacts, relays, and signer pairing remain.
+
+[Version 0.7.2](https://github.com/DavidGershony/Scramble/releases/tag/v0.7.2) ships Avalonia and native Android view layers with the same app ID and release certificate, so one can install over the other without clearing the new-engine account and chats. They cannot be installed side by side. The native view still lacks some device-management settings; the project's release notes say protocol interop is tested but do not claim a real-device group conversation test for the 0.7.0 migration.
+
+### Morganite 0.0.5 makes onion Blossom media seekable
+
+[Morganite](https://github.com/greenart7c3/Morganite) is an Android Blossom media cache for Nostr clients. [Version 0.0.5](https://github.com/greenart7c3/Morganite/releases/tag/v0.0.5) fetches blobs from Tor `.onion` Blossom servers with Tor-aware retries and honors HTTP Range requests on a cache miss. A player can seek into an uncached video while Morganite fills the full cache in the background instead of storing only disjoint requested slices.
+
+### Bitcredit 0.5.16 recovers stalled Nostr bill events
+
+[Bitcredit E-Bills](https://github.com/BitcreditProtocol/Bitcredit-Core) carries bill, company, and identity chains through Nostr events. [Version 0.5.16](https://github.com/BitcreditProtocol/Bitcredit-Core/releases/tag/v0.5.16) repairs event-signature serialization compatibility after its Nostr 0.45 dependency upgrade, exposes failed resend-queue entries for inspection and requeue, and resynchronizes missing chain metadata before retrying a block publication. Those changes target both upgraded-data compatibility and messages that would otherwise remain stuck.
+
+### fips-ts 0.0.43 protects concurrent FIPS sessions
+
+[fips-ts](https://github.com/mmalmi/fips-ts) supplies the shared TypeScript FIPS mesh runtime used by compatible clients. Its [runtime 0.0.43 release](https://github.com/mmalmi/fips-ts/releases/tag/runtime-v0.0.43) preserves an authenticated identity when concurrent setup or an aliased WebRTC transport hands a session over, while rejecting a different identity. It also prevents canceled negotiations and late callbacks from replacing a working connection. This is library-level connection reliability, separate from fips2go's client-side bootstrap and discovery changes.
+
+### Bookshelf 0.1.25 makes signed book reviews editable
+
+[Bookshelf](https://github.com/decent-newsroom/bookshelf-app) is a Nostr-connected Android reader with community book ratings and private highlights. [Version 0.1.25](https://github.com/decent-newsroom/bookshelf-app/releases/tag/v0.1.25) lets readers revise their signed rating and written review through a durable outbox. The app displays cached ratings immediately, refreshes them online, and replaces older revisions by the newest event for the same book and author.
+
+The [release diff](https://github.com/decent-newsroom/bookshelf-app/compare/v0.1.24...v0.1.25) includes the review editor, revision cache, relay synchronization, and tests. It also normalizes pasted `nostr:naddr` references before searching for a book's publication coordinates.
+
+### Cordn 0.5.0 queues encrypted messages offline
+
+[Cordn](https://github.com/Cordn-msg/cordn-web) is an encrypted Nostr group-chat client. [Version 0.5.0](https://github.com/Cordn-msg/cordn-web/releases/tag/v0.5.0) queues text sends in a durable offline outbox, makes failed entries terminal until a successful confirmation sweep, and resumes coordinator chats in order. It also checks a signer's NIP-44 capability before offering an encrypted action, surfacing unsupported signers instead of failing silently.
+
+### 21Meetup 1.6.6 restores multi-hop trust paths
+
+[21Meetup](https://github.com/louisthecat86/Einundzwanzig-Meetup-App) issues Nostr-backed attendance badges for in-person events. [Version 1.6.6](https://github.com/louisthecat86/Einundzwanzig-Meetup-App/releases/tag/v1.6.6) restores second- and third-degree trust paths by fetching contacts' meetup records in bounded stages. Failed badge publications can be retried, and a send counts as successful only after a relay acknowledges it. Multi-day events now count as one attendance badge instead of one per day.
+
+### TWENTY ONE Companion 1.13.0 explains public Nostr RSVPs
+
+[TWENTY ONE Companion](https://github.com/HolgerHatGarKeineNode/twenty-one-companion) combines Nostr rooms and articles with meetup listings. [Version 1.13.0](https://github.com/HolgerHatGarKeineNode/twenty-one-companion/releases/tag/v1.13.0) saves pinned rooms and articles to relays, showing a pin as local until a relay confirms it. Eligible meetup RSVPs are signed public Nostr events; the app warns that third-party relays may retain them even after a user declines. A contact-list preview now refuses to publish if the list changed after review.
+
+### Armada 0.61.0 adds media privacy and member controls
+
+[Armada](https://github.com/soapbox-pub/armada) is a Nostr-based encrypted community client. [Version 0.61.0](https://primal.net/e/122a06dbab02d207b3aa793b0fedd06fd59d36178a7b9ae5971cfc3b7f3eb6ce) adds an opt-in image proxy list so a sender's media host need not learn a reader's address. Staff can kick, ban, or unban a member from a profile card, and a private-channel key granted with a role now applies without a separate invite. The proxy is off by default; operators choose and rotate their own servers.
+
+### Ditto 2.40.0 brings Top 8 rankings to Nostr profiles
+
+[Ditto](https://gitlab.com/soapbox-pub/ditto) is a social client on Nostr. [Version 2.40.0](https://gitlab.com/soapbox-pub/ditto/-/releases/v2.40.0) lets a user rank eight favorite people on their profile. Reordering stays local until Save, then the ranked list appears on the profile and its update can appear as a card in followers' feeds. That turns a profile preference into a shared social-graph signal with an explicit publish step.
+
+### XM Arcade 1.1.3 binds mini-app approval to one run
+
+[XM Arcade](https://gitworkshop.dev/r/xm-arcade) runs small games and mini-apps within a Nostr group context. [Version 1.1.3](https://primal.net/e/dec0edda9ff464b4b7598032318cb48e17cf496e29d05031d1f1629409039a4c) binds a post approval to an opaque run token, the request, app, account, group, and channel. Expired or replayed approvals no longer authorize another mini-app run. The update also persists trusted group-key epoch state across restart.
+
+### Zzub 0.0.15–0.0.16 expands mobile project boards
+
+[Zzub](https://primal.net/e/70c5efeea2e9314329b8951346d83ad0688b74607a108e8bc820caae545196c2) is a Nostr-based project and code-review client. Its 0.0.15 release adds status columns, sorting and filtering, threaded comments, named assignees, and approve or request-changes actions to its phone boards. A built-in Git client opens source and files-changed diffs from a pull-request card, bringing the existing desktop review flow onto the phone.
+
+[Version 0.0.16](https://primal.net/e/d9ad994bfadc1152b4c77a4fd3eb6be1746eca9d2626008d341bf31d06988872) restores the full announced Projects list after the previous device-local scoping hid it. The release adds an @mention selector to card comments, shows mentions as chips, and gives the project screen Tasks and Reviews tabs spanning all its repositories while keeping per-repository boards available. It also adds repository and status filters and lifts the comment box above Android navigation.
+
+### Table Mesh 0.1.0 brings Nostr game discovery to offline board games
+
+[Table Mesh 0.1.0](https://primal.net/e/c5c5ad0eba413e18c10e3cd2be607e550ac818a8abaf97ccbf8fa242fbaff15f) is a first Android release for playing board games across nearby phones over Bluetooth and local Wi-Fi. It includes *Mensch ärgere Dich nicht* and solo bots. A Nostr kind-7529 catalog distributes additional sandboxed game modules through Blossom, with downloaded bytes checked against their announced hashes.
+
+The [app listing](https://zapstore.dev/apps/org.tablemesh.app) describes the Bluetooth mesh as tested in simulation and emulators, not yet at real multi-phone tables. The table session itself runs locally without an internet connection or account; Nostr does not carry its moves.
+
 ## In Development
+
+### 0xchat merges fixes for signing, message-authentication, and redirect flaws
+
+[0xchat's merged security PR](https://github.com/0xchat-app/0xchat-app-main/pull/92) addresses four audit findings in its Nostr and Cashu application code. It limits Cashu P2PK witness signing to keys actually authorized by a lock, rejects unsealed gift-wrap contents except MLS Welcome events, accepts infrastructure host-map configuration only from the trusted server key, and requires consent before an embedded web page can call NIP-07 signing or read relay settings.
+
+The [PR's test record](https://github.com/0xchat-app/0xchat-app-main/pull/92) reports static analysis and runtime checks for the gift-wrap path. This is source-level progress, not a claim that an updated app has been released or independently tested on a device.
+
+### nos2x-fox closes a PIN exposure path
+
+[nos2x-fox](https://github.com/diegogurpegui/nos2x-fox) is a Firefox extension that offers Nostr signing to websites. A [merged access-control fix](https://github.com/diegogurpegui/nos2x-fox/pull/69) stops a website from asking the extension background for the cached PIN that derives its private-key encryption key. The page bridge now forwards only allowed request types, and the background rejects privileged requests unless they originate from an extension page.
+
+A separate [merged injection change](https://github.com/diegogurpegui/nos2x-fox/pull/67) makes the NIP-07 `window.nostr` interface appear at document start and removes a web-accessible script URL that exposed a stable extension identifier. It raises the Firefox minimum to version 128. Both fixes are merged source work; a new extension-store release has not been verified.
 
 ### nostream publishes relay health events
 
@@ -187,7 +265,7 @@ The site's [search fix](https://github.com/zapcooking/frontend/pull/744) now ope
 
 [Divine Mobile](https://github.com/divinevideo/divine-mobile) is a short-video client that publishes and reads Nostr events. A [merged relay fix](https://github.com/divinevideo/divine-mobile/pull/9246) reconnects after an idle timeout or remote closure, including subscriptions that only receive data and never send another request to trigger recovery. That restores a path used by direct-message inboxes and moderation labels after a connection drops.
 
-A separate [profile-verification fix](https://github.com/divinevideo/divine-mobile/pull/9293) waits for all queried relays before concluding that a profile has no linked accounts. The previous early empty answer could hide a valid identity event from a slower relay, so this changes what users see on a first profile view rather than merely changing an internal timeout.
+A separate [profile-verification fix](https://github.com/divinevideo/divine-mobile/pull/9293) waits for all queried relays before concluding that a profile has no linked accounts. The previous early empty answer could hide a valid identity event from a slower relay, so users see valid identity events from slower relays on a first profile view.
 
 ### Conduit uploads product images through Blossom
 
@@ -213,19 +291,49 @@ The SDK also [repaired per-sender stream sequencing](https://github.com/ContextV
 
 This is the implementation counterpart to the [proposed NIP-69 clarification](https://github.com/nostr-protocol/nips/pull/2476) below. Older clients can ignore the additive tag, while clients that read it can avoid making a returned or repaired order look newly created.
 
+### Amethyst implements DECK-0003 objects and encrypted bag search
+
+[Amethyst's merged DECK-0003 work](https://github.com/vitorpamplona/amethyst/pull/4186) reads and renders Simple Nostr Objects, a JSON 3D-mesh format carried in Nostr events. It supports kind `11333` avatars, kind `3330` shards, and opening encrypted kind `33330` region bags from a location hint. CLI commands parse and verify objects or calculate the bounded search needed to open a bag. The PR reports 15 passing conformance sections against reference implementations.
+
+The [bag-search implementation](https://github.com/vitorpamplona/amethyst/pull/4186) is still a development milestone, not a device-verified release. Its card compiles and its state machine has unit tests, but it has not been exercised on a phone; the reachable real bags checked by the maintainer lack the hint needed to offer a search button. A synthetic bag is needed to exercise that user path.
+
+### Amethyst broadens MLS interoperability and repairs desktop group rendering
+
+[Amethyst's Quartz library](https://github.com/vitorpamplona/amethyst/pull/4187) now lets callers choose an MLS group ID and omit Marmot-only required capabilities when interoperating with other MLS stacks. Separate merged changes allow [extensions supported by every group member](https://github.com/vitorpamplona/amethyst/pull/4182), carry [authenticated application-message data](https://github.com/vitorpamplona/amethyst/pull/4184), and set an optional [key-package lifetime](https://github.com/vitorpamplona/amethyst/pull/4188). The Marmot defaults remain unchanged; these are shared-library capabilities, not a claim that every client UI exposes them.
+
+A later [desktop render fix](https://github.com/vitorpamplona/amethyst/pull/4189) uses shared dialogs and prevents blank group messages after the display-layer split. These merged PRs are development progress, not a tagged Amethyst release.
+
+### nostter gates signing and private reads on real capabilities
+
+Continuing the session-owned NIP-46 work above, [nostter's merged signer migration](https://github.com/SnowCait/nostter/pull/2570) checks for an actual signer before offering write actions instead of treating every logged-in session as writable. [Private bookmarks](https://github.com/SnowCait/nostter/pull/2574) now require NIP-04 or NIP-44 decryption capability, and [remote-signer settings](https://github.com/SnowCait/nostter/pull/2576) require NIP-44 support. A read-only or anonymous account can still use non-writing profile actions.
+
+The [npub display change](https://github.com/SnowCait/nostter/pull/2577) and subsequent authentication-state refactors continue that same migration. These are merged application changes, but no new tagged release is claimed here.
+
+### Pensieve makes archive reconciliation bounded and durable
+
+[Pensieve's archive receipt work](https://github.com/andotherstuff/pensieve/pull/48) waits for actual durable event markers before declaring a reconciliation attempt complete, retaining unresolved IDs across recovery. The [sealing change](https://github.com/andotherstuff/pensieve/pull/49) separates periodic archive durability from optional Parquet publication, and the [bounded inventory](https://github.com/andotherstuff/pensieve/pull/50) scans sealed segments with explicit limits and a persisted cursor.
+
+These are [merged library increments](https://github.com/andotherstuff/pensieve/pull/50), not an enabled relay repair worker: runtime scheduling, peer-authenticated IPC, deployment, and production canary remain separate gates.
+
+### MDK reduces repeated replay work for parked encrypted messages
+
+[MDK's merged replay fix](https://github.com/marmot-protocol/mdk/pull/2007) addresses work repeated after a publish confirmation, publish failure, or group join when messages remain parked because they cannot yet be decrypted. The previous path classified each row's lineage again and rewound group state for each row and retained anchor. The new deferred-sweep ingest path skips redundant classification and shares a group-scoped cache of historical contexts, invalidating it when canonical state changes.
+
+The [PR's regression tests](https://github.com/marmot-protocol/mdk/pull/2007) compare the one-row and eight-row parked-message cases. Its engine suite reports 681 passing tests and five skipped. This is merged library work after MDK 0.10.4, not part of that tagged release or a measured end-user latency claim.
+
 ## Protocol and Spec Work
 
 ### NIP-02 clarifies petnames in follow lists
 
 [NIP-02 (Follow List)](/en/topics/nip-02/) standardizes the kind `3` event that records whom an account follows and can attach a local petname to each followed key. The [merged petname clarification](https://github.com/nostr-protocol/nips/pull/2472) allows display-safe characters while preserving the field as a user's local label, not a globally verified name.
 
-### NIP-86 proposes clear and list methods for relay management
+### NIP-86 adds clear and list methods for relay management
 
-[NIP-86 (Relay Management API)](/en/topics/nip-86/) standardizes authenticated administrative calls for banning, allowing, inspecting, and configuring a relay. [PR #2477](https://github.com/nostr-protocol/nips/pull/2477) proposes methods for clearing pubkeys or events from both allow and ban lists and for listing roles, allowed events, and disallowed kinds, including behavior already present in the khatru relay framework and the go-nostr library.
+[NIP-86 (Relay Management API)](/en/topics/nip-86/) standardizes authenticated administrative calls for banning, allowing, inspecting, and configuring a relay. [PR #2477](https://github.com/nostr-protocol/nips/pull/2477), merged September 23, adds methods for clearing pubkeys or events from both allow and ban lists and for listing roles, allowed events, and disallowed kinds, including behavior already present in the khatru relay framework and the go-nostr library.
 
 ### NIP-69 proposes a stable creation time for trading orders
 
-[NIP-69 (Peer-to-Peer Trading)](/en/topics/nip-69/) standardizes addressable order events that let multiple trading applications share buy and sell liquidity. [PR #2476](https://github.com/nostr-protocol/nips/pull/2476) proposes an optional creation-time tag that stays fixed across status updates, so a returned or republished order does not look newly created merely because its event timestamp changed.
+[NIP-69 (Peer-to-Peer Trading)](/en/topics/nip-69/) standardizes addressable order events that let multiple trading applications share buy and sell liquidity. [PR #2476](https://github.com/nostr-protocol/nips/pull/2476) proposes an optional creation-time tag that stays fixed across status updates, so a returned or republished order retains its original age even when a newer event records a status change.
 
 ### NIP-A3 proposes proof of payment-address ownership
 
@@ -251,7 +359,7 @@ This is the implementation counterpart to the [proposed NIP-69 clarification](ht
 
 ### NIP-30: Custom Emoji
 
-[NIP-30 (Custom Emoji)](/en/topics/nip-30/) standardizes how a signed event maps readable `:shortcodes:` to image URLs, with an optional address that points to a reusable emoji set. The [specification](https://github.com/nostr-protocol/nips/blob/master/30.md) permits letters, numbers, hyphens, and underscores in a shortcode and applies the mapping to profiles, short text notes, comments, reactions, and live activities. NIP-51 defines public and private list formats, including the kind `30030` parameterized replaceable events that hold named emoji sets.
+[NIP-30 (Custom Emoji)](/en/topics/nip-30/) standardizes how a signed event maps readable `:shortcodes:` to image URLs, with an optional address that points to a reusable emoji set. The [specification](https://github.com/nostr-protocol/nips/blob/master/30.md) permits letters, numbers, hyphens, and underscore (`_`) characters in a shortcode and applies the mapping to profiles, short text notes, comments, reactions, and live activities. NIP-51 defines public and private list formats, including the kind `30030` parameterized replaceable events that hold named emoji sets.
 
 Clients should preserve the literal shortcode when an image fails to load, reject malformed mappings, and treat every image host as an external network request that can observe the viewer's address and timing. [Amethyst's Android implementation](https://github.com/vitorpamplona/amethyst/blob/96bec0cc7c1df4c05d4208fb1cfd6aac06fe97e7/quartz/src/commonMain/kotlin/com/vitorpamplona/quartz/nip30CustomEmoji/EmojiUrlTag.kt) parses the optional set address and enforces the allowed shortcode characters. [Wisp's mobile client implementation](https://github.com/barrydeen/wisp/blob/b48be58271131c6062be2cc5449777cdd4fe6d31/app/src/main/kotlin/com/wisp/app/nostr/Nip30.kt) builds emoji sets and removes duplicate shortcodes from rendered content. [Nostria's web client implementation](https://github.com/nostria-app/nostria/blob/e861946f4ef4e70f3ec49997a4be27615b9b6f5e/src/app/utils/emoji-shortcode.ts) normalizes separators before validating shortcodes, which shows why producers should test common clients before depending on punctuation permitted by the specification.
 
@@ -261,11 +369,11 @@ Clients should preserve the literal shortcode when an image fails to load, rejec
 {"kind":30030,"id":"438814476db249b50067d167e50c85530e317126179546a584365c8371bdd97f","pubkey":"6e1897660c62153be7355a82a62549b09993fb12b50de73a32610725d1a5de6b","created_at":1790025651,"tags":[["d","1962f3e8-5a74-4327-b88d-4697bdd2119d"],["client","Amethyst"],["emoji","liberlandflag","https://nogues.ca/emoji/liberlandflag.png"],["title","Liberland"],["description","#Liberland"],["image","https://npub1dcvfwesvvg2nhee4t2p2vf2fkzve87cjk5x7ww3jvyrjt5d9me4szmscg7.blossom.band/a8aa38949d3d7a17e369703391de0406f50b518a1a6ca9791ebf38c94b51a0e1.jpg"]],"content":"","sig":"5f7dd5b8879311689e95cbab26edd6f65611d517d22d12d568a9de219c8a8fc6999365c83205d02ec74844b4b9944ed5419ec17ea9d8cbf4e347504cc3685304"}
 ```
 
-[Alex Gleason introduced NIP-30 in April 2023](https://github.com/nostr-protocol/nips/commit/e91ce3409e1ce8267fc07a21784d2538621267c3). That original proposal, covered previously, has now shipped three years of specification changes, including an [August 2026 update](https://github.com/nostr-protocol/nips/commit/735a25e44b8e7a01539864f2a2dcf3e728977fd3) that added kind `1111` comments to its supported event kinds. The design keeps emoji meaning local to each signed event or referenced set, so clients do not need a global shortcode registry.
+[Alex Gleason introduced NIP-30 in April 2023](https://github.com/nostr-protocol/nips/commit/e91ce3409e1ce8267fc07a21784d2538621267c3). That original proposal, reported previously in the April 29 issue, has now shipped in current clients. Subsequent specification changes include an [August 2026 update](https://github.com/nostr-protocol/nips/commit/735a25e44b8e7a01539864f2a2dcf3e728977fd3) that added kind `1111` comments to its supported event kinds. The design keeps emoji meaning local to each signed event or referenced set, so clients do not need a global shortcode registry.
 
 ### NIP-71: Video Events
 
-[NIP-71 (Video Events)](/en/topics/nip-71/) standardizes Nostr events for landscape and short-form video, including playback metadata, alternate files, captions, chapters, participants, and imported-source provenance. The [canonical specification](https://github.com/nostr-protocol/nips/blob/master/71.md) assigns kinds `21` and `22` to immutable landscape and portrait video posts, while kinds `34235` and `34236` use a `d` tag to create addressable videos whose metadata can be updated under a stable coordinate. Each `imeta` tag describes one playable variant with a URL and media type plus optional dimensions, hash, preview image, fallback, service, bitrate, and duration.
+[NIP-71 (Video Events)](/en/topics/nip-71/) standardizes Nostr events for horizontal and short-form video, including playback metadata, alternate files, captions, chapters, participants, and imported-source provenance. The [canonical specification](https://github.com/nostr-protocol/nips/blob/master/71.md) assigns kinds `21` and `22` to immutable horizontal and portrait video posts, while kinds `34235` and `34236` use a `d` tag to create addressable videos whose metadata can be updated under a stable coordinate. Each `imeta` tag describes one playable variant with a URL and media type plus optional dimensions, hash, preview image, fallback, service, bitrate, and duration.
 
 Clients must validate media URLs and hashes, bound downloads, handle missing variants, and make external-host requests visible to users because a video server can observe playback traffic. [Amethyst's Android implementation](https://github.com/vitorpamplona/amethyst/blob/96bec0cc7c1df4c05d4208fb1cfd6aac06fe97e7/quartz/src/commonMain/kotlin/com/vitorpamplona/quartz/nip71Video/VideoEvent.kt) separates video and audio tracks and chooses a playable variant. [Wisp's mobile client implementation](https://github.com/barrydeen/wisp/blob/b48be58271131c6062be2cc5449777cdd4fe6d31/app/src/main/kotlin/com/wisp/app/nostr/Nip71.kt) parses and builds regular video events with structured `imeta` fields. [Resonote's browser-extension implementation](https://github.com/ikuradon/Resonote/blob/4ac14e1206608315d6507da405d4c5df3312d4d0/packages/core/src/nip71-video.ts) builds and parses all four event kinds, media variants, text tracks, segments, participants, and origin metadata.
 
@@ -275,7 +383,7 @@ The following kind `22` short-video event was recovered from `wss://relay.damus.
 {"kind":22,"id":"dd1fcfe7ce6db5450e362879897138ca4e639ef39654dfe3b1f669310fd9545d","pubkey":"870ce6f7aa9ee05025667245343278eccfb8e3eafc08bcab68824ad0f4cfa675","created_at":1790094714,"tags":[["title","Why Pepe moves 3x Bitcoin"],["published_at","1790094714"],["alt","Why Pepe moves 3x Bitcoin"],["imeta","url https://the-bitcoin-strategy.com/nostr-relay/pKy3my2zzMhCVNL1.mp4","m video/mp4","x 3dafddd0b1730213212bcaf96136684f15e20ee5f20a1252052a58f3a8b36652","dim 1080x1920","duration 62"],["duration","62"],["t","bitcoin"],["t","pepe"],["t","memecoin"],["t","altcoin"]],"content":"Why Pepe moves 3x Bitcoin\n\nPepe jumped about twenty percent in a single day, roughly triple Bitcoin's move. Most of the trading is not the token itself: on Binance, the volume in bets on the price was about eight times the volume in the actual token. Those bets are made with borrowed money, so every dollar tends to move the price more, in both directions.\n\nAsk Gerhard AI For Free:\nhttps://mybtcguy.com\n\n#bitcoin #pepe #memecoin #altcoin","sig":"0da305b00f4b1631b14b8fd33fcc6a2a0e54e24233dba541db3d2bce3705ac0dcf61401764b47555015e2566dcf4a8886cd3f767ea26ed2da76b3ac9bb23d680"}
 ```
 
-[The NIP-71 file history began in December 2023](https://github.com/nostr-protocol/nips/commit/7afd1049d98a82aa7754f80de80d97dd686cf40e) when zmeyer44 moved the video-event proposal to its current number. The [addressable-video update](https://github.com/nostr-protocol/nips/pull/1669), covered previously, has now shipped across multiple current implementations; its kinds `34235` and `34236` give publishers a stable coordinate for corrected metadata and migrated hosting.
+[The NIP-71 file history began in December 2023](https://github.com/nostr-protocol/nips/commit/7afd1049d98a82aa7754f80de80d97dd686cf40e) when zmeyer44 moved the video-event proposal to its current number. The [addressable-video update](https://github.com/nostr-protocol/nips/pull/1669), reported previously in the January 13 issue, has now shipped across multiple current implementations; its kinds `34235` and `34236` give publishers a stable coordinate for corrected metadata and migrated hosting.
 
 ### How the two specifications relate
 

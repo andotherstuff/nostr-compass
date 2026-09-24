@@ -1,0 +1,54 @@
+{
+  "findings": [
+    {
+      "evidence": "Draft intro: \"New projects include \u2026 RelayKit \u2026\" vs RelayKit section: \"This coverage therefore treats RelayKit as a changed project direction, not as its first appearance.\"",
+      "recommendation": "Change the intro to \"Project spotlights include\" or \"New coverage this issue includes\" and drop RelayKit from any \"new project\" phrasing, matching the body's April prior-coverage continuity.",
+      "severity": "major",
+      "title": "RelayKit intro contradicts body on first appearance"
+    },
+    {
+      "evidence": "Intro opens with \"**This week:** \u2026 fips-initramfs \u2026 lets operators open encrypted roots before boot,\" but the fips-initramfs section states the September 6 release \"falls outside the current collection window\" and is a catch-up item.",
+      "recommendation": "Remove fips-initramfs from the unqualified \"This week\" lede or add an immediate parenthetical (catch-up / outside collection window) so the opening hook matches window policy stated in the body.",
+      "severity": "major",
+      "title": "Lede frames out-of-window fips-initramfs as \"This week\""
+    },
+    {
+      "evidence": "Intro lists merged work as \"nostream relay health events, Zap Cooking image descriptions, and Conduit Blossom uploads\" but does not mention 0xchat #92 or nos2x-fox #67/#69, which the 80-project memo includes as primary merged security work and the draft covers under In Development.",
+      "recommendation": "Either add 0xchat and nos2x-fox to the intro merged-work sentence or rephrase the lede to say it is a partial highlight so readers are not steered away from the security items.",
+      "severity": "minor",
+      "title": "Intro merged-work highlights omit frozen-artifact security stories"
+    },
+    {
+      "evidence": "Draft has two separate In Development subsections for nostter (\"ties remote signing to the active session\" for #2518/#2510 and \"gates signing and private reads on real capabilities\" for #2570\u2013#2577) with no cross-reference that they are sequential milestones in one migration arc.",
+      "recommendation": "Add a bridging clause in the second nostter subsection (e.g., \"continuing the session-owned NIP-46 work above\") or merge under one nostter header with two dated bullets.",
+      "severity": "minor",
+      "title": "Duplicate nostter In Development headings without cross-link"
+    },
+    {
+      "evidence": "late_delta_inventory_2026-09-23.json lists 37 merged PRs and two fips2go releases; late_delta_review_2026-09-23.md disposition table covers all 37; eight Zapstore records fold Zzub 0.0.16 plus both fips2go signed events and skip five non-Nostr apps with reasons; four NIP-34 announcements and five app-discovery leads each have explicit SKIP reasons; open NIP-86 #2439 is skipped and not reported as merged (draft covers merged #2477 only).",
+      "recommendation": "No ledger action required on snapshot evidence; retain separate live readback before publish.",
+      "severity": "note",
+      "title": "Late-cutoff ledger completeness checks out on supplied memos"
+    },
+    {
+      "evidence": "0xchat section cites https://github.com/0xchat-app/0xchat-app-main/pull/92 and states \"source-level progress, not a claim that an updated app has been released or independently tested on a device\"; nos2x-fox cites #69 and #67 and states \"merged source work; a new extension-store release has not been verified,\" matching source_fact_checks_2026-09-23.md primary-body readback.",
+      "recommendation": "Keep separate In Development coverage; no store-release or device-test claims added at publish.",
+      "severity": "note",
+      "title": "0xchat and nos2x-fox merged-source framing matches fact checks"
+    },
+    {
+      "evidence": "Late review INCLUDE/FOLD decisions map to draft sections for Amethyst DECK-0003 (#4186, phone/bag caveats), Amethyst MLS/desktop rendering (#4182\u2013#4189), nostter capability migration (#2570\u2013#2577, no tagged release claimed), and Pensieve archive durability (#48\u2013#50, explicit \"not an enabled relay repair worker\" gate). fips2go Top Story carries DNS64 untested and ARM64-only Pixel verification caveats per fact checks.",
+      "recommendation": "Preserve deployment caveats verbatim through final editorial pass; do not collapse into tagged-release language.",
+      "severity": "note",
+      "title": "Four late In Development additions are distinct and caveated"
+    },
+    {
+      "evidence": "Review inputs are frozen artifacts (draft sha256 98445d1f\u2026, project memo b9b81645\u2026, late inventory 903f641d\u2026, late decisions a7751814\u2026, fact checks 8e6c1103\u2026) without live GitHub/Zapstore/relay verification in this pass.",
+      "recommendation": "Treat this verdict as cold snapshot editorial review only; run separate live PR-head, CI, deploy, and relay gates before publication.",
+      "severity": "note",
+      "title": "Immutable snapshot review limits"
+    }
+  ],
+  "summary": "The immutable snapshot (SHA-256-bound draft, 80-project memo, late inventory/decision memo, and fact-check excerpt) supports most late-cutoff dispositions, merged-source framing for 0xchat #92 and nos2x-fox #67/#69, fips2go/Zzub caveats, and the four In Development late additions with appropriate deployment limits. However, the assembled draft has a major continuity contradiction on RelayKit and lede framing that misaligns with the stated collection window for fips-initramfs. A PASS on this snapshot would not substitute for live PR-head, CI, deploy, relay-readback, or broadcast gates.",
+  "verdict": "FAIL"
+}

@@ -1,16 +1,16 @@
 ## Top Stories
 
-### fips2go 0.6.0 gives mesh nodes readable names
+### fips2go 0.7.0 keeps the mesh connected through bootstrap failures
 
-[fips2go](https://github.com/fr34aky/fips2go) is an Android client that lets selected applications reach peers and services over the FIPS encrypted mesh. [Version 0.6.0](https://github.com/fr34aky/fips2go/releases/tag/v0.6.0) adds device-local mesh names, so a user can map a long node key to a name such as `home` and connect through `home.fips` anywhere a hostname is accepted.
+[fips2go](https://github.com/fr34aky/fips2go) is an Android client that lets selected applications reach peers and services over the FIPS encrypted mesh. [Version 0.6.0](https://github.com/fr34aky/fips2go/releases/tag/v0.6.0) added device-local mesh names such as `home.fips`. The subsequent [0.6.1 release](https://github.com/fr34aky/fips2go/releases/tag/v0.6.1) fixes bootstrap address selection on IPv6-only carriers using DNS64/NAT64; its maintainer has not tested that fix on a real DNS64 network.
 
-The [mesh-name resolver](https://github.com/fr34aky/fips2go/releases/tag/v0.6.0) applies additions, removals, and changed mappings to the next lookup without reconnecting the mesh. Names remain local to the phone and outside identity backups, which makes the feature an address book instead of a global naming system; the release also documents that only its ARM64 build received physical-device verification.
+The new [0.7.0 release](https://github.com/fr34aky/fips2go/releases/tag/v0.7.0) connects to three regional bootstrap peers by default instead of relying on one. It can also retry a configured peer at Nostr-advertised endpoints when its static address changes. Optional open discovery adds at most three recent Nostr-announced peers, but remains off by default: the maintainer reports that many public test-mesh announcements no longer answer. The ARM64 build was installed over the previous version and checked on a physical Pixel; the other device architectures have narrower verification.
 
-### fips-initramfs brings remote LUKS unlock into early boot
+### fips-initramfs opens encrypted roots over FIPS before boot
 
-[fips-initramfs](https://github.com/jmcorgan/fips-initramfs) is a Linux initramfs package that starts a FIPS mesh node before normal boot so an operator can remotely unlock a LUKS-encrypted root through its npub-addressed node. The user-submitted [0.1.0 release](https://github.com/jmcorgan/fips-initramfs/releases/tag/v0.1.0), published September 6, packages the mesh client, SSH access, and unlock scripts for systems that need unattended or remote encrypted-root startup.
+[fips-initramfs](https://github.com/jmcorgan/fips-initramfs) is a Linux initramfs package that starts a FIPS mesh node before normal boot so an operator can remotely open a LUKS-encrypted root through its npub-addressed node. The user-submitted [0.1.0 release](https://github.com/jmcorgan/fips-initramfs/releases/tag/v0.1.0), published September 6, packages the mesh client, SSH access, and passphrase-entry scripts for systems that need unattended or remote encrypted-root startup.
 
-The [first release](https://github.com/jmcorgan/fips-initramfs/releases/tag/v0.1.0) documents the security tradeoffs instead of hiding them: the initramfs contains the node key, the passphrase crosses SSH over FIPS, and local console unlock remains available. This is a catch-up item from a prior user submission rather than a release from the current collection window.
+The [first release](https://github.com/jmcorgan/fips-initramfs/releases/tag/v0.1.0) documents the security tradeoffs instead of hiding them: the initramfs contains the node key, the passphrase crosses SSH over FIPS, and local console passphrase entry remains available. This catch-up item came from a prior user submission; its September 6 release falls outside the current collection window.
 
 ### Grain 0.8.0-rc4 turns relay health into an operator dashboard
 
@@ -48,11 +48,13 @@ The [graph 0.3.0 storage migration](https://github.com/nostr-wot/nostr-wot-sdk/r
 
 The [project source](https://github.com/zeSchlausKwab/napplet-soy) keeps network and storage access behind declared capabilities instead of giving each napplet unrestricted browser authority. Its project identity remains unresolved because the canonical site and repository do not bind a project or maintainer npub, so no identity claim is attached here.
 
+The [soyLI 0.20.0 CLI release](https://github.com/zeSchlausKwab/napplet-soy/releases/tag/soyli-v0.20.0) adds bounded NIP-78 helpers for sharing reusable public tracks, puzzles, drawings, and presets, plus structured data on high scores. Writes are scoped to a napplet and player identity with consent and revision checks; linked large assets use Blossom. Website and backend features require a separate deployment, so the CLI tag alone does not prove those public features are live on the site.
+
 ### RelayKit installs a self-hosted Nostr stack
 
-[RelayKit](https://relayk.it) is a one-command installer for a self-hosted Nostr stack that can include relays, Blossom media, nsites, Git services, and notifications. The current project is materially broader than the browser relay-discovery client covered in April, and its [current source repository](https://github.com/samthomson/relaykit) documents the new operator-focused deployment surface.
+[RelayKit](https://relayk.it) is a one-command installer for a self-hosted Nostr stack that can include relays, Blossom media, nsites, Git services, and notifications. RelayKit now packages a broader stack than the browser relay-discovery client covered in April; its [current source repository](https://github.com/samthomson/relaykit) documents the new operator-focused deployment surface.
 
-The [installation site](https://relayk.it) presents the services as one coordinated stack instead of requiring operators to assemble each component independently. This coverage therefore treats RelayKit as a changed project direction, not as its first appearance.
+Its [installation site](https://relayk.it) presents the services as one coordinated stack instead of requiring operators to assemble each component independently. This coverage therefore treats RelayKit as a changed project direction, not as its first appearance.
 
 ### Threshold Sessions turns coding transcripts into private training data
 

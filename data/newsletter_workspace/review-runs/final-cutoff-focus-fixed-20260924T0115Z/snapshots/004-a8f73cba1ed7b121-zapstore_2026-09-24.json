@@ -1,0 +1,130 @@
+{
+  "generated_at": "2026-09-24T00:52:56+00:00",
+  "period": {
+    "start": "2026-09-23",
+    "end": "2026-09-24",
+    "days": 1
+  },
+  "summary": {
+    "total_releases": 2,
+    "nostr_relevant": 2,
+    "nostr_relevant_strong": 2,
+    "nostr_relevant_tracked_override": 0,
+    "nostr_relevant_in_description": 0,
+    "anti_keyword_vetoed": 0,
+    "nostr_tag_only_excluded": 0,
+    "new_apps": 1,
+    "updates": 1,
+    "sanity_demoted": 0,
+    "first_run_baseline": 0,
+    "baseline_suppressed_nostr_relevant": 0,
+    "distinct_nostr_relevant_apps": 2,
+    "tracked_in_projects_yml": 0,
+    "candidates_for_projects_yml": 2
+  },
+  "releases": [
+    {
+      "release_id": "c5c5ad0eba413e18c10e3cd2be607e550ac818a8abaf97ccbf8fa242fbaff15f",
+      "release_created_at": 1790208728,
+      "release_created_at_iso": "2026-09-24T00:12:08Z",
+      "pubkey": "5ea4648045bb1ff222655ddd36e6dceddc43590c26090c486bef38ef450da5bd",
+      "app_id": "org.tablemesh.app",
+      "version": "0.1.0",
+      "d_tag": "org.tablemesh.app@0.1.0",
+      "release_notes": "First release.\n\n- Tables over Bluetooth LE and Wi-Fi together — no internet, no host, no account\n- Solo play against bots, each bot a whole device on a local mesh\n- Mensch ärgere Dich nicht, with table dice or your own real dice\n- Find more games on Nostr (kind 7529), downloaded from Blossom and verified byte for byte\n- A diagnostics screen with Resync for the rare time two phones disagree\n",
+      "app_name": "Table Mesh",
+      "app_summary": "Board games around a real table — phones play together over Bluetooth, no internet, no host, no account.",
+      "app_content": "Table Mesh lets a group of friends play a board game together at a real table,\neach on their own phone. The phones find each other over Bluetooth (and Wi-Fi\nwhen there is one) and form a small mesh: no internet, no server, no account,\nand no phone is the host. Every phone runs the game's rules itself and only the\nmoves travel, so a game keeps going when a phone sleeps, drops out or restarts —\nit catches up from the others when it comes back. A tablet in the middle can\nshow the whole board.\n\n**Included: Mensch ärgere Dich nicht** — the German family classic for 2–4\nplayers, with the full rules, table dice or your own real dice, a referee\noverride, bots to play against on your own, and a table view for the tablet.\n\n**More games from Nostr.** Games are small sandboxed modules. *Find games*\nsearches Nostr for game releases (kind 7529) and downloads them from Blossom\nservers, checking every byte against the game's hash before it is installed.\nA game module has no network access and no storage: it can only receive moves\nand propose moves.\n\n**When something goes wrong, you see it.** Every phone keeps the whole game\nhistory, hash-chained. If two phones ever disagree, the table turns red and a\nperson decides which history to keep — nothing is merged behind your back.\n\nThis is an early release. The Bluetooth mesh has been tested extensively in\nsimulation and on emulators; reports from real tables with several phones are\nvery welcome.\n",
+      "app_repository": "",
+      "app_url": "",
+      "app_icon": "https://cdn.zapstore.dev/b53215ce38947481236b7ee72a0d40f69db62525ee527a4d181e27565a729d53",
+      "app_license": "Unlicense",
+      "app_topics": [
+        "games",
+        "boardgames",
+        "offline",
+        "bluetooth",
+        "mesh",
+        "local-first",
+        "nostr"
+      ],
+      "app_platforms": [
+        "android-arm64-v8a",
+        "android-x86_64"
+      ],
+      "tracked_project": null,
+      "nostr_relevant": true,
+      "nostr_match_reason": "strong-keyword",
+      "nostr_match_strength": 3,
+      "new_app": true,
+      "update": false,
+      "sanity_demoted": false
+    },
+    {
+      "release_id": "35e74e8a6546c85a8ce540a845dc859010138ef03aec9572478bb4c5a111cfa2",
+      "release_created_at": 1790207288,
+      "release_created_at_iso": "2026-09-23T23:48:08Z",
+      "pubkey": "4b56bbf41c92e586e88927acb78836eb49f2b184081ef852625cf78be7d56bd6",
+      "app_id": "place.poster.app",
+      "version": "1.0.2356",
+      "d_tag": "place.poster.app@1.0.2356",
+      "release_notes": "- Import who you follow on your linked Pleroma; follow bridge puppets by their real id\n\n_Built from `cbaee22`._",
+      "app_name": "PosterChan",
+      "app_summary": "A Nostr-powered personal cloud and self-hosted AI — notes, calendar, contacts, files, passwords",
+      "app_content": "PosterChan is the Android half of a **Nostr-powered personal cloud** and a **self-hosted AI powerhouse**\nthat runs on hardware you own. Your notes, calendar, contacts, files, passwords and mail live as encrypted\nNostr events on a relay you run — no account with anybody, no subscription, no vendor holding the keys.\n\n**The personal cloud**\n\n- **Notes**: private, offline-first, encrypted to your own key. Write with no signal; it syncs when you have one.\n- **Calendar and contacts**: real **CalDAV/CardDAV**, so your phone's own calendar and contacts apps sync\n  with your node like any other server — one account for both.\n- **Files and folder sync**: keep Documents and Pictures in step between phone and desktop through your own\n  node. Contents are encrypted before they leave the device, so your server stores a folder it cannot read.\n- **Password manager**: logins, one-time codes (TOTP) and a generator, with **Android autofill** offering\n  them in your other apps and browsers. Every entry is encrypted on your device — the relay holds ciphertext.\n- **Bookmark sync**: the companion add-on (Firefox, Chrome, Edge, Brave) keeps bookmarks in step across\n  browsers, sealed with the same vault key.\n- **Mail**: your own IMAP/SMTP accounts, mirrored as encrypted events so search works without a round trip.\n\n**The AI powerhouse**\n\n- **Chat**: streaming LLM conversations against your own models or any OpenAI-compatible API.\n- **Generation**: images, music and video, produced on your own GPU rather than someone's rented one.\n- **Private search**: a metasearch engine bundled with your node, with AI overviews and citations.\n- **Live streaming**: go live from your camera or screen (NIP-53), and watch other people's streams.\n- **Voice and video calls**: 1:1 and group, over WebRTC.\n\n**And a full Nostr client**: feeds, threads, profiles, DMs, communities, mini apps and a web-of-trust relay.\n\nSelf-hostable by design — point the app at your own instance; the default is poster.place.\n",
+      "app_repository": "https://github.com/loblawbob873-svg/posterchanai",
+      "app_url": "https://poster.place",
+      "app_icon": "https://cdn.zapstore.dev/8c3cfffd0d765d6e829bf9c14f307269169a3deed030470d86fb2fba62258041",
+      "app_license": "GPL-3.0-or-later",
+      "app_topics": [
+        "nostr",
+        "personal-cloud",
+        "self-hosted",
+        "notes",
+        "calendar",
+        "passwords",
+        "bookmarks",
+        "ai",
+        "social",
+        "streaming"
+      ],
+      "app_platforms": [
+        "android-arm64-v8a",
+        "android-armeabi-v7a",
+        "android-x86",
+        "android-x86_64"
+      ],
+      "tracked_project": null,
+      "nostr_relevant": true,
+      "nostr_match_reason": "strong-keyword",
+      "nostr_match_strength": 3,
+      "new_app": false,
+      "update": true,
+      "sanity_demoted": false
+    }
+  ],
+  "apps": [
+    {
+      "app_id": "org.tablemesh.app",
+      "app_name": "Table Mesh",
+      "app_repository": null,
+      "tracked_project": null,
+      "release_count": 1,
+      "latest_version": "0.1.0",
+      "latest_at": "2026-09-24T00:12:08Z",
+      "new_app": true,
+      "baseline_suppressed": false
+    },
+    {
+      "app_id": "place.poster.app",
+      "app_name": "PosterChan",
+      "app_repository": "https://github.com/loblawbob873-svg/posterchanai",
+      "tracked_project": null,
+      "release_count": 1,
+      "latest_version": "1.0.2356",
+      "latest_at": "2026-09-23T23:48:08Z",
+      "new_app": false,
+      "baseline_suppressed": false
+    }
+  ]
+}

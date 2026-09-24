@@ -1,0 +1,132 @@
+{
+  "attempts": [
+    {
+      "attempt": 1,
+      "model": "grok-4.6[effort=high,fast=true]",
+      "outcome": "success",
+      "output_sha256": "481be886625e8a547a3f82618de374113ad70bda1385cee94b441161c2e8d039",
+      "provider": "cursor",
+      "response_id": null,
+      "routing_attempts": [
+        {
+          "budget_seconds": 120.0,
+          "elapsed_seconds": 114.427,
+          "model": "grok-4.6",
+          "outcome": "success",
+          "provider": "cursor"
+        }
+      ],
+      "started_at": "2026-09-24T01:09:58.668089+00:00",
+      "usage": {}
+    }
+  ],
+  "completed_at": "2026-09-24T01:11:53.095467+00:00",
+  "elapsed_seconds": 114.427,
+  "endpoint": "cursor-acp",
+  "implementation_model": "gpt-6-sol",
+  "implementation_models": [
+    "gpt-6-sol"
+  ],
+  "instructions_sha256": "bd44eb47504e1a026f49acfa9f3ab754d6fcaa13b333b37922ad1aa80b8a9050",
+  "max_attempts": 2,
+  "max_output_tokens": 8000,
+  "requested_model": "grok-4.6",
+  "review_tier": "standard",
+  "routing_chain": [
+    {
+      "model": "grok-4.6",
+      "provider": "cursor"
+    },
+    {
+      "model": "composer-2.5",
+      "provider": "cursor"
+    },
+    {
+      "model": "claude-opus-5",
+      "provider": "claude-code"
+    },
+    {
+      "model": "google/gemini-3.1-pro-preview",
+      "provider": "openrouter"
+    }
+  ],
+  "schema_version": 1,
+  "selected_cost_usd": null,
+  "selected_endpoint": "cursor-acp",
+  "selected_family": "xai",
+  "selected_model": "grok-4.6[effort=high,fast=true]",
+  "selected_provider": "cursor",
+  "snapshots": [
+    {
+      "bytes": 58678,
+      "path": "/opt/data/compass-worktrees/2026-09-23-publish-codex/content/en/newsletters/2026-09-23-newsletter.md",
+      "sha256": "cf81ee6709a4e903c14aabdb3ea8acd48ed6eb409539c73546703273eee20a58",
+      "stored_name": "001-cf81ee6709a4e903-2026-09-23-newsletter.md"
+    },
+    {
+      "bytes": 5239,
+      "path": "/opt/data/compass-worktrees/2026-09-23-publish-codex/data/newsletter_workspace/final_cutoff_review_2026-09-23.md",
+      "sha256": "6b60c4de8f7947c40b73b3c4d4c98ecf43abbe50cf24db7cc58bbe6122f0bef0",
+      "stored_name": "002-6b60c4de8f7947c4-final_cutoff_review_2026-09-23.md"
+    },
+    {
+      "bytes": 10438,
+      "path": "/opt/data/compass-worktrees/2026-09-23-publish-codex/data/newsletter_workspace/source_fact_checks_2026-09-23.md",
+      "sha256": "9d0c2f599f9246f6795715193c4ed0e147edb0e2e84ef64ccebdb9511a21d630",
+      "stored_name": "003-9d0c2f599f9246f6-source_fact_checks_2026-09-23.md"
+    },
+    {
+      "bytes": 8060,
+      "path": "/opt/data/compass-worktrees/2026-09-23-final-cutoff/data/zapstore_releases/zapstore_2026-09-24.json",
+      "sha256": "a8f73cba1ed7b12191cb5a7544fe856611c366a632125816023f16b63b573902",
+      "stored_name": "004-a8f73cba1ed7b121-zapstore_2026-09-24.json"
+    }
+  ],
+  "started_at": "2026-09-24T01:09:58.667754+00:00",
+  "status": "completed",
+  "timeout_scope": "invocation_including_retries_and_cleanup",
+  "timeout_seconds": 600,
+  "tools_enabled": false,
+  "verdict": {
+    "findings": [
+      {
+        "evidence": "The draft adds `### Table Mesh releases offline board games with Nostr game discovery` under Top Stories and links https://zapstore.dev/apps/org.tablemesh.app, but the YAML `description` and the opening `This week:` paragraph preview fips2go, fips-initramfs, MintRadar, Grain, Marmot 0.10.4, White Noise, web-of-trust tools, napplet.soy, RelayKit, and Threshold Sessions and never name Table Mesh. Every other Top Story is previewed there (WoT items grouped as `new web-of-trust tools`). Signed primary: https://primal.net/e/c5c5ad0eba413e18c10e3cd2be607e550ac818a8abaf97ccbf8fa242fbaff15f",
+        "recommendation": "If Table Mesh stays a Top Story, add it to the YAML description and the `This week:` lede as a first Android release whose Nostr role is optional kind-7529/Blossom game discovery. If that optional path should not lead the issue, move the item to Tagged Releases and leave the current lede.",
+        "severity": "major",
+        "title": "Table Mesh Top Story is omitted from the issue lede and description"
+      },
+      {
+        "evidence": "The new story\u2019s only hyperlink is `[Table Mesh 0.1.0](https://zapstore.dev/apps/org.tablemesh.app)`. Sibling Zapstore items (XM Arcade, Zzub, Armada) cite developer-signed `primal.net/e/...` events. The source-decision memo\u2019s primary is https://primal.net/e/c5c5ad0eba413e18c10e3cd2be607e550ac818a8abaf97ccbf8fa242fbaff15f from zapstore_2026-09-24.json SHA-256 a8f73cba1ed7b12191cb5a7544fe856611c366a632125816023f16b63b573902.",
+        "recommendation": "Keep a Zapstore listing link if useful, but make the signed release event the primary citation so readers can check the emulator-only mesh caveat and the kind-7529/Blossom/hash claims against the signed notes.",
+        "severity": "minor",
+        "title": "Table Mesh cites the Zapstore listing instead of the signed release event"
+      },
+      {
+        "evidence": "Draft: `The [PR's tests](https://github.com/marmot-protocol/mdk/pull/2007) compare replay costs across one and eight parked rows and check that deferred rows remain retryable.` The captured PR-body/fact-check readback states regression tests comparing eight parked rows to one, 681 engine tests passed and five skipped, `just fast-ci` passed, deferred-sweep ingest, and a shared per-group past-peel cache \u2014 not a test described as proving deferred rows remain retryable.",
+        "recommendation": "Quote only the captured test facts (eight-versus-one parked-row comparison, 681 passed / 5 skipped, optionally `just fast-ci`) and describe the new path as deferred-sweep ingest plus a shared per-group past-peel cache invalidated on canonical changes.",
+        "severity": "minor",
+        "title": "MDK #2007 attributes a retryability test not present in the supplied PR-body facts"
+      },
+      {
+        "evidence": "Signed notes at https://primal.net/e/c5c5ad0eba413e18c10e3cd2be607e550ac818a8abaf97ccbf8fa242fbaff15f make Nostr optional (`Find more games on Nostr (kind 7529), downloaded from Blossom and verified byte for byte`) while table play is local Bluetooth/Wi-Fi with no account. The same artifact has empty `app_repository` and `app_url`, and states mesh testing in simulation/emulators only. The memo INCLUDE reason is that distinctive distribution path, not gameplay-over-Nostr. The draft correctly says `Nostr is used to discover and deliver optional games; the actual table session runs locally` and `not yet at real multi-phone tables`.",
+        "recommendation": "Keep the INCLUDE decision. Treat Top Story as a first-appearance spotlight only, on par with napplet.soy/RelayKit/Threshold Sessions, and do not imply a protocol milestone. Prefer Tagged Releases if the lede cannot make room.",
+        "severity": "note",
+        "title": "Optional kind-7529/Blossom path meets INCLUDE/8/10; Top Story is the ceiling of that case"
+      },
+      {
+        "evidence": "The In Development item states `This is merged library work after MDK 0.10.4, not part of that tagged release or a measured end-user latency claim` and links https://github.com/marmot-protocol/mdk/pull/2007. The memo INCLUDE and fact-check confirm merge at 2026-09-23T23:59:48Z into `master` (commit 828bed64e2359aa174bdcbd7ddf8655d09b58516), no new MDK tag, and no client latency measurement. The separate Top Story remains the tagged 0.10.4 release. SKIP\u2019d MDK #2005 is correctly absent.",
+        "recommendation": "Retain INCLUDE-as-In-Development and the explicit post-0.10.4 / no-measured-latency wording after trimming the uncaptured retryability-test clause.",
+        "severity": "note",
+        "title": "MDK #2007 story decision and 0.10.4 boundary are sound"
+      },
+      {
+        "evidence": "Source-decision memo: `GATE: PENDING \u2014 the specs family hit GitHub's shared core API reserve and must be resumed after reset. The final manifest hash, spec decisions, final draft hash and independent exact-draft review remain required.` It also states this isolated pass `is not a replacement for the complete Wednesday pass` and `remains pending until all ten families have exact results.`",
+        "recommendation": "Do not treat this review as publication approval or as the final ten-family sweep. Final source, PR-head, CI, deployment, signing, and relay gates remain separate; the unreviewed specs family is not assumed clean.",
+        "severity": "note",
+        "title": "Final specs family and remaining gates stay separate from this cold read"
+      }
+    ],
+    "summary": "MDK #2007 describes only the merged library fix, correctly separates tagged 0.10.4 from later master work, and does not invent end-user latency or deployed-client behavior. Table Mesh 0.1.0 correctly reports Bluetooth/Wi-Fi local play, bundled Mensch \u00e4rgere Dich nicht plus bots, kind-7529/Blossom fetch with byte-hash verification, emulator-only mesh testing, and that Nostr does not carry table moves. The optional kind-7529/Blossom path is narrowly enough for INCLUDE/8/10, but inserting Table Mesh as a Top Story without updating the YAML description or weekly lede is a major continuity defect, so these two story decisions/wording cannot PASS on this snapshot. This verdict does not approve publication or the final ten-family sweep; final source, PR-head, CI, deployment, signing, and relay gates remain separate, and the unreviewed specs family is not assumed clean.",
+    "verdict": "FAIL"
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "findings": [
+    {
+      "evidence": "Inventory and the decision table skip https://github.com/vitorpamplona/amethyst/pull/4186 with reason \u201cDECK reader work has no verified Nostr protocol or event surface,\u201d but the exact title is \u201cImplement DECK-0003 (SNO) reader, rasterizer, and Cyberspace bag opening.\u201d No PR body is supplied, so the Nostr-negative hard-gate claim is not source-grounded here.",
+      "recommendation": "Re-read the #4186 body and confirm whether Cyberspace bag opening emits or consumes Nostr events before keeping the skip; if a protocol surface exists, fold or include it instead.",
+      "severity": "minor",
+      "title": "Amethyst #4186 skip is not independently confirmable from the snapshot"
+    },
+    {
+      "evidence": "https://github.com/vitorpamplona/amethyst/pull/4185 is titled \u201crefactor: Render/Display split, batches 1\u20133 \u2014 shared displays for AccountViewModel-bound composables,\u201d yet late_delta_review_2026-09-23.md gives it the same reason as the marmot PRs: \u201cMLS optional fields, supported extensions and desktop group rendering.\u201d The draft Amethyst in-dev story cites 4187/4182/4184/4188/4189 and not 4185.",
+      "recommendation": "Replace the #4185 reason with a title-accurate fold (support for the #4189 desktop-group render fix) or skip it as an internal refactor; do not leave the MLS boilerplate on a UI-split PR.",
+      "severity": "minor",
+      "title": "Amethyst #4185 fold reason is copy-pasted and not title-grounded"
+    },
+    {
+      "evidence": "The memo closer says \u201cNo grouped PR is represented as a tagged app release or deployed runtime.\u201d The draft nostter story is narrower and accurate: \u201cThese are merged application changes, but no new tagged release is claimed here,\u201d citing https://github.com/SnowCait/nostter/pull/2570, #2574, #2576, and #2577. Snapshot has no deploy/live-web check for this web client.",
+      "recommendation": "Qualify nostter as \u201cno tagged release; live web deploy not independently verified\u201d in the memo; keep the draft\u2019s no-tag wording.",
+      "severity": "minor",
+      "title": "Decision-memo \u201cundeployed runtime\u201d overreaches for nostter"
+    },
+    {
+      "evidence": "Compact inventory lists 37 PRs, fips2go v0.6.1/v0.7.0, and Zzub 0.0.16 (https://primal.net/e/d9ad994bfadc1152b4c77a4fd3eb6be1746eca9d2626008d341bf31d06988872). late_delta_review_2026-09-23.md has a matching row or fold for each, SHA b5ed87d73deb5e6da13f71e5c96e921cd33600555a1c142e1a078433d7206f0f, and GATE PENDING. Individual PR bodies, release notes, NIP-34/app-discovery announcement bodies, and full collector artifacts were not supplied. source_fact_checks_2026-09-23.md quotes Zzub 0.0.16 notes but not fips2go 0.6.1/0.7.0 notes.",
+      "recommendation": "Treat this PASS as editorial-disposition only. Re-run the ten-family source-pass and exact-ledger checks against primary bodies before publication.",
+      "severity": "note",
+      "title": "Snapshot limits: not a final source-pass or ledger gate"
+    },
+    {
+      "evidence": "Memo and draft both keep the 0.6.1 DNS64 untested-carrier caveat (https://github.com/fr34aky/fips2go/releases/tag/v0.6.1) and the 0.7.0 stale-announcement plus ARM64-Pixel/narrower-arch caveat (https://github.com/fr34aky/fips2go/releases/tag/v0.7.0). Inventory titles for #50/#51 support fallback peers, via_nostr, and capped opt-in discovery, but \u201cthree regional peers,\u201d \u201cat most three,\u201d \u201coff by default,\u201d and the Pixel install are not in the compact inventory or fact-check excerpts.",
+      "recommendation": "Re-read the two GitHub release bodies and confirm those quantitative and verification sentences before the final source-pass.",
+      "severity": "note",
+      "title": "fips2go caveats are in the draft; product details still need release-body re-read"
+    },
+    {
+      "evidence": "Inventory, memo, draft, and fact checks all use https://primal.net/e/d9ad994bfadc1152b4c77a4fd3eb6be1746eca9d2626008d341bf31d06988872. Fact checks quote restored Projects, mention chips, Tasks/Reviews tabs, and filters. The memo calls it developer-signed; the draft states the features as shipped and does not repeat a not-device-installed limit (unlike fips2go\u2019s Pixel sentence).",
+      "recommendation": "Keep 0.0.16 folded into the existing Zzub tagged-release story; optionally add that claims are from the signed Zapstore event if the source-pass requires explicit verification posture.",
+      "severity": "note",
+      "title": "Zzub 0.0.16 claims match signed notes; draft omits signed-only posture"
+    },
+    {
+      "evidence": "https://github.com/divinevideo/divine-mobile/pull/9413 (\u201cmembership and optional profile badges\u201d) is skipped for an unverified companion endpoint and \u201cno Nostr event/protocol behavior,\u201d which could be either below the Nostr gate or an undeployed in-dev item (NIP-58 vs custom badges is not in the snapshot). https://github.com/marmot-protocol/mdk/pull/2008 and https://github.com/HeterodyneNetwork/HeterodyneProtocol/pull/33 titles support non-user-facing skips, but \u201cinactive by default / no production sender\u201d and \u201cdoes not change live protocol or published vectors\u201d are body-level claims. Buzz #7844, Mostro #976, and Angor #973/#974 titles are clearly below the Nostr-facing gate.",
+      "recommendation": "Re-read #9413 before treating the skip as final; keep #7844/#976/#973/#974; treat #2008/#33 extra implementation claims as unverified until bodies are read.",
+      "severity": "note",
+      "title": "diVine #9413, mdk #2008, and Heterodyne #33 skip reasons exceed title evidence"
+    },
+    {
+      "evidence": "Memo SKIPs gyoza-hanto (https://primal.net/e/aad13a158be702a1835b41ebb022a00c0a51c97851082caae7d22d7da85dea6e), omarchy-pock, omarchy-btclock, and omarchy-bitcoin-frontier-theme as announcements without a verified Nostr product surface, and SKIPs BlindOracle, node-dlc, qrgo, taskledger, and tollbooth-web as candidate-only leads. Those reasons match a Nostr-facing hard gate, but the announcement/repo bodies are not in this snapshot.",
+      "recommendation": "Accept the skips for this late-delta editorial pass; re-read the four NIP-34 events and five app-discovery leads only if the final source-pass requires primary-body confirmation.",
+      "severity": "note",
+      "title": "NIP-34 and app-discovery skips are conservative; announcement bodies not supplied"
+    }
+  ],
+  "summary": "Late-cutoff dispositions cover all 37 inventory PR identities and both fips2go tags; the three in-dev groups are distinct and the draft does not treat them as tagged/deployed releases; fips2go 0.6.1/0.7.0 caveats appear in the draft. This is not the final ten-family source-pass or exact-ledger gate: PR/release bodies and full collector artifacts were not in the snapshot, so several skip/caveat claims still need a primary-body re-read.",
+  "verdict": "PASS"
+}

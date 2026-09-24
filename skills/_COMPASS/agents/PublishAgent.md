@@ -100,11 +100,9 @@ Run `bun scripts/publish.ts <draft>` and capture stderr. The script lists every 
    - The project's GitHub README or website
    - A web search for "<project> nostr npub"
 2. When the agent finds a candidate npub with high confidence (verified on njump.me or nostr.band and the profile self-identifies as the project), add it to `data/npubs.yml`.
-3. When the agent cannot find an npub with high confidence, surface to the user with the question "Missing npub for `<project>` — please provide or confirm I should skip the mention."
+3. For a project with no defensible identity after exhaustive primary-source, NIP-50, directory and relay searches, record a researched-unresolved entry with the search classes and omit only that identity from mention injection and outreach. Keep genuinely unresearched missing identities as a hard stop.
 
-When the user provides npubs, append them to `data/npubs.yml` and re-run `publish.ts` to verify all mentions resolve.
-
-The publish does not proceed while there are unresolved missing npubs that the user has not explicitly waived.
+The standing omission policy in `AGENTS.md` applies: continue verified-recipient outreach and publication after researched-unresolved identities are recorded, and name each omission and its searches in the final owner handoff. Do not invent a project or maintainer npub, or silently omit an unresearched missing identity. If the owner later provides a verified npub before publication, update the database and rerun the exact-draft check.
 
 ### Step 3: Merge the PR
 

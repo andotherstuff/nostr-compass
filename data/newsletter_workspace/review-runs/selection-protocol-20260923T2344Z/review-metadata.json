@@ -1,0 +1,120 @@
+{
+  "attempts": [
+    {
+      "attempt": 1,
+      "model": "grok-4.6[effort=high,fast=true]",
+      "outcome": "success",
+      "output_sha256": "82eab179079da9fd3c3e78932692358b2be54df1e320134d8c661fa18d5ad037",
+      "provider": "cursor",
+      "response_id": null,
+      "routing_attempts": [
+        {
+          "budget_seconds": 120.0,
+          "elapsed_seconds": 98.241,
+          "model": "grok-4.6",
+          "outcome": "success",
+          "provider": "cursor"
+        }
+      ],
+      "started_at": "2026-09-23T23:42:55.543188+00:00",
+      "usage": {}
+    }
+  ],
+  "completed_at": "2026-09-23T23:44:33.784869+00:00",
+  "elapsed_seconds": 98.242,
+  "endpoint": "cursor-acp",
+  "implementation_model": "gpt-6-sol",
+  "implementation_models": [
+    "gpt-6-sol"
+  ],
+  "instructions_sha256": "51fa9cf1df7ed23b73e74b7f925cf8419ef32de9699a85e1ceb51fdadec51d3f",
+  "max_attempts": 2,
+  "max_output_tokens": 8000,
+  "requested_model": "grok-4.6",
+  "review_tier": "standard",
+  "routing_chain": [
+    {
+      "model": "grok-4.6",
+      "provider": "cursor"
+    },
+    {
+      "model": "composer-2.5",
+      "provider": "cursor"
+    },
+    {
+      "model": "claude-opus-5",
+      "provider": "claude-code"
+    },
+    {
+      "model": "google/gemini-3.1-pro-preview",
+      "provider": "openrouter"
+    }
+  ],
+  "schema_version": 1,
+  "selected_cost_usd": null,
+  "selected_endpoint": "cursor-acp",
+  "selected_family": "xai",
+  "selected_model": "grok-4.6[effort=high,fast=true]",
+  "selected_provider": "cursor",
+  "snapshots": [
+    {
+      "bytes": 432898,
+      "path": "/opt/data/compass-worktrees/2026-09-23-publish-codex/data/newsletter_workspace/selection_coverage_wednesday_2026-09-23.json",
+      "sha256": "47ef3b5a09bd62e78d8275ead1faccc836c26ae02921eebc687d4ee13a3f3e4b",
+      "stored_name": "001-47ef3b5a09bd62e7-selection_coverage_wednesday_2026-09-23.json"
+    },
+    {
+      "bytes": 51046,
+      "path": "/opt/data/compass-worktrees/2026-09-23-publish-codex/content/en/newsletters/2026-09-23-newsletter.md",
+      "sha256": "a0fb9b47b556d9a2ebf60eac01aebfd2238e48e2dc2dc2fa62a71909393bf990",
+      "stored_name": "002-a0fb9b47b556d9a2-2026-09-23-newsletter.md"
+    },
+    {
+      "bytes": 38784,
+      "path": "/opt/data/compass-worktrees/2026-09-23-publish-codex/content/en/newsletters/2026-09-16-newsletter.md",
+      "sha256": "080a48f9b9a0e8ef7b1982dc5b55e86c64eba65caea66c35433a1e6bdce346c7",
+      "stored_name": "003-080a48f9b9a0e8ef-2026-09-16-newsletter.md"
+    },
+    {
+      "bytes": 31259,
+      "path": "/opt/data/compass-worktrees/2026-09-23-publish-codex/content/en/newsletters/2026-09-09-newsletter.md",
+      "sha256": "10f7a6397985e3e658c5c00becb556d4c466e1712278c81512fa1845f66cdf9e",
+      "stored_name": "004-10f7a6397985e3e6-2026-09-09-newsletter.md"
+    },
+    {
+      "bytes": 38274,
+      "path": "/opt/data/compass-worktrees/2026-09-23-publish-codex/content/en/newsletters/2026-09-02-newsletter.md",
+      "sha256": "4fcb7418140a135e26fa1be27cee4a5aa5b72ceb9ca4c79f6a4c459e557bb410",
+      "stored_name": "005-4fcb7418140a135e-2026-09-02-newsletter.md"
+    },
+    {
+      "bytes": 20377,
+      "path": "/opt/data/compass-worktrees/2026-09-23-publish-codex/data/newsletter_workspace/selection_review_2026-09-23.md",
+      "sha256": "63fb59afb36353a5bb2853b68ae5f93129b8f578060d11cfc92d7f95cc85e415",
+      "stored_name": "006-63fb59afb36353a5-selection_review_2026-09-23.md"
+    },
+    {
+      "bytes": 1114,
+      "path": "/opt/data/compass-worktrees/2026-09-23-publish-codex/data/newsletter_workspace/selection_coverage_receipt_2026-09-23.json",
+      "sha256": "16a281ef8c8e69fd2a12649f6a999c1f0370a1082473283d403056f2310b0de2",
+      "stored_name": "007-16a281ef8c8e69fd-selection_coverage_receipt_2026-09-23.json"
+    }
+  ],
+  "started_at": "2026-09-23T23:42:55.542570+00:00",
+  "status": "completed",
+  "timeout_scope": "invocation_including_retries_and_cleanup",
+  "timeout_seconds": 600,
+  "tools_enabled": false,
+  "verdict": {
+    "findings": [
+      {
+        "evidence": "Ledger items deep-dive:nip-30 and deep-dive:nip-71 (rotation_check: not found in prior deep-dive headings; event_example_status cites check_newsletter_event_examples.py). Draft headings ### NIP-30: Custom Emoji and ### NIP-71: Video Events embed kind 30030 id 438814476db249b50067d167e50c85530e317126179546a584365c8371bdd97f and kind 22 id dd1fcfe7ce6db5450e362879897138ca4e639ef39654dfe3b1f669310fd9545d, claiming recovery from named relays plus NIP-01/BIP-340 checks. Prior issues #38\u2013#40 deep-dive NIP-18/25, NIP-21/27, and NIP-23/92 only. No event-example checker receipt is in this snapshot.",
+        "recommendation": "Keep NIP-30/NIP-71. Do not add or tighten relay-recovery language beyond the existing checker assertion on draft sha256 a0fb9b47b556d9a2ebf60eac01aebfd2238e48e2dc2dc2fa62a71909393bf990. Implementation behavior claims remain bound to the cited commit URLs, which were not re-read in this cold pass.",
+        "severity": "note",
+        "title": "NIP-30/NIP-71 challenge: novelty holds; signed-event and implementation claims were not re-executed here"
+      }
+    ],
+    "summary": "Checked the eight selected protocol items (NIP-02 PR #2472, NIP-86 PR #2477, NIP-69 PR #2476, NIP-A3 PR #2475, BUD-16 blossom#105, Marmot #425, Marmot #423, NWC-13 nwc#7) against the Wednesday ledger and the exact #41 draft Protocol headings: each has a distinct PR or merge URL; merged-versus-proposal wording matches the draft. Marmot #423 reuses last week\u2019s URL but the draft and ledger treat the merge as the new milestone, not a repeat of #40\u2019s open-proposal writeup. NIP-A3 #2475 is distinct from #40\u2019s #2463; NWC-13 #7 is distinct from #40\u2019s NWC #3/#5. NIP-30 and NIP-71 are not deep-dive headings in supplied #38\u2013#40; the draft does not reuse NIP-57/NIP-60; kind 30030 and kind 22 examples are embedded and use different event IDs than #38\u2013#40. Limits: no live GitHub merge check, no relay queries, implementation file bodies not in the snapshot, and check_newsletter_event_examples.py was not re-run (only the selection-coverage receipt is supplied).",
+    "verdict": "PASS"
+  }
+}

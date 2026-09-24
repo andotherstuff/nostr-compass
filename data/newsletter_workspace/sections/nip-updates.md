@@ -4,17 +4,13 @@
 
 [NIP-02 (Follow List)](/en/topics/nip-02/) standardizes the kind `3` event that records whom an account follows and can attach a local petname to each followed key. The [merged petname clarification](https://github.com/nostr-protocol/nips/pull/2472) allows display-safe characters while preserving the field as a user's local label, not a globally verified name.
 
-### NIP-AC proposes relay-bootstrapped WebRTC signaling
+### NIP-86 adds clear and list methods for relay management
 
-[NIP-AC](https://github.com/nostr-protocol/nips/pull/2461) is an open proposal for using signed Nostr events to discover peers and exchange WebRTC offers, answers, and ICE candidates before traffic moves to a direct connection. NIP-59 standardizes gift wrapping that hides an event's sender and metadata inside encrypted envelopes. The proposal covered last week has since shipped a revised draft that keeps relays out of the established data path, uses ordinary `p` and `e` tags for recipients and session correlation, and recommends that gift-wrapping scheme when signaling metadata needs concealment.
-
-### NIP-86 proposes clear and list methods for relay management
-
-[NIP-86 (Relay Management API)](/en/topics/nip-86/) standardizes authenticated administrative calls for banning, allowing, inspecting, and configuring a relay. [PR #2477](https://github.com/nostr-protocol/nips/pull/2477) proposes methods for clearing pubkeys or events from both allow and ban lists and for listing roles, allowed events, and disallowed kinds, including behavior already present in the khatru relay framework and the go-nostr library.
+[NIP-86 (Relay Management API)](/en/topics/nip-86/) standardizes authenticated administrative calls for banning, allowing, inspecting, and configuring a relay. [PR #2477](https://github.com/nostr-protocol/nips/pull/2477), merged September 23, adds methods for clearing pubkeys or events from both allow and ban lists and for listing roles, allowed events, and disallowed kinds, including behavior already present in the khatru relay framework and the go-nostr library.
 
 ### NIP-69 proposes a stable creation time for trading orders
 
-[NIP-69 (Peer-to-Peer Trading)](/en/topics/nip-69/) standardizes addressable order events that let multiple trading applications share buy and sell liquidity. [PR #2476](https://github.com/nostr-protocol/nips/pull/2476) proposes an optional creation-time tag that stays fixed across status updates, so a returned or republished order does not look newly created merely because its event timestamp changed.
+[NIP-69 (Peer-to-Peer Trading)](/en/topics/nip-69/) standardizes addressable order events that let multiple trading applications share buy and sell liquidity. [PR #2476](https://github.com/nostr-protocol/nips/pull/2476) proposes an optional creation-time tag that stays fixed across status updates, so a returned or republished order retains its original age even when a newer event records a status change.
 
 ### NIP-A3 proposes proof of payment-address ownership
 

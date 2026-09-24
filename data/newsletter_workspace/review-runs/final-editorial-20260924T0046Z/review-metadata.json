@@ -1,0 +1,146 @@
+{
+  "attempts": [
+    {
+      "attempt": 1,
+      "model": "glm-5.2[reasoning=high]",
+      "outcome": "success",
+      "output_sha256": "cb7a86e229f67dcfc9da1b6d27f1be536d4e79ac7fee3f3c80074b8d90bea66b",
+      "provider": "cursor",
+      "response_id": null,
+      "routing_attempts": [
+        {
+          "budget_seconds": 85.714,
+          "elapsed_seconds": 80.82,
+          "kind": "timeout",
+          "message": "Isolated review deadline",
+          "model": "kimi-k3-max",
+          "outcome": "failure",
+          "provider": "cursor",
+          "provider_wide": false
+        },
+        {
+          "budget_seconds": 86.53,
+          "elapsed_seconds": 47.758,
+          "model": "glm-5.2-high",
+          "outcome": "success",
+          "provider": "cursor"
+        }
+      ],
+      "started_at": "2026-09-24T00:46:43.916536+00:00",
+      "usage": {}
+    }
+  ],
+  "completed_at": "2026-09-24T00:48:52.494879+00:00",
+  "elapsed_seconds": 128.578,
+  "endpoint": "cursor-acp",
+  "implementation_model": "gpt-6-sol",
+  "implementation_models": [
+    "gpt-6-sol"
+  ],
+  "instructions_sha256": "c12e96aca274d8b23c5cdf2549f8ad318cca5dd92e784e2b0243aade6341f4ce",
+  "max_attempts": 2,
+  "max_output_tokens": 8000,
+  "requested_model": "kimi-k3-max",
+  "review_tier": "deep",
+  "routing_chain": [
+    {
+      "model": "kimi-k3-max",
+      "provider": "cursor"
+    },
+    {
+      "model": "glm-5.2-high",
+      "provider": "cursor"
+    },
+    {
+      "model": "grok-4.6",
+      "provider": "cursor"
+    },
+    {
+      "model": "composer-2.5",
+      "provider": "cursor"
+    },
+    {
+      "model": "claude-opus-5",
+      "provider": "claude-code"
+    },
+    {
+      "model": "moonshotai/kimi-k3",
+      "provider": "openrouter"
+    },
+    {
+      "model": "z-ai/glm-5.2",
+      "provider": "openrouter"
+    },
+    {
+      "model": "google/gemini-3.1-pro-preview",
+      "provider": "openrouter"
+    }
+  ],
+  "schema_version": 1,
+  "selected_cost_usd": null,
+  "selected_endpoint": "cursor-acp",
+  "selected_family": "zhipu",
+  "selected_model": "glm-5.2[reasoning=high]",
+  "selected_provider": "cursor",
+  "snapshots": [
+    {
+      "bytes": 57072,
+      "path": "/opt/data/compass-worktrees/2026-09-23-publish-codex/content/en/newsletters/2026-09-23-newsletter.md",
+      "sha256": "32af76039e5d45be7fe14b9508918d130e76dc641b0a80eb699d3c6bb598e591",
+      "stored_name": "001-32af76039e5d45be-2026-09-23-newsletter.md"
+    },
+    {
+      "bytes": 15989,
+      "path": "/opt/data/compass-worktrees/2026-09-23-publish-codex/data/newsletter_workspace/project_activity_coverage_2026-09-23.md",
+      "sha256": "b9b81645c67b40b5cee9f977b7723004fe4330853641d948688c76df5e6a4643",
+      "stored_name": "002-b9b81645c67b40b5-project_activity_coverage_2026-09-23.md"
+    },
+    {
+      "bytes": 12557,
+      "path": "/opt/data/compass-worktrees/2026-09-23-publish-codex/data/newsletter_workspace/late_delta_inventory_2026-09-23.json",
+      "sha256": "903f641d309d83691e370236829f099aaabe91f161c35bd6cd0c214f690720d4",
+      "stored_name": "003-903f641d309d8369-late_delta_inventory_2026-09-23.json"
+    },
+    {
+      "bytes": 16774,
+      "path": "/opt/data/compass-worktrees/2026-09-23-publish-codex/data/newsletter_workspace/late_delta_review_2026-09-23.md",
+      "sha256": "a77518146e774f714734f81323913a14e5065aff582b901ca53f320e8871f095",
+      "stored_name": "004-a77518146e774f71-late_delta_review_2026-09-23.md"
+    },
+    {
+      "bytes": 7947,
+      "path": "/opt/data/compass-worktrees/2026-09-23-publish-codex/data/newsletter_workspace/source_fact_checks_2026-09-23.md",
+      "sha256": "8e6c11036d1616edb2e29a8e88ed77bb1910d98b0dabfe87ca2b5b7c58128546",
+      "stored_name": "005-8e6c11036d1616ed-source_fact_checks_2026-09-23.md"
+    }
+  ],
+  "started_at": "2026-09-24T00:46:43.915999+00:00",
+  "status": "completed",
+  "timeout_scope": "invocation_including_retries_and_cleanup",
+  "timeout_seconds": 600,
+  "tools_enabled": false,
+  "verdict": {
+    "findings": [
+      {
+        "evidence": "The late-delta memo folds Amethyst #4183 (feat(marmot): Ed25519.keyPairFromSeed) and #4185 (refactor: Render/Display split, batches 1\u20133) into the Amethyst MLS interop / desktop group rendering update. The draft's Amethyst MLS section (https://github.com/vitorpamplona/amethyst/pull/4187 vicinity) cites #4187, #4182, #4184, #4188, and #4189, but does not separately cite #4183 or #4185; #4185 is only referenced indirectly via 'after the display-layer split' in the #4189 sentence.",
+        "recommendation": "No change required for correctness since both are folded implementation-support PRs. If desired for traceability, add a brief parenthetical noting #4183 (Ed25519 key-pair helper) and #4185 (Render/Display split) as folded implementation support within the Amethyst MLS paragraph.",
+        "severity": "note",
+        "title": "Two folded Amethyst late PRs are not explicitly cited in the draft"
+      },
+      {
+        "evidence": "The late-delta memo folds nostter PRs #2570\u2013#2584 (15 PRs) into one 'nostter signer capabilities' update. The draft's 'nostter gates signing and private reads on real capabilities' section cites #2570, #2574, #2576, and #2577, while #2571, #2572, #2573, #2575, #2578, #2579, #2580, #2581, #2582, #2583, #2584 are folded but uncited projection-removal and caller-migration PRs.",
+        "recommendation": "No change required; representative citation of the most material capability-gating PRs is acceptable editorial practice and the uncited PRs are implementation support. The draft's 'subsequent authentication-state refactors' phrasing already acknowledges the broader set.",
+        "severity": "note",
+        "title": "nostter capability section cites 4 of 15 folded late PRs"
+      },
+      {
+        "evidence": "The late-delta memo states Zzub 0.0.16 is 'developer-signed at 21:10:28Z' and the fact notes call it a 'developer-signed event.' The draft's Zzub 0.0.16 paragraph (https://primal.net/e/d9ad994bfadc1152b4c77a4fd3eb6be1746eca9d2626008d341bf31d06988872) describes the release features accurately but does not explicitly label it as a signed Zapstore event, consistent with the 0.0.15 paragraph's treatment.",
+        "recommendation": "No change required for consistency. If the editorial standard prefers explicit provenance labels, add 'signed Zapstore release' to both Zzub version sentences for clarity.",
+        "severity": "note",
+        "title": "Zzub 0.0.16 signed-event nature is implicit, not stated"
+      }
+    ],
+    "summary": "Cold no-tools review of the immutable Compass #41 snapshot (final draft, 80-project activity memo, late cutoff inventory, late-delta decision memo, and primary-body fact notes) finds no blocking or major defects. All 37 late merged PR identities and both fips2go releases are dispositioned in the late-delta memo; Zzub 0.0.16 plus both fips2go signed events are folded, and the five non-Nostr Zapstore events (FilePipe, Fokus, Mood Cairns, Clench, Atmo Engine) are skipped with explicit reasons. The four new NIP-34 announcements (gyoza-hanto, omarchy-pock, omarchy-btclock, omarchy-bitcoin-frontier-theme) and five app-discovery leads (BlindOracle, node-dlc, qrgo, taskledger, tollbooth-web) all carry explicit skip reasons. The older open NIP-86 PR #2439 is correctly NOT reported as merged or implemented; only merged PR #2477 is covered as a NIP-86 milestone. 0xchat #92 and nos2x-fox #67/#69 are described as merged source-level work with explicit caveats that no app/extension-store release or device test is claimed, matching the primary-body fact notes. The four late In Development additions (Amethyst DECK-0003, Amethyst MLS/render, nostter capability migration, Pensieve archive) are distinct from each other and from Wednesday coverage, and each carries a deployment/verification caveat. fips2go DNS64 and device-architecture caveats and signed Zzub 0.0.16 board claims match the supplied fact notes. NIP claims are scoped to their specifications and proposal/merge status is stated correctly. This PASS is limited to the supplied immutable snapshot; live PR/head/CI/deploy/relay gates and any post-snapshot state changes are separate and were not verified here.",
+    "verdict": "PASS"
+  }
+}
