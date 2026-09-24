@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "source_pass_id": "wednesday-2026-09-23-codex-recovery-1",
-  "source_manifest_sha256": "4fc99ed313aea0db36e082b89bcc5e90b60466361e1fd51f7c2337015346771d",
+  "source_manifest_sha256": "b55a33b7792f5b8aad430d43d09762a18f7730974af0968b9bc8e249c8f4497e",
   "app_discovery_artifact_sha256": "6a10a1fdfb3c50baba1dc311fe7e83f95ced74d0f1c49066b4afda4d666dbe5f",
   "new_discovery_decisions": [
     {

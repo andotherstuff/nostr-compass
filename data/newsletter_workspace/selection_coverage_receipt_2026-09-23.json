@@ -7,7 +7,7 @@
   "editorial_candidate_count": 230,
   "final": true,
   "ledger_path": "/opt/data/compass-worktrees/2026-09-23-publish-codex/data/newsletter_workspace/selection_coverage_wednesday_2026-09-23.json",
-  "ledger_sha256": "65a60eac94217928575dd62429982af79e385c9efa0d792550d9d02848d16650",
+  "ledger_sha256": "7194beda290f4c21a67cc23dbbdcbe69d2c1071861f520c6825bd6a34180f215",
   "qualified_candidate_count": 72,
   "receipt_type": "selection-coverage",
   "retained_source_candidate_count": 259,
@@ -15,7 +15,7 @@
   "selected_candidate_count": 72,
   "skipped_candidate_count": 158,
   "source_manifest_path": "/opt/data/compass-worktrees/2026-09-23-publish-codex/data/source_runs/source_run_2026-09-23_wednesday-2026-09-23-codex-recovery-1.json",
-  "source_manifest_sha256": "4fc99ed313aea0db36e082b89bcc5e90b60466361e1fd51f7c2337015346771d",
+  "source_manifest_sha256": "b55a33b7792f5b8aad430d43d09762a18f7730974af0968b9bc8e249c8f4497e",
   "source_pass_id": "wednesday-2026-09-23-codex-recovery-1",
   "unresolved_count": 0,
   "verdict": "PASS"

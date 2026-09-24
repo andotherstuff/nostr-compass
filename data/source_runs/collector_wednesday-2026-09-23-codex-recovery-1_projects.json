@@ -39169,7 +39169,7 @@
     "until": "2026-09-23T20:31:30Z",
     "upper_bound_enforced": "collector"
   },
-  "collector_path": "/opt/data/compass-worktrees/2026-09-23-publish-codex/data/source_runs/collector_snapshots/scripts/fetch_project_updates.py",
+  "collector_path": "/opt/data/compass-worktrees/2026-09-23-publish-codex/evidence/collectors/2026-09-23/fetch_project_updates.py",
   "dispositions": {
     "/repos/00quasr/Shirushi:1143220974": {
       "decision": "include",
