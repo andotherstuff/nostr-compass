@@ -15,9 +15,13 @@ import argparse
 import hashlib
 import json
 from pathlib import Path
+import sys
 from typing import Any
 
-CHECKER_VERSION = "selection-coverage-v1"
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from project_activity_coverage import inventory as activity_inventory, read_object as read_activity_object, validate as validate_activity
+
+CHECKER_VERSION = "selection-coverage-v2"
 SOURCE_FAMILIES = (
     "projects",
     "nip-discussions",
@@ -182,7 +186,43 @@ def validate(manifest_path: Path, ledger_path: Path, draft_path: Path) -> tuple[
     if tuple(ledger.get("score_axes", ())) != SCORE_AXES:
         errors.append("selection ledger score axes do not match the maintained policy")
 
+
+    # The source-manifest projects family contains low-level API record IDs,
+    # while editorial selection works at project/change level. The separate
+    # exact-input activity decision closes the release-only blind spot before a
+    # final selection receipt can pass. It does not replace source expansion.
+    activity_counts = {"activity_project_count": 0, "activity_pr_count": 0}
+    activity_selected_urls: set[str] = set()
+    manifest_families = manifest.get("families")
+    project_entry = manifest_families.get("projects") if isinstance(manifest_families, dict) else None
+    project_source = project_entry if isinstance(project_entry, dict) else {}
+    source_path = project_source.get("artifact_path")
+    decision_binding = ledger.get("project_activity_decisions")
+    if not isinstance(source_path, str) or not source_path or not isinstance(decision_binding, dict):
+        errors.append("final selection needs the project source artifact and bound project-activity decisions")
+    else:
+        decision_path = decision_binding.get("path")
+        try:
+            updates_path = Path(source_path)
+            if file_hash(updates_path) != project_source.get("artifact_sha256"):
+                errors.append("project-activity source does not match the finalized source manifest")
+            if not isinstance(decision_path, str) or file_hash(Path(decision_path)) != decision_binding.get("sha256"):
+                errors.append("project-activity decisions lack their exact-file binding")
+            else:
+                activity = activity_inventory(read_activity_object(updates_path), file_hash(updates_path))
+                activity_counts = {"activity_project_count": activity["project_count"], "activity_pr_count": activity["pr_count"]}
+                activity_decisions = read_activity_object(Path(decision_path))
+                errors.extend(validate_activity(activity, activity_decisions, draft))
+                decision_rows = activity_decisions.get("projects")
+                if isinstance(decision_rows, list):
+                    for row in decision_rows:
+                        if isinstance(row, dict) and row.get("verdict") == "include" and isinstance(row.get("selected_pr_urls"), list):
+                            activity_selected_urls.update(url for url in row["selected_pr_urls"] if isinstance(url, str))
+        except (OSError, ValueError, json.JSONDecodeError) as exc:
+            errors.append(f"project-activity evidence cannot be read: {exc}")
+
     retained_sources = source_universe(manifest, ledger, ledger_path, errors)
+
     candidates_value = ledger.get("candidates")
     expansions_value = ledger.get("source_expansion")
     if not isinstance(candidates_value, list) or not isinstance(expansions_value, list):
@@ -224,6 +264,7 @@ def validate(manifest_path: Path, ledger_path: Path, draft_path: Path) -> tuple[
         errors.append("selection ledger cites unknown retained sources: " + ", ".join(sorted(extra_sources)[:20]))
 
     selected = skipped = qualified_count = 0
+    selected_candidate_sources: set[str] = set()
     for candidate_id, candidate in candidates.items():
         name = candidate.get("name")
         reason = candidate.get("reason")
@@ -299,6 +340,8 @@ def validate(manifest_path: Path, ledger_path: Path, draft_path: Path) -> tuple[
                 errors.append(f"sub-threshold candidate {candidate_id} was included")
         if disposition in {"include", "fold"}:
             selected += 1
+            if isinstance(draft_sources, list):
+                selected_candidate_sources.update(url for url in draft_sources if isinstance(url, str))
             if not isinstance(draft_sources, list) or not draft_sources:
                 errors.append(f"selected candidate {candidate_id} lacks draft source evidence")
             elif any(url not in primary_sources or url not in draft for url in draft_sources):
@@ -307,6 +350,10 @@ def validate(manifest_path: Path, ledger_path: Path, draft_path: Path) -> tuple[
             skipped += 1
         else:
             errors.append(f"candidate {candidate_id} has invalid final disposition {disposition!r}")
+
+    uncovered_activity = activity_selected_urls - selected_candidate_sources
+    if uncovered_activity:
+        errors.append("selected merged-PR activity lacks included candidate mapping: " + ", ".join(sorted(uncovered_activity)[:20]))
 
     referenced_candidates = {candidate_id for ids in expanded_sources.values() for candidate_id in ids}
     unreferenced = set(candidates) - referenced_candidates
@@ -320,6 +367,7 @@ def validate(manifest_path: Path, ledger_path: Path, draft_path: Path) -> tuple[
         "selected_candidate_count": selected,
         "skipped_candidate_count": skipped,
         "unresolved_count": len(errors),
+        **activity_counts,
     }
     receipt = {
         "schema_version": 1,

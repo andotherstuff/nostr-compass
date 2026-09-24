@@ -445,7 +445,9 @@ Run `python3 scripts/check_newsletter_continuity.py content/en/newsletters/<date
 
 ## Editorial Decisions
 1. Check all prior newsletters mechanically and read the last 3 in full. SKIP items already covered unless a distinct primary source supports a distinct substantive change.
-2. Triage the full exact-window family inventories, including every project in the release digest, with explicit write-up-or-skip reasons. Reconcile every normalized editorial source through `selection_coverage_<date>.json`; raw collector `include` alone does not mean editorial retention. Expand aggregate events into every named project or protocol item. Do not promote low-scoring items or drop qualifying ones.
+
+2. Triage the full exact-window family inventories. Reconcile every collector-retained raw source through normalized `editorial_sources` and `selection_coverage_<date>.json`; collector `include` alone is not editorial retention. Reconcile every merged-PR project through `project_activity_decisions_<date>.json`, bound in the ledger as `project_activity_decisions: {"path": "<exact path>", "sha256": "<exact file hash>"}`. Expand aggregates into every named project or protocol item. Do not promote low-scoring maintenance or drop qualifying work, regardless of PR count.
+
 3. Apply the Nostr Relay Test: does this change affect Nostr relays or Nostr users?
 4. Section assignments (each item in ONE section only)
    - Apps first: lead stories and section headlines favor app/project news. Spec work
@@ -897,7 +899,7 @@ Read: data/newsletter_workspace/editorial_plan.md (for topic pages needed)
 12. **Change C Discovery follow-through.** Add every durable qualifying Discovery selection to `data/projects.yml` in the appropriate category (read existing categories at the top of the file). Include name, description, platforms, repo, website (if any), maintainer (from repo metadata if needed), status (active/beta), priority (medium for newly discovered, never high on first appearance), and a notes field describing the Nostr surface. Stage the projects.yml changes in the same branch as the newsletter.
 13. **All-history continuity gate (HARD FAIL).** Run `python3 scripts/check_newsletter_continuity.py content/en/newsletters/YYYY-MM-DD-newsletter.md --history-dir content/en/newsletters`. A failure means a repeated project lacks its own distinct primary source or reuses a source URL already covered. Remove it unless the writer can cite a distinct source and explain a distinct user-facing or protocol-facing change in at least two substantive sentences. Never preserve a version-only or "follow-up" pointer.
 14. Run `python3 scripts/check_newsletter_style.py content/en/newsletters/YYYY-MM-DD-newsletter.md` and `python3 scripts/check_newsletter_paragraph_links.py content/en/newsletters/YYYY-MM-DD-newsletter.md`; either failure blocks assembly.
-15. Run `python3 scripts/check_selection_coverage.py --manifest <source-pass> --ledger data/newsletter_workspace/selection_coverage_<date>.json --draft content/en/newsletters/YYYY-MM-DD-newsletter.md --receipt data/newsletter_workspace/selection_coverage_receipt_<date>.json`; any missing candidate, unexplained GREEN omission, low-score inclusion, changed draft, or fixed item cap blocks assembly.
+15. Run `python3 scripts/check_selection_coverage.py --manifest <source-pass> --ledger data/newsletter_workspace/selection_coverage_<date>.json --draft content/en/newsletters/YYYY-MM-DD-newsletter.md --receipt data/newsletter_workspace/selection_coverage_receipt_<date>.json`; any missing candidate, unreviewed merged-PR project, unexplained GREEN omission, low-score inclusion, changed draft, or fixed item cap blocks assembly.
 16. Run: hugo --quiet (fix any errors)
 17. Write assembly report
 
