@@ -1,0 +1,28 @@
+{
+  "artifact_path": "/opt/data/compass-worktrees/2026-09-23-final-cutoff/data/nostr_recap/recap_2026-09-23_2026-09-24.json",
+  "artifact_sha256": "b529bf37ac739230ae1aff42a0c3f773ee57ef740f81a0c2ad0acea4906d8010",
+  "candidate_ids": [],
+  "canonical_query": {
+    "author": "cae5b7ea348afefc4c102bb7b125c4928f114739a27b877c6bcfbe5a79280384",
+    "family": "nostr-recap",
+    "kinds": [
+      1,
+      30023
+    ],
+    "limit_per_kind": 1000,
+    "pass_id": "final-20260924T0041Z",
+    "since": "2026-09-23T23:44:00Z",
+    "until": "2026-09-24T00:41:00Z"
+  },
+  "collector_path": "/opt/data/compass-worktrees/2026-09-23-final-cutoff/scripts/fetch_nostr_recap.sh",
+  "dispositions": {},
+  "family": "nostr-recap",
+  "include_count": 0,
+  "item_count": 0,
+  "page_count": 2,
+  "pagination_complete": true,
+  "pass_id": "final-20260924T0041Z",
+  "skip_count": 0,
+  "skip_evidence": [],
+  "status": "empty_verified"
+}

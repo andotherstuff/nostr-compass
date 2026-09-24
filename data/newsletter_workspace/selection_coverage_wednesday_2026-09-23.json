@@ -2400,7 +2400,7 @@
   },
   "final": true,
   "source_manifest": "source_run_2026-09-23_wednesday-2026-09-23-codex-recovery-1.json",
-  "source_manifest_sha256": "bcac650f8267bb5eecd808bd79c7dd31d308d18081176fc138081d6d0adb70c8",
+  "source_manifest_sha256": "4fc99ed313aea0db36e082b89bcc5e90b60466361e1fd51f7c2337015346771d",
   "pass_id": "wednesday-2026-09-23-codex-recovery-1",
   "draft_sha256": "4ab0093751cc18209aafd42a65fabe89e26f960250625032e31e40bd43704c91",
   "finalization_owner": "Stage 5 selection ledger build; checker acceptance remains separate",
@@ -2447,7 +2447,7 @@
       "collector_source_ids": [],
       "editorial_provenance": {
         "path": "/opt/data/compass-worktrees/2026-09-23-publish-codex/data/newsletter_workspace/selection_review_2026-09-23.md",
-        "sha256": "33fc309f19fa1369f0c1481b151afe665eda7605a2b70960e36e78714b36c9f1",
+        "sha256": "38172d4d8b336eff2da6558a2e5f3fc74515e4c6b0b6064a4acb5292cdbe8bb0",
         "locator": "https://github.com/jmcorgan/fips-initramfs/releases/tag/v0.1.0"
       }
     },
@@ -2486,7 +2486,7 @@
       "collector_source_ids": [],
       "editorial_provenance": {
         "path": "/opt/data/compass-worktrees/2026-09-23-publish-codex/data/newsletter_workspace/selection_review_2026-09-23.md",
-        "sha256": "33fc309f19fa1369f0c1481b151afe665eda7605a2b70960e36e78714b36c9f1",
+        "sha256": "38172d4d8b336eff2da6558a2e5f3fc74515e4c6b0b6064a4acb5292cdbe8bb0",
         "locator": "https://github.com/hroomnik007/MintRadar/commit/82a66c64c4a920f89e0dfca6bc32e1b747c27c22"
       }
     },
@@ -2540,7 +2540,7 @@
       "collector_source_ids": [],
       "editorial_provenance": {
         "path": "/opt/data/compass-worktrees/2026-09-23-publish-codex/data/newsletter_workspace/selection_review_2026-09-23.md",
-        "sha256": "33fc309f19fa1369f0c1481b151afe665eda7605a2b70960e36e78714b36c9f1",
+        "sha256": "38172d4d8b336eff2da6558a2e5f3fc74515e4c6b0b6064a4acb5292cdbe8bb0",
         "locator": "https://github.com/samthomson/relaykit/commit/a6c1a645cd0c4e21e34730ad8c13692e8e3066d5"
       }
     },
@@ -2549,7 +2549,7 @@
       "collector_source_ids": [],
       "editorial_provenance": {
         "path": "/opt/data/compass-worktrees/2026-09-23-publish-codex/data/newsletter_workspace/selection_review_2026-09-23.md",
-        "sha256": "33fc309f19fa1369f0c1481b151afe665eda7605a2b70960e36e78714b36c9f1",
+        "sha256": "38172d4d8b336eff2da6558a2e5f3fc74515e4c6b0b6064a4acb5292cdbe8bb0",
         "locator": "https://gitworkshop.dev/npub17m2ual3pdjvhd8yc6a3m8snzjsgnmtl26hwen48ne937qgyjyshs2zgvse/relay.ngit.dev/threshold"
       }
     },
@@ -2558,7 +2558,7 @@
       "collector_source_ids": [],
       "editorial_provenance": {
         "path": "/opt/data/compass-worktrees/2026-09-23-publish-codex/data/newsletter_workspace/selection_review_2026-09-23.md",
-        "sha256": "33fc309f19fa1369f0c1481b151afe665eda7605a2b70960e36e78714b36c9f1",
+        "sha256": "38172d4d8b336eff2da6558a2e5f3fc74515e4c6b0b6064a4acb5292cdbe8bb0",
         "locator": "https://github.com/marmot-protocol/whitenoise-android/releases/tag/android-v2026.9.21"
       }
     },
@@ -2860,7 +2860,7 @@
       "collector_source_ids": [],
       "editorial_provenance": {
         "path": "/opt/data/compass-worktrees/2026-09-23-publish-codex/data/newsletter_workspace/selection_review_2026-09-23.md",
-        "sha256": "33fc309f19fa1369f0c1481b151afe665eda7605a2b70960e36e78714b36c9f1",
+        "sha256": "38172d4d8b336eff2da6558a2e5f3fc74515e4c6b0b6064a4acb5292cdbe8bb0",
         "locator": "https://github.com/nostr-wallet-connect/nwc/pull/7"
       }
     },
@@ -2869,7 +2869,7 @@
       "collector_source_ids": [],
       "editorial_provenance": {
         "path": "/opt/data/compass-worktrees/2026-09-23-publish-codex/data/newsletter_workspace/selection_review_2026-09-23.md",
-        "sha256": "33fc309f19fa1369f0c1481b151afe665eda7605a2b70960e36e78714b36c9f1",
+        "sha256": "38172d4d8b336eff2da6558a2e5f3fc74515e4c6b0b6064a4acb5292cdbe8bb0",
         "locator": "https://github.com/nostr-protocol/nips/blob/master/30.md"
       }
     },
@@ -2878,7 +2878,7 @@
       "collector_source_ids": [],
       "editorial_provenance": {
         "path": "/opt/data/compass-worktrees/2026-09-23-publish-codex/data/newsletter_workspace/selection_review_2026-09-23.md",
-        "sha256": "33fc309f19fa1369f0c1481b151afe665eda7605a2b70960e36e78714b36c9f1",
+        "sha256": "38172d4d8b336eff2da6558a2e5f3fc74515e4c6b0b6064a4acb5292cdbe8bb0",
         "locator": "https://github.com/nostr-protocol/nips/blob/master/71.md"
       }
     },

@@ -1,0 +1,1735 @@
+{
+  "artifact_path": "/opt/data/compass-worktrees/2026-09-23-final-cutoff/data/app_discovery/discovery_2026-09-24.json",
+  "artifact_sha256": "c805a27eb789f616b94b9a3b0ff8ba52d65793742ebfaab2e851d7592395e713",
+  "candidate_ids": [
+    "github:100134877",
+    "github:1002271234",
+    "github:1003233658",
+    "github:1004113453",
+    "github:100711978",
+    "github:1011838643",
+    "github:1013830656",
+    "github:1016387436",
+    "github:1020393325",
+    "github:1021739787",
+    "github:1023334001",
+    "github:1029873778",
+    "github:1034144288",
+    "github:1034211886",
+    "github:1042555111",
+    "github:1043652948",
+    "github:1044107289",
+    "github:1044345546",
+    "github:1050639990",
+    "github:1050990201",
+    "github:1051419570",
+    "github:1052831571",
+    "github:1053704880",
+    "github:1053874316",
+    "github:1055628515",
+    "github:1057442228",
+    "github:1057878734",
+    "github:1065668596",
+    "github:1068355003",
+    "github:1072701108",
+    "github:1079099257",
+    "github:1083051966",
+    "github:10835647",
+    "github:1083908802",
+    "github:1095282404",
+    "github:1099388749",
+    "github:1099389313",
+    "github:1104999086",
+    "github:1108313852",
+    "github:1109098066",
+    "github:1110988043",
+    "github:1112819976",
+    "github:1118379577",
+    "github:1123960847",
+    "github:1126672238",
+    "github:1126672895",
+    "github:1128029386",
+    "github:1129745922",
+    "github:113107217",
+    "github:1131562108",
+    "github:1133659811",
+    "github:1135783427",
+    "github:1139107729",
+    "github:1139856836",
+    "github:1141467006",
+    "github:1142164031",
+    "github:1144849760",
+    "github:1146702680",
+    "github:1147592384",
+    "github:1148174380",
+    "github:1148249299",
+    "github:1148287834",
+    "github:1149967035",
+    "github:1154739373",
+    "github:1154829623",
+    "github:1155025406",
+    "github:1155603689",
+    "github:1162220612",
+    "github:1162754827",
+    "github:1162905606",
+    "github:1165001010",
+    "github:1166688900",
+    "github:1167734557",
+    "github:1168712448",
+    "github:1172223550",
+    "github:1172828981",
+    "github:1173988543",
+    "github:1174789082",
+    "github:1175835688",
+    "github:1176254931",
+    "github:1176729103",
+    "github:1177841163",
+    "github:1179327806",
+    "github:1179660976",
+    "github:1181933777",
+    "github:1182343347",
+    "github:1183030228",
+    "github:1183284531",
+    "github:1183699512",
+    "github:1183815821",
+    "github:1183940288",
+    "github:1185403896",
+    "github:1187507811",
+    "github:1189086392",
+    "github:1189090952",
+    "github:1189362139",
+    "github:1190966177",
+    "github:1192470639",
+    "github:1192652555",
+    "github:1193425731",
+    "github:1193738592",
+    "github:1200292656",
+    "github:1201373651",
+    "github:1202487580",
+    "github:1203260455",
+    "github:1204300413",
+    "github:1206299549",
+    "github:1208091394",
+    "github:1208837511",
+    "github:1209274450",
+    "github:1209410435",
+    "github:1215064324",
+    "github:1215789362",
+    "github:1216365184",
+    "github:1222982254",
+    "github:1223090036",
+    "github:1229813769",
+    "github:1230684946",
+    "github:1235423317",
+    "github:1235564797",
+    "github:1235656340",
+    "github:1238769644",
+    "github:1239322558",
+    "github:1245816682",
+    "github:1249144179",
+    "github:1249490895",
+    "github:1256423460",
+    "github:1260305132",
+    "github:1260328296",
+    "github:1261170003",
+    "github:1261628552",
+    "github:1266376930",
+    "github:1266587767",
+    "github:1269968918",
+    "github:1270346402",
+    "github:1272928322",
+    "github:1273079429",
+    "github:1276595002",
+    "github:1284552213",
+    "github:1293600287",
+    "github:1294245177",
+    "github:1296530907",
+    "github:129746296",
+    "github:1301557199",
+    "github:1301979650",
+    "github:1303959647",
+    "github:1306382244",
+    "github:1306960556",
+    "github:1315399891",
+    "github:1319154684",
+    "github:1321173485",
+    "github:1321544953",
+    "github:1321971949",
+    "github:1327394224",
+    "github:1329235020",
+    "github:1329524466",
+    "github:1331110883",
+    "github:1333246534",
+    "github:1333575587",
+    "github:1333687119",
+    "github:1334381404",
+    "github:1335097337",
+    "github:1335835227",
+    "github:1336045774",
+    "github:1339093938",
+    "github:1339347406",
+    "github:1342169466",
+    "github:1342195071",
+    "github:1346075548",
+    "github:1346075794",
+    "github:1346080913",
+    "github:1346533230",
+    "github:1346917193",
+    "github:1349675255",
+    "github:1350514455",
+    "github:1351713429",
+    "github:1351816093",
+    "github:1356627519",
+    "github:1358968667",
+    "github:1359606199",
+    "github:1364527927",
+    "github:1365744883",
+    "github:1368737093",
+    "github:1368792440",
+    "github:1369841494",
+    "github:1370998066",
+    "github:1371008575",
+    "github:1371100876",
+    "github:1373292049",
+    "github:1373995240",
+    "github:1374058281",
+    "github:1375693444",
+    "github:1376149922",
+    "github:1377934008",
+    "github:1378374926",
+    "github:1378438941",
+    "github:1378781592",
+    "github:1380703403",
+    "github:1381052206",
+    "github:1381124678",
+    "github:1381867138",
+    "github:1382353074",
+    "github:1382364989",
+    "github:1382365033",
+    "github:1382371325",
+    "github:1382429563",
+    "github:1382832903",
+    "github:1382845208",
+    "github:1382884123",
+    "github:1383115664",
+    "github:1383151371",
+    "github:1383458485",
+    "github:1383527767",
+    "github:1384308827",
+    "github:166220658",
+    "github:171051201",
+    "github:190347236",
+    "github:191815190",
+    "github:198068297",
+    "github:215791627",
+    "github:226972903",
+    "github:24712181",
+    "github:277259093",
+    "github:296629609",
+    "github:2968000",
+    "github:300322167",
+    "github:333767628",
+    "github:341757830",
+    "github:3557653",
+    "github:37350472",
+    "github:3883093",
+    "github:39234942",
+    "github:426649939",
+    "github:443566756",
+    "github:457552225",
+    "github:465199957",
+    "github:47046554",
+    "github:482383845",
+    "github:487510752",
+    "github:494059063",
+    "github:529702262",
+    "github:535160981",
+    "github:537120958",
+    "github:55341469",
+    "github:567322453",
+    "github:569861981",
+    "github:585619089",
+    "github:586675515",
+    "github:586764735",
+    "github:587040583",
+    "github:587850619",
+    "github:589318758",
+    "github:593242547",
+    "github:594032089",
+    "github:594650572",
+    "github:598916956",
+    "github:602759574",
+    "github:605404233",
+    "github:625600324",
+    "github:628168721",
+    "github:629244983",
+    "github:631709647",
+    "github:632726428",
+    "github:639015226",
+    "github:650682873",
+    "github:653813871",
+    "github:666075482",
+    "github:671206453",
+    "github:701688640",
+    "github:708075590",
+    "github:715683924",
+    "github:721745659",
+    "github:7220676",
+    "github:726610453",
+    "github:728250043",
+    "github:734689751",
+    "github:741012134",
+    "github:745255700",
+    "github:760673550",
+    "github:764470216",
+    "github:790069442",
+    "github:79691689",
+    "github:798039699",
+    "github:799363724",
+    "github:800510942",
+    "github:807770864",
+    "github:816359434",
+    "github:824249796",
+    "github:824431992",
+    "github:832325302",
+    "github:838547564",
+    "github:846698999",
+    "github:853479494",
+    "github:853752457",
+    "github:858192406",
+    "github:860416373",
+    "github:860952373",
+    "github:874306329",
+    "github:874824388",
+    "github:878484385",
+    "github:888618167",
+    "github:897604067",
+    "github:897605603",
+    "github:89773035",
+    "github:905106533",
+    "github:912392212",
+    "github:914129579",
+    "github:915104742",
+    "github:917622820",
+    "github:922264042",
+    "github:935530611",
+    "github:947790040",
+    "github:949378027",
+    "github:949656316",
+    "github:951205333",
+    "github:957279345",
+    "github:962661894",
+    "github:976522066",
+    "github:977638539",
+    "github:978267207",
+    "github:979646067",
+    "github:987140841",
+    "github:990909683",
+    "github:992889848",
+    "github:996984044",
+    "nip89:1fc0efa2d319b96722efbf69f8dca96c3ab26db8b20378b4f84457a136411784",
+    "nip89:2678696cdfc92203c2642d41939b67be31839ce214d46cc85c1f8429c4f8393b",
+    "nip89:2a0bcfce5f775c3bfa9348b7e47101f0afeb1a99b9e9b250ad0372fd62f8562b",
+    "nip89:2fda943c56c700659590a56996d309750e96e6d0e45a2333f844ff3cffefcea5",
+    "nip89:38d4af6f14ff5bc397c435edc1db51018db8692c5c256590c3e20d7aa5cf3805",
+    "nip89:393f02f35ded23a0bf1ca96144ead39a9795642582f05eb649c4c835aa8d3272",
+    "nip89:6d69c71af2c497ea62e4f1bc8fc133598a9855eb88591c298605051ac602a345",
+    "nip89:8425827c76322ee19cf7e93fcf39b60618e852e60c618182715d6ca43af32d09",
+    "nip89:945672d34c81ab31a21cb1146561315469740e4081239f16bde40ab0b98975e0",
+    "nip89:bb83d74e45a408ff752077f0d3972bcb3dee23e99a39cba1e2a28e3701ffb16a",
+    "nip89:c07510eabf43f33464c5f25404353fa4690a5a8796f23cd5d547f57c36e1f0b7",
+    "nip89:d1e21f3fed272166c83bd30c6d798c386d75456904efe8b20b9b27a32b3cf491",
+    "nip89:d7b7111760e6a43741ed94ca010212260c6c2b1e325908a86188f31742f92365",
+    "nip89:fcc640518b390c59946fb9a7945e2168ded314fc09005644404d0ae41ffeaafb",
+    "zapstore:91b2123be43d09cca98ae0f0a581821c6236e7a988a0d41b88bb632e73af835f",
+    "zapstore:95210e33896b635fe56b41fc8b57b224de44d9607378827cdace1336de588437"
+  ],
+  "canonical_query": {
+    "family": "app-discovery",
+    "pass_id": "final-20260924T0041Z",
+    "since": "2026-09-23T23:44:00Z",
+    "sources": [
+      "github",
+      "nip89",
+      "zapstore"
+    ],
+    "until": "2026-09-24T00:41:00Z",
+    "upper_bound_enforced": "server-or-collector"
+  },
+  "collector_path": "/opt/data/compass-worktrees/2026-09-23-final-cutoff/scripts/fetch_app_discovery.py",
+  "dispositions": {
+    "github:100134877": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1002271234": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1003233658": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1004113453": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:100711978": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1011838643": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1013830656": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1016387436": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1020393325": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1021739787": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1023334001": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1029873778": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1034144288": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1034211886": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1042555111": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1043652948": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1044107289": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1044345546": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1050639990": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1050990201": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1051419570": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1052831571": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1053704880": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1053874316": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1055628515": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1057442228": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1057878734": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1065668596": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1068355003": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1072701108": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1079099257": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1083051966": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:10835647": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1083908802": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1095282404": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1099388749": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1099389313": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1104999086": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1108313852": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1109098066": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1110988043": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1112819976": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1118379577": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1123960847": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1126672238": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1126672895": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1128029386": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1129745922": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:113107217": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1131562108": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1133659811": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1135783427": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1139107729": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1139856836": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1141467006": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1142164031": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1144849760": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1146702680": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1147592384": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1148174380": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1148249299": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1148287834": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1149967035": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1154739373": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1154829623": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1155025406": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1155603689": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1162220612": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1162754827": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1162905606": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1165001010": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1166688900": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1167734557": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1168712448": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1172223550": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1172828981": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1173988543": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1174789082": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1175835688": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1176254931": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1176729103": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1177841163": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1179327806": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1179660976": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1181933777": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1182343347": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1183030228": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1183284531": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1183699512": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1183815821": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1183940288": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1185403896": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1187507811": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1189086392": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1189090952": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1189362139": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1190966177": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1192470639": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1192652555": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1193425731": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1193738592": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1200292656": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1201373651": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1202487580": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1203260455": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1204300413": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1206299549": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1208091394": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1208837511": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1209274450": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1209410435": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1215064324": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1215789362": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1216365184": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1222982254": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1223090036": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1229813769": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1230684946": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1235423317": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1235564797": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1235656340": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1238769644": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1239322558": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1245816682": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1249144179": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1249490895": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1256423460": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1260305132": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1260328296": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1261170003": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1261628552": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1266376930": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1266587767": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1269968918": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1270346402": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1272928322": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1273079429": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1276595002": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1284552213": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1293600287": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1294245177": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1296530907": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:129746296": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1301557199": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1301979650": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1303959647": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1306382244": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1306960556": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1315399891": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1319154684": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1321173485": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1321544953": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1321971949": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1327394224": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1329235020": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1329524466": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1331110883": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1333246534": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1333575587": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1333687119": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1334381404": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1335097337": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1335835227": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1336045774": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1339093938": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1339347406": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1342169466": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1342195071": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1346075548": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1346075794": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1346080913": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1346533230": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1346917193": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1349675255": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1350514455": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1351713429": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1351816093": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1356627519": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1358968667": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1359606199": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1364527927": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1365744883": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1368737093": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1368792440": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1369841494": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1370998066": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1371008575": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1371100876": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1373292049": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1373995240": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1374058281": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1375693444": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1376149922": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1377934008": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1378374926": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1378438941": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1378781592": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1380703403": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1381052206": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1381124678": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1381867138": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1382353074": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1382364989": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1382365033": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1382371325": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1382429563": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1382832903": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1382845208": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1382884123": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1383115664": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1383151371": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1383458485": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1383527767": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:1384308827": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:166220658": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:171051201": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:190347236": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:191815190": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:198068297": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:215791627": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:226972903": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:24712181": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:277259093": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:296629609": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:2968000": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:300322167": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:333767628": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:341757830": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:3557653": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:37350472": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:3883093": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:39234942": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:426649939": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:443566756": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:457552225": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:465199957": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:47046554": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:482383845": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:487510752": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:494059063": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:529702262": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:535160981": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:537120958": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:55341469": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:567322453": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:569861981": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:585619089": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:586675515": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:586764735": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:587040583": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:587850619": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:589318758": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:593242547": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:594032089": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:594650572": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:598916956": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:602759574": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:605404233": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:625600324": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:628168721": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:629244983": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:631709647": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:632726428": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:639015226": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:650682873": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:653813871": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:666075482": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:671206453": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:701688640": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:708075590": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:715683924": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:721745659": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:7220676": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:726610453": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:728250043": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:734689751": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:741012134": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:745255700": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:760673550": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:764470216": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:790069442": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:79691689": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:798039699": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:799363724": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:800510942": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:807770864": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:816359434": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:824249796": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:824431992": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:832325302": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:838547564": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:846698999": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:853479494": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:853752457": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:858192406": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:860416373": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:860952373": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:874306329": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:874824388": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:878484385": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:888618167": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:897604067": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:897605603": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:89773035": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:905106533": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:912392212": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:914129579": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:915104742": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:917622820": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:922264042": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:935530611": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:947790040": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:949378027": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:949656316": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:951205333": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:957279345": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:962661894": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:976522066": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:977638539": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:978267207": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:979646067": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:987140841": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:990909683": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:992889848": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "github:996984044": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "nip89:1fc0efa2d319b96722efbf69f8dca96c3ab26db8b20378b4f84457a136411784": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "nip89:2678696cdfc92203c2642d41939b67be31839ce214d46cc85c1f8429c4f8393b": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "nip89:2a0bcfce5f775c3bfa9348b7e47101f0afeb1a99b9e9b250ad0372fd62f8562b": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "nip89:2fda943c56c700659590a56996d309750e96e6d0e45a2333f844ff3cffefcea5": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "nip89:38d4af6f14ff5bc397c435edc1db51018db8692c5c256590c3e20d7aa5cf3805": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "nip89:393f02f35ded23a0bf1ca96144ead39a9795642582f05eb649c4c835aa8d3272": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "nip89:6d69c71af2c497ea62e4f1bc8fc133598a9855eb88591c298605051ac602a345": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "nip89:8425827c76322ee19cf7e93fcf39b60618e852e60c618182715d6ca43af32d09": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "nip89:945672d34c81ab31a21cb1146561315469740e4081239f16bde40ab0b98975e0": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "nip89:bb83d74e45a408ff752077f0d3972bcb3dee23e99a39cba1e2a28e3701ffb16a": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "nip89:c07510eabf43f33464c5f25404353fa4690a5a8796f23cd5d547f57c36e1f0b7": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "nip89:d1e21f3fed272166c83bd30c6d798c386d75456904efe8b20b9b27a32b3cf491": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "nip89:d7b7111760e6a43741ed94ca010212260c6c2b1e325908a86188f31742f92365": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "nip89:fcc640518b390c59946fb9a7945e2168ded314fc09005644404d0ae41ffeaafb": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "zapstore:91b2123be43d09cca98ae0f0a581821c6236e7a988a0d41b88bb632e73af835f": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    },
+    "zapstore:95210e33896b635fe56b41fc8b57b224de44d9607378827cdace1336de588437": {
+      "decision": "include",
+      "reason": "record was evaluated and retained by discovery collection"
+    }
+  },
+  "family": "app-discovery",
+  "include_count": 341,
+  "item_count": 341,
+  "page_count": 427,
+  "pagination_complete": true,
+  "pass_id": "final-20260924T0041Z",
+  "skip_count": 0,
+  "skip_evidence": [],
+  "status": "complete"
+}

@@ -2,6 +2,8 @@
 
 The current source ledger is `selection_coverage_wednesday_2026-09-23.json`, bound to the finalized ten-family Wednesday manifest, the exact 80-project/1,230-PR activity audit, separately finalized late and final cutoffs, and the exact assembled draft hash. `scripts/check_selection_coverage.py` passes 259 retained source candidates normalized into 230 editorial candidates, with 72 selected and 158 skipped. Scores use five 0–2 axes; every ordinary selected item scores at least 8/10 with no zero. `fips-initramfs` remains an authenticated owner-directed catch-up because its September 6 release falls outside the mechanical window. Any later draft edit must rebuild the exact-hash ledger and repeat this check.
 
+The Wednesday project collector's exact collection-time bytes are preserved at a frozen path after the active script advanced; `wednesday_collector_provenance_2026-09-23.md` records the original Git object, unchanged collector hash, path-only receipt repair, and successor manifest digest. No source output or editorial decision was retroactively changed.
+
 ## Tuesday reviewed baseline (35 selected items)
 
 | Section | Item | Score | Primary source | Substance |

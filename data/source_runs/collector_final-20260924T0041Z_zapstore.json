@@ -1,0 +1,37 @@
+{
+  "artifact_path": "/opt/data/compass-worktrees/2026-09-23-final-cutoff/data/zapstore_releases/zapstore_2026-09-24.json",
+  "artifact_sha256": "a8f73cba1ed7b12191cb5a7544fe856611c366a632125816023f16b63b573902",
+  "candidate_ids": [
+    "35e74e8a6546c85a8ce540a845dc859010138ef03aec9572478bb4c5a111cfa2",
+    "c5c5ad0eba413e18c10e3cd2be607e550ac818a8abaf97ccbf8fa242fbaff15f"
+  ],
+  "canonical_query": {
+    "family": "zapstore",
+    "kind": 30063,
+    "page_size": 50,
+    "pass_id": "final-20260924T0041Z",
+    "relay": "wss://relay.zapstore.dev",
+    "since": "2026-09-23T23:44:00Z",
+    "until": "2026-09-24T00:41:00Z"
+  },
+  "collector_path": "/opt/data/compass-worktrees/2026-09-23-final-cutoff/scripts/fetch_zapstore_releases.sh",
+  "dispositions": {
+    "35e74e8a6546c85a8ce540a845dc859010138ef03aec9572478bb4c5a111cfa2": {
+      "decision": "include",
+      "reason": "developer-signed release retained after relevance gates"
+    },
+    "c5c5ad0eba413e18c10e3cd2be607e550ac818a8abaf97ccbf8fa242fbaff15f": {
+      "decision": "include",
+      "reason": "developer-signed release retained after relevance gates"
+    }
+  },
+  "family": "zapstore",
+  "include_count": 2,
+  "item_count": 2,
+  "page_count": 1,
+  "pagination_complete": true,
+  "pass_id": "final-20260924T0041Z",
+  "skip_count": 0,
+  "skip_evidence": [],
+  "status": "complete"
+}
