@@ -12,7 +12,7 @@ Deployed page: https://nostrcompass.org/en/newsletters/2026-09-23-newsletter/
 
 ## Merge and deployment
 
-- PR #177 squash-merged into `main` as commit `7bb4eb1`.
+- PR #177 merged into `main` as commit `7bb4eb1`.
 - GitHub Pages workflow https://github.com/andotherstuff/nostr-compass/actions/runs/35958588406 concluded `success`.
 - The canonical URL returned HTTP 200 and contained `Nostr Compass #41`.
 
