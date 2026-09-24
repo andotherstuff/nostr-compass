@@ -1,0 +1,28 @@
+{
+  "artifact_path": "/opt/data/compass-worktrees/2026-09-23/data/nostr_recap/recap_2026-09-23_2026-09-23.json",
+  "artifact_sha256": "97586eb1945c642ab5811c264958c47c00823c7820276768c58e5785c55133dc",
+  "candidate_ids": [],
+  "canonical_query": {
+    "author": "cae5b7ea348afefc4c102bb7b125c4928f114739a27b877c6bcfbe5a79280384",
+    "family": "nostr-recap",
+    "kinds": [
+      1,
+      30023
+    ],
+    "limit_per_kind": 1000,
+    "pass_id": "delta-20260923T2344Z",
+    "since": "2026-09-23T20:31:30Z",
+    "until": "2026-09-23T23:44:00Z"
+  },
+  "collector_path": "/opt/data/compass-worktrees/2026-09-23/scripts/fetch_nostr_recap.sh",
+  "dispositions": {},
+  "family": "nostr-recap",
+  "include_count": 0,
+  "item_count": 0,
+  "page_count": 2,
+  "pagination_complete": true,
+  "pass_id": "delta-20260923T2344Z",
+  "skip_count": 0,
+  "skip_evidence": [],
+  "status": "empty_verified"
+}

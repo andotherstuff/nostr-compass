@@ -171,6 +171,44 @@ Text.
     expect(result.missing).toEqual([]);
   });
 
+  test("keeps a domain-shaped project name when it has a curated unresolved record", () => {
+    const body = `## Top Stories
+
+### napplet.soy publishes sandboxed programs
+
+Text.
+`;
+    const result = extractMentions(body, npubs, {
+      "napplet.soy": {
+        checked_at: "2026-09-22",
+        reason: "No verified identity.",
+        sources: ["https://napplet.soy"],
+      },
+    });
+
+    expect(result.unresolved.map((entry) => entry.name)).toEqual(["napplet.soy"]);
+    expect(result.missing).toEqual([]);
+  });
+
+  test("uses a curated unresolved identity before an unfamiliar headline verb", () => {
+    const body = `## Unreleased Changes
+
+### nostter ties remote signing to the active session
+
+[nostter](https://github.com/SnowCait/nostter) is a Nostr client.
+`;
+    const result = extractMentions(body, npubs, {
+      nostter: {
+        checked_at: "2026-08-18",
+        reason: "No verified project or maintainer identity.",
+        sources: ["https://github.com/SnowCait/nostter"],
+      },
+    });
+
+    expect(result.unresolved.map((entry) => entry.name)).toEqual(["nostter"]);
+    expect(result.missing).toEqual([]);
+  });
+
   test("alias order cannot downgrade a project representative to an unlabeled individual", () => {
     const shared = "npub1shared";
     const identities: NpubMap = {

@@ -1,0 +1,12 @@
+{
+  "findings": [
+    {
+      "evidence": "Ledger items deep-dive:nip-30 and deep-dive:nip-71 (rotation_check: not found in prior deep-dive headings; event_example_status cites check_newsletter_event_examples.py). Draft headings ### NIP-30: Custom Emoji and ### NIP-71: Video Events embed kind 30030 id 438814476db249b50067d167e50c85530e317126179546a584365c8371bdd97f and kind 22 id dd1fcfe7ce6db5450e362879897138ca4e639ef39654dfe3b1f669310fd9545d, claiming recovery from named relays plus NIP-01/BIP-340 checks. Prior issues #38\u2013#40 deep-dive NIP-18/25, NIP-21/27, and NIP-23/92 only. No event-example checker receipt is in this snapshot.",
+      "recommendation": "Keep NIP-30/NIP-71. Do not add or tighten relay-recovery language beyond the existing checker assertion on draft sha256 a0fb9b47b556d9a2ebf60eac01aebfd2238e48e2dc2dc2fa62a71909393bf990. Implementation behavior claims remain bound to the cited commit URLs, which were not re-read in this cold pass.",
+      "severity": "note",
+      "title": "NIP-30/NIP-71 challenge: novelty holds; signed-event and implementation claims were not re-executed here"
+    }
+  ],
+  "summary": "Checked the eight selected protocol items (NIP-02 PR #2472, NIP-86 PR #2477, NIP-69 PR #2476, NIP-A3 PR #2475, BUD-16 blossom#105, Marmot #425, Marmot #423, NWC-13 nwc#7) against the Wednesday ledger and the exact #41 draft Protocol headings: each has a distinct PR or merge URL; merged-versus-proposal wording matches the draft. Marmot #423 reuses last week\u2019s URL but the draft and ledger treat the merge as the new milestone, not a repeat of #40\u2019s open-proposal writeup. NIP-A3 #2475 is distinct from #40\u2019s #2463; NWC-13 #7 is distinct from #40\u2019s NWC #3/#5. NIP-30 and NIP-71 are not deep-dive headings in supplied #38\u2013#40; the draft does not reuse NIP-57/NIP-60; kind 30030 and kind 22 examples are embedded and use different event IDs than #38\u2013#40. Limits: no live GitHub merge check, no relay queries, implementation file bodies not in the snapshot, and check_newsletter_event_examples.py was not re-run (only the selection-coverage receipt is supplied).",
+  "verdict": "PASS"
+}

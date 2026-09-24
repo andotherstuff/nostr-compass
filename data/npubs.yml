@@ -21,6 +21,12 @@ no_dm:
 # These remain visible to validation and workflow reporting, but never become
 # mentions or outreach recipients.
 unresolved:
+  Table Mesh:
+    checked_at: 2026-09-24
+    reason: The developer-signed Zapstore release supplies a publisher key but no project or maintainer profile, repository, or verified monitored inbox. A release-signing key alone is not an outreach identity.
+    sources:
+      - https://zapstore.dev/apps/org.tablemesh.app
+      - https://primal.net/e/c5c5ad0eba413e18c10e3cd2be607e550ac818a8abaf97ccbf8fa242fbaff15f
   Wingman App:
     checked_at: 2026-09-09
     reason: The canonical repository and OtherStuffAI GitHub profile publish no project or maintainer npub; otherstuff.ai has no NIP-05 document. NIP-50 searches for Wingman App and OtherStuffAI returned unrelated or ambiguous keys, and npub.world lookups were inaccessible, so no candidate could be defensibly bound to this project.
@@ -79,6 +85,39 @@ unresolved:
     sources:
       - https://github.com/napplet/naps
       - https://napplet.run/
+  napplet.soy:
+    checked_at: 2026-09-22
+    reason: The canonical site and repository identify the GitHub maintainer and link the wider Napplet ecosystem, but neither binds a project or maintainer Nostr key. Creator npubs in the live catalog identify individual napplet authors, not the platform maintainer.
+    sources:
+      - https://napplet.soy/
+      - https://napplet.soy/about
+      - https://github.com/zeSchlausKwab/napplet-soy
+  Scramble:
+    checked_at: 2026-09-23
+    reason: The canonical Scramble repository and README do not bind a public Nostr key to the project or maintainer. The repository's bot-npub.txt explicitly identifies a bot key, not a monitored project or maintainer account; an ambiguous web-search name match is not ownership evidence.
+    sources:
+      - https://github.com/DavidGershony/Scramble
+      - https://github.com/DavidGershony/Scramble/blob/main/bot-npub.txt
+      - https://github.com/DavidGershony
+  Armada:
+    checked_at: 2026-09-23
+    reason: Canonical project and signed app release identify the application, but no public project or maintainer notification npub is bound by its site or repository. A release signer alone is not a verified monitored inbox.
+    sources:
+      - https://armada.buzz/
+      - https://github.com/soapbox-pub/armada
+      - https://primal.net/e/122a06dbab02d207b3aa793b0fedd06fd59d36178a7b9ae5971cfc3b7f3eb6ce
+  XM Arcade:
+    checked_at: 2026-09-23
+    reason: The NIP-34 repository and signed release do not designate the release key as a monitored project or maintainer mention target.
+    sources:
+      - https://gitworkshop.dev/r/xm-arcade
+      - https://primal.net/e/dec0edda9ff464b4b7598032318cb48e17cf496e29d05031d1f1629409039a4c
+  Zzub:
+    checked_at: 2026-09-23
+    reason: The signed app release establishes its publisher, but the listed NIP-34 source URL is unavailable and no monitored project or maintainer key is bound by a primary profile.
+    sources:
+      - https://zapstore.dev/apps/social.cloudfodder.zzub
+      - https://primal.net/e/70c5efeea2e9314329b8951346d83ad0688b74607a108e8bc820caae545196c2
   keep-android:
     checked_at: 2026-08-02
     reason: Candidate personal keys for the maintainer are not bound to PrivKey or keep-android by a primary source.
@@ -268,6 +307,20 @@ Zeus: npub1xnf02f60r9v0e5kty33a404dm79zr7z2eepyrk5gsq3m7pwvsz2sazlpr5
 Alby Hub: npub1getal6ykt05fsz5nqu4uld09nfj3y3qxmv8crys4aeut53unfvlqr80nfm
 eNuts: npub1dx5q2el8nd4eh3eg9t2e25fd7zuqg7zxz6ldkc3uzgh66ss2yc6st288sj
 Bitcredit: npub1eajvs8x67vmzsnwaf9ltfgt59e6acmeztx9shduewvfgwftx8ahsagcd93
+Bitcredit E-Bills: npub1eajvs8x67vmzsnwaf9ltfgt59e6acmeztx9shduewvfgwftx8ahsagcd93
+Bookshelf:
+  npub: npub1ez09adke4vy8udk3y2skwst8q5chjgqzym9lpq4u58zf96zcl7kqyry2lz
+  identity_type: organization
+  display_name: Decent Newsroom
+  outreach: false
+  evidence:
+    - https://nostr.com/nprofile1qqsv38j7kmv6kzr7xmgj9gt8g9ns2vteyqpzdjlss272r3yjapv0ltqpqqjzl855
+TWENTY ONE Companion:
+  npub: npub1pt0kw36ue3w2g4haxq3wgm6a2fhtptmzsjlc2j2vphtcgle72qesgpjyc6
+  identity_type: project
+  outreach: false
+  evidence:
+    - https://github.com/HolgerHatGarKeineNode/twenty-one-companion#readme
 
 # --- App stores and marketplaces ---
 Zapstore: npub10r8xl2njyepcw2zwv3a6dyufj4e4ajx86hz6v4ehu4gnpupxxp7stjt2p8
@@ -305,6 +358,7 @@ Marmot Protocol Updates: npub1marm0t9qkmv8lq7pe7vdx60ed8fl2d876a2ytk3ade208dlyfw
 Marmot TS: npub1marm0t9qkmv8lq7pe7vdx60ed8fl2d876a2ytk3ade208dlyfweqg5r6m9
 # White Noise (the client app) keeps its own pre-existing npub
 White Noise: npub1whtn0s68y3cs98zysa4nxrfzss5g5snhndv35tk5m2sudsr7ltms48r3ec
+White Noise Android: npub1whtn0s68y3cs98zysa4nxrfzss5g5snhndv35tk5m2sudsr7ltms48r3ec
 
 # --- Media ---
 Wavlake: npub1yfg0d955c2jrj2080ew7pa4xrtj7x7s7umt28wh0zurwmxgpyj9shwv6vg
@@ -380,6 +434,13 @@ nsite-clay edits and republishes a single-page site from the browser:
   npub: npub12edc7326qsryw5rw5yw0yh57fmj9r8jf4c8xazz6333w305qgnms9ypvj2
 # Clawstr: (no project npub; parent org Soapbox exists)
 0xchat: npub1tm99pgz2lth724jeld6gzz6zv48zy6xp4n9xu5uqrwvx9km54qaqkkxn72
+nos2x-fox:
+  npub: npub168nqgewzkamnyh53x0epqrftkv2pdh9gzr6558v4vetzr3w7uxfs63926e
+  identity_type: maintainer
+  person: Diego Gurpegui
+  evidence:
+    - https://github.com/diegogurpegui/nos2x-fox
+    - https://diegogurpegui.com/.well-known/nostr.json
 Chachi: npub1gm7gw8q6akeft2pjt270we35vlff0v9g2fene6cxkz2h68q5hl6qls0fte
 Listr: npub1lstr2kmdthkgfuzne8e4cn2nhr646x8jt25szdj7t4wr6xemtuuq3lczsj
 # [dev:turizspace]
@@ -426,6 +487,7 @@ Keep:
 # [dev:hardran3] Prism - Android share-to-Nostr tool
 # Prism: (no verified npub - same developer as Aerith)
 ContextVM: npub1dvmcpmefwtnn6dctsj3728n64xhrf06p9yude77echmrkgs5zmyqw33jdm
+ContextVM SDK: npub1dvmcpmefwtnn6dctsj3728n64xhrf06p9yude77echmrkgs5zmyqw33jdm
 Relatr: npub1w5rgyvpunuxa446egx6fahyagm376vrtnm3nx5ec5gdruszvt73spqeu4t
 # [dev:derek ross]
 Burrow:
@@ -434,6 +496,10 @@ Burrow:
 # [dev:johnathan/jmcorgan]
 FIPS:
   npub: npub19wavu4f7l6l43h24jyskn7fvzy37kcfp67aqjtmv2qgy4lp34nhsda8p6k
+  mention_only: true
+# [dev:WildCitizen7] MintRadar creator; kind-0 profile binds mintradar.org
+MintRadar:
+  npub: npub1zatej55x47xzhnw06yarqr5ugz7y5el8vygcckek24e5qmrtx77qnmd6rg
   mention_only: true
 # [dev:gandlafbtc]
 Nutsack:
@@ -819,6 +885,12 @@ Napplet:
   mention_only: true
 sandwich.farm:
   npub: npub1uac67zc9er54ln0kl6e4qp2y6ta3enfcg7ywnayshvlw9r5w6ehsqq99rx
+  mention_only: true
+
+# threshold training-epoch tool maintainer; the NIP-34 repository address binds
+# the owner key and kind-0 metadata was recovered from nos.lol on 2026-09-22.
+Threshold Sessions:
+  npub: npub17m2ual3pdjvhd8yc6a3m8snzjsgnmtl26hwen48ne937qgyjyshs2zgvse
   mention_only: true
 
 # ntrack / f321x project account
@@ -1357,3 +1429,79 @@ cal.emre.xyz:
 # already verified project or maintainer recipient above.
 Zap: npub1xxdd8eusvdxmaph3fkuu9x2mymhrcc3ghe2l38zv0l4f4nqp659qskkt7a
 nostrord repairs wrapped DMs and shared event links: npub1ktxukd7ny5e3ghqqcn6r6hs7rh4hceaua6n77cl4ym9ye2ufzces7rzc2h
+
+# =============================================================================
+# Newsletter #41 additions (verified 2026-09-22)
+# =============================================================================
+
+Alby Extension:
+  npub: npub1getal6ykt05fsz5nqu4uld09nfj3y3qxmv8crys4aeut53unfvlqr80nfm
+  identity_type: project
+  evidence:
+    - https://github.com/getAlby/lightning-browser-extension
+    - https://getalby.com/.well-known/nostr.json?name=hello
+
+BitBlik:
+  npub: npub1k3g092rlzvn7nftz3jte9pkx63zp705nh78r6hjpjm55fjg7r2cqx8stj3
+  identity_type: project
+  evidence:
+    - https://github.com/bit-blik/bitblik
+    - https://bitblik.app/.well-known/nostr.json?name=_
+
+Dart NDK dev.5:
+  npub: npub1xpuz4qerklyck9evtg40wgrthq5rce2mumwuuygnxcg6q02lz9ms275ams
+  identity_type: maintainer
+  person: fmar
+  evidence:
+    - https://github.com/relaystr/ndk
+
+Marmot Protocol's MDK:
+  npub: npub1marm0t9qkmv8lq7pe7vdx60ed8fl2d876a2ytk3ade208dlyfweqg5r6m9
+  identity_type: project
+  evidence:
+    - https://github.com/marmot-protocol/mdk
+
+Mostro CLI:
+  npub: npub1m0str0d7z2ww8rdh20t2n9lx520xjwhaq24p68umqp06wwrwtsnqen40un
+  identity_type: project
+  evidence:
+    - https://github.com/MostroP2P/mostro-cli
+    - https://mostro.network/
+
+Nostr Mail Client:
+  npub: npub1kg4sdvz3l4fr99n2jdz2vdxe2mpacva87hkdetv76ywacsfq5leqquw5te
+  identity_type: maintainer
+  person: nogringo
+  evidence:
+    - https://github.com/nogringo/nostr-mail-client
+
+Nostr WoT Oracle:
+  npub: npub1gxdhmu9swqduwhr6zptjy4ya693zp3ql28nemy4hd97kuufyrqdqwe5zfk
+  identity_type: maintainer
+  person: Leon Acosta
+  evidence:
+    - https://github.com/nostr-wot/nostr-wot-oracle
+    - https://nostr-wot.com/
+Nostr WoT SDK:
+  npub: npub1gxdhmu9swqduwhr6zptjy4ya693zp3ql28nemy4hd97kuufyrqdqwe5zfk
+  identity_type: maintainer
+  person: Leon Acosta
+  evidence:
+    - https://github.com/nostr-wot/nostr-wot-sdk
+    - https://nostr-wot.com/
+
+fips-initramfs:
+  npub: npub19wavu4f7l6l43h24jyskn7fvzy37kcfp67aqjtmv2qgy4lp34nhsda8p6k
+  identity_type: maintainer
+  person: jcorgan
+  evidence:
+    - https://github.com/jmcorgan/fips-initramfs
+    - https://github.com/jmcorgan/fips-initramfs/releases/tag/v0.1.0
+
+RelayKit:
+  npub: npub1yzfm42rzr3dj2h50flpvdl0uzrv22kv2y4ghve804w5xqu6lzqcqkyfxu5
+  identity_type: maintainer
+  person: sam
+  evidence:
+    - https://github.com/samthomson/relaykit
+    - https://relayk.it

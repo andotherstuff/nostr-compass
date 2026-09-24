@@ -23,7 +23,7 @@ An event using custom emoji includes `emoji` tags alongside the shortcode refere
 }
 ```
 
-Clients replace `:gleam:` and `:nostrich:` in the rendered content with inline images from the specified URLs. Shortcodes must be alphanumeric (with underscore separators allowed), and the image URLs should point to small, square images suitable for inline display.
+Clients replace `:gleam:` and `:nostrich:` in the rendered content with inline images from the specified URLs. Shortcodes may contain letters, numbers, hyphens, and underscores, and the image URLs should point to small, square images suitable for inline display.
 
 ## Emoji Sets
 
@@ -63,6 +63,10 @@ NIP-30 custom emoji also work in kind 7 reaction events. A reaction with `conten
 }
 ```
 
+## Implementations
+
+[Amethyst](https://github.com/vitorpamplona/amethyst/blob/96bec0cc7c1df4c05d4208fb1cfd6aac06fe97e7/quartz/src/commonMain/kotlin/com/vitorpamplona/quartz/nip30CustomEmoji/EmojiUrlTag.kt) parses each emoji URL tag, validates the shortcode, and preserves an optional emoji-set address. [Wisp](https://github.com/barrydeen/wisp/blob/b48be58271131c6062be2cc5449777cdd4fe6d31/app/src/main/kotlin/com/wisp/app/nostr/Nip30.kt) builds and parses emoji sets and removes duplicate shortcodes during rendering. [Nostria](https://github.com/nostria-app/nostria/blob/e861946f4ef4e70f3ec49997a4be27615b9b6f5e/src/app/utils/emoji-shortcode.ts) normalizes separators before validation, so a producer should test its chosen shortcode against the clients it expects readers to use.
+
 ---
 
 **Primary sources:**
@@ -70,6 +74,7 @@ NIP-30 custom emoji also work in kind 7 reaction events. A reaction with `conten
 - [PR #2247](https://github.com/nostr-protocol/nips/pull/2247) - Emoji set address in tags
 
 **Mentioned in:**
+- [Newsletter #41: NIP Deep Dive](/en/newsletters/2026-09-23-newsletter/#nip-deep-dive-custom-emoji-and-video-events)
 - [Newsletter #12: NoorNote v0.5.x](/en/newsletters/2026-03-04-newsletter/#noornote-v05x)
 - [Newsletter #12: NIP Updates](/en/newsletters/2026-03-04-newsletter/#nip-updates)
 - [Newsletter #37: NIPs](/en/newsletters/2026-08-26-newsletter/#nips)

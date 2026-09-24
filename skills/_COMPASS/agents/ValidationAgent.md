@@ -304,11 +304,12 @@ type: newsletters
 ### 9. Selection Coverage Validation
 
 Run `scripts/check_selection_coverage.py` with the finalized source manifest,
-selection ledger, exact project-activity decisions, and exact draft. Missing
-source candidates, unreviewed merged-PR projects, unexpanded recap events,
-unexplained GREEN omissions, sub-threshold inclusions, a changed draft, or a
-fixed item cap are publication-blocking errors. Only a version 2 selection
-receipt can clear the publication gate.
+
+selection ledger, exact project-activity decisions, and exact draft. Confirm that full source-family triage accounts
+for evaluated raw collector records; `include` is not an editorial keep. Missing normalized editorial sources,
+unreviewed merged-PR projects, unexpanded recap events, unexplained GREEN omissions, sub-threshold inclusions,
+a changed draft, or a fixed item cap are publication-blocking errors. Only a version 2 selection receipt can clear the publication gate.
+
 
 ---
 

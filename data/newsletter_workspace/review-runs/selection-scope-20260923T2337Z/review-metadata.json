@@ -1,0 +1,108 @@
+{
+  "attempts": [
+    {
+      "attempt": 1,
+      "model": "grok-4.6[effort=high,fast=true]",
+      "outcome": "success",
+      "output_sha256": "a62a9001148cabd4f94b9015f25c90bddfe28ab54aa09623044fe2191e00b799",
+      "provider": "cursor",
+      "response_id": null,
+      "routing_attempts": [
+        {
+          "budget_seconds": 120.0,
+          "elapsed_seconds": 87.18,
+          "model": "grok-4.6",
+          "outcome": "success",
+          "provider": "cursor"
+        }
+      ],
+      "started_at": "2026-09-23T23:35:57.566946+00:00",
+      "usage": {}
+    }
+  ],
+  "completed_at": "2026-09-23T23:37:24.747596+00:00",
+  "elapsed_seconds": 87.181,
+  "endpoint": "cursor-acp",
+  "implementation_model": "gpt-6-sol",
+  "implementation_models": [
+    "gpt-6-sol"
+  ],
+  "instructions_sha256": "9722928fb93c62e5c603daf2c9dfbef4902be63a17394a33ce4b1c6167cccbf5",
+  "max_attempts": 1,
+  "max_output_tokens": 8000,
+  "requested_model": "grok-4.6",
+  "review_tier": "standard",
+  "routing_chain": [
+    {
+      "model": "grok-4.6",
+      "provider": "cursor"
+    },
+    {
+      "model": "composer-2.5",
+      "provider": "cursor"
+    },
+    {
+      "model": "claude-opus-5",
+      "provider": "claude-code"
+    },
+    {
+      "model": "google/gemini-3.1-pro-preview",
+      "provider": "openrouter"
+    }
+  ],
+  "schema_version": 1,
+  "selected_cost_usd": null,
+  "selected_endpoint": "cursor-acp",
+  "selected_family": "xai",
+  "selected_model": "grok-4.6[effort=high,fast=true]",
+  "selected_provider": "cursor",
+  "snapshots": [
+    {
+      "bytes": 432898,
+      "path": "/opt/data/compass-worktrees/2026-09-23-publish-codex/data/newsletter_workspace/selection_coverage_wednesday_2026-09-23.json",
+      "sha256": "47ef3b5a09bd62e78d8275ead1faccc836c26ae02921eebc687d4ee13a3f3e4b",
+      "stored_name": "001-47ef3b5a09bd62e7-selection_coverage_wednesday_2026-09-23.json"
+    },
+    {
+      "bytes": 51046,
+      "path": "/opt/data/compass-worktrees/2026-09-23-publish-codex/content/en/newsletters/2026-09-23-newsletter.md",
+      "sha256": "a0fb9b47b556d9a2ebf60eac01aebfd2238e48e2dc2dc2fa62a71909393bf990",
+      "stored_name": "002-a0fb9b47b556d9a2-2026-09-23-newsletter.md"
+    },
+    {
+      "bytes": 29727,
+      "path": "/opt/data/compass-worktrees/2026-09-23-publish-codex/data/newsletter_workspace/triage_2026-09-23.md",
+      "sha256": "5428db2efa462ea6df3fa0a83e8daa983f5a17f3422f1ce9a01e32cf5a225cfe",
+      "stored_name": "003-5428db2efa462ea6-triage_2026-09-23.md"
+    },
+    {
+      "bytes": 3771,
+      "path": "/opt/data/compass-worktrees/2026-09-23-publish-codex/data/newsletter_workspace/source_fact_checks_2026-09-23.md",
+      "sha256": "750c182fe255280c19ea4e29907bbe9c63b281303aff2a201e44374bc1ba2772",
+      "stored_name": "004-750c182fe255280c-source_fact_checks_2026-09-23.md"
+    },
+    {
+      "bytes": 1114,
+      "path": "/opt/data/compass-worktrees/2026-09-23-publish-codex/data/newsletter_workspace/selection_coverage_receipt_2026-09-23.json",
+      "sha256": "16a281ef8c8e69fd2a12649f6a999c1f0370a1082473283d403056f2310b0de2",
+      "stored_name": "005-16a281ef8c8e69fd-selection_coverage_receipt_2026-09-23.json"
+    }
+  ],
+  "started_at": "2026-09-23T23:35:57.566322+00:00",
+  "status": "completed",
+  "timeout_scope": "invocation_including_retries_and_cleanup",
+  "timeout_seconds": 600,
+  "tools_enabled": false,
+  "verdict": {
+    "findings": [
+      {
+        "evidence": "Checked ledger selected[] (63) and candidates[] (208 include/skip dispositions), draft sections Top Stories through NIP Deep Dive, triage Wednesday deltas (releases, Zapstore, discovery, White Noise correction, scope-review NoorNote/napplet.soy), source_fact_checks_2026-09-23.md (XM Arcade dec0edda\u2026, Zzub 70c5efee\u2026, pakstr/Amethyst/NoorNote/Dart NDK/NIP-86), and selection_coverage_receipt PASS. Not in packet: full 38-project activity memo, zapstore_2026-09-23.json bodies beyond the two excerpts, or live GitHub note re-read.",
+        "recommendation": "Treat this PASS as ledger-and-draft editorial clearance only; any later collector or note mutation needs a new Stage 4 pass.",
+        "severity": "note",
+        "title": "Review scope and snapshot limits"
+      }
+    ],
+    "summary": "Stage 4 cold review of Compass #41 against the exact Wednesday ledger (selection_coverage_wednesday_2026-09-23.json, sha256 47ef3b5a\u2026; 208 editorial candidates, 63 selected, 145 skipped, 0 unresolved) and the bound assembled draft (2026-09-23-newsletter.md, sha256 a0fb9b47\u2026). Scope: four hard gates, 8/10 no-zero with no item cap, selected-item effect/window/evidence/score justification, skipped items for clear false negatives, tag-bound release prose, and signed-app claims versus supplied notes. All 63 selected items meet \u22658 with no zero axis; the only failed in-window gate is top:fips-initramfs-0.1.0, which is an authenticated catch-up override and is labeled out-of-window in the draft. No skipped candidate in this snapshot has all four gates true and a qualifying score. Release prose keeps NoorNote 1.6.0/1.6.1/1.7.0, Amethyst 1.16.0, Dart NDK dev.4\u2013dev.5, pakstr 0.21\u20130.24, Wisp 1.2.4, Scramble 0.7.0/0.7.2, and in-dev PRs on their own sources. XM Arcade 1.1.3 and Zzub 0.0.15 claims match the fact-checked signed notes. Limits: immutable snapshot only (no live refetch); project_activity_coverage_2026-09-23.md and raw collector JSON were not in the review packet; Armada signed-note body was not excerpted; event-example signatures were not re-verified.",
+    "verdict": "PASS"
+  }
+}

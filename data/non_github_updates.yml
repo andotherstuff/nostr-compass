@@ -89,3 +89,7 @@ other:
   - project: didactyl
     repo: https://git.laantungir.net/laantungir/didactyl
     updates: []
+
+  - project: threshold-sessions
+    repo: https://relay.ngit.dev/npub17m2ual3pdjvhd8yc6a3m8snzjsgnmtl26hwen48ne937qgyjyshs2zgvse/threshold.git
+    updates: []

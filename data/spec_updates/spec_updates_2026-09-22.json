@@ -1,0 +1,309 @@
+{
+  "generated_at": "2026-09-22T14:28:39.921207+00:00",
+  "window": {
+    "since": "2026-09-14T00:00:00Z",
+    "until": "2026-09-22T13:24:20Z"
+  },
+  "families": [
+    {
+      "id": "nip",
+      "name": "Nostr Implementation Possibilities (NIPs)",
+      "repo": "nostr-protocol/nips",
+      "status": "active",
+      "window": {
+        "since": "2026-09-14T00:00:00Z",
+        "until": "2026-09-22T13:24:20Z"
+      },
+      "commits": [
+        {
+          "sha": "01e707bacdc87cf262db80545aecaa8f17ac2a4f",
+          "date": "2026-09-21T11:37:37Z",
+          "title": "README: fix broken Marmot links and table of contents anchor (#2474)",
+          "url": "https://github.com/nostr-protocol/nips/commit/01e707bacdc87cf262db80545aecaa8f17ac2a4f"
+        },
+        {
+          "sha": "46f8e9501c32f506d07b5de67f414d4f92928cd5",
+          "date": "2026-09-20T16:53:29Z",
+          "title": "nip02: clarify petname character eligibility.",
+          "url": "https://github.com/nostr-protocol/nips/commit/46f8e9501c32f506d07b5de67f414d4f92928cd5"
+        },
+        {
+          "sha": "11cca8f6cf0b65ef4fa6ab97deb2c68db4900847",
+          "date": "2026-09-19T16:42:35Z",
+          "title": "nip02: make petnames great again (#2472)",
+          "url": "https://github.com/nostr-protocol/nips/commit/11cca8f6cf0b65ef4fa6ab97deb2c68db4900847"
+        }
+      ],
+      "pull_requests": [
+        {
+          "number": 2461,
+          "title": "NIP-AC: WebRTC signaling for p2p connections",
+          "state": "open",
+          "created_at": "2026-09-04T16:22:07Z",
+          "updated_at": "2026-09-22T11:54:16Z",
+          "merged_at": null,
+          "url": "https://github.com/nostr-protocol/nips/pull/2461"
+        },
+        {
+          "number": 2477,
+          "title": "NIP-86: Add clear and list methods",
+          "state": "open",
+          "created_at": "2026-09-22T06:35:53Z",
+          "updated_at": "2026-09-22T11:28:30Z",
+          "merged_at": null,
+          "url": "https://github.com/nostr-protocol/nips/pull/2477"
+        },
+        {
+          "number": 2476,
+          "title": "NIP-69: add created_at tag",
+          "state": "open",
+          "created_at": "2026-09-21T20:51:19Z",
+          "updated_at": "2026-09-21T21:09:00Z",
+          "merged_at": null,
+          "url": "https://github.com/nostr-protocol/nips/pull/2476"
+        },
+        {
+          "number": 2475,
+          "title": "NIP-A3: optional proof of address ownership on payto tags",
+          "state": "open",
+          "created_at": "2026-09-21T16:18:55Z",
+          "updated_at": "2026-09-21T16:22:09Z",
+          "merged_at": null,
+          "url": "https://github.com/nostr-protocol/nips/pull/2475"
+        },
+        {
+          "number": 2439,
+          "title": "Add assign/unassign method to nip 86",
+          "state": "open",
+          "created_at": "2026-08-18T16:43:38Z",
+          "updated_at": "2026-09-21T22:01:02Z",
+          "merged_at": null,
+          "url": "https://github.com/nostr-protocol/nips/pull/2439"
+        },
+        {
+          "number": 2474,
+          "title": "README: fix broken Marmot links and table of contents anchor",
+          "state": "merged",
+          "created_at": "2026-09-21T11:07:44Z",
+          "updated_at": "2026-09-21T11:37:38Z",
+          "merged_at": "2026-09-21T11:37:37Z",
+          "url": "https://github.com/nostr-protocol/nips/pull/2474"
+        },
+        {
+          "number": 2472,
+          "title": "nip02: make petnames great again",
+          "state": "merged",
+          "created_at": "2026-09-17T19:18:45Z",
+          "updated_at": "2026-09-20T16:50:56Z",
+          "merged_at": "2026-09-19T16:42:35Z",
+          "url": "https://github.com/nostr-protocol/nips/pull/2472"
+        },
+        {
+          "number": 2462,
+          "title": "Add slash commands",
+          "state": "open",
+          "created_at": "2026-09-04T18:22:49Z",
+          "updated_at": "2026-09-18T16:31:28Z",
+          "merged_at": null,
+          "url": "https://github.com/nostr-protocol/nips/pull/2462"
+        },
+        {
+          "number": 2468,
+          "title": "NIP-73 - Add Podcast Medium K Tags",
+          "state": "open",
+          "created_at": "2026-09-16T11:42:52Z",
+          "updated_at": "2026-09-17T22:46:01Z",
+          "merged_at": null,
+          "url": "https://github.com/nostr-protocol/nips/pull/2468"
+        },
+        {
+          "number": 2470,
+          "title": "NIP-85: Extend Kind 30383 (Events as Subject) with Event Enrichments",
+          "state": "open",
+          "created_at": "2026-09-17T14:32:22Z",
+          "updated_at": "2026-09-17T19:51:58Z",
+          "merged_at": null,
+          "url": "https://github.com/nostr-protocol/nips/pull/2470"
+        },
+        {
+          "number": 2471,
+          "title": "nip17: the seal timestamp shouldn't have to be randomized",
+          "state": "open",
+          "created_at": "2026-09-17T17:40:22Z",
+          "updated_at": "2026-09-17T18:57:41Z",
+          "merged_at": null,
+          "url": "https://github.com/nostr-protocol/nips/pull/2471"
+        },
+        {
+          "number": 2061,
+          "title": "NIP-PO: podcast episodes",
+          "state": "closed",
+          "created_at": "2025-09-10T21:21:04Z",
+          "updated_at": "2026-09-17T13:35:05Z",
+          "merged_at": null,
+          "url": "https://github.com/nostr-protocol/nips/pull/2061"
+        },
+        {
+          "number": 2469,
+          "title": "NIP-F5: FIPS Transport capability for web browsers",
+          "state": "open",
+          "created_at": "2026-09-16T13:14:45Z",
+          "updated_at": "2026-09-17T03:27:47Z",
+          "merged_at": null,
+          "url": "https://github.com/nostr-protocol/nips/pull/2469"
+        },
+        {
+          "number": 2466,
+          "title": "NIP-XX: Agent-First Messaging",
+          "state": "closed",
+          "created_at": "2026-09-15T13:54:26Z",
+          "updated_at": "2026-09-16T13:31:22Z",
+          "merged_at": null,
+          "url": "https://github.com/nostr-protocol/nips/pull/2466"
+        },
+        {
+          "number": 2104,
+          "title": "NIP-61 replay protection: commit to `P` and `e` in Cashu proof",
+          "state": "open",
+          "created_at": "2025-10-31T16:53:20Z",
+          "updated_at": "2026-09-15T19:58:50Z",
+          "merged_at": null,
+          "url": "https://github.com/nostr-protocol/nips/pull/2104"
+        },
+        {
+          "number": 2442,
+          "title": "Add audio tracks and releases NIP",
+          "state": "closed",
+          "created_at": "2026-08-18T18:47:47Z",
+          "updated_at": "2026-09-14T20:55:06Z",
+          "merged_at": null,
+          "url": "https://github.com/nostr-protocol/nips/pull/2442"
+        }
+      ]
+    },
+    {
+      "id": "bud",
+      "name": "Blossom Upgrade Documents (BUDs)",
+      "repo": "hzrd149/blossom",
+      "status": "active",
+      "window": {
+        "since": "2026-09-14T00:00:00Z",
+        "until": "2026-09-22T13:24:20Z"
+      },
+      "commits": [],
+      "pull_requests": [
+        {
+          "number": 105,
+          "title": "BUD-16: Directory manifests",
+          "state": "open",
+          "created_at": "2026-06-06T08:07:50Z",
+          "updated_at": "2026-09-21T18:12:00Z",
+          "merged_at": null,
+          "url": "https://github.com/hzrd149/blossom/pull/105"
+        }
+      ]
+    },
+    {
+      "id": "nap",
+      "name": "Napplet Application Proposals (NAPs)",
+      "repo": "napplet/naps",
+      "status": "quiet",
+      "window": {
+        "since": "2026-09-14T00:00:00Z",
+        "until": "2026-09-22T13:24:20Z"
+      },
+      "commits": [],
+      "pull_requests": []
+    },
+    {
+      "id": "marmot",
+      "name": "Marmot Improvement Proposals (MIPs)",
+      "repo": "marmot-protocol/marmot",
+      "status": "active",
+      "window": {
+        "since": "2026-09-14T00:00:00Z",
+        "until": "2026-09-22T13:24:20Z"
+      },
+      "commits": [
+        {
+          "sha": "26fa6a6972d7b4325cb3d105ffdd41a1ceda2bb0",
+          "date": "2026-09-20T19:26:21Z",
+          "title": "Document encrypted NIP-88 polls (#425)",
+          "url": "https://github.com/marmot-protocol/marmot/commit/26fa6a6972d7b4325cb3d105ffdd41a1ceda2bb0"
+        },
+        {
+          "sha": "27cd32631dfe1043383c5c8d9ae0dbf95d2d95b2",
+          "date": "2026-09-16T16:47:11Z",
+          "title": "Specify group reports, dismissal labels, and admin deletion (#423)",
+          "url": "https://github.com/marmot-protocol/marmot/commit/27cd32631dfe1043383c5c8d9ae0dbf95d2d95b2"
+        }
+      ],
+      "pull_requests": [
+        {
+          "number": 425,
+          "title": "Document encrypted NIP-88 polls",
+          "state": "merged",
+          "created_at": "2026-09-20T19:01:14Z",
+          "updated_at": "2026-09-20T19:26:23Z",
+          "merged_at": "2026-09-20T19:26:22Z",
+          "url": "https://github.com/marmot-protocol/marmot/pull/425"
+        },
+        {
+          "number": 423,
+          "title": "Specify group reports, dismissal labels, and admin deletion",
+          "state": "merged",
+          "created_at": "2026-09-16T10:07:36Z",
+          "updated_at": "2026-09-16T16:47:15Z",
+          "merged_at": "2026-09-16T16:47:12Z",
+          "url": "https://github.com/marmot-protocol/marmot/pull/423"
+        }
+      ]
+    },
+    {
+      "id": "gamma",
+      "name": "Gamma Markets",
+      "repo": "GammaMarkets/market-spec",
+      "status": "quiet",
+      "window": {
+        "since": "2026-09-14T00:00:00Z",
+        "until": "2026-09-22T13:24:20Z"
+      },
+      "commits": [],
+      "pull_requests": []
+    },
+    {
+      "id": "concord",
+      "name": "Concord (CORD specs)",
+      "repo": "concord-protocol/concord",
+      "status": "quiet",
+      "window": {
+        "since": "2026-09-14T00:00:00Z",
+        "until": "2026-09-22T13:24:20Z"
+      },
+      "commits": [],
+      "pull_requests": []
+    },
+    {
+      "id": "nwc",
+      "name": "Nostr Wallet Connect",
+      "repo": "nostr-wallet-connect/nwc",
+      "status": "active",
+      "window": {
+        "since": "2026-09-14T00:00:00Z",
+        "until": "2026-09-22T13:24:20Z"
+      },
+      "commits": [],
+      "pull_requests": [
+        {
+          "number": 7,
+          "title": "NWC-13: Add get_budget for connection budgets",
+          "state": "open",
+          "created_at": "2026-09-11T18:23:40Z",
+          "updated_at": "2026-09-17T23:21:38Z",
+          "merged_at": null,
+          "url": "https://github.com/nostr-wallet-connect/nwc/pull/7"
+        }
+      ]
+    }
+  ]
+}

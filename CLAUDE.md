@@ -175,12 +175,16 @@ python3 scripts/project_activity_coverage.py --updates <source-pass-project-arti
   --decisions data/newsletter_workspace/project_activity_decisions_<date>.json
 ```
 
-Release coverage and complete merged-PR decisions are both required. The
-finalized source-pass manifest also feeds `selection_coverage_<date>.json`,
-which binds the exact project-activity decisions file and draft. Every source candidate
-retained by a collector maps to one or more stable editorial candidate IDs;
-aggregate recaps must expand into the projects and protocol items they name.
-Each editorial candidate records the four hard-gate results, all five quality
+
+Release coverage and complete merged-PR decisions are both required. The finalized source-pass
+manifest feeds `selection_coverage_<date>.json`, binding the exact project-activity decisions
+file and draft. A collector `include` means a raw record was evaluated, not editorial retention.
+Triage the complete exact-window family inventories (including the release digest), record
+write-up-or-skip reasons, then normalize reviewed sources into `editorial_sources` with
+collector, artifact, or editorial provenance. Every normalized source maps to one or more
+stable editorial candidate IDs; aggregate recaps expand into every named project and protocol
+item. Each editorial candidate records the four hard-gate results, all five quality
+
 scores, its primary evidence, and one final disposition. Run:
 
 ```bash

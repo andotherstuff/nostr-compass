@@ -1,0 +1,150 @@
+{
+  "attempts": [
+    {
+      "attempt": 1,
+      "model": "grok-4.6[effort=high,fast=true]",
+      "outcome": "success",
+      "output_sha256": "1d8f5a5a12edb052ece9d15be0e92a620078e74ef6d8bb77295db6f493c53b76",
+      "provider": "cursor",
+      "response_id": null,
+      "routing_attempts": [
+        {
+          "budget_seconds": 120.0,
+          "elapsed_seconds": 89.792,
+          "model": "grok-4.6",
+          "outcome": "success",
+          "provider": "cursor"
+        }
+      ],
+      "started_at": "2026-09-24T00:08:07.933408+00:00",
+      "usage": {}
+    }
+  ],
+  "completed_at": "2026-09-24T00:09:37.726060+00:00",
+  "elapsed_seconds": 89.793,
+  "endpoint": "cursor-acp",
+  "implementation_model": "gpt-6-sol",
+  "implementation_models": [
+    "gpt-6-sol"
+  ],
+  "instructions_sha256": "10ead63a84fcd08672baaf418089765dc2b5acf651c37fe85144531a501329d5",
+  "max_attempts": 2,
+  "max_output_tokens": 8000,
+  "requested_model": "grok-4.6",
+  "review_tier": "standard",
+  "routing_chain": [
+    {
+      "model": "grok-4.6",
+      "provider": "cursor"
+    },
+    {
+      "model": "composer-2.5",
+      "provider": "cursor"
+    },
+    {
+      "model": "claude-opus-5",
+      "provider": "claude-code"
+    },
+    {
+      "model": "google/gemini-3.1-pro-preview",
+      "provider": "openrouter"
+    }
+  ],
+  "schema_version": 1,
+  "selected_cost_usd": null,
+  "selected_endpoint": "cursor-acp",
+  "selected_family": "xai",
+  "selected_model": "grok-4.6[effort=high,fast=true]",
+  "selected_provider": "cursor",
+  "snapshots": [
+    {
+      "bytes": 10173,
+      "path": "/opt/data/compass-worktrees/2026-09-23-publish-codex/data/newsletter_workspace/late_delta_inventory_2026-09-23.json",
+      "sha256": "9a2468fb9362d6abaec7995b426e4c449eb539bd4478a6b16b19d4e18c7ae527",
+      "stored_name": "001-9a2468fb9362d6ab-late_delta_inventory_2026-09-23.json"
+    },
+    {
+      "bytes": 14024,
+      "path": "/opt/data/compass-worktrees/2026-09-23-publish-codex/data/newsletter_workspace/late_delta_review_2026-09-23.md",
+      "sha256": "a0516b3368b312967bef2c449bc5135790d729662814b09a39665c3f3813b559",
+      "stored_name": "002-a0516b3368b31296-late_delta_review_2026-09-23.md"
+    },
+    {
+      "bytes": 54177,
+      "path": "/opt/data/compass-worktrees/2026-09-23-publish-codex/content/en/newsletters/2026-09-23-newsletter.md",
+      "sha256": "07d402cd8985f395ee59fe6bb9216e4208d611fd6246a2798bbd5851e9d9a11a",
+      "stored_name": "003-07d402cd8985f395-2026-09-23-newsletter.md"
+    },
+    {
+      "bytes": 4211,
+      "path": "/opt/data/compass-worktrees/2026-09-23-publish-codex/data/newsletter_workspace/source_fact_checks_2026-09-23.md",
+      "sha256": "be9e147344963115b3bec0541153d2f2948dbf59a10073b0f9b2d1fd3d981ec5",
+      "stored_name": "004-be9e147344963115-source_fact_checks_2026-09-23.md"
+    },
+    {
+      "bytes": 22435,
+      "path": "/opt/data/compass-worktrees/2026-09-23-publish-codex/data/newsletter_workspace/selection_review_2026-09-23.md",
+      "sha256": "22d8258ed5ed01e317ea02c3b45fc119844cdda19678d422adf5a0476c5c9a2b",
+      "stored_name": "005-22d8258ed5ed01e3-selection_review_2026-09-23.md"
+    }
+  ],
+  "started_at": "2026-09-24T00:08:07.933065+00:00",
+  "status": "completed",
+  "timeout_scope": "invocation_including_retries_and_cleanup",
+  "timeout_seconds": 600,
+  "tools_enabled": false,
+  "verdict": {
+    "findings": [
+      {
+        "evidence": "Inventory and the decision table skip https://github.com/vitorpamplona/amethyst/pull/4186 with reason \u201cDECK reader work has no verified Nostr protocol or event surface,\u201d but the exact title is \u201cImplement DECK-0003 (SNO) reader, rasterizer, and Cyberspace bag opening.\u201d No PR body is supplied, so the Nostr-negative hard-gate claim is not source-grounded here.",
+        "recommendation": "Re-read the #4186 body and confirm whether Cyberspace bag opening emits or consumes Nostr events before keeping the skip; if a protocol surface exists, fold or include it instead.",
+        "severity": "minor",
+        "title": "Amethyst #4186 skip is not independently confirmable from the snapshot"
+      },
+      {
+        "evidence": "https://github.com/vitorpamplona/amethyst/pull/4185 is titled \u201crefactor: Render/Display split, batches 1\u20133 \u2014 shared displays for AccountViewModel-bound composables,\u201d yet late_delta_review_2026-09-23.md gives it the same reason as the marmot PRs: \u201cMLS optional fields, supported extensions and desktop group rendering.\u201d The draft Amethyst in-dev story cites 4187/4182/4184/4188/4189 and not 4185.",
+        "recommendation": "Replace the #4185 reason with a title-accurate fold (support for the #4189 desktop-group render fix) or skip it as an internal refactor; do not leave the MLS boilerplate on a UI-split PR.",
+        "severity": "minor",
+        "title": "Amethyst #4185 fold reason is copy-pasted and not title-grounded"
+      },
+      {
+        "evidence": "The memo closer says \u201cNo grouped PR is represented as a tagged app release or deployed runtime.\u201d The draft nostter story is narrower and accurate: \u201cThese are merged application changes, but no new tagged release is claimed here,\u201d citing https://github.com/SnowCait/nostter/pull/2570, #2574, #2576, and #2577. Snapshot has no deploy/live-web check for this web client.",
+        "recommendation": "Qualify nostter as \u201cno tagged release; live web deploy not independently verified\u201d in the memo; keep the draft\u2019s no-tag wording.",
+        "severity": "minor",
+        "title": "Decision-memo \u201cundeployed runtime\u201d overreaches for nostter"
+      },
+      {
+        "evidence": "Compact inventory lists 37 PRs, fips2go v0.6.1/v0.7.0, and Zzub 0.0.16 (https://primal.net/e/d9ad994bfadc1152b4c77a4fd3eb6be1746eca9d2626008d341bf31d06988872). late_delta_review_2026-09-23.md has a matching row or fold for each, SHA b5ed87d73deb5e6da13f71e5c96e921cd33600555a1c142e1a078433d7206f0f, and GATE PENDING. Individual PR bodies, release notes, NIP-34/app-discovery announcement bodies, and full collector artifacts were not supplied. source_fact_checks_2026-09-23.md quotes Zzub 0.0.16 notes but not fips2go 0.6.1/0.7.0 notes.",
+        "recommendation": "Treat this PASS as editorial-disposition only. Re-run the ten-family source-pass and exact-ledger checks against primary bodies before publication.",
+        "severity": "note",
+        "title": "Snapshot limits: not a final source-pass or ledger gate"
+      },
+      {
+        "evidence": "Memo and draft both keep the 0.6.1 DNS64 untested-carrier caveat (https://github.com/fr34aky/fips2go/releases/tag/v0.6.1) and the 0.7.0 stale-announcement plus ARM64-Pixel/narrower-arch caveat (https://github.com/fr34aky/fips2go/releases/tag/v0.7.0). Inventory titles for #50/#51 support fallback peers, via_nostr, and capped opt-in discovery, but \u201cthree regional peers,\u201d \u201cat most three,\u201d \u201coff by default,\u201d and the Pixel install are not in the compact inventory or fact-check excerpts.",
+        "recommendation": "Re-read the two GitHub release bodies and confirm those quantitative and verification sentences before the final source-pass.",
+        "severity": "note",
+        "title": "fips2go caveats are in the draft; product details still need release-body re-read"
+      },
+      {
+        "evidence": "Inventory, memo, draft, and fact checks all use https://primal.net/e/d9ad994bfadc1152b4c77a4fd3eb6be1746eca9d2626008d341bf31d06988872. Fact checks quote restored Projects, mention chips, Tasks/Reviews tabs, and filters. The memo calls it developer-signed; the draft states the features as shipped and does not repeat a not-device-installed limit (unlike fips2go\u2019s Pixel sentence).",
+        "recommendation": "Keep 0.0.16 folded into the existing Zzub tagged-release story; optionally add that claims are from the signed Zapstore event if the source-pass requires explicit verification posture.",
+        "severity": "note",
+        "title": "Zzub 0.0.16 claims match signed notes; draft omits signed-only posture"
+      },
+      {
+        "evidence": "https://github.com/divinevideo/divine-mobile/pull/9413 (\u201cmembership and optional profile badges\u201d) is skipped for an unverified companion endpoint and \u201cno Nostr event/protocol behavior,\u201d which could be either below the Nostr gate or an undeployed in-dev item (NIP-58 vs custom badges is not in the snapshot). https://github.com/marmot-protocol/mdk/pull/2008 and https://github.com/HeterodyneNetwork/HeterodyneProtocol/pull/33 titles support non-user-facing skips, but \u201cinactive by default / no production sender\u201d and \u201cdoes not change live protocol or published vectors\u201d are body-level claims. Buzz #7844, Mostro #976, and Angor #973/#974 titles are clearly below the Nostr-facing gate.",
+        "recommendation": "Re-read #9413 before treating the skip as final; keep #7844/#976/#973/#974; treat #2008/#33 extra implementation claims as unverified until bodies are read.",
+        "severity": "note",
+        "title": "diVine #9413, mdk #2008, and Heterodyne #33 skip reasons exceed title evidence"
+      },
+      {
+        "evidence": "Memo SKIPs gyoza-hanto (https://primal.net/e/aad13a158be702a1835b41ebb022a00c0a51c97851082caae7d22d7da85dea6e), omarchy-pock, omarchy-btclock, and omarchy-bitcoin-frontier-theme as announcements without a verified Nostr product surface, and SKIPs BlindOracle, node-dlc, qrgo, taskledger, and tollbooth-web as candidate-only leads. Those reasons match a Nostr-facing hard gate, but the announcement/repo bodies are not in this snapshot.",
+        "recommendation": "Accept the skips for this late-delta editorial pass; re-read the four NIP-34 events and five app-discovery leads only if the final source-pass requires primary-body confirmation.",
+        "severity": "note",
+        "title": "NIP-34 and app-discovery skips are conservative; announcement bodies not supplied"
+      }
+    ],
+    "summary": "Late-cutoff dispositions cover all 37 inventory PR identities and both fips2go tags; the three in-dev groups are distinct and the draft does not treat them as tagged/deployed releases; fips2go 0.6.1/0.7.0 caveats appear in the draft. This is not the final ten-family source-pass or exact-ledger gate: PR/release bodies and full collector artifacts were not in the snapshot, so several skip/caveat claims still need a primary-body re-read.",
+    "verdict": "PASS"
+  }
+}

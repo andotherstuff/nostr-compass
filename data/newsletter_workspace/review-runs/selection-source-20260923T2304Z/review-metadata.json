@@ -1,0 +1,120 @@
+{
+  "attempts": [
+    {
+      "attempt": 1,
+      "model": "grok-4.6[effort=high,fast=true]",
+      "outcome": "success",
+      "output_sha256": "4de4c645dc231337f4d31c14389b7022f9347e1017218fcc44c1507c9c92f416",
+      "provider": "cursor",
+      "response_id": null,
+      "routing_attempts": [
+        {
+          "budget_seconds": 120.0,
+          "elapsed_seconds": 102.702,
+          "model": "grok-4.6",
+          "outcome": "success",
+          "provider": "cursor"
+        }
+      ],
+      "started_at": "2026-09-23T23:03:18.062391+00:00",
+      "usage": {}
+    }
+  ],
+  "completed_at": "2026-09-23T23:05:00.765132+00:00",
+  "elapsed_seconds": 102.703,
+  "endpoint": "cursor-acp",
+  "implementation_model": "gpt-6-sol",
+  "implementation_models": [
+    "gpt-6-sol"
+  ],
+  "instructions_sha256": "14f38448cc95c037b3e51ff96596ee85e8ac4f7121e1bac773990caadf84ebe8",
+  "max_attempts": 1,
+  "max_output_tokens": 8000,
+  "requested_model": "grok-4.6",
+  "review_tier": "standard",
+  "routing_chain": [
+    {
+      "model": "grok-4.6",
+      "provider": "cursor"
+    },
+    {
+      "model": "composer-2.5",
+      "provider": "cursor"
+    },
+    {
+      "model": "claude-opus-5",
+      "provider": "claude-code"
+    },
+    {
+      "model": "google/gemini-3.1-pro-preview",
+      "provider": "openrouter"
+    }
+  ],
+  "schema_version": 1,
+  "selected_cost_usd": null,
+  "selected_endpoint": "cursor-acp",
+  "selected_family": "xai",
+  "selected_model": "grok-4.6[effort=high,fast=true]",
+  "selected_provider": "cursor",
+  "snapshots": [
+    {
+      "bytes": 389967,
+      "path": "/opt/data/compass-worktrees/2026-09-23-publish-codex/data/newsletter_workspace/selection_coverage_wednesday_2026-09-23.json",
+      "sha256": "94d3d150303a34de410e9f51966733ea0d42628230fea60ab8285c9da3bb6975",
+      "stored_name": "001-94d3d150303a34de-selection_coverage_wednesday_2026-09-23.json"
+    },
+    {
+      "bytes": 28243,
+      "path": "/opt/data/compass-worktrees/2026-09-23-publish-codex/data/newsletter_workspace/triage_2026-09-23.md",
+      "sha256": "74caa747f3561420f8e675403af7ea2013d522d2f4155b46f7d3e23252b6baa8",
+      "stored_name": "002-74caa747f3561420-triage_2026-09-23.md"
+    },
+    {
+      "bytes": 5084,
+      "path": "/opt/data/compass-worktrees/2026-09-23-publish-codex/data/newsletter_workspace/project_activity_coverage_2026-09-23.md",
+      "sha256": "c704dd4b592a07a9e9ee1381922a7dac57b931cc781ea0927d7711f7085c363a",
+      "stored_name": "003-c704dd4b592a07a9-project_activity_coverage_2026-09-23.md"
+    },
+    {
+      "bytes": 16727,
+      "path": "/opt/data/compass-worktrees/2026-09-23-publish-codex/data/newsletter_workspace/discovery_delta_2026-09-23.json",
+      "sha256": "2d939a72e2ddd23b46c5f272b90cc6255238114c6bac68570443be71d2791675",
+      "stored_name": "004-2d939a72e2ddd23b-discovery_delta_2026-09-23.json"
+    },
+    {
+      "bytes": 1114,
+      "path": "/opt/data/compass-worktrees/2026-09-23-publish-codex/data/newsletter_workspace/selection_coverage_receipt_2026-09-23.json",
+      "sha256": "ec6e02b837593e908eb01f013e378c717b810e251cf939451723d2682d2bbd9e",
+      "stored_name": "005-ec6e02b837593e90-selection_coverage_receipt_2026-09-23.json"
+    }
+  ],
+  "started_at": "2026-09-23T23:03:18.061309+00:00",
+  "status": "completed",
+  "timeout_scope": "invocation_including_retries_and_cleanup",
+  "timeout_seconds": 600,
+  "tools_enabled": false,
+  "verdict": {
+    "findings": [
+      {
+        "evidence": "project_activity_coverage_2026-09-23.md marks eight Wednesday high-PR projects GREEN/selected with primary PRs: divinevideo/divine-mobile#9246 (182 PRs), SnowCait/nostter#2518 (125), Conduit-BTC/conduit-mono#503 (77), block/buzz#7302 (56), zapcooking/frontend#746 (16), ContextVM/sdk#100 (10), cameri/nostream#741 (9), MostroP2P/mostro#971 (9). None of those repos or PRs appear among the ledger\u2019s 47 selected IDs or 145 skipped candidate_ids. Seven have no counterpart story at all; MostroP2P/mostro is only present as skipped release:Mostro (\u201ccoordinator maintenance\u201d), not as the NIP-69 implementation the activity file selected. The receipt still reports 192/192 draft-bound reconciliation with 0 unresolved.",
+        "recommendation": "Add ledger candidate_ids for the eight GREEN activity items (e.g. activity:divine-mobile, activity:nostter, activity:conduit-mono, activity:block-buzz, activity:zapcooking, activity:contextvm-ts-sdk, activity:nostream, activity:mostro-nip69) with include-or-explicit-fold dispositions, the cited PR URLs as primary_sources, scores, and draft binding. If any is only support for an existing selected item (protocol:nip69-pr2476 for Mostro), record that fold on the activity candidate instead of leaving it unbound.",
+        "severity": "blocking",
+        "title": "Eight GREEN high-activity projects are omitted from the Stage 4 ledger"
+      },
+      {
+        "evidence": "Selected candidate release:scramble-0.7.2 (also in selected[]) cites only https://github.com/DavidGershony/Scramble/releases/tag/v0.7.2 while its summary claims the Dark Matter MLS switch and non-migration of 0.6.x groups. triage_2026-09-23.md Wednesday release delta attributes that MLS/non-migration milestone to v0.7.0 and limits v0.7.2 to the dual Android view-layer change. No v0.7.0 URL is in primary_sources or draft_sources.",
+        "recommendation": "Add https://github.com/DavidGershony/Scramble/releases/tag/v0.7.0 to release:scramble-0.7.2 primary_sources (and draft_sources), or split a second candidate for v0.7.0 and confine the 0.7.2 item to the view-layer claim.",
+        "severity": "major",
+        "title": "release:scramble-0.7.2 publishes the 0.7.0 MLS claim without that tag"
+      },
+      {
+        "evidence": "The ledger selects release:wot-extension-0.8.0 with primary source https://github.com/nostr-wot/nostr-wot-extension/releases/tag/v0.8.0 and the claim that 0.8.0 restores opt-in graph queries. project_activity_coverage_2026-09-23.md folds the same repo\u2019s 7 merged PRs into https://github.com/nostr-wot/nostr-wot-extension/releases/tag/v0.8.3 for scoped NWC connections. No candidate_id dispositions v0.8.3 as include, skip, or series expansion.",
+        "recommendation": "Either retarget release:wot-extension-0.8.0 to v0.8.3 (or a 0.8.0\u20130.8.3 series) and revise the summary to the NWC claim with the 0.8.3 URL, or add an explicit skip/fold row for v0.8.3 stating why 0.8.0 remains the publishable tag.",
+        "severity": "major",
+        "title": "release:wot-extension-0.8.0 is unbound from the in-window 0.8.3 fold target"
+      }
+    ],
+    "summary": "Stage 4 review used only the supplied ledger (SHA 94d3d150\u2026, 47 selected / 145 skipped / 192 candidates), Wednesday triage, project-activity coverage, discovery delta, and checker receipt (draft SHA 3319b14c\u2026, manifest SHA bcac650f\u2026, unresolved 0). The source manifest, project/zapstore/discovery artifacts, draft prose, and remote release bodies were not available and were not treated as inspected. Counts, family reconciliation (56 tagged-release rows, 83 discovery skips, 8 Zapstore deltas, 4 named owner includes), and selected-item hard-gate/score floors are internally consistent. Publication is blocked because eight GREEN high-activity projects with primary PR evidence never enter the 47/145 ledger, and two selected release IDs are bound to the wrong or incomplete primary tags.",
+    "verdict": "FAIL"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "findings": [
+    {
+      "evidence": "Current heading in #41: 'pakstr 0.21.0\u20130.24.0 hardens Android Nostr signing' presents 0.21.0 bunker pairing as this week's start. Prior issue #40 heading 'pakstr 0.21.1 advances Nostr application packaging' already selected that same 0.21.x sequence ('continues a five-release sequence for Nostr application packaging and app-shell behavior'). New tags 0.22.0, 0.23.0, and 0.24.0 are distinct; 0.21.0 is not.",
+      "recommendation": "Retitle to start at 0.22.0 (or 0.22.0\u20130.23.0), add a one-line back-reference to #40's 0.21.1, and drop the 0.21.0 recap so the item is only the new signer/runtime tags.",
+      "severity": "minor",
+      "title": "pakstr heading reopens last week's 0.21.x series"
+    },
+    {
+      "evidence": "#41 headings 'NIP-30: Custom Emoji' and 'NIP-71: Video Events' do not match prior deep-dive headings: #38 'NIP Deep Dive: Reposts and Reactions' (NIP-18/NIP-25), #39 'NIP Deep Dive: URI Links and References in Event Text' (NIP-21/NIP-27), #40 'NIP Deep Dive: NIP-23 and NIP-92'. #38 mentions NIP-30 only as a reaction-shortcode aside inside NIP-25; that is not a prior NIP-30 dive. NIP-71 is absent from #38\u2013#40.",
+      "recommendation": "Keep NIP-30 and NIP-71. Do not treat the NIP-25 shortcode aside or NIP-71's use of imeta as grounds to swap these dives.",
+      "severity": "note",
+      "title": "NIP-30 and NIP-71 deep dives are not recycled"
+    },
+    {
+      "evidence": "Current heading 'Marmot merges group reports and admin deletion' cites marmot-protocol/marmot/pull/423 and states 'The proposal covered last week has now merged'. Prior #40 heading 'Marmot proposes encrypted group reports and shared moderation' cited the same URL as an open proposal. That is a material status transition.",
+      "recommendation": "Keep the item. Continue to label it as last week's open draft now merged rather than as a new specification.",
+      "severity": "note",
+      "title": "Marmot PR 423 is a merge transition, not a reprint"
+    },
+    {
+      "evidence": "#41 heading 'RelayKit installs a self-hosted Nostr stack' says coverage is 'a changed project direction' versus 'the browser relay-discovery client covered in April' and cites only https://relayk.it and https://github.com/samthomson/relaykit. RelayKit does not appear in #38\u2013#40. A generic repository URL is not a new primary source; the April issue is not in this snapshot.",
+      "recommendation": "No in-window continuity cut. If full-history continuity is required later, cite the in-window 0.3.5 commit from the Stage 4 ledger instead of the bare repo homepage.",
+      "severity": "note",
+      "title": "RelayKit April callback is outside this snapshot"
+    }
+  ],
+  "summary": "Archive continuity was checked only against the three supplied complete issues\u2014Nostr Compass #38 (2026-09-02), #39 (2026-09-09), and #40 (2026-09-16)\u2014and the #41 draft (2026-09-23). The Stage 4 selection memo was used only to identify claimed primary URLs, not as proof of novelty. Within that window, repeated projects (Grain, MDK, Amethyst, Amber, Dart NDK, Nostr Mail Client, Nail, pakstr, nostr-wot-extension, TWENTY ONE Companion, nostream, Divine Mobile, Zap Cooking, Conduit, Mostro, Ditto, NIP-A3, NWC, Marmot PR 423) each carry a new tag, merged PR, signed event, or open-to-merged transition; NIP-30 and NIP-71 do not reuse #38 NIP-18/25, #39 NIP-21/27, or #40 NIP-23/92. Limitations: #38 is truncated mid-nostrord; this snapshot has no issues before #38, so the draft's April RelayKit and January/April deep-dive callbacks cannot be verified here; a project name or generic repository URL was not treated as a new primary source.",
+  "verdict": "PASS"
+}

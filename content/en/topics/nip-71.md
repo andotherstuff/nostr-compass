@@ -7,7 +7,7 @@ categories:
   - Protocol
 ---
 
-NIP-71 defines event kinds for video content on Nostr, enabling video sharing with proper metadata support. The specification covers both regular video events and addressable video events, with the latter added in January 2026 to allow creators to update video metadata without republishing.
+NIP-71 defines Nostr events for landscape and short-form video, including the playback metadata clients need to choose media, display previews, load captions, and preserve imported-source provenance. It covers immutable video posts and addressable videos whose metadata can be updated under a stable coordinate.
 
 ## Event Kinds
 
@@ -19,7 +19,7 @@ Addressable video events use kind 34235 for horizontal videos and kind 34236 for
 
 ## Structure
 
-A complete addressable video event includes identification fields, metadata tags, and the video content reference.
+A complete addressable video event includes an identifier, descriptive tags, and one or more `imeta` tags describing playable media variants.
 
 ```json
 {
@@ -31,10 +31,8 @@ A complete addressable video event includes identification fields, metadata tags
     ["d", "my-video-2026-01"],
     ["title", "Introduction to Nostr Video"],
     ["summary", "A walkthrough of NIP-71 video events"],
-    ["url", "https://example.com/video.mp4"],
-    ["thumb", "https://example.com/thumbnail.jpg"],
+    ["imeta", "url https://example.com/video.mp4", "m video/mp4", "dim 1920x1080", "image https://example.com/thumbnail.jpg", "duration 300"],
     ["duration", "300"],
-    ["dim", "1920x1080"],
     ["origin", "youtube:dQw4w9WgXcQ"]
   ],
   "content": "Extended description, transcript, or additional notes about the video.",
@@ -42,7 +40,9 @@ A complete addressable video event includes identification fields, metadata tags
 }
 ```
 
-The `d` tag provides a unique identifier within your videos of that kind, so you can have multiple addressable videos by using different `d` values. The `title` and `summary` tags provide the video title and a short description for display in clients. The `url` tag points to the actual video file, while `thumb` provides a preview image. The `duration` tag specifies the length in seconds, and `dim` optionally specifies the video dimensions.
+The `d` tag provides a unique identifier within a publisher's videos of that kind. The `title` and `summary` tags provide descriptive text. Each `imeta` tag begins with a media URL and MIME type and can include dimensions, a SHA-256 hash, preview images, fallbacks, a media service, bitrate, and duration. Multiple `imeta` tags let a client select among files with different formats, resolutions, or hosts.
+
+NIP-71 can also attach text tracks for captions, timed segments for chapters, `p` tags for participants, content warnings, hashtags, references, and imported-source metadata. A client should validate hashes when present, bound media downloads, and disclose external-host requests because a video server can observe playback traffic.
 
 The `origin` tag tracks the source platform when importing content from other services. This preserves provenance when migrating videos from YouTube, Vimeo, or other platforms to Nostr hosting.
 
@@ -66,7 +66,7 @@ Kinds 21 and 22 still matter for applications that want an immutable publication
 
 ## Implementations
 
-Addressable video events (kinds 34235 and 34236) are currently implemented in Amethyst and nostrvine. Both clients can create, display, and update addressable video events.
+[Amethyst](https://github.com/vitorpamplona/amethyst/blob/96bec0cc7c1df4c05d4208fb1cfd6aac06fe97e7/quartz/src/commonMain/kotlin/com/vitorpamplona/quartz/nip71Video/VideoEvent.kt) parses video metadata, separates video and audio tracks, and chooses a playable variant. [Wisp](https://github.com/barrydeen/wisp/blob/b48be58271131c6062be2cc5449777cdd4fe6d31/app/src/main/kotlin/com/wisp/app/nostr/Nip71.kt) parses and builds regular landscape and short-video events with structured `imeta` fields. [Resonote](https://github.com/ikuradon/Resonote/blob/4ac14e1206608315d6507da405d4c5df3312d4d0/packages/core/src/nip71-video.ts) builds and parses all four video kinds along with variants, captions, chapters, participants, and origin metadata.
 
 ---
 
@@ -75,6 +75,7 @@ Addressable video events (kinds 34235 and 34236) are currently implemented in Am
 - [PR #1669](https://github.com/nostr-protocol/nips/pull/1669) - Addressable video events update
 
 **Mentioned in:**
+- [Newsletter #41: NIP Deep Dive](/en/newsletters/2026-09-23-newsletter/#nip-deep-dive-custom-emoji-and-video-events)
 - [Newsletter #5: NIP Updates](/en/newsletters/2026-01-13-newsletter/#nip-updates)
 - [Newsletter #12: NoorNote](/en/newsletters/2026-03-04-newsletter/)
 - [Newsletter #13: NIP Updates](/en/newsletters/2026-03-11-newsletter/#nip-updates)

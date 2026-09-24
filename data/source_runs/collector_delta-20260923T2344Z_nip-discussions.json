@@ -1,0 +1,29 @@
+{
+  "artifact_path": "/opt/data/compass-worktrees/2026-09-23/data/nostr_nip_discussions/discussions_2026-09-23_2026-09-23.json",
+  "artifact_sha256": "56156dc6cc021ea4e9ecdd199b13daff3241d7d2ba90f052b23eb9e8813e8cca",
+  "candidate_ids": [],
+  "canonical_query": {
+    "family": "nip-discussions",
+    "kinds": [
+      1,
+      30023,
+      30817,
+      34550
+    ],
+    "pass_id": "delta-20260923T2344Z",
+    "relay_count": 7,
+    "since": "2026-09-23T20:31:30Z",
+    "until": "2026-09-23T23:44:00Z"
+  },
+  "collector_path": "/opt/data/compass-worktrees/2026-09-23/scripts/fetch_nostr_nip_discussions.sh",
+  "dispositions": {},
+  "family": "nip-discussions",
+  "include_count": 0,
+  "item_count": 0,
+  "page_count": 7,
+  "pagination_complete": true,
+  "pass_id": "delta-20260923T2344Z",
+  "skip_count": 0,
+  "skip_evidence": [],
+  "status": "empty_verified"
+}

@@ -1,0 +1,54 @@
+{
+  "findings": [
+    {
+      "evidence": "Ledger candidate release:amethyst-1.16.0 (score 8) summarizes only the single-flight Blossom signer-boundary fix and cites https://github.com/vitorpamplona/amethyst/releases/tag/v1.16.0; triage item 11 matches that framing. The draft section \u201cAmethyst 1.16.0 expands video, calendars, and geocaching\u201d instead foregrounds NIP-71/NIP-51/NIP-CC/NIP-52 features and BOLT12 offers with no mention of the selected signer fix.",
+      "recommendation": "Rewrite the Amethyst section to match the v1.16.0 tag evidence used for selection, or re-score/re-select with a ledger summary and primary-source set that support the video/calendar/geocaching prose.",
+      "severity": "blocking",
+      "title": "Amethyst draft prose contradicts selected ledger milestone"
+    },
+    {
+      "evidence": "Only release:noornote-1.6.1 is selected; its ledger summary explicitly says the release adds Addons overview and naddr/npub URL fixes \u201cwithout misattributing the 1.6.0 calendar feature.\u201d Triage item 26 repeats that 1.6.0 owns the encrypted-calendar milestone. The draft heading \u201cNoorNote 1.7.0 adds encrypted calendars and booking\u201d then describes 1.6.0 calendar work, 1.6.1 addon fixes, and additional 1.7.0 booking/ICS/NWC behavior that is not a selected candidate in the ledger.",
+      "recommendation": "Collapse coverage to the selected 1.6.1 tag only, move calendar and booking claims to their own verified release rows if they qualify, and retitle so no later tag owns earlier-tag features.",
+      "severity": "blocking",
+      "title": "NoorNote section violates tag attribution guard and exceeds selected scope"
+    },
+    {
+      "evidence": "Selected release:dart-ndk-dev.4-dev.5 states \u201cdev.4 release adds NIP-82 application-update support, while dev.5 hardens relay delivery and Cashu quote handling\u201d and binds the application-update claim to dev.4. The draft says \u201cVersion 0.10.0-dev.5 adds those application-update events, while the preceding development release makes Cashu quote recovery resumable,\u201d reversing which tag introduced NIP-82.",
+      "recommendation": "Attribute NIP-82 application-update support to v0.10.0-dev.4 and limit dev.5 prose to its delivery/Cashu hardening, matching primary_sources ordering.",
+      "severity": "major",
+      "title": "Dart NDK misattributes NIP-82 to dev.5 instead of dev.4"
+    },
+    {
+      "evidence": "Ledger/triage selected release:wisp-1.2.4 with explicit note that \u201c1.2.5 is excluded because it is only a version bump.\u201d Draft section title is \u201cWisp 1.2.5 routes threads through inbox relays\u201d even though the body correctly places inbox routing and NIP-22 handling on 1.2.4.",
+      "recommendation": "Retitle and lead with v1.2.4 as the evidence tag; mention 1.2.5 only as packaging if needed, not as the milestone headline.",
+      "severity": "major",
+      "title": "Wisp headline attributes routing milestone to excluded 1.2.5 bump"
+    },
+    {
+      "evidence": "Selected activity:nostream cites only PR #741 (NIP-66 health events), but the draft also covers merged PR #779 adaptive proof-of-work trust distance. Selected activity:nostter is PR #2518 remote-signer lifecycle, but the draft adds PR #2510 share-menu intake. Selected activity:divine-mobile is PR #9246 relay reconnection, but the draft adds PR #9293 profile-verification timing. Selected activity:contextvm-ts-sdk is PR #100 relay acknowledgements, but the draft adds PR #95 stream-sequencing work. None of those extra PRs appear in the 55-item ledger.",
+      "recommendation": "Restrict each In Development subsection to the selected PR\u2019s primary_source, or add separate scored ledger rows before publishing additional merged work.",
+      "severity": "major",
+      "title": "In Development prose bundles unselected PRs with selected activity items"
+    },
+    {
+      "evidence": "Selected top:napplet-soy is anchored to soyli-v0.18.2 with primary_source https://github.com/zeSchlausKwab/napplet-soy/releases/tag/soyli-v0.18.2. The draft adds a separate soyLI v0.20.0 CLI subsection with NIP-78 helpers and notes that the website/backend require separate deployment\u2014content not present in the selected row\u2019s sources or summary.",
+      "recommendation": "Limit napplet.soy prose to v0.18.2 unless v0.20.0 is independently gated, scored, and added to the ledger.",
+      "severity": "major",
+      "title": "napplet.soy draft exceeds selected tag evidence"
+    },
+    {
+      "evidence": "deep-dive:nip-30 and deep-dive:nip-71 set material_window_progress true while citing static NIP files plus implementation commits; ledger event_example_status still says examples are \u201crequired in Stage 5\u201d even though the draft already embeds recovered events. This is internally inconsistent but not a release-tag attribution defect.",
+      "recommendation": "Either document window-local rationale for deep-dive progress (rotation/implementation delta) in the ledger or downgrade in_window_progress; align event_example_status with the draft that already contains verified examples.",
+      "severity": "minor",
+      "title": "Deep-dive rows mark in-window progress without window-local spec delta"
+    },
+    {
+      "evidence": "release:scramble-0.7.2, release:morganite-0.0.5, release:bitcredit-0.5.16, and release:fips-ts-0.0.43 are ledger-section top_stories but appear under Tagged Releases in the draft. All four are present and sourced.",
+      "recommendation": "Normalize section placement between ledger and draft for editorial consistency; no scoring change required if prose stays tag-bound.",
+      "severity": "note",
+      "title": "Section labels diverge for four release-delta items"
+    }
+  ],
+  "summary": "Reviewed Compass #41 Stage 4 against the finalized Wednesday ledger (sha256 28f3045d\u2026, 55/200 selected, window 2026-09-14T00:00:00Z\u20132026-09-23T20:31:30Z, draft sha256 3319b14c\u2026) plus the assembled draft and triage notes. All 55 ledger rows meet the 8/10 no-zero scoring envelope on paper, but the draft repeatedly mis-binds release milestones to later tags or unselected PRs, and several selected summaries (especially Amethyst and NoorNote) do not match published prose. Limits: no live GitHub/GitLab/Nostr refetch; judgment is confined to the supplied snapshot.",
+  "verdict": "FAIL"
+}

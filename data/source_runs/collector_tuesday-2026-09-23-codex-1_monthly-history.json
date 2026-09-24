@@ -1,0 +1,22 @@
+{
+  "artifact_path": null,
+  "artifact_sha256": null,
+  "candidate_ids": [],
+  "canonical_query": {
+    "family": "monthly-history",
+    "pass_id": "tuesday-2026-09-23-codex-1",
+    "since": "2026-09-14T00:00:00Z",
+    "until": "2026-09-22T13:24:20Z"
+  },
+  "collector_path": "/opt/data/compass-worktrees/2026-09-23/scripts/fetch_monthly_history.py",
+  "dispositions": {},
+  "family": "monthly-history",
+  "include_count": 0,
+  "item_count": 0,
+  "page_count": 0,
+  "pagination_complete": false,
+  "pass_id": "tuesday-2026-09-23-codex-1",
+  "skip_count": 0,
+  "skip_evidence": [],
+  "status": "not_applicable"
+}

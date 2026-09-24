@@ -180,6 +180,24 @@ def finalize(path: Path) -> bool:
 def verify_finalized(path: Path) -> bool:
     return bool(load_manifest(path).get("finalized")) and finalize(path)
 
+def verify_family(path: Path, family: str) -> bool:
+    """Verify one already-ingested family without rewriting its artifact."""
+    manifest = load_manifest(path)
+    entry = manifest["families"].get(family)
+    if entry is None or entry.get("pass_id") != manifest["pass_id"] or entry.get("window") != manifest["window"]:
+        return False
+    if digest_json(entry.get("canonical_query")) != entry.get("canonical_query_sha256"):
+        return False
+    collector = Path(entry["collector"])
+    if not collector.is_file() or hashlib.sha256(collector.read_bytes()).hexdigest() != entry.get("collector_sha256"):
+        return False
+    if entry["status"] != "not_applicable":
+        artifact = Path(entry["artifact_path"])
+        if not artifact.is_file() or hashlib.sha256(artifact.read_bytes()).hexdigest() != entry.get("artifact_sha256"):
+            return False
+    _ensure_collector_receipt(path, family, entry)
+    return True
+
 def main() -> int:
     parser = argparse.ArgumentParser(); sub = parser.add_subparsers(dest="command", required=True)
     create = sub.add_parser("create"); create.add_argument("--manifest", type=Path, required=True); create.add_argument("--pass-id", required=True); create.add_argument("--since", required=True); create.add_argument("--until", required=True); create.add_argument("--expected", action="append", required=True)
@@ -187,11 +205,13 @@ def main() -> int:
     ingest = sub.add_parser("ingest"); ingest.add_argument("--manifest", type=Path, required=True); ingest.add_argument("--receipt", type=Path, required=True)
     finish = sub.add_parser("finalize"); finish.add_argument("--manifest", type=Path, required=True)
     verify = sub.add_parser("verify-finalized"); verify.add_argument("--manifest", type=Path, required=True)
+    verify_one = sub.add_parser("verify-family"); verify_one.add_argument("--manifest", type=Path, required=True); verify_one.add_argument("--family", required=True)
     args = parser.parse_args()
     if args.command == "create": create_manifest(args.manifest, args.pass_id, args.since, args.until, args.expected); return 0
     if args.command == "ingest": ingest_receipt(args.manifest, args.receipt); return 0
     if args.command == "record": record_family(args.manifest, pass_id=args.pass_id, family=args.family, status=args.status, artifact=args.artifact, collector=args.collector, query=json.loads(args.query_json), pagination_complete=args.pagination_complete, item_count=args.item_count, page_count=args.page_count, include_count=args.include_count, skip_count=args.skip_count, skip_evidence=json.loads(args.skip_evidence_json), candidate_ids=json.loads(args.candidate_ids_json), dispositions=json.loads(args.dispositions_json)); return 0
     if args.command == "verify-finalized": return 0 if verify_finalized(args.manifest) else 1
+    if args.command == "verify-family": return 0 if verify_family(args.manifest, args.family) else 1
     return 0 if finalize(args.manifest) else 1
 
 if __name__ == "__main__": raise SystemExit(main())

@@ -1,0 +1,28 @@
+{
+  "artifact_path": "/opt/data/compass-worktrees/2026-09-23-final-cutoff/data/nip34_repos/nip34_2026-09-23_2026-09-24.json",
+  "artifact_sha256": "a83365ae61e1f70b63f5f13d7d09fe40cf7e4602b745e9fb47d628e570c0e88e",
+  "candidate_ids": [],
+  "canonical_query": {
+    "family": "nip34",
+    "kinds": [
+      30617,
+      1617,
+      1621
+    ],
+    "mode": "both",
+    "pass_id": "final-20260924T0041Z",
+    "since": "2026-09-23T23:44:00Z",
+    "until": "2026-09-24T00:41:00Z"
+  },
+  "collector_path": "/opt/data/compass-worktrees/2026-09-23-final-cutoff/scripts/fetch_nip34_repos.sh",
+  "dispositions": {},
+  "family": "nip34",
+  "include_count": 0,
+  "item_count": 0,
+  "page_count": 49,
+  "pagination_complete": true,
+  "pass_id": "final-20260924T0041Z",
+  "skip_count": 0,
+  "skip_evidence": [],
+  "status": "empty_verified"
+}

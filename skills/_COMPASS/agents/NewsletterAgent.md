@@ -276,9 +276,12 @@ Examples of FAILING the relay test:
 
 ## Hard eligibility and quality scoring (0-10, minimum 8 with no zero)
 
-Every collector-retained source candidate receives a stable ID. Expand recap and
-roundup events into the individual projects or protocol items they name, then
-map every source ID into `selection_coverage_<date>.json`. A candidate advances
+Collector `include` means evaluated raw evidence, not an editorial keep. Reconcile
+the full required source-family inventories in triage with explicit write-up-or-skip
+reasons. Give each reviewed editorial source a stable ID and collector, artifact,
+or editorial provenance. Expand recap and roundup events into the individual
+projects or protocol items they name, then map those normalized IDs into
+`selection_coverage_<date>.json`. A candidate advances
 to scoring only when all four hard gates pass:
 
 1. direct primary evidence supports the exact claim;
@@ -442,7 +445,9 @@ Run `python3 scripts/check_newsletter_continuity.py content/en/newsletters/<date
 
 ## Editorial Decisions
 1. Check all prior newsletters mechanically and read the last 3 in full. SKIP items already covered unless a distinct primary source supports a distinct substantive change.
-2. Reconcile every collector-retained source ID through `selection_coverage_<date>.json` and every merged-PR project through `project_activity_decisions_<date>.json`. Bind the latter in the ledger as `project_activity_decisions: {"path": "<exact path>", "sha256": "<exact file hash>"}`. Expand aggregate events into every named project or protocol item. Do not promote low-scoring maintenance work and do not drop qualifying work, regardless of PR count.
+
+2. Triage the full exact-window family inventories. Reconcile every collector-retained raw source through normalized `editorial_sources` and `selection_coverage_<date>.json`; collector `include` alone is not editorial retention. Reconcile every merged-PR project through `project_activity_decisions_<date>.json`, bound in the ledger as `project_activity_decisions: {"path": "<exact path>", "sha256": "<exact file hash>"}`. Expand aggregates into every named project or protocol item. Do not promote low-scoring maintenance or drop qualifying work, regardless of PR count.
+
 3. Apply the Nostr Relay Test: does this change affect Nostr relays or Nostr users?
 4. Section assignments (each item in ONE section only)
    - Apps first: lead stories and section headlines favor app/project news. Spec work
@@ -577,7 +582,7 @@ RULES:
 
 WRITING-QUALITY RULES (Change F):
 
-1. INLINE EXPLAINER ALWAYS. Every project, NIP, protocol, event kind, and cryptographic primitive gets a SHORT inline explainer (one phrase, never a full sentence) on first mention, PLUS a topic-page link when one exists. Inline clause is for the reader who does not click through; topic-page link is for the reader who wants depth. Both ship together, every time.
+1. ONE-SENTENCE EXPLAINER ALWAYS. Every project gets a self-contained one-sentence summary on first mention in each section. Every NIP gets a self-contained one-sentence plain-language summary of what it enables or standardizes on first mention in each section. Protocols, event kinds, and cryptographic primitives still get a short inline explainer, plus a topic-page link when one exists. A category label, bare identifier, heading, or link text is not a summary. The sentence is for the reader who does not click through; the topic-page link is for the reader who wants depth. Both ship together, every time.
    Examples:
    - 'Damus, the iOS Nostr client, shipped v1.x'
    - '[NIP-46 (remote signing over Nostr)](/en/topics/nip-46/) gained two implementers'
@@ -634,7 +639,7 @@ WRITING-QUALITY RULES (Change F):
 
 16. ONE HEADER PER PROJECT PER NEWSLETTER. If a project appears in Lead Stories, it does NOT get a second header in Unreleased/Notable. Consolidate.
 
-17. FIRST-MENTION EXPLAINER FOR EVERY PROJECT. The first sentence of a section's body must include a "X is a Y" or "X, an [role], does Z" clause. A reader who has never seen the project should understand what it does from the first sentence, not have to click through to the repo. The explainer must be USEFUL and SPECIFIC: name the platform, the distinguishing feature, or the niche. Never a bare tautology like "Wisp is a Nostr client" or "X is a Nostr app". Same rule for NIP first-mentions in a section body: the number alone is opaque, always pair it with a functional clause.
+17. FIRST-MENTION SUMMARY FOR EVERY PROJECT AND NIP. The first sentence of a section's body must give the project a complete one-sentence summary using a useful, specific "X is a Y that does Z" or "X, an [role], does Z" construction. A reader who has never seen the project should understand what it does without clicking through. Never use a bare tautology such as "Wisp is a Nostr client" or "X is a Nostr app". Apply the same rule to each NIP's first mention: state in one complete plain-language sentence what the NIP enables or standardizes, not only its number or title. This summary does not replace the item's required substantive follow-through.
    Bad: "Pollerama shipped v1.12.0 to Zapstore this week. Users can now pick which client tag..."
    Bad: "Wisp is a Nostr client."
    Good: "Pollerama, an Android Nostr client focused on polls and notes with a strong web-of-trust discovery layer, shipped v1.12.0..."

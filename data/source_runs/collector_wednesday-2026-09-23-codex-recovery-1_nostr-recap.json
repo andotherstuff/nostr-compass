@@ -1,0 +1,130 @@
+{
+  "artifact_path": "/opt/data/compass-worktrees/2026-09-23-publish-codex/data/nostr_recap/recap_2026-09-14_2026-09-23.json",
+  "artifact_sha256": "2ab1541c75f1ade783226310124d5e600ade74ab4a913f918ca772e4b764273c",
+  "candidate_ids": [
+    "2185985ad61da0b491814fc9e8850805f520e690670fe5243c20ca6bea4fecea",
+    "2a8160cb755e21e8510f75d94fa70880598dbf57eb10b2a92d1c685f18081894",
+    "2a9b49b1c8e271c195f5960315383f92ca68cef50b8980d7ca22dcb282894cba",
+    "39e0b0b0c370ac7d0a4e681b60e062408cc92d6cf6a18bffc1a997aa4154ddae",
+    "452866530f8629e14cd97bb890ee9caf05c18601a269b879d8948c57a13b823c",
+    "4e97ccff85fbcfc3d6462a28fabce1e3fdf4ee14ae171bffdeba3baf3638395e",
+    "586d867ca317f1488476721150c54ae5c0503d33ce5c5ccca20648168f81e431",
+    "6cfefd45144e56dfc2be34717c0ba5a55d7c56f064c5bebd04ec5cc958d9f545",
+    "79fa67a420f34ebe36b141e40f8620b6591dbf5ee1f8e21e8d53fab16ea7a85d",
+    "8136f401b9fcbcc369a68cac21ac8b5a9b5ca0ab5e47d4583123843cd7f1bff1",
+    "88f96692028778c55a2f77ae2b259c4ae19aceed57b08ecba2663d1f51b52ace",
+    "9ea887b52e249295ac67a3393dbca2dce7ce706cb0d6002c9b1a76e5152f4769",
+    "a304e6442f7d57756d97451c851202dd591d002d09fa23501c4d2c7744e1ed49",
+    "a347adf225687a8cadedfe976727be6afef8f49b3f1305b27421553fc7cc4a1b",
+    "a40085e3d41a48564f92e608e31fbf430e786bd199dbb3a9cf5cb07562884839",
+    "a560a978aa02437afb3fecacd1adeb08e9ead58d63e9efe338ff9b9e0b2aa2f9",
+    "a6fc1daeea9ca8d99f29af411354e7cc9e2fa1519d2bbe26cde22e0027a0fb3f",
+    "b067e8fe6900bf76eebe1ec5570bedce0643aa4f6d36d7bbcb0c1de0ba018342",
+    "bae440c4553fd86e20dde317109d649f45ab30e2ff223a222343b4e4841d5f42",
+    "ee065ab1d979269783a25a88caa6d99d7bdcd3f5f33a8cecd719c4c7b633cccc"
+  ],
+  "canonical_query": {
+    "author": "cae5b7ea348afefc4c102bb7b125c4928f114739a27b877c6bcfbe5a79280384",
+    "family": "nostr-recap",
+    "kinds": [
+      1,
+      30023
+    ],
+    "limit_per_kind": 1000,
+    "pass_id": "wednesday-2026-09-23-codex-recovery-1",
+    "since": "2026-09-14T00:00:00Z",
+    "until": "2026-09-23T20:31:30Z"
+  },
+  "collector_path": "/opt/data/compass-worktrees/2026-09-23-publish-codex/scripts/fetch_nostr_recap.sh",
+  "dispositions": {
+    "2185985ad61da0b491814fc9e8850805f520e690670fe5243c20ca6bea4fecea": {
+      "decision": "include",
+      "reason": "valid signed recap event retained in exact-window artifact"
+    },
+    "2a8160cb755e21e8510f75d94fa70880598dbf57eb10b2a92d1c685f18081894": {
+      "decision": "include",
+      "reason": "valid signed recap event retained in exact-window artifact"
+    },
+    "2a9b49b1c8e271c195f5960315383f92ca68cef50b8980d7ca22dcb282894cba": {
+      "decision": "include",
+      "reason": "valid signed recap event retained in exact-window artifact"
+    },
+    "39e0b0b0c370ac7d0a4e681b60e062408cc92d6cf6a18bffc1a997aa4154ddae": {
+      "decision": "include",
+      "reason": "valid signed recap event retained in exact-window artifact"
+    },
+    "452866530f8629e14cd97bb890ee9caf05c18601a269b879d8948c57a13b823c": {
+      "decision": "include",
+      "reason": "valid signed recap event retained in exact-window artifact"
+    },
+    "4e97ccff85fbcfc3d6462a28fabce1e3fdf4ee14ae171bffdeba3baf3638395e": {
+      "decision": "include",
+      "reason": "valid signed recap event retained in exact-window artifact"
+    },
+    "586d867ca317f1488476721150c54ae5c0503d33ce5c5ccca20648168f81e431": {
+      "decision": "include",
+      "reason": "valid signed recap event retained in exact-window artifact"
+    },
+    "6cfefd45144e56dfc2be34717c0ba5a55d7c56f064c5bebd04ec5cc958d9f545": {
+      "decision": "include",
+      "reason": "valid signed recap event retained in exact-window artifact"
+    },
+    "79fa67a420f34ebe36b141e40f8620b6591dbf5ee1f8e21e8d53fab16ea7a85d": {
+      "decision": "include",
+      "reason": "valid signed recap event retained in exact-window artifact"
+    },
+    "8136f401b9fcbcc369a68cac21ac8b5a9b5ca0ab5e47d4583123843cd7f1bff1": {
+      "decision": "include",
+      "reason": "valid signed recap event retained in exact-window artifact"
+    },
+    "88f96692028778c55a2f77ae2b259c4ae19aceed57b08ecba2663d1f51b52ace": {
+      "decision": "include",
+      "reason": "valid signed recap event retained in exact-window artifact"
+    },
+    "9ea887b52e249295ac67a3393dbca2dce7ce706cb0d6002c9b1a76e5152f4769": {
+      "decision": "include",
+      "reason": "valid signed recap event retained in exact-window artifact"
+    },
+    "a304e6442f7d57756d97451c851202dd591d002d09fa23501c4d2c7744e1ed49": {
+      "decision": "include",
+      "reason": "valid signed recap event retained in exact-window artifact"
+    },
+    "a347adf225687a8cadedfe976727be6afef8f49b3f1305b27421553fc7cc4a1b": {
+      "decision": "include",
+      "reason": "valid signed recap event retained in exact-window artifact"
+    },
+    "a40085e3d41a48564f92e608e31fbf430e786bd199dbb3a9cf5cb07562884839": {
+      "decision": "include",
+      "reason": "valid signed recap event retained in exact-window artifact"
+    },
+    "a560a978aa02437afb3fecacd1adeb08e9ead58d63e9efe338ff9b9e0b2aa2f9": {
+      "decision": "include",
+      "reason": "valid signed recap event retained in exact-window artifact"
+    },
+    "a6fc1daeea9ca8d99f29af411354e7cc9e2fa1519d2bbe26cde22e0027a0fb3f": {
+      "decision": "include",
+      "reason": "valid signed recap event retained in exact-window artifact"
+    },
+    "b067e8fe6900bf76eebe1ec5570bedce0643aa4f6d36d7bbcb0c1de0ba018342": {
+      "decision": "include",
+      "reason": "valid signed recap event retained in exact-window artifact"
+    },
+    "bae440c4553fd86e20dde317109d649f45ab30e2ff223a222343b4e4841d5f42": {
+      "decision": "include",
+      "reason": "valid signed recap event retained in exact-window artifact"
+    },
+    "ee065ab1d979269783a25a88caa6d99d7bdcd3f5f33a8cecd719c4c7b633cccc": {
+      "decision": "include",
+      "reason": "valid signed recap event retained in exact-window artifact"
+    }
+  },
+  "family": "nostr-recap",
+  "include_count": 20,
+  "item_count": 20,
+  "page_count": 2,
+  "pagination_complete": true,
+  "pass_id": "wednesday-2026-09-23-codex-recovery-1",
+  "skip_count": 0,
+  "skip_evidence": [],
+  "status": "complete"
+}

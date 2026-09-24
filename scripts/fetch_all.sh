@@ -123,7 +123,13 @@ FAILED=0
 SKIPPED=0
 
 source_done() {
-    local family="$1" receipt="$PROJECT_ROOT/data/source_runs/collector_${PASS_ID}_${family}.json"
+    local family="$1"
+    local receipt="$PROJECT_ROOT/data/source_runs/collector_${PASS_ID}_${family}.json"
+    if python3 "$SCRIPT_DIR/source_run_manifest.py" verify-family --manifest "$MANIFEST" --family "$family"; then
+        SOURCE_EXIT[$family]=0
+        echo "  Resumed: already-ingested family and exact artifact hash verified."
+        return 0
+    fi
     if [ -f "$receipt" ] && python3 "$SCRIPT_DIR/source_run_manifest.py" ingest --manifest "$MANIFEST" --receipt "$receipt"; then
         SOURCE_EXIT[$family]=0
         echo "  Resumed: exact-pass receipt and retained artifact verified."

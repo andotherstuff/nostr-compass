@@ -1,0 +1,36 @@
+{
+  "findings": [
+    {
+      "evidence": "selection_review_2026-09-23.md handoff: 'Final cold editorial and exact-head five-role reviews remain required'; source_fact_checks_2026-09-23.md: 'Recheck live state before any publication mutation.'",
+      "recommendation": "Treat this PASS as editorial correctness against the frozen snapshot only; run live PR-head, CI, deployment, and broadcast checks before publish.",
+      "severity": "note",
+      "title": "Review bounded to immutable snapshot; live gates remain out of scope"
+    },
+    {
+      "evidence": "Draft YAML description lists fips2go, Grain, Marmot 0.10.4, deep dives, etc., but not Table Mesh 0.1.0 (final_cutoff_review_2026-09-23.md INCLUDE), MDK #2007 replay work, or late Zzub 0.0.16 refresh despite their presence in the assembled body.",
+      "recommendation": "Update the draft description metadata to mention Table Mesh and post-0.10.4 MDK library work if SEO/preview text must mirror final selection coverage.",
+      "severity": "minor",
+      "title": "Frontmatter description omits final-cutoff selections"
+    },
+    {
+      "evidence": "late_delta_review_2026-09-23.md folds Amethyst #4183 (Ed25519.keyPairFromSeed) into the MLS interop story; draft In Development MLS subsection cites #4182, #4184, #4187, #4188, and #4189 but not #4183.",
+      "recommendation": "Add a brief clause naming #4183\u2019s seed-derived key helper or explicitly state the MLS item summarizes the full folded PR set so attribution matches the late disposition ledger.",
+      "severity": "minor",
+      "title": "Amethyst MLS fold omits folded PR #4183 from prose"
+    },
+    {
+      "evidence": "project_activity_coverage_2026-09-23.md: coracle-social/coracle PR #674 merged but 'relay acceptance was not verified and it remains below the independent product-milestone bar'; draft has no Coracle entry.",
+      "recommendation": "If pre-publish relay acceptance can be verified from primary sources, reconsider a short In Development note; otherwise keep the documented skip rationale in editorial records.",
+      "severity": "minor",
+      "title": "Coracle NIP-70 compose toggle is a conservative skip"
+    },
+    {
+      "evidence": "selection_coverage_receipt_2026-09-23.json: activity_pr_count 1230, selected_candidate_count 72, verdict PASS; user review brief: 'do not infer that this alone proves editorial correctness.'",
+      "recommendation": "Retain the exact-hash selection receipt with the draft, but continue treating skipped high-scoring borderline items (e.g., Coracle, formstr NIP-55 integrations with unverified deployment) as explicit editorial judgments rather than mechanical exhaustiveness.",
+      "severity": "note",
+      "title": "Mechanical coverage gates do not prove editorial completeness"
+    }
+  ],
+  "summary": "Cold read of the immutable Compass #41 snapshot (draft SHA-256 b83039d8, selection-coverage receipt PASS with 72/230 selected and 0 unresolved, 80-project/1,230-PR activity gate, late_delta_inventory 37 PRs + 2 fips2go tags + 8 Zapstore events, and distinct final-cutoff 23:44Z..00:41Z manifest) finds source-grounded editorial decisions with appropriate deployment and release caveats. 0xchat #92 and nos2x-fox #67/#69 are correctly framed as merged source security work, not shipped or device-tested products; late In Development folds (Amethyst DECK-0003, Amethyst MLS/render, nostter capability migration, Pensieve archive) are distinct and caveated; fips2go DNS64 and partial ARM64 device checks, signed Zzub board claims, MDK #2007 library-only replay work, and Table Mesh 0.1.0 discovery-vs-local-play boundaries match supplied primary-body facts; open NIP-86 #2439 is skipped rather than reported merged. This verdict is bounded to the supplied frozen artifacts only\u2014live PR-head/CI, deployment, relay broadcast, and exact-head five-role gates remain separate and were not evaluated here.",
+  "verdict": "PASS"
+}

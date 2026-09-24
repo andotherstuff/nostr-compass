@@ -1,0 +1,30 @@
+{
+  "findings": [
+    {
+      "evidence": "Draft In Development: \u201cThis is merged library work after MDK 0.10.4, not part of that tagged release or a measured end-user latency claim,\u201d citing https://github.com/marmot-protocol/mdk/pull/2007. Source memo INCLUDE and fact-check readback: parked-row lineage reclassification and per-row/anchor rewinds after publish confirmation, failure, or join; deferred-sweep ingest and a shared per-group cache invalidated on canonical change; one-row vs eight-row regressions; 681 passed / 5 skipped; merged 2026-09-23T23:59:48Z into master; no new MDK tag or client latency measurement.",
+      "recommendation": "Keep the after-0.10.4 / library-only / no-measured-latency fence if the story is edited later; do not fold this PR into the Marmot 0.10.4 Top Story or any White Noise client claim.",
+      "severity": "note",
+      "title": "MDK #2007 wording matches merged-library facts and stays off the 0.10.4 tag"
+    },
+    {
+      "evidence": "Draft places Table Mesh under Tagged Releases, not Top Stories, and is absent from the lede. Signed release https://primal.net/e/c5c5ad0eba413e18c10e3cd2be607e550ac818a8abaf97ccbf8fa242fbaff15f (zapstore_2026-09-24.json, SHA-256 a8f73cba1ed7b12191cb5a7544fe856611c366a632125816023f16b63b573902) is the first Android release: Bluetooth LE/Wi-Fi local tables, bundled Mensch \u00e4rgere Dich nicht and solo bots, kind 7529 + Blossom fetch with byte-hash verification. Memo INCLUDE reason is that distinctive optional Nostr module path; signed app_content says the Bluetooth mesh was tested in simulation/emulators and asks for real multi-phone reports. Draft: \u201ctested in simulation and emulators, not yet at real multi-phone tables\u201d and \u201cNostr is used to discover and deliver optional games; the actual table session runs locally without an internet connection or account.\u201d",
+      "recommendation": "Retain Tagged Releases INCLUDE; do not elevate to Top Stories. The optional kind-7529/Blossom/hash path is a real first-release Nostr surface, but emulator-only mesh testing and non-core Nostr usage would make Top Story placement unjustified.",
+      "severity": "note",
+      "title": "Table Mesh 0.1.0 INCLUDE is 8/10 at Tagged Releases, not a Top Story"
+    },
+    {
+      "evidence": "Draft Table Mesh: \u201cNostr is used to discover and deliver optional games; the actual table session runs locally without an internet connection or account.\u201d Signed release notes at https://primal.net/e/c5c5ad0eba413e18c10e3cd2be607e550ac818a8abaf97ccbf8fa242fbaff15f: \u201cFind more games on Nostr (kind 7529), downloaded from Blossom and verified byte for byte\u201d / \u201csearches Nostr for game releases (kind 7529) and downloads them from Blossom.\u201d The draft does not say Nostr carries table moves.",
+      "recommendation": "Tighten to \u201cNostr is used to discover optional games, which are fetched from Blossom and hash-checked; the table session itself runs locally and does not carry moves over Nostr.\u201d",
+      "severity": "minor",
+      "title": "Second-paragraph \u201cdeliver\u201d slightly compresses Blossom fetch onto Nostr"
+    },
+    {
+      "evidence": "Source-decision memo GATE: \u201cPENDING \u2014 the specs family hit GitHub's shared core API reserve and must be resumed after reset. The final manifest hash, spec decisions, final draft hash and independent exact-draft review remain required.\u201d Runner scope: this cold read cannot approve publication or the final ten-family sweep.",
+      "recommendation": "Treat this PASS as scoped only to the MDK #2007 and Table Mesh 0.1.0 decisions/wording on this snapshot. Keep final source, PR-head, CI, deployment, signing, and relay gates as separate reviews; do not assume the unreviewed specs family or the rest of the draft is clean.",
+      "severity": "note",
+      "title": "Publication and remaining families/gates are not approved"
+    }
+  ],
+  "summary": "On this immutable snapshot only, the two final-cutoff story decisions and their wording hold: MDK #2007 is described as merged library work after the 0.10.4 tag, matching the captured PR-body facts and inventing neither measured latency nor deployed client behavior; Table Mesh 0.1.0 is a first signed Android release whose Bluetooth/Wi-Fi local play, bundled Mensch \u00e4rgere Dich nicht and bots, kind-7529 discovery, and Blossom byte verification are supported by the signed-store artifact, without implying that Nostr carries table moves or that real multi-phone testing is complete. The optional Nostr distribution path is substantial enough for INCLUDE at Tagged Releases (not Top Stories). This PASS approves only those two story decisions and wording on this input; it does not approve publication or the final ten-family sweep. Final source, PR-head, CI, deployment, signing, and relay gates remain separate, and the unreviewed specs family is still PENDING.",
+  "verdict": "PASS"
+}

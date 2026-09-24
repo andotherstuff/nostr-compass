@@ -1,0 +1,24 @@
+{
+  "findings": [
+    {
+      "evidence": "project_activity_coverage_2026-09-23.md marks eight Wednesday high-PR projects GREEN/selected with primary PRs: divinevideo/divine-mobile#9246 (182 PRs), SnowCait/nostter#2518 (125), Conduit-BTC/conduit-mono#503 (77), block/buzz#7302 (56), zapcooking/frontend#746 (16), ContextVM/sdk#100 (10), cameri/nostream#741 (9), MostroP2P/mostro#971 (9). None of those repos or PRs appear among the ledger\u2019s 47 selected IDs or 145 skipped candidate_ids. Seven have no counterpart story at all; MostroP2P/mostro is only present as skipped release:Mostro (\u201ccoordinator maintenance\u201d), not as the NIP-69 implementation the activity file selected. The receipt still reports 192/192 draft-bound reconciliation with 0 unresolved.",
+      "recommendation": "Add ledger candidate_ids for the eight GREEN activity items (e.g. activity:divine-mobile, activity:nostter, activity:conduit-mono, activity:block-buzz, activity:zapcooking, activity:contextvm-ts-sdk, activity:nostream, activity:mostro-nip69) with include-or-explicit-fold dispositions, the cited PR URLs as primary_sources, scores, and draft binding. If any is only support for an existing selected item (protocol:nip69-pr2476 for Mostro), record that fold on the activity candidate instead of leaving it unbound.",
+      "severity": "blocking",
+      "title": "Eight GREEN high-activity projects are omitted from the Stage 4 ledger"
+    },
+    {
+      "evidence": "Selected candidate release:scramble-0.7.2 (also in selected[]) cites only https://github.com/DavidGershony/Scramble/releases/tag/v0.7.2 while its summary claims the Dark Matter MLS switch and non-migration of 0.6.x groups. triage_2026-09-23.md Wednesday release delta attributes that MLS/non-migration milestone to v0.7.0 and limits v0.7.2 to the dual Android view-layer change. No v0.7.0 URL is in primary_sources or draft_sources.",
+      "recommendation": "Add https://github.com/DavidGershony/Scramble/releases/tag/v0.7.0 to release:scramble-0.7.2 primary_sources (and draft_sources), or split a second candidate for v0.7.0 and confine the 0.7.2 item to the view-layer claim.",
+      "severity": "major",
+      "title": "release:scramble-0.7.2 publishes the 0.7.0 MLS claim without that tag"
+    },
+    {
+      "evidence": "The ledger selects release:wot-extension-0.8.0 with primary source https://github.com/nostr-wot/nostr-wot-extension/releases/tag/v0.8.0 and the claim that 0.8.0 restores opt-in graph queries. project_activity_coverage_2026-09-23.md folds the same repo\u2019s 7 merged PRs into https://github.com/nostr-wot/nostr-wot-extension/releases/tag/v0.8.3 for scoped NWC connections. No candidate_id dispositions v0.8.3 as include, skip, or series expansion.",
+      "recommendation": "Either retarget release:wot-extension-0.8.0 to v0.8.3 (or a 0.8.0\u20130.8.3 series) and revise the summary to the NWC claim with the 0.8.3 URL, or add an explicit skip/fold row for v0.8.3 stating why 0.8.0 remains the publishable tag.",
+      "severity": "major",
+      "title": "release:wot-extension-0.8.0 is unbound from the in-window 0.8.3 fold target"
+    }
+  ],
+  "summary": "Stage 4 review used only the supplied ledger (SHA 94d3d150\u2026, 47 selected / 145 skipped / 192 candidates), Wednesday triage, project-activity coverage, discovery delta, and checker receipt (draft SHA 3319b14c\u2026, manifest SHA bcac650f\u2026, unresolved 0). The source manifest, project/zapstore/discovery artifacts, draft prose, and remote release bodies were not available and were not treated as inspected. Counts, family reconciliation (56 tagged-release rows, 83 discovery skips, 8 Zapstore deltas, 4 named owner includes), and selected-item hard-gate/score floors are internally consistent. Publication is blocked because eight GREEN high-activity projects with primary PR evidence never enter the 47/145 ledger, and two selected release IDs are bound to the wrong or incomplete primary tags.",
+  "verdict": "FAIL"
+}

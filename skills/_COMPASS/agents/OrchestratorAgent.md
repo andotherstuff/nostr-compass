@@ -154,7 +154,7 @@ For the exact project-updates file in the finalized source manifest, generate `p
 
 Reasons for SKIP follow the Nostr Relay Test, the So What Test, and the scope rule (Bitcoin/Lightning-only items skip unless Nostr-relevant work shipped this week).
 
-Gate fails when a retained source candidate is missing, an aggregate source item was not expanded, a candidate lacks a hard-gate result or provisional score, or a verdict lacks primary evidence. A quiet week with fewer than eight GREEN items is valid and produces a shorter issue.
+Gate fails when a required family-inventory item lacks a write-up-or-skip decision, a normalized editorial source is missing, an aggregate source item was not expanded, a candidate lacks a hard-gate result or provisional score, or a verdict lacks primary evidence. Raw collector `include` is not itself editorial retention. A quiet week with fewer than eight GREEN items is valid and produces a shorter issue.
 
 ### Stage 4: Selection
 

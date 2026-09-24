@@ -198,8 +198,14 @@ export function extractMentions(
     // Skip NIP refs, PR numbers, version strings, commit hashes, kind descriptions
     if (/^NIP-|^PR #|^v?\d+\.\d+|^[a-f0-9]{7,}$/.test(text)) return;
     if (/^Kind \d/i.test(text)) return;
-    // Skip bare domain names (foo.com, foo.org, etc.)
-    if (/^[a-z0-9.-]+\.[a-z]{2,}$/.test(text)) return;
+    // Skip bare domain names (foo.com, foo.org, etc.) unless the exact domain
+    // is already a curated resolved or researched-unresolved project identity.
+    // Some projects intentionally use a domain as their canonical name.
+    if (
+      /^[a-z0-9.-]+\.[a-z]{2,}$/.test(text) &&
+      !npubs[text.toLowerCase()] &&
+      !unresolvedIdentities[text.toLowerCase()]
+    ) return;
     // Skip all-lowercase multi-word phrases (descriptions, not project names)
     if (!fromApplicationHeading && /^[a-z]/.test(text) && text.split(/\s+/).length > 1) return;
     // Skip hyphenated repo-style names (marmots-web-chat, etc.)
@@ -256,6 +262,20 @@ export function extractMentions(
     if (!h3 || (!projectSections.has(currentSection) && !protocolProjectSections.has(currentSection))) continue;
     const fullHeader = h3[1].trim();
     if (/^NIP-/.test(fullHeader)) continue;
+    // Prefer the longest curated identity at the start of an application
+    // heading. The action-verb heuristic cannot know every headline verb;
+    // an unfamiliar one must not turn the whole headline into a project name.
+    if (projectSections.has(currentSection)) {
+      const lowerHeader = fullHeader.toLowerCase();
+      const knownName = [...Object.keys(npubs), ...Object.keys(unresolvedIdentities)]
+        .filter((candidate) => lowerHeader.startsWith(candidate) &&
+          (lowerHeader.length === candidate.length || /[\s:(]/.test(lowerHeader[candidate.length] ?? "")))
+        .sort((left, right) => right.length - left.length)[0];
+      if (knownName) {
+        addIfValid(fullHeader.slice(0, knownName.length), true);
+        continue;
+      }
+    }
     // Extract name before action verb, version, or colon
     const nameMatch = fullHeader.match(
       /^(.+?)(?:\s+(?:Ships?|Adds?|Implements?|Releases?|Merges?|Launches?|Fixes?|Receives?|Recovers?|Remembers?|Keeps?|Tightens?|Pairs?|Gives?|Lets?|Clarifies?|Schedules?|Binds?|Turns?|Enables?|Expands?|Extracts?|Gets?|Updates?|Introduces?|Reaches?|Begins?|Gains?|Supports?|Drops?|Brings?|Rolls?|Publishes?|Integrates?|Migrates?|Moves?|Coordinates?|Opens?|Polishes?|Extends?)\b|\s+v\d|\s+\d+\.\d|:|$)/i

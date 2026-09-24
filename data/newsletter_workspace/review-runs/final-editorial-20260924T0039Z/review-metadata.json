@@ -1,0 +1,196 @@
+{
+  "attempts": [
+    {
+      "attempt": 1,
+      "model": "composer-2.5[fast=true]",
+      "outcome": "success",
+      "output_sha256": "19f9b67c45d8ee251b220addcae510d3b6aec362d2f0c5126a4ed5ebdc06ac7d",
+      "provider": "cursor",
+      "response_id": null,
+      "routing_attempts": [
+        {
+          "budget_seconds": 85.714,
+          "elapsed_seconds": 80.805,
+          "kind": "timeout",
+          "message": "Isolated review deadline",
+          "model": "kimi-k3-max",
+          "outcome": "failure",
+          "provider": "cursor",
+          "provider_wide": false
+        },
+        {
+          "budget_seconds": 86.532,
+          "elapsed_seconds": 52.583,
+          "kind": "malformed_verdict",
+          "message": "ACP output did not contain exactly one schema-valid trailing JSON verdict",
+          "model": "glm-5.2-high",
+          "outcome": "failure",
+          "provider": "cursor",
+          "provider_wide": false
+        },
+        {
+          "budget_seconds": 93.322,
+          "elapsed_seconds": 88.507,
+          "kind": "timeout",
+          "message": "Isolated review deadline",
+          "model": "grok-4.6",
+          "outcome": "failure",
+          "provider": "cursor",
+          "provider_wide": false
+        },
+        {
+          "budget_seconds": 94.526,
+          "elapsed_seconds": 43.227,
+          "model": "composer-2.5",
+          "outcome": "success",
+          "provider": "cursor"
+        }
+      ],
+      "started_at": "2026-09-24T00:39:38.439479+00:00",
+      "usage": {}
+    }
+  ],
+  "completed_at": "2026-09-24T00:44:03.562950+00:00",
+  "elapsed_seconds": 265.123,
+  "endpoint": "cursor-acp",
+  "implementation_model": "gpt-6-sol",
+  "implementation_models": [
+    "gpt-6-sol"
+  ],
+  "instructions_sha256": "c12e96aca274d8b23c5cdf2549f8ad318cca5dd92e784e2b0243aade6341f4ce",
+  "max_attempts": 2,
+  "max_output_tokens": 8000,
+  "requested_model": "kimi-k3-max",
+  "review_tier": "deep",
+  "routing_chain": [
+    {
+      "model": "kimi-k3-max",
+      "provider": "cursor"
+    },
+    {
+      "model": "glm-5.2-high",
+      "provider": "cursor"
+    },
+    {
+      "model": "grok-4.6",
+      "provider": "cursor"
+    },
+    {
+      "model": "composer-2.5",
+      "provider": "cursor"
+    },
+    {
+      "model": "claude-opus-5",
+      "provider": "claude-code"
+    },
+    {
+      "model": "moonshotai/kimi-k3",
+      "provider": "openrouter"
+    },
+    {
+      "model": "z-ai/glm-5.2",
+      "provider": "openrouter"
+    },
+    {
+      "model": "google/gemini-3.1-pro-preview",
+      "provider": "openrouter"
+    }
+  ],
+  "schema_version": 1,
+  "selected_cost_usd": null,
+  "selected_endpoint": "cursor-acp",
+  "selected_family": "cursor",
+  "selected_model": "composer-2.5[fast=true]",
+  "selected_provider": "cursor",
+  "snapshots": [
+    {
+      "bytes": 56821,
+      "path": "/opt/data/compass-worktrees/2026-09-23-publish-codex/content/en/newsletters/2026-09-23-newsletter.md",
+      "sha256": "98445d1fdd0f1b460416933fec8882bed552c21de3432338c273ae54d41a43d4",
+      "stored_name": "001-98445d1fdd0f1b46-2026-09-23-newsletter.md"
+    },
+    {
+      "bytes": 15989,
+      "path": "/opt/data/compass-worktrees/2026-09-23-publish-codex/data/newsletter_workspace/project_activity_coverage_2026-09-23.md",
+      "sha256": "b9b81645c67b40b5cee9f977b7723004fe4330853641d948688c76df5e6a4643",
+      "stored_name": "002-b9b81645c67b40b5-project_activity_coverage_2026-09-23.md"
+    },
+    {
+      "bytes": 12557,
+      "path": "/opt/data/compass-worktrees/2026-09-23-publish-codex/data/newsletter_workspace/late_delta_inventory_2026-09-23.json",
+      "sha256": "903f641d309d83691e370236829f099aaabe91f161c35bd6cd0c214f690720d4",
+      "stored_name": "003-903f641d309d8369-late_delta_inventory_2026-09-23.json"
+    },
+    {
+      "bytes": 16774,
+      "path": "/opt/data/compass-worktrees/2026-09-23-publish-codex/data/newsletter_workspace/late_delta_review_2026-09-23.md",
+      "sha256": "a77518146e774f714734f81323913a14e5065aff582b901ca53f320e8871f095",
+      "stored_name": "004-a77518146e774f71-late_delta_review_2026-09-23.md"
+    },
+    {
+      "bytes": 7947,
+      "path": "/opt/data/compass-worktrees/2026-09-23-publish-codex/data/newsletter_workspace/source_fact_checks_2026-09-23.md",
+      "sha256": "8e6c11036d1616edb2e29a8e88ed77bb1910d98b0dabfe87ca2b5b7c58128546",
+      "stored_name": "005-8e6c11036d1616ed-source_fact_checks_2026-09-23.md"
+    }
+  ],
+  "started_at": "2026-09-24T00:39:38.439074+00:00",
+  "status": "completed",
+  "timeout_scope": "invocation_including_retries_and_cleanup",
+  "timeout_seconds": 600,
+  "tools_enabled": false,
+  "verdict": {
+    "findings": [
+      {
+        "evidence": "Draft intro: \"New projects include \u2026 RelayKit \u2026\" vs RelayKit section: \"This coverage therefore treats RelayKit as a changed project direction, not as its first appearance.\"",
+        "recommendation": "Change the intro to \"Project spotlights include\" or \"New coverage this issue includes\" and drop RelayKit from any \"new project\" phrasing, matching the body's April prior-coverage continuity.",
+        "severity": "major",
+        "title": "RelayKit intro contradicts body on first appearance"
+      },
+      {
+        "evidence": "Intro opens with \"**This week:** \u2026 fips-initramfs \u2026 lets operators open encrypted roots before boot,\" but the fips-initramfs section states the September 6 release \"falls outside the current collection window\" and is a catch-up item.",
+        "recommendation": "Remove fips-initramfs from the unqualified \"This week\" lede or add an immediate parenthetical (catch-up / outside collection window) so the opening hook matches window policy stated in the body.",
+        "severity": "major",
+        "title": "Lede frames out-of-window fips-initramfs as \"This week\""
+      },
+      {
+        "evidence": "Intro lists merged work as \"nostream relay health events, Zap Cooking image descriptions, and Conduit Blossom uploads\" but does not mention 0xchat #92 or nos2x-fox #67/#69, which the 80-project memo includes as primary merged security work and the draft covers under In Development.",
+        "recommendation": "Either add 0xchat and nos2x-fox to the intro merged-work sentence or rephrase the lede to say it is a partial highlight so readers are not steered away from the security items.",
+        "severity": "minor",
+        "title": "Intro merged-work highlights omit frozen-artifact security stories"
+      },
+      {
+        "evidence": "Draft has two separate In Development subsections for nostter (\"ties remote signing to the active session\" for #2518/#2510 and \"gates signing and private reads on real capabilities\" for #2570\u2013#2577) with no cross-reference that they are sequential milestones in one migration arc.",
+        "recommendation": "Add a bridging clause in the second nostter subsection (e.g., \"continuing the session-owned NIP-46 work above\") or merge under one nostter header with two dated bullets.",
+        "severity": "minor",
+        "title": "Duplicate nostter In Development headings without cross-link"
+      },
+      {
+        "evidence": "late_delta_inventory_2026-09-23.json lists 37 merged PRs and two fips2go releases; late_delta_review_2026-09-23.md disposition table covers all 37; eight Zapstore records fold Zzub 0.0.16 plus both fips2go signed events and skip five non-Nostr apps with reasons; four NIP-34 announcements and five app-discovery leads each have explicit SKIP reasons; open NIP-86 #2439 is skipped and not reported as merged (draft covers merged #2477 only).",
+        "recommendation": "No ledger action required on snapshot evidence; retain separate live readback before publish.",
+        "severity": "note",
+        "title": "Late-cutoff ledger completeness checks out on supplied memos"
+      },
+      {
+        "evidence": "0xchat section cites https://github.com/0xchat-app/0xchat-app-main/pull/92 and states \"source-level progress, not a claim that an updated app has been released or independently tested on a device\"; nos2x-fox cites #69 and #67 and states \"merged source work; a new extension-store release has not been verified,\" matching source_fact_checks_2026-09-23.md primary-body readback.",
+        "recommendation": "Keep separate In Development coverage; no store-release or device-test claims added at publish.",
+        "severity": "note",
+        "title": "0xchat and nos2x-fox merged-source framing matches fact checks"
+      },
+      {
+        "evidence": "Late review INCLUDE/FOLD decisions map to draft sections for Amethyst DECK-0003 (#4186, phone/bag caveats), Amethyst MLS/desktop rendering (#4182\u2013#4189), nostter capability migration (#2570\u2013#2577, no tagged release claimed), and Pensieve archive durability (#48\u2013#50, explicit \"not an enabled relay repair worker\" gate). fips2go Top Story carries DNS64 untested and ARM64-only Pixel verification caveats per fact checks.",
+        "recommendation": "Preserve deployment caveats verbatim through final editorial pass; do not collapse into tagged-release language.",
+        "severity": "note",
+        "title": "Four late In Development additions are distinct and caveated"
+      },
+      {
+        "evidence": "Review inputs are frozen artifacts (draft sha256 98445d1f\u2026, project memo b9b81645\u2026, late inventory 903f641d\u2026, late decisions a7751814\u2026, fact checks 8e6c1103\u2026) without live GitHub/Zapstore/relay verification in this pass.",
+        "recommendation": "Treat this verdict as cold snapshot editorial review only; run separate live PR-head, CI, deploy, and relay gates before publication.",
+        "severity": "note",
+        "title": "Immutable snapshot review limits"
+      }
+    ],
+    "summary": "The immutable snapshot (SHA-256-bound draft, 80-project memo, late inventory/decision memo, and fact-check excerpt) supports most late-cutoff dispositions, merged-source framing for 0xchat #92 and nos2x-fox #67/#69, fips2go/Zzub caveats, and the four In Development late additions with appropriate deployment limits. However, the assembled draft has a major continuity contradiction on RelayKit and lede framing that misaligns with the stated collection window for fips-initramfs. A PASS on this snapshot would not substitute for live PR-head, CI, deploy, relay-readback, or broadcast gates.",
+    "verdict": "FAIL"
+  }
+}

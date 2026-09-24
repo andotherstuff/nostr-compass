@@ -1,0 +1,24 @@
+{
+  "findings": [
+    {
+      "evidence": "The late-delta memo folds Amethyst #4183 (feat(marmot): Ed25519.keyPairFromSeed) and #4185 (refactor: Render/Display split, batches 1\u20133) into the Amethyst MLS interop / desktop group rendering update. The draft's Amethyst MLS section (https://github.com/vitorpamplona/amethyst/pull/4187 vicinity) cites #4187, #4182, #4184, #4188, and #4189, but does not separately cite #4183 or #4185; #4185 is only referenced indirectly via 'after the display-layer split' in the #4189 sentence.",
+      "recommendation": "No change required for correctness since both are folded implementation-support PRs. If desired for traceability, add a brief parenthetical noting #4183 (Ed25519 key-pair helper) and #4185 (Render/Display split) as folded implementation support within the Amethyst MLS paragraph.",
+      "severity": "note",
+      "title": "Two folded Amethyst late PRs are not explicitly cited in the draft"
+    },
+    {
+      "evidence": "The late-delta memo folds nostter PRs #2570\u2013#2584 (15 PRs) into one 'nostter signer capabilities' update. The draft's 'nostter gates signing and private reads on real capabilities' section cites #2570, #2574, #2576, and #2577, while #2571, #2572, #2573, #2575, #2578, #2579, #2580, #2581, #2582, #2583, #2584 are folded but uncited projection-removal and caller-migration PRs.",
+      "recommendation": "No change required; representative citation of the most material capability-gating PRs is acceptable editorial practice and the uncited PRs are implementation support. The draft's 'subsequent authentication-state refactors' phrasing already acknowledges the broader set.",
+      "severity": "note",
+      "title": "nostter capability section cites 4 of 15 folded late PRs"
+    },
+    {
+      "evidence": "The late-delta memo states Zzub 0.0.16 is 'developer-signed at 21:10:28Z' and the fact notes call it a 'developer-signed event.' The draft's Zzub 0.0.16 paragraph (https://primal.net/e/d9ad994bfadc1152b4c77a4fd3eb6be1746eca9d2626008d341bf31d06988872) describes the release features accurately but does not explicitly label it as a signed Zapstore event, consistent with the 0.0.15 paragraph's treatment.",
+      "recommendation": "No change required for consistency. If the editorial standard prefers explicit provenance labels, add 'signed Zapstore release' to both Zzub version sentences for clarity.",
+      "severity": "note",
+      "title": "Zzub 0.0.16 signed-event nature is implicit, not stated"
+    }
+  ],
+  "summary": "Cold no-tools review of the immutable Compass #41 snapshot (final draft, 80-project activity memo, late cutoff inventory, late-delta decision memo, and primary-body fact notes) finds no blocking or major defects. All 37 late merged PR identities and both fips2go releases are dispositioned in the late-delta memo; Zzub 0.0.16 plus both fips2go signed events are folded, and the five non-Nostr Zapstore events (FilePipe, Fokus, Mood Cairns, Clench, Atmo Engine) are skipped with explicit reasons. The four new NIP-34 announcements (gyoza-hanto, omarchy-pock, omarchy-btclock, omarchy-bitcoin-frontier-theme) and five app-discovery leads (BlindOracle, node-dlc, qrgo, taskledger, tollbooth-web) all carry explicit skip reasons. The older open NIP-86 PR #2439 is correctly NOT reported as merged or implemented; only merged PR #2477 is covered as a NIP-86 milestone. 0xchat #92 and nos2x-fox #67/#69 are described as merged source-level work with explicit caveats that no app/extension-store release or device test is claimed, matching the primary-body fact notes. The four late In Development additions (Amethyst DECK-0003, Amethyst MLS/render, nostter capability migration, Pensieve archive) are distinct from each other and from Wednesday coverage, and each carries a deployment/verification caveat. fips2go DNS64 and device-architecture caveats and signed Zzub 0.0.16 board claims match the supplied fact notes. NIP claims are scoped to their specifications and proposal/merge status is stated correctly. This PASS is limited to the supplied immutable snapshot; live PR/head/CI/deploy/relay gates and any post-snapshot state changes are separate and were not verified here.",
+  "verdict": "PASS"
+}

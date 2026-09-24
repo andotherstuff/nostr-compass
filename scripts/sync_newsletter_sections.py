@@ -11,8 +11,12 @@ from pathlib import Path
 CANONICAL = (
     (("## Top Stories",), "lead-stories.md"),
     (("## Tagged Releases", "## Releases"), "tagged-releases.md"),
-    (("## In Development", "## Unreleased Changes"), "unreleased-changes.md"),
     (("## Protocol and Spec Work", "## NIP Updates and Protocol Spec Work"), "protocol-work.md"),
+)
+
+OPTIONAL = (
+    (("## In Development", "## Unreleased Changes"), "unreleased-changes.md"),
+    (("## New Projects", "## New and Newly Tracked Projects"), "new-projects.md"),
 )
 
 
@@ -48,6 +52,16 @@ def synchronize(markdown: str, output_dir: Path) -> list[Path]:
         if heading is None:
             raise ValueError(f"missing canonical section: {headings[0]}")
         path = output_dir / filename
+        write_section(path, sections[heading])
+        written.append(path)
+        selected[filename] = sections[heading]
+
+    for headings, filename in OPTIONAL:
+        heading = next((candidate for candidate in headings if candidate in sections), None)
+        path = output_dir / filename
+        if heading is None:
+            path.unlink(missing_ok=True)
+            continue
         write_section(path, sections[heading])
         written.append(path)
         selected[filename] = sections[heading]

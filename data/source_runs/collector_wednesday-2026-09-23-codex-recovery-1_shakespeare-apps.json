@@ -1,0 +1,27 @@
+{
+  "artifact_path": "/opt/data/compass-worktrees/2026-09-23-publish-codex/data/shakespeare_apps/apps_2026-09-14_2026-09-23.json",
+  "artifact_sha256": "c1f356ae54cfd3b35b798c049d8efec3f335e231150a4ae3fce8cdb8980dc531",
+  "candidate_ids": [],
+  "canonical_query": {
+    "approved_only": false,
+    "family": "shakespeare-apps",
+    "featured_only": false,
+    "kind": 31733,
+    "limit_per_relay": 200,
+    "pass_id": "wednesday-2026-09-23-codex-recovery-1",
+    "since": "2026-09-14T00:00:00Z",
+    "tag": "soapbox-app-submission",
+    "until": "2026-09-23T20:31:30Z"
+  },
+  "collector_path": "/opt/data/compass-worktrees/2026-09-23-publish-codex/scripts/fetch_shakespeare_apps.sh",
+  "dispositions": {},
+  "family": "shakespeare-apps",
+  "include_count": 0,
+  "item_count": 0,
+  "page_count": 7,
+  "pagination_complete": true,
+  "pass_id": "wednesday-2026-09-23-codex-recovery-1",
+  "skip_count": 0,
+  "skip_evidence": [],
+  "status": "empty_verified"
+}

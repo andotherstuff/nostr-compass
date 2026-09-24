@@ -60,6 +60,31 @@ Protocol.
             self.assertNotIn(stale, written)
             self.assertFalse(stale.exists())
 
+    def test_optional_sections_are_removed_when_absent(self):
+        newsletter = self.canonical.replace("## Unreleased Changes\n\nDevelopment.\n\n", "")
+        with tempfile.TemporaryDirectory() as tmp:
+            output = Path(tmp)
+            stale = output / "unreleased-changes.md"
+            stale.write_text("stale\n")
+
+            written = self.mod.synchronize(newsletter, output)
+
+            self.assertNotIn(stale, written)
+            self.assertFalse(stale.exists())
+
+    def test_new_projects_round_trip_to_dedicated_section_artifact(self):
+        newsletter = self.canonical.replace(
+            "## NIP Updates and Protocol Spec Work",
+            "## New Projects\n\n### RelayKit\n\nProject.\n\n## NIP Updates and Protocol Spec Work",
+        )
+        with tempfile.TemporaryDirectory() as tmp:
+            output = Path(tmp)
+            written = self.mod.synchronize(newsletter, output)
+            path = output / "new-projects.md"
+
+            self.assertIn(path, written)
+            self.assertIn("### RelayKit", path.read_text())
+
     def test_modern_headings_and_writer_provenance_are_preserved(self):
         newsletter = self.canonical.replace("## Releases", "## Tagged Releases")
         newsletter = newsletter.replace("## Unreleased Changes", "## In Development")

@@ -1,0 +1,1876 @@
+{
+  "artifact_path": "/opt/data/compass-worktrees/2026-09-23-publish-codex/data/nip34_repos/nip34_2026-09-14_2026-09-23.json",
+  "artifact_sha256": "e1dd8da8245a174fe2a46c5d40b667ac36aed3a61c39e745b03b4ed004c0ae6f",
+  "candidate_ids": [
+    "01a19e47eef66638c19b8adc4915e54ab0dc1e8a257866d6b5d7487200ee64c9",
+    "01d41e4a417d177f4f3baad2cf5ea54d1cab5dd9b5d2f519804ef0f078a5a4ea",
+    "023ba946168310beeb303bc5dfa308da7711ae4203fca052f2e3601aaec5859d",
+    "0322a1566c628f3cfaaec802a1a028440508583505b044035d917503fd24da50",
+    "0428d4c86d7210332d1863a9fc8c7a975fa5c1df34c39f6ae9ec9ea7ba345394",
+    "042d9ba31c27e05ad7ecb588b3210924b1152d23d6faa846088e9eea93a088f5",
+    "05a2c9631c06529c484d070e112f08014d6adbc280491cfec351792d3dbf9c71",
+    "05b6730ba8d710d415db59e483330d5d22011d5b77f3b66a139d4cd97375f438",
+    "05edd16566a825541a206ef2fe335530e6ac8536be620d90b8779a8e9f0d9086",
+    "0769698037a4426da02e816e31d2e0e4eaf3f410a19764556bab624d0773eeb2",
+    "08ec1b18060ec4feb30f08d6972d03112a509f9e0343f38d7cbe6d864419d5d1",
+    "093936cb650d79df2618e1d7490c88fb0e5491bcd6dc08a015420df0a01e6450",
+    "0ae8bbe701cbaf7cec64ed090f38f84f291b378bb7983d6449c18e6ec803c265",
+    "0b59e629cdc12ff69d74b5a5a64de0c6ac0f29cbda753ae9be538ecd2e8cceb5",
+    "0cc5e90144e72fc1742e3997adff64f894ff09247c50b74c60581fd953118245",
+    "1072f87ddca73169a1507f38c964048c109cee697571f75b7322f96034c9044c",
+    "10b1c2fe2cd4c303a193abeee6a8628049dd2fc951560d78430c62dad4639894",
+    "1160140f5ec29d4accafdbada6ad6e757cd74295246a87b3cae6c16bad6e8f21",
+    "1168703c3d89d6b7b352a4d8a1aa50495b77d0a5b798ee17a6cd86002ea34bc0",
+    "11f387b5e0a13444d555d0b61b3ac997929f3a55f4314461d7b7f2a580b8ec44",
+    "11f87547769d934ae14d38c5b41a8b4821e739ec6a043165604526adff0be139",
+    "1395a0839da122c2c473960bee1affe3d8e5bab6d6cd8b32096749e6c22148e7",
+    "14ea4f887eba96cc11b248f928df3a09ee516bacdb2744209fe098f74941d119",
+    "15a192a87b9b565b1688914cb21d45460753c73a7ab8096d32435ed6e3368bb5",
+    "16985b2fd85dfed9cdda2377229eba415d8130b0137d4b78add20c648f2f8330",
+    "16b027920e6f992c5c82706ef80f1b622abfd719cff04bae3292f32646ccb0a2",
+    "170b58122202df80f25fe955c9bf13814518e7d1f75137797a407da5e158664a",
+    "1805e3eebf5cdef669f8222488deaccb0e1203a10afaa9483377a8e433972875",
+    "18c5242b95afface50917c9e9c87eaeb34dbb09e4d91b9649be3b9e4dc108c3d",
+    "1912bd67eeaeaf50854f9689059be35f6329eff8dd52f284d6e54fc1331a9457",
+    "19421269a53906580e5ecd8d71754d5b00c72686fc7042963251e495069d7e9b",
+    "198c6d6300f2a5e0ebd747fb6d39096e724dd7f8f5accf9d20cfd3a7e47329e5",
+    "19c236568b54d4d30219cb4bf1629033c1c4537fa796232e4d70b8bcdbcdddd0",
+    "19ca696f5665dc8b7a4c1b331363a6effc4d2376401d9374aa275d6f0dbbda58",
+    "1a2569525a46092b855fa3b0f52cf16ffdc0328aeaa054f5a24024789d2024c9",
+    "1a554472824f89d7ad283cfe92afd437dd6e5d8587ecb786ec8561358256c1d3",
+    "1c5ab9b2c9b4df32b8303a302c4a23ff76d0aa82dbe5e45176c861dbd8933b1e",
+    "1c945197a28e85112e58d3ea4afd9f40f4888fd778c95847d941c2ce096e8588",
+    "1ce7cfa4fd02f3f86e9e7aeb64392278c5fbec3ba8f37f6976b2e30043881938",
+    "1d1b7b5b1b701b079eebf96d468d28c9e9a86f78d50bfb045023257b8c7c8516",
+    "1f56c8a08965c9cc80e37f90f7ff647fee4ef46aeb236c22e748b5477cb6067a",
+    "200e72d6c372635fd1fd208d2d5a888ac0607c832be97af4bfb243434fe6c78a",
+    "202b011b9ad69687759a764cd857c4969e9263d8b756001b5f9b3f771aa1b7bd",
+    "204786e8447240bd26b1ddf7d5032427838c665093a51dd40fa5e9857a2cc0f2",
+    "21232a6c8a809e0fd638a22ba5e3b934be8331584821213a9b3065e4f29793cd",
+    "24279050ff3ed2355d3a3562f76d94c83fc86d9dc952fc03badeb2019ccbaff0",
+    "245bc5e292637ae6627d0ada63fcda47313d40d0577cd5bc15c3b05936c02d47",
+    "28ae8eb48261c20cd9aa635a1c04203eb225c7047a36e494bec60b24ec213ea2",
+    "29ffdf6b05737f38486358956e7edf6fdd359499296d18fb273c545c3d152e59",
+    "2a077ec2a4528510756eb5e3baca0d9a01ca3eb47b01804d055e72e473d8d878",
+    "2a79f74dc7f638654d62edba08b3a9b7875df3f0d21a6811854ebb44886dcbd3",
+    "2c4e6a52a5cbf21f6e1f2d12ed91f491f11dcf7b6688586faf6eb45a359939d9",
+    "2d01a96f61cd359b5107e73aef1c598cbbc5496434a9c233725592810a4049d8",
+    "2d64d55abb6f06f7eb4a9deedc9a8f4dfd2c5f3007625cd54700e68460491b82",
+    "2d7a6fb37200eb8fa147b5559be1fecaf22cf860e84fe71eed9736ab304393f8",
+    "2db4585f86e51fb11b15263edb087d717d7f51657fe6fcbf72719fd6b7931276",
+    "301e18e234fbf4ab0a0569c056b6ebbc075fff16b6e38b5d3f7942bfa223576a",
+    "3039653e092aa2b618ec268806e2f21bc6271c8b3b82268b2b3dc5a2b2f621bc",
+    "30efa27866d5878daede7e43c64e8833c63c86bfdae5adaa9a6956718f049209",
+    "3243a4b7f9c868011392c233327537fc1dc7b78651923101d35442fdd8908374",
+    "33147c7aa8ccc3edc6606dcb1f4e49643b9a8e31955b692f324dfa1edfa809c4",
+    "35b79650139724a624af5c5fda84a2c846ed299529d6727e349b1519239378ec",
+    "3613ddac5bd657a6511841aad2a1b2fc5776b1a5899be3b9eb1cea6580e99894",
+    "3619fda3a8fed9a359f45430bbae5d52de22c1a6621efd766fd5a08ebbd169d4",
+    "37101851c7351ff9ce7643f02bccf4a5750a4833e86c2856f81d331e6536f917",
+    "38aea819539a23855642a25203934768d96d52feb61fea2daa83a8f27a8bb7c3",
+    "38e2ea1f28b4f574100616894b27d25df1bfe9e6e8069a03456d751491e1ff54",
+    "39001b3ab0578a050cd62096370f15e298564d33f390ef06c861c2237ae989b1",
+    "3929b140103e538e9f79fced562107cdafe1e2ea7f4caa190f611d8abe696868",
+    "39ce815dfe8d5e4f654ce2ca54641e3c2a5e17d5240119a1dae8fc7b5f4e0181",
+    "3c78bf056dc98ea8abc733e210b2f93732c76f0116b32f2c01e2f8bcd01b45f6",
+    "407714e694ba66f3df9c2ab56bc9f671ab8d20316f53cb7bdde291aa1b1b7880",
+    "4087974a700746408a40c70f43cf8ceba109419f4a14ddc6d4a7a7915ff1af32",
+    "40b0de2385dfa028d5cfc6fa7e8adcd4db489ca9bddabc45c9d57c9f1909ba69",
+    "40e04e9794f80b7a9a7ca7000539883a1bcd19a28c418f12d940e7b479839888",
+    "41d7919176e247001ac6938a1163a9c3a60268ba3d29a2ce1d89ee01395fcf41",
+    "44dd3e220eaa520352fe541e018137babbcf6e05ad934bf8fcb14b2abc0bafc1",
+    "45c8e9a94f268deed1bd594ce2b1a693787138db884273e63e983834d0e9a0cd",
+    "47ede9d4d5718d59a811ef12ecd3487fd2f6f7938d8c96e2e6c9879636d9ebc8",
+    "48955de4a559c3f9f55a44d1fcf5e1d258fca39d59328906cb2e8f2e84a50907",
+    "48dc147ef5467ba5da9da9028d4147f4512d3b78a7f90f8bf1721a3a60cbbca4",
+    "4a524196aef18bee4c52f55c758670f9fbd8f7a14fee40f2ae92e2183a4ae288",
+    "4ae97f6ba18c400777f2fd432db59652a4eb073f6b79bbd9c79fbdcc3dd5fddf",
+    "4dbb44d74e19cf95a4bd90c6ad1feae986b57aa46901172d8815f3e0d837844c",
+    "51ab3c89e38721b4f95f0fc41a96f260647db3381e87431382b2c4efc4ff2629",
+    "53b70a5a4b0fdb850711fb2136e8504b9721cc7c7b2588f1668e1ce19f3a2c31",
+    "55233ad0c39e6212b76e0df24b12eb07e14077631aa21bbe1dfbac02400dce80",
+    "563d29781a07e96885ca6e4d47effdcb0b84639ab4cbff97d998516959004b79",
+    "576d39baad451969ae61965466401e958aca1ae44e1658ced3dff39b70750a68",
+    "58af1229bae478b80b3fa63811848c49d487b5e2ae666e8adc57090634445bed",
+    "5950404ae3c525a8d5255c29ad4f816557e3ff9a79a8137778d3edcb8109f9e5",
+    "5b697b877a3e1834eb351de1740b8cb2963c8abbb62e58dde62ca1214799fa94",
+    "5b7df09e888a848bb0fcebe71b5826f1e177c2abc1e3e482ec7989c890329a9c",
+    "5c087732107c7dbb03b70d6c54cbe71d06dc31a9859507aabb370ce842587337",
+    "5c0f942f121de74791f992cddc541a99a113716030f963b9eb70e54c793ba7f4",
+    "5ccae0cc818accabdea40c8bf36b4ce4abe1ee9af062e96c8e808dfc92cad1ad",
+    "5cd671eea7dacefdf9b37e4dbd00c9fc5a1a92588b44bfa6a1cd39073d77f549",
+    "5d6975fe5540e74e5aa6284b035d723d0b397d63737edf4c5e568e09cc81019c",
+    "5d946c563bad5059f3a6229369a8aaa44b82be345e1430d9e4385b5be6017537",
+    "60fb9ff3d8043995cde685b2d1e0c4730a679c6952f4371c7cf66c52b04e8af5",
+    "63196486a17b323dcec13fb00f8f7cf720abb07c006fda3896af5a244f7a6ebb",
+    "631c954a6da421573e25aef27351fc0114caee21ad02f7492a52cea628b43450",
+    "67b7b9ca7b9a9c95b33fec91fe2e5c074fd80ab5885e807adc1ef3b8f18fbbaa",
+    "68a91dd397b53ff8ee1f7c9ddd6b77d698c8783d0fc67c801f5c125e36fc188a",
+    "693b035f73f175aa09df8be35313becea638f140fa5c0ee9daf03e8cee86aaa0",
+    "6988bbeec224fac0440dd5c0d79dbb13ee68891e9ff9589cfa0616589643daec",
+    "6c153ed6b8e3b9bb46e1f2d935a93d88248914555050ef5245e386e8af3b619c",
+    "6f8c9e86831afcefbaff73df5bbd4bb564edb7ddccfab0af0fa379951d87c16b",
+    "6ff490e6264aa97c781ad1f9e48ea296c6393da766d7fbc7f0bcc61a30433df5",
+    "700ec7ae7e1ff7344ddb633434b0aad0a9ea31a3489f0b37b222ace7579cf012",
+    "709fab187deef692c6b6fad6e09af933e4de7c5276860d092ffde85436cc3b76",
+    "741ef423ac58fe6f7fa97948c0a7fec2091fa449027dc464643cb7a89736a361",
+    "748d5aa7d7879d3b4d1018a04cfd3eb2ba0c78b34d8775ff6fea4e4a6a3a5a5f",
+    "7506749eaff74da5415485eb4c5c3ff1d73c2f3f8314ca561385424b3be74e7e",
+    "7726909be788457d1810a0491773a19aa1882b8b1a2828813496e423664c6b89",
+    "785fd63ef7a6f8b223564d1afd3e016e7beaef99eee88497cf134d4c09fffbe9",
+    "7a18565dc63e21ad06ef9f048a4295ecad916368e9d387a5d499f7822d219dc4",
+    "7a20ef528717d7a13076c8ec386d6d364f064611c1b07ffd333829da33b362dd",
+    "7a5cf21ac18af1b8cd058b580e822f74f17375cd4bae43217e9eb2ca413da3de",
+    "7b79e6f2f0c94004a17bcf69d4cf65cd148788d54d8a2fc724c8249829f366a0",
+    "7c9aff5901e47e858cc1ca957974b683ad9e74c39a880764075878d84c6f1d41",
+    "7e9e44ee3d44bd82bfd942763a2a8a5caf5ea330f084ffe0c4cd0e963ad7d5ae",
+    "814fc37766ed612b059e5b713386f7e19a5d54b77c7fc54ddccc978c7759c89a",
+    "818e51ea1f7554f3c3553c43adc28c50a76ede44052790a368a7eb639b68d1ea",
+    "81a984631c9d379fff2b21bf8df5dee95e26d33321de29a04ee5abaf78f99d82",
+    "82183ee53a03eed5325c074a5dcbf7e2c0d0adb8bfe39a029d319c0a66c6dcd5",
+    "8238d1955cb292072976359862fa68cf72fce812955a128c41fd4b7ebaf6c96c",
+    "825f0291131ed18df929bc62c176df168760fe9aff3a079a12a394da9df33081",
+    "844aac218579d850099b1b663206c777689d44e43062f1d6491bcfcad05781b6",
+    "853d72300ee5dd1515d891423e8da4487395ac364059be55cbcce2c2a01f6a64",
+    "85bc1de0a086056d99db7d29704b5240eedc97109a738232897057de457f187e",
+    "85e062d15da2d2016f8394a8df3c2dd7ee9a330ef307eeee5aa0aa48c979a165",
+    "8ab600c86fac491e15933da5ce90e41b6d0523a4f0c631f74658dd6e1ce8a428",
+    "901f86175c70c79e02bc42640788021f3da3f25f9a39d4c08ab348472c718b02",
+    "9394e33d6f49fb2e11fd2766a45944bdf64971fc8ec3082a83b59a994967eee8",
+    "9411ddf8c32efefd17d5564a1a7cc3f71029921c5da6e1cab07f1547dcc1eb28",
+    "97a19ba7c3a56f0a774188ada312c9bebf0a54ffc3f31cb02c694578f2a8ce33",
+    "9816293137a6bf729f19290e9fe708f34233f9db0a532e179b8bef3f1cd20e53",
+    "98694e5df4a80e68e1237b4e9fd89ca1518364771b15517671605dab5e40fe6a",
+    "9e37e955dfe269ff0cc9616eec0f043b35302b9fd3be1e37ac0a2905b0f9ec68",
+    "9fb1e420ce3397b73522ce90b1a5c75d5490025400a12ddffba8cbbda70ab1c5",
+    "9fd51093c292fa11a4f98c585fb9e57e0c1e402a5b0ff74ff2ee700e79ce7c6a",
+    "a00131897ec55384e1981289e030f123c0e7656480766082620cd1e99062d5e5",
+    "a1140966024139c441e248d187d9303d83bfaa3d736b75a2140c0736e8301122",
+    "a18f4da4b876d1de57a30e2181b8084d6e0ea457e4605ef3d55fb1330e91a276",
+    "a38b0ee0ed65321c38de7a3262583f689195d2f651ecaba4c6c28770dea32e81",
+    "a52042e24fc630cb97ef74be8e6214cbb9aef9c560d3d672742b2a6bad32b630",
+    "a724b2c8ead39c167209968f96a9d9c8ae9cd5f270d69923246cbe6a555c978f",
+    "a79b7da1bd2d2d75708754c06d9d7978a283af293af797106a6ebbd94a04c2a2",
+    "aa3efc28ee50c8073f2187b1f83dcb9335a5c262627b1e46bdc7068421797ea6",
+    "aa4b4d451bd07da462ad9f582f7cf133d3814bdccbe49e7e199279c4518c5604",
+    "ac7be91d776ef8349177a4538ffabcbb51a0eef0e6a2440a630c06f20f6bb188",
+    "ad45f48dba111e4609abf085540f75523af075d4f493d9d0dba406cc5d25ef1d",
+    "b1a4b7fc172833e486190419dbd2a3ee92b0a411a07d579575a2fc5d07cfc689",
+    "b456ae0fd1368dfdb93fbb3a3c4970e38de0a26563b5af032fbe113c80b2b14d",
+    "b528795f91da9a996dc5a3df4aff2fb15d0216ad7c55674ec287f850fd1badf4",
+    "b5bc756113a8c041be0154411f3c29890d76ce82dbe9ef06c8b7fb251619e730",
+    "b617b37ba9aa46ad318a18c9a8cf43b0f20c2bfa5b11d709908f49e736d80555",
+    "b6dc814e3a0d79b0ccbd937de65271e57cfde419993d4ebd2b41838aec57a7b3",
+    "b732b80b714054a822f6e5b6d4f416a617ca6dd747cfee53e138d704c3862f4a",
+    "b826013ce5037dd77324a59af0820a630ffee6e250d168ecae2847b4d63ab530",
+    "b844aa970dd1091f4b73da13b0e097474f99fcf07b0fde24391e89c5045aa9df",
+    "b9c91640a34e4f8917dbfa53dfebdf41f3e9f4c9999a98b006e41f7cec403d48",
+    "ba378e07e3a05f78d28fb5bedba2d4a31fe2e3a8696225815503d8b77bd2f1e2",
+    "bae24b00bd85b3a89476fd778b1371ef2663de3189e31914e43701c706441d2c",
+    "bb20bc6b71cb5fd66040ddc161c235c291c70cffd0c463c83205ea359e4d0bee",
+    "bdac0e2ef874c269fff4dbcda94b2592e449a608905d5abd1f741dd147a2e741",
+    "bedce710506482d67770929da457c754b72f2e9cfcd05dc415fd1fdadb04404d",
+    "bedecf08d8730a53290ddad6af9083cc3f2d7477f8034b42ff9b547a46321d4a",
+    "c0846806af319062a600a54e4996dee5237153a767fa6b55f8adab5f90a9a8fb",
+    "c18f2dc89759b32fb1ec352689a28dd191af9e01786e73d2fb3f12adb1157c96",
+    "c435db6dece422f404946ae0f462527e516fda2cbafb4d334e46afec3a66c6a0",
+    "c44896a7e12e5c0fbe7903f08707565be2ee809400731d61ce80f66bebefad9c",
+    "c55cb90f7f7e52cc5a3da3ee636b50ae3cd79aecd1ef989105cf9f1c8722d0c9",
+    "c6096d0c3a5ea1b83d84b76f856ddf3ddedacc34a8dd345403f7a79d7827f054",
+    "c6a69cd9d43e86b54e468e1302feed98747f875e2727cd5cd14f2c5446c16290",
+    "c7fba10186d28e12ed5f0b59b51c3f53ee942e0b7636f66143381ccf05ee6542",
+    "cba15e4aad5a543443b23dcf41c8780fd6bb48ec5b4f355d3d7c5e1fa4ed189a",
+    "cf2b8945b4b4c73e30dd5365c3fbab4dc4371c36a09c58e18274f5a8538a2441",
+    "d28a470981c013fb71c3913974d56d5118fc3439a131d042fc8c9118dfae62a9",
+    "d2d805ca05f9eeed8ff5219b9c1fd899c68ebd77f25a1be0232a615066ad3718",
+    "d2ebdf231baba487501bff1c977332b194ce5200440fcc674faef190c4bf6538",
+    "d6e9774f1991e2cc64d238507c183acc774b4fb05394d65112c2780bdfadd641",
+    "d6f55c4db35ad184766f12317dbc50c6569055596c1de66cd6827a1b339badb8",
+    "d848703374ec8a325bb9629703d6de3c665993153ffb5e4a8cba00fe66692522",
+    "d8a5fc8a1ea76863abdabf6f4e31062fb5bcee2224151b151f496702b9af12a7",
+    "dbb92f3325fd11cc3caec8c28b04f9cfa4949a8d0eb917e0d94f603614bae36b",
+    "dddfa826750853ac40332e209b357d8cb15dd7d4a5d03809a936986b168e1520",
+    "e07aeb8f5aedf075afd894c7fdcdb2e8fedb23b6f478a371fc9212509d542d0a",
+    "e17ad00f0f1d43eef0027173f732d320db3defa5f1775435d28c32a23a385dd6",
+    "e3e4b336f030d0f64af9e0351dd220e767db4063081f5c12a1cd4da59b63d4af",
+    "e60de070cb1418c9b5eb6b448cd51157ccb88c84f1f67d63c21f6678e5023355",
+    "e76357963aba2da09729622cf2ddd7d727be33911ecb5f5f54c8d5e5f34f7cd5",
+    "ebd4c2744d1e633b66239e239e402d16012b2c992d393e2f7771d1282b81d94a",
+    "ed4c191bc5f61b4e2ad7c1751f68431c1e13e9e3f4ee3f5af135f9b82d5b3f39",
+    "ee4bc5921170933d9fe3ad4f118cd300e0419c104b2282921e51a80372d2a627",
+    "eefafb34b88747a4b6dabeaa8b2a7a3e4dd6c2860030793ba552864d18af01e7",
+    "ef118f8d3ff8f85aec5cb5369516c9804b0bed899715e0ec4466c60deeca4ca9",
+    "ef942bd502e2cfece7ffb9af98bf8e07517933ace1d656ae695f80f6f6182933",
+    "f3f0e47f623ce1a7dbb6bc964e31c8f2cb7642e05f322d9e88b1e666d7c0cd48",
+    "f3f7fcab0a76ea9015f5134343ddc1ebc71515c1499561f60ad0998e58e63766",
+    "f45f0947c6d3384df254aac12120ddcd0576172b9e4b3ee21c8dbe2f9b9ad0bd",
+    "f6500c6921699757e469a2fafa71df4f802061b54f387e4a7d2ddedff7095ac2",
+    "f7afeb37c71184c65346dae86c886f5b84c2de9c2feb6a0ea0d6ee186d628c96",
+    "fca166efa53bafc5664f625dfbd17c0703a2d4e8875968cd819cee315e159706"
+  ],
+  "canonical_query": {
+    "family": "nip34",
+    "kinds": [
+      30617,
+      1617,
+      1621
+    ],
+    "mode": "both",
+    "pass_id": "wednesday-2026-09-23-codex-recovery-1",
+    "since": "2026-09-14T00:00:00Z",
+    "until": "2026-09-23T20:31:30Z"
+  },
+  "collector_path": "/opt/data/compass-worktrees/2026-09-23-publish-codex/scripts/fetch_nip34_repos.sh",
+  "dispositions": {
+    "01a19e47eef66638c19b8adc4915e54ab0dc1e8a257866d6b5d7487200ee64c9": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "01d41e4a417d177f4f3baad2cf5ea54d1cab5dd9b5d2f519804ef0f078a5a4ea": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "023ba946168310beeb303bc5dfa308da7711ae4203fca052f2e3601aaec5859d": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "0322a1566c628f3cfaaec802a1a028440508583505b044035d917503fd24da50": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "0428d4c86d7210332d1863a9fc8c7a975fa5c1df34c39f6ae9ec9ea7ba345394": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "042d9ba31c27e05ad7ecb588b3210924b1152d23d6faa846088e9eea93a088f5": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "05a2c9631c06529c484d070e112f08014d6adbc280491cfec351792d3dbf9c71": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "05b6730ba8d710d415db59e483330d5d22011d5b77f3b66a139d4cd97375f438": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "05edd16566a825541a206ef2fe335530e6ac8536be620d90b8779a8e9f0d9086": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "0769698037a4426da02e816e31d2e0e4eaf3f410a19764556bab624d0773eeb2": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "08ec1b18060ec4feb30f08d6972d03112a509f9e0343f38d7cbe6d864419d5d1": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "093936cb650d79df2618e1d7490c88fb0e5491bcd6dc08a015420df0a01e6450": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "0ae8bbe701cbaf7cec64ed090f38f84f291b378bb7983d6449c18e6ec803c265": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "0b59e629cdc12ff69d74b5a5a64de0c6ac0f29cbda753ae9be538ecd2e8cceb5": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "0cc5e90144e72fc1742e3997adff64f894ff09247c50b74c60581fd953118245": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "1072f87ddca73169a1507f38c964048c109cee697571f75b7322f96034c9044c": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "10b1c2fe2cd4c303a193abeee6a8628049dd2fc951560d78430c62dad4639894": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "1160140f5ec29d4accafdbada6ad6e757cd74295246a87b3cae6c16bad6e8f21": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "1168703c3d89d6b7b352a4d8a1aa50495b77d0a5b798ee17a6cd86002ea34bc0": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "11f387b5e0a13444d555d0b61b3ac997929f3a55f4314461d7b7f2a580b8ec44": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "11f87547769d934ae14d38c5b41a8b4821e739ec6a043165604526adff0be139": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "1395a0839da122c2c473960bee1affe3d8e5bab6d6cd8b32096749e6c22148e7": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "14ea4f887eba96cc11b248f928df3a09ee516bacdb2744209fe098f74941d119": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "15a192a87b9b565b1688914cb21d45460753c73a7ab8096d32435ed6e3368bb5": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "16985b2fd85dfed9cdda2377229eba415d8130b0137d4b78add20c648f2f8330": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "16b027920e6f992c5c82706ef80f1b622abfd719cff04bae3292f32646ccb0a2": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "170b58122202df80f25fe955c9bf13814518e7d1f75137797a407da5e158664a": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "1805e3eebf5cdef669f8222488deaccb0e1203a10afaa9483377a8e433972875": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "18c5242b95afface50917c9e9c87eaeb34dbb09e4d91b9649be3b9e4dc108c3d": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "1912bd67eeaeaf50854f9689059be35f6329eff8dd52f284d6e54fc1331a9457": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "19421269a53906580e5ecd8d71754d5b00c72686fc7042963251e495069d7e9b": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "198c6d6300f2a5e0ebd747fb6d39096e724dd7f8f5accf9d20cfd3a7e47329e5": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "19c236568b54d4d30219cb4bf1629033c1c4537fa796232e4d70b8bcdbcdddd0": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "19ca696f5665dc8b7a4c1b331363a6effc4d2376401d9374aa275d6f0dbbda58": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "1a2569525a46092b855fa3b0f52cf16ffdc0328aeaa054f5a24024789d2024c9": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "1a554472824f89d7ad283cfe92afd437dd6e5d8587ecb786ec8561358256c1d3": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "1c5ab9b2c9b4df32b8303a302c4a23ff76d0aa82dbe5e45176c861dbd8933b1e": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "1c945197a28e85112e58d3ea4afd9f40f4888fd778c95847d941c2ce096e8588": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "1ce7cfa4fd02f3f86e9e7aeb64392278c5fbec3ba8f37f6976b2e30043881938": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "1d1b7b5b1b701b079eebf96d468d28c9e9a86f78d50bfb045023257b8c7c8516": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "1f56c8a08965c9cc80e37f90f7ff647fee4ef46aeb236c22e748b5477cb6067a": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "200e72d6c372635fd1fd208d2d5a888ac0607c832be97af4bfb243434fe6c78a": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "202b011b9ad69687759a764cd857c4969e9263d8b756001b5f9b3f771aa1b7bd": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "204786e8447240bd26b1ddf7d5032427838c665093a51dd40fa5e9857a2cc0f2": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "21232a6c8a809e0fd638a22ba5e3b934be8331584821213a9b3065e4f29793cd": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "24279050ff3ed2355d3a3562f76d94c83fc86d9dc952fc03badeb2019ccbaff0": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "245bc5e292637ae6627d0ada63fcda47313d40d0577cd5bc15c3b05936c02d47": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "28ae8eb48261c20cd9aa635a1c04203eb225c7047a36e494bec60b24ec213ea2": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "29ffdf6b05737f38486358956e7edf6fdd359499296d18fb273c545c3d152e59": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "2a077ec2a4528510756eb5e3baca0d9a01ca3eb47b01804d055e72e473d8d878": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "2a79f74dc7f638654d62edba08b3a9b7875df3f0d21a6811854ebb44886dcbd3": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "2c4e6a52a5cbf21f6e1f2d12ed91f491f11dcf7b6688586faf6eb45a359939d9": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "2d01a96f61cd359b5107e73aef1c598cbbc5496434a9c233725592810a4049d8": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "2d64d55abb6f06f7eb4a9deedc9a8f4dfd2c5f3007625cd54700e68460491b82": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "2d7a6fb37200eb8fa147b5559be1fecaf22cf860e84fe71eed9736ab304393f8": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "2db4585f86e51fb11b15263edb087d717d7f51657fe6fcbf72719fd6b7931276": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "301e18e234fbf4ab0a0569c056b6ebbc075fff16b6e38b5d3f7942bfa223576a": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "3039653e092aa2b618ec268806e2f21bc6271c8b3b82268b2b3dc5a2b2f621bc": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "30efa27866d5878daede7e43c64e8833c63c86bfdae5adaa9a6956718f049209": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "3243a4b7f9c868011392c233327537fc1dc7b78651923101d35442fdd8908374": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "33147c7aa8ccc3edc6606dcb1f4e49643b9a8e31955b692f324dfa1edfa809c4": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "35b79650139724a624af5c5fda84a2c846ed299529d6727e349b1519239378ec": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "3613ddac5bd657a6511841aad2a1b2fc5776b1a5899be3b9eb1cea6580e99894": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "3619fda3a8fed9a359f45430bbae5d52de22c1a6621efd766fd5a08ebbd169d4": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "37101851c7351ff9ce7643f02bccf4a5750a4833e86c2856f81d331e6536f917": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "38aea819539a23855642a25203934768d96d52feb61fea2daa83a8f27a8bb7c3": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "38e2ea1f28b4f574100616894b27d25df1bfe9e6e8069a03456d751491e1ff54": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "39001b3ab0578a050cd62096370f15e298564d33f390ef06c861c2237ae989b1": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "3929b140103e538e9f79fced562107cdafe1e2ea7f4caa190f611d8abe696868": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "39ce815dfe8d5e4f654ce2ca54641e3c2a5e17d5240119a1dae8fc7b5f4e0181": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "3c78bf056dc98ea8abc733e210b2f93732c76f0116b32f2c01e2f8bcd01b45f6": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "407714e694ba66f3df9c2ab56bc9f671ab8d20316f53cb7bdde291aa1b1b7880": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "4087974a700746408a40c70f43cf8ceba109419f4a14ddc6d4a7a7915ff1af32": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "40b0de2385dfa028d5cfc6fa7e8adcd4db489ca9bddabc45c9d57c9f1909ba69": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "40e04e9794f80b7a9a7ca7000539883a1bcd19a28c418f12d940e7b479839888": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "41d7919176e247001ac6938a1163a9c3a60268ba3d29a2ce1d89ee01395fcf41": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "44dd3e220eaa520352fe541e018137babbcf6e05ad934bf8fcb14b2abc0bafc1": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "45c8e9a94f268deed1bd594ce2b1a693787138db884273e63e983834d0e9a0cd": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "47ede9d4d5718d59a811ef12ecd3487fd2f6f7938d8c96e2e6c9879636d9ebc8": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "48955de4a559c3f9f55a44d1fcf5e1d258fca39d59328906cb2e8f2e84a50907": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "48dc147ef5467ba5da9da9028d4147f4512d3b78a7f90f8bf1721a3a60cbbca4": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "4a524196aef18bee4c52f55c758670f9fbd8f7a14fee40f2ae92e2183a4ae288": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "4ae97f6ba18c400777f2fd432db59652a4eb073f6b79bbd9c79fbdcc3dd5fddf": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "4dbb44d74e19cf95a4bd90c6ad1feae986b57aa46901172d8815f3e0d837844c": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "51ab3c89e38721b4f95f0fc41a96f260647db3381e87431382b2c4efc4ff2629": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "53b70a5a4b0fdb850711fb2136e8504b9721cc7c7b2588f1668e1ce19f3a2c31": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "55233ad0c39e6212b76e0df24b12eb07e14077631aa21bbe1dfbac02400dce80": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "563d29781a07e96885ca6e4d47effdcb0b84639ab4cbff97d998516959004b79": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "576d39baad451969ae61965466401e958aca1ae44e1658ced3dff39b70750a68": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "58af1229bae478b80b3fa63811848c49d487b5e2ae666e8adc57090634445bed": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "5950404ae3c525a8d5255c29ad4f816557e3ff9a79a8137778d3edcb8109f9e5": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "5b697b877a3e1834eb351de1740b8cb2963c8abbb62e58dde62ca1214799fa94": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "5b7df09e888a848bb0fcebe71b5826f1e177c2abc1e3e482ec7989c890329a9c": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "5c087732107c7dbb03b70d6c54cbe71d06dc31a9859507aabb370ce842587337": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "5c0f942f121de74791f992cddc541a99a113716030f963b9eb70e54c793ba7f4": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "5ccae0cc818accabdea40c8bf36b4ce4abe1ee9af062e96c8e808dfc92cad1ad": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "5cd671eea7dacefdf9b37e4dbd00c9fc5a1a92588b44bfa6a1cd39073d77f549": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "5d6975fe5540e74e5aa6284b035d723d0b397d63737edf4c5e568e09cc81019c": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "5d946c563bad5059f3a6229369a8aaa44b82be345e1430d9e4385b5be6017537": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "60fb9ff3d8043995cde685b2d1e0c4730a679c6952f4371c7cf66c52b04e8af5": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "63196486a17b323dcec13fb00f8f7cf720abb07c006fda3896af5a244f7a6ebb": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "631c954a6da421573e25aef27351fc0114caee21ad02f7492a52cea628b43450": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "67b7b9ca7b9a9c95b33fec91fe2e5c074fd80ab5885e807adc1ef3b8f18fbbaa": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "68a91dd397b53ff8ee1f7c9ddd6b77d698c8783d0fc67c801f5c125e36fc188a": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "693b035f73f175aa09df8be35313becea638f140fa5c0ee9daf03e8cee86aaa0": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "6988bbeec224fac0440dd5c0d79dbb13ee68891e9ff9589cfa0616589643daec": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "6c153ed6b8e3b9bb46e1f2d935a93d88248914555050ef5245e386e8af3b619c": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "6f8c9e86831afcefbaff73df5bbd4bb564edb7ddccfab0af0fa379951d87c16b": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "6ff490e6264aa97c781ad1f9e48ea296c6393da766d7fbc7f0bcc61a30433df5": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "700ec7ae7e1ff7344ddb633434b0aad0a9ea31a3489f0b37b222ace7579cf012": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "709fab187deef692c6b6fad6e09af933e4de7c5276860d092ffde85436cc3b76": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "741ef423ac58fe6f7fa97948c0a7fec2091fa449027dc464643cb7a89736a361": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "748d5aa7d7879d3b4d1018a04cfd3eb2ba0c78b34d8775ff6fea4e4a6a3a5a5f": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "7506749eaff74da5415485eb4c5c3ff1d73c2f3f8314ca561385424b3be74e7e": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "7726909be788457d1810a0491773a19aa1882b8b1a2828813496e423664c6b89": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "785fd63ef7a6f8b223564d1afd3e016e7beaef99eee88497cf134d4c09fffbe9": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "7a18565dc63e21ad06ef9f048a4295ecad916368e9d387a5d499f7822d219dc4": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "7a20ef528717d7a13076c8ec386d6d364f064611c1b07ffd333829da33b362dd": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "7a5cf21ac18af1b8cd058b580e822f74f17375cd4bae43217e9eb2ca413da3de": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "7b79e6f2f0c94004a17bcf69d4cf65cd148788d54d8a2fc724c8249829f366a0": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "7c9aff5901e47e858cc1ca957974b683ad9e74c39a880764075878d84c6f1d41": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "7e9e44ee3d44bd82bfd942763a2a8a5caf5ea330f084ffe0c4cd0e963ad7d5ae": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "814fc37766ed612b059e5b713386f7e19a5d54b77c7fc54ddccc978c7759c89a": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "818e51ea1f7554f3c3553c43adc28c50a76ede44052790a368a7eb639b68d1ea": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "81a984631c9d379fff2b21bf8df5dee95e26d33321de29a04ee5abaf78f99d82": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "82183ee53a03eed5325c074a5dcbf7e2c0d0adb8bfe39a029d319c0a66c6dcd5": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "8238d1955cb292072976359862fa68cf72fce812955a128c41fd4b7ebaf6c96c": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "825f0291131ed18df929bc62c176df168760fe9aff3a079a12a394da9df33081": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "844aac218579d850099b1b663206c777689d44e43062f1d6491bcfcad05781b6": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "853d72300ee5dd1515d891423e8da4487395ac364059be55cbcce2c2a01f6a64": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "85bc1de0a086056d99db7d29704b5240eedc97109a738232897057de457f187e": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "85e062d15da2d2016f8394a8df3c2dd7ee9a330ef307eeee5aa0aa48c979a165": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "8ab600c86fac491e15933da5ce90e41b6d0523a4f0c631f74658dd6e1ce8a428": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "901f86175c70c79e02bc42640788021f3da3f25f9a39d4c08ab348472c718b02": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "9394e33d6f49fb2e11fd2766a45944bdf64971fc8ec3082a83b59a994967eee8": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "9411ddf8c32efefd17d5564a1a7cc3f71029921c5da6e1cab07f1547dcc1eb28": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "97a19ba7c3a56f0a774188ada312c9bebf0a54ffc3f31cb02c694578f2a8ce33": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "9816293137a6bf729f19290e9fe708f34233f9db0a532e179b8bef3f1cd20e53": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "98694e5df4a80e68e1237b4e9fd89ca1518364771b15517671605dab5e40fe6a": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "9e37e955dfe269ff0cc9616eec0f043b35302b9fd3be1e37ac0a2905b0f9ec68": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "9fb1e420ce3397b73522ce90b1a5c75d5490025400a12ddffba8cbbda70ab1c5": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "9fd51093c292fa11a4f98c585fb9e57e0c1e402a5b0ff74ff2ee700e79ce7c6a": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "a00131897ec55384e1981289e030f123c0e7656480766082620cd1e99062d5e5": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "a1140966024139c441e248d187d9303d83bfaa3d736b75a2140c0736e8301122": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "a18f4da4b876d1de57a30e2181b8084d6e0ea457e4605ef3d55fb1330e91a276": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "a38b0ee0ed65321c38de7a3262583f689195d2f651ecaba4c6c28770dea32e81": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "a52042e24fc630cb97ef74be8e6214cbb9aef9c560d3d672742b2a6bad32b630": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "a724b2c8ead39c167209968f96a9d9c8ae9cd5f270d69923246cbe6a555c978f": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "a79b7da1bd2d2d75708754c06d9d7978a283af293af797106a6ebbd94a04c2a2": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "aa3efc28ee50c8073f2187b1f83dcb9335a5c262627b1e46bdc7068421797ea6": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "aa4b4d451bd07da462ad9f582f7cf133d3814bdccbe49e7e199279c4518c5604": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "ac7be91d776ef8349177a4538ffabcbb51a0eef0e6a2440a630c06f20f6bb188": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "ad45f48dba111e4609abf085540f75523af075d4f493d9d0dba406cc5d25ef1d": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "b1a4b7fc172833e486190419dbd2a3ee92b0a411a07d579575a2fc5d07cfc689": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "b456ae0fd1368dfdb93fbb3a3c4970e38de0a26563b5af032fbe113c80b2b14d": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "b528795f91da9a996dc5a3df4aff2fb15d0216ad7c55674ec287f850fd1badf4": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "b5bc756113a8c041be0154411f3c29890d76ce82dbe9ef06c8b7fb251619e730": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "b617b37ba9aa46ad318a18c9a8cf43b0f20c2bfa5b11d709908f49e736d80555": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "b6dc814e3a0d79b0ccbd937de65271e57cfde419993d4ebd2b41838aec57a7b3": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "b732b80b714054a822f6e5b6d4f416a617ca6dd747cfee53e138d704c3862f4a": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "b826013ce5037dd77324a59af0820a630ffee6e250d168ecae2847b4d63ab530": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "b844aa970dd1091f4b73da13b0e097474f99fcf07b0fde24391e89c5045aa9df": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "b9c91640a34e4f8917dbfa53dfebdf41f3e9f4c9999a98b006e41f7cec403d48": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "ba378e07e3a05f78d28fb5bedba2d4a31fe2e3a8696225815503d8b77bd2f1e2": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "bae24b00bd85b3a89476fd778b1371ef2663de3189e31914e43701c706441d2c": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "bb20bc6b71cb5fd66040ddc161c235c291c70cffd0c463c83205ea359e4d0bee": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "bdac0e2ef874c269fff4dbcda94b2592e449a608905d5abd1f741dd147a2e741": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "bedce710506482d67770929da457c754b72f2e9cfcd05dc415fd1fdadb04404d": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "bedecf08d8730a53290ddad6af9083cc3f2d7477f8034b42ff9b547a46321d4a": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "c0846806af319062a600a54e4996dee5237153a767fa6b55f8adab5f90a9a8fb": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "c18f2dc89759b32fb1ec352689a28dd191af9e01786e73d2fb3f12adb1157c96": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "c435db6dece422f404946ae0f462527e516fda2cbafb4d334e46afec3a66c6a0": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "c44896a7e12e5c0fbe7903f08707565be2ee809400731d61ce80f66bebefad9c": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "c55cb90f7f7e52cc5a3da3ee636b50ae3cd79aecd1ef989105cf9f1c8722d0c9": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "c6096d0c3a5ea1b83d84b76f856ddf3ddedacc34a8dd345403f7a79d7827f054": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "c6a69cd9d43e86b54e468e1302feed98747f875e2727cd5cd14f2c5446c16290": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "c7fba10186d28e12ed5f0b59b51c3f53ee942e0b7636f66143381ccf05ee6542": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "cba15e4aad5a543443b23dcf41c8780fd6bb48ec5b4f355d3d7c5e1fa4ed189a": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "cf2b8945b4b4c73e30dd5365c3fbab4dc4371c36a09c58e18274f5a8538a2441": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "d28a470981c013fb71c3913974d56d5118fc3439a131d042fc8c9118dfae62a9": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "d2d805ca05f9eeed8ff5219b9c1fd899c68ebd77f25a1be0232a615066ad3718": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "d2ebdf231baba487501bff1c977332b194ce5200440fcc674faef190c4bf6538": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "d6e9774f1991e2cc64d238507c183acc774b4fb05394d65112c2780bdfadd641": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "d6f55c4db35ad184766f12317dbc50c6569055596c1de66cd6827a1b339badb8": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "d848703374ec8a325bb9629703d6de3c665993153ffb5e4a8cba00fe66692522": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "d8a5fc8a1ea76863abdabf6f4e31062fb5bcee2224151b151f496702b9af12a7": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "dbb92f3325fd11cc3caec8c28b04f9cfa4949a8d0eb917e0d94f603614bae36b": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "dddfa826750853ac40332e209b357d8cb15dd7d4a5d03809a936986b168e1520": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "e07aeb8f5aedf075afd894c7fdcdb2e8fedb23b6f478a371fc9212509d542d0a": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "e17ad00f0f1d43eef0027173f732d320db3defa5f1775435d28c32a23a385dd6": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "e3e4b336f030d0f64af9e0351dd220e767db4063081f5c12a1cd4da59b63d4af": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "e60de070cb1418c9b5eb6b448cd51157ccb88c84f1f67d63c21f6678e5023355": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "e76357963aba2da09729622cf2ddd7d727be33911ecb5f5f54c8d5e5f34f7cd5": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "ebd4c2744d1e633b66239e239e402d16012b2c992d393e2f7771d1282b81d94a": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "ed4c191bc5f61b4e2ad7c1751f68431c1e13e9e3f4ee3f5af135f9b82d5b3f39": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "ee4bc5921170933d9fe3ad4f118cd300e0419c104b2282921e51a80372d2a627": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "eefafb34b88747a4b6dabeaa8b2a7a3e4dd6c2860030793ba552864d18af01e7": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "ef118f8d3ff8f85aec5cb5369516c9804b0bed899715e0ec4466c60deeca4ca9": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "ef942bd502e2cfece7ffb9af98bf8e07517933ace1d656ae695f80f6f6182933": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "f3f0e47f623ce1a7dbb6bc964e31c8f2cb7642e05f322d9e88b1e666d7c0cd48": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "f3f7fcab0a76ea9015f5134343ddc1ebc71515c1499561f60ad0998e58e63766": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "f45f0947c6d3384df254aac12120ddcd0576172b9e4b3ee21c8dbe2f9b9ad0bd": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "f6500c6921699757e469a2fafa71df4f802061b54f387e4a7d2ddedff7095ac2": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "f7afeb37c71184c65346dae86c886f5b84c2de9c2feb6a0ea0d6ee186d628c96": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "fca166efa53bafc5664f625dfbd17c0703a2d4e8875968cd819cee315e159706": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    }
+  },
+  "family": "nip34",
+  "include_count": 0,
+  "item_count": 205,
+  "page_count": 50,
+  "pagination_complete": true,
+  "pass_id": "wednesday-2026-09-23-codex-recovery-1",
+  "skip_count": 205,
+  "skip_evidence": [
+    {
+      "candidate_id": "01a19e47eef66638c19b8adc4915e54ab0dc1e8a257866d6b5d7487200ee64c9",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "01d41e4a417d177f4f3baad2cf5ea54d1cab5dd9b5d2f519804ef0f078a5a4ea",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "023ba946168310beeb303bc5dfa308da7711ae4203fca052f2e3601aaec5859d",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "0322a1566c628f3cfaaec802a1a028440508583505b044035d917503fd24da50",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "0428d4c86d7210332d1863a9fc8c7a975fa5c1df34c39f6ae9ec9ea7ba345394",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "042d9ba31c27e05ad7ecb588b3210924b1152d23d6faa846088e9eea93a088f5",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "05a2c9631c06529c484d070e112f08014d6adbc280491cfec351792d3dbf9c71",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "05b6730ba8d710d415db59e483330d5d22011d5b77f3b66a139d4cd97375f438",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "05edd16566a825541a206ef2fe335530e6ac8536be620d90b8779a8e9f0d9086",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "0769698037a4426da02e816e31d2e0e4eaf3f410a19764556bab624d0773eeb2",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "08ec1b18060ec4feb30f08d6972d03112a509f9e0343f38d7cbe6d864419d5d1",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "093936cb650d79df2618e1d7490c88fb0e5491bcd6dc08a015420df0a01e6450",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "0ae8bbe701cbaf7cec64ed090f38f84f291b378bb7983d6449c18e6ec803c265",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "0b59e629cdc12ff69d74b5a5a64de0c6ac0f29cbda753ae9be538ecd2e8cceb5",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "0cc5e90144e72fc1742e3997adff64f894ff09247c50b74c60581fd953118245",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "1072f87ddca73169a1507f38c964048c109cee697571f75b7322f96034c9044c",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "10b1c2fe2cd4c303a193abeee6a8628049dd2fc951560d78430c62dad4639894",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "1160140f5ec29d4accafdbada6ad6e757cd74295246a87b3cae6c16bad6e8f21",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "1168703c3d89d6b7b352a4d8a1aa50495b77d0a5b798ee17a6cd86002ea34bc0",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "11f387b5e0a13444d555d0b61b3ac997929f3a55f4314461d7b7f2a580b8ec44",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "11f87547769d934ae14d38c5b41a8b4821e739ec6a043165604526adff0be139",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "1395a0839da122c2c473960bee1affe3d8e5bab6d6cd8b32096749e6c22148e7",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "14ea4f887eba96cc11b248f928df3a09ee516bacdb2744209fe098f74941d119",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "15a192a87b9b565b1688914cb21d45460753c73a7ab8096d32435ed6e3368bb5",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "16985b2fd85dfed9cdda2377229eba415d8130b0137d4b78add20c648f2f8330",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "16b027920e6f992c5c82706ef80f1b622abfd719cff04bae3292f32646ccb0a2",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "170b58122202df80f25fe955c9bf13814518e7d1f75137797a407da5e158664a",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "1805e3eebf5cdef669f8222488deaccb0e1203a10afaa9483377a8e433972875",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "18c5242b95afface50917c9e9c87eaeb34dbb09e4d91b9649be3b9e4dc108c3d",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "1912bd67eeaeaf50854f9689059be35f6329eff8dd52f284d6e54fc1331a9457",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "19421269a53906580e5ecd8d71754d5b00c72686fc7042963251e495069d7e9b",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "198c6d6300f2a5e0ebd747fb6d39096e724dd7f8f5accf9d20cfd3a7e47329e5",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "19c236568b54d4d30219cb4bf1629033c1c4537fa796232e4d70b8bcdbcdddd0",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "19ca696f5665dc8b7a4c1b331363a6effc4d2376401d9374aa275d6f0dbbda58",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "1a2569525a46092b855fa3b0f52cf16ffdc0328aeaa054f5a24024789d2024c9",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "1a554472824f89d7ad283cfe92afd437dd6e5d8587ecb786ec8561358256c1d3",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "1c5ab9b2c9b4df32b8303a302c4a23ff76d0aa82dbe5e45176c861dbd8933b1e",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "1c945197a28e85112e58d3ea4afd9f40f4888fd778c95847d941c2ce096e8588",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "1ce7cfa4fd02f3f86e9e7aeb64392278c5fbec3ba8f37f6976b2e30043881938",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "1d1b7b5b1b701b079eebf96d468d28c9e9a86f78d50bfb045023257b8c7c8516",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "1f56c8a08965c9cc80e37f90f7ff647fee4ef46aeb236c22e748b5477cb6067a",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "200e72d6c372635fd1fd208d2d5a888ac0607c832be97af4bfb243434fe6c78a",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "202b011b9ad69687759a764cd857c4969e9263d8b756001b5f9b3f771aa1b7bd",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "204786e8447240bd26b1ddf7d5032427838c665093a51dd40fa5e9857a2cc0f2",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "21232a6c8a809e0fd638a22ba5e3b934be8331584821213a9b3065e4f29793cd",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "24279050ff3ed2355d3a3562f76d94c83fc86d9dc952fc03badeb2019ccbaff0",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "245bc5e292637ae6627d0ada63fcda47313d40d0577cd5bc15c3b05936c02d47",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "28ae8eb48261c20cd9aa635a1c04203eb225c7047a36e494bec60b24ec213ea2",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "29ffdf6b05737f38486358956e7edf6fdd359499296d18fb273c545c3d152e59",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "2a077ec2a4528510756eb5e3baca0d9a01ca3eb47b01804d055e72e473d8d878",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "2a79f74dc7f638654d62edba08b3a9b7875df3f0d21a6811854ebb44886dcbd3",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "2c4e6a52a5cbf21f6e1f2d12ed91f491f11dcf7b6688586faf6eb45a359939d9",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "2d01a96f61cd359b5107e73aef1c598cbbc5496434a9c233725592810a4049d8",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "2d64d55abb6f06f7eb4a9deedc9a8f4dfd2c5f3007625cd54700e68460491b82",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "2d7a6fb37200eb8fa147b5559be1fecaf22cf860e84fe71eed9736ab304393f8",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "2db4585f86e51fb11b15263edb087d717d7f51657fe6fcbf72719fd6b7931276",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "301e18e234fbf4ab0a0569c056b6ebbc075fff16b6e38b5d3f7942bfa223576a",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "3039653e092aa2b618ec268806e2f21bc6271c8b3b82268b2b3dc5a2b2f621bc",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "30efa27866d5878daede7e43c64e8833c63c86bfdae5adaa9a6956718f049209",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "3243a4b7f9c868011392c233327537fc1dc7b78651923101d35442fdd8908374",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "33147c7aa8ccc3edc6606dcb1f4e49643b9a8e31955b692f324dfa1edfa809c4",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "35b79650139724a624af5c5fda84a2c846ed299529d6727e349b1519239378ec",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "3613ddac5bd657a6511841aad2a1b2fc5776b1a5899be3b9eb1cea6580e99894",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "3619fda3a8fed9a359f45430bbae5d52de22c1a6621efd766fd5a08ebbd169d4",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "37101851c7351ff9ce7643f02bccf4a5750a4833e86c2856f81d331e6536f917",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "38aea819539a23855642a25203934768d96d52feb61fea2daa83a8f27a8bb7c3",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "38e2ea1f28b4f574100616894b27d25df1bfe9e6e8069a03456d751491e1ff54",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "39001b3ab0578a050cd62096370f15e298564d33f390ef06c861c2237ae989b1",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "3929b140103e538e9f79fced562107cdafe1e2ea7f4caa190f611d8abe696868",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "39ce815dfe8d5e4f654ce2ca54641e3c2a5e17d5240119a1dae8fc7b5f4e0181",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "3c78bf056dc98ea8abc733e210b2f93732c76f0116b32f2c01e2f8bcd01b45f6",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "407714e694ba66f3df9c2ab56bc9f671ab8d20316f53cb7bdde291aa1b1b7880",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "4087974a700746408a40c70f43cf8ceba109419f4a14ddc6d4a7a7915ff1af32",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "40b0de2385dfa028d5cfc6fa7e8adcd4db489ca9bddabc45c9d57c9f1909ba69",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "40e04e9794f80b7a9a7ca7000539883a1bcd19a28c418f12d940e7b479839888",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "41d7919176e247001ac6938a1163a9c3a60268ba3d29a2ce1d89ee01395fcf41",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "44dd3e220eaa520352fe541e018137babbcf6e05ad934bf8fcb14b2abc0bafc1",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "45c8e9a94f268deed1bd594ce2b1a693787138db884273e63e983834d0e9a0cd",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "47ede9d4d5718d59a811ef12ecd3487fd2f6f7938d8c96e2e6c9879636d9ebc8",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "48955de4a559c3f9f55a44d1fcf5e1d258fca39d59328906cb2e8f2e84a50907",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "48dc147ef5467ba5da9da9028d4147f4512d3b78a7f90f8bf1721a3a60cbbca4",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "4a524196aef18bee4c52f55c758670f9fbd8f7a14fee40f2ae92e2183a4ae288",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "4ae97f6ba18c400777f2fd432db59652a4eb073f6b79bbd9c79fbdcc3dd5fddf",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "4dbb44d74e19cf95a4bd90c6ad1feae986b57aa46901172d8815f3e0d837844c",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "51ab3c89e38721b4f95f0fc41a96f260647db3381e87431382b2c4efc4ff2629",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "53b70a5a4b0fdb850711fb2136e8504b9721cc7c7b2588f1668e1ce19f3a2c31",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "55233ad0c39e6212b76e0df24b12eb07e14077631aa21bbe1dfbac02400dce80",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "563d29781a07e96885ca6e4d47effdcb0b84639ab4cbff97d998516959004b79",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "576d39baad451969ae61965466401e958aca1ae44e1658ced3dff39b70750a68",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "58af1229bae478b80b3fa63811848c49d487b5e2ae666e8adc57090634445bed",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "5950404ae3c525a8d5255c29ad4f816557e3ff9a79a8137778d3edcb8109f9e5",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "5b697b877a3e1834eb351de1740b8cb2963c8abbb62e58dde62ca1214799fa94",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "5b7df09e888a848bb0fcebe71b5826f1e177c2abc1e3e482ec7989c890329a9c",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "5c087732107c7dbb03b70d6c54cbe71d06dc31a9859507aabb370ce842587337",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "5c0f942f121de74791f992cddc541a99a113716030f963b9eb70e54c793ba7f4",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "5ccae0cc818accabdea40c8bf36b4ce4abe1ee9af062e96c8e808dfc92cad1ad",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "5cd671eea7dacefdf9b37e4dbd00c9fc5a1a92588b44bfa6a1cd39073d77f549",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "5d6975fe5540e74e5aa6284b035d723d0b397d63737edf4c5e568e09cc81019c",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "5d946c563bad5059f3a6229369a8aaa44b82be345e1430d9e4385b5be6017537",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "60fb9ff3d8043995cde685b2d1e0c4730a679c6952f4371c7cf66c52b04e8af5",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "63196486a17b323dcec13fb00f8f7cf720abb07c006fda3896af5a244f7a6ebb",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "631c954a6da421573e25aef27351fc0114caee21ad02f7492a52cea628b43450",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "67b7b9ca7b9a9c95b33fec91fe2e5c074fd80ab5885e807adc1ef3b8f18fbbaa",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "68a91dd397b53ff8ee1f7c9ddd6b77d698c8783d0fc67c801f5c125e36fc188a",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "693b035f73f175aa09df8be35313becea638f140fa5c0ee9daf03e8cee86aaa0",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "6988bbeec224fac0440dd5c0d79dbb13ee68891e9ff9589cfa0616589643daec",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "6c153ed6b8e3b9bb46e1f2d935a93d88248914555050ef5245e386e8af3b619c",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "6f8c9e86831afcefbaff73df5bbd4bb564edb7ddccfab0af0fa379951d87c16b",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "6ff490e6264aa97c781ad1f9e48ea296c6393da766d7fbc7f0bcc61a30433df5",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "700ec7ae7e1ff7344ddb633434b0aad0a9ea31a3489f0b37b222ace7579cf012",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "709fab187deef692c6b6fad6e09af933e4de7c5276860d092ffde85436cc3b76",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "741ef423ac58fe6f7fa97948c0a7fec2091fa449027dc464643cb7a89736a361",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "748d5aa7d7879d3b4d1018a04cfd3eb2ba0c78b34d8775ff6fea4e4a6a3a5a5f",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "7506749eaff74da5415485eb4c5c3ff1d73c2f3f8314ca561385424b3be74e7e",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "7726909be788457d1810a0491773a19aa1882b8b1a2828813496e423664c6b89",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "785fd63ef7a6f8b223564d1afd3e016e7beaef99eee88497cf134d4c09fffbe9",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "7a18565dc63e21ad06ef9f048a4295ecad916368e9d387a5d499f7822d219dc4",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "7a20ef528717d7a13076c8ec386d6d364f064611c1b07ffd333829da33b362dd",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "7a5cf21ac18af1b8cd058b580e822f74f17375cd4bae43217e9eb2ca413da3de",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "7b79e6f2f0c94004a17bcf69d4cf65cd148788d54d8a2fc724c8249829f366a0",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "7c9aff5901e47e858cc1ca957974b683ad9e74c39a880764075878d84c6f1d41",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "7e9e44ee3d44bd82bfd942763a2a8a5caf5ea330f084ffe0c4cd0e963ad7d5ae",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "814fc37766ed612b059e5b713386f7e19a5d54b77c7fc54ddccc978c7759c89a",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "818e51ea1f7554f3c3553c43adc28c50a76ede44052790a368a7eb639b68d1ea",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "81a984631c9d379fff2b21bf8df5dee95e26d33321de29a04ee5abaf78f99d82",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "82183ee53a03eed5325c074a5dcbf7e2c0d0adb8bfe39a029d319c0a66c6dcd5",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "8238d1955cb292072976359862fa68cf72fce812955a128c41fd4b7ebaf6c96c",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "825f0291131ed18df929bc62c176df168760fe9aff3a079a12a394da9df33081",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "844aac218579d850099b1b663206c777689d44e43062f1d6491bcfcad05781b6",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "853d72300ee5dd1515d891423e8da4487395ac364059be55cbcce2c2a01f6a64",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "85bc1de0a086056d99db7d29704b5240eedc97109a738232897057de457f187e",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "85e062d15da2d2016f8394a8df3c2dd7ee9a330ef307eeee5aa0aa48c979a165",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "8ab600c86fac491e15933da5ce90e41b6d0523a4f0c631f74658dd6e1ce8a428",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "901f86175c70c79e02bc42640788021f3da3f25f9a39d4c08ab348472c718b02",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "9394e33d6f49fb2e11fd2766a45944bdf64971fc8ec3082a83b59a994967eee8",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "9411ddf8c32efefd17d5564a1a7cc3f71029921c5da6e1cab07f1547dcc1eb28",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "97a19ba7c3a56f0a774188ada312c9bebf0a54ffc3f31cb02c694578f2a8ce33",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "9816293137a6bf729f19290e9fe708f34233f9db0a532e179b8bef3f1cd20e53",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "98694e5df4a80e68e1237b4e9fd89ca1518364771b15517671605dab5e40fe6a",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "9e37e955dfe269ff0cc9616eec0f043b35302b9fd3be1e37ac0a2905b0f9ec68",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "9fb1e420ce3397b73522ce90b1a5c75d5490025400a12ddffba8cbbda70ab1c5",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "9fd51093c292fa11a4f98c585fb9e57e0c1e402a5b0ff74ff2ee700e79ce7c6a",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "a00131897ec55384e1981289e030f123c0e7656480766082620cd1e99062d5e5",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "a1140966024139c441e248d187d9303d83bfaa3d736b75a2140c0736e8301122",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "a18f4da4b876d1de57a30e2181b8084d6e0ea457e4605ef3d55fb1330e91a276",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "a38b0ee0ed65321c38de7a3262583f689195d2f651ecaba4c6c28770dea32e81",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "a52042e24fc630cb97ef74be8e6214cbb9aef9c560d3d672742b2a6bad32b630",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "a724b2c8ead39c167209968f96a9d9c8ae9cd5f270d69923246cbe6a555c978f",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "a79b7da1bd2d2d75708754c06d9d7978a283af293af797106a6ebbd94a04c2a2",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "aa3efc28ee50c8073f2187b1f83dcb9335a5c262627b1e46bdc7068421797ea6",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "aa4b4d451bd07da462ad9f582f7cf133d3814bdccbe49e7e199279c4518c5604",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "ac7be91d776ef8349177a4538ffabcbb51a0eef0e6a2440a630c06f20f6bb188",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "ad45f48dba111e4609abf085540f75523af075d4f493d9d0dba406cc5d25ef1d",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "b1a4b7fc172833e486190419dbd2a3ee92b0a411a07d579575a2fc5d07cfc689",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "b456ae0fd1368dfdb93fbb3a3c4970e38de0a26563b5af032fbe113c80b2b14d",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "b528795f91da9a996dc5a3df4aff2fb15d0216ad7c55674ec287f850fd1badf4",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "b5bc756113a8c041be0154411f3c29890d76ce82dbe9ef06c8b7fb251619e730",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "b617b37ba9aa46ad318a18c9a8cf43b0f20c2bfa5b11d709908f49e736d80555",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "b6dc814e3a0d79b0ccbd937de65271e57cfde419993d4ebd2b41838aec57a7b3",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "b732b80b714054a822f6e5b6d4f416a617ca6dd747cfee53e138d704c3862f4a",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "b826013ce5037dd77324a59af0820a630ffee6e250d168ecae2847b4d63ab530",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "b844aa970dd1091f4b73da13b0e097474f99fcf07b0fde24391e89c5045aa9df",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "b9c91640a34e4f8917dbfa53dfebdf41f3e9f4c9999a98b006e41f7cec403d48",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "ba378e07e3a05f78d28fb5bedba2d4a31fe2e3a8696225815503d8b77bd2f1e2",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "bae24b00bd85b3a89476fd778b1371ef2663de3189e31914e43701c706441d2c",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "bb20bc6b71cb5fd66040ddc161c235c291c70cffd0c463c83205ea359e4d0bee",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "bdac0e2ef874c269fff4dbcda94b2592e449a608905d5abd1f741dd147a2e741",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "bedce710506482d67770929da457c754b72f2e9cfcd05dc415fd1fdadb04404d",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "bedecf08d8730a53290ddad6af9083cc3f2d7477f8034b42ff9b547a46321d4a",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "c0846806af319062a600a54e4996dee5237153a767fa6b55f8adab5f90a9a8fb",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "c18f2dc89759b32fb1ec352689a28dd191af9e01786e73d2fb3f12adb1157c96",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "c435db6dece422f404946ae0f462527e516fda2cbafb4d334e46afec3a66c6a0",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "c44896a7e12e5c0fbe7903f08707565be2ee809400731d61ce80f66bebefad9c",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "c55cb90f7f7e52cc5a3da3ee636b50ae3cd79aecd1ef989105cf9f1c8722d0c9",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "c6096d0c3a5ea1b83d84b76f856ddf3ddedacc34a8dd345403f7a79d7827f054",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "c6a69cd9d43e86b54e468e1302feed98747f875e2727cd5cd14f2c5446c16290",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "c7fba10186d28e12ed5f0b59b51c3f53ee942e0b7636f66143381ccf05ee6542",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "cba15e4aad5a543443b23dcf41c8780fd6bb48ec5b4f355d3d7c5e1fa4ed189a",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "cf2b8945b4b4c73e30dd5365c3fbab4dc4371c36a09c58e18274f5a8538a2441",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "d28a470981c013fb71c3913974d56d5118fc3439a131d042fc8c9118dfae62a9",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "d2d805ca05f9eeed8ff5219b9c1fd899c68ebd77f25a1be0232a615066ad3718",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "d2ebdf231baba487501bff1c977332b194ce5200440fcc674faef190c4bf6538",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "d6e9774f1991e2cc64d238507c183acc774b4fb05394d65112c2780bdfadd641",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "d6f55c4db35ad184766f12317dbc50c6569055596c1de66cd6827a1b339badb8",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "d848703374ec8a325bb9629703d6de3c665993153ffb5e4a8cba00fe66692522",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "d8a5fc8a1ea76863abdabf6f4e31062fb5bcee2224151b151f496702b9af12a7",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "dbb92f3325fd11cc3caec8c28b04f9cfa4949a8d0eb917e0d94f603614bae36b",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "dddfa826750853ac40332e209b357d8cb15dd7d4a5d03809a936986b168e1520",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "e07aeb8f5aedf075afd894c7fdcdb2e8fedb23b6f478a371fc9212509d542d0a",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "e17ad00f0f1d43eef0027173f732d320db3defa5f1775435d28c32a23a385dd6",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "e3e4b336f030d0f64af9e0351dd220e767db4063081f5c12a1cd4da59b63d4af",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "e60de070cb1418c9b5eb6b448cd51157ccb88c84f1f67d63c21f6678e5023355",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "e76357963aba2da09729622cf2ddd7d727be33911ecb5f5f54c8d5e5f34f7cd5",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "ebd4c2744d1e633b66239e239e402d16012b2c992d393e2f7771d1282b81d94a",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "ed4c191bc5f61b4e2ad7c1751f68431c1e13e9e3f4ee3f5af135f9b82d5b3f39",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "ee4bc5921170933d9fe3ad4f118cd300e0419c104b2282921e51a80372d2a627",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "eefafb34b88747a4b6dabeaa8b2a7a3e4dd6c2860030793ba552864d18af01e7",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "ef118f8d3ff8f85aec5cb5369516c9804b0bed899715e0ec4466c60deeca4ca9",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "ef942bd502e2cfece7ffb9af98bf8e07517933ace1d656ae695f80f6f6182933",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "f3f0e47f623ce1a7dbb6bc964e31c8f2cb7642e05f322d9e88b1e666d7c0cd48",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "f3f7fcab0a76ea9015f5134343ddc1ebc71515c1499561f60ad0998e58e63766",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "f45f0947c6d3384df254aac12120ddcd0576172b9e4b3ee21c8dbe2f9b9ad0bd",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "f6500c6921699757e469a2fafa71df4f802061b54f387e4a7d2ddedff7095ac2",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "f7afeb37c71184c65346dae86c886f5b84c2de9c2feb6a0ea0d6ee186d628c96",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "fca166efa53bafc5664f625dfbd17c0703a2d4e8875968cd819cee315e159706",
+      "reason": "repository announcement rejected by discovery filters"
+    }
+  ],
+  "status": "complete"
+}

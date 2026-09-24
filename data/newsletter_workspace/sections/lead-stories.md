@@ -1,36 +1,66 @@
 ## Top Stories
 
-### Marmot Protocol and MDK reach v0.10.0
+### fips2go 0.7.0 keeps the mesh connected through bootstrap failures
 
-[Marmot Protocol’s MDK v0.10.0](https://github.com/marmot-protocol/mdk/releases/tag/v0.10.0) adds bounded chat-list and conversation windows, independent account-attention summaries, revision-safe drafts, and viewer reaction state for applications building MLS-based encrypted groups over Nostr. It also restores account-scoped user blocking and counts pending invitations without counting them again as unread messages.
+[fips2go](https://github.com/fr34aky/fips2go) is an Android client that lets selected applications reach peers and services over the FIPS encrypted mesh. [Version 0.6.0](https://github.com/fr34aky/fips2go/releases/tag/v0.6.0) added device-local mesh names such as `home.fips`. The subsequent [0.6.1 release](https://github.com/fr34aky/fips2go/releases/tag/v0.6.1) fixes bootstrap address selection on IPv6-only carriers using DNS64/NAT64; its maintainer has not tested that fix on a real DNS64 network.
 
-The [v0.10.0 release series](https://github.com/marmot-protocol/mdk/releases/tag/v0.10.0) fixes recovery when a device is removed and re-added, when traffic arrives before its Welcome, and when peel replay is interrupted. It reduces relay synchronization and subscription churn, queues media operations while transfer slots are busy, and pins forensic-audit uploads to validated destinations on every attempt.
+The new [0.7.0 release](https://github.com/fr34aky/fips2go/releases/tag/v0.7.0) connects to three regional bootstrap peers by default instead of relying on one. It can also retry a configured peer at Nostr-advertised endpoints when its static address changes. Optional open discovery adds at most three recent Nostr-announced peers, but remains off by default: the maintainer reports that many public test-mesh announcements no longer answer. The ARM64 build was installed over the previous version and checked on a physical Pixel; the other device architectures have narrower verification.
 
-The same [MDK source commit](https://github.com/marmot-protocol/mdk/releases/tag/v0.10.0) ships Rust, C, Swift, Kotlin, command-line, and agent artifacts as one compatibility cohort. Account databases advance through migrations 70–75, so applications must update generated source and native libraries together, preserve complete Apple framework bundles, back up before migration, and avoid downgrading a migrated database.
+### fips-initramfs opens encrypted roots over FIPS before boot
 
-### Myco 0.7.0 runs napplets and file sharing over a multi-path FIPS mesh
+[fips-initramfs](https://github.com/jmcorgan/fips-initramfs) is a Linux initramfs package that starts a FIPS mesh node before normal boot so an operator can remotely open a LUKS-encrypted root through its npub-addressed node. The user-submitted [0.1.0 release](https://github.com/jmcorgan/fips-initramfs/releases/tag/v0.1.0), published September 6, packages the mesh client, SSH access, and passphrase-entry scripts for systems that need unattended or remote encrypted-root startup.
 
-[Myco v0.7.0](https://github.com/Origami74/myco/releases/tag/v0.7.0) turns the Android mesh application into a host for napplets, single-file Nostr programs described by the open [NIP-5D proposal](/en/topics/nip-5d/). Each napplet runs in a sandbox without direct network or storage access and requests identity, relay, outbox, mesh, picture, or file capabilities through Myco. The install sheet shows those permissions before approval, users can change them later, and updates that request broader access return to the permission gate.
+The [first release](https://github.com/jmcorgan/fips-initramfs/releases/tag/v0.1.0) documents the security tradeoffs instead of hiding them: the initramfs contains the node key, the passphrase crosses SSH over FIPS, and local console passphrase entry remains available. This catch-up item came from a prior user submission; its September 6 release falls outside the current collection window.
 
-[Myco v0.7.0](https://github.com/Origami74/myco/releases/tag/v0.7.0) also sends arbitrary files to paired phones through the system share sheet or a Circle contact. The receiving phone approves the transfer before Myco writes it to `Downloads/Myco`, and the payload is encrypted to that phone’s key. Local-network discovery uses UDP when both phones share Wi-Fi and retains Bluetooth for offline paths; retries cover lost control messages, while a silence timer bounds stalled large transfers.
+### Grain 0.8.0-rc4 turns relay health into an operator dashboard
 
-[Myco now keeps simultaneous FIPS links](https://github.com/Origami74/myco/releases/tag/v0.7.0) to a peer, probes standby paths, and moves traffic when the active Bluetooth, Wi-Fi Aware, or local-network link degrades. The work builds on FIPS’s experimental multi-path branch. Version 0.7.0 remains wire-compatible with 0.6.1 for existing app exchange, messaging, and pairing, but multi-path links form only between two updated phones. The embedded relay also moves to LMDB and migrates earlier event stores on first launch.
+[Grain](https://github.com/0ceanSlim/grain) is a self-hosted Nostr relay with an integrated reference client and administration interface. [Version 0.8.0-rc4](https://github.com/0ceanSlim/grain/releases/tag/v0.8.0-rc4) adds a live vitals panel for event volume, connections, uptime, storage, memory, and writer health, plus per-kind storage charts and reorganized access, policy, and retention controls.
 
-### Dart NDK changes relay, cache, and account behavior
+The [release candidate](https://github.com/0ceanSlim/grain/releases/tag/v0.8.0-rc4) also makes its client escalate missing-event lookups from the local relay to author outbox relays, embedded relay hints, and NIP-50 search. NIP-50 standardizes relay-side search filters, while NIP-01 defines the core event and subscription rules that include identifier and author prefix matching. Grain adds those prefix matches and configurable full-text kinds to its database, while the release-candidate label makes clear that operators should test the new dashboard and database behavior before treating it as a stable line.
 
-[Dart NDK v0.10.0-dev.3](https://github.com/relaystr/ndk/releases/tag/v0.10.0-dev.3) is a development release of the Dart client library, with breaking changes across relay handling, caching, authentication, and account streams. Client maintainers should expect code and behavioral migration work, especially where an application assumes that cached events, hidden events, or account updates follow the previous release line’s semantics.
+### Marmot Protocol 0.10.4 makes local sends durable
 
-The [v0.10.0 development series](https://github.com/relaystr/ndk/releases/tag/v0.10.0-dev.3) also improves cache and Rust verifier performance and changes metadata, deletion-coordinate, event-visibility, signer-authentication, and NWC payment behavior. Packed Rust event verification reduces verification overhead, while the new `loadHiddenEvents` cache behavior is explicitly breaking.
+[Marmot Protocol's MDK](https://github.com/marmot-protocol/mdk) is an SDK for MLS-encrypted group messaging whose transport and discovery run over Nostr. [Version 0.10.4](https://github.com/marmot-protocol/mdk/releases/tag/v0.10.4) persists local sends before network completion, lowers draft and pending-message latency, prevents repeated automatic attachment downloads, and exposes retention state in chat-list previews.
 
-Because this is [v0.10.0-dev.3](https://github.com/relaystr/ndk/releases/tag/v0.10.0-dev.3), not a stable v0.10.0 release, application teams should pin versions and test migrations deliberately. Relay reconnection, cache hydration, signer authentication, wallet handling, and account-stream ordering are the highest-value paths to exercise before moving production clients.
+The [same release](https://github.com/marmot-protocol/mdk/releases/tag/v0.10.4) adds group creation to agent-control integrations and opt-in reaction consent for approval prompts. It also repairs a halted-wrapper edge case and bounds retry backoff during epoch backfill, continuing the post-0.10.0 reliability work without changing the requirement that generated bindings and native libraries move together.
 
-### Keycast publishes its rebuilt signer release candidate
+### MintRadar makes Cashu mints easier to compare
 
-[Keycast v2.0.0-rc.1](https://github.com/marmot-protocol/keycast/releases/tag/v2.0.0-rc.1) is the first numbered release of the rebuilt self-hosted NIP-46 remote signer. The release candidate adds multiplexed NIP-46 support, shared and per-key relay routing, durable request handling, encrypted key storage, invitations, sessions, and team workspaces.
+[MintRadar](https://mintradar.org) is a privacy-focused Cashu dashboard that uses Nostr to discover mints and bind community reviews to signed identities. Its [current source](https://github.com/hroomnik007/MintRadar) adds persistent NIP-87 mint announcements, same-operator detection from NUT-06 pubkeys, shareable comparison URLs, and Nostr `naddr` deep links.
 
-Signing policy and recovery receive equal weight in [v2.0.0-rc.1](https://github.com/marmot-protocol/keycast/releases/tag/v2.0.0-rc.1). Operators can configure signing policies, inspect audit history, create encrypted backups, recover deployments, and rotate the root key. The project also documents coordinated and verified release provenance across its API, signer, and web components.
+NIP-87 standardizes discovery and review events for Cashu mints, while NUT-06 defines the mint information document that exposes a mint's public keys and supported capabilities. A [signed user-submitted update](https://njump.to/nevent1qqs9hwth0rgsprqaml9xuuve2s47x08w2ltjujgwwr4zyqw0qjptecqpzamhxue69uhhyetvv9ujuurjd9kkzmpwdejhgtczyqt40x2js6hcc27delgn5vqwn3qtcjn8uas3rrzmxe2hxsrvdvmmcqcyqqqqqqgyqg6ap) brought MintRadar back into the intake after it was missed in an earlier pass; the project has since accumulated substantial current-window work around those comparison and discovery paths.
 
-The release remains a [release candidate](https://github.com/marmot-protocol/keycast/releases/tag/v2.0.0-rc.1), so operators should not infer final compatibility or production readiness from the version number alone. Testing should cover interrupted request recovery, relay-routing failures, policy enforcement, backup restoration, and key rotation before replacing an existing signer service.
+### Nostr WoT Oracle 0.3.1 makes trust queries restart-safe
+
+[Nostr WoT Oracle](https://github.com/nostr-wot/nostr-wot-oracle) is a server that ingests public follow and mute events and answers bounded web-of-trust path queries. [Versions 0.3.0 and 0.3.1](https://github.com/nostr-wot/nostr-wot-oracle/releases/tag/v0.3.1) add independently persisted public mute evidence, readiness and ingestion status, revision-bound caches, deterministic replaceable-event selection, and rollback behavior that prevents unpersisted graph changes from becoming queryable.
+
+The [0.3.1 performance pass](https://github.com/nostr-wot/nostr-wot-oracle/releases/tag/v0.3.1) restores graph edges directly into numeric adjacency lists, coalesces superseded follow and mute events before publication, and batches distance-cache misses. These changes matter to clients that need explainable follow distance or mute evidence without silently serving a relationship graph from an older revision.
+
+### Nostr WoT SDK 1.0.2 compresses browser graph storage
+
+[Nostr WoT SDK](https://github.com/nostr-wot/nostr-wot-sdk) is a JavaScript toolkit for crawling, storing, and querying Nostr follow graphs in applications. [Version 1.0.2](https://github.com/nostr-wot/nostr-wot-sdk/releases/tag/nostr-wot-sdk%401.0.2) adopts a graph engine that batches up to 100 authors per relay request, stores edges with compact delta encoding, reuses compatible traversals, and exposes batch distance queries.
+
+The [graph 0.3.0 storage migration](https://github.com/nostr-wot/nostr-wot-sdk/releases/tag/%40nostr-wot/graph%400.3.0) upgrades IndexedDB namespaces to schema 2 and cannot be reopened by older SDK versions. Applications that need rollback should use a separate namespace or clear the upgraded graph instead of assuming the earlier client can read it.
+
+### napplet.soy publishes small sandboxed Nostr programs
+
+[napplet.soy](https://napplet.soy) is a web playground and creator toolkit for building, publishing, playing, inspecting, and remixing small sandboxed Nostr programs called napplets. NIP-34 defines signed Nostr events for Git repository discovery and collaboration. The [soyLI 0.18.2 release](https://github.com/zeSchlausKwab/napplet-soy/releases/tag/soyli-v0.18.2) follows the project's September launch with signed listings, Blossom-hosted assets, Git and NIP-34 source references, and relay-discovered manifests.
+
+The [project source](https://github.com/zeSchlausKwab/napplet-soy) keeps network and storage access behind declared capabilities instead of giving each napplet unrestricted browser authority. Its project identity remains unresolved because the canonical site and repository do not bind a project or maintainer npub, so no identity claim is attached here.
+
+The [soyLI 0.20.0 CLI release](https://github.com/zeSchlausKwab/napplet-soy/releases/tag/soyli-v0.20.0) adds bounded NIP-78 helpers for sharing reusable public tracks, puzzles, drawings, and presets, plus structured data on high scores. Writes are scoped to a napplet and player identity with consent and revision checks; linked large assets use Blossom. Website and backend features require a separate deployment, so the CLI tag alone does not prove those public features are live on the site.
+
+### RelayKit installs a self-hosted Nostr stack
+
+[RelayKit](https://relayk.it) is a one-command installer for a self-hosted Nostr stack that can include relays, Blossom media, nsites, Git services, and notifications. RelayKit now packages a broader stack than the browser relay-discovery client covered in April; its [current source repository](https://github.com/samthomson/relaykit) documents the new operator-focused deployment surface.
+
+Its [installation site](https://relayk.it) presents the services as one coordinated stack instead of requiring operators to assemble each component independently. This coverage therefore treats RelayKit as a changed project direction, not as its first appearance.
+
+### Threshold Sessions turns coding transcripts into private training data
+
+[Threshold Sessions](https://gitworkshop.dev/npub17m2ual3pdjvhd8yc6a3m8snzjsgnmtl26hwen48ne937qgyjyshs2zgvse/relay.ngit.dev/threshold) is a command-line tool that converts AI coding sessions into normalized, redacted, and encrypted training-data epochs. Its repository supports Codex, Claude Code, Cursor, OpenCode, and pi transcripts, stores encrypted artifacts on Blossom, and publishes signed references through Nostr.
+
+Recent [Threshold Sessions source history](https://relay.ngit.dev/npub17m2ual3pdjvhd8yc6a3m8snzjsgnmtl26hwen48ne937qgyjyshs2zgvse/threshold.git) adds timestamp randomization, provenance, extractors, and a ledger for produced epochs. The design lets a contributor preserve auditability and later data use without publishing the readable session transcript to relays.
 
 writer_model: preferred=gemini-3.1-pro, actual=openai-codex/gpt-5.6-sol, receipt=data/newsletter_workspace/writer_receipt_2026-09-16.json
 

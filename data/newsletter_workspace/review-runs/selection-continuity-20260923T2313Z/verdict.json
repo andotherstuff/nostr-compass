@@ -1,0 +1,24 @@
+{
+  "findings": [
+    {
+      "evidence": "#41 Top Stories for RelayKit states it is \u201cmaterially broader than the browser relay-discovery client covered in April,\u201d but the supplied snapshot contains only #38\u2013#40 plus the #41 draft and selection ledger\u2014no April newsletter file to independently verify that earlier coverage.",
+      "recommendation": "Treat RelayKit continuity as verified only against #38\u2013#40 in this review; if April coverage must be audited, add that immutable issue to the snapshot before publish.",
+      "severity": "note",
+      "title": "Comparison baseline excludes pre-#38 Compass history"
+    },
+    {
+      "evidence": "#40 deep-dives NIP-92 under \u201cNIP Deep Dive: NIP-23 and NIP-92.\u201d #41 covers Zap Cooking under In Development via merged PR #746 for author image descriptions in `imeta` tags, not a second NIP-92 explainer.",
+      "recommendation": "No archive cut required; keep Zap Cooking anchored to PR #746 and avoid re-teaching NIP-92 spec mechanics already covered in #40.",
+      "severity": "note",
+      "title": "NIP-92 deep dive (#40) vs Zap Cooking NIP-92 work (#41) is project-scoped, not recycled protocol coverage"
+    },
+    {
+      "evidence": "#41 NIP-30 deep dive says the April 2023 proposal was \u201ccovered previously,\u201d and NIP-71 says the addressable-video update was \u201ccovered previously,\u201d yet neither NIP-30 nor NIP-71 appears as a deep-dive heading in #38\u2013#40.",
+      "recommendation": "Clarify whether \u201ccovered previously\u201d means an earlier Compass protocol mention or upstream NIPs history, to prevent readers from inferring a recycled deep dive.",
+      "severity": "minor",
+      "title": "Ambiguous \u201ccovered previously\u201d wording inside new deep dives"
+    }
+  ],
+  "summary": "Compared the draft Nostr Compass #41 (2026-09-23-newsletter.md) against the three immediately preceding published issues #38 (2026-09-02), #39 (2026-09-09), and #40 (2026-09-16), using section headings, cited release tags, merged PR URLs, and signed-event links in the supplied snapshot only. Repeated projects (Amethyst, Marmot/MDK, Grain, Amber, pakstr, Dart NDK, nostream, Zap Cooking, Conduit, Divine Mobile, Mostro, Nostr Mail Client, Nail, nostr-wot-extension) each anchor to a new primary source not used as the main hook in the prior three issues\u2014chiefly v1.16.0, v0.10.4, v0.8.0-rc4, v6.6.5, v0.24.0, v0.10.0-dev.5, PRs #741/#779, #746/#744, #503, #9246/#9293, #971, v0.16.0, v0.2.2, and v0.8.0\u2013v0.8.3. Marmot group moderation PR #423 is correctly reframed from #40\u2019s open proposal to a merged status transition. Deep dives NIP-30 and NIP-71 do not repeat prior deep-dive headings (NIP-18/25, NIP-21/27, NIP-23/92). Limitations: pre-#38 Compass history (e.g., April RelayKit) is out of scope; #38 is truncated; draft is still draft:true; live URL contents were not re-fetched.",
+  "verdict": "PASS"
+}

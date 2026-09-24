@@ -1,0 +1,111 @@
+{
+  "attempts": [
+    {
+      "attempt": 1,
+      "model": "composer-2.5[fast=true]",
+      "outcome": "success",
+      "output_sha256": "34af0b8dd426dd28cd47a8671d2a65e4ddfb0b01c2d38cfb519cb170c9f78e34",
+      "provider": "cursor",
+      "response_id": null,
+      "routing_attempts": [
+        {
+          "budget_seconds": 120.0,
+          "elapsed_seconds": 115.244,
+          "kind": "timeout",
+          "message": "Isolated review deadline",
+          "model": "grok-4.6",
+          "outcome": "failure",
+          "provider": "cursor",
+          "provider_wide": false
+        },
+        {
+          "budget_seconds": 121.189,
+          "elapsed_seconds": 51.301,
+          "model": "composer-2.5",
+          "outcome": "success",
+          "provider": "cursor"
+        }
+      ],
+      "started_at": "2026-09-23T23:10:03.544460+00:00",
+      "usage": {}
+    }
+  ],
+  "completed_at": "2026-09-23T23:12:50.090851+00:00",
+  "elapsed_seconds": 166.546,
+  "endpoint": "cursor-acp",
+  "implementation_model": "gpt-6-sol",
+  "implementation_models": [
+    "gpt-6-sol"
+  ],
+  "instructions_sha256": "14f38448cc95c037b3e51ff96596ee85e8ac4f7121e1bac773990caadf84ebe8",
+  "max_attempts": 1,
+  "max_output_tokens": 8000,
+  "requested_model": "grok-4.6",
+  "review_tier": "standard",
+  "routing_chain": [
+    {
+      "model": "grok-4.6",
+      "provider": "cursor"
+    },
+    {
+      "model": "composer-2.5",
+      "provider": "cursor"
+    },
+    {
+      "model": "claude-opus-5",
+      "provider": "claude-code"
+    },
+    {
+      "model": "google/gemini-3.1-pro-preview",
+      "provider": "openrouter"
+    }
+  ],
+  "schema_version": 1,
+  "selected_cost_usd": null,
+  "selected_endpoint": "cursor-acp",
+  "selected_family": "cursor",
+  "selected_model": "composer-2.5[fast=true]",
+  "selected_provider": "cursor",
+  "snapshots": [
+    {
+      "bytes": 411132,
+      "path": "/opt/data/compass-worktrees/2026-09-23-publish-codex/data/newsletter_workspace/selection_coverage_wednesday_2026-09-23.json",
+      "sha256": "28f3045d7686e30e2a6f2b6413ec6d11ca84654869b4597fedb85814989aa1ad",
+      "stored_name": "001-28f3045d7686e30e-selection_coverage_wednesday_2026-09-23.json"
+    },
+    {
+      "bytes": 28347,
+      "path": "/opt/data/compass-worktrees/2026-09-23-publish-codex/data/newsletter_workspace/triage_2026-09-23.md",
+      "sha256": "a1e69c83c62aa0d9e9ac2314f15718ecd8e8689587acd435ff56ee7490249fde",
+      "stored_name": "002-a1e69c83c62aa0d9-triage_2026-09-23.md"
+    },
+    {
+      "bytes": 5084,
+      "path": "/opt/data/compass-worktrees/2026-09-23-publish-codex/data/newsletter_workspace/project_activity_coverage_2026-09-23.md",
+      "sha256": "c704dd4b592a07a9e9ee1381922a7dac57b931cc781ea0927d7711f7085c363a",
+      "stored_name": "003-c704dd4b592a07a9-project_activity_coverage_2026-09-23.md"
+    },
+    {
+      "bytes": 16727,
+      "path": "/opt/data/compass-worktrees/2026-09-23-publish-codex/data/newsletter_workspace/discovery_delta_2026-09-23.json",
+      "sha256": "2d939a72e2ddd23b46c5f272b90cc6255238114c6bac68570443be71d2791675",
+      "stored_name": "004-2d939a72e2ddd23b-discovery_delta_2026-09-23.json"
+    },
+    {
+      "bytes": 1114,
+      "path": "/opt/data/compass-worktrees/2026-09-23-publish-codex/data/newsletter_workspace/selection_coverage_receipt_2026-09-23.json",
+      "sha256": "26dcc58ce4afdcd342af15def4ba32c5958ed65030d1bfee106aed46b051e41b",
+      "stored_name": "005-26dcc58ce4afdcd3-selection_coverage_receipt_2026-09-23.json"
+    }
+  ],
+  "started_at": "2026-09-23T23:10:03.542935+00:00",
+  "status": "completed",
+  "timeout_scope": "invocation_including_retries_and_cleanup",
+  "timeout_seconds": 600,
+  "tools_enabled": false,
+  "verdict": {
+    "findings": [],
+    "summary": "Cold review of the immutable Wednesday ledger (SHA256 28f3045d7686e30e2a6f2b6413ec6d11ca84654869b4597fedb85814989aa1ad), bound to draft SHA256 3319b14c6ab0f0045c40c83cf186cecd9c54e01c21e2b6782c7d8b586bbd7dd1 and manifest SHA256 bcac650f8267bb5eecd808bd79c7dd31d308d18081176fc138081d6d0adb70c8 per receipt index 5. Verified internal reconciliation: 200 editorial candidates with 55 selected and 145 skipped (receipt unresolved_count 0); 56/56 tagged-release projects dispositioned in source_reconciliation.tagged_release_projects; 39/39 zapstore-only apps dispositioned; app_discovery bulk skip (83) with per-lead candidate rows; 38/38 high-activity projects dispositioned in project_activity_coverage (8 selected, 11 release-folded, 19 skipped); 51/51 Wednesday discovery-delta leads individually SKIP with fold/supersede notes. All 55 selected rows declare primary_sources, score >= 8, no zero axis, and hard_gate.primary_evidence true except documented owner overrides (top:fips-initramfs-0.1.0 catch-up; release:white-noise-android-2026.9.21 post-listing GitHub verification). Skipped high-churn families (Mostro server, CDK, Nutshell, mesh-llm, pensieve negentropy, toll-booth 6.2.6, listing-only Zapstore clients) carry explicit snapshot reasons and triage refs; no unsupported selected candidate or un dispositioned material family lead found within supplied artifacts. Limits: did not read source_run manifest, collector JSON (project_updates, zapstore, discovery, spec_updates), triage prose beyond supplied excerpts, or live release/Primal/GitHub pages\u2014cannot independently confirm claim text in primary URLs or Zapstore event bodies.",
+    "verdict": "PASS"
+  }
+}

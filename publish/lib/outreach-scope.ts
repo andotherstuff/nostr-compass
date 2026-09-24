@@ -70,3 +70,8 @@ export function outreachReportSuffix(onlyNames: string[], reminder = false, rere
     .join("-");
   return slug ? `-${slug}${reminderSuffix}` : reminderSuffix;
 }
+
+/** Keep a targeted review follow-up independent from the immutable initial campaign. */
+export function reviewCampaignIdentity(onlyNames: string[]): string {
+  return `review${outreachReportSuffix(onlyNames)}`;
+}

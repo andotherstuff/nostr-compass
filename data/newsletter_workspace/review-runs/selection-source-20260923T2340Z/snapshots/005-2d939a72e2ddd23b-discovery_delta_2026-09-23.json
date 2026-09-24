@@ -1,0 +1,335 @@
+{
+  "schema_version": 1,
+  "source_pass_id": "wednesday-2026-09-23-codex-recovery-1",
+  "source_manifest_sha256": "bcac650f8267bb5eecd808bd79c7dd31d308d18081176fc138081d6d0adb70c8",
+  "app_discovery_artifact_sha256": "6a10a1fdfb3c50baba1dc311fe7e83f95ced74d0f1c49066b4afda4d666dbe5f",
+  "new_discovery_decisions": [
+    {
+      "verdict": "SKIP",
+      "name": "1y-wo-por",
+      "url": "https://github.com/koteitan/1y-wo-por",
+      "reason": "sibling repository of an owner that already has a tracked project; no independently verified release or material product launch in this source pass."
+    },
+    {
+      "verdict": "SKIP",
+      "name": "21Meetup",
+      "url": "https://github.com/louisthecat86/Einundzwanzig-Meetup-App",
+      "reason": "Discovery metadata is folded into the separately verified release https://github.com/louisthecat86/Einundzwanzig-Meetup-App/releases/tag/v1.6.6; it is not a second story."
+    },
+    {
+      "verdict": "SKIP",
+      "name": "Barattolo",
+      "url": "https://github.com/kreamistudio-crypto/barattolo-releases",
+      "reason": "developer-signed listing without a joined release; verify product and repository ownership; no independently verified release or material product launch in this source pass."
+    },
+    {
+      "verdict": "SKIP",
+      "name": "Bookshelf",
+      "url": "https://github.com/decent-newsroom/bookshelf-app",
+      "reason": "Discovery metadata is folded into the separately verified release https://github.com/decent-newsroom/bookshelf-app/releases/tag/v0.1.25; it is not a second story."
+    },
+    {
+      "verdict": "SKIP",
+      "name": "Btc Blake2b Wallet",
+      "url": "https://github.com/btcblake2b/wallet",
+      "reason": "developer-signed listing without a joined release; verify product and repository ownership; no independently verified release or material product launch in this source pass."
+    },
+    {
+      "verdict": "SKIP",
+      "name": "camwall",
+      "url": "https://github.com/v0l/camwall",
+      "reason": "sibling repository of an owner that already has a tracked project; no independently verified release or material product launch in this source pass."
+    },
+    {
+      "verdict": "SKIP",
+      "name": "ChartRemotely",
+      "url": "https://github.com/lonniev/ChartRemotely",
+      "reason": "sibling repository of an owner that already has a tracked project; no independently verified release or material product launch in this source pass."
+    },
+    {
+      "verdict": "SKIP",
+      "name": "ChartRemotely-agent",
+      "url": "https://github.com/lonniev/ChartRemotely-agent",
+      "reason": "sibling repository of an owner that already has a tracked project; no independently verified release or material product launch in this source pass."
+    },
+    {
+      "verdict": "SKIP",
+      "name": "ChartRemotely-mcp",
+      "url": "https://github.com/lonniev/ChartRemotely-mcp",
+      "reason": "sibling repository of an owner that already has a tracked project; no independently verified release or material product launch in this source pass."
+    },
+    {
+      "verdict": "SKIP",
+      "name": "diversz-commons",
+      "url": "https://diversz.lovable.app",
+      "reason": "self-published handler; verify repository ownership and released product; no independently verified release or material product launch in this source pass."
+    },
+    {
+      "verdict": "SKIP",
+      "name": "Ecash App",
+      "url": "https://github.com/fedimint/ecash-app",
+      "reason": "developer-signed listing without a joined release; verify product and repository ownership; no independently verified release or material product launch in this source pass."
+    },
+    {
+      "verdict": "SKIP",
+      "name": "egui_bench",
+      "url": "https://github.com/v0l/egui_bench",
+      "reason": "sibling repository of an owner that already has a tracked project; no independently verified release or material product launch in this source pass."
+    },
+    {
+      "verdict": "SKIP",
+      "name": "glyphbyte",
+      "url": "https://github.com/arkin0x/glyphbyte",
+      "reason": "sibling repository of an owner that already has a tracked project; no independently verified release or material product launch in this source pass."
+    },
+    {
+      "verdict": "SKIP",
+      "name": "Gnext-Prototype-v2.5",
+      "url": "https://github.com/baensaf/Gnext-Prototype-v2.5",
+      "reason": "sibling repository of an owner that already has a tracked project; no independently verified release or material product launch in this source pass."
+    },
+    {
+      "verdict": "SKIP",
+      "name": "go-jev",
+      "url": "https://github.com/mattn/go-jev",
+      "reason": "sibling repository of an owner that already has a tracked project; no independently verified release or material product launch in this source pass."
+    },
+    {
+      "verdict": "SKIP",
+      "name": "hivetalksfu",
+      "url": "https://github.com/Pleb5/hivetalksfu",
+      "reason": "sibling repository of an owner that already has a tracked project; no independently verified release or material product launch in this source pass."
+    },
+    {
+      "verdict": "SKIP",
+      "name": "Iris Chat",
+      "url": "https://github.com/irislib/iris-chat-rs",
+      "reason": "developer-signed listing without a joined release; verify product and repository ownership; no independently verified release or material product launch in this source pass."
+    },
+    {
+      "verdict": "SKIP",
+      "name": "K.ai",
+      "url": "https://github.com/ostermayer/k.ai-zapstore",
+      "reason": "developer-signed listing without a joined release; verify product and repository ownership; no independently verified release or material product launch in this source pass."
+    },
+    {
+      "verdict": "SKIP",
+      "name": "ldk-node-go",
+      "url": "https://github.com/getAlby/ldk-node-go",
+      "reason": "sibling repository of an owner that already has a tracked project; no independently verified release or material product launch in this source pass."
+    },
+    {
+      "verdict": "SKIP",
+      "name": "lejudge-jev-jepa",
+      "url": "https://github.com/AbdelStark/lejudge-jev-jepa",
+      "reason": "sibling repository of an owner that already has a tracked project; no independently verified release or material product launch in this source pass."
+    },
+    {
+      "verdict": "SKIP",
+      "name": "LNbits-proxy",
+      "url": "https://github.com/nostr-wot/LNbits-proxy",
+      "reason": "sibling repository of an owner that already has a tracked project; no independently verified release or material product launch in this source pass."
+    },
+    {
+      "verdict": "SKIP",
+      "name": "mruby-json",
+      "url": "https://github.com/mattn/mruby-json",
+      "reason": "sibling repository of an owner that already has a tracked project; no independently verified release or material product launch in this source pass."
+    },
+    {
+      "verdict": "SKIP",
+      "name": "nmail-api",
+      "url": "https://github.com/nogringo/nmail-api",
+      "reason": "sibling repository of an owner that already has a tracked project; no independently verified release or material product launch in this source pass."
+    },
+    {
+      "verdict": "SKIP",
+      "name": "nostr-client-console",
+      "url": "https://github.com/ogerly/nostr-client-console",
+      "reason": "self-asserted forge metadata; verify Nostr behavior before tracking; no independently verified release or material product launch in this source pass."
+    },
+    {
+      "verdict": "SKIP",
+      "name": "nostr-mail-inbound-webhook",
+      "url": "https://github.com/nogringo/nostr-mail-inbound-webhook",
+      "reason": "sibling repository of an owner that already has a tracked project; no independently verified release or material product launch in this source pass."
+    },
+    {
+      "verdict": "SKIP",
+      "name": "nostrhost-apps",
+      "url": "https://github.com/imattau/nostrhost-apps",
+      "reason": "self-asserted forge metadata; verify Nostr behavior before tracking; no independently verified release or material product launch in this source pass."
+    },
+    {
+      "verdict": "SKIP",
+      "name": "nostrich-client",
+      "url": "https://github.com/nostrichOS/nostrich-client",
+      "reason": "self-asserted forge metadata; verify Nostr behavior before tracking; no independently verified release or material product launch in this source pass."
+    },
+    {
+      "verdict": "SKIP",
+      "name": "nwc-lnd-bridge",
+      "url": "https://github.com/forgesworn/nwc-lnd-bridge",
+      "reason": "sibling repository of an owner that already has a tracked project; no independently verified release or material product launch in this source pass."
+    },
+    {
+      "verdict": "SKIP",
+      "name": "NwcKit",
+      "url": "https://github.com/nmassari/NwcKit",
+      "reason": "self-asserted forge metadata; verify Nostr behavior before tracking; no independently verified release or material product launch in this source pass."
+    },
+    {
+      "verdict": "SKIP",
+      "name": "phoenixd-java",
+      "url": "https://github.com/398ja/phoenixd-java",
+      "reason": "sibling repository of an owner that already has a tracked project; no independently verified release or material product launch in this source pass."
+    },
+    {
+      "verdict": "SKIP",
+      "name": "PosterChan",
+      "url": "https://github.com/loblawbob873-svg/posterchanai",
+      "reason": "developer-signed listing without a joined release; verify product and repository ownership; no independently verified release or material product launch in this source pass."
+    },
+    {
+      "verdict": "SKIP",
+      "name": "saferalloc",
+      "url": "https://github.com/NostrGameEngine/saferalloc",
+      "reason": "sibling repository of an owner that already has a tracked project; no independently verified release or material product launch in this source pass."
+    },
+    {
+      "verdict": "SKIP",
+      "name": "sidestr-rs",
+      "url": "https://github.com/DreamLab-AI/sidestr-rs",
+      "reason": "self-asserted forge metadata; verify Nostr behavior before tracking; no independently verified release or material product launch in this source pass."
+    },
+    {
+      "verdict": "SKIP",
+      "name": "Sonara",
+      "url": "https://sprachcode.shakespeare.wtf",
+      "reason": "self-published handler; verify repository ownership and released product; no independently verified release or material product launch in this source pass."
+    },
+    {
+      "verdict": "SKIP",
+      "name": "Soshal",
+      "url": "https://github.com/SalamiMommy/Soshal",
+      "reason": "self-asserted forge metadata; verify Nostr behavior before tracking; no independently verified release or material product launch in this source pass."
+    },
+    {
+      "verdict": "SKIP",
+      "name": "spectre",
+      "url": "https://github.com/block/spectre",
+      "reason": "sibling repository of an owner that already has a tracked project; no independently verified release or material product launch in this source pass."
+    },
+    {
+      "verdict": "SKIP",
+      "name": "ssmd",
+      "url": "https://github.com/buchwandler/ssmd",
+      "reason": "sibling repository of an owner that already has a tracked project; no independently verified release or material product launch in this source pass."
+    },
+    {
+      "verdict": "SKIP",
+      "name": "status-original",
+      "url": "https://github.com/alaibe/status-original",
+      "reason": "self-asserted forge metadata; verify Nostr behavior before tracking; no independently verified release or material product launch in this source pass."
+    },
+    {
+      "verdict": "SKIP",
+      "name": "stremstr",
+      "url": "https://github.com/silencesoft/stremstr",
+      "reason": "sibling repository of an owner that already has a tracked project; no independently verified release or material product launch in this source pass."
+    },
+    {
+      "verdict": "SKIP",
+      "name": "tendrl",
+      "url": "https://github.com/limina1/tendrl-engine",
+      "reason": "developer-signed listing without a joined release; verify product and repository ownership; no independently verified release or material product launch in this source pass."
+    },
+    {
+      "verdict": "SKIP",
+      "name": "Tenna",
+      "url": "https://nostrhub.io/npub1q3sle0kvfsehgsuexttt3ugjd8xdklxfwwkh559wxckmzddywnws6cd26p/tenna",
+      "reason": "developer-signed listing without a joined release; verify product and repository ownership; no independently verified release or material product launch in this source pass."
+    },
+    {
+      "verdict": "SKIP",
+      "name": "TWENTY ONE Companion",
+      "url": "https://github.com/HolgerHatGarKeineNode/twenty-one-companion",
+      "reason": "Discovery metadata is folded into the separately verified release https://github.com/HolgerHatGarKeineNode/twenty-one-companion/releases/tag/v1.13.0; it is not a second story."
+    },
+    {
+      "verdict": "SKIP",
+      "name": "unreal-harness",
+      "url": "https://github.com/neeboo/unreal-harness",
+      "reason": "sibling repository of an owner that already has a tracked project; no independently verified release or material product launch in this source pass."
+    },
+    {
+      "verdict": "SKIP",
+      "name": "unyu-house",
+      "url": "https://github.com/nikolat/unyu-house",
+      "reason": "self-asserted forge metadata; verify Nostr behavior before tracking; no independently verified release or material product launch in this source pass."
+    },
+    {
+      "verdict": "SKIP",
+      "name": "vibe-check",
+      "url": "https://github.com/ghobs91/vibe-check",
+      "reason": "sibling repository of an owner that already has a tracked project; no independently verified release or material product launch in this source pass."
+    },
+    {
+      "verdict": "SKIP",
+      "name": "watchtower",
+      "url": "https://github.com/iqbqioza/watchtower",
+      "reason": "self-asserted forge metadata; verify Nostr behavior before tracking; no independently verified release or material product launch in this source pass."
+    },
+    {
+      "verdict": "SKIP",
+      "name": "Whistle",
+      "url": "https://github.com/sjmcnamara/whistle",
+      "reason": "developer-signed listing without a joined release; verify product and repository ownership; no independently verified release or material product launch in this source pass."
+    },
+    {
+      "verdict": "SKIP",
+      "name": "wmwy-wo-por",
+      "url": "https://github.com/koteitan/wmwy-wo-por",
+      "reason": "sibling repository of an owner that already has a tracked project; no independently verified release or material product launch in this source pass."
+    },
+    {
+      "verdict": "SKIP",
+      "name": "wy-wo-por",
+      "url": "https://github.com/koteitan/wy-wo-por",
+      "reason": "sibling repository of an owner that already has a tracked project; no independently verified release or material product launch in this source pass."
+    },
+    {
+      "verdict": "SKIP",
+      "name": "XM Arcade",
+      "url": "https://gitworkshop.dev/r/xm-arcade",
+      "reason": "Discovery metadata is folded into the separately verified release https://primal.net/e/dec0edda9ff464b4b7598032318cb48e17cf496e29d05031d1f1629409039a4c; it is not a second story."
+    },
+    {
+      "verdict": "SKIP",
+      "name": "zaptv-lib",
+      "url": "https://github.com/bitcoin3us/zaptv-lib",
+      "reason": "self-asserted forge metadata; verify Nostr behavior before tracking; no independently verified release or material product launch in this source pass."
+    }
+  ],
+  "superseded_editorial_sources": [
+    "editorial:zapstore:com.wingmanbefree.wingman_app",
+    "editorial:zapstore:app.postr",
+    "editorial:zapstore:com.circumspace.contactstr",
+    "editorial:zapstore:com.plazabtc.merchant",
+    "editorial:zapstore:diy.shakespeare.app",
+    "editorial:zapstore:org.skatespots.app",
+    "editorial:discovery:github.com/1m5/1m5-nostr-node-java",
+    "editorial:discovery:github.com/callebtc/decision-tools",
+    "editorial:discovery:github.com/nostr-net/hench",
+    "editorial:discovery:github.com/nostr-net/hench-nsite",
+    "editorial:discovery:github.com/nostr-net/hench-web"
+  ],
+  "superseded_raw_collector_ids": [
+    "zapstore:f26248e5f5166662785d928fdbfc18ddc295d33266bf9ae499759703442576d4",
+    "zapstore:2745b0859228f3c101a751d08b87c727e63c56b2b2bc61214a5f3169744161e9",
+    "zapstore:92a52f5957b11369af8751a6968ef36387f6ae9f06d340b080febec52500f578",
+    "zapstore:d87be68b94e6c238701239a99324d6feaa8754a4e8dc5e706d6965f0a926d0d5",
+    "zapstore:d6d04288ffecb4ba173e49953790184f044a19777033bd51e32a8a698ede2b71",
+    "zapstore:ec8e13f5d55a41962450515b4d8b8683535139988c0a10d3ac5ab17b2edc1106"
+  ]
+}

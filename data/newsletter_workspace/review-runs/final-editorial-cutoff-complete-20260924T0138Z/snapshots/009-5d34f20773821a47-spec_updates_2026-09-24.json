@@ -1,0 +1,93 @@
+{
+  "generated_at": "2026-09-24T01:33:53.202794+00:00",
+  "window": {
+    "since": "2026-09-23T23:44:00Z",
+    "until": "2026-09-24T00:41:00Z"
+  },
+  "families": [
+    {
+      "id": "nip",
+      "name": "Nostr Implementation Possibilities (NIPs)",
+      "repo": "nostr-protocol/nips",
+      "status": "quiet",
+      "window": {
+        "since": "2026-09-23T23:44:00Z",
+        "until": "2026-09-24T00:41:00Z"
+      },
+      "commits": [],
+      "pull_requests": []
+    },
+    {
+      "id": "bud",
+      "name": "Blossom Upgrade Documents (BUDs)",
+      "repo": "hzrd149/blossom",
+      "status": "quiet",
+      "window": {
+        "since": "2026-09-23T23:44:00Z",
+        "until": "2026-09-24T00:41:00Z"
+      },
+      "commits": [],
+      "pull_requests": []
+    },
+    {
+      "id": "nap",
+      "name": "Napplet Application Proposals (NAPs)",
+      "repo": "napplet/naps",
+      "status": "quiet",
+      "window": {
+        "since": "2026-09-23T23:44:00Z",
+        "until": "2026-09-24T00:41:00Z"
+      },
+      "commits": [],
+      "pull_requests": []
+    },
+    {
+      "id": "marmot",
+      "name": "Marmot Improvement Proposals (MIPs)",
+      "repo": "marmot-protocol/marmot",
+      "status": "quiet",
+      "window": {
+        "since": "2026-09-23T23:44:00Z",
+        "until": "2026-09-24T00:41:00Z"
+      },
+      "commits": [],
+      "pull_requests": []
+    },
+    {
+      "id": "gamma",
+      "name": "Gamma Markets",
+      "repo": "GammaMarkets/market-spec",
+      "status": "quiet",
+      "window": {
+        "since": "2026-09-23T23:44:00Z",
+        "until": "2026-09-24T00:41:00Z"
+      },
+      "commits": [],
+      "pull_requests": []
+    },
+    {
+      "id": "concord",
+      "name": "Concord (CORD specs)",
+      "repo": "concord-protocol/concord",
+      "status": "quiet",
+      "window": {
+        "since": "2026-09-23T23:44:00Z",
+        "until": "2026-09-24T00:41:00Z"
+      },
+      "commits": [],
+      "pull_requests": []
+    },
+    {
+      "id": "nwc",
+      "name": "Nostr Wallet Connect",
+      "repo": "nostr-wallet-connect/nwc",
+      "status": "quiet",
+      "window": {
+        "since": "2026-09-23T23:44:00Z",
+        "until": "2026-09-24T00:41:00Z"
+      },
+      "commits": [],
+      "pull_requests": []
+    }
+  ]
+}

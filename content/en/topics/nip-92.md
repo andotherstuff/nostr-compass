@@ -60,6 +60,7 @@ NIP-92 is inline metadata, not a separate media object format. If a client needs
 - [algia 0.0.133](https://github.com/mattn/algia/releases/tag/v0.0.133) - Command-line image upload with matching `imeta` tags
 
 **Mentioned in:**
+- [Newsletter #41: Zap Cooking publishes image descriptions](/en/newsletters/2026-09-23-newsletter/#zap-cooking-publishes-image-descriptions-and-blocks-secret-key-searches)
 - [Newsletter #3: December Recap](/en/newsletters/2025-12-31-newsletter/#december-recap-five-years-of-nostr-decembers)
 - [Newsletter #6: News](/en/newsletters/2026-01-21-newsletter/#news)
 - [Newsletter #24: Amethyst floating-point dims and Deep Dive](/en/newsletters/2026-05-28-newsletter/#nip-deep-dive-nip-92-media-attachments-via-imeta)

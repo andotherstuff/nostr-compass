@@ -8,7 +8,7 @@ import { writeAtomic } from "./safety.ts";
 type OutreachObligation = {
   schema_version: 1;
   issue: number;
-  campaign: "review" | "podcast-invitation";
+  campaign: string;
   pr_url: string;
   pr_number: number;
   head_sha: string;
@@ -44,7 +44,9 @@ function normalizedRecipients(recipients: CampaignRecipientInput[]) {
   })).sort((a, b) => String(a.key).localeCompare(String(b.key)));
 }
 
-export async function assertOutreachObligation(args: { outDir: string; issue: number; campaign: "review" | "podcast-invitation"; prUrl?: string; newsletterUrl?: string; podcastUrl?: string; recipients: { npub: string; names: string[] }[] }): Promise<{ obligation_sha256: string; access_receipt_sha256?: string }> {
+export async function assertOutreachObligation(args: { outDir: string; issue: number; campaign: string; prUrl?: string; newsletterUrl?: string; podcastUrl?: string; recipients: { npub: string; names: string[] }[] }): Promise<{ obligation_sha256: string; access_receipt_sha256?: string }> {
+  const reviewCampaign = args.campaign === "review" || args.campaign.startsWith("review-");
+  if (!reviewCampaign && args.campaign !== "podcast-invitation") throw new Error(`Unsupported outreach campaign: ${args.campaign}`);
   const journal = await loadJournal(args.outDir, args.issue);
   const effect = journal.effects[`outreach:${args.campaign}`];
   if (effect?.state !== "confirmed" || !effect.payload_path || !effect.payload_sha256) throw new Error(`Missing journaled ${args.campaign} outreach obligation`);
@@ -56,7 +58,7 @@ export async function assertOutreachObligation(args: { outDir: string; issue: nu
     .map((recipient) => ({ npub: recipient.npub, names: [...recipient.names].sort() }))
     .sort((a, b) => a.npub.localeCompare(b.npub));
   if (obligation.schema_version !== 1 || obligation.final !== true || obligation.issue !== args.issue || obligation.campaign !== args.campaign || obligation.recipient_manifest_sha256 !== sha256(stableJson(manifest)) || obligation.pr_number !== journal.pull_request?.number || obligation.head_sha !== journal.pull_request?.head_sha || obligation.pr_url !== `https://github.com/andotherstuff/nostr-compass/pull/${obligation.pr_number}`) throw new Error("Outreach obligation does not match the exact PR/head/recipient manifest");
-  if (args.campaign === "review") {
+  if (reviewCampaign) {
     if (!args.prUrl || obligation.pr_url !== args.prUrl) throw new Error("Review outreach obligation does not match the requested PR URL");
     return { obligation_sha256: effect.payload_sha256 };
   }

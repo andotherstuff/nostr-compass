@@ -317,14 +317,14 @@ projects:
         self.assertIn("graphql", runner.call_args.args[0])
         self.assertEqual(runner.call_count, 1)
 
-    def test_owner_sweep_uses_graphql_when_core_cannot_cover_owners_and_reserve(self):
+    def test_owner_sweep_prefers_graphql_when_it_can_cover_owners_and_reserve(self):
         mod = load_module()
         owners = ["alpha", "zeta"]
         self.assertTrue(mod.use_graphql_owner_sweep(owners, {
             "core": {"remaining": 501},
             "graphql": {"remaining": 5000},
         }))
-        self.assertFalse(mod.use_graphql_owner_sweep(owners, {
+        self.assertTrue(mod.use_graphql_owner_sweep(owners, {
             "core": {"remaining": 1000},
             "graphql": {"remaining": 5000},
         }))
@@ -332,6 +332,7 @@ projects:
             "core": {"remaining": 501},
             "graphql": {"remaining": 100},
         }))
+        self.assertTrue(mod.use_graphql_owner_sweep(owners, None))
 
         warnings: list[str] = []
         with mock.patch.object(
@@ -344,6 +345,19 @@ projects:
         self.assertEqual(items, [{"full_name": "alpha/repo"}])
         graphql_fetch.assert_called_once()
         rest_fetch.assert_not_called()
+
+    def test_graphql_owner_login_is_always_passed_as_a_string(self):
+        mod = load_module()
+        payload = {"data": {"repositoryOwner": {"repositories": {
+            "nodes": [],
+            "pageInfo": {"hasNextPage": False, "endCursor": None},
+        }}}}
+        completed = subprocess.CompletedProcess([], 0, stdout=json.dumps(payload), stderr="")
+        with mock.patch.object(mod.subprocess, "run", return_value=completed) as runner:
+            self.assertEqual(mod.fetch_owner_repositories_graphql("4383", "2026-08-10"), [])
+        command = runner.call_args.args[0]
+        login_index = command.index("login=4383")
+        self.assertEqual(command[login_index - 1], "-f")
 
     def test_owner_sweep_records_a_failing_owner_without_aborting_the_rest(self):
         mod = load_module()
@@ -937,6 +951,38 @@ projects:
         self.assertEqual(events, [valid])
         self.assertEqual(errors, [])
         self.assertEqual(rejected, [invalid["id"]])
+
+    def test_relay_fetch_retries_one_transient_transport_failure(self):
+        mod = load_module()
+        valid = {"id": "a" * 64, "kind": 31990, "_relay": "wss://one"}
+        with (
+            mock.patch.object(mod, "query_relay_kind", side_effect=[RuntimeError("temporary"), [valid]]) as query,
+            mock.patch.object(mod, "verify_nostr_event", return_value=True),
+        ):
+            events, errors, rejected = mod.fetch_relay_kind_discovery(31990, 0, ["wss://one"])
+
+        self.assertEqual(events, [valid])
+        self.assertEqual(errors, [])
+        self.assertEqual(rejected, [])
+        self.assertEqual(query.call_count, 2)
+
+    def test_one_retried_nip89_relay_failure_is_a_warning_with_redundant_coverage(self):
+        mod = load_module()
+        events = [{"id": "a" * 64}]
+        errors = ["wss://one: unavailable"]
+        hard, warnings = mod.redundant_relay_warnings(
+            events, errors, ["wss://one", "wss://two", "wss://three", "wss://four"]
+        )
+        self.assertEqual(hard, [])
+        self.assertEqual(warnings, errors)
+
+        hard, warnings = mod.redundant_relay_warnings(
+            events,
+            ["wss://one: unavailable", "wss://two: unavailable"],
+            ["wss://one", "wss://two", "wss://three", "wss://four"],
+        )
+        self.assertEqual(len(hard), 2)
+        self.assertEqual(warnings, [])
 
     def test_verified_events_deduplicates_validation_by_event_id(self):
         mod = load_module()

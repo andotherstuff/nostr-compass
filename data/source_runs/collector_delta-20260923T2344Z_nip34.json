@@ -1,0 +1,85 @@
+{
+  "artifact_path": "/opt/data/compass-worktrees/2026-09-23/data/nip34_repos/nip34_2026-09-23_2026-09-23.json",
+  "artifact_sha256": "68c8479c91171d0c1713e7fe029cb9a9228aee73506e81e22607063fcf232620",
+  "candidate_ids": [
+    "1a41e07d21d4f5556ee1a4f63b3a7287dd40aef1b64820f41129c8b8571f51f0",
+    "1d5fb184124e41fb09a00f8673c3ca3e93337dc79a1428a979d3c8209d4e0d2e",
+    "3f0d3ce0840025f1e25afe1be139e294718fe2b1b3d56d6525f0cbddf31e2877",
+    "75d7771286ff9b2c6d542396d72cfbc3dbe90bf8bfcef526c2eb69a35ef9add7",
+    "aad13a158be702a1835b41ebb022a00c0a51c97851082caae7d22d7da85dea6e",
+    "d2cd9dfde48986285945496708d804d2de059a4151b6efd819b4bf1d7758a98b"
+  ],
+  "canonical_query": {
+    "family": "nip34",
+    "kinds": [
+      30617,
+      1617,
+      1621
+    ],
+    "mode": "both",
+    "pass_id": "delta-20260923T2344Z",
+    "since": "2026-09-23T20:31:30Z",
+    "until": "2026-09-23T23:44:00Z"
+  },
+  "collector_path": "/opt/data/compass-worktrees/2026-09-23/scripts/fetch_nip34_repos.sh",
+  "dispositions": {
+    "1a41e07d21d4f5556ee1a4f63b3a7287dd40aef1b64820f41129c8b8571f51f0": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "1d5fb184124e41fb09a00f8673c3ca3e93337dc79a1428a979d3c8209d4e0d2e": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "3f0d3ce0840025f1e25afe1be139e294718fe2b1b3d56d6525f0cbddf31e2877": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "75d7771286ff9b2c6d542396d72cfbc3dbe90bf8bfcef526c2eb69a35ef9add7": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "aad13a158be702a1835b41ebb022a00c0a51c97851082caae7d22d7da85dea6e": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    "d2cd9dfde48986285945496708d804d2de059a4151b6efd819b4bf1d7758a98b": {
+      "decision": "skip",
+      "reason": "repository announcement rejected by discovery filters"
+    }
+  },
+  "family": "nip34",
+  "include_count": 0,
+  "item_count": 6,
+  "page_count": 49,
+  "pagination_complete": true,
+  "pass_id": "delta-20260923T2344Z",
+  "skip_count": 6,
+  "skip_evidence": [
+    {
+      "candidate_id": "1a41e07d21d4f5556ee1a4f63b3a7287dd40aef1b64820f41129c8b8571f51f0",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "1d5fb184124e41fb09a00f8673c3ca3e93337dc79a1428a979d3c8209d4e0d2e",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "3f0d3ce0840025f1e25afe1be139e294718fe2b1b3d56d6525f0cbddf31e2877",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "75d7771286ff9b2c6d542396d72cfbc3dbe90bf8bfcef526c2eb69a35ef9add7",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "aad13a158be702a1835b41ebb022a00c0a51c97851082caae7d22d7da85dea6e",
+      "reason": "repository announcement rejected by discovery filters"
+    },
+    {
+      "candidate_id": "d2cd9dfde48986285945496708d804d2de059a4151b6efd819b4bf1d7758a98b",
+      "reason": "repository announcement rejected by discovery filters"
+    }
+  ],
+  "status": "complete"
+}

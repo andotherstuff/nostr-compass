@@ -1,0 +1,279 @@
+{
+  "generated_at": "2026-09-23T18:24:11.808Z",
+  "window": {
+    "since": "2026-09-23T20:31:30Z",
+    "until": "2026-09-23T23:44:00Z"
+  },
+  "opensats_nostr_fund": {
+    "repo_count": 256,
+    "events": []
+  },
+  "opensats_general_fund": {
+    "repo_count": 210,
+    "events": []
+  },
+  "sovereign_engineering": {
+    "source": "https://sovereignengineering.io/projects",
+    "current_cohort": "SEC-08",
+    "latest_archive": "SEC-07",
+    "archive_paths": [
+      "/projects/SEC-00",
+      "/projects/SEC-01",
+      "/projects/SEC-02",
+      "/projects/SEC-03",
+      "/projects/SEC-04",
+      "/projects/SEC-05",
+      "/projects/SEC-06",
+      "/projects/SEC-07"
+    ],
+    "latest_archive_projects": [
+      {
+        "name": "Apprentice",
+        "repositories": [],
+        "links": [
+          "https://apprentice.atobitcoin.io"
+        ]
+      },
+      {
+        "name": "Archipelago over Meshcore",
+        "repositories": [],
+        "links": [
+          "https://archipelago-foundation.org"
+        ]
+      },
+      {
+        "name": "Fanal",
+        "repositories": [
+          "https://github.com/oleksky/fanal"
+        ],
+        "links": [
+          "https://github.com/oleksky/fanal"
+        ]
+      },
+      {
+        "name": "FIPS Android",
+        "repositories": [
+          "https://github.com/k0sti/fips-android"
+        ],
+        "links": [
+          "https://github.com/k0sti/fips-android"
+        ]
+      },
+      {
+        "name": "FIPS Bloom Research",
+        "repositories": [
+          "https://github.com/gzuuus/fips/tree/bloom-research"
+        ],
+        "links": [
+          "https://github.com/gzuuus/fips/tree/bloom-research"
+        ]
+      },
+      {
+        "name": "FIPS Endpoint Discovery",
+        "repositories": [
+          "https://github.com/jmcorgan/fips",
+          "https://github.com/jmcorgan/fips/pull/53"
+        ],
+        "links": [
+          "https://github.com/jmcorgan/fips",
+          "https://github.com/jmcorgan/fips/pull/53"
+        ]
+      },
+      {
+        "name": "FIPS Mixnet Transport",
+        "repositories": [
+          "https://github.com/jmcorgan/fips"
+        ],
+        "links": [
+          "https://github.com/jmcorgan/fips"
+        ]
+      },
+      {
+        "name": "FIPS Peer Policy Controls",
+        "repositories": [
+          "https://github.com/jmcorgan/fips",
+          "https://github.com/jmcorgan/fips/pull/50",
+          "https://github.com/jmcorgan/fips/issues/35"
+        ],
+        "links": [
+          "https://github.com/jmcorgan/fips",
+          "https://github.com/jmcorgan/fips/pull/50",
+          "https://github.com/jmcorgan/fips/issues/35"
+        ]
+      },
+      {
+        "name": "fipstr",
+        "repositories": [
+          "https://github.com/lauri000/fipstr-search"
+        ],
+        "links": [
+          "https://search.fipstr.com",
+          "https://github.com/lauri000/fipstr-search"
+        ]
+      },
+      {
+        "name": "FREEDOOM Nsite",
+        "repositories": [
+          "https://github.com/jodobear/freedoom-nsite"
+        ],
+        "links": [
+          "https://github.com/jodobear/freedoom-nsite",
+          "https://5c1zux4p3v4hcj9q4kumfcbo3494lqydx2scp9uax5bwnxu9jrfreedoom.nsite.lol/"
+        ]
+      },
+      {
+        "name": "Hashtree FUSE Mount",
+        "repositories": [
+          "https://github.com/mmalmi/hashtree"
+        ],
+        "links": [
+          "https://github.com/mmalmi/hashtree"
+        ]
+      },
+      {
+        "name": "Learn FIPS",
+        "repositories": [
+          "https://github.com/dergigi/learn-fips"
+        ],
+        "links": [
+          "https://learn.fips.network",
+          "https://github.com/dergigi/learn-fips"
+        ]
+      },
+      {
+        "name": "LocalGram",
+        "repositories": [
+          "https://github.com/lauri000/wifi-aware-photo-feed"
+        ],
+        "links": [
+          "https://github.com/lauri000/wifi-aware-photo-feed"
+        ]
+      },
+      {
+        "name": "LoRa Range Test",
+        "repositories": [
+          "https://gitworkshop.dev/npub12m5exm2uk3xa674cc5r0hlyvccs5xxn7qv83ezuteefv5972nquq4j4szl/relay.ngit.dev/sx1280-correlation-test"
+        ],
+        "links": [
+          "https://gitworkshop.dev/npub12m5exm2uk3xa674cc5r0hlyvccs5xxn7qv83ezuteefv5972nquq4j4szl/relay.ngit.dev/sx1280-correlation-test"
+        ]
+      },
+      {
+        "name": "MONAD",
+        "repositories": [
+          "https://github.com/SatsAndSports/MONAD"
+        ],
+        "links": [
+          "https://github.com/SatsAndSports/MONAD"
+        ]
+      },
+      {
+        "name": "NAAN",
+        "repositories": [
+          "https://github.com/dergigi/naan"
+        ],
+        "links": [
+          "https://github.com/dergigi/naan"
+        ]
+      },
+      {
+        "name": "Nostr VPN on FIPS",
+        "repositories": [
+          "https://github.com/mmalmi/nostr-vpn"
+        ],
+        "links": [
+          "https://github.com/mmalmi/nostr-vpn"
+        ]
+      },
+      {
+        "name": "OPNsense FIPS Backup",
+        "repositories": [
+          "https://github.com/oleksky/os-fips-backup"
+        ],
+        "links": [
+          "https://github.com/oleksky/os-fips-backup"
+        ]
+      },
+      {
+        "name": "PyramidPlot",
+        "repositories": [
+          "https://github.com/k0sti/pyramidplot"
+        ],
+        "links": [
+          "https://github.com/k0sti/pyramidplot"
+        ]
+      },
+      {
+        "name": "TollGate Captive Portal",
+        "repositories": [
+          "https://github.com/OpenTollGate/tollgate-captive-portal-site",
+          "https://github.com/OpenTollGate/tollgate-captive-portal-site/pull/9",
+          "https://github.com/OpenTollGate/tollgate-module-basic-go/pull/93"
+        ],
+        "links": [
+          "https://github.com/OpenTollGate/tollgate-captive-portal-site",
+          "https://github.com/OpenTollGate/tollgate-captive-portal-site/pull/9",
+          "https://github.com/OpenTollGate/tollgate-module-basic-go/pull/93"
+        ]
+      },
+      {
+        "name": "Top 8",
+        "repositories": [
+          "https://github.com/jodobear/top8"
+        ],
+        "links": [
+          "https://github.com/jodobear/top8"
+        ]
+      },
+      {
+        "name": "Wallnut",
+        "repositories": [
+          "https://github.com/eskema/alphaama",
+          "https://github.com/soveng"
+        ],
+        "links": [
+          "https://github.com/eskema/alphaama",
+          "https://ants.sh/t/SovEng",
+          "https://tshirt.sovereignengineering.io/results",
+          "https://following.space/d/sier9e7ih6k2?p=83d999a148625c3d2bb819af3064c0f6a12d7da88f68b2c69221f3a746171d19",
+          "https://njump.to/sovereignengineering.io",
+          "https://github.com/soveng",
+          "https://slidestr.net/p/npub1s0veng2gvfwr62acrxhnqexq76sj6ldg3a5t935jy8e6w3shr5vsnwrmq5",
+          "https://castr.me/npub1s0veng2gvfwr62acrxhnqexq76sj6ldg3a5t935jy8e6w3shr5vsnwrmq5",
+          "https://njump.to/npub1p4kg8zxukpym3h20erfa3samj00rm2gt4q5wfuyu3tg0x3jg3gesvncxf8",
+          "https://njump.to/npub1330v3vee2mdvn2npdkquka2upmlrlsp0dl2c6kfnzwhpq6dvkjgq0d2k82",
+          "https://njump.to/dergigi.com"
+        ]
+      }
+    ],
+    "nostr": {
+      "tags": [
+        "SovEng",
+        "soveng",
+        "SEC08",
+        "sec08"
+      ],
+      "relays": [
+        "wss://relay.damus.io",
+        "wss://nos.lol",
+        "wss://relay.primal.net",
+        "wss://relay.nostr.band"
+      ],
+      "project_tags": [],
+      "events": []
+    },
+    "_collector_evidence": {
+      "pages": [
+        {
+          "source": "sovereign-engineering-tagged-events",
+          "cursor": null,
+          "count": 0,
+          "cap": 500,
+          "exhausted": true,
+          "effective_since": "2026-09-23T20:31:30Z",
+          "effective_until": "2026-09-23T23:44:00Z"
+        }
+      ]
+    }
+  }
+}

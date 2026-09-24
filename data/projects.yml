@@ -3524,6 +3524,16 @@ devtools:
     priority: medium
     notes: Uses NIP-07/NIP-46 signing surfaces; added automatic release versioning, Zapstore publisher validation and metadata, and corrected Blossom authorization in the 2026-08-18 to 2026-08-25 issue window
 
+  - name: Threshold Sessions
+    description: CLI for turning AI coding sessions into redacted, encrypted training-data epochs published through Nostr and Blossom
+    platforms: [ cli ]
+    repo: https://relay.ngit.dev/npub17m2ual3pdjvhd8yc6a3m8snzjsgnmtl26hwen48ne937qgyjyshs2zgvse/threshold.git
+    website: https://gitworkshop.dev/npub17m2ual3pdjvhd8yc6a3m8snzjsgnmtl26hwen48ne937qgyjyshs2zgvse/relay.ngit.dev/threshold
+    maintainer: zero
+    status: alpha
+    priority: medium
+    notes: Publishes per-epoch encrypted trees to Blossom and announces references on Nostr; supports Codex, Claude Code, Cursor, OpenCode, and pi session formats
+
 signers:
   - name: Amber
     description: Android event signer
@@ -5132,6 +5142,16 @@ libraries:
     notes: Transport plumbing; Nostr-surface gate applies at triage; submitted via link queue 2026-07-16
 
 wallets:
+  - name: MintRadar
+    description: Privacy-first dashboard for Cashu mint status, trust, NUT support, Nostr discovery, and community reviews
+    platforms: [ web ]
+    repo: https://github.com/hroomnik007/MintRadar
+    website: https://mintradar.org
+    maintainer: WildCitizen7
+    status: active
+    priority: medium
+    notes: Discovers mints through NIP-87; direct user submission recovered for Newsletter #41
+
   - name: Glow
     description: Self-custodial mobile and web Bitcoin wallet built on the Breez SDK
     platforms: [ web, ios, android ]
@@ -5503,6 +5523,15 @@ other:
     status: active
     priority: medium
     notes: Signed Zapstore listing; submitted by owner for Newsletter #39
+
+  - name: fips-initramfs
+    description: Remote LUKS root-unlock package that places an npub-addressed FIPS mesh node in initramfs
+    platforms: [ linux ]
+    repo: https://github.com/jmcorgan/fips-initramfs
+    maintainer: jmcorgan
+    status: active
+    priority: medium
+    notes: First release submitted directly for Compass; uses the FIPS Nostr-identity mesh before normal boot
 
   - name: Surveil
     description: Magic The Gathering deck builder on Nostr (kind 37381)
@@ -6462,3 +6491,13 @@ protocols:
     status: alpha
     priority: medium
     notes: Composes Nostr signed events, Radicle-backed durable storage, Marmot encrypted conversations, KERI identity, and conformance vectors; Radicle RID rad:z2zX5XvPiggGJvCn8DPkp1hRNGA5; submitted via link queue 2026-08-20
+
+  - name: napplet.soy
+    description: Nostr playground and creator tool for building, publishing, playing, inspecting, and remixing small sandboxed napplets
+    platforms: [ web, cli, server ]
+    repo: https://github.com/zeSchlausKwab/napplet-soy
+    website: https://napplet.soy
+    maintainer: zeSchlausKwab
+    status: alpha
+    priority: medium
+    notes: soyLI publishes signed napplet listings with source and assets while the site discovers manifests from Nostr relays and loads content from Blossom

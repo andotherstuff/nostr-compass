@@ -1,0 +1,7 @@
+Independently review the Compass #41 draft's two new final-cutoff stories against the supplied primary-source notes and signed-store artifact. This is a focused, no-tools cold read while the distinct specs collector is pending; it cannot approve publication or the final ten-family sweep. Use the runner's strict JSON verdict contract.
+
+1. MDK #2007: Check that the draft describes only the merged library implementation, correctly distinguishes the 0.10.4 tagged release from later merged work, and does not invent measured latency or deployed client behavior. Compare the exact PR-body facts in the supplied notes and source-decision memo.
+2. Table Mesh 0.1.0: Check that its first signed release actually supports Bluetooth/Wi-Fi local play, bundled game and bots, Nostr kind-7529 game discovery, Blossom fetch and byte verification. Flag any unsupported implication that Nostr carries table moves or that real multi-phone testing is complete. Assess whether the optional Nostr distribution path is substantial enough for the 8/10 editorial selection and whether its Top Story position is justified.
+3. Spot any nearby continuity, ambiguity, safety, or attribution defect introduced by these additions. Do not assume the unreviewed final specs family is clean; specifically state that final source, PR-head, CI, deployment, signing, and relay gates remain separate.
+
+For each defect cite the exact passage and primary URL and give an actionable correction. A PASS may approve only these two story decisions and wording on this immutable input snapshot.
