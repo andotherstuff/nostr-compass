@@ -2532,6 +2532,16 @@ devtools:
     notes: Browser-only publishing flow with generated or imported Nostr keys;
       launched August 2026
 
+  - name: Nostermentor
+    description: Single-file manager for nsite websites and blogs, with nothing to install
+    platforms: [ web ]
+    repo: https://github.com/LucasQSats/nostermentor
+    website: https://npub1j5tad3x8msv4sy6qnvyrcgvjhfjmlmh32l75kgch2jkqdgfudzaq2wmx2k.nsite.lol/
+    maintainer: LucasQSats
+    status: beta
+    priority: low
+    notes: Pages, posts, media and 21 themes; signs NIP-5A manifests in the browser and uploads to Blossom; built for Tails and Tor Browser; desktop only; interface in Portuguese only for now
+
   - name: Backyard Explorer
     description: Example search app for window.nostrdb
     platforms: [ web ]
