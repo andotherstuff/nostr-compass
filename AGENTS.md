@@ -378,7 +378,7 @@ pip3 install -r scripts/requirements.txt  # includes httpx
 python3 scripts/fetch_project_updates.py --since-days 7          # full fetch
 python3 scripts/fetch_project_updates.py --since-days 1 --compact # quick check (skip commits/open PRs)
 python3 scripts/fetch_project_updates.py --fresh                  # ignore partial results
-python3 scripts/fetch_project_updates.py --concurrency 40         # more parallel connections
+python3 scripts/fetch_project_updates.py --concurrency 4          # raw transport only; guarded calls are serialized
 ```
 
 **Output:** `data/project_updates/updates_*.json`
@@ -391,51 +391,26 @@ batch. A normal rerun resumes from this journal; `--fresh` deliberately drops
 it and should only be used when a complete refetch is required. This prevents
 worker or gateway restarts from repeatedly consuming the GitHub REST quota.
 
-**GitHub API budget and immutable-pass rule:** Before Stage 2, use the
-authenticated CLI to read every relevant bucket:
+**GitHub API budget and immutable-pass rule:** Read
+[the collector budget contract](docs/collector-github-budget.md) before collection.
+Hermes selects its maintained authenticated CLI, shares serialization/backoff,
+and keeps 1,500 REST requests available to other work. Other installations can
+set `COMPASS_GITHUB_GH` to their maintained CLI. A configured transport failure
+never falls back to raw HTTP.
 
-```bash
-gh api rate_limit --jq '{core:.resources.core,graphql:.resources.graphql,search:.resources.search}'
-```
+Freeze one absolute UTC `--since`/`--until` window and one pass ID. Run
+`fetch_all.sh` once, then resume that same pass without `--fresh` after a quota
+deferral. Check matching live collector processes first. Exit 75 preserves
+checkpoints and does not certify complete coverage. Checkpoint filenames bind
+the exact timestamps and compact mode; a prior cutoff is never a fresh delta.
+Never rewrite an artifact after its immutable receipt exists.
 
-The project collector currently consumes the REST `core` bucket and a complete
-725-repository pass can use roughly 3,650 requests. The later app-discovery
-family also lists every distinct tracked GitHub owner through REST core (418
-owners as of 2026-09-16), so one complete `fetch_all.sh` pass needs roughly
-4,100 core requests before unrelated same-hour traffic. Start it only when the
-remaining core budget can finish both collectors with the 500-request guard
-reserve. Do not mistake the untouched GraphQL or search buckets for additional
-REST core capacity. Run at most
-one fresh project sweep for one fixed `--pass-id`, `--since`, and `--until`
-window. Run `fetch_all.sh` exactly once for that pass; never prime it with a
-standalone project collector and then invoke `fetch_all.sh`, because the second
-invocation rewrites nondeterministic artifact metadata after receipt creation.
-Never start a second collector while a matching `fetch_all.sh` or
-`fetch_project_updates.py` PID is live, even when its parent worker has ended.
-Never rerun `--fresh` after that pass emitted an immutable receipt: it rewrites
-the artifact and invalidates the receipt hash. Resume the same pass without
-`--fresh`. If an unfinalized pass already has a conflicting receipt/artifact,
-abandon that pass and run one new pass ID over the same still-frozen window,
-resuming its completed project journal without `--fresh`; never relabel or
-overwrite the conflicting receipt.
-
-REST `core`, GraphQL, and search are separate limits. Use `gh api graphql` for
-bounded current-state or delta verification when core is constrained; do not
-spend REST repeatedly while GraphQL is untouched. A GraphQL check may replace
-the project collector only when it records the same exact window, exhaustive
-pagination, candidate dispositions, artifact hash, and immutable collector
-receipt. Otherwise wait for the documented reset and run exactly one fresh
-REST collector. Browser scraping is never a rate-limit fallback.
-
-App discovery reads both live budgets before its owner sweep. When REST core
-cannot cover every remaining owner plus the reserve but GraphQL can, it uses
-the exhaustively paginated GraphQL owner query and records those pages in the
-same immutable receipt. If neither bucket can cover the sweep, it exits without
-an `app-discovery` receipt. Let the process exit, wait for a recorded reset,
-and rerun only `fetch_app_discovery.py` with the same pass/window environment;
-then resume `fetch_all.sh` so valid receipts are ingested and only missing
-families run. Never accept partial JSON or `source_errors` as complete source
-evidence.
+REST core, GraphQL and search have separate limits. REST's `rate_limit`
+GraphQL entry is not authoritative; owner discovery queries GraphQL itself.
+A complete REST sweep may span quota resets. Prefer an already verified
+exact-window receipt or an exhaustive, receipt-producing GraphQL delta over
+another full sweep. Never use partial JSON, errors, browser scraping, or a
+relabeled old receipt as complete evidence.
 
 Run `python3 -m unittest tests/test_fetch_project_updates_resume.py` after
 editing the resume/checkpoint path.

@@ -317,6 +317,19 @@ projects:
         self.assertIn("graphql", runner.call_args.args[0])
         self.assertEqual(runner.call_count, 1)
 
+    def test_budget_probe_ignores_rest_graphql_and_reads_independent_authority(self):
+        mod = load_module()
+        rest = subprocess.CompletedProcess([], 0, json.dumps({"core":{"remaining":2000},"search":{"remaining":30},"graphql":{"remaining":5000}}), "")
+        independent = subprocess.CompletedProcess([], 0, json.dumps({"data":{"rateLimit":{"limit":5000,"remaining":123,"used":4877,"resetAt":"2026-09-30T17:00:00Z","cost":1}}}), "")
+        with mock.patch.object(mod.subprocess, "run", side_effect=[rest, independent]) as runner:
+            budgets = mod.github_rate_limits()
+        self.assertEqual(123, budgets["graphql"]["remaining"])
+        self.assertEqual(1790787600, budgets["graphql"]["reset"])
+        self.assertIn("graphql", runner.call_args_list[1].args[0])
+        failed = subprocess.CompletedProcess([], 75, "", "shared backoff")
+        with mock.patch.object(mod.subprocess, "run", side_effect=[rest, failed]):
+            self.assertEqual(0, mod.github_rate_limits()["graphql"]["remaining"])
+
     def test_owner_sweep_prefers_graphql_when_it_can_cover_owners_and_reserve(self):
         mod = load_module()
         owners = ["alpha", "zeta"]

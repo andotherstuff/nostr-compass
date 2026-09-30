@@ -964,7 +964,7 @@ def fetch_owner_siblings(
 
 def github_rate_limits() -> dict[str, dict]:
     proc = subprocess.run(
-        ["gh", "api", "rate_limit", "--jq", ".resources | {core,graphql,search}"],
+        ["gh", "api", "rate_limit", "--jq", ".resources | {core,search}"],
         check=False, capture_output=True, text=True, timeout=60,
     )
     if proc.returncode != 0:
@@ -972,6 +972,21 @@ def github_rate_limits() -> dict[str, dict]:
     value = json.loads(proc.stdout)
     if not isinstance(value, dict):
         raise RuntimeError("GitHub rate-limit response was not an object")
+    graphql = subprocess.run(
+        ["gh", "api", "graphql", "-f",
+         "query=query { rateLimit { limit remaining used resetAt cost } }"],
+        check=False, capture_output=True, text=True, timeout=60,
+    )
+    if graphql.returncode == 0:
+        payload = json.loads(graphql.stdout)
+        if payload.get("errors"):
+            raise RuntimeError("GraphQL quota probe returned errors")
+        rate = payload["data"]["rateLimit"]
+        value["graphql"] = {key: int(rate[key]) for key in ("limit", "remaining", "used")}
+        value["graphql"]["reset"] = int(datetime.fromisoformat(rate["resetAt"].replace("Z", "+00:00")).timestamp())
+    else:
+        # Failed independent authority is zero available, never REST's value.
+        value["graphql"] = {"limit": 0, "remaining": 0, "used": 0, "reset": 0}
     return value
 
 
