@@ -46,6 +46,8 @@ That split lets users publish a visible list shell while hiding some entries. A 
 
 Recent spec changes moved hashtags out of generic bookmarks and into interest sets, and added kind `30006` for picture curation. Both changes reduce ambiguity in how clients interpret list contents.
 
+A [September 2026 correction](https://github.com/nostr-protocol/nips/pull/2417) moved the favorite-follow-sets list to kind `10021` because its earlier kind was already in use. The list's `a` tags still reference kind `30000` follow sets. This resolves a collision without changing what a follow set contains.
+
 ---
 
 **Primary sources:**
@@ -62,6 +64,9 @@ Recent spec changes moved hashtags out of generic bookmarks and into interest se
 - [Newsletter #32: News](/en/newsletters/2026-07-22-newsletter/#the-favorite-follow-sets-list-kind-merges-and-immediately-moves-house)
 - [Newsletter #33: Six Years of Nostr Julys](/en/newsletters/2026-07-29-newsletter/#six-years-of-nostr-julys)
 - [Newsletter #36: Nostter adds bookmark lists, profile badges, and Blossom uploads](/en/newsletters/2026-08-19-newsletter/#nostter-adds-bookmark-lists-profile-badges-and-blossom-uploads)
+- [Newsletter #42: follow-set kind correction](/en/newsletters/2026-09-30-newsletter/#nip-51-moves-favorite-follow-sets-to-an-unused-event-kind)
 
 **See also:**
 - [NIP-02: Follow List](/en/topics/nip-02/)
+
+- [Newsletter #42: Hidden replies proposal](/en/newsletters/2026-09-30-newsletter/#nip-51-proposes-hidden-replies-for-each-thread)

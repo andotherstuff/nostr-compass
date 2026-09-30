@@ -26,18 +26,22 @@ The transport-agnostic design is also important. The same routing and identity m
 
 ## Implementation Status
 
-As covered in Compass, the current Rust implementation already includes working UDP transport and bloom-filter-based discovery. Relay-based bootstrapping is still future work, so today the protocol is more a networking substrate than a finished Nostr relay replacement.
+The Rust implementation includes UDP transport and bloom-filter-based discovery. [fips2go 0.7.0](https://github.com/fr34aky/fips2go/releases/tag/v0.7.0) added optional Nostr-announced peer discovery and fallback bootstrap peers. [fips-pub-domains](https://github.com/fr34aky/fips-pub-domains/releases/tag/v0.2.1) is testing Nostr-signed public-domain claims, DNSSEC proofs, and mesh-only lookups. These are application and naming integrations; they do not make FIPS a Nostr relay replacement.
 
 ---
 
 **Primary sources:**
 - [FIPS Repository](https://github.com/jmcorgan/fips)
 - [Design Documentation](https://github.com/jmcorgan/fips/blob/master/docs/design/fips-intro.md)
+- [fips2go 0.7.0 release](https://github.com/fr34aky/fips2go/releases/tag/v0.7.0)
+- [fips-pub-domains 0.2.1 release](https://github.com/fr34aky/fips-pub-domains/releases/tag/v0.2.1)
 
 **Mentioned in:**
 - [Newsletter #11: FIPS News](/en/newsletters/2026-02-25-newsletter/#fips-nostr-native-mesh-networking)
 - [Newsletter #12](/en/newsletters/2026-03-04-newsletter/)
 - [Newsletter #32: News](/en/newsletters/2026-07-22-newsletter/#the-iris-projects-ship-a-pubsub-library-a-browser-fips-runtime-and-a-social-graph-20-in-one-week)
+- [Newsletter #41: FIPS mesh updates](/en/newsletters/2026-09-23-newsletter/#fips2go-070-keeps-the-mesh-connected-through-bootstrap-failures)
+- [Newsletter #42: public-domain bindings](/en/newsletters/2026-09-30-newsletter/#fips-pub-domains-tests-signed-public-names-for-a-mesh)
 
 **See also:**
 - [Marmot Protocol](/en/topics/marmot/)

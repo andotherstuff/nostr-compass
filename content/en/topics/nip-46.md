@@ -66,6 +66,7 @@ The `switch_relays` method exists so the signer can move the session to a differ
 - [Newsletter #38: Zap Cooking](/en/newsletters/2026-09-02-newsletter/#zap-cooking-scopes-bunker-relays-and-signs-paid-endpoints)
 
 - [Newsletter #40: Keycast 2.0.0-rc.1 remote signer](/en/newsletters/2026-09-16-newsletter/#keycast-publishes-its-rebuilt-signer-release-candidate)
+- [Newsletter #42: Conduit remote signing](/en/newsletters/2026-09-30-newsletter/#conduit-advances-checkout-after-relay-acceptance)
 
 **See also:**
 - [NIP-55: Android Signer](/en/topics/nip-55/)

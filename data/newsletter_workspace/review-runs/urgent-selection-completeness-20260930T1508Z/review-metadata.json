@@ -1,0 +1,160 @@
+{
+  "attempts": [
+    {
+      "attempt": 1,
+      "model": "composer-2.5[fast=true]",
+      "outcome": "success",
+      "output_sha256": "d207f72f6a4bcc1f803b591dd46fffb09317f3f2ef12e16ca3c09b6741c1f0ff",
+      "provider": "cursor",
+      "response_id": null,
+      "routing_attempts": [
+        {
+          "budget_seconds": 72.0,
+          "elapsed_seconds": 67.305,
+          "kind": "timeout",
+          "message": "Isolated review deadline",
+          "model": "grok-4.6",
+          "outcome": "failure",
+          "provider": "cursor",
+          "provider_wide": false
+        },
+        {
+          "budget_seconds": 73.173,
+          "elapsed_seconds": 60.561,
+          "model": "composer-2.5",
+          "outcome": "success",
+          "provider": "cursor"
+        }
+      ],
+      "started_at": "2026-09-30T15:12:43.280733+00:00",
+      "usage": {}
+    }
+  ],
+  "completed_at": "2026-09-30T15:14:51.148622+00:00",
+  "elapsed_seconds": 127.868,
+  "endpoint": "cursor-acp",
+  "implementation_model": "gpt-6.1-sol",
+  "implementation_models": [
+    "gpt-6.1-sol"
+  ],
+  "instructions_sha256": "be9832847911219a7d921a48957067651165381a241168b2a0f4f2c423d3b9d4",
+  "max_attempts": 1,
+  "max_output_tokens": 2600,
+  "requested_model": "grok-4.6",
+  "review_tier": "standard",
+  "routing_chain": [
+    {
+      "model": "grok-4.6",
+      "provider": "cursor"
+    },
+    {
+      "model": "composer-2.5",
+      "provider": "cursor"
+    },
+    {
+      "model": "claude-opus-5",
+      "provider": "claude-code"
+    },
+    {
+      "model": "google/gemini-3.1-pro-preview",
+      "provider": "openrouter"
+    }
+  ],
+  "schema_version": 1,
+  "selected_cost_usd": null,
+  "selected_endpoint": "cursor-acp",
+  "selected_family": "cursor",
+  "selected_model": "composer-2.5[fast=true]",
+  "selected_provider": "cursor",
+  "snapshots": [
+    {
+      "bytes": 33832,
+      "path": "/opt/data/compass-worktrees/2026-09-30/data/newsletter_workspace/selection_review_2026-09-30.md",
+      "sha256": "185c73a8e095e71e0b9f62c1f9089cbea3a80f1fea687986943bc07303a84c46",
+      "stored_name": "001-185c73a8e095e71e-selection_review_2026-09-30.md"
+    },
+    {
+      "bytes": 169136,
+      "path": "/opt/data/compass-worktrees/2026-09-30/data/newsletter_workspace/selection_coverage_2026-09-30.json",
+      "sha256": "bd2e82de912122c0a63d863bb2811a5894ba039b8246ea62f1e174ccc0ee2ffb",
+      "stored_name": "002-bd2e82de912122c0-selection_coverage_2026-09-30.json"
+    },
+    {
+      "bytes": 10697,
+      "path": "/opt/data/compass-worktrees/2026-09-30/data/newsletter_workspace/triage_2026-09-30.md",
+      "sha256": "bfbf785e42ef6aa02aab722f3ff9fbf6a62cde342df96fce44b7abdedf886d36",
+      "stored_name": "003-bfbf785e42ef6aa0-triage_2026-09-30.md"
+    },
+    {
+      "bytes": 62247,
+      "path": "/opt/data/compass-worktrees/2026-09-30/content/en/newsletters/2026-09-30-newsletter.md",
+      "sha256": "692281bd4d5fe7d5505e875236ff8451051611b17a9c08ab2ef8250d76b6a99c",
+      "stored_name": "004-692281bd4d5fe7d5-2026-09-30-newsletter.md"
+    },
+    {
+      "bytes": 8896,
+      "path": "/opt/data/compass-worktrees/2026-09-30/data/newsletter_workspace/review_claims_2026-09-30.md",
+      "sha256": "f93e2d8e7acf044fa0d6cb60cb9daf45452f0fc35ee94f44590dc1d370a21b38",
+      "stored_name": "005-f93e2d8e7acf044f-review_claims_2026-09-30.md"
+    },
+    {
+      "bytes": 128530,
+      "path": "/opt/data/compass-worktrees/2026-09-30/data/newsletter_workspace/project_activity_decisions_2026-09-30.json",
+      "sha256": "6c0fdfc92ad5481894fd95daafaf2b5e9cbd5ed559b67a4b8fbc86ab070f185e",
+      "stored_name": "006-6c0fdfc92ad54818-project_activity_decisions_2026-09-30.json"
+    },
+    {
+      "bytes": 25710,
+      "path": "/opt/data/compass-worktrees/2026-09-30/data/newsletter_workspace/release_triage_2026-09-30.md",
+      "sha256": "b95055d24ebc2e1cf17d6ec5cb98b4d4ef33b99c8856109b41b743cd96a8f550",
+      "stored_name": "007-b95055d24ebc2e1c-release_triage_2026-09-30.md"
+    },
+    {
+      "bytes": 8145,
+      "path": "/opt/data/compass-worktrees/2026-09-30/data/newsletter_workspace/app_discovery_triage_2026-09-30.md",
+      "sha256": "214e1e5b7e248e06328a5def36dbaed564837d92be76240a21febc5d956a6720",
+      "stored_name": "008-214e1e5b7e248e06-app_discovery_triage_2026-09-30.md"
+    },
+    {
+      "bytes": 7402,
+      "path": "/opt/data/compass-worktrees/2026-09-30/data/newsletter_workspace/non_github_triage_2026-09-30.md",
+      "sha256": "017ce76b511c8b1bc9a4cf392235f50d285b33e91302127a015b877a4e6ed4cb",
+      "stored_name": "009-017ce76b511c8b1b-non_github_triage_2026-09-30.md"
+    },
+    {
+      "bytes": 14579,
+      "path": "/opt/data/compass-worktrees/2026-09-30/data/newsletter_workspace/zapstore_triage_2026-09-30.md",
+      "sha256": "23c91d074a5bb09ac3420ecc652277b7d9f9d06f8b473c06d4872fdad77f9d4b",
+      "stored_name": "010-23c91d074a5bb09a-zapstore_triage_2026-09-30.md"
+    }
+  ],
+  "started_at": "2026-09-30T15:12:43.279481+00:00",
+  "status": "completed",
+  "timeout_scope": "invocation_including_retries_and_cleanup",
+  "timeout_seconds": 360,
+  "tools_enabled": false,
+  "verdict": {
+    "findings": [
+      {
+        "evidence": "In content/en/newsletters/2026-09-30-newsletter.md, \u201cElisym's commerce packages introduce private Nostr orders\u201d calls the linked @elisym/pay-core@0.1.1 release the \u201cfirst `commerce` package\u201d that defines store products and wrapped orders, then treats @elisym/commerce@0.2.0 as a later commerce tag. review_claims_2026-09-30.md explicitly states the series introduces \u201cseparate payment-core and browser-checkout work,\u201d and the In Development item correctly anchors commerce behavior to merged PR #120\u2014not the pay-core tag.",
+        "recommendation": "Relabel pay-core@0.1.1 as payment-core infrastructure (or remove commerce-package claims from that link) and point the first commerce-package sentence to the @elisym/commerce release tag and/or PR #120 primary sources; keep the pay-core/commerce split consistent across Tagged Releases and In Development.",
+        "severity": "major",
+        "title": "Elisym release paragraph mislabels pay-core tag as the first commerce package"
+      },
+      {
+        "evidence": "selection_review_2026-09-30.md and selection_coverage_2026-09-30.json title the item \u201cSonar alpha.15\u2013alpha.15.1 repairs encrypted-group publishing,\u201d but the same reason text and newsletter draft lead with alpha.15 emoji reactions and private local-time sharing, treating the encrypted-group republish hotfix as alpha.15.1-specific (\u201crepairs encrypted-group publishing\u201d matches alpha.15.1, not the whole range headline).",
+        "recommendation": "Retitle or rebalance the lead so alpha.15 user-visible features and the alpha.15.1 relay-storm repair are both explicit, e.g., split the headline emphasis or add a first sentence on reactions/local-time before the publishing repair.",
+        "severity": "minor",
+        "title": "Sonar headline overweights the alpha.15.1 repair relative to alpha.15 features"
+      },
+      {
+        "evidence": "selection_coverage_2026-09-30.json maps story:scramble-0-7-4-0-7-5 to collector_source_ids under DavidGershony/openChat while editorial provenance, primary_sources, and release_triage_2026-09-30.md all cite DavidGershony/Scramble release tags v0.7.4/v0.7.5.",
+        "recommendation": "Confirm openChat is the tracked alias for Scramble in project metadata; if not, fix the collector/editorial mapping so release receipts and story locators reference the same repository.",
+        "severity": "note",
+        "title": "Scramble release collector key differs from editorial repo locator"
+      }
+    ],
+    "summary": "Edition #42\u2019s Tuesday-window selection is largely coherent\u201448/48 tagged releases dispositioned, merged-PR skips documented, and maturity qualifiers (proposed vs merged vs released) are mostly sound\u2014but the Elisym Tagged Releases paragraph misattributes the first commerce-package claim to a pay-core release tag while the snapshot separately treats payment-core and commerce packages. That is a substantive source-mapping error in published copy, not a receipts gap.",
+    "verdict": "FAIL"
+  }
+}

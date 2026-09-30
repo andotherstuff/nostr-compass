@@ -40,6 +40,7 @@ One practical point for implementers is that kind 0 remains a hot path in most c
 
 **Mentioned in:**
 - [Newsletter #1: NIP Updates](/en/newsletters/2025-12-17-newsletter/#nip-updates)
+- [Newsletter #42: September 2023 metadata](/en/newsletters/2026-09-30-newsletter/#september-2023-clients-grow-up-around-relay-discovery-and-metadata)
 
 **See also:**
 - [NIP-01: Basic Protocol](/en/topics/nip-01/)

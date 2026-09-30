@@ -1,0 +1,172 @@
+{
+  "attempts": [
+    {
+      "attempt": 1,
+      "kind": "provider",
+      "message": "all configured subscription-backed Cursor and Claude reviewers and metered OpenRouter were unavailable",
+      "outcome": "failure",
+      "retryable": true,
+      "routing_attempts": [
+        {
+          "budget_seconds": 72.0,
+          "elapsed_seconds": 67.142,
+          "kind": "timeout",
+          "message": "Isolated review deadline",
+          "model": "grok-4.6",
+          "outcome": "failure",
+          "provider": "cursor",
+          "provider_wide": false
+        },
+        {
+          "budget_seconds": 73.215,
+          "elapsed_seconds": 23.861,
+          "kind": "malformed_verdict",
+          "message": "ACP output did not contain exactly one schema-valid trailing JSON verdict",
+          "model": "composer-2.5",
+          "outcome": "failure",
+          "provider": "cursor",
+          "provider_wide": false
+        },
+        {
+          "budget_seconds": 179.332,
+          "elapsed_seconds": 1.385,
+          "kind": "provider",
+          "message": "Claude review failed (provider; exit 1)",
+          "model": "claude-opus-5",
+          "outcome": "failure",
+          "provider": "claude-code"
+        },
+        {
+          "budget_seconds": 267.613,
+          "elapsed_seconds": 3.002,
+          "kind": "capacity",
+          "message": "OpenRouter credential credit $0.05 is below the $50.00 reserve floor",
+          "models": [
+            "google/gemini-3.1-pro-preview"
+          ],
+          "outcome": "failure",
+          "provider": "openrouter"
+        }
+      ],
+      "started_at": "2026-09-30T16:21:38.032665+00:00"
+    }
+  ],
+  "elapsed_seconds": 95.389,
+  "endpoint": "cursor-acp",
+  "implementation_model": "gpt-6.1-sol",
+  "implementation_models": [
+    "gpt-6.1-sol"
+  ],
+  "instructions_sha256": "aeefa0fbbcb38ba52a4e380b92208ae77aba3b011d85195bbbb7024b7d279cc7",
+  "last_failure": {
+    "attempt": 1,
+    "kind": "provider",
+    "message": "all configured subscription-backed Cursor and Claude reviewers and metered OpenRouter were unavailable",
+    "outcome": "failure",
+    "retryable": true,
+    "routing_attempts": [
+      {
+        "budget_seconds": 72.0,
+        "elapsed_seconds": 67.142,
+        "kind": "timeout",
+        "message": "Isolated review deadline",
+        "model": "grok-4.6",
+        "outcome": "failure",
+        "provider": "cursor",
+        "provider_wide": false
+      },
+      {
+        "budget_seconds": 73.215,
+        "elapsed_seconds": 23.861,
+        "kind": "malformed_verdict",
+        "message": "ACP output did not contain exactly one schema-valid trailing JSON verdict",
+        "model": "composer-2.5",
+        "outcome": "failure",
+        "provider": "cursor",
+        "provider_wide": false
+      },
+      {
+        "budget_seconds": 179.332,
+        "elapsed_seconds": 1.385,
+        "kind": "provider",
+        "message": "Claude review failed (provider; exit 1)",
+        "model": "claude-opus-5",
+        "outcome": "failure",
+        "provider": "claude-code"
+      },
+      {
+        "budget_seconds": 267.613,
+        "elapsed_seconds": 3.002,
+        "kind": "capacity",
+        "message": "OpenRouter credential credit $0.05 is below the $50.00 reserve floor",
+        "models": [
+          "google/gemini-3.1-pro-preview"
+        ],
+        "outcome": "failure",
+        "provider": "openrouter"
+      }
+    ],
+    "started_at": "2026-09-30T16:21:38.032665+00:00"
+  },
+  "max_attempts": 1,
+  "max_output_tokens": 2200,
+  "requested_model": "grok-4.6",
+  "review_tier": "standard",
+  "routing_chain": [
+    {
+      "model": "grok-4.6",
+      "provider": "cursor"
+    },
+    {
+      "model": "composer-2.5",
+      "provider": "cursor"
+    },
+    {
+      "model": "claude-opus-5",
+      "provider": "claude-code"
+    },
+    {
+      "model": "google/gemini-3.1-pro-preview",
+      "provider": "openrouter"
+    }
+  ],
+  "schema_version": 1,
+  "snapshots": [
+    {
+      "bytes": 110675,
+      "path": "/opt/data/compass-worktrees/2026-09-30/content/en/newsletters/2026-09-30-newsletter.md",
+      "sha256": "b5bdeaa8da60ea2d299527d02bb8c562e54af64061b04823d101213a840e0e3f",
+      "stored_name": "001-b5bdeaa8da60ea2d-2026-09-30-newsletter.md"
+    },
+    {
+      "bytes": 4924,
+      "path": "/opt/data/tmp/compass_selection_urgent_20260930/final_leak_fixed.diff",
+      "sha256": "47dcc6a66e4c9315fe8456d57004d904f709ec66686e75ff89b31ff2f09adbd8",
+      "stored_name": "002-47dcc6a66e4c9315-final_leak_fixed.diff"
+    },
+    {
+      "bytes": 1961,
+      "path": "/opt/data/compass-worktrees/2026-09-30/data/newsletter_workspace/review-runs/urgent-final-leak-challenge-20260930T1616Z/verdict.json",
+      "sha256": "3b02bb854f8d4448ff8edb772c2215fc4962f22f694144f5e442cafab9467dc0",
+      "stored_name": "003-3b02bb854f8d4448-verdict.json"
+    },
+    {
+      "bytes": 2201,
+      "path": "/opt/data/compass-worktrees/2026-09-30/data/newsletter_workspace/review-runs/urgent-final-delta-20260930T1610Z/verdict.json",
+      "sha256": "68c8e4e28d884ccf93822fc29cbb8d058f8f699a1a5d9165725083d5afc78dc3",
+      "stored_name": "004-68c8e4e28d884ccf-verdict.json"
+    },
+    {
+      "bytes": 153,
+      "path": "/opt/data/tmp/compass_tldr_proposed_20260930.txt",
+      "sha256": "3ae9efe27b2a4971a84530dfd34d4502f3ca241ce457efda2cbe9c2e1726dad3",
+      "stored_name": "005-3ae9efe27b2a4971-compass_tldr_proposed_20260930.txt"
+    }
+  ],
+  "started_at": "2026-09-30T16:21:38.032264+00:00",
+  "status": "failed",
+  "timeout_scope": "invocation_including_retries_and_cleanup",
+  "timeout_seconds": 360,
+  "tools_enabled": false,
+  "updated_at": "2026-09-30T16:23:13.422125+00:00"
+}

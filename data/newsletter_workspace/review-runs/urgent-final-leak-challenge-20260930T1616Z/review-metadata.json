@@ -1,0 +1,118 @@
+{
+  "attempts": [
+    {
+      "attempt": 1,
+      "model": "composer-2.5[fast=true]",
+      "outcome": "success",
+      "output_sha256": "c8cf180b40573f81df2f92ac8a26e3318a2021f23f455e6c808488980bdd01ed",
+      "provider": "cursor",
+      "response_id": null,
+      "routing_attempts": [
+        {
+          "budget_seconds": 96.0,
+          "elapsed_seconds": 91.195,
+          "kind": "timeout",
+          "message": "Isolated review deadline",
+          "model": "grok-4.6",
+          "outcome": "failure",
+          "provider": "cursor",
+          "provider_wide": false
+        },
+        {
+          "budget_seconds": 97.201,
+          "elapsed_seconds": 34.447,
+          "model": "composer-2.5",
+          "outcome": "success",
+          "provider": "cursor"
+        }
+      ],
+      "started_at": "2026-09-30T16:16:46.133822+00:00",
+      "usage": {}
+    }
+  ],
+  "completed_at": "2026-09-30T16:18:51.776902+00:00",
+  "elapsed_seconds": 125.643,
+  "endpoint": "cursor-acp",
+  "implementation_model": "gpt-6.1-sol",
+  "implementation_models": [
+    "gpt-6.1-sol"
+  ],
+  "instructions_sha256": "c9ebe3e08c3c6de0c1396134e1a86b7e522418ac9ef2de2b4aad59c3b479b8b1",
+  "max_attempts": 1,
+  "max_output_tokens": 2200,
+  "requested_model": "grok-4.6",
+  "review_tier": "standard",
+  "routing_chain": [
+    {
+      "model": "grok-4.6",
+      "provider": "cursor"
+    },
+    {
+      "model": "composer-2.5",
+      "provider": "cursor"
+    },
+    {
+      "model": "claude-opus-5",
+      "provider": "claude-code"
+    },
+    {
+      "model": "google/gemini-3.1-pro-preview",
+      "provider": "openrouter"
+    }
+  ],
+  "schema_version": 1,
+  "selected_cost_usd": null,
+  "selected_endpoint": "cursor-acp",
+  "selected_family": "cursor",
+  "selected_model": "composer-2.5[fast=true]",
+  "selected_provider": "cursor",
+  "snapshots": [
+    {
+      "bytes": 110801,
+      "path": "/opt/data/compass-worktrees/2026-09-30/content/en/newsletters/2026-09-30-newsletter.md",
+      "sha256": "406c7db2562afa1d5eda16e0bae940ec406d7cfa17683ecd16722a720387a217",
+      "stored_name": "001-406c7db2562afa1d-2026-09-30-newsletter.md"
+    },
+    {
+      "bytes": 3564,
+      "path": "/opt/data/tmp/compass_selection_urgent_20260930/final_mechanical_correction.diff",
+      "sha256": "4429718f330e8b3f7d0d859877d1c39d920245b1cf2bdf2187710d303670ca86",
+      "stored_name": "002-4429718f330e8b3f-final_mechanical_correction.diff"
+    },
+    {
+      "bytes": 153,
+      "path": "/opt/data/tmp/compass_tldr_proposed_20260930.txt",
+      "sha256": "3ae9efe27b2a4971a84530dfd34d4502f3ca241ce457efda2cbe9c2e1726dad3",
+      "stored_name": "003-3ae9efe27b2a4971-compass_tldr_proposed_20260930.txt"
+    },
+    {
+      "bytes": 1196,
+      "path": "/opt/data/compass-worktrees/2026-09-30/data/newsletter_workspace/review-runs/urgent-final-editorial-20260930T1548Z/verdict.json",
+      "sha256": "c2ec8cf470d919051a132a9f06108dec59aee19cb5e0f2a51137dfaa4ddd2d47",
+      "stored_name": "004-c2ec8cf470d91905-verdict.json"
+    }
+  ],
+  "started_at": "2026-09-30T16:16:46.133033+00:00",
+  "status": "completed",
+  "timeout_scope": "invocation_including_retries_and_cleanup",
+  "timeout_seconds": 480,
+  "tools_enabled": false,
+  "verdict": {
+    "findings": [
+      {
+        "evidence": "In the Buzz desktop 0.5.26 paragraph: \"Preserve the existing explanation that NIP-AR and NIP-FI are Buzz's project specifications.\" The preceding sentences already state that NIP-AR is Buzz's own proposal and NIP-FI is a project specification; \"Preserve the existing explanation\" is placement guidance to the writer, not reader-facing newsletter prose.",
+        "recommendation": "Delete the preservation directive and, if needed, fold its substance into ordinary reader-facing sentences already present earlier in the Buzz section.",
+        "severity": "major",
+        "title": "Buzz section retains an editorial preservation directive"
+      },
+      {
+        "evidence": "Closing sentence of the in-development Marmot MDK item: \"These source changes should be described separately from the already tagged MDK release.\" This tells an editor how to organize coverage rather than reporting project behavior to readers.",
+        "recommendation": "Remove the meta-instruction; if separation matters to readers, state it as factual scope (for example, that the merges follow the tagged 0.11.0 release) without a directive to the writer.",
+        "severity": "major",
+        "title": "Marmot MDK in-development section carries a section-placement instruction"
+      }
+    ],
+    "summary": "The two supplied mechanical corrections were applied correctly: Iris Meet now reads \"This is default-branch implementation progress\" and the Hubstr Relay paragraph no longer carries the \"This can share the existing Hubstr Blossom section\" placement note, without altering the adjacent source-claim boundaries. A mandatory full-article scan of snapshot 406c7db still finds unreremoved internal writer/editor directives in the Buzz and Marmot MDK sections. Those leaks are independent of the fixed Iris/Hubstr edits and block a PASS on this correction-only scope; pending substantive delta review remains separate.",
+    "verdict": "FAIL"
+  }
+}

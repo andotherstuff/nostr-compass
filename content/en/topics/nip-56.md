@@ -44,3 +44,5 @@ Additional classification can be added with NIP-32 `l` and `L` tags, which is us
 
 **See also:**
 - [NIP-22: Comment](/en/topics/nip-22/)
+
+- [Newsletter #42: nostream trusted reports](/en/newsletters/2026-09-30-newsletter/#nostream-310-adjusts-relay-proof-of-work-to-load)

@@ -45,6 +45,7 @@ Because the events sit in relay-controlled and user-controlled spaces at the sam
 - [Newsletter #14: NIP Updates](/en/newsletters/2026-03-18-newsletter/#nip-updates)
 - [Newsletter #32: NIP Deep Dive](/en/newsletters/2026-07-22-newsletter/#nip-deep-dive-nip-42-and-nip-43)
 - [Newsletter #36: nostream adds a relay monitor and mints invite codes](/en/newsletters/2026-08-19-newsletter/#nostream-adds-a-relay-monitor-and-mints-invite-codes)
+- [Newsletter #42: relay invite codes](/en/newsletters/2026-09-30-newsletter/#nip-86-adds-invite-code-management-for-relay-administrators)
 
 **See also:**
 - [NIP-11: Relay Information Document](/en/topics/nip-11/)

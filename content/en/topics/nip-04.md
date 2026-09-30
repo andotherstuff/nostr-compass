@@ -51,6 +51,7 @@ Legacy clients and signers still expose NIP-04 encrypt/decrypt methods because o
 - [Newsletter #3: December Recap](/en/newsletters/2025-12-31-newsletter/#december-recap-five-years-of-nostr-decembers)
 - [Newsletter #19: nostter NIP-44 migration](/en/newsletters/2026-04-22-newsletter/#nostter-adds-nip-44-encryption-across-people-lists-bookmarks-and-mutes)
 - [Newsletter #32: Mostr bridges ActivityPub private chats and Nostr DMs](/en/newsletters/2026-07-22-newsletter/#mostr-bridges-activitypub-private-chats-and-nostr-dms)
+- [Newsletter #42: Holoboard private messages](/en/newsletters/2026-09-30-newsletter/#holoboard-adds-nostr-promotion-commands-and-an-android-app)
 
 **See also:**
 - [NIP-44: Encrypted Payloads](/en/topics/nip-44/)

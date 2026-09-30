@@ -125,6 +125,7 @@ NIP-34 splits discovery from transport. The repository data can still live on or
 - [Newsletter #35: NIP-34 non-default target branch proposal](/en/newsletters/2026-08-12-newsletter/#nips)
 
 - [Newsletter #40: Git collaboration and Nostr CI releases](/en/newsletters/2026-09-16-newsletter/#gittr-100-advances-nip-34-collaboration)
+- [Newsletter #42: September 2024 Git collaboration](/en/newsletters/2026-09-30-newsletter/#september-2024-posts-acquire-richer-context)
 
 **See also:**
 

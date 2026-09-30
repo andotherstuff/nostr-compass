@@ -1,0 +1,411 @@
+{
+  "generated_at": "2026-09-30T16:12:36.744122+00:00",
+  "window": {
+    "since": "2026-09-21T14:00:00Z",
+    "until": "2026-09-30T15:11:00Z"
+  },
+  "families": [
+    {
+      "id": "nip",
+      "name": "Nostr Implementation Possibilities (NIPs)",
+      "repo": "nostr-protocol/nips",
+      "status": "active",
+      "window": {
+        "since": "2026-09-21T14:00:00Z",
+        "until": "2026-09-30T15:11:00Z"
+      },
+      "commits": [
+        {
+          "sha": "0046368a747c5c25ae2bec28bae0e537744c8f10",
+          "date": "2026-09-27T17:18:24Z",
+          "title": "NIP-39: unify verification text, add bluesky and discord (#2486)",
+          "url": "https://github.com/nostr-protocol/nips/commit/0046368a747c5c25ae2bec28bae0e537744c8f10"
+        },
+        {
+          "sha": "6631b3eb1f2a8d808f9a0efc073df8f31404bed0",
+          "date": "2026-09-27T16:20:21Z",
+          "title": "move favorite follow sets to kind:10021 as that other is already being used (#2417)",
+          "url": "https://github.com/nostr-protocol/nips/commit/6631b3eb1f2a8d808f9a0efc073df8f31404bed0"
+        },
+        {
+          "sha": "b82211e96c6dad616ed2ea43034c1c621256b745",
+          "date": "2026-09-25T13:51:26Z",
+          "title": "Add kinds 10040, 21059, 33534 and 38000 to the Event Kinds table (#2483)",
+          "url": "https://github.com/nostr-protocol/nips/commit/b82211e96c6dad616ed2ea43034c1c621256b745"
+        },
+        {
+          "sha": "62d5feddb1a12f4d454af3890af5253e7292f1d2",
+          "date": "2026-09-24T01:14:11Z",
+          "title": "Add claim management to nip 86 (#2408)",
+          "url": "https://github.com/nostr-protocol/nips/commit/62d5feddb1a12f4d454af3890af5253e7292f1d2"
+        },
+        {
+          "sha": "182a13e3be61e0e11edd1ecd5f1fa176e0aadab8",
+          "date": "2026-09-23T18:21:17Z",
+          "title": "Reformat and describe nip 86 methods (#2481)",
+          "url": "https://github.com/nostr-protocol/nips/commit/182a13e3be61e0e11edd1ecd5f1fa176e0aadab8"
+        },
+        {
+          "sha": "5b9920982ae1f4061328c1b09a90360da28d13c8",
+          "date": "2026-09-23T17:16:05Z",
+          "title": "NIP-86: Add unallow/unban event and list methods (#2477)",
+          "url": "https://github.com/nostr-protocol/nips/commit/5b9920982ae1f4061328c1b09a90360da28d13c8"
+        }
+      ],
+      "pull_requests": [
+        {
+          "number": 2488,
+          "title": "NIP-FB / NIP-FE: multi-recipient envelope and private feeds",
+          "state": "open",
+          "created_at": "2026-09-29T11:44:21Z",
+          "updated_at": "2026-09-30T15:16:41Z",
+          "merged_at": null,
+          "url": "https://github.com/nostr-protocol/nips/pull/2488"
+        },
+        {
+          "number": 2490,
+          "title": "README: move the NIP-A3 entry to its place in the list",
+          "state": "open",
+          "created_at": "2026-09-30T09:25:02Z",
+          "updated_at": "2026-09-30T09:25:02Z",
+          "merged_at": null,
+          "url": "https://github.com/nostr-protocol/nips/pull/2490"
+        },
+        {
+          "number": 2489,
+          "title": "NIP-51: add hidden replies set (kind:30027)",
+          "state": "open",
+          "created_at": "2026-09-29T18:46:20Z",
+          "updated_at": "2026-09-29T20:13:22Z",
+          "merged_at": null,
+          "url": "https://github.com/nostr-protocol/nips/pull/2489"
+        },
+        {
+          "number": 1985,
+          "title": "NIP-51: Adds user's preferred Index, Proxy, Broadcasting and Trusted relay lists",
+          "state": "open",
+          "created_at": "2025-07-23T17:51:54Z",
+          "updated_at": "2026-09-29T19:29:51Z",
+          "merged_at": null,
+          "url": "https://github.com/nostr-protocol/nips/pull/1985"
+        },
+        {
+          "number": 2252,
+          "title": "NIP-91: AND operator for filters",
+          "state": "open",
+          "created_at": "2026-03-05T14:13:03Z",
+          "updated_at": "2026-09-29T00:19:39Z",
+          "merged_at": null,
+          "url": "https://github.com/nostr-protocol/nips/pull/2252"
+        },
+        {
+          "number": 2487,
+          "title": "NIP-DB: Domain Service Bindings",
+          "state": "open",
+          "created_at": "2026-09-28T18:01:44Z",
+          "updated_at": "2026-09-28T18:01:44Z",
+          "merged_at": null,
+          "url": "https://github.com/nostr-protocol/nips/pull/2487"
+        },
+        {
+          "number": 2461,
+          "title": "NIP-AC: WebRTC signaling for p2p connections",
+          "state": "open",
+          "created_at": "2026-09-04T16:22:07Z",
+          "updated_at": "2026-09-28T13:24:28Z",
+          "merged_at": null,
+          "url": "https://github.com/nostr-protocol/nips/pull/2461"
+        },
+        {
+          "number": 2484,
+          "title": "Nostr over http",
+          "state": "closed",
+          "created_at": "2026-09-27T02:05:50Z",
+          "updated_at": "2026-09-27T18:04:47Z",
+          "merged_at": null,
+          "url": "https://github.com/nostr-protocol/nips/pull/2484"
+        },
+        {
+          "number": 2486,
+          "title": "NIP-39: unify verification text, add bluesky and discord",
+          "state": "merged",
+          "created_at": "2026-09-27T16:04:03Z",
+          "updated_at": "2026-09-27T17:18:25Z",
+          "merged_at": "2026-09-27T17:18:24Z",
+          "url": "https://github.com/nostr-protocol/nips/pull/2486"
+        },
+        {
+          "number": 2469,
+          "title": "NIP-F5: FIPS Transport capability for web browsers",
+          "state": "open",
+          "created_at": "2026-09-16T13:14:45Z",
+          "updated_at": "2026-09-27T17:15:39Z",
+          "merged_at": null,
+          "url": "https://github.com/nostr-protocol/nips/pull/2469"
+        },
+        {
+          "number": 2417,
+          "title": "move favorite follow sets to kind:10021 as that other is already being used",
+          "state": "merged",
+          "created_at": "2026-07-17T00:05:27Z",
+          "updated_at": "2026-09-27T16:20:22Z",
+          "merged_at": "2026-09-27T16:20:22Z",
+          "url": "https://github.com/nostr-protocol/nips/pull/2417"
+        },
+        {
+          "number": 2483,
+          "title": "Add kinds 10040, 21059, 33534 and 38000 to the Event Kinds table",
+          "state": "merged",
+          "created_at": "2026-09-25T10:17:28Z",
+          "updated_at": "2026-09-25T13:51:27Z",
+          "merged_at": "2026-09-25T13:51:27Z",
+          "url": "https://github.com/nostr-protocol/nips/pull/2483"
+        },
+        {
+          "number": 2439,
+          "title": "Add assign/unassign method to nip 86",
+          "state": "open",
+          "created_at": "2026-08-18T16:43:38Z",
+          "updated_at": "2026-09-25T07:27:07Z",
+          "merged_at": null,
+          "url": "https://github.com/nostr-protocol/nips/pull/2439"
+        },
+        {
+          "number": 2301,
+          "title": "NIP-AC: P2P Voice and Video calls over WebRTC",
+          "state": "open",
+          "created_at": "2026-04-05T19:46:22Z",
+          "updated_at": "2026-09-24T12:21:52Z",
+          "merged_at": null,
+          "url": "https://github.com/nostr-protocol/nips/pull/2301"
+        },
+        {
+          "number": 2408,
+          "title": "Add claim management to nip 86",
+          "state": "merged",
+          "created_at": "2026-07-03T18:41:31Z",
+          "updated_at": "2026-09-24T01:14:12Z",
+          "merged_at": "2026-09-24T01:14:11Z",
+          "url": "https://github.com/nostr-protocol/nips/pull/2408"
+        },
+        {
+          "number": 2481,
+          "title": "Reformat and describe nip 86 methods",
+          "state": "merged",
+          "created_at": "2026-09-23T17:46:14Z",
+          "updated_at": "2026-09-23T18:32:51Z",
+          "merged_at": "2026-09-23T18:21:18Z",
+          "url": "https://github.com/nostr-protocol/nips/pull/2481"
+        },
+        {
+          "number": 2477,
+          "title": "NIP-86: Add unallow/unban event and list methods",
+          "state": "merged",
+          "created_at": "2026-09-22T06:35:53Z",
+          "updated_at": "2026-09-23T17:16:06Z",
+          "merged_at": "2026-09-23T17:16:06Z",
+          "url": "https://github.com/nostr-protocol/nips/pull/2477"
+        },
+        {
+          "number": 2480,
+          "title": "README: record kind 30404 (want-to-buy listing)",
+          "state": "open",
+          "created_at": "2026-09-23T11:22:50Z",
+          "updated_at": "2026-09-23T11:22:50Z",
+          "merged_at": null,
+          "url": "https://github.com/nostr-protocol/nips/pull/2480"
+        },
+        {
+          "number": 2479,
+          "title": "NIP-F7: Road Event Reports (kinds 1315/1316)",
+          "state": "open",
+          "created_at": "2026-09-22T22:47:45Z",
+          "updated_at": "2026-09-22T22:47:45Z",
+          "merged_at": null,
+          "url": "https://github.com/nostr-protocol/nips/pull/2479"
+        },
+        {
+          "number": 2478,
+          "title": "blossom community storage fallback",
+          "state": "open",
+          "created_at": "2026-09-22T15:05:56Z",
+          "updated_at": "2026-09-23T14:08:36Z",
+          "merged_at": null,
+          "url": "https://github.com/nostr-protocol/nips/pull/2478"
+        },
+        {
+          "number": 2476,
+          "title": "NIP-69: add created_at tag",
+          "state": "open",
+          "created_at": "2026-09-21T20:51:19Z",
+          "updated_at": "2026-09-21T21:09:00Z",
+          "merged_at": null,
+          "url": "https://github.com/nostr-protocol/nips/pull/2476"
+        },
+        {
+          "number": 2475,
+          "title": "NIP-A3: optional proof of address ownership on payto tags",
+          "state": "open",
+          "created_at": "2026-09-21T16:18:55Z",
+          "updated_at": "2026-09-21T16:22:09Z",
+          "merged_at": null,
+          "url": "https://github.com/nostr-protocol/nips/pull/2475"
+        }
+      ]
+    },
+    {
+      "id": "bud",
+      "name": "Blossom Upgrade Documents (BUDs)",
+      "repo": "hzrd149/blossom",
+      "status": "active",
+      "window": {
+        "since": "2026-09-21T14:00:00Z",
+        "until": "2026-09-30T15:11:00Z"
+      },
+      "commits": [],
+      "pull_requests": [
+        {
+          "number": 114,
+          "title": "Loosen BUD-11 encoding requirements",
+          "state": "open",
+          "created_at": "2026-09-23T14:47:26Z",
+          "updated_at": "2026-09-25T17:00:54Z",
+          "merged_at": null,
+          "url": "https://github.com/hzrd149/blossom/pull/114"
+        },
+        {
+          "number": 105,
+          "title": "BUD-16: Directory manifests",
+          "state": "open",
+          "created_at": "2026-06-06T08:07:50Z",
+          "updated_at": "2026-09-21T18:12:00Z",
+          "merged_at": null,
+          "url": "https://github.com/hzrd149/blossom/pull/105"
+        }
+      ]
+    },
+    {
+      "id": "nap",
+      "name": "Napplet Application Proposals (NAPs)",
+      "repo": "napplet/naps",
+      "status": "active",
+      "window": {
+        "since": "2026-09-21T14:00:00Z",
+        "until": "2026-09-30T15:11:00Z"
+      },
+      "commits": [],
+      "pull_requests": [
+        {
+          "number": 94,
+          "title": "NAP-CAPTURE: define shell-mediated microphone recording",
+          "state": "open",
+          "created_at": "2026-07-28T16:42:15Z",
+          "updated_at": "2026-09-25T13:22:33Z",
+          "merged_at": null,
+          "url": "https://github.com/napplet/naps/pull/94"
+        },
+        {
+          "number": 73,
+          "title": "NAP-HASHTREE: Add runtime-mediated document trees",
+          "state": "open",
+          "created_at": "2026-06-25T13:17:26Z",
+          "updated_at": "2026-09-25T13:22:23Z",
+          "merged_at": null,
+          "url": "https://github.com/napplet/naps/pull/73"
+        },
+        {
+          "number": 95,
+          "title": "NAP-CATALOG: Define runtime napplet discovery",
+          "state": "open",
+          "created_at": "2026-08-04T10:22:39Z",
+          "updated_at": "2026-09-25T13:21:59Z",
+          "merged_at": null,
+          "url": "https://github.com/napplet/naps/pull/95"
+        },
+        {
+          "number": 91,
+          "title": "NAP-INTENT: Accept lifecycle-independent convention delivery",
+          "state": "open",
+          "created_at": "2026-07-23T14:54:02Z",
+          "updated_at": "2026-09-25T13:21:57Z",
+          "merged_at": null,
+          "url": "https://github.com/napplet/naps/pull/91"
+        }
+      ]
+    },
+    {
+      "id": "marmot",
+      "name": "Marmot Improvement Proposals (MIPs)",
+      "repo": "marmot-protocol/marmot",
+      "status": "active",
+      "window": {
+        "since": "2026-09-21T14:00:00Z",
+        "until": "2026-09-30T15:11:00Z"
+      },
+      "commits": [
+        {
+          "sha": "07da8ffbfa7aa6c1e73e8e326085d0c47dc298e7",
+          "date": "2026-09-30T10:32:50Z",
+          "title": "Replace multi-device draft with an ideas-surface walkthrough (#427)",
+          "url": "https://github.com/marmot-protocol/marmot/commit/07da8ffbfa7aa6c1e73e8e326085d0c47dc298e7"
+        }
+      ],
+      "pull_requests": [
+        {
+          "number": 427,
+          "title": "Replace multi-device draft with an ideas-surface walkthrough",
+          "state": "merged",
+          "created_at": "2026-09-30T09:41:41Z",
+          "updated_at": "2026-09-30T10:32:53Z",
+          "merged_at": "2026-09-30T10:32:51Z",
+          "url": "https://github.com/marmot-protocol/marmot/pull/427"
+        },
+        {
+          "number": 426,
+          "title": "docs: plan secure multi-device enrollment and recovery",
+          "state": "open",
+          "created_at": "2026-09-25T21:43:05Z",
+          "updated_at": "2026-09-25T22:04:16Z",
+          "merged_at": null,
+          "url": "https://github.com/marmot-protocol/marmot/pull/426"
+        }
+      ]
+    },
+    {
+      "id": "gamma",
+      "name": "Gamma Markets",
+      "repo": "GammaMarkets/market-spec",
+      "status": "quiet",
+      "window": {
+        "since": "2026-09-21T14:00:00Z",
+        "until": "2026-09-30T15:11:00Z"
+      },
+      "commits": [],
+      "pull_requests": []
+    },
+    {
+      "id": "concord",
+      "name": "Concord (CORD specs)",
+      "repo": "concord-protocol/concord",
+      "status": "quiet",
+      "window": {
+        "since": "2026-09-21T14:00:00Z",
+        "until": "2026-09-30T15:11:00Z"
+      },
+      "commits": [],
+      "pull_requests": []
+    },
+    {
+      "id": "nwc",
+      "name": "Nostr Wallet Connect",
+      "repo": "nostr-wallet-connect/nwc",
+      "status": "quiet",
+      "window": {
+        "since": "2026-09-21T14:00:00Z",
+        "until": "2026-09-30T15:11:00Z"
+      },
+      "commits": [],
+      "pull_requests": []
+    }
+  ]
+}

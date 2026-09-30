@@ -1,0 +1,129 @@
+{
+  "attempts": [
+    {
+      "attempt": 1,
+      "model": "composer-2.5[fast=true]",
+      "outcome": "success",
+      "output_sha256": "6d94fc22b72eef946d1dbe5edb4b8d2a24a9d06e17d2eda65db4079dc25fa859",
+      "provider": "cursor",
+      "response_id": null,
+      "routing_attempts": [
+        {
+          "budget_seconds": 72.0,
+          "elapsed_seconds": 67.262,
+          "kind": "timeout",
+          "message": "Isolated review deadline",
+          "model": "grok-4.6",
+          "outcome": "failure",
+          "provider": "cursor",
+          "provider_wide": false
+        },
+        {
+          "budget_seconds": 73.184,
+          "elapsed_seconds": 44.246,
+          "model": "composer-2.5",
+          "outcome": "success",
+          "provider": "cursor"
+        }
+      ],
+      "started_at": "2026-09-30T15:14:51.597918+00:00",
+      "usage": {}
+    }
+  ],
+  "completed_at": "2026-09-30T15:16:43.106864+00:00",
+  "elapsed_seconds": 111.509,
+  "endpoint": "cursor-acp",
+  "implementation_model": "gpt-6.1-sol",
+  "implementation_models": [
+    "gpt-6.1-sol"
+  ],
+  "instructions_sha256": "77c92615334ed129a0f76fa24f902e6fa85057a9037694ae70826f1738986180",
+  "max_attempts": 1,
+  "max_output_tokens": 2600,
+  "requested_model": "grok-4.6",
+  "review_tier": "standard",
+  "routing_chain": [
+    {
+      "model": "grok-4.6",
+      "provider": "cursor"
+    },
+    {
+      "model": "composer-2.5",
+      "provider": "cursor"
+    },
+    {
+      "model": "claude-opus-5",
+      "provider": "claude-code"
+    },
+    {
+      "model": "google/gemini-3.1-pro-preview",
+      "provider": "openrouter"
+    }
+  ],
+  "schema_version": 1,
+  "selected_cost_usd": null,
+  "selected_endpoint": "cursor-acp",
+  "selected_family": "cursor",
+  "selected_model": "composer-2.5[fast=true]",
+  "selected_provider": "cursor",
+  "snapshots": [
+    {
+      "bytes": 33832,
+      "path": "/opt/data/compass-worktrees/2026-09-30/data/newsletter_workspace/selection_review_2026-09-30.md",
+      "sha256": "185c73a8e095e71e0b9f62c1f9089cbea3a80f1fea687986943bc07303a84c46",
+      "stored_name": "001-185c73a8e095e71e-selection_review_2026-09-30.md"
+    },
+    {
+      "bytes": 169136,
+      "path": "/opt/data/compass-worktrees/2026-09-30/data/newsletter_workspace/selection_coverage_2026-09-30.json",
+      "sha256": "bd2e82de912122c0a63d863bb2811a5894ba039b8246ea62f1e174ccc0ee2ffb",
+      "stored_name": "002-bd2e82de912122c0-selection_coverage_2026-09-30.json"
+    },
+    {
+      "bytes": 10697,
+      "path": "/opt/data/compass-worktrees/2026-09-30/data/newsletter_workspace/triage_2026-09-30.md",
+      "sha256": "bfbf785e42ef6aa02aab722f3ff9fbf6a62cde342df96fce44b7abdedf886d36",
+      "stored_name": "003-bfbf785e42ef6aa0-triage_2026-09-30.md"
+    },
+    {
+      "bytes": 62247,
+      "path": "/opt/data/compass-worktrees/2026-09-30/content/en/newsletters/2026-09-30-newsletter.md",
+      "sha256": "692281bd4d5fe7d5505e875236ff8451051611b17a9c08ab2ef8250d76b6a99c",
+      "stored_name": "004-692281bd4d5fe7d5-2026-09-30-newsletter.md"
+    },
+    {
+      "bytes": 8896,
+      "path": "/opt/data/compass-worktrees/2026-09-30/data/newsletter_workspace/review_claims_2026-09-30.md",
+      "sha256": "f93e2d8e7acf044fa0d6cb60cb9daf45452f0fc35ee94f44590dc1d370a21b38",
+      "stored_name": "005-f93e2d8e7acf044f-review_claims_2026-09-30.md"
+    },
+    {
+      "bytes": 58732,
+      "path": "/opt/data/compass-worktrees/2026-09-30/content/en/newsletters/2026-09-23-newsletter.md",
+      "sha256": "4ab0093751cc18209aafd42a65fabe89e26f960250625032e31e40bd43704c91",
+      "stored_name": "006-4ab0093751cc1820-2026-09-23-newsletter.md"
+    },
+    {
+      "bytes": 38784,
+      "path": "/opt/data/compass-worktrees/2026-09-30/content/en/newsletters/2026-09-16-newsletter.md",
+      "sha256": "080a48f9b9a0e8ef7b1982dc5b55e86c64eba65caea66c35433a1e6bdce346c7",
+      "stored_name": "007-080a48f9b9a0e8ef-2026-09-16-newsletter.md"
+    },
+    {
+      "bytes": 31259,
+      "path": "/opt/data/compass-worktrees/2026-09-30/content/en/newsletters/2026-09-09-newsletter.md",
+      "sha256": "10f7a6397985e3e658c5c00becb556d4c466e1712278c81512fa1845f66cdf9e",
+      "stored_name": "008-10f7a6397985e3e6-2026-09-09-newsletter.md"
+    }
+  ],
+  "started_at": "2026-09-30T15:14:51.596312+00:00",
+  "status": "completed",
+  "timeout_scope": "invocation_including_retries_and_cleanup",
+  "timeout_seconds": 360,
+  "tools_enabled": false,
+  "verdict": {
+    "findings": [],
+    "summary": "Edition 42\u2019s Tuesday-window selection, draft, triage, and ClaimCheck material hang together: proposed versus merged status is labeled correctly (including the NIP-86 correction of #41\u2019s obsolete method names and the distinct merged invite-code work in #2408), Elisym/Mostro/Wisp/Buzz release-versus-development splits are intentional, Bitcoin-primary skips are justified, and the scheduled Six Years of Nostr Septembers section delivers six chronological September years (2021\u20132026) with primary-source anchors and 2026 in-window merges rather than substituting a deep dive for month-end history.",
+    "verdict": "PASS"
+  }
+}

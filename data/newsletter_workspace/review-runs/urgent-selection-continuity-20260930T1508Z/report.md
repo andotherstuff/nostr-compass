@@ -1,0 +1,28 @@
+# Independent selection review: continuity
+
+Actual provider/model: cursor/composer-2.5[fast=true]
+Family: cursor; implementation gpt-6.1-sol excluded.
+Completed: 2026-09-30T15:14:41.550855+00:00
+Verdict: PASS
+
+Within the Tuesday window through 2026-09-29T14:00Z, the 53 selected units map to distinct primary sources, in-window progress, and Nostr surfaces. Repeated projects (#41–#40) carry new evidence or explicit status corrections (MDK 0.11.0, nostream 3.1.0 release vs prior merged PoW work, NIP-86 July 8 continuity plus #41 method-name correction). URL reuse for NIP-86 #2408 and NIP-51 #2417 is transparently labeled as earlier proposal coverage now merged. No blocking mislabeling of proposed vs merged vs released work was found in the supplied draft and selection artifacts.
+
+## minor: Scramble collector key differs from cited primary repo
+
+selection_coverage_2026-09-30.json maps editorial:story:scramble-0-7-4-0-7-5 to locator https://github.com/DavidGershony/Scramble but collector_source_ids use projects:/repos/DavidGershony/openChat/releases; triage_2026-09-30.md WRITE entry names DavidGershony/openChat while selection_review_2026-09-30.md and 2026-09-30-newsletter.md cite DavidGershony/Scramble release tags.
+
+Reconcile the canonical project key across triage, collector_source_ids, and published primary links (rename note if openChat and Scramble are aliases) so source-to-selection attribution is internally consistent.
+
+## note: Elisym commerce appears as both a tagged release and an in-development story
+
+selection_review_2026-09-30.md and 2026-09-30-newsletter.md include both Elisym's commerce packages introduce private Nostr orders (release tags @elisym/pay-core@0.1.1 and @elisym/commerce@0.2.0) and Elisym builds a Nostr commerce checkout (merged PRs #120, #131, #133); triage_2026-09-30.md says collapse eleven monorepo package tags into one developing Nostr commerce story for releases.
+
+Optional copy edit: cross-link the two sections or fold overlapping commerce framing so readers see one arc with release tags plus merged checkout work, matching the Buzz/Divine fold pattern used elsewhere in the same edition.
+
+## note: September retrospective repeats two protocol merges covered earlier in the same issue
+
+2026-09-30-newsletter.md Protocol and Spec Work covers merged NIP-39 #2486 and NIP-51 #2417; Six Years of Nostr Septembers September 2026 subsection cites the same merges via nips commits 6631b3eb1 and 0046368a7. selection_review_2026-09-30.md states the month-end retrospective is the scheduled September synthesis.
+
+No change required if intentional synthesis; keep retrospective prose status-oriented (historical arc) rather than re-announcing the protocol items as fresh news.
+
+GATE: PASS (canonical runner completed; immutable snapshot hashes and attested model identity in review-metadata.json)

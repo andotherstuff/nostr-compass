@@ -85,6 +85,7 @@ Mix general-purpose relays with any specialized relays you use. For instance, yo
 - [Newsletter #36: Nail brings email onto Nostr as gift-wrapped events](/en/newsletters/2026-08-19-newsletter/#nail-brings-email-onto-nostr-as-gift-wrapped-events)
 
 - [Newsletter #40: LibreNostr routes feeds through author write relays](/en/newsletters/2026-09-16-newsletter/#librenostr-0517-routes-feeds-through-author-write-relays)
+- [Newsletter #42: September 2023 relay lists](/en/newsletters/2026-09-30-newsletter/#september-2023-clients-grow-up-around-relay-discovery-and-metadata)
 
 **See also:**
 - [NIP-11: Relay Information](/en/topics/nip-11/)

@@ -15,6 +15,8 @@ The management API uses JSON-RPC-like requests over HTTP on the same URI as the 
 
 Available methods include banning and allowing pubkeys, listing banned users, and querying relay configuration. The standardized interface means a single client implementation can manage any NIP-86-compatible relay.
 
+A [September 2026 merge](https://github.com/nostr-protocol/nips/pull/2408) added `listclaims`, `createclaim`, and `deleteclaim` for the NIP-43 invite codes a relay accepts. A relay operator can issue and revoke those claims through the same management interface. Support remains optional for individual relay implementations.
+
 ## Implementations
 
 - [Amethyst](https://github.com/vitorpamplona/amethyst) - Android client with NIP-86 relay management UI (v1.07.0+)
@@ -26,12 +28,14 @@ Available methods include banning and allowing pubkeys, listing banned users, an
 - [Amethyst v1.07.0](https://github.com/vitorpamplona/amethyst/releases/tag/v1.07.0) - Client-side NIP-86 support
 - [PR #2039](https://github.com/vitorpamplona/amethyst/pull/2039) - Relay management user search dialog
 - [Citrine PR #150](https://github.com/greenart7c3/Citrine/pull/150) - Android NIP-86 relay management
+- [NIP-86 claim management merge](https://github.com/nostr-protocol/nips/pull/2408)
 
 **Mentioned in:**
 - [Newsletter #16: Amethyst ships relay management](/en/newsletters/2026-04-01-newsletter/#amethyst-ships-pinned-notes-relay-management-and-request-to-vanish)
 - [Newsletter #33: Unreleased app/client changes](/en/newsletters/2026-07-29-newsletter/#in-development)
 - [Newsletter #36: Citrine 3.1.0 turns a phone relay into a group host and a site host](/en/newsletters/2026-08-19-newsletter/#citrine-310-turns-a-phone-relay-into-a-group-host-and-a-site-host)
 - [Newsletter #41: Relay clear and list methods](/en/newsletters/2026-09-23-newsletter/#nip-86-adds-clear-and-list-methods-for-relay-management)
+- [Newsletter #42: invite-code management](/en/newsletters/2026-09-30-newsletter/#nip-86-adds-invite-code-management-for-relay-administrators)
 
 **See also:**
 - [NIP-11: Relay Information Document](/en/topics/nip-11/)

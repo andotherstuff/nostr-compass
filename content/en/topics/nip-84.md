@@ -41,6 +41,7 @@ Attribution tags are more important than they look. A `p` tag with an `author` o
 - [Newsletter #34: NIP Deep Dive](/en/newsletters/2026-08-05-newsletter/#highlights-nip-84)
 - [Newsletter #38: Amethyst](/en/newsletters/2026-09-02-newsletter/#amethyst-ships-nip-84-highlights-and-fixes-two-relay-facing-failure-paths)
 - [Newsletter #38: NIP Updates](/en/newsletters/2026-09-02-newsletter/#nostr-implementation-possibilities)
+- [Newsletter #42: September 2024 highlights](/en/newsletters/2026-09-30-newsletter/#september-2024-posts-acquire-richer-context)
 
 **See also:**
 - [NIP-94: File Metadata](/en/topics/nip-94/)

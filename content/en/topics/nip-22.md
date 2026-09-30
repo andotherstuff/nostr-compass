@@ -65,6 +65,7 @@ Another useful distinction is scope. NIP-22 can anchor discussion to non-note re
 - [Newsletter #12: diVine](/en/newsletters/2026-03-04-newsletter/#divine)
 - [Newsletter #36: NIPs](/en/newsletters/2026-08-19-newsletter/#nips)
 - [Newsletter #37: NIPs](/en/newsletters/2026-08-26-newsletter/#nips)
+- [Newsletter #42: Wisp comment replies](/en/newsletters/2026-09-30-newsletter/#wisp-fixes-replies-to-nostr-comments)
 
 **See also:**
 - [NIP-10: Reply Threads](/en/topics/nip-10/)

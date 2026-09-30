@@ -1,0 +1,512 @@
+{
+  "schema": "compass.lightweight_final_cutoff.v1",
+  "since_exclusive": "2026-09-30T15:11:00Z",
+  "until_inclusive": "2026-09-30T15:46:40Z",
+  "actual_query_started_at": "2026-09-30T15:46:40.769608+00:00",
+  "actual_query_finished_at": "2026-09-30T15:52:31.791089+00:00",
+  "status": "Completed bounded final cutoff with explicit coverage exceptions; not a replacement for exhaustive source-family collection.",
+  "github": {
+    "tracked_unique_repos": 717,
+    "release_repos_resolved": 705,
+    "unresolved_after_bounded_retry": [
+      "ArcadeCity/wally",
+      "MostroP2P/mostro-web",
+      "TimA314/JiYou",
+      "antoinedelorme/gravity-swarm-mcp",
+      "beacon21m/beacon",
+      "nicfab/BoldWallet",
+      "nicfab/matrix-nostr-bridge",
+      "nicfab/nostr-secrets",
+      "pablof7z/wikifreedia",
+      "plebstr/plebstr",
+      "vertex-lab/vertex",
+      "zerosats/mdk-pwa-reference"
+    ],
+    "release_depth": 3,
+    "owner_searches": 38,
+    "tracked_owners": 423,
+    "all_owner_search_pages_exhausted": true,
+    "redirected_new_owners_checked": [
+      "Mesh-LLM",
+      "PlebeianApp",
+      "bitdevs-maputo",
+      "chakany",
+      "danieltvela",
+      "franzaps",
+      "ionextdebug",
+      "nostrdevkit",
+      "nostrver-se",
+      "waterblower"
+    ],
+    "redirected_new_owner_search_matches": 0,
+    "merged_pr_candidates": 4,
+    "release_candidates": 1,
+    "global_search_cap_hit": true,
+    "global_search_not_used_as_complete_proof": true
+  },
+  "nostr": {
+    "queries": 17,
+    "verified_events": 6,
+    "owner_compass_white_noise_recap_new_events": 0,
+    "failed_filters": [
+      {
+        "family": "nip_discussion",
+        "relay": "wss://relay.damus.io",
+        "exit_code": 3,
+        "filter": {
+          "kinds": [
+            1,
+            30023
+          ],
+          "#t": [
+            "nip",
+            "NIP",
+            "NIPs",
+            "nips"
+          ],
+          "since": 1790781061,
+          "until": 1790783200,
+          "limit": 200
+        }
+      }
+    ]
+  },
+  "limits": [
+    "GitHub release results are the three most recently created releases per repo; an older-created newly-published release outside these three can be missed.",
+    "Merged PR search uses the GitHub search index and is subject to indexing lag and its 1000-record cap.",
+    "Non-GitHub forge repositories excluded from this lightweight GitHub cutoff.",
+    "Relay EOSE and available results establish coverage of queried filters on reachable relays, not exhaustive global Nostr activity.",
+    "Owner keys are the project identities in the tracked npub directory; personal contributor keys are excluded.",
+    "NIP discussion hashtag filter is narrower than the full canonical collector.",
+    "No old events modified after 15:11 can be discovered by created_at window.",
+    "Twelve repositories returned NOT_FOUND on both attempts; cannot distinguish private/deleted/renamed without further authoritative evidence.",
+    "This fixed-window check does not discover activity after 15:46:40 UTC."
+  ],
+  "decisions": [
+    {
+      "candidate": "release:relaystr/ndk:v0.10.0",
+      "decision": "fold",
+      "reason": "Promote existing dev.7\u2013dev.9 story to stable; comparison also packages NIP-46 metadata and random relay subscription IDs already discussed as source merges.",
+      "score": 8,
+      "sources": [
+        "https://github.com/relaystr/ndk/releases/tag/v0.10.0",
+        "https://github.com/relaystr/ndk/compare/v0.10.0-dev.9...v0.10.0"
+      ]
+    },
+    {
+      "candidate": "pr:Routstr/routstrd:112",
+      "decision": "skip",
+      "reason": "Immediately reverted by merged PR115; no surviving change at cutoff.",
+      "sources": [
+        "https://github.com/Routstr/routstrd/pull/112",
+        "https://github.com/Routstr/routstrd/pull/115"
+      ]
+    },
+    {
+      "candidate": "pr:Routstr/routstrd:115",
+      "decision": "skip",
+      "reason": "Reverts PR112; net-zero behavior for this cutoff, and underlying mint recovery is not a fresh Nostr protocol capability.",
+      "sources": [
+        "https://github.com/Routstr/routstrd/pull/115"
+      ]
+    },
+    {
+      "candidate": "pr:block/buzz:7192",
+      "decision": "fold",
+      "score": 8,
+      "reason": "Existing Buzz story; newly added Nostr agents become mentionable from authoritative channel rosters, and onboarding is bound to signer/relay identity. Later merged source work, not covered by earlier desktop tag.",
+      "sources": [
+        "https://github.com/block/buzz/pull/7192"
+      ]
+    },
+    {
+      "candidate": "pr:elisymlabs/elisym:139",
+      "decision": "fold",
+      "score": 8,
+      "reason": "Existing signed-product checkout story; removes initialization failure when a browser wallet answers discovery synchronously. No independent new payment or Nostr schema claim.",
+      "sources": [
+        "https://github.com/elisymlabs/elisym/pull/139"
+      ]
+    },
+    {
+      "candidate": "nostr:ece111abdc8677feb1f384013f781ee330f2ed595c7b6412cc04bd4ec63a58b7",
+      "decision": "skip",
+      "reason": "Release notes only say Fix; no demonstrated material Nostr change.",
+      "app": "place.poster.app",
+      "sources": [
+        "https://njump.me/ece111abdc8677feb1f384013f781ee330f2ed595c7b6412cc04bd4ec63a58b7"
+      ]
+    },
+    {
+      "candidate": "nostr:8ad2149ee7b4494446bda47416c73c65792af8b4bba82fb4294b73e26a437cae",
+      "decision": "skip",
+      "reason": "New voices and image viewing are app UI changes without meaningful new Nostr behavior.",
+      "app": "ai.alohak.kai",
+      "sources": [
+        "https://njump.me/8ad2149ee7b4494446bda47416c73c65792af8b4bba82fb4294b73e26a437cae"
+      ]
+    },
+    {
+      "candidate": "nostr:4edf41a82f295e5c56af9bc72dab20d7219bbd4b594af68debadb44cd2c9e269",
+      "decision": "skip",
+      "reason": "Listing describes a non-Nostr app; publication on Zapstore does not satisfy newsletter subject scope.",
+      "app": "duress.ultimate",
+      "sources": [
+        "https://njump.me/4edf41a82f295e5c56af9bc72dab20d7219bbd4b594af68debadb44cd2c9e269"
+      ]
+    },
+    {
+      "candidate": "nostr:f777adb02eb9b0b7f5e04d6dc2cfb480445fb31d88078e0a7cf950fb3f3b698e",
+      "decision": "skip",
+      "reason": "Listing describes a non-Nostr app; publication on Zapstore does not satisfy newsletter subject scope.",
+      "app": "jp.nonbili.meron",
+      "sources": [
+        "https://njump.me/f777adb02eb9b0b7f5e04d6dc2cfb480445fb31d88078e0a7cf950fb3f3b698e"
+      ]
+    },
+    {
+      "candidate": "nostr:e048922acd67c1c11e1d46eebd09e17e24c6472f7e2aaf8fadb1f97b0b0ee582",
+      "decision": "skip",
+      "reason": "Listing describes a non-Nostr app; publication on Zapstore does not satisfy newsletter subject scope.",
+      "app": "com.karin.idTech4Amm",
+      "sources": [
+        "https://njump.me/e048922acd67c1c11e1d46eebd09e17e24c6472f7e2aaf8fadb1f97b0b0ee582"
+      ]
+    },
+    {
+      "candidate": "nostr:019b8da7ed47df77f4fa4c63e829d207064cf963ecae31e3cbea0e06005ea2bb",
+      "decision": "skip",
+      "reason": "New voices and image viewing are app UI changes without meaningful new Nostr behavior.",
+      "app": "ai.alohak.kai",
+      "sources": [
+        "https://njump.me/019b8da7ed47df77f4fa4c63e829d207064cf963ecae31e3cbea0e06005ea2bb"
+      ]
+    }
+  ],
+  "proof_artifacts": {
+    "prs_page_1_query.json": {
+      "path": "/opt/data/tmp/compass_cutoff_20260930/prs_page_1_query.json",
+      "sha256": "9fcb9965d032c76492b4b102ec7646e7c8db52091af6c49265e06ec776120f67"
+    },
+    "release_batch_1_query.json": {
+      "path": "/opt/data/tmp/compass_cutoff_20260930/release_batch_1_query.json",
+      "sha256": "0f955a37c9ed49c21bcd0468b56603b78becd7f42c151b24fe1cfc38afd22565"
+    },
+    "release_batch_1_raw.json": {
+      "path": "/opt/data/tmp/compass_cutoff_20260930/release_batch_1_raw.json",
+      "sha256": "77838e1a47a3f1f5add63cbd7afaffc8949ecdbca6b26236dc9a56f959d137ac"
+    },
+    "release_batch_2_query.json": {
+      "path": "/opt/data/tmp/compass_cutoff_20260930/release_batch_2_query.json",
+      "sha256": "67a92641491f7ca49b9b2807f3e893d08e183b4cd0aac9e1e738e9072ae91834"
+    },
+    "prs_page_1_raw.json": {
+      "path": "/opt/data/tmp/compass_cutoff_20260930/prs_page_1_raw.json",
+      "sha256": "0cbf5ed1af0f35f00584a26cae80992acaa6697f78d4aca71aef7c583d2a5e77"
+    },
+    "prs_page_2_query.json": {
+      "path": "/opt/data/tmp/compass_cutoff_20260930/prs_page_2_query.json",
+      "sha256": "adc8e7ce1ff269e57464e599e4d77c111ce036f65fbb00aa91684897750d32b4"
+    },
+    "release_batch_2_raw.json": {
+      "path": "/opt/data/tmp/compass_cutoff_20260930/release_batch_2_raw.json",
+      "sha256": "4c1053d3db69f8a93ee13f0ea025da670c9760a61ebd8072766cc2c46f29e8de"
+    },
+    "release_batch_3_query.json": {
+      "path": "/opt/data/tmp/compass_cutoff_20260930/release_batch_3_query.json",
+      "sha256": "f598ebed4f9472c8761e9ce50a8f1d926e3c7f9f198391fbfa9df35a47126507"
+    },
+    "prs_page_2_raw.json": {
+      "path": "/opt/data/tmp/compass_cutoff_20260930/prs_page_2_raw.json",
+      "sha256": "5702ae44d797b55aec310411e8b0e61be4733373dc8213ecc64a4a15e436a67c"
+    },
+    "prs_page_3_query.json": {
+      "path": "/opt/data/tmp/compass_cutoff_20260930/prs_page_3_query.json",
+      "sha256": "e441b9f49f9865d0436d31cb03de1221610649921f4f9cbf76258a782c5b6d74"
+    },
+    "release_batch_3_raw.json": {
+      "path": "/opt/data/tmp/compass_cutoff_20260930/release_batch_3_raw.json",
+      "sha256": "17205159b7f3116bacdb9993cb55aaf0244c2db5caf089f739a179bb4c8c0719"
+    },
+    "release_batch_4_query.json": {
+      "path": "/opt/data/tmp/compass_cutoff_20260930/release_batch_4_query.json",
+      "sha256": "49dd1c4e7ad05d9a6ea2a770170111813dad7facc5656f87935d07ce642cd886"
+    },
+    "prs_page_3_raw.json": {
+      "path": "/opt/data/tmp/compass_cutoff_20260930/prs_page_3_raw.json",
+      "sha256": "44c404e12a5452853a8b5a27a0f0c8fbd8effc00d47fe9ae4c4449875ac9891b"
+    },
+    "prs_page_4_query.json": {
+      "path": "/opt/data/tmp/compass_cutoff_20260930/prs_page_4_query.json",
+      "sha256": "a2b5ab0d28c3d49a02852d9756e52bf4a6d7efe0081e940607b2cb6b15c5c7fe"
+    },
+    "release_batch_4_raw.json": {
+      "path": "/opt/data/tmp/compass_cutoff_20260930/release_batch_4_raw.json",
+      "sha256": "753800cd39e31a6d58c0a4d4d3a6e2033f39fbd4ef6e7520e75ba52b5f0d933c"
+    },
+    "release_batch_5_query.json": {
+      "path": "/opt/data/tmp/compass_cutoff_20260930/release_batch_5_query.json",
+      "sha256": "f82539020989138e79ec888460c3fc73c5ca3bb59b5d860638271120b1c39d41"
+    },
+    "prs_page_4_raw.json": {
+      "path": "/opt/data/tmp/compass_cutoff_20260930/prs_page_4_raw.json",
+      "sha256": "06da7caa478f2b30e14f05ecbdef6694ee5b03b5b46d8bc8b755ab25dd946c07"
+    },
+    "prs_page_5_query.json": {
+      "path": "/opt/data/tmp/compass_cutoff_20260930/prs_page_5_query.json",
+      "sha256": "e71093dfcfbaa70e8c3b8d4da03d168961ea19fe67262e6220b05b5c8e901490"
+    },
+    "release_batch_5_raw.json": {
+      "path": "/opt/data/tmp/compass_cutoff_20260930/release_batch_5_raw.json",
+      "sha256": "3a141fdb569d394c2d9a52a5bf86992c958d1f5dc6caae57cb6e830e4b866a2e"
+    },
+    "release_batch_6_query.json": {
+      "path": "/opt/data/tmp/compass_cutoff_20260930/release_batch_6_query.json",
+      "sha256": "cfbf9bc8a56f3f205c420ec64e32328e36b623cbcccfddde43a533520fef1f6c"
+    },
+    "prs_page_5_raw.json": {
+      "path": "/opt/data/tmp/compass_cutoff_20260930/prs_page_5_raw.json",
+      "sha256": "87ed9243055254a44eec88772caf2562688c567cbb4628950fa8dad8020e197b"
+    },
+    "prs_page_6_query.json": {
+      "path": "/opt/data/tmp/compass_cutoff_20260930/prs_page_6_query.json",
+      "sha256": "286d915a5d377fa5ae4723a1929c0c451fb390cd50df55ac72ce0487c32a6aa0"
+    },
+    "release_batch_6_raw.json": {
+      "path": "/opt/data/tmp/compass_cutoff_20260930/release_batch_6_raw.json",
+      "sha256": "924edf4af8c34b16cf3493c3fcacbddb12d24b119f2bd46e880daa01d9be9a1d"
+    },
+    "release_batch_7_query.json": {
+      "path": "/opt/data/tmp/compass_cutoff_20260930/release_batch_7_query.json",
+      "sha256": "c5a5a48b5cd202fd73d36573b6c95634d10b53511bf5a9f2739185a2ea6e38ad"
+    },
+    "prs_page_6_raw.json": {
+      "path": "/opt/data/tmp/compass_cutoff_20260930/prs_page_6_raw.json",
+      "sha256": "165012d31d8aafc594a322f679662729e2cb0df7300f8d3dc39583b97163d460"
+    },
+    "prs_page_7_query.json": {
+      "path": "/opt/data/tmp/compass_cutoff_20260930/prs_page_7_query.json",
+      "sha256": "362bcfc3c7310a3dee746b66681bd2a859dd3abe8b9a92d99baca2f99bd82343"
+    },
+    "owner_pr_batch_1_query.json": {
+      "path": "/opt/data/tmp/compass_cutoff_20260930/owner_pr_batch_1_query.json",
+      "sha256": "f7a041fd6969b976409fefe20457e76a2899b3fcc05572d8177ac6ac0db6c72a"
+    },
+    "release_batch_7_raw.json": {
+      "path": "/opt/data/tmp/compass_cutoff_20260930/release_batch_7_raw.json",
+      "sha256": "f711e68ae2519815c3a66fe71a1f0aa4a81820135c0752df38c398c3b15ee62b"
+    },
+    "release_batch_8_query.json": {
+      "path": "/opt/data/tmp/compass_cutoff_20260930/release_batch_8_query.json",
+      "sha256": "3f35f29cd8a70080e204d756a6e5357dbdf091403455bf86fd946bbed9eb58aa"
+    },
+    "prs_page_7_raw.json": {
+      "path": "/opt/data/tmp/compass_cutoff_20260930/prs_page_7_raw.json",
+      "sha256": "7dc0033ef18ae5a28d62ef98333ef0da1dee68359cb32651a4c3aa1c22123086"
+    },
+    "prs_page_8_query.json": {
+      "path": "/opt/data/tmp/compass_cutoff_20260930/prs_page_8_query.json",
+      "sha256": "3093d381b3e99a5938aea360527182cc368123cf870adcec90cc081e06ec226b"
+    },
+    "owner_pr_batch_1_raw.json": {
+      "path": "/opt/data/tmp/compass_cutoff_20260930/owner_pr_batch_1_raw.json",
+      "sha256": "7d441d153c0038e7650c5f064f10257df6316c8b53127e2e1eaa0c057787b2e8"
+    },
+    "owner_pr_batch_2_query.json": {
+      "path": "/opt/data/tmp/compass_cutoff_20260930/owner_pr_batch_2_query.json",
+      "sha256": "cb0efc9d2d8d3f2c715246ea5f828d0e22b5acc911462c96a081a5995edd09d7"
+    },
+    "release_batch_8_raw.json": {
+      "path": "/opt/data/tmp/compass_cutoff_20260930/release_batch_8_raw.json",
+      "sha256": "73e380a6aa8002b1d9bc6ed049f2a55f56526b6c83775612a5217fc1d8249487"
+    },
+    "release_batch_9_query.json": {
+      "path": "/opt/data/tmp/compass_cutoff_20260930/release_batch_9_query.json",
+      "sha256": "421ccfb1e4850bf71ef075f3ffc624ace650933867e1b75cd555e94103df861f"
+    },
+    "prs_page_8_raw.json": {
+      "path": "/opt/data/tmp/compass_cutoff_20260930/prs_page_8_raw.json",
+      "sha256": "7d66caa0fde95e63824823a5489e6e4f04c3c7fcf4d60da5301bb240244c7913"
+    },
+    "prs_page_9_query.json": {
+      "path": "/opt/data/tmp/compass_cutoff_20260930/prs_page_9_query.json",
+      "sha256": "96d32af19a739ca0ea46bc8b8d5ad0b8915c76bb8518ae069ef158e68175fc96"
+    },
+    "owner_pr_batch_2_raw.json": {
+      "path": "/opt/data/tmp/compass_cutoff_20260930/owner_pr_batch_2_raw.json",
+      "sha256": "0ea184f89c185aefd34848942d27fab2b61155e8e7ad13181d96d1e376e5f6e8"
+    },
+    "owner_pr_batch_3_query.json": {
+      "path": "/opt/data/tmp/compass_cutoff_20260930/owner_pr_batch_3_query.json",
+      "sha256": "297d4e71f06e6e22e57be3718758d6be6db9a1f841b71633c251183ef08bc424"
+    },
+    "release_batch_9_raw.json": {
+      "path": "/opt/data/tmp/compass_cutoff_20260930/release_batch_9_raw.json",
+      "sha256": "d2d4e1ee15cd5aa6b261417c096959410ae45cf25b14775f131c87978824f073"
+    },
+    "release_batch_10_query.json": {
+      "path": "/opt/data/tmp/compass_cutoff_20260930/release_batch_10_query.json",
+      "sha256": "3a098dfe2bf805700ccf81e68354f8bf3e75dfa2e29ab914b8762871727a1f3d"
+    },
+    "prs_page_9_raw.json": {
+      "path": "/opt/data/tmp/compass_cutoff_20260930/prs_page_9_raw.json",
+      "sha256": "3ef50273eed3ed0ced0202c431b7c602cea5849d4c9b81eefbf7566c9c04edc1"
+    },
+    "prs_page_10_query.json": {
+      "path": "/opt/data/tmp/compass_cutoff_20260930/prs_page_10_query.json",
+      "sha256": "2d2edbd339497ec5c2cee87253db45ea1694268e3966b65a0700bc621d2ce367"
+    },
+    "owner_pr_batch_3_raw.json": {
+      "path": "/opt/data/tmp/compass_cutoff_20260930/owner_pr_batch_3_raw.json",
+      "sha256": "de00af8c0289d424206988087352c62db0b2af52d7d329303c0545c70cde0068"
+    },
+    "owner_pr_batch_4_query.json": {
+      "path": "/opt/data/tmp/compass_cutoff_20260930/owner_pr_batch_4_query.json",
+      "sha256": "befbdf1e95cbd27f5bdc735c3fa594712ffdf153e734e60750003d5275f654e0"
+    },
+    "release_batch_10_raw.json": {
+      "path": "/opt/data/tmp/compass_cutoff_20260930/release_batch_10_raw.json",
+      "sha256": "74506cc7cb598641542243444948051e7bd44395c9c44dcf75ae3e5a503e9363"
+    },
+    "release_batch_11_query.json": {
+      "path": "/opt/data/tmp/compass_cutoff_20260930/release_batch_11_query.json",
+      "sha256": "fdfbe091ec57dc3a03a123012bb85bfff2e6edea99227044656fa874c31a3ec2"
+    },
+    "prs_page_10_raw.json": {
+      "path": "/opt/data/tmp/compass_cutoff_20260930/prs_page_10_raw.json",
+      "sha256": "13f0e4d5d29102cab4953fe1b9861d3125b01cd9042cbbab5c569ab4cc951f35"
+    },
+    "pr_summary.json": {
+      "path": "/opt/data/tmp/compass_cutoff_20260930/pr_summary.json",
+      "sha256": "6b2644c2ceb98854294d7364d9f51a4759f4b80290831ed43e7910393c2f1fc4"
+    },
+    "owner_pr_batch_4_raw.json": {
+      "path": "/opt/data/tmp/compass_cutoff_20260930/owner_pr_batch_4_raw.json",
+      "sha256": "4816f0b3ede728ac23fbc778799b58bf282e80560dc50478614ebf94cb7c5c75"
+    },
+    "owner_pr_batch_5_query.json": {
+      "path": "/opt/data/tmp/compass_cutoff_20260930/owner_pr_batch_5_query.json",
+      "sha256": "6957616457b0d89a3e78e6634cee0a5b5885e7391c0bcf425adbd1740dc69f89"
+    },
+    "release_batch_11_raw.json": {
+      "path": "/opt/data/tmp/compass_cutoff_20260930/release_batch_11_raw.json",
+      "sha256": "0fb9f10cac37fe20e5995ef2e35766afab335e0633638d8d95a9b904e7c22eb7"
+    },
+    "release_batch_12_query.json": {
+      "path": "/opt/data/tmp/compass_cutoff_20260930/release_batch_12_query.json",
+      "sha256": "473f01ac21721fe257527a620a1fd711217ffbbe50d7f7e359fc820d31ef4202"
+    },
+    "owner_pr_batch_5_raw.json": {
+      "path": "/opt/data/tmp/compass_cutoff_20260930/owner_pr_batch_5_raw.json",
+      "sha256": "e76090c8ba0b90643e3bd6a5af022d9539beaa05d7d6129ad51e3106a5ec3306"
+    },
+    "owner_pr_summary.json": {
+      "path": "/opt/data/tmp/compass_cutoff_20260930/owner_pr_summary.json",
+      "sha256": "b0f7cc9b3af91b976095a0cc5eedaa586006b2075ae19bff6d295be8463ae394"
+    },
+    "release_batch_12_raw.json": {
+      "path": "/opt/data/tmp/compass_cutoff_20260930/release_batch_12_raw.json",
+      "sha256": "c4ba9f8cb805b42911f5761cc25a6621461343890e58352c83ffd82d5f0c0029"
+    },
+    "release_batch_13_query.json": {
+      "path": "/opt/data/tmp/compass_cutoff_20260930/release_batch_13_query.json",
+      "sha256": "5349feb3a138f4f8cb16ed24ec06eeb1654ab54fd8d3ead736cfbd8c12973ee7"
+    },
+    "release_batch_13_raw.json": {
+      "path": "/opt/data/tmp/compass_cutoff_20260930/release_batch_13_raw.json",
+      "sha256": "fbc80e94048f50065eb50fff840b90a02f4eb871dbcf7dc63e918de2da02d4ca"
+    },
+    "release_batch_14_query.json": {
+      "path": "/opt/data/tmp/compass_cutoff_20260930/release_batch_14_query.json",
+      "sha256": "7a0496918f4699c012b9718804f27206011755917c5b6c6db290cdb1d3ff2a08"
+    },
+    "release_batch_14_raw.json": {
+      "path": "/opt/data/tmp/compass_cutoff_20260930/release_batch_14_raw.json",
+      "sha256": "007905f6708c2c0657b923666bb5c570406bf25e1e3b20bc63dd68b8882b2254"
+    },
+    "release_batch_15_query.json": {
+      "path": "/opt/data/tmp/compass_cutoff_20260930/release_batch_15_query.json",
+      "sha256": "38282bcfdee788a63cb5b2671d1e692b17f2e5d6d356998692308aa01e9af745"
+    },
+    "release_batch_15_raw.json": {
+      "path": "/opt/data/tmp/compass_cutoff_20260930/release_batch_15_raw.json",
+      "sha256": "b76d87a5122e6b573f781d8fac662c1459919ae65356fc0063bb1e59db766aa3"
+    },
+    "release_summary.json": {
+      "path": "/opt/data/tmp/compass_cutoff_20260930/release_summary.json",
+      "sha256": "b4c4d12fefb36d8200733dcc89efaccd9a1d1af6ade915dddd445c0ddd4fc5bf"
+    },
+    "query_receipt.json": {
+      "path": "/opt/data/tmp/compass_cutoff_20260930/query_receipt.json",
+      "sha256": "19d59a2abe6afc262090490127043e939589dae93b904355dc6c21897777934a"
+    },
+    "nostr_summary.json": {
+      "path": "/opt/data/tmp/compass_cutoff_20260930/nostr_summary.json",
+      "sha256": "ea707da329cc13f3f8aa87148f7837d96e0a1447511f86ef5320bf4e9abc1535"
+    },
+    "exact_final_query.json": {
+      "path": "/opt/data/tmp/compass_cutoff_20260930/exact_final_query.json",
+      "sha256": "e7deba277b15afd61f7744d99c6cd99de430c2c6956c4226f1c97d506561b155"
+    },
+    "exact_final_raw.json": {
+      "path": "/opt/data/tmp/compass_cutoff_20260930/exact_final_raw.json",
+      "sha256": "ffc9014656e59e14728bf4e70b1356c2f37c5d6d63058f8ee9d5e7a6de683e1f"
+    },
+    "exact_final_receipt.json": {
+      "path": "/opt/data/tmp/compass_cutoff_20260930/exact_final_receipt.json",
+      "sha256": "57ab64e5c4dc1d609b5e12cd83b3fb5ec540801faab76c8216adde013687bc13"
+    },
+    "canonical_pr_candidates.json": {
+      "path": "/opt/data/tmp/compass_cutoff_20260930/canonical_pr_candidates.json",
+      "sha256": "17b89ff9a0469019216c8ce9bdf43cfd849c4bce4782adc8698e3cc913c5832f"
+    },
+    "moyu_source_query.json": {
+      "path": "/opt/data/tmp/compass_cutoff_20260930/moyu_source_query.json",
+      "sha256": "cd21c225423f6a8046bf082294c8282fc627998cba47ca8e77b6e088aa3f0462"
+    },
+    "moyu_source_raw.json": {
+      "path": "/opt/data/tmp/compass_cutoff_20260930/moyu_source_raw.json",
+      "sha256": "bbe2662f3be58c118d9d5238e748bc7c7f255612aa8780df515a6b154eacf40d"
+    },
+    "source_diffs_manifest.json": {
+      "path": "/opt/data/tmp/compass_cutoff_20260930/source_diffs_manifest.json",
+      "sha256": "67fec8eabd955ff399bb3762fd2036cb5fea154e305d510b187d94726627d3d6"
+    },
+    "moyu_tree_query.json": {
+      "path": "/opt/data/tmp/compass_cutoff_20260930/moyu_tree_query.json",
+      "sha256": "d4fcf080b838816971691c4ba56ce11bb2bcba10b270132271ec9997ad652f9a"
+    },
+    "moyu_tree_raw.json": {
+      "path": "/opt/data/tmp/compass_cutoff_20260930/moyu_tree_raw.json",
+      "sha256": "c29df5ca75bcc28c4ae8876d98bc3596e352a48cf5506667f5694b5d8c8dfdad"
+    }
+  },
+  "editorial_source_comparison": {
+    "completed_at": "2026-09-30T16:03:30.425271+00:00",
+    "release_diff": "ndk_stable.diff",
+    "named_ndk_sources_read": [
+      "Nip46ClientMetadata",
+      "Bunkers.connectWithBunkerUrl",
+      "NostrConnect",
+      "Requests._requestId/_checkExplicitId/query/subscription/pagination",
+      "Helpers.getSecureRandomHex",
+      "package changelogs"
+    ],
+    "buzz_sources_read": [
+      "channels/hooks.ts",
+      "membershipDirectorySync.ts",
+      "useChannelMembersQuery.ts",
+      "onboarding/hooks.ts",
+      "welcomeGuide.ts",
+      "welcomeKickoff.ts"
+    ],
+    "elisym_sources_read": [
+      "packages/checkout/src/app/main.tsx entire patch"
+    ],
+    "diff_manifest_path": "/opt/data/tmp/compass_cutoff_20260930/source_diffs_manifest.json",
+    "diff_manifest_sha256": "67fec8eabd955ff399bb3762fd2036cb5fea154e305d510b187d94726627d3d6",
+    "proposed_prose_path": "/opt/data/tmp/compass_cutoff_20260930/proposed_delta.md",
+    "proposed_prose_sha256": "0e377109652c05bc4fcc0e6419327424436734779e71bcce3f695961e56b497f",
+    "scope": "Full changed-file inventories and named substantive implementation patches reviewed; no independent model review or device test."
+  }
+}

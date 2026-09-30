@@ -28,7 +28,7 @@ Users publish identity claims in kind 10011 events as `i` tags. Each tag contain
 }
 ```
 
-Clients reconstruct the proof URL from the platform and proof value, then check that the external post contains the user's `npub`. That keeps the claim portable across clients without requiring a central verifier.
+Clients reconstruct the proof URL from the platform and proof value, then check that the external post contains the user's `npub`. That keeps the claim portable across clients without requiring a central verifier. A [September 2026 merge](https://github.com/nostr-protocol/nips/pull/2486) added Bluesky posts and Discord messages as proof locations and recommends common proof wording. Verifiers still accept older proofs containing the account's npub. A Discord proof can only be checked by someone able to read its server.
 
 ## Proof Model
 
@@ -51,12 +51,14 @@ As of the current spec, identity claims live in dedicated kind 10011 events inst
 - [NIP-39: External Identities in Profiles](https://github.com/nostr-protocol/nips/blob/master/39.md)
 - [PR #2216](https://github.com/nostr-protocol/nips/pull/2216) - Moved identity claims out of kind 0
 - [PR #2256](https://github.com/nostr-protocol/nips/pull/2256) - Added explicit kind 10011 reference
+- [NIP-39 September 2026 proof update](https://github.com/nostr-protocol/nips/pull/2486)
 
 **Mentioned in:**
 - [Newsletter #9: NIP Updates](/en/newsletters/2026-02-11-newsletter/#nip-updates)
 - [Newsletter #12: Amethyst](/en/newsletters/2026-03-04-newsletter/#amethyst-nip-39-nip-c0-nip-66)
 - [Newsletter #13: NIP Updates](/en/newsletters/2026-03-11-newsletter/#nip-updates)
 - [Newsletter #23: NIP Deep Dive](/en/newsletters/2026-05-21-newsletter/#nip-deep-dive-nip-39-external-identities-in-profiles)
+- [Newsletter #42: identity proof update](/en/newsletters/2026-09-30-newsletter/#nip-39-extends-identity-proofs-to-bluesky-and-discord)
 
 **See also:**
 - [NIP-05: DNS-Based Verification](/en/topics/nip-05/)

@@ -1,0 +1,122 @@
+{
+  "schema_version": 1,
+  "source_artifact_path": "/opt/data/compass-worktrees/2026-09-30/data/spec_updates/spec_updates_2026-09-30.json",
+  "source_artifact_sha256": "6be26cb93f9c0b19aa16f988fb435f167b3062746a6f01b8f429399ba4674c40",
+  "review_path": "/opt/data/compass-worktrees/2026-09-30/data/newsletter_workspace/spec_delta_review_wednesday_2026-09-30.md",
+  "review_sha256": "6302e4b243d66f34eefef03bf3c24495c0c2c952afaa45c14a4999017e185497",
+  "primary_review_receipt_path": "/opt/data/tmp/compass_specs_late_20260930/final_decisions_20260930.json",
+  "primary_review_receipt_sha256": "2a3ef19b37c4b88e91ec0f6638824e864de29ff5d890c14234bbd720820b43ff",
+  "candidates": [
+    {
+      "candidate_id": "wednesday:specs:nostr-protocol/nips:pull:2490",
+      "name": "README ordering",
+      "reason": "The September 30 PR moves the NIP-A3 README entry into list order. It supplies no new wire format, deployed behavior or substantive Nostr capability. Score 1/10: direct proposed documentation edit, no material protocol delta.",
+      "hard_gate": {
+        "primary_evidence": true,
+        "in_window_progress": false,
+        "nostr_surface": true,
+        "continuity_delta": true
+      },
+      "scores": {
+        "nostr_significance": 0,
+        "user_operator_impact": 0,
+        "novelty": 0,
+        "evidence_maturity": 1,
+        "explanatory_value": 0
+      },
+      "triage": "SKIP",
+      "final_disposition": "skip",
+      "primary_sources": [
+        "https://github.com/nostr-protocol/nips/pull/2490"
+      ],
+      "draft_sources": [],
+      "section": "Specification triage",
+      "collector_source_ids": [
+        "specs:nostr-protocol/nips:pull:2490"
+      ],
+      "source_head": "0dd301aef5eb52bcc54d51975828387a4afb214d",
+      "primary_review_receipt": {
+        "path": "/opt/data/tmp/compass_specs_late_20260930/final_decisions_20260930.json",
+        "sha256": "2a3ef19b37c4b88e91ec0f6638824e864de29ff5d890c14234bbd720820b43ff"
+      }
+    },
+    {
+      "candidate_id": "wednesday:specs:nostr-protocol/nips:pull:1985",
+      "name": "Preferred relay list proposal",
+      "reason": "The proposal was opened July 23, 2025. Current-window activity merges master into the existing proposal; no newly verified proposal or implementation milestone is established. Score 2/10: readable source proposal but no material in-window novelty.",
+      "hard_gate": {
+        "primary_evidence": true,
+        "in_window_progress": false,
+        "nostr_surface": true,
+        "continuity_delta": true
+      },
+      "scores": {
+        "nostr_significance": 0,
+        "user_operator_impact": 0,
+        "novelty": 0,
+        "evidence_maturity": 1,
+        "explanatory_value": 1
+      },
+      "triage": "SKIP",
+      "final_disposition": "skip",
+      "primary_sources": [
+        "https://github.com/nostr-protocol/nips/pull/1985"
+      ],
+      "draft_sources": [],
+      "section": "Specification triage",
+      "collector_source_ids": [
+        "specs:nostr-protocol/nips:pull:1985"
+      ],
+      "source_head": "f4635984e8c2e091dc12189ed9ed212ec0d4fce8",
+      "primary_review_receipt": {
+        "path": "/opt/data/tmp/compass_specs_late_20260930/final_decisions_20260930.json",
+        "sha256": "2a3ef19b37c4b88e91ec0f6638824e864de29ff5d890c14234bbd720820b43ff"
+      }
+    },
+    {
+      "candidate_id": "wednesday:specs:nostr-protocol/nips:pull:2489",
+      "name": "Hidden replies set proposal",
+      "reason": "New September 29 NIP-51 proposal introduces a hidden replies set using kind 30027. Discussion leaves format details unresolved. The author claims a Nostrich implementation; review of 594 public source files did not verify kind 30027 support in that inspected source. This does not establish that no implementation exists. Score 8/10: reviewable new Nostr proposal milestone (significance2, impact1, novelty2, maturity1, explanatory2). The actual specification draft supplies primary evidence independently of its unverified implementation claim.",
+      "hard_gate": {
+        "primary_evidence": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "continuity_delta": true
+      },
+      "scores": {
+        "nostr_significance": 2,
+        "user_operator_impact": 1,
+        "novelty": 2,
+        "evidence_maturity": 1,
+        "explanatory_value": 2
+      },
+      "triage": "GREEN",
+      "final_disposition": "include",
+      "primary_sources": [
+        "https://github.com/nostr-protocol/nips/pull/2489",
+        "https://github.com/nostrichOS/nostrich-client/tree/d693ab84544beb810e75577080c679e735fe26d5",
+        "https://github.com/nostrichOS/nostrich-client/blob/d693ab84544beb810e75577080c679e735fe26d5/apps/web/components/ThreadScreen.tsx",
+        "https://github.com/nostrichOS/nostrich-client/blob/d693ab84544beb810e75577080c679e735fe26d5/apps/web/lib/thread.ts"
+      ],
+      "draft_sources": [
+        "https://github.com/nostr-protocol/nips/pull/2489"
+      ],
+      "section": "Specification triage",
+      "collector_source_ids": [
+        "specs:nostr-protocol/nips:pull:2489"
+      ],
+      "source_head": "ace81d7e534c82a63f7f49e96330370f7b654ee7",
+      "primary_review_receipt": {
+        "path": "/opt/data/tmp/compass_specs_late_20260930/final_decisions_20260930.json",
+        "sha256": "2a3ef19b37c4b88e91ec0f6638824e864de29ff5d890c14234bbd720820b43ff"
+      },
+      "score_axis_reasons": {
+        "nostr_significance": "2: Defines a root-author-signed relay event and concrete client interpretation for public thread moderation.",
+        "user_operator_impact": "1: Potentially useful author control, but current impact is prospective; released client behavior was not verified.",
+        "novelty": "2: New September29 proposal, revised in-window from a per-user list to a per-thread addressable set.",
+        "evidence_maturity": "1: Complete primary diff and live discussion support the proposal; it remains open and the author's implementation claim was not established from the public repository.",
+        "explanatory_value": "2: Clearly distinguishes client display requests from relay publication control and explains how per-thread sets narrow edit contention."
+      }
+    }
+  ]
+}

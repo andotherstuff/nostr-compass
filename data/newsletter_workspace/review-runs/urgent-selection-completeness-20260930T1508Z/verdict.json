@@ -1,0 +1,24 @@
+{
+  "findings": [
+    {
+      "evidence": "In content/en/newsletters/2026-09-30-newsletter.md, \u201cElisym's commerce packages introduce private Nostr orders\u201d calls the linked @elisym/pay-core@0.1.1 release the \u201cfirst `commerce` package\u201d that defines store products and wrapped orders, then treats @elisym/commerce@0.2.0 as a later commerce tag. review_claims_2026-09-30.md explicitly states the series introduces \u201cseparate payment-core and browser-checkout work,\u201d and the In Development item correctly anchors commerce behavior to merged PR #120\u2014not the pay-core tag.",
+      "recommendation": "Relabel pay-core@0.1.1 as payment-core infrastructure (or remove commerce-package claims from that link) and point the first commerce-package sentence to the @elisym/commerce release tag and/or PR #120 primary sources; keep the pay-core/commerce split consistent across Tagged Releases and In Development.",
+      "severity": "major",
+      "title": "Elisym release paragraph mislabels pay-core tag as the first commerce package"
+    },
+    {
+      "evidence": "selection_review_2026-09-30.md and selection_coverage_2026-09-30.json title the item \u201cSonar alpha.15\u2013alpha.15.1 repairs encrypted-group publishing,\u201d but the same reason text and newsletter draft lead with alpha.15 emoji reactions and private local-time sharing, treating the encrypted-group republish hotfix as alpha.15.1-specific (\u201crepairs encrypted-group publishing\u201d matches alpha.15.1, not the whole range headline).",
+      "recommendation": "Retitle or rebalance the lead so alpha.15 user-visible features and the alpha.15.1 relay-storm repair are both explicit, e.g., split the headline emphasis or add a first sentence on reactions/local-time before the publishing repair.",
+      "severity": "minor",
+      "title": "Sonar headline overweights the alpha.15.1 repair relative to alpha.15 features"
+    },
+    {
+      "evidence": "selection_coverage_2026-09-30.json maps story:scramble-0-7-4-0-7-5 to collector_source_ids under DavidGershony/openChat while editorial provenance, primary_sources, and release_triage_2026-09-30.md all cite DavidGershony/Scramble release tags v0.7.4/v0.7.5.",
+      "recommendation": "Confirm openChat is the tracked alias for Scramble in project metadata; if not, fix the collector/editorial mapping so release receipts and story locators reference the same repository.",
+      "severity": "note",
+      "title": "Scramble release collector key differs from editorial repo locator"
+    }
+  ],
+  "summary": "Edition #42\u2019s Tuesday-window selection is largely coherent\u201448/48 tagged releases dispositioned, merged-PR skips documented, and maturity qualifiers (proposed vs merged vs released) are mostly sound\u2014but the Elisym Tagged Releases paragraph misattributes the first commerce-package claim to a pay-core release tag while the snapshot separately treats payment-core and commerce packages. That is a substantive source-mapping error in published copy, not a receipts gap.",
+  "verdict": "FAIL"
+}

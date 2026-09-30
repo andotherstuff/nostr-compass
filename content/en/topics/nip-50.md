@@ -61,3 +61,5 @@ Structured filters work well when you already know the author, kind, or tag you 
 **See also:**
 - [NIP-11: Relay Information](/en/topics/nip-11/)
 - [Newsletter #37: Also shipped](/en/newsletters/2026-08-26-newsletter/#also-shipped)
+
+- [Newsletter #42: Conduit ranked search](/en/newsletters/2026-09-30-newsletter/#conduit-advances-checkout-after-relay-acceptance)

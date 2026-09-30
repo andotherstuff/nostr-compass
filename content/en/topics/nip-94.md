@@ -62,6 +62,7 @@ NIP-94 works across storage backends. A file can be uploaded through [NIP-96: HT
 - [Newsletter #3: December Recap](/en/newsletters/2025-12-31-newsletter/#december-recap-five-years-of-nostr-decembers)
 - [Newsletter #14: NIP Deep Dive](/en/newsletters/2026-03-18-newsletter/#nip-deep-dive-nip-94-file-metadata)
 - [Newsletter #34: Napplet upload contract](/en/newsletters/2026-08-05-newsletter/#napplet-host-capabilities)
+- [Newsletter #42: Hubstr media metadata](/en/newsletters/2026-09-30-newsletter/#hubstr-blossom-opens-a-personal-media-origin)
 
 **See also:**
 - [NIP-92: Media Attachments](/en/topics/nip-92/)

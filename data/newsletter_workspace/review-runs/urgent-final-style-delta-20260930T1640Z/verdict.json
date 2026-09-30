@@ -1,0 +1,5 @@
+{
+  "findings": [],
+  "summary": "Exact diff has only three sentence replacements from cleared SHA 1ffcbcb385302acc630f64305864d546e1f61d6959acd80d0c173562fc2aaf72 to current SHA 230ed2b42703ae41aef9927d9ca5dee367c33286710fdeacd55ddd0056d29a3a; NIP-51 hidden-replies PR2489 paragraph is untouched. Nymbot keeps the same primal.net release link and listed features, replacing 'developer release claims rather than an independent privacy audit' with attribution to the developer release notes plus an explicit no-independent-privacy-audit hedge. Noteds keeps the same commit link and states Android NIP-55 signing in positive form; the Mangatsu sentence still defines NIP-55 as the Android external-signer interface, so protocol meaning holds without a new claim. WoT still states scores depend on the chosen roots and keeps the early-source/no-production-deployment close. No links, kinds, dates, or live URL/build/device checks were added. Claims, prose, links, topics, and continuity show no blocking or major regression; prior source and quality receipts remain applicable.",
+  "verdict": "PASS"
+}

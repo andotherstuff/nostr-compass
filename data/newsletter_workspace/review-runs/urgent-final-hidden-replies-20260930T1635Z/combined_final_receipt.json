@@ -1,0 +1,33 @@
+{
+  "schema": "compass.final_late_spec_delta_clearance.v1",
+  "recorded_at": "2026-09-30T16:38:41.875040+00:00",
+  "verdict": "PASS",
+  "final_article_sha256": "1ffcbcb385302acc630f64305864d546e1f61d6959acd80d0c173562fc2aaf72",
+  "baseline_article_sha256": "0ae9e56d9974e0c5c778e12388099d21addd4c807a13b25e69e81ac99f535b06",
+  "baseline_combined_receipt": "/opt/data/compass-worktrees/2026-09-30/data/newsletter_workspace/review-runs/urgent-final-leak-fixed-retry-20260930T1625Z/combined_final_receipt.json",
+  "baseline_combined_receipt_sha256": "8ff1676d483f4b025be71082313b90d2fddc0d9138371461adada6232c5c0968",
+  "delta_run": "/opt/data/compass-worktrees/2026-09-30/data/newsletter_workspace/review-runs/urgent-final-hidden-replies-20260930T1635Z",
+  "delta_metadata_sha256": "db5d6260027904712883d733d7e625d70cb9827d7d870b4ed826a7b5a1e0a646",
+  "actual_provider": "cursor",
+  "actual_model": "grok-4.6[effort=high,fast=true]",
+  "actual_family": "xai",
+  "implementation_models": [
+    "gpt-6.1-sol"
+  ],
+  "delta_scope": "Only new NIP-51 hidden-replies proposal H3 and paragraph; current fullarticle supplied for context. Five narrow editorial roles and baseline-no-regression reviewed. Actual liveURL/topic/continuity/build/CI gates publisher-owned.",
+  "delta_verdict": {
+    "findings": [],
+    "summary": "Narrow five-role review of the added NIP-51 hidden-replies paragraph and its effect on the preceding merged kind-10021 item finds no blocking or major defect. Source/maturity: the text matches OPEN PR2489 (created 2026-09-29, unmerged) as a public per-thread addressable kind-30027 set, d=root id, e-tag reply ids, apply-only-if-same-key-authored-root, root-listing hides other authors' replies and the composer while relays still accept posts, cooperating-client toggle, public-only set, and collisions limited to the same thread rather than claimed gone. The Nostrich line attributes the author's implemented claim and states public-source inspection did not establish it, which is the bounded snapshot result (public main@d693ab84, 2026-09-24) and does not assert that no implementation exists or a shipped interoperable release. Prose is reader-facing with no scoring or selection jargon. The primary link is PR2489. Topic terms (addressable set, d/e tags, toggle, unmerged format discussion) are explained in ordinary language. Continuity: the new heading stays a proposal beside the distinct adopted favorites-kind-10021 correction, which is unchanged and not confused with this item. Proposed-spec versus implemented-client boundary is explicit.",
+    "verdict": "PASS"
+  },
+  "delta_diff_sha256": "f34a49b70d0f2b41195048cf751983d5fadbe80ad6385b2262a420710b2fc1d8",
+  "quality_roles": [
+    "claims",
+    "prose",
+    "links",
+    "topics",
+    "continuity"
+  ],
+  "tldr": "Nostr Compass arrives on Android; White Noise adds polls, while new releases improve relay moderation, signer permissions, and encrypted group recovery.",
+  "tldr_whitespace_words": 21
+}

@@ -1,0 +1,153 @@
+{
+  "attempts": [
+    {
+      "attempt": 1,
+      "model": "composer-2.5[fast=true]",
+      "outcome": "success",
+      "output_sha256": "836b35ec9b1d0ad54c49a8d8b95805b029fa3b5a7ec92f6583bd6e6d35ddb1c3",
+      "provider": "cursor",
+      "response_id": null,
+      "routing_attempts": [
+        {
+          "budget_seconds": 120.0,
+          "elapsed_seconds": 115.198,
+          "kind": "timeout",
+          "message": "Isolated review deadline",
+          "model": "grok-4.6",
+          "outcome": "failure",
+          "provider": "cursor",
+          "provider_wide": false
+        },
+        {
+          "budget_seconds": 121.2,
+          "elapsed_seconds": 74.907,
+          "model": "composer-2.5",
+          "outcome": "success",
+          "provider": "cursor"
+        }
+      ],
+      "started_at": "2026-09-30T16:14:12.743135+00:00",
+      "usage": {}
+    }
+  ],
+  "completed_at": "2026-09-30T16:17:22.848226+00:00",
+  "elapsed_seconds": 190.105,
+  "endpoint": "cursor-acp",
+  "implementation_model": "gpt-6.1-sol",
+  "implementation_models": [
+    "gpt-6.1-sol"
+  ],
+  "instructions_sha256": "1834e243b8a203131522f7910e918e325f1d80bc6881ccced833a56054d8ceaf",
+  "max_attempts": 1,
+  "max_output_tokens": 3000,
+  "requested_model": "grok-4.6",
+  "review_tier": "standard",
+  "routing_chain": [
+    {
+      "model": "grok-4.6",
+      "provider": "cursor"
+    },
+    {
+      "model": "composer-2.5",
+      "provider": "cursor"
+    },
+    {
+      "model": "claude-opus-5",
+      "provider": "claude-code"
+    },
+    {
+      "model": "google/gemini-3.1-pro-preview",
+      "provider": "openrouter"
+    }
+  ],
+  "schema_version": 1,
+  "selected_cost_usd": null,
+  "selected_endpoint": "cursor-acp",
+  "selected_family": "cursor",
+  "selected_model": "composer-2.5[fast=true]",
+  "selected_provider": "cursor",
+  "snapshots": [
+    {
+      "bytes": 110904,
+      "path": "/opt/data/compass-worktrees/2026-09-30/content/en/newsletters/2026-09-30-newsletter.md",
+      "sha256": "80e3667dbf5428f4c71e5d059333b95da58f6d0dd7af7cfb89696437b7e280d6",
+      "stored_name": "001-80e3667dbf5428f4-2026-09-30-newsletter.md"
+    },
+    {
+      "bytes": 16970,
+      "path": "/opt/data/tmp/compass_selection_urgent_20260930/final_combined_delta.diff",
+      "sha256": "b9aabc9c51a1cb5186a1a86f8bae1f2647aeb1641c4d540e5e1174e45deb44da",
+      "stored_name": "002-b9aabc9c51a1cb51-final_combined_delta.diff"
+    },
+    {
+      "bytes": 488963,
+      "path": "/opt/data/tmp/compass_selection_urgent_20260930/final_combined_primary_sources.txt",
+      "sha256": "be3e0900988b973ac96caf1f91145d82e8b34acfd11a216ba475c95481045f9b",
+      "stored_name": "003-be3e0900988b973a-final_combined_primary_sources.txt"
+    },
+    {
+      "bytes": 10673,
+      "path": "/opt/data/tmp/compass_selection_urgent_20260930/discovery_primary_receipt_scoped.json",
+      "sha256": "bf5e970151068dff5db616572f09ad065f791f0aad6300e602e0de3f2a9f1311",
+      "stored_name": "004-bf5e970151068dff-discovery_primary_receipt_scoped.json"
+    },
+    {
+      "bytes": 7430,
+      "path": "/opt/data/tmp/compass_discovery_delta_addenda_20260930.md",
+      "sha256": "08a16a88c0d91662eed18ccd26f354cb9dfe4d35244fe475f7c9b8532c781529",
+      "stored_name": "005-08a16a88c0d91662-compass_discovery_delta_addenda_20260930.md"
+    },
+    {
+      "bytes": 3691,
+      "path": "/opt/data/tmp/compass_moyu_source_launch_20260930.md",
+      "sha256": "709ae2fbc6d8947264e854ff0e4fee20b875b7c9bd11e61b8eeb420db6556c44",
+      "stored_name": "006-709ae2fbc6d89472-compass_moyu_source_launch_20260930.md"
+    },
+    {
+      "bytes": 3382,
+      "path": "/opt/data/tmp/compass_cutoff_20260930/proposed_delta.md",
+      "sha256": "0e377109652c05bc4fcc0e6419327424436734779e71bcce3f695961e56b497f",
+      "stored_name": "007-0e377109652c05bc-proposed_delta.md"
+    },
+    {
+      "bytes": 23508,
+      "path": "/opt/data/tmp/compass_cutoff_20260930/final_cutoff_receipt.json",
+      "sha256": "172e0514166008729a91cb9f4325b1670cf64285041b8f898d357e37ab932cd9",
+      "stored_name": "008-172e051416600872-final_cutoff_receipt.json"
+    },
+    {
+      "bytes": 5376,
+      "path": "/opt/data/tmp/compass_cutoff_20260930/source_diffs_manifest.json",
+      "sha256": "67fec8eabd955ff399bb3762fd2036cb5fea154e305d510b187d94726627d3d6",
+      "stored_name": "009-67fec8eabd955ff3-source_diffs_manifest.json"
+    },
+    {
+      "bytes": 343,
+      "path": "/opt/data/tmp/compass_buzz7192_containment_compare.json",
+      "sha256": "fec90d656865317bdda218ae78a31a50e6afc9b04d09b6b2c880c58f00732957",
+      "stored_name": "010-fec90d656865317b-compass_buzz7192_containment_compare.json"
+    },
+    {
+      "bytes": 153,
+      "path": "/opt/data/tmp/compass_tldr_proposed_20260930.txt",
+      "sha256": "3ae9efe27b2a4971a84530dfd34d4502f3ca241ce457efda2cbe9c2e1726dad3",
+      "stored_name": "011-3ae9efe27b2a4971-compass_tldr_proposed_20260930.txt"
+    },
+    {
+      "bytes": 1196,
+      "path": "/opt/data/compass-worktrees/2026-09-30/data/newsletter_workspace/review-runs/urgent-final-editorial-20260930T1548Z/verdict.json",
+      "sha256": "c2ec8cf470d919051a132a9f06108dec59aee19cb5e0f2a51137dfaa4ddd2d47",
+      "stored_name": "012-c2ec8cf470d91905-verdict.json"
+    }
+  ],
+  "started_at": "2026-09-30T16:14:12.741648+00:00",
+  "status": "completed",
+  "timeout_scope": "invocation_including_retries_and_cleanup",
+  "timeout_seconds": 600,
+  "tools_enabled": false,
+  "verdict": {
+    "findings": [],
+    "summary": "Across claims/source/maturity, the supplied Edition #42 draft matches the Wednesday delta inventory and primary receipts: White Noise android-v2026.9.30 stays within group polls, account-default, in-process edit, and history-notice bounds without attachment-resume or custom-poll UI overreach; Dart NDK 0.10.0 is correctly promoted as a stable packaging of the prior dev series plus NIP-46 metadata and private subscription IDs; Elisym commerce remains anchored to merged PR #120 with provisional-schema and non-deployment caveats, and PR #139 is labeled source-only; Moyu, Iris Meet, etemiz/wot, and khatru are treated as default-branch or newly published source without false release or live-site claims; Mangatsu, Noteds, Statim, and SCRUTINY Lens tie capabilities to tagged READMEs and/or cited commits with early-release hedges; Hubstr Relay and Buzz PR #7192 handling follow the receipts (Hubstr NIP-86 fix included; Buzz #7192 appropriately omitted after integration-branch-only merge). Prose sections remain reader-facing with concrete Nostr surfaces and primary-source-bound paragraphs, including Compass Android opener distinctions (ngit repo, signed 1.1.2 notes, public recordings, editor vs shipped features). Link and topic treatment is consistent where checked: NIP-55 is explained with a topic backlink in Mangatsu, NIP-86/NIP-51 merged-status transitions and the July NIP-86 correction are explicit, and relay or signer caveats (khatru advertised methods, Statim multi-network privacy, SCRUTINY AI optional path) are preserved. Continuity is sound: the six-year September retrospective is intentional synthesis with dated primary sources, not a substitute for in-window news, and I found no Buzz #7192 regression or duplicate false-release claims. The proposed 21-word TLDR accurately compresses the lead (Compass Android, White Noise polls, relay moderation, signer permissions, encrypted-group recovery themes) without introducing new factual claims beyond the draft. Review boundary: this verdict is based only on the supplied snapshot text and evidence bundles, not live HTTP checks, device exercise, or production render.",
+    "verdict": "PASS"
+  }
+}
