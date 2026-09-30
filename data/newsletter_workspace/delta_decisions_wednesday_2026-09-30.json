@@ -1,0 +1,3207 @@
+{
+  "schema_version": 1,
+  "source_delta_path": "/opt/data/tmp/compass_full_project_delta_20260930.json",
+  "source_delta_sha256": "d5ceba1599d8c12801f6f561575ac8feac2eaa9ce47f54d859b4ac788451e40c",
+  "merged_pr_decisions": [
+    {
+      "candidate_id": "pr:SnowCait/nostter:2628",
+      "project": "Nostter",
+      "repo": "SnowCait/nostter",
+      "number": 2628,
+      "url": "https://github.com/SnowCait/nostter/pull/2628",
+      "title": "Move document-wide body styles from root layout to app.css",
+      "base_ref": "main",
+      "merged_at": "2026-09-30T01:24:02Z",
+      "decision": "skip",
+      "reason": "CSS placement/reset refactor explicitly without intended behavior change"
+    },
+    {
+      "candidate_id": "pr:SnowCait/nostter:2626",
+      "project": "Nostter",
+      "repo": "SnowCait/nostter",
+      "number": 2626,
+      "url": "https://github.com/SnowCait/nostter/pull/2626",
+      "title": "Log 5xx responses and unexpected server errors",
+      "base_ref": "main",
+      "merged_at": "2026-09-30T00:14:18Z",
+      "decision": "skip",
+      "reason": "Server diagnostics only, no changed Nostr behavior"
+    },
+    {
+      "candidate_id": "pr:SnowCait/nostter:2625",
+      "project": "Nostter",
+      "repo": "SnowCait/nostter",
+      "number": 2625,
+      "url": "https://github.com/SnowCait/nostter/pull/2625",
+      "title": "Report stylesheet response statuses in CSS diagnostics",
+      "base_ref": "main",
+      "merged_at": "2026-09-29T23:27:53Z",
+      "decision": "skip",
+      "reason": "Stylesheet diagnostic telemetry only"
+    },
+    {
+      "candidate_id": "pr:SnowCait/nostter:2624",
+      "project": "Nostter",
+      "repo": "SnowCait/nostter",
+      "number": 2624,
+      "url": "https://github.com/SnowCait/nostter/pull/2624",
+      "title": "Add temporary client diagnostics for intermittent CSS failures",
+      "base_ref": "main",
+      "merged_at": "2026-09-29T22:42:50Z",
+      "decision": "skip",
+      "reason": "Temporary CSS diagnostics explicitly do not fix cause"
+    },
+    {
+      "candidate_id": "pr:vitorpamplona/amethyst:4282",
+      "project": "Amethyst",
+      "repo": "vitorpamplona/amethyst",
+      "number": 4282,
+      "url": "https://github.com/vitorpamplona/amethyst/pull/4282",
+      "title": "Add Buzz protocol event types and NIP-MP conformance fixtures",
+      "base_ref": "main",
+      "merged_at": "2026-09-30T11:53:25Z",
+      "decision": "include",
+      "reason": "Material merged-source Nostr progress: Add Buzz protocol event types and NIP-MP conformance fixtures. Fold into sourced Amethyst addendum, retaining implementation/test/deployment limitations."
+    },
+    {
+      "candidate_id": "pr:vitorpamplona/amethyst:4284",
+      "project": "Amethyst",
+      "repo": "vitorpamplona/amethyst",
+      "number": 4284,
+      "url": "https://github.com/vitorpamplona/amethyst/pull/4284",
+      "title": "feat: display Ultra HDR photos in HDR",
+      "base_ref": "main",
+      "merged_at": "2026-09-30T11:50:44Z",
+      "decision": "include",
+      "reason": "Material merged-source Nostr progress: feat: display Ultra HDR photos in HDR. Fold into sourced Amethyst addendum, retaining implementation/test/deployment limitations."
+    },
+    {
+      "candidate_id": "pr:vitorpamplona/amethyst:4277",
+      "project": "Amethyst",
+      "repo": "vitorpamplona/amethyst",
+      "number": 4277,
+      "url": "https://github.com/vitorpamplona/amethyst/pull/4277",
+      "title": "feat(concord): private channels, Kick, audit fixes and the remaining CORD features",
+      "base_ref": "main",
+      "merged_at": "2026-09-29T22:37:28Z",
+      "decision": "include",
+      "reason": "Material merged-source Nostr progress: feat(concord): private channels, Kick, audit fixes and the remaining CORD features. Fold into sourced Amethyst addendum, retaining implementation/test/deployment limitations."
+    },
+    {
+      "candidate_id": "pr:vitorpamplona/amethyst:4280",
+      "project": "Amethyst",
+      "repo": "vitorpamplona/amethyst",
+      "number": 4280,
+      "url": "https://github.com/vitorpamplona/amethyst/pull/4280",
+      "title": "Fix image zoom transition clipping during open/close animation",
+      "base_ref": "main",
+      "merged_at": "2026-09-29T22:03:18Z",
+      "decision": "skip",
+      "reason": "Image transition clipping polish below substantive workflow threshold"
+    },
+    {
+      "candidate_id": "pr:vitorpamplona/amethyst:4281",
+      "project": "Amethyst",
+      "repo": "vitorpamplona/amethyst",
+      "number": 4281,
+      "url": "https://github.com/vitorpamplona/amethyst/pull/4281",
+      "title": "Extract test constants in ConcordChannelListFragmentationTest",
+      "base_ref": "main",
+      "merged_at": "2026-09-29T22:02:51Z",
+      "decision": "skip",
+      "reason": "Test/CI/internal cleanup only; no new Nostr runtime, user workflow or independently reviewable protocol milestone."
+    },
+    {
+      "candidate_id": "pr:vitorpamplona/amethyst:4278",
+      "project": "Amethyst",
+      "repo": "vitorpamplona/amethyst",
+      "number": 4278,
+      "url": "https://github.com/vitorpamplona/amethyst/pull/4278",
+      "title": "refactor: one-UI step 6 waves 3–7 — upload port, 140 shared screens, audit fixes",
+      "base_ref": "main",
+      "merged_at": "2026-09-29T21:48:44Z",
+      "decision": "include",
+      "reason": "Material merged-source Nostr progress: refactor: one-UI step 6 waves 3–7 — upload port, 140 shared screens, audit fixes. Fold into sourced Amethyst addendum, retaining implementation/test/deployment limitations."
+    },
+    {
+      "candidate_id": "pr:vitorpamplona/amethyst:4272",
+      "project": "Amethyst",
+      "repo": "vitorpamplona/amethyst",
+      "number": 4272,
+      "url": "https://github.com/vitorpamplona/amethyst/pull/4272",
+      "title": "feat(mls): open late application messages from retained former epochs",
+      "base_ref": "main",
+      "merged_at": "2026-09-29T21:39:52Z",
+      "decision": "include",
+      "reason": "Material merged-source Nostr progress: feat(mls): open late application messages from retained former epochs. Fold into sourced Amethyst addendum, retaining implementation/test/deployment limitations."
+    },
+    {
+      "candidate_id": "pr:vitorpamplona/amethyst:4275",
+      "project": "Amethyst",
+      "repo": "vitorpamplona/amethyst",
+      "number": 4275,
+      "url": "https://github.com/vitorpamplona/amethyst/pull/4275",
+      "title": "feat(mls): derive secret-tree leaves from the unexpanded node secrets",
+      "base_ref": "main",
+      "merged_at": "2026-09-29T21:39:50Z",
+      "decision": "include",
+      "reason": "Material merged-source Nostr progress: feat(mls): derive secret-tree leaves from the unexpanded node secrets. Fold into sourced Amethyst addendum, retaining implementation/test/deployment limitations."
+    },
+    {
+      "candidate_id": "pr:vitorpamplona/amethyst:4271",
+      "project": "Amethyst",
+      "repo": "vitorpamplona/amethyst",
+      "number": 4271,
+      "url": "https://github.com/vitorpamplona/amethyst/pull/4271",
+      "title": "feat(mls): keep skipped-generation secrets across a restore",
+      "base_ref": "main",
+      "merged_at": "2026-09-29T21:39:32Z",
+      "decision": "include",
+      "reason": "Material merged-source Nostr progress: feat(mls): keep skipped-generation secrets across a restore. Fold into sourced Amethyst addendum, retaining implementation/test/deployment limitations."
+    },
+    {
+      "candidate_id": "pr:vitorpamplona/amethyst:4270",
+      "project": "Amethyst",
+      "repo": "vitorpamplona/amethyst",
+      "number": 4270,
+      "url": "https://github.com/vitorpamplona/amethyst/pull/4270",
+      "title": "fix(mls): name the sender when a ratchet generation is reused",
+      "base_ref": "main",
+      "merged_at": "2026-09-29T21:39:22Z",
+      "decision": "include",
+      "reason": "Material merged-source Nostr progress: fix(mls): name the sender when a ratchet generation is reused. Fold into sourced Amethyst addendum, retaining implementation/test/deployment limitations."
+    },
+    {
+      "candidate_id": "pr:vitorpamplona/amethyst:4274",
+      "project": "Amethyst",
+      "repo": "vitorpamplona/amethyst",
+      "number": 4274,
+      "url": "https://github.com/vitorpamplona/amethyst/pull/4274",
+      "title": "Fix amy build",
+      "base_ref": "main",
+      "merged_at": "2026-09-29T20:11:36Z",
+      "decision": "skip",
+      "reason": "Build repair without shipped release or new Nostr functionality"
+    },
+    {
+      "candidate_id": "pr:vitorpamplona/amethyst:4265",
+      "project": "Amethyst",
+      "repo": "vitorpamplona/amethyst",
+      "number": 4265,
+      "url": "https://github.com/vitorpamplona/amethyst/pull/4265",
+      "title": "fix(concord): cross-client interop with Armada and Accordion",
+      "base_ref": "main",
+      "merged_at": "2026-09-29T19:58:40Z",
+      "decision": "include",
+      "reason": "Material merged-source Nostr progress: fix(concord): cross-client interop with Armada and Accordion. Fold into sourced Amethyst addendum, retaining implementation/test/deployment limitations."
+    },
+    {
+      "candidate_id": "pr:vitorpamplona/amethyst:4264",
+      "project": "Amethyst",
+      "repo": "vitorpamplona/amethyst",
+      "number": 4264,
+      "url": "https://github.com/vitorpamplona/amethyst/pull/4264",
+      "title": "feat(concord): pins, disappearing messages, Invite Registry and Direct Invites",
+      "base_ref": "main",
+      "merged_at": "2026-09-29T19:44:32Z",
+      "decision": "include",
+      "reason": "Material merged-source Nostr progress: feat(concord): pins, disappearing messages, Invite Registry and Direct Invites. Fold into sourced Amethyst addendum, retaining implementation/test/deployment limitations."
+    },
+    {
+      "candidate_id": "pr:vitorpamplona/amethyst:4267",
+      "project": "Amethyst",
+      "repo": "vitorpamplona/amethyst",
+      "number": 4267,
+      "url": "https://github.com/vitorpamplona/amethyst/pull/4267",
+      "title": "fix(quartz): correct tag readers found by the graph link review; remove ForkTag",
+      "base_ref": "main",
+      "merged_at": "2026-09-29T18:17:20Z",
+      "decision": "include",
+      "reason": "Material merged-source Nostr progress: fix(quartz): correct tag readers found by the graph link review; remove ForkTag. Fold into sourced Amethyst addendum, retaining implementation/test/deployment limitations."
+    },
+    {
+      "candidate_id": "pr:vitorpamplona/amethyst:4266",
+      "project": "Amethyst",
+      "repo": "vitorpamplona/amethyst",
+      "number": 4266,
+      "url": "https://github.com/vitorpamplona/amethyst/pull/4266",
+      "title": "Add NIP-71 video view events and push notification support",
+      "base_ref": "main",
+      "merged_at": "2026-09-29T18:13:21Z",
+      "decision": "include",
+      "reason": "Material merged-source Nostr progress: Add NIP-71 video view events and push notification support. Fold into sourced Amethyst addendum, retaining implementation/test/deployment limitations."
+    },
+    {
+      "candidate_id": "pr:vitorpamplona/amethyst:4262",
+      "project": "Amethyst",
+      "repo": "vitorpamplona/amethyst",
+      "number": 4262,
+      "url": "https://github.com/vitorpamplona/amethyst/pull/4262",
+      "title": "Implement CORD spec conformance: fragments, pins, rekey, dissolution",
+      "base_ref": "main",
+      "merged_at": "2026-09-29T16:30:17Z",
+      "decision": "include",
+      "reason": "Material merged-source Nostr progress: Implement CORD spec conformance: fragments, pins, rekey, dissolution. Fold into sourced Amethyst addendum, retaining implementation/test/deployment limitations."
+    },
+    {
+      "candidate_id": "pr:divinevideo/divine-mobile:9702",
+      "project": "diVine",
+      "repo": "divinevideo/divine-mobile",
+      "number": 9702,
+      "url": "https://github.com/divinevideo/divine-mobile/pull/9702",
+      "title": "test(profile): settle feed cubit inside fake async",
+      "base_ref": "main",
+      "merged_at": "2026-09-30T14:22:09Z",
+      "decision": "skip",
+      "reason": "Test/CI/internal cleanup only; no new Nostr runtime, user workflow or independently reviewable protocol milestone."
+    },
+    {
+      "candidate_id": "pr:divinevideo/divine-mobile:9703",
+      "project": "diVine",
+      "repo": "divinevideo/divine-mobile",
+      "number": 9703,
+      "url": "https://github.com/divinevideo/divine-mobile/pull/9703",
+      "title": "fix(video-editor): keep text in place on square exports with a smaller clip",
+      "base_ref": "main",
+      "merged_at": "2026-09-30T13:03:29Z",
+      "decision": "include",
+      "reason": "Material merged-source Nostr progress: fix(video-editor): keep text in place on square exports with a smaller clip. Fold into sourced diVine addendum, retaining implementation/test/deployment limitations."
+    },
+    {
+      "candidate_id": "pr:divinevideo/divine-mobile:9662",
+      "project": "diVine",
+      "repo": "divinevideo/divine-mobile",
+      "number": 9662,
+      "url": "https://github.com/divinevideo/divine-mobile/pull/9662",
+      "title": "test(integration): let a failed check fail app-launching suites instead of hanging",
+      "base_ref": "main",
+      "merged_at": "2026-09-30T13:03:25Z",
+      "decision": "skip",
+      "reason": "Test/CI/internal cleanup only; no new Nostr runtime, user workflow or independently reviewable protocol milestone."
+    },
+    {
+      "candidate_id": "pr:divinevideo/divine-mobile:9598",
+      "project": "diVine",
+      "repo": "divinevideo/divine-mobile",
+      "number": 9598,
+      "url": "https://github.com/divinevideo/divine-mobile/pull/9598",
+      "title": "feat(video-recorder): add a chroma key camera mode that shows the swapped background while recording",
+      "base_ref": "main",
+      "merged_at": "2026-09-30T12:07:40Z",
+      "decision": "include",
+      "reason": "Material merged-source Nostr progress: feat(video-recorder): add a chroma key camera mode that shows the swapped background while recording. Fold into sourced diVine addendum, retaining implementation/test/deployment limitations."
+    },
+    {
+      "candidate_id": "pr:divinevideo/divine-mobile:9701",
+      "project": "diVine",
+      "repo": "divinevideo/divine-mobile",
+      "number": 9701,
+      "url": "https://github.com/divinevideo/divine-mobile/pull/9701",
+      "title": "feat(video-editor): rename green screen to Color mask and let it key a plain white wall",
+      "base_ref": "main",
+      "merged_at": "2026-09-30T11:28:45Z",
+      "decision": "include",
+      "reason": "Material merged-source Nostr progress: feat(video-editor): rename green screen to Color mask and let it key a plain white wall. Fold into sourced diVine addendum, retaining implementation/test/deployment limitations."
+    },
+    {
+      "candidate_id": "pr:divinevideo/divine-mobile:9682",
+      "project": "diVine",
+      "repo": "divinevideo/divine-mobile",
+      "number": 9682,
+      "url": "https://github.com/divinevideo/divine-mobile/pull/9682",
+      "title": "test(feed): await mode switch cleanup",
+      "base_ref": "main",
+      "merged_at": "2026-09-30T10:35:02Z",
+      "decision": "skip",
+      "reason": "Test/CI/internal cleanup only; no new Nostr runtime, user workflow or independently reviewable protocol milestone."
+    },
+    {
+      "candidate_id": "pr:divinevideo/divine-mobile:9698",
+      "project": "diVine",
+      "repo": "divinevideo/divine-mobile",
+      "number": 9698,
+      "url": "https://github.com/divinevideo/divine-mobile/pull/9698",
+      "title": "fix(recorder): keep stills shot after leaving the stop-motion editor in the same clip",
+      "base_ref": "main",
+      "merged_at": "2026-09-30T08:51:15Z",
+      "decision": "include",
+      "reason": "Material merged-source Nostr progress: fix(recorder): keep stills shot after leaving the stop-motion editor in the same clip. Fold into sourced diVine addendum, retaining implementation/test/deployment limitations."
+    },
+    {
+      "candidate_id": "pr:divinevideo/divine-mobile:9694",
+      "project": "diVine",
+      "repo": "divinevideo/divine-mobile",
+      "number": 9694,
+      "url": "https://github.com/divinevideo/divine-mobile/pull/9694",
+      "title": "fix(video-editor): stop text moving down in square videos that mix clip resolutions",
+      "base_ref": "main",
+      "merged_at": "2026-09-30T08:51:15Z",
+      "decision": "include",
+      "reason": "Material merged-source Nostr progress: fix(video-editor): stop text moving down in square videos that mix clip resolutions. Fold into sourced diVine addendum, retaining implementation/test/deployment limitations."
+    },
+    {
+      "candidate_id": "pr:divinevideo/divine-mobile:9652",
+      "project": "diVine",
+      "repo": "divinevideo/divine-mobile",
+      "number": 9652,
+      "url": "https://github.com/divinevideo/divine-mobile/pull/9652",
+      "title": "feat(video-editor): highlight each caption word as it is spoken",
+      "base_ref": "main",
+      "merged_at": "2026-09-30T07:59:31Z",
+      "decision": "include",
+      "reason": "Material merged-source Nostr progress: feat(video-editor): highlight each caption word as it is spoken. Fold into sourced diVine addendum, retaining implementation/test/deployment limitations."
+    },
+    {
+      "candidate_id": "pr:divinevideo/divine-mobile:9672",
+      "project": "diVine",
+      "repo": "divinevideo/divine-mobile",
+      "number": 9672,
+      "url": "https://github.com/divinevideo/divine-mobile/pull/9672",
+      "title": "test(comments): await comments list bloc cleanup",
+      "base_ref": "main",
+      "merged_at": "2026-09-30T02:13:07Z",
+      "decision": "skip",
+      "reason": "Test/CI/internal cleanup only; no new Nostr runtime, user workflow or independently reviewable protocol milestone."
+    },
+    {
+      "candidate_id": "pr:divinevideo/divine-mobile:9680",
+      "project": "diVine",
+      "repo": "divinevideo/divine-mobile",
+      "number": 9680,
+      "url": "https://github.com/divinevideo/divine-mobile/pull/9680",
+      "title": "fix(providers): reload account-scoped preference services instead of rebuilding them",
+      "base_ref": "main",
+      "merged_at": "2026-09-30T03:00:05Z",
+      "decision": "include",
+      "reason": "Material merged-source Nostr progress: fix(providers): reload account-scoped preference services instead of rebuilding them. Fold into sourced diVine addendum, retaining implementation/test/deployment limitations."
+    },
+    {
+      "candidate_id": "pr:divinevideo/divine-mobile:9674",
+      "project": "diVine",
+      "repo": "divinevideo/divine-mobile",
+      "number": 9674,
+      "url": "https://github.com/divinevideo/divine-mobile/pull/9674",
+      "title": "test(profile): await reposted videos bloc cleanup",
+      "base_ref": "main",
+      "merged_at": "2026-09-30T02:37:55Z",
+      "decision": "skip",
+      "reason": "Test/CI/internal cleanup only; no new Nostr runtime, user workflow or independently reviewable protocol milestone."
+    },
+    {
+      "candidate_id": "pr:divinevideo/divine-mobile:9679",
+      "project": "diVine",
+      "repo": "divinevideo/divine-mobile",
+      "number": 9679,
+      "url": "https://github.com/divinevideo/divine-mobile/pull/9679",
+      "title": "test(feed): await inline comment composer cleanup",
+      "base_ref": "main",
+      "merged_at": "2026-09-30T02:19:34Z",
+      "decision": "skip",
+      "reason": "Test/CI/internal cleanup only; no new Nostr runtime, user workflow or independently reviewable protocol milestone."
+    },
+    {
+      "candidate_id": "pr:divinevideo/divine-mobile:9677",
+      "project": "diVine",
+      "repo": "divinevideo/divine-mobile",
+      "number": 9677,
+      "url": "https://github.com/divinevideo/divine-mobile/pull/9677",
+      "title": "fix(comments): stop deleted comments from reappearing",
+      "base_ref": "main",
+      "merged_at": "2026-09-30T02:16:03Z",
+      "decision": "include",
+      "reason": "Material merged-source Nostr progress: fix(comments): stop deleted comments from reappearing. Fold into sourced diVine addendum, retaining implementation/test/deployment limitations."
+    },
+    {
+      "candidate_id": "pr:divinevideo/divine-mobile:9676",
+      "project": "diVine",
+      "repo": "divinevideo/divine-mobile",
+      "number": 9676,
+      "url": "https://github.com/divinevideo/divine-mobile/pull/9676",
+      "title": "test(upload): await failure listener cleanup",
+      "base_ref": "main",
+      "merged_at": "2026-09-30T02:14:01Z",
+      "decision": "skip",
+      "reason": "Test/CI/internal cleanup only; no new Nostr runtime, user workflow or independently reviewable protocol milestone."
+    },
+    {
+      "candidate_id": "pr:divinevideo/divine-mobile:9675",
+      "project": "diVine",
+      "repo": "divinevideo/divine-mobile",
+      "number": 9675,
+      "url": "https://github.com/divinevideo/divine-mobile/pull/9675",
+      "title": "test(profile): await liked videos bloc cleanup",
+      "base_ref": "main",
+      "merged_at": "2026-09-30T02:14:01Z",
+      "decision": "skip",
+      "reason": "Test/CI/internal cleanup only; no new Nostr runtime, user workflow or independently reviewable protocol milestone."
+    },
+    {
+      "candidate_id": "pr:divinevideo/divine-mobile:9673",
+      "project": "diVine",
+      "repo": "divinevideo/divine-mobile",
+      "number": 9673,
+      "url": "https://github.com/divinevideo/divine-mobile/pull/9673",
+      "title": "test(profile): await saved videos bloc cleanup",
+      "base_ref": "main",
+      "merged_at": "2026-09-30T02:14:01Z",
+      "decision": "skip",
+      "reason": "Test/CI/internal cleanup only; no new Nostr runtime, user workflow or independently reviewable protocol milestone."
+    },
+    {
+      "candidate_id": "pr:divinevideo/divine-mobile:9671",
+      "project": "diVine",
+      "repo": "divinevideo/divine-mobile",
+      "number": 9671,
+      "url": "https://github.com/divinevideo/divine-mobile/pull/9671",
+      "title": "fix(ios): restore release builds after audio fade change",
+      "base_ref": "main",
+      "merged_at": "2026-09-29T23:22:59Z",
+      "decision": "skip",
+      "reason": "iOS compiler workaround without proven new shipped release"
+    },
+    {
+      "candidate_id": "pr:divinevideo/divine-mobile:9669",
+      "project": "diVine",
+      "repo": "divinevideo/divine-mobile",
+      "number": 9669,
+      "url": "https://github.com/divinevideo/divine-mobile/pull/9669",
+      "title": "fix(supporters): stop presenting verification as a membership benefit",
+      "base_ref": "main",
+      "merged_at": "2026-09-29T22:45:41Z",
+      "decision": "skip",
+      "reason": "Supporter marketing copy with no material Nostr surface"
+    },
+    {
+      "candidate_id": "pr:divinevideo/divine-mobile:9647",
+      "project": "diVine",
+      "repo": "divinevideo/divine-mobile",
+      "number": 9647,
+      "url": "https://github.com/divinevideo/divine-mobile/pull/9647",
+      "title": "fix(supporter): end checkout when a verified purchase grants nothing",
+      "base_ref": "main",
+      "merged_at": "2026-09-29T20:17:42Z",
+      "decision": "skip",
+      "reason": "Store supporter purchase handling with no direct Nostr integration change"
+    },
+    {
+      "candidate_id": "pr:divinevideo/divine-mobile:9645",
+      "project": "diVine",
+      "repo": "divinevideo/divine-mobile",
+      "number": 9645,
+      "url": "https://github.com/divinevideo/divine-mobile/pull/9645",
+      "title": "feat(video-editor): put a detached clip back into the timeline",
+      "base_ref": "main",
+      "merged_at": "2026-09-29T18:42:46Z",
+      "decision": "include",
+      "reason": "Material merged-source Nostr progress: feat(video-editor): put a detached clip back into the timeline. Fold into sourced diVine addendum, retaining implementation/test/deployment limitations."
+    },
+    {
+      "candidate_id": "pr:divinevideo/divine-mobile:9664",
+      "project": "diVine",
+      "repo": "divinevideo/divine-mobile",
+      "number": 9664,
+      "url": "https://github.com/divinevideo/divine-mobile/pull/9664",
+      "title": "fix(video-player): stop imported HLS videos from crashing the Android feed",
+      "base_ref": "main",
+      "merged_at": "2026-09-29T18:42:28Z",
+      "decision": "include",
+      "reason": "Material merged-source Nostr progress: fix(video-player): stop imported HLS videos from crashing the Android feed. Fold into sourced diVine addendum, retaining implementation/test/deployment limitations."
+    },
+    {
+      "candidate_id": "pr:divinevideo/divine-mobile:9640",
+      "project": "diVine",
+      "repo": "divinevideo/divine-mobile",
+      "number": 9640,
+      "url": "https://github.com/divinevideo/divine-mobile/pull/9640",
+      "title": "test(profile): await my profile bloc cleanup",
+      "base_ref": "main",
+      "merged_at": "2026-09-29T18:18:44Z",
+      "decision": "skip",
+      "reason": "Test/CI/internal cleanup only; no new Nostr runtime, user workflow or independently reviewable protocol milestone."
+    },
+    {
+      "candidate_id": "pr:divinevideo/divine-mobile:9639",
+      "project": "diVine",
+      "repo": "divinevideo/divine-mobile",
+      "number": 9639,
+      "url": "https://github.com/divinevideo/divine-mobile/pull/9639",
+      "title": "test(upload-progress): await cubit cleanup",
+      "base_ref": "main",
+      "merged_at": "2026-09-29T18:18:43Z",
+      "decision": "skip",
+      "reason": "Test/CI/internal cleanup only; no new Nostr runtime, user workflow or independently reviewable protocol milestone."
+    },
+    {
+      "candidate_id": "pr:divinevideo/divine-mobile:9654",
+      "project": "diVine",
+      "repo": "divinevideo/divine-mobile",
+      "number": 9654,
+      "url": "https://github.com/divinevideo/divine-mobile/pull/9654",
+      "title": "feat(video-editor): add 49 text fonts and group the font picker by style",
+      "base_ref": "main",
+      "merged_at": "2026-09-29T15:43:30Z",
+      "decision": "include",
+      "reason": "Material merged-source Nostr progress: feat(video-editor): add 49 text fonts and group the font picker by style. Fold into sourced diVine addendum, retaining implementation/test/deployment limitations."
+    },
+    {
+      "candidate_id": "pr:divinevideo/divine-mobile:9601",
+      "project": "diVine",
+      "repo": "divinevideo/divine-mobile",
+      "number": 9601,
+      "url": "https://github.com/divinevideo/divine-mobile/pull/9601",
+      "title": "feat(video-editor): pick common clip speeds with one tap",
+      "base_ref": "main",
+      "merged_at": "2026-09-29T15:14:11Z",
+      "decision": "include",
+      "reason": "Material merged-source Nostr progress: feat(video-editor): pick common clip speeds with one tap. Fold into sourced diVine addendum, retaining implementation/test/deployment limitations."
+    },
+    {
+      "candidate_id": "pr:divinevideo/divine-mobile:9658",
+      "project": "diVine",
+      "repo": "divinevideo/divine-mobile",
+      "number": 9658,
+      "url": "https://github.com/divinevideo/divine-mobile/pull/9658",
+      "title": "test(auth): cover signing in again while a second video is still uploading",
+      "base_ref": "main",
+      "merged_at": "2026-09-29T15:11:28Z",
+      "decision": "skip",
+      "reason": "Test/CI/internal cleanup only; no new Nostr runtime, user workflow or independently reviewable protocol milestone."
+    },
+    {
+      "candidate_id": "pr:divinevideo/divine-mobile:9661",
+      "project": "diVine",
+      "repo": "divinevideo/divine-mobile",
+      "number": 9661,
+      "url": "https://github.com/divinevideo/divine-mobile/pull/9661",
+      "title": "chore(auth): log when signing in again waits for uploads or is dropped",
+      "base_ref": "main",
+      "merged_at": "2026-09-29T15:11:28Z",
+      "decision": "skip",
+      "reason": "Diagnostic logging of existing sign-in/upload behavior"
+    },
+    {
+      "candidate_id": "pr:divinevideo/divine-mobile:9603",
+      "project": "diVine",
+      "repo": "divinevideo/divine-mobile",
+      "number": 9603,
+      "url": "https://github.com/divinevideo/divine-mobile/pull/9603",
+      "title": "fix(dm): stop trusting retired moderation keys for minors, labels and reports",
+      "base_ref": "main",
+      "merged_at": "2026-09-29T14:49:29Z",
+      "decision": "include",
+      "reason": "Material merged-source Nostr progress: fix(dm): stop trusting retired moderation keys for minors, labels and reports. Fold into sourced diVine addendum, retaining implementation/test/deployment limitations."
+    },
+    {
+      "candidate_id": "pr:divinevideo/divine-mobile:9644",
+      "project": "diVine",
+      "repo": "divinevideo/divine-mobile",
+      "number": 9644,
+      "url": "https://github.com/divinevideo/divine-mobile/pull/9644",
+      "title": "fix(router): record navigation analytics after the navigator builds",
+      "base_ref": "main",
+      "merged_at": "2026-09-29T14:03:41Z",
+      "decision": "skip",
+      "reason": "Navigation analytics scheduling only"
+    },
+    {
+      "candidate_id": "pr:block/buzz:7969",
+      "project": "Buzz",
+      "repo": "block/buzz",
+      "number": 7969,
+      "url": "https://github.com/block/buzz/pull/7969",
+      "title": "feat(buzz-relay): idempotent owner community deletion with quota reservation",
+      "base_ref": "main",
+      "merged_at": "2026-09-30T14:49:43Z",
+      "decision": "include",
+      "reason": "Material merged-source Nostr progress: feat(buzz-relay): idempotent owner community deletion with quota reservation. Fold into sourced Buzz addendum, retaining implementation/test/deployment limitations."
+    },
+    {
+      "candidate_id": "pr:block/buzz:7896",
+      "project": "Buzz",
+      "repo": "block/buzz",
+      "number": 7896,
+      "url": "https://github.com/block/buzz/pull/7896",
+      "title": "feat(mobile): show contextual names in lists, Search and Pulse",
+      "base_ref": "main",
+      "merged_at": "2026-09-30T14:46:15Z",
+      "decision": "include",
+      "reason": "Material merged-source Nostr progress: feat(mobile): show contextual names in lists, Search and Pulse. Fold into sourced Buzz addendum, retaining implementation/test/deployment limitations."
+    },
+    {
+      "candidate_id": "pr:block/buzz:5997",
+      "project": "Buzz",
+      "repo": "block/buzz",
+      "number": 5997,
+      "url": "https://github.com/block/buzz/pull/5997",
+      "title": "Add Kimi Code's default install path to managed-agent binary discovery",
+      "base_ref": "main",
+      "merged_at": "2026-09-30T02:36:01Z",
+      "decision": "skip",
+      "reason": "AI harness executable discovery, no Nostr surface"
+    },
+    {
+      "candidate_id": "pr:block/buzz:7981",
+      "project": "Buzz",
+      "repo": "block/buzz",
+      "number": 7981,
+      "url": "https://github.com/block/buzz/pull/7981",
+      "title": "test(desktop): fix flaky forum empty-draft replacement e2e",
+      "base_ref": "main",
+      "merged_at": "2026-09-29T22:59:30Z",
+      "decision": "skip",
+      "reason": "Test/CI/internal cleanup only; no new Nostr runtime, user workflow or independently reviewable protocol milestone."
+    },
+    {
+      "candidate_id": "pr:block/buzz:7980",
+      "project": "Buzz",
+      "repo": "block/buzz",
+      "number": 7980,
+      "url": "https://github.com/block/buzz/pull/7980",
+      "title": "chore(release): release Buzz Desktop version 0.5.26",
+      "base_ref": "main",
+      "merged_at": "2026-09-29T22:31:45Z",
+      "decision": "skip",
+      "reason": "Release bookkeeping: substantive release research belongs to root release triage"
+    },
+    {
+      "candidate_id": "pr:block/buzz:4846",
+      "project": "Buzz",
+      "repo": "block/buzz",
+      "number": 4846,
+      "url": "https://github.com/block/buzz/pull/4846",
+      "title": "fix(desktop): correct Grok Build setup guide URL",
+      "base_ref": "main",
+      "merged_at": "2026-09-29T20:58:26Z",
+      "decision": "skip",
+      "reason": "Third-party AI guide link repair, no Nostr surface"
+    },
+    {
+      "candidate_id": "pr:block/buzz:6515",
+      "project": "Buzz",
+      "repo": "block/buzz",
+      "number": 6515,
+      "url": "https://github.com/block/buzz/pull/6515",
+      "title": "fix(db): audit partition catalog before creation",
+      "base_ref": "main",
+      "merged_at": "2026-09-29T20:43:40Z",
+      "decision": "include",
+      "reason": "Material merged-source Nostr progress: fix(db): audit partition catalog before creation. Fold into sourced Buzz addendum, retaining implementation/test/deployment limitations."
+    },
+    {
+      "candidate_id": "pr:block/buzz:7895",
+      "project": "Buzz",
+      "repo": "block/buzz",
+      "number": 7895,
+      "url": "https://github.com/block/buzz/pull/7895",
+      "title": "feat(mobile): show contextual names in channel conversations",
+      "base_ref": "main",
+      "merged_at": "2026-09-29T19:47:44Z",
+      "decision": "include",
+      "reason": "Material merged-source Nostr progress: feat(mobile): show contextual names in channel conversations. Fold into sourced Buzz addendum, retaining implementation/test/deployment limitations."
+    },
+    {
+      "candidate_id": "pr:block/buzz:7224",
+      "project": "Buzz",
+      "repo": "block/buzz",
+      "number": 7224,
+      "url": "https://github.com/block/buzz/pull/7224",
+      "title": "feat(buzz-relay): NIP-FI stateless enforcement (S3) — upgrade gate, NIP-42 pairing, session lifetime, JWKS warm",
+      "base_ref": "main",
+      "merged_at": "2026-09-29T18:27:41Z",
+      "decision": "include",
+      "reason": "Material merged-source Nostr progress: feat(buzz-relay): NIP-FI stateless enforcement (S3) — upgrade gate, NIP-42 pairing, session lifetime, JWKS warm. Fold into sourced Buzz addendum, retaining implementation/test/deployment limitations."
+    },
+    {
+      "candidate_id": "pr:block/buzz:2255",
+      "project": "Buzz",
+      "repo": "block/buzz",
+      "number": 2255,
+      "url": "https://github.com/block/buzz/pull/2255",
+      "title": "feat(web): add Browse releases link next to invite download",
+      "base_ref": "main",
+      "merged_at": "2026-09-29T17:27:08Z",
+      "decision": "skip",
+      "reason": "Download-page navigation polish below materiality threshold"
+    },
+    {
+      "candidate_id": "pr:block/buzz:4486",
+      "project": "Buzz",
+      "repo": "block/buzz",
+      "number": 4486,
+      "url": "https://github.com/block/buzz/pull/4486",
+      "title": "docs(nips): fix stray angle brackets in created_at clauses",
+      "base_ref": "main",
+      "merged_at": "2026-09-29T17:02:31Z",
+      "decision": "skip",
+      "reason": "Specification comparison-operator formatting only; vectors/wire unchanged"
+    },
+    {
+      "candidate_id": "pr:block/buzz:7809",
+      "project": "Buzz",
+      "repo": "block/buzz",
+      "number": 7809,
+      "url": "https://github.com/block/buzz/pull/7809",
+      "title": "docs: specify desktop-driven mobile push suppression",
+      "base_ref": "main",
+      "merged_at": "2026-09-29T16:54:08Z",
+      "decision": "skip",
+      "reason": "Early push suppression design with wire/synchronization unresolved; insufficient mature milestone"
+    },
+    {
+      "candidate_id": "pr:block/buzz:7894",
+      "project": "Buzz",
+      "repo": "block/buzz",
+      "number": 7894,
+      "url": "https://github.com/block/buzz/pull/7894",
+      "title": "feat(mobile): add the contextual identity-name resolver",
+      "base_ref": "main",
+      "merged_at": "2026-09-29T16:21:15Z",
+      "decision": "include",
+      "reason": "Material merged-source Nostr progress: feat(mobile): add the contextual identity-name resolver. Fold into sourced Buzz addendum, retaining implementation/test/deployment limitations."
+    },
+    {
+      "candidate_id": "pr:block/buzz:7830",
+      "project": "Buzz",
+      "repo": "block/buzz",
+      "number": 7830,
+      "url": "https://github.com/block/buzz/pull/7830",
+      "title": "Automate owner deletion preparation",
+      "base_ref": "main",
+      "merged_at": "2026-09-29T15:39:34Z",
+      "decision": "include",
+      "reason": "Material merged-source Nostr progress: Automate owner deletion preparation. Fold into sourced Buzz addendum, retaining implementation/test/deployment limitations."
+    },
+    {
+      "candidate_id": "pr:MostroP2P/mobile:733",
+      "project": "Mostro Mobile",
+      "repo": "MostroP2P/mobile",
+      "number": 733,
+      "url": "https://github.com/MostroP2P/mobile/pull/733",
+      "title": "Add 'Satispay' to EUR payment methods",
+      "base_ref": "main",
+      "merged_at": "2026-09-30T12:52:42Z",
+      "decision": "skip",
+      "reason": "Fiat payment-method list only, no Nostr transport delta"
+    },
+    {
+      "candidate_id": "pr:MostroP2P/mostro:923",
+      "project": "Mostro",
+      "repo": "MostroP2P/mostro",
+      "number": 923,
+      "url": "https://github.com/MostroP2P/mostro/pull/923",
+      "title": "fix(dispute): make the dispute writes atomic (#921)",
+      "base_ref": "main",
+      "merged_at": "2026-09-30T12:52:18Z",
+      "decision": "include",
+      "reason": "Material merged-source Nostr progress: fix(dispute): make the dispute writes atomic (#921). Fold into sourced Mostro addendum, retaining implementation/test/deployment limitations."
+    },
+    {
+      "candidate_id": "pr:MostroP2P/mostro:1008",
+      "project": "Mostro",
+      "repo": "MostroP2P/mostro",
+      "number": 1008,
+      "url": "https://github.com/MostroP2P/mostro/pull/1008",
+      "title": "fix: build Ortsom PR images with the base's gate files",
+      "base_ref": "main",
+      "merged_at": "2026-09-30T12:21:27Z",
+      "decision": "skip",
+      "reason": "Test/CI/internal cleanup only; no new Nostr runtime, user workflow or independently reviewable protocol milestone."
+    },
+    {
+      "candidate_id": "pr:MostroP2P/mostro:945",
+      "project": "Mostro",
+      "repo": "MostroP2P/mostro",
+      "number": 945,
+      "url": "https://github.com/MostroP2P/mostro/pull/945",
+      "title": "fix: notify solver when dispute closes after user resolution",
+      "base_ref": "main",
+      "merged_at": "2026-09-29T15:30:40Z",
+      "decision": "include",
+      "reason": "Material merged-source Nostr progress: fix: notify solver when dispute closes after user resolution. Fold into sourced Mostro addendum, retaining implementation/test/deployment limitations."
+    },
+    {
+      "candidate_id": "pr:MostroP2P/mostro:1006",
+      "project": "Mostro",
+      "repo": "MostroP2P/mostro",
+      "number": 1006,
+      "url": "https://github.com/MostroP2P/mostro/pull/1006",
+      "title": "fix: recognize trade keys when create/take is accepted",
+      "base_ref": "main",
+      "merged_at": "2026-09-29T15:37:14Z",
+      "decision": "include",
+      "reason": "Material merged-source Nostr progress: fix: recognize trade keys when create/take is accepted. Fold into sourced Mostro addendum, retaining implementation/test/deployment limitations."
+    },
+    {
+      "candidate_id": "pr:Conduit-BTC/conduit-mono:591",
+      "project": "Conduit",
+      "repo": "Conduit-BTC/conduit-mono",
+      "number": 591,
+      "url": "https://github.com/Conduit-BTC/conduit-mono/pull/591",
+      "title": "fix(market): keep preview presence through Worker subdomain rename",
+      "base_ref": "main",
+      "merged_at": "2026-09-29T23:44:24Z",
+      "decision": "skip",
+      "reason": "Preview hosting rename/dependency patch, no distinct Nostr functionality"
+    },
+    {
+      "candidate_id": "pr:Conduit-BTC/conduit-mono:575",
+      "project": "Conduit",
+      "repo": "Conduit-BTC/conduit-mono",
+      "number": 575,
+      "url": "https://github.com/Conduit-BTC/conduit-mono/pull/575",
+      "title": "fix(market): use plain NIP-50 for ranked product search",
+      "base_ref": "main",
+      "merged_at": "2026-09-29T21:30:32Z",
+      "decision": "include",
+      "reason": "Material merged-source Nostr progress: fix(market): use plain NIP-50 for ranked product search. Fold into sourced Conduit addendum, retaining implementation/test/deployment limitations."
+    },
+    {
+      "candidate_id": "pr:pratik227/zap_dashboard:133",
+      "project": "ZapTracker",
+      "repo": "pratik227/zap_dashboard",
+      "number": 133,
+      "url": "https://github.com/pratik227/zap_dashboard/pull/133",
+      "title": "Replace Lightning Network stats with Nostr network stats",
+      "base_ref": "dev",
+      "merged_at": "2026-09-30T07:09:24Z",
+      "decision": "include",
+      "reason": "Material merged-source Nostr progress: Replace Lightning Network stats with Nostr network stats. Fold into sourced ZapTracker addendum, retaining implementation/test/deployment limitations."
+    },
+    {
+      "candidate_id": "pr:pratik227/zap_dashboard:135",
+      "project": "ZapTracker",
+      "repo": "pratik227/zap_dashboard",
+      "number": 135,
+      "url": "https://github.com/pratik227/zap_dashboard/pull/135",
+      "title": "Add Nostr quote engagement metrics",
+      "base_ref": "dev",
+      "merged_at": "2026-09-30T06:57:00Z",
+      "decision": "include",
+      "reason": "Material merged-source Nostr progress: Add Nostr quote engagement metrics. Fold into sourced ZapTracker addendum, retaining implementation/test/deployment limitations."
+    },
+    {
+      "candidate_id": "pr:pratik227/zap_dashboard:138",
+      "project": "ZapTracker",
+      "repo": "pratik227/zap_dashboard",
+      "number": 138,
+      "url": "https://github.com/pratik227/zap_dashboard/pull/138",
+      "title": "Deps update",
+      "base_ref": "dev",
+      "merged_at": "2026-09-30T06:46:38Z",
+      "decision": "skip",
+      "reason": "Test/CI/internal cleanup only; no new Nostr runtime, user workflow or independently reviewable protocol milestone."
+    },
+    {
+      "candidate_id": "pr:pratik227/zap_dashboard:137",
+      "project": "ZapTracker",
+      "repo": "pratik227/zap_dashboard",
+      "number": 137,
+      "url": "https://github.com/pratik227/zap_dashboard/pull/137",
+      "title": "Content import",
+      "base_ref": "dev",
+      "merged_at": "2026-09-30T06:46:39Z",
+      "decision": "skip",
+      "reason": "Blank primary PR body; exact files read yielded no output under quota guard, no verified material claim"
+    },
+    {
+      "candidate_id": "pr:pratik227/zap_dashboard:136",
+      "project": "ZapTracker",
+      "repo": "pratik227/zap_dashboard",
+      "number": 136,
+      "url": "https://github.com/pratik227/zap_dashboard/pull/136",
+      "title": "Content bridge",
+      "base_ref": "dev",
+      "merged_at": "2026-09-30T06:46:26Z",
+      "decision": "skip",
+      "reason": "Blank primary PR body; exact files read yielded no output under quota guard, no verified material claim"
+    },
+    {
+      "candidate_id": "pr:pratik227/zap_dashboard:129",
+      "project": "ZapTracker",
+      "repo": "pratik227/zap_dashboard",
+      "number": 129,
+      "url": "https://github.com/pratik227/zap_dashboard/pull/129",
+      "title": "Full NostrCore",
+      "base_ref": "dev",
+      "merged_at": "2026-09-30T05:56:35Z",
+      "decision": "skip",
+      "reason": "Blank primary PR body; exact files read yielded no output under quota guard, no verified material claim"
+    },
+    {
+      "candidate_id": "pr:moogmodular/earthly:30",
+      "project": "earthly",
+      "repo": "moogmodular/earthly",
+      "number": 30,
+      "url": "https://github.com/zeSchlausKwab/earthly/pull/30",
+      "title": "Fix Android SDK setup and prepare release 0.1.12",
+      "base_ref": "master",
+      "merged_at": "2026-09-30T14:52:49Z",
+      "decision": "include",
+      "reason": "Material merged-source Nostr progress: Fix Android SDK setup and prepare release 0.1.12. Fold into sourced earthly addendum, retaining implementation/test/deployment limitations."
+    },
+    {
+      "candidate_id": "pr:moogmodular/earthly:29",
+      "project": "earthly",
+      "repo": "moogmodular/earthly",
+      "number": 29,
+      "url": "https://github.com/zeSchlausKwab/earthly/pull/29",
+      "title": "Release 0.1.11: GMapper configurations and chat improvements",
+      "base_ref": "master",
+      "merged_at": "2026-09-30T14:42:05Z",
+      "decision": "include",
+      "reason": "Material merged-source Nostr progress: Release 0.1.11: GMapper configurations and chat improvements. Fold into sourced earthly addendum, retaining implementation/test/deployment limitations."
+    },
+    {
+      "candidate_id": "pr:elisymlabs/elisym:137",
+      "project": "@elisym/cli",
+      "repo": "elisymlabs/elisym",
+      "number": 137,
+      "url": "https://github.com/elisymlabs/elisym/pull/137",
+      "title": "Commerce: Tempo payments in the checkout and the merchant node (P3)",
+      "base_ref": "main",
+      "merged_at": "2026-09-29T22:15:52Z",
+      "decision": "include",
+      "reason": "Material merged-source Nostr progress: Commerce: Tempo payments in the checkout and the merchant node (P3). Fold into sourced @elisym/cli addendum, retaining implementation/test/deployment limitations."
+    },
+    {
+      "candidate_id": "pr:elisymlabs/elisym:136",
+      "project": "@elisym/cli",
+      "repo": "elisymlabs/elisym",
+      "number": 136,
+      "url": "https://github.com/elisymlabs/elisym/pull/136",
+      "title": "MCP: buy_product and get_order for commerce products (P5a)",
+      "base_ref": "main",
+      "merged_at": "2026-09-29T21:31:41Z",
+      "decision": "include",
+      "reason": "Material merged-source Nostr progress: MCP: buy_product and get_order for commerce products (P5a). Fold into sourced @elisym/cli addendum, retaining implementation/test/deployment limitations."
+    },
+    {
+      "candidate_id": "pr:elisymlabs/elisym:138",
+      "project": "@elisym/cli",
+      "repo": "elisymlabs/elisym",
+      "number": 138,
+      "url": "https://github.com/elisymlabs/elisym/pull/138",
+      "title": "Release merchant-node from the workflow (npm + GHCR image)",
+      "base_ref": "main",
+      "merged_at": "2026-09-29T21:28:29Z",
+      "decision": "skip",
+      "reason": "Release packaging only; author explicitly states merge publishes nothing"
+    },
+    {
+      "candidate_id": "pr:elisymlabs/elisym:134",
+      "project": "@elisym/cli",
+      "repo": "elisymlabs/elisym",
+      "number": 134,
+      "url": "https://github.com/elisymlabs/elisym/pull/134",
+      "title": "Docs: sell with the checkout (merchant quickstart, widget reference)",
+      "base_ref": "main",
+      "merged_at": "2026-09-29T21:25:31Z",
+      "decision": "skip",
+      "reason": "Documentation for implementation already included; no separate runtime milestone"
+    },
+    {
+      "candidate_id": "pr:elisymlabs/elisym:135",
+      "project": "@elisym/cli",
+      "repo": "elisymlabs/elisym",
+      "number": 135,
+      "url": "https://github.com/elisymlabs/elisym/pull/135",
+      "title": "Fix docs deploy: cache the Vercel build output",
+      "base_ref": "main",
+      "merged_at": "2026-09-29T20:41:27Z",
+      "decision": "skip",
+      "reason": "Documentation deploy cache only"
+    },
+    {
+      "candidate_id": "pr:Cameri/nostream:788",
+      "project": "nostream",
+      "repo": "Cameri/nostream",
+      "number": 788,
+      "url": "https://github.com/cameri/nostream/pull/788",
+      "title": "feat(nip56): hide events matching an actionable report",
+      "base_ref": "main",
+      "merged_at": "2026-09-29T14:29:04Z",
+      "decision": "include",
+      "reason": "Material merged-source Nostr progress: feat(nip56): hide events matching an actionable report. Fold into sourced nostream addendum, retaining implementation/test/deployment limitations."
+    },
+    {
+      "candidate_id": "pr:nbd-wtf/nostr-tools:564",
+      "project": "nostr-tools",
+      "repo": "nbd-wtf/nostr-tools",
+      "number": 564,
+      "url": "https://github.com/nbd-wtf/nostr-tools/pull/564",
+      "title": "pure: document that verifyEvent caches its result",
+      "base_ref": "master",
+      "merged_at": "2026-09-30T14:53:12Z",
+      "decision": "skip",
+      "reason": "Documents existing verification cache semantics; no new validation behavior or fix"
+    },
+    {
+      "candidate_id": "pr:relaystr/ndk:852",
+      "project": "Dart NDK",
+      "repo": "relaystr/ndk",
+      "number": 852,
+      "url": "https://github.com/relaystr/ndk/pull/852",
+      "title": "feat: send NIP-46 client metadata and requested perms on bunker connect",
+      "base_ref": "master",
+      "merged_at": "2026-09-30T13:15:59Z",
+      "decision": "include",
+      "reason": "Material merged-source Nostr progress: feat: send NIP-46 client metadata and requested perms on bunker connect. Fold into sourced Dart NDK addendum, retaining implementation/test/deployment limitations."
+    },
+    {
+      "candidate_id": "pr:relaystr/ndk:863",
+      "project": "Dart NDK",
+      "repo": "relaystr/ndk",
+      "number": 863,
+      "url": "https://github.com/relaystr/ndk/pull/863",
+      "title": "fix: allow file_picker 13.x in ndk_flutter",
+      "base_ref": "master",
+      "merged_at": "2026-09-29T17:01:17Z",
+      "decision": "skip",
+      "reason": "File-picker dependency compatibility only"
+    },
+    {
+      "candidate_id": "pr:relaystr/ndk:860",
+      "project": "Dart NDK",
+      "repo": "relaystr/ndk",
+      "number": 860,
+      "url": "https://github.com/relaystr/ndk/pull/860",
+      "title": "fix: send private NIP-01 compliant request ids",
+      "base_ref": "master",
+      "merged_at": "2026-09-29T17:00:17Z",
+      "decision": "include",
+      "reason": "Material merged-source Nostr progress: fix: send private NIP-01 compliant request ids. Fold into sourced Dart NDK addendum, retaining implementation/test/deployment limitations."
+    },
+    {
+      "candidate_id": "pr:rust-nostr/nostr:1478",
+      "project": "rust-nostr",
+      "repo": "rust-nostr/nostr",
+      "number": 1478,
+      "url": "https://github.com/nostrdevkit/nostr/pull/1478",
+      "title": "sdk: require correlated COUNT results and preserve waiter receive errors",
+      "base_ref": "master",
+      "merged_at": "2026-09-30T14:06:35Z",
+      "decision": "include",
+      "reason": "Material merged-source Nostr progress: sdk: require correlated COUNT results and preserve waiter receive errors. Fold into sourced rust-nostr addendum, retaining implementation/test/deployment limitations."
+    },
+    {
+      "candidate_id": "pr:ZeusLN/zeus:4423",
+      "project": "Zeus",
+      "repo": "ZeusLN/zeus",
+      "number": 4423,
+      "url": "https://github.com/ZeusLN/zeus/pull/4423",
+      "title": "fix: avoid spurious node refetch after unlocking",
+      "base_ref": "master",
+      "merged_at": "2026-09-29T19:54:41Z",
+      "decision": "skip",
+      "reason": "Lightning node refetch only, no direct Nostr surface"
+    },
+    {
+      "candidate_id": "pr:ZeusLN/zeus:4788",
+      "project": "Zeus",
+      "repo": "ZeusLN/zeus",
+      "number": 4788,
+      "url": "https://github.com/ZeusLN/zeus/pull/4788",
+      "title": "fix(settings): don't crash when a stored blob is missing a settings group",
+      "base_ref": "master",
+      "merged_at": "2026-09-29T17:26:38Z",
+      "decision": "skip",
+      "reason": "Wallet settings data repair only, no direct Nostr surface"
+    },
+    {
+      "candidate_id": "pr:hroomnik007/MintRadar:107",
+      "project": "MintRadar",
+      "repo": "hroomnik007/MintRadar",
+      "number": 107,
+      "url": "https://github.com/hroomnik007/MintRadar/pull/107",
+      "title": "Fix 25 e2e specs that drifted from the UI",
+      "base_ref": "main",
+      "merged_at": "2026-09-29T18:53:40Z",
+      "decision": "skip",
+      "reason": "Test/CI/internal cleanup only; no new Nostr runtime, user workflow or independently reviewable protocol milestone."
+    },
+    {
+      "candidate_id": "pr:hroomnik007/MintRadar:106",
+      "project": "MintRadar",
+      "repo": "hroomnik007/MintRadar",
+      "number": 106,
+      "url": "https://github.com/hroomnik007/MintRadar/pull/106",
+      "title": "Mint Detail: show keyset input fee",
+      "base_ref": "main",
+      "merged_at": "2026-09-29T18:09:03Z",
+      "decision": "skip",
+      "reason": "Cashu mint fees only, no direct Nostr integration change"
+    },
+    {
+      "candidate_id": "pr:hroomnik007/MintRadar:105",
+      "project": "MintRadar",
+      "repo": "hroomnik007/MintRadar",
+      "number": 105,
+      "url": "https://github.com/hroomnik007/MintRadar/pull/105",
+      "title": "Token Inspector: desktop action layout, caption instead of tooltip",
+      "base_ref": "main",
+      "merged_at": "2026-09-29T17:58:59Z",
+      "decision": "skip",
+      "reason": "Cashu token inspector layout only"
+    },
+    {
+      "candidate_id": "pr:hroomnik007/MintRadar:104",
+      "project": "MintRadar",
+      "repo": "hroomnik007/MintRadar",
+      "number": 104,
+      "url": "https://github.com/hroomnik007/MintRadar/pull/104",
+      "title": "Best Mint wizard: make currency buttons compact",
+      "base_ref": "main",
+      "merged_at": "2026-09-29T14:06:20Z",
+      "decision": "skip",
+      "reason": "Cashu mint wizard layout only"
+    },
+    {
+      "candidate_id": "pr:lawalletio/lawallet-nwc:322",
+      "project": "lawalletio/lawallet-nwc",
+      "repo": "lawalletio/lawallet-nwc",
+      "number": 322,
+      "url": "https://github.com/lawalletio/lawallet-nwc/pull/322",
+      "title": "fix(cards): let owners rebind a card wallet from the Connection Map",
+      "base_ref": "main",
+      "merged_at": "2026-09-30T14:09:31Z",
+      "decision": "skip",
+      "reason": "Card-wallet REST rebinding, no new NWC integration behavior"
+    },
+    {
+      "candidate_id": "pr:lawalletio/lawallet-nwc:316",
+      "project": "lawalletio/lawallet-nwc",
+      "repo": "lawalletio/lawallet-nwc",
+      "number": 316,
+      "url": "https://github.com/lawalletio/lawallet-nwc/pull/316",
+      "title": "feat(cards): LUD-19 payLink for BoltCard top-up",
+      "base_ref": "main",
+      "merged_at": "2026-09-29T14:53:09Z",
+      "decision": "include",
+      "reason": "Material merged-source Nostr progress: feat(cards): LUD-19 payLink for BoltCard top-up. Fold into sourced lawalletio/lawallet-nwc addendum, retaining implementation/test/deployment limitations."
+    },
+    {
+      "candidate_id": "pr:lawalletio/lawallet-nwc:319",
+      "project": "lawalletio/lawallet-nwc",
+      "repo": "lawalletio/lawallet-nwc",
+      "number": 319,
+      "url": "https://github.com/lawalletio/lawallet-nwc/pull/319",
+      "title": "feat: BoltCard payLink and payer notes on send",
+      "base_ref": "main",
+      "merged_at": "2026-09-29T14:40:51Z",
+      "decision": "include",
+      "reason": "Material merged-source Nostr progress: feat: BoltCard payLink and payer notes on send. Fold into sourced lawalletio/lawallet-nwc addendum, retaining implementation/test/deployment limitations."
+    },
+    {
+      "candidate_id": "pr:block-core/angor:978",
+      "project": "Angor",
+      "repo": "block-core/angor",
+      "number": 978,
+      "url": "https://github.com/block-core/angor/pull/978",
+      "title": "Add manual UAT test guide and indexer/relay deployment docs",
+      "base_ref": "main",
+      "merged_at": "2026-09-29T23:13:19Z",
+      "decision": "skip",
+      "reason": "Bitcoin indexer/testing documentation; hosting a relay does not establish Nostr runtime progress"
+    },
+    {
+      "candidate_id": "pr:routstr/routstrd:113",
+      "project": "Routstrd",
+      "repo": "routstr/routstrd",
+      "number": 113,
+      "url": "https://github.com/Routstr/routstrd/pull/113",
+      "title": "Change the default mint to Minibits; keep cubabitcoin in trusted",
+      "base_ref": "main",
+      "merged_at": "2026-09-30T09:20:09Z",
+      "decision": "skip",
+      "reason": "Cashu mint selection only, no direct Nostr behavior"
+    },
+    {
+      "candidate_id": "pr:dergigi/castr.me:26",
+      "project": "castr.me",
+      "repo": "dergigi/castr.me",
+      "number": 26,
+      "url": "https://github.com/dergigi/castr.me/pull/26",
+      "title": "Upgrade to Node.js 24 for Vercel deployments",
+      "base_ref": "master",
+      "merged_at": "2026-09-30T14:29:55Z",
+      "decision": "skip",
+      "reason": "Hosting runtime upgrade only"
+    },
+    {
+      "candidate_id": "pr:zapcooking/frontend:766",
+      "project": "Zap Cooking",
+      "repo": "zapcooking/frontend",
+      "number": 766,
+      "url": "https://github.com/zapcooking/frontend/pull/766",
+      "title": "fix(feed): stopgap — hide ytmeta4 spam bot from Global Food",
+      "base_ref": "main",
+      "merged_at": "2026-09-29T23:16:10Z",
+      "decision": "skip",
+      "reason": "Single-account temporary spam denylist, explicitly not broader moderation capability"
+    },
+    {
+      "candidate_id": "pr:zapcooking/frontend:765",
+      "project": "Zap Cooking",
+      "repo": "zapcooking/frontend",
+      "number": 765,
+      "url": "https://github.com/zapcooking/frontend/pull/765",
+      "title": "fix(feed): drop dead antiprimal.net from the feed's relay pools",
+      "base_ref": "main",
+      "merged_at": "2026-09-29T23:08:16Z",
+      "decision": "skip",
+      "reason": "Removal of one dead relay below substantive new-change threshold"
+    },
+    {
+      "candidate_id": "pr:zapcooking/frontend:764",
+      "project": "Zap Cooking",
+      "repo": "zapcooking/frontend",
+      "number": 764,
+      "url": "https://github.com/zapcooking/frontend/pull/764",
+      "title": "fix(mute): ProfileSheet mute keeps every existing mute-list entry",
+      "base_ref": "main",
+      "merged_at": "2026-09-29T22:27:43Z",
+      "decision": "include",
+      "reason": "Material merged-source Nostr progress: fix(mute): ProfileSheet mute keeps every existing mute-list entry. Fold into sourced Zap Cooking addendum, retaining implementation/test/deployment limitations."
+    },
+    {
+      "candidate_id": "pr:zapcooking/frontend:763",
+      "project": "Zap Cooking",
+      "repo": "zapcooking/frontend",
+      "number": 763,
+      "url": "https://github.com/zapcooking/frontend/pull/763",
+      "title": "fix(nip05): require NIP-98 signer to match the claimed pubkey",
+      "base_ref": "main",
+      "merged_at": "2026-09-29T22:18:57Z",
+      "decision": "include",
+      "reason": "Material merged-source Nostr progress: fix(nip05): require NIP-98 signer to match the claimed pubkey. Fold into sourced Zap Cooking addendum, retaining implementation/test/deployment limitations."
+    },
+    {
+      "candidate_id": "pr:michaelneale/mesh-llm:2121",
+      "project": "mesh-llm",
+      "repo": "michaelneale/mesh-llm",
+      "number": 2121,
+      "url": "https://github.com/Mesh-LLM/mesh-llm/pull/2121",
+      "title": "build: compile the built-in Lexe wallet out by default",
+      "base_ref": "main",
+      "merged_at": "2026-09-30T08:56:49Z",
+      "decision": "skip",
+      "reason": "LLM wallet build defaults, no direct Nostr surface"
+    },
+    {
+      "candidate_id": "pr:michaelneale/mesh-llm:2117",
+      "project": "mesh-llm",
+      "repo": "michaelneale/mesh-llm",
+      "number": 2117,
+      "url": "https://github.com/Mesh-LLM/mesh-llm/pull/2117",
+      "title": "security(plugin-mesh): stamp the local endpoint id as the frame source",
+      "base_ref": "main",
+      "merged_at": "2026-09-30T05:37:38Z",
+      "decision": "skip",
+      "reason": "Non-Nostr mesh frame authentication"
+    },
+    {
+      "candidate_id": "pr:michaelneale/mesh-llm:2118",
+      "project": "mesh-llm",
+      "repo": "michaelneale/mesh-llm",
+      "number": 2118,
+      "url": "https://github.com/Mesh-LLM/mesh-llm/pull/2118",
+      "title": "fix(ci): restore Windows and Vulkan Laya smokes",
+      "base_ref": "main",
+      "merged_at": "2026-09-30T03:13:04Z",
+      "decision": "skip",
+      "reason": "Test/CI/internal cleanup only; no new Nostr runtime, user workflow or independently reviewable protocol milestone."
+    },
+    {
+      "candidate_id": "pr:michaelneale/mesh-llm:2113",
+      "project": "mesh-llm",
+      "repo": "michaelneale/mesh-llm",
+      "number": 2113,
+      "url": "https://github.com/Mesh-LLM/mesh-llm/pull/2113",
+      "title": "feat: make the split performance settings reachable and documented (#2112 workstream 1)",
+      "base_ref": "main",
+      "merged_at": "2026-09-30T01:24:17Z",
+      "decision": "skip",
+      "reason": "LLM performance controls, no Nostr surface"
+    },
+    {
+      "candidate_id": "pr:michaelneale/mesh-llm:2111",
+      "project": "mesh-llm",
+      "repo": "michaelneale/mesh-llm",
+      "number": 2111,
+      "url": "https://github.com/Mesh-LLM/mesh-llm/pull/2111",
+      "title": "fix(sdk): preserve wallet profiles and release payments on restart",
+      "base_ref": "main",
+      "merged_at": "2026-09-30T01:13:47Z",
+      "decision": "skip",
+      "reason": "LLM wallet/payment profile restart behavior, no Nostr surface"
+    },
+    {
+      "candidate_id": "pr:michaelneale/mesh-llm:2120",
+      "project": "mesh-llm",
+      "repo": "michaelneale/mesh-llm",
+      "number": 2120,
+      "url": "https://github.com/Mesh-LLM/mesh-llm/pull/2120",
+      "title": "docs: run Laya directly from published model weights",
+      "base_ref": "main",
+      "merged_at": "2026-09-30T00:12:12Z",
+      "decision": "skip",
+      "reason": "LLM model setup docs, no Nostr surface"
+    },
+    {
+      "candidate_id": "pr:michaelneale/mesh-llm:2102",
+      "project": "mesh-llm",
+      "repo": "michaelneale/mesh-llm",
+      "number": 2102,
+      "url": "https://github.com/Mesh-LLM/mesh-llm/pull/2102",
+      "title": "feat(analytics): report upgrades and execution environment",
+      "base_ref": "main",
+      "merged_at": "2026-09-30T00:14:29Z",
+      "decision": "skip",
+      "reason": "LLM analytics instrumentation, no Nostr surface"
+    },
+    {
+      "candidate_id": "pr:michaelneale/mesh-llm:2114",
+      "project": "mesh-llm",
+      "repo": "michaelneale/mesh-llm",
+      "number": 2114,
+      "url": "https://github.com/Mesh-LLM/mesh-llm/pull/2114",
+      "title": "docs: add the DwarfStar (ds4) engine plugin guide",
+      "base_ref": "main",
+      "merged_at": "2026-09-30T00:13:02Z",
+      "decision": "skip",
+      "reason": "LLM engine guide, no Nostr surface"
+    },
+    {
+      "candidate_id": "pr:marmot-protocol/marmot:427",
+      "project": "Marmot Protocol",
+      "repo": "marmot-protocol/marmot",
+      "number": 427,
+      "url": "https://github.com/marmot-protocol/marmot/pull/427",
+      "title": "Replace multi-device draft with an ideas-surface walkthrough",
+      "base_ref": "master",
+      "merged_at": "2026-09-30T10:32:51Z",
+      "decision": "include",
+      "reason": "Material merged-source Nostr progress: Replace multi-device draft with an ideas-surface walkthrough. Fold into sourced Marmot Protocol addendum, retaining implementation/test/deployment limitations."
+    },
+    {
+      "candidate_id": "pr:marmot-protocol/mdk:2101",
+      "project": "Marmot Protocol (mdk)",
+      "repo": "marmot-protocol/mdk",
+      "number": 2101,
+      "url": "https://github.com/marmot-protocol/mdk/pull/2101",
+      "title": "Fix wn-codex attachment test setup on macOS APFS",
+      "base_ref": "master",
+      "merged_at": "2026-09-30T13:05:53Z",
+      "decision": "skip",
+      "reason": "APFS test fixture only; production attachment validation unchanged"
+    },
+    {
+      "candidate_id": "pr:marmot-protocol/mdk:2105",
+      "project": "Marmot Protocol (mdk)",
+      "repo": "marmot-protocol/mdk",
+      "number": 2105,
+      "url": "https://github.com/marmot-protocol/mdk/pull/2105",
+      "title": "Add NIP-30 tagged sends and window emoji tags",
+      "base_ref": "master",
+      "merged_at": "2026-09-30T12:11:19Z",
+      "decision": "include",
+      "reason": "Material merged-source Nostr progress: Add NIP-30 tagged sends and window emoji tags. Fold into sourced Marmot Protocol (mdk) addendum, retaining implementation/test/deployment limitations."
+    },
+    {
+      "candidate_id": "pr:marmot-protocol/mdk:1929",
+      "project": "Marmot Protocol (mdk)",
+      "repo": "marmot-protocol/mdk",
+      "number": 1929,
+      "url": "https://github.com/marmot-protocol/mdk/pull/1929",
+      "title": "Expose optional group app components",
+      "base_ref": "master",
+      "merged_at": "2026-09-30T08:21:31Z",
+      "decision": "include",
+      "reason": "Material merged-source Nostr progress: Expose optional group app components. Fold into sourced Marmot Protocol (mdk) addendum, retaining implementation/test/deployment limitations."
+    },
+    {
+      "candidate_id": "pr:marmot-protocol/mdk:1969",
+      "project": "Marmot Protocol (mdk)",
+      "repo": "marmot-protocol/mdk",
+      "number": 1969,
+      "url": "https://github.com/marmot-protocol/mdk/pull/1969",
+      "title": "Merge the published kind:0 profile in account_publish_profile instead of replacing it",
+      "base_ref": "master",
+      "merged_at": "2026-09-30T06:56:02Z",
+      "decision": "include",
+      "reason": "Material merged-source Nostr progress: Merge the published kind:0 profile in account_publish_profile instead of replacing it. Fold into sourced Marmot Protocol (mdk) addendum, retaining implementation/test/deployment limitations."
+    },
+    {
+      "candidate_id": "pr:marmot-protocol/mdk:2097",
+      "project": "Marmot Protocol (mdk)",
+      "repo": "marmot-protocol/mdk",
+      "number": 2097,
+      "url": "https://github.com/marmot-protocol/mdk/pull/2097",
+      "title": "Align encrypted-media read timeout with resumable body idle policy",
+      "base_ref": "master",
+      "merged_at": "2026-09-30T06:49:57Z",
+      "decision": "include",
+      "reason": "Material merged-source Nostr progress: Align encrypted-media read timeout with resumable body idle policy. Fold into sourced Marmot Protocol (mdk) addendum, retaining implementation/test/deployment limitations."
+    },
+    {
+      "candidate_id": "pr:marmot-protocol/mdk:2098",
+      "project": "Marmot Protocol (mdk)",
+      "repo": "marmot-protocol/mdk",
+      "number": 2098,
+      "url": "https://github.com/marmot-protocol/mdk/pull/2098",
+      "title": "Report the startup stage an account worker was blocked in when its ready-wait expires",
+      "base_ref": "master",
+      "merged_at": "2026-09-30T06:22:18Z",
+      "decision": "include",
+      "reason": "Material merged-source Nostr progress: Report the startup stage an account worker was blocked in when its ready-wait expires. Fold into sourced Marmot Protocol (mdk) addendum, retaining implementation/test/deployment limitations."
+    },
+    {
+      "candidate_id": "pr:marmot-protocol/mdk:2096",
+      "project": "Marmot Protocol (mdk)",
+      "repo": "marmot-protocol/mdk",
+      "number": 2096,
+      "url": "https://github.com/marmot-protocol/mdk/pull/2096",
+      "title": "Expose admin group profile updates to agent connector",
+      "base_ref": "master",
+      "merged_at": "2026-09-30T06:12:47Z",
+      "decision": "include",
+      "reason": "Material merged-source Nostr progress: Expose admin group profile updates to agent connector. Fold into sourced Marmot Protocol (mdk) addendum, retaining implementation/test/deployment limitations."
+    },
+    {
+      "candidate_id": "pr:marmot-protocol/mdk:2095",
+      "project": "Marmot Protocol (mdk)",
+      "repo": "marmot-protocol/mdk",
+      "number": 2095,
+      "url": "https://github.com/marmot-protocol/mdk/pull/2095",
+      "title": "Remove the unreachable commit-merge arm from direct ingest",
+      "base_ref": "master",
+      "merged_at": "2026-09-29T18:31:19Z",
+      "decision": "include",
+      "reason": "Material merged-source Nostr progress: Remove the unreachable commit-merge arm from direct ingest. Fold into sourced Marmot Protocol (mdk) addendum, retaining implementation/test/deployment limitations."
+    },
+    {
+      "candidate_id": "pr:marmot-protocol/mdk:2094",
+      "project": "Marmot Protocol (mdk)",
+      "repo": "marmot-protocol/mdk",
+      "number": 2094,
+      "url": "https://github.com/marmot-protocol/mdk/pull/2094",
+      "title": "Expose per-voter poll selections through the bindings",
+      "base_ref": "master",
+      "merged_at": "2026-09-29T16:50:27Z",
+      "decision": "include",
+      "reason": "Material merged-source Nostr progress: Expose per-voter poll selections through the bindings. Fold into sourced Marmot Protocol (mdk) addendum, retaining implementation/test/deployment limitations."
+    },
+    {
+      "candidate_id": "pr:marmot-protocol/mdk:2093",
+      "project": "Marmot Protocol (mdk)",
+      "repo": "marmot-protocol/mdk",
+      "number": 2093,
+      "url": "https://github.com/marmot-protocol/mdk/pull/2093",
+      "title": "Stop discarding pending messages when convergence selects no branch",
+      "base_ref": "master",
+      "merged_at": "2026-09-29T14:42:25Z",
+      "decision": "include",
+      "reason": "Material merged-source Nostr progress: Stop discarding pending messages when convergence selects no branch. Fold into sourced Marmot Protocol (mdk) addendum, retaining implementation/test/deployment limitations."
+    }
+  ],
+  "release_decisions": [
+    {
+      "candidate_id": "release:mouse484/astraea:399511430",
+      "release_id": 399511430,
+      "repo": "mouse484/astraea",
+      "tag": "v5.35.180",
+      "published_at": "2026-09-29T20:40:12Z",
+      "disposition": "skip",
+      "story": "astraea",
+      "reason": "Dependency-only TanStack query update; no changed Nostr feature or protocol behavior.",
+      "source_urls": [
+        "https://github.com/mouse484/astraea/releases/tag/v5.35.180"
+      ],
+      "exact_tag_commit": "cd1e6fcdd3bde4e68b520f90b34d10fdad53b8ea",
+      "live_readback": "/opt/data/tmp/compass_release_delta_graphql_live_20260930.json"
+    },
+    {
+      "candidate_id": "release:nostr-wot/nostr-wot-extension:399528040",
+      "release_id": 399528040,
+      "repo": "nostr-wot/nostr-wot-extension",
+      "tag": "v0.8.7",
+      "published_at": "2026-09-30T12:58:17Z",
+      "disposition": "include",
+      "story": "nostr-wot-extension-authentication",
+      "reason": "Exact-destination authentication grants and complete approved-event verification; internal wallet proof restrictions, payment preimage checks and local timed private-message previews.",
+      "source_urls": [
+        "https://github.com/nostr-wot/nostr-wot-extension/releases/tag/v0.8.7"
+      ],
+      "exact_tag_commit": "1dec2c8ae90d9acce5020ce29c87c5eb2f961097",
+      "live_readback": "/opt/data/tmp/compass_release_delta_graphql_live_20260930.json"
+    },
+    {
+      "candidate_id": "release:0xchat-app/0xchat-app-main:399903578",
+      "release_id": 399903578,
+      "repo": "0xchat-app/0xchat-app-main",
+      "tag": "v1.5.6-release",
+      "published_at": "2026-09-30T12:14:33Z",
+      "disposition": "include",
+      "story": "0xchat-tagged-security-release",
+      "reason": "Previously covered source security fixes now ship in1.5.6; additional Tor proxy/log privacy, relay recovery, account/signer retention and send failure fixes establish a distinct continuity delta.",
+      "source_urls": [
+        "https://github.com/0xchat-app/0xchat-app-main/releases/tag/v1.5.6-release"
+      ],
+      "exact_tag_commit": "79531d929154baf08bf4212c39cbdf51e864c866",
+      "live_readback": "/opt/data/tmp/compass_release_delta_graphql_live_20260930.json"
+    },
+    {
+      "candidate_id": "release:nogringo/nostr-mail-client:399242999",
+      "release_id": 399242999,
+      "repo": "nogringo/nostr-mail-client",
+      "tag": "v0.17.0",
+      "published_at": "2026-09-29T14:42:33Z",
+      "disposition": "include",
+      "story": "nmail-private-state-release",
+      "reason": "New hidden mailbox-state/deletion synchronization, large-message Bcc protection, recipient read-relay delivery, folders/labels and composition changes; distinct from prior0.16.0.",
+      "source_urls": [
+        "https://github.com/nogringo/nostr-mail-client/releases/tag/v0.17.0"
+      ],
+      "exact_tag_commit": "293829b939c31ad0f274bf845c9cf9a7b05a0e73",
+      "live_readback": "/opt/data/tmp/compass_release_delta_graphql_live_20260930.json"
+    },
+    {
+      "candidate_id": "release:DavidGershony/openChat:399891758",
+      "release_id": 399891758,
+      "repo": "DavidGershony/openChat",
+      "tag": "v0.7.8",
+      "published_at": "2026-09-30T09:26:46Z",
+      "disposition": "fold",
+      "story": "scramble-recovery",
+      "reason": "Fold into existing Scramble section: manual all-address group-history recovery, native member administration and held-message drain fix; never imply decryption of pre-join MLSepochs.",
+      "source_urls": [
+        "https://github.com/DavidGershony/Scramble/releases/tag/v0.7.8"
+      ],
+      "exact_tag_commit": "301a54b0272fddcfeab385a3408a2d365c2089ac",
+      "live_readback": "/opt/data/tmp/compass_release_delta_graphql_live_20260930.json"
+    },
+    {
+      "candidate_id": "release:DavidGershony/openChat:399863199",
+      "release_id": 399863199,
+      "repo": "DavidGershony/openChat",
+      "tag": "v0.7.7",
+      "published_at": "2026-09-30T08:50:35Z",
+      "disposition": "fold",
+      "story": "scramble-recovery",
+      "reason": "Fold into existing Scramble section: manual all-address group-history recovery, native member administration and held-message drain fix; never imply decryption of pre-join MLSepochs.",
+      "source_urls": [
+        "https://github.com/DavidGershony/Scramble/releases/tag/v0.7.7"
+      ],
+      "exact_tag_commit": "cc1cbd058beaaeb82a1e59405d6571340d8e2aca",
+      "live_readback": "/opt/data/tmp/compass_release_delta_graphql_live_20260930.json"
+    },
+    {
+      "candidate_id": "release:DavidGershony/openChat:399743071",
+      "release_id": 399743071,
+      "repo": "DavidGershony/openChat",
+      "tag": "v0.7.6",
+      "published_at": "2026-09-30T05:29:38Z",
+      "disposition": "fold",
+      "story": "scramble-recovery",
+      "reason": "Fold into existing Scramble section: manual all-address group-history recovery, native member administration and held-message drain fix; never imply decryption of pre-join MLSepochs.",
+      "source_urls": [
+        "https://github.com/DavidGershony/Scramble/releases/tag/v0.7.6"
+      ],
+      "exact_tag_commit": "adf9142243207e6fedc0a33fcd34f05bb54d310f",
+      "live_readback": "/opt/data/tmp/compass_release_delta_graphql_live_20260930.json"
+    },
+    {
+      "candidate_id": "release:block/buzz:399593628",
+      "release_id": 399593628,
+      "repo": "block/buzz",
+      "tag": "desktop-v0.5.26",
+      "published_at": "2026-09-29T23:14:47Z",
+      "disposition": "fold",
+      "story": "buzz-channel-identity-controls",
+      "reason": "Tagged desktop/shared release ships previously described source changes, adds relay admin console and cross-device sidebar synchronization; repository/mobile notes retain separate source-level status.",
+      "source_urls": [
+        "https://github.com/block/buzz/releases/tag/desktop-v0.5.26"
+      ],
+      "exact_tag_commit": "2b4b138dc5cf2d9cc1a0ceb21d9063ff56fe8bf4",
+      "live_readback": "/opt/data/tmp/compass_release_delta_graphql_live_20260930.json"
+    },
+    {
+      "candidate_id": "release:MostroP2P/mostro:399301427",
+      "release_id": 399301427,
+      "repo": "MostroP2P/mostro",
+      "tag": "v0.19.0",
+      "published_at": "2026-09-29T15:50:20Z",
+      "disposition": "fold",
+      "story": "mostro-daemon-transport",
+      "reason": "v0.19.0 now publishes daemon transport removal already in existing development section; replace obsolete source-only status, include published_at tags, restoration and first-relay acceptance.",
+      "source_urls": [
+        "https://github.com/MostroP2P/mostro/releases/tag/v0.19.0"
+      ],
+      "exact_tag_commit": "d53e41d72e849f59311a2fd59f5c1545dfd6756a",
+      "live_readback": "/opt/data/tmp/compass_release_delta_graphql_live_20260930.json"
+    },
+    {
+      "candidate_id": "release:jesuspirate/chama:399702889",
+      "release_id": 399702889,
+      "repo": "jesuspirate/chama",
+      "tag": "v6.4.16",
+      "published_at": "2026-09-30T03:47:54Z",
+      "disposition": "include",
+      "story": "chama-signed-cancellation-background",
+      "reason": "Group6.4.14–6.4.16: signed cancellation propagates listing removal, recipient opaque wake tags and per-trade replay repair alerts, signed event chronology makes client trade state converge.",
+      "source_urls": [
+        "https://github.com/jesuspirate/chama/releases/tag/v6.4.16"
+      ],
+      "exact_tag_commit": "f7d577397647abab16b40ed624fa69d051f3c614",
+      "live_readback": "/opt/data/tmp/compass_release_delta_graphql_live_20260930.json"
+    },
+    {
+      "candidate_id": "release:jesuspirate/chama:399606385",
+      "release_id": 399606385,
+      "repo": "jesuspirate/chama",
+      "tag": "v6.4.15",
+      "published_at": "2026-09-29T23:46:26Z",
+      "disposition": "include",
+      "story": "chama-signed-cancellation-background",
+      "reason": "Group6.4.14–6.4.16: signed cancellation propagates listing removal, recipient opaque wake tags and per-trade replay repair alerts, signed event chronology makes client trade state converge.",
+      "source_urls": [
+        "https://github.com/jesuspirate/chama/releases/tag/v6.4.15"
+      ],
+      "exact_tag_commit": "76f9b7dbffbe5e0721e10f11e7a3b54da901a317",
+      "live_readback": "/opt/data/tmp/compass_release_delta_graphql_live_20260930.json"
+    },
+    {
+      "candidate_id": "release:jesuspirate/chama:399437540",
+      "release_id": 399437540,
+      "repo": "jesuspirate/chama",
+      "tag": "v6.4.14",
+      "published_at": "2026-09-29T18:57:38Z",
+      "disposition": "include",
+      "story": "chama-signed-cancellation-background",
+      "reason": "Group6.4.14–6.4.16: signed cancellation propagates listing removal, recipient opaque wake tags and per-trade replay repair alerts, signed event chronology makes client trade state converge.",
+      "source_urls": [
+        "https://github.com/jesuspirate/chama/releases/tag/v6.4.14"
+      ],
+      "exact_tag_commit": "5cbbfdc6310b9c60ec799d2250037f44ac465c4a",
+      "live_readback": "/opt/data/tmp/compass_release_delta_graphql_live_20260930.json"
+    },
+    {
+      "candidate_id": "release:moogmodular/earthly:400161950",
+      "release_id": 400161950,
+      "repo": "moogmodular/earthly",
+      "tag": "v0.1.12",
+      "published_at": "2026-09-30T15:03:08Z",
+      "disposition": "include",
+      "story": "earthly-maplet-configurations",
+      "reason": "Earthly is aNostr collaborative mapper (exact-tag README verified); v0.1.12 adds reusable public/private configurations, Maplet discovery and encrypted connection sharing. Canonical repository redirected tozeSchlausKwab/earthly.",
+      "source_urls": [
+        "https://github.com/zeSchlausKwab/earthly/releases/tag/v0.1.12"
+      ],
+      "exact_tag_commit": "47d93bcc3a12af80625433a1171e241d9d145f82",
+      "live_readback": "/opt/data/tmp/compass_release_delta_graphql_live_20260930.json"
+    },
+    {
+      "candidate_id": "release:elisymlabs/elisym:399552333",
+      "release_id": 399552333,
+      "repo": "elisymlabs/elisym",
+      "tag": "@elisym/sdk@0.41.0",
+      "published_at": "2026-09-29T21:46:53Z",
+      "disposition": "fold",
+      "story": "elisym-commerce-packages",
+      "reason": "Group shared monorepo tags into existing commerce story; self-hosted merchant-node distribution and MCPbuy_product/get_order add concrete Nostr-commerce surfaces. Do not assign all shared release-body features independently to every package.",
+      "source_urls": [
+        "https://github.com/elisymlabs/elisym/releases/tag/%40elisym/sdk%400.41.0"
+      ],
+      "exact_tag_commit": "4faba4f22832bdd2918c8374f79b6a47d038e51e",
+      "live_readback": "/opt/data/tmp/compass_release_delta_graphql_live_20260930.json"
+    },
+    {
+      "candidate_id": "release:elisymlabs/elisym:399570393",
+      "release_id": 399570393,
+      "repo": "elisymlabs/elisym",
+      "tag": "@elisym/pay-core@0.1.3",
+      "published_at": "2026-09-29T22:20:58Z",
+      "disposition": "fold",
+      "story": "elisym-commerce-packages",
+      "reason": "Fold Tempo payment integration into existing commerce story; payment-rail delta alone is not independent Nostr news.",
+      "source_urls": [
+        "https://github.com/elisymlabs/elisym/releases/tag/%40elisym/pay-core%400.1.3"
+      ],
+      "exact_tag_commit": "6f174683a3fc55f8c42fd6f82b7ed253b3563e8d",
+      "live_readback": "/opt/data/tmp/compass_release_delta_graphql_live_20260930.json"
+    },
+    {
+      "candidate_id": "release:elisymlabs/elisym:399570541",
+      "release_id": 399570541,
+      "repo": "elisymlabs/elisym",
+      "tag": "@elisym/merchant-node@0.2.0",
+      "published_at": "2026-09-29T22:21:17Z",
+      "disposition": "fold",
+      "story": "elisym-commerce-packages",
+      "reason": "Fold Tempo payment integration into existing commerce story; payment-rail delta alone is not independent Nostr news.",
+      "source_urls": [
+        "https://github.com/elisymlabs/elisym/releases/tag/%40elisym/merchant-node%400.2.0"
+      ],
+      "exact_tag_commit": "6f174683a3fc55f8c42fd6f82b7ed253b3563e8d",
+      "live_readback": "/opt/data/tmp/compass_release_delta_graphql_live_20260930.json"
+    },
+    {
+      "candidate_id": "release:elisymlabs/elisym:399539080",
+      "release_id": 399539080,
+      "repo": "elisymlabs/elisym",
+      "tag": "@elisym/merchant-node@0.1.0",
+      "published_at": "2026-09-29T21:23:56Z",
+      "disposition": "fold",
+      "story": "elisym-commerce-packages",
+      "reason": "Group shared monorepo tags into existing commerce story; self-hosted merchant-node distribution and MCPbuy_product/get_order add concrete Nostr-commerce surfaces. Do not assign all shared release-body features independently to every package.",
+      "source_urls": [
+        "https://github.com/elisymlabs/elisym/releases/tag/%40elisym/merchant-node%400.1.0"
+      ],
+      "exact_tag_commit": "7e34278405f68687c693ededf57cd13cd84d732f",
+      "live_readback": "/opt/data/tmp/compass_release_delta_graphql_live_20260930.json"
+    },
+    {
+      "candidate_id": "release:elisymlabs/elisym:399570648",
+      "release_id": 399570648,
+      "repo": "elisymlabs/elisym",
+      "tag": "@elisym/mcp@0.31.1",
+      "published_at": "2026-09-29T22:21:34Z",
+      "disposition": "fold",
+      "story": "elisym-commerce-packages",
+      "reason": "Fold Tempo payment integration into existing commerce story; payment-rail delta alone is not independent Nostr news.",
+      "source_urls": [
+        "https://github.com/elisymlabs/elisym/releases/tag/%40elisym/mcp%400.31.1"
+      ],
+      "exact_tag_commit": "6f174683a3fc55f8c42fd6f82b7ed253b3563e8d",
+      "live_readback": "/opt/data/tmp/compass_release_delta_graphql_live_20260930.json"
+    },
+    {
+      "candidate_id": "release:elisymlabs/elisym:399552450",
+      "release_id": 399552450,
+      "repo": "elisymlabs/elisym",
+      "tag": "@elisym/mcp@0.31.0",
+      "published_at": "2026-09-29T21:47:08Z",
+      "disposition": "fold",
+      "story": "elisym-commerce-packages",
+      "reason": "Group shared monorepo tags into existing commerce story; self-hosted merchant-node distribution and MCPbuy_product/get_order add concrete Nostr-commerce surfaces. Do not assign all shared release-body features independently to every package.",
+      "source_urls": [
+        "https://github.com/elisymlabs/elisym/releases/tag/%40elisym/mcp%400.31.0"
+      ],
+      "exact_tag_commit": "4faba4f22832bdd2918c8374f79b6a47d038e51e",
+      "live_readback": "/opt/data/tmp/compass_release_delta_graphql_live_20260930.json"
+    },
+    {
+      "candidate_id": "release:elisymlabs/elisym:399570463",
+      "release_id": 399570463,
+      "repo": "elisymlabs/elisym",
+      "tag": "@elisym/commerce@0.4.0",
+      "published_at": "2026-09-29T22:21:07Z",
+      "disposition": "fold",
+      "story": "elisym-commerce-packages",
+      "reason": "Fold Tempo payment integration into existing commerce story; payment-rail delta alone is not independent Nostr news.",
+      "source_urls": [
+        "https://github.com/elisymlabs/elisym/releases/tag/%40elisym/commerce%400.4.0"
+      ],
+      "exact_tag_commit": "6f174683a3fc55f8c42fd6f82b7ed253b3563e8d",
+      "live_readback": "/opt/data/tmp/compass_release_delta_graphql_live_20260930.json"
+    },
+    {
+      "candidate_id": "release:elisymlabs/elisym:399552249",
+      "release_id": 399552249,
+      "repo": "elisymlabs/elisym",
+      "tag": "@elisym/commerce@0.3.0",
+      "published_at": "2026-09-29T21:46:44Z",
+      "disposition": "fold",
+      "story": "elisym-commerce-packages",
+      "reason": "Group shared monorepo tags into existing commerce story; self-hosted merchant-node distribution and MCPbuy_product/get_order add concrete Nostr-commerce surfaces. Do not assign all shared release-body features independently to every package.",
+      "source_urls": [
+        "https://github.com/elisymlabs/elisym/releases/tag/%40elisym/commerce%400.3.0"
+      ],
+      "exact_tag_commit": "4faba4f22832bdd2918c8374f79b6a47d038e51e",
+      "live_readback": "/opt/data/tmp/compass_release_delta_graphql_live_20260930.json"
+    },
+    {
+      "candidate_id": "release:elisymlabs/elisym:399552583",
+      "release_id": 399552583,
+      "repo": "elisymlabs/elisym",
+      "tag": "@elisym/cli@0.33.3",
+      "published_at": "2026-09-29T21:47:22Z",
+      "disposition": "fold",
+      "story": "elisym-commerce-packages",
+      "reason": "Group shared monorepo tags into existing commerce story; self-hosted merchant-node distribution and MCPbuy_product/get_order add concrete Nostr-commerce surfaces. Do not assign all shared release-body features independently to every package.",
+      "source_urls": [
+        "https://github.com/elisymlabs/elisym/releases/tag/%40elisym/cli%400.33.3"
+      ],
+      "exact_tag_commit": "4faba4f22832bdd2918c8374f79b6a47d038e51e",
+      "live_readback": "/opt/data/tmp/compass_release_delta_graphql_live_20260930.json"
+    },
+    {
+      "candidate_id": "release:irislib/nostr-double-ratchet:400034388",
+      "release_id": 400034388,
+      "repo": "irislib/nostr-double-ratchet",
+      "tag": "nostr-double-ratchet-ts-v0.0.175",
+      "published_at": "2026-09-30T12:42:08Z",
+      "disposition": "fold",
+      "story": "nostr-double-ratchet-group-removal",
+      "reason": "Extend existing ratchet story through.175: durable handoffs saved before publishing, local group publication scope for removal-aware retry cancellation and device-label retention; unchanged signed wire format.",
+      "source_urls": [
+        "https://github.com/irislib/nostr-double-ratchet/releases/tag/nostr-double-ratchet-ts-v0.0.175"
+      ],
+      "exact_tag_commit": "95861c5559bfb045167cf450c509267e8a98c483",
+      "live_readback": "/opt/data/tmp/compass_release_delta_graphql_live_20260930.json"
+    },
+    {
+      "candidate_id": "release:irislib/nostr-double-ratchet:399821853",
+      "release_id": 399821853,
+      "repo": "irislib/nostr-double-ratchet",
+      "tag": "nostr-double-ratchet-ts-v0.0.174",
+      "published_at": "2026-09-30T07:50:26Z",
+      "disposition": "fold",
+      "story": "nostr-double-ratchet-group-removal",
+      "reason": "Extend existing ratchet story through.175: durable handoffs saved before publishing, local group publication scope for removal-aware retry cancellation and device-label retention; unchanged signed wire format.",
+      "source_urls": [
+        "https://github.com/irislib/nostr-double-ratchet/releases/tag/nostr-double-ratchet-ts-v0.0.174"
+      ],
+      "exact_tag_commit": "79122f90cb0c151a89d48b075a3d3fd3559f9e8f",
+      "live_readback": "/opt/data/tmp/compass_release_delta_graphql_live_20260930.json"
+    },
+    {
+      "candidate_id": "release:irislib/nostr-double-ratchet:399780394",
+      "release_id": 399780394,
+      "repo": "irislib/nostr-double-ratchet",
+      "tag": "nostr-double-ratchet-ts-v0.0.173",
+      "published_at": "2026-09-30T06:41:31Z",
+      "disposition": "fold",
+      "story": "nostr-double-ratchet-group-removal",
+      "reason": "Extend existing ratchet story through.175: durable handoffs saved before publishing, local group publication scope for removal-aware retry cancellation and device-label retention; unchanged signed wire format.",
+      "source_urls": [
+        "https://github.com/irislib/nostr-double-ratchet/releases/tag/nostr-double-ratchet-ts-v0.0.173"
+      ],
+      "exact_tag_commit": "2022b2cd2a1d2c581c434eed462cb76cab52ba9a",
+      "live_readback": "/opt/data/tmp/compass_release_delta_graphql_live_20260930.json"
+    },
+    {
+      "candidate_id": "release:mmalmi/nostr-pubsub:399766233",
+      "release_id": 399766233,
+      "repo": "mmalmi/nostr-pubsub",
+      "tag": "nostr-pubsub-ts-v0.5.9",
+      "published_at": "2026-09-30T06:19:22Z",
+      "disposition": "include",
+      "story": "iris-shared-event-file-runtime",
+      "reason": "Group0.5.7–.13: persistent event/outbox runtime, bounded exact relay/peer batching, source-bound evidence and durable admission before complete-history status.",
+      "source_urls": [
+        "https://github.com/mmalmi/nostr-pubsub/releases/tag/nostr-pubsub-ts-v0.5.9"
+      ],
+      "exact_tag_commit": "70a92d6e211762d863ea996342482672f452fc8b",
+      "live_readback": "/opt/data/tmp/compass_release_delta_graphql_live_20260930.json"
+    },
+    {
+      "candidate_id": "release:mmalmi/nostr-pubsub:399758999",
+      "release_id": 399758999,
+      "repo": "mmalmi/nostr-pubsub",
+      "tag": "nostr-pubsub-ts-v0.5.8",
+      "published_at": "2026-09-30T06:05:18Z",
+      "disposition": "include",
+      "story": "iris-shared-event-file-runtime",
+      "reason": "Group0.5.7–.13: persistent event/outbox runtime, bounded exact relay/peer batching, source-bound evidence and durable admission before complete-history status.",
+      "source_urls": [
+        "https://github.com/mmalmi/nostr-pubsub/releases/tag/nostr-pubsub-ts-v0.5.8"
+      ],
+      "exact_tag_commit": "ec1bde1287a5e08f7cb7e7f696b17a1fb1371d63",
+      "live_readback": "/opt/data/tmp/compass_release_delta_graphql_live_20260930.json"
+    },
+    {
+      "candidate_id": "release:mmalmi/nostr-pubsub:399758643",
+      "release_id": 399758643,
+      "repo": "mmalmi/nostr-pubsub",
+      "tag": "nostr-pubsub-ts-v0.5.7",
+      "published_at": "2026-09-30T06:04:33Z",
+      "disposition": "include",
+      "story": "iris-shared-event-file-runtime",
+      "reason": "Group0.5.7–.13: persistent event/outbox runtime, bounded exact relay/peer batching, source-bound evidence and durable admission before complete-history status.",
+      "source_urls": [
+        "https://github.com/mmalmi/nostr-pubsub/releases/tag/nostr-pubsub-ts-v0.5.7"
+      ],
+      "exact_tag_commit": "9e7d75bcbb11b4342dba469529ed111337a27be6",
+      "live_readback": "/opt/data/tmp/compass_release_delta_graphql_live_20260930.json"
+    },
+    {
+      "candidate_id": "release:mmalmi/nostr-pubsub:399859757",
+      "release_id": 399859757,
+      "repo": "mmalmi/nostr-pubsub",
+      "tag": "nostr-pubsub-ts-v0.5.13",
+      "published_at": "2026-09-30T08:45:45Z",
+      "disposition": "include",
+      "story": "iris-shared-event-file-runtime",
+      "reason": "Group0.5.7–.13: persistent event/outbox runtime, bounded exact relay/peer batching, source-bound evidence and durable admission before complete-history status.",
+      "source_urls": [
+        "https://github.com/mmalmi/nostr-pubsub/releases/tag/nostr-pubsub-ts-v0.5.13"
+      ],
+      "exact_tag_commit": "3811fd5462b85a0c1e5f0b120f852017b38e24e5",
+      "live_readback": "/opt/data/tmp/compass_release_delta_graphql_live_20260930.json"
+    },
+    {
+      "candidate_id": "release:mmalmi/nostr-pubsub:399828149",
+      "release_id": 399828149,
+      "repo": "mmalmi/nostr-pubsub",
+      "tag": "nostr-pubsub-ts-v0.5.12",
+      "published_at": "2026-09-30T08:00:16Z",
+      "disposition": "include",
+      "story": "iris-shared-event-file-runtime",
+      "reason": "Group0.5.7–.13: persistent event/outbox runtime, bounded exact relay/peer batching, source-bound evidence and durable admission before complete-history status.",
+      "source_urls": [
+        "https://github.com/mmalmi/nostr-pubsub/releases/tag/nostr-pubsub-ts-v0.5.12"
+      ],
+      "exact_tag_commit": "db8cd8c1447bfa9df3c9f03e4863f9b7ea0f3586",
+      "live_readback": "/opt/data/tmp/compass_release_delta_graphql_live_20260930.json"
+    },
+    {
+      "candidate_id": "release:mmalmi/nostr-pubsub:399798937",
+      "release_id": 399798937,
+      "repo": "mmalmi/nostr-pubsub",
+      "tag": "nostr-pubsub-ts-v0.5.11",
+      "published_at": "2026-09-30T07:14:05Z",
+      "disposition": "include",
+      "story": "iris-shared-event-file-runtime",
+      "reason": "Group0.5.7–.13: persistent event/outbox runtime, bounded exact relay/peer batching, source-bound evidence and durable admission before complete-history status.",
+      "source_urls": [
+        "https://github.com/mmalmi/nostr-pubsub/releases/tag/nostr-pubsub-ts-v0.5.11"
+      ],
+      "exact_tag_commit": "c6b1f4a25d2977a53a7e220573744f27a81969f4",
+      "live_readback": "/opt/data/tmp/compass_release_delta_graphql_live_20260930.json"
+    },
+    {
+      "candidate_id": "release:mmalmi/nostr-pubsub:399788859",
+      "release_id": 399788859,
+      "repo": "mmalmi/nostr-pubsub",
+      "tag": "nostr-pubsub-ts-v0.5.10",
+      "published_at": "2026-09-30T06:56:14Z",
+      "disposition": "include",
+      "story": "iris-shared-event-file-runtime",
+      "reason": "Group0.5.7–.13: persistent event/outbox runtime, bounded exact relay/peer batching, source-bound evidence and durable admission before complete-history status.",
+      "source_urls": [
+        "https://github.com/mmalmi/nostr-pubsub/releases/tag/nostr-pubsub-ts-v0.5.10"
+      ],
+      "exact_tag_commit": "b0dc23f943acca1b2eba2cb144c52e7bc0c5777c",
+      "live_readback": "/opt/data/tmp/compass_release_delta_graphql_live_20260930.json"
+    },
+    {
+      "candidate_id": "release:mmalmi/fips-ts:400042681",
+      "release_id": 400042681,
+      "repo": "mmalmi/fips-ts",
+      "tag": "runtime-v0.0.45",
+      "published_at": "2026-09-30T12:51:28Z",
+      "disposition": "fold",
+      "story": "iris-shared-event-file-runtime",
+      "reason": "Fold capacity-aware signaling routes and bounded setup recovery into shared event/file runtime story; retain native-peer upgrade requirement, no standalone package churn entry.",
+      "source_urls": [
+        "https://github.com/mmalmi/fips-ts/releases/tag/runtime-v0.0.45"
+      ],
+      "exact_tag_commit": "f7a982190926d3e81d510a2b1847f9cdee24ef60",
+      "live_readback": "/opt/data/tmp/compass_release_delta_graphql_live_20260930.json"
+    },
+    {
+      "candidate_id": "release:mmalmi/fips-ts:399964437",
+      "release_id": 399964437,
+      "repo": "mmalmi/fips-ts",
+      "tag": "runtime-v0.0.44",
+      "published_at": "2026-09-30T11:08:49Z",
+      "disposition": "fold",
+      "story": "iris-shared-event-file-runtime",
+      "reason": "Fold capacity-aware signaling routes and bounded setup recovery into shared event/file runtime story; retain native-peer upgrade requirement, no standalone package churn entry.",
+      "source_urls": [
+        "https://github.com/mmalmi/fips-ts/releases/tag/runtime-v0.0.44"
+      ],
+      "exact_tag_commit": "6c8a158ccd14e20d3696ee008f0aaa6c7b772d59",
+      "live_readback": "/opt/data/tmp/compass_release_delta_graphql_live_20260930.json"
+    },
+    {
+      "candidate_id": "release:mmalmi/hashtree:399800063",
+      "release_id": 399800063,
+      "repo": "mmalmi/hashtree",
+      "tag": "hashtree-ts-runtime-v0.5.9",
+      "published_at": "2026-09-30T07:16:05Z",
+      "disposition": "fold",
+      "story": "iris-shared-event-file-runtime",
+      "reason": "Fold0.5.8–.13 shared event worker/index/outbox and compatible FIPSadapter adoption into runtime story; adapter-only releases are dependency consumption of already described behavior.",
+      "source_urls": [
+        "https://github.com/mmalmi/hashtree/releases/tag/hashtree-ts-runtime-v0.5.9"
+      ],
+      "exact_tag_commit": "e5088541e58d844fa2c4fef817cad693405bef89",
+      "live_readback": "/opt/data/tmp/compass_release_delta_graphql_live_20260930.json"
+    },
+    {
+      "candidate_id": "release:mmalmi/hashtree:399771534",
+      "release_id": 399771534,
+      "repo": "mmalmi/hashtree",
+      "tag": "hashtree-ts-runtime-v0.5.8",
+      "published_at": "2026-09-30T06:25:04Z",
+      "disposition": "fold",
+      "story": "iris-shared-event-file-runtime",
+      "reason": "Fold0.5.8–.13 shared event worker/index/outbox and compatible FIPSadapter adoption into runtime story; adapter-only releases are dependency consumption of already described behavior.",
+      "source_urls": [
+        "https://github.com/mmalmi/hashtree/releases/tag/hashtree-ts-runtime-v0.5.8"
+      ],
+      "exact_tag_commit": "7837a39e2c831f3cc90ff3367759902864ef4a2f",
+      "live_readback": "/opt/data/tmp/compass_release_delta_graphql_live_20260930.json"
+    },
+    {
+      "candidate_id": "release:mmalmi/hashtree:400047426",
+      "release_id": 400047426,
+      "repo": "mmalmi/hashtree",
+      "tag": "hashtree-ts-runtime-v0.5.13",
+      "published_at": "2026-09-30T12:56:51Z",
+      "disposition": "fold",
+      "story": "iris-shared-event-file-runtime",
+      "reason": "Fold0.5.8–.13 shared event worker/index/outbox and compatible FIPSadapter adoption into runtime story; adapter-only releases are dependency consumption of already described behavior.",
+      "source_urls": [
+        "https://github.com/mmalmi/hashtree/releases/tag/hashtree-ts-runtime-v0.5.13"
+      ],
+      "exact_tag_commit": "e3c055a9e49e30945040f7c28f19bcb10bd09f2a",
+      "live_readback": "/opt/data/tmp/compass_release_delta_graphql_live_20260930.json"
+    },
+    {
+      "candidate_id": "release:mmalmi/hashtree:399969124",
+      "release_id": 399969124,
+      "repo": "mmalmi/hashtree",
+      "tag": "hashtree-ts-runtime-v0.5.12",
+      "published_at": "2026-09-30T11:15:08Z",
+      "disposition": "fold",
+      "story": "iris-shared-event-file-runtime",
+      "reason": "Fold0.5.8–.13 shared event worker/index/outbox and compatible FIPSadapter adoption into runtime story; adapter-only releases are dependency consumption of already described behavior.",
+      "source_urls": [
+        "https://github.com/mmalmi/hashtree/releases/tag/hashtree-ts-runtime-v0.5.12"
+      ],
+      "exact_tag_commit": "d9c9f0dae69b4775e81747b03836024f5ca67d6c",
+      "live_readback": "/opt/data/tmp/compass_release_delta_graphql_live_20260930.json"
+    },
+    {
+      "candidate_id": "release:mmalmi/hashtree:399861485",
+      "release_id": 399861485,
+      "repo": "mmalmi/hashtree",
+      "tag": "hashtree-ts-runtime-v0.5.11",
+      "published_at": "2026-09-30T08:48:09Z",
+      "disposition": "fold",
+      "story": "iris-shared-event-file-runtime",
+      "reason": "Fold0.5.8–.13 shared event worker/index/outbox and compatible FIPSadapter adoption into runtime story; adapter-only releases are dependency consumption of already described behavior.",
+      "source_urls": [
+        "https://github.com/mmalmi/hashtree/releases/tag/hashtree-ts-runtime-v0.5.11"
+      ],
+      "exact_tag_commit": "666f533e34bc459ab94e1f6b3a974a010f7c6f6f",
+      "live_readback": "/opt/data/tmp/compass_release_delta_graphql_live_20260930.json"
+    },
+    {
+      "candidate_id": "release:mmalmi/hashtree:399829753",
+      "release_id": 399829753,
+      "repo": "mmalmi/hashtree",
+      "tag": "hashtree-ts-runtime-v0.5.10",
+      "published_at": "2026-09-30T08:02:41Z",
+      "disposition": "fold",
+      "story": "iris-shared-event-file-runtime",
+      "reason": "Fold0.5.8–.13 shared event worker/index/outbox and compatible FIPSadapter adoption into runtime story; adapter-only releases are dependency consumption of already described behavior.",
+      "source_urls": [
+        "https://github.com/mmalmi/hashtree/releases/tag/hashtree-ts-runtime-v0.5.10"
+      ],
+      "exact_tag_commit": "1200fdd79cae87c9e50d7767aa2852b9e6222722",
+      "live_readback": "/opt/data/tmp/compass_release_delta_graphql_live_20260930.json"
+    },
+    {
+      "candidate_id": "release:mmalmi/iris-kit:399824606",
+      "release_id": 399824606,
+      "repo": "mmalmi/iris-kit",
+      "tag": "runtime-v0.2.6",
+      "published_at": "2026-09-30T07:54:51Z",
+      "disposition": "fold",
+      "story": "iris-shared-event-file-runtime",
+      "reason": "Fold transport-neutral NIP46signer and persistent app client, then immediate exact-ID cached retrieval into runtime story; prefix/replaceable queries retain history-completion requirement.",
+      "source_urls": [
+        "https://github.com/mmalmi/iris-kit/releases/tag/runtime-v0.2.6"
+      ],
+      "exact_tag_commit": "fe172839f85efc7d1dfce291f098a793c5399ed1",
+      "live_readback": "/opt/data/tmp/compass_release_delta_graphql_live_20260930.json"
+    },
+    {
+      "candidate_id": "release:mmalmi/iris-kit:399766809",
+      "release_id": 399766809,
+      "repo": "mmalmi/iris-kit",
+      "tag": "runtime-v0.2.5",
+      "published_at": "2026-09-30T06:20:29Z",
+      "disposition": "fold",
+      "story": "iris-shared-event-file-runtime",
+      "reason": "Fold transport-neutral NIP46signer and persistent app client, then immediate exact-ID cached retrieval into runtime story; prefix/replaceable queries retain history-completion requirement.",
+      "source_urls": [
+        "https://github.com/mmalmi/iris-kit/releases/tag/runtime-v0.2.5"
+      ],
+      "exact_tag_commit": "57d449680d7359c0422cc5727ca178e8fd92a85b",
+      "live_readback": "/opt/data/tmp/compass_release_delta_graphql_live_20260930.json"
+    }
+  ],
+  "branch_evidence": [
+    {
+      "project": "Nostter",
+      "repo": "SnowCait/nostter",
+      "reviewed_pr_urls": [
+        "https://github.com/SnowCait/nostter/pull/2628",
+        "https://github.com/SnowCait/nostter/pull/2626",
+        "https://github.com/SnowCait/nostter/pull/2625",
+        "https://github.com/SnowCait/nostter/pull/2624"
+      ],
+      "selected_pr_urls": [],
+      "verdict": "skip",
+      "reason": "All new PRs rejected for concrete per-PR low-value, source-maturity or non-Nostr reasons, not a count cap.",
+      "branch_checks": []
+    },
+    {
+      "project": "Amethyst",
+      "repo": "vitorpamplona/amethyst",
+      "reviewed_pr_urls": [
+        "https://github.com/vitorpamplona/amethyst/pull/4282",
+        "https://github.com/vitorpamplona/amethyst/pull/4284",
+        "https://github.com/vitorpamplona/amethyst/pull/4277",
+        "https://github.com/vitorpamplona/amethyst/pull/4280",
+        "https://github.com/vitorpamplona/amethyst/pull/4281",
+        "https://github.com/vitorpamplona/amethyst/pull/4278",
+        "https://github.com/vitorpamplona/amethyst/pull/4272",
+        "https://github.com/vitorpamplona/amethyst/pull/4275",
+        "https://github.com/vitorpamplona/amethyst/pull/4271",
+        "https://github.com/vitorpamplona/amethyst/pull/4270",
+        "https://github.com/vitorpamplona/amethyst/pull/4274",
+        "https://github.com/vitorpamplona/amethyst/pull/4265",
+        "https://github.com/vitorpamplona/amethyst/pull/4264",
+        "https://github.com/vitorpamplona/amethyst/pull/4267",
+        "https://github.com/vitorpamplona/amethyst/pull/4266",
+        "https://github.com/vitorpamplona/amethyst/pull/4262"
+      ],
+      "selected_pr_urls": [
+        "https://github.com/vitorpamplona/amethyst/pull/4282",
+        "https://github.com/vitorpamplona/amethyst/pull/4284",
+        "https://github.com/vitorpamplona/amethyst/pull/4277",
+        "https://github.com/vitorpamplona/amethyst/pull/4278",
+        "https://github.com/vitorpamplona/amethyst/pull/4272",
+        "https://github.com/vitorpamplona/amethyst/pull/4275",
+        "https://github.com/vitorpamplona/amethyst/pull/4271",
+        "https://github.com/vitorpamplona/amethyst/pull/4270",
+        "https://github.com/vitorpamplona/amethyst/pull/4265",
+        "https://github.com/vitorpamplona/amethyst/pull/4264",
+        "https://github.com/vitorpamplona/amethyst/pull/4267",
+        "https://github.com/vitorpamplona/amethyst/pull/4266",
+        "https://github.com/vitorpamplona/amethyst/pull/4262"
+      ],
+      "verdict": "include",
+      "reason": "Qualifying material merged-source changes are mapped to primary URLs in research addenda; all other input PRs retain explicit per-PR skips.",
+      "branch_checks": [
+        {
+          "pr_url": "https://github.com/vitorpamplona/amethyst/pull/4282",
+          "base_ref": "main",
+          "evidence_source": "/opt/data/tmp/compass_full_project_delta_20260930.json",
+          "default_branch": "main",
+          "default_branch_live_verified": true,
+          "note": "Default branch exact authenticated GraphQL readback; PR base_ref retained from parent live inventory.",
+          "default_branch_source": "/opt/data/tmp/compass_pr_delta_default_branches_20260930.json",
+          "base_matches_default": true
+        },
+        {
+          "pr_url": "https://github.com/vitorpamplona/amethyst/pull/4284",
+          "base_ref": "main",
+          "evidence_source": "/opt/data/tmp/compass_full_project_delta_20260930.json",
+          "default_branch": "main",
+          "default_branch_live_verified": true,
+          "note": "Default branch exact authenticated GraphQL readback; PR base_ref retained from parent live inventory.",
+          "default_branch_source": "/opt/data/tmp/compass_pr_delta_default_branches_20260930.json",
+          "base_matches_default": true
+        },
+        {
+          "pr_url": "https://github.com/vitorpamplona/amethyst/pull/4277",
+          "base_ref": "main",
+          "evidence_source": "/opt/data/tmp/compass_full_project_delta_20260930.json",
+          "default_branch": "main",
+          "default_branch_live_verified": true,
+          "note": "Default branch exact authenticated GraphQL readback; PR base_ref retained from parent live inventory.",
+          "default_branch_source": "/opt/data/tmp/compass_pr_delta_default_branches_20260930.json",
+          "base_matches_default": true
+        },
+        {
+          "pr_url": "https://github.com/vitorpamplona/amethyst/pull/4278",
+          "base_ref": "main",
+          "evidence_source": "/opt/data/tmp/compass_full_project_delta_20260930.json",
+          "default_branch": "main",
+          "default_branch_live_verified": true,
+          "note": "Default branch exact authenticated GraphQL readback; PR base_ref retained from parent live inventory.",
+          "default_branch_source": "/opt/data/tmp/compass_pr_delta_default_branches_20260930.json",
+          "base_matches_default": true
+        },
+        {
+          "pr_url": "https://github.com/vitorpamplona/amethyst/pull/4272",
+          "base_ref": "main",
+          "evidence_source": "/opt/data/tmp/compass_full_project_delta_20260930.json",
+          "default_branch": "main",
+          "default_branch_live_verified": true,
+          "note": "Default branch exact authenticated GraphQL readback; PR base_ref retained from parent live inventory.",
+          "default_branch_source": "/opt/data/tmp/compass_pr_delta_default_branches_20260930.json",
+          "base_matches_default": true
+        },
+        {
+          "pr_url": "https://github.com/vitorpamplona/amethyst/pull/4275",
+          "base_ref": "main",
+          "evidence_source": "/opt/data/tmp/compass_full_project_delta_20260930.json",
+          "default_branch": "main",
+          "default_branch_live_verified": true,
+          "note": "Default branch exact authenticated GraphQL readback; PR base_ref retained from parent live inventory.",
+          "default_branch_source": "/opt/data/tmp/compass_pr_delta_default_branches_20260930.json",
+          "base_matches_default": true
+        },
+        {
+          "pr_url": "https://github.com/vitorpamplona/amethyst/pull/4271",
+          "base_ref": "main",
+          "evidence_source": "/opt/data/tmp/compass_full_project_delta_20260930.json",
+          "default_branch": "main",
+          "default_branch_live_verified": true,
+          "note": "Default branch exact authenticated GraphQL readback; PR base_ref retained from parent live inventory.",
+          "default_branch_source": "/opt/data/tmp/compass_pr_delta_default_branches_20260930.json",
+          "base_matches_default": true
+        },
+        {
+          "pr_url": "https://github.com/vitorpamplona/amethyst/pull/4270",
+          "base_ref": "main",
+          "evidence_source": "/opt/data/tmp/compass_full_project_delta_20260930.json",
+          "default_branch": "main",
+          "default_branch_live_verified": true,
+          "note": "Default branch exact authenticated GraphQL readback; PR base_ref retained from parent live inventory.",
+          "default_branch_source": "/opt/data/tmp/compass_pr_delta_default_branches_20260930.json",
+          "base_matches_default": true
+        },
+        {
+          "pr_url": "https://github.com/vitorpamplona/amethyst/pull/4265",
+          "base_ref": "main",
+          "evidence_source": "/opt/data/tmp/compass_full_project_delta_20260930.json",
+          "default_branch": "main",
+          "default_branch_live_verified": true,
+          "note": "Default branch exact authenticated GraphQL readback; PR base_ref retained from parent live inventory.",
+          "default_branch_source": "/opt/data/tmp/compass_pr_delta_default_branches_20260930.json",
+          "base_matches_default": true
+        },
+        {
+          "pr_url": "https://github.com/vitorpamplona/amethyst/pull/4264",
+          "base_ref": "main",
+          "evidence_source": "/opt/data/tmp/compass_full_project_delta_20260930.json",
+          "default_branch": "main",
+          "default_branch_live_verified": true,
+          "note": "Default branch exact authenticated GraphQL readback; PR base_ref retained from parent live inventory.",
+          "default_branch_source": "/opt/data/tmp/compass_pr_delta_default_branches_20260930.json",
+          "base_matches_default": true
+        },
+        {
+          "pr_url": "https://github.com/vitorpamplona/amethyst/pull/4267",
+          "base_ref": "main",
+          "evidence_source": "/opt/data/tmp/compass_full_project_delta_20260930.json",
+          "default_branch": "main",
+          "default_branch_live_verified": true,
+          "note": "Default branch exact authenticated GraphQL readback; PR base_ref retained from parent live inventory.",
+          "default_branch_source": "/opt/data/tmp/compass_pr_delta_default_branches_20260930.json",
+          "base_matches_default": true
+        },
+        {
+          "pr_url": "https://github.com/vitorpamplona/amethyst/pull/4266",
+          "base_ref": "main",
+          "evidence_source": "/opt/data/tmp/compass_full_project_delta_20260930.json",
+          "default_branch": "main",
+          "default_branch_live_verified": true,
+          "note": "Default branch exact authenticated GraphQL readback; PR base_ref retained from parent live inventory.",
+          "default_branch_source": "/opt/data/tmp/compass_pr_delta_default_branches_20260930.json",
+          "base_matches_default": true
+        },
+        {
+          "pr_url": "https://github.com/vitorpamplona/amethyst/pull/4262",
+          "base_ref": "main",
+          "evidence_source": "/opt/data/tmp/compass_full_project_delta_20260930.json",
+          "default_branch": "main",
+          "default_branch_live_verified": true,
+          "note": "Default branch exact authenticated GraphQL readback; PR base_ref retained from parent live inventory.",
+          "default_branch_source": "/opt/data/tmp/compass_pr_delta_default_branches_20260930.json",
+          "base_matches_default": true
+        }
+      ]
+    },
+    {
+      "project": "diVine",
+      "repo": "divinevideo/divine-mobile",
+      "reviewed_pr_urls": [
+        "https://github.com/divinevideo/divine-mobile/pull/9702",
+        "https://github.com/divinevideo/divine-mobile/pull/9703",
+        "https://github.com/divinevideo/divine-mobile/pull/9662",
+        "https://github.com/divinevideo/divine-mobile/pull/9598",
+        "https://github.com/divinevideo/divine-mobile/pull/9701",
+        "https://github.com/divinevideo/divine-mobile/pull/9682",
+        "https://github.com/divinevideo/divine-mobile/pull/9698",
+        "https://github.com/divinevideo/divine-mobile/pull/9694",
+        "https://github.com/divinevideo/divine-mobile/pull/9652",
+        "https://github.com/divinevideo/divine-mobile/pull/9672",
+        "https://github.com/divinevideo/divine-mobile/pull/9680",
+        "https://github.com/divinevideo/divine-mobile/pull/9674",
+        "https://github.com/divinevideo/divine-mobile/pull/9679",
+        "https://github.com/divinevideo/divine-mobile/pull/9677",
+        "https://github.com/divinevideo/divine-mobile/pull/9676",
+        "https://github.com/divinevideo/divine-mobile/pull/9675",
+        "https://github.com/divinevideo/divine-mobile/pull/9673",
+        "https://github.com/divinevideo/divine-mobile/pull/9671",
+        "https://github.com/divinevideo/divine-mobile/pull/9669",
+        "https://github.com/divinevideo/divine-mobile/pull/9647",
+        "https://github.com/divinevideo/divine-mobile/pull/9645",
+        "https://github.com/divinevideo/divine-mobile/pull/9664",
+        "https://github.com/divinevideo/divine-mobile/pull/9640",
+        "https://github.com/divinevideo/divine-mobile/pull/9639",
+        "https://github.com/divinevideo/divine-mobile/pull/9654",
+        "https://github.com/divinevideo/divine-mobile/pull/9601",
+        "https://github.com/divinevideo/divine-mobile/pull/9658",
+        "https://github.com/divinevideo/divine-mobile/pull/9661",
+        "https://github.com/divinevideo/divine-mobile/pull/9603",
+        "https://github.com/divinevideo/divine-mobile/pull/9644"
+      ],
+      "selected_pr_urls": [
+        "https://github.com/divinevideo/divine-mobile/pull/9703",
+        "https://github.com/divinevideo/divine-mobile/pull/9598",
+        "https://github.com/divinevideo/divine-mobile/pull/9701",
+        "https://github.com/divinevideo/divine-mobile/pull/9698",
+        "https://github.com/divinevideo/divine-mobile/pull/9694",
+        "https://github.com/divinevideo/divine-mobile/pull/9652",
+        "https://github.com/divinevideo/divine-mobile/pull/9680",
+        "https://github.com/divinevideo/divine-mobile/pull/9677",
+        "https://github.com/divinevideo/divine-mobile/pull/9645",
+        "https://github.com/divinevideo/divine-mobile/pull/9664",
+        "https://github.com/divinevideo/divine-mobile/pull/9654",
+        "https://github.com/divinevideo/divine-mobile/pull/9601",
+        "https://github.com/divinevideo/divine-mobile/pull/9603"
+      ],
+      "verdict": "include",
+      "reason": "Qualifying material merged-source changes are mapped to primary URLs in research addenda; all other input PRs retain explicit per-PR skips.",
+      "branch_checks": [
+        {
+          "pr_url": "https://github.com/divinevideo/divine-mobile/pull/9703",
+          "base_ref": "main",
+          "evidence_source": "/opt/data/tmp/compass_full_project_delta_20260930.json",
+          "default_branch": "main",
+          "default_branch_live_verified": true,
+          "note": "Default branch exact authenticated GraphQL readback; PR base_ref retained from parent live inventory.",
+          "default_branch_source": "/opt/data/tmp/compass_pr_delta_default_branches_20260930.json",
+          "base_matches_default": true
+        },
+        {
+          "pr_url": "https://github.com/divinevideo/divine-mobile/pull/9598",
+          "base_ref": "main",
+          "evidence_source": "/opt/data/tmp/compass_full_project_delta_20260930.json",
+          "default_branch": "main",
+          "default_branch_live_verified": true,
+          "note": "Default branch exact authenticated GraphQL readback; PR base_ref retained from parent live inventory.",
+          "default_branch_source": "/opt/data/tmp/compass_pr_delta_default_branches_20260930.json",
+          "base_matches_default": true
+        },
+        {
+          "pr_url": "https://github.com/divinevideo/divine-mobile/pull/9701",
+          "base_ref": "main",
+          "evidence_source": "/opt/data/tmp/compass_full_project_delta_20260930.json",
+          "default_branch": "main",
+          "default_branch_live_verified": true,
+          "note": "Default branch exact authenticated GraphQL readback; PR base_ref retained from parent live inventory.",
+          "default_branch_source": "/opt/data/tmp/compass_pr_delta_default_branches_20260930.json",
+          "base_matches_default": true
+        },
+        {
+          "pr_url": "https://github.com/divinevideo/divine-mobile/pull/9698",
+          "base_ref": "main",
+          "evidence_source": "/opt/data/tmp/compass_full_project_delta_20260930.json",
+          "default_branch": "main",
+          "default_branch_live_verified": true,
+          "note": "Default branch exact authenticated GraphQL readback; PR base_ref retained from parent live inventory.",
+          "default_branch_source": "/opt/data/tmp/compass_pr_delta_default_branches_20260930.json",
+          "base_matches_default": true
+        },
+        {
+          "pr_url": "https://github.com/divinevideo/divine-mobile/pull/9694",
+          "base_ref": "main",
+          "evidence_source": "/opt/data/tmp/compass_full_project_delta_20260930.json",
+          "default_branch": "main",
+          "default_branch_live_verified": true,
+          "note": "Default branch exact authenticated GraphQL readback; PR base_ref retained from parent live inventory.",
+          "default_branch_source": "/opt/data/tmp/compass_pr_delta_default_branches_20260930.json",
+          "base_matches_default": true
+        },
+        {
+          "pr_url": "https://github.com/divinevideo/divine-mobile/pull/9652",
+          "base_ref": "main",
+          "evidence_source": "/opt/data/tmp/compass_full_project_delta_20260930.json",
+          "default_branch": "main",
+          "default_branch_live_verified": true,
+          "note": "Default branch exact authenticated GraphQL readback; PR base_ref retained from parent live inventory.",
+          "default_branch_source": "/opt/data/tmp/compass_pr_delta_default_branches_20260930.json",
+          "base_matches_default": true
+        },
+        {
+          "pr_url": "https://github.com/divinevideo/divine-mobile/pull/9680",
+          "base_ref": "main",
+          "evidence_source": "/opt/data/tmp/compass_full_project_delta_20260930.json",
+          "default_branch": "main",
+          "default_branch_live_verified": true,
+          "note": "Default branch exact authenticated GraphQL readback; PR base_ref retained from parent live inventory.",
+          "default_branch_source": "/opt/data/tmp/compass_pr_delta_default_branches_20260930.json",
+          "base_matches_default": true
+        },
+        {
+          "pr_url": "https://github.com/divinevideo/divine-mobile/pull/9677",
+          "base_ref": "main",
+          "evidence_source": "/opt/data/tmp/compass_full_project_delta_20260930.json",
+          "default_branch": "main",
+          "default_branch_live_verified": true,
+          "note": "Default branch exact authenticated GraphQL readback; PR base_ref retained from parent live inventory.",
+          "default_branch_source": "/opt/data/tmp/compass_pr_delta_default_branches_20260930.json",
+          "base_matches_default": true
+        },
+        {
+          "pr_url": "https://github.com/divinevideo/divine-mobile/pull/9645",
+          "base_ref": "main",
+          "evidence_source": "/opt/data/tmp/compass_full_project_delta_20260930.json",
+          "default_branch": "main",
+          "default_branch_live_verified": true,
+          "note": "Default branch exact authenticated GraphQL readback; PR base_ref retained from parent live inventory.",
+          "default_branch_source": "/opt/data/tmp/compass_pr_delta_default_branches_20260930.json",
+          "base_matches_default": true
+        },
+        {
+          "pr_url": "https://github.com/divinevideo/divine-mobile/pull/9664",
+          "base_ref": "main",
+          "evidence_source": "/opt/data/tmp/compass_full_project_delta_20260930.json",
+          "default_branch": "main",
+          "default_branch_live_verified": true,
+          "note": "Default branch exact authenticated GraphQL readback; PR base_ref retained from parent live inventory.",
+          "default_branch_source": "/opt/data/tmp/compass_pr_delta_default_branches_20260930.json",
+          "base_matches_default": true
+        },
+        {
+          "pr_url": "https://github.com/divinevideo/divine-mobile/pull/9654",
+          "base_ref": "main",
+          "evidence_source": "/opt/data/tmp/compass_full_project_delta_20260930.json",
+          "default_branch": "main",
+          "default_branch_live_verified": true,
+          "note": "Default branch exact authenticated GraphQL readback; PR base_ref retained from parent live inventory.",
+          "default_branch_source": "/opt/data/tmp/compass_pr_delta_default_branches_20260930.json",
+          "base_matches_default": true
+        },
+        {
+          "pr_url": "https://github.com/divinevideo/divine-mobile/pull/9601",
+          "base_ref": "main",
+          "evidence_source": "/opt/data/tmp/compass_full_project_delta_20260930.json",
+          "default_branch": "main",
+          "default_branch_live_verified": true,
+          "note": "Default branch exact authenticated GraphQL readback; PR base_ref retained from parent live inventory.",
+          "default_branch_source": "/opt/data/tmp/compass_pr_delta_default_branches_20260930.json",
+          "base_matches_default": true
+        },
+        {
+          "pr_url": "https://github.com/divinevideo/divine-mobile/pull/9603",
+          "base_ref": "main",
+          "evidence_source": "/opt/data/tmp/compass_full_project_delta_20260930.json",
+          "default_branch": "main",
+          "default_branch_live_verified": true,
+          "note": "Default branch exact authenticated GraphQL readback; PR base_ref retained from parent live inventory.",
+          "default_branch_source": "/opt/data/tmp/compass_pr_delta_default_branches_20260930.json",
+          "base_matches_default": true
+        }
+      ]
+    },
+    {
+      "project": "Buzz",
+      "repo": "block/buzz",
+      "reviewed_pr_urls": [
+        "https://github.com/block/buzz/pull/7969",
+        "https://github.com/block/buzz/pull/7896",
+        "https://github.com/block/buzz/pull/5997",
+        "https://github.com/block/buzz/pull/7981",
+        "https://github.com/block/buzz/pull/7980",
+        "https://github.com/block/buzz/pull/4846",
+        "https://github.com/block/buzz/pull/6515",
+        "https://github.com/block/buzz/pull/7895",
+        "https://github.com/block/buzz/pull/7224",
+        "https://github.com/block/buzz/pull/2255",
+        "https://github.com/block/buzz/pull/4486",
+        "https://github.com/block/buzz/pull/7809",
+        "https://github.com/block/buzz/pull/7894",
+        "https://github.com/block/buzz/pull/7830"
+      ],
+      "selected_pr_urls": [
+        "https://github.com/block/buzz/pull/7969",
+        "https://github.com/block/buzz/pull/7896",
+        "https://github.com/block/buzz/pull/6515",
+        "https://github.com/block/buzz/pull/7895",
+        "https://github.com/block/buzz/pull/7224",
+        "https://github.com/block/buzz/pull/7894",
+        "https://github.com/block/buzz/pull/7830"
+      ],
+      "verdict": "include",
+      "reason": "Qualifying material merged-source changes are mapped to primary URLs in research addenda; all other input PRs retain explicit per-PR skips.",
+      "branch_checks": [
+        {
+          "pr_url": "https://github.com/block/buzz/pull/7969",
+          "base_ref": "main",
+          "evidence_source": "/opt/data/tmp/compass_full_project_delta_20260930.json",
+          "default_branch": "main",
+          "default_branch_live_verified": true,
+          "note": "Default branch exact authenticated GraphQL readback; PR base_ref retained from parent live inventory.",
+          "default_branch_source": "/opt/data/tmp/compass_pr_delta_default_branches_20260930.json",
+          "base_matches_default": true
+        },
+        {
+          "pr_url": "https://github.com/block/buzz/pull/7896",
+          "base_ref": "main",
+          "evidence_source": "/opt/data/tmp/compass_full_project_delta_20260930.json",
+          "default_branch": "main",
+          "default_branch_live_verified": true,
+          "note": "Default branch exact authenticated GraphQL readback; PR base_ref retained from parent live inventory.",
+          "default_branch_source": "/opt/data/tmp/compass_pr_delta_default_branches_20260930.json",
+          "base_matches_default": true
+        },
+        {
+          "pr_url": "https://github.com/block/buzz/pull/6515",
+          "base_ref": "main",
+          "evidence_source": "/opt/data/tmp/compass_full_project_delta_20260930.json",
+          "default_branch": "main",
+          "default_branch_live_verified": true,
+          "note": "Default branch exact authenticated GraphQL readback; PR base_ref retained from parent live inventory.",
+          "default_branch_source": "/opt/data/tmp/compass_pr_delta_default_branches_20260930.json",
+          "base_matches_default": true
+        },
+        {
+          "pr_url": "https://github.com/block/buzz/pull/7895",
+          "base_ref": "main",
+          "evidence_source": "/opt/data/tmp/compass_full_project_delta_20260930.json",
+          "default_branch": "main",
+          "default_branch_live_verified": true,
+          "note": "Default branch exact authenticated GraphQL readback; PR base_ref retained from parent live inventory.",
+          "default_branch_source": "/opt/data/tmp/compass_pr_delta_default_branches_20260930.json",
+          "base_matches_default": true
+        },
+        {
+          "pr_url": "https://github.com/block/buzz/pull/7224",
+          "base_ref": "main",
+          "evidence_source": "/opt/data/tmp/compass_full_project_delta_20260930.json",
+          "default_branch": "main",
+          "default_branch_live_verified": true,
+          "note": "Default branch exact authenticated GraphQL readback; PR base_ref retained from parent live inventory.",
+          "default_branch_source": "/opt/data/tmp/compass_pr_delta_default_branches_20260930.json",
+          "base_matches_default": true
+        },
+        {
+          "pr_url": "https://github.com/block/buzz/pull/7894",
+          "base_ref": "main",
+          "evidence_source": "/opt/data/tmp/compass_full_project_delta_20260930.json",
+          "default_branch": "main",
+          "default_branch_live_verified": true,
+          "note": "Default branch exact authenticated GraphQL readback; PR base_ref retained from parent live inventory.",
+          "default_branch_source": "/opt/data/tmp/compass_pr_delta_default_branches_20260930.json",
+          "base_matches_default": true
+        },
+        {
+          "pr_url": "https://github.com/block/buzz/pull/7830",
+          "base_ref": "main",
+          "evidence_source": "/opt/data/tmp/compass_full_project_delta_20260930.json",
+          "default_branch": "main",
+          "default_branch_live_verified": true,
+          "note": "Default branch exact authenticated GraphQL readback; PR base_ref retained from parent live inventory.",
+          "default_branch_source": "/opt/data/tmp/compass_pr_delta_default_branches_20260930.json",
+          "base_matches_default": true
+        }
+      ]
+    },
+    {
+      "project": "Mostro Mobile",
+      "repo": "MostroP2P/mobile",
+      "reviewed_pr_urls": [
+        "https://github.com/MostroP2P/mobile/pull/733"
+      ],
+      "selected_pr_urls": [],
+      "verdict": "skip",
+      "reason": "All new PRs rejected for concrete per-PR low-value, source-maturity or non-Nostr reasons, not a count cap.",
+      "branch_checks": []
+    },
+    {
+      "project": "Mostro",
+      "repo": "MostroP2P/mostro",
+      "reviewed_pr_urls": [
+        "https://github.com/MostroP2P/mostro/pull/923",
+        "https://github.com/MostroP2P/mostro/pull/1008",
+        "https://github.com/MostroP2P/mostro/pull/945",
+        "https://github.com/MostroP2P/mostro/pull/1006"
+      ],
+      "selected_pr_urls": [
+        "https://github.com/MostroP2P/mostro/pull/923",
+        "https://github.com/MostroP2P/mostro/pull/945",
+        "https://github.com/MostroP2P/mostro/pull/1006"
+      ],
+      "verdict": "include",
+      "reason": "Qualifying material merged-source changes are mapped to primary URLs in research addenda; all other input PRs retain explicit per-PR skips.",
+      "branch_checks": [
+        {
+          "pr_url": "https://github.com/MostroP2P/mostro/pull/923",
+          "base_ref": "main",
+          "evidence_source": "/opt/data/tmp/compass_full_project_delta_20260930.json",
+          "default_branch": "main",
+          "default_branch_live_verified": true,
+          "note": "Default branch exact authenticated GraphQL readback; PR base_ref retained from parent live inventory.",
+          "default_branch_source": "/opt/data/tmp/compass_pr_delta_default_branches_20260930.json",
+          "base_matches_default": true
+        },
+        {
+          "pr_url": "https://github.com/MostroP2P/mostro/pull/945",
+          "base_ref": "main",
+          "evidence_source": "/opt/data/tmp/compass_full_project_delta_20260930.json",
+          "default_branch": "main",
+          "default_branch_live_verified": true,
+          "note": "Default branch exact authenticated GraphQL readback; PR base_ref retained from parent live inventory.",
+          "default_branch_source": "/opt/data/tmp/compass_pr_delta_default_branches_20260930.json",
+          "base_matches_default": true
+        },
+        {
+          "pr_url": "https://github.com/MostroP2P/mostro/pull/1006",
+          "base_ref": "main",
+          "evidence_source": "/opt/data/tmp/compass_full_project_delta_20260930.json",
+          "default_branch": "main",
+          "default_branch_live_verified": true,
+          "note": "Default branch exact authenticated GraphQL readback; PR base_ref retained from parent live inventory.",
+          "default_branch_source": "/opt/data/tmp/compass_pr_delta_default_branches_20260930.json",
+          "base_matches_default": true
+        }
+      ]
+    },
+    {
+      "project": "Conduit",
+      "repo": "Conduit-BTC/conduit-mono",
+      "reviewed_pr_urls": [
+        "https://github.com/Conduit-BTC/conduit-mono/pull/591",
+        "https://github.com/Conduit-BTC/conduit-mono/pull/575"
+      ],
+      "selected_pr_urls": [
+        "https://github.com/Conduit-BTC/conduit-mono/pull/575"
+      ],
+      "verdict": "include",
+      "reason": "Qualifying material merged-source changes are mapped to primary URLs in research addenda; all other input PRs retain explicit per-PR skips.",
+      "branch_checks": [
+        {
+          "pr_url": "https://github.com/Conduit-BTC/conduit-mono/pull/575",
+          "base_ref": "main",
+          "evidence_source": "/opt/data/tmp/compass_full_project_delta_20260930.json",
+          "default_branch": "main",
+          "default_branch_live_verified": true,
+          "note": "Default branch exact authenticated GraphQL readback; PR base_ref retained from parent live inventory.",
+          "default_branch_source": "/opt/data/tmp/compass_pr_delta_default_branches_20260930.json",
+          "base_matches_default": true
+        }
+      ]
+    },
+    {
+      "project": "ZapTracker",
+      "repo": "pratik227/zap_dashboard",
+      "reviewed_pr_urls": [
+        "https://github.com/pratik227/zap_dashboard/pull/133",
+        "https://github.com/pratik227/zap_dashboard/pull/135",
+        "https://github.com/pratik227/zap_dashboard/pull/138",
+        "https://github.com/pratik227/zap_dashboard/pull/137",
+        "https://github.com/pratik227/zap_dashboard/pull/136",
+        "https://github.com/pratik227/zap_dashboard/pull/129"
+      ],
+      "selected_pr_urls": [
+        "https://github.com/pratik227/zap_dashboard/pull/133",
+        "https://github.com/pratik227/zap_dashboard/pull/135"
+      ],
+      "verdict": "include",
+      "reason": "Qualifying material merged-source changes are mapped to primary URLs in research addenda; all other input PRs retain explicit per-PR skips.",
+      "branch_checks": [
+        {
+          "pr_url": "https://github.com/pratik227/zap_dashboard/pull/133",
+          "base_ref": "dev",
+          "evidence_source": "/opt/data/tmp/compass_full_project_delta_20260930.json",
+          "default_branch": "dev",
+          "default_branch_live_verified": true,
+          "note": "Default branch exact authenticated GraphQL readback; PR base_ref retained from parent live inventory.",
+          "default_branch_source": "/opt/data/tmp/compass_pr_delta_default_branches_20260930.json",
+          "base_matches_default": true
+        },
+        {
+          "pr_url": "https://github.com/pratik227/zap_dashboard/pull/135",
+          "base_ref": "dev",
+          "evidence_source": "/opt/data/tmp/compass_full_project_delta_20260930.json",
+          "default_branch": "dev",
+          "default_branch_live_verified": true,
+          "note": "Default branch exact authenticated GraphQL readback; PR base_ref retained from parent live inventory.",
+          "default_branch_source": "/opt/data/tmp/compass_pr_delta_default_branches_20260930.json",
+          "base_matches_default": true
+        }
+      ]
+    },
+    {
+      "project": "earthly",
+      "repo": "moogmodular/earthly",
+      "reviewed_pr_urls": [
+        "https://github.com/zeSchlausKwab/earthly/pull/30",
+        "https://github.com/zeSchlausKwab/earthly/pull/29"
+      ],
+      "selected_pr_urls": [
+        "https://github.com/zeSchlausKwab/earthly/pull/30",
+        "https://github.com/zeSchlausKwab/earthly/pull/29"
+      ],
+      "verdict": "include",
+      "reason": "Qualifying material merged-source changes are mapped to primary URLs in research addenda; all other input PRs retain explicit per-PR skips.",
+      "branch_checks": [
+        {
+          "pr_url": "https://github.com/zeSchlausKwab/earthly/pull/30",
+          "base_ref": "master",
+          "evidence_source": "/opt/data/tmp/compass_full_project_delta_20260930.json",
+          "default_branch": "master",
+          "default_branch_live_verified": true,
+          "note": "Default branch exact authenticated GraphQL readback; PR base_ref retained from parent live inventory.",
+          "default_branch_source": "/opt/data/tmp/compass_pr_delta_default_branches_20260930.json",
+          "base_matches_default": true
+        },
+        {
+          "pr_url": "https://github.com/zeSchlausKwab/earthly/pull/29",
+          "base_ref": "master",
+          "evidence_source": "/opt/data/tmp/compass_full_project_delta_20260930.json",
+          "default_branch": "master",
+          "default_branch_live_verified": true,
+          "note": "Default branch exact authenticated GraphQL readback; PR base_ref retained from parent live inventory.",
+          "default_branch_source": "/opt/data/tmp/compass_pr_delta_default_branches_20260930.json",
+          "base_matches_default": true
+        }
+      ]
+    },
+    {
+      "project": "@elisym/cli",
+      "repo": "elisymlabs/elisym",
+      "reviewed_pr_urls": [
+        "https://github.com/elisymlabs/elisym/pull/137",
+        "https://github.com/elisymlabs/elisym/pull/136",
+        "https://github.com/elisymlabs/elisym/pull/138",
+        "https://github.com/elisymlabs/elisym/pull/134",
+        "https://github.com/elisymlabs/elisym/pull/135"
+      ],
+      "selected_pr_urls": [
+        "https://github.com/elisymlabs/elisym/pull/137",
+        "https://github.com/elisymlabs/elisym/pull/136"
+      ],
+      "verdict": "include",
+      "reason": "Qualifying material merged-source changes are mapped to primary URLs in research addenda; all other input PRs retain explicit per-PR skips.",
+      "branch_checks": [
+        {
+          "pr_url": "https://github.com/elisymlabs/elisym/pull/137",
+          "base_ref": "main",
+          "evidence_source": "/opt/data/tmp/compass_full_project_delta_20260930.json",
+          "default_branch": "main",
+          "default_branch_live_verified": true,
+          "note": "Default branch exact authenticated GraphQL readback; PR base_ref retained from parent live inventory.",
+          "default_branch_source": "/opt/data/tmp/compass_pr_delta_default_branches_20260930.json",
+          "base_matches_default": true
+        },
+        {
+          "pr_url": "https://github.com/elisymlabs/elisym/pull/136",
+          "base_ref": "main",
+          "evidence_source": "/opt/data/tmp/compass_full_project_delta_20260930.json",
+          "default_branch": "main",
+          "default_branch_live_verified": true,
+          "note": "Default branch exact authenticated GraphQL readback; PR base_ref retained from parent live inventory.",
+          "default_branch_source": "/opt/data/tmp/compass_pr_delta_default_branches_20260930.json",
+          "base_matches_default": true
+        }
+      ]
+    },
+    {
+      "project": "nostream",
+      "repo": "Cameri/nostream",
+      "reviewed_pr_urls": [
+        "https://github.com/cameri/nostream/pull/788"
+      ],
+      "selected_pr_urls": [
+        "https://github.com/cameri/nostream/pull/788"
+      ],
+      "verdict": "include",
+      "reason": "Qualifying material merged-source changes are mapped to primary URLs in research addenda; all other input PRs retain explicit per-PR skips.",
+      "branch_checks": [
+        {
+          "pr_url": "https://github.com/cameri/nostream/pull/788",
+          "base_ref": "main",
+          "evidence_source": "/opt/data/tmp/compass_full_project_delta_20260930.json",
+          "default_branch": "main",
+          "default_branch_live_verified": true,
+          "note": "Default branch exact authenticated GraphQL readback; PR base_ref retained from parent live inventory.",
+          "default_branch_source": "/opt/data/tmp/compass_pr_delta_default_branches_20260930.json",
+          "base_matches_default": true
+        }
+      ]
+    },
+    {
+      "project": "nostr-tools",
+      "repo": "nbd-wtf/nostr-tools",
+      "reviewed_pr_urls": [
+        "https://github.com/nbd-wtf/nostr-tools/pull/564"
+      ],
+      "selected_pr_urls": [],
+      "verdict": "skip",
+      "reason": "All new PRs rejected for concrete per-PR low-value, source-maturity or non-Nostr reasons, not a count cap.",
+      "branch_checks": []
+    },
+    {
+      "project": "Dart NDK",
+      "repo": "relaystr/ndk",
+      "reviewed_pr_urls": [
+        "https://github.com/relaystr/ndk/pull/852",
+        "https://github.com/relaystr/ndk/pull/863",
+        "https://github.com/relaystr/ndk/pull/860"
+      ],
+      "selected_pr_urls": [
+        "https://github.com/relaystr/ndk/pull/852",
+        "https://github.com/relaystr/ndk/pull/860"
+      ],
+      "verdict": "include",
+      "reason": "Qualifying material merged-source changes are mapped to primary URLs in research addenda; all other input PRs retain explicit per-PR skips.",
+      "branch_checks": [
+        {
+          "pr_url": "https://github.com/relaystr/ndk/pull/852",
+          "base_ref": "master",
+          "evidence_source": "/opt/data/tmp/compass_full_project_delta_20260930.json",
+          "default_branch": "master",
+          "default_branch_live_verified": true,
+          "note": "Default branch exact authenticated GraphQL readback; PR base_ref retained from parent live inventory.",
+          "default_branch_source": "/opt/data/tmp/compass_pr_delta_default_branches_20260930.json",
+          "base_matches_default": true
+        },
+        {
+          "pr_url": "https://github.com/relaystr/ndk/pull/860",
+          "base_ref": "master",
+          "evidence_source": "/opt/data/tmp/compass_full_project_delta_20260930.json",
+          "default_branch": "master",
+          "default_branch_live_verified": true,
+          "note": "Default branch exact authenticated GraphQL readback; PR base_ref retained from parent live inventory.",
+          "default_branch_source": "/opt/data/tmp/compass_pr_delta_default_branches_20260930.json",
+          "base_matches_default": true
+        }
+      ]
+    },
+    {
+      "project": "rust-nostr",
+      "repo": "rust-nostr/nostr",
+      "reviewed_pr_urls": [
+        "https://github.com/nostrdevkit/nostr/pull/1478"
+      ],
+      "selected_pr_urls": [
+        "https://github.com/nostrdevkit/nostr/pull/1478"
+      ],
+      "verdict": "include",
+      "reason": "Qualifying material merged-source changes are mapped to primary URLs in research addenda; all other input PRs retain explicit per-PR skips.",
+      "branch_checks": [
+        {
+          "pr_url": "https://github.com/nostrdevkit/nostr/pull/1478",
+          "base_ref": "master",
+          "evidence_source": "/opt/data/tmp/compass_full_project_delta_20260930.json",
+          "default_branch": "master",
+          "default_branch_live_verified": true,
+          "note": "Default branch exact authenticated GraphQL readback; PR base_ref retained from parent live inventory.",
+          "default_branch_source": "/opt/data/tmp/compass_pr_delta_default_branches_20260930.json",
+          "base_matches_default": true
+        }
+      ]
+    },
+    {
+      "project": "Zeus",
+      "repo": "ZeusLN/zeus",
+      "reviewed_pr_urls": [
+        "https://github.com/ZeusLN/zeus/pull/4423",
+        "https://github.com/ZeusLN/zeus/pull/4788"
+      ],
+      "selected_pr_urls": [],
+      "verdict": "skip",
+      "reason": "All new PRs rejected for concrete per-PR low-value, source-maturity or non-Nostr reasons, not a count cap.",
+      "branch_checks": []
+    },
+    {
+      "project": "MintRadar",
+      "repo": "hroomnik007/MintRadar",
+      "reviewed_pr_urls": [
+        "https://github.com/hroomnik007/MintRadar/pull/107",
+        "https://github.com/hroomnik007/MintRadar/pull/106",
+        "https://github.com/hroomnik007/MintRadar/pull/105",
+        "https://github.com/hroomnik007/MintRadar/pull/104"
+      ],
+      "selected_pr_urls": [],
+      "verdict": "skip",
+      "reason": "All new PRs rejected for concrete per-PR low-value, source-maturity or non-Nostr reasons, not a count cap.",
+      "branch_checks": []
+    },
+    {
+      "project": "lawalletio/lawallet-nwc",
+      "repo": "lawalletio/lawallet-nwc",
+      "reviewed_pr_urls": [
+        "https://github.com/lawalletio/lawallet-nwc/pull/322",
+        "https://github.com/lawalletio/lawallet-nwc/pull/316",
+        "https://github.com/lawalletio/lawallet-nwc/pull/319"
+      ],
+      "selected_pr_urls": [
+        "https://github.com/lawalletio/lawallet-nwc/pull/316",
+        "https://github.com/lawalletio/lawallet-nwc/pull/319"
+      ],
+      "verdict": "include",
+      "reason": "Qualifying material merged-source changes are mapped to primary URLs in research addenda; all other input PRs retain explicit per-PR skips.",
+      "branch_checks": [
+        {
+          "pr_url": "https://github.com/lawalletio/lawallet-nwc/pull/316",
+          "base_ref": "main",
+          "evidence_source": "/opt/data/tmp/compass_full_project_delta_20260930.json",
+          "default_branch": "main",
+          "default_branch_live_verified": true,
+          "note": "Default branch exact authenticated GraphQL readback; PR base_ref retained from parent live inventory.",
+          "default_branch_source": "/opt/data/tmp/compass_pr_delta_default_branches_20260930.json",
+          "base_matches_default": true
+        },
+        {
+          "pr_url": "https://github.com/lawalletio/lawallet-nwc/pull/319",
+          "base_ref": "main",
+          "evidence_source": "/opt/data/tmp/compass_full_project_delta_20260930.json",
+          "default_branch": "main",
+          "default_branch_live_verified": true,
+          "note": "Default branch exact authenticated GraphQL readback; PR base_ref retained from parent live inventory.",
+          "default_branch_source": "/opt/data/tmp/compass_pr_delta_default_branches_20260930.json",
+          "base_matches_default": true
+        }
+      ]
+    },
+    {
+      "project": "Angor",
+      "repo": "block-core/angor",
+      "reviewed_pr_urls": [
+        "https://github.com/block-core/angor/pull/978"
+      ],
+      "selected_pr_urls": [],
+      "verdict": "skip",
+      "reason": "All new PRs rejected for concrete per-PR low-value, source-maturity or non-Nostr reasons, not a count cap.",
+      "branch_checks": []
+    },
+    {
+      "project": "Routstrd",
+      "repo": "routstr/routstrd",
+      "reviewed_pr_urls": [
+        "https://github.com/Routstr/routstrd/pull/113"
+      ],
+      "selected_pr_urls": [],
+      "verdict": "skip",
+      "reason": "All new PRs rejected for concrete per-PR low-value, source-maturity or non-Nostr reasons, not a count cap.",
+      "branch_checks": []
+    },
+    {
+      "project": "castr.me",
+      "repo": "dergigi/castr.me",
+      "reviewed_pr_urls": [
+        "https://github.com/dergigi/castr.me/pull/26"
+      ],
+      "selected_pr_urls": [],
+      "verdict": "skip",
+      "reason": "All new PRs rejected for concrete per-PR low-value, source-maturity or non-Nostr reasons, not a count cap.",
+      "branch_checks": []
+    },
+    {
+      "project": "Zap Cooking",
+      "repo": "zapcooking/frontend",
+      "reviewed_pr_urls": [
+        "https://github.com/zapcooking/frontend/pull/766",
+        "https://github.com/zapcooking/frontend/pull/765",
+        "https://github.com/zapcooking/frontend/pull/764",
+        "https://github.com/zapcooking/frontend/pull/763"
+      ],
+      "selected_pr_urls": [
+        "https://github.com/zapcooking/frontend/pull/764",
+        "https://github.com/zapcooking/frontend/pull/763"
+      ],
+      "verdict": "include",
+      "reason": "Qualifying material merged-source changes are mapped to primary URLs in research addenda; all other input PRs retain explicit per-PR skips.",
+      "branch_checks": [
+        {
+          "pr_url": "https://github.com/zapcooking/frontend/pull/764",
+          "base_ref": "main",
+          "evidence_source": "/opt/data/tmp/compass_full_project_delta_20260930.json",
+          "default_branch": "main",
+          "default_branch_live_verified": true,
+          "note": "Default branch exact authenticated GraphQL readback; PR base_ref retained from parent live inventory.",
+          "default_branch_source": "/opt/data/tmp/compass_pr_delta_default_branches_20260930.json",
+          "base_matches_default": true
+        },
+        {
+          "pr_url": "https://github.com/zapcooking/frontend/pull/763",
+          "base_ref": "main",
+          "evidence_source": "/opt/data/tmp/compass_full_project_delta_20260930.json",
+          "default_branch": "main",
+          "default_branch_live_verified": true,
+          "note": "Default branch exact authenticated GraphQL readback; PR base_ref retained from parent live inventory.",
+          "default_branch_source": "/opt/data/tmp/compass_pr_delta_default_branches_20260930.json",
+          "base_matches_default": true
+        }
+      ]
+    },
+    {
+      "project": "mesh-llm",
+      "repo": "michaelneale/mesh-llm",
+      "reviewed_pr_urls": [
+        "https://github.com/Mesh-LLM/mesh-llm/pull/2121",
+        "https://github.com/Mesh-LLM/mesh-llm/pull/2117",
+        "https://github.com/Mesh-LLM/mesh-llm/pull/2118",
+        "https://github.com/Mesh-LLM/mesh-llm/pull/2113",
+        "https://github.com/Mesh-LLM/mesh-llm/pull/2111",
+        "https://github.com/Mesh-LLM/mesh-llm/pull/2120",
+        "https://github.com/Mesh-LLM/mesh-llm/pull/2102",
+        "https://github.com/Mesh-LLM/mesh-llm/pull/2114"
+      ],
+      "selected_pr_urls": [],
+      "verdict": "skip",
+      "reason": "All new PRs rejected for concrete per-PR low-value, source-maturity or non-Nostr reasons, not a count cap.",
+      "branch_checks": []
+    },
+    {
+      "project": "Marmot Protocol",
+      "repo": "marmot-protocol/marmot",
+      "reviewed_pr_urls": [
+        "https://github.com/marmot-protocol/marmot/pull/427"
+      ],
+      "selected_pr_urls": [
+        "https://github.com/marmot-protocol/marmot/pull/427"
+      ],
+      "verdict": "include",
+      "reason": "Qualifying material merged-source changes are mapped to primary URLs in research addenda; all other input PRs retain explicit per-PR skips.",
+      "branch_checks": [
+        {
+          "pr_url": "https://github.com/marmot-protocol/marmot/pull/427",
+          "base_ref": "master",
+          "evidence_source": "/opt/data/tmp/compass_full_project_delta_20260930.json",
+          "default_branch": "master",
+          "default_branch_live_verified": true,
+          "note": "Default branch exact authenticated GraphQL readback; PR base_ref retained from parent live inventory.",
+          "default_branch_source": "/opt/data/tmp/compass_pr_delta_default_branches_20260930.json",
+          "base_matches_default": true
+        }
+      ]
+    },
+    {
+      "project": "Marmot Protocol (mdk)",
+      "repo": "marmot-protocol/mdk",
+      "reviewed_pr_urls": [
+        "https://github.com/marmot-protocol/mdk/pull/2101",
+        "https://github.com/marmot-protocol/mdk/pull/2105",
+        "https://github.com/marmot-protocol/mdk/pull/1929",
+        "https://github.com/marmot-protocol/mdk/pull/1969",
+        "https://github.com/marmot-protocol/mdk/pull/2097",
+        "https://github.com/marmot-protocol/mdk/pull/2098",
+        "https://github.com/marmot-protocol/mdk/pull/2096",
+        "https://github.com/marmot-protocol/mdk/pull/2095",
+        "https://github.com/marmot-protocol/mdk/pull/2094",
+        "https://github.com/marmot-protocol/mdk/pull/2093"
+      ],
+      "selected_pr_urls": [
+        "https://github.com/marmot-protocol/mdk/pull/2105",
+        "https://github.com/marmot-protocol/mdk/pull/1929",
+        "https://github.com/marmot-protocol/mdk/pull/1969",
+        "https://github.com/marmot-protocol/mdk/pull/2097",
+        "https://github.com/marmot-protocol/mdk/pull/2098",
+        "https://github.com/marmot-protocol/mdk/pull/2096",
+        "https://github.com/marmot-protocol/mdk/pull/2095",
+        "https://github.com/marmot-protocol/mdk/pull/2094",
+        "https://github.com/marmot-protocol/mdk/pull/2093"
+      ],
+      "verdict": "include",
+      "reason": "Qualifying material merged-source changes are mapped to primary URLs in research addenda; all other input PRs retain explicit per-PR skips.",
+      "branch_checks": [
+        {
+          "pr_url": "https://github.com/marmot-protocol/mdk/pull/2105",
+          "base_ref": "master",
+          "evidence_source": "/opt/data/tmp/compass_full_project_delta_20260930.json",
+          "default_branch": "master",
+          "default_branch_live_verified": true,
+          "note": "Default branch exact authenticated GraphQL readback; PR base_ref retained from parent live inventory.",
+          "default_branch_source": "/opt/data/tmp/compass_pr_delta_default_branches_20260930.json",
+          "base_matches_default": true
+        },
+        {
+          "pr_url": "https://github.com/marmot-protocol/mdk/pull/1929",
+          "base_ref": "master",
+          "evidence_source": "/opt/data/tmp/compass_full_project_delta_20260930.json",
+          "default_branch": "master",
+          "default_branch_live_verified": true,
+          "note": "Default branch exact authenticated GraphQL readback; PR base_ref retained from parent live inventory.",
+          "default_branch_source": "/opt/data/tmp/compass_pr_delta_default_branches_20260930.json",
+          "base_matches_default": true
+        },
+        {
+          "pr_url": "https://github.com/marmot-protocol/mdk/pull/1969",
+          "base_ref": "master",
+          "evidence_source": "/opt/data/tmp/compass_full_project_delta_20260930.json",
+          "default_branch": "master",
+          "default_branch_live_verified": true,
+          "note": "Default branch exact authenticated GraphQL readback; PR base_ref retained from parent live inventory.",
+          "default_branch_source": "/opt/data/tmp/compass_pr_delta_default_branches_20260930.json",
+          "base_matches_default": true
+        },
+        {
+          "pr_url": "https://github.com/marmot-protocol/mdk/pull/2097",
+          "base_ref": "master",
+          "evidence_source": "/opt/data/tmp/compass_full_project_delta_20260930.json",
+          "default_branch": "master",
+          "default_branch_live_verified": true,
+          "note": "Default branch exact authenticated GraphQL readback; PR base_ref retained from parent live inventory.",
+          "default_branch_source": "/opt/data/tmp/compass_pr_delta_default_branches_20260930.json",
+          "base_matches_default": true
+        },
+        {
+          "pr_url": "https://github.com/marmot-protocol/mdk/pull/2098",
+          "base_ref": "master",
+          "evidence_source": "/opt/data/tmp/compass_full_project_delta_20260930.json",
+          "default_branch": "master",
+          "default_branch_live_verified": true,
+          "note": "Default branch exact authenticated GraphQL readback; PR base_ref retained from parent live inventory.",
+          "default_branch_source": "/opt/data/tmp/compass_pr_delta_default_branches_20260930.json",
+          "base_matches_default": true
+        },
+        {
+          "pr_url": "https://github.com/marmot-protocol/mdk/pull/2096",
+          "base_ref": "master",
+          "evidence_source": "/opt/data/tmp/compass_full_project_delta_20260930.json",
+          "default_branch": "master",
+          "default_branch_live_verified": true,
+          "note": "Default branch exact authenticated GraphQL readback; PR base_ref retained from parent live inventory.",
+          "default_branch_source": "/opt/data/tmp/compass_pr_delta_default_branches_20260930.json",
+          "base_matches_default": true
+        },
+        {
+          "pr_url": "https://github.com/marmot-protocol/mdk/pull/2095",
+          "base_ref": "master",
+          "evidence_source": "/opt/data/tmp/compass_full_project_delta_20260930.json",
+          "default_branch": "master",
+          "default_branch_live_verified": true,
+          "note": "Default branch exact authenticated GraphQL readback; PR base_ref retained from parent live inventory.",
+          "default_branch_source": "/opt/data/tmp/compass_pr_delta_default_branches_20260930.json",
+          "base_matches_default": true
+        },
+        {
+          "pr_url": "https://github.com/marmot-protocol/mdk/pull/2094",
+          "base_ref": "master",
+          "evidence_source": "/opt/data/tmp/compass_full_project_delta_20260930.json",
+          "default_branch": "master",
+          "default_branch_live_verified": true,
+          "note": "Default branch exact authenticated GraphQL readback; PR base_ref retained from parent live inventory.",
+          "default_branch_source": "/opt/data/tmp/compass_pr_delta_default_branches_20260930.json",
+          "base_matches_default": true
+        },
+        {
+          "pr_url": "https://github.com/marmot-protocol/mdk/pull/2093",
+          "base_ref": "master",
+          "evidence_source": "/opt/data/tmp/compass_full_project_delta_20260930.json",
+          "default_branch": "master",
+          "default_branch_live_verified": true,
+          "note": "Default branch exact authenticated GraphQL readback; PR base_ref retained from parent live inventory.",
+          "default_branch_source": "/opt/data/tmp/compass_pr_delta_default_branches_20260930.json",
+          "base_matches_default": true
+        }
+      ]
+    }
+  ]
+}

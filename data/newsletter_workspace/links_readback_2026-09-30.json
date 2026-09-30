@@ -1,0 +1,1540 @@
+{
+  "draft_sha256": "18f3f80a31b011737722c1715490836a88141e7cf19ad1a9ddec7f3253a751ec",
+  "urls": [
+    {
+      "url": "https://code.relay.tools/opensauce/newlay",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/0xchat-app/0xchat-app-main",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/0xchat-app/0xchat-app-main/releases/tag/v1.5.6-release",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/Cameri/nostream",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/Cameri/nostream/releases/tag/v3.1.0",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/Conduit-BTC/conduit-mono",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/Conduit-BTC/conduit-mono/pull/483",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/Conduit-BTC/conduit-mono/pull/488",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/Conduit-BTC/conduit-mono/pull/529",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/Conduit-BTC/conduit-mono/pull/533",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/Conduit-BTC/conduit-mono/pull/575",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/ContextVM/sdk",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/ContextVM/sdk/pull/101",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/ContextVM/sdk/pull/103",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/Cordn-msg/cordn",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/Cordn-msg/cordn/pull/9",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/DavidGershony/Scramble",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/DavidGershony/Scramble/commit/35e72177a0009ec96e8494caed7e9c250b66c7cb",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/DavidGershony/Scramble/releases/tag/v0.7.4",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/DavidGershony/Scramble/releases/tag/v0.7.5",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/DavidGershony/Scramble/releases/tag/v0.7.6",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/DavidGershony/Scramble/releases/tag/v0.7.7",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/DavidGershony/Scramble/releases/tag/v0.7.8",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/DestBro/mafrend-zapstore",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/DestBro/mafrend-zapstore/releases/tag/v1.3.0-alpha",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/Lwb89dev/librenostr",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/Lwb89dev/librenostr/releases/tag/v0.6.0",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/Lwb89dev/librenostr/releases/tag/v0.6.2",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/Lwb89dev/librenostr/releases/tag/v0.7.0",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/MostroP2P/mostro",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/MostroP2P/mostro-core",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/MostroP2P/mostro-core/releases/tag/v0.15.1",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/MostroP2P/mostro-core/releases/tag/v0.16.0",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/MostroP2P/mostro/pull/1000",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/MostroP2P/mostro/pull/1004",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/MostroP2P/mostro/pull/1006",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/MostroP2P/mostro/pull/923",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/MostroP2P/mostro/pull/945",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/MostroP2P/mostro/releases/tag/v0.19.0",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/Origami74/myco",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/Origami74/myco/releases/tag/v0.8.0",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/Origami74/myco/releases/tag/v0.8.1",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/SnowCait/nostter",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/SnowCait/nostter/pull/2573",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/SnowCait/nostter/pull/2608",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/SnowCait/nostter/pull/2611",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/alaibe/statim/blob/v0.4.0/README.md",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/alaibe/statim/releases/tag/v0.4.0",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/andotherstuff/pensieve",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/andotherstuff/pensieve/pull/60",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/arcbtc/buber/commit/7a66d400f2",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/arkin0x/cyberspace",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/arkin0x/cyberspace/pull/36",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/arkin0x/cyberspace/pull/38",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/arkin0x/cyberspace/pull/40",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/barrydeen/wisp",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/barrydeen/wisp/pull/667",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/block/buzz",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/block/buzz/pull/6515",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/block/buzz/pull/7224",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/block/buzz/pull/7264",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/block/buzz/pull/7830",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/block/buzz/pull/7849",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/block/buzz/pull/7894",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/block/buzz/pull/7895",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/block/buzz/pull/7896",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/block/buzz/pull/7919",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/block/buzz/pull/7969",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/block/buzz/releases/tag/desktop-v0.5.26",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/cameri/nostream/pull/788",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/cameri/nostream/releases/tag/v3.1.0",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/coracle-social/flotilla",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/coracle-social/flotilla/releases/tag/1.11.2",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/crocs-muni/scrutiny-lens/releases/tag/v0.1.0",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/damus-io/damus/blob/master/CHANGELOG.md#1101---2024-09-22",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/damus-io/damus/blob/master/CHANGELOG.md#16-18---2023-09-21",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/derekross/opal",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/derekross/opal/releases/tag/v0.3.3",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/divinevideo/divine-mobile",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/divinevideo/divine-mobile/pull/9446",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/divinevideo/divine-mobile/pull/9486",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/divinevideo/divine-mobile/pull/9598",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/divinevideo/divine-mobile/pull/9601",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/divinevideo/divine-mobile/pull/9603",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/divinevideo/divine-mobile/pull/9645",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/divinevideo/divine-mobile/pull/9652",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/divinevideo/divine-mobile/pull/9654",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/divinevideo/divine-mobile/pull/9664",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/divinevideo/divine-mobile/pull/9677",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/divinevideo/divine-mobile/pull/9680",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/divinevideo/divine-mobile/pull/9694",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/divinevideo/divine-mobile/pull/9698",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/divinevideo/divine-mobile/pull/9701",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/divinevideo/divine-mobile/pull/9703",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/elisymlabs/elisym",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/elisymlabs/elisym/pull/120",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/elisymlabs/elisym/pull/131",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/elisymlabs/elisym/pull/133",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/elisymlabs/elisym/pull/136",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/elisymlabs/elisym/pull/137",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/elisymlabs/elisym/pull/139",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/elisymlabs/elisym/releases/tag/%40elisym%2Fmcp%400.31.0",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/elisymlabs/elisym/releases/tag/%40elisym%2Fmerchant-node%400.1.0",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/elisymlabs/elisym/releases/tag/%40elisym/commerce%400.2.0",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/emeceve/loquaz/commit/d885d93d22",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/etemiz/wot",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/etemiz/wot/commit/212fe268dd781c73adad51329be235abc8fd37db",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/forgesworn/bray",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/forgesworn/bray/releases/tag/v3.5.0",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/forgesworn/bray/releases/tag/v3.5.2",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/forgesworn/cambium",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/forgesworn/cambium/releases/tag/v0.6.0",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/forgesworn/cambium/releases/tag/v0.7.0",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/forgesworn/cambium/releases/tag/v0.7.1",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/fr34aky/fips-pub-domains",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/fr34aky/fips-pub-domains/blob/main/docs/nip.md",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/fr34aky/fips-pub-domains/blob/main/docs/testing.md",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/fr34aky/fips-pub-domains/releases/tag/v0.1.0",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/fr34aky/fips-pub-domains/releases/tag/v0.2.0",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/fr34aky/fips-pub-domains/releases/tag/v0.2.1",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/fr34aky/fips2go/pull/55",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/fr34aky/fips2go/pull/59",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/greenart7c3/Amber",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/greenart7c3/Amber/releases/tag/v6.6.6",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/hedwig-corp/bitchat-to-sonar",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/hedwig-corp/bitchat-to-sonar/releases/tag/v0.1-alpha.15",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/hedwig-corp/bitchat-to-sonar/releases/tag/v0.1-alpha.15.1",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/imattau/Mangatsu/commit/543d6d3dde3bffe293b7336d0fb6f4c82532fe13",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/imattau/Mangatsu/releases/tag/v0.1.11",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/imattau/noteds/commit/c9294999134196e9d98c011440c7ca0ed5fcc398",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/imattau/noteds/releases/tag/v0.1.2",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/iqbqioza/watchtower",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/irislib/iris-chat-rs",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/irislib/iris-chat-rs/releases/tag/v2026.9.24.4",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/irislib/iris-chat-rs/releases/tag/v2026.9.24.5",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/irislib/meet",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/irislib/meet/commit/9bebb074895fd34574c3a92056612cf3891de74b",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/irislib/nostr-double-ratchet",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/irislib/nostr-double-ratchet/releases/tag/nostr-double-ratchet-ts-v0.0.171",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/irislib/nostr-double-ratchet/releases/tag/nostr-double-ratchet-ts-v0.0.172",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/irislib/nostr-double-ratchet/releases/tag/nostr-double-ratchet-ts-v0.0.173",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/irislib/nostr-double-ratchet/releases/tag/nostr-double-ratchet-ts-v0.0.175",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/jesuspirate/chama",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/jesuspirate/chama/releases/tag/v6.4.16",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/jmcorgan/fips",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/jmcorgan/fips/releases/tag/v0.5.2",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/johninnis/hubstr-blossom",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/johninnis/hubstr-relay",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/johninnis/hubstr-relay/commit/0ae1a551ac50da0b7097105b76591dbc4d6cc023",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/jooray/roadstr",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/lawalletio/lawallet-nwc",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/lawalletio/lawallet-nwc/pull/316",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/lawalletio/lawallet-nwc/pull/319",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/marmot-protocol/marmot/pull/427",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/marmot-protocol/mdk",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/marmot-protocol/mdk/blob/v0.11.0/docs/release/0.11.0.md",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/marmot-protocol/mdk/pull/1929",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/marmot-protocol/mdk/pull/1969",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/marmot-protocol/mdk/pull/2093",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/marmot-protocol/mdk/pull/2094",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/marmot-protocol/mdk/pull/2095",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/marmot-protocol/mdk/pull/2096",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/marmot-protocol/mdk/pull/2097",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/marmot-protocol/mdk/pull/2098",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/marmot-protocol/mdk/pull/2105",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/marmot-protocol/mdk/releases/tag/v0.11.0",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/marmot-protocol/whitenoise-android",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/marmot-protocol/whitenoise-android/pull/2712",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/marmot-protocol/whitenoise-android/pull/2765",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/marmot-protocol/whitenoise-android/pull/2768",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/marmot-protocol/whitenoise-android/pull/2799",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/marmot-protocol/whitenoise-android/pull/2802",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/marmot-protocol/whitenoise-android/pull/2806",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/marmot-protocol/whitenoise-android/pull/2808",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/marmot-protocol/whitenoise-android/pull/2818",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/marmot-protocol/whitenoise-android/pull/2825",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/marmot-protocol/whitenoise-android/pull/2830",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/marmot-protocol/whitenoise-android/pull/2840",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/marmot-protocol/whitenoise-android/pull/2869",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/marmot-protocol/whitenoise-android/pull/2872",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/marmot-protocol/whitenoise-android/pull/2877",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/marmot-protocol/whitenoise-android/pull/2879",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/marmot-protocol/whitenoise-android/pull/2888",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/marmot-protocol/whitenoise-android/releases/tag/android-v2026.9.30",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/mmalmi/fips-ts/releases/tag/runtime-v0.0.45",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/mmalmi/hashtree/releases/tag/hashtree-ts-runtime-v0.5.13",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/mmalmi/iris-kit/releases/tag/runtime-v0.2.5",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/mmalmi/iris-kit/releases/tag/runtime-v0.2.6",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/mmalmi/nostr-pubsub",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/mmalmi/nostr-pubsub/releases/tag/nostr-pubsub-ts-v0.5.13",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/nogringo/nostr-mail-client",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/nogringo/nostr-mail-client/releases/tag/v0.17.0",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/nostr-protocol/nips/blob/5b9920982ae1f4061328c1b09a90360da28d13c8/86.md",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/nostr-protocol/nips/blob/master/26.md",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/nostr-protocol/nips/commit/0046368a7",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/nostr-protocol/nips/commit/3423a6dfb",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/nostr-protocol/nips/commit/3b5d3ca67",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/nostr-protocol/nips/commit/400d975da",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/nostr-protocol/nips/commit/44c21c9d8",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/nostr-protocol/nips/commit/4c5d5fff9",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/nostr-protocol/nips/commit/6631b3eb1",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/nostr-protocol/nips/commit/79786bb7b",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/nostr-protocol/nips/commit/b62aa418d",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/nostr-protocol/nips/commit/ea36ec9ed",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/nostr-protocol/nips/pull/2408",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/nostr-protocol/nips/pull/2417",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/nostr-protocol/nips/pull/2478",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/nostr-protocol/nips/pull/2479",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/nostr-protocol/nips/pull/2486",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/nostr-protocol/nips/pull/2487",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/nostr-protocol/nips/pull/2488",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/nostr-protocol/nips/pull/2489",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/nostr-wot/nostr-wot-extension",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/nostr-wot/nostr-wot-extension/releases/tag/v0.8.7",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/nostrdevkit/nostr/pull/1478",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/pratik227/zap_dashboard",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/pratik227/zap_dashboard/pull/133",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/pratik227/zap_dashboard/pull/135",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/ptrio42/holoboard.space/blob/main/CHANGELOG.md",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/ptrio42/holoboard.space/blob/main/CHANGELOG.md#2026-09-23",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/ptrio42/holoboard.space/blob/main/relay/README.md",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/relaystr/ndk",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/relaystr/ndk/compare/v0.10.0-dev.9...v0.10.0",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/relaystr/ndk/pull/852",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/relaystr/ndk/pull/860",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/relaystr/ndk/releases/tag/v0.10.0",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/relaystr/ndk/releases/tag/v0.10.0-dev.7",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/relaystr/ndk/releases/tag/v0.10.0-dev.8",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/relaystr/ndk/releases/tag/v0.10.0-dev.9",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/rust-nostr/nostr",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/rzazo24/nostr-relay-khatru",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/rzazo24/nostr-relay-khatru/commit/a6ef7cff9c4f833a6a2f72957d45935c736a0c51",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/saiy2k/nostr-components/pull/144",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/saiy2k/nostr-components/pull/146",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/saiy2k/nostr-components/pull/148",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/satanrayshe/dossier",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/soapbox-pub/armada",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/tcheeric/nostr-java",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/tcheeric/nostr-java/pull/557",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/tcheeric/nostr-java/pull/558",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/tsgx1990/moyu",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/tsgx1990/moyu/blob/88a20d247510d1cc46ca955564aa395d26ae8e89/CHANGELOG.md",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/vitorpamplona/amethyst",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/vitorpamplona/amethyst/pull/4174",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/vitorpamplona/amethyst/pull/4201",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/vitorpamplona/amethyst/pull/4231",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/vitorpamplona/amethyst/pull/4233",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/vitorpamplona/amethyst/pull/4240",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/vitorpamplona/amethyst/pull/4245",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/vitorpamplona/amethyst/pull/4262",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/vitorpamplona/amethyst/pull/4264",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/vitorpamplona/amethyst/pull/4265",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/vitorpamplona/amethyst/pull/4266",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/vitorpamplona/amethyst/pull/4267",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/vitorpamplona/amethyst/pull/4270",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/vitorpamplona/amethyst/pull/4271",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/vitorpamplona/amethyst/pull/4272",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/vitorpamplona/amethyst/pull/4275",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/vitorpamplona/amethyst/pull/4277",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/vitorpamplona/amethyst/pull/4278",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/vitorpamplona/amethyst/pull/4282",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/vitorpamplona/amethyst/pull/4284",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/zapcooking/frontend",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/zapcooking/frontend/pull/743",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/zapcooking/frontend/pull/752",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/zapcooking/frontend/pull/753",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/zapcooking/frontend/pull/763",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/zapcooking/frontend/pull/764",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/zeSchlausKwab/earthly",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/zeSchlausKwab/earthly/blob/v0.1.12/README.md",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/zeSchlausKwab/earthly/pull/29",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/zeSchlausKwab/earthly/pull/30",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/zeSchlausKwab/earthly/releases/tag/v0.1.12",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/zeSchlausKwab/napplet-soy",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/zeSchlausKwab/napplet-soy/releases/tag/soyli-v0.23.1",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/zeSchlausKwab/napplet-soy/releases/tag/soyli-v0.23.2",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/zeSchlausKwab/napplet-soy/releases/tag/soyli-v0.23.4",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/zig-nostr/deed",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/zig-nostr/deed/releases/tag/v0.3.0",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/zig-nostr/deed/releases/tag/v0.3.1",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://github.com/zig-nostr/deed/releases/tag/v0.3.2",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://gitlab.com/soapbox-pub/ditto",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://gitlab.com/soapbox-pub/ditto/-/releases/v2.42.3",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://gitlab.pocketlabs.dev/meshstr/meshstr",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://gitlab.pocketlabs.dev/meshstr/meshstr/-/commit/6d609fc99f",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://gitworkshop.dev/danconwaydev.com/ngit-grasp",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://gitworkshop.dev/npub1wav4fae3gyfy3xj298kxj2mj8phavz7vavps34przq02j7w902qq902923/relay.ngit.dev/nostr-compass-android",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://holoboard.space",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://nostr-atlas.web.app",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://nostrcompass.org",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://primal.net/e/17fd3f325dda1feb0c1e51c6e1af0f7b3efe42ecff75e9527ac435cdc6a30c7a",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://primal.net/e/23f7498e2e405e05c4d3075ccc522c753d80f37b954a81ff8ecb3268f2dc7dc6",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://primal.net/e/34021b55504d74c5d04f55dbfea87f31168a7c4582f35113d7ec063894d19e56",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://primal.net/e/4eeba660b6b789288954290497de89fe3222bfc955214647ead5d63e6031d927",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://primal.net/e/630becb73dbe7ba7c76a2d1970f1d7262a5afc33b02fc8002bef611cf638deab",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://primal.net/e/6ff00b9230e4523e6f14aaf6e5088f91e5696be38b9304a4e1cef384e3318d41",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://primal.net/e/89ec93e25caf31831714e807c927b6d50d3d5fc38044df845163ff656db3f711",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://primal.net/e/ad0f6ad1a7730a400e8257c494c53ef14597c55a24e01b05dd2b2301c7d3aa36",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://primal.net/e/af3ff711c1c1daa4d6a621dc5add0615fc5d37fbb1de31395cb79dcdf820aaf1",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://primal.net/e/affd11e97fb3438965780aa01732e8d0e0f9b2162b87ab0f3019dff93449673e",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://primal.net/e/b8380ae1bf30492129727ec59e27e2ae8a4cf9ad08e7361826a9ba8be88a227a",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://relay.hivescope.xyz",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://satanrayshe.github.io/dossier/",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://watchtower.nostrfy.org",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://zapstore.dev/apps/ai.nymbot",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://zapstore.dev/apps/naddr1qq2x7un89ehx7um5wf3k7mtsv9ehxtnpwpcqzxrhwden5te0wfjkccte9eaxzurnw3hhyefwv3jhvq3qwav4fae3gyfy3xj298kxj2mj8phavz7vavps34przq02j7w902qqxpqqqplqk563kdn",
+      "status": "200",
+      "exit_code": 0
+    },
+    {
+      "url": "https://zapstore.dev/apps/space.holoboard.app",
+      "status": "200",
+      "exit_code": 0
+    }
+  ]
+}

@@ -153,6 +153,179 @@ unresolved:
     sources:
       - https://radicle.xyz
       - https://radicle.network/nodes/iris.radicle.network/rad%3Az2zX5XvPiggGJvCn8DPkp1hRNGA5
+  Cyberspace:
+    checked_at: '2026-09-30'
+    reason: Canonical GitHubrepository page200, no public npub found. Both guessed README main/master raw routes404; no inference
+      from those failures. Public ownerprofile inspection recorded separately; NIP50 timedout; directory400.
+    sources:
+    - https://raw.githubusercontent.com/arkin0x/cyberspace/main/README.md
+    - https://raw.githubusercontent.com/arkin0x/cyberspace/master/README.md
+  Dossier:
+    checked_at: '2026-09-30'
+    reason: Canonical primaryproject source/README has no bound project or maintainer npub. Public directory failed400. NIP50
+      name search, where applicable, returned unrelated results or timedout; no defensible monitored identity established. Preserve
+      project untagged and out of outreach.
+    sources:
+    - https://raw.githubusercontent.com/satanrayshe/dossier/main/README.md
+  Elisym:
+    checked_at: '2026-09-30'
+    reason: Canonical primaryproject source/README has no bound project or maintainer npub. Public directory failed400. NIP50
+      name search, where applicable, returned unrelated results or timedout; no defensible monitored identity established. Preserve
+      project untagged and out of outreach.
+    sources:
+    - https://raw.githubusercontent.com/elisymlabs/elisym/main/README.md
+  Elisym's commerce packages:
+    checked_at: '2026-09-30'
+    reason: Canonical primaryproject source/README has no bound project or maintainer npub. Public directory failed400. NIP50
+      name search, where applicable, returned unrelated results or timedout; no defensible monitored identity established. Preserve
+      project untagged and out of outreach.
+    sources:
+    - https://raw.githubusercontent.com/elisymlabs/elisym/main/README.md
+  Holoboard:
+    checked_at: '2026-09-30'
+    reason: Primary site and README contain no bound project/maintainer npub. NIP50queries Holoboard/ptrio42 timedout; directory400.
+      App release signing identity is not inferred as inbox.
+    sources:
+    - https://holoboard.space
+    - https://github.com/ptrio42/holoboard.space/blob/main/README.md
+  Hubstr Blossom:
+    checked_at: '2026-09-30'
+    reason: Canonical primaryproject source/README has no bound project or maintainer npub. Public directory failed400. NIP50
+      name search, where applicable, returned unrelated results or timedout; no defensible monitored identity established. Preserve
+      project untagged and out of outreach.
+    sources:
+    - https://raw.githubusercontent.com/johninnis/hubstr-blossom/main/README.md
+    - https://raw.githubusercontent.com/johninnis/hubstr-blossom/master/README.md
+  Hubstr Blossom server:
+    checked_at: '2026-09-30'
+    reason: Same project as Hubstr Blossom at johninnis/hubstr-blossom; primary masterREADME contains no npub. Separate fullheading
+      alias needs same researchedunresolved record.
+    sources:
+    - https://github.com/johninnis/hubstr-blossom/blob/master/README.md
+  Iris Chat:
+    checked_at: '2026-09-30'
+    reason: Primary README publishes npub1399g0q2gtwjcglyjcg3jw3rcllqhm375pwases5hkvqa56aqe5wsz2eaap as decentralizedGit/distribution
+      location. Exact kind0 query returned no profile for it. Repository signing/distribution role alone does not establish
+      monitored contact identity. Existing Iris project/mmalmi personal aliases are possible but no new exact role binding verified
+      here.
+    sources:
+    - https://raw.githubusercontent.com/irislib/iris-chat-rs/main/README.md
+  LibreNostr:
+    checked_at: '2026-09-30'
+    reason: Canonical primaryproject source/README has no bound project or maintainer npub. Public directory failed400. NIP50
+      name search, where applicable, returned unrelated results or timedout; no defensible monitored identity established. Preserve
+      project untagged and out of outreach.
+    sources:
+    - https://raw.githubusercontent.com/Lwb89dev/librenostr/main/README.md
+  Meshstr:
+    checked_at: '2026-09-30'
+    reason: Raw primaryREADME explicitly lists publisher npub1dxlsl0yzz9yglsephmjmlgrm4cvy4zqmpvtv87mwzwjtrhdzsyjq4xs7uy for
+      signed kind30817 protocol docs and repositories. Publisher role is verified, monitored messaging role not established.
+      Generic NIP50 search timedout; omit outreach until person/projectprofile binding.
+    sources:
+    - https://gitlab.pocketlabs.dev/meshstr/meshstr
+    - https://gitlab.pocketlabs.dev/meshstr/meshstr/-/raw/main/README.md
+  Newlay:
+    checked_at: '2026-09-30'
+    reason: Canonical primaryproject source/README has no bound project or maintainer npub. Public directory failed400. NIP50
+      name search, where applicable, returned unrelated results or timedout; no defensible monitored identity established. Preserve
+      project untagged and out of outreach.
+    sources:
+    - https://code.relay.tools/opensauce/newlay
+  Nostr Atlas:
+    checked_at: '2026-09-30'
+    reason: Primary site zap button binds npub1qsvv5ttv6mrlh38q8ydmw3gzwq360mdu8re2vr7rk68sqmhmsh4svhsft3 as donationbeneficiary.
+      Signed kind0 eventf84405041c85145eca404fca1bdf40eb3c6200bd225a12f2fe63196dc9587768 identifies personal sai y2k profile/website.
+      This supports project donation recipient, not a maintained project notification inbox; omitted pending explicit role evidence.
+    sources:
+    - https://nostr-atlas.web.app
+  Nostr double ratchet:
+    checked_at: '2026-09-30'
+    reason: Primary README binds npub1xdhnr9mrv47kkrn95k6cwecearydeh8e895990n3acntwvmgk2dsdeeycm to decentralized repository.
+      This key is already no_dm as Sirius Business Ltd repository signer; omit outreach. Existing mmalmi verified maintainer
+      might serve a separately role-proven alias, but never treat this repo key as inbox.
+    sources:
+    - https://raw.githubusercontent.com/irislib/nostr-double-ratchet/main/README.md
+    - https://raw.githubusercontent.com/irislib/nostr-double-ratchet/master/README.md
+  deed:
+    checked_at: '2026-09-30'
+    reason: Canonical primaryproject source/README has no bound project or maintainer npub. Public directory failed400. NIP50
+      name search, where applicable, returned unrelated results or timedout; no defensible monitored identity established. Preserve
+      project untagged and out of outreach.
+    sources:
+    - https://raw.githubusercontent.com/zig-nostr/deed/main/README.md
+  nostr-java:
+    checked_at: '2026-09-30'
+    reason: Canonical primaryproject source/README has no bound project or maintainer npub. Public directory failed400. NIP50
+      name search, where applicable, returned unrelated results or timedout; no defensible monitored identity established. Preserve
+      project untagged and out of outreach.
+    sources:
+    - https://raw.githubusercontent.com/tcheeric/nostr-java/main/README.md
+  Moyu:
+    checked_at: '2026-09-30'
+    reason: Primaryrepository main/master README and publicGitHubownerprofile publish no project/maintainer npub. README only
+      has abbreviated user-input npub examples. npub.world/Moyu returnsHTTP400. BoundedNIP50Moyu profile search was attempted;
+      any genericname matches are not rolebound to this repository. No defensible monitoredcontactidentity established; omit
+      mentions/outreach. Source/changelogversion0.3.0 alone does not establish an actualGitHubrelease.
+    sources:
+    - https://github.com/tsgx1990/moyu
+    - https://raw.githubusercontent.com/tsgx1990/moyu/main/README.md
+    - https://github.com/tsgx1990
+    - https://npub.world/Moyu
+  SCRUTINY Lens:
+    checked_at: '2026-09-30'
+    reason: Canonical primaryREADME and publicGitHubownerprofile publish no bound project/maintainer npub. npub.world directory400;
+      boundedNIP50namequery timedout or found no project-bound profile. No defensible monitoredcontact identity established;
+      omit mentions/outreach.
+    sources:
+    - https://github.com/crocs-muni/scrutiny-lens
+    - https://raw.githubusercontent.com/crocs-muni/scrutiny-lens/main/README.md
+    - https://github.com/crocs-muni
+  Statim:
+    checked_at: '2026-09-30'
+    reason: Canonical primaryREADME and publicGitHubownerprofile publish no bound project/maintainer npub. npub.world directory400;
+      boundedNIP50namequery timedout or found no project-bound profile. No defensible monitoredcontact identity established;
+      omit mentions/outreach.
+    sources:
+    - https://github.com/alaibe/statim
+    - https://raw.githubusercontent.com/alaibe/statim/main/README.md
+    - https://github.com/alaibe
+  Hubstr Relay:
+    checked_at: '2026-09-30'
+    reason: Canonical primaryREADME and publicGitHubownerprofile publish no bound project/maintainer npub. npub.world directory400;
+      boundedNIP50namequery timedout or found no project-bound profile. No defensible monitoredcontact identity established;
+      omit mentions/outreach.
+    sources:
+    - https://github.com/johninnis/hubstr-relay
+    - https://raw.githubusercontent.com/johninnis/hubstr-relay/master/README.md
+    - https://github.com/johninnis
+  wot:
+    checked_at: '2026-09-30'
+    reason: Primaryetemiz/wot README has only abbreviated exampleuserseednpub, no maintainer/projectkey. Ownerprofile has no
+      publicnpub. NIP50etemiz timedout; directory400. This Rustclient/server is distinct from NostrWoT extension/Leon; never
+      reuse similarly namedproject identity.
+    sources:
+    - https://github.com/etemiz/wot
+    - https://raw.githubusercontent.com/etemiz/wot/master/README.md
+    - https://github.com/etemiz
+  nostr-relay-khatru:
+    checked_at: '2026-09-30'
+    reason: PrimarymasterREADME and ownerGitHubprofile contain no contactnpub. ExactboundedNIP50rzazo24 returned0events; directory400.
+      Khatruupstreamauthorfiatjaf is not inferred to maintain this independentrelay; leave untagged/out of outreach.
+    sources:
+    - https://github.com/rzazo24/nostr-relay-khatru
+    - https://raw.githubusercontent.com/rzazo24/nostr-relay-khatru/master/README.md
+    - https://github.com/rzazo24
+  Iris Meet:
+    checked_at: '2026-09-30'
+    reason: PrimaryREADME explicitly gives npub1xdhnr9mrv47kkrn95k6cwecearydeh8e895990n3acntwvmgk2dsdeeycm as sourceGitpublisher;
+      existing registry marks this SiriusBusinessLtd repository key no_dm. Do not infer human/monitorednotification inbox from
+      sourcekey. NIP50IrisMeet returned4unrelated profiles. Corporatekey stays excluded; no new personal maintainer binding
+      established in this bounded sweep.
+    sources:
+    - https://github.com/irislib/meet
+    - https://raw.githubusercontent.com/irislib/meet/master/README.md
+    - https://github.com/irislib
 #
 # New and corrected records use the typed object format:
 #   ProjectName:
@@ -1505,3 +1678,71 @@ RelayKit:
   evidence:
     - https://github.com/samthomson/relaykit
     - https://relayk.it
+
+# Edition 42 identities researched against primary sources and signed profiles.
+ContextVM's TypeScript SDK: npub1dvmcpmefwtnn6dctsj3728n64xhrf06p9yude77echmrkgs5zmyqw33jdm
+Nymbot: npub16jdfqgazrkapk0yrqm9rdxlnys7ck39c7zmdzxtxqlmmpxg04r0sd733sv
+Opal:
+  npub: npub18ams6ewn5aj2n3wt2qawzglx9mr4nzksxhvrdc4gzrecw7n5tvjqctp424
+  mention_only: true
+fips-pub-domains tests signed public names for a mesh:
+  npub: npub1yptpz34agws3z95dqxgvyhwnhkulav5vueryjpzrl32p57euwteqwha52w
+ngit-grasp: npub15qydau2hjma6ngxkl2cyar74wzyjshvl65za5k5rl69264ar2exs5cyejr
+WatchTower:
+  npub: npub1takuya0nl8u82tgppggscgnpfz5m5vueckmr5r6xnm5nkyu555lq2uqwf4
+  identity_type: maintainer
+  person: takuya (iqbqioza)
+  evidence:
+  - https://github.com/iqbqioza/watchtower
+  - https://github.com/iqbqioza
+  - https://njump.me/iqbqioza.com
+  outreach: true
+
+Iris's shared runtime:
+  npub: npub1g53mukxnjkcmr94fhryzkqutdz2ukq4ks0gvy5af25rgmwsl4ngq43drvk
+  identity_type: maintainer
+  person: Martti Malmi
+  evidence:
+  - https://github.com/mmalmi/iris-kit
+  - https://github.com/mmalmi/nostr-pubsub
+  - https://github.com/mmalmi/fips-ts
+  outreach: true
+Nostr WoT:
+  npub: npub1gxdhmu9swqduwhr6zptjy4ya693zp3ql28nemy4hd97kuufyrqdqwe5zfk
+  identity_type: maintainer
+  person: Leon
+  evidence:
+  - https://nostr-wot.com
+  - https://nostr-wot.com/blog/introducing-widgets
+  - https://github.com/nostr-wot/nostr-wot-extension
+  outreach: true
+ZapTracker:
+  npub: npub1s56kqwj9ewz89dn5ns8elfwc4y7vygl0v4etglamw2gkc84cp8ts893h9f
+  identity_type: maintainer
+  person: Pratik (pratik227)
+  evidence:
+  - https://github.com/pratik227/zap_dashboard
+  - https://raw.githubusercontent.com/pratik227/zap_dashboard/dev/README.md
+  - https://github.com/pratik227
+  - https://damus.io/nprofile1qqsg2dtq8fzuhprjke6fcrul5hv2j0xzy0hk2u4507ah9ytvr6uqn4chexkgx
+  - https://zap-tracker.netlify.app/
+  outreach: true
+
+Mangatsu:
+  npub: npub1khf5amw8mrupe649a5mhkk3d2d8wjj06urz6kwawpftk4f68tjlstdmd3q
+  identity_type: maintainer
+  person: lostcause (imattau)
+  evidence:
+  - https://github.com/imattau/Mangatsu
+  - https://raw.githubusercontent.com/imattau/Mangatsu/master/README.md
+  - https://github.com/imattau
+  outreach: true
+Noteds:
+  npub: npub1khf5amw8mrupe649a5mhkk3d2d8wjj06urz6kwawpftk4f68tjlstdmd3q
+  identity_type: maintainer
+  person: lostcause (imattau)
+  evidence:
+  - https://github.com/imattau/noteds
+  - https://raw.githubusercontent.com/imattau/noteds/main/README.md
+  - https://github.com/imattau
+  outreach: true

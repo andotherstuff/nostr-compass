@@ -62,6 +62,7 @@ That is why Nostr projects such as Marmot add extra rules on top of MLS. The cry
 - [Newsletter #10](/en/newsletters/2026-02-18-newsletter/)
 - [Newsletter #12](/en/newsletters/2026-03-04-newsletter/)
 - [Newsletter #33: Lead stories](/en/newsletters/2026-07-29-newsletter/#top-stories)
+- [Newsletter #42: MDK encrypted groups](/en/newsletters/2026-09-30-newsletter/#marmot-mdk-0110-makes-account-history-gaps-visible)
 
 **See also:**
 - [Marmot Protocol](/en/topics/marmot/)

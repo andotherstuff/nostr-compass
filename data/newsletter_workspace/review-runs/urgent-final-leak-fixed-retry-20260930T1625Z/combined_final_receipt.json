@@ -1,0 +1,110 @@
+{
+  "schema": "compass.combined_final_editorial_clearance.v1",
+  "recorded_at": "2026-09-30T16:27:30.854268+00:00",
+  "final_article_sha256": "0ae9e56d9974e0c5c778e12388099d21addd4c807a13b25e69e81ac99f535b06",
+  "verdict": "PASS",
+  "scope": "Prior full five-role review, substantive source-bound delta review, and independent exact three-clause correction plus full-article instruction-leak challenge. No live URL/build/device checks performed by models.",
+  "runs": [
+    {
+      "run_dir": "/opt/data/compass-worktrees/2026-09-30/data/newsletter_workspace/review-runs/urgent-final-editorial-20260930T1548Z",
+      "article_sha256": "2f81997f28c148477afa10e31fe60483cbeb5777325507025e9050249a3bbc63",
+      "selected_provider": "cursor",
+      "selected_model": "composer-2.5[fast=true]",
+      "selected_family": "cursor",
+      "implementation_models": [
+        "gpt-6.1-sol"
+      ],
+      "verdict": {
+        "findings": [],
+        "summary": "Edition #42\u2019s supplied draft aligns with the Wednesday delta inventory, release receipts, and stated claim boundaries: White Noise android-v2026.9.30 is scoped to group polls and in-process edit handoff without process-death or attachment-throughput promises; Earthly v0.1.12 is presented as a tagged release with pending Android verification, not a delivered 0.1.11 binary; Marmot PR427 is labeled non-normative; Nostr Compass opens on the ngit repository with shipped-feature claims tied to signed release notes; Elisym commerce is anchored to merged PR #120 with provisional-schema and non-launch caveats; and NIP-86/NIP-51 merged-status transitions are explained against prior proposal coverage. Wednesday addenda (Amethyst, Buzz, Divine, nostream NIP-56, Mostro/MDK source work, Conduit, Zap Cooking, rust-nostr, ZapTracker, LaWallet NWC, Earthly, Elisym MCP/checkout) appear incorporated with appropriate source-only labeling. The six-year September retrospective is intentional synthesis, not a substitute for in-window news. No blocking or major claim, link, prose, or continuity defects were found in the supplied snapshot.",
+        "verdict": "PASS"
+      },
+      "completed_at": "2026-09-30T15:49:42.820555+00:00"
+    },
+    {
+      "run_dir": "/opt/data/compass-worktrees/2026-09-30/data/newsletter_workspace/review-runs/urgent-final-delta-20260930T1610Z",
+      "article_sha256": "80e3667dbf5428f4c71e5d059333b95da58f6d0dd7af7cfb89696437b7e280d6",
+      "selected_provider": "cursor",
+      "selected_model": "composer-2.5[fast=true]",
+      "selected_family": "cursor",
+      "implementation_models": [
+        "gpt-6.1-sol"
+      ],
+      "verdict": {
+        "findings": [],
+        "summary": "Across claims/source/maturity, the supplied Edition #42 draft matches the Wednesday delta inventory and primary receipts: White Noise android-v2026.9.30 stays within group polls, account-default, in-process edit, and history-notice bounds without attachment-resume or custom-poll UI overreach; Dart NDK 0.10.0 is correctly promoted as a stable packaging of the prior dev series plus NIP-46 metadata and private subscription IDs; Elisym commerce remains anchored to merged PR #120 with provisional-schema and non-deployment caveats, and PR #139 is labeled source-only; Moyu, Iris Meet, etemiz/wot, and khatru are treated as default-branch or newly published source without false release or live-site claims; Mangatsu, Noteds, Statim, and SCRUTINY Lens tie capabilities to tagged READMEs and/or cited commits with early-release hedges; Hubstr Relay and Buzz PR #7192 handling follow the receipts (Hubstr NIP-86 fix included; Buzz #7192 appropriately omitted after integration-branch-only merge). Prose sections remain reader-facing with concrete Nostr surfaces and primary-source-bound paragraphs, including Compass Android opener distinctions (ngit repo, signed 1.1.2 notes, public recordings, editor vs shipped features). Link and topic treatment is consistent where checked: NIP-55 is explained with a topic backlink in Mangatsu, NIP-86/NIP-51 merged-status transitions and the July NIP-86 correction are explicit, and relay or signer caveats (khatru advertised methods, Statim multi-network privacy, SCRUTINY AI optional path) are preserved. Continuity is sound: the six-year September retrospective is intentional synthesis with dated primary sources, not a substitute for in-window news, and I found no Buzz #7192 regression or duplicate false-release claims. The proposed 21-word TLDR accurately compresses the lead (Compass Android, White Noise polls, relay moderation, signer permissions, encrypted-group recovery themes) without introducing new factual claims beyond the draft. Review boundary: this verdict is based only on the supplied snapshot text and evidence bundles, not live HTTP checks, device exercise, or production render.",
+        "verdict": "PASS"
+      },
+      "completed_at": "2026-09-30T16:17:22.848226+00:00"
+    },
+    {
+      "run_dir": "/opt/data/compass-worktrees/2026-09-30/data/newsletter_workspace/review-runs/urgent-final-leak-challenge-20260930T1616Z",
+      "article_sha256": "406c7db2562afa1d5eda16e0bae940ec406d7cfa17683ecd16722a720387a217",
+      "selected_provider": "cursor",
+      "selected_model": "composer-2.5[fast=true]",
+      "selected_family": "cursor",
+      "implementation_models": [
+        "gpt-6.1-sol"
+      ],
+      "verdict": {
+        "findings": [
+          {
+            "evidence": "In the Buzz desktop 0.5.26 paragraph: \"Preserve the existing explanation that NIP-AR and NIP-FI are Buzz's project specifications.\" The preceding sentences already state that NIP-AR is Buzz's own proposal and NIP-FI is a project specification; \"Preserve the existing explanation\" is placement guidance to the writer, not reader-facing newsletter prose.",
+            "recommendation": "Delete the preservation directive and, if needed, fold its substance into ordinary reader-facing sentences already present earlier in the Buzz section.",
+            "severity": "major",
+            "title": "Buzz section retains an editorial preservation directive"
+          },
+          {
+            "evidence": "Closing sentence of the in-development Marmot MDK item: \"These source changes should be described separately from the already tagged MDK release.\" This tells an editor how to organize coverage rather than reporting project behavior to readers.",
+            "recommendation": "Remove the meta-instruction; if separation matters to readers, state it as factual scope (for example, that the merges follow the tagged 0.11.0 release) without a directive to the writer.",
+            "severity": "major",
+            "title": "Marmot MDK in-development section carries a section-placement instruction"
+          }
+        ],
+        "summary": "The two supplied mechanical corrections were applied correctly: Iris Meet now reads \"This is default-branch implementation progress\" and the Hubstr Relay paragraph no longer carries the \"This can share the existing Hubstr Blossom section\" placement note, without altering the adjacent source-claim boundaries. A mandatory full-article scan of snapshot 406c7db still finds unreremoved internal writer/editor directives in the Buzz and Marmot MDK sections. Those leaks are independent of the fixed Iris/Hubstr edits and block a PASS on this correction-only scope; pending substantive delta review remains separate.",
+        "verdict": "FAIL"
+      },
+      "completed_at": "2026-09-30T16:18:51.776902+00:00"
+    },
+    {
+      "run_dir": "/opt/data/compass-worktrees/2026-09-30/data/newsletter_workspace/review-runs/urgent-final-leak-fixed-retry-20260930T1625Z",
+      "article_sha256": "0ae9e56d9974e0c5c778e12388099d21addd4c807a13b25e69e81ac99f535b06",
+      "selected_provider": "cursor",
+      "selected_model": "grok-4.6[effort=high,fast=true]",
+      "selected_family": "xai",
+      "implementation_models": [
+        "gpt-6.1-sol"
+      ],
+      "verdict": {
+        "findings": [],
+        "summary": "Both prior major editorial leaks are resolved in SHA 0ae9e56d: Buzz no longer contains the preservation directive while NIP-AR and NIP-FI remain identified as Buzz project specifications in ordinary prose; MDK\u2019s placement instruction is now the factual sentence that later source merges follow tagged 0.11.0; the LaWallet Compass-eligibility clause is gone. The exact FAIL406c7db\u21920ae9e56d diff is only those three edits, with no claims, source, link, topic, maturity, or continuity regressions versus prior five-role PASS80e3667 / baseline PASS2f81997. Iris Meet remains default-branch/unverified-live-site wording and Hubstr has no \u2018This can share\u2026\u2019 placement note. A full remaining-prose scan found no copied writer/editor instructions, placement advice, preservation guidance, scoring/selection workflow, or draft-meta language. Proposed TLDR is exactly 21 words and matches the article\u2019s Android app, White Noise polls, relay moderation, signer permissions, and encrypted-group recovery lead. Parent owns live URL/build/device testing; this verdict did not run them.",
+        "verdict": "PASS"
+      },
+      "completed_at": "2026-09-30T16:26:40.620006+00:00"
+    }
+  ],
+  "resolved_findings": {
+    "failed_hash": "406c7db2562afa1d5eda16e0bae940ec406d7cfa17683ecd16722a720387a217",
+    "failed_run": "/opt/data/compass-worktrees/2026-09-30/data/newsletter_workspace/review-runs/urgent-final-leak-challenge-20260930T1616Z",
+    "resolution_run": "/opt/data/compass-worktrees/2026-09-30/data/newsletter_workspace/review-runs/urgent-final-leak-fixed-retry-20260930T1625Z",
+    "final_hash": "0ae9e56d9974e0c5c778e12388099d21addd4c807a13b25e69e81ac99f535b06",
+    "exact_correction_diff": "/opt/data/tmp/compass_selection_urgent_20260930/final_leak_fixed_retry.diff",
+    "disposition": "Both actual major editorial preservation/placement directives resolved; LaWallet eligibility clause removed; previous Iris/Hubstr fixes retained; final independent full scan challenges all corrections; original FAIL retained."
+  },
+  "quality_roles": [
+    "claims",
+    "prose",
+    "links",
+    "topics",
+    "continuity"
+  ],
+  "tldr": "Nostr Compass arrives on Android; White Noise adds polls, while new releases improve relay moderation, signer permissions, and encrypted group recovery.",
+  "tldr_whitespace_words": 21,
+  "retained_failed_transport_attempt": {
+    "metadata_path": "/opt/data/compass-worktrees/2026-09-30/data/newsletter_workspace/review-runs/urgent-final-leak-fixed-20260930T1621Z/review-metadata.json",
+    "metadata_sha256": "5b61d7812fb7df59d07c470153142d5d513f3f28ea81d083b06d3040bd0bfdff",
+    "status": "failed",
+    "article_sha256": "b5bdeaa8da60ea2d299527d02bb8c562e54af64061b04823d101213a840e0e3f",
+    "note": "Grok timeout; Composer malformed_verdict; Claude provider unavailable; metered reserve floor refused. Preserved as failed routing evidence, never a content review or waiver."
+  }
+}

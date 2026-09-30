@@ -1,0 +1,3943 @@
+{
+  "schema_version": 1,
+  "edition": 42,
+  "date": "2026-09-30",
+  "final": true,
+  "source_manifest_sha256": "9765209c7f9b47bd1cb0b3e564e9a47bfec00b836e842e775095ae3523b0d432",
+  "source_pass_id": "tuesday-2026-09-29-1400",
+  "draft_sha256": "7ad2be8bbae7935d85baf5de3dd876ac9dc91690b1bc56b5496114e8d5a99d33",
+  "selection_policy": {
+    "minimum_score": 8,
+    "maximum_score": 10,
+    "require_no_zero_axis": true,
+    "fixed_item_cap": null,
+    "qualified_items_must_publish": true
+  },
+  "hard_gate_fields": [
+    "primary_evidence",
+    "in_window_progress",
+    "nostr_surface",
+    "continuity_delta"
+  ],
+  "score_axes": [
+    "nostr_significance",
+    "user_operator_impact",
+    "novelty",
+    "evidence_maturity",
+    "explanatory_value"
+  ],
+  "project_activity_decisions": {
+    "path": "data/newsletter_workspace/project_activity_decisions_2026-09-30.json",
+    "sha256": "6c0fdfc92ad5481894fd95daafaf2b5e9cbd5ed559b67a4b8fbc86ab070f185e"
+  },
+  "editorial_sources": [
+    {
+      "source_id": "editorial:story:holoboard-adds-nostr-promotion-commands-and-an-android-app",
+      "collector_source_ids": [],
+      "editorial_provenance": {
+        "path": "data/newsletter_workspace/selection_review_2026-09-30.md",
+        "sha256": "185c73a8e095e71e0b9f62c1f9089cbea3a80f1fea687986943bc07303a84c46",
+        "locator": "https://holoboard.space"
+      }
+    },
+    {
+      "source_id": "editorial:story:fips-pub-domains-tests-signed-public-names-for-a-mesh",
+      "collector_source_ids": [
+        "projects:/repos/fr34aky/fips-pub-domains/releases:398497946",
+        "projects:/repos/fr34aky/fips-pub-domains/releases:398599897",
+        "projects:/repos/fr34aky/fips-pub-domains/releases:398669054"
+      ],
+      "editorial_provenance": {
+        "path": "data/newsletter_workspace/selection_review_2026-09-30.md",
+        "sha256": "185c73a8e095e71e0b9f62c1f9089cbea3a80f1fea687986943bc07303a84c46",
+        "locator": "https://github.com/fr34aky/fips-pub-domains"
+      }
+    },
+    {
+      "source_id": "editorial:story:marmot-mdk-0-11-0-makes-account-history-gaps-visible",
+      "collector_source_ids": [
+        "projects:/repos/marmot-protocol/mdk/releases:398848902"
+      ],
+      "editorial_provenance": {
+        "path": "data/newsletter_workspace/selection_review_2026-09-30.md",
+        "sha256": "185c73a8e095e71e0b9f62c1f9089cbea3a80f1fea687986943bc07303a84c46",
+        "locator": "https://github.com/marmot-protocol/mdk"
+      }
+    },
+    {
+      "source_id": "editorial:story:myco-0-8-0-0-8-1-gives-nearby-apps-their-own-nostr-store",
+      "collector_source_ids": [
+        "projects:/repos/Origami74/myco/releases:397453027",
+        "projects:/repos/Origami74/myco/releases:397759286"
+      ],
+      "editorial_provenance": {
+        "path": "data/newsletter_workspace/selection_review_2026-09-30.md",
+        "sha256": "185c73a8e095e71e0b9f62c1f9089cbea3a80f1fea687986943bc07303a84c46",
+        "locator": "https://github.com/Origami74/myco"
+      }
+    },
+    {
+      "source_id": "editorial:story:nostream-3-1-0-adjusts-relay-proof-of-work-to-load",
+      "collector_source_ids": [
+        "projects:/repos/Cameri/nostream/releases:397873842"
+      ],
+      "editorial_provenance": {
+        "path": "data/newsletter_workspace/selection_review_2026-09-30.md",
+        "sha256": "185c73a8e095e71e0b9f62c1f9089cbea3a80f1fea687986943bc07303a84c46",
+        "locator": "https://github.com/Cameri/nostream"
+      }
+    },
+    {
+      "source_id": "editorial:story:nostr-double-ratchet-0-0-171-0-0-172-closes-a-removed-member-gap",
+      "collector_source_ids": [
+        "projects:/repos/irislib/nostr-double-ratchet/releases:393247059",
+        "projects:/repos/irislib/nostr-double-ratchet/releases:393775372"
+      ],
+      "editorial_provenance": {
+        "path": "data/newsletter_workspace/selection_review_2026-09-30.md",
+        "sha256": "185c73a8e095e71e0b9f62c1f9089cbea3a80f1fea687986943bc07303a84c46",
+        "locator": "https://github.com/irislib/nostr-double-ratchet"
+      }
+    },
+    {
+      "source_id": "editorial:story:scramble-0-7-4-0-7-5-fetches-the-messages-a-new-group-member-should-see",
+      "collector_source_ids": [
+        "projects:/repos/DavidGershony/openChat/releases:398843580",
+        "projects:/repos/DavidGershony/openChat/releases:396028524"
+      ],
+      "editorial_provenance": {
+        "path": "data/newsletter_workspace/selection_review_2026-09-30.md",
+        "sha256": "185c73a8e095e71e0b9f62c1f9089cbea3a80f1fea687986943bc07303a84c46",
+        "locator": "https://github.com/DavidGershony/Scramble"
+      }
+    },
+    {
+      "source_id": "editorial:story:amber-6-6-6-repairs-remote-signer-connection-secrets",
+      "collector_source_ids": [
+        "projects:/repos/greenart7c3/amber/releases:398181233"
+      ],
+      "editorial_provenance": {
+        "path": "data/newsletter_workspace/selection_review_2026-09-30.md",
+        "sha256": "185c73a8e095e71e0b9f62c1f9089cbea3a80f1fea687986943bc07303a84c46",
+        "locator": "https://github.com/greenart7c3/Amber"
+      }
+    },
+    {
+      "source_id": "editorial:story:fips-0-5-2-stops-a-nostr-discovery-privacy-leak",
+      "collector_source_ids": [
+        "projects:/repos/jmcorgan/fips/releases:398723918"
+      ],
+      "editorial_provenance": {
+        "path": "data/newsletter_workspace/selection_review_2026-09-30.md",
+        "sha256": "185c73a8e095e71e0b9f62c1f9089cbea3a80f1fea687986943bc07303a84c46",
+        "locator": "https://github.com/jmcorgan/fips"
+      }
+    },
+    {
+      "source_id": "editorial:story:napplet-soyli-0-23-1-0-23-4-repairs-backend-publishing-and-signer-approval",
+      "collector_source_ids": [
+        "projects:/repos/zeSchlausKwab/napplet-soy/releases:396843431",
+        "projects:/repos/zeSchlausKwab/napplet-soy/releases:396905787",
+        "projects:/repos/zeSchlausKwab/napplet-soy/releases:397107579"
+      ],
+      "editorial_provenance": {
+        "path": "data/newsletter_workspace/selection_review_2026-09-30.md",
+        "sha256": "185c73a8e095e71e0b9f62c1f9089cbea3a80f1fea687986943bc07303a84c46",
+        "locator": "https://github.com/zeSchlausKwab/napplet-soy"
+      }
+    },
+    {
+      "source_id": "editorial:story:dart-ndk-dev-7-dev-9-keeps-blossom-auth-scoped-and-signer-replies-moving",
+      "collector_source_ids": [
+        "projects:/repos/relaystr/ndk/releases:396582086",
+        "projects:/repos/relaystr/ndk/releases:398339984",
+        "projects:/repos/relaystr/ndk/releases:397392494"
+      ],
+      "editorial_provenance": {
+        "path": "data/newsletter_workspace/selection_review_2026-09-30.md",
+        "sha256": "185c73a8e095e71e0b9f62c1f9089cbea3a80f1fea687986943bc07303a84c46",
+        "locator": "https://github.com/relaystr/ndk"
+      }
+    },
+    {
+      "source_id": "editorial:story:mostro-core-0-16-0-removes-the-old-gift-wrap-transport",
+      "collector_source_ids": [
+        "projects:/repos/MostroP2P/mostro-core/releases:398476471",
+        "projects:/repos/MostroP2P/mostro-core/releases:393234692"
+      ],
+      "editorial_provenance": {
+        "path": "data/newsletter_workspace/selection_review_2026-09-30.md",
+        "sha256": "185c73a8e095e71e0b9f62c1f9089cbea3a80f1fea687986943bc07303a84c46",
+        "locator": "https://github.com/MostroP2P/mostro-core"
+      }
+    },
+    {
+      "source_id": "editorial:story:cambium-0-6-0-0-7-1-enrolls-an-unlock-phone-through-relay-messages",
+      "collector_source_ids": [
+        "projects:/repos/forgesworn/cambium/releases:396928771",
+        "projects:/repos/forgesworn/cambium/releases:396983636",
+        "projects:/repos/forgesworn/cambium/releases:397014154"
+      ],
+      "editorial_provenance": {
+        "path": "data/newsletter_workspace/selection_review_2026-09-30.md",
+        "sha256": "185c73a8e095e71e0b9f62c1f9089cbea3a80f1fea687986943bc07303a84c46",
+        "locator": "https://github.com/forgesworn/cambium"
+      }
+    },
+    {
+      "source_id": "editorial:story:bray-3-5-0-3-5-2-limits-agent-initiated-nostr-wallet-spending",
+      "collector_source_ids": [
+        "projects:/repos/forgesworn/bray/releases:394797737",
+        "projects:/repos/forgesworn/bray/releases:395856738"
+      ],
+      "editorial_provenance": {
+        "path": "data/newsletter_workspace/selection_review_2026-09-30.md",
+        "sha256": "185c73a8e095e71e0b9f62c1f9089cbea3a80f1fea687986943bc07303a84c46",
+        "locator": "https://github.com/forgesworn/bray"
+      }
+    },
+    {
+      "source_id": "editorial:story:mafrend-1-3-0-alpha-moves-private-map-groups-to-current-marmot",
+      "collector_source_ids": [
+        "projects:/repos/DestBro/mafrend-zapstore/releases:397162009"
+      ],
+      "editorial_provenance": {
+        "path": "data/newsletter_workspace/selection_review_2026-09-30.md",
+        "sha256": "185c73a8e095e71e0b9f62c1f9089cbea3a80f1fea687986943bc07303a84c46",
+        "locator": "https://github.com/DestBro/mafrend-zapstore"
+      }
+    },
+    {
+      "source_id": "editorial:story:sonar-alpha-15-alpha-15-1-repairs-encrypted-group-publishing",
+      "collector_source_ids": [
+        "projects:/repos/hedwig-corp/bitchat-to-sonar/releases:398670124",
+        "projects:/repos/hedwig-corp/bitchat-to-sonar/releases:398806005"
+      ],
+      "editorial_provenance": {
+        "path": "data/newsletter_workspace/selection_review_2026-09-30.md",
+        "sha256": "185c73a8e095e71e0b9f62c1f9089cbea3a80f1fea687986943bc07303a84c46",
+        "locator": "https://github.com/hedwig-corp/bitchat-to-sonar"
+      }
+    },
+    {
+      "source_id": "editorial:story:elisym-s-commerce-packages-introduce-private-nostr-orders",
+      "collector_source_ids": [
+        "projects:/repos/elisymlabs/elisym/releases:396435218",
+        "projects:/repos/elisymlabs/elisym/releases:396529932"
+      ],
+      "editorial_provenance": {
+        "path": "data/newsletter_workspace/selection_review_2026-09-30.md",
+        "sha256": "185c73a8e095e71e0b9f62c1f9089cbea3a80f1fea687986943bc07303a84c46",
+        "locator": "https://github.com/elisymlabs/elisym"
+      }
+    },
+    {
+      "source_id": "editorial:story:flotilla-1-11-2-unsticks-signers-and-incomplete-relay-feeds",
+      "collector_source_ids": [],
+      "editorial_provenance": {
+        "path": "data/newsletter_workspace/selection_review_2026-09-30.md",
+        "sha256": "185c73a8e095e71e0b9f62c1f9089cbea3a80f1fea687986943bc07303a84c46",
+        "locator": "https://github.com/coracle-social/flotilla"
+      }
+    },
+    {
+      "source_id": "editorial:story:ditto-2-42-3-shows-relay-delivery-and-tightens-account-boundaries",
+      "collector_source_ids": [],
+      "editorial_provenance": {
+        "path": "data/newsletter_workspace/selection_review_2026-09-30.md",
+        "sha256": "185c73a8e095e71e0b9f62c1f9089cbea3a80f1fea687986943bc07303a84c46",
+        "locator": "https://gitlab.com/soapbox-pub/ditto"
+      }
+    },
+    {
+      "source_id": "editorial:story:iris-chat-2026-9-24-4-brings-calls-into-encrypted-conversations",
+      "collector_source_ids": [],
+      "editorial_provenance": {
+        "path": "data/newsletter_workspace/selection_review_2026-09-30.md",
+        "sha256": "185c73a8e095e71e0b9f62c1f9089cbea3a80f1fea687986943bc07303a84c46",
+        "locator": "https://github.com/irislib/iris-chat-rs"
+      }
+    },
+    {
+      "source_id": "editorial:story:librenostr-0-6-0-0-7-0-routes-relays-through-built-in-tor",
+      "collector_source_ids": [],
+      "editorial_provenance": {
+        "path": "data/newsletter_workspace/selection_review_2026-09-30.md",
+        "sha256": "185c73a8e095e71e0b9f62c1f9089cbea3a80f1fea687986943bc07303a84c46",
+        "locator": "https://github.com/Lwb89dev/librenostr"
+      }
+    },
+    {
+      "source_id": "editorial:story:newlay-0-3-45-streams-large-relay-queries-instead-of-closing-them",
+      "collector_source_ids": [],
+      "editorial_provenance": {
+        "path": "data/newsletter_workspace/selection_review_2026-09-30.md",
+        "sha256": "185c73a8e095e71e0b9f62c1f9089cbea3a80f1fea687986943bc07303a84c46",
+        "locator": "https://code.relay.tools/opensauce/newlay"
+      }
+    },
+    {
+      "source_id": "editorial:story:ngit-grasp-3-0-5-keeps-git-pushes-and-relay-sync-moving",
+      "collector_source_ids": [],
+      "editorial_provenance": {
+        "path": "data/newsletter_workspace/selection_review_2026-09-30.md",
+        "sha256": "185c73a8e095e71e0b9f62c1f9089cbea3a80f1fea687986943bc07303a84c46",
+        "locator": "https://gitworkshop.dev/danconwaydev.com/ngit-grasp"
+      }
+    },
+    {
+      "source_id": "editorial:story:armada-0-63-0-carries-push-alerts-across-signer-types",
+      "collector_source_ids": [],
+      "editorial_provenance": {
+        "path": "data/newsletter_workspace/selection_review_2026-09-30.md",
+        "sha256": "185c73a8e095e71e0b9f62c1f9089cbea3a80f1fea687986943bc07303a84c46",
+        "locator": "https://github.com/soapbox-pub/armada"
+      }
+    },
+    {
+      "source_id": "editorial:story:deed-0-3-0-0-3-2-makes-zig-nostr-publishing-steadier",
+      "collector_source_ids": [],
+      "editorial_provenance": {
+        "path": "data/newsletter_workspace/selection_review_2026-09-30.md",
+        "sha256": "185c73a8e095e71e0b9f62c1f9089cbea3a80f1fea687986943bc07303a84c46",
+        "locator": "https://github.com/zig-nostr/deed"
+      }
+    },
+    {
+      "source_id": "editorial:story:amethyst-repairs-encrypted-group-interoperability",
+      "collector_source_ids": [],
+      "editorial_provenance": {
+        "path": "data/newsletter_workspace/selection_review_2026-09-30.md",
+        "sha256": "185c73a8e095e71e0b9f62c1f9089cbea3a80f1fea687986943bc07303a84c46",
+        "locator": "https://github.com/vitorpamplona/amethyst"
+      }
+    },
+    {
+      "source_id": "editorial:story:divine-adds-encrypted-video-to-direct-messages",
+      "collector_source_ids": [],
+      "editorial_provenance": {
+        "path": "data/newsletter_workspace/selection_review_2026-09-30.md",
+        "sha256": "185c73a8e095e71e0b9f62c1f9089cbea3a80f1fea687986943bc07303a84c46",
+        "locator": "https://github.com/divinevideo/divine-mobile"
+      }
+    },
+    {
+      "source_id": "editorial:story:buzz-extends-its-relay-s-channel-and-identity-controls",
+      "collector_source_ids": [],
+      "editorial_provenance": {
+        "path": "data/newsletter_workspace/selection_review_2026-09-30.md",
+        "sha256": "185c73a8e095e71e0b9f62c1f9089cbea3a80f1fea687986943bc07303a84c46",
+        "locator": "https://github.com/block/buzz"
+      }
+    },
+    {
+      "source_id": "editorial:story:conduit-advances-checkout-after-relay-acceptance",
+      "collector_source_ids": [],
+      "editorial_provenance": {
+        "path": "data/newsletter_workspace/selection_review_2026-09-30.md",
+        "sha256": "185c73a8e095e71e0b9f62c1f9089cbea3a80f1fea687986943bc07303a84c46",
+        "locator": "https://github.com/Conduit-BTC/conduit-mono"
+      }
+    },
+    {
+      "source_id": "editorial:story:mostro-removes-its-first-generation-daemon-transport",
+      "collector_source_ids": [],
+      "editorial_provenance": {
+        "path": "data/newsletter_workspace/selection_review_2026-09-30.md",
+        "sha256": "185c73a8e095e71e0b9f62c1f9089cbea3a80f1fea687986943bc07303a84c46",
+        "locator": "https://github.com/MostroP2P/mostro"
+      }
+    },
+    {
+      "source_id": "editorial:story:elisym-builds-a-nostr-commerce-checkout",
+      "collector_source_ids": [],
+      "editorial_provenance": {
+        "path": "data/newsletter_workspace/selection_review_2026-09-30.md",
+        "sha256": "185c73a8e095e71e0b9f62c1f9089cbea3a80f1fea687986943bc07303a84c46",
+        "locator": "https://github.com/elisymlabs/elisym"
+      }
+    },
+    {
+      "source_id": "editorial:story:nostter-improves-signer-checks-and-event-retrieval",
+      "collector_source_ids": [],
+      "editorial_provenance": {
+        "path": "data/newsletter_workspace/selection_review_2026-09-30.md",
+        "sha256": "185c73a8e095e71e0b9f62c1f9089cbea3a80f1fea687986943bc07303a84c46",
+        "locator": "https://github.com/SnowCait/nostter"
+      }
+    },
+    {
+      "source_id": "editorial:story:pensieve-prepares-isolated-archive-reconciliation",
+      "collector_source_ids": [],
+      "editorial_provenance": {
+        "path": "data/newsletter_workspace/selection_review_2026-09-30.md",
+        "sha256": "185c73a8e095e71e0b9f62c1f9089cbea3a80f1fea687986943bc07303a84c46",
+        "locator": "https://github.com/andotherstuff/pensieve"
+      }
+    },
+    {
+      "source_id": "editorial:story:contextvm-avoids-duplicate-calls-across-relays",
+      "collector_source_ids": [],
+      "editorial_provenance": {
+        "path": "data/newsletter_workspace/selection_review_2026-09-30.md",
+        "sha256": "185c73a8e095e71e0b9f62c1f9089cbea3a80f1fea687986943bc07303a84c46",
+        "locator": "https://github.com/ContextVM/sdk"
+      }
+    },
+    {
+      "source_id": "editorial:story:cyberspace-revises-the-deck-0003-object-rules",
+      "collector_source_ids": [],
+      "editorial_provenance": {
+        "path": "data/newsletter_workspace/selection_review_2026-09-30.md",
+        "sha256": "185c73a8e095e71e0b9f62c1f9089cbea3a80f1fea687986943bc07303a84c46",
+        "locator": "https://github.com/arkin0x/cyberspace"
+      }
+    },
+    {
+      "source_id": "editorial:story:wisp-fixes-replies-to-nostr-comments",
+      "collector_source_ids": [],
+      "editorial_provenance": {
+        "path": "data/newsletter_workspace/selection_review_2026-09-30.md",
+        "sha256": "185c73a8e095e71e0b9f62c1f9089cbea3a80f1fea687986943bc07303a84c46",
+        "locator": "https://github.com/barrydeen/wisp"
+      }
+    },
+    {
+      "source_id": "editorial:story:cordn-sends-coordinator-locations-to-a-second-device",
+      "collector_source_ids": [],
+      "editorial_provenance": {
+        "path": "data/newsletter_workspace/selection_review_2026-09-30.md",
+        "sha256": "185c73a8e095e71e0b9f62c1f9089cbea3a80f1fea687986943bc07303a84c46",
+        "locator": "https://github.com/Cordn-msg/cordn"
+      }
+    },
+    {
+      "source_id": "editorial:story:nostr-atlas-opens-a-directory-for-checkable-identities",
+      "collector_source_ids": [],
+      "editorial_provenance": {
+        "path": "data/newsletter_workspace/selection_review_2026-09-30.md",
+        "sha256": "185c73a8e095e71e0b9f62c1f9089cbea3a80f1fea687986943bc07303a84c46",
+        "locator": "https://nostr-atlas.web.app"
+      }
+    },
+    {
+      "source_id": "editorial:story:nostr-java-adds-media-hosting-tools-and-preserves-tag-positions",
+      "collector_source_ids": [],
+      "editorial_provenance": {
+        "path": "data/newsletter_workspace/selection_review_2026-09-30.md",
+        "sha256": "185c73a8e095e71e0b9f62c1f9089cbea3a80f1fea687986943bc07303a84c46",
+        "locator": "https://github.com/tcheeric/nostr-java"
+      }
+    },
+    {
+      "source_id": "editorial:story:zap-cooking-changes-how-account-history-can-be-recovered",
+      "collector_source_ids": [],
+      "editorial_provenance": {
+        "path": "data/newsletter_workspace/selection_review_2026-09-30.md",
+        "sha256": "185c73a8e095e71e0b9f62c1f9089cbea3a80f1fea687986943bc07303a84c46",
+        "locator": "https://github.com/zapcooking/frontend"
+      }
+    },
+    {
+      "source_id": "editorial:story:opal-brings-remote-signing-to-omarchy",
+      "collector_source_ids": [],
+      "editorial_provenance": {
+        "path": "data/newsletter_workspace/selection_review_2026-09-30.md",
+        "sha256": "185c73a8e095e71e0b9f62c1f9089cbea3a80f1fea687986943bc07303a84c46",
+        "locator": "https://github.com/derekross/opal"
+      }
+    },
+    {
+      "source_id": "editorial:story:watchtower-opens-a-nip-86-relay-control-panel",
+      "collector_source_ids": [],
+      "editorial_provenance": {
+        "path": "data/newsletter_workspace/selection_review_2026-09-30.md",
+        "sha256": "185c73a8e095e71e0b9f62c1f9089cbea3a80f1fea687986943bc07303a84c46",
+        "locator": "https://github.com/iqbqioza/watchtower"
+      }
+    },
+    {
+      "source_id": "editorial:story:hubstr-blossom-opens-a-personal-media-origin",
+      "collector_source_ids": [],
+      "editorial_provenance": {
+        "path": "data/newsletter_workspace/selection_review_2026-09-30.md",
+        "sha256": "185c73a8e095e71e0b9f62c1f9089cbea3a80f1fea687986943bc07303a84c46",
+        "locator": "https://github.com/johninnis/hubstr-blossom"
+      }
+    },
+    {
+      "source_id": "editorial:story:meshstr-experiments-with-a-permissionless-relay-mesh",
+      "collector_source_ids": [],
+      "editorial_provenance": {
+        "path": "data/newsletter_workspace/selection_review_2026-09-30.md",
+        "sha256": "185c73a8e095e71e0b9f62c1f9089cbea3a80f1fea687986943bc07303a84c46",
+        "locator": "https://gitlab.pocketlabs.dev/meshstr/meshstr"
+      }
+    },
+    {
+      "source_id": "editorial:story:dossier-shows-what-a-public-nostr-history-can-reveal",
+      "collector_source_ids": [],
+      "editorial_provenance": {
+        "path": "data/newsletter_workspace/selection_review_2026-09-30.md",
+        "sha256": "185c73a8e095e71e0b9f62c1f9089cbea3a80f1fea687986943bc07303a84c46",
+        "locator": "https://github.com/satanrayshe/dossier"
+      }
+    },
+    {
+      "source_id": "editorial:story:nip-39-extends-identity-proofs-to-bluesky-and-discord",
+      "collector_source_ids": [],
+      "editorial_provenance": {
+        "path": "data/newsletter_workspace/selection_review_2026-09-30.md",
+        "sha256": "185c73a8e095e71e0b9f62c1f9089cbea3a80f1fea687986943bc07303a84c46",
+        "locator": "https://github.com/nostr-protocol/nips/pull/2486"
+      }
+    },
+    {
+      "source_id": "editorial:story:nip-86-adds-invite-code-management-for-relay-administrators",
+      "collector_source_ids": [],
+      "editorial_provenance": {
+        "path": "data/newsletter_workspace/selection_review_2026-09-30.md",
+        "sha256": "185c73a8e095e71e0b9f62c1f9089cbea3a80f1fea687986943bc07303a84c46",
+        "locator": "https://github.com/nostr-protocol/nips/pull/2408"
+      }
+    },
+    {
+      "source_id": "editorial:story:nip-51-moves-favorite-follow-sets-to-an-unused-event-kind",
+      "collector_source_ids": [],
+      "editorial_provenance": {
+        "path": "data/newsletter_workspace/selection_review_2026-09-30.md",
+        "sha256": "185c73a8e095e71e0b9f62c1f9089cbea3a80f1fea687986943bc07303a84c46",
+        "locator": "https://github.com/nostr-protocol/nips/pull/2417"
+      }
+    },
+    {
+      "source_id": "editorial:story:nip-db-proposes-verified-domain-names-for-key-addressed-services",
+      "collector_source_ids": [],
+      "editorial_provenance": {
+        "path": "data/newsletter_workspace/selection_review_2026-09-30.md",
+        "sha256": "185c73a8e095e71e0b9f62c1f9089cbea3a80f1fea687986943bc07303a84c46",
+        "locator": "https://github.com/nostr-protocol/nips/pull/2487"
+      }
+    },
+    {
+      "source_id": "editorial:story:a-private-feed-draft-explores-encrypted-groups-of-recipients",
+      "collector_source_ids": [],
+      "editorial_provenance": {
+        "path": "data/newsletter_workspace/selection_review_2026-09-30.md",
+        "sha256": "185c73a8e095e71e0b9f62c1f9089cbea3a80f1fea687986943bc07303a84c46",
+        "locator": "https://github.com/nostr-protocol/nips/pull/2488"
+      }
+    },
+    {
+      "source_id": "editorial:story:a-blossom-proposal-lets-other-people-announce-mirrored-media",
+      "collector_source_ids": [],
+      "editorial_provenance": {
+        "path": "data/newsletter_workspace/selection_review_2026-09-30.md",
+        "sha256": "185c73a8e095e71e0b9f62c1f9089cbea3a80f1fea687986943bc07303a84c46",
+        "locator": "https://github.com/nostr-protocol/nips/pull/2478"
+      }
+    },
+    {
+      "source_id": "editorial:story:road-event-reports-seek-a-shared-nostr-format",
+      "collector_source_ids": [],
+      "editorial_provenance": {
+        "path": "data/newsletter_workspace/selection_review_2026-09-30.md",
+        "sha256": "185c73a8e095e71e0b9f62c1f9089cbea3a80f1fea687986943bc07303a84c46",
+        "locator": "https://github.com/nostr-protocol/nips/pull/2479"
+      }
+    },
+    {
+      "source_id": "editorial:story:six-years-of-nostr-septembers",
+      "collector_source_ids": [],
+      "editorial_provenance": {
+        "path": "data/newsletter_workspace/selection_review_2026-09-30.md",
+        "sha256": "185c73a8e095e71e0b9f62c1f9089cbea3a80f1fea687986943bc07303a84c46",
+        "locator": "https://github.com/arcbtc/buber/commit/7a66d400f2"
+      }
+    },
+    {
+      "source_id": "editorial:release-skip:0ceanslim-grain",
+      "collector_source_ids": [
+        "projects:/repos/0ceanSlim/grain/releases:393382179"
+      ],
+      "artifact_provenance": {
+        "family": "projects",
+        "artifact_path": "/opt/data/compass-worktrees/2026-09-30/data/project_updates/updates_2026-09-21_2026-09-29.json",
+        "artifact_sha256": "97fad295ac0387e8c8ddc4560aeb5846e1ef3a618caaa5456f0f4b11ddb9ad86",
+        "locator": {
+          "project_key": "0ceanSlim/grain"
+        }
+      }
+    },
+    {
+      "source_id": "editorial:release-skip:77elements-noornote",
+      "collector_source_ids": [
+        "projects:/repos/77elements/noornote/releases:397348560",
+        "projects:/repos/77elements/noornote/releases:396150547",
+        "projects:/repos/77elements/noornote/releases:394071793"
+      ],
+      "artifact_provenance": {
+        "family": "projects",
+        "artifact_path": "/opt/data/compass-worktrees/2026-09-30/data/project_updates/updates_2026-09-21_2026-09-29.json",
+        "artifact_sha256": "97fad295ac0387e8c8ddc4560aeb5846e1ef3a618caaa5456f0f4b11ddb9ad86",
+        "locator": {
+          "project_key": "77elements/noornote"
+        }
+      }
+    },
+    {
+      "source_id": "editorial:release-skip:bitcreditprotocol-bitcredit-core",
+      "collector_source_ids": [
+        "projects:/repos/BitcreditProtocol/Bitcredit-Core/releases:398496663",
+        "projects:/repos/BitcreditProtocol/Bitcredit-Core/releases:394617964"
+      ],
+      "artifact_provenance": {
+        "family": "projects",
+        "artifact_path": "/opt/data/compass-worktrees/2026-09-30/data/project_updates/updates_2026-09-21_2026-09-29.json",
+        "artifact_sha256": "97fad295ac0387e8c8ddc4560aeb5846e1ef3a618caaa5456f0f4b11ddb9ad86",
+        "locator": {
+          "project_key": "BitcreditProtocol/Bitcredit-Core"
+        }
+      }
+    },
+    {
+      "source_id": "editorial:release-skip:danconwaydev-ngit-cli",
+      "collector_source_ids": [
+        "projects:/repos/DanConwayDev/ngit-cli/releases:393290764"
+      ],
+      "artifact_provenance": {
+        "family": "projects",
+        "artifact_path": "/opt/data/compass-worktrees/2026-09-30/data/project_updates/updates_2026-09-21_2026-09-29.json",
+        "artifact_sha256": "97fad295ac0387e8c8ddc4560aeb5846e1ef3a618caaa5456f0f4b11ddb9ad86",
+        "locator": {
+          "project_key": "DanConwayDev/ngit-cli"
+        }
+      }
+    },
+    {
+      "source_id": "editorial:release-skip:hivetalk-swarm",
+      "collector_source_ids": [
+        "projects:/repos/HiveTalk/swarm/releases:396948059"
+      ],
+      "artifact_provenance": {
+        "family": "projects",
+        "artifact_path": "/opt/data/compass-worktrees/2026-09-30/data/project_updates/updates_2026-09-21_2026-09-29.json",
+        "artifact_sha256": "97fad295ac0387e8c8ddc4560aeb5846e1ef3a618caaa5456f0f4b11ddb9ad86",
+        "locator": {
+          "project_key": "HiveTalk/swarm"
+        }
+      }
+    },
+    {
+      "source_id": "editorial:release-skip:mostrop2p-mostro-cli",
+      "collector_source_ids": [
+        "projects:/repos/MostroP2P/mostro-cli/releases:393984204"
+      ],
+      "artifact_provenance": {
+        "family": "projects",
+        "artifact_path": "/opt/data/compass-worktrees/2026-09-30/data/project_updates/updates_2026-09-21_2026-09-29.json",
+        "artifact_sha256": "97fad295ac0387e8c8ddc4560aeb5846e1ef3a618caaa5456f0f4b11ddb9ad86",
+        "locator": {
+          "project_key": "MostroP2P/mostro-cli"
+        }
+      }
+    },
+    {
+      "source_id": "editorial:release-skip:zeusln-zeus",
+      "collector_source_ids": [
+        "projects:/repos/ZeusLN/zeus/releases:394740112"
+      ],
+      "artifact_provenance": {
+        "family": "projects",
+        "artifact_path": "/opt/data/compass-worktrees/2026-09-30/data/project_updates/updates_2026-09-21_2026-09-29.json",
+        "artifact_sha256": "97fad295ac0387e8c8ddc4560aeb5846e1ef3a618caaa5456f0f4b11ddb9ad86",
+        "locator": {
+          "project_key": "ZeusLN/zeus"
+        }
+      }
+    },
+    {
+      "source_id": "editorial:release-skip:barrydeen-wisp",
+      "collector_source_ids": [
+        "projects:/repos/barrydeen/wisp/releases:393075669"
+      ],
+      "artifact_provenance": {
+        "family": "projects",
+        "artifact_path": "/opt/data/compass-worktrees/2026-09-30/data/project_updates/updates_2026-09-21_2026-09-29.json",
+        "artifact_sha256": "97fad295ac0387e8c8ddc4560aeb5846e1ef3a618caaa5456f0f4b11ddb9ad86",
+        "locator": {
+          "project_key": "barrydeen/wisp"
+        }
+      }
+    },
+    {
+      "source_id": "editorial:release-skip:bit-blik-bitblik",
+      "collector_source_ids": [
+        "projects:/repos/bit-blik/bitblik/releases:397850616",
+        "projects:/repos/bit-blik/bitblik/releases:396402433",
+        "projects:/repos/bit-blik/bitblik/releases:393297617"
+      ],
+      "artifact_provenance": {
+        "family": "projects",
+        "artifact_path": "/opt/data/compass-worktrees/2026-09-30/data/project_updates/updates_2026-09-21_2026-09-29.json",
+        "artifact_sha256": "97fad295ac0387e8c8ddc4560aeb5846e1ef3a618caaa5456f0f4b11ddb9ad86",
+        "locator": {
+          "project_key": "bit-blik/bitblik"
+        }
+      }
+    },
+    {
+      "source_id": "editorial:release-skip:block-core-angor",
+      "collector_source_ids": [
+        "projects:/repos/block-core/angor/releases:395537547"
+      ],
+      "artifact_provenance": {
+        "family": "projects",
+        "artifact_path": "/opt/data/compass-worktrees/2026-09-30/data/project_updates/updates_2026-09-21_2026-09-29.json",
+        "artifact_sha256": "97fad295ac0387e8c8ddc4560aeb5846e1ef3a618caaa5456f0f4b11ddb9ad86",
+        "locator": {
+          "project_key": "block-core/angor"
+        }
+      }
+    },
+    {
+      "source_id": "editorial:release-skip:block-buzz",
+      "collector_source_ids": [
+        "projects:/repos/block/buzz/releases:396017963",
+        "projects:/repos/block/buzz/releases:394260379"
+      ],
+      "artifact_provenance": {
+        "family": "projects",
+        "artifact_path": "/opt/data/compass-worktrees/2026-09-30/data/project_updates/updates_2026-09-21_2026-09-29.json",
+        "artifact_sha256": "97fad295ac0387e8c8ddc4560aeb5846e1ef3a618caaa5456f0f4b11ddb9ad86",
+        "locator": {
+          "project_key": "block/buzz"
+        }
+      }
+    },
+    {
+      "source_id": "editorial:release-skip:daywalker90-cln-nip47",
+      "collector_source_ids": [
+        "projects:/repos/daywalker90/cln-nip47/releases:397198093"
+      ],
+      "artifact_provenance": {
+        "family": "projects",
+        "artifact_path": "/opt/data/compass-worktrees/2026-09-30/data/project_updates/updates_2026-09-21_2026-09-29.json",
+        "artifact_sha256": "97fad295ac0387e8c8ddc4560aeb5846e1ef3a618caaa5456f0f4b11ddb9ad86",
+        "locator": {
+          "project_key": "daywalker90/cln-nip47"
+        }
+      }
+    },
+    {
+      "source_id": "editorial:release-skip:divinevideo-divine-mobile",
+      "collector_source_ids": [
+        "projects:/repos/divinevideo/divine-mobile/releases:395245759"
+      ],
+      "artifact_provenance": {
+        "family": "projects",
+        "artifact_path": "/opt/data/compass-worktrees/2026-09-30/data/project_updates/updates_2026-09-21_2026-09-29.json",
+        "artifact_sha256": "97fad295ac0387e8c8ddc4560aeb5846e1ef3a618caaa5456f0f4b11ddb9ad86",
+        "locator": {
+          "project_key": "divinevideo/divine-mobile"
+        }
+      }
+    },
+    {
+      "source_id": "editorial:release-skip:forgesworn-toll-booth",
+      "collector_source_ids": [
+        "projects:/repos/forgesworn/toll-booth/releases:394857278",
+        "projects:/repos/forgesworn/toll-booth/releases:394791009",
+        "projects:/repos/forgesworn/toll-booth/releases:394671403"
+      ],
+      "artifact_provenance": {
+        "family": "projects",
+        "artifact_path": "/opt/data/compass-worktrees/2026-09-30/data/project_updates/updates_2026-09-21_2026-09-29.json",
+        "artifact_sha256": "97fad295ac0387e8c8ddc4560aeb5846e1ef3a618caaa5456f0f4b11ddb9ad86",
+        "locator": {
+          "project_key": "forgesworn/toll-booth"
+        }
+      }
+    },
+    {
+      "source_id": "editorial:release-skip:fr34aky-fips2go",
+      "collector_source_ids": [
+        "projects:/repos/fr34aky/fips2go/releases:397795547",
+        "projects:/repos/fr34aky/fips2go/releases:395115883",
+        "projects:/repos/fr34aky/fips2go/releases:395037505"
+      ],
+      "artifact_provenance": {
+        "family": "projects",
+        "artifact_path": "/opt/data/compass-worktrees/2026-09-30/data/project_updates/updates_2026-09-21_2026-09-29.json",
+        "artifact_sha256": "97fad295ac0387e8c8ddc4560aeb5846e1ef3a618caaa5456f0f4b11ddb9ad86",
+        "locator": {
+          "project_key": "fr34aky/fips2go"
+        }
+      }
+    },
+    {
+      "source_id": "editorial:release-skip:git-nostrdev-com-stuff-nostrappshell",
+      "collector_source_ids": [],
+      "artifact_provenance": {
+        "family": "projects",
+        "artifact_path": "/opt/data/compass-worktrees/2026-09-30/data/project_updates/updates_2026-09-21_2026-09-29.json",
+        "artifact_sha256": "97fad295ac0387e8c8ddc4560aeb5846e1ef3a618caaa5456f0f4b11ddb9ad86",
+        "locator": {
+          "project_key": "git.nostrdev.com/stuff/NostrAppShell"
+        }
+      }
+    },
+    {
+      "source_id": "editorial:release-skip:git-nostrdev-com-stuff-pakstr",
+      "collector_source_ids": [],
+      "artifact_provenance": {
+        "family": "projects",
+        "artifact_path": "/opt/data/compass-worktrees/2026-09-30/data/project_updates/updates_2026-09-21_2026-09-29.json",
+        "artifact_sha256": "97fad295ac0387e8c8ddc4560aeb5846e1ef3a618caaa5456f0f4b11ddb9ad86",
+        "locator": {
+          "project_key": "git.nostrdev.com/stuff/pakstr"
+        }
+      }
+    },
+    {
+      "source_id": "editorial:release-skip:git-vanderwarker-family-wellbeing-cellibacy-android",
+      "collector_source_ids": [],
+      "artifact_provenance": {
+        "family": "projects",
+        "artifact_path": "/opt/data/compass-worktrees/2026-09-30/data/project_updates/updates_2026-09-21_2026-09-29.json",
+        "artifact_sha256": "97fad295ac0387e8c8ddc4560aeb5846e1ef3a618caaa5456f0f4b11ddb9ad86",
+        "locator": {
+          "project_key": "git.vanderwarker.family/wellbeing/cellibacy-android"
+        }
+      }
+    },
+    {
+      "source_id": "editorial:release-skip:git-vanderwarker-family-wellbeing-holyfit-android",
+      "collector_source_ids": [],
+      "artifact_provenance": {
+        "family": "projects",
+        "artifact_path": "/opt/data/compass-worktrees/2026-09-30/data/project_updates/updates_2026-09-21_2026-09-29.json",
+        "artifact_sha256": "97fad295ac0387e8c8ddc4560aeb5846e1ef3a618caaa5456f0f4b11ddb9ad86",
+        "locator": {
+          "project_key": "git.vanderwarker.family/wellbeing/holyfit-android"
+        }
+      }
+    },
+    {
+      "source_id": "editorial:release-skip:git-vanderwarker-family-wellbeing-nunlock-android",
+      "collector_source_ids": [],
+      "artifact_provenance": {
+        "family": "projects",
+        "artifact_path": "/opt/data/compass-worktrees/2026-09-30/data/project_updates/updates_2026-09-21_2026-09-29.json",
+        "artifact_sha256": "97fad295ac0387e8c8ddc4560aeb5846e1ef3a618caaa5456f0f4b11ddb9ad86",
+        "locator": {
+          "project_key": "git.vanderwarker.family/wellbeing/nunlock-android"
+        }
+      }
+    },
+    {
+      "source_id": "editorial:release-skip:git-vanderwarker-family-wellbeing-saintstream-android",
+      "collector_source_ids": [],
+      "artifact_provenance": {
+        "family": "projects",
+        "artifact_path": "/opt/data/compass-worktrees/2026-09-30/data/project_updates/updates_2026-09-21_2026-09-29.json",
+        "artifact_sha256": "97fad295ac0387e8c8ddc4560aeb5846e1ef3a618caaa5456f0f4b11ddb9ad86",
+        "locator": {
+          "project_key": "git.vanderwarker.family/wellbeing/saintstream-android"
+        }
+      }
+    },
+    {
+      "source_id": "editorial:release-skip:git-vanderwarker-family-wellbeing-sistercharge-android",
+      "collector_source_ids": [],
+      "artifact_provenance": {
+        "family": "projects",
+        "artifact_path": "/opt/data/compass-worktrees/2026-09-30/data/project_updates/updates_2026-09-21_2026-09-29.json",
+        "artifact_sha256": "97fad295ac0387e8c8ddc4560aeb5846e1ef3a618caaa5456f0f4b11ddb9ad86",
+        "locator": {
+          "project_key": "git.vanderwarker.family/wellbeing/sistercharge-android"
+        }
+      }
+    },
+    {
+      "source_id": "editorial:release-skip:greenart7c3-morganite",
+      "collector_source_ids": [
+        "projects:/repos/greenart7c3/Morganite/releases:394925973"
+      ],
+      "artifact_provenance": {
+        "family": "projects",
+        "artifact_path": "/opt/data/compass-worktrees/2026-09-30/data/project_updates/updates_2026-09-21_2026-09-29.json",
+        "artifact_sha256": "97fad295ac0387e8c8ddc4560aeb5846e1ef3a618caaa5456f0f4b11ddb9ad86",
+        "locator": {
+          "project_key": "greenart7c3/Morganite"
+        }
+      }
+    },
+    {
+      "source_id": "editorial:release-skip:jesuspirate-chama",
+      "collector_source_ids": [
+        "projects:/repos/jesuspirate/chama/releases:398914564",
+        "projects:/repos/jesuspirate/chama/releases:398786796",
+        "projects:/repos/jesuspirate/chama/releases:397951501",
+        "projects:/repos/jesuspirate/chama/releases:397484962",
+        "projects:/repos/jesuspirate/chama/releases:396325266",
+        "projects:/repos/jesuspirate/chama/releases:395536387",
+        "projects:/repos/jesuspirate/chama/releases:393433471"
+      ],
+      "artifact_provenance": {
+        "family": "projects",
+        "artifact_path": "/opt/data/compass-worktrees/2026-09-30/data/project_updates/updates_2026-09-21_2026-09-29.json",
+        "artifact_sha256": "97fad295ac0387e8c8ddc4560aeb5846e1ef3a618caaa5456f0f4b11ddb9ad86",
+        "locator": {
+          "project_key": "jesuspirate/chama"
+        }
+      }
+    },
+    {
+      "source_id": "editorial:release-skip:michaelneale-mesh-llm",
+      "collector_source_ids": [
+        "projects:/repos/michaelneale/mesh-llm/releases:398123759"
+      ],
+      "artifact_provenance": {
+        "family": "projects",
+        "artifact_path": "/opt/data/compass-worktrees/2026-09-30/data/project_updates/updates_2026-09-21_2026-09-29.json",
+        "artifact_sha256": "97fad295ac0387e8c8ddc4560aeb5846e1ef3a618caaa5456f0f4b11ddb9ad86",
+        "locator": {
+          "project_key": "michaelneale/mesh-llm"
+        }
+      }
+    },
+    {
+      "source_id": "editorial:release-skip:mmalmi-fips-ts",
+      "collector_source_ids": [
+        "projects:/repos/mmalmi/fips-ts/releases:395025354"
+      ],
+      "artifact_provenance": {
+        "family": "projects",
+        "artifact_path": "/opt/data/compass-worktrees/2026-09-30/data/project_updates/updates_2026-09-21_2026-09-29.json",
+        "artifact_sha256": "97fad295ac0387e8c8ddc4560aeb5846e1ef3a618caaa5456f0f4b11ddb9ad86",
+        "locator": {
+          "project_key": "mmalmi/fips-ts"
+        }
+      }
+    },
+    {
+      "source_id": "editorial:release-skip:mmalmi-nostr-vpn",
+      "collector_source_ids": [
+        "projects:/repos/mmalmi/nostr-vpn/releases:398023978",
+        "projects:/repos/mmalmi/nostr-vpn/releases:396657767",
+        "projects:/repos/mmalmi/nostr-vpn/releases:393354619"
+      ],
+      "artifact_provenance": {
+        "family": "projects",
+        "artifact_path": "/opt/data/compass-worktrees/2026-09-30/data/project_updates/updates_2026-09-21_2026-09-29.json",
+        "artifact_sha256": "97fad295ac0387e8c8ddc4560aeb5846e1ef3a618caaa5456f0f4b11ddb9ad86",
+        "locator": {
+          "project_key": "mmalmi/nostr-vpn"
+        }
+      }
+    },
+    {
+      "source_id": "editorial:release-skip:mouse484-astraea",
+      "collector_source_ids": [
+        "projects:/repos/mouse484/astraea/releases:397675779",
+        "projects:/repos/mouse484/astraea/releases:397118485",
+        "projects:/repos/mouse484/astraea/releases:397029533",
+        "projects:/repos/mouse484/astraea/releases:396909641",
+        "projects:/repos/mouse484/astraea/releases:395246443"
+      ],
+      "artifact_provenance": {
+        "family": "projects",
+        "artifact_path": "/opt/data/compass-worktrees/2026-09-30/data/project_updates/updates_2026-09-21_2026-09-29.json",
+        "artifact_sha256": "97fad295ac0387e8c8ddc4560aeb5846e1ef3a618caaa5456f0f4b11ddb9ad86",
+        "locator": {
+          "project_key": "mouse484/astraea"
+        }
+      }
+    },
+    {
+      "source_id": "editorial:release-skip:nostr-wot-nostr-wot-extension",
+      "collector_source_ids": [
+        "projects:/repos/nostr-wot/nostr-wot-extension/releases:397776622",
+        "projects:/repos/nostr-wot/nostr-wot-extension/releases:394394299",
+        "projects:/repos/nostr-wot/nostr-wot-extension/releases:394203778",
+        "projects:/repos/nostr-wot/nostr-wot-extension/releases:394164573"
+      ],
+      "artifact_provenance": {
+        "family": "projects",
+        "artifact_path": "/opt/data/compass-worktrees/2026-09-30/data/project_updates/updates_2026-09-21_2026-09-29.json",
+        "artifact_sha256": "97fad295ac0387e8c8ddc4560aeb5846e1ef3a618caaa5456f0f4b11ddb9ad86",
+        "locator": {
+          "project_key": "nostr-wot/nostr-wot-extension"
+        }
+      }
+    },
+    {
+      "source_id": "editorial:release-skip:penpenpng-rx-nostr",
+      "collector_source_ids": [
+        "projects:/repos/penpenpng/rx-nostr/releases:393211302"
+      ],
+      "artifact_provenance": {
+        "family": "projects",
+        "artifact_path": "/opt/data/compass-worktrees/2026-09-30/data/project_updates/updates_2026-09-21_2026-09-29.json",
+        "artifact_sha256": "97fad295ac0387e8c8ddc4560aeb5846e1ef3a618caaa5456f0f4b11ddb9ad86",
+        "locator": {
+          "project_key": "penpenpng/rx-nostr"
+        }
+      }
+    },
+    {
+      "source_id": "editorial:release-skip:r0d8lsh0p-shosho-releases",
+      "collector_source_ids": [
+        "projects:/repos/r0d8lsh0p/shosho-releases/releases:398765693"
+      ],
+      "artifact_provenance": {
+        "family": "projects",
+        "artifact_path": "/opt/data/compass-worktrees/2026-09-30/data/project_updates/updates_2026-09-21_2026-09-29.json",
+        "artifact_sha256": "97fad295ac0387e8c8ddc4560aeb5846e1ef3a618caaa5456f0f4b11ddb9ad86",
+        "locator": {
+          "project_key": "r0d8lsh0p/shosho-releases"
+        }
+      }
+    },
+    {
+      "source_id": "editorial:release-skip:tcheeric-nostr-java",
+      "collector_source_ids": [
+        "projects:/repos/tcheeric/nostr-java/releases:396767247",
+        "projects:/repos/tcheeric/nostr-java/releases:395772374"
+      ],
+      "artifact_provenance": {
+        "family": "projects",
+        "artifact_path": "/opt/data/compass-worktrees/2026-09-30/data/project_updates/updates_2026-09-21_2026-09-29.json",
+        "artifact_sha256": "97fad295ac0387e8c8ddc4560aeb5846e1ef3a618caaa5456f0f4b11ddb9ad86",
+        "locator": {
+          "project_key": "tcheeric/nostr-java"
+        }
+      }
+    }
+  ],
+  "source_expansion": [
+    {
+      "source_id": "editorial:story:holoboard-adds-nostr-promotion-commands-and-an-android-app",
+      "candidate_ids": [
+        "story:holoboard-adds-nostr-promotion-commands-and-an-android-app"
+      ]
+    },
+    {
+      "source_id": "editorial:story:fips-pub-domains-tests-signed-public-names-for-a-mesh",
+      "candidate_ids": [
+        "story:fips-pub-domains-tests-signed-public-names-for-a-mesh"
+      ]
+    },
+    {
+      "source_id": "editorial:story:marmot-mdk-0-11-0-makes-account-history-gaps-visible",
+      "candidate_ids": [
+        "story:marmot-mdk-0-11-0-makes-account-history-gaps-visible"
+      ]
+    },
+    {
+      "source_id": "editorial:story:myco-0-8-0-0-8-1-gives-nearby-apps-their-own-nostr-store",
+      "candidate_ids": [
+        "story:myco-0-8-0-0-8-1-gives-nearby-apps-their-own-nostr-store"
+      ]
+    },
+    {
+      "source_id": "editorial:story:nostream-3-1-0-adjusts-relay-proof-of-work-to-load",
+      "candidate_ids": [
+        "story:nostream-3-1-0-adjusts-relay-proof-of-work-to-load"
+      ]
+    },
+    {
+      "source_id": "editorial:story:nostr-double-ratchet-0-0-171-0-0-172-closes-a-removed-member-gap",
+      "candidate_ids": [
+        "story:nostr-double-ratchet-0-0-171-0-0-172-closes-a-removed-member-gap"
+      ]
+    },
+    {
+      "source_id": "editorial:story:scramble-0-7-4-0-7-5-fetches-the-messages-a-new-group-member-should-see",
+      "candidate_ids": [
+        "story:scramble-0-7-4-0-7-5-fetches-the-messages-a-new-group-member-should-see"
+      ]
+    },
+    {
+      "source_id": "editorial:story:amber-6-6-6-repairs-remote-signer-connection-secrets",
+      "candidate_ids": [
+        "story:amber-6-6-6-repairs-remote-signer-connection-secrets"
+      ]
+    },
+    {
+      "source_id": "editorial:story:fips-0-5-2-stops-a-nostr-discovery-privacy-leak",
+      "candidate_ids": [
+        "story:fips-0-5-2-stops-a-nostr-discovery-privacy-leak"
+      ]
+    },
+    {
+      "source_id": "editorial:story:napplet-soyli-0-23-1-0-23-4-repairs-backend-publishing-and-signer-approval",
+      "candidate_ids": [
+        "story:napplet-soyli-0-23-1-0-23-4-repairs-backend-publishing-and-signer-approval"
+      ]
+    },
+    {
+      "source_id": "editorial:story:dart-ndk-dev-7-dev-9-keeps-blossom-auth-scoped-and-signer-replies-moving",
+      "candidate_ids": [
+        "story:dart-ndk-dev-7-dev-9-keeps-blossom-auth-scoped-and-signer-replies-moving"
+      ]
+    },
+    {
+      "source_id": "editorial:story:mostro-core-0-16-0-removes-the-old-gift-wrap-transport",
+      "candidate_ids": [
+        "story:mostro-core-0-16-0-removes-the-old-gift-wrap-transport"
+      ]
+    },
+    {
+      "source_id": "editorial:story:cambium-0-6-0-0-7-1-enrolls-an-unlock-phone-through-relay-messages",
+      "candidate_ids": [
+        "story:cambium-0-6-0-0-7-1-enrolls-an-unlock-phone-through-relay-messages"
+      ]
+    },
+    {
+      "source_id": "editorial:story:bray-3-5-0-3-5-2-limits-agent-initiated-nostr-wallet-spending",
+      "candidate_ids": [
+        "story:bray-3-5-0-3-5-2-limits-agent-initiated-nostr-wallet-spending"
+      ]
+    },
+    {
+      "source_id": "editorial:story:mafrend-1-3-0-alpha-moves-private-map-groups-to-current-marmot",
+      "candidate_ids": [
+        "story:mafrend-1-3-0-alpha-moves-private-map-groups-to-current-marmot"
+      ]
+    },
+    {
+      "source_id": "editorial:story:sonar-alpha-15-alpha-15-1-repairs-encrypted-group-publishing",
+      "candidate_ids": [
+        "story:sonar-alpha-15-alpha-15-1-repairs-encrypted-group-publishing"
+      ]
+    },
+    {
+      "source_id": "editorial:story:elisym-s-commerce-packages-introduce-private-nostr-orders",
+      "candidate_ids": [
+        "story:elisym-s-commerce-packages-introduce-private-nostr-orders"
+      ]
+    },
+    {
+      "source_id": "editorial:story:flotilla-1-11-2-unsticks-signers-and-incomplete-relay-feeds",
+      "candidate_ids": [
+        "story:flotilla-1-11-2-unsticks-signers-and-incomplete-relay-feeds"
+      ]
+    },
+    {
+      "source_id": "editorial:story:ditto-2-42-3-shows-relay-delivery-and-tightens-account-boundaries",
+      "candidate_ids": [
+        "story:ditto-2-42-3-shows-relay-delivery-and-tightens-account-boundaries"
+      ]
+    },
+    {
+      "source_id": "editorial:story:iris-chat-2026-9-24-4-brings-calls-into-encrypted-conversations",
+      "candidate_ids": [
+        "story:iris-chat-2026-9-24-4-brings-calls-into-encrypted-conversations"
+      ]
+    },
+    {
+      "source_id": "editorial:story:librenostr-0-6-0-0-7-0-routes-relays-through-built-in-tor",
+      "candidate_ids": [
+        "story:librenostr-0-6-0-0-7-0-routes-relays-through-built-in-tor"
+      ]
+    },
+    {
+      "source_id": "editorial:story:newlay-0-3-45-streams-large-relay-queries-instead-of-closing-them",
+      "candidate_ids": [
+        "story:newlay-0-3-45-streams-large-relay-queries-instead-of-closing-them"
+      ]
+    },
+    {
+      "source_id": "editorial:story:ngit-grasp-3-0-5-keeps-git-pushes-and-relay-sync-moving",
+      "candidate_ids": [
+        "story:ngit-grasp-3-0-5-keeps-git-pushes-and-relay-sync-moving"
+      ]
+    },
+    {
+      "source_id": "editorial:story:armada-0-63-0-carries-push-alerts-across-signer-types",
+      "candidate_ids": [
+        "story:armada-0-63-0-carries-push-alerts-across-signer-types"
+      ]
+    },
+    {
+      "source_id": "editorial:story:deed-0-3-0-0-3-2-makes-zig-nostr-publishing-steadier",
+      "candidate_ids": [
+        "story:deed-0-3-0-0-3-2-makes-zig-nostr-publishing-steadier"
+      ]
+    },
+    {
+      "source_id": "editorial:story:amethyst-repairs-encrypted-group-interoperability",
+      "candidate_ids": [
+        "story:amethyst-repairs-encrypted-group-interoperability"
+      ]
+    },
+    {
+      "source_id": "editorial:story:divine-adds-encrypted-video-to-direct-messages",
+      "candidate_ids": [
+        "story:divine-adds-encrypted-video-to-direct-messages"
+      ]
+    },
+    {
+      "source_id": "editorial:story:buzz-extends-its-relay-s-channel-and-identity-controls",
+      "candidate_ids": [
+        "story:buzz-extends-its-relay-s-channel-and-identity-controls"
+      ]
+    },
+    {
+      "source_id": "editorial:story:conduit-advances-checkout-after-relay-acceptance",
+      "candidate_ids": [
+        "story:conduit-advances-checkout-after-relay-acceptance"
+      ]
+    },
+    {
+      "source_id": "editorial:story:mostro-removes-its-first-generation-daemon-transport",
+      "candidate_ids": [
+        "story:mostro-removes-its-first-generation-daemon-transport"
+      ]
+    },
+    {
+      "source_id": "editorial:story:elisym-builds-a-nostr-commerce-checkout",
+      "candidate_ids": [
+        "story:elisym-builds-a-nostr-commerce-checkout"
+      ]
+    },
+    {
+      "source_id": "editorial:story:nostter-improves-signer-checks-and-event-retrieval",
+      "candidate_ids": [
+        "story:nostter-improves-signer-checks-and-event-retrieval"
+      ]
+    },
+    {
+      "source_id": "editorial:story:pensieve-prepares-isolated-archive-reconciliation",
+      "candidate_ids": [
+        "story:pensieve-prepares-isolated-archive-reconciliation"
+      ]
+    },
+    {
+      "source_id": "editorial:story:contextvm-avoids-duplicate-calls-across-relays",
+      "candidate_ids": [
+        "story:contextvm-avoids-duplicate-calls-across-relays"
+      ]
+    },
+    {
+      "source_id": "editorial:story:cyberspace-revises-the-deck-0003-object-rules",
+      "candidate_ids": [
+        "story:cyberspace-revises-the-deck-0003-object-rules"
+      ]
+    },
+    {
+      "source_id": "editorial:story:wisp-fixes-replies-to-nostr-comments",
+      "candidate_ids": [
+        "story:wisp-fixes-replies-to-nostr-comments"
+      ]
+    },
+    {
+      "source_id": "editorial:story:cordn-sends-coordinator-locations-to-a-second-device",
+      "candidate_ids": [
+        "story:cordn-sends-coordinator-locations-to-a-second-device"
+      ]
+    },
+    {
+      "source_id": "editorial:story:nostr-atlas-opens-a-directory-for-checkable-identities",
+      "candidate_ids": [
+        "story:nostr-atlas-opens-a-directory-for-checkable-identities"
+      ]
+    },
+    {
+      "source_id": "editorial:story:nostr-java-adds-media-hosting-tools-and-preserves-tag-positions",
+      "candidate_ids": [
+        "story:nostr-java-adds-media-hosting-tools-and-preserves-tag-positions"
+      ]
+    },
+    {
+      "source_id": "editorial:story:zap-cooking-changes-how-account-history-can-be-recovered",
+      "candidate_ids": [
+        "story:zap-cooking-changes-how-account-history-can-be-recovered"
+      ]
+    },
+    {
+      "source_id": "editorial:story:opal-brings-remote-signing-to-omarchy",
+      "candidate_ids": [
+        "story:opal-brings-remote-signing-to-omarchy"
+      ]
+    },
+    {
+      "source_id": "editorial:story:watchtower-opens-a-nip-86-relay-control-panel",
+      "candidate_ids": [
+        "story:watchtower-opens-a-nip-86-relay-control-panel"
+      ]
+    },
+    {
+      "source_id": "editorial:story:hubstr-blossom-opens-a-personal-media-origin",
+      "candidate_ids": [
+        "story:hubstr-blossom-opens-a-personal-media-origin"
+      ]
+    },
+    {
+      "source_id": "editorial:story:meshstr-experiments-with-a-permissionless-relay-mesh",
+      "candidate_ids": [
+        "story:meshstr-experiments-with-a-permissionless-relay-mesh"
+      ]
+    },
+    {
+      "source_id": "editorial:story:dossier-shows-what-a-public-nostr-history-can-reveal",
+      "candidate_ids": [
+        "story:dossier-shows-what-a-public-nostr-history-can-reveal"
+      ]
+    },
+    {
+      "source_id": "editorial:story:nip-39-extends-identity-proofs-to-bluesky-and-discord",
+      "candidate_ids": [
+        "story:nip-39-extends-identity-proofs-to-bluesky-and-discord"
+      ]
+    },
+    {
+      "source_id": "editorial:story:nip-86-adds-invite-code-management-for-relay-administrators",
+      "candidate_ids": [
+        "story:nip-86-adds-invite-code-management-for-relay-administrators"
+      ]
+    },
+    {
+      "source_id": "editorial:story:nip-51-moves-favorite-follow-sets-to-an-unused-event-kind",
+      "candidate_ids": [
+        "story:nip-51-moves-favorite-follow-sets-to-an-unused-event-kind"
+      ]
+    },
+    {
+      "source_id": "editorial:story:nip-db-proposes-verified-domain-names-for-key-addressed-services",
+      "candidate_ids": [
+        "story:nip-db-proposes-verified-domain-names-for-key-addressed-services"
+      ]
+    },
+    {
+      "source_id": "editorial:story:a-private-feed-draft-explores-encrypted-groups-of-recipients",
+      "candidate_ids": [
+        "story:a-private-feed-draft-explores-encrypted-groups-of-recipients"
+      ]
+    },
+    {
+      "source_id": "editorial:story:a-blossom-proposal-lets-other-people-announce-mirrored-media",
+      "candidate_ids": [
+        "story:a-blossom-proposal-lets-other-people-announce-mirrored-media"
+      ]
+    },
+    {
+      "source_id": "editorial:story:road-event-reports-seek-a-shared-nostr-format",
+      "candidate_ids": [
+        "story:road-event-reports-seek-a-shared-nostr-format"
+      ]
+    },
+    {
+      "source_id": "editorial:story:six-years-of-nostr-septembers",
+      "candidate_ids": [
+        "story:six-years-of-nostr-septembers"
+      ]
+    },
+    {
+      "source_id": "editorial:release-skip:0ceanslim-grain",
+      "candidate_ids": [
+        "release-skip:0ceanslim-grain"
+      ]
+    },
+    {
+      "source_id": "editorial:release-skip:77elements-noornote",
+      "candidate_ids": [
+        "release-skip:77elements-noornote"
+      ]
+    },
+    {
+      "source_id": "editorial:release-skip:bitcreditprotocol-bitcredit-core",
+      "candidate_ids": [
+        "release-skip:bitcreditprotocol-bitcredit-core"
+      ]
+    },
+    {
+      "source_id": "editorial:release-skip:danconwaydev-ngit-cli",
+      "candidate_ids": [
+        "release-skip:danconwaydev-ngit-cli"
+      ]
+    },
+    {
+      "source_id": "editorial:release-skip:hivetalk-swarm",
+      "candidate_ids": [
+        "release-skip:hivetalk-swarm"
+      ]
+    },
+    {
+      "source_id": "editorial:release-skip:mostrop2p-mostro-cli",
+      "candidate_ids": [
+        "release-skip:mostrop2p-mostro-cli"
+      ]
+    },
+    {
+      "source_id": "editorial:release-skip:zeusln-zeus",
+      "candidate_ids": [
+        "release-skip:zeusln-zeus"
+      ]
+    },
+    {
+      "source_id": "editorial:release-skip:barrydeen-wisp",
+      "candidate_ids": [
+        "release-skip:barrydeen-wisp"
+      ]
+    },
+    {
+      "source_id": "editorial:release-skip:bit-blik-bitblik",
+      "candidate_ids": [
+        "release-skip:bit-blik-bitblik"
+      ]
+    },
+    {
+      "source_id": "editorial:release-skip:block-core-angor",
+      "candidate_ids": [
+        "release-skip:block-core-angor"
+      ]
+    },
+    {
+      "source_id": "editorial:release-skip:block-buzz",
+      "candidate_ids": [
+        "release-skip:block-buzz"
+      ]
+    },
+    {
+      "source_id": "editorial:release-skip:daywalker90-cln-nip47",
+      "candidate_ids": [
+        "release-skip:daywalker90-cln-nip47"
+      ]
+    },
+    {
+      "source_id": "editorial:release-skip:divinevideo-divine-mobile",
+      "candidate_ids": [
+        "release-skip:divinevideo-divine-mobile"
+      ]
+    },
+    {
+      "source_id": "editorial:release-skip:forgesworn-toll-booth",
+      "candidate_ids": [
+        "release-skip:forgesworn-toll-booth"
+      ]
+    },
+    {
+      "source_id": "editorial:release-skip:fr34aky-fips2go",
+      "candidate_ids": [
+        "release-skip:fr34aky-fips2go"
+      ]
+    },
+    {
+      "source_id": "editorial:release-skip:git-nostrdev-com-stuff-nostrappshell",
+      "candidate_ids": [
+        "release-skip:git-nostrdev-com-stuff-nostrappshell"
+      ]
+    },
+    {
+      "source_id": "editorial:release-skip:git-nostrdev-com-stuff-pakstr",
+      "candidate_ids": [
+        "release-skip:git-nostrdev-com-stuff-pakstr"
+      ]
+    },
+    {
+      "source_id": "editorial:release-skip:git-vanderwarker-family-wellbeing-cellibacy-android",
+      "candidate_ids": [
+        "release-skip:git-vanderwarker-family-wellbeing-cellibacy-android"
+      ]
+    },
+    {
+      "source_id": "editorial:release-skip:git-vanderwarker-family-wellbeing-holyfit-android",
+      "candidate_ids": [
+        "release-skip:git-vanderwarker-family-wellbeing-holyfit-android"
+      ]
+    },
+    {
+      "source_id": "editorial:release-skip:git-vanderwarker-family-wellbeing-nunlock-android",
+      "candidate_ids": [
+        "release-skip:git-vanderwarker-family-wellbeing-nunlock-android"
+      ]
+    },
+    {
+      "source_id": "editorial:release-skip:git-vanderwarker-family-wellbeing-saintstream-android",
+      "candidate_ids": [
+        "release-skip:git-vanderwarker-family-wellbeing-saintstream-android"
+      ]
+    },
+    {
+      "source_id": "editorial:release-skip:git-vanderwarker-family-wellbeing-sistercharge-android",
+      "candidate_ids": [
+        "release-skip:git-vanderwarker-family-wellbeing-sistercharge-android"
+      ]
+    },
+    {
+      "source_id": "editorial:release-skip:greenart7c3-morganite",
+      "candidate_ids": [
+        "release-skip:greenart7c3-morganite"
+      ]
+    },
+    {
+      "source_id": "editorial:release-skip:jesuspirate-chama",
+      "candidate_ids": [
+        "release-skip:jesuspirate-chama"
+      ]
+    },
+    {
+      "source_id": "editorial:release-skip:michaelneale-mesh-llm",
+      "candidate_ids": [
+        "release-skip:michaelneale-mesh-llm"
+      ]
+    },
+    {
+      "source_id": "editorial:release-skip:mmalmi-fips-ts",
+      "candidate_ids": [
+        "release-skip:mmalmi-fips-ts"
+      ]
+    },
+    {
+      "source_id": "editorial:release-skip:mmalmi-nostr-vpn",
+      "candidate_ids": [
+        "release-skip:mmalmi-nostr-vpn"
+      ]
+    },
+    {
+      "source_id": "editorial:release-skip:mouse484-astraea",
+      "candidate_ids": [
+        "release-skip:mouse484-astraea"
+      ]
+    },
+    {
+      "source_id": "editorial:release-skip:nostr-wot-nostr-wot-extension",
+      "candidate_ids": [
+        "release-skip:nostr-wot-nostr-wot-extension"
+      ]
+    },
+    {
+      "source_id": "editorial:release-skip:penpenpng-rx-nostr",
+      "candidate_ids": [
+        "release-skip:penpenpng-rx-nostr"
+      ]
+    },
+    {
+      "source_id": "editorial:release-skip:r0d8lsh0p-shosho-releases",
+      "candidate_ids": [
+        "release-skip:r0d8lsh0p-shosho-releases"
+      ]
+    },
+    {
+      "source_id": "editorial:release-skip:tcheeric-nostr-java",
+      "candidate_ids": [
+        "release-skip:tcheeric-nostr-java"
+      ]
+    }
+  ],
+  "candidates": [
+    {
+      "candidate_id": "story:holoboard-adds-nostr-promotion-commands-and-an-android-app",
+      "name": "Holoboard adds Nostr promotion commands and an Android app",
+      "hard_gate": {
+        "primary_evidence": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "continuity_delta": true
+      },
+      "scores": {
+        "nostr_significance": 2,
+        "user_operator_impact": 2,
+        "novelty": 2,
+        "evidence_maturity": 1,
+        "explanatory_value": 2
+      },
+      "score_total": 9,
+      "triage": "GREEN",
+      "final_disposition": "include",
+      "reason": "Holoboard is a board for finding Nostr notes through a ranking that can be boosted with Lightning payments. The original posts remain Nostr events; Holoboard serves its ranking and appearance data through its own HTTP API. That distinction matters if a reader expects the board's ordering to be a relay-native feed.",
+      "primary_sources": [
+        "https://holoboard.space",
+        "https://github.com/ptrio42/holoboard.space/blob/main/CHANGELOG.md#2026-09-23",
+        "https://github.com/ptrio42/holoboard.space/blob/main/CHANGELOG.md",
+        "https://github.com/ptrio42/holoboard.space/blob/main/relay/README.md",
+        "https://zapstore.dev/apps/space.holoboard.app"
+      ],
+      "draft_sources": [
+        "https://holoboard.space",
+        "https://github.com/ptrio42/holoboard.space/blob/main/CHANGELOG.md#2026-09-23",
+        "https://github.com/ptrio42/holoboard.space/blob/main/CHANGELOG.md",
+        "https://github.com/ptrio42/holoboard.space/blob/main/relay/README.md",
+        "https://zapstore.dev/apps/space.holoboard.app"
+      ],
+      "section": "Top Stories",
+      "triage_decision_ref": "data/newsletter_workspace/triage_2026-09-30.md"
+    },
+    {
+      "candidate_id": "story:fips-pub-domains-tests-signed-public-names-for-a-mesh",
+      "name": "fips-pub-domains tests signed public names for a mesh",
+      "hard_gate": {
+        "primary_evidence": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "continuity_delta": true
+      },
+      "scores": {
+        "nostr_significance": 2,
+        "user_operator_impact": 2,
+        "novelty": 2,
+        "evidence_maturity": 1,
+        "explanatory_value": 2
+      },
+      "score_total": 9,
+      "triage": "GREEN",
+      "final_disposition": "include",
+      "reason": "fips-pub-domains is a new resolver and naming experiment that binds public domain names to nodes on FIPS, an encrypted mesh that uses Nostr messages for peer discovery. Its first release combines those claims with DNS TXT records, optional DNSSEC validation, locally pinned bindings, a Linux resolver daemon, and Android integration with fips2go, the FIPS client for phones. A sig",
+      "primary_sources": [
+        "https://github.com/fr34aky/fips-pub-domains",
+        "https://github.com/fr34aky/fips-pub-domains/releases/tag/v0.1.0",
+        "https://github.com/fr34aky/fips-pub-domains/releases/tag/v0.2.0",
+        "https://github.com/fr34aky/fips-pub-domains/releases/tag/v0.2.1",
+        "https://github.com/fr34aky/fips2go/pull/55",
+        "https://github.com/fr34aky/fips2go/pull/59",
+        "https://github.com/fr34aky/fips-pub-domains/blob/main/docs/testing.md",
+        "https://github.com/nostr-protocol/nips/pull/2487",
+        "https://github.com/fr34aky/fips-pub-domains/blob/main/docs/nip.md"
+      ],
+      "draft_sources": [
+        "https://github.com/fr34aky/fips-pub-domains",
+        "https://github.com/fr34aky/fips-pub-domains/releases/tag/v0.1.0",
+        "https://github.com/fr34aky/fips-pub-domains/releases/tag/v0.2.0",
+        "https://github.com/fr34aky/fips-pub-domains/releases/tag/v0.2.1",
+        "https://github.com/fr34aky/fips2go/pull/55",
+        "https://github.com/fr34aky/fips2go/pull/59",
+        "https://github.com/fr34aky/fips-pub-domains/blob/main/docs/testing.md",
+        "https://github.com/nostr-protocol/nips/pull/2487",
+        "https://github.com/fr34aky/fips-pub-domains/blob/main/docs/nip.md"
+      ],
+      "section": "Top Stories",
+      "triage_decision_ref": "data/newsletter_workspace/triage_2026-09-30.md"
+    },
+    {
+      "candidate_id": "story:marmot-mdk-0-11-0-makes-account-history-gaps-visible",
+      "name": "Marmot MDK 0.11.0 makes account history gaps visible",
+      "hard_gate": {
+        "primary_evidence": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "continuity_delta": true
+      },
+      "scores": {
+        "nostr_significance": 2,
+        "user_operator_impact": 2,
+        "novelty": 2,
+        "evidence_maturity": 1,
+        "explanatory_value": 2
+      },
+      "score_total": 9,
+      "triage": "GREEN",
+      "final_disposition": "include",
+      "reason": "Marmot MDK, the Rust runtime and generated bindings for MLS-encrypted Nostr group messaging, follows last week's durable-send release with version 0.11.0. Account recovery now declares a history gap complete only after every required relay finishes an untruncated event comparison; an unproven gap produces a durable notice that a host can show to the user. A full delivery queue ",
+      "primary_sources": [
+        "https://github.com/marmot-protocol/mdk",
+        "https://github.com/marmot-protocol/mdk/releases/tag/v0.11.0",
+        "https://github.com/marmot-protocol/mdk/blob/v0.11.0/docs/release/0.11.0.md"
+      ],
+      "draft_sources": [
+        "https://github.com/marmot-protocol/mdk",
+        "https://github.com/marmot-protocol/mdk/releases/tag/v0.11.0",
+        "https://github.com/marmot-protocol/mdk/blob/v0.11.0/docs/release/0.11.0.md"
+      ],
+      "section": "Top Stories",
+      "triage_decision_ref": "data/newsletter_workspace/triage_2026-09-30.md"
+    },
+    {
+      "candidate_id": "story:myco-0-8-0-0-8-1-gives-nearby-apps-their-own-nostr-store",
+      "name": "Myco 0.8.0–0.8.1 gives nearby apps their own Nostr store",
+      "hard_gate": {
+        "primary_evidence": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "continuity_delta": true
+      },
+      "scores": {
+        "nostr_significance": 2,
+        "user_operator_impact": 2,
+        "novelty": 2,
+        "evidence_maturity": 1,
+        "explanatory_value": 2
+      },
+      "score_total": 9,
+      "triage": "GREEN",
+      "final_disposition": "include",
+      "reason": "Myco is an Android app for exchanging small Nostr programs, called napplets, with nearby phones, including when they are offline. Version 0.8.0 gives each installation a guest Nostr identity and permits login with an existing key or Amber, an Android signer that approves signatures without sharing the account key. It also replaces the Discover tab with an app store that is itse",
+      "primary_sources": [
+        "https://github.com/Origami74/myco",
+        "https://github.com/Origami74/myco/releases/tag/v0.8.0",
+        "https://github.com/Origami74/myco/releases/tag/v0.8.1"
+      ],
+      "draft_sources": [
+        "https://github.com/Origami74/myco",
+        "https://github.com/Origami74/myco/releases/tag/v0.8.0",
+        "https://github.com/Origami74/myco/releases/tag/v0.8.1"
+      ],
+      "section": "Top Stories",
+      "triage_decision_ref": "data/newsletter_workspace/triage_2026-09-30.md"
+    },
+    {
+      "candidate_id": "story:nostream-3-1-0-adjusts-relay-proof-of-work-to-load",
+      "name": "nostream 3.1.0 adjusts relay proof of work to load",
+      "hard_gate": {
+        "primary_evidence": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "continuity_delta": true
+      },
+      "scores": {
+        "nostr_significance": 2,
+        "user_operator_impact": 2,
+        "novelty": 1,
+        "evidence_maturity": 1,
+        "explanatory_value": 2
+      },
+      "score_total": 8,
+      "triage": "GREEN",
+      "final_disposition": "include",
+      "reason": "nostream is a TypeScript Nostr relay backed by PostgreSQL. Version 3.1.0 can raise or lower the event proof-of-work threshold between operator-set limits as its observed event rate changes. The setting is off by default, uses each worker's measured rate, and leaves the existing static public-key threshold independent, so operators must opt in before senders see a different admi",
+      "primary_sources": [
+        "https://github.com/Cameri/nostream",
+        "https://github.com/cameri/nostream/releases/tag/v3.1.0",
+        "https://github.com/Cameri/nostream/releases/tag/v3.1.0"
+      ],
+      "draft_sources": [
+        "https://github.com/Cameri/nostream",
+        "https://github.com/cameri/nostream/releases/tag/v3.1.0",
+        "https://github.com/Cameri/nostream/releases/tag/v3.1.0"
+      ],
+      "section": "Tagged Releases",
+      "triage_decision_ref": "data/newsletter_workspace/triage_2026-09-30.md"
+    },
+    {
+      "candidate_id": "story:nostr-double-ratchet-0-0-171-0-0-172-closes-a-removed-member-gap",
+      "name": "Nostr double ratchet 0.0.171–0.0.172 closes a removed-member gap",
+      "hard_gate": {
+        "primary_evidence": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "continuity_delta": true
+      },
+      "scores": {
+        "nostr_significance": 2,
+        "user_operator_impact": 2,
+        "novelty": 1,
+        "evidence_maturity": 1,
+        "explanatory_value": 2
+      },
+      "score_total": 8,
+      "triage": "GREEN",
+      "final_disposition": "include",
+      "reason": "Nostr double ratchet is a TypeScript library for encrypted private chats carried by Nostr. Version 0.0.171 rotates a group's sender key after membership changes so someone removed with the old keys cannot decrypt later messages from an updated sender, even after that sender restarts. It also refuses sends or key rotation by a removed local owner and aborts a send if membership ",
+      "primary_sources": [
+        "https://github.com/irislib/nostr-double-ratchet",
+        "https://github.com/irislib/nostr-double-ratchet/releases/tag/nostr-double-ratchet-ts-v0.0.171",
+        "https://github.com/irislib/nostr-double-ratchet/releases/tag/nostr-double-ratchet-ts-v0.0.172"
+      ],
+      "draft_sources": [
+        "https://github.com/irislib/nostr-double-ratchet",
+        "https://github.com/irislib/nostr-double-ratchet/releases/tag/nostr-double-ratchet-ts-v0.0.171",
+        "https://github.com/irislib/nostr-double-ratchet/releases/tag/nostr-double-ratchet-ts-v0.0.172"
+      ],
+      "section": "Tagged Releases",
+      "triage_decision_ref": "data/newsletter_workspace/triage_2026-09-30.md"
+    },
+    {
+      "candidate_id": "story:scramble-0-7-4-0-7-5-fetches-the-messages-a-new-group-member-should-see",
+      "name": "Scramble 0.7.4–0.7.5 fetches the messages a new group member should see",
+      "hard_gate": {
+        "primary_evidence": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "continuity_delta": true
+      },
+      "scores": {
+        "nostr_significance": 2,
+        "user_operator_impact": 2,
+        "novelty": 1,
+        "evidence_maturity": 1,
+        "explanatory_value": 2
+      },
+      "score_total": 8,
+      "triage": "GREEN",
+      "final_disposition": "include",
+      "reason": "Scramble is a cross-platform Marmot group messenger with a native Android interface. In version 0.7.5, each group gets its own relay history cutoff: previously the most active conversation's cutoff was applied to every group, so a newly joined one could remain empty because its post-join messages were never requested. The reconnect path receives the same fix, and a group with n",
+      "primary_sources": [
+        "https://github.com/DavidGershony/Scramble",
+        "https://github.com/DavidGershony/Scramble/releases/tag/v0.7.5",
+        "https://github.com/DavidGershony/Scramble/releases/tag/v0.7.4"
+      ],
+      "draft_sources": [
+        "https://github.com/DavidGershony/Scramble",
+        "https://github.com/DavidGershony/Scramble/releases/tag/v0.7.5",
+        "https://github.com/DavidGershony/Scramble/releases/tag/v0.7.4"
+      ],
+      "section": "Tagged Releases",
+      "triage_decision_ref": "data/newsletter_workspace/triage_2026-09-30.md"
+    },
+    {
+      "candidate_id": "story:amber-6-6-6-repairs-remote-signer-connection-secrets",
+      "name": "Amber 6.6.6 repairs remote-signer connection secrets",
+      "hard_gate": {
+        "primary_evidence": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "continuity_delta": true
+      },
+      "scores": {
+        "nostr_significance": 2,
+        "user_operator_impact": 2,
+        "novelty": 1,
+        "evidence_maturity": 1,
+        "explanatory_value": 2
+      },
+      "score_total": 8,
+      "triage": "GREEN",
+      "final_disposition": "include",
+      "reason": "Amber is an Android signer that approves Nostr event signatures without handing an application's account key to it. After last week's backup-encryption change, version 6.6.6 fixes its `nostrconnect` parser: a connection parameter containing `=`, such as a padded secret, had been altered before Amber answered. That made NDK-based clients fail their secret check even when the sig",
+      "primary_sources": [
+        "https://github.com/greenart7c3/Amber",
+        "https://github.com/greenart7c3/Amber/releases/tag/v6.6.6"
+      ],
+      "draft_sources": [
+        "https://github.com/greenart7c3/Amber",
+        "https://github.com/greenart7c3/Amber/releases/tag/v6.6.6"
+      ],
+      "section": "Tagged Releases",
+      "triage_decision_ref": "data/newsletter_workspace/triage_2026-09-30.md"
+    },
+    {
+      "candidate_id": "story:fips-0-5-2-stops-a-nostr-discovery-privacy-leak",
+      "name": "FIPS 0.5.2 stops a Nostr discovery privacy leak",
+      "hard_gate": {
+        "primary_evidence": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "continuity_delta": true
+      },
+      "scores": {
+        "nostr_significance": 2,
+        "user_operator_impact": 2,
+        "novelty": 1,
+        "evidence_maturity": 1,
+        "explanatory_value": 2
+      },
+      "score_total": 8,
+      "triage": "GREEN",
+      "final_disposition": "include",
+      "reason": "FIPS is an encrypted mesh that uses Nostr identities and relay messages to discover peers. Its 0.5.2 maintenance release stops signing NAT-traversal deletion requests with the node's routing key, which had linked that key to traversal traffic on relays. It also updates the TLS library used for relay connections to a version that fixes a published security advisory and repairs s",
+      "primary_sources": [
+        "https://github.com/jmcorgan/fips",
+        "https://github.com/jmcorgan/fips/releases/tag/v0.5.2"
+      ],
+      "draft_sources": [
+        "https://github.com/jmcorgan/fips",
+        "https://github.com/jmcorgan/fips/releases/tag/v0.5.2"
+      ],
+      "section": "Tagged Releases",
+      "triage_decision_ref": "data/newsletter_workspace/triage_2026-09-30.md"
+    },
+    {
+      "candidate_id": "story:napplet-soyli-0-23-1-0-23-4-repairs-backend-publishing-and-signer-approval",
+      "name": "napplet soyLI 0.23.1–0.23.4 repairs backend publishing and signer approval",
+      "hard_gate": {
+        "primary_evidence": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "continuity_delta": true
+      },
+      "scores": {
+        "nostr_significance": 2,
+        "user_operator_impact": 2,
+        "novelty": 1,
+        "evidence_maturity": 1,
+        "explanatory_value": 2
+      },
+      "score_total": 8,
+      "triage": "GREEN",
+      "final_disposition": "include",
+      "reason": "napplet.soy's soyLI is the creator and publishing toolkit for small sandboxed Nostr programs. After last week's shared-creations release, version 0.23.1 makes backend manifests, handlers, and schemas part of creator checks and multiplayer previews. It keeps portable provider configuration in the project manifest while leaving private identity bindings and development databases ",
+      "primary_sources": [
+        "https://github.com/zeSchlausKwab/napplet-soy",
+        "https://github.com/zeSchlausKwab/napplet-soy/releases/tag/soyli-v0.23.1",
+        "https://github.com/zeSchlausKwab/napplet-soy/releases/tag/soyli-v0.23.2",
+        "https://github.com/zeSchlausKwab/napplet-soy/releases/tag/soyli-v0.23.4"
+      ],
+      "draft_sources": [
+        "https://github.com/zeSchlausKwab/napplet-soy",
+        "https://github.com/zeSchlausKwab/napplet-soy/releases/tag/soyli-v0.23.1",
+        "https://github.com/zeSchlausKwab/napplet-soy/releases/tag/soyli-v0.23.2",
+        "https://github.com/zeSchlausKwab/napplet-soy/releases/tag/soyli-v0.23.4"
+      ],
+      "section": "Tagged Releases",
+      "triage_decision_ref": "data/newsletter_workspace/triage_2026-09-30.md"
+    },
+    {
+      "candidate_id": "story:dart-ndk-dev-7-dev-9-keeps-blossom-auth-scoped-and-signer-replies-moving",
+      "name": "Dart NDK dev.7–dev.9 keeps Blossom auth scoped and signer replies moving",
+      "hard_gate": {
+        "primary_evidence": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "continuity_delta": true
+      },
+      "scores": {
+        "nostr_significance": 2,
+        "user_operator_impact": 2,
+        "novelty": 1,
+        "evidence_maturity": 1,
+        "explanatory_value": 2
+      },
+      "score_total": 8,
+      "triage": "GREEN",
+      "final_disposition": "include",
+      "reason": "Dart NDK is a Flutter and Dart library for Nostr relay access, signing, wallet requests, and media operations. Following last week's prerelease, 0.10.0-dev.7 changes Blossom media requests to stay anonymous until a server refuses them, then authorizes through an explicit policy that says which identity an operation may reveal. It carries that authorization through the request p",
+      "primary_sources": [
+        "https://github.com/relaystr/ndk",
+        "https://github.com/relaystr/ndk/releases/tag/v0.10.0-dev.7",
+        "https://github.com/relaystr/ndk/releases/tag/v0.10.0-dev.9",
+        "https://github.com/relaystr/ndk/releases/tag/v0.10.0-dev.8"
+      ],
+      "draft_sources": [
+        "https://github.com/relaystr/ndk",
+        "https://github.com/relaystr/ndk/releases/tag/v0.10.0-dev.7",
+        "https://github.com/relaystr/ndk/releases/tag/v0.10.0-dev.9",
+        "https://github.com/relaystr/ndk/releases/tag/v0.10.0-dev.8"
+      ],
+      "section": "Tagged Releases",
+      "triage_decision_ref": "data/newsletter_workspace/triage_2026-09-30.md"
+    },
+    {
+      "candidate_id": "story:mostro-core-0-16-0-removes-the-old-gift-wrap-transport",
+      "name": "Mostro Core 0.16.0 removes the old gift-wrap transport",
+      "hard_gate": {
+        "primary_evidence": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "continuity_delta": true
+      },
+      "scores": {
+        "nostr_significance": 2,
+        "user_operator_impact": 2,
+        "novelty": 1,
+        "evidence_maturity": 1,
+        "explanatory_value": 2
+      },
+      "score_total": 8,
+      "triage": "GREEN",
+      "final_disposition": "include",
+      "reason": "Mostro Core supplies the message protocol used by Mostro's Nostr-based peer-to-peer trading clients and coordinator. Version 0.16.0 removes its protocol-v1 gift-wrap transport and its old wrap and unwrap functions, leaving the newer transport as the library path. That is a breaking change for applications still constructing or reading v1 messages through this library.",
+      "primary_sources": [
+        "https://github.com/MostroP2P/mostro-core",
+        "https://github.com/MostroP2P/mostro-core/releases/tag/v0.16.0",
+        "https://github.com/MostroP2P/mostro-core/releases/tag/v0.15.1"
+      ],
+      "draft_sources": [
+        "https://github.com/MostroP2P/mostro-core",
+        "https://github.com/MostroP2P/mostro-core/releases/tag/v0.16.0",
+        "https://github.com/MostroP2P/mostro-core/releases/tag/v0.15.1"
+      ],
+      "section": "Tagged Releases",
+      "triage_decision_ref": "data/newsletter_workspace/triage_2026-09-30.md"
+    },
+    {
+      "candidate_id": "story:cambium-0-6-0-0-7-1-enrolls-an-unlock-phone-through-relay-messages",
+      "name": "Cambium 0.6.0–0.7.1 enrolls an unlock phone through relay messages",
+      "hard_gate": {
+        "primary_evidence": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "continuity_delta": true
+      },
+      "scores": {
+        "nostr_significance": 2,
+        "user_operator_impact": 2,
+        "novelty": 1,
+        "evidence_maturity": 1,
+        "explanatory_value": 2
+      },
+      "score_total": 8,
+      "triage": "GREEN",
+      "final_disposition": "include",
+      "reason": "Cambium is an Android signing companion for a Heartwood hardware key that can also unlock the board after a restart. Version 0.6.0 lets a phone enroll for unlock through the board's Nostr relays without a USB cable; the user compares five request words on the phone, the board, and Sapwood, the board's enrollment interface, before pressing the board's button. Newly announced rel",
+      "primary_sources": [
+        "https://github.com/forgesworn/cambium",
+        "https://github.com/forgesworn/cambium/releases/tag/v0.6.0",
+        "https://github.com/forgesworn/cambium/releases/tag/v0.7.0",
+        "https://github.com/forgesworn/cambium/releases/tag/v0.7.1"
+      ],
+      "draft_sources": [
+        "https://github.com/forgesworn/cambium",
+        "https://github.com/forgesworn/cambium/releases/tag/v0.6.0",
+        "https://github.com/forgesworn/cambium/releases/tag/v0.7.0",
+        "https://github.com/forgesworn/cambium/releases/tag/v0.7.1"
+      ],
+      "section": "Tagged Releases",
+      "triage_decision_ref": "data/newsletter_workspace/triage_2026-09-30.md"
+    },
+    {
+      "candidate_id": "story:bray-3-5-0-3-5-2-limits-agent-initiated-nostr-wallet-spending",
+      "name": "Bray 3.5.0–3.5.2 limits agent-initiated Nostr wallet spending",
+      "hard_gate": {
+        "primary_evidence": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "continuity_delta": true
+      },
+      "scores": {
+        "nostr_significance": 2,
+        "user_operator_impact": 2,
+        "novelty": 1,
+        "evidence_maturity": 1,
+        "explanatory_value": 2
+      },
+      "score_total": 8,
+      "triage": "GREEN",
+      "final_disposition": "include",
+      "reason": "Bray is a Nostr tool server that lets an AI assistant request relay, identity, and wallet actions through a scoped interface. Its 3.5.0 release adds a cap on each Nostr Wallet Connect payment and a persisted daily budget, with human confirmation where the assistant host supports it. Serving separate spending connections now requires an explicit wallet-service setting, rechecks ",
+      "primary_sources": [
+        "https://github.com/forgesworn/bray",
+        "https://github.com/forgesworn/bray/releases/tag/v3.5.0",
+        "https://github.com/forgesworn/bray/releases/tag/v3.5.2"
+      ],
+      "draft_sources": [
+        "https://github.com/forgesworn/bray",
+        "https://github.com/forgesworn/bray/releases/tag/v3.5.0",
+        "https://github.com/forgesworn/bray/releases/tag/v3.5.2"
+      ],
+      "section": "Tagged Releases",
+      "triage_decision_ref": "data/newsletter_workspace/triage_2026-09-30.md"
+    },
+    {
+      "candidate_id": "story:mafrend-1-3-0-alpha-moves-private-map-groups-to-current-marmot",
+      "name": "Mafrend 1.3.0-alpha moves private map groups to current Marmot",
+      "hard_gate": {
+        "primary_evidence": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "continuity_delta": true
+      },
+      "scores": {
+        "nostr_significance": 2,
+        "user_operator_impact": 2,
+        "novelty": 1,
+        "evidence_maturity": 1,
+        "explanatory_value": 2
+      },
+      "score_total": 8,
+      "triage": "GREEN",
+      "final_disposition": "include",
+      "reason": "Mafrend is a map-based Nostr social app that lets people explore places and chat around destinations. Its 1.3.0-alpha release upgrades private groups to a newer Marmot encrypted-group specification and adds profile views from chats and reviews. The group format is incompatible with older alpha chats; users should treat this as an alpha migration with a compatibility break.",
+      "primary_sources": [
+        "https://github.com/DestBro/mafrend-zapstore",
+        "https://github.com/DestBro/mafrend-zapstore/releases/tag/v1.3.0-alpha"
+      ],
+      "draft_sources": [
+        "https://github.com/DestBro/mafrend-zapstore",
+        "https://github.com/DestBro/mafrend-zapstore/releases/tag/v1.3.0-alpha"
+      ],
+      "section": "Tagged Releases",
+      "triage_decision_ref": "data/newsletter_workspace/triage_2026-09-30.md"
+    },
+    {
+      "candidate_id": "story:sonar-alpha-15-alpha-15-1-repairs-encrypted-group-publishing",
+      "name": "Sonar alpha.15–alpha.15.1 repairs encrypted-group publishing",
+      "hard_gate": {
+        "primary_evidence": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "continuity_delta": true
+      },
+      "scores": {
+        "nostr_significance": 2,
+        "user_operator_impact": 2,
+        "novelty": 1,
+        "evidence_maturity": 1,
+        "explanatory_value": 2
+      },
+      "score_total": 8,
+      "triage": "GREEN",
+      "final_disposition": "include",
+      "reason": "Sonar is a private messenger that can carry conversations over Bluetooth mesh and Nostr. Alpha.15 adds emoji reactions to messages and private local-time sharing inside encrypted chats, with a setting to revoke that sharing. Its wallet switches to Cashu, but that payment change is separate from the messaging update.",
+      "primary_sources": [
+        "https://github.com/hedwig-corp/bitchat-to-sonar",
+        "https://github.com/hedwig-corp/bitchat-to-sonar/releases/tag/v0.1-alpha.15",
+        "https://github.com/hedwig-corp/bitchat-to-sonar/releases/tag/v0.1-alpha.15.1"
+      ],
+      "draft_sources": [
+        "https://github.com/hedwig-corp/bitchat-to-sonar",
+        "https://github.com/hedwig-corp/bitchat-to-sonar/releases/tag/v0.1-alpha.15",
+        "https://github.com/hedwig-corp/bitchat-to-sonar/releases/tag/v0.1-alpha.15.1"
+      ],
+      "section": "Tagged Releases",
+      "triage_decision_ref": "data/newsletter_workspace/triage_2026-09-30.md"
+    },
+    {
+      "candidate_id": "story:elisym-s-commerce-packages-introduce-private-nostr-orders",
+      "name": "Elisym's commerce packages introduce private Nostr orders",
+      "hard_gate": {
+        "primary_evidence": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "continuity_delta": true
+      },
+      "scores": {
+        "nostr_significance": 2,
+        "user_operator_impact": 2,
+        "novelty": 1,
+        "evidence_maturity": 1,
+        "explanatory_value": 2
+      },
+      "score_total": 8,
+      "triage": "GREEN",
+      "final_disposition": "include",
+      "reason": "Elisym is a Nostr-based agent toolkit now building a signed-event commerce flow. Its first `commerce` package defines store products, owner authorization, privately wrapped orders and receipts, and offer verification for the checkout and merchant components. A later commerce 0.2.0 tag derives an order's payment reference from that order, tying the payment lookup to the signed p",
+      "primary_sources": [
+        "https://github.com/elisymlabs/elisym",
+        "https://github.com/elisymlabs/elisym/releases/tag/%40elisym/pay-core%400.1.1",
+        "https://github.com/elisymlabs/elisym/releases/tag/%40elisym/commerce%400.2.0"
+      ],
+      "draft_sources": [
+        "https://github.com/elisymlabs/elisym",
+        "https://github.com/elisymlabs/elisym/releases/tag/%40elisym/pay-core%400.1.1",
+        "https://github.com/elisymlabs/elisym/releases/tag/%40elisym/commerce%400.2.0"
+      ],
+      "section": "Tagged Releases",
+      "triage_decision_ref": "data/newsletter_workspace/triage_2026-09-30.md"
+    },
+    {
+      "candidate_id": "story:flotilla-1-11-2-unsticks-signers-and-incomplete-relay-feeds",
+      "name": "Flotilla 1.11.2 unsticks signers and incomplete relay feeds",
+      "hard_gate": {
+        "primary_evidence": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "continuity_delta": true
+      },
+      "scores": {
+        "nostr_significance": 2,
+        "user_operator_impact": 2,
+        "novelty": 1,
+        "evidence_maturity": 1,
+        "explanatory_value": 2
+      },
+      "score_total": 8,
+      "triage": "GREEN",
+      "final_disposition": "include",
+      "reason": "Flotilla is a Nostr client for conversations, rooms, and shared spaces. Version 1.11.2 gives a user a way out when startup stalls waiting for a remote signer, and signs out a session whose local application data has been cleared. A room can now display its messages before its wider space finishes synchronizing, while feeds no longer omit posts simply because one relay answered ",
+      "primary_sources": [
+        "https://github.com/coracle-social/flotilla",
+        "https://github.com/coracle-social/flotilla/releases/tag/1.11.2"
+      ],
+      "draft_sources": [
+        "https://github.com/coracle-social/flotilla",
+        "https://github.com/coracle-social/flotilla/releases/tag/1.11.2"
+      ],
+      "section": "Tagged Releases",
+      "triage_decision_ref": "data/newsletter_workspace/triage_2026-09-30.md"
+    },
+    {
+      "candidate_id": "story:ditto-2-42-3-shows-relay-delivery-and-tightens-account-boundaries",
+      "name": "Ditto 2.42.3 shows relay delivery and tightens account boundaries",
+      "hard_gate": {
+        "primary_evidence": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "continuity_delta": true
+      },
+      "scores": {
+        "nostr_significance": 2,
+        "user_operator_impact": 2,
+        "novelty": 1,
+        "evidence_maturity": 1,
+        "explanatory_value": 2
+      },
+      "score_total": 8,
+      "triage": "GREEN",
+      "final_disposition": "include",
+      "reason": "Ditto is a Nostr social client that lets users choose and authenticate to their relays. In version 2.42.3, a post's Event Details shows which user and author relays hold it; Broadcast targets only the missing ones. The release also points out unresponsive read relays and gives them a retry control, making a missing post easier to diagnose without sending it everywhere again.",
+      "primary_sources": [
+        "https://gitlab.com/soapbox-pub/ditto",
+        "https://gitlab.com/soapbox-pub/ditto/-/releases/v2.42.3"
+      ],
+      "draft_sources": [
+        "https://gitlab.com/soapbox-pub/ditto",
+        "https://gitlab.com/soapbox-pub/ditto/-/releases/v2.42.3"
+      ],
+      "section": "Tagged Releases",
+      "triage_decision_ref": "data/newsletter_workspace/triage_2026-09-30.md"
+    },
+    {
+      "candidate_id": "story:iris-chat-2026-9-24-4-brings-calls-into-encrypted-conversations",
+      "name": "Iris Chat 2026.9.24.4 brings calls into encrypted conversations",
+      "hard_gate": {
+        "primary_evidence": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "continuity_delta": true
+      },
+      "scores": {
+        "nostr_significance": 2,
+        "user_operator_impact": 2,
+        "novelty": 1,
+        "evidence_maturity": 1,
+        "explanatory_value": 2
+      },
+      "score_total": 8,
+      "triage": "GREEN",
+      "final_disposition": "include",
+      "reason": "Iris Chat is an end-to-end encrypted Nostr messenger using the double-ratchet family of chat protocols. Its September 24 release adds voice and video calls with compatible contacts, including over an existing local connection when the internet is unavailable. A user can lower video quality, answer video as voice, and handle an incoming call through Android's call interface; ans",
+      "primary_sources": [
+        "https://github.com/irislib/iris-chat-rs",
+        "https://github.com/irislib/iris-chat-rs/releases/tag/v2026.9.24.4",
+        "https://github.com/irislib/iris-chat-rs/releases/tag/v2026.9.24.5"
+      ],
+      "draft_sources": [
+        "https://github.com/irislib/iris-chat-rs",
+        "https://github.com/irislib/iris-chat-rs/releases/tag/v2026.9.24.4",
+        "https://github.com/irislib/iris-chat-rs/releases/tag/v2026.9.24.5"
+      ],
+      "section": "Tagged Releases",
+      "triage_decision_ref": "data/newsletter_workspace/triage_2026-09-30.md"
+    },
+    {
+      "candidate_id": "story:librenostr-0-6-0-0-7-0-routes-relays-through-built-in-tor",
+      "name": "LibreNostr 0.6.0–0.7.0 routes relays through built-in Tor",
+      "hard_gate": {
+        "primary_evidence": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "continuity_delta": true
+      },
+      "scores": {
+        "nostr_significance": 2,
+        "user_operator_impact": 2,
+        "novelty": 1,
+        "evidence_maturity": 1,
+        "explanatory_value": 2
+      },
+      "score_total": 8,
+      "triage": "GREEN",
+      "final_disposition": "include",
+      "reason": "LibreNostr is an Android Nostr client with configurable relay and privacy settings. Version 0.6.0 bundles an Arti-based Tor engine on ARM64 and applies the chosen Direct, Tor-for-everything, or `.onion`-only mode to relay WebSockets, HTTP requests, media, uploads, and web pages. Strict Tor mode fails closed when Tor is unavailable and never silently sends a request directly; ch",
+      "primary_sources": [
+        "https://github.com/Lwb89dev/librenostr",
+        "https://github.com/Lwb89dev/librenostr/releases/tag/v0.6.0",
+        "https://github.com/Lwb89dev/librenostr/releases/tag/v0.6.2",
+        "https://github.com/Lwb89dev/librenostr/releases/tag/v0.7.0"
+      ],
+      "draft_sources": [
+        "https://github.com/Lwb89dev/librenostr",
+        "https://github.com/Lwb89dev/librenostr/releases/tag/v0.6.0",
+        "https://github.com/Lwb89dev/librenostr/releases/tag/v0.6.2",
+        "https://github.com/Lwb89dev/librenostr/releases/tag/v0.7.0"
+      ],
+      "section": "Tagged Releases",
+      "triage_decision_ref": "data/newsletter_workspace/triage_2026-09-30.md"
+    },
+    {
+      "candidate_id": "story:newlay-0-3-45-streams-large-relay-queries-instead-of-closing-them",
+      "name": "Newlay 0.3.45 streams large relay queries instead of closing them",
+      "hard_gate": {
+        "primary_evidence": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "continuity_delta": true
+      },
+      "scores": {
+        "nostr_significance": 2,
+        "user_operator_impact": 2,
+        "novelty": 1,
+        "evidence_maturity": 1,
+        "explanatory_value": 2
+      },
+      "score_total": 8,
+      "triage": "GREEN",
+      "final_disposition": "include",
+      "reason": "Newlay is an Android-hosted Nostr relay and related local services. Its signed 0.3.45 release announcement says that large query results now stream with backpressure instead of closing the client's connection. The embedded Git host prunes superseded packs after pushes, while its Cordn encrypted-messaging coordinator accepts oversized client requests and sends an abort frame whe",
+      "primary_sources": [
+        "https://code.relay.tools/opensauce/newlay",
+        "https://primal.net/e/b8380ae1bf30492129727ec59e27e2ae8a4cf9ad08e7361826a9ba8be88a227a"
+      ],
+      "draft_sources": [
+        "https://code.relay.tools/opensauce/newlay",
+        "https://primal.net/e/b8380ae1bf30492129727ec59e27e2ae8a4cf9ad08e7361826a9ba8be88a227a"
+      ],
+      "section": "Tagged Releases",
+      "triage_decision_ref": "data/newsletter_workspace/triage_2026-09-30.md"
+    },
+    {
+      "candidate_id": "story:ngit-grasp-3-0-5-keeps-git-pushes-and-relay-sync-moving",
+      "name": "ngit-grasp 3.0.5 keeps Git pushes and relay sync moving",
+      "hard_gate": {
+        "primary_evidence": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "continuity_delta": true
+      },
+      "scores": {
+        "nostr_significance": 2,
+        "user_operator_impact": 2,
+        "novelty": 1,
+        "evidence_maturity": 1,
+        "explanatory_value": 2
+      },
+      "score_total": 8,
+      "triage": "GREEN",
+      "final_disposition": "include",
+      "reason": "ngit-grasp is a self-hosted Nostr relay and Git server for signed repository collaboration. Its signed 3.0.5 release announcement moves slow history reconciliation out of the shared live-sync actor, allowing relay subscriptions to start while earlier events are checked. It backs off separately for rate limits, incomplete history queries, mailbox reads, and identity lookups, so ",
+      "primary_sources": [
+        "https://gitworkshop.dev/danconwaydev.com/ngit-grasp",
+        "https://primal.net/e/6ff00b9230e4523e6f14aaf6e5088f91e5696be38b9304a4e1cef384e3318d41"
+      ],
+      "draft_sources": [
+        "https://gitworkshop.dev/danconwaydev.com/ngit-grasp",
+        "https://primal.net/e/6ff00b9230e4523e6f14aaf6e5088f91e5696be38b9304a4e1cef384e3318d41"
+      ],
+      "section": "Tagged Releases",
+      "triage_decision_ref": "data/newsletter_workspace/triage_2026-09-30.md"
+    },
+    {
+      "candidate_id": "story:armada-0-63-0-carries-push-alerts-across-signer-types",
+      "name": "Armada 0.63.0 carries push alerts across signer types",
+      "hard_gate": {
+        "primary_evidence": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "continuity_delta": true
+      },
+      "scores": {
+        "nostr_significance": 2,
+        "user_operator_impact": 2,
+        "novelty": 1,
+        "evidence_maturity": 1,
+        "explanatory_value": 2
+      },
+      "score_total": 8,
+      "triage": "GREEN",
+      "final_disposition": "include",
+      "reason": "Armada is a Nostr client for encrypted communities, channels, and direct messages. Following last week's media-privacy release, its signed 0.63.0 announcement describes a new browser push path that works while the app is closed for extension and remote-signer logins as well as other account types. Tenna, a host app that embeds Armada, also gains background notifications for its",
+      "primary_sources": [
+        "https://github.com/soapbox-pub/armada",
+        "https://primal.net/e/34021b55504d74c5d04f55dbfea87f31168a7c4582f35113d7ec063894d19e56"
+      ],
+      "draft_sources": [
+        "https://github.com/soapbox-pub/armada",
+        "https://primal.net/e/34021b55504d74c5d04f55dbfea87f31168a7c4582f35113d7ec063894d19e56"
+      ],
+      "section": "Tagged Releases",
+      "triage_decision_ref": "data/newsletter_workspace/triage_2026-09-30.md"
+    },
+    {
+      "candidate_id": "story:deed-0-3-0-0-3-2-makes-zig-nostr-publishing-steadier",
+      "name": "deed 0.3.0–0.3.2 makes Zig Nostr publishing steadier",
+      "hard_gate": {
+        "primary_evidence": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "continuity_delta": true
+      },
+      "scores": {
+        "nostr_significance": 2,
+        "user_operator_impact": 1,
+        "novelty": 2,
+        "evidence_maturity": 2,
+        "explanatory_value": 1
+      },
+      "score_total": 8,
+      "triage": "GREEN",
+      "final_disposition": "include",
+      "reason": "deed is a Zig command-line tool for reading and publishing Nostr events. Its September 24 version 0.3.2 adds an agent skill and fixes relay ping deadlines; the preceding 0.3.1 and 0.3.0 releases improve performance and publication reliability. The three tags describe one early tool series. The visible Nostr benefit is a steadier relay connection and event-publishing path for sc",
+      "primary_sources": [
+        "https://github.com/zig-nostr/deed",
+        "https://github.com/zig-nostr/deed/releases/tag/v0.3.2",
+        "https://github.com/zig-nostr/deed/releases/tag/v0.3.1",
+        "https://github.com/zig-nostr/deed/releases/tag/v0.3.0"
+      ],
+      "draft_sources": [
+        "https://github.com/zig-nostr/deed",
+        "https://github.com/zig-nostr/deed/releases/tag/v0.3.2",
+        "https://github.com/zig-nostr/deed/releases/tag/v0.3.1",
+        "https://github.com/zig-nostr/deed/releases/tag/v0.3.0"
+      ],
+      "section": "Tagged Releases",
+      "triage_decision_ref": "data/newsletter_workspace/triage_2026-09-30.md"
+    },
+    {
+      "candidate_id": "story:amethyst-repairs-encrypted-group-interoperability",
+      "name": "Amethyst repairs encrypted-group interoperability",
+      "hard_gate": {
+        "primary_evidence": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "continuity_delta": true
+      },
+      "scores": {
+        "nostr_significance": 2,
+        "user_operator_impact": 2,
+        "novelty": 1,
+        "evidence_maturity": 1,
+        "explanatory_value": 2
+      },
+      "score_total": 8,
+      "triage": "GREEN",
+      "final_disposition": "include",
+      "reason": "Amethyst is an Android Nostr client with Marmot encrypted-group support. White Noise is another Marmot messenger; an interoperability batch tested with its clients addresses group administration, deletion wording, and other behavior exposed when the two clients share a conversation. More pointed fixes send reactions and deletions inside the Marmot group instead of as separate N",
+      "primary_sources": [
+        "https://github.com/vitorpamplona/amethyst",
+        "https://github.com/vitorpamplona/amethyst/pull/4245",
+        "https://github.com/vitorpamplona/amethyst/pull/4233",
+        "https://github.com/vitorpamplona/amethyst/pull/4240",
+        "https://github.com/vitorpamplona/amethyst/pull/4201",
+        "https://github.com/vitorpamplona/amethyst/pull/4231",
+        "https://github.com/vitorpamplona/amethyst/pull/4174"
+      ],
+      "draft_sources": [
+        "https://github.com/vitorpamplona/amethyst",
+        "https://github.com/vitorpamplona/amethyst/pull/4245",
+        "https://github.com/vitorpamplona/amethyst/pull/4233",
+        "https://github.com/vitorpamplona/amethyst/pull/4240",
+        "https://github.com/vitorpamplona/amethyst/pull/4201",
+        "https://github.com/vitorpamplona/amethyst/pull/4231",
+        "https://github.com/vitorpamplona/amethyst/pull/4174"
+      ],
+      "section": "In Development",
+      "triage_decision_ref": "data/newsletter_workspace/triage_2026-09-30.md"
+    },
+    {
+      "candidate_id": "story:divine-adds-encrypted-video-to-direct-messages",
+      "name": "Divine adds encrypted video to direct messages",
+      "hard_gate": {
+        "primary_evidence": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "continuity_delta": true
+      },
+      "scores": {
+        "nostr_significance": 2,
+        "user_operator_impact": 2,
+        "novelty": 1,
+        "evidence_maturity": 1,
+        "explanatory_value": 2
+      },
+      "score_total": 8,
+      "triage": "GREEN",
+      "final_disposition": "include",
+      "reason": "Divine is a Nostr video client. NIP-17 carries private messages in encrypted gift wraps that hide their sender from relays. Divine's merged video-message work encrypts an attached video on the device, uploads ciphertext, and sends the decryption key inside that private message. A recipient can verify and decrypt the file for playback or save it. A separate history-restore fix k",
+      "primary_sources": [
+        "https://github.com/divinevideo/divine-mobile",
+        "https://github.com/divinevideo/divine-mobile/pull/9486",
+        "https://github.com/divinevideo/divine-mobile/pull/9446"
+      ],
+      "draft_sources": [
+        "https://github.com/divinevideo/divine-mobile",
+        "https://github.com/divinevideo/divine-mobile/pull/9486",
+        "https://github.com/divinevideo/divine-mobile/pull/9446"
+      ],
+      "section": "In Development",
+      "triage_decision_ref": "data/newsletter_workspace/triage_2026-09-30.md"
+    },
+    {
+      "candidate_id": "story:buzz-extends-its-relay-s-channel-and-identity-controls",
+      "name": "Buzz extends its relay's channel and identity controls",
+      "hard_gate": {
+        "primary_evidence": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "continuity_delta": true
+      },
+      "scores": {
+        "nostr_significance": 2,
+        "user_operator_impact": 2,
+        "novelty": 1,
+        "evidence_maturity": 1,
+        "explanatory_value": 2
+      },
+      "score_total": 8,
+      "triage": "GREEN",
+      "final_disposition": "include",
+      "reason": "Buzz is a Nostr-based workspace with its own relay and clients. Its merged channel-artifact implementation gives an editable record one channel home and a revision chain; conflicting edits cannot both become the head. The project's NIP-AR label refers to its own proposal and implementation, not an established Nostr standard.",
+      "primary_sources": [
+        "https://github.com/block/buzz",
+        "https://github.com/block/buzz/pull/7919",
+        "https://github.com/block/buzz/pull/7264",
+        "https://github.com/block/buzz/pull/7849"
+      ],
+      "draft_sources": [
+        "https://github.com/block/buzz",
+        "https://github.com/block/buzz/pull/7919",
+        "https://github.com/block/buzz/pull/7264",
+        "https://github.com/block/buzz/pull/7849"
+      ],
+      "section": "In Development",
+      "triage_decision_ref": "data/newsletter_workspace/triage_2026-09-30.md"
+    },
+    {
+      "candidate_id": "story:conduit-advances-checkout-after-relay-acceptance",
+      "name": "Conduit advances checkout after relay acceptance",
+      "hard_gate": {
+        "primary_evidence": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "continuity_delta": true
+      },
+      "scores": {
+        "nostr_significance": 2,
+        "user_operator_impact": 2,
+        "novelty": 1,
+        "evidence_maturity": 1,
+        "explanatory_value": 2
+      },
+      "score_total": 8,
+      "triage": "GREEN",
+      "final_disposition": "include",
+      "reason": "Conduit is a Nostr marketplace that sends private order messages to merchants. Progressive relay publishing distinguishes the first positive relay acknowledgement from completion of all relay attempts, and a checkout follow-up persists that first acknowledgement before proceeding. A relay's acceptance means the signed order reached a relay; it does not prove a merchant read or ",
+      "primary_sources": [
+        "https://github.com/Conduit-BTC/conduit-mono",
+        "https://github.com/Conduit-BTC/conduit-mono/pull/483",
+        "https://github.com/Conduit-BTC/conduit-mono/pull/488",
+        "https://github.com/Conduit-BTC/conduit-mono/pull/529",
+        "https://github.com/Conduit-BTC/conduit-mono/pull/533"
+      ],
+      "draft_sources": [
+        "https://github.com/Conduit-BTC/conduit-mono",
+        "https://github.com/Conduit-BTC/conduit-mono/pull/483",
+        "https://github.com/Conduit-BTC/conduit-mono/pull/488",
+        "https://github.com/Conduit-BTC/conduit-mono/pull/529",
+        "https://github.com/Conduit-BTC/conduit-mono/pull/533"
+      ],
+      "section": "In Development",
+      "triage_decision_ref": "data/newsletter_workspace/triage_2026-09-30.md"
+    },
+    {
+      "candidate_id": "story:mostro-removes-its-first-generation-daemon-transport",
+      "name": "Mostro removes its first-generation daemon transport",
+      "hard_gate": {
+        "primary_evidence": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "continuity_delta": true
+      },
+      "scores": {
+        "nostr_significance": 2,
+        "user_operator_impact": 2,
+        "novelty": 1,
+        "evidence_maturity": 1,
+        "explanatory_value": 2
+      },
+      "score_total": 8,
+      "triage": "GREEN",
+      "final_disposition": "include",
+      "reason": "Mostro coordinates peer-to-peer Bitcoin trades using Nostr messages. NIP-59 defines gift wraps that obscure the sender and contents of a relayed event. A merged daemon change removes Mostro's first-generation gift-wrap protocol path and expects the newer transport. Operators still on first-generation clients will need a compatible daemon version; the source merge does not estab",
+      "primary_sources": [
+        "https://github.com/MostroP2P/mostro",
+        "https://github.com/MostroP2P/mostro/pull/1004",
+        "https://github.com/MostroP2P/mostro/pull/1000"
+      ],
+      "draft_sources": [
+        "https://github.com/MostroP2P/mostro",
+        "https://github.com/MostroP2P/mostro/pull/1004",
+        "https://github.com/MostroP2P/mostro/pull/1000"
+      ],
+      "section": "In Development",
+      "triage_decision_ref": "data/newsletter_workspace/triage_2026-09-30.md"
+    },
+    {
+      "candidate_id": "story:elisym-builds-a-nostr-commerce-checkout",
+      "name": "Elisym builds a Nostr commerce checkout",
+      "hard_gate": {
+        "primary_evidence": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "continuity_delta": true
+      },
+      "scores": {
+        "nostr_significance": 2,
+        "user_operator_impact": 2,
+        "novelty": 1,
+        "evidence_maturity": 1,
+        "explanatory_value": 2
+      },
+      "score_total": 8,
+      "triage": "GREEN",
+      "final_disposition": "include",
+      "reason": "Elisym is developing a commerce toolkit that signs products and carries private order and receipt messages over Nostr. Its merged commerce package defines offer verification and gift-wrapped order events; a checkout interface handles offer review, wallet payment, and delivery status, while a self-hosted merchant node packages the store side. The project calls kind `30490` provi",
+      "primary_sources": [
+        "https://github.com/elisymlabs/elisym",
+        "https://github.com/elisymlabs/elisym/pull/120",
+        "https://github.com/elisymlabs/elisym/pull/131",
+        "https://github.com/elisymlabs/elisym/pull/133"
+      ],
+      "draft_sources": [
+        "https://github.com/elisymlabs/elisym",
+        "https://github.com/elisymlabs/elisym/pull/120",
+        "https://github.com/elisymlabs/elisym/pull/131",
+        "https://github.com/elisymlabs/elisym/pull/133"
+      ],
+      "section": "In Development",
+      "triage_decision_ref": "data/newsletter_workspace/triage_2026-09-30.md"
+    },
+    {
+      "candidate_id": "story:nostter-improves-signer-checks-and-event-retrieval",
+      "name": "nostter improves signer checks and event retrieval",
+      "hard_gate": {
+        "primary_evidence": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "continuity_delta": true
+      },
+      "scores": {
+        "nostr_significance": 2,
+        "user_operator_impact": 2,
+        "novelty": 1,
+        "evidence_maturity": 1,
+        "explanatory_value": 2
+      },
+      "score_total": 8,
+      "triage": "GREEN",
+      "final_disposition": "include",
+      "reason": "nostter is a Nostr social client. Its merged signer-capability change asks whether a usable signer is present before offering follow and reaction actions. New pin tags carry the author's key and a known relay hint without guessing one, and replaceable-event cache ordering follows NIP-01's timestamp and event-ID tie-break. NIP-01 defines the core Nostr event rules, including how",
+      "primary_sources": [
+        "https://github.com/SnowCait/nostter",
+        "https://github.com/SnowCait/nostter/pull/2573",
+        "https://github.com/SnowCait/nostter/pull/2611",
+        "https://github.com/SnowCait/nostter/pull/2608"
+      ],
+      "draft_sources": [
+        "https://github.com/SnowCait/nostter",
+        "https://github.com/SnowCait/nostter/pull/2573",
+        "https://github.com/SnowCait/nostter/pull/2611",
+        "https://github.com/SnowCait/nostter/pull/2608"
+      ],
+      "section": "In Development",
+      "triage_decision_ref": "data/newsletter_workspace/triage_2026-09-30.md"
+    },
+    {
+      "candidate_id": "story:pensieve-prepares-isolated-archive-reconciliation",
+      "name": "Pensieve prepares isolated archive reconciliation",
+      "hard_gate": {
+        "primary_evidence": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "continuity_delta": true
+      },
+      "scores": {
+        "nostr_significance": 2,
+        "user_operator_impact": 2,
+        "novelty": 1,
+        "evidence_maturity": 1,
+        "explanatory_value": 2
+      },
+      "score_total": 8,
+      "triage": "GREEN",
+      "final_disposition": "include",
+      "reason": "Pensieve is a Nostr archive and recovery tool. Its merged isolated negentropy runtime gives synchronization a bounded worker and durable completion behavior. The feature is opt-in and the PR explicitly says no production service or configuration was activated; this is groundwork for a safer recovery path, not evidence of a running deployment.",
+      "primary_sources": [
+        "https://github.com/andotherstuff/pensieve",
+        "https://github.com/andotherstuff/pensieve/pull/60"
+      ],
+      "draft_sources": [
+        "https://github.com/andotherstuff/pensieve",
+        "https://github.com/andotherstuff/pensieve/pull/60"
+      ],
+      "section": "In Development",
+      "triage_decision_ref": "data/newsletter_workspace/triage_2026-09-30.md"
+    },
+    {
+      "candidate_id": "story:contextvm-avoids-duplicate-calls-across-relays",
+      "name": "ContextVM avoids duplicate calls across relays",
+      "hard_gate": {
+        "primary_evidence": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "continuity_delta": true
+      },
+      "scores": {
+        "nostr_significance": 2,
+        "user_operator_impact": 2,
+        "novelty": 1,
+        "evidence_maturity": 1,
+        "explanatory_value": 2
+      },
+      "score_total": 8,
+      "triage": "GREEN",
+      "final_disposition": "include",
+      "reason": "ContextVM's TypeScript SDK carries tool and resource requests as Nostr events. Its merged inbound deduplication fix recognizes one plaintext request by event ID even when multiple relays or a reconnect deliver it again, matching the existing wrapped-message path. The PR reports one non-idempotent tool running three times for a single call before the fix. A companion resource-no",
+      "primary_sources": [
+        "https://github.com/ContextVM/sdk",
+        "https://github.com/ContextVM/sdk/pull/103",
+        "https://github.com/ContextVM/sdk/pull/101"
+      ],
+      "draft_sources": [
+        "https://github.com/ContextVM/sdk",
+        "https://github.com/ContextVM/sdk/pull/103",
+        "https://github.com/ContextVM/sdk/pull/101"
+      ],
+      "section": "In Development",
+      "triage_decision_ref": "data/newsletter_workspace/triage_2026-09-30.md"
+    },
+    {
+      "candidate_id": "story:cyberspace-revises-the-deck-0003-object-rules",
+      "name": "Cyberspace revises the DECK-0003 object rules",
+      "hard_gate": {
+        "primary_evidence": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "continuity_delta": true
+      },
+      "scores": {
+        "nostr_significance": 2,
+        "user_operator_impact": 2,
+        "novelty": 1,
+        "evidence_maturity": 1,
+        "explanatory_value": 2
+      },
+      "score_total": 8,
+      "triage": "GREEN",
+      "final_disposition": "include",
+      "reason": "Cyberspace develops the DECK-0003 format for structured Nostr objects and encrypted region bags, which Amethyst began implementing in last week's issue. New parts and hidden-object rules and bag references let a bag refer to a separately published object instead of embedding every part. A later correction says that an event-ID reference cannot reliably pin an old version of an ",
+      "primary_sources": [
+        "https://github.com/arkin0x/cyberspace",
+        "https://github.com/arkin0x/cyberspace/pull/36",
+        "https://github.com/arkin0x/cyberspace/pull/38",
+        "https://github.com/arkin0x/cyberspace/pull/40"
+      ],
+      "draft_sources": [
+        "https://github.com/arkin0x/cyberspace",
+        "https://github.com/arkin0x/cyberspace/pull/36",
+        "https://github.com/arkin0x/cyberspace/pull/38",
+        "https://github.com/arkin0x/cyberspace/pull/40"
+      ],
+      "section": "In Development",
+      "triage_decision_ref": "data/newsletter_workspace/triage_2026-09-30.md"
+    },
+    {
+      "candidate_id": "story:wisp-fixes-replies-to-nostr-comments",
+      "name": "Wisp fixes replies to Nostr comments",
+      "hard_gate": {
+        "primary_evidence": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "continuity_delta": true
+      },
+      "scores": {
+        "nostr_significance": 2,
+        "user_operator_impact": 2,
+        "novelty": 1,
+        "evidence_maturity": 1,
+        "explanatory_value": 2
+      },
+      "score_total": 8,
+      "triage": "GREEN",
+      "final_disposition": "include",
+      "reason": "Wisp is a Nostr client with relay-routing and wallet features. After last week's released NIP-22 comment support, a merged follow-up makes a reply to a NIP-22 comment a comment event too, with the proper parent and root references; the previous path always published an ordinary note. NIP-22 lets comments attach to many Nostr content types. The fix merged after Wisp's 1.2.5 tag,",
+      "primary_sources": [
+        "https://github.com/barrydeen/wisp",
+        "https://github.com/barrydeen/wisp/pull/667"
+      ],
+      "draft_sources": [
+        "https://github.com/barrydeen/wisp",
+        "https://github.com/barrydeen/wisp/pull/667"
+      ],
+      "section": "In Development",
+      "triage_decision_ref": "data/newsletter_workspace/triage_2026-09-30.md"
+    },
+    {
+      "candidate_id": "story:cordn-sends-coordinator-locations-to-a-second-device",
+      "name": "Cordn sends coordinator locations to a second device",
+      "hard_gate": {
+        "primary_evidence": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "continuity_delta": true
+      },
+      "scores": {
+        "nostr_significance": 2,
+        "user_operator_impact": 2,
+        "novelty": 1,
+        "evidence_maturity": 1,
+        "explanatory_value": 2
+      },
+      "score_total": 8,
+      "triage": "GREEN",
+      "final_disposition": "include",
+      "reason": "Cordn coordinates encrypted group messaging over Nostr. Its merged multi-device specification change carries a group's coordinator relay hints in the replicated group document. A newly seeded device can then find a coordinator that is absent from default relays, instead of appearing to join a group whose backlog and live messages it cannot fetch. This is protocol-document work ",
+      "primary_sources": [
+        "https://github.com/Cordn-msg/cordn",
+        "https://github.com/Cordn-msg/cordn/pull/9"
+      ],
+      "draft_sources": [
+        "https://github.com/Cordn-msg/cordn",
+        "https://github.com/Cordn-msg/cordn/pull/9"
+      ],
+      "section": "In Development",
+      "triage_decision_ref": "data/newsletter_workspace/triage_2026-09-30.md"
+    },
+    {
+      "candidate_id": "story:nostr-atlas-opens-a-directory-for-checkable-identities",
+      "name": "Nostr Atlas opens a directory for checkable identities",
+      "hard_gate": {
+        "primary_evidence": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "continuity_delta": true
+      },
+      "scores": {
+        "nostr_significance": 2,
+        "user_operator_impact": 2,
+        "novelty": 1,
+        "evidence_maturity": 1,
+        "explanatory_value": 2
+      },
+      "score_total": 8,
+      "triage": "GREEN",
+      "final_disposition": "include",
+      "reason": "Nostr Atlas is a new directory that presents Nostr profiles alongside claims to external accounts. Its merged site publication separates the directory from the project's component demo, and the site responds publicly. A claim-flow merge lets an X account owner publish a signed NIP-39 proof with a browser signer, while profile enrichment reads kind-0 Nostr metadata only after th",
+      "primary_sources": [
+        "https://nostr-atlas.web.app",
+        "https://github.com/saiy2k/nostr-components/pull/148",
+        "https://github.com/saiy2k/nostr-components/pull/144",
+        "https://github.com/saiy2k/nostr-components/pull/146"
+      ],
+      "draft_sources": [
+        "https://nostr-atlas.web.app",
+        "https://github.com/saiy2k/nostr-components/pull/148",
+        "https://github.com/saiy2k/nostr-components/pull/144",
+        "https://github.com/saiy2k/nostr-components/pull/146"
+      ],
+      "section": "In Development",
+      "triage_decision_ref": "data/newsletter_workspace/triage_2026-09-30.md"
+    },
+    {
+      "candidate_id": "story:nostr-java-adds-media-hosting-tools-and-preserves-tag-positions",
+      "name": "nostr-java adds media hosting tools and preserves tag positions",
+      "hard_gate": {
+        "primary_evidence": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "continuity_delta": true
+      },
+      "scores": {
+        "nostr_significance": 2,
+        "user_operator_impact": 2,
+        "novelty": 1,
+        "evidence_maturity": 1,
+        "explanatory_value": 2
+      },
+      "score_total": 8,
+      "triage": "GREEN",
+      "final_disposition": "include",
+      "reason": "nostr-java is a Java library and MCP tool set for Nostr applications. Its merged Blossom tools let a caller upload, find, list, and delete hash-addressed media and manage the user's server list. A separate publishing fix keeps empty tag values in place: Nostr tags are positional, so dropping an empty relay hint could shift a marker into the wrong field and make the published ev",
+      "primary_sources": [
+        "https://github.com/tcheeric/nostr-java",
+        "https://github.com/tcheeric/nostr-java/pull/557",
+        "https://github.com/tcheeric/nostr-java/pull/558"
+      ],
+      "draft_sources": [
+        "https://github.com/tcheeric/nostr-java",
+        "https://github.com/tcheeric/nostr-java/pull/557",
+        "https://github.com/tcheeric/nostr-java/pull/558"
+      ],
+      "section": "In Development",
+      "triage_decision_ref": "data/newsletter_workspace/triage_2026-09-30.md"
+    },
+    {
+      "candidate_id": "story:zap-cooking-changes-how-account-history-can-be-recovered",
+      "name": "Zap Cooking changes how account history can be recovered",
+      "hard_gate": {
+        "primary_evidence": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "continuity_delta": true
+      },
+      "scores": {
+        "nostr_significance": 2,
+        "user_operator_impact": 2,
+        "novelty": 1,
+        "evidence_maturity": 1,
+        "explanatory_value": 2
+      },
+      "score_total": 8,
+      "triage": "GREEN",
+      "final_disposition": "include",
+      "reason": "Zap Cooking is a recipe-sharing Nostr client. Its merged Lazarus recovery work replaces a backup built on NIP-78 application-specific data events with an approach that scans relay-retained versions of replaceable events to detect overwritten follows, mutes, or profiles. Lazarus remains a draft protocol; recovery depends on relays that retained the older versions, and a merged w",
+      "primary_sources": [
+        "https://github.com/zapcooking/frontend",
+        "https://github.com/zapcooking/frontend/pull/753",
+        "https://github.com/zapcooking/frontend/pull/743",
+        "https://github.com/zapcooking/frontend/pull/752"
+      ],
+      "draft_sources": [
+        "https://github.com/zapcooking/frontend",
+        "https://github.com/zapcooking/frontend/pull/753",
+        "https://github.com/zapcooking/frontend/pull/743",
+        "https://github.com/zapcooking/frontend/pull/752"
+      ],
+      "section": "In Development",
+      "triage_decision_ref": "data/newsletter_workspace/triage_2026-09-30.md"
+    },
+    {
+      "candidate_id": "story:opal-brings-remote-signing-to-omarchy",
+      "name": "Opal brings remote signing to Omarchy",
+      "hard_gate": {
+        "primary_evidence": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "continuity_delta": true
+      },
+      "scores": {
+        "nostr_significance": 2,
+        "user_operator_impact": 2,
+        "novelty": 2,
+        "evidence_maturity": 2,
+        "explanatory_value": 1
+      },
+      "score_total": 9,
+      "triage": "GREEN",
+      "final_disposition": "include",
+      "reason": "Opal is a desktop Nostr signer built for the Omarchy Linux environment. Its September 28 version 0.3.3 follows the first public series with NIP-46 remote-signing support, a local keyring, and a permission interface for requests from connected apps. NIP-46 keeps the account key with the signer while a separate client asks it to approve operations. This is an early release of a p",
+      "primary_sources": [
+        "https://github.com/derekross/opal",
+        "https://github.com/derekross/opal/releases/tag/v0.3.3"
+      ],
+      "draft_sources": [
+        "https://github.com/derekross/opal",
+        "https://github.com/derekross/opal/releases/tag/v0.3.3"
+      ],
+      "section": "In Development",
+      "triage_decision_ref": "data/newsletter_workspace/triage_2026-09-30.md"
+    },
+    {
+      "candidate_id": "story:watchtower-opens-a-nip-86-relay-control-panel",
+      "name": "WatchTower opens a NIP-86 relay control panel",
+      "hard_gate": {
+        "primary_evidence": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "continuity_delta": true
+      },
+      "scores": {
+        "nostr_significance": 2,
+        "user_operator_impact": 1,
+        "novelty": 2,
+        "evidence_maturity": 2,
+        "explanatory_value": 1
+      },
+      "score_total": 8,
+      "triage": "GREEN",
+      "final_disposition": "include",
+      "reason": "WatchTower is a newly published panel for relay administration through NIP-86, the protocol for authenticated relay management requests. A public instance responds, giving operators a place to inspect the interface. The repository was created September 22; a reachable site does not establish that its authorization flows have been independently audited or that it works with ever",
+      "primary_sources": [
+        "https://github.com/iqbqioza/watchtower",
+        "https://watchtower.nostrfy.org"
+      ],
+      "draft_sources": [
+        "https://github.com/iqbqioza/watchtower",
+        "https://watchtower.nostrfy.org"
+      ],
+      "section": "In Development",
+      "triage_decision_ref": "data/newsletter_workspace/triage_2026-09-30.md"
+    },
+    {
+      "candidate_id": "story:hubstr-blossom-opens-a-personal-media-origin",
+      "name": "Hubstr Blossom opens a personal media origin",
+      "hard_gate": {
+        "primary_evidence": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "continuity_delta": true
+      },
+      "scores": {
+        "nostr_significance": 2,
+        "user_operator_impact": 2,
+        "novelty": 1,
+        "evidence_maturity": 1,
+        "explanatory_value": 2
+      },
+      "score_total": 8,
+      "triage": "GREEN",
+      "final_disposition": "include",
+      "reason": "The newly published Hubstr Blossom server lets a Nostr client upload images, video, and files to a self-hosted Blossom endpoint, then put those URLs in events. Its README documents local content-hash storage, a SQLite index, signed kind-24242 authorization for changes, and a range of Blossom operations for upload, mirroring, listings, and deletion. Public reads let other client",
+      "primary_sources": [
+        "https://github.com/johninnis/hubstr-blossom"
+      ],
+      "draft_sources": [
+        "https://github.com/johninnis/hubstr-blossom"
+      ],
+      "section": "In Development",
+      "triage_decision_ref": "data/newsletter_workspace/triage_2026-09-30.md"
+    },
+    {
+      "candidate_id": "story:meshstr-experiments-with-a-permissionless-relay-mesh",
+      "name": "Meshstr experiments with a permissionless relay mesh",
+      "hard_gate": {
+        "primary_evidence": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "continuity_delta": true
+      },
+      "scores": {
+        "nostr_significance": 2,
+        "user_operator_impact": 2,
+        "novelty": 1,
+        "evidence_maturity": 1,
+        "explanatory_value": 2
+      },
+      "score_total": 8,
+      "triage": "GREEN",
+      "final_disposition": "include",
+      "reason": "Meshstr is an alpha design for Nostr relays to negotiate peer budgets and exchange signed usage receipts. Its first implementation includes a write-policy bridge for strfry, a Nostr relay, added September 27, with a socket fix the next day. The repository describes DIDComm negotiation and NIP-77 reconciliation, which lets peers compare event sets without exchanging their full i",
+      "primary_sources": [
+        "https://gitlab.pocketlabs.dev/meshstr/meshstr",
+        "https://gitlab.pocketlabs.dev/meshstr/meshstr/-/commit/6d609fc99f"
+      ],
+      "draft_sources": [
+        "https://gitlab.pocketlabs.dev/meshstr/meshstr",
+        "https://gitlab.pocketlabs.dev/meshstr/meshstr/-/commit/6d609fc99f"
+      ],
+      "section": "In Development",
+      "triage_decision_ref": "data/newsletter_workspace/triage_2026-09-30.md"
+    },
+    {
+      "candidate_id": "story:dossier-shows-what-a-public-nostr-history-can-reveal",
+      "name": "Dossier shows what a public Nostr history can reveal",
+      "hard_gate": {
+        "primary_evidence": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "continuity_delta": true
+      },
+      "scores": {
+        "nostr_significance": 2,
+        "user_operator_impact": 2,
+        "novelty": 2,
+        "evidence_maturity": 2,
+        "explanatory_value": 1
+      },
+      "score_total": 9,
+      "triage": "GREEN",
+      "final_disposition": "include",
+      "reason": "Dossier is a new browser-side self-audit tool for a person's Nostr and Lightning footprint, with a public demo. It gathers visible profile links, zap trails, posting times, metadata from old NIP-04 encrypted direct messages, and media metadata such as photo EXIF; it can also show where a relay still serves an event someone tried to delete. NIP-07 signer support lets a user auth",
+      "primary_sources": [
+        "https://github.com/satanrayshe/dossier",
+        "https://satanrayshe.github.io/dossier/"
+      ],
+      "draft_sources": [
+        "https://github.com/satanrayshe/dossier",
+        "https://satanrayshe.github.io/dossier/"
+      ],
+      "section": "In Development",
+      "triage_decision_ref": "data/newsletter_workspace/triage_2026-09-30.md"
+    },
+    {
+      "candidate_id": "story:nip-39-extends-identity-proofs-to-bluesky-and-discord",
+      "name": "NIP-39 extends identity proofs to Bluesky and Discord",
+      "hard_gate": {
+        "primary_evidence": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "continuity_delta": true
+      },
+      "scores": {
+        "nostr_significance": 2,
+        "user_operator_impact": 2,
+        "novelty": 1,
+        "evidence_maturity": 1,
+        "explanatory_value": 2
+      },
+      "score_total": 8,
+      "triage": "GREEN",
+      "final_disposition": "include",
+      "reason": "NIP-39 lets a Nostr account point to proof that it controls an identity on another platform. A change merged September 27 gives new proofs one recommended sentence and tells verifiers to accept older proofs that contain the account's npub, even when their wording differs. It also documents Bluesky posts and Discord messages as proof locations. A Discord claim can only be checke",
+      "primary_sources": [
+        "https://github.com/nostr-protocol/nips/pull/2486"
+      ],
+      "draft_sources": [
+        "https://github.com/nostr-protocol/nips/pull/2486"
+      ],
+      "section": "Protocol and Spec Work",
+      "triage_decision_ref": "data/newsletter_workspace/triage_2026-09-30.md"
+    },
+    {
+      "candidate_id": "story:nip-86-adds-invite-code-management-for-relay-administrators",
+      "name": "NIP-86 adds invite-code management for relay administrators",
+      "hard_gate": {
+        "primary_evidence": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "continuity_delta": true
+      },
+      "scores": {
+        "nostr_significance": 2,
+        "user_operator_impact": 2,
+        "novelty": 1,
+        "evidence_maturity": 1,
+        "explanatory_value": 2
+      },
+      "score_total": 8,
+      "triage": "GREEN",
+      "final_disposition": "include",
+      "reason": "Compass described in the July 8 issue the NIP-86 invitation proposal while it was open; it has now merged. NIP-86 defines a standard relay-management API, and NIP-43 defines how restricted relays announce membership and process admission requests. The September 24 merge adds `listclaims`, `createclaim`, and `deleteclaim` so an administrator can list, issue, and revoke invite co",
+      "primary_sources": [
+        "https://github.com/nostr-protocol/nips/pull/2408",
+        "https://github.com/nostr-protocol/nips/blob/5b9920982ae1f4061328c1b09a90360da28d13c8/86.md"
+      ],
+      "draft_sources": [
+        "https://github.com/nostr-protocol/nips/pull/2408",
+        "https://github.com/nostr-protocol/nips/blob/5b9920982ae1f4061328c1b09a90360da28d13c8/86.md"
+      ],
+      "section": "Protocol and Spec Work",
+      "triage_decision_ref": "data/newsletter_workspace/triage_2026-09-30.md"
+    },
+    {
+      "candidate_id": "story:nip-51-moves-favorite-follow-sets-to-an-unused-event-kind",
+      "name": "NIP-51 moves favorite follow sets to an unused event kind",
+      "hard_gate": {
+        "primary_evidence": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "continuity_delta": true
+      },
+      "scores": {
+        "nostr_significance": 2,
+        "user_operator_impact": 2,
+        "novelty": 1,
+        "evidence_maturity": 1,
+        "explanatory_value": 2
+      },
+      "score_total": 8,
+      "triage": "GREEN",
+      "final_disposition": "include",
+      "reason": "NIP-51 defines public and private lists, including a list of a user's favorite follow sets. Compass described the kind-collision proposal in the July 22 issue; it has now merged. The September 27 correction assigns that favorites list kind `10021` because the earlier number was already in use. Its `a` tags still point to kind `30000` follow sets. The change resolves a number co",
+      "primary_sources": [
+        "https://github.com/nostr-protocol/nips/pull/2417"
+      ],
+      "draft_sources": [
+        "https://github.com/nostr-protocol/nips/pull/2417"
+      ],
+      "section": "Protocol and Spec Work",
+      "triage_decision_ref": "data/newsletter_workspace/triage_2026-09-30.md"
+    },
+    {
+      "candidate_id": "story:nip-db-proposes-verified-domain-names-for-key-addressed-services",
+      "name": "NIP-DB proposes verified domain names for key-addressed services",
+      "hard_gate": {
+        "primary_evidence": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "continuity_delta": true
+      },
+      "scores": {
+        "nostr_significance": 2,
+        "user_operator_impact": 2,
+        "novelty": 1,
+        "evidence_maturity": 1,
+        "explanatory_value": 2
+      },
+      "score_total": 8,
+      "triage": "GREEN",
+      "final_disposition": "include",
+      "reason": "The open NIP-DB proposal, submitted September 28, describes Nostr events that bind an ordinary Internet domain to the key serving it over a key-addressed network such as FIPS, an encrypted mesh that addresses nodes by Nostr public key. A domain owner can establish the binding with a DNS TXT record or a DNSSEC proof carried with the claim; clients would pin a verified result for",
+      "primary_sources": [
+        "https://github.com/nostr-protocol/nips/pull/2487",
+        "https://github.com/fr34aky/fips-pub-domains"
+      ],
+      "draft_sources": [
+        "https://github.com/nostr-protocol/nips/pull/2487",
+        "https://github.com/fr34aky/fips-pub-domains"
+      ],
+      "section": "Protocol and Spec Work",
+      "triage_decision_ref": "data/newsletter_workspace/triage_2026-09-30.md"
+    },
+    {
+      "candidate_id": "story:a-private-feed-draft-explores-encrypted-groups-of-recipients",
+      "name": "A private-feed draft explores encrypted groups of recipients",
+      "hard_gate": {
+        "primary_evidence": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "continuity_delta": true
+      },
+      "scores": {
+        "nostr_significance": 2,
+        "user_operator_impact": 2,
+        "novelty": 1,
+        "evidence_maturity": 1,
+        "explanatory_value": 2
+      },
+      "score_total": 8,
+      "triage": "GREEN",
+      "final_disposition": "include",
+      "reason": "A new multi-recipient envelope proposal, opened September 29, sketches private notes, replies, and connections whose intended recipients can find an event without exposing their ordinary public keys in its visible tags. It proposes opaque pairwise alias tags derived from shared secrets and provisional event kinds, including a way to wrap another Nostr event for hundreds of read",
+      "primary_sources": [
+        "https://github.com/nostr-protocol/nips/pull/2488"
+      ],
+      "draft_sources": [
+        "https://github.com/nostr-protocol/nips/pull/2488"
+      ],
+      "section": "Protocol and Spec Work",
+      "triage_decision_ref": "data/newsletter_workspace/triage_2026-09-30.md"
+    },
+    {
+      "candidate_id": "story:a-blossom-proposal-lets-other-people-announce-mirrored-media",
+      "name": "A Blossom proposal lets other people announce mirrored media",
+      "hard_gate": {
+        "primary_evidence": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "continuity_delta": true
+      },
+      "scores": {
+        "nostr_significance": 2,
+        "user_operator_impact": 2,
+        "novelty": 1,
+        "evidence_maturity": 1,
+        "explanatory_value": 2
+      },
+      "score_total": 8,
+      "triage": "GREEN",
+      "final_disposition": "include",
+      "reason": "An open NIP proposal describes a way for someone who mirrors another author's Blossom blob to announce that copy through Nostr. A client could then look for the copy if the original server loses the blob. Discussion has also raised checking the mirror's current BUD-03 server list when an announced server hint has gone stale. This is a proposed discovery path, not a guarantee th",
+      "primary_sources": [
+        "https://github.com/nostr-protocol/nips/pull/2478"
+      ],
+      "draft_sources": [
+        "https://github.com/nostr-protocol/nips/pull/2478"
+      ],
+      "section": "Protocol and Spec Work",
+      "triage_decision_ref": "data/newsletter_workspace/triage_2026-09-30.md"
+    },
+    {
+      "candidate_id": "story:road-event-reports-seek-a-shared-nostr-format",
+      "name": "Road-event reports seek a shared Nostr format",
+      "hard_gate": {
+        "primary_evidence": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "continuity_delta": true
+      },
+      "scores": {
+        "nostr_significance": 2,
+        "user_operator_impact": 2,
+        "novelty": 1,
+        "evidence_maturity": 1,
+        "explanatory_value": 2
+      },
+      "score_total": 8,
+      "triage": "GREEN",
+      "final_disposition": "include",
+      "reason": "The open Road Event Reports proposal describes reports and confirmations for potholes, closures, cameras, and other road conditions. It uses location tags and NIP-40's expiration timestamp, which tells relays when to stop serving an event, so a report need not remain current indefinitely. The author based revisions on a sample of events recovered from public relays and on the e",
+      "primary_sources": [
+        "https://github.com/nostr-protocol/nips/pull/2479",
+        "https://github.com/jooray/roadstr"
+      ],
+      "draft_sources": [
+        "https://github.com/nostr-protocol/nips/pull/2479",
+        "https://github.com/jooray/roadstr"
+      ],
+      "section": "Protocol and Spec Work",
+      "triage_decision_ref": "data/newsletter_workspace/triage_2026-09-30.md"
+    },
+    {
+      "candidate_id": "story:six-years-of-nostr-septembers",
+      "name": "Six Years of Nostr Septembers",
+      "hard_gate": {
+        "primary_evidence": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "continuity_delta": true
+      },
+      "scores": {
+        "nostr_significance": 2,
+        "user_operator_impact": 2,
+        "novelty": 1,
+        "evidence_maturity": 1,
+        "explanatory_value": 2
+      },
+      "score_total": 8,
+      "triage": "GREEN",
+      "final_disposition": "include",
+      "reason": "A September 4 BUber commit explored a taxi-matching concept using Nostr events. It showed how a signed, relay-carried request could coordinate people without assigning the whole service to one server. The source is a concept, and it does not establish a launched ride service.",
+      "primary_sources": [
+        "https://github.com/arcbtc/buber/commit/7a66d400f2",
+        "https://github.com/emeceve/loquaz/commit/d885d93d22",
+        "https://github.com/nostr-protocol/nips/commit/3423a6dfb",
+        "https://github.com/nostr-protocol/nips/commit/b62aa418d",
+        "https://github.com/nostr-protocol/nips/blob/master/26.md",
+        "https://github.com/damus-io/damus/blob/master/CHANGELOG.md#16-18---2023-09-21",
+        "https://github.com/nostr-protocol/nips/commit/44c21c9d8",
+        "https://github.com/nostr-protocol/nips/commit/3b5d3ca67",
+        "https://github.com/damus-io/damus/blob/master/CHANGELOG.md#1101---2024-09-22",
+        "https://github.com/nostr-protocol/nips/commit/ea36ec9ed",
+        "https://github.com/nostr-protocol/nips/commit/79786bb7b",
+        "https://github.com/nostr-protocol/nips/commit/4c5d5fff9",
+        "https://github.com/nostr-protocol/nips/commit/400d975da",
+        "https://github.com/nostr-protocol/nips/commit/6631b3eb1",
+        "https://github.com/nostr-protocol/nips/commit/0046368a7"
+      ],
+      "draft_sources": [
+        "https://github.com/arcbtc/buber/commit/7a66d400f2",
+        "https://github.com/emeceve/loquaz/commit/d885d93d22",
+        "https://github.com/nostr-protocol/nips/commit/3423a6dfb",
+        "https://github.com/nostr-protocol/nips/commit/b62aa418d",
+        "https://github.com/nostr-protocol/nips/blob/master/26.md",
+        "https://github.com/damus-io/damus/blob/master/CHANGELOG.md#16-18---2023-09-21",
+        "https://github.com/nostr-protocol/nips/commit/44c21c9d8",
+        "https://github.com/nostr-protocol/nips/commit/3b5d3ca67",
+        "https://github.com/damus-io/damus/blob/master/CHANGELOG.md#1101---2024-09-22",
+        "https://github.com/nostr-protocol/nips/commit/ea36ec9ed",
+        "https://github.com/nostr-protocol/nips/commit/79786bb7b",
+        "https://github.com/nostr-protocol/nips/commit/4c5d5fff9",
+        "https://github.com/nostr-protocol/nips/commit/400d975da",
+        "https://github.com/nostr-protocol/nips/commit/6631b3eb1",
+        "https://github.com/nostr-protocol/nips/commit/0046368a7"
+      ],
+      "section": "Six Years of Nostr Septembers",
+      "triage_decision_ref": "data/newsletter_workspace/triage_2026-09-30.md"
+    },
+    {
+      "candidate_id": "release-skip:0ceanslim-grain",
+      "name": "0ceanSlim/grain tagged releases",
+      "hard_gate": {
+        "primary_evidence": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "continuity_delta": false
+      },
+      "scores": null,
+      "triage": "SKIP",
+      "final_disposition": "skip",
+      "reason": "The only tag is the rc4 release covered in issue 41.",
+      "primary_sources": [
+        "https://github.com/0ceanSlim/grain/releases/tag/v0.8.0-rc4"
+      ],
+      "draft_sources": [],
+      "triage_decision_ref": "data/newsletter_workspace/triage_2026-09-30.md"
+    },
+    {
+      "candidate_id": "release-skip:77elements-noornote",
+      "name": "77elements/noornote tagged releases",
+      "hard_gate": {
+        "primary_evidence": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "continuity_delta": false
+      },
+      "scores": null,
+      "triage": "SKIP",
+      "final_disposition": "skip",
+      "reason": "The new 1.8 tags emphasize navigation and visual treatment; the 1.7 booking release was covered in issue 41.",
+      "primary_sources": [
+        "https://github.com/77elements/noornote/releases/tag/v1.8.1",
+        "https://github.com/77elements/noornote/releases/tag/v1.8.0",
+        "https://github.com/77elements/noornote/releases/tag/v1.7.0"
+      ],
+      "draft_sources": [],
+      "triage_decision_ref": "data/newsletter_workspace/triage_2026-09-30.md"
+    },
+    {
+      "candidate_id": "release-skip:bitcreditprotocol-bitcredit-core",
+      "name": "BitcreditProtocol/Bitcredit-Core tagged releases",
+      "hard_gate": {
+        "primary_evidence": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "continuity_delta": false
+      },
+      "scores": null,
+      "triage": "SKIP",
+      "final_disposition": "skip",
+      "reason": "The new tag is an automated precompiled-binary bundle without a new relay behavior; 0.5.16 was covered.",
+      "primary_sources": [
+        "https://github.com/BitcreditProtocol/Bitcredit-Core/releases/tag/precompiled_4310b77585bc2c7be0da0d16aafc54fb",
+        "https://github.com/BitcreditProtocol/Bitcredit-Core/releases/tag/v0.5.16"
+      ],
+      "draft_sources": [],
+      "triage_decision_ref": "data/newsletter_workspace/triage_2026-09-30.md"
+    },
+    {
+      "candidate_id": "release-skip:danconwaydev-ngit-cli",
+      "name": "DanConwayDev/ngit-cli tagged releases",
+      "hard_gate": {
+        "primary_evidence": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "continuity_delta": false
+      },
+      "scores": null,
+      "triage": "SKIP",
+      "final_disposition": "skip",
+      "reason": "Proposal-base correction is useful Nostr Git tooling maintenance, but too narrow for a full release paragraph.",
+      "primary_sources": [
+        "https://github.com/DanConwayDev/ngit-cli/releases/tag/v3.0.3"
+      ],
+      "draft_sources": [],
+      "triage_decision_ref": "data/newsletter_workspace/triage_2026-09-30.md"
+    },
+    {
+      "candidate_id": "release-skip:hivetalk-swarm",
+      "name": "HiveTalk/swarm tagged releases",
+      "hard_gate": {
+        "primary_evidence": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "continuity_delta": false
+      },
+      "scores": null,
+      "triage": "SKIP",
+      "final_disposition": "skip",
+      "reason": "The release only adds architecture documentation.",
+      "primary_sources": [
+        "https://github.com/HiveTalk/swarm/releases/tag/v0.1.2"
+      ],
+      "draft_sources": [],
+      "triage_decision_ref": "data/newsletter_workspace/triage_2026-09-30.md"
+    },
+    {
+      "candidate_id": "release-skip:mostrop2p-mostro-cli",
+      "name": "MostroP2P/mostro-cli tagged releases",
+      "hard_gate": {
+        "primary_evidence": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "continuity_delta": false
+      },
+      "scores": null,
+      "triage": "SKIP",
+      "final_disposition": "skip",
+      "reason": "Two-sided chat transcript display is narrow after issue 41 covered the v0.16.2 transport migration.",
+      "primary_sources": [
+        "https://github.com/MostroP2P/mostro-cli/releases/tag/v0.16.3"
+      ],
+      "draft_sources": [],
+      "triage_decision_ref": "data/newsletter_workspace/triage_2026-09-30.md"
+    },
+    {
+      "candidate_id": "release-skip:zeusln-zeus",
+      "name": "ZeusLN/zeus tagged releases",
+      "hard_gate": {
+        "primary_evidence": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "continuity_delta": false
+      },
+      "scores": null,
+      "triage": "SKIP",
+      "final_disposition": "skip",
+      "reason": "Mostly Lightning, swaps, and wallet maintenance; NWC secret display/validation is a possible short item but below this section’s depth threshold.",
+      "primary_sources": [
+        "https://github.com/ZeusLN/zeus/releases/tag/v13.2.2"
+      ],
+      "draft_sources": [],
+      "triage_decision_ref": "data/newsletter_workspace/triage_2026-09-30.md"
+    },
+    {
+      "candidate_id": "release-skip:barrydeen-wisp",
+      "name": "barrydeen/wisp tagged releases",
+      "hard_gate": {
+        "primary_evidence": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "continuity_delta": false
+      },
+      "scores": null,
+      "triage": "SKIP",
+      "final_disposition": "skip",
+      "reason": "Version bump only; issue 41 covered the last substantive release. The NIP-22 reply fix PR #667 merged September 24, after the September 21 tag, so it belongs in development coverage and cannot be attributed to 1.2.5.",
+      "primary_sources": [
+        "https://github.com/barrydeen/wisp/releases/tag/v1.2.5"
+      ],
+      "draft_sources": [],
+      "triage_decision_ref": "data/newsletter_workspace/triage_2026-09-30.md"
+    },
+    {
+      "candidate_id": "release-skip:bit-blik-bitblik",
+      "name": "bit-blik/bitblik tagged releases",
+      "hard_gate": {
+        "primary_evidence": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "continuity_delta": false
+      },
+      "scores": null,
+      "triage": "SKIP",
+      "final_disposition": "skip",
+      "reason": "The new tags fix battery use and offer loading; issue 41 covered the dispute feature in 0.11.0.",
+      "primary_sources": [
+        "https://github.com/bit-blik/bitblik/releases/tag/v0.11.2",
+        "https://github.com/bit-blik/bitblik/releases/tag/v0.11.1",
+        "https://github.com/bit-blik/bitblik/releases/tag/v0.11.0"
+      ],
+      "draft_sources": [],
+      "triage_decision_ref": "data/newsletter_workspace/triage_2026-09-30.md"
+    },
+    {
+      "candidate_id": "release-skip:block-core-angor",
+      "name": "block-core/angor tagged releases",
+      "hard_gate": {
+        "primary_evidence": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "continuity_delta": false
+      },
+      "scores": null,
+      "triage": "SKIP",
+      "final_disposition": "skip",
+      "reason": "Main release is Bitcoin funding and wallet fixes; Nostr subscription timeout cleanup alone is below the slot threshold.",
+      "primary_sources": [
+        "https://github.com/block-core/angor/releases/tag/v0.2.36"
+      ],
+      "draft_sources": [],
+      "triage_decision_ref": "data/newsletter_workspace/triage_2026-09-30.md"
+    },
+    {
+      "candidate_id": "release-skip:block-buzz",
+      "name": "block/buzz tagged releases",
+      "hard_gate": {
+        "primary_evidence": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "continuity_delta": false
+      },
+      "scores": null,
+      "triage": "SKIP",
+      "final_disposition": "skip",
+      "reason": "Version tags bundle much maintenance; specific merged Nostr protocol changes are more accurately covered in the development section.",
+      "primary_sources": [
+        "https://github.com/block/buzz/releases/tag/desktop-v0.5.25",
+        "https://github.com/block/buzz/releases/tag/desktop-v0.5.24"
+      ],
+      "draft_sources": [],
+      "triage_decision_ref": "data/newsletter_workspace/triage_2026-09-30.md"
+    },
+    {
+      "candidate_id": "release-skip:daywalker90-cln-nip47",
+      "name": "daywalker90/cln-nip47 tagged releases",
+      "hard_gate": {
+        "primary_evidence": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "continuity_delta": false
+      },
+      "scores": null,
+      "triage": "SKIP",
+      "final_disposition": "skip",
+      "reason": "Dependency refresh only, no distinct Nostr Wallet Connect behavior.",
+      "primary_sources": [
+        "https://github.com/daywalker90/cln-nip47/releases/tag/v0.2.1"
+      ],
+      "draft_sources": [],
+      "triage_decision_ref": "data/newsletter_workspace/triage_2026-09-30.md"
+    },
+    {
+      "candidate_id": "release-skip:divinevideo-divine-mobile",
+      "name": "divinevideo/divine-mobile tagged releases",
+      "hard_gate": {
+        "primary_evidence": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "continuity_delta": false
+      },
+      "scores": null,
+      "triage": "SKIP",
+      "final_disposition": "skip",
+      "reason": "Release notes are broad; exact merged encrypted-video and relay-recovery PRs belong in the development section.",
+      "primary_sources": [
+        "https://github.com/divinevideo/divine-mobile/releases/tag/1.0.23"
+      ],
+      "draft_sources": [],
+      "triage_decision_ref": "data/newsletter_workspace/triage_2026-09-30.md"
+    },
+    {
+      "candidate_id": "release-skip:forgesworn-toll-booth",
+      "name": "forgesworn/toll-booth tagged releases",
+      "hard_gate": {
+        "primary_evidence": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "continuity_delta": false
+      },
+      "scores": null,
+      "triage": "SKIP",
+      "final_disposition": "skip",
+      "reason": "Payment-service hardening without an independently explained new relay behavior.",
+      "primary_sources": [
+        "https://github.com/forgesworn/toll-booth/releases/tag/v6.2.6",
+        "https://github.com/forgesworn/toll-booth/releases/tag/v6.2.5",
+        "https://github.com/forgesworn/toll-booth/releases/tag/v6.2.4"
+      ],
+      "draft_sources": [],
+      "triage_decision_ref": "data/newsletter_workspace/triage_2026-09-30.md"
+    },
+    {
+      "candidate_id": "release-skip:fr34aky-fips2go",
+      "name": "fr34aky/fips2go tagged releases",
+      "hard_gate": {
+        "primary_evidence": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "continuity_delta": false
+      },
+      "scores": null,
+      "triage": "SKIP",
+      "final_disposition": "skip",
+      "reason": "0.8.0 mesh-name synchronization runs over FIPS/fips-ui and lacks a distinct Nostr-relay change; 0.7.0 was covered in issue 41.",
+      "primary_sources": [
+        "https://github.com/fr34aky/fips2go/releases/tag/v0.8.0",
+        "https://github.com/fr34aky/fips2go/releases/tag/v0.7.0",
+        "https://github.com/fr34aky/fips2go/releases/tag/v0.6.1"
+      ],
+      "draft_sources": [],
+      "triage_decision_ref": "data/newsletter_workspace/triage_2026-09-30.md"
+    },
+    {
+      "candidate_id": "release-skip:git-nostrdev-com-stuff-nostrappshell",
+      "name": "git.nostrdev.com/stuff/NostrAppShell tagged releases",
+      "hard_gate": {
+        "primary_evidence": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "continuity_delta": false
+      },
+      "scores": null,
+      "triage": "SKIP",
+      "final_disposition": "skip",
+      "reason": "Duplicate tracking row for the canonical pakstr tags; count once under pakstr.",
+      "primary_sources": [
+        "https://git.nostrdev.com/stuff/pakstr/releases/tag/v0.25.4",
+        "https://git.nostrdev.com/stuff/pakstr/releases/tag/v0.25.3",
+        "https://git.nostrdev.com/stuff/pakstr/releases/tag/v0.25.2",
+        "https://git.nostrdev.com/stuff/pakstr/releases/tag/v0.25.1",
+        "https://git.nostrdev.com/stuff/pakstr/releases/tag/v0.25.0"
+      ],
+      "draft_sources": [],
+      "triage_decision_ref": "data/newsletter_workspace/triage_2026-09-30.md"
+    },
+    {
+      "candidate_id": "release-skip:git-nostrdev-com-stuff-pakstr",
+      "name": "git.nostrdev.com/stuff/pakstr tagged releases",
+      "hard_gate": {
+        "primary_evidence": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "continuity_delta": false
+      },
+      "scores": null,
+      "triage": "SKIP",
+      "final_disposition": "skip",
+      "reason": "0.25.x tags are mostly icon, proxy and CI updates; the relay-error npub change is narrow after issue 41 covered the signer milestone.",
+      "primary_sources": [
+        "https://git.nostrdev.com/stuff/pakstr/releases/tag/v0.25.4",
+        "https://git.nostrdev.com/stuff/pakstr/releases/tag/v0.25.3",
+        "https://git.nostrdev.com/stuff/pakstr/releases/tag/v0.25.2",
+        "https://git.nostrdev.com/stuff/pakstr/releases/tag/v0.25.1",
+        "https://git.nostrdev.com/stuff/pakstr/releases/tag/v0.25.0"
+      ],
+      "draft_sources": [],
+      "triage_decision_ref": "data/newsletter_workspace/triage_2026-09-30.md"
+    },
+    {
+      "candidate_id": "release-skip:git-vanderwarker-family-wellbeing-cellibacy-android",
+      "name": "git.vanderwarker.family/wellbeing/cellibacy-android tagged releases",
+      "hard_gate": {
+        "primary_evidence": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "continuity_delta": false
+      },
+      "scores": null,
+      "triage": "SKIP",
+      "final_disposition": "skip",
+      "reason": "Automated release note gives no verifiable Nostr behavior.",
+      "primary_sources": [
+        "https://git.vanderwarker.family/wellbeing/cellibacy-android/releases/tag/v2.0.8"
+      ],
+      "draft_sources": [],
+      "triage_decision_ref": "data/newsletter_workspace/triage_2026-09-30.md"
+    },
+    {
+      "candidate_id": "release-skip:git-vanderwarker-family-wellbeing-holyfit-android",
+      "name": "git.vanderwarker.family/wellbeing/holyfit-android tagged releases",
+      "hard_gate": {
+        "primary_evidence": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "continuity_delta": false
+      },
+      "scores": null,
+      "triage": "SKIP",
+      "final_disposition": "skip",
+      "reason": "Automated release note gives no verifiable Nostr behavior.",
+      "primary_sources": [
+        "https://git.vanderwarker.family/wellbeing/holyfit-android/releases/tag/v2.0.8"
+      ],
+      "draft_sources": [],
+      "triage_decision_ref": "data/newsletter_workspace/triage_2026-09-30.md"
+    },
+    {
+      "candidate_id": "release-skip:git-vanderwarker-family-wellbeing-nunlock-android",
+      "name": "git.vanderwarker.family/wellbeing/nunlock-android tagged releases",
+      "hard_gate": {
+        "primary_evidence": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "continuity_delta": false
+      },
+      "scores": null,
+      "triage": "SKIP",
+      "final_disposition": "skip",
+      "reason": "Automated release note gives no verifiable Nostr behavior.",
+      "primary_sources": [
+        "https://git.vanderwarker.family/wellbeing/nunlock-android/releases/tag/v2.0.7"
+      ],
+      "draft_sources": [],
+      "triage_decision_ref": "data/newsletter_workspace/triage_2026-09-30.md"
+    },
+    {
+      "candidate_id": "release-skip:git-vanderwarker-family-wellbeing-saintstream-android",
+      "name": "git.vanderwarker.family/wellbeing/saintstream-android tagged releases",
+      "hard_gate": {
+        "primary_evidence": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "continuity_delta": false
+      },
+      "scores": null,
+      "triage": "SKIP",
+      "final_disposition": "skip",
+      "reason": "Automated release note gives no verifiable Nostr behavior.",
+      "primary_sources": [
+        "https://git.vanderwarker.family/wellbeing/saintstream-android/releases/tag/v2.0.9"
+      ],
+      "draft_sources": [],
+      "triage_decision_ref": "data/newsletter_workspace/triage_2026-09-30.md"
+    },
+    {
+      "candidate_id": "release-skip:git-vanderwarker-family-wellbeing-sistercharge-android",
+      "name": "git.vanderwarker.family/wellbeing/sistercharge-android tagged releases",
+      "hard_gate": {
+        "primary_evidence": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "continuity_delta": false
+      },
+      "scores": null,
+      "triage": "SKIP",
+      "final_disposition": "skip",
+      "reason": "Automated release note gives no verifiable Nostr behavior.",
+      "primary_sources": [
+        "https://git.vanderwarker.family/wellbeing/sistercharge-android/releases/tag/v2.0.8"
+      ],
+      "draft_sources": [],
+      "triage_decision_ref": "data/newsletter_workspace/triage_2026-09-30.md"
+    },
+    {
+      "candidate_id": "release-skip:greenart7c3-morganite",
+      "name": "greenart7c3/Morganite tagged releases",
+      "hard_gate": {
+        "primary_evidence": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "continuity_delta": false
+      },
+      "scores": null,
+      "triage": "SKIP",
+      "final_disposition": "skip",
+      "reason": "The .onion Blossom release was covered in issue 41.",
+      "primary_sources": [
+        "https://github.com/greenart7c3/Morganite/releases/tag/v0.0.5"
+      ],
+      "draft_sources": [],
+      "triage_decision_ref": "data/newsletter_workspace/triage_2026-09-30.md"
+    },
+    {
+      "candidate_id": "release-skip:jesuspirate-chama",
+      "name": "jesuspirate/chama tagged releases",
+      "hard_gate": {
+        "primary_evidence": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "continuity_delta": false
+      },
+      "scores": null,
+      "triage": "SKIP",
+      "final_disposition": "skip",
+      "reason": "Phone alerts and trade-history fixes are useful to Chama users, but too product-specific for the release slot.",
+      "primary_sources": [
+        "https://github.com/jesuspirate/chama/releases/tag/v6.4.13",
+        "https://github.com/jesuspirate/chama/releases/tag/v6.4.12",
+        "https://github.com/jesuspirate/chama/releases/tag/v6.4.11",
+        "https://github.com/jesuspirate/chama/releases/tag/v6.4.10",
+        "https://github.com/jesuspirate/chama/releases/tag/v6.4.9",
+        "https://github.com/jesuspirate/chama/releases/tag/v6.4.8",
+        "https://github.com/jesuspirate/chama/releases/tag/v6.4.7"
+      ],
+      "draft_sources": [],
+      "triage_decision_ref": "data/newsletter_workspace/triage_2026-09-30.md"
+    },
+    {
+      "candidate_id": "release-skip:michaelneale-mesh-llm",
+      "name": "michaelneale/mesh-llm tagged releases",
+      "hard_gate": {
+        "primary_evidence": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "continuity_delta": false
+      },
+      "scores": null,
+      "triage": "SKIP",
+      "final_disposition": "skip",
+      "reason": "Release focuses on agent runtime and CI, with no material Nostr relay surface in the tagged notes.",
+      "primary_sources": [
+        "https://github.com/Mesh-LLM/mesh-llm/releases/tag/v0.77.0"
+      ],
+      "draft_sources": [],
+      "triage_decision_ref": "data/newsletter_workspace/triage_2026-09-30.md"
+    },
+    {
+      "candidate_id": "release-skip:mmalmi-fips-ts",
+      "name": "mmalmi/fips-ts tagged releases",
+      "hard_gate": {
+        "primary_evidence": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "continuity_delta": false
+      },
+      "scores": null,
+      "triage": "SKIP",
+      "final_disposition": "skip",
+      "reason": "The 0.0.43 runtime release was covered in issue 41.",
+      "primary_sources": [
+        "https://github.com/mmalmi/fips-ts/releases/tag/runtime-v0.0.43"
+      ],
+      "draft_sources": [],
+      "triage_decision_ref": "data/newsletter_workspace/triage_2026-09-30.md"
+    },
+    {
+      "candidate_id": "release-skip:mmalmi-nostr-vpn",
+      "name": "mmalmi/nostr-vpn tagged releases",
+      "hard_gate": {
+        "primary_evidence": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "continuity_delta": false
+      },
+      "scores": null,
+      "triage": "SKIP",
+      "final_disposition": "skip",
+      "reason": "Private-exit discovery in 4.1.16 may merit a brief item; the three tags mainly address VPN platform, wallet and upgrade reliability.",
+      "primary_sources": [
+        "https://github.com/mmalmi/nostr-vpn/releases/tag/v4.1.17",
+        "https://github.com/mmalmi/nostr-vpn/releases/tag/v4.1.16",
+        "https://github.com/mmalmi/nostr-vpn/releases/tag/v4.1.15"
+      ],
+      "draft_sources": [],
+      "triage_decision_ref": "data/newsletter_workspace/triage_2026-09-30.md"
+    },
+    {
+      "candidate_id": "release-skip:mouse484-astraea",
+      "name": "mouse484/astraea tagged releases",
+      "hard_gate": {
+        "primary_evidence": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "continuity_delta": false
+      },
+      "scores": null,
+      "triage": "SKIP",
+      "final_disposition": "skip",
+      "reason": "Five dependency-only tags; no new user or relay behavior.",
+      "primary_sources": [
+        "https://github.com/mouse484/astraea/releases/tag/v5.35.179",
+        "https://github.com/mouse484/astraea/releases/tag/v5.35.178",
+        "https://github.com/mouse484/astraea/releases/tag/v5.35.177",
+        "https://github.com/mouse484/astraea/releases/tag/v5.35.176",
+        "https://github.com/mouse484/astraea/releases/tag/v5.35.175"
+      ],
+      "draft_sources": [],
+      "triage_decision_ref": "data/newsletter_workspace/triage_2026-09-30.md"
+    },
+    {
+      "candidate_id": "release-skip:nostr-wot-nostr-wot-extension",
+      "name": "nostr-wot/nostr-wot-extension tagged releases",
+      "hard_gate": {
+        "primary_evidence": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "continuity_delta": false
+      },
+      "scores": null,
+      "triage": "SKIP",
+      "final_disposition": "skip",
+      "reason": "0.8.4 mainly adds themes; 0.8.3 NWC connection work was covered in issue 41.",
+      "primary_sources": [
+        "https://github.com/nostr-wot/nostr-wot-extension/releases/tag/v0.8.4",
+        "https://github.com/nostr-wot/nostr-wot-extension/releases/tag/v0.8.3",
+        "https://github.com/nostr-wot/nostr-wot-extension/releases/tag/v0.8.2",
+        "https://github.com/nostr-wot/nostr-wot-extension/releases/tag/v0.8.1"
+      ],
+      "draft_sources": [],
+      "triage_decision_ref": "data/newsletter_workspace/triage_2026-09-30.md"
+    },
+    {
+      "candidate_id": "release-skip:penpenpng-rx-nostr",
+      "name": "penpenpng/rx-nostr tagged releases",
+      "hard_gate": {
+        "primary_evidence": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "continuity_delta": false
+      },
+      "scores": null,
+      "triage": "SKIP",
+      "final_disposition": "skip",
+      "reason": "Small default-relay tag parsing fix; useful library maintenance but below a full section slot.",
+      "primary_sources": [
+        "https://github.com/penpenpng/rx-nostr/releases/tag/rx-nostr%403.7.7"
+      ],
+      "draft_sources": [],
+      "triage_decision_ref": "data/newsletter_workspace/triage_2026-09-30.md"
+    },
+    {
+      "candidate_id": "release-skip:r0d8lsh0p-shosho-releases",
+      "name": "r0d8lsh0p/shosho-releases tagged releases",
+      "hard_gate": {
+        "primary_evidence": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "continuity_delta": false
+      },
+      "scores": null,
+      "triage": "SKIP",
+      "final_disposition": "skip",
+      "reason": "NWC and zap features are real, but the release centers on Bitcoin wallet and marketplace flows; hold for higher-confidence Nostr-specific follow-up.",
+      "primary_sources": [
+        "https://github.com/r0d8lsh0p/shosho-releases/releases/tag/v1.2.0"
+      ],
+      "draft_sources": [],
+      "triage_decision_ref": "data/newsletter_workspace/triage_2026-09-30.md"
+    },
+    {
+      "candidate_id": "release-skip:tcheeric-nostr-java",
+      "name": "tcheeric/nostr-java tagged releases",
+      "hard_gate": {
+        "primary_evidence": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "continuity_delta": false
+      },
+      "scores": null,
+      "triage": "SKIP",
+      "final_disposition": "skip",
+      "reason": "New Blossom MCP tools and tag preservation are real but narrow relative to selected developer-tool releases.",
+      "primary_sources": [
+        "https://github.com/tcheeric/nostr-java/releases/tag/v2.4.1",
+        "https://github.com/tcheeric/nostr-java/releases/tag/v2.4.0"
+      ],
+      "draft_sources": [],
+      "triage_decision_ref": "data/newsletter_workspace/triage_2026-09-30.md"
+    }
+  ],
+  "review_note": "53 selected story units and 32 skipped release-project units. Source-family noise and app-discovery candidates retain decisions in the source manifest and specialist triage files."
+}

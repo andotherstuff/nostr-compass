@@ -1,0 +1,99 @@
+{
+  "attempts": [
+    {
+      "attempt": 1,
+      "model": "composer-2.5[fast=true]",
+      "outcome": "success",
+      "output_sha256": "2ea1b33638473f8630131bd9ef9a56907fdc2b956b1228b7b03b305147d69449",
+      "provider": "cursor",
+      "response_id": null,
+      "routing_attempts": [
+        {
+          "budget_seconds": 72.0,
+          "elapsed_seconds": 67.395,
+          "kind": "timeout",
+          "message": "Isolated review deadline",
+          "model": "grok-4.6",
+          "outcome": "failure",
+          "provider": "cursor",
+          "provider_wide": false
+        },
+        {
+          "budget_seconds": 73.151,
+          "elapsed_seconds": 36.808,
+          "model": "composer-2.5",
+          "outcome": "success",
+          "provider": "cursor"
+        }
+      ],
+      "started_at": "2026-09-30T15:20:55.678519+00:00",
+      "usage": {}
+    }
+  ],
+  "completed_at": "2026-09-30T15:22:39.882799+00:00",
+  "elapsed_seconds": 104.204,
+  "endpoint": "cursor-acp",
+  "implementation_model": "gpt-6.1-sol",
+  "implementation_models": [
+    "gpt-6.1-sol"
+  ],
+  "instructions_sha256": "c596ccea8c513b1b692915fbf9af7cdc1d82134240ae1bc068e33b4c7faadfdb",
+  "max_attempts": 1,
+  "max_output_tokens": 1300,
+  "requested_model": "grok-4.6",
+  "review_tier": "standard",
+  "routing_chain": [
+    {
+      "model": "grok-4.6",
+      "provider": "cursor"
+    },
+    {
+      "model": "composer-2.5",
+      "provider": "cursor"
+    },
+    {
+      "model": "claude-opus-5",
+      "provider": "claude-code"
+    },
+    {
+      "model": "google/gemini-3.1-pro-preview",
+      "provider": "openrouter"
+    }
+  ],
+  "schema_version": 1,
+  "selected_cost_usd": null,
+  "selected_endpoint": "cursor-acp",
+  "selected_family": "cursor",
+  "selected_model": "composer-2.5[fast=true]",
+  "selected_provider": "cursor",
+  "snapshots": [
+    {
+      "bytes": 3065,
+      "path": "/opt/data/compass-worktrees/2026-09-30/data/newsletter_workspace/review-runs/urgent-selection-completeness-20260930T1508Z/verdict.json",
+      "sha256": "8a4f46502096e0eaffad13bc834961f324ee8b5e9e354c4251ad8b6e5ec63adb",
+      "stored_name": "001-8a4f46502096e0ea-verdict.json"
+    },
+    {
+      "bytes": 62217,
+      "path": "/opt/data/tmp/compass_selection_urgent_20260930/baseline_corrected_2026-09-30-newsletter.md",
+      "sha256": "22c829cf2932c51005b82ed189587c8f37e6d8a3790cc46d57bf77c78afb120e",
+      "stored_name": "002-22c829cf2932c510-baseline_corrected_2026-09-30-newsletter.md"
+    },
+    {
+      "bytes": 1429,
+      "path": "/opt/data/tmp/compass_selection_urgent_20260930/elisym_release_notes.json",
+      "sha256": "49c7c2bce97b23fa153e8ded89161c0ba963b6e17e4bcd36686c4b1c0627375a",
+      "stored_name": "003-49c7c2bce97b23fa-elisym_release_notes.json"
+    }
+  ],
+  "started_at": "2026-09-30T15:20:55.677021+00:00",
+  "status": "completed",
+  "timeout_scope": "invocation_including_retries_and_cleanup",
+  "timeout_seconds": 360,
+  "tools_enabled": false,
+  "verdict": {
+    "findings": [],
+    "summary": "The corrected Elisym Tagged Releases paragraph resolves the sole prior major finding: it no longer labels @elisym/pay-core@0.1.1 as the first commerce package and instead anchors commerce behavior to merged PR #120, with @elisym/commerce@0.2.0 described as the later tag for payment-reference derivation. That mapping matches the supplied release-note excerpts (pay-core@0.1.1 changelog lists PR #120 adding @elisym/commerce; commerce@0.2.0 changelog lists PR #124 deriving the payment reference) and keeps the pay-core/commerce split explicit. No new blocking or major source/maturity errors were introduced by the correction.",
+    "verdict": "PASS"
+  }
+}

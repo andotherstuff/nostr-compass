@@ -56,3 +56,5 @@ For web apps on Android, NIP-55 is less ergonomic than NIP-46. Browser-based flo
 
 **See also:**
 - [NIP-46: Nostr Connect](/en/topics/nip-46/)
+
+- [Newsletter #42: Mangatsu and Noteds Android signing](/en/newsletters/2026-09-30-newsletter/#mangatsu-and-noteds-reach-android)

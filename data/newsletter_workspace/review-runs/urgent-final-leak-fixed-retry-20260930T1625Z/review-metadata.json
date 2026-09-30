@@ -1,0 +1,101 @@
+{
+  "attempts": [
+    {
+      "attempt": 1,
+      "model": "grok-4.6[effort=high,fast=true]",
+      "outcome": "success",
+      "output_sha256": "f6dc82ea309d384819ee21340015fd99f4dc6c1fd91f35bca292b35d834080c3",
+      "provider": "cursor",
+      "response_id": null,
+      "routing_attempts": [
+        {
+          "budget_seconds": 120.0,
+          "elapsed_seconds": 66.899,
+          "model": "grok-4.6",
+          "outcome": "success",
+          "provider": "cursor"
+        }
+      ],
+      "started_at": "2026-09-30T16:25:33.720720+00:00",
+      "usage": {}
+    }
+  ],
+  "completed_at": "2026-09-30T16:26:40.620006+00:00",
+  "elapsed_seconds": 66.899,
+  "endpoint": "cursor-acp",
+  "implementation_model": "gpt-6.1-sol",
+  "implementation_models": [
+    "gpt-6.1-sol"
+  ],
+  "instructions_sha256": "0a0399a5dc41f04d38ae2097c5745146cedbd55524946e1b5fcc959305cedf4b",
+  "max_attempts": 1,
+  "max_output_tokens": 3000,
+  "requested_model": "grok-4.6",
+  "review_tier": "standard",
+  "routing_chain": [
+    {
+      "model": "grok-4.6",
+      "provider": "cursor"
+    },
+    {
+      "model": "composer-2.5",
+      "provider": "cursor"
+    },
+    {
+      "model": "claude-opus-5",
+      "provider": "claude-code"
+    },
+    {
+      "model": "google/gemini-3.1-pro-preview",
+      "provider": "openrouter"
+    }
+  ],
+  "schema_version": 1,
+  "selected_cost_usd": null,
+  "selected_endpoint": "cursor-acp",
+  "selected_family": "xai",
+  "selected_model": "grok-4.6[effort=high,fast=true]",
+  "selected_provider": "cursor",
+  "snapshots": [
+    {
+      "bytes": 110609,
+      "path": "/opt/data/compass-worktrees/2026-09-30/content/en/newsletters/2026-09-30-newsletter.md",
+      "sha256": "0ae9e56d9974e0c5c778e12388099d21addd4c807a13b25e69e81ac99f535b06",
+      "stored_name": "001-0ae9e56d9974e0c5-2026-09-30-newsletter.md"
+    },
+    {
+      "bytes": 6389,
+      "path": "/opt/data/tmp/compass_selection_urgent_20260930/final_leak_fixed_retry.diff",
+      "sha256": "9d96687e0fca13cade673d1e77b944ec21ae1967f7239e27a007591d30d7a21b",
+      "stored_name": "002-9d96687e0fca13ca-final_leak_fixed_retry.diff"
+    },
+    {
+      "bytes": 1961,
+      "path": "/opt/data/compass-worktrees/2026-09-30/data/newsletter_workspace/review-runs/urgent-final-leak-challenge-20260930T1616Z/verdict.json",
+      "sha256": "3b02bb854f8d4448ff8edb772c2215fc4962f22f694144f5e442cafab9467dc0",
+      "stored_name": "003-3b02bb854f8d4448-verdict.json"
+    },
+    {
+      "bytes": 2201,
+      "path": "/opt/data/compass-worktrees/2026-09-30/data/newsletter_workspace/review-runs/urgent-final-delta-20260930T1610Z/verdict.json",
+      "sha256": "68c8e4e28d884ccf93822fc29cbb8d058f8f699a1a5d9165725083d5afc78dc3",
+      "stored_name": "004-68c8e4e28d884ccf-verdict.json"
+    },
+    {
+      "bytes": 153,
+      "path": "/opt/data/tmp/compass_tldr_proposed_20260930.txt",
+      "sha256": "3ae9efe27b2a4971a84530dfd34d4502f3ca241ce457efda2cbe9c2e1726dad3",
+      "stored_name": "005-3ae9efe27b2a4971-compass_tldr_proposed_20260930.txt"
+    }
+  ],
+  "started_at": "2026-09-30T16:25:33.720224+00:00",
+  "status": "completed",
+  "timeout_scope": "invocation_including_retries_and_cleanup",
+  "timeout_seconds": 600,
+  "tools_enabled": false,
+  "verdict": {
+    "findings": [],
+    "summary": "Both prior major editorial leaks are resolved in SHA 0ae9e56d: Buzz no longer contains the preservation directive while NIP-AR and NIP-FI remain identified as Buzz project specifications in ordinary prose; MDK\u2019s placement instruction is now the factual sentence that later source merges follow tagged 0.11.0; the LaWallet Compass-eligibility clause is gone. The exact FAIL406c7db\u21920ae9e56d diff is only those three edits, with no claims, source, link, topic, maturity, or continuity regressions versus prior five-role PASS80e3667 / baseline PASS2f81997. Iris Meet remains default-branch/unverified-live-site wording and Hubstr has no \u2018This can share\u2026\u2019 placement note. A full remaining-prose scan found no copied writer/editor instructions, placement advice, preservation guidance, scoring/selection workflow, or draft-meta language. Proposed TLDR is exactly 21 words and matches the article\u2019s Android app, White Noise polls, relay moderation, signer permissions, and encrypted-group recovery lead. Parent owns live URL/build/device testing; this verdict did not run them.",
+    "verdict": "PASS"
+  }
+}

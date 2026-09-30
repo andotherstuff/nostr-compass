@@ -1,0 +1,44 @@
+{
+  "schema": "compass.final_style_delta_clearance.v1",
+  "recorded_at": "2026-09-30T16:50:12.729265+00:00",
+  "verdict": "PASS",
+  "final_article_sha256": "18f3f80a31b011737722c1715490836a88141e7cf19ad1a9ddec7f3253a751ec",
+  "baseline_article_sha256": "1ffcbcb385302acc630f64305864d546e1f61d6959acd80d0c173562fc2aaf72",
+  "baseline_combined_receipt": "/opt/data/compass-worktrees/2026-09-30/data/newsletter_workspace/review-runs/urgent-final-hidden-replies-20260930T1635Z/combined_final_receipt.json",
+  "baseline_combined_receipt_sha256": "05e8110d78e93b49a227835da91043a0957526b06cb17763d55457a4b7d8972a",
+  "delta_run": "/opt/data/compass-worktrees/2026-09-30/data/newsletter_workspace/review-runs/urgent-final-style-corrected-20260930T1645Z",
+  "delta_metadata_sha256": "582908b613620b3e4982e2d58bbf1abbf124ce11ab087a0b32a7e1843ea9e94d",
+  "actual_provider": "cursor",
+  "actual_model": "grok-4.6[effort=high,fast=true]",
+  "actual_family": "xai",
+  "implementation_models": [
+    "gpt-6.1-sol"
+  ],
+  "delta_scope": "Exactly three final sentence changes remove prohibited comparison constructs. Nymbot audit statement scoped to Compass review boundary. All prior claimed facts/source links, topic explanations, maturity and continuity preserved. Models performed no liveURL/build/device/CI checks.",
+  "delta_verdict": {
+    "findings": [],
+    "summary": "Exact 1ffcbcb385302acc630f64305864d546e1f61d6959acd80d0c173562fc2aaf72\u219218f3f80a31b011737722c1715490836a88141e7cf19ad1a9ddec7f3253a751ec diff contains only the three requested sentence rewrites; NIP-51 hidden-replies PR2489 paragraph is absent from the delta and remains the prior cleared text. (1) Nymbot: banned 'rather than an independent privacy audit' becomes 'these claims come from the developer release notes; Compass has not independently audited the privacy of the app'\u2014developer-note attribution and Compass reporter-boundary, not a claim that no external privacy audit exists; same primal.net release link. (2) Noteds: 'uses NIP-55 rather than the browser's NIP-07 flow' becomes 'uses Android NIP-55 signing'\u2014positive Android external-signer fact; NIP-55 already defined in the preceding Mangatsu sentence as the Android interface for an external signer; commit/release links unchanged. (3) WoT: 'Scores depend on the chosen roots rather than providing a universal reputation measure' becomes 'Scores depend on the chosen roots'\u2014root-dependence kept; following newly-published/no-tag/no-production sentence unchanged. Claims, prose, links, topics, and continuity show no major or blocking regression; no live URL, build, or device checks claimed.",
+    "verdict": "PASS"
+  },
+  "delta_diff_sha256": "865bf9ef2cd418b16572c7d1d989da8905dd8c084d245cd919b9ff959606051b",
+  "quality_roles": [
+    "claims",
+    "prose",
+    "links",
+    "topics",
+    "continuity"
+  ],
+  "tldr": "Nostr Compass arrives on Android; White Noise adds polls, while new releases improve relay moderation, signer permissions, and encrypted group recovery.",
+  "tldr_whitespace_words": 21,
+  "retained_superseded_style_review": {
+    "article_sha256": "230ed2b42703ae41aef9927d9ca5dee367c33286710fdeacd55ddd0056d29a3a",
+    "metadata_path": "/opt/data/compass-worktrees/2026-09-30/data/newsletter_workspace/review-runs/urgent-final-style-delta-20260930T1640Z/review-metadata.json",
+    "actual_model": "grok-4.6[effort=high,fast=true]",
+    "verdict": {
+      "findings": [],
+      "summary": "Exact diff has only three sentence replacements from cleared SHA 1ffcbcb385302acc630f64305864d546e1f61d6959acd80d0c173562fc2aaf72 to current SHA 230ed2b42703ae41aef9927d9ca5dee367c33286710fdeacd55ddd0056d29a3a; NIP-51 hidden-replies PR2489 paragraph is untouched. Nymbot keeps the same primal.net release link and listed features, replacing 'developer release claims rather than an independent privacy audit' with attribution to the developer release notes plus an explicit no-independent-privacy-audit hedge. Noteds keeps the same commit link and states Android NIP-55 signing in positive form; the Mangatsu sentence still defines NIP-55 as the Android external-signer interface, so protocol meaning holds without a new claim. WoT still states scores depend on the chosen roots and keeps the early-source/no-production-deployment close. No links, kinds, dates, or live URL/build/device checks were added. Claims, prose, links, topics, and continuity show no blocking or major regression; prior source and quality receipts remain applicable.",
+      "verdict": "PASS"
+    },
+    "note": "Superseded230ed2b PASS remains supporting history only, not current publication approval."
+  }
+}

@@ -51,6 +51,7 @@ That split lets clients implement the minimum needed for basic interoperability,
 - [Newsletter #33: Lead stories](/en/newsletters/2026-07-29-newsletter/#top-stories)
 - [Newsletter #36: Morganite 0.0.4: verifying a blob before it is cached](/en/newsletters/2026-08-19-newsletter/#morganite-004-verifying-a-blob-before-it-is-cached)
 - [Newsletter #37: Postr launches as a small Android composer](/en/newsletters/2026-08-26-newsletter/#postr-launches-as-a-small-android-composer)
+- [Newsletter #42: Hubstr media origin](/en/newsletters/2026-09-30-newsletter/#hubstr-blossom-opens-a-personal-media-origin)
 
 **See also:**
 - [BUD-03: User Server List](/en/topics/bud-03/)

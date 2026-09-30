@@ -274,6 +274,32 @@ extract_repo_data() {
 # MODE 1: TRACK KNOWN REPOS
 # ============================================================================
 
+fetch_tracked_activity_slice() {
+    local kind="$1" a_tag="$2" label="$3" slice_since="$4" slice_until="$5" output="$6"
+    local slice_file raw_count midpoint
+    slice_file="$NOSTR_TEMP_DIR/tracked-${kind}-${slice_since}-${slice_until}.jsonl"
+    if ! timeout "$NAK_TIMEOUT" nak req -k "$kind" -t a="$a_tag" \
+        --since "$slice_since" --until "$slice_until" --limit 200 \
+        $RELAY_ARGS > "$slice_file" 2>/dev/null; then
+        echo "tracked ${label} query failed for ${slice_since}..${slice_until}" >&2
+        return 1
+    fi
+    raw_count=$(wc -l < "$slice_file")
+    if [ "$raw_count" -ge 200 ]; then
+        if [ "$slice_until" -le "$((slice_since + 1))" ]; then
+            echo "tracked ${label} query still capped within one second: ${slice_since}..${slice_until}" >&2
+            return 1
+        fi
+        midpoint=$(((slice_since + slice_until) / 2))
+        fetch_tracked_activity_slice "$kind" "$a_tag" "$label" "$slice_since" "$midpoint" "$output" || return 1
+        fetch_tracked_activity_slice "$kind" "$a_tag" "$label" "$midpoint" "$slice_until" "$output" || return 1
+        return 0
+    fi
+    cat "$slice_file" >> "$output"
+    record_exact_page "$PAGES_FILE" "tracked-${label}:${slice_since}-${slice_until}" \
+        "${slice_since}:${slice_until}" "$raw_count" 200 true
+}
+
 fetch_tracked_repos() {
     echo "=== Tracking known NIP-34 repos ===" >&2
 
@@ -335,29 +361,21 @@ fetch_tracked_repos() {
             local a_tag="$KIND_REPO:$yml_pubkey:$d_tag"
 
             # Fetch patches (kind 1617) referencing this repo
-            local patches
-            patches=$(
-                timeout "$NAK_TIMEOUT" nak req -k "$KIND_PATCH" -t a="$a_tag" \
-                    --since "$SINCE_TIMESTAMP" --until "$UNTIL_TIMESTAMP" --limit 50 \
-                    $RELAY_ARGS 2>/dev/null \
-                | jq -s 'unique_by(.id)' 2>/dev/null
-            )
+            local patches patch_file="$NOSTR_TEMP_DIR/tracked-patches.jsonl"
+            : > "$patch_file"
+            fetch_tracked_activity_slice "$KIND_PATCH" "$a_tag" "patches:${yml_name:-$d_tag}" \
+                "$SINCE_TIMESTAMP" "$UNTIL_TIMESTAMP" "$patch_file" || return 1
+            patches=$(jq -s 'unique_by(.id)' "$patch_file")
             patch_count=$(echo "${patches:-[]}" | jq 'length' 2>/dev/null || echo 0)
-            [ "$patch_count" -lt 50 ] || { echo "tracked patch query reached cap for ${yml_name:-$d_tag}" >&2; return 1; }
-            record_exact_page "$PAGES_FILE" "tracked-patches:${yml_name:-$d_tag}" "" "$patch_count" 50 true
             echo "    Patches in period: $patch_count" >&2
 
             # Fetch issues (kind 1621) referencing this repo
-            local issues
-            issues=$(
-                timeout "$NAK_TIMEOUT" nak req -k "$KIND_ISSUE" -t a="$a_tag" \
-                    --since "$SINCE_TIMESTAMP" --until "$UNTIL_TIMESTAMP" --limit 50 \
-                    $RELAY_ARGS 2>/dev/null \
-                | jq -s 'unique_by(.id)' 2>/dev/null
-            )
+            local issues issue_file="$NOSTR_TEMP_DIR/tracked-issues.jsonl"
+            : > "$issue_file"
+            fetch_tracked_activity_slice "$KIND_ISSUE" "$a_tag" "issues:${yml_name:-$d_tag}" \
+                "$SINCE_TIMESTAMP" "$UNTIL_TIMESTAMP" "$issue_file" || return 1
+            issues=$(jq -s 'unique_by(.id)' "$issue_file")
             issue_count=$(echo "${issues:-[]}" | jq 'length' 2>/dev/null || echo 0)
-            [ "$issue_count" -lt 50 ] || { echo "tracked issue query reached cap for ${yml_name:-$d_tag}" >&2; return 1; }
-            record_exact_page "$PAGES_FILE" "tracked-issues:${yml_name:-$d_tag}" "" "$issue_count" 50 true
             echo "    Issues in period: $issue_count" >&2
 
             # Build patch summaries

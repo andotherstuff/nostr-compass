@@ -1,0 +1,125 @@
+{
+  "attempts": [
+    {
+      "attempt": 1,
+      "model": "grok-4.6[effort=high,fast=true]",
+      "outcome": "success",
+      "output_sha256": "f96d7fe2445983cc06b916411849f8c6565bfe5cae76233c08b19a5853aeac4b",
+      "provider": "cursor",
+      "response_id": null,
+      "routing_attempts": [
+        {
+          "budget_seconds": 96.0,
+          "elapsed_seconds": 68.771,
+          "model": "grok-4.6",
+          "outcome": "success",
+          "provider": "cursor"
+        }
+      ],
+      "started_at": "2026-09-30T16:36:23.228734+00:00",
+      "usage": {}
+    }
+  ],
+  "completed_at": "2026-09-30T16:37:32.000749+00:00",
+  "elapsed_seconds": 68.772,
+  "endpoint": "cursor-acp",
+  "implementation_model": "gpt-6.1-sol",
+  "implementation_models": [
+    "gpt-6.1-sol"
+  ],
+  "instructions_sha256": "d3c466e5d86c7a4654a9437436dd7994ef6a92e08d5de3c650818de80b6a9185",
+  "max_attempts": 1,
+  "max_output_tokens": 2500,
+  "requested_model": "grok-4.6",
+  "review_tier": "standard",
+  "routing_chain": [
+    {
+      "model": "grok-4.6",
+      "provider": "cursor"
+    },
+    {
+      "model": "composer-2.5",
+      "provider": "cursor"
+    },
+    {
+      "model": "claude-opus-5",
+      "provider": "claude-code"
+    },
+    {
+      "model": "google/gemini-3.1-pro-preview",
+      "provider": "openrouter"
+    }
+  ],
+  "schema_version": 1,
+  "selected_cost_usd": null,
+  "selected_endpoint": "cursor-acp",
+  "selected_family": "xai",
+  "selected_model": "grok-4.6[effort=high,fast=true]",
+  "selected_provider": "cursor",
+  "snapshots": [
+    {
+      "bytes": 111410,
+      "path": "/opt/data/compass-worktrees/2026-09-30/content/en/newsletters/2026-09-30-newsletter.md",
+      "sha256": "1ffcbcb385302acc630f64305864d546e1f61d6959acd80d0c173562fc2aaf72",
+      "stored_name": "001-1ffcbcb385302acc-2026-09-30-newsletter.md"
+    },
+    {
+      "bytes": 2432,
+      "path": "/opt/data/tmp/compass_selection_urgent_20260930/late_hidden_replies.diff",
+      "sha256": "f34a49b70d0f2b41195048cf751983d5fadbe80ad6385b2262a420710b2fc1d8",
+      "stored_name": "002-f34a49b70d0f2b41-late_hidden_replies.diff"
+    },
+    {
+      "bytes": 1053,
+      "path": "/opt/data/tmp/compass_spec2489_live.json",
+      "sha256": "73c788009ca12730a58d5f7a965ca79a0d6c726a365f94268c83a3d24c91b15c",
+      "stored_name": "003-73c788009ca12730-compass_spec2489_live.json"
+    },
+    {
+      "bytes": 3671,
+      "path": "/opt/data/tmp/compass_specs_late_20260930/pr2489.diff",
+      "sha256": "856d433c992668ccb7ccd5826fbe589a884c23840c487c9240c1e52c7d208084",
+      "stored_name": "004-856d433c992668cc-pr2489.diff"
+    },
+    {
+      "bytes": 6623,
+      "path": "/opt/data/tmp/compass_specs_late_20260930/decisions.md",
+      "sha256": "918c737399d32e5edddb7baaaf35f73db022b2d80758a4cf64199d4e4651b7f6",
+      "stored_name": "005-918c737399d32e5e-decisions.md"
+    },
+    {
+      "bytes": 25183,
+      "path": "/opt/data/tmp/compass_specs_late_20260930/exact_raw.json",
+      "sha256": "22f6c8eef45a3de6069bd2e8662595cb6735b7c123d84cb016ce17d9c74b5ddc",
+      "stored_name": "006-22f6c8eef45a3de6-exact_raw.json"
+    },
+    {
+      "bytes": 967,
+      "path": "/opt/data/tmp/compass_specs_late_20260930/final_state_raw.json",
+      "sha256": "a9dd705affe1172d350d3bb16e9ee5a538c10dfc6b8370c347e3c24a07ff46ca",
+      "stored_name": "007-a9dd705affe1172d-final_state_raw.json"
+    },
+    {
+      "bytes": 395,
+      "path": "/opt/data/tmp/compass_specs_late_20260930/branches_raw.json",
+      "sha256": "23e35d88c6fb92061a8122472999fe1d7b144c6cb87c8bae2ff536ed18ccebde",
+      "stored_name": "008-23e35d88c6fb9206-branches_raw.json"
+    },
+    {
+      "bytes": 10926,
+      "path": "/opt/data/compass-worktrees/2026-09-30/data/newsletter_workspace/review-runs/urgent-final-leak-fixed-retry-20260930T1625Z/combined_final_receipt.json",
+      "sha256": "8ff1676d483f4b025be71082313b90d2fddc0d9138371461adada6232c5c0968",
+      "stored_name": "009-8ff1676d483f4b02-combined_final_receipt.json"
+    }
+  ],
+  "started_at": "2026-09-30T16:36:23.227033+00:00",
+  "status": "completed",
+  "timeout_scope": "invocation_including_retries_and_cleanup",
+  "timeout_seconds": 480,
+  "tools_enabled": false,
+  "verdict": {
+    "findings": [],
+    "summary": "Narrow five-role review of the added NIP-51 hidden-replies paragraph and its effect on the preceding merged kind-10021 item finds no blocking or major defect. Source/maturity: the text matches OPEN PR2489 (created 2026-09-29, unmerged) as a public per-thread addressable kind-30027 set, d=root id, e-tag reply ids, apply-only-if-same-key-authored-root, root-listing hides other authors' replies and the composer while relays still accept posts, cooperating-client toggle, public-only set, and collisions limited to the same thread rather than claimed gone. The Nostrich line attributes the author's implemented claim and states public-source inspection did not establish it, which is the bounded snapshot result (public main@d693ab84, 2026-09-24) and does not assert that no implementation exists or a shipped interoperable release. Prose is reader-facing with no scoring or selection jargon. The primary link is PR2489. Topic terms (addressable set, d/e tags, toggle, unmerged format discussion) are explained in ordinary language. Continuity: the new heading stays a proposal beside the distinct adopted favorites-kind-10021 correction, which is unchanged and not confused with this item. Proposed-spec versus implemented-client boundary is explicit.",
+    "verdict": "PASS"
+  }
+}

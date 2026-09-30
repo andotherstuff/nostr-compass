@@ -61,3 +61,4 @@ Blossom servers use NIP-98 to authenticate file uploads and deletions, tying sto
 - [Newsletter #33: Lead stories](/en/newsletters/2026-07-29-newsletter/#top-stories)
 - [Newsletter #36: Zap Cooking binds admin routes to signed requests and encrypts stored wallet connections](/en/newsletters/2026-08-19-newsletter/#zap-cooking-binds-admin-routes-to-signed-requests-and-encrypts-stored-wallet-connections)
 - [Newsletter #38: nostream and Zap Cooking](/en/newsletters/2026-09-02-newsletter/#nostream-expands-relay-side-dvm-routing-and-authenticated-operation)
+- [Newsletter #42: Buzz HTTP authorization](/en/newsletters/2026-09-30-newsletter/#buzz-extends-its-relays-channel-and-identity-controls)

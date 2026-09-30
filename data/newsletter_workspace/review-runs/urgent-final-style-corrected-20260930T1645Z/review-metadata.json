@@ -1,0 +1,89 @@
+{
+  "attempts": [
+    {
+      "attempt": 1,
+      "model": "grok-4.6[effort=high,fast=true]",
+      "outcome": "success",
+      "output_sha256": "989953037b067a25507b3a8f52b02139c2645401adc59e64ac452c6ab10ad4bc",
+      "provider": "cursor",
+      "response_id": null,
+      "routing_attempts": [
+        {
+          "budget_seconds": 96.0,
+          "elapsed_seconds": 72.709,
+          "model": "grok-4.6",
+          "outcome": "success",
+          "provider": "cursor"
+        }
+      ],
+      "started_at": "2026-09-30T16:47:28.532739+00:00",
+      "usage": {}
+    }
+  ],
+  "completed_at": "2026-09-30T16:48:41.242553+00:00",
+  "elapsed_seconds": 72.71,
+  "endpoint": "cursor-acp",
+  "implementation_model": "gpt-6.1-sol",
+  "implementation_models": [
+    "gpt-6.1-sol"
+  ],
+  "instructions_sha256": "ae52b8dc6bd588ea6fd8bb096d98bc74f2331b0ed2e33bac55afce826fe36d33",
+  "max_attempts": 1,
+  "max_output_tokens": 2200,
+  "requested_model": "grok-4.6",
+  "review_tier": "standard",
+  "routing_chain": [
+    {
+      "model": "grok-4.6",
+      "provider": "cursor"
+    },
+    {
+      "model": "composer-2.5",
+      "provider": "cursor"
+    },
+    {
+      "model": "claude-opus-5",
+      "provider": "claude-code"
+    },
+    {
+      "model": "google/gemini-3.1-pro-preview",
+      "provider": "openrouter"
+    }
+  ],
+  "schema_version": 1,
+  "selected_cost_usd": null,
+  "selected_endpoint": "cursor-acp",
+  "selected_family": "xai",
+  "selected_model": "grok-4.6[effort=high,fast=true]",
+  "selected_provider": "cursor",
+  "snapshots": [
+    {
+      "bytes": 111372,
+      "path": "/opt/data/compass-worktrees/2026-09-30/content/en/newsletters/2026-09-30-newsletter.md",
+      "sha256": "18f3f80a31b011737722c1715490836a88141e7cf19ad1a9ddec7f3253a751ec",
+      "stored_name": "001-18f3f80a31b01173-2026-09-30-newsletter.md"
+    },
+    {
+      "bytes": 5438,
+      "path": "/opt/data/tmp/compass_selection_urgent_20260930/final_style_delta_corrected.diff",
+      "sha256": "865bf9ef2cd418b16572c7d1d989da8905dd8c084d245cd919b9ff959606051b",
+      "stored_name": "002-865bf9ef2cd418b1-final_style_delta_corrected.diff"
+    },
+    {
+      "bytes": 2983,
+      "path": "/opt/data/compass-worktrees/2026-09-30/data/newsletter_workspace/review-runs/urgent-final-hidden-replies-20260930T1635Z/combined_final_receipt.json",
+      "sha256": "05e8110d78e93b49a227835da91043a0957526b06cb17763d55457a4b7d8972a",
+      "stored_name": "003-05e8110d78e93b49-combined_final_receipt.json"
+    }
+  ],
+  "started_at": "2026-09-30T16:47:28.531459+00:00",
+  "status": "completed",
+  "timeout_scope": "invocation_including_retries_and_cleanup",
+  "timeout_seconds": 480,
+  "tools_enabled": false,
+  "verdict": {
+    "findings": [],
+    "summary": "Exact 1ffcbcb385302acc630f64305864d546e1f61d6959acd80d0c173562fc2aaf72\u219218f3f80a31b011737722c1715490836a88141e7cf19ad1a9ddec7f3253a751ec diff contains only the three requested sentence rewrites; NIP-51 hidden-replies PR2489 paragraph is absent from the delta and remains the prior cleared text. (1) Nymbot: banned 'rather than an independent privacy audit' becomes 'these claims come from the developer release notes; Compass has not independently audited the privacy of the app'\u2014developer-note attribution and Compass reporter-boundary, not a claim that no external privacy audit exists; same primal.net release link. (2) Noteds: 'uses NIP-55 rather than the browser's NIP-07 flow' becomes 'uses Android NIP-55 signing'\u2014positive Android external-signer fact; NIP-55 already defined in the preceding Mangatsu sentence as the Android interface for an external signer; commit/release links unchanged. (3) WoT: 'Scores depend on the chosen roots rather than providing a universal reputation measure' becomes 'Scores depend on the chosen roots'\u2014root-dependence kept; following newly-published/no-tag/no-production sentence unchanged. Claims, prose, links, topics, and continuity show no major or blocking regression; no live URL, build, or device checks claimed.",
+    "verdict": "PASS"
+  }
+}

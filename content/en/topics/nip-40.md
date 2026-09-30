@@ -46,6 +46,7 @@ Expiration is a retention hint, not a revocation system. It helps align relay be
 - [Newsletter #30: NIP Deep Dive](/en/newsletters/2026-07-08-newsletter/#nip-deep-dive-nip-40-expiration-timestamp)
 - [Newsletter #34: Concord disappearing messages](/en/newsletters/2026-08-05-newsletter/#concord-community-planes)
 - [Newsletter #38: Mostro](/en/newsletters/2026-09-02-newsletter/#mostro-validates-signed-orders-before-expensive-work-and-preserves-order-audit-events)
+- [Newsletter #42: Road-event proposal](/en/newsletters/2026-09-30-newsletter/#road-event-reports-seek-a-shared-nostr-format)
 
 **See also:**
 - [NIP-01: Basic Protocol](/en/topics/nip-01/)

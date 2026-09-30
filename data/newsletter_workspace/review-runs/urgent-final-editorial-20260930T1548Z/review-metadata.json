@@ -1,0 +1,141 @@
+{
+  "attempts": [
+    {
+      "attempt": 1,
+      "model": "composer-2.5[fast=true]",
+      "outcome": "success",
+      "output_sha256": "400d31fba1004b3a01bc186a779ab31c9d81207d18d20f47faefa9523696e10d",
+      "provider": "cursor",
+      "response_id": null,
+      "routing_attempts": [
+        {
+          "budget_seconds": 120.0,
+          "elapsed_seconds": 115.483,
+          "kind": "timeout",
+          "message": "Isolated review deadline",
+          "model": "grok-4.6",
+          "outcome": "failure",
+          "provider": "cursor",
+          "provider_wide": false
+        },
+        {
+          "budget_seconds": 121.129,
+          "elapsed_seconds": 63.279,
+          "model": "composer-2.5",
+          "outcome": "success",
+          "provider": "cursor"
+        }
+      ],
+      "started_at": "2026-09-30T15:46:44.057594+00:00",
+      "usage": {}
+    }
+  ],
+  "completed_at": "2026-09-30T15:49:42.820555+00:00",
+  "elapsed_seconds": 178.763,
+  "endpoint": "cursor-acp",
+  "implementation_model": "gpt-6.1-sol",
+  "implementation_models": [
+    "gpt-6.1-sol"
+  ],
+  "instructions_sha256": "ee8f78288bcf0b45954a871a6c89b78787c2636f51fb3df0f9fb915e8d5db8ed",
+  "max_attempts": 1,
+  "max_output_tokens": 3000,
+  "requested_model": "grok-4.6",
+  "review_tier": "standard",
+  "routing_chain": [
+    {
+      "model": "grok-4.6",
+      "provider": "cursor"
+    },
+    {
+      "model": "composer-2.5",
+      "provider": "cursor"
+    },
+    {
+      "model": "claude-opus-5",
+      "provider": "claude-code"
+    },
+    {
+      "model": "google/gemini-3.1-pro-preview",
+      "provider": "openrouter"
+    }
+  ],
+  "schema_version": 1,
+  "selected_cost_usd": null,
+  "selected_endpoint": "cursor-acp",
+  "selected_family": "cursor",
+  "selected_model": "composer-2.5[fast=true]",
+  "selected_provider": "cursor",
+  "snapshots": [
+    {
+      "bytes": 103995,
+      "path": "/opt/data/compass-worktrees/2026-09-30/content/en/newsletters/2026-09-30-newsletter.md",
+      "sha256": "2f81997f28c148477afa10e31fe60483cbeb5777325507025e9050249a3bbc63",
+      "stored_name": "001-2f81997f28c14847-2026-09-30-newsletter.md"
+    },
+    {
+      "bytes": 54980,
+      "path": "/opt/data/tmp/compass_pr_delta_20260930.md",
+      "sha256": "a8285eb24eff7f63f4cb41c5d7f239f7f1492eb4a77cfd213118d56b0975fca1",
+      "stored_name": "002-a8285eb24eff7f63-compass_pr_delta_20260930.md"
+    },
+    {
+      "bytes": 21185,
+      "path": "/opt/data/tmp/compass_release_delta_20260930.md",
+      "sha256": "4d91818860fa5ac0e614857dc5a58866ad042e53a8aab86ad6a4edd232d67309",
+      "stored_name": "003-4d91818860fa5ac0-compass_release_delta_20260930.md"
+    },
+    {
+      "bytes": 341561,
+      "path": "/opt/data/tmp/compass_selection_urgent_20260930/final_delta_primary_sources.json",
+      "sha256": "cf4d6fc539e8467615a1745a9804e5f5e3742424e23f8afb780c3583dc14c0df",
+      "stored_name": "004-cf4d6fc539e84676-final_delta_primary_sources.json"
+    },
+    {
+      "bytes": 11110,
+      "path": "/opt/data/tmp/compass_selection_urgent_20260930/final_release_diff_scope.json",
+      "sha256": "1ec895b733383fb0df4ac9a6361127e18a86bb73059b7578d10b505a01604f6a",
+      "stored_name": "005-1ec895b733383fb0-final_release_diff_scope.json"
+    },
+    {
+      "bytes": 28644,
+      "path": "/opt/data/compass-worktrees/2026-09-30/data/newsletter_workspace/late_intake_2026-09-30_white_noise.md",
+      "sha256": "f3c0f220ff866fe041b6169e090fb54855bc808e793917facddfca4e3af11fdf",
+      "stored_name": "006-f3c0f220ff866fe0-late_intake_2026-09-30_white_noise.md"
+    },
+    {
+      "bytes": 3258,
+      "path": "/opt/data/compass-worktrees/2026-09-30/data/newsletter_workspace/late_intake_2026-09-30_compass_android.md",
+      "sha256": "2e6792d0448089932cf583e00290aa35d828d97236c1144ad431d8a3595167e3",
+      "stored_name": "007-2e6792d044808993-late_intake_2026-09-30_compass_android.md"
+    },
+    {
+      "bytes": 8566,
+      "path": "/opt/data/compass-worktrees/2026-09-30/data/newsletter_workspace/zapstore_delta_triage_2026-09-30.md",
+      "sha256": "13ad42375538642e07d322e21b7d6e10f06edbd22a1e04900bf55d64b319ac24",
+      "stored_name": "008-13ad42375538642e-zapstore_delta_triage_2026-09-30.md"
+    },
+    {
+      "bytes": 58732,
+      "path": "/opt/data/compass-worktrees/2026-09-30/content/en/newsletters/2026-09-23-newsletter.md",
+      "sha256": "4ab0093751cc18209aafd42a65fabe89e26f960250625032e31e40bd43704c91",
+      "stored_name": "009-4ab0093751cc1820-2026-09-23-newsletter.md"
+    },
+    {
+      "bytes": 8177,
+      "path": "/opt/data/tmp/compass_selection_clearance_20260930.md",
+      "sha256": "b73a1df343a603bb9e016bb63c62859a3b1203ca20e5f8fd821a8b4ab72f31d1",
+      "stored_name": "010-b73a1df343a603bb-compass_selection_clearance_20260930.md"
+    }
+  ],
+  "started_at": "2026-09-30T15:46:44.056494+00:00",
+  "status": "completed",
+  "timeout_scope": "invocation_including_retries_and_cleanup",
+  "timeout_seconds": 600,
+  "tools_enabled": false,
+  "verdict": {
+    "findings": [],
+    "summary": "Edition #42\u2019s supplied draft aligns with the Wednesday delta inventory, release receipts, and stated claim boundaries: White Noise android-v2026.9.30 is scoped to group polls and in-process edit handoff without process-death or attachment-throughput promises; Earthly v0.1.12 is presented as a tagged release with pending Android verification, not a delivered 0.1.11 binary; Marmot PR427 is labeled non-normative; Nostr Compass opens on the ngit repository with shipped-feature claims tied to signed release notes; Elisym commerce is anchored to merged PR #120 with provisional-schema and non-launch caveats; and NIP-86/NIP-51 merged-status transitions are explained against prior proposal coverage. Wednesday addenda (Amethyst, Buzz, Divine, nostream NIP-56, Mostro/MDK source work, Conduit, Zap Cooking, rust-nostr, ZapTracker, LaWallet NWC, Earthly, Elisym MCP/checkout) appear incorporated with appropriate source-only labeling. The six-year September retrospective is intentional synthesis, not a substitute for in-window news. No blocking or major claim, link, prose, or continuity defects were found in the supplied snapshot.",
+    "verdict": "PASS"
+  }
+}

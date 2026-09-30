@@ -1,0 +1,110 @@
+{
+  "artifact_path": "/opt/data/compass-worktrees/2026-09-30/data/nostr_recap/recap_2026-09-21_2026-09-29.json",
+  "artifact_sha256": "29ffe06102d2c284bc4f875bd8a07b1e54185baf7b5a8d0f2071cf15b3287408",
+  "candidate_ids": [
+    "1307837b7a18abe7557cfb0516e8bc4a634df9de708614bc50fa0ae22157b5e3",
+    "1682fbe04f2374e6380cac59f332f94e597fd3a6f0cd468e86c50b8550285fc5",
+    "1ab95400b52834b3cf73fb1737c5816db075c37b4199d712e4c2d6b540a5865b",
+    "230cbd879d2d81d971079df2a2964ff850ca0394d10f603956febea7b66b9a58",
+    "2a8160cb755e21e8510f75d94fa70880598dbf57eb10b2a92d1c685f18081894",
+    "46c0e662451842bbb14002c4313de8f41c3ef6c99ccdc286198f93ad258c6fe1",
+    "48cde26c76c3e8c009443556d74081b66c012c5e0dbd9800be1b7d832927e75e",
+    "4c5ce8d68f0e9bfb107b341873c3822f4530bdfd7fb1166803cc0479df8ce35e",
+    "586d867ca317f1488476721150c54ae5c0503d33ce5c5ccca20648168f81e431",
+    "5f426e8be9b7575100420911714681b858180cd60bfd83d69b930848bf8744af",
+    "622c651ab3b59e5e22ebed336ba422ff63c056862a2f823295e5ab1b8e656571",
+    "6c059406c16e47984c73950066a603e068fd3aabf1367504f23a853fb2bfba51",
+    "b067e8fe6900bf76eebe1ec5570bedce0643aa4f6d36d7bbcb0c1de0ba018342",
+    "b0a6d75e294a1bd14550db78dc348b1d8b82143aff78ac07917159e7badd4b3b",
+    "e73de3e1924e098a4cf7a571f8d1bf32ea2ef1011c2a75e1f6bdd63943456bae",
+    "fd4c8e6ce38babc8c9aab95b09fb2d7ef9bc00d667868653080514231441faba"
+  ],
+  "canonical_query": {
+    "author": "cae5b7ea348afefc4c102bb7b125c4928f114739a27b877c6bcfbe5a79280384",
+    "family": "nostr-recap",
+    "kinds": [
+      1,
+      30023
+    ],
+    "limit_per_kind": 1000,
+    "pass_id": "tuesday-2026-09-29-1400",
+    "since": "2026-09-21T14:00:00Z",
+    "until": "2026-09-29T14:00:00Z"
+  },
+  "collector_path": "/opt/data/compass-worktrees/2026-09-30/scripts/fetch_nostr_recap.sh",
+  "dispositions": {
+    "1307837b7a18abe7557cfb0516e8bc4a634df9de708614bc50fa0ae22157b5e3": {
+      "decision": "include",
+      "reason": "valid signed recap event retained in exact-window artifact"
+    },
+    "1682fbe04f2374e6380cac59f332f94e597fd3a6f0cd468e86c50b8550285fc5": {
+      "decision": "include",
+      "reason": "valid signed recap event retained in exact-window artifact"
+    },
+    "1ab95400b52834b3cf73fb1737c5816db075c37b4199d712e4c2d6b540a5865b": {
+      "decision": "include",
+      "reason": "valid signed recap event retained in exact-window artifact"
+    },
+    "230cbd879d2d81d971079df2a2964ff850ca0394d10f603956febea7b66b9a58": {
+      "decision": "include",
+      "reason": "valid signed recap event retained in exact-window artifact"
+    },
+    "2a8160cb755e21e8510f75d94fa70880598dbf57eb10b2a92d1c685f18081894": {
+      "decision": "include",
+      "reason": "valid signed recap event retained in exact-window artifact"
+    },
+    "46c0e662451842bbb14002c4313de8f41c3ef6c99ccdc286198f93ad258c6fe1": {
+      "decision": "include",
+      "reason": "valid signed recap event retained in exact-window artifact"
+    },
+    "48cde26c76c3e8c009443556d74081b66c012c5e0dbd9800be1b7d832927e75e": {
+      "decision": "include",
+      "reason": "valid signed recap event retained in exact-window artifact"
+    },
+    "4c5ce8d68f0e9bfb107b341873c3822f4530bdfd7fb1166803cc0479df8ce35e": {
+      "decision": "include",
+      "reason": "valid signed recap event retained in exact-window artifact"
+    },
+    "586d867ca317f1488476721150c54ae5c0503d33ce5c5ccca20648168f81e431": {
+      "decision": "include",
+      "reason": "valid signed recap event retained in exact-window artifact"
+    },
+    "5f426e8be9b7575100420911714681b858180cd60bfd83d69b930848bf8744af": {
+      "decision": "include",
+      "reason": "valid signed recap event retained in exact-window artifact"
+    },
+    "622c651ab3b59e5e22ebed336ba422ff63c056862a2f823295e5ab1b8e656571": {
+      "decision": "include",
+      "reason": "valid signed recap event retained in exact-window artifact"
+    },
+    "6c059406c16e47984c73950066a603e068fd3aabf1367504f23a853fb2bfba51": {
+      "decision": "include",
+      "reason": "valid signed recap event retained in exact-window artifact"
+    },
+    "b067e8fe6900bf76eebe1ec5570bedce0643aa4f6d36d7bbcb0c1de0ba018342": {
+      "decision": "include",
+      "reason": "valid signed recap event retained in exact-window artifact"
+    },
+    "b0a6d75e294a1bd14550db78dc348b1d8b82143aff78ac07917159e7badd4b3b": {
+      "decision": "include",
+      "reason": "valid signed recap event retained in exact-window artifact"
+    },
+    "e73de3e1924e098a4cf7a571f8d1bf32ea2ef1011c2a75e1f6bdd63943456bae": {
+      "decision": "include",
+      "reason": "valid signed recap event retained in exact-window artifact"
+    },
+    "fd4c8e6ce38babc8c9aab95b09fb2d7ef9bc00d667868653080514231441faba": {
+      "decision": "include",
+      "reason": "valid signed recap event retained in exact-window artifact"
+    }
+  },
+  "family": "nostr-recap",
+  "include_count": 16,
+  "item_count": 16,
+  "page_count": 2,
+  "pagination_complete": true,
+  "pass_id": "tuesday-2026-09-29-1400",
+  "skip_count": 0,
+  "skip_evidence": [],
+  "status": "complete"
+}

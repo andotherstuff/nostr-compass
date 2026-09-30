@@ -1,0 +1,44 @@
+# ClaimCheck review — 2026-09-30
+
+Draft: `content/en/newsletters/2026-09-30-newsletter.md`
+SHA-256: `08440bb4505bc8a32ac3b907f1a6cf2b4917ab82873ddc3998ba39c47e28e705`
+Reviewer: Codex ClaimCheck, same model family as the writer; this is editorial checking, not independent model review.
+Workflow: `ClaimCheck/Workflows/NeedsCitation.md`; checked against the assembled draft on September 29.
+
+Final binding check: reversing exactly five H3 topic-link removals (WatchTower, NIP-39, NIP-86, NIP-51, NIP-DB) in memory reconstructs the previously reviewed SHA-256 `59b121d6714eba62590ad48afae4c828dc4c0fcf134c68350bb85c97cf4498c7`. Body claims and citations are byte-for-byte unchanged.
+
+## Citation gaps: Nostr Compass #42
+
+**Claims needing citations: 0 in the reviewed artifact.** Each substantive paragraph contains a primary-source link. I checked empirical, technical, maturity, and comparative wording, including the new projects and all numbered NIP references. The source-specific checks below are stronger than a URL status check: I read the linked primary text or exact release/PR body and compared its claim with the draft.
+
+| Draft | Primary evidence and result |
+| --- | --- |
+| Holoboard, lines 16–22 | The [September 23–24 changelog](https://github.com/ptrio42/holoboard.space/blob/main/CHANGELOG.md) says NIP-17/NIP-04 promotion commands, invoices, opt-in `YES` reminders, the first paid promotion quote, retry behavior, and the Android web app. The [relay README](https://github.com/ptrio42/holoboard.space/blob/main/relay/README.md) distinguishes original Nostr events from HTTP ranking and appearance data. The draft appropriately avoids equating the Zapstore listing key with the board identity. |
+| fips-pub-domains, lines 24–32 | [v0.2.0](https://github.com/fr34aky/fips-pub-domains/releases/tag/v0.2.0) documents embedded DNSSEC proofs and redundant servers; [v0.2.1](https://github.com/fr34aky/fips-pub-domains/releases/tag/v0.2.1) documents the fixed server unit and unprivileged service. Merged [fips2go PR #55](https://github.com/fr34aky/fips2go/pull/55) covers Android name resolution, and [PR #59](https://github.com/fr34aky/fips2go/pull/59) covers mesh relay access and reports the offline empty-pin device run. The [test record](https://github.com/fr34aky/fips-pub-domains/blob/main/docs/testing.md) is maintainer reported. [NIP-DB PR #2487](https://github.com/nostr-protocol/nips/pull/2487) remains open and calls its kind numbers provisional, as the draft says. |
+| FIPS explainer in the NIP-DB paragraph, line 288 | The [FIPS primary README](https://github.com/jmcorgan/fips/blob/master/README.md) calls it an encrypted mesh built on Nostr identities, documents end-to-end encrypted node traffic, secp256k1/Schnorr keypairs as node addresses, and native communication by public key. The added phrase “an encrypted mesh that addresses nodes by Nostr public key” is supported. |
+| MDK, lines 34–38 | The [0.11.0 release document](https://github.com/marmot-protocol/mdk/blob/v0.11.0/docs/release/0.11.0.md) directly describes gap proof, delivery queue spill, schema 89–98, no downgrade, and the separate intermittent catch-up issue; the draft does not promise universal recovery. |
+| Opal, lines 244–246 | The [v0.3.3 tagged README](https://github.com/derekross/opal/blob/v0.3.3/README.md#signer-nip-46) describes NIP-46, the passphrase-protected keyring, and app permission controls; the [release](https://github.com/derekross/opal/releases/tag/v0.3.3) is dated September 28. The draft frames these as an early Omarchy-specific signer. |
+| WatchTower, Hubstr Blossom, Meshstr, Dossier, lines 248–268 | The linked project READMEs support each described product surface. The [Meshstr README](https://gitlab.pocketlabs.dev/meshstr/meshstr/-/blob/main/README.md) calls the implementation alpha and the specification a proposal; its [strfry bridge commit](https://gitlab.pocketlabs.dev/meshstr/meshstr/-/commit/6d609fc99fa574b60c711619fe7ce391ff331d71) is dated September 27. The [Dossier README](https://github.com/satanrayshe/dossier) documents public DM metadata, zap and EXIF observations, NIP-07 remediation, and limited relay visibility. The draft does not claim a deployed mesh network or exhaustive self-audit. |
+| NIP-39, NIP-51, NIP-86, NIP-DB, lines 272–286 | Merged [NIP-39 PR #2486](https://github.com/nostr-protocol/nips/pull/2486) covers Bluesky/Discord and tolerant proof text; current [NIP-51](https://github.com/nostr-protocol/nips/blob/master/51.md) assigns favorite follow sets kind `10021` pointing to kind `30000`; current [NIP-86](https://github.com/nostr-protocol/nips/blob/master/86.md) contains the three invite-code methods. The NIP-DB proposal is correctly labelled open and provisional. |
+
+The assembled draft no longer contains Nymbot. Its September 29 Zapstore update added on-device file reading, while a signed 1.0.6 listing already existed September 19; that item did not establish a new in-window Nostr behavior. Earlier wording calling it a new app was therefore rejected before this PASS.
+
+## NIP identifier check
+
+An uncached authenticated read of the current `nostr-protocol/nips` root directory confirms files for every numeric identifier in the draft: `01`, `04`, `07`, `13`, `17`, `22`, `24`, `26`, `28`, `34`, `39`, `40`, `42`, `43`, `46`, `47`, `51`, `59`, `65`, `73`, `77`, `78`, `84`, `86`, `92`, `94`, and `98`. `NIP-AR` and `NIP-FI` are explicitly labelled Buzz project proposals, `NIP-FE` is Amethyst proposal terminology, and `NIP-DB` is identified as an open PR. None is presented as an accepted numbered NIP.
+
+The historical section distinguishes dated source evidence from later status, including the current unrecommended status of NIP-26. I found no first-to-market, adoption, independent-audit, or deployment claim unsupported by its cited primary source.
+
+## Finalized specification-collector reconciliation
+
+The first claim pass predated the finalized `data/spec_updates/spec_updates_2026-09-29.json` artifact. Its seven tracked spec families surfaced one new reviewable proposal and one factual error in the preceding issue. The current draft covers the proposal and transparently corrects the error:
+
+| Source | Finding and fix |
+| --- | --- |
+| [Merged NIP-86 PR #2477](https://github.com/nostr-protocol/nips/pull/2477), September 23 | The preceding published #41 mentioned this exact PR but incorrectly repeated its obsolete PR-body description (`clearpubkey`, `clearevent`, `listroles`). The actual merged diff adds `unallowevent`, `unbanevent`, `listallowedevents`, and `listdisallowedkinds`, giving relay admins a way to reverse event allow/ban choices and inspect lists. Current [NIP-86](https://github.com/nostr-protocol/nips/blob/master/86.md) and the PR files confirm this. The current #42 NIP-86 paragraph links the previous article and corrects the names, while its main news is the distinct merged invite-code [PR #2408](https://github.com/nostr-protocol/nips/pull/2408). Merged [PR #2481](https://github.com/nostr-protocol/nips/pull/2481) only reformats and explains methods. |
+| [Open NIP-FB/NIP-FE PR #2488](https://github.com/nostr-protocol/nips/pull/2488), September 29 | Two new draft documents specify a multi-recipient encrypted envelope and private notes/replies/connections. Proposed kinds are `124`, `1370`, `1470`, `30378`. The author explicitly calls it a total draft and work in progress; kind allocation and connection-signature serialization remain open, with no confirmed implementation/security audit. The current #42 section describes pairwise alias tags as opaque values derived from shared secrets, not encrypted tags, and clearly labels the proposal as unimplemented. It omits the provisional NIP-FE name, avoiding confusion with Amethyst's unrelated label. |
+| [Open NIP-A3 PR #2475](https://github.com/nostr-protocol/nips/pull/2475), September 21 | **Already covered in #41; skip repetition.** Its optional `payto` ownership proof was described in the preceding published issue at lines 338–340, citing the same PR. No distinct subsequent status or source change is established, so the immediate-prior continuity gate fails even if the proposal's intrinsic quality score is high. |
+
+Other spec candidates lack a new qualifying user/protocol milestone in this window: merged NIPs [#2483](https://github.com/nostr-protocol/nips/pull/2483) only adds four previously defined kinds to the README table; open BUD-11 [#114](https://github.com/hzrd149/blossom/pull/114) makes a narrow encoding allowance; open Marmot [#426](https://github.com/marmot-protocol/marmot/pull/426) explicitly adds non-normative planning without adopted behavior or runtime; open NIP-69 [#2476](https://github.com/nostr-protocol/nips/pull/2476) is a narrow optional order-age tag. Older open proposals updated in the window show no status change established by this review.
+
+GATE: PASS

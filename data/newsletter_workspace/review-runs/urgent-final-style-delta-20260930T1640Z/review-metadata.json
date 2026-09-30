@@ -1,0 +1,89 @@
+{
+  "attempts": [
+    {
+      "attempt": 1,
+      "model": "grok-4.6[effort=high,fast=true]",
+      "outcome": "success",
+      "output_sha256": "516b0748d3a9f729489df618cbfb0f8c9e4131f503175212112daa1774b527ea",
+      "provider": "cursor",
+      "response_id": null,
+      "routing_attempts": [
+        {
+          "budget_seconds": 96.0,
+          "elapsed_seconds": 84.813,
+          "model": "grok-4.6",
+          "outcome": "success",
+          "provider": "cursor"
+        }
+      ],
+      "started_at": "2026-09-30T16:44:29.748183+00:00",
+      "usage": {}
+    }
+  ],
+  "completed_at": "2026-09-30T16:45:54.561893+00:00",
+  "elapsed_seconds": 84.814,
+  "endpoint": "cursor-acp",
+  "implementation_model": "gpt-6.1-sol",
+  "implementation_models": [
+    "gpt-6.1-sol"
+  ],
+  "instructions_sha256": "8b16c4175634c4add92bcfad6b4ddc4f1f259fb007c0aab95d31898c17111897",
+  "max_attempts": 1,
+  "max_output_tokens": 2200,
+  "requested_model": "grok-4.6",
+  "review_tier": "standard",
+  "routing_chain": [
+    {
+      "model": "grok-4.6",
+      "provider": "cursor"
+    },
+    {
+      "model": "composer-2.5",
+      "provider": "cursor"
+    },
+    {
+      "model": "claude-opus-5",
+      "provider": "claude-code"
+    },
+    {
+      "model": "google/gemini-3.1-pro-preview",
+      "provider": "openrouter"
+    }
+  ],
+  "schema_version": 1,
+  "selected_cost_usd": null,
+  "selected_endpoint": "cursor-acp",
+  "selected_family": "xai",
+  "selected_model": "grok-4.6[effort=high,fast=true]",
+  "selected_provider": "cursor",
+  "snapshots": [
+    {
+      "bytes": 111362,
+      "path": "/opt/data/compass-worktrees/2026-09-30/content/en/newsletters/2026-09-30-newsletter.md",
+      "sha256": "230ed2b42703ae41aef9927d9ca5dee367c33286710fdeacd55ddd0056d29a3a",
+      "stored_name": "001-230ed2b42703ae41-2026-09-30-newsletter.md"
+    },
+    {
+      "bytes": 5428,
+      "path": "/opt/data/tmp/compass_selection_urgent_20260930/final_style_delta.diff",
+      "sha256": "4ee74ab4dac7d0da21c5464ccd1d117154f446829352732eae9542cc47f57900",
+      "stored_name": "002-4ee74ab4dac7d0da-final_style_delta.diff"
+    },
+    {
+      "bytes": 2983,
+      "path": "/opt/data/compass-worktrees/2026-09-30/data/newsletter_workspace/review-runs/urgent-final-hidden-replies-20260930T1635Z/combined_final_receipt.json",
+      "sha256": "05e8110d78e93b49a227835da91043a0957526b06cb17763d55457a4b7d8972a",
+      "stored_name": "003-05e8110d78e93b49-combined_final_receipt.json"
+    }
+  ],
+  "started_at": "2026-09-30T16:44:29.746879+00:00",
+  "status": "completed",
+  "timeout_scope": "invocation_including_retries_and_cleanup",
+  "timeout_seconds": 480,
+  "tools_enabled": false,
+  "verdict": {
+    "findings": [],
+    "summary": "Exact diff has only three sentence replacements from cleared SHA 1ffcbcb385302acc630f64305864d546e1f61d6959acd80d0c173562fc2aaf72 to current SHA 230ed2b42703ae41aef9927d9ca5dee367c33286710fdeacd55ddd0056d29a3a; NIP-51 hidden-replies PR2489 paragraph is untouched. Nymbot keeps the same primal.net release link and listed features, replacing 'developer release claims rather than an independent privacy audit' with attribution to the developer release notes plus an explicit no-independent-privacy-audit hedge. Noteds keeps the same commit link and states Android NIP-55 signing in positive form; the Mangatsu sentence still defines NIP-55 as the Android external-signer interface, so protocol meaning holds without a new claim. WoT still states scores depend on the chosen roots and keeps the early-source/no-production-deployment close. No links, kinds, dates, or live URL/build/device checks were added. Claims, prose, links, topics, and continuity show no blocking or major regression; prior source and quality receipts remain applicable.",
+    "verdict": "PASS"
+  }
+}

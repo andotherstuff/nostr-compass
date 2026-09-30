@@ -59,12 +59,15 @@ def canonical_project_name(label: str) -> str:
 
 def heading_project(heading: str, known_projects: set[str] | None = None) -> str | None:
     """Extract a project label from a linked heading or a known-project prefix."""
-    linked = LINK_LABEL_RE.search(heading)
+    linked = LINK_LABEL_RE.match(heading.lstrip())
     if linked:
         return canonical_project_name(linked.group(1).strip())
     if known_projects:
         heading_folded = heading.casefold()
-        matches = [project for project in known_projects if heading_folded.startswith(project.casefold())]
+        matches = [project for project in known_projects
+                   if heading_folded.startswith(project.casefold())
+                   and (len(heading_folded) == len(project)
+                        or not heading_folded[len(project)].isalnum())]
         if matches:
             return max(matches, key=len)
     return canonical_project_name(heading)

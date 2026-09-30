@@ -67,6 +67,7 @@ NIP-92 is inline metadata, not a separate media object format. If a client needs
 - [Newsletter #33: Tagged releases](/en/newsletters/2026-07-29-newsletter/#tagged-releases)
 
 - [Newsletter #40: NIP-92 media attachments deep dive](/en/newsletters/2026-09-16-newsletter/#nip-92-media-attachments-metadata)
+- [Newsletter #42: Zap Cooking media tags](/en/newsletters/2026-09-30-newsletter/#zap-cooking-changes-how-account-history-can-be-recovered)
 
 **See also:**
 - [NIP-94: File Metadata](/en/topics/nip-94/)

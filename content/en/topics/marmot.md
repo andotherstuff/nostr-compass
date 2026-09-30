@@ -28,11 +28,15 @@ Recent work has focused on hardening and interop. Audit-driven fixes landed in e
 
 [MDK 0.9.9](https://github.com/marmot-protocol/mdk/releases/tag/v0.9.9) preserves manual chat-pin order, adds terminal group disbanding, and exposes richer reply and ambient group context to agent integrations.
 
+[MDK 0.11.0](https://github.com/marmot-protocol/mdk/releases/tag/v0.11.0) adds qualified account-history recovery, durable notices for unproven gaps, and a database-backed delivery queue. It also carries encrypted group polls and an Android native-library update. Applications need the matching generated bindings and native libraries, and account databases cannot be downgraded after the schema migration.
+
 In April 2026, Amethyst brought its embedded MDK into line with the MIP-01 and MIP-05 wire formats: [PR #2462](https://github.com/vitorpamplona/amethyst/pull/2462) added VarInt encoding of TLS-style length prefixes and round-trip validation against MDK test vectors, [PR #2435](https://github.com/vitorpamplona/amethyst/pull/2435) added MIP-00 KeyPackage Relay List support, and [PR #2436](https://github.com/vitorpamplona/amethyst/pull/2436) closed remaining admin-gate and media-handling gaps flagged by cross-client testing against White Noise. [PR #2466](https://github.com/vitorpamplona/amethyst/pull/2466) corrected MLS commit framing so encrypted welcome bytes match mdk-core output, and [PR #2471](https://github.com/vitorpamplona/amethyst/pull/2471) fixed an outer-layer decryption bug that caused state divergence between co-admins. Follow-up [PR #2493](https://github.com/vitorpamplona/amethyst/pull/2493) adds comprehensive MLS commit cryptography validation, and [PR #2488](https://github.com/vitorpamplona/amethyst/pull/2488) ships `amy`, a CLI interface for Marmot and MLS group operations driven from Amethyst's implementation.
 
 MDK landed [PR #261](https://github.com/marmot-protocol/mdk/pull/261) to compute a group's `RequiredCapabilities` as the LCD of invitee capabilities (unblocking mixed-version invites between Amethyst and White Noise), [PR #262](https://github.com/marmot-protocol/mdk/pull/262) to parse invitee key packages before persisting the creator's signer, [PR #264](https://github.com/marmot-protocol/mdk/pull/264) to converge the SelfUpdate wire format across implementations, and [PR #265](https://github.com/marmot-protocol/mdk/pull/265) to expose a `group_required_proposals` accessor.
 
 [whitenoise-rs](https://github.com/marmot-protocol/whitenoise-rs) is in the middle of a multi-phase refactor from global singletons to per-account `AccountSession` views: [PR #743](https://github.com/marmot-protocol/whitenoise-rs/pull/743) established the `AccountSession` and `AccountManager` scaffolding, and follow-on phases have migrated relay handles, drafts and settings, message ops, group read and write, membership, push notifications, key-package reads, group creation, and, as of [PR #770](https://github.com/marmot-protocol/whitenoise-rs/pull/770), session-scoped event dispatch. [marmot-ts PR #68](https://github.com/marmot-protocol/marmot-ts/pull/68) migrates the TypeScript client to addressable kind `30443` key packages.
+
+[White Noise Android’s September 30 release](https://github.com/marmot-protocol/whitenoise-android/releases/tag/android-v2026.9.30) brings encrypted group polls into its Android interface and shows notices when history recovery remains incomplete. Account-specific disappearing-message defaults apply to new conversations. [Later MDK source work](https://github.com/marmot-protocol/mdk/pull/2105) adds tagged custom-emoji sends and media reactions, separately from the tagged runtime release.
 
 ---
 
@@ -41,6 +45,7 @@ MDK landed [PR #261](https://github.com/marmot-protocol/mdk/pull/261) to compute
 - [MLS Protocol](https://messaginglayersecurity.rocks/)
 - [Marmot Development Kit (MDK)](https://github.com/marmot-protocol/mdk)
 - [MDK 0.9.9](https://github.com/marmot-protocol/mdk/releases/tag/v0.9.9) - Pinned-chat ordering, terminal group disbanding, and agent context
+- [MDK 0.11.0 release notes](https://github.com/marmot-protocol/mdk/blob/v0.11.0/docs/release/0.11.0.md)
 - [marmot-ts](https://github.com/marmot-protocol/marmot-ts)
 - [whitenoise-rs](https://github.com/marmot-protocol/whitenoise-rs)
 - [White Noise client](https://github.com/marmot-protocol/whitenoise)
@@ -67,6 +72,12 @@ MDK landed [PR #261](https://github.com/marmot-protocol/mdk/pull/261) to compute
 
 - [Newsletter #40: Marmot Protocol and MDK 0.10.0](/en/newsletters/2026-09-16-newsletter/#marmot-protocol-and-mdk-reach-v0100)
 - [Newsletter #41: MDK 0.10.4, encrypted polls, and moderation](/en/newsletters/2026-09-23-newsletter/#marmot-protocol-0104-makes-local-sends-durable)
+- [Newsletter #42: MDK 0.11.0 recovery](/en/newsletters/2026-09-30-newsletter/#marmot-mdk-0110-makes-account-history-gaps-visible)
+
+- [Newsletter #42: White Noise Android](/en/newsletters/2026-09-30-newsletter/#white-noise-android-adds-group-polls-and-account-specific-disappearing-message-defaults)
+- [Newsletter #42: MDK source work](/en/newsletters/2026-09-30-newsletter/#marmot-mdk-extends-polls-custom-emoji-and-account-metadata)
+
+- [Newsletter #42: Moyu workspace client](/en/newsletters/2026-09-30-newsletter/#moyu-opens-a-marmot-workspace-client)
 
 **See also:**
 - [MLS (Message Layer Security)](/en/topics/mls/)

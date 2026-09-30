@@ -1,0 +1,123 @@
+{
+  "attempts": [
+    {
+      "attempt": 1,
+      "model": "composer-2.5[fast=true]",
+      "outcome": "success",
+      "output_sha256": "7c17a188ffd1292a6f963e31eed0cbccf843ebe3162c029550f5b0f40f67e4e9",
+      "provider": "cursor",
+      "response_id": null,
+      "routing_attempts": [
+        {
+          "budget_seconds": 72.0,
+          "elapsed_seconds": 67.151,
+          "kind": "timeout",
+          "message": "Isolated review deadline",
+          "model": "grok-4.6",
+          "outcome": "failure",
+          "provider": "cursor",
+          "provider_wide": false
+        },
+        {
+          "budget_seconds": 73.212,
+          "elapsed_seconds": 53.507,
+          "model": "composer-2.5",
+          "outcome": "success",
+          "provider": "cursor"
+        }
+      ],
+      "started_at": "2026-09-30T15:14:41.769907+00:00",
+      "usage": {}
+    }
+  ],
+  "completed_at": "2026-09-30T15:16:42.428397+00:00",
+  "elapsed_seconds": 120.659,
+  "endpoint": "cursor-acp",
+  "implementation_model": "gpt-6.1-sol",
+  "implementation_models": [
+    "gpt-6.1-sol"
+  ],
+  "instructions_sha256": "4fba85f03dbfca2b3085cb9adc7b45eed59749869fe0d407a5217c3f121fc820",
+  "max_attempts": 1,
+  "max_output_tokens": 2600,
+  "requested_model": "grok-4.6",
+  "review_tier": "standard",
+  "routing_chain": [
+    {
+      "model": "grok-4.6",
+      "provider": "cursor"
+    },
+    {
+      "model": "composer-2.5",
+      "provider": "cursor"
+    },
+    {
+      "model": "claude-opus-5",
+      "provider": "claude-code"
+    },
+    {
+      "model": "google/gemini-3.1-pro-preview",
+      "provider": "openrouter"
+    }
+  ],
+  "schema_version": 1,
+  "selected_cost_usd": null,
+  "selected_endpoint": "cursor-acp",
+  "selected_family": "cursor",
+  "selected_model": "composer-2.5[fast=true]",
+  "selected_provider": "cursor",
+  "snapshots": [
+    {
+      "bytes": 33832,
+      "path": "/opt/data/compass-worktrees/2026-09-30/data/newsletter_workspace/selection_review_2026-09-30.md",
+      "sha256": "185c73a8e095e71e0b9f62c1f9089cbea3a80f1fea687986943bc07303a84c46",
+      "stored_name": "001-185c73a8e095e71e-selection_review_2026-09-30.md"
+    },
+    {
+      "bytes": 169136,
+      "path": "/opt/data/compass-worktrees/2026-09-30/data/newsletter_workspace/selection_coverage_2026-09-30.json",
+      "sha256": "bd2e82de912122c0a63d863bb2811a5894ba039b8246ea62f1e174ccc0ee2ffb",
+      "stored_name": "002-bd2e82de912122c0-selection_coverage_2026-09-30.json"
+    },
+    {
+      "bytes": 10697,
+      "path": "/opt/data/compass-worktrees/2026-09-30/data/newsletter_workspace/triage_2026-09-30.md",
+      "sha256": "bfbf785e42ef6aa02aab722f3ff9fbf6a62cde342df96fce44b7abdedf886d36",
+      "stored_name": "003-bfbf785e42ef6aa0-triage_2026-09-30.md"
+    },
+    {
+      "bytes": 62247,
+      "path": "/opt/data/compass-worktrees/2026-09-30/content/en/newsletters/2026-09-30-newsletter.md",
+      "sha256": "692281bd4d5fe7d5505e875236ff8451051611b17a9c08ab2ef8250d76b6a99c",
+      "stored_name": "004-692281bd4d5fe7d5-2026-09-30-newsletter.md"
+    },
+    {
+      "bytes": 8896,
+      "path": "/opt/data/compass-worktrees/2026-09-30/data/newsletter_workspace/review_claims_2026-09-30.md",
+      "sha256": "f93e2d8e7acf044fa0d6cb60cb9daf45452f0fc35ee94f44590dc1d370a21b38",
+      "stored_name": "005-f93e2d8e7acf044f-review_claims_2026-09-30.md"
+    },
+    {
+      "bytes": 25710,
+      "path": "/opt/data/compass-worktrees/2026-09-30/data/newsletter_workspace/release_triage_2026-09-30.md",
+      "sha256": "b95055d24ebc2e1cf17d6ec5cb98b4d4ef33b99c8856109b41b743cd96a8f550",
+      "stored_name": "006-b95055d24ebc2e1c-release_triage_2026-09-30.md"
+    },
+    {
+      "bytes": 154887,
+      "path": "/opt/data/tmp/compass_selection_urgent_20260930/selected_release_notes.json",
+      "sha256": "b03f8a00f41f9c8e90aa4a81efb6744bb3d814a340aeba238bef6d686c61c3cd",
+      "stored_name": "007-b03f8a00f41f9c8e-selected_release_notes.json"
+    }
+  ],
+  "started_at": "2026-09-30T15:14:41.768955+00:00",
+  "status": "completed",
+  "timeout_scope": "invocation_including_retries_and_cleanup",
+  "timeout_seconds": 360,
+  "tools_enabled": false,
+  "verdict": {
+    "findings": [],
+    "summary": "Within the Tuesday 2026-09-21T14:00:00Z through 2026-09-29T14:00:00Z window, the 53 selected story units align with triage and coverage mappings: hard gates, 8+/10 scoring, proposed/merged/released/observed distinctions, alpha and breaking-change caveats, and release-versus-development folds (Buzz, Divine, Wisp, nostr-java, Elisym, Mostro) match release_triage_2026-09-30.md and selection_coverage_2026-09-30.json. Compared against selected_release_notes.json bodies, lead paragraphs capture the substantive Nostr-facing deltas without treating maintenance bundles as standalone stories (notably nostream adaptive PoW with opt-in/default-off accuracy, Scramble per-group relay cutoffs and Obtainium filename break, Sonar alpha.15.1 republish hotfix with alpha.15 features still described, MDK gap-proof limits, Mostro library versus daemon rollout). The procedural GATE FAIL for missing independent review receipts is out of scope for this substantive pass.",
+    "verdict": "PASS"
+  }
+}

@@ -1,0 +1,83 @@
+{
+  "article_sha256": "18f3f80a31b011737722c1715490836a88141e7cf19ad1a9ddec7f3253a751ec",
+  "completed_at": "2026-09-30T16:47:40.444179+00:00",
+  "checks": [
+    {
+      "command": [
+        "/opt/hermes/.venv/bin/python3",
+        "scripts/check_newsletter_style.py",
+        "/opt/data/compass-worktrees/2026-09-30/content/en/newsletters/2026-09-30-newsletter.md"
+      ],
+      "command_sha256": "3808ef9dc14773a9ba0187a02b7e7c8912e927a9b1d56095dd9717a115d3d0a3",
+      "exit_code": 0,
+      "input_sha256": "18f3f80a31b011737722c1715490836a88141e7cf19ad1a9ddec7f3253a751ec",
+      "output_sha256": "56308b8a1d10e359b1f9a85f0f586b6c00630c325763586c3f40806ad976c111",
+      "output_path": "/opt/data/tmp/compass42_final_checks/check_0.log"
+    },
+    {
+      "command": [
+        "/opt/hermes/.venv/bin/python3",
+        "scripts/check_newsletter_paragraph_links.py",
+        "/opt/data/compass-worktrees/2026-09-30/content/en/newsletters/2026-09-30-newsletter.md"
+      ],
+      "command_sha256": "1ec17f02dd5da7f5c65511804e8807e6a952040e680c470fd01029acc15ab4cd",
+      "exit_code": 0,
+      "input_sha256": "18f3f80a31b011737722c1715490836a88141e7cf19ad1a9ddec7f3253a751ec",
+      "output_sha256": "6a48d503330eb39619efb589a29950721266e449ff6931b215fde8eab1ccab28",
+      "output_path": "/opt/data/tmp/compass42_final_checks/check_1.log"
+    },
+    {
+      "command": [
+        "/opt/hermes/.venv/bin/python3",
+        "scripts/check_newsletter_continuity.py",
+        "/opt/data/compass-worktrees/2026-09-30/content/en/newsletters/2026-09-30-newsletter.md",
+        "--history-dir",
+        "content/en/newsletters"
+      ],
+      "command_sha256": "34630b6c99f51be0527bcac2a5be4f06e0aa4dc50f186b10d7609cae54b05f0a",
+      "exit_code": 0,
+      "input_sha256": "18f3f80a31b011737722c1715490836a88141e7cf19ad1a9ddec7f3253a751ec",
+      "output_sha256": "b4c420106fa1ba582eb2e3fa29b507333675ad847e5020f3c1a2d4f9e8d2abd5",
+      "output_path": "/opt/data/tmp/compass42_final_checks/check_2.log"
+    },
+    {
+      "command": [
+        "/opt/hermes/.venv/bin/python3",
+        "scripts/check_month_end_history.py",
+        "/opt/data/compass-worktrees/2026-09-30/content/en/newsletters/2026-09-30-newsletter.md"
+      ],
+      "command_sha256": "687984e2ba61b3023674612f53beb4072afc9b91ac597f8f6b62520f39beabe4",
+      "exit_code": 0,
+      "input_sha256": "18f3f80a31b011737722c1715490836a88141e7cf19ad1a9ddec7f3253a751ec",
+      "output_sha256": "ee4807fff0f3a0b57df6ae105e33eb05b62c842e8cac2bb186b2ba2372eaca3d",
+      "output_path": "/opt/data/tmp/compass42_final_checks/check_3.log"
+    },
+    {
+      "command": [
+        "/opt/hermes/.venv/bin/python3",
+        "scripts/check_topic_backlinks.py",
+        "/opt/data/compass-worktrees/2026-09-30/content/en/newsletters/2026-09-30-newsletter.md",
+        "--rendered-html",
+        "public/en/newsletters/2026-09-30-newsletter/index.html"
+      ],
+      "command_sha256": "ea0fa564b5cfee627136f78e184008c367b684049c33728cf5c7ffb2d0dc9f9d",
+      "exit_code": 0,
+      "input_sha256": "18f3f80a31b011737722c1715490836a88141e7cf19ad1a9ddec7f3253a751ec",
+      "output_sha256": "2298ea0f5566d25218d8ffb1c3d5824b3f1d17dd3c325b282a32ae85362764b9",
+      "output_path": "/opt/data/tmp/compass42_final_checks/check_4.log"
+    },
+    {
+      "command": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "command_sha256": "b0cb0040bc422ebfb014e6153798728f63427fe39376489da5643dfed1f50179",
+      "exit_code": 0,
+      "input_sha256": "18f3f80a31b011737722c1715490836a88141e7cf19ad1a9ddec7f3253a751ec",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "output_path": "/opt/data/tmp/compass42_final_checks/check_5.log"
+    }
+  ],
+  "pass": true
+}

@@ -1,0 +1,3102 @@
+{
+  "projects": [
+    {
+      "branch_checks": [
+        {
+          "base_ref": "master",
+          "default_branch": "master",
+          "source_url": "https://github.com/andotherstuff/pensieve/pull/60",
+          "url": "https://github.com/andotherstuff/pensieve/pull/60"
+        }
+      ],
+      "hard_gate": {
+        "continuity_delta": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "primary_evidence": true
+      },
+      "primary_sources": [
+        "https://github.com/andotherstuff/pensieve/pull/60"
+      ],
+      "reason": "Selected distinct, material Nostr source progress: Nineteen PRs build archive and negentropy groundwork; PR #60 is already in the current In Development draft.",
+      "repo": "andotherstuff/pensieve",
+      "reviewed_pr_urls": [
+        "https://github.com/andotherstuff/pensieve/pull/43",
+        "https://github.com/andotherstuff/pensieve/pull/44",
+        "https://github.com/andotherstuff/pensieve/pull/40",
+        "https://github.com/andotherstuff/pensieve/pull/41",
+        "https://github.com/andotherstuff/pensieve/pull/45",
+        "https://github.com/andotherstuff/pensieve/pull/46",
+        "https://github.com/andotherstuff/pensieve/pull/48",
+        "https://github.com/andotherstuff/pensieve/pull/49",
+        "https://github.com/andotherstuff/pensieve/pull/50",
+        "https://github.com/andotherstuff/pensieve/pull/51",
+        "https://github.com/andotherstuff/pensieve/pull/52",
+        "https://github.com/andotherstuff/pensieve/pull/55",
+        "https://github.com/andotherstuff/pensieve/pull/53",
+        "https://github.com/andotherstuff/pensieve/pull/57",
+        "https://github.com/andotherstuff/pensieve/pull/54",
+        "https://github.com/andotherstuff/pensieve/pull/56",
+        "https://github.com/andotherstuff/pensieve/pull/58",
+        "https://github.com/andotherstuff/pensieve/pull/59",
+        "https://github.com/andotherstuff/pensieve/pull/60"
+      ],
+      "scores": {
+        "evidence_maturity": 2,
+        "explanatory_value": 2,
+        "nostr_significance": 2,
+        "novelty": 1,
+        "user_operator_impact": 2
+      },
+      "selected_pr_urls": [
+        "https://github.com/andotherstuff/pensieve/pull/60"
+      ],
+      "verdict": "include"
+    },
+    {
+      "branch_checks": [],
+      "hard_gate": {
+        "continuity_delta": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "primary_evidence": true
+      },
+      "primary_sources": [
+        "https://github.com/arbadacarbaYK/gittr/pull/46"
+      ],
+      "reason": "PR #46 repairs Nostr WoT extension identity/cache checks, but browser deployment remains unverified and the item is smaller than the selected stories.",
+      "repo": "arbadacarbaYK/gittr",
+      "reviewed_pr_urls": [
+        "https://github.com/arbadacarbaYK/gittr/pull/46"
+      ],
+      "scores": {
+        "evidence_maturity": 2,
+        "explanatory_value": 1,
+        "nostr_significance": 1,
+        "novelty": 1,
+        "user_operator_impact": 1
+      },
+      "selected_pr_urls": [],
+      "verdict": "skip"
+    },
+    {
+      "branch_checks": [
+        {
+          "base_ref": "master",
+          "default_branch": "master",
+          "source_url": "https://github.com/arkin0x/cyberspace/pull/36",
+          "url": "https://github.com/arkin0x/cyberspace/pull/36"
+        },
+        {
+          "base_ref": "master",
+          "default_branch": "master",
+          "source_url": "https://github.com/arkin0x/cyberspace/pull/38",
+          "url": "https://github.com/arkin0x/cyberspace/pull/38"
+        },
+        {
+          "base_ref": "master",
+          "default_branch": "master",
+          "source_url": "https://github.com/arkin0x/cyberspace/pull/40",
+          "url": "https://github.com/arkin0x/cyberspace/pull/40"
+        }
+      ],
+      "hard_gate": {
+        "continuity_delta": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "primary_evidence": true
+      },
+      "primary_sources": [
+        "https://github.com/arkin0x/cyberspace/pull/36",
+        "https://github.com/arkin0x/cyberspace/pull/38",
+        "https://github.com/arkin0x/cyberspace/pull/40"
+      ],
+      "reason": "Selected distinct, material Nostr source progress: DECK-0003 parts, bag references, and corrected addressable-event reference semantics: #36, #38, #40.",
+      "repo": "arkin0x/cyberspace",
+      "reviewed_pr_urls": [
+        "https://github.com/arkin0x/cyberspace/pull/36",
+        "https://github.com/arkin0x/cyberspace/pull/35",
+        "https://github.com/arkin0x/cyberspace/pull/38",
+        "https://github.com/arkin0x/cyberspace/pull/37",
+        "https://github.com/arkin0x/cyberspace/pull/39",
+        "https://github.com/arkin0x/cyberspace/pull/40",
+        "https://github.com/arkin0x/cyberspace/pull/41",
+        "https://github.com/arkin0x/cyberspace/pull/43",
+        "https://github.com/arkin0x/cyberspace/pull/45"
+      ],
+      "scores": {
+        "evidence_maturity": 2,
+        "explanatory_value": 2,
+        "nostr_significance": 2,
+        "novelty": 1,
+        "user_operator_impact": 2
+      },
+      "selected_pr_urls": [
+        "https://github.com/arkin0x/cyberspace/pull/36",
+        "https://github.com/arkin0x/cyberspace/pull/38",
+        "https://github.com/arkin0x/cyberspace/pull/40"
+      ],
+      "verdict": "include"
+    },
+    {
+      "branch_checks": [
+        {
+          "base_ref": "main",
+          "default_branch": "main",
+          "source_url": "https://github.com/barrydeen/wisp/pull/667",
+          "url": "https://github.com/barrydeen/wisp/pull/667"
+        }
+      ],
+      "hard_gate": {
+        "continuity_delta": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "primary_evidence": true
+      },
+      "primary_sources": [
+        "https://github.com/barrydeen/wisp/pull/667"
+      ],
+      "reason": "Selected distinct, material Nostr source progress: #667 fixes NIP-22 comment replies; frame 1.2.5 after last week's 1.2.4.",
+      "repo": "barrydeen/wisp",
+      "reviewed_pr_urls": [
+        "https://github.com/barrydeen/wisp/pull/662",
+        "https://github.com/barrydeen/wisp/pull/667"
+      ],
+      "scores": {
+        "evidence_maturity": 2,
+        "explanatory_value": 2,
+        "nostr_significance": 2,
+        "novelty": 1,
+        "user_operator_impact": 2
+      },
+      "selected_pr_urls": [
+        "https://github.com/barrydeen/wisp/pull/667"
+      ],
+      "verdict": "include"
+    },
+    {
+      "branch_checks": [],
+      "hard_gate": {
+        "continuity_delta": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "primary_evidence": true
+      },
+      "primary_sources": [
+        "https://github.com/BitcreditProtocol/bcr-relay/pull/34"
+      ],
+      "reason": "Only a CI timeout change.",
+      "repo": "BitcreditProtocol/bcr-relay",
+      "reviewed_pr_urls": [
+        "https://github.com/BitcreditProtocol/bcr-relay/pull/34"
+      ],
+      "scores": {
+        "evidence_maturity": 2,
+        "explanatory_value": 1,
+        "nostr_significance": 1,
+        "novelty": 1,
+        "user_operator_impact": 1
+      },
+      "selected_pr_urls": [],
+      "verdict": "skip"
+    },
+    {
+      "branch_checks": [],
+      "hard_gate": {
+        "continuity_delta": true,
+        "in_window_progress": true,
+        "nostr_surface": false,
+        "primary_evidence": true
+      },
+      "primary_sources": [
+        "https://github.com/BitcreditProtocol/Bitcredit-Core/pull/1021"
+      ],
+      "reason": "Six PRs concern e-bills, block publishing, CI and packaging; no clear new Nostr reader feature in the titles.",
+      "repo": "BitcreditProtocol/Bitcredit-Core",
+      "reviewed_pr_urls": [
+        "https://github.com/BitcreditProtocol/Bitcredit-Core/pull/1021",
+        "https://github.com/BitcreditProtocol/Bitcredit-Core/pull/1019",
+        "https://github.com/BitcreditProtocol/Bitcredit-Core/pull/961",
+        "https://github.com/BitcreditProtocol/Bitcredit-Core/pull/1025",
+        "https://github.com/BitcreditProtocol/Bitcredit-Core/pull/1026",
+        "https://github.com/BitcreditProtocol/Bitcredit-Core/pull/1027"
+      ],
+      "scores": {
+        "evidence_maturity": 2,
+        "explanatory_value": 1,
+        "nostr_significance": 1,
+        "novelty": 1,
+        "user_operator_impact": 1
+      },
+      "selected_pr_urls": [],
+      "verdict": "skip"
+    },
+    {
+      "branch_checks": [],
+      "hard_gate": {
+        "continuity_delta": true,
+        "in_window_progress": true,
+        "nostr_surface": false,
+        "primary_evidence": true
+      },
+      "primary_sources": [
+        "https://github.com/block-core/angor/pull/969"
+      ],
+      "reason": "#968 cleans up Nostr relay subscriptions, but the rest is Bitcoin wallet/indexer maintenance and this alone is minor.",
+      "repo": "block-core/angor",
+      "reviewed_pr_urls": [
+        "https://github.com/block-core/angor/pull/969",
+        "https://github.com/block-core/angor/pull/968",
+        "https://github.com/block-core/angor/pull/970",
+        "https://github.com/block-core/angor/pull/973",
+        "https://github.com/block-core/angor/pull/974",
+        "https://github.com/block-core/angor/pull/975"
+      ],
+      "scores": {
+        "evidence_maturity": 2,
+        "explanatory_value": 1,
+        "nostr_significance": 1,
+        "novelty": 1,
+        "user_operator_impact": 1
+      },
+      "selected_pr_urls": [],
+      "verdict": "skip"
+    },
+    {
+      "branch_checks": [
+        {
+          "base_ref": "main",
+          "default_branch": "main",
+          "source_url": "https://github.com/block/buzz/pull/7264",
+          "url": "https://github.com/block/buzz/pull/7264"
+        },
+        {
+          "base_ref": "main",
+          "default_branch": "main",
+          "source_url": "https://github.com/block/buzz/pull/7849",
+          "url": "https://github.com/block/buzz/pull/7849"
+        },
+        {
+          "base_ref": "main",
+          "default_branch": "main",
+          "source_url": "https://github.com/block/buzz/pull/7919",
+          "url": "https://github.com/block/buzz/pull/7919"
+        }
+      ],
+      "hard_gate": {
+        "continuity_delta": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "primary_evidence": true
+      },
+      "primary_sources": [
+        "https://github.com/block/buzz/pull/7264",
+        "https://github.com/block/buzz/pull/7849",
+        "https://github.com/block/buzz/pull/7919"
+      ],
+      "reason": "Selected distinct, material Nostr source progress: Current In Development draft covers channel artifacts #7919, NIP-FI ingress #7264, and encrypted key backup #7849. Thread windows #7823 and read-state snapshots #7572 are possible substitutions if the section is revised, not extra unbounded paragraphs.",
+      "repo": "block/buzz",
+      "reviewed_pr_urls": [
+        "https://github.com/block/buzz/pull/7735",
+        "https://github.com/block/buzz/pull/7756",
+        "https://github.com/block/buzz/pull/7783",
+        "https://github.com/block/buzz/pull/7572",
+        "https://github.com/block/buzz/pull/7298",
+        "https://github.com/block/buzz/pull/7302",
+        "https://github.com/block/buzz/pull/7770",
+        "https://github.com/block/buzz/pull/7492",
+        "https://github.com/block/buzz/pull/7790",
+        "https://github.com/block/buzz/pull/7784",
+        "https://github.com/block/buzz/pull/7803",
+        "https://github.com/block/buzz/pull/7744",
+        "https://github.com/block/buzz/pull/7672",
+        "https://github.com/block/buzz/pull/7821",
+        "https://github.com/block/buzz/pull/7817",
+        "https://github.com/block/buzz/pull/6780",
+        "https://github.com/block/buzz/pull/7840",
+        "https://github.com/block/buzz/pull/7820",
+        "https://github.com/block/buzz/pull/7841",
+        "https://github.com/block/buzz/pull/7845",
+        "https://github.com/block/buzz/pull/7819",
+        "https://github.com/block/buzz/pull/7823",
+        "https://github.com/block/buzz/pull/7829",
+        "https://github.com/block/buzz/pull/7844",
+        "https://github.com/block/buzz/pull/7559",
+        "https://github.com/block/buzz/pull/7842",
+        "https://github.com/block/buzz/pull/7851",
+        "https://github.com/block/buzz/pull/7850",
+        "https://github.com/block/buzz/pull/6948",
+        "https://github.com/block/buzz/pull/7869",
+        "https://github.com/block/buzz/pull/7806",
+        "https://github.com/block/buzz/pull/7870",
+        "https://github.com/block/buzz/pull/7867",
+        "https://github.com/block/buzz/pull/7677",
+        "https://github.com/block/buzz/pull/7873",
+        "https://github.com/block/buzz/pull/4768",
+        "https://github.com/block/buzz/pull/7853",
+        "https://github.com/block/buzz/pull/7881",
+        "https://github.com/block/buzz/pull/7879",
+        "https://github.com/block/buzz/pull/7326",
+        "https://github.com/block/buzz/pull/7897",
+        "https://github.com/block/buzz/pull/7900",
+        "https://github.com/block/buzz/pull/7264",
+        "https://github.com/block/buzz/pull/7903",
+        "https://github.com/block/buzz/pull/7843",
+        "https://github.com/block/buzz/pull/7877",
+        "https://github.com/block/buzz/pull/7791",
+        "https://github.com/block/buzz/pull/7793",
+        "https://github.com/block/buzz/pull/7932",
+        "https://github.com/block/buzz/pull/7933",
+        "https://github.com/block/buzz/pull/7912",
+        "https://github.com/block/buzz/pull/7341",
+        "https://github.com/block/buzz/pull/7288",
+        "https://github.com/block/buzz/pull/7805",
+        "https://github.com/block/buzz/pull/7818",
+        "https://github.com/block/buzz/pull/7953",
+        "https://github.com/block/buzz/pull/7849",
+        "https://github.com/block/buzz/pull/7854",
+        "https://github.com/block/buzz/pull/7955",
+        "https://github.com/block/buzz/pull/7951",
+        "https://github.com/block/buzz/pull/7827",
+        "https://github.com/block/buzz/pull/7619",
+        "https://github.com/block/buzz/pull/7919"
+      ],
+      "scores": {
+        "evidence_maturity": 2,
+        "explanatory_value": 2,
+        "nostr_significance": 2,
+        "novelty": 1,
+        "user_operator_impact": 2
+      },
+      "selected_pr_urls": [
+        "https://github.com/block/buzz/pull/7264",
+        "https://github.com/block/buzz/pull/7849",
+        "https://github.com/block/buzz/pull/7919"
+      ],
+      "verdict": "include"
+    },
+    {
+      "branch_checks": [],
+      "hard_gate": {
+        "continuity_delta": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "primary_evidence": true
+      },
+      "primary_sources": [
+        "https://github.com/breez/glow-web/pull/447"
+      ],
+      "reason": "Thirty-three wallet/payment UI and chain fixes; no material Nostr surface in the titles.",
+      "repo": "breez/glow-web",
+      "reviewed_pr_urls": [
+        "https://github.com/breez/glow-web/pull/447",
+        "https://github.com/breez/glow-web/pull/451",
+        "https://github.com/breez/glow-web/pull/449",
+        "https://github.com/breez/glow-web/pull/448",
+        "https://github.com/breez/glow-web/pull/452",
+        "https://github.com/breez/glow-web/pull/453",
+        "https://github.com/breez/glow-web/pull/454",
+        "https://github.com/breez/glow-web/pull/455",
+        "https://github.com/breez/glow-web/pull/456",
+        "https://github.com/breez/glow-web/pull/458",
+        "https://github.com/breez/glow-web/pull/459",
+        "https://github.com/breez/glow-web/pull/460",
+        "https://github.com/breez/glow-web/pull/464",
+        "https://github.com/breez/glow-web/pull/465",
+        "https://github.com/breez/glow-web/pull/466",
+        "https://github.com/breez/glow-web/pull/467",
+        "https://github.com/breez/glow-web/pull/470",
+        "https://github.com/breez/glow-web/pull/471",
+        "https://github.com/breez/glow-web/pull/472",
+        "https://github.com/breez/glow-web/pull/468",
+        "https://github.com/breez/glow-web/pull/473",
+        "https://github.com/breez/glow-web/pull/498",
+        "https://github.com/breez/glow-web/pull/489",
+        "https://github.com/breez/glow-web/pull/490",
+        "https://github.com/breez/glow-web/pull/492",
+        "https://github.com/breez/glow-web/pull/474",
+        "https://github.com/breez/glow-web/pull/494",
+        "https://github.com/breez/glow-web/pull/496",
+        "https://github.com/breez/glow-web/pull/497",
+        "https://github.com/breez/glow-web/pull/495",
+        "https://github.com/breez/glow-web/pull/500",
+        "https://github.com/breez/glow-web/pull/502",
+        "https://github.com/breez/glow-web/pull/504"
+      ],
+      "scores": {
+        "evidence_maturity": 2,
+        "explanatory_value": 1,
+        "nostr_significance": 1,
+        "novelty": 1,
+        "user_operator_impact": 1
+      },
+      "selected_pr_urls": [],
+      "verdict": "skip"
+    },
+    {
+      "branch_checks": [],
+      "hard_gate": {
+        "continuity_delta": false,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "primary_evidence": true
+      },
+      "primary_sources": [
+        "https://github.com/cameri/nostream/pull/786"
+      ],
+      "reason": "3.1.0 release draft already covers new relay admin dashboard and notifications; #784, #787.",
+      "repo": "Cameri/nostream",
+      "reviewed_pr_urls": [
+        "https://github.com/cameri/nostream/pull/786",
+        "https://github.com/cameri/nostream/pull/784",
+        "https://github.com/cameri/nostream/pull/787",
+        "https://github.com/cameri/nostream/pull/658",
+        "https://github.com/cameri/nostream/pull/791"
+      ],
+      "scores": {
+        "evidence_maturity": 2,
+        "explanatory_value": 1,
+        "nostr_significance": 1,
+        "novelty": 1,
+        "user_operator_impact": 1
+      },
+      "selected_pr_urls": [],
+      "verdict": "skip"
+    },
+    {
+      "branch_checks": [],
+      "hard_gate": {
+        "continuity_delta": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "primary_evidence": true
+      },
+      "primary_sources": [
+        "https://github.com/cashubtc/cashu.me/pull/617"
+      ],
+      "reason": "Cashu deposits and payment-request handling without a new Nostr surface.",
+      "repo": "cashubtc/cashu.me",
+      "reviewed_pr_urls": [
+        "https://github.com/cashubtc/cashu.me/pull/617",
+        "https://github.com/cashubtc/cashu.me/pull/592"
+      ],
+      "scores": {
+        "evidence_maturity": 2,
+        "explanatory_value": 1,
+        "nostr_significance": 1,
+        "novelty": 1,
+        "user_operator_impact": 1
+      },
+      "selected_pr_urls": [],
+      "verdict": "skip"
+    },
+    {
+      "branch_checks": [],
+      "hard_gate": {
+        "continuity_delta": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "primary_evidence": true
+      },
+      "primary_sources": [
+        "https://github.com/cashubtc/cdk/pull/2545"
+      ],
+      "reason": "Cashu wallet, mint, RPC and BOLT12 work without a new Nostr surface.",
+      "repo": "cashubtc/cdk",
+      "reviewed_pr_urls": [
+        "https://github.com/cashubtc/cdk/pull/2545",
+        "https://github.com/cashubtc/cdk/pull/2594",
+        "https://github.com/cashubtc/cdk/pull/2564",
+        "https://github.com/cashubtc/cdk/pull/2565",
+        "https://github.com/cashubtc/cdk/pull/2566",
+        "https://github.com/cashubtc/cdk/pull/2599",
+        "https://github.com/cashubtc/cdk/pull/2585",
+        "https://github.com/cashubtc/cdk/pull/2595",
+        "https://github.com/cashubtc/cdk/pull/2612",
+        "https://github.com/cashubtc/cdk/pull/2613",
+        "https://github.com/cashubtc/cdk/pull/2610",
+        "https://github.com/cashubtc/cdk/pull/2614",
+        "https://github.com/cashubtc/cdk/pull/2555",
+        "https://github.com/cashubtc/cdk/pull/2580",
+        "https://github.com/cashubtc/cdk/pull/2620"
+      ],
+      "scores": {
+        "evidence_maturity": 2,
+        "explanatory_value": 1,
+        "nostr_significance": 1,
+        "novelty": 1,
+        "user_operator_impact": 1
+      },
+      "selected_pr_urls": [],
+      "verdict": "skip"
+    },
+    {
+      "branch_checks": [],
+      "hard_gate": {
+        "continuity_delta": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "primary_evidence": true
+      },
+      "primary_sources": [
+        "https://github.com/cashubtc/nutshell/pull/1159"
+      ],
+      "reason": "Cashu mint, wallet, tests and CI without a new Nostr surface.",
+      "repo": "cashubtc/nutshell",
+      "reviewed_pr_urls": [
+        "https://github.com/cashubtc/nutshell/pull/1159",
+        "https://github.com/cashubtc/nutshell/pull/1172",
+        "https://github.com/cashubtc/nutshell/pull/1169",
+        "https://github.com/cashubtc/nutshell/pull/1095",
+        "https://github.com/cashubtc/nutshell/pull/1176",
+        "https://github.com/cashubtc/nutshell/pull/1164",
+        "https://github.com/cashubtc/nutshell/pull/1165",
+        "https://github.com/cashubtc/nutshell/pull/1174",
+        "https://github.com/cashubtc/nutshell/pull/1139"
+      ],
+      "scores": {
+        "evidence_maturity": 2,
+        "explanatory_value": 1,
+        "nostr_significance": 1,
+        "novelty": 1,
+        "user_operator_impact": 1
+      },
+      "selected_pr_urls": [],
+      "verdict": "skip"
+    },
+    {
+      "branch_checks": [],
+      "hard_gate": {
+        "continuity_delta": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "primary_evidence": true
+      },
+      "primary_sources": [
+        "https://github.com/ChadFarrow/stablekraft-app/pull/276"
+      ],
+      "reason": "Relay-route WebSocket fix in #276 is incidental to security/build/site maintenance.",
+      "repo": "ChadFarrow/stablekraft-app",
+      "reviewed_pr_urls": [
+        "https://github.com/ChadFarrow/stablekraft-app/pull/276",
+        "https://github.com/ChadFarrow/stablekraft-app/pull/278",
+        "https://github.com/ChadFarrow/stablekraft-app/pull/279",
+        "https://github.com/ChadFarrow/stablekraft-app/pull/277",
+        "https://github.com/ChadFarrow/stablekraft-app/pull/281",
+        "https://github.com/ChadFarrow/stablekraft-app/pull/282"
+      ],
+      "scores": {
+        "evidence_maturity": 2,
+        "explanatory_value": 1,
+        "nostr_significance": 1,
+        "novelty": 1,
+        "user_operator_impact": 1
+      },
+      "selected_pr_urls": [],
+      "verdict": "skip"
+    },
+    {
+      "branch_checks": [
+        {
+          "base_ref": "main",
+          "default_branch": "main",
+          "source_url": "https://github.com/Conduit-BTC/conduit-mono/pull/529",
+          "url": "https://github.com/Conduit-BTC/conduit-mono/pull/529"
+        },
+        {
+          "base_ref": "main",
+          "default_branch": "main",
+          "source_url": "https://github.com/Conduit-BTC/conduit-mono/pull/533",
+          "url": "https://github.com/Conduit-BTC/conduit-mono/pull/533"
+        },
+        {
+          "base_ref": "main",
+          "default_branch": "main",
+          "source_url": "https://github.com/Conduit-BTC/conduit-mono/pull/483",
+          "url": "https://github.com/Conduit-BTC/conduit-mono/pull/483"
+        },
+        {
+          "base_ref": "main",
+          "default_branch": "main",
+          "source_url": "https://github.com/Conduit-BTC/conduit-mono/pull/488",
+          "url": "https://github.com/Conduit-BTC/conduit-mono/pull/488"
+        }
+      ],
+      "hard_gate": {
+        "continuity_delta": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "primary_evidence": true
+      },
+      "primary_sources": [
+        "https://github.com/Conduit-BTC/conduit-mono/pull/529",
+        "https://github.com/Conduit-BTC/conduit-mono/pull/533",
+        "https://github.com/Conduit-BTC/conduit-mono/pull/483",
+        "https://github.com/Conduit-BTC/conduit-mono/pull/488"
+      ],
+      "reason": "Selected distinct, material Nostr source progress: Current development draft covers relay acceptance #483 and #488. Add the distinct NIP-46 signer-recovery sequence #529, #533, and perhaps NIP-50 product search #569 if space allows; check deployment state before claiming availability.",
+      "repo": "Conduit-BTC/conduit-mono",
+      "reviewed_pr_urls": [
+        "https://github.com/Conduit-BTC/conduit-mono/pull/485",
+        "https://github.com/Conduit-BTC/conduit-mono/pull/509",
+        "https://github.com/Conduit-BTC/conduit-mono/pull/517",
+        "https://github.com/Conduit-BTC/conduit-mono/pull/513",
+        "https://github.com/Conduit-BTC/conduit-mono/pull/512",
+        "https://github.com/Conduit-BTC/conduit-mono/pull/511",
+        "https://github.com/Conduit-BTC/conduit-mono/pull/518",
+        "https://github.com/Conduit-BTC/conduit-mono/pull/528",
+        "https://github.com/Conduit-BTC/conduit-mono/pull/531",
+        "https://github.com/Conduit-BTC/conduit-mono/pull/534",
+        "https://github.com/Conduit-BTC/conduit-mono/pull/529",
+        "https://github.com/Conduit-BTC/conduit-mono/pull/533",
+        "https://github.com/Conduit-BTC/conduit-mono/pull/510",
+        "https://github.com/Conduit-BTC/conduit-mono/pull/530",
+        "https://github.com/Conduit-BTC/conduit-mono/pull/543",
+        "https://github.com/Conduit-BTC/conduit-mono/pull/544",
+        "https://github.com/Conduit-BTC/conduit-mono/pull/536",
+        "https://github.com/Conduit-BTC/conduit-mono/pull/545",
+        "https://github.com/Conduit-BTC/conduit-mono/pull/537",
+        "https://github.com/Conduit-BTC/conduit-mono/pull/546",
+        "https://github.com/Conduit-BTC/conduit-mono/pull/541",
+        "https://github.com/Conduit-BTC/conduit-mono/pull/540",
+        "https://github.com/Conduit-BTC/conduit-mono/pull/539",
+        "https://github.com/Conduit-BTC/conduit-mono/pull/487",
+        "https://github.com/Conduit-BTC/conduit-mono/pull/483",
+        "https://github.com/Conduit-BTC/conduit-mono/pull/488",
+        "https://github.com/Conduit-BTC/conduit-mono/pull/549",
+        "https://github.com/Conduit-BTC/conduit-mono/pull/548",
+        "https://github.com/Conduit-BTC/conduit-mono/pull/538",
+        "https://github.com/Conduit-BTC/conduit-mono/pull/552",
+        "https://github.com/Conduit-BTC/conduit-mono/pull/553",
+        "https://github.com/Conduit-BTC/conduit-mono/pull/551",
+        "https://github.com/Conduit-BTC/conduit-mono/pull/547",
+        "https://github.com/Conduit-BTC/conduit-mono/pull/555",
+        "https://github.com/Conduit-BTC/conduit-mono/pull/556",
+        "https://github.com/Conduit-BTC/conduit-mono/pull/557",
+        "https://github.com/Conduit-BTC/conduit-mono/pull/559",
+        "https://github.com/Conduit-BTC/conduit-mono/pull/562",
+        "https://github.com/Conduit-BTC/conduit-mono/pull/568",
+        "https://github.com/Conduit-BTC/conduit-mono/pull/570",
+        "https://github.com/Conduit-BTC/conduit-mono/pull/571",
+        "https://github.com/Conduit-BTC/conduit-mono/pull/566",
+        "https://github.com/Conduit-BTC/conduit-mono/pull/569",
+        "https://github.com/Conduit-BTC/conduit-mono/pull/572",
+        "https://github.com/Conduit-BTC/conduit-mono/pull/550",
+        "https://github.com/Conduit-BTC/conduit-mono/pull/576",
+        "https://github.com/Conduit-BTC/conduit-mono/pull/578",
+        "https://github.com/Conduit-BTC/conduit-mono/pull/502",
+        "https://github.com/Conduit-BTC/conduit-mono/pull/532",
+        "https://github.com/Conduit-BTC/conduit-mono/pull/564",
+        "https://github.com/Conduit-BTC/conduit-mono/pull/573",
+        "https://github.com/Conduit-BTC/conduit-mono/pull/535",
+        "https://github.com/Conduit-BTC/conduit-mono/pull/589",
+        "https://github.com/Conduit-BTC/conduit-mono/pull/563"
+      ],
+      "scores": {
+        "evidence_maturity": 2,
+        "explanatory_value": 2,
+        "nostr_significance": 2,
+        "novelty": 1,
+        "user_operator_impact": 2
+      },
+      "selected_pr_urls": [
+        "https://github.com/Conduit-BTC/conduit-mono/pull/529",
+        "https://github.com/Conduit-BTC/conduit-mono/pull/533",
+        "https://github.com/Conduit-BTC/conduit-mono/pull/483",
+        "https://github.com/Conduit-BTC/conduit-mono/pull/488"
+      ],
+      "verdict": "include"
+    },
+    {
+      "branch_checks": [],
+      "hard_gate": {
+        "continuity_delta": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "primary_evidence": true
+      },
+      "primary_sources": [
+        "https://github.com/Conduit-BTC/conduit-relay/pull/15"
+      ],
+      "reason": "Sole PR changes CI model routing.",
+      "repo": "Conduit-BTC/conduit-relay",
+      "reviewed_pr_urls": [
+        "https://github.com/Conduit-BTC/conduit-relay/pull/15"
+      ],
+      "scores": {
+        "evidence_maturity": 2,
+        "explanatory_value": 1,
+        "nostr_significance": 1,
+        "novelty": 1,
+        "user_operator_impact": 1
+      },
+      "selected_pr_urls": [],
+      "verdict": "skip"
+    },
+    {
+      "branch_checks": [
+        {
+          "base_ref": "master",
+          "default_branch": "master",
+          "source_url": "https://github.com/ContextVM/sdk/pull/101",
+          "url": "https://github.com/ContextVM/sdk/pull/101"
+        },
+        {
+          "base_ref": "master",
+          "default_branch": "master",
+          "source_url": "https://github.com/ContextVM/sdk/pull/103",
+          "url": "https://github.com/ContextVM/sdk/pull/103"
+        }
+      ],
+      "hard_gate": {
+        "continuity_delta": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "primary_evidence": true
+      },
+      "primary_sources": [
+        "https://github.com/ContextVM/sdk/pull/101",
+        "https://github.com/ContextVM/sdk/pull/103"
+      ],
+      "reason": "Selected distinct, material Nostr source progress: #103 prevents duplicate plaintext tool calls over multiple relays; #101 targets subscribed clients for resource notifications.",
+      "repo": "contextvm/ts-sdk",
+      "reviewed_pr_urls": [
+        "https://github.com/ContextVM/sdk/pull/101",
+        "https://github.com/ContextVM/sdk/pull/103",
+        "https://github.com/ContextVM/sdk/pull/104"
+      ],
+      "scores": {
+        "evidence_maturity": 2,
+        "explanatory_value": 2,
+        "nostr_significance": 2,
+        "novelty": 1,
+        "user_operator_impact": 2
+      },
+      "selected_pr_urls": [
+        "https://github.com/ContextVM/sdk/pull/101",
+        "https://github.com/ContextVM/sdk/pull/103"
+      ],
+      "verdict": "include"
+    },
+    {
+      "branch_checks": [],
+      "hard_gate": {
+        "continuity_delta": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "primary_evidence": true
+      },
+      "primary_sources": [
+        "https://github.com/coracle-social/coracle/pull/674"
+      ],
+      "reason": "The protected-note PR merged into dev, while live master lacks that merge commit. Default-branch integration is unverified; do not imply it is available.",
+      "repo": "coracle-social/coracle",
+      "reviewed_pr_urls": [
+        "https://github.com/coracle-social/coracle/pull/674"
+      ],
+      "scores": {
+        "evidence_maturity": 2,
+        "explanatory_value": 1,
+        "nostr_significance": 1,
+        "novelty": 1,
+        "user_operator_impact": 1
+      },
+      "selected_pr_urls": [],
+      "verdict": "skip"
+    },
+    {
+      "branch_checks": [
+        {
+          "base_ref": "master",
+          "default_branch": "master",
+          "source_url": "https://github.com/Cordn-msg/cordn/pull/9",
+          "url": "https://github.com/Cordn-msg/cordn/pull/9"
+        }
+      ],
+      "hard_gate": {
+        "continuity_delta": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "primary_evidence": true
+      },
+      "primary_sources": [
+        "https://github.com/Cordn-msg/cordn/pull/9"
+      ],
+      "reason": "Selected distinct, material Nostr source progress: #9 specifies multi-device coordinator relay hints; #8 adds CLI transport encryption but has no explanatory body in the fetch.",
+      "repo": "Cordn-msg/cordn",
+      "reviewed_pr_urls": [
+        "https://github.com/Cordn-msg/cordn/pull/8",
+        "https://github.com/Cordn-msg/cordn/pull/9"
+      ],
+      "scores": {
+        "evidence_maturity": 2,
+        "explanatory_value": 2,
+        "nostr_significance": 2,
+        "novelty": 1,
+        "user_operator_impact": 2
+      },
+      "selected_pr_urls": [
+        "https://github.com/Cordn-msg/cordn/pull/9"
+      ],
+      "verdict": "include"
+    },
+    {
+      "branch_checks": [],
+      "hard_gate": {
+        "continuity_delta": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "primary_evidence": true
+      },
+      "primary_sources": [
+        "https://github.com/daywalker90/cln-nip47/pull/69"
+      ],
+      "reason": "CI/dependency work and 0.2.1 preparation; no new NWC behavior in the titles.",
+      "repo": "daywalker90/cln-nip47",
+      "reviewed_pr_urls": [
+        "https://github.com/daywalker90/cln-nip47/pull/69",
+        "https://github.com/daywalker90/cln-nip47/pull/71",
+        "https://github.com/daywalker90/cln-nip47/pull/73"
+      ],
+      "scores": {
+        "evidence_maturity": 2,
+        "explanatory_value": 1,
+        "nostr_significance": 1,
+        "novelty": 1,
+        "user_operator_impact": 1
+      },
+      "selected_pr_urls": [],
+      "verdict": "skip"
+    },
+    {
+      "branch_checks": [
+        {
+          "base_ref": "main",
+          "default_branch": "main",
+          "source_url": "https://github.com/divinevideo/divine-mobile/pull/9486",
+          "url": "https://github.com/divinevideo/divine-mobile/pull/9486"
+        },
+        {
+          "base_ref": "main",
+          "default_branch": "main",
+          "source_url": "https://github.com/divinevideo/divine-mobile/pull/9446",
+          "url": "https://github.com/divinevideo/divine-mobile/pull/9446"
+        }
+      ],
+      "hard_gate": {
+        "continuity_delta": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "primary_evidence": true
+      },
+      "primary_sources": [
+        "https://github.com/divinevideo/divine-mobile/pull/9486",
+        "https://github.com/divinevideo/divine-mobile/pull/9446"
+      ],
+      "reason": "Selected distinct, material Nostr source progress: Among 134 PRs, encrypted video DMs #9486 are already covered in the development draft. Other Nostr fixes are smaller; do not treat every UI/editor change as a separate Nostr story.",
+      "repo": "divinevideo/divine-mobile",
+      "reviewed_pr_urls": [
+        "https://github.com/divinevideo/divine-mobile/pull/9388",
+        "https://github.com/divinevideo/divine-mobile/pull/9397",
+        "https://github.com/divinevideo/divine-mobile/pull/9398",
+        "https://github.com/divinevideo/divine-mobile/pull/9377",
+        "https://github.com/divinevideo/divine-mobile/pull/9379",
+        "https://github.com/divinevideo/divine-mobile/pull/9399",
+        "https://github.com/divinevideo/divine-mobile/pull/9401",
+        "https://github.com/divinevideo/divine-mobile/pull/9402",
+        "https://github.com/divinevideo/divine-mobile/pull/9403",
+        "https://github.com/divinevideo/divine-mobile/pull/9275",
+        "https://github.com/divinevideo/divine-mobile/pull/9394",
+        "https://github.com/divinevideo/divine-mobile/pull/9408",
+        "https://github.com/divinevideo/divine-mobile/pull/9369",
+        "https://github.com/divinevideo/divine-mobile/pull/9383",
+        "https://github.com/divinevideo/divine-mobile/pull/9412",
+        "https://github.com/divinevideo/divine-mobile/pull/9384",
+        "https://github.com/divinevideo/divine-mobile/pull/9391",
+        "https://github.com/divinevideo/divine-mobile/pull/9428",
+        "https://github.com/divinevideo/divine-mobile/pull/9435",
+        "https://github.com/divinevideo/divine-mobile/pull/9440",
+        "https://github.com/divinevideo/divine-mobile/pull/9430",
+        "https://github.com/divinevideo/divine-mobile/pull/9432",
+        "https://github.com/divinevideo/divine-mobile/pull/9410",
+        "https://github.com/divinevideo/divine-mobile/pull/9406",
+        "https://github.com/divinevideo/divine-mobile/pull/9439",
+        "https://github.com/divinevideo/divine-mobile/pull/9444",
+        "https://github.com/divinevideo/divine-mobile/pull/9456",
+        "https://github.com/divinevideo/divine-mobile/pull/9448",
+        "https://github.com/divinevideo/divine-mobile/pull/9376",
+        "https://github.com/divinevideo/divine-mobile/pull/9434",
+        "https://github.com/divinevideo/divine-mobile/pull/9395",
+        "https://github.com/divinevideo/divine-mobile/pull/9460",
+        "https://github.com/divinevideo/divine-mobile/pull/9466",
+        "https://github.com/divinevideo/divine-mobile/pull/9457",
+        "https://github.com/divinevideo/divine-mobile/pull/9445",
+        "https://github.com/divinevideo/divine-mobile/pull/9479",
+        "https://github.com/divinevideo/divine-mobile/pull/9413",
+        "https://github.com/divinevideo/divine-mobile/pull/9473",
+        "https://github.com/divinevideo/divine-mobile/pull/9464",
+        "https://github.com/divinevideo/divine-mobile/pull/9469",
+        "https://github.com/divinevideo/divine-mobile/pull/9474",
+        "https://github.com/divinevideo/divine-mobile/pull/9431",
+        "https://github.com/divinevideo/divine-mobile/pull/9458",
+        "https://github.com/divinevideo/divine-mobile/pull/9462",
+        "https://github.com/divinevideo/divine-mobile/pull/9481",
+        "https://github.com/divinevideo/divine-mobile/pull/9372",
+        "https://github.com/divinevideo/divine-mobile/pull/9447",
+        "https://github.com/divinevideo/divine-mobile/pull/9486",
+        "https://github.com/divinevideo/divine-mobile/pull/9489",
+        "https://github.com/divinevideo/divine-mobile/pull/9498",
+        "https://github.com/divinevideo/divine-mobile/pull/9390",
+        "https://github.com/divinevideo/divine-mobile/pull/9497",
+        "https://github.com/divinevideo/divine-mobile/pull/9446",
+        "https://github.com/divinevideo/divine-mobile/pull/9478",
+        "https://github.com/divinevideo/divine-mobile/pull/9301",
+        "https://github.com/divinevideo/divine-mobile/pull/9513",
+        "https://github.com/divinevideo/divine-mobile/pull/9508",
+        "https://github.com/divinevideo/divine-mobile/pull/9500",
+        "https://github.com/divinevideo/divine-mobile/pull/9504",
+        "https://github.com/divinevideo/divine-mobile/pull/9437",
+        "https://github.com/divinevideo/divine-mobile/pull/9518",
+        "https://github.com/divinevideo/divine-mobile/pull/9519",
+        "https://github.com/divinevideo/divine-mobile/pull/9488",
+        "https://github.com/divinevideo/divine-mobile/pull/9547",
+        "https://github.com/divinevideo/divine-mobile/pull/9516",
+        "https://github.com/divinevideo/divine-mobile/pull/9531",
+        "https://github.com/divinevideo/divine-mobile/pull/9534",
+        "https://github.com/divinevideo/divine-mobile/pull/9535",
+        "https://github.com/divinevideo/divine-mobile/pull/9502",
+        "https://github.com/divinevideo/divine-mobile/pull/9514",
+        "https://github.com/divinevideo/divine-mobile/pull/9556",
+        "https://github.com/divinevideo/divine-mobile/pull/9529",
+        "https://github.com/divinevideo/divine-mobile/pull/9536",
+        "https://github.com/divinevideo/divine-mobile/pull/9538",
+        "https://github.com/divinevideo/divine-mobile/pull/9542",
+        "https://github.com/divinevideo/divine-mobile/pull/9545",
+        "https://github.com/divinevideo/divine-mobile/pull/9555",
+        "https://github.com/divinevideo/divine-mobile/pull/9570",
+        "https://github.com/divinevideo/divine-mobile/pull/9566",
+        "https://github.com/divinevideo/divine-mobile/pull/9551",
+        "https://github.com/divinevideo/divine-mobile/pull/9571",
+        "https://github.com/divinevideo/divine-mobile/pull/9569",
+        "https://github.com/divinevideo/divine-mobile/pull/9568",
+        "https://github.com/divinevideo/divine-mobile/pull/9389",
+        "https://github.com/divinevideo/divine-mobile/pull/9572",
+        "https://github.com/divinevideo/divine-mobile/pull/9577",
+        "https://github.com/divinevideo/divine-mobile/pull/9579",
+        "https://github.com/divinevideo/divine-mobile/pull/9580",
+        "https://github.com/divinevideo/divine-mobile/pull/9540",
+        "https://github.com/divinevideo/divine-mobile/pull/9578",
+        "https://github.com/divinevideo/divine-mobile/pull/9575",
+        "https://github.com/divinevideo/divine-mobile/pull/9581",
+        "https://github.com/divinevideo/divine-mobile/pull/9600",
+        "https://github.com/divinevideo/divine-mobile/pull/9583",
+        "https://github.com/divinevideo/divine-mobile/pull/9599",
+        "https://github.com/divinevideo/divine-mobile/pull/9605",
+        "https://github.com/divinevideo/divine-mobile/pull/9606",
+        "https://github.com/divinevideo/divine-mobile/pull/9607",
+        "https://github.com/divinevideo/divine-mobile/pull/9609",
+        "https://github.com/divinevideo/divine-mobile/pull/9610",
+        "https://github.com/divinevideo/divine-mobile/pull/9611",
+        "https://github.com/divinevideo/divine-mobile/pull/9612",
+        "https://github.com/divinevideo/divine-mobile/pull/9616",
+        "https://github.com/divinevideo/divine-mobile/pull/9617",
+        "https://github.com/divinevideo/divine-mobile/pull/9618",
+        "https://github.com/divinevideo/divine-mobile/pull/9623",
+        "https://github.com/divinevideo/divine-mobile/pull/9591",
+        "https://github.com/divinevideo/divine-mobile/pull/9590",
+        "https://github.com/divinevideo/divine-mobile/pull/9584",
+        "https://github.com/divinevideo/divine-mobile/pull/9585",
+        "https://github.com/divinevideo/divine-mobile/pull/9613",
+        "https://github.com/divinevideo/divine-mobile/pull/9624",
+        "https://github.com/divinevideo/divine-mobile/pull/9625",
+        "https://github.com/divinevideo/divine-mobile/pull/9626",
+        "https://github.com/divinevideo/divine-mobile/pull/9628",
+        "https://github.com/divinevideo/divine-mobile/pull/9629",
+        "https://github.com/divinevideo/divine-mobile/pull/9630",
+        "https://github.com/divinevideo/divine-mobile/pull/9632",
+        "https://github.com/divinevideo/divine-mobile/pull/9634",
+        "https://github.com/divinevideo/divine-mobile/pull/9595",
+        "https://github.com/divinevideo/divine-mobile/pull/9592",
+        "https://github.com/divinevideo/divine-mobile/pull/9594",
+        "https://github.com/divinevideo/divine-mobile/pull/9631",
+        "https://github.com/divinevideo/divine-mobile/pull/9635",
+        "https://github.com/divinevideo/divine-mobile/pull/9627",
+        "https://github.com/divinevideo/divine-mobile/pull/9636",
+        "https://github.com/divinevideo/divine-mobile/pull/9637",
+        "https://github.com/divinevideo/divine-mobile/pull/8467",
+        "https://github.com/divinevideo/divine-mobile/pull/9597",
+        "https://github.com/divinevideo/divine-mobile/pull/8673",
+        "https://github.com/divinevideo/divine-mobile/pull/9653",
+        "https://github.com/divinevideo/divine-mobile/pull/9646",
+        "https://github.com/divinevideo/divine-mobile/pull/9649",
+        "https://github.com/divinevideo/divine-mobile/pull/9642"
+      ],
+      "scores": {
+        "evidence_maturity": 2,
+        "explanatory_value": 2,
+        "nostr_significance": 2,
+        "novelty": 1,
+        "user_operator_impact": 2
+      },
+      "selected_pr_urls": [
+        "https://github.com/divinevideo/divine-mobile/pull/9486",
+        "https://github.com/divinevideo/divine-mobile/pull/9446"
+      ],
+      "verdict": "include"
+    },
+    {
+      "branch_checks": [
+        {
+          "base_ref": "main",
+          "default_branch": "main",
+          "source_url": "https://github.com/elisymlabs/elisym/pull/120",
+          "url": "https://github.com/elisymlabs/elisym/pull/120"
+        },
+        {
+          "base_ref": "main",
+          "default_branch": "main",
+          "source_url": "https://github.com/elisymlabs/elisym/pull/131",
+          "url": "https://github.com/elisymlabs/elisym/pull/131"
+        },
+        {
+          "base_ref": "main",
+          "default_branch": "main",
+          "source_url": "https://github.com/elisymlabs/elisym/pull/133",
+          "url": "https://github.com/elisymlabs/elisym/pull/133"
+        }
+      ],
+      "hard_gate": {
+        "continuity_delta": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "primary_evidence": true
+      },
+      "primary_sources": [
+        "https://github.com/elisymlabs/elisym/pull/120",
+        "https://github.com/elisymlabs/elisym/pull/131",
+        "https://github.com/elisymlabs/elisym/pull/133"
+      ],
+      "reason": "Selected distinct, material Nostr source progress: Signed commerce and private orders #120, checkout #131, and merchant node #133 already have release and development sections.",
+      "repo": "elisymlabs/elisym",
+      "reviewed_pr_urls": [
+        "https://github.com/elisymlabs/elisym/pull/107",
+        "https://github.com/elisymlabs/elisym/pull/112",
+        "https://github.com/elisymlabs/elisym/pull/109",
+        "https://github.com/elisymlabs/elisym/pull/110",
+        "https://github.com/elisymlabs/elisym/pull/111",
+        "https://github.com/elisymlabs/elisym/pull/113",
+        "https://github.com/elisymlabs/elisym/pull/114",
+        "https://github.com/elisymlabs/elisym/pull/115",
+        "https://github.com/elisymlabs/elisym/pull/117",
+        "https://github.com/elisymlabs/elisym/pull/118",
+        "https://github.com/elisymlabs/elisym/pull/116",
+        "https://github.com/elisymlabs/elisym/pull/119",
+        "https://github.com/elisymlabs/elisym/pull/120",
+        "https://github.com/elisymlabs/elisym/pull/123",
+        "https://github.com/elisymlabs/elisym/pull/124",
+        "https://github.com/elisymlabs/elisym/pull/125",
+        "https://github.com/elisymlabs/elisym/pull/126",
+        "https://github.com/elisymlabs/elisym/pull/127",
+        "https://github.com/elisymlabs/elisym/pull/128",
+        "https://github.com/elisymlabs/elisym/pull/129",
+        "https://github.com/elisymlabs/elisym/pull/130",
+        "https://github.com/elisymlabs/elisym/pull/131",
+        "https://github.com/elisymlabs/elisym/pull/132",
+        "https://github.com/elisymlabs/elisym/pull/133"
+      ],
+      "scores": {
+        "evidence_maturity": 2,
+        "explanatory_value": 2,
+        "nostr_significance": 2,
+        "novelty": 1,
+        "user_operator_impact": 2
+      },
+      "selected_pr_urls": [
+        "https://github.com/elisymlabs/elisym/pull/120",
+        "https://github.com/elisymlabs/elisym/pull/131",
+        "https://github.com/elisymlabs/elisym/pull/133"
+      ],
+      "verdict": "include"
+    },
+    {
+      "branch_checks": [],
+      "hard_gate": {
+        "continuity_delta": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "primary_evidence": true
+      },
+      "primary_sources": [
+        "https://github.com/fiatjaf/nak/pull/218"
+      ],
+      "reason": "#217 adds nak event --github for GitHub Actions, a narrow CLI convenience.",
+      "repo": "fiatjaf/nak",
+      "reviewed_pr_urls": [
+        "https://github.com/fiatjaf/nak/pull/218",
+        "https://github.com/fiatjaf/nak/pull/219",
+        "https://github.com/fiatjaf/nak/pull/220",
+        "https://github.com/fiatjaf/nak/pull/217"
+      ],
+      "scores": {
+        "evidence_maturity": 2,
+        "explanatory_value": 1,
+        "nostr_significance": 1,
+        "novelty": 1,
+        "user_operator_impact": 1
+      },
+      "selected_pr_urls": [],
+      "verdict": "skip"
+    },
+    {
+      "branch_checks": [],
+      "hard_gate": {
+        "continuity_delta": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "primary_evidence": true
+      },
+      "primary_sources": [
+        "https://github.com/forgesworn/bray/pull/113"
+      ],
+      "reason": "#114 changes NWC payment caps, confirmation and scoped connections; reconcile with its three 3.5.x tags.",
+      "repo": "forgesworn/bray",
+      "reviewed_pr_urls": [
+        "https://github.com/forgesworn/bray/pull/113",
+        "https://github.com/forgesworn/bray/pull/114",
+        "https://github.com/forgesworn/bray/pull/115",
+        "https://github.com/forgesworn/bray/pull/116"
+      ],
+      "scores": {
+        "evidence_maturity": 2,
+        "explanatory_value": 1,
+        "nostr_significance": 1,
+        "novelty": 1,
+        "user_operator_impact": 1
+      },
+      "selected_pr_urls": [],
+      "verdict": "skip"
+    },
+    {
+      "branch_checks": [],
+      "hard_gate": {
+        "continuity_delta": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "primary_evidence": true
+      },
+      "primary_sources": [
+        "https://github.com/forgesworn/cambium/pull/15"
+      ],
+      "reason": "#22 adds NIP-44 phone enrollment through Nostr relays; #18 adds private relay-update handling. Four tags are one feature progression.",
+      "repo": "forgesworn/cambium",
+      "reviewed_pr_urls": [
+        "https://github.com/forgesworn/cambium/pull/15",
+        "https://github.com/forgesworn/cambium/pull/16",
+        "https://github.com/forgesworn/cambium/pull/17",
+        "https://github.com/forgesworn/cambium/pull/18",
+        "https://github.com/forgesworn/cambium/pull/19",
+        "https://github.com/forgesworn/cambium/pull/20",
+        "https://github.com/forgesworn/cambium/pull/21",
+        "https://github.com/forgesworn/cambium/pull/22",
+        "https://github.com/forgesworn/cambium/pull/23",
+        "https://github.com/forgesworn/cambium/pull/24",
+        "https://github.com/forgesworn/cambium/pull/25",
+        "https://github.com/forgesworn/cambium/pull/26",
+        "https://github.com/forgesworn/cambium/pull/27",
+        "https://github.com/forgesworn/cambium/pull/28"
+      ],
+      "scores": {
+        "evidence_maturity": 2,
+        "explanatory_value": 1,
+        "nostr_significance": 1,
+        "novelty": 1,
+        "user_operator_impact": 1
+      },
+      "selected_pr_urls": [],
+      "verdict": "skip"
+    },
+    {
+      "branch_checks": [],
+      "hard_gate": {
+        "continuity_delta": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "primary_evidence": true
+      },
+      "primary_sources": [
+        "https://github.com/forgesworn/toll-booth/pull/96"
+      ],
+      "reason": "Four PRs close payment and credential bypasses; the Nostr surface is not material in these changes.",
+      "repo": "forgesworn/toll-booth",
+      "reviewed_pr_urls": [
+        "https://github.com/forgesworn/toll-booth/pull/96",
+        "https://github.com/forgesworn/toll-booth/pull/97",
+        "https://github.com/forgesworn/toll-booth/pull/98",
+        "https://github.com/forgesworn/toll-booth/pull/99"
+      ],
+      "scores": {
+        "evidence_maturity": 2,
+        "explanatory_value": 1,
+        "nostr_significance": 1,
+        "novelty": 1,
+        "user_operator_impact": 1
+      },
+      "selected_pr_urls": [],
+      "verdict": "skip"
+    },
+    {
+      "branch_checks": [],
+      "hard_gate": {
+        "continuity_delta": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "primary_evidence": true
+      },
+      "primary_sources": [
+        "https://github.com/formstr-hq/nostr-calendar/pull/215"
+      ],
+      "reason": "#215 adds a default relay, too small for this issue.",
+      "repo": "formstr-hq/nostr-calendar",
+      "reviewed_pr_urls": [
+        "https://github.com/formstr-hq/nostr-calendar/pull/215"
+      ],
+      "scores": {
+        "evidence_maturity": 2,
+        "explanatory_value": 1,
+        "nostr_significance": 1,
+        "novelty": 1,
+        "user_operator_impact": 1
+      },
+      "selected_pr_urls": [],
+      "verdict": "skip"
+    },
+    {
+      "branch_checks": [],
+      "hard_gate": {
+        "continuity_delta": false,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "primary_evidence": true
+      },
+      "primary_sources": [
+        "https://github.com/fr34aky/fips-pub-domains/pull/1"
+      ],
+      "reason": "Top Story and release drafts cover the submitted project's zone records #1, redundant servers #2, and DNSSEC proofs #6.",
+      "repo": "fr34aky/fips-pub-domains",
+      "reviewed_pr_urls": [
+        "https://github.com/fr34aky/fips-pub-domains/pull/1",
+        "https://github.com/fr34aky/fips-pub-domains/pull/2",
+        "https://github.com/fr34aky/fips-pub-domains/pull/3",
+        "https://github.com/fr34aky/fips-pub-domains/pull/4",
+        "https://github.com/fr34aky/fips-pub-domains/pull/5",
+        "https://github.com/fr34aky/fips-pub-domains/pull/6",
+        "https://github.com/fr34aky/fips-pub-domains/pull/7",
+        "https://github.com/fr34aky/fips-pub-domains/pull/8",
+        "https://github.com/fr34aky/fips-pub-domains/pull/9",
+        "https://github.com/fr34aky/fips-pub-domains/pull/10"
+      ],
+      "scores": {
+        "evidence_maturity": 2,
+        "explanatory_value": 1,
+        "nostr_significance": 1,
+        "novelty": 1,
+        "user_operator_impact": 1
+      },
+      "selected_pr_urls": [],
+      "verdict": "skip"
+    },
+    {
+      "branch_checks": [
+        {
+          "base_ref": "main",
+          "default_branch": "main",
+          "source_url": "https://github.com/fr34aky/fips2go/pull/55",
+          "url": "https://github.com/fr34aky/fips2go/pull/55"
+        },
+        {
+          "base_ref": "main",
+          "default_branch": "main",
+          "source_url": "https://github.com/fr34aky/fips2go/pull/59",
+          "url": "https://github.com/fr34aky/fips2go/pull/59"
+        }
+      ],
+      "hard_gate": {
+        "continuity_delta": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "primary_evidence": true
+      },
+      "primary_sources": [
+        "https://github.com/fr34aky/fips2go/pull/55",
+        "https://github.com/fr34aky/fips2go/pull/59"
+      ],
+      "reason": "Selected distinct, material Nostr source progress: #55 resolves verified public domains on Android; #59 carries relay connections over mesh for offline claim discovery. Tie to the fips-pub-domains story, distinguishing device integration from the domain-server package.",
+      "repo": "fr34aky/fips2go",
+      "reviewed_pr_urls": [
+        "https://github.com/fr34aky/fips2go/pull/48",
+        "https://github.com/fr34aky/fips2go/pull/49",
+        "https://github.com/fr34aky/fips2go/pull/50",
+        "https://github.com/fr34aky/fips2go/pull/51",
+        "https://github.com/fr34aky/fips2go/pull/52",
+        "https://github.com/fr34aky/fips2go/pull/53",
+        "https://github.com/fr34aky/fips2go/pull/54",
+        "https://github.com/fr34aky/fips2go/pull/55",
+        "https://github.com/fr34aky/fips2go/pull/56",
+        "https://github.com/fr34aky/fips2go/pull/57",
+        "https://github.com/fr34aky/fips2go/pull/58",
+        "https://github.com/fr34aky/fips2go/pull/59"
+      ],
+      "scores": {
+        "evidence_maturity": 2,
+        "explanatory_value": 2,
+        "nostr_significance": 2,
+        "novelty": 1,
+        "user_operator_impact": 2
+      },
+      "selected_pr_urls": [
+        "https://github.com/fr34aky/fips2go/pull/55",
+        "https://github.com/fr34aky/fips2go/pull/59"
+      ],
+      "verdict": "include"
+    },
+    {
+      "branch_checks": [],
+      "hard_gate": {
+        "continuity_delta": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "primary_evidence": true
+      },
+      "primary_sources": [
+        "https://github.com/getAlby/hub/pull/2598"
+      ],
+      "reason": "Swap, chain source and package fixes; no new NWC behavior in these PR titles.",
+      "repo": "getAlby/hub",
+      "reviewed_pr_urls": [
+        "https://github.com/getAlby/hub/pull/2598",
+        "https://github.com/getAlby/hub/pull/2599",
+        "https://github.com/getAlby/hub/pull/2595",
+        "https://github.com/getAlby/hub/pull/2593",
+        "https://github.com/getAlby/hub/pull/2601"
+      ],
+      "scores": {
+        "evidence_maturity": 2,
+        "explanatory_value": 1,
+        "nostr_significance": 1,
+        "novelty": 1,
+        "user_operator_impact": 1
+      },
+      "selected_pr_urls": [],
+      "verdict": "skip"
+    },
+    {
+      "branch_checks": [],
+      "hard_gate": {
+        "continuity_delta": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "primary_evidence": true
+      },
+      "primary_sources": [
+        "https://git.nostrdev.com/stuff/pakstr/pulls/91"
+      ],
+      "reason": "Five CI/proxy/cache/error-report PRs, no reader-facing Nostr feature. Identical PR inventory under pakstr; avoid counting both as two stories.",
+      "repo": "git.nostrdev.com/stuff/NostrAppShell",
+      "reviewed_pr_urls": [
+        "https://git.nostrdev.com/stuff/pakstr/pulls/91",
+        "https://git.nostrdev.com/stuff/pakstr/pulls/93",
+        "https://git.nostrdev.com/stuff/pakstr/pulls/94",
+        "https://git.nostrdev.com/stuff/pakstr/pulls/95",
+        "https://git.nostrdev.com/stuff/pakstr/pulls/96"
+      ],
+      "scores": {
+        "evidence_maturity": 2,
+        "explanatory_value": 1,
+        "nostr_significance": 1,
+        "novelty": 1,
+        "user_operator_impact": 1
+      },
+      "selected_pr_urls": [],
+      "verdict": "skip"
+    },
+    {
+      "branch_checks": [],
+      "hard_gate": {
+        "continuity_delta": false,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "primary_evidence": true
+      },
+      "primary_sources": [
+        "https://git.nostrdev.com/stuff/pakstr/pulls/91"
+      ],
+      "reason": "Same five PR titles as NostrAppShell plus release tags; first resolve repository identity if later considered.",
+      "repo": "git.nostrdev.com/stuff/pakstr",
+      "reviewed_pr_urls": [
+        "https://git.nostrdev.com/stuff/pakstr/pulls/91",
+        "https://git.nostrdev.com/stuff/pakstr/pulls/93",
+        "https://git.nostrdev.com/stuff/pakstr/pulls/94",
+        "https://git.nostrdev.com/stuff/pakstr/pulls/95",
+        "https://git.nostrdev.com/stuff/pakstr/pulls/96"
+      ],
+      "scores": {
+        "evidence_maturity": 2,
+        "explanatory_value": 1,
+        "nostr_significance": 1,
+        "novelty": 1,
+        "user_operator_impact": 1
+      },
+      "selected_pr_urls": [],
+      "verdict": "skip"
+    },
+    {
+      "branch_checks": [],
+      "hard_gate": {
+        "continuity_delta": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "primary_evidence": true
+      },
+      "primary_sources": [
+        "https://github.com/gzuuus/linktr-nostr/pull/31"
+      ],
+      "reason": "#31 fixes an empty-link race during relay connection, useful but small.",
+      "repo": "gzuuus/linktr-nostr",
+      "reviewed_pr_urls": [
+        "https://github.com/gzuuus/linktr-nostr/pull/31"
+      ],
+      "scores": {
+        "evidence_maturity": 2,
+        "explanatory_value": 1,
+        "nostr_significance": 1,
+        "novelty": 1,
+        "user_operator_impact": 1
+      },
+      "selected_pr_urls": [],
+      "verdict": "skip"
+    },
+    {
+      "branch_checks": [],
+      "hard_gate": {
+        "continuity_delta": false,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "primary_evidence": true
+      },
+      "primary_sources": [
+        "https://github.com/hedwig-corp/bitchat-to-sonar/pull/616"
+      ],
+      "reason": "Alpha.15/15.1 release section already covers reactions #603, private local time #607, and launch repair #629.",
+      "repo": "hedwig-corp/bitchat-to-sonar",
+      "reviewed_pr_urls": [
+        "https://github.com/hedwig-corp/bitchat-to-sonar/pull/616",
+        "https://github.com/hedwig-corp/bitchat-to-sonar/pull/617",
+        "https://github.com/hedwig-corp/bitchat-to-sonar/pull/615",
+        "https://github.com/hedwig-corp/bitchat-to-sonar/pull/607",
+        "https://github.com/hedwig-corp/bitchat-to-sonar/pull/559",
+        "https://github.com/hedwig-corp/bitchat-to-sonar/pull/619",
+        "https://github.com/hedwig-corp/bitchat-to-sonar/pull/603",
+        "https://github.com/hedwig-corp/bitchat-to-sonar/pull/621",
+        "https://github.com/hedwig-corp/bitchat-to-sonar/pull/614",
+        "https://github.com/hedwig-corp/bitchat-to-sonar/pull/622",
+        "https://github.com/hedwig-corp/bitchat-to-sonar/pull/623",
+        "https://github.com/hedwig-corp/bitchat-to-sonar/pull/624",
+        "https://github.com/hedwig-corp/bitchat-to-sonar/pull/339",
+        "https://github.com/hedwig-corp/bitchat-to-sonar/pull/625",
+        "https://github.com/hedwig-corp/bitchat-to-sonar/pull/629",
+        "https://github.com/hedwig-corp/bitchat-to-sonar/pull/631",
+        "https://github.com/hedwig-corp/bitchat-to-sonar/pull/643",
+        "https://github.com/hedwig-corp/bitchat-to-sonar/pull/642",
+        "https://github.com/hedwig-corp/bitchat-to-sonar/pull/644"
+      ],
+      "scores": {
+        "evidence_maturity": 2,
+        "explanatory_value": 1,
+        "nostr_significance": 1,
+        "novelty": 1,
+        "user_operator_impact": 1
+      },
+      "selected_pr_urls": [],
+      "verdict": "skip"
+    },
+    {
+      "branch_checks": [],
+      "hard_gate": {
+        "continuity_delta": true,
+        "in_window_progress": true,
+        "nostr_surface": false,
+        "primary_evidence": true
+      },
+      "primary_sources": [
+        "https://github.com/HeterodyneNetwork/HeterodyneProtocol/pull/31"
+      ],
+      "reason": "Maintenance workflow and token-custody checker, no clear new Nostr protocol change.",
+      "repo": "HeterodyneNetwork/HeterodyneProtocol",
+      "reviewed_pr_urls": [
+        "https://github.com/HeterodyneNetwork/HeterodyneProtocol/pull/31",
+        "https://github.com/HeterodyneNetwork/HeterodyneProtocol/pull/33"
+      ],
+      "scores": {
+        "evidence_maturity": 2,
+        "explanatory_value": 1,
+        "nostr_significance": 1,
+        "novelty": 1,
+        "user_operator_impact": 1
+      },
+      "selected_pr_urls": [],
+      "verdict": "skip"
+    },
+    {
+      "branch_checks": [],
+      "hard_gate": {
+        "continuity_delta": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "primary_evidence": true
+      },
+      "primary_sources": [
+        "https://github.com/HiveTalk/swarm/pull/20"
+      ],
+      "reason": "Dependabot configuration only.",
+      "repo": "HiveTalk/swarm",
+      "reviewed_pr_urls": [
+        "https://github.com/HiveTalk/swarm/pull/20"
+      ],
+      "scores": {
+        "evidence_maturity": 2,
+        "explanatory_value": 1,
+        "nostr_significance": 1,
+        "novelty": 1,
+        "user_operator_impact": 1
+      },
+      "selected_pr_urls": [],
+      "verdict": "skip"
+    },
+    {
+      "branch_checks": [],
+      "hard_gate": {
+        "continuity_delta": false,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "primary_evidence": true
+      },
+      "primary_sources": [
+        "https://github.com/hroomnik007/MintRadar/pull/95"
+      ],
+      "reason": "Private allowlist #98 avoids leaking private mint hosts via Nostr discovery, but last week's MintRadar launch was already substantial and the remaining PRs are mostly Cashu tools/UI. Keep #98 as a reserve privacy brief if room.",
+      "repo": "hroomnik007/MintRadar",
+      "reviewed_pr_urls": [
+        "https://github.com/hroomnik007/MintRadar/pull/95",
+        "https://github.com/hroomnik007/MintRadar/pull/96",
+        "https://github.com/hroomnik007/MintRadar/pull/98",
+        "https://github.com/hroomnik007/MintRadar/pull/101",
+        "https://github.com/hroomnik007/MintRadar/pull/102",
+        "https://github.com/hroomnik007/MintRadar/pull/103"
+      ],
+      "scores": {
+        "evidence_maturity": 2,
+        "explanatory_value": 1,
+        "nostr_significance": 1,
+        "novelty": 1,
+        "user_operator_impact": 1
+      },
+      "selected_pr_urls": [],
+      "verdict": "skip"
+    },
+    {
+      "branch_checks": [],
+      "hard_gate": {
+        "continuity_delta": false,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "primary_evidence": true
+      },
+      "primary_sources": [
+        "https://github.com/jmcorgan/fips/pull/169"
+      ],
+      "reason": "#169 fixes gateway DNS TTL during drain; current FIPS release draft covers the Nostr discovery privacy fix separately.",
+      "repo": "jmcorgan/fips",
+      "reviewed_pr_urls": [
+        "https://github.com/jmcorgan/fips/pull/169"
+      ],
+      "scores": {
+        "evidence_maturity": 2,
+        "explanatory_value": 1,
+        "nostr_significance": 1,
+        "novelty": 1,
+        "user_operator_impact": 1
+      },
+      "selected_pr_urls": [],
+      "verdict": "skip"
+    },
+    {
+      "branch_checks": [],
+      "hard_gate": {
+        "continuity_delta": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "primary_evidence": true
+      },
+      "primary_sources": [
+        "https://github.com/jooray/nsite-clay/pull/5"
+      ],
+      "reason": "#5 refuses to publish probable secret keys, a valuable guard but narrow.",
+      "repo": "jooray/nsite-clay",
+      "reviewed_pr_urls": [
+        "https://github.com/jooray/nsite-clay/pull/5"
+      ],
+      "scores": {
+        "evidence_maturity": 2,
+        "explanatory_value": 1,
+        "nostr_significance": 1,
+        "novelty": 1,
+        "user_operator_impact": 1
+      },
+      "selected_pr_urls": [],
+      "verdict": "skip"
+    },
+    {
+      "branch_checks": [],
+      "hard_gate": {
+        "continuity_delta": false,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "primary_evidence": true
+      },
+      "primary_sources": [
+        "https://github.com/lawalletio/lawallet-nwc/pull/308"
+      ],
+      "reason": "#314 simplifies adding an NWC wallet; the other merged PRs are wallet UI, Lightning and BoltCard. Last week's 2.7.1 coverage already handled the broader NWC release.",
+      "repo": "lawalletio/lawallet-nwc",
+      "reviewed_pr_urls": [
+        "https://github.com/lawalletio/lawallet-nwc/pull/308",
+        "https://github.com/lawalletio/lawallet-nwc/pull/299",
+        "https://github.com/lawalletio/lawallet-nwc/pull/311",
+        "https://github.com/lawalletio/lawallet-nwc/pull/312",
+        "https://github.com/lawalletio/lawallet-nwc/pull/314",
+        "https://github.com/lawalletio/lawallet-nwc/pull/313"
+      ],
+      "scores": {
+        "evidence_maturity": 2,
+        "explanatory_value": 1,
+        "nostr_significance": 1,
+        "novelty": 1,
+        "user_operator_impact": 1
+      },
+      "selected_pr_urls": [],
+      "verdict": "skip"
+    },
+    {
+      "branch_checks": [],
+      "hard_gate": {
+        "continuity_delta": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "primary_evidence": true
+      },
+      "primary_sources": [
+        "https://github.com/lnbits/lnbits/pull/4175"
+      ],
+      "reason": "BOLT12/macOS/payment accounting changes without material Nostr behavior.",
+      "repo": "lnbits/lnbits",
+      "reviewed_pr_urls": [
+        "https://github.com/lnbits/lnbits/pull/4175",
+        "https://github.com/lnbits/lnbits/pull/4169",
+        "https://github.com/lnbits/lnbits/pull/4197",
+        "https://github.com/lnbits/lnbits/pull/4193",
+        "https://github.com/lnbits/lnbits/pull/4200"
+      ],
+      "scores": {
+        "evidence_maturity": 2,
+        "explanatory_value": 1,
+        "nostr_significance": 1,
+        "novelty": 1,
+        "user_operator_impact": 1
+      },
+      "selected_pr_urls": [],
+      "verdict": "skip"
+    },
+    {
+      "branch_checks": [],
+      "hard_gate": {
+        "continuity_delta": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "primary_evidence": true
+      },
+      "primary_sources": [
+        "https://github.com/Lokuyow/ehagaki/pull/261"
+      ],
+      "reason": "#266 and #267 add post-history actions/reactions, smaller than this week's selected client work.",
+      "repo": "Lokuyow/ehagaki",
+      "reviewed_pr_urls": [
+        "https://github.com/Lokuyow/ehagaki/pull/261",
+        "https://github.com/Lokuyow/ehagaki/pull/262",
+        "https://github.com/Lokuyow/ehagaki/pull/263",
+        "https://github.com/Lokuyow/ehagaki/pull/264",
+        "https://github.com/Lokuyow/ehagaki/pull/265",
+        "https://github.com/Lokuyow/ehagaki/pull/266",
+        "https://github.com/Lokuyow/ehagaki/pull/267"
+      ],
+      "scores": {
+        "evidence_maturity": 2,
+        "explanatory_value": 1,
+        "nostr_significance": 1,
+        "novelty": 1,
+        "user_operator_impact": 1
+      },
+      "selected_pr_urls": [],
+      "verdict": "skip"
+    },
+    {
+      "branch_checks": [],
+      "hard_gate": {
+        "continuity_delta": false,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "primary_evidence": true
+      },
+      "primary_sources": [
+        "https://github.com/marmot-protocol/mdk/pull/1957"
+      ],
+      "reason": "The 0.11.0 release draft covers recovery, queue durability, NIP-88 polls #1956, and binding verification. Pending-message edit queue #2026 is a possible minor addition to that release paragraph, not a separate story.",
+      "repo": "marmot-protocol/mdk",
+      "reviewed_pr_urls": [
+        "https://github.com/marmot-protocol/mdk/pull/1957",
+        "https://github.com/marmot-protocol/mdk/pull/1965",
+        "https://github.com/marmot-protocol/mdk/pull/1956",
+        "https://github.com/marmot-protocol/mdk/pull/1885",
+        "https://github.com/marmot-protocol/mdk/pull/1972",
+        "https://github.com/marmot-protocol/mdk/pull/1971",
+        "https://github.com/marmot-protocol/mdk/pull/1982",
+        "https://github.com/marmot-protocol/mdk/pull/1985",
+        "https://github.com/marmot-protocol/mdk/pull/1986",
+        "https://github.com/marmot-protocol/mdk/pull/1702",
+        "https://github.com/marmot-protocol/mdk/pull/1993",
+        "https://github.com/marmot-protocol/mdk/pull/1988",
+        "https://github.com/marmot-protocol/mdk/pull/1983",
+        "https://github.com/marmot-protocol/mdk/pull/1997",
+        "https://github.com/marmot-protocol/mdk/pull/1987",
+        "https://github.com/marmot-protocol/mdk/pull/1992",
+        "https://github.com/marmot-protocol/mdk/pull/1984",
+        "https://github.com/marmot-protocol/mdk/pull/1995",
+        "https://github.com/marmot-protocol/mdk/pull/1999",
+        "https://github.com/marmot-protocol/mdk/pull/2000",
+        "https://github.com/marmot-protocol/mdk/pull/2001",
+        "https://github.com/marmot-protocol/mdk/pull/2003",
+        "https://github.com/marmot-protocol/mdk/pull/2008",
+        "https://github.com/marmot-protocol/mdk/pull/2007",
+        "https://github.com/marmot-protocol/mdk/pull/2005",
+        "https://github.com/marmot-protocol/mdk/pull/2009",
+        "https://github.com/marmot-protocol/mdk/pull/2006",
+        "https://github.com/marmot-protocol/mdk/pull/1998",
+        "https://github.com/marmot-protocol/mdk/pull/1959",
+        "https://github.com/marmot-protocol/mdk/pull/1968",
+        "https://github.com/marmot-protocol/mdk/pull/2004",
+        "https://github.com/marmot-protocol/mdk/pull/2011",
+        "https://github.com/marmot-protocol/mdk/pull/2002",
+        "https://github.com/marmot-protocol/mdk/pull/2010",
+        "https://github.com/marmot-protocol/mdk/pull/2016",
+        "https://github.com/marmot-protocol/mdk/pull/2015",
+        "https://github.com/marmot-protocol/mdk/pull/2017",
+        "https://github.com/marmot-protocol/mdk/pull/2020",
+        "https://github.com/marmot-protocol/mdk/pull/2023",
+        "https://github.com/marmot-protocol/mdk/pull/2024",
+        "https://github.com/marmot-protocol/mdk/pull/2021",
+        "https://github.com/marmot-protocol/mdk/pull/2022",
+        "https://github.com/marmot-protocol/mdk/pull/2027",
+        "https://github.com/marmot-protocol/mdk/pull/2031",
+        "https://github.com/marmot-protocol/mdk/pull/2032",
+        "https://github.com/marmot-protocol/mdk/pull/2030",
+        "https://github.com/marmot-protocol/mdk/pull/1981",
+        "https://github.com/marmot-protocol/mdk/pull/2035",
+        "https://github.com/marmot-protocol/mdk/pull/2025",
+        "https://github.com/marmot-protocol/mdk/pull/2036",
+        "https://github.com/marmot-protocol/mdk/pull/2018",
+        "https://github.com/marmot-protocol/mdk/pull/2039",
+        "https://github.com/marmot-protocol/mdk/pull/2042",
+        "https://github.com/marmot-protocol/mdk/pull/2037",
+        "https://github.com/marmot-protocol/mdk/pull/2040",
+        "https://github.com/marmot-protocol/mdk/pull/2044",
+        "https://github.com/marmot-protocol/mdk/pull/2046",
+        "https://github.com/marmot-protocol/mdk/pull/2033",
+        "https://github.com/marmot-protocol/mdk/pull/2045",
+        "https://github.com/marmot-protocol/mdk/pull/2047",
+        "https://github.com/marmot-protocol/mdk/pull/2019",
+        "https://github.com/marmot-protocol/mdk/pull/2048",
+        "https://github.com/marmot-protocol/mdk/pull/2049",
+        "https://github.com/marmot-protocol/mdk/pull/2050",
+        "https://github.com/marmot-protocol/mdk/pull/2051",
+        "https://github.com/marmot-protocol/mdk/pull/2053",
+        "https://github.com/marmot-protocol/mdk/pull/2038",
+        "https://github.com/marmot-protocol/mdk/pull/2056",
+        "https://github.com/marmot-protocol/mdk/pull/2054",
+        "https://github.com/marmot-protocol/mdk/pull/2057",
+        "https://github.com/marmot-protocol/mdk/pull/2058",
+        "https://github.com/marmot-protocol/mdk/pull/2064",
+        "https://github.com/marmot-protocol/mdk/pull/2066",
+        "https://github.com/marmot-protocol/mdk/pull/2063",
+        "https://github.com/marmot-protocol/mdk/pull/2067",
+        "https://github.com/marmot-protocol/mdk/pull/2065",
+        "https://github.com/marmot-protocol/mdk/pull/2069",
+        "https://github.com/marmot-protocol/mdk/pull/2071",
+        "https://github.com/marmot-protocol/mdk/pull/2026",
+        "https://github.com/marmot-protocol/mdk/pull/2072",
+        "https://github.com/marmot-protocol/mdk/pull/2068",
+        "https://github.com/marmot-protocol/mdk/pull/2055",
+        "https://github.com/marmot-protocol/mdk/pull/1991",
+        "https://github.com/marmot-protocol/mdk/pull/2074",
+        "https://github.com/marmot-protocol/mdk/pull/2077",
+        "https://github.com/marmot-protocol/mdk/pull/2078",
+        "https://github.com/marmot-protocol/mdk/pull/2075",
+        "https://github.com/marmot-protocol/mdk/pull/2079",
+        "https://github.com/marmot-protocol/mdk/pull/2081",
+        "https://github.com/marmot-protocol/mdk/pull/2076",
+        "https://github.com/marmot-protocol/mdk/pull/2080",
+        "https://github.com/marmot-protocol/mdk/pull/2088"
+      ],
+      "scores": {
+        "evidence_maturity": 2,
+        "explanatory_value": 1,
+        "nostr_significance": 1,
+        "novelty": 1,
+        "user_operator_impact": 1
+      },
+      "selected_pr_urls": [],
+      "verdict": "skip"
+    },
+    {
+      "branch_checks": [],
+      "hard_gate": {
+        "continuity_delta": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "primary_evidence": true
+      },
+      "primary_sources": [
+        "https://github.com/Mesh-LLM/mesh-llm/pull/1969"
+      ],
+      "reason": "Despite 107 merged PRs, titles focus on distributed LLM runtime, inference, payments, CI and packaging; no new Nostr identity/config feature is evident.",
+      "repo": "michaelneale/mesh-llm",
+      "reviewed_pr_urls": [
+        "https://github.com/Mesh-LLM/mesh-llm/pull/1969",
+        "https://github.com/Mesh-LLM/mesh-llm/pull/1974",
+        "https://github.com/Mesh-LLM/mesh-llm/pull/1970",
+        "https://github.com/Mesh-LLM/mesh-llm/pull/1979",
+        "https://github.com/Mesh-LLM/mesh-llm/pull/1982",
+        "https://github.com/Mesh-LLM/mesh-llm/pull/1938",
+        "https://github.com/Mesh-LLM/mesh-llm/pull/1973",
+        "https://github.com/Mesh-LLM/mesh-llm/pull/1980",
+        "https://github.com/Mesh-LLM/mesh-llm/pull/1975",
+        "https://github.com/Mesh-LLM/mesh-llm/pull/1946",
+        "https://github.com/Mesh-LLM/mesh-llm/pull/1976",
+        "https://github.com/Mesh-LLM/mesh-llm/pull/1978",
+        "https://github.com/Mesh-LLM/mesh-llm/pull/1971",
+        "https://github.com/Mesh-LLM/mesh-llm/pull/1984",
+        "https://github.com/Mesh-LLM/mesh-llm/pull/1988",
+        "https://github.com/Mesh-LLM/mesh-llm/pull/1989",
+        "https://github.com/Mesh-LLM/mesh-llm/pull/1964",
+        "https://github.com/Mesh-LLM/mesh-llm/pull/1987",
+        "https://github.com/Mesh-LLM/mesh-llm/pull/1994",
+        "https://github.com/Mesh-LLM/mesh-llm/pull/1990",
+        "https://github.com/Mesh-LLM/mesh-llm/pull/1998",
+        "https://github.com/Mesh-LLM/mesh-llm/pull/2000",
+        "https://github.com/Mesh-LLM/mesh-llm/pull/2002",
+        "https://github.com/Mesh-LLM/mesh-llm/pull/1997",
+        "https://github.com/Mesh-LLM/mesh-llm/pull/2008",
+        "https://github.com/Mesh-LLM/mesh-llm/pull/1993",
+        "https://github.com/Mesh-LLM/mesh-llm/pull/1939",
+        "https://github.com/Mesh-LLM/mesh-llm/pull/2012",
+        "https://github.com/Mesh-LLM/mesh-llm/pull/2026",
+        "https://github.com/Mesh-LLM/mesh-llm/pull/1995",
+        "https://github.com/Mesh-LLM/mesh-llm/pull/2007",
+        "https://github.com/Mesh-LLM/mesh-llm/pull/2027",
+        "https://github.com/Mesh-LLM/mesh-llm/pull/2004",
+        "https://github.com/Mesh-LLM/mesh-llm/pull/1977",
+        "https://github.com/Mesh-LLM/mesh-llm/pull/2018",
+        "https://github.com/Mesh-LLM/mesh-llm/pull/2015",
+        "https://github.com/Mesh-LLM/mesh-llm/pull/2016",
+        "https://github.com/Mesh-LLM/mesh-llm/pull/2019",
+        "https://github.com/Mesh-LLM/mesh-llm/pull/2006",
+        "https://github.com/Mesh-LLM/mesh-llm/pull/2031",
+        "https://github.com/Mesh-LLM/mesh-llm/pull/1968",
+        "https://github.com/Mesh-LLM/mesh-llm/pull/2032",
+        "https://github.com/Mesh-LLM/mesh-llm/pull/2024",
+        "https://github.com/Mesh-LLM/mesh-llm/pull/1983",
+        "https://github.com/Mesh-LLM/mesh-llm/pull/2034",
+        "https://github.com/Mesh-LLM/mesh-llm/pull/2030",
+        "https://github.com/Mesh-LLM/mesh-llm/pull/2028",
+        "https://github.com/Mesh-LLM/mesh-llm/pull/2033",
+        "https://github.com/Mesh-LLM/mesh-llm/pull/2035",
+        "https://github.com/Mesh-LLM/mesh-llm/pull/2049",
+        "https://github.com/Mesh-LLM/mesh-llm/pull/2044",
+        "https://github.com/Mesh-LLM/mesh-llm/pull/2043",
+        "https://github.com/Mesh-LLM/mesh-llm/pull/2038",
+        "https://github.com/Mesh-LLM/mesh-llm/pull/2040",
+        "https://github.com/Mesh-LLM/mesh-llm/pull/2025",
+        "https://github.com/Mesh-LLM/mesh-llm/pull/2041",
+        "https://github.com/Mesh-LLM/mesh-llm/pull/2046",
+        "https://github.com/Mesh-LLM/mesh-llm/pull/2047",
+        "https://github.com/Mesh-LLM/mesh-llm/pull/2053",
+        "https://github.com/Mesh-LLM/mesh-llm/pull/2048",
+        "https://github.com/Mesh-LLM/mesh-llm/pull/1878",
+        "https://github.com/Mesh-LLM/mesh-llm/pull/2011",
+        "https://github.com/Mesh-LLM/mesh-llm/pull/2052",
+        "https://github.com/Mesh-LLM/mesh-llm/pull/1838",
+        "https://github.com/Mesh-LLM/mesh-llm/pull/2060",
+        "https://github.com/Mesh-LLM/mesh-llm/pull/2050",
+        "https://github.com/Mesh-LLM/mesh-llm/pull/2070",
+        "https://github.com/Mesh-LLM/mesh-llm/pull/2067",
+        "https://github.com/Mesh-LLM/mesh-llm/pull/2072",
+        "https://github.com/Mesh-LLM/mesh-llm/pull/2065",
+        "https://github.com/Mesh-LLM/mesh-llm/pull/2069",
+        "https://github.com/Mesh-LLM/mesh-llm/pull/2074",
+        "https://github.com/Mesh-LLM/mesh-llm/pull/2063",
+        "https://github.com/Mesh-LLM/mesh-llm/pull/2054",
+        "https://github.com/Mesh-LLM/mesh-llm/pull/2039",
+        "https://github.com/Mesh-LLM/mesh-llm/pull/1911",
+        "https://github.com/Mesh-LLM/mesh-llm/pull/2066",
+        "https://github.com/Mesh-LLM/mesh-llm/pull/2058",
+        "https://github.com/Mesh-LLM/mesh-llm/pull/2084",
+        "https://github.com/Mesh-LLM/mesh-llm/pull/2082",
+        "https://github.com/Mesh-LLM/mesh-llm/pull/2078",
+        "https://github.com/Mesh-LLM/mesh-llm/pull/2079",
+        "https://github.com/Mesh-LLM/mesh-llm/pull/2083",
+        "https://github.com/Mesh-LLM/mesh-llm/pull/2077",
+        "https://github.com/Mesh-LLM/mesh-llm/pull/2085",
+        "https://github.com/Mesh-LLM/mesh-llm/pull/2090",
+        "https://github.com/Mesh-LLM/mesh-llm/pull/2088",
+        "https://github.com/Mesh-LLM/mesh-llm/pull/2089",
+        "https://github.com/Mesh-LLM/mesh-llm/pull/2086",
+        "https://github.com/Mesh-LLM/mesh-llm/pull/2080",
+        "https://github.com/Mesh-LLM/mesh-llm/pull/2057",
+        "https://github.com/Mesh-LLM/mesh-llm/pull/2094",
+        "https://github.com/Mesh-LLM/mesh-llm/pull/2093",
+        "https://github.com/Mesh-LLM/mesh-llm/pull/2091",
+        "https://github.com/Mesh-LLM/mesh-llm/pull/2096",
+        "https://github.com/Mesh-LLM/mesh-llm/pull/2097",
+        "https://github.com/Mesh-LLM/mesh-llm/pull/2098",
+        "https://github.com/Mesh-LLM/mesh-llm/pull/2100",
+        "https://github.com/Mesh-LLM/mesh-llm/pull/2103",
+        "https://github.com/Mesh-LLM/mesh-llm/pull/2104",
+        "https://github.com/Mesh-LLM/mesh-llm/pull/2105",
+        "https://github.com/Mesh-LLM/mesh-llm/pull/2092",
+        "https://github.com/Mesh-LLM/mesh-llm/pull/2101",
+        "https://github.com/Mesh-LLM/mesh-llm/pull/2110",
+        "https://github.com/Mesh-LLM/mesh-llm/pull/2095",
+        "https://github.com/Mesh-LLM/mesh-llm/pull/2068",
+        "https://github.com/Mesh-LLM/mesh-llm/pull/2073"
+      ],
+      "scores": {
+        "evidence_maturity": 2,
+        "explanatory_value": 1,
+        "nostr_significance": 1,
+        "novelty": 1,
+        "user_operator_impact": 1
+      },
+      "selected_pr_urls": [],
+      "verdict": "skip"
+    },
+    {
+      "branch_checks": [
+        {
+          "base_ref": "main",
+          "default_branch": "main",
+          "source_url": "https://github.com/MostroP2P/mostro/pull/1000",
+          "url": "https://github.com/MostroP2P/mostro/pull/1000"
+        },
+        {
+          "base_ref": "main",
+          "default_branch": "main",
+          "source_url": "https://github.com/MostroP2P/mostro/pull/1004",
+          "url": "https://github.com/MostroP2P/mostro/pull/1004"
+        }
+      ],
+      "hard_gate": {
+        "continuity_delta": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "primary_evidence": true
+      },
+      "primary_sources": [
+        "https://github.com/MostroP2P/mostro/pull/1000",
+        "https://github.com/MostroP2P/mostro/pull/1004"
+      ],
+      "reason": "Selected distinct, material Nostr source progress: Current development draft covers daemon transport removal #1004 and timestamp rename #1000. Other PRs are trading/dispute or CI work.",
+      "repo": "MostroP2P/mostro",
+      "reviewed_pr_urls": [
+        "https://github.com/MostroP2P/mostro/pull/967",
+        "https://github.com/MostroP2P/mostro/pull/968",
+        "https://github.com/MostroP2P/mostro/pull/969",
+        "https://github.com/MostroP2P/mostro/pull/971",
+        "https://github.com/MostroP2P/mostro/pull/975",
+        "https://github.com/MostroP2P/mostro/pull/976",
+        "https://github.com/MostroP2P/mostro/pull/915",
+        "https://github.com/MostroP2P/mostro/pull/916",
+        "https://github.com/MostroP2P/mostro/pull/977",
+        "https://github.com/MostroP2P/mostro/pull/978",
+        "https://github.com/MostroP2P/mostro/pull/979",
+        "https://github.com/MostroP2P/mostro/pull/980",
+        "https://github.com/MostroP2P/mostro/pull/981",
+        "https://github.com/MostroP2P/mostro/pull/982",
+        "https://github.com/MostroP2P/mostro/pull/983",
+        "https://github.com/MostroP2P/mostro/pull/985",
+        "https://github.com/MostroP2P/mostro/pull/988",
+        "https://github.com/MostroP2P/mostro/pull/989",
+        "https://github.com/MostroP2P/mostro/pull/995",
+        "https://github.com/MostroP2P/mostro/pull/992",
+        "https://github.com/MostroP2P/mostro/pull/994",
+        "https://github.com/MostroP2P/mostro/pull/998",
+        "https://github.com/MostroP2P/mostro/pull/996",
+        "https://github.com/MostroP2P/mostro/pull/999",
+        "https://github.com/MostroP2P/mostro/pull/1000",
+        "https://github.com/MostroP2P/mostro/pull/986",
+        "https://github.com/MostroP2P/mostro/pull/1001",
+        "https://github.com/MostroP2P/mostro/pull/1003",
+        "https://github.com/MostroP2P/mostro/pull/889",
+        "https://github.com/MostroP2P/mostro/pull/1004",
+        "https://github.com/MostroP2P/mostro/pull/925",
+        "https://github.com/MostroP2P/mostro/pull/1005"
+      ],
+      "scores": {
+        "evidence_maturity": 2,
+        "explanatory_value": 2,
+        "nostr_significance": 2,
+        "novelty": 1,
+        "user_operator_impact": 2
+      },
+      "selected_pr_urls": [
+        "https://github.com/MostroP2P/mostro/pull/1000",
+        "https://github.com/MostroP2P/mostro/pull/1004"
+      ],
+      "verdict": "include"
+    },
+    {
+      "branch_checks": [],
+      "hard_gate": {
+        "continuity_delta": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "primary_evidence": true
+      },
+      "primary_sources": [
+        "https://github.com/MostroP2P/mostro-cli/pull/199"
+      ],
+      "reason": "#199 displays both chat sides; its 0.16.3 tag is a narrow UI change.",
+      "repo": "MostroP2P/mostro-cli",
+      "reviewed_pr_urls": [
+        "https://github.com/MostroP2P/mostro-cli/pull/199"
+      ],
+      "scores": {
+        "evidence_maturity": 2,
+        "explanatory_value": 1,
+        "nostr_significance": 1,
+        "novelty": 1,
+        "user_operator_impact": 1
+      },
+      "selected_pr_urls": [],
+      "verdict": "skip"
+    },
+    {
+      "branch_checks": [],
+      "hard_gate": {
+        "continuity_delta": false,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "primary_evidence": true
+      },
+      "primary_sources": [
+        "https://github.com/MostroP2P/mostro-core/pull/175"
+      ],
+      "reason": "#175 removes v1 gift wrap in the shared core, the same protocol migration already covered via the daemon.",
+      "repo": "MostroP2P/mostro-core",
+      "reviewed_pr_urls": [
+        "https://github.com/MostroP2P/mostro-core/pull/175"
+      ],
+      "scores": {
+        "evidence_maturity": 2,
+        "explanatory_value": 1,
+        "nostr_significance": 1,
+        "novelty": 1,
+        "user_operator_impact": 1
+      },
+      "selected_pr_urls": [],
+      "verdict": "skip"
+    },
+    {
+      "branch_checks": [
+        {
+          "base_ref": "master",
+          "default_branch": "master",
+          "source_url": "https://github.com/nostr-protocol/nips/pull/2408",
+          "url": "https://github.com/nostr-protocol/nips/pull/2408"
+        },
+        {
+          "base_ref": "master",
+          "default_branch": "master",
+          "source_url": "https://github.com/nostr-protocol/nips/pull/2417",
+          "url": "https://github.com/nostr-protocol/nips/pull/2417"
+        },
+        {
+          "base_ref": "master",
+          "default_branch": "master",
+          "source_url": "https://github.com/nostr-protocol/nips/pull/2486",
+          "url": "https://github.com/nostr-protocol/nips/pull/2486"
+        }
+      ],
+      "hard_gate": {
+        "continuity_delta": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "primary_evidence": true
+      },
+      "primary_sources": [
+        "https://github.com/nostr-protocol/nips/pull/2408",
+        "https://github.com/nostr-protocol/nips/pull/2417",
+        "https://github.com/nostr-protocol/nips/pull/2486"
+      ],
+      "reason": "Selected distinct, material Nostr source progress: Merged NIP-39 proof text and claim types, NIP-86 invitation management, and NIP-51 collision correction are distinct specification changes. The other event-kind registry and formatting changes are minor or folded into these.",
+      "repo": "nostr-protocol/nips",
+      "reviewed_pr_urls": [
+        "https://github.com/nostr-protocol/nips/pull/2477",
+        "https://github.com/nostr-protocol/nips/pull/2481",
+        "https://github.com/nostr-protocol/nips/pull/2408",
+        "https://github.com/nostr-protocol/nips/pull/2483",
+        "https://github.com/nostr-protocol/nips/pull/2417",
+        "https://github.com/nostr-protocol/nips/pull/2486"
+      ],
+      "scores": {
+        "evidence_maturity": 2,
+        "explanatory_value": 2,
+        "nostr_significance": 2,
+        "novelty": 1,
+        "user_operator_impact": 2
+      },
+      "selected_pr_urls": [
+        "https://github.com/nostr-protocol/nips/pull/2408",
+        "https://github.com/nostr-protocol/nips/pull/2417",
+        "https://github.com/nostr-protocol/nips/pull/2486"
+      ],
+      "verdict": "include"
+    },
+    {
+      "branch_checks": [],
+      "hard_gate": {
+        "continuity_delta": false,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "primary_evidence": true
+      },
+      "primary_sources": [
+        "https://github.com/nostr-wot/nostr-wot-extension/pull/28"
+      ],
+      "reason": "Current substantive NWC connection and wallet fixes are covered by the tagged release series; theme changes are lower impact.",
+      "repo": "nostr-wot/nostr-wot-extension",
+      "reviewed_pr_urls": [
+        "https://github.com/nostr-wot/nostr-wot-extension/pull/28",
+        "https://github.com/nostr-wot/nostr-wot-extension/pull/29",
+        "https://github.com/nostr-wot/nostr-wot-extension/pull/30",
+        "https://github.com/nostr-wot/nostr-wot-extension/pull/31",
+        "https://github.com/nostr-wot/nostr-wot-extension/pull/32",
+        "https://github.com/nostr-wot/nostr-wot-extension/pull/33",
+        "https://github.com/nostr-wot/nostr-wot-extension/pull/35"
+      ],
+      "scores": {
+        "evidence_maturity": 2,
+        "explanatory_value": 1,
+        "nostr_significance": 1,
+        "novelty": 1,
+        "user_operator_impact": 1
+      },
+      "selected_pr_urls": [],
+      "verdict": "skip"
+    },
+    {
+      "branch_checks": [],
+      "hard_gate": {
+        "continuity_delta": false,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "primary_evidence": true
+      },
+      "primary_sources": [
+        "https://github.com/Origami74/myco/pull/54"
+      ],
+      "reason": "The account, signer, app update, and relay changes are covered by the 0.8.0\u20130.8.1 tagged release pair.",
+      "repo": "Origami74/myco",
+      "reviewed_pr_urls": [
+        "https://github.com/Origami74/myco/pull/54",
+        "https://github.com/Origami74/myco/pull/55",
+        "https://github.com/Origami74/myco/pull/56",
+        "https://github.com/Origami74/myco/pull/57",
+        "https://github.com/Origami74/myco/pull/58",
+        "https://github.com/Origami74/myco/pull/59",
+        "https://github.com/Origami74/myco/pull/60",
+        "https://github.com/Origami74/myco/pull/61",
+        "https://github.com/Origami74/myco/pull/62",
+        "https://github.com/Origami74/myco/pull/63",
+        "https://github.com/Origami74/myco/pull/65",
+        "https://github.com/Origami74/myco/pull/64",
+        "https://github.com/Origami74/myco/pull/66",
+        "https://github.com/Origami74/myco/pull/68",
+        "https://github.com/Origami74/myco/pull/70",
+        "https://github.com/Origami74/myco/pull/72",
+        "https://github.com/Origami74/myco/pull/74",
+        "https://github.com/Origami74/myco/pull/75",
+        "https://github.com/Origami74/myco/pull/77",
+        "https://github.com/Origami74/myco/pull/76",
+        "https://github.com/Origami74/myco/pull/73",
+        "https://github.com/Origami74/myco/pull/78",
+        "https://github.com/Origami74/myco/pull/79",
+        "https://github.com/Origami74/myco/pull/80",
+        "https://github.com/Origami74/myco/pull/81",
+        "https://github.com/Origami74/myco/pull/82",
+        "https://github.com/Origami74/myco/pull/84",
+        "https://github.com/Origami74/myco/pull/83",
+        "https://github.com/Origami74/myco/pull/86",
+        "https://github.com/Origami74/myco/pull/85",
+        "https://github.com/Origami74/myco/pull/87"
+      ],
+      "scores": {
+        "evidence_maturity": 2,
+        "explanatory_value": 1,
+        "nostr_significance": 1,
+        "novelty": 1,
+        "user_operator_impact": 1
+      },
+      "selected_pr_urls": [],
+      "verdict": "skip"
+    },
+    {
+      "branch_checks": [],
+      "hard_gate": {
+        "continuity_delta": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "primary_evidence": true
+      },
+      "primary_sources": [
+        "https://github.com/penpenpng/rx-nostr/pull/199"
+      ],
+      "reason": "Default relay-tag filter fix is narrow; the other changes are tests and API refactoring without an independently material user story.",
+      "repo": "penpenpng/rx-nostr",
+      "reviewed_pr_urls": [
+        "https://github.com/penpenpng/rx-nostr/pull/199",
+        "https://github.com/penpenpng/rx-nostr/pull/200",
+        "https://github.com/penpenpng/rx-nostr/pull/201"
+      ],
+      "scores": {
+        "evidence_maturity": 2,
+        "explanatory_value": 1,
+        "nostr_significance": 1,
+        "novelty": 1,
+        "user_operator_impact": 1
+      },
+      "selected_pr_urls": [],
+      "verdict": "skip"
+    },
+    {
+      "branch_checks": [],
+      "hard_gate": {
+        "continuity_delta": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "primary_evidence": true
+      },
+      "primary_sources": [
+        "https://github.com/permissionlesstech/bitchat/pull/1718"
+      ],
+      "reason": "Much of the security and transport work concerns the project's Bluetooth/geohash mesh rather than a distinct Nostr relay behavior this window.",
+      "repo": "permissionlesstech/bitchat",
+      "reviewed_pr_urls": [
+        "https://github.com/permissionlesstech/bitchat/pull/1718",
+        "https://github.com/permissionlesstech/bitchat/pull/1720",
+        "https://github.com/permissionlesstech/bitchat/pull/1717",
+        "https://github.com/permissionlesstech/bitchat/pull/1719",
+        "https://github.com/permissionlesstech/bitchat/pull/1699",
+        "https://github.com/permissionlesstech/bitchat/pull/1689",
+        "https://github.com/permissionlesstech/bitchat/pull/1675",
+        "https://github.com/permissionlesstech/bitchat/pull/1687",
+        "https://github.com/permissionlesstech/bitchat/pull/1642",
+        "https://github.com/permissionlesstech/bitchat/pull/1604",
+        "https://github.com/permissionlesstech/bitchat/pull/1679",
+        "https://github.com/permissionlesstech/bitchat/pull/1472",
+        "https://github.com/permissionlesstech/bitchat/pull/1711",
+        "https://github.com/permissionlesstech/bitchat/pull/1636",
+        "https://github.com/permissionlesstech/bitchat/pull/1704",
+        "https://github.com/permissionlesstech/bitchat/pull/1569"
+      ],
+      "scores": {
+        "evidence_maturity": 2,
+        "explanatory_value": 1,
+        "nostr_significance": 1,
+        "novelty": 1,
+        "user_operator_impact": 1
+      },
+      "selected_pr_urls": [],
+      "verdict": "skip"
+    },
+    {
+      "branch_checks": [],
+      "hard_gate": {
+        "continuity_delta": false,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "primary_evidence": true
+      },
+      "primary_sources": [
+        "https://github.com/relaystr/ndk/pull/841"
+      ],
+      "reason": "NIP-46 response and Blossom authorization changes are covered by the new dev-tag series; other work is narrower.",
+      "repo": "relaystr/ndk",
+      "reviewed_pr_urls": [
+        "https://github.com/relaystr/ndk/pull/841",
+        "https://github.com/relaystr/ndk/pull/837",
+        "https://github.com/relaystr/ndk/pull/839",
+        "https://github.com/relaystr/ndk/pull/840",
+        "https://github.com/relaystr/ndk/pull/850",
+        "https://github.com/relaystr/ndk/pull/845",
+        "https://github.com/relaystr/ndk/pull/831",
+        "https://github.com/relaystr/ndk/pull/844",
+        "https://github.com/relaystr/ndk/pull/857",
+        "https://github.com/relaystr/ndk/pull/855",
+        "https://github.com/relaystr/ndk/pull/849"
+      ],
+      "scores": {
+        "evidence_maturity": 2,
+        "explanatory_value": 1,
+        "nostr_significance": 1,
+        "novelty": 1,
+        "user_operator_impact": 1
+      },
+      "selected_pr_urls": [],
+      "verdict": "skip"
+    },
+    {
+      "branch_checks": [],
+      "hard_gate": {
+        "continuity_delta": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "primary_evidence": true
+      },
+      "primary_sources": [
+        "https://github.com/Routstr/routstrd/pull/111"
+      ],
+      "reason": "nostr-sync status and provider routing provide no independently explained change to Nostr event delivery this week.",
+      "repo": "routstr/routstrd",
+      "reviewed_pr_urls": [
+        "https://github.com/Routstr/routstrd/pull/111",
+        "https://github.com/Routstr/routstrd/pull/110"
+      ],
+      "scores": {
+        "evidence_maturity": 2,
+        "explanatory_value": 1,
+        "nostr_significance": 1,
+        "novelty": 1,
+        "user_operator_impact": 1
+      },
+      "selected_pr_urls": [],
+      "verdict": "skip"
+    },
+    {
+      "branch_checks": [
+        {
+          "base_ref": "main",
+          "default_branch": "main",
+          "source_url": "https://github.com/saiy2k/nostr-components/pull/144",
+          "url": "https://github.com/saiy2k/nostr-components/pull/144"
+        },
+        {
+          "base_ref": "main",
+          "default_branch": "main",
+          "source_url": "https://github.com/saiy2k/nostr-components/pull/146",
+          "url": "https://github.com/saiy2k/nostr-components/pull/146"
+        },
+        {
+          "base_ref": "main",
+          "default_branch": "main",
+          "source_url": "https://github.com/saiy2k/nostr-components/pull/148",
+          "url": "https://github.com/saiy2k/nostr-components/pull/148"
+        }
+      ],
+      "hard_gate": {
+        "continuity_delta": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "primary_evidence": true
+      },
+      "primary_sources": [
+        "https://github.com/saiy2k/nostr-components/pull/144",
+        "https://github.com/saiy2k/nostr-components/pull/146",
+        "https://github.com/saiy2k/nostr-components/pull/148"
+      ],
+      "reason": "Selected distinct, material Nostr source progress: A new public Nostr Atlas site and the signed NIP-39 claim and profile-enrichment path are distinct from previous coverage.",
+      "repo": "saiy2k/nostr-components",
+      "reviewed_pr_urls": [
+        "https://github.com/saiy2k/nostr-components/pull/138",
+        "https://github.com/saiy2k/nostr-components/pull/141",
+        "https://github.com/saiy2k/nostr-components/pull/142",
+        "https://github.com/saiy2k/nostr-components/pull/133",
+        "https://github.com/saiy2k/nostr-components/pull/144",
+        "https://github.com/saiy2k/nostr-components/pull/146",
+        "https://github.com/saiy2k/nostr-components/pull/147",
+        "https://github.com/saiy2k/nostr-components/pull/148",
+        "https://github.com/saiy2k/nostr-components/pull/143",
+        "https://github.com/saiy2k/nostr-components/pull/150",
+        "https://github.com/saiy2k/nostr-components/pull/151",
+        "https://github.com/saiy2k/nostr-components/pull/153",
+        "https://github.com/saiy2k/nostr-components/pull/152"
+      ],
+      "scores": {
+        "evidence_maturity": 2,
+        "explanatory_value": 2,
+        "nostr_significance": 2,
+        "novelty": 1,
+        "user_operator_impact": 2
+      },
+      "selected_pr_urls": [
+        "https://github.com/saiy2k/nostr-components/pull/144",
+        "https://github.com/saiy2k/nostr-components/pull/146",
+        "https://github.com/saiy2k/nostr-components/pull/148"
+      ],
+      "verdict": "include"
+    },
+    {
+      "branch_checks": [],
+      "hard_gate": {
+        "continuity_delta": true,
+        "in_window_progress": true,
+        "nostr_surface": false,
+        "primary_evidence": true
+      },
+      "primary_sources": [
+        "https://github.com/shocknet/Lightning.Pub/pull/1042"
+      ],
+      "reason": "This is Lightning service and debit-session work; no new Nostr application surface is established by the merged PRs.",
+      "repo": "shocknet/Lightning.Pub",
+      "reviewed_pr_urls": [
+        "https://github.com/shocknet/Lightning.Pub/pull/1042",
+        "https://github.com/shocknet/Lightning.Pub/pull/1043",
+        "https://github.com/shocknet/Lightning.Pub/pull/1044",
+        "https://github.com/shocknet/Lightning.Pub/pull/1038",
+        "https://github.com/shocknet/Lightning.Pub/pull/1028",
+        "https://github.com/shocknet/Lightning.Pub/pull/1032",
+        "https://github.com/shocknet/Lightning.Pub/pull/1045",
+        "https://github.com/shocknet/Lightning.Pub/pull/1046"
+      ],
+      "scores": {
+        "evidence_maturity": 2,
+        "explanatory_value": 1,
+        "nostr_significance": 1,
+        "novelty": 1,
+        "user_operator_impact": 1
+      },
+      "selected_pr_urls": [],
+      "verdict": "skip"
+    },
+    {
+      "branch_checks": [],
+      "hard_gate": {
+        "continuity_delta": true,
+        "in_window_progress": true,
+        "nostr_surface": false,
+        "primary_evidence": true
+      },
+      "primary_sources": [
+        "https://github.com/shocknet/wallet2/pull/630"
+      ],
+      "reason": "Intents, overlays, and dashboard checkpoint are generic wallet UI work without Nostr-specific behavior.",
+      "repo": "shocknet/wallet2",
+      "reviewed_pr_urls": [
+        "https://github.com/shocknet/wallet2/pull/630",
+        "https://github.com/shocknet/wallet2/pull/634"
+      ],
+      "scores": {
+        "evidence_maturity": 2,
+        "explanatory_value": 1,
+        "nostr_significance": 1,
+        "novelty": 1,
+        "user_operator_impact": 1
+      },
+      "selected_pr_urls": [],
+      "verdict": "skip"
+    },
+    {
+      "branch_checks": [],
+      "hard_gate": {
+        "continuity_delta": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "primary_evidence": true
+      },
+      "primary_sources": [
+        "https://github.com/shopstr-eng/shopstr/pull/626"
+      ],
+      "reason": "Search relay refresh is configuration maintenance; the payout and MCP work lack a distinct Nostr interaction worth covering.",
+      "repo": "shopstr-eng/shopstr",
+      "reviewed_pr_urls": [
+        "https://github.com/shopstr-eng/shopstr/pull/626",
+        "https://github.com/shopstr-eng/shopstr/pull/611",
+        "https://github.com/shopstr-eng/shopstr/pull/635",
+        "https://github.com/shopstr-eng/shopstr/pull/634"
+      ],
+      "scores": {
+        "evidence_maturity": 2,
+        "explanatory_value": 1,
+        "nostr_significance": 1,
+        "novelty": 1,
+        "user_operator_impact": 1
+      },
+      "selected_pr_urls": [],
+      "verdict": "skip"
+    },
+    {
+      "branch_checks": [
+        {
+          "base_ref": "main",
+          "default_branch": "main",
+          "source_url": "https://github.com/SnowCait/nostter/pull/2573",
+          "url": "https://github.com/SnowCait/nostter/pull/2573"
+        },
+        {
+          "base_ref": "main",
+          "default_branch": "main",
+          "source_url": "https://github.com/SnowCait/nostter/pull/2608",
+          "url": "https://github.com/SnowCait/nostter/pull/2608"
+        },
+        {
+          "base_ref": "main",
+          "default_branch": "main",
+          "source_url": "https://github.com/SnowCait/nostter/pull/2611",
+          "url": "https://github.com/SnowCait/nostter/pull/2611"
+        }
+      ],
+      "hard_gate": {
+        "continuity_delta": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "primary_evidence": true
+      },
+      "primary_sources": [
+        "https://github.com/SnowCait/nostter/pull/2573",
+        "https://github.com/SnowCait/nostter/pull/2608",
+        "https://github.com/SnowCait/nostter/pull/2611"
+      ],
+      "reason": "Selected distinct, material Nostr source progress: Real signer capability gates, pin author/relay hints, and NIP-01 replaceable-event ordering change Nostr client behavior. Much of the 100-PR auth migration is internal support.",
+      "repo": "SnowCait/nostter",
+      "reviewed_pr_urls": [
+        "https://github.com/SnowCait/nostter/pull/2514",
+        "https://github.com/SnowCait/nostter/pull/2515",
+        "https://github.com/SnowCait/nostter/pull/2516",
+        "https://github.com/SnowCait/nostter/pull/2517",
+        "https://github.com/SnowCait/nostter/pull/2518",
+        "https://github.com/SnowCait/nostter/pull/2519",
+        "https://github.com/SnowCait/nostter/pull/2520",
+        "https://github.com/SnowCait/nostter/pull/2521",
+        "https://github.com/SnowCait/nostter/pull/2522",
+        "https://github.com/SnowCait/nostter/pull/2523",
+        "https://github.com/SnowCait/nostter/pull/2524",
+        "https://github.com/SnowCait/nostter/pull/2525",
+        "https://github.com/SnowCait/nostter/pull/2526",
+        "https://github.com/SnowCait/nostter/pull/2527",
+        "https://github.com/SnowCait/nostter/pull/2528",
+        "https://github.com/SnowCait/nostter/pull/2529",
+        "https://github.com/SnowCait/nostter/pull/2530",
+        "https://github.com/SnowCait/nostter/pull/2531",
+        "https://github.com/SnowCait/nostter/pull/2532",
+        "https://github.com/SnowCait/nostter/pull/2533",
+        "https://github.com/SnowCait/nostter/pull/2534",
+        "https://github.com/SnowCait/nostter/pull/2535",
+        "https://github.com/SnowCait/nostter/pull/2536",
+        "https://github.com/SnowCait/nostter/pull/2537",
+        "https://github.com/SnowCait/nostter/pull/2538",
+        "https://github.com/SnowCait/nostter/pull/2539",
+        "https://github.com/SnowCait/nostter/pull/2540",
+        "https://github.com/SnowCait/nostter/pull/2541",
+        "https://github.com/SnowCait/nostter/pull/2542",
+        "https://github.com/SnowCait/nostter/pull/2543",
+        "https://github.com/SnowCait/nostter/pull/2544",
+        "https://github.com/SnowCait/nostter/pull/2545",
+        "https://github.com/SnowCait/nostter/pull/2546",
+        "https://github.com/SnowCait/nostter/pull/2547",
+        "https://github.com/SnowCait/nostter/pull/2548",
+        "https://github.com/SnowCait/nostter/pull/2549",
+        "https://github.com/SnowCait/nostter/pull/2550",
+        "https://github.com/SnowCait/nostter/pull/2551",
+        "https://github.com/SnowCait/nostter/pull/2552",
+        "https://github.com/SnowCait/nostter/pull/2553",
+        "https://github.com/SnowCait/nostter/pull/2554",
+        "https://github.com/SnowCait/nostter/pull/2555",
+        "https://github.com/SnowCait/nostter/pull/2556",
+        "https://github.com/SnowCait/nostter/pull/2557",
+        "https://github.com/SnowCait/nostter/pull/2558",
+        "https://github.com/SnowCait/nostter/pull/2559",
+        "https://github.com/SnowCait/nostter/pull/2560",
+        "https://github.com/SnowCait/nostter/pull/2561",
+        "https://github.com/SnowCait/nostter/pull/2562",
+        "https://github.com/SnowCait/nostter/pull/2563",
+        "https://github.com/SnowCait/nostter/pull/2564",
+        "https://github.com/SnowCait/nostter/pull/2565",
+        "https://github.com/SnowCait/nostter/pull/2566",
+        "https://github.com/SnowCait/nostter/pull/2567",
+        "https://github.com/SnowCait/nostter/pull/2568",
+        "https://github.com/SnowCait/nostter/pull/2569",
+        "https://github.com/SnowCait/nostter/pull/2570",
+        "https://github.com/SnowCait/nostter/pull/2571",
+        "https://github.com/SnowCait/nostter/pull/2572",
+        "https://github.com/SnowCait/nostter/pull/2573",
+        "https://github.com/SnowCait/nostter/pull/2574",
+        "https://github.com/SnowCait/nostter/pull/2575",
+        "https://github.com/SnowCait/nostter/pull/2576",
+        "https://github.com/SnowCait/nostter/pull/2577",
+        "https://github.com/SnowCait/nostter/pull/2578",
+        "https://github.com/SnowCait/nostter/pull/2579",
+        "https://github.com/SnowCait/nostter/pull/2580",
+        "https://github.com/SnowCait/nostter/pull/2581",
+        "https://github.com/SnowCait/nostter/pull/2582",
+        "https://github.com/SnowCait/nostter/pull/2583",
+        "https://github.com/SnowCait/nostter/pull/2584",
+        "https://github.com/SnowCait/nostter/pull/2585",
+        "https://github.com/SnowCait/nostter/pull/2586",
+        "https://github.com/SnowCait/nostter/pull/2587",
+        "https://github.com/SnowCait/nostter/pull/2588",
+        "https://github.com/SnowCait/nostter/pull/2589",
+        "https://github.com/SnowCait/nostter/pull/2590",
+        "https://github.com/SnowCait/nostter/pull/2591",
+        "https://github.com/SnowCait/nostter/pull/2592",
+        "https://github.com/SnowCait/nostter/pull/2595",
+        "https://github.com/SnowCait/nostter/pull/2598",
+        "https://github.com/SnowCait/nostter/pull/2597",
+        "https://github.com/SnowCait/nostter/pull/2599",
+        "https://github.com/SnowCait/nostter/pull/2600",
+        "https://github.com/SnowCait/nostter/pull/2604",
+        "https://github.com/SnowCait/nostter/pull/2605",
+        "https://github.com/SnowCait/nostter/pull/2606",
+        "https://github.com/SnowCait/nostter/pull/2607",
+        "https://github.com/SnowCait/nostter/pull/2608",
+        "https://github.com/SnowCait/nostter/pull/2609",
+        "https://github.com/SnowCait/nostter/pull/2610",
+        "https://github.com/SnowCait/nostter/pull/2611",
+        "https://github.com/SnowCait/nostter/pull/2612",
+        "https://github.com/SnowCait/nostter/pull/2614",
+        "https://github.com/SnowCait/nostter/pull/2615",
+        "https://github.com/SnowCait/nostter/pull/2616",
+        "https://github.com/SnowCait/nostter/pull/2620",
+        "https://github.com/SnowCait/nostter/pull/2619",
+        "https://github.com/SnowCait/nostter/pull/2621",
+        "https://github.com/SnowCait/nostter/pull/2623"
+      ],
+      "scores": {
+        "evidence_maturity": 2,
+        "explanatory_value": 2,
+        "nostr_significance": 2,
+        "novelty": 1,
+        "user_operator_impact": 2
+      },
+      "selected_pr_urls": [
+        "https://github.com/SnowCait/nostter/pull/2573",
+        "https://github.com/SnowCait/nostter/pull/2608",
+        "https://github.com/SnowCait/nostter/pull/2611"
+      ],
+      "verdict": "include"
+    },
+    {
+      "branch_checks": [],
+      "hard_gate": {
+        "continuity_delta": true,
+        "in_window_progress": true,
+        "nostr_surface": false,
+        "primary_evidence": true
+      },
+      "primary_sources": [
+        "https://github.com/SnowCait/snowflare/pull/17"
+      ],
+      "reason": "Dependency-lock checks are CI maintenance.",
+      "repo": "SnowCait/snowflare",
+      "reviewed_pr_urls": [
+        "https://github.com/SnowCait/snowflare/pull/17"
+      ],
+      "scores": {
+        "evidence_maturity": 2,
+        "explanatory_value": 1,
+        "nostr_significance": 1,
+        "novelty": 1,
+        "user_operator_impact": 1
+      },
+      "selected_pr_urls": [],
+      "verdict": "skip"
+    },
+    {
+      "branch_checks": [
+        {
+          "base_ref": "main",
+          "default_branch": "main",
+          "source_url": "https://github.com/tcheeric/nostr-java/pull/557",
+          "url": "https://github.com/tcheeric/nostr-java/pull/557"
+        },
+        {
+          "base_ref": "main",
+          "default_branch": "main",
+          "source_url": "https://github.com/tcheeric/nostr-java/pull/558",
+          "url": "https://github.com/tcheeric/nostr-java/pull/558"
+        }
+      ],
+      "hard_gate": {
+        "continuity_delta": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "primary_evidence": true
+      },
+      "primary_sources": [
+        "https://github.com/tcheeric/nostr-java/pull/557",
+        "https://github.com/tcheeric/nostr-java/pull/558"
+      ],
+      "reason": "Selected distinct, material Nostr source progress: Blossom hosting tools expose a new Nostr media workflow through the Java SDK; preserving event-tag values in publishing also protects protocol fidelity.",
+      "repo": "tcheeric/nostr-java",
+      "reviewed_pr_urls": [
+        "https://github.com/tcheeric/nostr-java/pull/557",
+        "https://github.com/tcheeric/nostr-java/pull/558"
+      ],
+      "scores": {
+        "evidence_maturity": 2,
+        "explanatory_value": 2,
+        "nostr_significance": 2,
+        "novelty": 1,
+        "user_operator_impact": 2
+      },
+      "selected_pr_urls": [
+        "https://github.com/tcheeric/nostr-java/pull/557",
+        "https://github.com/tcheeric/nostr-java/pull/558"
+      ],
+      "verdict": "include"
+    },
+    {
+      "branch_checks": [],
+      "hard_gate": {
+        "continuity_delta": false,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "primary_evidence": true
+      },
+      "primary_sources": [
+        "https://github.com/TsukemonoGit/lumilumi/pull/1108"
+      ],
+      "reason": "Custom-emoji and YouTube fixes are narrow, with no broader release or interoperability evidence.",
+      "repo": "TsukemonoGit/lumilumi",
+      "reviewed_pr_urls": [
+        "https://github.com/TsukemonoGit/lumilumi/pull/1108",
+        "https://github.com/TsukemonoGit/lumilumi/pull/1109"
+      ],
+      "scores": {
+        "evidence_maturity": 2,
+        "explanatory_value": 1,
+        "nostr_significance": 1,
+        "novelty": 1,
+        "user_operator_impact": 1
+      },
+      "selected_pr_urls": [],
+      "verdict": "skip"
+    },
+    {
+      "branch_checks": [
+        {
+          "base_ref": "main",
+          "default_branch": "main",
+          "source_url": "https://github.com/vitorpamplona/amethyst/pull/4174",
+          "url": "https://github.com/vitorpamplona/amethyst/pull/4174"
+        },
+        {
+          "base_ref": "main",
+          "default_branch": "main",
+          "source_url": "https://github.com/vitorpamplona/amethyst/pull/4201",
+          "url": "https://github.com/vitorpamplona/amethyst/pull/4201"
+        },
+        {
+          "base_ref": "main",
+          "default_branch": "main",
+          "source_url": "https://github.com/vitorpamplona/amethyst/pull/4231",
+          "url": "https://github.com/vitorpamplona/amethyst/pull/4231"
+        },
+        {
+          "base_ref": "main",
+          "default_branch": "main",
+          "source_url": "https://github.com/vitorpamplona/amethyst/pull/4233",
+          "url": "https://github.com/vitorpamplona/amethyst/pull/4233"
+        },
+        {
+          "base_ref": "main",
+          "default_branch": "main",
+          "source_url": "https://github.com/vitorpamplona/amethyst/pull/4240",
+          "url": "https://github.com/vitorpamplona/amethyst/pull/4240"
+        },
+        {
+          "base_ref": "main",
+          "default_branch": "main",
+          "source_url": "https://github.com/vitorpamplona/amethyst/pull/4245",
+          "url": "https://github.com/vitorpamplona/amethyst/pull/4245"
+        }
+      ],
+      "hard_gate": {
+        "continuity_delta": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "primary_evidence": true
+      },
+      "primary_sources": [
+        "https://github.com/vitorpamplona/amethyst/pull/4174",
+        "https://github.com/vitorpamplona/amethyst/pull/4201",
+        "https://github.com/vitorpamplona/amethyst/pull/4231",
+        "https://github.com/vitorpamplona/amethyst/pull/4233",
+        "https://github.com/vitorpamplona/amethyst/pull/4240",
+        "https://github.com/vitorpamplona/amethyst/pull/4245"
+      ],
+      "reason": "Selected distinct, material Nostr source progress: Marmot/White Noise reactions, deletion and edit interoperability, Cordn group runtime, NIP-FE relay commands, and backup conflict handling are material merged changes. Release availability is not assumed.",
+      "repo": "vitorpamplona/amethyst",
+      "reviewed_pr_urls": [
+        "https://github.com/vitorpamplona/amethyst/pull/4152",
+        "https://github.com/vitorpamplona/amethyst/pull/4153",
+        "https://github.com/vitorpamplona/amethyst/pull/4155",
+        "https://github.com/vitorpamplona/amethyst/pull/4156",
+        "https://github.com/vitorpamplona/amethyst/pull/4158",
+        "https://github.com/vitorpamplona/amethyst/pull/4157",
+        "https://github.com/vitorpamplona/amethyst/pull/4160",
+        "https://github.com/vitorpamplona/amethyst/pull/4161",
+        "https://github.com/vitorpamplona/amethyst/pull/4149",
+        "https://github.com/vitorpamplona/amethyst/pull/4162",
+        "https://github.com/vitorpamplona/amethyst/pull/4163",
+        "https://github.com/vitorpamplona/amethyst/pull/4135",
+        "https://github.com/vitorpamplona/amethyst/pull/4165",
+        "https://github.com/vitorpamplona/amethyst/pull/4167",
+        "https://github.com/vitorpamplona/amethyst/pull/4168",
+        "https://github.com/vitorpamplona/amethyst/pull/4169",
+        "https://github.com/vitorpamplona/amethyst/pull/4171",
+        "https://github.com/vitorpamplona/amethyst/pull/4174",
+        "https://github.com/vitorpamplona/amethyst/pull/4172",
+        "https://github.com/vitorpamplona/amethyst/pull/4179",
+        "https://github.com/vitorpamplona/amethyst/pull/4178",
+        "https://github.com/vitorpamplona/amethyst/pull/4177",
+        "https://github.com/vitorpamplona/amethyst/pull/4176",
+        "https://github.com/vitorpamplona/amethyst/pull/4180",
+        "https://github.com/vitorpamplona/amethyst/pull/4186",
+        "https://github.com/vitorpamplona/amethyst/pull/4182",
+        "https://github.com/vitorpamplona/amethyst/pull/4183",
+        "https://github.com/vitorpamplona/amethyst/pull/4184",
+        "https://github.com/vitorpamplona/amethyst/pull/4187",
+        "https://github.com/vitorpamplona/amethyst/pull/4188",
+        "https://github.com/vitorpamplona/amethyst/pull/4185",
+        "https://github.com/vitorpamplona/amethyst/pull/4189",
+        "https://github.com/vitorpamplona/amethyst/pull/4191",
+        "https://github.com/vitorpamplona/amethyst/pull/4193",
+        "https://github.com/vitorpamplona/amethyst/pull/4194",
+        "https://github.com/vitorpamplona/amethyst/pull/4197",
+        "https://github.com/vitorpamplona/amethyst/pull/4198",
+        "https://github.com/vitorpamplona/amethyst/pull/4200",
+        "https://github.com/vitorpamplona/amethyst/pull/4201",
+        "https://github.com/vitorpamplona/amethyst/pull/4202",
+        "https://github.com/vitorpamplona/amethyst/pull/4203",
+        "https://github.com/vitorpamplona/amethyst/pull/4190",
+        "https://github.com/vitorpamplona/amethyst/pull/4204",
+        "https://github.com/vitorpamplona/amethyst/pull/4205",
+        "https://github.com/vitorpamplona/amethyst/pull/4199",
+        "https://github.com/vitorpamplona/amethyst/pull/4207",
+        "https://github.com/vitorpamplona/amethyst/pull/4208",
+        "https://github.com/vitorpamplona/amethyst/pull/4211",
+        "https://github.com/vitorpamplona/amethyst/pull/4210",
+        "https://github.com/vitorpamplona/amethyst/pull/4212",
+        "https://github.com/vitorpamplona/amethyst/pull/4213",
+        "https://github.com/vitorpamplona/amethyst/pull/4217",
+        "https://github.com/vitorpamplona/amethyst/pull/4215",
+        "https://github.com/vitorpamplona/amethyst/pull/4216",
+        "https://github.com/vitorpamplona/amethyst/pull/4221",
+        "https://github.com/vitorpamplona/amethyst/pull/4222",
+        "https://github.com/vitorpamplona/amethyst/pull/4214",
+        "https://github.com/vitorpamplona/amethyst/pull/4224",
+        "https://github.com/vitorpamplona/amethyst/pull/4209",
+        "https://github.com/vitorpamplona/amethyst/pull/4226",
+        "https://github.com/vitorpamplona/amethyst/pull/4230",
+        "https://github.com/vitorpamplona/amethyst/pull/4231",
+        "https://github.com/vitorpamplona/amethyst/pull/4233",
+        "https://github.com/vitorpamplona/amethyst/pull/4232",
+        "https://github.com/vitorpamplona/amethyst/pull/4238",
+        "https://github.com/vitorpamplona/amethyst/pull/4240",
+        "https://github.com/vitorpamplona/amethyst/pull/4239",
+        "https://github.com/vitorpamplona/amethyst/pull/4228",
+        "https://github.com/vitorpamplona/amethyst/pull/4236",
+        "https://github.com/vitorpamplona/amethyst/pull/4243",
+        "https://github.com/vitorpamplona/amethyst/pull/4242",
+        "https://github.com/vitorpamplona/amethyst/pull/4249",
+        "https://github.com/vitorpamplona/amethyst/pull/4245",
+        "https://github.com/vitorpamplona/amethyst/pull/4250",
+        "https://github.com/vitorpamplona/amethyst/pull/4252",
+        "https://github.com/vitorpamplona/amethyst/pull/4251",
+        "https://github.com/vitorpamplona/amethyst/pull/4254",
+        "https://github.com/vitorpamplona/amethyst/pull/4255",
+        "https://github.com/vitorpamplona/amethyst/pull/4256",
+        "https://github.com/vitorpamplona/amethyst/pull/4258",
+        "https://github.com/vitorpamplona/amethyst/pull/4248",
+        "https://github.com/vitorpamplona/amethyst/pull/4259"
+      ],
+      "scores": {
+        "evidence_maturity": 2,
+        "explanatory_value": 2,
+        "nostr_significance": 2,
+        "novelty": 1,
+        "user_operator_impact": 2
+      },
+      "selected_pr_urls": [
+        "https://github.com/vitorpamplona/amethyst/pull/4174",
+        "https://github.com/vitorpamplona/amethyst/pull/4201",
+        "https://github.com/vitorpamplona/amethyst/pull/4231",
+        "https://github.com/vitorpamplona/amethyst/pull/4233",
+        "https://github.com/vitorpamplona/amethyst/pull/4240",
+        "https://github.com/vitorpamplona/amethyst/pull/4245"
+      ],
+      "verdict": "include"
+    },
+    {
+      "branch_checks": [
+        {
+          "base_ref": "main",
+          "default_branch": "main",
+          "source_url": "https://github.com/zapcooking/frontend/pull/743",
+          "url": "https://github.com/zapcooking/frontend/pull/743"
+        },
+        {
+          "base_ref": "main",
+          "default_branch": "main",
+          "source_url": "https://github.com/zapcooking/frontend/pull/752",
+          "url": "https://github.com/zapcooking/frontend/pull/752"
+        },
+        {
+          "base_ref": "main",
+          "default_branch": "main",
+          "source_url": "https://github.com/zapcooking/frontend/pull/753",
+          "url": "https://github.com/zapcooking/frontend/pull/753"
+        }
+      ],
+      "hard_gate": {
+        "continuity_delta": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "primary_evidence": true
+      },
+      "primary_sources": [
+        "https://github.com/zapcooking/frontend/pull/743",
+        "https://github.com/zapcooking/frontend/pull/752",
+        "https://github.com/zapcooking/frontend/pull/753"
+      ],
+      "reason": "Selected distinct, material Nostr source progress: Lazarus replaces the account backup design with relay-history recovery; other merged PoW and attachment work merits source-level mention if it passes final review.",
+      "repo": "zapcooking/frontend",
+      "reviewed_pr_urls": [
+        "https://github.com/zapcooking/frontend/pull/750",
+        "https://github.com/zapcooking/frontend/pull/743",
+        "https://github.com/zapcooking/frontend/pull/749",
+        "https://github.com/zapcooking/frontend/pull/752",
+        "https://github.com/zapcooking/frontend/pull/754",
+        "https://github.com/zapcooking/frontend/pull/755",
+        "https://github.com/zapcooking/frontend/pull/756",
+        "https://github.com/zapcooking/frontend/pull/757",
+        "https://github.com/zapcooking/frontend/pull/753",
+        "https://github.com/zapcooking/frontend/pull/758",
+        "https://github.com/zapcooking/frontend/pull/751",
+        "https://github.com/zapcooking/frontend/pull/761",
+        "https://github.com/zapcooking/frontend/pull/759"
+      ],
+      "scores": {
+        "evidence_maturity": 2,
+        "explanatory_value": 2,
+        "nostr_significance": 2,
+        "novelty": 1,
+        "user_operator_impact": 2
+      },
+      "selected_pr_urls": [
+        "https://github.com/zapcooking/frontend/pull/743",
+        "https://github.com/zapcooking/frontend/pull/752",
+        "https://github.com/zapcooking/frontend/pull/753"
+      ],
+      "verdict": "include"
+    },
+    {
+      "branch_checks": [],
+      "hard_gate": {
+        "continuity_delta": false,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "primary_evidence": true
+      },
+      "primary_sources": [
+        "https://github.com/zeSchlausKwab/napplet-soy/pull/1"
+      ],
+      "reason": "The only merged PR is CI repair, while current user-facing work is covered by the soyLI tagged release.",
+      "repo": "zeSchlausKwab/napplet-soy",
+      "reviewed_pr_urls": [
+        "https://github.com/zeSchlausKwab/napplet-soy/pull/1"
+      ],
+      "scores": {
+        "evidence_maturity": 2,
+        "explanatory_value": 1,
+        "nostr_significance": 1,
+        "novelty": 1,
+        "user_operator_impact": 1
+      },
+      "selected_pr_urls": [],
+      "verdict": "skip"
+    },
+    {
+      "branch_checks": [],
+      "hard_gate": {
+        "continuity_delta": true,
+        "in_window_progress": true,
+        "nostr_surface": false,
+        "primary_evidence": true
+      },
+      "primary_sources": [
+        "https://github.com/ZeusLN/zeus/pull/4691"
+      ],
+      "reason": "NWC configuration crash and NIP-05 case fixes are narrow amid a Lightning-heavy set of changes; no independently material Nostr milestone.",
+      "repo": "ZeusLN/zeus",
+      "reviewed_pr_urls": [
+        "https://github.com/ZeusLN/zeus/pull/4691",
+        "https://github.com/ZeusLN/zeus/pull/4685",
+        "https://github.com/ZeusLN/zeus/pull/4689",
+        "https://github.com/ZeusLN/zeus/pull/4664",
+        "https://github.com/ZeusLN/zeus/pull/4704",
+        "https://github.com/ZeusLN/zeus/pull/4694",
+        "https://github.com/ZeusLN/zeus/pull/4450",
+        "https://github.com/ZeusLN/zeus/pull/4705",
+        "https://github.com/ZeusLN/zeus/pull/4651",
+        "https://github.com/ZeusLN/zeus/pull/4702",
+        "https://github.com/ZeusLN/zeus/pull/4662",
+        "https://github.com/ZeusLN/zeus/pull/4734",
+        "https://github.com/ZeusLN/zeus/pull/4726",
+        "https://github.com/ZeusLN/zeus/pull/4737",
+        "https://github.com/ZeusLN/zeus/pull/4515",
+        "https://github.com/ZeusLN/zeus/pull/4721",
+        "https://github.com/ZeusLN/zeus/pull/4731",
+        "https://github.com/ZeusLN/zeus/pull/4767",
+        "https://github.com/ZeusLN/zeus/pull/4772",
+        "https://github.com/ZeusLN/zeus/pull/4762",
+        "https://github.com/ZeusLN/zeus/pull/4763",
+        "https://github.com/ZeusLN/zeus/pull/4761",
+        "https://github.com/ZeusLN/zeus/pull/4758",
+        "https://github.com/ZeusLN/zeus/pull/4775",
+        "https://github.com/ZeusLN/zeus/pull/4701",
+        "https://github.com/ZeusLN/zeus/pull/4759",
+        "https://github.com/ZeusLN/zeus/pull/4760",
+        "https://github.com/ZeusLN/zeus/pull/4729"
+      ],
+      "scores": {
+        "evidence_maturity": 2,
+        "explanatory_value": 1,
+        "nostr_significance": 1,
+        "novelty": 1,
+        "user_operator_impact": 1
+      },
+      "selected_pr_urls": [],
+      "verdict": "skip"
+    }
+  ],
+  "schema_version": 1,
+  "updates_sha256": "97fad295ac0387e8c8ddc4560aeb5846e1ef3a618caaa5456f0f4b11ddb9ad86"
+}

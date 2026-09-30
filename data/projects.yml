@@ -1284,6 +1284,16 @@ social_clients:
     priority: medium
     notes: NIP-34 repository announced 2026-08-22; initial 1.0.0 release keeps private keys in Amber and publishes signed notes to user relays
 
+  - name: Holoboard
+    description: Paid bulletin board that promotes original Nostr notes through Lightning payments and signed Nostr commands
+    platforms: [ web, android ]
+    repo: https://github.com/ptrio42/holoboard.space
+    website: https://holoboard.space
+    maintainer: ptrio42
+    status: active
+    priority: medium
+    notes: Submitted for the September 30 issue; September 23 and 24 changelog entries document NIP-17 promotion commands and an Android app
+
 longform_clients:
   - name: Habla
     description: Long-form content publishing (NIP-23)
@@ -6501,3 +6511,12 @@ protocols:
     status: alpha
     priority: medium
     notes: soyLI publishes signed napplet listings with source and assets while the site discovers manifests from Nostr relays and loads content from Blossom
+
+  - name: fips-pub-domains
+    description: Public-domain resolution for FIPS mesh nodes using signed Nostr claims and optional DNS verification
+    platforms: [ linux, android ]
+    repo: https://github.com/fr34aky/fips-pub-domains
+    maintainer: fr34aky
+    status: beta
+    priority: medium
+    notes: Submitted for the September 30 issue; Phase 1 is documented as tested while its NIP and event kinds remain drafts
