@@ -99,7 +99,8 @@ Choose one caller-owned pass ID and one absolute UTC window. Read the
 authenticated GitHub buckets before starting, then run all fetchers:
 
 ```bash
-gh api rate_limit --jq '{core:.resources.core,graphql:.resources.graphql,search:.resources.search}'
+gh api rate_limit --jq '{core:.resources.core,search:.resources.search}'
+gh api graphql -f 'query=query { rateLimit { limit remaining used resetAt cost } }'
 bash scripts/fetch_all.sh \
   --pass-id <immutable-pass-id> \
   --since <RFC3339-window-start> \
@@ -109,34 +110,15 @@ python3 scripts/build_coverage_history.py
 bash scripts/detect_non_github_sources.sh
 ```
 
-The tracked-project fetch currently uses about 3,650 REST-core requests. App
-discovery later lists every distinct tracked GitHub owner through REST core
-(418 owners as of 2026-09-16), so budget roughly 4,100 core requests before
-unrelated same-hour traffic and retain the 500-request guard reserve. Do not
-start without sufficient core budget for both collectors plus the reserve. Run
-only one fresh project collector per fixed pass. Before any retry,
-verify that no matching `fetch_all.sh` or `fetch_project_updates.py` process is
-still live, including children whose parent worker ended. Resume from the
-completion journal and valid immutable receipts; never rerun `--fresh` after a
-receipt exists, because rewriting the artifact invalidates its hash. Invoke
-`fetch_all.sh` exactly once per pass; never run the standalone project collector
-and then replay it through `fetch_all.sh`. A changed window requires a new pass
-ID. If an unfinalized pass is already unusable because its receipt and artifact
-conflict, abandon it and run one new pass ID over the same frozen window while
-resuming the completed project journal without `--fresh`. REST, GraphQL, and
-search have separate limits;
-prefer authenticated `gh api graphql` for bounded exact-window verification
-when core is constrained, but accept it as source-gate evidence only when the
-query is exhaustively paginated and emits the normal artifact-bound immutable
-receipt.
-
-App discovery switches its owner sweep to exhaustively paginated GraphQL when
-REST cannot cover the owners plus reserve and GraphQL can. If neither bucket
-can finish, it returns `source_errors` without an immutable receipt. Treat that
-family as failed. Let the current process exit, wait for a recorded reset,
-rerun only `fetch_app_discovery.py` under the same pass/window environment, and
-resume `fetch_all.sh` to ingest already-valid receipts. Partial discovery JSON
-is not source-gate evidence.
+Follow [the collector budget contract](../../../docs/collector-github-budget.md).
+Use the host's guarded collection launcher when LOCAL_OPS.md provides one.
+Freeze one pass and exact window; resume verified receipts/checkpoints after
+exit 75. The 1,500-request REST bulk reserve can require collection across
+resets. Never repeat a full sweep for an already-covered window, certify
+partial JSON, or use `--fresh` after an immutable receipt. Verify no matching
+collector is live before retrying. GraphQL owner discovery checks its own
+budget and preserves exhaustive pagination; a REST diagnostic is not GraphQL
+authority.
 
 `fetch_all.sh` already orchestrates project updates, NIP discussions, Nostr Recap, Shakespeare apps, NIP-34 repositories, Zapstore releases, grantee heartbeats, and the mandatory spec-family sweep. It also writes `data/project_updates/activity_digest_<date>.json`, an exact-input inventory of all merged-PR activity, including projects with no release and fewer than five PRs. Heartbeats include automatic Sovereign Engineering cohort parsing plus relay-backed `#SovEng` and current `#SECxx` discovery. The spec sweep writes `data/spec_updates/spec_updates_<date>.json` for NIPs, BUDs, NAPs, Marmot/MIPs, Gamma Markets, Concord/CORD, and NWC, preserving quiet families as explicit `status: quiet` records. The Orchestrator runs the build_coverage_history and detect_non_github_sources passes after.
 

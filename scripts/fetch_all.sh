@@ -148,7 +148,12 @@ elif command -v python3 &>/dev/null; then
         SOURCE_EXIT[projects]=0
         echo "  Done."
     else
-        echo "  WARNING: GitHub fetcher failed (exit code $?)"
+        project_status=$?
+        if [ "$project_status" -eq 75 ]; then
+            echo "GitHub collection deferred; retained exact-window checkpoints. Resume this pass after admission." >&2
+            exit 75
+        fi
+        echo "  WARNING: GitHub fetcher failed (exit code $project_status)"
         FAILED=$((FAILED + 1))
     fi
 else

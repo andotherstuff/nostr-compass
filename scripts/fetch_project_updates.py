@@ -2,8 +2,9 @@
 """
 Fetch recent updates (releases, PRs, commits) from projects in data/projects.yml.
 
-Uses httpx with asyncio for concurrent GitHub API requests (20-50x faster than
-sequential gh CLI subprocess spawning).
+Uses the maintained guarded GitHub CLI on Hermes, with serialized single-page
+requests and resumable exact-window checkpoints. Other installs can select a
+guarded CLI with COMPASS_GITHUB_GH or use the portable httpx transport.
 
 Requirements:
     - GitHub token: either GITHUB_TOKEN env var or `gh auth token`
@@ -17,6 +18,7 @@ Usage:
 """
 
 import argparse
+import hashlib
 import asyncio
 import json
 import os
@@ -69,9 +71,7 @@ def _observe_response(endpoint: str, response) -> None:
 
 
 def _request_failure(message: str):
-    if ACTIVE_WINDOW:
-        raise RuntimeError(message)
-    return None
+    raise RuntimeError(message)
 
 try:
     import yaml
@@ -195,6 +195,32 @@ def get_github_token() -> str:
 # =============================================================================
 
 
+class GitHubQuotaDeferred(RuntimeError):
+    """Typed shared-budget stop; repository checkpoints remain usable."""
+
+
+def guarded_github_cli() -> str | None:
+    configured = os.environ.get("COMPASS_GITHUB_GH")
+    if configured:
+        if not Path(configured).is_file():
+            raise RuntimeError("configured Compass GitHub CLI is unavailable")
+        return configured
+    maintained = Path("/opt/data/.local/bin/gh")
+    return str(maintained) if maintained.is_file() else None
+
+
+def parse_cli_response(raw: bytes) -> httpx.Response:
+    match = re.match(rb"HTTP/\S+ ([1-5]\d\d)[^\r\n]*\r?\n((?:[^\r\n]+\r?\n)*)\r?\n", raw)
+    if not match:
+        raise RuntimeError("guarded GitHub response lacks HTTP status/headers")
+    headers = {}
+    for line in match.group(2).splitlines():
+        key, sep, value = line.partition(b":")
+        if sep:
+            headers[key.decode("ascii").lower()] = value.decode("utf-8").strip()
+    return httpx.Response(int(match.group(1)), headers=headers, content=raw[match.end():])
+
+
 class GitHubClient:
     """Async GitHub API client with rate limit awareness and concurrency control."""
 
@@ -202,8 +228,10 @@ class GitHubClient:
         self, token: str, concurrency: int = DEFAULT_CONCURRENCY, verbose: bool = False
     ):
         self.token = token
+        self.guarded_cli = guarded_github_cli()
+        self._quota_stop: GitHubQuotaDeferred | None = None
         self.verbose = verbose
-        self.semaphore = asyncio.Semaphore(concurrency)
+        self.semaphore = asyncio.Semaphore(1 if self.guarded_cli else concurrency)
         self.rate_limit_remaining: Optional[int] = None
         self.rate_limit_reset: Optional[float] = None
         self._rate_lock = asyncio.Lock()
@@ -211,6 +239,8 @@ class GitHubClient:
         self.client: Optional[httpx.AsyncClient] = None
 
     async def __aenter__(self):
+        if self.guarded_cli:
+            return self
         self.client = httpx.AsyncClient(
             base_url=GITHUB_API_BASE,
             headers={
@@ -259,8 +289,48 @@ class GitHubClient:
                     )
                 await asyncio.sleep(wait)
 
+    async def _guarded_get(self, endpoint: str) -> httpx.Response:
+        parts = urlsplit(endpoint)
+        if parts.scheme or parts.netloc:
+            if parts.scheme != "https" or parts.netloc != "api.github.com":
+                raise RuntimeError("refusing GitHub pagination outside the authenticated API origin")
+            endpoint = parts.path.lstrip("/") + ("?" + parts.query if parts.query else "")
+        else:
+            endpoint = endpoint.lstrip("/")
+        if not endpoint.startswith("repos/") or ".." in endpoint.split("?")[0].split("/"):
+            raise RuntimeError("invalid Compass GitHub endpoint")
+        async with self.semaphore:
+            if self._quota_stop:
+                raise self._quota_stop
+            env = os.environ.copy()
+            env["HERMES_GH_BULK"] = "1"
+            process = await asyncio.create_subprocess_exec(
+                self.guarded_cli, "api", endpoint, "--include", env=env,
+                stdout=asyncio.subprocess.PIPE, stderr=asyncio.subprocess.PIPE,
+            )
+            try:
+                output, error = await asyncio.wait_for(process.communicate(), timeout=120)
+            except BaseException:
+                if process.returncode is None:
+                    process.terminate()
+                    await process.wait()
+                raise
+            self.request_count += 1
+            if process.returncode == 75:
+                self._quota_stop = GitHubQuotaDeferred(error.decode(errors="replace").strip())
+                raise self._quota_stop
+            response = parse_cli_response(output)
+            if process.returncode and response.status_code != 404:
+                raise RuntimeError(f"guarded GitHub request failed (HTTP {response.status_code})")
+            await self._check_rate_limit(response.headers)
+            if response.status_code != 404:
+                _observe_response(endpoint, response)
+            return response
+
     async def get(self, endpoint: str) -> Optional[httpx.Response]:
         """Make a GET request with concurrency control and rate limit handling."""
+        if self.guarded_cli:
+            return await self._guarded_get(endpoint)
         await self._maybe_throttle()
 
         async with self.semaphore:
@@ -848,14 +918,8 @@ async def fetch_repo(
 
     for (key, _), result in zip(task_items, gathered):
         if isinstance(result, Exception):
-            if client.verbose:
-                print(
-                    f"  Warning: {key} failed for {owner}/{repo}: {result}",
-                    file=sys.stderr,
-                )
-            results[key] = []
-        else:
-            results[key] = result
+            raise result
+        results[key] = result
 
     releases = results.get("releases", [])
     merged_prs = results.get("merged_prs", [])
@@ -978,12 +1042,18 @@ def _project_entry_from_url(
 # =============================================================================
 
 
-def get_output_filename(since_date, until_date):
-    return f"updates_{since_date.strftime('%Y-%m-%d')}_{until_date.strftime('%Y-%m-%d')}.json"
+def collection_scope(projects: list[dict]) -> str:
+    return hashlib.sha256(json.dumps(projects, sort_keys=True).encode()).hexdigest()
+
+
+def get_output_filename(since_date, until_date, compact=False, scope=''):
+    window = f"{since_date.isoformat()}|{until_date.isoformat()}|compact={compact}|scope={scope}"
+    suffix = hashlib.sha256(window.encode()).hexdigest()[:12]
+    return f"updates_{since_date.strftime('%Y-%m-%d')}_{until_date.strftime('%Y-%m-%d')}_{suffix}.json"
 
 
 def get_last_run_date(output_dir):
-    pattern = re.compile(r"updates_(\d{4}-\d{2}-\d{2})_(\d{4}-\d{2}-\d{2})\.json$")
+    pattern = re.compile(r"updates_(\d{4}-\d{2}-\d{2})_(\d{4}-\d{2}-\d{2})(?:_[a-f0-9]{12})?\.json$")
     latest = None
     for fp in output_dir.glob("updates_*.json"):
         m = pattern.match(fp.name)
@@ -1145,13 +1215,13 @@ async def run(args, projects: list[dict]):
     QUERY_DISPOSITIONS.clear()
     query_started = datetime.now(timezone.utc).isoformat().replace("+00:00", "Z")
 
-    output_path = args.output_dir / get_output_filename(since_dt, until_dt)
+    output_path = args.output_dir / get_output_filename(since_dt, until_dt, args.compact, collection_scope(projects))
 
     already_fetched = set()
     all_projects = {}
     if not args.fresh:
         existing = load_existing_data(output_path)
-        if existing:
+        if existing and existing.get("collector_window") == {"since": pass_since, "until": pass_until, "compact": args.compact}:
             all_projects = existing.get("projects", {})
             already_fetched = _completed_repo_keys(existing)
             evidence = existing.get("_collector_evidence", {})
@@ -1183,13 +1253,15 @@ async def run(args, projects: list[dict]):
 
     fetched_repos = set(already_fetched)
     failed_repos: list[str] = []
+    quota_deferred = False
 
-    def save_progress():
+    def save_progress(preserve_generated_at=None):
         temp_path = output_path.with_suffix(output_path.suffix + ".tmp")
         with open(temp_path, "w") as f:
             json.dump(
                 {
-                    "generated_at": datetime.now(timezone.utc).isoformat(),
+                    "generated_at": preserve_generated_at or datetime.now(timezone.utc).isoformat(),
+                    "collector_window": {"since": pass_since, "until": pass_until, "compact": args.compact},
                     "period": {
                         "start": since_dt.strftime("%Y-%m-%d"),
                         "end": until_dt.isoformat(),
@@ -1230,8 +1302,8 @@ async def run(args, projects: list[dict]):
     total_requests = [0]
 
     async def run_batch(client, batch: list[dict]):
-        nonlocal interrupted
-        if interrupted:
+        nonlocal interrupted, quota_deferred
+        if interrupted or quota_deferred:
             return
         async def fetch_one(project):
             try:
@@ -1246,6 +1318,8 @@ async def run(args, projects: list[dict]):
             project, result = await task
             repo_key = _repo_key(project)
             completed[0] += 1
+            if isinstance(result, GitHubQuotaDeferred):
+                quota_deferred = True
             if isinstance(result, Exception):
                 failed_repos.append(repo_key)
                 if args.verbose:
@@ -1278,13 +1352,13 @@ async def run(args, projects: list[dict]):
 
     # GitHub batch
     if github_projects:
-        token = get_github_token()
+        token = "" if guarded_github_cli() else get_github_token()
         async with GitHubClient(
             token, concurrency=args.concurrency, verbose=args.verbose
         ) as client:
             batch_size = args.concurrency * 2
             for batch_start in range(0, len(github_projects), batch_size):
-                if interrupted:
+                if interrupted or quota_deferred:
                     break
                 await run_batch(
                     client, github_projects[batch_start : batch_start + batch_size]
@@ -1334,6 +1408,15 @@ async def run(args, projects: list[dict]):
     # exact artifact bytes when there was no repository work to perform.
     if _resume_has_collection_work(remaining):
         save_progress()
+    else:
+        persisted = load_existing_data(output_path)
+        repaired = {"pages": QUERY_PAGES, "dispositions": QUERY_DISPOSITIONS}
+        if persisted and persisted.get("_collector_evidence") != repaired:
+            pass_id = os.environ.get("COMPASS_SOURCE_PASS_ID")
+            receipt = output_path.parents[1] / "source_runs" / f"collector_{pass_id}_projects.json"
+            if pass_id and receipt.exists():
+                raise RuntimeError("sealed project artifact requires evidence repair; refusing overwrite")
+            save_progress(preserve_generated_at=persisted.get("generated_at"))
 
     print(f"\nOutput saved to {output_path}")
     print(
@@ -1347,6 +1430,10 @@ async def run(args, projects: list[dict]):
             file=sys.stderr,
         )
         sys.exit(130)
+
+    if quota_deferred:
+        print("GitHub API rate limit reserve: collection checkpointed; resume the same frozen window after admission.", file=sys.stderr)
+        sys.exit(75)
 
     if failed_repos:
         raise RuntimeError(f"partial project collection failed for: {', '.join(sorted(failed_repos))}")
