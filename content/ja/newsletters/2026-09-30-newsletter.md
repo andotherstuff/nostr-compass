@@ -253,11 +253,11 @@ Androidでは、[マージされたfips2goの変更](https://github.com/fr34aky/
 
 [Chama](https://github.com/jesuspirate/chama)は、コミュニティでの取引とプライベートな会話に署名付きeventを使います。[バージョン6.4.14〜6.4.16](https://github.com/jesuspirate/chama/releases/tag/v6.4.16)では、掲載をローカルで削除する前に署名付きの取り消しを公開するため、他のクライアントもキャッシュされた同じオファーを取り下げられます。受信者を起こすためのwake tagが送信者の通知設定とは関係なくeventに付けられるようになり、通知サーバーは署名付きeventによって重複を排除するため、参加直後のチャットでも起動を引き起こせます。バックグラウンドのジョブは保存されたカーソルから影響を受けた取引を再処理し、失敗したチェーンを隔離し、通知テキストをローカルで復号します。このリリースでは、付属の監視プロセスを再展開する必要があります。
 
-[まとめて公開されたリリース](https://github.com/jesuspirate/chama/releases/tag/v6.4.16)では、参加者の更新を署名されたevent時刻の時点で適用し、席の期限切れ後に行われた資金ロックを隔離し、保存された持参人払いのノートの復旧手段を示します。クレームの公開は、インポートまたは支払いが確認されるまで待ちます。掲載のフィルターはコミュニティの範囲をまたいで閲覧者の通貨を保持し、取引のヘッダーには確定した参加金額が使われます。これらの変更により、Nostrに接続された2つのクライアントが同じevent履歴から推測する内容がそろいます。
+[まとめて公開されたリリース](https://github.com/jesuspirate/chama/releases/tag/v6.4.16)では、参加者の更新を署名されたevent時刻の時点で適用し、席の期限切れ後に行われた資金ロックを隔離し、保存された無記名式のノート（bearer note）の復旧手段を示します。クレームの公開は、インポートまたは支払いが確認されるまで待ちます。掲載のフィルターはコミュニティの範囲をまたいで閲覧者の通貨を保持し、取引のヘッダーには確定した参加金額が使われます。これらの変更により、Nostrに接続された2つのクライアントが同じevent履歴から推測する内容がそろいます。
 
 ### Earthly 0.1.12が再利用可能な地図設定を追加 {#earthly-0112-adds-reusable-map-configurations}
 
-[Earthly](https://github.com/zeSchlausKwab/earthly)は、署名付きの公開と暗号化された共有を備えた[Nostrの共同地図エディター](https://github.com/zeSchlausKwab/earthly/blob/v0.1.12/README.md)です。[バージョン0.1.12](https://github.com/zeSchlausKwab/earthly/releases/tag/v0.1.12)では、公開されたGoogleマイマップ向けの再利用可能なGMapper設定、開発者が作成したMapletの発見、設定の非公開保存または公開、出典を明示したジオメトリのコピーが追加されました。同じリリースでは、暗号化された接続の共有、エンティティのドロップ、モバイルでのチャットのナビゲーションも追加されています。Googleのエクスポートの可否とブラウザーのCORSによってインポートは制限され、ダウンロードした実行可能なMapletはTauriでは引き続き利用できず、Android実機でのアップグレードの確認はまだ保留中です。
+[Earthly](https://github.com/zeSchlausKwab/earthly)は、署名付きの公開と暗号化された共有を備えた[Nostrの共同地図エディター](https://github.com/zeSchlausKwab/earthly/blob/v0.1.12/README.md)です。[バージョン0.1.12](https://github.com/zeSchlausKwab/earthly/releases/tag/v0.1.12)では、公開されたGoogleマイマップ向けの再利用可能なGMapper設定、開発者が作成したMapletの発見、設定の非公開保存または公開、出典を明示したジオメトリのコピーが追加されました。同じリリースでは、暗号化された接続の共有、ドラッグ＆ドロップでエンティティを追加する機能、モバイルでのチャットのナビゲーションも追加されています。Googleのエクスポートの可否とブラウザーのCORSによってインポートは制限され、ダウンロードした実行可能なMapletはTauriでは引き続き利用できず、Android実機でのアップグレードの確認はまだ保留中です。
 
 [設定に関する作業](https://github.com/zeSchlausKwab/earthly/pull/29)では、既存の公開アドレスと設定を移行し、設定の更新をレビューまたは取り下げる機能を追加しました。最初のAndroidワークフローはコンパイル前に失敗しましたが、[ツール関連の修正](https://github.com/zeSchlausKwab/earthly/pull/30)によって、その後にタグ付けされたリリースの準備が整いました。
 
