@@ -258,7 +258,7 @@ Android에서는 [병합된 fips2go 변경](https://github.com/fr34aky/fips2go/p
 
 ### Earthly 0.1.12가 재사용 가능한 지도 구성을 추가 {#earthly-0112-adds-reusable-map-configurations}
 
-[Earthly](https://github.com/zeSchlausKwab/earthly)는 서명된 게시와 암호화된 공유를 지원하는 [Nostr 협업 지도 편집기](https://github.com/zeSchlausKwab/earthly/blob/v0.1.12/README.md)입니다. [버전 0.1.12](https://github.com/zeSchlausKwab/earthly/releases/tag/v0.1.12)는 공개 Google My Maps를 위한 재사용 가능한 GMapper 구성, 개발자가 만든 Maplet 탐색, 구성의 비공개 저장 또는 공개 게시, 출처가 표시되는 도형 복사를 추가합니다. 같은 릴리스는 암호화된 연결 공유, 엔티티 드롭, 모바일 채팅 탐색도 추가합니다. Google 내보내기 가용성과 브라우저 CORS가 가져오기를 제한하고, 다운로드한 실행형 Maplet은 Tauri에서 여전히 사용할 수 없으며, 실제 Android 기기에서의 업그레이드 확인은 아직 남아 있습니다.
+[Earthly](https://github.com/zeSchlausKwab/earthly)는 서명된 게시와 암호화된 공유를 지원하는 [Nostr 협업 지도 편집기](https://github.com/zeSchlausKwab/earthly/blob/v0.1.12/README.md)입니다. [버전 0.1.12](https://github.com/zeSchlausKwab/earthly/releases/tag/v0.1.12)는 공개 Google My Maps를 위한 재사용 가능한 GMapper 구성, 개발자가 만든 Maplet 탐색, 구성의 비공개 저장 또는 공개 게시, 출처가 표시되는 도형 복사를 추가합니다. 같은 릴리스는 암호화된 연결 공유, 드래그 앤 드롭으로 엔티티 추가, 모바일 채팅 탐색도 추가합니다. Google 내보내기 가용성과 브라우저 CORS가 가져오기를 제한하고, 다운로드한 실행형 Maplet은 Tauri에서 여전히 사용할 수 없으며, 실제 Android 기기에서의 업그레이드 확인은 아직 남아 있습니다.
 
 [구성 작업](https://github.com/zeSchlausKwab/earthly/pull/29)은 기존 게시 주소와 환경설정을 마이그레이션하고, 구성 업데이트에 대한 검토 또는 철회를 추가했습니다. 초기 Android 워크플로는 컴파일 전에 실패했으며, [도구 수정](https://github.com/zeSchlausKwab/earthly/pull/30)이 이후 태그된 릴리스를 준비했습니다.
 
