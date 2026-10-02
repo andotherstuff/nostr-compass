@@ -83,7 +83,7 @@ Androidでは、[マージされたfips2goの変更](https://github.com/fr34aky/
 
 その前の[0.7.4リリース](https://github.com/DavidGershony/Scramble/releases/tag/v0.7.4)では、再利用されたAndroidの行にクリックハンドラーが蓄積して招待の承認が繰り返される問題が修正され、ネイティブアプリでカスタムのBlossomメディアサーバーの設定が保持されるようになりました。バージョン0.7.5はネイティブのAndroid APKのみを提供するため、古いAvalonia版のファイル名を追跡しているユーザーは更新対象を変更する必要があります。アカウントと履歴はこの2つのAndroidビルド間で移行されますが、古い0.6.xのMLSエンジンで作成されたグループは0.7.xへ移行されません。
 
-[Scramble 0.7.6](https://github.com/DavidGershony/Scramble/releases/tag/v0.7.6)では、手動の「欠けているメッセージを取得」操作が追加されました。これはグループが使ってきたすべてのルーティングアドレスを問い合わせ、時間の制限を取り除き、古くなった保存済みアドレスを修復し、何を復旧したかを報告します。ただし、ユーザーが参加する前のエポックは引き続き復号できません。ネイティブ版の管理者は、現在の名簿の状態と失敗時の結果を確認しながら、他のメンバーを昇格または降格できます。2人での会話では引き続きこれらの操作は表示されません。グループ情報のコピー操作も反応するようになりましたが、招待された会話では、プロトコル上のグループIDではなく内部のチャット識別子がコピーされる場合があります。[バージョン0.7.7](https://github.com/DavidGershony/Scramble/releases/tag/v0.7.7)では、[他のメンバーのコミットが届いたときに保留中のメッセージを処理する](https://github.com/DavidGershony/Scramble/commit/35e72177a0009ec96e8494caed7e9c250b66c7cb)ようにもなり、[0.7.8](https://github.com/DavidGershony/Scramble/releases/tag/v0.7.8)では、受動的なメンバーのこの経路に対する回帰テストが追加されました。
+[Scramble 0.7.6](https://github.com/DavidGershony/Scramble/releases/tag/v0.7.6)では、手動の「Fetch missing messages」（欠けているメッセージを取得）操作が追加されました。これはグループが使ってきたすべてのルーティングアドレスを問い合わせ、時間の制限を取り除き、古くなった保存済みアドレスを修復し、何を復旧したかを報告します。ただし、ユーザーが参加する前のエポックは引き続き復号できません。ネイティブ版の管理者は、現在の名簿の状態と失敗時の結果を確認しながら、他のメンバーを昇格または降格できます。2人での会話では引き続きこれらの操作は表示されません。グループ情報のコピー操作も反応するようになりましたが、招待された会話では、プロトコル上のグループIDではなく内部のチャット識別子がコピーされる場合があります。[バージョン0.7.7](https://github.com/DavidGershony/Scramble/releases/tag/v0.7.7)では、[他のメンバーのコミットが届いたときに保留中のメッセージを処理する](https://github.com/DavidGershony/Scramble/commit/35e72177a0009ec96e8494caed7e9c250b66c7cb)ようにもなり、[0.7.8](https://github.com/DavidGershony/Scramble/releases/tag/v0.7.8)では、受動的なメンバーのこの経路に対する回帰テストが追加されました。
 
 ### Amber 6.6.6がリモート署名の接続シークレットを修復 {#amber-666-repairs-remote-signer-connection-secrets}
 
@@ -97,7 +97,7 @@ Androidでは、[マージされたfips2goの変更](https://github.com/fr34aky/
 
 [リリースノート](https://github.com/jmcorgan/fips/releases/tag/v0.5.2)では、すべてのプラットフォームの運営者にアップグレードを求めるとともに、Windowsの鍵ファイルの権限、ゲートウェイ、パッケージサービスに関する個別の修正を詳しく説明しています。一時的なノードは、後の再起動で上書きされる可能性のある非公開の`fips.key`を書き込まなくなりました。安定したidentityを意図していた運営者は、アップグレード前に永続モードを設定する必要があります。このリリースはメッシュのwire形式を変更しないため、バージョンの混在したノードを個別にアップグレードできます。
 
-### napplet soyLI 0.23.1〜0.23.4がバックエンドの公開と署名の承認を修復 {#napplet-soyli-023102234-repairs-backend-publishing-and-signer-approval}
+### napplet soyLI 0.23.1〜0.23.4がバックエンドの公開と署名の承認を修復 {#napplet-soyli-02310234-repairs-backend-publishing-and-signer-approval}
 
 [napplet.soyのsoyLI](https://github.com/zeSchlausKwab/napplet-soy)は、サンドボックス化された小さなNostrプログラムのための作成と公開のツールキットです。先週の作品共有のリリースに続き、[バージョン0.23.1](https://github.com/zeSchlausKwab/napplet-soy/releases/tag/soyli-v0.23.1)では、バックエンドのマニフェスト、ハンドラー、スキーマが作成者向けのチェックとマルチプレイヤーのプレビューの対象になりました。移植可能なプロバイダー設定はプロジェクトのマニフェストに保持し、非公開のidentityのバインディングと開発用データベースは公開されるソースのスナップショットの外に置きます。
 
