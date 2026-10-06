@@ -48,6 +48,14 @@ still fails its actual editorial or feedback gate.
 
 ## Exact effect order
 
+During #43–46, email preparation uses the separately reviewed digest described
+in [the digest contract](../../../docs/email-digest-trial.md), bound to the final
+canonical source bytes and rendered anchors. Verify the prepared email hash at
+handoff; the existing Buttondown sent/skipped disposition still requires a real
+external send ID or explicit skip reason. The digest receipt cannot satisfy it.
+All merge/deploy/sign/broadcast inputs and post-publication podcast promotion
+continue to use the full canonical edition and their existing proof.
+
 Use `publish/publish.ts` in the edition worktree and its schema-versioned
 `publish/out/<issue>/state.json` journal. Each stage is restart-safe only after
 reconciling the exact external outcome; do not replay an unknown attempt.

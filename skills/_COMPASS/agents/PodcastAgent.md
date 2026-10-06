@@ -35,15 +35,22 @@ Conversational yet technical, audience-aware, and timing-conscious. PodcastAgent
 
 **Input:** Newsletter #N (must be published)
 
+Use the complete canonical `content/en/newsletters/<date>-newsletter.md` and
+its verified published page. During the #43–46 email digest trial, never use
+`email_digest_<date>.md` or `email_ready_<date>.md` as the episode source. Keep
+every full-edition topic in its actual order, all participant/Logbook section
+mappings, and existing publication/access/invitation gates. The digest adds no
+podcast campaign, timing change or dependent-card completion signal. See
+[the digest contract](../../../docs/email-digest-trial.md).
+
 **Output:** Comprehensive prep package for hosts and guests following newsletter topic order
 
 **CRITICAL: The prep package MUST include ALL topics from the newsletter in the EXACT order they appear. Do not skip topics. Do not reorder topics. Follow the newsletter structure precisely:**
 
-1. ALL News items
-2. ALL NIP Updates (merged + open PRs/discussions)
-3. ALL NIP Deep Dive NIPs
-4. ALL Releases
-5. ALL Notable code and documentation changes
+Walk the published edition's headings in sequence, covering every story,
+release, development update, new project, protocol/spec change and deep dive or
+month-end history. The published order is authoritative; the sample prep
+template below does not prescribe a different topic order.
 
 ### Prep Package Structure
 
@@ -417,12 +424,16 @@ After show notes are written, generate separately if requested via `/publish`:
 ## Timing Recommendations
 
 ### Episode Frequency
-**Weekly**, published **Fridays** (2 days after newsletter)
+**Weekly**, released exactly **seven days (604800 seconds)** after the matching
+newsletter's first verified website publication, at the same UTC time. Preserve
+that first-publication clock across retries. This is the current host policy;
+the digest trial does not change it.
 
-**Rationale:**
-- Gives readers time to read newsletter first
-- Podcast provides deeper dive and discussion
-- Friday publishing for weekend listening
+Newsletter publication starts preparation, transcription, editing and independent
+review. Complete the genuine recordings, transcripts, chapters and linked show
+notes before the deadline. Preserve the host's existing clock, artifact review,
+signer, media and RSS verification gates. Never publish early or fabricate
+missing recordings; record actual availability and delays truthfully.
 
 ### Episode Length
 **Target:** 30-45 minutes
@@ -435,9 +446,9 @@ After show notes are written, generate separately if requested via `/publish`:
 - Outro: 2-3 min
 
 ### Recording Schedule
-- Newsletter published: Wednesday 16:00 UTC
-- Recording window: Thursday (24 hours to prepare)
-- Publishing: Friday (24-48 hours after newsletter)
+- Newsletter published: the matching edition's first verified publication time
+- Recording and editing: begin after verified publication and finish before the seven-day deadline
+- Publishing: publication time + 604800 seconds, with actual availability verified and delays recorded
 
 ## Guest Coordination
 
@@ -573,7 +584,7 @@ If newsletter includes urgent security advisory:
 - Explain vulnerability clearly
 - Detail mitigation steps
 - Interview security researcher if possible
-- Urgent publishing (skip normal schedule)
+- An urgent schedule change requires an explicit user timing override; retain every release gate
 
 ### Guest Cancellation
 If scheduled guest cancels:

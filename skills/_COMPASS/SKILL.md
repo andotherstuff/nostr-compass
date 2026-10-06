@@ -293,8 +293,8 @@ Stages (each gates on a file in `data/newsletter_workspace/`):
 3. Triage: per-item verdict (GREEN/MAYBE/SKIP) against Nostr Relay Test, So What Test, and scope rule. Owned by `agents/TriageAgent.md`.
 4. Selection: reconcile every collector-retained candidate, expand aggregates, apply the hard eligibility gate and 8/10 no-zero quality threshold without item caps, choose section placement, select the NIP deep dive rotation or last-Wednesday history mode, and run all-history redundancy checks via `data/coverage_history.json` plus a full read of the latest three newsletters. Automatic editorial and review gate; an authenticated hold still stops publication. Owned by `agents/NewsletterAgent.md` (select mode).
 5. Section writing: parallel writers per section. Owned by `agents/NewsletterAgent.md` (write mode).
-6. Assembly: concatenate sections into `content/en/newsletters/<date>-newsletter.md` with `draft: true` frontmatter.
-7. Review swarm: five parallel reviewers (LinkChecker, ClaimCheck, ProseReview, TopicAudit, ContinuityValueCheck). The prose gate runs `check_newsletter_style.py` and `check_newsletter_paragraph_links.py`; continuity runs against all prior newsletters. Loop with section writers until all five pass. Owned by `agents/ReviewSwarmAgent.md`.
+6. Assembly: concatenate sections into `content/en/newsletters/<date>-newsletter.md` with `draft: true` frontmatter. For the approved #43–46 email trial, author a separate digest following `docs/email-digest-trial.md`; preserve the complete canonical edition as the podcast and publication source.
+7. Review swarm: five parallel reviewers (LinkChecker, ClaimCheck, ProseReview, TopicAudit, ContinuityValueCheck). The prose gate runs `check_newsletter_style.py` and `check_newsletter_paragraph_links.py`; continuity runs against all prior newsletters. During the trial, also prepare and review the email digest against the exact canonical source and production-rendered anchors. Loop with section writers until all five pass. Owned by `agents/ReviewSwarmAgent.md`.
 8. Handoff: write `handoff_<date>.md`, open/update the draft review PR, run verified outreach, surface it to the user, then park the parent task for the Wednesday clock gates.
 9. Wednesday 13:00 full refresh: run every applicable source family under one fixed pass window, rebuild non-GitHub and coverage data, incorporate material late changes and verified feedback into the draft PR, and rerun review/build gates. Continue with the 14:30 broad delta and the real at-or-after-15:30 cutoff query; prepare `draft: false` plus exact source, preliminary feedback, quality, PR/head/base/prospective-tree, and CI evidence before 16:00. Never merge, sign, broadcast, or deploy before the publication window.
 10. Wednesday publication at or after 16:00 UTC: take the final fresh feedback/hold snapshot and scoped edition authorization. If those and every prepared exact-candidate receipt pass, merge only the recorded candidate under an expected-head guard, verify its attributable deployment and served content, then sign/broadcast kind 30023 and kind 1, verify relay recovery, and complete the parent task.
@@ -431,7 +431,18 @@ Full workflow: `agents/TranslationAgent.md`.
 
 ### Podcast reference
 
-Podcast prep + publish remain a separate workflow with their own commands (`/podcast-prep`, `/podcast-publish`). They are not part of the newsletter pipeline. Full workflow: `agents/PodcastAgent.md`.
+Verified newsletter publication starts the matching podcast preparation,
+transcription, editing, independent review and release workflow. Its current
+host deadline is first verified newsletter publication + seven days (604800
+seconds, same UTC time); the digest does not change this. Commands
+`/podcast-prep` and `/podcast-publish` are stage entry points. English publication
+and podcast completion keep their separate proof. Full workflow:
+`agents/PodcastAgent.md`.
+
+The email digest trial never changes podcast inputs: use the published complete
+`content/en/newsletters/<date>-newsletter.md`, preserving every topic and its
+actual order. Email digest files and their preparation receipts do not promote
+podcast cards or substitute for publication and Logbook readiness proof.
 
 ### Legacy `/validate` and `/publish` standalone commands
 
@@ -683,7 +694,7 @@ data/newsletter_workspace/
 | TranslationAgent | 9-language translation with encoding rules | `agents/TranslationAgent.md` |
 | ValidationAgent | Legacy validation (folded into ReviewSwarm) | `agents/ValidationAgent.md` |
 | PublishingAgent | TLDR and announcement text (used by PublishAgent) | `agents/PublishingAgent.md` |
-| PodcastAgent | Separate podcast prep + publish workflow | `agents/PodcastAgent.md` |
+| PodcastAgent | Publication-triggered podcast workflow and seven-day release | `agents/PodcastAgent.md` |
 
 ---
 

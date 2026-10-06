@@ -868,6 +868,14 @@ Output: data/newsletter_workspace/sections/notable_changes.md
 
 **Purpose:** Merge sections, validate, create topic pages, build.
 
+For the owner-approved #43–46 email trial, also author
+`data/newsletter_workspace/email_digest_<date>.md` after assembling the complete
+edition. Read [the digest contract](../../../docs/email-digest-trial.md). Target
+800–1,200 words, combine release/progress coverage per project, and link to full
+coverage and depth. The complete canonical edition remains the evidence and
+podcast source; the email word maximum never truncates its qualifying coverage.
+Bind the digest to the exact full-source hash and hand both surfaces to Stage 7.
+
 **Spawn:**
 ```
 Task(subagent_type: "general-purpose", prompt: "

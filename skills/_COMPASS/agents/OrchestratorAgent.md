@@ -185,6 +185,12 @@ Write to `content/en/newsletters/<date>-newsletter.md`.
 
 Immediately run `python3 scripts/sync_newsletter_sections.py content/en/newsletters/<date>-newsletter.md`. A manual draft edit without this synchronization invalidates every section gate; synchronized section artifacts remain `GATE: PENDING REVIEW` until Stage 7 verifies the assembled draft.
 
+For #43–46, assemble the separate email digest under
+`data/newsletter_workspace/email_digest_<date>.md` using
+[`docs/email-digest-trial.md`](../../../docs/email-digest-trial.md). Keep it
+outside `content/`; the complete canonical draft and section artifacts remain
+the publication, participant and podcast inputs.
+
 ### Stage 7: Review swarm
 
 Owner: the review lane, using `ReviewSwarmAgent.md`.
@@ -205,6 +211,12 @@ Fan out five reviewers in parallel:
 
 The ReviewSwarmAgent consolidates the five reports into `review_log_<date>.md`. This file is mandatory: Stage 7 cannot pass merely because the five individual reports exist.
 
+During the email trial, include the digest in claim, prose and link review and
+prepare it with `scripts/prepare_email_digest.py` against the current canonical
+file and that production build's rendered HTML. Record both source hashes and
+the digest receipt in the review log. Repeat preparation and affected review
+after every source change, including final frontmatter or mention edits.
+
 If any reviewer reports issues, the Orchestrator routes the report back to the appropriate section writer, which fixes the specific items and re-emits its section. The review swarm runs again. This loop runs until all five reviewers report `GATE: PASS`. Per user direction, the round count is uncapped.
 
 Escape hatch: each reviewer must produce a concrete fix-list (line number, current text, suggested text, reason). A reviewer reporting "FAIL" without a fix-list is itself failed and re-prompted. This prevents the loop from running infinitely on a vague failure signal.
@@ -219,6 +231,9 @@ Write `handoff_<date>.md` containing:
 - Path to the draft newsletter
 - Summary of items covered (counts per section)
 - Topic pages created or updated this issue
+- During #43–46, paths and exact hashes for the reviewed email digest, prepared
+  email and preparation receipt; identify the complete canonical file as the
+  podcast/Logbook source
 - Review swarm final scores
 - List of npubs that publish.ts will need (preview from `bun scripts/publish.ts --no-inject path/to/draft.md` shows missing entries)
 - The text "READY FOR SCHEDULED PUBLICATION REVIEW"

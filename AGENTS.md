@@ -4,6 +4,11 @@
 
 Weekly newsletter, podcast, and topic documentation with AI-powered workflows.
 
+**Approved email trial (#43–46):** Read [the email digest contract](docs/email-digest-trial.md)
+before writing, reviewing or preparing distribution. Email gets a separate
+800–1,200-word digest (maximum 1,200); the canonical full newsletter remains
+the website, Nostr, translation, podcast and Logbook source.
+
 ---
 
 ## System Overview
@@ -350,7 +355,7 @@ Generate publishing materials AFTER recording.
 - Prep materials BEFORE recording
 - Publishing materials AFTER recording
 - Transform technical writing to accessible conversation
-- Weekly publishing (Fridays, 2 days after newsletter)
+- Release exactly seven days after the matching newsletter's first verified publication, with preparation, transcription, editing and review included
 
 **[Full documentation →](skills/_COMPASS/agents/PodcastAgent.md)**
 
@@ -707,9 +712,9 @@ Follow established patterns:
 - **Rationale:** Optimal for global audience (morning Americas, evening Europe/Africa, night Asia)
 
 ### Podcast
-- **Day:** Friday (2 days after newsletter)
-- **Time:** Flexible
-- **Rationale:** Gives readers time to read first, podcast provides deeper dive
+- **Deadline:** Exactly seven days (604800 seconds) after the matching newsletter's first verified publication, at the same UTC time.
+- **Workflow:** Publication starts preparation, transcription, editing and independent review; preserve current host release, signer, media and RSS gates.
+- **Verification:** Use the complete canonical edition for every topic, participant and Logbook target. Missing recordings or late availability remain explicit.
 
 ### Translations
 - **Timeline:** Within 24-48 hours of English publication

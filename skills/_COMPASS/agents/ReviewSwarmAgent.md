@@ -28,6 +28,19 @@ Before that PASS, rerun `python3 scripts/project_activity_coverage.py --updates 
 
 The coordinator and all five reviewers MUST run from the review lane. Never run this stage from, or reuse, the Stage 5 writing lane. Record the reviewer model in the consolidated evidence.
 
+## Email digest trial (#43–46)
+
+Read [the digest contract](../../../docs/email-digest-trial.md). ClaimCheck,
+ProseReview and LinkChecker also receive `email_digest_<date>.md` and its prepared
+email. Check assertions against the complete edition and primary sources,
+concise selection and project deduplication, actual `shaka scan` output, and
+working links including full-edition rendered fragments. Run
+`scripts/prepare_email_digest.py` after the production build, recording its
+receipt and both current source hashes in the consolidated log. A preparation
+receipt alone is not review PASS. Structure, selection, continuity and topic
+backlink checks continue to operate on the complete canonical edition. A source
+edit invalidates the digest binding and requires reconciliation and new evidence.
+
 ## The five reviewers
 
 ### Reviewer 1: LinkChecker

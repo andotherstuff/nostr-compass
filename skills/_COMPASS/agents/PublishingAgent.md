@@ -22,7 +22,8 @@ Concise, distribution-focused, and platform-aware. PublishingAgent understands t
 - Platform-appropriate formatting
 
 ### 3. Email Distribution
-- Full newsletter with absolute URLs
+- During the approved #43–46 trial, reviewed digest with absolute URLs; full
+  newsletter in other editions unless the owner changes the format
 - Convert relative links to absolute
 - Ensure cross-client compatibility
 
@@ -118,6 +119,14 @@ Read the full issue: nostr:naddr1...
 ```
 
 ## Email Distribution Preparation
+
+For #43–46, follow [the digest contract](../../../docs/email-digest-trial.md).
+Use the separately reviewed `email_ready_<date>.md` and its exact-input receipt,
+verifying the current canonical source and email hashes at handoff. Do not
+silently send the full edition if the digest fails its checks. The full edition
+still feeds the website, Nostr article, participant extraction and podcast;
+email preparation neither sends mail nor supplies publication proof. Preserve
+the existing explicit sent/skipped journal disposition and sender authority.
 
 ### URL Absolutization
 
