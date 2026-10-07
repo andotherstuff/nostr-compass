@@ -97,6 +97,7 @@ RATE_LIMIT_BUFFER = 100  # slow down when fewer than this many requests remain
 GITEA_HOSTS = {
     "git.vanderwarker.family": "https://git.vanderwarker.family/api/v1",
     "git.reya.su": "https://git.reya.su/api/v1",
+    "git.reya.info": "https://git.reya.info/api/v1",
     "git.nostrdev.com": "https://git.nostrdev.com/api/v1",
 }
 GITEA_CONCURRENCY = 8  # per-host cap to avoid hammering small self-hosted instances
@@ -1387,6 +1388,7 @@ async def run(args, projects: list[dict]):
     # and validating the exact-pass evidence.
     terminal_pages: dict[str, int] = {}
     walk_numbers: dict[str, int] = {}
+    last_exhausted: dict[str, bool] = {}
     seen_sources: set[str] = set()
     for index, page in enumerate(QUERY_PAGES):
         if page.get("cap") == 1 and "#request-" not in page["source"]:
@@ -1394,9 +1396,15 @@ async def run(args, projects: list[dict]):
         elif page.get("cap") != 1:
             base_source = page["source"].split("#walk-", 1)[0]
             cursor_query = dict(parse_qsl(urlsplit(page.get("cursor", "")).query))
-            if base_source in seen_sources and cursor_query.get("page", "1") == "1":
+            # A captured cursor names the next page (often page 2 for the
+            # first response), so exhaustion also identifies a new walk.
+            if base_source in seen_sources and (
+                last_exhausted.get(base_source, False)
+                or cursor_query.get("page", "1") == "1"
+            ):
                 walk_numbers[base_source] = walk_numbers.get(base_source, 0) + 1
             seen_sources.add(base_source)
+            last_exhausted[base_source] = page["exhausted"]
             page["source"] = f'{base_source}#walk-{walk_numbers.get(base_source, 0)}'
         terminal_pages[page["source"]] = index
     for index in terminal_pages.values():

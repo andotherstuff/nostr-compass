@@ -31,6 +31,7 @@ Another practical issue is references. Users and apps may still hold the deleted
 - [NIP-09 Specification](https://github.com/nostr-protocol/nips/blob/master/09.md)
 
 **Mentioned in:**
+- [Newsletter #43](/en/newsletters/2026-10-07-newsletter/#in-development)
 - [Newsletter #11: NIP-60 Deep Dive](/en/newsletters/2026-02-25-newsletter/#nip-deep-dive-nip-60-cashu-wallet)
 - [Newsletter #12: News](/en/newsletters/2026-03-04-newsletter/#news)
 - [Newsletter #32: News](/en/newsletters/2026-07-22-newsletter/#indiesats-drops-its-publisher-role-and-relaunches-as-open-nostr-music-infrastructure)

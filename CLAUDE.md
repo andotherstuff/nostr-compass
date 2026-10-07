@@ -26,10 +26,14 @@ Replacement: state the claim directly. If a tradeoff is worth flagging, name the
 
 Tracker, fetcher, outreach, discovery, and workflow commentary is never publishable prose. Describe what the project does and what changed for users or implementers. `scripts/check_newsletter_style.py` is a blocking gate, not an advisory pass.
 
+### Compact regular newsletter
+
+Apply the [compact writing contract](skills/_COMPASS/SKILL.md#compact-regular-newsletter) throughout selection, drafting, assembly and prose review. Give each project one news entry combining release and development progress. Ordinary entries usually take 2–4 sentences and about 60–90 words; use a soft 2,000–3,000-word whole-issue target. Keep a brief intro and focused deep dives inside the same canonical edition used by podcast prep and Logbook. Preserve its schema, anchors, participant attribution and downstream timing.
+
 ### Mandatory editorial completeness and durable handoff
 
 - At a project's first mention in the issue, include a short human description of what the project is or does. A repository name alone is not sufficient context.
-- Audit every tagged release against its complete primary release notes. Cover every material user-facing, protocol-facing, security, privacy, reliability, data-loss, and interoperability change. Routine dependency, build, translation, and cosmetic churn may be omitted. Preserve the audit in the issue workspace before review.
+- Audit every tagged release against its complete primary release notes and preserve that audit in the workspace. In the newsletter, lead with the main material change and combine related changes concisely. Preserve essential security, privacy, reliability, data-loss and interoperability distinctions; omit routine dependency, build, translation and cosmetic churn. Do not turn the internal audit into a changelog recitation.
 - In `Protocol and Spec Work`, give every changed PR or commit its own descriptive H3 and paragraph. A family name such as `NIPs`, `Marmot`, `NWC`, or `Concord/CORD` is not an acceptable H3, and one H3 must never group multiple changed PRs or commits. Mention only specifications with an in-window change; never add quiet-status filler. `scripts/check_newsletter_style.py` enforces this structure.
 - Give every NIP or protocol identifier a short plain-language description at first mention.
 - A NIP Deep Dive may cover only a merged specification with verified use in multiple independent applications. End each deep dive with a non-exhaustive implementation paragraph linking at least three current clients or tools whose source or release notes prove support.
@@ -50,13 +54,14 @@ See `~/.claude/rules/base-antislop.md` §"Superlative claims without specifics" 
 
 ### Newsletter section structure (CRITICAL)
 
-Every newsletter MUST follow this section order. The boundary between sections is functional, not editorial — sort each item into the correct bucket based on what it IS, not on how prominent it feels.
+Keep these canonical sections in order and give each project one news entry. Put a project's qualifying versioned release in Tagged Releases unless it warrants Top Stories; fold its later merged development into that same entry and identify which changes remain unreleased. When only source development qualifies, use In Development. A release tag or routine maintenance alone does not justify coverage.
 
-1. **Top stories** — multi-PR releases of major projects, architecturally significant new projects, or coordinated multi-repo work that needs flagship treatment.
-2. **Releases** — every version-tagged release that didn't qualify for Top stories. One subsection per project, named `### Project vX.Y.Z: short description`. If a release qualifies for Top stories, it does NOT also appear here.
-3. **Unreleased changes** — merged PRs that have NOT been bundled into a versioned release. Once these features ship in a release, they move to that release's writeup in a future newsletter. NEVER include unmerged or draft PRs here.
-4. **NIP updates and protocol spec work** — every proposal opened against `nostr-protocol/nips`, plus any `kind:30023` long-form NIP proposal circulated this week. This includes PRs from project teams (e.g. Formstr's calendar stack) as well as individual NIP proposals (e.g. Payment Targets, Silent Payments). Each PR or proposal must explain the event kind, tag structure, wire-protocol behavior, and the problem the proposal solves. NIP work from projects always goes here, NEVER in Top stories or Releases, regardless of how flagship the originating project is.
-5. **NIP Deep Dives OR History section** — see the month-end rule below.
+1. **Top Stories** — substantive releases of major projects, architecturally significant projects, or coordinated work that needs flagship treatment.
+2. **Tagged Releases** — qualifying versioned releases outside Top Stories, with related source development consolidated under the same project heading. Keep shipped and main-only behavior explicit.
+3. **In Development** — qualifying merged or verified default-branch changes outside a release entry. Do not present unmerged or draft implementation PRs as landed work.
+4. **New Projects** — verified qualifying introductions or launches without a versioned release entry. Explain the concrete Nostr function and maturity.
+5. **Protocol and Spec Work** — qualifying in-window specification changes and proposals, including open proposals. Give each changed PR or commit its own descriptive H3; explain wire behavior, the problem solved and proposal status. Project-authored protocol proposals belong here.
+6. **NIP Deep Dive OR History** — use the canonical deep-dive heading for regular editions and the month-end history rule below.
 
 NEVER add a "Closing notes" or "Closing thoughts" section. The newsletter ends with the deep dives or the history section. Forward-looking commentary belongs inside the relevant section as a single concrete sentence, not in a meta-summary at the end.
 
@@ -322,8 +327,8 @@ ISSUE_DATE=YYYY-MM-DD
 Common mistakes the structure prevents:
 - Skipping the month-end history rule and shipping deep dives instead (this happened in #11)
 - Putting NIP proposals in Top stories because they came from a flagship team
-- Mixing released and unreleased work in the same section
-- Using "Shipping this week" or "In Development" as section headings (boundary is unclear)
+- Claiming main-only changes ship in a referenced release without tag evidence
+- Inventing alternate section headings that break the canonical anchors and schema
 - Splitting a single project across multiple sections (consolidate under the one section where it belongs)
 
 ## PR Management for Newsletters

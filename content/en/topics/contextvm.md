@@ -45,6 +45,7 @@ In February and March 2026, the project moved from implementation toward standar
 - [NIP PR #2246: MCP JSON-RPC over Nostr](https://github.com/nostr-protocol/nips/pull/2246)
 
 **Mentioned in:**
+- [Newsletter #43](/en/newsletters/2026-10-07-newsletter/#in-development)
 - [Newsletter #11: ContextVM News](/en/newsletters/2026-02-25-newsletter/#contextvm-mcp-over-nostr)
 - [Newsletter #12](/en/newsletters/2026-03-04-newsletter/)
 

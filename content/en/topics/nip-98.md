@@ -53,6 +53,7 @@ Blossom servers use NIP-98 to authenticate file uploads and deletions, tying sto
 - [Zap Cooking PR #599](https://github.com/zapcooking/frontend/pull/599) - scanner authentication bound to the request body
 
 **Mentioned in:**
+- [Newsletter #43](/en/newsletters/2026-10-07-newsletter/#tagged-releases)
 - [Newsletter #41: Buzz adds authenticated relay moderation controls](/en/newsletters/2026-09-23-newsletter/#buzz-adds-authenticated-relay-moderation-controls)
 - [Newsletter #39: Wingman App joins browsing, signing, and files](/en/newsletters/2026-09-09-newsletter/#wingman-app-joins-browsing-signing-and-files)
 - [Newsletter #15](/en/newsletters/2026-03-25-newsletter/)

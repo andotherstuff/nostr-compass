@@ -160,7 +160,8 @@ For each approved section in the selection review, spawn a section writer with:
 - Section name
 - Approved items for that section (with triage-attached source links)
 - Any entries from `human_overrides_<date>.md` for that section
-- The section's style rules from `SKILL.md`
+- The section's style rules and compact regular-newsletter contract from `SKILL.md`
+- The editorial word budget and single news-section placement for each project; combine release and development evidence rather than assigning the same project twice
 - A pointer to recent newsletters for tone calibration
 
 Each writer outputs `data/newsletter_workspace/sections/<section-slug>.md`. Each section file ends with `GATE: PASS` once the writer has self-checked: every PR linked, every release linked, every NIP linked to its topic page, every prose paragraph linked to a repository or primary source, no em dashes, and no banned phrases from the anti-slop list. Every included change under `Protocol and Spec Work` must also have its own descriptive H3; family-only headings and H3s that group multiple spec PRs or commits fail the stage. `join Shipping This Week with` and `developer-signed release expands the browser` are explicitly banned.
@@ -174,14 +175,16 @@ Owner: Orchestrator itself.
 Concatenate sections in canonical order:
 1. Frontmatter (`draft: true`, date, publishDate, title, type)
 2. Intro paragraph
-3. News
+3. Top Stories
 4. Tagged Releases
-5. Notable Code and Documentation Changes
-6. NIP Updates
+5. In Development
+6. New Projects, then Protocol and Spec Work
 7. NIP Deep Dive, or `Six Years of Nostr <Month>s` on the final weekly issue of a month. The history title is never prefixed with `NIP Deep Dive`.
-8. Closing footer
+8. End with the deep dives or history section; do not append a closing summary.
 
 Write to `content/en/newsletters/<date>-newsletter.md`.
+
+Before review, perform a compression pass on this regular edition. Remove duplicate project news, repeated explanations and low-value chronology; retain essential claims, primary links and required deep-dive/history evidence. Record total and section prose word counts in the assembly report, plus an internal reason for exceeding the soft 2,000–3,000-word target. Send wordy sections back for tightening. Preserve canonical section anchors and participant attribution for podcast prep and Logbook; no separate digest or change to podcast timing is needed.
 
 Immediately run `python3 scripts/sync_newsletter_sections.py content/en/newsletters/<date>-newsletter.md`. A manual draft edit without this synchronization invalidates every section gate; synchronized section artifacts remain `GATE: PENDING REVIEW` until Stage 7 verifies the assembled draft.
 

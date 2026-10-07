@@ -95,13 +95,9 @@ The ProseReview skill loads the user's anti-slop rules from `~/.config/shaka/use
 
 **Mandatory Compass style and structure check:** before PASS, run `python3 scripts/check_newsletter_style.py "$DRAFT"`. Any GHSA/CVE/advisory slug used as visible link text or bare `one, GHSA-…` enumeration is a hard FAIL. The same command hard-fails `Protocol and Spec Work` when an H3 groups multiple tracked spec PRs/commits, uses only a generic family heading, or leaves a tracked spec change without an H3. Every individual NIP, BUD, NAP, Marmot/MIP, Gamma, Concord/CORD, NWC, or other specification change must have its own descriptive H3, matching project sections. Security prose must use descriptive anchors per Newsletter #35 (`2026-08-12-newsletter.md`, Amber section). Also grep for `\[GHSA-` and `\[CVE-` in the draft; zero matches as link anchors.
 
-**Mandatory explainer inventory:** ProseReview must list every project and every
-NIP in the draft and verify its first mention in each section. Each project must
-have a self-contained one-sentence summary of what it does, and each NIP must
-have a self-contained one-sentence plain-language summary of what it enables or
-standardizes. A category label, heading, bare identifier, or link title does not
-pass. Record the inventory and any fixes in `review_prose_<date>.md`; unresolved
-or omitted summaries are a hard FAIL.
+**Mandatory explainer inventory:** List every project and NIP and verify that its first substantive explanation includes a brief, specific role or purpose. Integrate this context into the change sentence; do not demand a separate full-sentence overview. A heading, bare identifier or link title alone does not pass. Record the inventory and fixes in `review_prose_<date>.md`; missing reader context is a hard FAIL.
+
+**Mandatory compactness review:** Apply `SKILL.md`’s compact regular-newsletter contract. Check project identities across all news sections, including aliases: a project must have one substantive entry combining release and development progress, with no second heading or pointer-only entry. Record total and section prose word counts, excluding frontmatter, fenced examples and link destinations. Flag routine entries that exceed roughly 60–90 words for a specific tightening rewrite or an evidenced editorial exception. Check the soft 2,000–3,000-word whole-issue target without dropping qualifying facts to meet it. Cut repeated context, changelog recitation and incidental PR chronology before PASS. Preserve signed examples, necessary technical distinctions and deep-dive/history evidence; document any necessary length exception in the review report.
 
 ProseReview output goes into `review_prose_<date>.md`. The fix list format:
 

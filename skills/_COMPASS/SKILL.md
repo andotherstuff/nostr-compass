@@ -253,12 +253,11 @@ enforce these gates before handoff:
   notes and tag diff. `review_claims_<date>.md` must enumerate the checked
   source and confirm that every substantive user-facing and protocol change is
   represented; release-title summaries are insufficient.
-- Give every project a self-contained one-sentence summary on its first mention
-  in each section, and give every NIP a self-contained one-sentence plain-
-  language summary of what it enables or standardizes. A short app category,
-  bare identifier, heading, or link label does not satisfy this gate. These
-  summaries introduce the item and do not replace the substantive explanation
-  required for included work.
+- Give each project a brief, specific role clause and each NIP a plain-language
+  purpose at its first substantive explanation. Fold this context into the
+  change sentence instead of adding a separate overview. A bare identifier,
+  heading or link label alone is insufficient; the paragraph must make the
+  change understandable without clicking through.
 - Include only spec items with verified in-window activity. Under `Protocol and
   Spec Work`, give every changed PR, commit, or specification item its own
   descriptive `###` heading and body paragraph(s), matching the project
@@ -411,9 +410,9 @@ Note: Projects like CDK, Cashu.me, Nutshell, eNuts, Bitcoin Connect, Geyser, and
 
 3. **So What? Test:** If you cannot explain in one sentence why a Nostr developer should care, omit it.
 
-4. **Depth Minimum:** No item gets fewer than 2-3 sentences. One-sentence filler entries are forbidden.
+4. **Concise substance:** Ordinary entries usually take 2–4 sentences and about 60–90 words: the change, its practical effect and any evidenced material limitation. Do not pad an entry to meet a sentence count.
 
-5. **No item budgets:** Section length follows the qualifying set. Every qualifier appears or is folded into a sourced related section, and no sub-threshold item is added to fill space. Target: 30 minutes reading time when the evidence allows, as short or long as the selected progress requires.
+5. **Plan and compress:** Use the compact regular-newsletter contract below. Every qualifier appears or is folded into a sourced related section; do not add sub-threshold items to fill space or impose arbitrary item caps.
 
 See [NewsletterAgent](agents/NewsletterAgent.md) for the full scoring rubric and agent prompts.
 
@@ -437,11 +436,22 @@ Podcast prep + publish remain a separate workflow with their own commands (`/pod
 
 The standalone `/validate` and PublishingAgent's text-only `/publish` are retired as user-facing commands. Their behaviour is folded into the orchestrated pipeline:
 
-- Validation work happens in Stage 7 (ReviewSwarmAgent) with four parallel reviewers
+- Validation work happens in Stage 7 (ReviewSwarmAgent) with five parallel reviewers
 - Publishing TLDR + announcement text generation happens inside PublishAgent's Step 7
 - The TLDR (21 words) and announcement tweet rules from PublishingAgent still apply; see `agents/PublishingAgent.md` for the format spec
 
 ---
+
+## Compact regular newsletter
+
+Keep one canonical newsletter for readers, translations, podcast prep and Logbook. Preserve its section structure, anchors, primary sources and downstream workflow. Compactness comes from selection and editing inside this edition.
+
+- Give each project one substantive news entry across Top Stories, Tagged Releases, In Development and New Projects. Combine release and unreleased progress there, clearly distinguishing what shipped from what only merged. Do not add a second heading or pointer-only entry. Protocol changes and deep-dive implementation references remain evidence in their required sections.
+- Select for a concrete, interesting change to Nostr users, operators or implementers. A release tag, PR count or maintenance activity alone does not qualify. Keep the existing primary-evidence, continuity and 8/10-with-no-zero gates; never inflate scores or add filler.
+- Ordinary project entries should usually take 2–4 sentences and about 60–90 words. Lead with the change, fold a brief project-role clause into that explanation, and state its practical effect. Include a remaining limitation only when evidence establishes one that matters. Explain essential mechanics without reciting the changelog or giving a separate product tour.
+- Use 2,000–3,000 prose words as a soft whole-issue planning target, excluding frontmatter, fenced event examples and link destinations. This is not a minimum, item cap or license to omit qualifying facts. Quiet issues can be shorter; record an internal reason when essential verified coverage or depth requires more.
+- Keep the intro brief. Preserve real signed event examples, implementation evidence and required deep-dive/history substance; focus the narrative and link to existing topic pages or primary sources for additional detail. Avoid repeating news-entry explanations in the deep dive.
+- Assembly and prose review must cut duplicate coverage, repeated context, incidental PR chronology and low-value detail, then record total and section word counts. Length targets guide actual rewriting, not an automatic pass or failure. Source, factual, review, publication and podcast gates still apply.
 
 ## Writing Style Guide
 
@@ -454,7 +464,7 @@ The standalone `/validate` and PublishingAgent's text-only `/publish` are retire
 
 ### Format
 - **USE FLOWING PROSE, NOT BULLET LISTS** for news items
-- Each news item: 3-6 flowing sentences
+- Ordinary project news: 2–4 flowing sentences, usually about 60–90 words
 - Bullets ONLY for: NIP Updates section, Releases quick list, technical specs
 - Never start a paragraph with **Bold:** followed by bullets
 
@@ -596,14 +606,15 @@ The pipeline is orchestrated across specialized agents with file-based handoffs.
         |          AUTOMATIC POLICY + REVIEW GATE; AUTHENTICATED HOLD STOPS
         v
  [5] NewsletterAgent (write mode, parallel section writers)
-        |   News / Releases / Notable Changes / NIP Updates / NIP Deep Dive
+        |   Top Stories / Tagged Releases / In Development / New Projects
+        |   Protocol and Spec Work / NIP Deep Dive or History
         v
  [6] Assembly ── concatenate sections, write content/en/newsletters/<date>.md
         |
         v
  [7] ReviewSwarmAgent (parallel reviewers)
         |   LinkChecker / ClaimCheck / ProseReview / TopicAudit
-        |   <--- loops back to section writers until all four pass
+        |   <--- loops back to section writers until all five pass
         v
  [8] Draft PR + verified review outreach
         |
@@ -690,12 +701,13 @@ data/newsletter_workspace/
 ## Technical Conventions
 
 ### Newsletter Frontmatter
+Assembled review drafts use `draft: true`. Scheduled publication preparation changes it to `draft: false` after the applicable refresh, quality and clock gates.
 ```yaml
 ---
 title: 'Nostr Compass #N'
 date: YYYY-MM-DD
 publishDate: YYYY-MM-DD
-draft: false
+draft: true
 type: newsletters
 ---
 ```
