@@ -415,20 +415,20 @@ Create an editorial plan from the common hard gate and quality threshold.
 
 | Section | Treatment |
 |---------|-----------|
-| **News** | Prose paragraphs, 3-6 sentences each, for qualifying high-impact work. |
-| **Releases** | At least 2-3 substantive sentences for every qualifying release. No one-line filler. |
-| **Notable Changes** | At least 2-3 substantive sentences, grouped by project, for qualifying unreleased work. |
+| **News** | Concise prose, usually 2–4 sentences and about 60–90 words per project. |
+| **Releases** | The same compact project treatment; combine related release and development progress. |
+| **Notable Changes** | The same compact treatment for projects not covered in another news section. |
 | **NIP Updates** | Only qualifying merged work or reviewable proposal milestones. |
 | **NIP Deep Dive** | Two related NIPs receive full treatment, or one history section replaces them at month-end. |
 | **Discovery (Change C)** | Each tracked-worthy untracked candidate that clears the same gate gets coverage under New Projects or Top Stories. See Discovery section below. |
 
-The selection ledger is authoritative: every candidate first needs primary evidence, material in-window progress, a concrete Nostr surface, and a distinct continuity delta. Survivors score 0-2 on Nostr significance, user/operator impact, novelty, evidence maturity, and explanatory value. Include every candidate scoring at least 8/10 with no zero axis, and include nothing below that threshold. A busy week may be long; a quiet week may be short.
+The selection ledger is authoritative: every candidate first needs primary evidence, material in-window progress, a concrete Nostr surface, and a distinct continuity delta. Survivors score 0-2 on Nostr significance, user/operator impact, novelty, evidence maturity, and explanatory value. Include every candidate scoring at least 8/10 with no zero axis, and include nothing below that threshold. Release tags and activity volume alone do not justify coverage; avoid inflated scores and filler.
 
-**Target reading time:** around 30 minutes when the evidence supports it. The qualifying set determines the final length; a quiet issue should remain short.
+**Length planning:** use the compact regular-newsletter contract in `SKILL.md`. Plan around 2,000–3,000 prose words for the whole issue, with a brief intro and focused deep dives. This is a soft target, not a minimum or item cap. Record why essential verified coverage requires an exception.
 
-## Depth Minimum (NON-NEGOTIABLE)
+## Concise substance
 
-No item in any section gets fewer than 2-3 sentences of substantive explanation. If an item is not worth explaining properly, it is not worth including. One-sentence filler entries are forbidden.
+Ordinary project entries usually take 2–4 sentences and about 60–90 words. Explain the change and its practical effect; add a material remaining limitation only when supported. Do not pad to meet a sentence minimum. Keep the deep-dive and history evidence requirements.
 
 Every item must answer: **What does this mean for a Nostr developer or user?** If the answer is 'nothing yet' or 'nothing specific,' the item should be omitted or held for a future issue.
 
@@ -457,8 +457,8 @@ Run `python3 scripts/check_newsletter_continuity.py content/en/newsletters/<date
      but framed around the shipping client, with spec detail deferred to the protocol
      section.
    - No duplicate coverage: a project gets one header per newsletter (rule 16 below).
-     If a lead story covers a release in depth, the Releases section either omits it
-     or carries one short follow-up sentence, never a re-narration.
+     Combine release and unreleased progress in the chosen entry, marking their
+     status accurately. Omit every second news entry, including follow-up pointers.
 5. NIP Deep Dive selection (two related NIPs not covered before)
    - For the final weekly issue of a month, do not write or label a NIP Deep Dive. Replace it with `Six Years of Nostr <Month>s` (for this issue: `Six Years of Nostr Julys`). Read the month-end history sections from earlier issues that year for tone and depth. Give each year at least two substantive paragraphs and multiple primary-source links where the historical record supports them; do not pad a thin year with generic summary.
    - `Protocol and Spec Work` always audits NIPs, BUDs, NAPs, Marmot/MIPs, Gamma Markets, Concord/CORD, and NWC using `data/spec_updates/spec_updates_<date>.json`. Give every included changed PR, commit, or specification item its own descriptive `###` heading and body paragraph(s), matching the project sections. Never group multiple changes under a family heading or use only a generic family name as the heading. Omit quiet families from the newsletter.
@@ -472,24 +472,24 @@ Format:
 Edition type: [Regular / Monthly Recap]
 Estimated reading time: [N minutes]
 
-### News Section (all qualifying high-impact items)
+### Top Stories (all qualifying high-impact items)
 1. [Item] - Score: N/10 - Why newsworthy, what angle to take
 2. ...
 
-### NIP Updates
-**Merged:** [list]
-**Open PRs:** [list]
+### Protocol and Spec Work
+Each qualifying changed PR or commit has its own descriptive H3 and prose.
+Record whether it is merged source or an open proposal and explain its wire behavior.
 
 ### NIP Deep Dive
 Primary: NIP-XX - [reason]
 Secondary: NIP-YY - [reason]
 Connection: [how they relate]
 
-### Releases Section (every qualifying release, score >= 8 with no zero axis)
+### Tagged Releases (every qualifying release, score >= 8 with no zero axis)
 Each must have enough substance for 2-3 sentences.
 ...
 
-### Notable Changes Section (every qualifying untagged change, score >= 8 with no zero axis)
+### In Development (every qualifying untagged change, score >= 8 with no zero axis)
 Each must have enough substance for 2-3 sentences.
 ...
 
@@ -569,7 +569,7 @@ Read: data/newsletter_workspace/curated_items.md (for details on assigned items,
 
 RULES:
 - Flowing prose paragraphs, NOT bullet lists
-- Each news item: 3-6 sentences that explain WHAT changed, WHY it matters, and HOW it works
+- Ordinary project entries: usually 2–4 sentences and about 60–90 words explaining the change, its practical effect and essential mechanics
 - Every PR/release MUST have a link - VERIFY links exist (no hallucinated repos)
 - No em dashes, no AI buzzwords (demonstrates, crucial, emphasizes, leverages, robust, cutting-edge, exciting, dive into, highlights, ensures, indicating, showcases, underscores, illustrates)
 - Never write `join Shipping This Week with` or `developer-signed release expands the browser`; both are hard-blocked by `scripts/check_newsletter_style.py`.
@@ -582,7 +582,7 @@ RULES:
 
 WRITING-QUALITY RULES (Change F):
 
-1. ONE-SENTENCE EXPLAINER ALWAYS. Every project gets a self-contained one-sentence summary on first mention in each section. Every NIP gets a self-contained one-sentence plain-language summary of what it enables or standardizes on first mention in each section. Protocols, event kinds, and cryptographic primitives still get a short inline explainer, plus a topic-page link when one exists. A category label, bare identifier, heading, or link text is not a summary. The sentence is for the reader who does not click through; the topic-page link is for the reader who wants depth. Both ship together, every time.
+1. BRIEF FIRST-MENTION CONTEXT. Fold a specific project-role clause or plain-language NIP purpose into its first substantive explanation. The reader should understand the change without clicking through; also link an existing topic page. A heading or bare identifier is insufficient, but a separate full-sentence overview is unnecessary.
    Examples:
    - 'Damus, the iOS Nostr client, shipped v1.x'
    - '[NIP-46 (remote signing over Nostr)](/en/topics/nip-46/) gained two implementers'
@@ -637,9 +637,9 @@ WRITING-QUALITY RULES (Change F):
 
 15. LAUNDRY-LIST GUARD. Three or more PR links in one paragraph is a laundry list. Three or more sub-package names in a run is a laundry list. Three or more version-tag ranges is a laundry list. Rewrite: pick the 1-3 highest-signal items, describe them, aggregate the rest as "and follow-up refactors" or delete them. `applesauce-core@6.2.0, applesauce-common@6.2.0, applesauce-content@6.2.0, ...` is never acceptable prose.
 
-16. ONE HEADER PER PROJECT PER NEWSLETTER. If a project appears in Lead Stories, it does NOT get a second header in Unreleased/Notable. Consolidate.
+16. ONE NEWS ENTRY PER PROJECT. Across Top Stories, Tagged Releases, In Development and New Projects, choose one placement and combine release and development evidence. Mark shipped versus merged-only behavior accurately. No second heading or pointer entry. Protocol and deep-dive implementation references remain evidence, not additional project news.
 
-17. FIRST-MENTION SUMMARY FOR EVERY PROJECT AND NIP. The first sentence of a section's body must give the project a complete one-sentence summary using a useful, specific "X is a Y that does Z" or "X, an [role], does Z" construction. A reader who has never seen the project should understand what it does without clicking through. Never use a bare tautology such as "Wisp is a Nostr client" or "X is a Nostr app". Apply the same rule to each NIP's first mention: state in one complete plain-language sentence what the NIP enables or standardizes, not only its number or title. This summary does not replace the item's required substantive follow-through.
+17. BRIEF FIRST-MENTION CONTEXT FOR EVERY PROJECT AND NIP. Integrate a specific project-role clause or plain-language NIP purpose into the change sentence. Keep it short while making the paragraph understandable to a newcomer; no standalone product tour or repeated full-sentence overview.
    Bad: "Pollerama shipped v1.12.0 to Zapstore this week. Users can now pick which client tag..."
    Bad: "Wisp is a Nostr client."
    Good: "Pollerama, an Android Nostr client focused on polls and notes with a strong web-of-trust discovery layer, shipped v1.12.0..."
@@ -647,7 +647,7 @@ WRITING-QUALITY RULES (Change F):
    Bad: "The `relay` crate now stores private-sync relays as a kind `10013` NIP-37 list."
    Good: "The `relay` crate now stores private-sync relays as a kind `10013` [NIP-37 private-sync relay list](/en/topics/nip-37/)"
 
-17b. DENSITY. Every item gets real meat: how it works, not just what it is. For a new project, explain the mechanism (what transport, what encryption, what platforms, what the user flow looks like). Two or three thin sentences is a red flag; if you cannot find the mechanism in the repo README or release notes, dig before writing. Human-readable dates only in prose ("July 20", "the July 15 merge"), never ISO timestamps (no "2026-07-20"). Never narrate where content was discovered: no "published as a kind:1 note", no "found via Zapstore", no "spotted on njump". Just state the fact with its link.
+17b. SIGNAL PER WORD. Explain the essential mechanism that makes the change meaningful. Research the transport, encryption, platforms and user flow internally, but include only details needed to understand the claimed behavior or limitation. Short, substantive entries are desirable; do not expand them to display all the research. Human-readable dates only in prose ("July 20", "the July 15 merge"), never ISO timestamps (no "2026-07-20"). Never narrate where content was discovered: no "published as a kind:1 note", no "found via Zapstore", no "spotted on njump". Just state the fact with its link.
 
 17c. NEVER MISCHARACTERIZE A LAUNCH. Check whether a project was already on Zapstore/already tracked before writing "launched", "debuted", or "new". A version bump on an already-listed app is an update, not a launch.
 
@@ -736,11 +736,11 @@ You are writing the RELEASES section.
 Read: data/newsletter_workspace/editorial_plan.md (Releases section)
 Read: data/newsletter_workspace/curated_items.md (for release details, including Analyst continuity notes)
 
-Format: **[Project vX.Y.Z](url)** - Description paragraph (2-3 sentences minimum).
+Format: **[Project vX.Y.Z](url)** - Concise paragraph (usually 2–4 sentences and about 60–90 words).
 
 RULES:
-- Every release entry MUST have 2-3 sentences minimum explaining what changed and why it matters
-- No one-sentence filler entries. If a release is not worth 2-3 sentences, it should not be here
+- Lead with the main material change and its practical effect. Include essential security, privacy, data-loss and interoperability distinctions; avoid a full changelog recitation.
+- A release tag alone is not news. Combine release and merged-only progress in one project entry, and omit the entry if the interest/evidence gates fail.
 - A project covered in the immediately preceding issue needs a new direct primary-source link **and** a distinct user-facing or protocol-facing change. Otherwise omit it entirely: do not add a follow-up pointer, version-only note, or second header.
 - Only cover Nostr-related changes. Skip pure Lightning/Bitcoin/ecash features in multi-protocol projects
 - Do not include minor patch releases that only fix trivial bugs or update dependencies
@@ -804,8 +804,8 @@ Read: data/newsletter_workspace/curated_items.md (for PR details, including Anal
 
 RULES:
 - Group by project. Link every PR
-- Every item MUST have 2-3 sentences minimum explaining what the change does and why it matters
-- No one-sentence filler entries. If a change is not worth explaining, it should not be here
+- Use the same compact project treatment: usually 2–4 sentences and about 60–90 words, stating the change and practical effect.
+- Fold this evidence into an existing release or lead entry for the same project; never create a second news entry.
 - Only cover Nostr-related changes. Skip pure infrastructure, CI, or non-Nostr features
 - Explain HOW the change works, not just THAT it exists
 
@@ -879,7 +879,8 @@ Read: data/newsletter_workspace/editorial_plan.md (for topic pages needed)
 
 ## Tasks
 1. Assemble sections into final newsletter with proper frontmatter
-1a. Run `python3 scripts/sync_newsletter_sections.py <draft>` after every assembled-draft edit so section artifacts cannot retain stale copy or stale `GATE: PASS` markers.
+1a. Before review, compress the regular edition using `SKILL.md`’s compact contract. Merge duplicate project news, cut repeated background and incidental PR chronology, and keep the intro brief. Record total and section prose word counts in the assembly report, with a reason for exceeding the soft 2,000–3,000-word target. Preserve essential facts, primary links, real event examples and required deep-dive/history evidence.
+1b. Run `python3 scripts/sync_newsletter_sections.py <draft>` after every assembled-draft edit so section artifacts cannot retain stale copy or stale `GATE: PASS` markers.
 2. Run style review (no em dashes, AI buzzwords)
 3. Organize multi-item sections topically, not by PR chronology. Group related PRs under a single sentence of context, then cite them. For long refactor chains, compress to "the foundation landed in [PR #X], followed by phases that migrated [list of surfaces] across [PRs #Y through #Z]" instead of enumerating each phase.
 4. Drop low-signal releases with zero user-facing or protocol-facing change. Do not create multi-project rollup paragraphs.
@@ -927,58 +928,62 @@ Hugo build: [pass/fail]
 
 The AssemblerAgent uses this template:
 
-**CRITICAL — frontmatter `draft` field:** Every assembled newsletter MUST ship with `draft: false`. Never leave a newsletter at `draft: true` on the branch that opens the PR — Hugo silently skips drafts, so a merged PR with `draft: true` will be live in git but invisible on the website. There is no "draft mode" workflow on this repo; if the prose is good enough to commit, it is good enough to ship `draft: false`. The ValidationAgent must reject any newsletter with `draft: true` before PR creation.
+**Frontmatter `draft` field:** Assemble and open the review PR with `draft: true`, as required by the Orchestrator's Stages 6–8. Preview checks must include drafts and future dates. Only the authorized scheduled publication preparation changes the article to `draft: false`, after its refresh, quality and clock gates pass.
 
 ```markdown
 ---
 title: 'Nostr Compass #N'
 date: YYYY-MM-DD
 publishDate: YYYY-MM-DD
-draft: false
+draft: true
 type: newsletters
 ---
 
 Welcome back to Nostr Compass, your weekly guide to Nostr.
 
-**This week:** [Short intro paragraph. HARD BUDGET: 1500-2200 characters, roughly 8-14 anchored links.]
+**This week:** [Brief summary of the strongest stories and the deep-dive pair, with section anchor links.]
 
 INTRO CONSTRUCTION RULES:
 - Cover ONLY the Lead Stories and the top 2-3 tagged releases. Nothing else belongs in the intro.
 - Every entry is a single short clause with a section anchor link. State what shipped, not superlatives.
-- End with: 'The NIPs repository merged N PRs this week including ...' (one sentence, name the PRs).
+- Mention a protocol change only when it helps explain the strongest story; omit aggregate activity counts.
 - End with: 'Deep dives cover [NIP-XX](#anchor) and [NIP-YY](#anchor).'
 - DO NOT list every tagged release. DO NOT list every unreleased work item. DO NOT enumerate every newly-tracked project. Those belong in their own sections.
 - DO NOT summarize the Newly Tracked section in the intro. Never.
 - DO NOT include Gitea host names, discovery mechanisms, or fetcher plumbing.
-- If the intro is over 2200 characters, cut items until it fits. The intro is a summary card, not a table of contents.
+- Keep the intro brief; never pad it to a character or link minimum. Detailed coverage belongs in the sections.
 
-## News
+## Top Stories
 
 [Flowing prose paragraphs - every PR/release linked]
 
-## NIP Updates
+## Tagged Releases
 
-**Merged:**
-- **[NIP-XX](/en/topics/nip-xx/)** - Description ([#NNNN](link))
+[Content from releases.md]
 
-**Open PRs:**
-- **[NIP-XX](/en/topics/nip-xx/)** - Description ([#NNNN](link))
+## In Development
+
+[Content from notable_changes.md]
+
+## New Projects
+
+[Qualifying new-project entries, each with its own heading]
+
+## Protocol and Spec Work
+
+### [Specific wire behavior changed]
+
+[Plain-language specification role and material change, linked to one primary
+PR or commit. State merged or proposed status and implementation limits.]
+
+### [Another separately changed specification]
+
+[Its own sourced behavior and status; omit quiet specifications.]
 
 ## NIP Deep Dive: [NIP-XX] and [NIP-YY]
 
 [Content from nip_deep_dive.md]
 
-## Releases
-
-[Content from releases.md]
-
-## Notable code and documentation changes
-
-[Content from notable_changes.md]
-
----
-
-That's it for this week. Building something? Let us know at...
 ```
 
 ## Topic Page Template

@@ -8,11 +8,11 @@ categories:
   - Discovery
 ---
 
-NIP-05 maps Nostr public keys to human-readable internet identifiers like `user@example.com`. It gives users a DNS-backed identity hint that clients can verify over HTTPS.
+NIP-05 associates Nostr public keys with human-readable internet identifiers like `user@example.com`. Clients compare a signed profile claim with an HTTPS name-to-key mapping hosted by the named domain.
 
 ## How It Works
 
-A user claims an identifier by adding a `nip05` field to their profile metadata. The identifier follows the format `name@domain`. Clients verify the claim by fetching `https://domain/.well-known/nostr.json` and checking that the name maps to the user's pubkey.
+A user claims an identifier by adding a `nip05` field to their profile metadata. The identifier follows the format `name@domain`. Clients verify the claim by fetching `https://domain/.well-known/nostr.json?name=user` and checking that the name maps to the signed profile author's lowercase hexadecimal key. The endpoint must not redirect; clients must ignore redirects.
 
 The JSON file at the well-known path contains a `names` object mapping local names to hex pubkeys:
 
@@ -29,9 +29,9 @@ When verification succeeds, clients can display the identifier instead of or alo
 
 ## Trust Model
 
-NIP-05 is not a global username registry. It proves control of a domain name and web server path, not legal identity or long-term account continuity. If a domain owner changes the mapping later, clients will verify the new mapping unless they keep prior state.
+NIP-05 is not a global username registry. A successful lookup establishes that the domain's mapping matches the profile author's claim at lookup time. It does not establish legal identity or permanent ownership of the identifier. A changed mapping must not replace a followed public key.
 
-That makes NIP-05 useful for discoverability and reputation, but weaker than users often assume. A good client should treat it as verified domain control, not proof that a person or organization is who they claim to be.
+That makes NIP-05 useful for discoverability and reputation, but weaker than users often assume. Following an account stays anchored to its public key; the domain-backed name is a mutable association. The server can observe name lookups and their network origins.
 
 ## Relay Hints
 
@@ -39,7 +39,7 @@ The `nostr.json` file can optionally include a `relays` object mapping pubkeys t
 
 ## Interop Notes
 
-The lowercase requirement matters more than it looks. Mixed-case names or pubkeys can work in one implementation and fail in another, so current clients should expect lowercase names and lowercase hex keys in `nostr.json`.
+The lowercase requirement matters more than it looks. The identifier local part uses `a-z0-9-_.`, and returned public keys are lowercase hexadecimal. Client parser tolerance is separate from this specified format.
 
 Another practical detail is the special `_` name, which lets a domain map the bare identifier form like `_@example.com` or just `example.com` in clients that support it. Not every client exposes that form the same way, so users still get the most consistent results with explicit `name@domain` identifiers.
 
@@ -59,6 +59,8 @@ Most major clients support NIP-05 verification:
 - [Cordn repository](https://github.com/Cordn-msg/cordn-web) - Android onboarding and NIP-05 profile links
 
 **Mentioned in:**
+- [Newsletter #43: NIP-05 and NIP-24](/en/newsletters/2026-10-07-newsletter/#nip-deep-dive-nip-05-and-nip-24)
+- [Newsletter #43](/en/newsletters/2026-10-07-newsletter/#new-projects)
 - [Newsletter #8: NIP Updates](/en/newsletters/2026-02-04-newsletter/#nip-updates)
 - [Newsletter #13: Amethyst](/en/newsletters/2026-03-11-newsletter/#amethyst)
 - [Newsletter #27: Amethyst v1.12.0 ships Cashu wallets, nutzaps, a CLINK driver, and Tor self-heal](/en/newsletters/2026-06-17-newsletter/#amethyst-v1-12-0-ships-cashu-wallets-nutzaps-a-clink-driver-and-tor-self-heal)

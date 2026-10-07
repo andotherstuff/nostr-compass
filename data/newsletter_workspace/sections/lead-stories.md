@@ -1,67 +1,31 @@
 ## Top Stories
 
-### fips2go 0.7.0 keeps the mesh connected through bootstrap failures
+### Ants
 
-[fips2go](https://github.com/fr34aky/fips2go) is an Android client that lets selected applications reach peers and services over the FIPS encrypted mesh. [Version 0.6.0](https://github.com/fr34aky/fips2go/releases/tag/v0.6.0) added device-local mesh names such as `home.fips`. The subsequent [0.6.1 release](https://github.com/fr34aky/fips2go/releases/tag/v0.6.1) fixes bootstrap address selection on IPv6-only carriers using DNS64/NAT64; its maintainer has not tested that fix on a real DNS64 network.
+Ants, a Nostr search client, now supports nested AND/OR searches across its [native Android release](https://github.com/dergigi/ants-android/releases/tag/v0.34.0) and [released web query compiler](https://github.com/dergigi/ants/pull/313), keeping author, event-type and date constraints tied to each branch. Android also filters result language locally. Results remain limited by selected relays, event caps and deadlines; text matching depends on relay support for [NIP-50, relay-side search](/en/topics/nip-50/).
 
-The new [0.7.0 release](https://github.com/fr34aky/fips2go/releases/tag/v0.7.0) connects to three regional bootstrap peers by default instead of relying on one. It can also retry a configured peer at Nostr-advertised endpoints when its static address changes. Optional open discovery adds at most three recent Nostr-announced peers, but remains off by default: the maintainer reports that many public test-mesh announcements no longer answer. The ARM64 build was installed over the previous version and checked on a physical Pixel; the other device architectures have narrower verification.
+The web app's [v0.6.0](https://github.com/dergigi/ants/releases/tag/v0.6.0) adds zap, nutzap and public mute-list cards; displayed amounts come from published invoices or proofs and do not establish settlement. Later [follow, pin and bookmark cards](https://github.com/dergigi/ants/commit/a81a1e2c628cc5aca5c5f2064652ba3bce1b7d30) read public entries while leaving encrypted private contents undisplayed.
 
-### fips-initramfs opens encrypted roots over FIPS before boot
+Later Android [0.35.0](https://github.com/dergigi/ants-android/releases/tag/v0.35.0) loads zap and nutzap targets inline, including addressable notes, and adds profile-scoped media filters. [0.36.0](https://github.com/dergigi/ants-android/releases/tag/v0.36.0) shares submitted searches as ants.sh links. These links expose query text and omit local language-filter settings; results still depend on the receiving client and its relays.
 
-[fips-initramfs](https://github.com/jmcorgan/fips-initramfs) is a Linux initramfs package that starts a FIPS mesh node before normal boot so an operator can remotely open a LUKS-encrypted root through its npub-addressed node. The user-submitted [0.1.0 release](https://github.com/jmcorgan/fips-initramfs/releases/tag/v0.1.0), published September 6, packages the mesh client, SSH access, and passphrase-entry scripts for systems that need unattended or remote encrypted-root startup.
+### Myco
 
-The [first release](https://github.com/jmcorgan/fips-initramfs/releases/tag/v0.1.0) documents the security tradeoffs instead of hiding them: the initramfs contains the node key, the passphrase crosses SSH over FIPS, and local console passphrase entry remains available. This catch-up item came from a prior user submission; its September 6 release falls outside the current collection window.
+Myco, a host for small Nostr apps, [ships permission-gated uploads](https://github.com/Origami74/myco/pull/125) in [v0.10.0](https://github.com/Origami74/myco/releases/tag/v0.10.0). The shell selects [Blossom file servers](/en/topics/blossom/) and signs upload authorization without exposing the user's key to apps, returning confirmed file URLs and hashes. Uploads are capped at 16 MiB; consent comes from installation approval, with no per-upload preview or EXIF stripping.
 
-### Grain 0.8.0-rc4 turns relay health into an operator dashboard
+### Marmot MDK
 
-[Grain](https://github.com/0ceanSlim/grain) is a self-hosted Nostr relay with an integrated reference client and administration interface. [Version 0.8.0-rc4](https://github.com/0ceanSlim/grain/releases/tag/v0.8.0-rc4) adds a live vitals panel for event volume, connections, uptime, storage, memory, and writer health, plus per-kind storage charts and reorganized access, policy, and retention controls.
+Marmot MDK, an encrypted messaging toolkit, [releases v0.12.0](https://github.com/marmot-protocol/mdk/releases/tag/v0.12.0) with broader account-import discovery, separate inbox defaults and source-epoch attachment keys with bounded recovery, supported by its [implementation changes](https://github.com/marmot-protocol/mdk/pull/2138) and [companion release work](https://github.com/marmot-protocol/mdk/pull/2141). Later [merged queued-send preservation](https://github.com/marmot-protocol/mdk/pull/2172) keeps sibling failures from stopping eligible sends, but is outside that release. History beyond five epochs can remain undecryptable.
 
-The [release candidate](https://github.com/0ceanSlim/grain/releases/tag/v0.8.0-rc4) also makes its client escalate missing-event lookups from the local relay to author outbox relays, embedded relay hints, and NIP-50 search. NIP-50 standardizes relay-side search filters, while NIP-01 defines the core event and subscription rules that include identifier and author prefix matching. Grain adds those prefix matches and configurable full-text kinds to its database, while the release-candidate label makes clear that operators should test the new dashboard and database behavior before treating it as a stable line.
+Later master work adds [beta per-account C sessions](https://github.com/marmot-protocol/mdk/pull/2154) using [NIP-46 remote signing](/en/topics/nip-46/) for remote-signer login and restore, and [backports the KEM dependency fix to 0.0.10](https://github.com/marmot-protocol/mdk/pull/2208) while retaining HPKE 0.7 compatibility. Hosts must encrypt exported signer credentials. These changes are outside v0.12.0.
 
-### Marmot Protocol 0.10.4 makes local sends durable
+Agent integrations add a [Goose terminal harness](https://github.com/marmot-protocol/mdk/pull/2199) and [admin-gated group-profile tools](https://github.com/marmot-protocol/mdk/pull/2115); [opaque draft-revision markers](https://github.com/marmot-protocol/mdk/pull/2132) help hosts distinguish newer edits during send handoff. Goose attachments and autonomous mode remain unsupported, and real-binary interoperability is unverified. Draft markers require host adoption and matching bindings; they do not authorize deletion.
 
-[Marmot Protocol's MDK](https://github.com/marmot-protocol/mdk) is an SDK for MLS-encrypted group messaging whose transport and discovery run over Nostr. [Version 0.10.4](https://github.com/marmot-protocol/mdk/releases/tag/v0.10.4) persists local sends before network completion, lowers draft and pending-message latency, prevents repeated automatic attachment downloads, and exposes retention state in chat-list previews.
+### Iris Chat
 
-The [same release](https://github.com/marmot-protocol/mdk/releases/tag/v0.10.4) adds group creation to agent-control integrations and opt-in reaction consent for approval prompts. It also repairs a halted-wrapper edge case and bounds retry backoff during epoch backfill, continuing the post-0.10.0 reliability work without changing the requirement that generated bindings and native libraries move together.
+Iris Chat, an encrypted messaging app, [adds message edits, edit history and deletion controls](https://github.com/irislib/iris-chat-rs/releases/tag/v2026.10.5.1). Its [author-authenticated mutation handling](https://github.com/irislib/iris-chat-rs/blob/90af94addbbaa8b9f34024f74def3b297499586f/core/src/core/message_mutations.rs) preserves deletion tombstones through replay and applies edits only after encrypted enqueue succeeds. Editing is limited to delivered, unexpired outgoing text without attachments; delete-for-everyone requests removal by compatible clients and cannot prove recipients erased their copies.
 
-### MintRadar makes Cashu mints easier to compare
+Later [device-link updates](https://github.com/irislib/iris-chat-rs/releases/tag/v2026.10.6.1) start chosen history transfer after verified local approval and preserve routed transfers when a direct link disappears. Sign-in codes remain usable until cancellation; completion waits for observed authorization. [Older-account recovery](https://github.com/irislib/iris-chat-rs/releases/tag/v2026.10.7) repairs equivalent signed device lists while stripping retired encrypted labels; conflicting authorization still fails.
 
-[MintRadar](https://mintradar.org) is a privacy-focused Cashu dashboard that uses Nostr to discover mints and bind community reviews to signed identities. Its [current source](https://github.com/hroomnik007/MintRadar) adds persistent NIP-87 mint announcements, same-operator detection from NUT-06 pubkeys, shareable comparison URLs, and Nostr `naddr` deep links.
-
-NIP-87 standardizes discovery and review events for Cashu mints, while NUT-06 defines the mint information document that exposes a mint's public keys and supported capabilities. A [signed user-submitted update](https://njump.to/nevent1qqs9hwth0rgsprqaml9xuuve2s47x08w2ltjujgwwr4zyqw0qjptecqpzamhxue69uhhyetvv9ujuurjd9kkzmpwdejhgtczyqt40x2js6hcc27delgn5vqwn3qtcjn8uas3rrzmxe2hxsrvdvmmcqcyqqqqqqgyqg6ap) brought MintRadar back into the intake after it was missed in an earlier pass; the project has since accumulated substantial current-window work around those comparison and discovery paths.
-
-### Nostr WoT Oracle 0.3.1 makes trust queries restart-safe
-
-[Nostr WoT Oracle](https://github.com/nostr-wot/nostr-wot-oracle) is a server that ingests public follow and mute events and answers bounded web-of-trust path queries. [Versions 0.3.0 and 0.3.1](https://github.com/nostr-wot/nostr-wot-oracle/releases/tag/v0.3.1) add independently persisted public mute evidence, readiness and ingestion status, revision-bound caches, deterministic replaceable-event selection, and rollback behavior that prevents unpersisted graph changes from becoming queryable.
-
-The [0.3.1 performance pass](https://github.com/nostr-wot/nostr-wot-oracle/releases/tag/v0.3.1) restores graph edges directly into numeric adjacency lists, coalesces superseded follow and mute events before publication, and batches distance-cache misses. These changes matter to clients that need explainable follow distance or mute evidence without silently serving a relationship graph from an older revision.
-
-### Nostr WoT SDK 1.0.2 compresses browser graph storage
-
-[Nostr WoT SDK](https://github.com/nostr-wot/nostr-wot-sdk) is a JavaScript toolkit for crawling, storing, and querying Nostr follow graphs in applications. [Version 1.0.2](https://github.com/nostr-wot/nostr-wot-sdk/releases/tag/nostr-wot-sdk%401.0.2) adopts a graph engine that batches up to 100 authors per relay request, stores edges with compact delta encoding, reuses compatible traversals, and exposes batch distance queries.
-
-The [graph 0.3.0 storage migration](https://github.com/nostr-wot/nostr-wot-sdk/releases/tag/%40nostr-wot/graph%400.3.0) upgrades IndexedDB namespaces to schema 2 and cannot be reopened by older SDK versions. Applications that need rollback should use a separate namespace or clear the upgraded graph instead of assuming the earlier client can read it.
-
-### napplet.soy publishes small sandboxed Nostr programs
-
-[napplet.soy](https://napplet.soy) is a web playground and creator toolkit for building, publishing, playing, inspecting, and remixing small sandboxed Nostr programs called napplets. NIP-34 defines signed Nostr events for Git repository discovery and collaboration. The [soyLI 0.18.2 release](https://github.com/zeSchlausKwab/napplet-soy/releases/tag/soyli-v0.18.2) follows the project's September launch with signed listings, Blossom-hosted assets, Git and NIP-34 source references, and relay-discovered manifests.
-
-The [project source](https://github.com/zeSchlausKwab/napplet-soy) keeps network and storage access behind declared capabilities instead of giving each napplet unrestricted browser authority. Its project identity remains unresolved because the canonical site and repository do not bind a project or maintainer npub, so no identity claim is attached here.
-
-The [soyLI 0.20.0 CLI release](https://github.com/zeSchlausKwab/napplet-soy/releases/tag/soyli-v0.20.0) adds bounded NIP-78 helpers for sharing reusable public tracks, puzzles, drawings, and presets, plus structured data on high scores. Writes are scoped to a napplet and player identity with consent and revision checks; linked large assets use Blossom. Website and backend features require a separate deployment, so the CLI tag alone does not prove those public features are live on the site.
-
-### RelayKit installs a self-hosted Nostr stack
-
-[RelayKit](https://relayk.it) is a one-command installer for a self-hosted Nostr stack that can include relays, Blossom media, nsites, Git services, and notifications. RelayKit now packages a broader stack than the browser relay-discovery client covered in April; its [current source repository](https://github.com/samthomson/relaykit) documents the new operator-focused deployment surface.
-
-Its [installation site](https://relayk.it) presents the services as one coordinated stack instead of requiring operators to assemble each component independently. This coverage therefore treats RelayKit as a changed project direction, not as its first appearance.
-
-### Threshold Sessions turns coding transcripts into private training data
-
-[Threshold Sessions](https://gitworkshop.dev/npub17m2ual3pdjvhd8yc6a3m8snzjsgnmtl26hwen48ne937qgyjyshs2zgvse/relay.ngit.dev/threshold) is a command-line tool that converts AI coding sessions into normalized, redacted, and encrypted training-data epochs. Its repository supports Codex, Claude Code, Cursor, OpenCode, and pi transcripts, stores encrypted artifacts on Blossom, and publishes signed references through Nostr.
-
-Recent [Threshold Sessions source history](https://relay.ngit.dev/npub17m2ual3pdjvhd8yc6a3m8snzjsgnmtl26hwen48ne937qgyjyshs2zgvse/threshold.git) adds timestamp randomization, provenance, extractors, and a ledger for produced epochs. The design lets a contributor preserve auditability and later data use without publishing the readable session transcript to relays.
-
-writer_model: preferred=gemini-3.1-pro, actual=openai-codex/gpt-5.6-sol, receipt=data/newsletter_workspace/writer_receipt_2026-09-16.json
+writer_model: actual=openai-codex/gpt-6.1-sol, receipt=/opt/data/task-artifacts/compass-direct-2026-10-07/writer-top_stories/receipt.json; final root edits verified in assembled draft 4f46a95e8d1bad2c63d2e7b67b35c387bded0c07ac10b97c6ca12298922f354b
 
 GATE: PENDING REVIEW

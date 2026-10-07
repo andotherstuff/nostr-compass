@@ -169,6 +169,52 @@ print('[{"id":2}]' if "page=2" in sys.argv[2] else '[{"id":1}]')
         self.assertEqual(before,path.read_bytes())
         receipt.assert_not_called()
 
+    def test_completed_resume_separates_repeated_next_cursor_walks(self):
+        from source_collector_receipt import validate_native_evidence
+
+        args = Namespace(
+            since=datetime(2026, 9, 21, tzinfo=timezone.utc),
+            until=datetime(2026, 9, 30, 13, tzinfo=timezone.utc),
+            since_days=None, output_dir=self.root / "data/project_updates",
+            fresh=False, compact=False, verbose=False, concurrency=2,
+        )
+        args.output_dir.mkdir(parents=True)
+        project = {"host": "github.com", "owner": "a", "repo": "b", "name": "b", "category": "clients"}
+        since, until = "2026-09-21T00:00:00Z", "2026-09-30T13:00:00Z"
+        source = "repos/a/b/pulls?per_page=100"
+        pages = [
+            {"source": source + "#walk-0", "cursor": f"{source}&page={page}",
+             "count": 100, "cap": 100, "exhausted": exhausted,
+             "effective_since": since, "effective_until": until}
+            for page, exhausted in ((2, False), (3, True), (2, False), (3, True))
+        ]
+        path = args.output_dir / mod.get_output_filename(args.since, args.until, scope=mod.collection_scope([project]))
+        path.write_text(json.dumps({
+            "generated_at": "2026-09-30T13:01:00Z",
+            "collector_window": {"since": since, "until": until, "compact": False},
+            "projects": {}, "fetched_repos": ["a/b"],
+            "_collector_evidence": {"pages": pages, "dispositions": {}},
+        }))
+
+        def validate_receipt(**kwargs):
+            validate_native_evidence(family=kwargs["family"], evidence=kwargs["evidence"], since=since, until=until)
+
+        with patch.dict(os.environ, {"COMPASS_SOURCE_PASS_ID": "fixture-run"}), \
+                patch.object(mod, "emit_receipt", side_effect=validate_receipt) as receipt, \
+                patch.object(mod, "fetch_repo") as network:
+            asyncio.run(mod.run(args, [project]))
+            saved = json.loads(path.read_text())["_collector_evidence"]["pages"]
+            self.assertEqual([p["exhausted"] for p in saved], [False, True, False, True])
+            self.assertEqual(len({p["source"] for p in saved}), 2)
+            for before, after in zip(pages, saved):
+                self.assertEqual({k: v for k, v in before.items() if k != "source"},
+                                 {k: v for k, v in after.items() if k != "source"})
+            before_repeat = path.read_bytes()
+            asyncio.run(mod.run(args, [project]))
+            self.assertEqual(path.read_bytes(), before_repeat)
+        network.assert_not_called()
+        self.assertEqual(receipt.call_count, 2)
+
     def test_mismatched_window_journal_is_not_used_for_resume(self):
         args=Namespace(since=datetime(2026,9,21,tzinfo=timezone.utc),
             until=datetime(2026,9,30,13,tzinfo=timezone.utc),since_days=None,

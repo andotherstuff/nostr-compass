@@ -4,6 +4,8 @@
 
 Weekly newsletter, podcast, and topic documentation with AI-powered workflows.
 
+The regular newsletter must stay compact. Apply the [compact writing contract](skills/_COMPASS/SKILL.md#compact-regular-newsletter) during selection, writing, assembly and review. Combine each project’s release and development progress in one news entry; preserve the same canonical edition for podcast prep and Logbook.
+
 ---
 
 ## System Overview
@@ -525,10 +527,10 @@ Note: Projects like CDK, Cashu.me, Nutshell, eNuts, Bitcoin Connect, Geyser, and
 
 ### Format
 - **USE FLOWING PROSE, NOT BULLET LISTS** for news items
-- Each news item: 3-6 flowing sentences
+- Ordinary project news: 2–4 flowing sentences, usually about 60–90 words
 - Bullets ONLY for: NIP Updates section, Releases quick list, technical specs
 - Never start a paragraph with **Bold:** followed by bullets
-- **NIP Updates items need FULL DETAIL (3-5 sentences minimum per item)**: explain what the existing NIP does, what the PR changes or proposes, why it matters, and include technical specifics (event kinds, tag formats, wire protocol changes). A one-sentence NIP summary is never acceptable. Use Newsletter #17's NIP Updates section as the reference standard.
+- **NIP Updates need concise technical substance:** explain the specification’s purpose, the proposed or merged change, its consequence and essential wire details. Keep each required spec heading and primary link, but do not add repeated background or pad to a sentence minimum.
 
 ### Source Linking (CRITICAL)
 **Every mention of a PR, release, commit, or NIP change MUST include a direct link.**
@@ -622,12 +624,15 @@ Technical details.
 ## Technical Conventions
 
 ### Newsletter Frontmatter
+Review PRs use `draft: true`. Authorized publication preparation changes this
+to `draft: false` after the refresh, quality and clock gates pass.
+
 ```yaml
 ---
 title: 'Nostr Compass #N'
 date: YYYY-MM-DD
 publishDate: YYYY-MM-DD
-draft: false
+draft: true
 type: newsletters
 ---
 ```

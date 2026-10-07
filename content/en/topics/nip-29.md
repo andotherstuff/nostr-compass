@@ -67,6 +67,7 @@ That makes migration and forking possible, but not automatic. The same group id 
 - [Mosaico 0.1.2](https://github.com/pablof7z/mosaico/releases/tag/v0.1.2) - shared-awareness fabric for coding-agent sessions
 
 **Mentioned in:**
+- [Newsletter #43: Nostr Vault](/en/newsletters/2026-10-07-newsletter/#nostr-vault)
 - [Newsletter #2: NIP Updates](/en/newsletters/2025-12-24-newsletter/#nip-updates)
 - [Newsletter #3: December Recap](/en/newsletters/2025-12-31-newsletter/#december-recap-five-years-of-nostr-decembers)
 - [Newsletter #6: NIP Updates](/en/newsletters/2026-01-21-newsletter/#nip-updates)

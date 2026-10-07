@@ -1,37 +1,35 @@
 ## Protocol and Spec Work
 
-### NIP-02 clarifies petnames in follow lists
+### Profile image metadata matched by exact URL
 
-[NIP-02 (Follow List)](/en/topics/nip-02/) standardizes the kind `3` event that records whom an account follows and can attach a local petname to each followed key. The [merged petname clarification](https://github.com/nostr-protocol/nips/pull/2472) allows display-safe characters while preserving the field as a user's local label, not a globally verified name.
+The merged [NIP-92 profile metadata change](https://github.com/nostr-protocol/nips/pull/2494) lets clients associate profile pictures and banners with [NIP-92](/en/topics/nip-92/), the media metadata format, only when URLs match exactly. Clients ignore unmatched tags and may use fallback URLs if the primary fails. Updates preserve metadata for unchanged fields and drop obsolete tags; the merge establishes specification behavior, not shipped client support.
 
-### NIP-86 adds clear and list methods for relay management
+### Signed descriptors for napplets
 
-[NIP-86 (Relay Management API)](/en/topics/nip-86/) standardizes authenticated administrative calls for banning, allowing, inspecting, and configuring a relay. [PR #2477](https://github.com/nostr-protocol/nips/pull/2477), merged September 23, adds methods for clearing pubkeys or events from both allow and ban lists and for listing roles, allowed events, and disallowed kinds, including behavior already present in the khatru relay framework and the go-nostr library.
+The open napplet proposal, for self-contained HTML applications, now uses a [signed descriptor tied to one HTML hash](https://github.com/nostr-protocol/nips/commit/020cb8b33a9e4c6b8ca4b2f9d0ed0a67843b68f7). It declares required and optional capabilities, intents, icons and a plaintext description, replacing the aggregate/path model. HTML publishing metadata cannot override the signed descriptor's authority; this remains proposed protocol text.
 
-### NIP-69 proposes a stable creation time for trading orders
+The [napplet CLI v0.7.0](https://github.com/napplet/web/releases/tag/%40napplet/cli%400.7.0) [implements the descriptor format and offline migration](https://github.com/napplet/web/pull/224). Unattended publishing defaults to the current format; a temporary explicit legacy option supports older shells. Migration verifies the original signed event and emits an unsigned template for review, without fetching, executing, signing or publishing its HTML. Ambiguous multi-file manifests must be rebundled, and permission and storage identities change to the artifact hash. [Explicit unknown capability declarations](https://github.com/napplet/web/pull/223) are retained with warnings; shells still decide whether they can load the app.
 
-[NIP-69 (Peer-to-Peer Trading)](/en/topics/nip-69/) standardizes addressable order events that let multiple trading applications share buy and sell liquidity. [PR #2476](https://github.com/nostr-protocol/nips/pull/2476) proposes an optional creation-time tag that stays fixed across status updates, so a returned or republished order retains its original age even when a newer event records a status change.
+### Financial cashtags with separate binding and indexing
 
-### NIP-A3 proposes proof of payment-address ownership
+The [financial cashtag proposal](https://github.com/nostr-protocol/nips/pull/2491) separates a cashtag's location in text from its indexed financial identity. Non-indexed `cashtag` tags bind text using UTF-8 byte offsets, while [NIP-73](/en/topics/nip-73/), the external-identifier tagging convention, supplies `i` tags for symbol and instrument indexing. The proposal covers ISIN, FIGI, CAIP-19 and ISO-4217 identities, not prices or payments; implemented adoption is not established.
 
-[NIP-A3 (Payment Targets)](/en/topics/nip-a3/) lets an account publish portable payment addresses for multiple networks in one replaceable event. [PR #2475](https://github.com/nostr-protocol/nips/pull/2475) proposes an optional signature made by the payment address's own key, giving compatible address types a proof that binds the destination to the Nostr author while treating missing proofs as neutral.
+### Marmot membership requests and receipts
 
-### BUD-16 proposes deterministic directory manifests
+A proposed [Marmot membership workflow](https://github.com/marmot-protocol/marmot/pull/432), for encrypted group messaging, adds optional inner kind-458 requests, rejections, withdrawals and Applied receipts. Administrators independently validate KeyPackages, and an Applied receipt requires a matching accepted Commit. These checks tie receipts to accepted membership changes; the fixtures assume Messaging Layer Security group-key authorization facts and do not prove convergence.
 
-[BUD-16](https://github.com/hzrd149/blossom/pull/105) is an open Blossom proposal for grouping content-addressed blobs into named directory trees with reproducible manifest hashes. The draft defines deterministic MessagePack encoding, named links, metadata, optional encryption keys, and `.bdir` path resolution while leaving servers to store ordinary blobs.
+### Marmot multi-device pairing security
 
-### Marmot adds encrypted group polls
+Merged [Marmot multi-device design notes](https://github.com/marmot-protocol/marmot/pull/430) introduce private, single-use KeyPackages, a device-group roster, commitment-based pairing and ordered settings. The design addresses substitution, KeyPackage reuse and offline-searchable pairing. Normative wire definitions and interoperable device support remain unfinished.
 
-[Marmot Protocol](/en/topics/marmot/) defines interoperable application events inside MLS-encrypted groups carried over Nostr. NIP-88 defines poll questions and signed response events. [Merged MIP work](https://github.com/marmot-protocol/marmot/pull/425) recognizes those polls inside a group while keeping relay selection bound to authenticated group routing and explicitly stating that they are not anonymous or election-grade.
+### Wallet Connect commission invoices
 
-### Marmot merges group reports and admin deletion
+The unimplemented [Nostr Wallet Connect commission proposal](https://github.com/nostr-wallet-connect/nwc/pull/9), for wallet-to-app communication, adds an optional `make_commission_invoice` permission governed by user-confirmed rate, payee, fee and budget limits. Shared-hash hold invoices coordinate payments, with idempotent retries to prevent duplicate requests. A preimage does not prove payment, and client delays and colluding routing remain risks.
 
-[Marmot group moderation](https://github.com/marmot-protocol/marmot/pull/423) defines encrypted report, dismissal, and administrator-deletion events that converge under the group's authenticated state. The proposal covered last week has now merged, fixing a status transition that lets implementations align report review and message removal against the accepted specification.
+### Cyberspace virtual brackets
 
-### NWC-13 proposes connection budget queries
+The Cyberspace spatial protocol [specifies virtual brackets](https://github.com/arkin0x/cyberspace/pull/44) for games identified by their public keys. An `enter-virtual` action names the game in a `p` tag and records base and game positions; an exit returns to the entry’s base position. Verifiers follow links through unrecognized actions and compare recognized positions with the preceding recognized action, so a skipped action that moved the identity invalidates the chain. Existing client verifiers still need implementation changes.
 
-[Nostr Wallet Connect](/en/topics/nip-47/) lets an application request narrowly scoped wallet operations through encrypted Nostr events. [NWC-13](https://github.com/nostr-wallet-connect/nwc/pull/7) proposes a separate `get_budget` permission and response so an application can inspect used, total, and renewal allowance without receiving permission to read the wallet's balance.
-
-writer_model: preferred=gemini-3.1-pro, actual=openai-codex/gpt-5.6-sol, receipt=data/newsletter_workspace/writer_receipt_2026-09-16.json
+writer_model: actual=openai-codex/gpt-6.1-sol, receipt=/opt/data/task-artifacts/compass-direct-2026-10-07/writer-protocol_and_spec_work/receipt.json; final root edits verified in assembled draft 4f46a95e8d1bad2c63d2e7b67b35c387bded0c07ac10b97c6ca12298922f354b
 
 GATE: PENDING REVIEW

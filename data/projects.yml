@@ -28,6 +28,15 @@
 # =============================================================================
 
 social_clients:
+  - name: Sidecar
+    description: Browser extension for publishing Nostr notes and web highlights
+    platforms: [ chrome, firefox ]
+    repo: https://github.com/dmnyc/sidecar
+    maintainer: dmnyc
+    status: active
+    priority: medium
+    notes: Publishes selected text as NIP-84 highlights and supports signing through browser extensions
+
   # --- Mobile ---
   - name: Damus
     description: The OG Nostr client for iOS
@@ -1842,11 +1851,11 @@ messaging_clients:
   - name: Coop Mobile
     description: NIP-17 encrypted direct messaging client for mobile platforms
     platforms: [ android, ios ]
-    repo: https://git.reya.su/reya/coop-mobile
+    repo: https://git.reya.info/reya/coop-mobile
     maintainer: reya
     status: alpha
     priority: low
-    notes: Mobile companion to the coop NIP-17 client; hosted on Gitea (git.reya.su)
+    notes: Mobile companion to the coop NIP-17 client; hosted on Gitea (git.reya.info, formerly git.reya.su)
 
   - name: Sonar
     description: Decentralized, privacy-first messenger and Lightning wallet over Bluetooth mesh and Nostr
@@ -2244,6 +2253,26 @@ shops:
     notes: NIP-05 verified (bot@giftcardshop.org), single-view reveal-link delivery; DM /menu to start
 
 devtools:
+  - name: Nostr Workshop
+    description: Phone-oriented Nostr learning tasks with a browser signer bridge
+    platforms: [ android, web ]
+    repo: https://relay.ngit.dev/npub1nlly7p4mtzkdg9qrffvtunvqazg7eyxmpkmx9ntnxmthvj77yuvqtk8rpg/workshop-multi-tool.git
+    website: https://npub1nhf36h08krl0ts8r9amkwq5eq9mjhq82kz7dxcfza2hmlkqdhn3qt2t4q6.nsite.lol/
+    maintainer: Techno Ethica
+    status: beta
+    priority: medium
+    notes: NIP-49 key backups, NIP-46 signing and signed NIP-82 app listings; unlocked browser keys stay in per-tab sessionStorage until Lock
+
+  - name: Haps
+    description: Nostr-keyed native package publisher and command-line installer
+    platforms: [ cli, linux, macos, windows ]
+    repo: https://github.com/mmalmi/haps
+    website: https://haps.hashtree.cc
+    maintainer: mmalmi
+    status: beta
+    priority: medium
+    notes: Signed publisher catalogs and release attestations with Hashtree distribution; experimental formats and native programs are not sandboxed
+
   - name: ngit
     description: Git collaboration over Nostr (NIP-34)
     platforms: [ cli ]
