@@ -50,6 +50,7 @@ Structured filters work well when you already know the author, kind, or tag you 
 - [NIP-50 Specification](https://github.com/nostr-protocol/nips/blob/master/50.md)
 
 **Mentioned in:**
+- [Newsletter #44](/en/newsletters/2026-10-14-newsletter/#ants)
 - [Newsletter #43](/en/newsletters/2026-10-07-newsletter/#top-stories)
 - [Newsletter #41: Zap Cooking blocks secret-key searches](/en/newsletters/2026-09-23-newsletter/#zap-cooking-publishes-image-descriptions-and-blocks-secret-key-searches)
 - [Newsletter #39: Zap Cooking renders NIP-27 references with relay hints](/en/newsletters/2026-09-09-newsletter/#zap-cooking-renders-nip-27-references-with-relay-hints)

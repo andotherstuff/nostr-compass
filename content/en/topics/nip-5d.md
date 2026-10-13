@@ -27,6 +27,7 @@ Under the proposal, a shell application would load a napplet in a sandboxed ifra
 - [Myco v0.7.0](https://github.com/Origami74/myco/releases/tag/v0.7.0) - Sandboxed napplet runtime and permission model
 
 **Mentioned in:**
+- [Newsletter #44](/en/newsletters/2026-10-14-newsletter/#soyli)
 - [Newsletter #40: Myco 0.7.0](/en/newsletters/2026-09-16-newsletter/#myco-070-runs-napplets-and-file-sharing-over-a-multi-path-fips-mesh)
 - [Newsletter #37: NAPs](/en/newsletters/2026-08-26-newsletter/#naps)
 - [Newsletter #17](/en/newsletters/2026-04-08-newsletter/#nip-updates)

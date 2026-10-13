@@ -50,6 +50,7 @@ Existing implementations also answer different questions. A global trust rank is
 - [Noswot](https://codeberg.org/weex/noswot)
 
 **Mentioned in:**
+- [Newsletter #44](/en/newsletters/2026-10-14-newsletter/#haps)
 - [Newsletter #3: December Recap](/en/newsletters/2025-12-31-newsletter/#december-recap-five-years-of-nostr-decembers)
 
 **See also:**

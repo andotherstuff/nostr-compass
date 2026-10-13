@@ -16,4 +16,5 @@ A user publishes a kind 30315 event with status text in `content`. The event is 
 - [NIP-38 specification](https://github.com/nostr-protocol/nips/blob/master/38.md) - User statuses
 
 **Mentioned in:**
+- [Newsletter #44](/en/newsletters/2026-10-14-newsletter/#profile-status-and-expiration)
 - [Newsletter #37: NoorNote v1.3.6: profile statuses and classified listings](/en/newsletters/2026-08-26-newsletter/#noornote-v136-profile-statuses-and-classified-listings)

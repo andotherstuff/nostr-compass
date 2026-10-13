@@ -21,6 +21,58 @@ no_dm:
 # These remain visible to validation and workflow reporting, but never become
 # mentions or outreach recipients.
 unresolved:
+  OUTKAST:
+    checked_at: 2026-10-14
+    reason: Current primaryREADME and repository ownerprofile supplied no defensible
+      project or maintainer key. Preserve the name untagged and exclude direct
+      outreach; this does not establish that no public identity exists.
+    sources:
+      - https://github.com/Lwb89dev/outkast/blob/HEAD/README.md
+      - https://github.com/Lwb89dev
+  cl-marmot:
+    checked_at: 2026-10-14
+    reason: Current primaryREADME and repository ownerprofile supplied no defensible
+      project or maintainer key. Preserve the name untagged and exclude direct
+      outreach; this does not establish that no public identity exists.
+    sources:
+      - https://github.com/modus-lisp/cl-marmot/blob/HEAD/README.md
+      - https://github.com/modus-lisp
+  Kehto:
+    checked_at: 2026-10-14
+    reason: Current primary README and owner site/profile did not bind a Nostr key
+      to this project or its maintainer. Directory and signed-profile discovery
+      supplied no defensible additional binding; the NIP-50 relay query timed out
+      rather than proving absence. Preserve this label untagged and exclude
+      outreach until primary evidence binds an identity.
+    sources:
+      - https://github.com/kehto/web/blob/main/README.md
+      - https://kehto.com
+      - https://npub.world
+      - https://relay.nostr.band
+  rx-nostr:
+    checked_at: 2026-10-14
+    reason: Current primary README and owner site/profile did not bind a Nostr key
+      to this project or its maintainer. Directory and signed-profile discovery
+      supplied no defensible additional binding; the NIP-50 relay query timed out
+      rather than proving absence. Preserve this label untagged and exclude
+      outreach until primary evidence binds an identity.
+    sources:
+      - https://github.com/penpenpng/rx-nostr/blob/main/README.md
+      - https://penpenpng.github.io/rx-nostr/
+      - https://npub.world
+      - https://relay.nostr.band
+  soyLI:
+    checked_at: 2026-10-14
+    reason: Current primary README and owner site/profile did not bind a Nostr key
+      to this project or its maintainer. Directory and signed-profile discovery
+      supplied no defensible additional binding; the NIP-50 relay query timed out
+      rather than proving absence. Preserve this label untagged and exclude
+      outreach until primary evidence binds an identity.
+    sources:
+      - https://github.com/zeSchlausKwab/napplet-soy/blob/main/README.md
+      - https://napplet.soy/about
+      - https://npub.world
+      - https://relay.nostr.band
   Table Mesh:
     checked_at: 2026-09-24
     reason: The developer-signed Zapstore release supplies a publisher key but no project or maintainer profile, repository, or verified monitored inbox. A release-signing key alone is not an outreach identity.
@@ -1746,3 +1798,101 @@ Noteds:
   - https://raw.githubusercontent.com/imattau/noteds/main/README.md
   - https://github.com/imattau
   outreach: true
+
+# Identities checked against primary repositories and owner profiles, 2026-10-14.
+Ants:
+  npub: npub1dergggklka99wwrs92yz8wdjs952h2ux2ha2ed598ngwu9w7a6fsh9xzpc
+  identity_type: maintainer
+  person: Gigi
+  evidence:
+    - https://github.com/dergigi/ants/blob/master/README.md
+  outreach: true
+Haps:
+  npub: npub1xdhnr9mrv47kkrn95k6cwecearydeh8e895990n3acntwvmgk2dsdeeycm
+  identity_type: organization
+  display_name: Sirius Business Ltd
+  outreach: false
+  evidence:
+    - https://github.com/mmalmi/haps/blob/master/README.md
+Sidecar:
+  npub: npub1aeh2zw4elewy5682lxc6xnlqzjnxksq303gwu2npfaxd49vmde6qcq4nwx
+  identity_type: maintainer
+  person: Daniel
+  outreach: true
+  evidence:
+    - https://github.com/dmnyc
+    - https://github.com/dmnyc/sidecar
+    - https://sidecar.top
+NosTube:
+  npub: npub1klr0dy2ul2dx9llk58czvpx73rprcmrvd5dc7ck8esg8f8es06qs427gxc
+  identity_type: maintainer
+  person: flox1an
+  outreach: true
+  evidence:
+    - https://github.com/flox1an
+    - https://github.com/flox1an/nostube
+eHagaki:
+  npub: npub1a3pvwe2p3v7mnjz6hle63r628wl9w567aw7u23fzqs062v5vqcqqu3sgh3
+  identity_type: maintainer
+  person: Lokuyow
+  outreach: true
+  evidence:
+    - https://github.com/Lokuyow
+    - https://lokuyow.github.io/.well-known/nostr.json?name=_
+    - https://github.com/Lokuyow/ehagaki
+
+# Primary-bound identities researched for issue44, 2026-10-14.
+Gittr:
+  npub: npub1n2ph08n4pqz4d3jk6n2p35p2f4ldhc5g5tu7dhftfpueajf4rpxqfjhzmc
+  identity_type: maintainer
+  person: arbadacarbaYK
+  outreach: false
+  evidence:
+    - https://github.com/arbadacarbaYK
+Grocery:
+  npub: npub1marc26z8nh3xkj5rcx7ufkatvx6ueqhp5vfw9v5teq26z254renshtf3g0
+  identity_type: maintainer
+  person: Marc
+  outreach: true
+  evidence:
+    - https://github.com/Marc26z
+    - https://primal.net/.well-known/nostr.json?name=marc
+    - https://github.com/Marc26z/nostr-grocery
+Minibits:
+  npub: npub1kvaln6tm0re4d99q9e4ma788wpvnw0jzkz595cljtfgwhldd75xsj9tkzv
+  identity_type: project
+  outreach: true
+  evidence:
+    - https://www.minibits.cash
+    - https://github.com/minibits-cash/minibits_wallet
+Nostrautica:
+  npub: npub1m2mvvpjugwdehtaskrcl7ksvdqnnhnjur9v6g9v266nss504q7mqvlr8p9
+  identity_type: maintainer
+  person: Juraj
+  outreach: true
+  evidence:
+    - https://github.com/jooray
+    - https://github.com/jooray/nostrautica
+Unfiltered:
+  npub: npub1w059awkdwvd4ce4hmc6wn5nnulpx8x2t33ykvzvfghgmnjsneu6q5xtl3x
+  identity_type: maintainer
+  person: CheshireRemnant
+  outreach: true
+  evidence:
+    - https://github.com/dmcarrington
+    - https://github.com/dmcarrington/unfiltered
+monostr:
+  npub: npub1zcqletxlyf7amggwx0n3j9unpdymusmtgw7aqv9hnx2g48e8fmfs89e6z2
+  identity_type: project
+  outreach: true
+  evidence:
+    - https://monostr.com
+    - https://github.com/schmidt1024/monostr
+Submarine:
+  npub: npub1kg4sdvz3l4fr99n2jdz2vdxe2mpacva87hkdetv76ywacsfq5leqquw5te
+  identity_type: maintainer
+  person: Russell
+  outreach: true
+  evidence:
+    - https://github.com/nogringo
+    - https://github.com/nogringo/submarine
