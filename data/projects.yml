@@ -450,7 +450,7 @@ social_clients:
   - name: Nalgorithm
     description: Relevance-ranked Nostr feed and digest generator using user-defined
       and learned preferences
-    platforms: [ web, cli ]
+    platforms: [ web, cli, android ]
     repo: https://github.com/jooray/nalgorithm
     website: https://cypherpunk.today/nalgorithm/
     maintainer: jooray

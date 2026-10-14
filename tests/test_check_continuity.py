@@ -118,6 +118,26 @@ class ContinuityCheckTests(unittest.TestCase):
 
         self.assertEqual([], checker.review_history(current, [older]))
 
+    def test_distinct_forgejo_pulls_keep_their_full_urls(self):
+        checker = load_module()
+        older_url = "https://git.nostrdev.com/stuff/pakstr/pulls/75"
+        current_url = "https://git.nostrdev.com/stuff/pakstr/pulls/105"
+        older = f"### Pakstr\n\n[External signing]({older_url}) adds signer handoff.\n"
+        current = f"### Pakstr\n\n[Local signing]({current_url}) adds a native signer.\n"
+
+        self.assertEqual({current_url}, checker.primary_urls(current))
+        self.assertEqual([], checker.review_history(current, [older]))
+
+    def test_reused_forgejo_pull_still_fails(self):
+        checker = load_module()
+        url = "https://git.nostrdev.com/stuff/pakstr/pulls/105"
+        article = f"### Pakstr\n\n[Local signing]({url}) adds a native signer.\n"
+
+        self.assertIn(
+            checker.Finding(url, "primary source already covered without a stated status change"),
+            checker.review_history(article, [article]),
+        )
+
 
 if __name__ == "__main__":
     unittest.main()

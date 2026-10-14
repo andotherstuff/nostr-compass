@@ -1,34 +1,17 @@
 ## New Projects
 
-### cvm-registry
+### Submarine
 
-[cvm-registry caches ContextVM service discovery](https://gitworkshop.dev/npub1nng5mxkdh2mu593twukfr7j3fk5wxfy0v8ujf0e5g8nwwtzlphhqksqpew/relay.ngit.dev/cvm-registry), using a curator allowlist and explicit fresh or expired catalog states to help users assess service listings. This static discovery dashboard makes catalog age visible, but its restaurant demonstration does not invoke services, make payments or settle transactions.
+[Submarine 0.1.0](https://github.com/nogringo/submarine/releases/tag/v0.1.0) releases a password manager whose encrypted vaults sync over Nostr. It supports external signers and retains concurrent item versions, with Bitwarden JSON import and export. Changes are saved locally before waiting for relay acceptance. Android, desktop and CLI downloads accompany the release. The project calls it young and advises a proven manager for critical passwords; the tagged protocol specification is still empty. Its [web storage](https://github.com/nogringo/submarine/blob/v0.1.0/apps/app/README.md) keeps the encryption key alongside the protected data.
 
-### Nostr Workshop
+### cl-marmot
 
-[Nostr Workshop's phone milestone](https://npub1nhf36h08krl0ts8r9amkwq5eq9mjhq82kz7dxcfza2hmlkqdhn3qt2t4q6.nsite.lol/) provides phone-oriented learning tasks, a signer bridge and encrypted key backups, with published results updating task progress. The browser signer holds the unlocked private key in plaintext per-tab sessionStorage until Lock; lasting use calls for transferring the encrypted backup to a dedicated signer. The newer source milestone is not attested to the listed APK.
+[cl-marmot](https://github.com/modus-lisp/cl-marmot/blob/5dd9dea97ece82b0e4cc08f0c893397fbb333a5b/README.md) adds a Common Lisp implementation of MLS group chat over Nostr. October 9 code adds competing-commit convergence and encrypted Blossom attachments, with author-reported interoperability tests against MDK’s wn command-line client. The implementation is unaudited, and account keys and message logs lack encryption at rest. Timed convergence windows, replay beyond the rollback horizon and disbanding remain unimplemented; the inspected harness uses disposable local relays.
 
-### Nostella
+### nalgorithm Android
 
-[Nostella's experimental relay mesh authenticates forwarded requests](https://relay.ngit.dev/npub1600yr4qg5vcfp7svf6ysj0008tn7aphnu0gjs6lw5hjn74n0laasjx889v/nostella.git) and gives them stable identities to stop recursive amplification. Bounded forwarding to ordinary relays preserves filters and limits. Remote results arrive after the local end-of-stored-events signal, so clients that close their subscription at that signal miss those results.
+[nalgorithm's Android release](https://github.com/jooray/nalgorithm/releases/tag/android-v1.0.0) builds a preference-ranked Nostr feed and a background audio digest that can be played offline. Users choose hosted, Lightning-priced inference or own-key inference requested from the phone; these are separate routes. Login supports Amber through remote signing. Follow-up releases [repair own-key ranking and follow-list discovery](https://github.com/jooray/nalgorithm/releases/tag/android-v1.0.1), then [preserve likes from working relays when another relay fails](https://github.com/jooray/nalgorithm/releases/tag/android-v1.0.2) and improve digest recovery. [Version 1.0.3](https://github.com/jooray/nalgorithm/releases/tag/android-v1.0.3) reorders model setup and reports missing connection-test inputs.
 
-### nope-mcp
+writer_model: direct-codex
 
-[nope-mcp adds connector metadata and default open-license filtering](https://gitworkshop.dev/npub1r30l8j4vmppvq8w23umcyvd3vct4zmfpfkn4c7h2h057rmlfcrmq9xt9ma/relay.ngit.dev/amb-mcp) to educational-resource search across Nostr relays, exposing it through a public MCP interface without signing or mutation tools. Resources missing license tags are excluded by default.
-
-### Vitals
-
-[Vitals implements owner-authorized monitoring sessions](https://npub1zzndrnyy0cf6n4m3y5flcndavp08p05cesmacqylq6r6ca8pldhshda6w9.nsite.lol/), with a Linux daemon sending ephemeral machine reports encrypted using [NIP-44, Nostr's encrypted-message format](/en/topics/nip-44/). Five-minute keepalives extend a seven-minute session timeout. Closing the browser sends no signed stop, leaving monitoring to expire by timeout; the daemon is a prototype.
-
-### grasp-go-proxy
-
-[grasp-go-proxy exposes Nostr repository discovery to Go tooling](https://gitnostr.com/npub180cvv07tjdrrgpa0j7j7tmnyl2yr6yr7l8j4s3evf6u64th6gkwsyjh6w6/grasp-go-proxy.git), resolving npub, naddr and [NIP-05 human-readable identifiers](/en/topics/nip-05/) for [NIP-34 Git repository announcements](/en/topics/nip-34/) into go-import metadata pointing at existing Git hosts.
-
-
-### Keythra
-
-[Keythra adds a Mac-mediated remote signer](https://github.com/gmkbenjamin/keythra/commit/155eec9bc635cc1f2cbc37302d461e45caaa49ab) using [NIP-46, Nostr's remote-signing protocol](/en/topics/nip-46/), forwarding authorized applications' requests to an iPhone or local authenticator. Each signing, encryption or decryption operation requests user verification, with event IDs derived from approved fields. This remains a prototype source milestone: the Mac bridge must stay running, Nostr keys remain in software storage.
-
-writer_model: actual=openai-codex/gpt-6.1-sol, receipt=/opt/data/task-artifacts/compass-direct-2026-10-07/writer-new_projects/receipt.json; final root edits verified in assembled draft 4f46a95e8d1bad2c63d2e7b67b35c387bded0c07ac10b97c6ca12298922f354b
-
-GATE: PENDING REVIEW
+GATE: PASS (source-owner content review; full publication receipts are separate)

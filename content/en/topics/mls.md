@@ -58,6 +58,7 @@ That is why Nostr projects such as Marmot add extra rules on top of MLS. The cry
 - [Cordn 0.2.1](https://github.com/Cordn-msg/cordn-web/releases/tag/v0.2.1) - Android client release using MLS group messaging
 
 **Mentioned in:**
+- [Newsletter #44](/en/newsletters/2026-10-14-newsletter/#mdk)
 - [Newsletter #3: Releases](/en/newsletters/2025-12-31-newsletter/#releases)
 - [Newsletter #10](/en/newsletters/2026-02-18-newsletter/)
 - [Newsletter #12](/en/newsletters/2026-03-04-newsletter/)

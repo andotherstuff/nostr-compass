@@ -48,6 +48,7 @@ Combined with [NIP-11](/en/topics/nip-11/) metadata, clients can discover whethe
 - [algia 0.0.133](https://github.com/mattn/algia/releases/tag/v0.0.133) - relay pre-authentication
 
 **Mentioned in:**
+- [Newsletter #44](/en/newsletters/2026-10-14-newsletter/#amethyst)
 - [Newsletter #43](/en/newsletters/2026-10-07-newsletter/#in-development)
 - [Newsletter #39: Nostr Implementation Possibilities](/en/newsletters/2026-09-09-newsletter/#nostr-implementation-possibilities)
 - [Newsletter #6: Relay Information Documents](/en/newsletters/2026-01-21-newsletter/#relay-information-documents-get-formalized)

@@ -67,6 +67,7 @@ Zap splits, defined in an appendix to the NIP, let a recipient publish a kind `0
 - [Earthly 0.0.9](https://github.com/zeSchlausKwab/earthly/releases/tag/v0.0.9) - Client implementation fixes
 
 **Mentioned in:**
+- [Newsletter #44](/en/newsletters/2026-10-14-newsletter/#nostr-components)
 - [Newsletter #1: News](/en/newsletters/2025-12-17-newsletter/#news)
 - [Newsletter #2: News](/en/newsletters/2025-12-24-newsletter/#news)
 - [Newsletter #3: Notable Code Changes](/en/newsletters/2025-12-31-newsletter/#amethyst-android)

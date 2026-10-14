@@ -54,6 +54,7 @@ MDK landed [PR #261](https://github.com/marmot-protocol/mdk/pull/261) to compute
 - [Amethyst PR #2488](https://github.com/vitorpamplona/amethyst/pull/2488) - Amy CLI
 
 **Mentioned in:**
+- [Newsletter #44](/en/newsletters/2026-10-14-newsletter/#mdk)
 - [Newsletter #1: News](/en/newsletters/2025-12-17-newsletter/#news)
 - [Newsletter #1: Releases](/en/newsletters/2025-12-17-newsletter/#releases)
 - [Newsletter #4](/en/newsletters/2026-01-07-newsletter/)
