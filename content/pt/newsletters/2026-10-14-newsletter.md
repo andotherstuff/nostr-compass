@@ -81,7 +81,7 @@ A versão também [consulta servidores DNS upstream em paralelo, usando a respos
 
 ### OUTKAST
 
-[OUTKAST 1.1.3](https://github.com/Lwb89dev/outkast/releases/tag/v1.1.3) melhora os comentários em artigos e o tratamento de publicações citadas em seu cliente Android. Comentários em artigos usam kind 1111, com o artigo como raiz e o comentário como pai, enquanto respostas a notas comuns continuam usando kind 1. A descoberta de citações aceita tanto tags q quanto menções e mais antigas que contêm links; citações recém-publicadas adicionam tags q. Falhas de publicação revertem reações aplicadas de forma otimista.
+[OUTKAST 1.1.3](https://github.com/Lwb89dev/outkast/releases/tag/v1.1.3) melhora os comentários em artigos e o tratamento de publicações citadas em seu cliente Android. Comentários em artigos usam kind 1111, com o artigo como raiz e o comentário como pai, enquanto respostas a notas comuns continuam usando kind 1. A descoberta de citações aceita tanto tags q quanto menções `e` mais antigas que contêm links; citações recém-publicadas adicionam tags q. Falhas de publicação revertem reações aplicadas de forma otimista.
 
 ### Bookshelf
 
@@ -121,7 +121,7 @@ A versão também [consulta servidores DNS upstream em paralelo, usando a respos
 
 ### Grain
 
-[Grain v0.8.1](https://github.com/0ceanSlim/grain/releases/tag/v0.8.1) corrige a [autenticação em relays NIP-42](/pt/topics/nip-42/) de sua biblioteca cliente Go para aplicativos que atendem a vários usuários. Cada `UserContext` possui conexões autenticadas privadas, preferências de relays e mecanismos de retenção de conexões; o pool compartilhado nunca se autentica. A biblioteca valida IDs e assinaturas recebidos, verifica a correspondência com as assinaturas de conteúdo e serializa corretamente filtros de tag e de tempo. Os chamadores autenticados precisam migrar para `UserContext`. O armazenamento e o fornecimento de dados pelos relays permanecem inalterados, e a autenticação ainda exige um desafio quando a conexão é aberta.
+[Grain v0.8.1](https://github.com/0ceanSlim/grain/releases/tag/v0.8.1) corrige a [autenticação em relays NIP-42](/pt/topics/nip-42/) de sua biblioteca cliente Go para aplicativos que atendem a vários usuários. Cada `UserContext` possui conexões autenticadas privadas, preferências de relays e mecanismos de retenção de conexões; o pool compartilhado nunca se autentica. A biblioteca valida IDs e assinaturas recebidos, verifica a correspondência com os filtros de subscrição e serializa corretamente filtros de tag e de tempo. Os chamadores autenticados precisam migrar para `UserContext`. O armazenamento e o fornecimento de dados pelos relays permanecem inalterados, e a autenticação ainda exige um desafio quando a conexão é aberta.
 
 ### Nmail
 

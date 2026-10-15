@@ -35,7 +35,7 @@ La [versione 1.3.1](https://github.com/privkeyio/keep-android/releases/tag/v1.3.
 
 [Chama v6.4.21](https://github.com/jesuspirate/chama/releases/tag/v6.4.21) [autentica il bridge del wallet nativo](https://github.com/jesuspirate/chama/pull/29) utilizzato dalla sua applicazione di scambio mediata da Nostr, disabilita in produzione il reindirizzamento del bridge basato su URL e convalida gli importi dei pagamenti. Rifiuta inoltre di cancellare un wallet il cui contenuto non può essere letto.
 
-La [versione 6.4.22](https://github.com/jesuspirate/chama/releases/tag/v6.4.22) rende la riproduzione più resistente agli event provenienti da soggetti esterni, verifica le relazioni di successione, rifiuta gli insiemi vuoti di arbitri e ricava le tempistiche di rimborso dall’orario LOCK firmato. Le modifiche al consenso si applicano agli event CREATE firmati a partire dal 1º novembre 2026; le protezioni del client si applicano immediatamente. Le note di rilascio mantengono le riserve sulle federazioni selezionate negli annunci e sui pagamenti di importi minimi. Le successive [modifiche al firmatario e al recupero](https://github.com/jesuspirate/chama/releases/tag/v6.4.23) aggiungono lettori per seed protetti e blocchi tardivi recuperabili, mentre la [v6.4.24](https://github.com/jesuspirate/chama/releases/tag/v6.4.24) migliora gli elenchi di scambi di grandi dimensioni.
+La [versione 6.4.22](https://github.com/jesuspirate/chama/releases/tag/v6.4.22) rafforza la resistenza al replay degli event provenienti da soggetti esterni, verifica le relazioni di successione, rifiuta gli insiemi vuoti di arbitri e ricava le tempistiche di rimborso dall’orario LOCK firmato. Le modifiche al consenso si applicano agli event CREATE firmati a partire dal 1º novembre 2026; le protezioni del client si applicano immediatamente. Le note di rilascio mantengono le riserve sulle federazioni selezionate negli annunci e sui pagamenti di importi minimi. Le successive [modifiche al firmatario e al recupero](https://github.com/jesuspirate/chama/releases/tag/v6.4.23) aggiungono lettori per seed protetti e blocchi tardivi recuperabili, mentre la [v6.4.24](https://github.com/jesuspirate/chama/releases/tag/v6.4.24) migliora gli elenchi di scambi di grandi dimensioni.
 
 ### Zap Cooking
 
@@ -81,7 +81,7 @@ La versione inoltre [interroga in parallelo i server DNS a monte, usando la prim
 
 ### OUTKAST
 
-[OUTKAST 1.1.3](https://github.com/Lwb89dev/outkast/releases/tag/v1.1.3) migliora i commenti agli articoli e la gestione dei post citati nel suo client Android. I commenti agli articoli usano kind 1111 con l’articolo come radice e il commento come elemento padre, mentre le normali risposte alle note restano di kind 1. L’individuazione delle citazioni accetta sia i tag q sia le precedenti menzioni e contenenti link; le citazioni appena pubblicate aggiungono tag q. Una pubblicazione fallita annulla le reazioni applicate in modo ottimistico.
+[OUTKAST 1.1.3](https://github.com/Lwb89dev/outkast/releases/tag/v1.1.3) migliora i commenti agli articoli e la gestione dei post citati nel suo client Android. I commenti agli articoli usano kind 1111 con l’articolo come radice e il commento come elemento padre, mentre le normali risposte alle note restano di kind 1. L’individuazione delle citazioni accetta sia i tag q sia le precedenti menzioni `e` contenenti link; le citazioni appena pubblicate aggiungono tag q. Una pubblicazione fallita annulla le reazioni applicate in modo ottimistico.
 
 ### Bookshelf
 
@@ -203,7 +203,7 @@ nostter [limita gli indizi sui relay forniti dall’esterno](https://github.com/
 
 ### Alby Hub
 
-[La modifica di Alby Hub all’autorizzazione delle fatture](https://github.com/getAlby/hub/pull/2629) limita il saldo e l’annullamento alle fatture create dall’app richiedente. Il wallet autogestito espone le connessioni delle app tramite [NIP-47, Nostr Wallet Connect](/it/topics/nip-47/); la possibilità di una connessione di gestire le proprie fatture non deve conferire autorità sulle fatture di un’altra app. Una [correzione separata per la privacy delle connessioni isolate](https://github.com/getAlby/hub/pull/2621) rimuove l’indirizzo Lightning del wallet principale dai percorsi di esito positivo nel browser per le connessioni isolate.
+[La modifica di Alby Hub all’autorizzazione delle fatture](https://github.com/getAlby/hub/pull/2629) limita il regolamento e l’annullamento alle fatture create dall’app richiedente. Il wallet autogestito espone le connessioni delle app tramite [NIP-47, Nostr Wallet Connect](/it/topics/nip-47/); la possibilità di una connessione di gestire le proprie fatture non deve conferire autorità sulle fatture di un’altra app. Una [correzione separata per la privacy delle connessioni isolate](https://github.com/getAlby/hub/pull/2621) rimuove l’indirizzo Lightning del wallet principale dai percorsi di esito positivo nel browser per le connessioni isolate.
 
 ### nak
 
@@ -317,7 +317,7 @@ Nelle specifiche NAP per le applicazioni napplet, gli [identificatori degli endp
 
 ### Catene di azioni di Cyberspace
 
-[Le regole riviste per le catene di Cyberspace](https://github.com/arkin0x/cyberspace/pull/48) fanno sì che una biforcazione invalidi una catena di azioni firmata a partire dalla sua creazione e richiedono ai client di confermare la testa corrente prima di firmare un'altra azione. Il mondo basato su Nostr aggiunge [140 catene sintetiche firmate](https://github.com/arkin0x/cyberspace/pull/49) con verdetti normativi per le implementazioni. Le [regole di attribuzione delle copie](https://github.com/arkin0x/cyberspace/pull/47) usano riferimenti `q` all'oggetto originale e ne avvisano l'autore per i remix pubblici; le copie sigillate omettono tale notifica. Si tratta di specifiche di progetto integrate, mentre la copertura dei verificatori in uso non è stata verificata.
+[Le regole riviste per le catene di Cyberspace](https://github.com/arkin0x/cyberspace/pull/48) fanno sì che una biforcazione invalidi una catena di azioni firmata a partire dal suo punto di spawn e richiedono ai client di confermare la testa corrente prima di firmare un'altra azione. Il mondo basato su Nostr aggiunge [140 catene sintetiche firmate](https://github.com/arkin0x/cyberspace/pull/49) con verdetti normativi per le implementazioni. Le [regole di attribuzione delle copie](https://github.com/arkin0x/cyberspace/pull/47) usano riferimenti `q` all'oggetto originale e ne avvisano l'autore per i remix pubblici; le copie sigillate omettono tale notifica. Si tratta di specifiche di progetto integrate, mentre la copertura dei verificatori in uso non è stata verificata.
 
 ### Conferme di persistenza dei relay
 

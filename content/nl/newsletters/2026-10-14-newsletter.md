@@ -177,7 +177,7 @@ De relayserver [nostream v3.3.0](https://github.com/cameri/nostream/releases/tag
 
 ### Milk Market
 
-[Milk Market's mobile v0.3.0](https://github.com/shopstr-eng/self-sown/releases/tag/mobile-v0.3.0) brengt volledige ontwer editors voor webwinkels naar de verkopersapp, met dezelfde secties en velden als de webeditor. Het paginaontwerp per product kan thema- en sectiekeuzes overschrijven, inclusief metadata en afbeeldingen voor sociale media. De release voegt controles toe om mobiele en webconfiguraties op elkaar afgestemd te houden. [Versie 0.3.1](https://github.com/shopstr-eng/self-sown/releases/tag/mobile-v0.3.1) corrigeert het contrast in de mobiele voorbeeldkaart; Android-downloads zijn bij de releases gevoegd en iOS is beschikbaar via TestFlight.
+[Milk Market's mobile v0.3.0](https://github.com/shopstr-eng/self-sown/releases/tag/mobile-v0.3.0) brengt volledige ontwerpeditors voor webwinkels naar de verkopersapp, met dezelfde secties en velden als de webeditor. Het paginaontwerp per product kan thema- en sectiekeuzes overschrijven, inclusief metadata en afbeeldingen voor sociale media. De release voegt controles toe om mobiele en webconfiguraties op elkaar afgestemd te houden. [Versie 0.3.1](https://github.com/shopstr-eng/self-sown/releases/tag/mobile-v0.3.1) corrigeert het contrast in de mobiele voorbeeldkaart; Android-downloads zijn bij de releases gevoegd en iOS is beschikbaar via TestFlight.
 
 ### Zeus
 
