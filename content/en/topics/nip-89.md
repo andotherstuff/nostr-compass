@@ -88,6 +88,7 @@ That is why the recommendation flow starts with people you follow. Socially filt
 - [NIP-89 Specification](https://github.com/nostr-protocol/nips/blob/master/89.md)
 
 **Mentioned in:**
+- [Newsletter #45](/en/newsletters/2026-10-21-newsletter/#zap-cooking)
 - [Newsletter #4: NIP Deep Dive](/en/newsletters/2026-01-07-newsletter/#nip-44-versioned-encryption)
 - [Newsletter #12: Damus](/en/newsletters/2026-03-04-newsletter/#damus-nip-89-recommended-application-handlers)
 - [Newsletter #38: nostream](/en/newsletters/2026-09-02-newsletter/#nostream-expands-relay-side-dvm-routing-and-authenticated-operation)

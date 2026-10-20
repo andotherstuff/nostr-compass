@@ -41,7 +41,7 @@ Because the events sit in relay-controlled and user-controlled spaces at the sam
 - [NIP-43 Specification](https://github.com/nostr-protocol/nips/blob/master/43.md)
 - [PR #2267](https://github.com/nostr-protocol/nips/pull/2267) - Clarify membership state handling
 
-**Mentioned in:**
+**Mentioned in:** [Newsletter 45](/en/newsletters/2026-10-21-newsletter/#nostream),
 - [Newsletter #14: NIP Updates](/en/newsletters/2026-03-18-newsletter/#nip-updates)
 - [Newsletter #32: NIP Deep Dive](/en/newsletters/2026-07-22-newsletter/#nip-deep-dive-nip-42-and-nip-43)
 - [Newsletter #36: nostream adds a relay monitor and mints invite codes](/en/newsletters/2026-08-19-newsletter/#nostream-adds-a-relay-monitor-and-mints-invite-codes)

@@ -47,6 +47,7 @@ Legacy clients and signers still expose NIP-04 encrypt/decrypt methods because o
 - [NIP-04 Specification](https://github.com/nostr-protocol/nips/blob/master/04.md)
 
 **Mentioned in:**
+- [Newsletter #45](/en/newsletters/2026-10-21-newsletter/#divine)
 - [Newsletter #4: NIP Deep Dive](/en/newsletters/2026-01-07-newsletter/#nip-deep-dive-nip-04-and-nip-44)
 - [Newsletter #3: December Recap](/en/newsletters/2025-12-31-newsletter/#december-recap-five-years-of-nostr-decembers)
 - [Newsletter #19: nostter NIP-44 migration](/en/newsletters/2026-04-22-newsletter/#nostter-adds-nip-44-encryption-across-people-lists-bookmarks-and-mutes)

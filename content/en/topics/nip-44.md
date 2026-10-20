@@ -69,6 +69,7 @@ NIP-44 revision 3 was merged in December 2023 following an independent Cure53 se
 - [Private location PR #2309](https://github.com/nostr-protocol/nips/pull/2309) - recipient-specific encrypted location payloads
 
 **Mentioned in:**
+- [Newsletter #45](/en/newsletters/2026-10-21-newsletter/#nomisma)
 - [Newsletter #44](/en/newsletters/2026-10-14-newsletter/#meiso)
 - [Newsletter #43](/en/newsletters/2026-10-07-newsletter/#tagged-releases)
 - [Newsletter #39: Nostr Implementation Possibilities](/en/newsletters/2026-09-09-newsletter/#nostr-implementation-possibilities)

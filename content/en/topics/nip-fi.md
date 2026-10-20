@@ -23,4 +23,5 @@ The [project specification revision](https://github.com/block/buzz/pull/7254) de
 - [Buzz HTTP ingress implementation](https://github.com/block/buzz/pull/7264)
 
 **Mentioned in:**
+- [Newsletter #45](/en/newsletters/2026-10-21-newsletter/#buzz)
 - [Newsletter #42: Buzz identity controls](/en/newsletters/2026-09-30-newsletter/#buzz-extends-its-relays-channel-and-identity-controls)

@@ -50,7 +50,7 @@ In practice, users often need the same mint, or they need a swap or bridge betwe
 - [NIP-60 Specification](https://github.com/nostr-protocol/nips/blob/master/60.md)
 - [NIP-87 Specification](https://github.com/nostr-protocol/nips/blob/master/87.md)
 
-**Mentioned in:**
+**Mentioned in:** [Newsletter 45](/en/newsletters/2026-10-21-newsletter/#linky),
 - [Newsletter #7](/en/newsletters/2026-01-28-newsletter/)
 - [Newsletter #11](/en/newsletters/2026-02-25-newsletter/)
 - [Newsletter #19: TollGate v0.1.0](/en/newsletters/2026-04-22-newsletter/#tollgate-v010-stabilizes-pay-per-use-internet-over-nostr-and-cashu)

@@ -60,6 +60,9 @@ Another useful distinction is scope. NIP-22 can anchor discussion to non-note re
 - [NIP-22 Specification](https://github.com/nostr-protocol/nips/blob/master/22.md)
 
 **Mentioned in:**
+
+- [Newsletter #45: Snort](/en/newsletters/2026-10-21-newsletter/#snort)
+
 - [Newsletter #43: soyLI](/en/newsletters/2026-10-07-newsletter/#soyli)
 - [Newsletter #7: Notedeck](/en/newsletters/2026-01-28-newsletter/#notedeck)
 - [Newsletter #10: AI Agent NIPs Arrive](/en/newsletters/2026-02-18-newsletter/#ai-agent-nips-arrive)

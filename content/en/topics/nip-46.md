@@ -46,6 +46,7 @@ The `switch_relays` method exists so the signer can move the session to a differ
 - [swift-nostr 0.7.0](https://github.com/yysskk/swift-nostr/releases/tag/0.7.0) - remote signer API coverage
 
 **Mentioned in:**
+- [Newsletter #45](/en/newsletters/2026-10-21-newsletter/#my-signet)
 - [Newsletter #44](/en/newsletters/2026-10-14-newsletter/#amethyst)
 - [Newsletter #43](/en/newsletters/2026-10-07-newsletter/#tagged-releases)
 - [Newsletter #41: nostter ties remote signing to the active session](/en/newsletters/2026-09-23-newsletter/#nostter-ties-remote-signing-to-the-active-session)
