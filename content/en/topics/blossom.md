@@ -43,7 +43,7 @@ That split lets clients implement the minimum needed for basic interoperability,
 - [Formstr Drive 0.0.2](https://github.com/formstr-hq/formstr-drive/releases/tag/v0.0.2) - chunked Blossom storage and authenticated deletion
 - [Code Call 0.2.66](https://github.com/tidley/nostr-codex-phone/releases/tag/v0.2.66) - encrypted Blossom attachments for remote work sessions
 
-**Mentioned in:**
+**Mentioned in:** [Newsletter 45](/en/newsletters/2026-10-21-newsletter/#nostube),
 - [Newsletter #44](/en/newsletters/2026-10-14-newsletter/#amethyst)
 - [Newsletter #43](/en/newsletters/2026-10-07-newsletter/#top-stories)
 - [Newsletter #39: Signed git workflows move CI, private repositories, and releases onto Nostr](/en/newsletters/2026-09-09-newsletter/#signed-git-workflows-move-ci-private-repositories-and-releases-onto-nostr)

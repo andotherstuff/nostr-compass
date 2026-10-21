@@ -28,6 +28,14 @@
 # =============================================================================
 
 social_clients:
+  - name: Monostr
+    description: Nostr social client with Monero tipping
+    repo: https://github.com/schmidt1024/monostr
+    maintainer: schmidt1024
+    status: beta
+    priority: medium
+    notes: Stored-result-first profile and feed refresh with mute filtering.
+
   - name: Sidecar
     description: Browser extension for publishing Nostr notes and web highlights
     platforms: [ chrome, firefox ]
@@ -1515,6 +1523,47 @@ longform_clients:
     notes: Flutter; MLS key-package publication on onboarding; NWC integration; ONNX embedding for in-reader semantic search
 
 messaging_clients:
+  - name: Pagemates
+    description: Firefox page and site rooms using Nostr presence and WebRTC interaction
+    platforms:
+    - firefox
+    repo: https://github.com/tom-tour/pagemates
+    maintainer: tom-tour
+    status: beta
+    priority: medium
+    notes: Nostr carries peer discovery; chat, cursors and highlights travel over WebRTC.
+
+  - name: Kryfo
+    description: Android messenger using Tor directly and Nostr relays as an offline
+      mailbox
+    platforms:
+    - android
+    repo: https://github.com/gnosiworks/kryfo
+    maintainer: gnosiworks
+    status: beta
+    priority: medium
+    notes: Alpha and unaudited; encrypted padded messages and attachment support.
+
+  - name: Kithmoot
+    description: Multi-device conference rooms coordinated over Nostr
+    platforms:
+    - web
+    repo: https://github.com/forgesworn/kithmoot
+    maintainer: forgesworn
+    status: beta
+    priority: medium
+    notes: Password-protected meeting-code links and delayed-reply rollback.
+
+  - name: Backchat
+    description: Linux Bitchat-compatible client with Nostr geohash relay chat
+    platforms:
+    - linux
+    repo: https://github.com/Letdown2491/backchat
+    maintainer: Letdown2491
+    status: beta
+    priority: medium
+    notes: Rust/GPUI client; relay chat and Bluetooth are separate transport paths.
+
   - name: 0xchat
     description: Telegram-style DMs and group chat with Cashu support
     platforms: [ ios, android ]
@@ -2253,6 +2302,27 @@ shops:
     notes: NIP-05 verified (bot@giftcardshop.org), single-view reveal-link delivery; DM /menu to start
 
 devtools:
+  - name: HERDR White Noise Remote
+    description: Linux HERDR plugin routing local agent sessions through White Noise
+      groups
+    platforms:
+    - linux
+    repo: https://github.com/tidley/codr
+    maintainer: tidley
+    status: beta
+    priority: medium
+    notes: Uses MDK transport with persistent session mappings and structured final
+      replies.
+
+  - name: ngit-mirror
+    description: Mirrors public GitHub organization repositories to ngit
+    repo: https://github.com/sandwichfarm/ngit-mirror
+    maintainer: sandwichfarm
+    status: beta
+    priority: medium
+    notes: Restricted NIP-46 signing; GitHub remains authoritative for force pushes
+      and deletions.
+
   - name: Nostr Workshop
     description: Phone-oriented Nostr learning tasks with a browser signer bridge
     platforms: [ android, web ]
@@ -3574,6 +3644,17 @@ devtools:
     notes: Publishes per-epoch encrypted trees to Blossom and announces references on Nostr; supports Codex, Claude Code, Cursor, OpenCode, and pi session formats
 
 signers:
+  - name: QRST Signer
+    description: Android QR-based Nostr key transfer using the draft QRST protocol
+    platforms:
+    - android
+    repo: https://github.com/sybenx/qrst-signer
+    maintainer: sybenx
+    status: beta
+    priority: medium
+    notes: Unaudited draft key-transfer vault; does not sign events. Stored keys use
+      Android Keystore-backed AES-GCM encryption.
+
   - name: Amber
     description: Android event signer
     platforms: [ android ]
@@ -3937,6 +4018,25 @@ signers:
     notes: Keyless companion app to the Heartwood hardware signing bridge; shares the forgesworn GitHub org with Bray
 
 relays:
+  - name: nosfry
+    description: Rust Nostr relay with native LMDB storage
+    repo: https://github.com/qntx/nosfry
+    maintainer: qntx
+    status: beta
+    priority: medium
+    notes: Native NIP-01 service; later development adds COUNT, authentication and protected
+      events.
+
+  - name: Ditto Blossom
+    description: Rust Blossom blob server with LMDB indexing and preservation administration
+    platforms:
+    - linux
+    repo: https://github.com/soapbox-pub/ditto-blossom
+    maintainer: soapbox-pub
+    status: beta
+    priority: medium
+    notes: Source-backed blob storage; performance measurements remain project-reported.
+
   - name: strfry
     description: High-performance C++ relay with negentropy sync
     repo: https://github.com/hoytech/strfry
@@ -4521,6 +4621,20 @@ relays:
     priority: low
 
 libraries:
+  - name: mls-kmp
+    description: Kotlin Multiplatform MLS engine extracted from Amethyst Quartz
+    platforms:
+    - android
+    - ios
+    - macos
+    - linux
+    repo: https://github.com/vitorpamplona/mls-kmp
+    maintainer: vitorpamplona
+    status: beta
+    priority: medium
+    notes: RFC 9420 core with policy hooks; Nostr-specific behavior belongs to the consuming
+      Marmot binding.
+
   # --- JavaScript/TypeScript ---
   - name: nostr-tools
     description: Core JavaScript library for Nostr clients
@@ -5181,6 +5295,35 @@ libraries:
     notes: Transport plumbing; Nostr-surface gate applies at triage; submitted via link queue 2026-07-16
 
 wallets:
+  - name: Lumen
+    description: Multiwallet client for Nostr Wallet Connect balances and payments
+    platforms:
+    - android
+    repo: https://github.com/nogringo/lumen
+    maintainer: nogringo
+    status: beta
+    priority: medium
+    notes: Flutter implementation with encrypted local history; other platform readiness
+      unverified.
+
+  - name: Linky
+    description: Nostr contact messaging with Lightning and Cashu payments
+    repo: https://github.com/linky-fit/linky
+    maintainer: linky-fit
+    status: beta
+    priority: medium
+    notes: Contact-linked cash requests and private payment progress messages.
+
+  - name: LaWallet Android
+    description: Native Android LaWallet client with Amber login and Nostr Wallet Connect
+    platforms:
+    - android
+    repo: https://github.com/lawalletio/android-wallet
+    maintainer: lawalletio
+    status: beta
+    priority: medium
+    notes: Native Kotlin/Compose port; tagged public release not verified.
+
   - name: MintRadar
     description: Privacy-first dashboard for Cashu mint status, trust, NUT support, Nostr discovery, and community reviews
     platforms: [ web ]
@@ -5553,6 +5696,24 @@ wallets:
     priority: low
 
 other:
+  - name: nostrmix
+    description: Local WebSocket gateway routing Nostr relay traffic through the Nym
+      mixnet
+    repo: https://github.com/apeirs/nostrmix
+    maintainer: apeirs
+    status: beta
+    priority: medium
+    notes: Unreleased Go gateway and CLI; fail-closed upstream and signature checks,
+      no anonymity audit claimed.
+
+  - name: Iskra Bridge
+    description: Encrypted Nostr-relayed TCP gateway for Matrix homeserver connections
+    repo: https://github.com/iskra-app/iskra-bridge
+    maintainer: iskra-app
+    status: beta
+    priority: medium
+    notes: Stream-v2 bridge; Matrix TLS remains end to end over the transport.
+
   - name: fips2go
     description: Android FIPS mesh node with per-app VPN access and .fips DNS
     platforms: [ android ]

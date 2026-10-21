@@ -34,7 +34,7 @@ Reposts are more than a UI share button. They are part of how content moves acro
 - [NIP-18 Specification](https://github.com/nostr-protocol/nips/blob/master/18.md)
 - [PR #2132](https://github.com/nostr-protocol/nips/pull/2132) - `a` tag support for generic reposts
 
-**Mentioned in:**
+**Mentioned in:** [Newsletter 45](/en/newsletters/2026-10-21-newsletter/#postr),
 - [Newsletter #39: NIP-27 rendering and optional tags](/en/newsletters/2026-09-09-newsletter/#nip-27-rendering-and-optional-tags)
 - [Newsletter #1: NIP Updates](/en/newsletters/2025-12-17-newsletter/#nip-updates)
 - [Newsletter #8: News](/en/newsletters/2026-02-04-newsletter/#news)

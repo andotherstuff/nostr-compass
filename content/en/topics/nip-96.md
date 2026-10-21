@@ -42,6 +42,7 @@ Kind 10096 server preference events remain useful while clients still support NI
 - [PR #2047: Mark NIP-96 as Unrecommended](https://github.com/nostr-protocol/nips/pull/2047)
 
 **Mentioned in:**
+- [Newsletter #45](/en/newsletters/2026-10-21-newsletter/#nostrbuild)
 - [Newsletter #9: NIP Deep Dive](/en/newsletters/2026-02-11-newsletter/#nip-deep-dive-nip-96-http-file-storage-and-the-transition-to-blossom)
 - [Newsletter #13: Route96 v0.5.0 and v0.5.1](/en/newsletters/2026-03-11-newsletter/#route96-v050-and-v051)
 - [Newsletter #34: nostrord media uploads](/en/newsletters/2026-08-05-newsletter/#nostrord-250-gives-relay-groups-stable-relay-specific-identities)

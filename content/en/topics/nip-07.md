@@ -68,6 +68,7 @@ For cross-device or mobile signing, NIP-46 and NIP-55 usually fit better.
 - [PR #2233](https://github.com/nostr-protocol/nips/pull/2233) - `peekPublicKey()` proposal
 
 **Mentioned in:**
+- [Newsletter #45](/en/newsletters/2026-10-21-newsletter/#better-auth-nostr)
 - [Newsletter #44](/en/newsletters/2026-10-14-newsletter/#pakstr)
 - [Newsletter #43](/en/newsletters/2026-10-07-newsletter/#tagged-releases)
 - [Newsletter #39: Wingman App joins browsing, signing, and files](/en/newsletters/2026-09-09-newsletter/#wingman-app-joins-browsing-signing-and-files)
