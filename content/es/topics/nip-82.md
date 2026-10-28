@@ -1,50 +1,48 @@
 ---
-title: "NIP-82: Aplicaciones de software"
+title: "NIP-82 propuesto (sin asignar): catálogo de aplicaciones de software"
 date: 2026-06-17
-draft: false
+lastmod: 2026-10-28
 translationOf: /en/topics/nip-82.md
-translationDate: 2026-07-01
+translationDate: 2026-10-28
+draft: false
 categories:
-  - Discovery
+  - Proposals
   - Apps
 ---
 
-NIP-82 define un evento de aplicación de software para que los clientes de Nostr puedan mostrar aplicaciones (APKs de Android, apps de iOS, aplicaciones web, binarios de escritorio) como objetos de primera clase en feeds y superficies de descubrimiento. La especificación reemplaza el enfoque anterior de describir aplicaciones mediante notas genéricas de kind 1 o recomendaciones de manejador [NIP-89](/es/topics/nip-89/) con un evento dedicado y estructurado que transporta metadatos de la aplicación, capturas de pantalla, enlaces al repositorio e identidad del autor.
+El catálogo de aplicaciones de software que se describe en esta página es una propuesta en revisión. No es un NIP aceptado. Se encuentra en la [pull request #2526 de nostr-protocol/nips](https://github.com/nostr-protocol/nips/pull/2526), titulada «Zapstore spec». En la fecha de la última actualización de esta página, esa pull request sigue abierta y sin fusionar, y la rama master oficial de los NIPs no contiene ningún archivo `82.md`. «NIP-82» es la etiqueta que la propuesta se da a sí misma. No es un número de NIP oficial. Los kinds de event, los tags y el comportamiento pueden cambiar antes de cualquier fusión. Según la pull request, esta sustituye a la anterior [pull request #1336](https://github.com/nostr-protocol/nips/pull/1336).
 
-## Cómo funciona
+## Kinds de event propuestos
 
-Una aplicación de software NIP-82 es un único evento reemplazable direccionado por pubkey del autor y tag `d`. El evento transporta:
+El borrador divide un catálogo de software en varios tipos de event:
 
-- Tags `name`, `description`, `icon`, `image` para visualización
-- Tags `repository` y `web` para las URLs del código fuente y la página principal
-- Tag `platforms` que enumera los objetivos soportados (android, ios, web, linux, macos, windows)
-- Tags `download` para cada binario o URL web específico de plataforma
-- Tags `screenshots` que transportan URLs de imágenes para las capturas de pantalla de la aplicación
-- Tags de tópico `t` para categorización
-- Tag `version` para la versión actual publicada
+- **Kind 32267, aplicación:** un event direccionable que describe una app.
+- **Kind 30063, lanzamiento:** un event direccionable para una versión concreta de esa app. Hace referencia a los recursos de esa versión.
+- **Kind 3063, recurso:** un event regular que describe un archivo descargable.
+- **Kind 30267, curación:** una lista direccionable que publica un curador para agrupar o recomendar apps.
+- **Kind 30509, vínculo de certificado de firma:** un event direccionable que vincula un certificado X.509, como un certificado de firma de APK, a la clave de Nostr que publica el software, de modo que los clientes sepan qué certificados controla ese publicador. Su tag `d` es el hash SHA-256 del certificado codificado en DER. Lleva una firma hecha con la clave privada del certificado y una caducidad expresada como marca de tiempo Unix, y opcionalmente puede marcar el vínculo como revocado.
+- **Kind 10067, lista de relays:** una lista reemplazable de relays en los que se pueden encontrar events del catálogo.
 
-Un cliente que navega un feed NIP-82 puede mostrar la tarjeta de la aplicación, enlazar al repositorio canónico y mostrar capturas de pantalla sin recurrir al scraping de una publicación de formato largo de Nostr o de una tienda de aplicaciones de terceros. La pubkey del autor es la fuente de verdad para la aplicación, por lo que un cliente puede verificar que el publicador coincide con la identidad esperada del desarrollador antes de promocionar un enlace de descarga.
+## Plataforma, integridad y validez
 
-## Semántica del feed
+Los events de recurso llevan identificadores de plataforma y de entorno de ejecución, para que un cliente pueda mostrar solo los archivos que corresponden a un dispositivo. Cada recurso lleva además un hash del archivo. Con él, un cliente puede comprobar que los bytes descargados coinciden con lo que firmó el publicador. Para los paquetes de Android, el borrador incluye la huella del certificado de firma. Antes de ofrecer una actualización, un instalador puede compararla con el certificado de una app que ya esté instalada. Antes de instalar un paquete de Android, los clientes DEBERÍAN obtener el event de kind 30509 por el hash del certificado. Deberían verificar su firma de certificado frente al certificado incrustado en el APK y frente al publicador del recurso, y comprobar que la prueba no ha caducado ni ha sido revocada.
 
-Los eventos NIP-82 son direccionables, por lo que cada aplicación tiene un evento reemplazable canónico por autor. Un desarrollador que publica una nueva versión reemplaza el evento anterior en su lugar, y los suscriptores ven la actualización sin gestionar historial de eventos. Los clientes que quieran un registro de cambios pueden suscribirse al evento direccionable y mostrar los incrementos de versión como actividad en la superficie de la aplicación.
+## Límites de confianza
 
-La especificación se compone con [NIP-89](/es/topics/nip-89/) (Manejadores de aplicación): un evento NIP-82 describe la aplicación como un artefacto, mientras que un evento NIP-89 describe que la aplicación puede manejar kinds de evento específicos. Los clientes pueden usar uno sin el otro, pero la pareja proporciona una superficie de descubrimiento (NIP-82) y una superficie de delegación (NIP-89) que funcionan juntas.
+Una firma válida solo demuestra que una clave concreta publicó un event. No prueba que la clave pertenezca al desarrollador real, que el software sea seguro ni que la lista de un curador sea fiable. La propuesta no ofrece ninguna garantía sobre publicadores arbitrarios. Son los clientes y los usuarios quienes deben decidir en qué claves de publicadores y curadores confiar. Esta página no afirma que exista ninguna auditoría de seguridad ni interoperabilidad en producción.
 
-## Implementaciones
+## Relación con NIP-89
 
-- [Amethyst v1.12.0](https://github.com/vitorpamplona/amethyst/releases/tag/v1.12.0) incorpora un feed dedicado a aplicaciones de software NIP-82 con una pantalla de detalle, información del autor y capturas de pantalla ([PR #3036](https://github.com/vitorpamplona/amethyst/pull/3036), [PR #3078](https://github.com/vitorpamplona/amethyst/pull/3078), [PR #3200](https://github.com/vitorpamplona/amethyst/pull/3200))
+Los events de handler de [NIP-89](/es/topics/nip-89/) anuncian qué aplicaciones pueden gestionar qué kinds de event. Esta propuesta, en cambio, describe los artefactos de software y dónde obtenerlos, por lo que ambas abarcan cuestiones distintas.
 
 ---
 
 **Fuentes primarias:**
-- [Especificación NIP-82](https://github.com/nostr-protocol/nips/blob/master/82.md)
-- [Amethyst PR #3036](https://github.com/vitorpamplona/amethyst/pull/3036) - Añadir soporte de Aplicaciones de Software NIP-82 con feed dedicado
-- [Amethyst PR #3078](https://github.com/vitorpamplona/amethyst/pull/3078) - Añadir pantalla de detalle dedicada para aplicaciones de software NIP-82
-- [Amethyst PR #3200](https://github.com/vitorpamplona/amethyst/pull/3200) - Mejorar la UI de aplicaciones de software NIP-82 con información del autor y capturas de pantalla
+- [PR #2526 de nostr-protocol/nips: Zapstore spec](https://github.com/nostr-protocol/nips/pull/2526) (abierta, sin fusionar; sustituye a la [PR #1336](https://github.com/nostr-protocol/nips/pull/1336))
 
 **Mencionado en:**
-- [Boletín #27: Amethyst v1.12.0 incorpora wallets Cashu, nutzaps, un driver CLINK y auto-reparación de Tor](/es/newsletters/2026-06-17-newsletter/#amethyst-v1120-ships-cashu-wallets-nutzaps-a-clink-driver-and-tor-self-heal)
+- [Boletín n.º 27: cobertura del lanzamiento de Amethyst v1.12.0 (referencia histórica)](/en/newsletters/2026-06-17-newsletter/#amethyst-v1120-ships-cashu-wallets-nutzaps-a-clink-driver-and-tor-self-heal)
+- [Boletín n.º 46: catálogo de aplicaciones de software propuesto como NIP-82](/es/newsletters/2026-10-28-newsletter/#software-application-catalog-proposed-as-nip-82)
 
 **Véase también:**
-- [NIP-89: Manejadores de aplicación](/es/topics/nip-89/)
+- [NIP-89: manejadores de aplicaciones](/es/topics/nip-89/)
