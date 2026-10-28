@@ -57,18 +57,6 @@ unresolved:
     - https://npub.world/?q=Pagemates
     - https://search.nos.today
     - https://relay.nostr.band
-  codr:
-    checked_at: '2026-10-21'
-    reason: Primary project/owner sources did not bind a defensible contact npub. Directory
-      search returned only generic site identities, not project-bound evidence; NIP-50
-      searches produced no matching profile on search.nos.today and relay.nostr.band
-      failed. Preserve untagged and omit outreach; no claim identity does not exist.
-    sources:
-    - https://github.com/tidley/codr
-    - https://github.com/tidley
-    - https://npub.world/?q=codr
-    - https://search.nos.today
-    - https://relay.nostr.band
   Mostr:
     checked_at: '2026-10-21'
     reason: Primary project repository/site and owner evidence did not bind a defensible
@@ -94,19 +82,18 @@ unresolved:
     - https://relay.nostr.band
     - https://search.nos.today
   Pact:
-    checked_at: '2026-10-21'
-    reason: Primary project repository/site and owner evidence did not bind a defensible
-      project or maintainer contact npub. npub.world discovery returned no primary-bound
-      identity; NIP-50 relay searches returned no verified binding, with relay.nostr.band
-      timing out. Preserve untagged and omit outreach; this is not proof no identity
-      exists.
+    checked_at: 2026-10-28
+    reason: Current primary repository/owner/site did not positively bind a project
+      or maintainer key. Actual npub.world read-only search plus signature-verified
+      bounded NIP50 profile queries produced no defensible first-party role binding;
+      similar-name/self-claimed profiles are not identity proof. Leave untagged and
+      omit outreach; no assertion that identity does not exist.
     sources:
-    - https://github.com/bobodread876/pact/pull/15
-    - https://github.com/bobodread876/pact/pull/16
-    - https://github.com/bobodread876/pact/pull/15
-    - https://npub.world/Pact
-    - https://relay.nostr.band
+    - https://raw.githubusercontent.com/bobodread876/pact/HEAD/README.md
+    - https://github.com/bobodread876
+    - https://npub.world/?/search
     - https://search.nos.today
+    - https://relay.nostr.band
   Tollbooth-DPYC:
     checked_at: '2026-10-21'
     reason: Primary project repository/site and owner evidence did not bind a defensible
@@ -133,17 +120,18 @@ unresolved:
     - https://relay.nostr.band
     - https://search.nos.today
   nosfry:
-    checked_at: '2026-10-21'
-    reason: Primary project repository/site and owner evidence did not bind a defensible
-      project or maintainer contact npub. npub.world discovery returned no primary-bound
-      identity; NIP-50 relay searches returned no verified binding, with relay.nostr.band
-      timing out. Preserve untagged and omit outreach; this is not proof no identity
-      exists.
+    checked_at: 2026-10-28
+    reason: Current primary repository/owner/site did not positively bind a project
+      or maintainer key. Actual npub.world read-only search plus signature-verified
+      bounded NIP50 profile queries produced no defensible first-party role binding;
+      similar-name/self-claimed profiles are not identity proof. Leave untagged and
+      omit outreach; no assertion that identity does not exist.
     sources:
-    - https://github.com/qntx/nosfry/releases/tag/v0.1.0
-    - https://npub.world/nosfry
-    - https://relay.nostr.band
+    - https://raw.githubusercontent.com/qntx/nosfry/HEAD/README.md
+    - https://github.com/qntx
+    - https://npub.world/?/search
     - https://search.nos.today
+    - https://relay.nostr.band
   nostrmix:
     checked_at: '2026-10-21'
     reason: Primary project repository/site and owner evidence did not bind a defensible
@@ -192,14 +180,6 @@ unresolved:
     - https://npub.world
     - https://relay.nostr.band
     - https://search.nos.today
-  OUTKAST:
-    checked_at: 2026-10-14
-    reason: Current primaryREADME and repository ownerprofile supplied no defensible
-      project or maintainer key. Preserve the name untagged and exclude direct
-      outreach; this does not establish that no public identity exists.
-    sources:
-      - https://github.com/Lwb89dev/outkast/blob/HEAD/README.md
-      - https://github.com/Lwb89dev
   cl-marmot:
     checked_at: 2026-10-14
     reason: Current primaryREADME and repository ownerprofile supplied no defensible
@@ -209,17 +189,18 @@ unresolved:
       - https://github.com/modus-lisp/cl-marmot/blob/HEAD/README.md
       - https://github.com/modus-lisp
   Kehto:
-    checked_at: 2026-10-14
-    reason: Current primary README and owner site/profile did not bind a Nostr key
-      to this project or its maintainer. Directory and signed-profile discovery
-      supplied no defensible additional binding; the NIP-50 relay query timed out
-      rather than proving absence. Preserve this label untagged and exclude
-      outreach until primary evidence binds an identity.
+    checked_at: 2026-10-28
+    reason: Current primary repository/owner/site did not positively bind a project
+      or maintainer key. Actual npub.world read-only search plus signature-verified
+      bounded NIP50 profile queries produced no defensible first-party role binding;
+      similar-name/self-claimed profiles are not identity proof. Leave untagged and
+      omit outreach; no assertion that identity does not exist.
     sources:
-      - https://github.com/kehto/web/blob/main/README.md
-      - https://kehto.com
-      - https://npub.world
-      - https://relay.nostr.band
+    - https://raw.githubusercontent.com/kehto/web/HEAD/README.md
+    - https://github.com/kehto
+    - https://npub.world/?/search
+    - https://search.nos.today
+    - https://relay.nostr.band
   rx-nostr:
     checked_at: 2026-10-14
     reason: Current primary README and owner site/profile did not bind a Nostr key
@@ -404,13 +385,6 @@ unresolved:
       project untagged and out of outreach.
     sources:
     - https://raw.githubusercontent.com/elisymlabs/elisym/main/README.md
-  Holoboard:
-    checked_at: '2026-09-30'
-    reason: Primary site and README contain no bound project/maintainer npub. NIP50queries Holoboard/ptrio42 timedout; directory400.
-      App release signing identity is not inferred as inbox.
-    sources:
-    - https://holoboard.space
-    - https://github.com/ptrio42/holoboard.space/blob/main/README.md
   Hubstr Blossom:
     checked_at: '2026-09-30'
     reason: Canonical primaryproject source/README has no bound project or maintainer npub. Public directory failed400. NIP50
@@ -567,6 +541,341 @@ unresolved:
 # =============================================================================
 # Nostr Compass
 # =============================================================================
+  44billion:
+    checked_at: 2026-10-28
+    reason: Current primary repository/owner/site did not positively bind a project
+      or maintainer key. Actual npub.world read-only search plus signature-verified
+      bounded NIP50 profile queries produced no defensible first-party role binding;
+      similar-name/self-claimed profiles are not identity proof. Leave untagged and
+      omit outreach; no assertion that identity does not exist.
+    sources:
+    - https://raw.githubusercontent.com/44Billion/44billion/HEAD/README.md
+    - https://github.com/44Billion
+    - https://npub.world/?/search
+    - https://search.nos.today
+    - https://relay.nostr.band
+  CarryChat:
+    checked_at: 2026-10-28
+    reason: Current primary repository/owner/site did not positively bind a project
+      or maintainer key. Actual npub.world read-only search plus signature-verified
+      bounded NIP50 profile queries produced no defensible first-party role binding;
+      similar-name/self-claimed profiles are not identity proof. Leave untagged and
+      omit outreach; no assertion that identity does not exist.
+    sources:
+    - https://raw.githubusercontent.com/kemal-arslan/carrychat/HEAD/README.md
+    - https://github.com/kemal-arslan
+    - https://npub.world/?/search
+    - https://search.nos.today
+    - https://relay.nostr.band
+  Dream Nests:
+    checked_at: 2026-10-28
+    reason: Current primary repository/owner/site did not positively bind a project
+      or maintainer key. Actual npub.world read-only search plus signature-verified
+      bounded NIP50 profile queries produced no defensible first-party role binding;
+      similar-name/self-claimed profiles are not identity proof. Leave untagged and
+      omit outreach; no assertion that identity does not exist.
+    sources:
+    - https://raw.githubusercontent.com/2three1y/dreamnests/HEAD/README.md
+    - https://github.com/2three1y
+    - https://npub.world/?/search
+    - https://search.nos.today
+    - https://relay.nostr.band
+  Hibiki:
+    checked_at: 2026-10-28
+    reason: Current primary repository/owner/site did not positively bind a project
+      or maintainer key. Actual npub.world read-only search plus signature-verified
+      bounded NIP50 profile queries produced no defensible first-party role binding;
+      similar-name/self-claimed profiles are not identity proof. Leave untagged and
+      omit outreach; no assertion that identity does not exist.
+    sources:
+    - https://raw.githubusercontent.com/ChiefmonkeyArt/torii-hibiki/HEAD/README.md
+    - https://github.com/ChiefmonkeyArt
+    - https://npub.world/?/search
+    - https://search.nos.today
+    - https://relay.nostr.band
+  Magnetar:
+    checked_at: 2026-10-28
+    reason: Current primary repository/owner/site did not positively bind a project
+      or maintainer key. Actual npub.world read-only search plus signature-verified
+      bounded NIP50 profile queries produced no defensible first-party role binding;
+      similar-name/self-claimed profiles are not identity proof. Leave untagged and
+      omit outreach; no assertion that identity does not exist.
+    sources:
+    - https://raw.githubusercontent.com/awake-devel/magnetar/HEAD/README.md
+    - https://github.com/awake-devel
+    - https://npub.world/?/search
+    - https://search.nos.today
+    - https://relay.nostr.band
+  Magnitude Relay:
+    checked_at: 2026-10-28
+    reason: Current primary repository/owner/site did not positively bind a project
+      or maintainer key. Actual npub.world read-only search plus signature-verified
+      bounded NIP50 profile queries produced no defensible first-party role binding;
+      similar-name/self-claimed profiles are not identity proof. Leave untagged and
+      omit outreach; no assertion that identity does not exist.
+    sources:
+    - https://raw.githubusercontent.com/VectorPrivacy/magnitude-relay/HEAD/README.md
+    - https://github.com/VectorPrivacy
+    - https://npub.world/?/search
+    - https://search.nos.today
+    - https://relay.nostr.band
+  Nostr Feedz archived:
+    checked_at: 2026-10-28
+    reason: Current primary repository/owner/site did not positively bind a project
+      or maintainer key. Actual npub.world read-only search plus signature-verified
+      bounded NIP50 profile queries produced no defensible first-party role binding;
+      similar-name/self-claimed profiles are not identity proof. Leave untagged and
+      omit outreach; no assertion that identity does not exist.
+    sources:
+    - https://raw.githubusercontent.com/PlebOne/Nostr-Feedz/HEAD/README.md
+    - https://github.com/PlebOne
+    - https://npub.world/?/search
+    - https://search.nos.today
+    - https://relay.nostr.band
+  Readstr:
+    checked_at: 2026-10-28
+    reason: Current primary repository/owner/site did not positively bind a project
+      or maintainer key. Actual npub.world read-only search plus signature-verified
+      bounded NIP50 profile queries produced no defensible first-party role binding;
+      similar-name/self-claimed profiles are not identity proof. Leave untagged and
+      omit outreach; no assertion that identity does not exist.
+    sources:
+    - https://raw.githubusercontent.com/privkeyio/readstr/HEAD/README.md
+    - https://github.com/privkeyio
+    - https://npub.world/?/search
+    - https://search.nos.today
+    - https://relay.nostr.band
+  Relay Radio:
+    checked_at: 2026-10-28
+    reason: Current primary repository/owner/site did not positively bind a project
+      or maintainer key. Actual npub.world read-only search plus signature-verified
+      bounded NIP50 profile queries produced no defensible first-party role binding;
+      similar-name/self-claimed profiles are not identity proof. Leave untagged and
+      omit outreach; no assertion that identity does not exist.
+    sources:
+    - https://raw.githubusercontent.com/2three1y/relayradio/HEAD/README.md
+    - https://github.com/2three1y
+    - https://npub.world/?/search
+    - https://search.nos.today
+    - https://relay.nostr.band
+  agent-inbox:
+    checked_at: 2026-10-28
+    reason: Current primary repository/owner/site did not positively bind a project
+      or maintainer key. Actual npub.world read-only search plus signature-verified
+      bounded NIP50 profile queries produced no defensible first-party role binding;
+      similar-name/self-claimed profiles are not identity proof. Leave untagged and
+      omit outreach; no assertion that identity does not exist.
+    sources:
+    - https://raw.githubusercontent.com/ec175/agent-inbox/HEAD/README.md
+    - https://github.com/ec175
+    - https://npub.world/?/search
+    - https://search.nos.today
+    - https://relay.nostr.band
+  emosphere:
+    checked_at: 2026-10-28
+    reason: Current primary repository/owner/site did not positively bind a project
+      or maintainer key. Actual npub.world read-only search plus signature-verified
+      bounded NIP50 profile queries produced no defensible first-party role binding;
+      similar-name/self-claimed profiles are not identity proof. Leave untagged and
+      omit outreach; no assertion that identity does not exist.
+    sources:
+    - https://raw.githubusercontent.com/Vojta01/emosphere/HEAD/README.md
+    - https://github.com/Vojta01
+    - https://npub.world/?/search
+    - https://search.nos.today
+    - https://relay.nostr.band
+  matrix-appservice-nostr:
+    checked_at: 2026-10-28
+    reason: Current primary repository/owner/site did not positively bind a project
+      or maintainer key. Actual npub.world read-only search plus signature-verified
+      bounded NIP50 profile queries produced no defensible first-party role binding;
+      similar-name/self-claimed profiles are not identity proof. Leave untagged and
+      omit outreach; no assertion that identity does not exist.
+    sources:
+    - https://raw.githubusercontent.com/Haven-Organization/matrix-appservice-nostr/HEAD/README.md
+    - https://github.com/Haven-Organization
+    - https://npub.world/?/search
+    - https://search.nos.today
+    - https://relay.nostr.band
+  napplet-soy:
+    checked_at: 2026-10-28
+    reason: Same canonical repository as prior researched-unresolved napplet.soy/soyLI;
+      current primary, directory and NIP50 checks still do not bind a platform maintainer.
+      Napplet catalog author keys are not platform contacts.
+    sources:
+    - https://raw.githubusercontent.com/soytec/napplet-soy/HEAD/README.md
+    - https://github.com/soytec
+    - https://npub.world/?/search
+    - https://search.nos.today
+    - https://relay.nostr.band
+  nostr-media:
+    checked_at: 2026-10-28
+    reason: Current primary repository/owner/site did not positively bind a project
+      or maintainer key. Actual npub.world read-only search plus signature-verified
+      bounded NIP50 profile queries produced no defensible first-party role binding;
+      similar-name/self-claimed profiles are not identity proof. Leave untagged and
+      omit outreach; no assertion that identity does not exist.
+    sources:
+    - https://raw.githubusercontent.com/fabianfabian/nostr-media/HEAD/README.md
+    - https://github.com/fabianfabian
+    - https://npub.world/?/search
+    - https://search.nos.today
+    - https://relay.nostr.band
+  nostr-scrutiny:
+    checked_at: 2026-10-28
+    reason: Current primary repository/owner/site did not positively bind a project
+      or maintainer key. Actual npub.world read-only search plus signature-verified
+      bounded NIP50 profile queries produced no defensible first-party role binding;
+      similar-name/self-claimed profiles are not identity proof. Leave untagged and
+      omit outreach; no assertion that identity does not exist.
+    sources:
+    - https://raw.githubusercontent.com/rzazo24/nostr-scrutiny/HEAD/README.md
+    - https://github.com/rzazo24
+    - https://npub.world/?/search
+    - https://search.nos.today
+    - https://relay.nostr.band
+  wax:
+    checked_at: 2026-10-28
+    reason: Current primary repository/owner/site did not positively bind a project
+      or maintainer key. Actual npub.world read-only search plus signature-verified
+      bounded NIP50 profile queries produced no defensible first-party role binding;
+      similar-name/self-claimed profiles are not identity proof. Leave untagged and
+      omit outreach; no assertion that identity does not exist.
+    sources:
+    - https://raw.githubusercontent.com/modus-lisp/wax/HEAD/README.md
+    - https://github.com/modus-lisp
+    - https://npub.world/?/search
+    - https://search.nos.today
+    - https://relay.nostr.band
+  web:
+    checked_at: 2026-10-28
+    reason: Generic anchor alias for Napplet Web Packages (napplet/web), not an independent
+      project named web. Existing same-family Napplet key is not positively bound to
+      this package; retained researched-unresolved evidence plus current primary/directory/relay
+      checks.
+    sources:
+    - https://raw.githubusercontent.com/napplet/web/HEAD/README.md
+    - https://github.com/napplet
+    - https://npub.world/?/search
+    - https://search.nos.today
+    - https://relay.nostr.band
+  witchat:
+    checked_at: 2026-10-28
+    reason: Current primary repository/owner/site did not positively bind a project
+      or maintainer key. Actual npub.world read-only search plus signature-verified
+      bounded NIP50 profile queries produced no defensible first-party role binding;
+      similar-name/self-claimed profiles are not identity proof. Leave untagged and
+      omit outreach; no assertion that identity does not exist.
+    sources:
+    - https://raw.githubusercontent.com/BarefootJoey/witchat/HEAD/README.md
+    - https://github.com/BarefootJoey
+    - https://npub.world/?/search
+    - https://search.nos.today
+    - https://relay.nostr.band
+  swift-nostr:
+    checked_at: 2026-10-28
+    reason: Current primary repository/owner/site did not positively bind a project
+      or maintainer key. Actual npub.world read-only search plus signature-verified
+      bounded NIP50 profile queries produced no defensible first-party role binding;
+      similar-name/self-claimed profiles are not identity proof. Leave untagged and
+      omit outreach; no assertion that identity does not exist.
+    sources:
+    - https://raw.githubusercontent.com/yysskk/swift-nostr/HEAD/README.md
+    - https://github.com/yysskk
+    - https://npub.world/?/search
+    - https://search.nos.today
+    - https://relay.nostr.band
+  Agora (maxgfr):
+    checked_at: 2026-10-28
+    reason: Canonical project README/owner primary examined for identity references;
+      bounded npub.world and signed-profile NIP50 searches did not provide positive
+      project-to-contact binding. No release author or same-name account substituted.
+    sources:
+    - https://github.com/maxgfr/agora
+  cinderous-sdk:
+    checked_at: 2026-10-28
+    reason: Canonical project README/owner primary examined for identity references;
+      bounded npub.world and signed-profile NIP50 searches did not provide positive
+      project-to-contact binding. No release author or same-name account substituted.
+    sources:
+    - https://github.com/VaalRL/cinderous-sdk
+  evil:
+    checked_at: 2026-10-28
+    reason: Canonical project README/owner primary examined for identity references;
+      bounded npub.world and signed-profile NIP50 searches did not provide positive
+      project-to-contact binding. No release author or same-name account substituted.
+    sources:
+    - https://github.com/napplet/evil
+  Feedstr (0n4t3):
+    checked_at: 2026-10-28
+    reason: Canonical project README/owner primary examined for identity references;
+      bounded npub.world and signed-profile NIP50 searches did not provide positive
+      project-to-contact binding. No release author or same-name account substituted.
+    sources:
+    - https://github.com/0n4t3/Feedstr
+  nostr-parse:
+    checked_at: 2026-10-28
+    reason: Canonical project README/owner primary examined for identity references;
+      bounded npub.world and signed-profile NIP50 searches did not provide positive
+      project-to-contact binding. No release author or same-name account substituted.
+    sources:
+    - https://github.com/VectorPrivacy/nostr-parse
+  Obelisk Relay:
+    checked_at: 2026-10-28
+    reason: Canonical project README/owner primary examined for identity references;
+      bounded npub.world and signed-profile NIP50 searches did not provide positive
+      project-to-contact binding. No release author or same-name account substituted.
+    sources:
+    - https://github.com/obelisk-app/obelisk-relay
+  Plume:
+    checked_at: 2026-10-28
+    reason: Canonical project README/owner primary examined for identity references;
+      bounded npub.world and signed-profile NIP50 searches did not provide positive
+      project-to-contact binding. No release author or same-name account substituted.
+    sources:
+    - https://github.com/cpkb-bluezoo/plume
+  cl-deposits:
+    checked_at: 2026-10-28
+    reason: Pinned cl-deposits README and canonical modus-lisp owner profile provide
+      no positive contact binding. Reused prior sibling wax/cl-marmot primary research;
+      actual npub.world searches for cl-deposits and modus-lisp and signature-verified
+      NIP50 searches returned no matching profiles. Omit outreach; bounded searches
+      do not establish global absence.
+    sources:
+    - https://github.com/modus-lisp/cl-deposits/blob/3d74564de6be0d25efec3ce6ad76a4fc691dc676/README.md
+    - https://github.com/modus-lisp
+    - https://npub.world/?/search
+    - https://search.nos.today
+    - https://relay.nostr.band
+  Agora encrypted polls:
+    checked_at: 2026-10-28
+    reason: Canonical project README/owner primary examined for identity references;
+      bounded npub.world and signed-profile NIP50 searches did not provide positive
+      project-to-contact binding. No release author or same-name account substituted.
+    sources:
+    - https://github.com/maxgfr/agora
+  Cinderous SDK:
+    checked_at: 2026-10-28
+    reason: Canonical project README/owner primary examined for identity references;
+      bounded npub.world and signed-profile NIP50 searches did not provide positive
+      project-to-contact binding. No release author or same-name account substituted.
+    sources:
+    - https://github.com/VaalRL/cinderous-sdk
+  Feedstr:
+    checked_at: 2026-10-28
+    reason: Canonical project README/owner primary examined for identity references;
+      bounded npub.world and signed-profile NIP50 searches did not provide positive
+      project-to-contact binding. No release author or same-name account substituted.
+    sources:
+    - https://github.com/0n4t3/Feedstr
+  evil-napplets:
+    checked_at: 2026-10-28
+    reason: Canonical project README/owner primary examined for identity references;
+      bounded npub.world and signed-profile NIP50 searches did not provide positive
+      project-to-contact binding. No release author or same-name account substituted.
+    sources:
+    - https://github.com/napplet/evil
+
 Nostr Compass: npub1wav4fae3gyfy3xj298kxj2mj8phavz7vavps34przq02j7w902qq902923
 
 # Added for Newsletter #21 publication
@@ -638,6 +947,13 @@ Nostria Signer Extension:
 # --- Dev tools and libraries ---
 fips2go:
   npub: npub1yptpz34agws3z95dqxgvyhwnhkulav5vueryjpzrl32p57euwteqwha52w
+  identity_type: maintainer
+  person: fr34aky
+  mention_only: true
+  evidence:
+  - https://github.com/fr34aky/fips2go
+  - https://relayted.de/.well-known/nostr.json?name=fr34aky
+
 fips2go exposes an embedded mesh node to chosen Android apps:
   npub: npub1yptpz34agws3z95dqxgvyhwnhkulav5vueryjpzrl32p57euwteqwha52w
 fr34aky:
@@ -2233,10 +2549,13 @@ LaWallet:
   - https://github.com/lawalletio/lawallet-nwc
 ngit-mirror:
   npub: npub1uac67zc9er54ln0kl6e4qp2y6ta3enfcg7ywnayshvlw9r5w6ehsqq99rx
-  identity_type: project
+  identity_type: maintainer
   outreach: false
   evidence:
   - https://njump.me/9919520c62f2939d7bd09999881a3e2ef3b0772371ab58367886b3f8415a394a
+  person: sandwich.farm
+  mention_only: true
+
 ditto-blossom:
   npub: npub1q3sle0kvfsehgsuexttt3ugjd8xdklxfwwkh559wxckmzddywnws6cd26p
   identity_type: lead-developer
@@ -2286,3 +2605,366 @@ shockwallet:
   evidence:
   - https://github.com/shocknet/wallet2
   - https://shockwallet.app/
+
+# Verified project and maintainer contacts
+Alby JS SDK:
+  npub: npub1getal6ykt05fsz5nqu4uld09nfj3y3qxmv8crys4aeut53unfvlqr80nfm
+  identity_type: project
+  outreach: false
+  evidence:
+  - https://github.com/getAlby/js-sdk
+  - https://github.com/getAlby
+  mention_only: false
+Alby's JavaScript SDK:
+  npub: npub1getal6ykt05fsz5nqu4uld09nfj3y3qxmv8crys4aeut53unfvlqr80nfm
+  identity_type: project
+  outreach: false
+  evidence:
+  - https://github.com/getAlby/js-sdk
+  - https://github.com/getAlby
+  mention_only: false
+Nostr WoT extension:
+  npub: npub1gxdhmu9swqduwhr6zptjy4ya693zp3ql28nemy4hd97kuufyrqdqwe5zfk
+  identity_type: maintainer
+  person: Leon Acosta
+  evidence:
+  - https://github.com/nostr-wot/nostr-wot-extension
+  - https://github.com/nostr-wot
+  mention_only: true
+  outreach: true
+Hasheus:
+  npub: npub1gm7yl6a9xsnkg2lepuaf4hddv2yvwlun5atxjtye3pu5l0vh5kes8ef4r5
+  identity_type: maintainer
+  person: tinfoilhash
+  outreach: true
+  mention_only: true
+  evidence:
+  - https://github.com/tinfoilhash/hasheus
+  - https://github.com/tinfoilhash
+MLS-KMP and Marmot compatibility:
+  npub: npub1gcxzte5zlkncx26j68ez60fzkvtkm9e0vrwdcvsjakxf9mu9qewqlfnj5z
+  mention_only: true
+  evidence:
+  - https://github.com/vitorpamplona/mls-kmp
+  - https://github.com/vitorpamplona
+  identity_type: maintainer
+  person: Vitor Pamplona
+  outreach: true
+cordn-kmp:
+  npub: npub1gcxzte5zlkncx26j68ez60fzkvtkm9e0vrwdcvsjakxf9mu9qewqlfnj5z
+  mention_only: true
+  evidence:
+  - https://github.com/vitorpamplona/cordn-kmp
+  - https://github.com/vitorpamplona
+  identity_type: maintainer
+  person: Vitor Pamplona
+  outreach: true
+eventstore:
+  npub: npub180cvv07tjdrrgpa0j7j7tmnyl2yr6yr7l8j4s3evf6u64th6gkwsyjh6w6
+  identity_type: maintainer
+  person: fiatjaf
+  outreach: true
+  mention_only: true
+  evidence:
+  - https://github.com/fiatjaf/eventstore
+  - https://github.com/fiatjaf
+Roadbeacon:
+  npub: npub1m2mvvpjugwdehtaskrcl7ksvdqnnhnjur9v6g9v266nss504q7mqvlr8p9
+  identity_type: maintainer
+  person: Juraj
+  outreach: true
+  evidence:
+  - https://github.com/jooray/roadbeacon
+  - https://github.com/jooray
+  mention_only: true
+Emanator:
+  npub: npub1m2mvvpjugwdehtaskrcl7ksvdqnnhnjur9v6g9v266nss504q7mqvlr8p9
+  identity_type: maintainer
+  person: Juraj
+  outreach: true
+  evidence:
+  - https://github.com/jooray/nostr-emanator
+  - https://github.com/jooray
+  mention_only: true
+wn-notify:
+  npub: npub1m2mvvpjugwdehtaskrcl7ksvdqnnhnjur9v6g9v266nss504q7mqvlr8p9
+  identity_type: maintainer
+  person: Juraj
+  outreach: true
+  evidence:
+  - https://github.com/jooray/wn-notify
+  - https://github.com/jooray
+  mention_only: true
+Orchard:
+  npub: npub1m2jphmdkskgnvwl5gplksl9e0zwv2sldqf9mwlpz6tyymz84g9fsqr3wgu
+  identity_type: maintainer
+  person: Letdown2491
+  outreach: true
+  mention_only: true
+  evidence:
+  - https://github.com/Letdown2491/orchard
+  - https://github.com/Letdown2491
+nostr_doctor:
+  npub: npub1kg4sdvz3l4fr99n2jdz2vdxe2mpacva87hkdetv76ywacsfq5leqquw5te
+  identity_type: maintainer
+  person: Russell
+  outreach: true
+  evidence:
+  - https://github.com/nogringo/nostr-doctor
+  - https://github.com/nogringo
+  mention_only: true
+nostr-indexer-relay:
+  npub: npub1kg4sdvz3l4fr99n2jdz2vdxe2mpacva87hkdetv76ywacsfq5leqquw5te
+  identity_type: maintainer
+  person: Russell
+  outreach: true
+  evidence:
+  - https://github.com/nogringo/nostr-indexer-relay
+  - https://github.com/nogringo
+  mention_only: true
+Cosign and Marble:
+  npub: npub175rnagjgxtvwvfrdytkqkkn4h062zf2cuwkx0jc8xc9nga895s8qgsef5g
+  identity_type: maintainer
+  person: sybenx
+  outreach: false
+  evidence:
+  - https://github.com/sybenx/cosign
+  - https://github.com/sybenx
+  mention_only: true
+nostr-sdk-ffi:
+  npub: npub1drvpzev3syqt0kjrls50050uzf25gehpz9vgdw08hvex7e0vgfeq0eseet
+  mention_only: true
+  evidence:
+  - https://github.com/nostrdevkit/nostr-sdk-ffi
+  - https://github.com/nostrdevkit
+  identity_type: maintainer
+  person: rust-nostr maintainer
+  outreach: true
+fips-pub-domains answers pinned lookups before fetching claims:
+  npub: npub1yptpz34agws3z95dqxgvyhwnhkulav5vueryjpzrl32p57euwteqwha52w
+  evidence:
+  - https://github.com/fr34aky/fips-pub-domains
+  - https://github.com/fr34aky
+  identity_type: maintainer
+  mention_only: true
+  person: fr34aky
+  outreach: true
+fips-pub-pki:
+  npub: npub1yptpz34agws3z95dqxgvyhwnhkulav5vueryjpzrl32p57euwteqwha52w
+  evidence:
+  - https://github.com/fr34aky/fips-pub-pki
+  - https://github.com/fr34aky
+  identity_type: maintainer
+  mention_only: true
+  person: fr34aky
+  outreach: true
+nsite-gateway:
+  npub: npub1ye5ptcxfyyxl5vjvdjar2ua3f0hynkjzpx552mu5snj3qmx5pzjscpknpr
+  evidence:
+  - https://github.com/hzrd149/nsite-gateway
+  - https://github.com/hzrd149
+  identity_type: maintainer
+  mention_only: true
+  person: hzrd149
+  outreach: true
+Swarm:
+  npub: npub1z0lcg9p2v5nzg5fycxq0k56ze6snp42clmrafzqpn5w6u74v5x9q708ldk
+  evidence:
+  - https://github.com/HiveTalk/swarm
+  - https://github.com/HiveTalk
+  identity_type: organization
+  display_name: HiveTalk
+  mention_only: false
+  outreach: true
+bosstro:
+  npub: npub1m0str0d7z2ww8rdh20t2n9lx520xjwhaq24p68umqp06wwrwtsnqen40un
+  identity_type: organization
+  evidence:
+  - https://github.com/MostroP2P/bosstro
+  - https://github.com/MostroP2P
+  display_name: MostroP2P
+  mention_only: false
+  outreach: false
+WhatZaps:
+  npub: npub1gxdhmu9swqduwhr6zptjy4ya693zp3ql28nemy4hd97kuufyrqdqwe5zfk
+  identity_type: maintainer
+  person: Leon Acosta
+  evidence:
+  - https://github.com/nostr-wot/whatsapp-zaps
+  - https://github.com/nostr-wot
+  outreach: true
+  mention_only: true
+zsp:
+  npub: npub10r8xl2njyepcw2zwv3a6dyufj4e4ajx86hz6v4ehu4gnpupxxp7stjt2p8
+  evidence:
+  - https://github.com/zapstore/zsp
+  - https://github.com/zapstore
+  identity_type: project
+  mention_only: false
+  outreach: false
+xmradar:
+  npub: npub10hqclu8wc4mhqjem300cep0rpc7f2uunn5h2lcxrx8wp3vmcrq0quj4fln
+  identity_type: maintainer
+  person: XBToshi
+  evidence:
+  - https://github.com/KYC-rip/xmradar
+  - https://github.com/KYC-rip
+  mention_only: true
+  outreach: true
+Codr:
+  npub: npub19at4nqjjymca2lh3v546vcg5ktun3al4c5xu2pts3ewckv0y70ys0gupzr
+  mention_only: true
+  evidence:
+  - https://github.com/tidley/codr
+  - https://github.com/tidley
+  identity_type: maintainer
+  person: Tom (tidley)
+  outreach: true
+OUTKAST:
+  npub: npub1vjxq75czca0nswp2f5kgtfyzhynuccdjs29q098rd3kv09k7s6nq39hh7v
+  identity_type: maintainer
+  outreach: true
+  evidence:
+  - https://github.com/Lwb89dev/outkast
+  - https://github.com/Lwb89dev
+  person: LWB
+  mention_only: true
+LNbits:
+  npub: npub10efcj7x65z2ak6vd69xr8f2hvqwuaqrhlygl3yqa4y63hfvc02mqwzaeh3
+  identity_type: project
+  outreach: true
+  mention_only: false
+  evidence:
+  - https://github.com/lnbits/lnbits
+  - https://lnbits.com
+  - https://njump.me/npub10efcj7x65z2ak6vd69xr8f2hvqwuaqrhlygl3yqa4y63hfvc02mqwzaeh3
+Holoboard:
+  npub: npub1xz73wt7999gs3wfaa923djq3l270hg8v3y0z29j9qgejjyfaweps5xyzav
+  identity_type: project
+  outreach: true
+  mention_only: false
+  evidence:
+  - https://github.com/ptrio42/holoboard.space
+  - https://holoboard.space/.well-known/nostr.json?name=_
+  - https://holoboard.space
+SkateSpots:
+  npub: npub1yrnuj56rnen08zp2h9h7p74ghgjx6ma39spmpj6w9hzxywutevsst7k5cx
+  identity_type: project
+  outreach: true
+  mention_only: false
+  evidence:
+  - https://skate-spots.org
+  - https://skate-spots.org/.well-known/nostr.json?name=skate-spots
+Nostr Vault:
+  npub: npub1vxlhjzeqjjhmqdy4e8sndt8kzklqlnxzew2mtt8mtakvalsckp3qa0gnvx
+  identity_type: maintainer
+  outreach: true
+  mention_only: true
+  evidence:
+  - https://github.com/btcforplebs/nostr-vault
+  - https://nostrvault.app
+  - https://nostrvault.app/.well-known/nostr.json?name=_
+  - https://btcforplebs.com
+  person: Logen (btcforplebs)
+nostr2gh:
+  npub: npub1yn84ur49llj7pp9a7uv477f7vrpj0rj7df5pnfncvkusaxgy6jqsj9xgfl
+  identity_type: maintainer
+  outreach: true
+  mention_only: true
+  evidence:
+  - https://github.com/kravens/nostr2gh
+  - https://github.com/kravens
+  - https://primal.net/kevinrav
+  - https://primal.net/.well-known/nostr.json?name=kevinrav
+  person: Kevin Ravensberg (kravens)
+nostrcheck-server Bark payments:
+  npub: npub1zdr58j526qsrkdjhcg9xs60xfutqeey2ucugms04efnlx3spnmns2eqha9
+  identity_type: project
+  outreach: true
+  mention_only: false
+  evidence:
+  - https://github.com/quentintaranpino/nostrcheck-server
+  - https://nostrcheck.me
+  - https://nostrcheck.me/.well-known/nostr.json?name=_
+  display_name: nostrcheck.me operator
+Bell:
+  npub: npub1jfcfn044rnwqmzyh4q0ejk76hwxguy8h5yl0cuwgjmkdqx3cmzmqm2sqyn
+  identity_type: project
+  outreach: false
+  mention_only: false
+  evidence:
+  - https://gitworkshop.dev/npub1jfcfn044rnwqmzyh4q0ejk76hwxguy8h5yl0cuwgjmkdqx3cmzmqm2sqyn/relay.ngit.dev/bell
+evil-napps:
+  npub: npub1uac67zc9er54ln0kl6e4qp2y6ta3enfcg7ywnayshvlw9r5w6ehsqq99rx
+  identity_type: maintainer
+  person: sandwich.farm
+  mention_only: true
+  evidence:
+  - https://github.com/sandwichfarm/evil-napps
+  - https://github.com/sandwichfarm
+  outreach: false
+nkip-0001:
+  npub: npub10hqclu8wc4mhqjem300cep0rpc7f2uunn5h2lcxrx8wp3vmcrq0quj4fln
+  identity_type: maintainer
+  person: XBToshi
+  evidence:
+  - https://github.com/KYC-rip/nkip-0001
+  - https://github.com/KYC-rip
+  - https://kyc.rip/.well-known/nostr.json?name=XBToshi
+  mention_only: true
+  outreach: true
+Labradorite:
+  npub: npub1w4uswmv6lu9yel005l3qgheysmr7tk9uvwluddznju3nuxalevvs2d0jr5
+  identity_type: maintainer
+  person: greenart7c3
+  mention_only: true
+  evidence:
+  - https://njump.me/2ee0c52f54b76b2a06a4936737dc38b0be3531e64afa5b1bc912b86904bc3f7f
+Onyx:
+  npub: npub1vx40p5mkcwyrg2gnthf343y39tf0zqxl56ajvql2m9q3rxremynsfp37lu
+  identity_type: maintainer
+  person: Damien (repository-owner agent)
+  mention_only: true
+  outreach: false
+  evidence:
+  - https://njump.me/489c4ab978b45e421477d93ec70a0986d7fa68f36dbf480b4ee64893a942c04a
+Streets:
+  npub: npub1m0n0eyetgrflxghneeckkv95ukrn0fdpzyysscy4vha3gm64739qxn23sk
+  identity_type: maintainer
+  person: eyemono.moe
+  mention_only: true
+  evidence:
+  - https://github.com/eyemono-moe/streets
+  - https://streets.eyemono.moe/.well-known/nostr.json?name=eyemono.moe
+  - https://eyemono.moe/.well-known/nostr.json?name=_
+NKIP deposit receipt toolkit:
+  npub: npub10hqclu8wc4mhqjem300cep0rpc7f2uunn5h2lcxrx8wp3vmcrq0quj4fln
+  identity_type: maintainer
+  person: XBToshi
+  evidence:
+  - https://github.com/KYC-rip/nkip-0001
+  - https://github.com/KYC-rip
+  - https://kyc.rip/.well-known/nostr.json?name=XBToshi
+  mention_only: true
+  outreach: true
+Alby Lightning browser extension:
+  npub: npub1getal6ykt05fsz5nqu4uld09nfj3y3qxmv8crys4aeut53unfvlqr80nfm
+  identity_type: project
+  evidence:
+  - https://github.com/getAlby/lightning-browser-extension
+  - https://getalby.com/.well-known/nostr.json?name=hello
+  outreach: false
+Alby browser extension:
+  npub: npub1getal6ykt05fsz5nqu4uld09nfj3y3qxmv8crys4aeut53unfvlqr80nfm
+  identity_type: project
+  evidence:
+  - https://github.com/getAlby/lightning-browser-extension
+  - https://getalby.com/.well-known/nostr.json?name=hello
+  outreach: false
+SatSigner:
+  npub: npub1dhfmwt3jtknnswe8tmh3cesnrwjxvsexu93tcps9yagfkn3n4epsa3d8yn
+  identity_type: project
+  evidence:
+  - https://github.com/satsigner/satsigner
+  - https://satsigner.com
+  - https://satsigner.com/.well-known/nostr.json?name=satsigner

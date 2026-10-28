@@ -31,6 +31,7 @@ A [September 2026 merge](https://github.com/nostr-protocol/nips/pull/2408) added
 - [NIP-86 claim management merge](https://github.com/nostr-protocol/nips/pull/2408)
 
 **Mentioned in:**
+- [Newsletter #46: nosfry](/en/newsletters/2026-10-28-newsletter/#nosfry)
 - [Newsletter #16: Amethyst ships relay management](/en/newsletters/2026-04-01-newsletter/#amethyst-ships-pinned-notes-relay-management-and-request-to-vanish)
 - [Newsletter #33: Unreleased app/client changes](/en/newsletters/2026-07-29-newsletter/#in-development)
 - [Newsletter #36: Citrine 3.1.0 turns a phone relay into a group host and a site host](/en/newsletters/2026-08-19-newsletter/#citrine-310-turns-a-phone-relay-into-a-group-host-and-a-site-host)

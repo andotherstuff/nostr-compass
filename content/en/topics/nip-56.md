@@ -36,7 +36,8 @@ Additional classification can be added with NIP-32 `l` and `L` tags, which is us
 **Primary sources:**
 - [NIP-56 Specification](https://github.com/nostr-protocol/nips/blob/master/56.md)
 
-**Mentioned in:** [Newsletter 45](/en/newsletters/2026-10-21-newsletter/#nostube),
+**Mentioned in:**
+- [Newsletter #46: nostream](/en/newsletters/2026-10-28-newsletter/#nostream) [Newsletter 45](/en/newsletters/2026-10-21-newsletter/#nostube),
 - [Newsletter #44](/en/newsletters/2026-10-14-newsletter/#mdk)
 - [Newsletter #10: Project Updates](/en/newsletters/2026-02-18-newsletter/#notedeck-android-app-store-prep)
 - [Newsletter #32: News](/en/newsletters/2026-07-22-newsletter/#zapstore-110-makes-the-device-key-portable-and-adds-background-auto-updates)

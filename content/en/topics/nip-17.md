@@ -58,6 +58,7 @@ NIP-17 also defines inbox relay lists for private messaging. Clients can publish
 - [Code Call 0.2.66](https://github.com/tidley/nostr-codex-phone/releases/tag/v0.2.66) - encrypted remote-work requests and replies
 
 **Mentioned in:**
+- [Newsletter #46: Emanator](/en/newsletters/2026-10-28-newsletter/#emanator)
 - [Newsletter #44: MintRadar alerts](/en/newsletters/2026-10-14-newsletter/#mintradar)
 - [Newsletter #43](/en/newsletters/2026-10-07-newsletter/#tagged-releases)
 - [Newsletter #39: TWENTY ONE Companion 1.12.0 separates encrypted DMs from legacy chat](/en/newsletters/2026-09-09-newsletter/#twenty-one-companion-1120-separates-encrypted-dms-from-legacy-chat)

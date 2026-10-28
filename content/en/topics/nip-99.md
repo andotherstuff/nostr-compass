@@ -65,6 +65,8 @@ That flexibility also explains why current marketplace projects favor it. The sp
 - [Initial classified-listing draft](https://github.com/nostr-protocol/nips/commit/451c06a3c572a13afe45c1d80616f8e6dd9bb1de)
 
 **Mentioned in:**
+
+- [Newsletter #46 (2026-10-28): conduit](/en/newsletters/2026-10-28-newsletter/#conduit)
 - [Newsletter #45](/en/newsletters/2026-10-21-newsletter/#zap-cooking)
 - [Newsletter #37: Shopstr keeps remote-signer and wallet secrets out of browser storage](/en/newsletters/2026-08-26-newsletter/#shopstr-keeps-remote-signer-and-wallet-secrets-out-of-browser-storage)
 - [Newsletter #13: Shopstr and Milk Market Open MCP Commerce Surfaces](/en/newsletters/2026-03-11-newsletter/#shopstr-and-milk-market-open-mcp-commerce-surfaces)

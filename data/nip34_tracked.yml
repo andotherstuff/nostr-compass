@@ -199,3 +199,17 @@ tracked_repos:
 # To identify new noise sources, run:
 #   ./scripts/fetch_nip34_repos.sh --discover-only --since-days 30
 # and look for pubkeys with many unrelated repos.
+
+  - name: Labradorite
+    d_tag: nostr-agents
+    pubkey: 7579076d9aff0a4cfdefa7e2045f2486c7e5d8bc63bfc6b45397233e1bbfcb19
+    relays: [wss://relay.ngit.dev]
+    in_projects_yml: false
+    notes: Marmot-based Android remote control for local coding agents
+
+  - name: Onyx
+    d_tag: onyx
+    pubkey: 61aaf0d376c3883429135dd31ac4912ad2f100dfa6bb2603ead941119879d927
+    relays: [wss://relay.ngit.dev]
+    in_projects_yml: false
+    notes: Local Markdown diary with encrypted Nostr backup

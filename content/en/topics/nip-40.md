@@ -40,6 +40,7 @@ Expiration is a retention hint, not a revocation system. It helps align relay be
 - [NIP-40 Specification](https://github.com/nostr-protocol/nips/blob/master/40.md)
 
 **Mentioned in:**
+- [Newsletter #46: nosfry](/en/newsletters/2026-10-28-newsletter/#nosfry)
 - [Newsletter #45](/en/newsletters/2026-10-21-newsletter/#nip-37-draft-wraps)
 - [Newsletter #1: News](/en/newsletters/2025-12-17-newsletter/#news)
 - [Newsletter #3: Notable Code Changes](/en/newsletters/2025-12-31-newsletter/#rust-nostr-library)

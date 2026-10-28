@@ -56,6 +56,8 @@ The format also carries a one-byte flag describing whether the key has ever been
 - [Formstr PR #434](https://github.com/formstr-hq/nostr-forms/pull/434) - Client-side signup flow using NIP-49
 
 **Mentioned in:**
+
+- [Newsletter #46 (2026-10-28): ndk](/en/newsletters/2026-10-28-newsletter/#ndk)
 - [Newsletter #13: Formstr](/en/newsletters/2026-03-11-newsletter/#formstr)
 - [Newsletter #13: NIP Deep Dive](/en/newsletters/2026-03-11-newsletter/#nip-deep-dive-nip-49-private-key-encryption)
 - [Newsletter #31: Nostr WoT 0.3.86 hardens key backups and signing prompts](/en/newsletters/2026-07-15-newsletter/#nostr-wot-0386-hardens-key-backups-and-signing-prompts)

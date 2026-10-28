@@ -1,48 +1,46 @@
 ---
-title: "NIP-82: Software Applications"
+title: "Proposed NIP-82 (Unassigned): Software Application Catalog"
 date: 2026-06-17
+lastmod: 2026-10-28
 draft: false
 categories:
-  - Discovery
+  - Proposals
   - Apps
 ---
 
-NIP-82 defines a software-application event so Nostr clients can render applications (Android APKs, iOS apps, web apps, desktop binaries) as first-class objects in feeds and discovery surfaces. The spec replaces the older approach of describing apps through generic kind 1 notes or [NIP-89](/en/topics/nip-89/) handler recommendations with a dedicated, structured event that carries application metadata, screenshots, repository links, and author identity.
+The software application catalog described on this page is a proposal under review. It is not an accepted NIP. It lives in [nostr-protocol/nips pull request #2526](https://github.com/nostr-protocol/nips/pull/2526), titled "Zapstore spec". As of this page's last update, that pull request is open and unmerged, and the official NIPs master branch contains no `82.md` file. "NIP-82" is the label the proposal uses for itself. It is not an official NIP number. Event kinds, tags and behaviour may change before any merge. The pull request says it supersedes the earlier [pull request #1336](https://github.com/nostr-protocol/nips/pull/1336).
 
-## How it works
+## Proposed event kinds
 
-A NIP-82 software application is a single replaceable event addressed by author pubkey and `d` tag. The event carries:
+The draft divides a software catalog into several kinds of event:
 
-- `name`, `description`, `icon`, `image` tags for display
-- `repository` and `web` tags for source and homepage URLs
-- `platforms` tag enumerating supported targets (android, ios, web, linux, macos, windows)
-- `download` tags for each platform-specific binary or web URL
-- `screenshots` tags carrying image URLs for the application screenshots
-- `t` topic tags for categorization
-- `version` tag for the current published version
+- **Kind 32267, application:** an addressable event that describes an app.
+- **Kind 30063, release:** an addressable event for one version of that app. It references that version's assets.
+- **Kind 3063, asset:** a regular event that describes one downloadable file.
+- **Kind 30267, curation:** an addressable list that a curator publishes to group or recommend apps.
+- **Kind 30509, signing certificate link:** an addressable event that links an X.509 certificate, such as an APK signing certificate, to the Nostr key that publishes software, so clients know which certificates that publisher controls. Its `d` tag is the SHA-256 hash of the DER-encoded certificate. It carries a signature made with the certificate's private key and an expiry as a Unix timestamp, and it can optionally mark the link as revoked.
+- **Kind 10067, relay list:** a replaceable list of relays where catalog events can be found.
 
-A client browsing a NIP-82 feed can show the application card, link to the canonical repository, and surface screenshots without falling back to scraping a Nostr long-form post or a third-party app store. The author pubkey is the source of truth for the application, so a client can verify the publisher matches the expected developer identity before promoting a download link.
+## Platform, integrity and validity
 
-## Feed semantics
+Asset events carry platform and runtime identifiers, so a client can show only the files that match a device. Each asset also carries a file hash. A client can use it to check that the downloaded bytes match what the publisher signed. For Android packages, the draft includes the signing certificate fingerprint. An installer can compare it with the certificate of an app that is already installed before it offers an update. Before installing an Android package, clients SHOULD fetch the kind 30509 event by certificate hash. They should verify its certificate signature against the certificate embedded in the APK and against the asset's publisher, and check that the proof has not expired or been revoked.
 
-NIP-82 events are addressable, so each application has one canonical replaceable event per author. A developer publishing a new version replaces the previous event in place, and subscribers see the update without managing event history. Clients that want a change log can subscribe to the addressable event and render version bumps as activity on the application surface.
+## Trust limits
 
-The spec composes with [NIP-89](/en/topics/nip-89/) (Application Handlers): a NIP-82 event describes the application as an artifact, while a NIP-89 event describes that the application can handle specific event kinds. Clients can use one without the other, but the pair gives a discovery surface (NIP-82) and a delegation surface (NIP-89) that work together.
+A valid signature only shows that a particular key published an event. It does not prove that the key belongs to the real developer, that the software is safe, or that a curator's list can be trusted. The proposal gives no guarantee about arbitrary publishers. Clients and users must decide which publisher and curator keys to rely on. This page does not claim any security audit or production interoperability.
 
-## Implementations
+## Relation to NIP-89
 
-- [Amethyst v1.12.0](https://github.com/vitorpamplona/amethyst/releases/tag/v1.12.0) ships a dedicated NIP-82 software-applications feed with a detail screen, author info, and screenshots ([PR #3036](https://github.com/vitorpamplona/amethyst/pull/3036), [PR #3078](https://github.com/vitorpamplona/amethyst/pull/3078), [PR #3200](https://github.com/vitorpamplona/amethyst/pull/3200))
+[NIP-89](/en/topics/nip-89/) handler events advertise which applications can handle which event kinds. This proposal describes the software artifacts and where to get them, so the two cover separate concerns.
 
 ---
 
 **Primary sources:**
-- [NIP-82 Specification](https://github.com/nostr-protocol/nips/blob/master/82.md)
-- [Amethyst PR #3036](https://github.com/vitorpamplona/amethyst/pull/3036) - Add NIP-82 Software Applications support with dedicated feed
-- [Amethyst PR #3078](https://github.com/vitorpamplona/amethyst/pull/3078) - Add dedicated NIP-82 software app detail screen
-- [Amethyst PR #3200](https://github.com/vitorpamplona/amethyst/pull/3200) - Improve NIP-82 software app UI with author info and screenshots
+- [nostr-protocol/nips PR #2526: Zapstore spec](https://github.com/nostr-protocol/nips/pull/2526) (open, unmerged; supersedes [PR #1336](https://github.com/nostr-protocol/nips/pull/1336))
 
 **Mentioned in:**
-- [Newsletter #27: Amethyst v1.12.0 ships Cashu wallets, nutzaps, a CLINK driver, and Tor self-heal](/en/newsletters/2026-06-17-newsletter/#amethyst-v1120-ships-cashu-wallets-nutzaps-a-clink-driver-and-tor-self-heal)
+- [Newsletter #27: Amethyst v1.12.0 release coverage (historical reference)](/en/newsletters/2026-06-17-newsletter/#amethyst-v1120-ships-cashu-wallets-nutzaps-a-clink-driver-and-tor-self-heal)
+- [Newsletter #46: Software application catalog proposed as NIP-82](/en/newsletters/2026-10-28-newsletter/#software-application-catalog-proposed-as-nip-82)
 
 **See also:**
 - [NIP-89: Application Handlers](/en/topics/nip-89/)

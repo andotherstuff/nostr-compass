@@ -49,6 +49,7 @@ NIP-66 does not create a single authoritative monitor. Multiple monitors can pub
 - [PR #2240](https://github.com/nostr-protocol/nips/pull/2240) - Defensive measures and unhappy-path guidance
 
 **Mentioned in:**
+- [Newsletter #46: noStrudel napplet intents and synced app data](/en/newsletters/2026-10-28-newsletter/#nostrudel-napplet-intents-and-synced-app-data)
 - [Newsletter #45](/en/newsletters/2026-10-21-newsletter/#applesauce)
 - [Newsletter #44](/en/newsletters/2026-10-14-newsletter/#nostream)
 - [Newsletter #41: nostream publishes relay health events](/en/newsletters/2026-09-23-newsletter/#nostream-publishes-relay-health-events)

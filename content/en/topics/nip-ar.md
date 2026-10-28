@@ -22,5 +22,6 @@ The [Buzz specification merge](https://github.com/block/buzz/pull/7791) describe
 - [Buzz channel-artifact implementation merge](https://github.com/block/buzz/pull/7919)
 
 **Mentioned in:**
+- [Newsletter #46: Buzz NIP-AR sync subscriptions send a complete snapshot before live heads](/en/newsletters/2026-10-28-newsletter/#buzz-nip-ar-sync-subscriptions-send-a-complete-snapshot-before-live-heads)
 - [Newsletter #45](/en/newsletters/2026-10-21-newsletter/#buzz)
 - [Newsletter #42: Buzz channel artifacts](/en/newsletters/2026-09-30-newsletter/#buzz-extends-its-relays-channel-and-identity-controls)

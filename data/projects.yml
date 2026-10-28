@@ -28,6 +28,78 @@
 # =============================================================================
 
 social_clients:
+  - name: Streets
+    repo: https://github.com/eyemono-moe/streets
+    description: Column-based web Nostr client
+    status: beta
+    priority: medium
+
+  - name: "plume"
+    repo: https://github.com/cpkb-bluezoo/plume
+    description: Rust and Tauri Nostr desktop client
+    status: beta
+    priority: medium
+
+  - name: "agora"
+    repo: https://github.com/maxgfr/agora
+    description: Encrypted group-poll browser prototype using Nostr and WebRTC
+    status: beta
+    priority: medium
+
+  - name: Marble
+    description: Nostr client using Cosign threshold signing
+    platforms:
+    - android
+    - web
+    repo: https://github.com/sybenx/marble
+    maintainer: sybenx
+    status: beta
+    priority: medium
+    notes: Uses the Cosign beta protocol; app and library share one newsletter story.
+
+  - name: Hibiki
+    description: Nostr feed client prototype
+    platforms:
+    - web
+    repo: https://github.com/ChiefmonkeyArt/torii-hibiki
+    maintainer: ChiefmonkeyArt
+    status: beta
+    priority: medium
+    notes: Source implements a feed with Nostr identity and relay access.
+
+  - name: Magnetar
+    description: Nostr torrent discovery client and crawler
+    platforms:
+    - android
+    - server
+    repo: https://github.com/awake-devel/magnetar
+    maintainer: awake-devel
+    status: beta
+    priority: medium
+    notes: Uses NIP-35 torrent announcements with publisher-follow trust and swarm checks.
+
+  - name: XMRadar
+    description: Browser extension for publishing web posts to Nostr
+    platforms:
+    - chrome
+    - firefox
+    repo: https://github.com/KYC-rip/xmradar
+    maintainer: KYC-rip
+    status: beta
+    priority: medium
+    notes: Uses NIP-07 signing, NIP-23 articles and Blossom media uploads.
+
+  - name: EmoSphere
+    description: Public mood map using signed Nostr check-ins
+    platforms:
+    - android
+    - web
+    repo: https://github.com/Vojta01/emosphere
+    maintainer: Vojta01
+    status: beta
+    priority: medium
+    notes: Publishes emotion check-ins with optional coarse location.
+
   - name: Monostr
     description: Nostr social client with Monero tipping
     repo: https://github.com/schmidt1024/monostr
@@ -1312,6 +1384,12 @@ social_clients:
     notes: Submitted for the September 30 issue; September 23 and 24 changelog entries document NIP-17 promotion commands and an Android app
 
 longform_clients:
+  - name: "Feedstr"
+    repo: https://github.com/0n4t3/Feedstr
+    description: Experimental RSS reader with encrypted Nostr synchronization
+    status: beta
+    priority: medium
+
   - name: Habla
     description: Long-form content publishing (NIP-23)
     platforms: [ web ]
@@ -1523,6 +1601,59 @@ longform_clients:
     notes: Flutter; MLS key-package publication on onboarding; NWC integration; ONNX embedding for in-reader semantic search
 
 messaging_clients:
+  - name: CarryChat
+    description: Store-and-forward messenger with Nostr transport
+    platforms:
+    - cli
+    repo: https://github.com/kemal-arslan/carrychat
+    maintainer: kemal-arslan
+    status: beta
+    priority: medium
+    notes: Nostr is one transport for bounded bundles alongside local exchange.
+
+  - name: Witchat
+    description: Unofficial Windows and Linux bitchat client
+    platforms:
+    - windows
+    - linux
+    repo: https://github.com/BarefootJoey/witchat
+    maintainer: BarefootJoey
+    status: beta
+    priority: medium
+    notes: Combines Bluetooth messaging with Nostr mutual-favorite delivery and geochannels.
+
+  - name: Solid Chat v2
+    description: Solid pod chat with Nostr private messages
+    platforms:
+    - web
+    repo: https://github.com/solid-chat/v2
+    maintainer: solid-chat
+    status: beta
+    priority: medium
+    notes: Uses Nostr keys for NIP-98 pod writes and NIP-17 direct messages.
+
+  - name: Matrix Nostr Appservice
+    description: Matrix bridge and home relay for Nostr identities
+    platforms:
+    - server
+    repo: https://github.com/Haven-Organization/matrix-appservice-nostr
+    maintainer: Haven-Organization
+    status: beta
+    priority: medium
+    notes: Bridges Matrix rooms to Nostr with local relay and NIP-46 signer support.
+
+  - name: Bosstro
+    description: Mostro dispute solver client
+    platforms:
+    - android
+    - linux
+    - web
+    repo: https://github.com/MostroP2P/bosstro
+    maintainer: MostroP2P
+    status: beta
+    priority: medium
+    notes: Dedicated solver keys authorize dispute chat and settlement on a Mostro node.
+
   - name: Pagemates
     description: Firefox page and site rooms using Nostr presence and WebRTC interaction
     platforms:
@@ -1916,6 +2047,26 @@ messaging_clients:
     notes: Grew out of bitchat; Marmot (MLS over Nostr) group DMs interoperable with White Noise, NIP-17 gift-wrapped mesh fallback, embedded Lightning wallet, geohash location channels over Nostr relays
 
 media_clients:
+  - name: Relay Radio
+    description: Read-only Nostr feed with browser speech
+    platforms:
+    - web
+    repo: https://github.com/2three1y/relayradio
+    maintainer: 2three1y
+    status: beta
+    priority: medium
+    notes: Renders public Nostr activity as earcons and browser text-to-speech without posting or paying.
+
+  - name: Dream Nests
+    description: Read-only Nostr audio-room directory
+    platforms:
+    - web
+    repo: https://github.com/2three1y/dreamnests
+    maintainer: 2three1y
+    status: beta
+    priority: medium
+    notes: Discovers Nests rooms and live activity, with HLS listening and links to room hosts.
+
   - name: Zap.stream
     description: Live streaming with Lightning zaps
     platforms: [ web, ios, android ]
@@ -2302,6 +2453,68 @@ shops:
     notes: NIP-05 verified (bot@giftcardshop.org), single-view reveal-link delivery; DM /menu to start
 
 devtools:
+  - name: "evil-napps"
+    repo: https://github.com/sandwichfarm/evil-napps
+    description: Hostile NAPP fixtures for testing signer and storage boundaries
+    status: beta
+    priority: medium
+
+  - name: "evil"
+    repo: https://github.com/napplet/evil
+    description: Hostile napplet fixtures for testing draft NIP-5D host boundaries
+    status: beta
+    priority: medium
+
+  - name: nostr2gh
+    description: Bridge Nostr git requests to GitHub pull requests
+    platforms:
+    - cli
+    repo: https://github.com/kravens/nostr2gh
+    maintainer: kravens
+    status: beta
+    priority: medium
+    notes: Relays signed NIP-34 patch, pull-request and update events through an allowed GitHub identity.
+
+  - name: nostr-doctor
+    description: Diagnostics for Nostr identities and relay lists
+    platforms:
+    - cli
+    repo: https://github.com/nogringo/nostr-doctor
+    maintainer: nogringo
+    status: beta
+    priority: medium
+    notes: Checks signed relay metadata and reports identity routing problems.
+
+  - name: agent-inbox
+    description: Nostr messaging inbox for agents
+    platforms:
+    - cli
+    repo: https://github.com/ec175/agent-inbox
+    maintainer: ec175
+    status: beta
+    priority: medium
+    notes: Exchanges NIP-17 messages and public NIP-78 board records.
+
+  - name: wn-notify
+    description: Command-line notifications for White Noise groups
+    platforms:
+    - cli
+    repo: https://github.com/jooray/wn-notify
+    maintainer: jooray
+    status: beta
+    priority: medium
+    notes: Uses a local wn-agent Unix socket for encrypted messages and file delivery.
+
+  - name: Nostr Scrutiny
+    description: Sourced fact sheets about Nostr clients
+    platforms:
+    - web
+    repo: https://github.com/rzazo24/nostr-scrutiny
+    maintainer: rzazo24
+    status: beta
+    priority: medium
+    notes: Compares app-store declarations, public code and dated browser observations.
+
   - name: HERDR White Noise Remote
     description: Linux HERDR plugin routing local agent sessions through White Noise
       groups
@@ -3644,6 +3857,27 @@ devtools:
     notes: Publishes per-epoch encrypted trees to Blossom and announces references on Nostr; supports Codex, Claude Code, Cursor, OpenCode, and pi session formats
 
 signers:
+  - name: wax
+    description: Nostr signing tool
+    platforms:
+    - cli
+    repo: https://github.com/modus-lisp/wax
+    maintainer: modus-lisp
+    status: beta
+    priority: medium
+    notes: Source provides Nostr event signing workflows.
+
+  - name: Cosign
+    description: Threshold signing library and Marble beta
+    platforms:
+    - android
+    - web
+    repo: https://github.com/sybenx/cosign
+    maintainer: sybenx
+    status: beta
+    priority: medium
+    notes: FROST shares split signing authority across devices, server and recovery material.
+
   - name: QRST Signer
     description: Android QR-based Nostr key transfer using the draft QRST protocol
     platforms:
@@ -4018,6 +4252,32 @@ signers:
     notes: Keyless companion app to the Heartwood hardware signing bridge; shares the forgesworn GitHub org with Bray
 
 relays:
+  - name: "obelisk-relay"
+    repo: https://github.com/obelisk-app/obelisk-relay
+    description: NIP-29 group relay
+    status: beta
+    priority: medium
+
+  - name: Nostr Indexer Relay
+    description: Indexer for Nostr relay-list discovery
+    platforms:
+    - server
+    repo: https://github.com/nogringo/nostr-indexer-relay
+    maintainer: nogringo
+    status: beta
+    priority: medium
+    notes: Indexes NIP-65 records and relay metadata for routing queries.
+
+  - name: Magnitude Relay
+    description: Nostr relay implementation
+    platforms:
+    - server
+    repo: https://github.com/VectorPrivacy/magnitude-relay
+    maintainer: VectorPrivacy
+    status: beta
+    priority: medium
+    notes: Implements relay event storage and querying with published benchmark harnesses.
+
   - name: nosfry
     description: Rust Nostr relay with native LMDB storage
     repo: https://github.com/qntx/nosfry
@@ -4621,6 +4881,48 @@ relays:
     priority: low
 
 libraries:
+  - name: "nostr-parse"
+    repo: https://github.com/VectorPrivacy/nostr-parse
+    description: Rust Nostr event and unsigned rumor parser
+    status: beta
+    priority: medium
+
+  - name: "nkip-0001"
+    repo: https://github.com/KYC-rip/nkip-0001
+    description: Deposit receipt toolkit with Nostr witnesses
+    status: beta
+    priority: medium
+
+  - name: "cinderous-sdk"
+    repo: https://github.com/VaalRL/cinderous-sdk
+    description: Experimental local-first document synchronization SDK using Nostr
+    status: beta
+    priority: medium
+
+  - name: FIPS Public PKI
+    description: Domain-bound certificates over Nostr and fips
+    platforms:
+    - cli
+    repo: https://github.com/fr34aky/fips-pub-pki
+    maintainer: fr34aky
+    status: beta
+    priority: medium
+    notes: Uses Nostr-published issuer claims and domain trust anchors for certificates.
+
+  - name: cordn-kmp
+    description: Kotlin Multiplatform Cordn group messaging
+    platforms:
+    - jvm
+    - android
+    - ios
+    - macos
+    - linux
+    repo: https://github.com/vitorpamplona/cordn-kmp
+    maintainer: vitorpamplona
+    status: beta
+    priority: medium
+    notes: Headless MLS group management uses an MCP coordinator over Nostr.
+
   - name: mls-kmp
     description: Kotlin Multiplatform MLS engine extracted from Amethyst Quartz
     platforms:
@@ -5295,6 +5597,28 @@ libraries:
     notes: Transport plumbing; Nostr-surface gate applies at triage; submitted via link queue 2026-07-16
 
 wallets:
+  - name: Nomisma
+    repo: https://github.com/Lwb89dev/nomisma
+    description: Shared expense ledger synchronized over Nostr
+    status: beta
+    priority: medium
+
+  - name: "cl-deposits"
+    repo: https://github.com/modus-lisp/cl-deposits
+    description: Common Lisp Bitcoin Deposits ledger implementation over Nostr
+    status: beta
+    priority: medium
+
+  - name: WhatZaps
+    description: Browser extension for Lightning payments from WhatsApp
+    platforms:
+    - chrome
+    repo: https://github.com/nostr-wot/whatsapp-zaps
+    maintainer: nostr-wot
+    status: beta
+    priority: medium
+    notes: Uses Nostr identity resolution and the Nostr WoT extension WebLN interface; no signed zap receipt claim.
+
   - name: Lumen
     description: Multiwallet client for Nostr Wallet Connect balances and payments
     platforms:

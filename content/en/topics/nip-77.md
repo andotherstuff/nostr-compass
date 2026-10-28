@@ -38,6 +38,7 @@ This is especially useful for:
 - [Amethyst PR #3747](https://github.com/vitorpamplona/amethyst/pull/3747) - closes a refusal-stalled reconciliation path
 
 **Mentioned in:**
+- [Newsletter #46: nosfry](/en/newsletters/2026-10-28-newsletter/#nosfry)
 - [Newsletter #45](/en/newsletters/2026-10-21-newsletter/#nostream)
 - [Newsletter #44: nostream reconciliation core](/en/newsletters/2026-10-14-newsletter/#nostream)
 - [Newsletter #43](/en/newsletters/2026-10-07-newsletter/#tagged-releases)

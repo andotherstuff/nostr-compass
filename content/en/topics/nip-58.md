@@ -104,6 +104,8 @@ Clients also have latitude in presentation. The spec explicitly allows them to s
 - [NIP-58 Specification](https://github.com/nostr-protocol/nips/blob/master/58.md)
 
 **Mentioned in:**
+
+- [Newsletter #46 (2026-10-28): zzub](/en/newsletters/2026-10-28-newsletter/#zzub)
 - [Newsletter #7: Five Years of Nostr Januarys](/en/newsletters/2026-01-28-newsletter/)
 - [Newsletter #12: Five Years of Nostr Februaries](/en/newsletters/2026-03-04-newsletter/)
 - [Newsletter #31: Vector v0.4.1 adds NIP-58 badges](/en/newsletters/2026-07-15-newsletter/#vector-v040-moves-group-chats-from-marmot-to-concord-and-amethyst-ships-its-own-concord-client-days-later)
