@@ -17,4 +17,6 @@ Primary source: the [NIP-AP specification](https://github.com/block/buzz/blob/ma
 
 ## Mentioned in
 
+- [Newsletter #46 (2026-10-28): buzz](/en/newsletters/2026-10-28-newsletter/#buzz)
+
 - [Newsletter 45](/en/newsletters/2026-10-21-newsletter/#buzz)

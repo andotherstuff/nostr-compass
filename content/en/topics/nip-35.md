@@ -17,5 +17,6 @@ The [current NIP-35 text](https://github.com/nostr-protocol/nips/blob/master/35.
 - [nostr-protocol/nips commit 48674e5 (2024 renumbering)](https://github.com/nostr-protocol/nips/commit/48674e563865b1cb7bb3c5c7869d20055446f408)
 
 ## Mentioned in
+- [Newsletter #46: Magnetar](/en/newsletters/2026-10-28-newsletter/#magnetar)
 
 - [Newsletter 45](/en/newsletters/2026-10-21-newsletter/#short-history)

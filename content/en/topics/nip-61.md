@@ -63,6 +63,7 @@ The kind 10019 advertisement is the social-layer trust gate. The sender chooses 
 - [Amethyst PR #3075](https://github.com/vitorpamplona/amethyst/pull/3075) - NIP-60 Cashu wallet and NIP-61 nutzap support
 
 **Mentioned in:**
+- [Newsletter #46: napplet-soy](/en/newsletters/2026-10-28-newsletter/#napplet-soy)
 - [Newsletter #27: Amethyst v1.12.0 ships Cashu wallets, nutzaps, a CLINK driver, and Tor self-heal](/en/newsletters/2026-06-17-newsletter/#amethyst-v1120-ships-cashu-wallets-nutzaps-a-clink-driver-and-tor-self-heal)
 
 **See also:**

@@ -47,6 +47,7 @@ Another practical distinction is stability. `note` points to one immutable event
 - [NIP-19 Specification](https://github.com/nostr-protocol/nips/blob/master/19.md)
 
 **Mentioned in:**
+- [Newsletter #46: Zap Cooking guarded lists, signer fixes and passkey signup](/en/newsletters/2026-10-28-newsletter/#zap-cooking-guarded-lists-signer-fixes-and-passkey-signup)
 - [Newsletter #45](/en/newsletters/2026-10-21-newsletter/#formstr-drive)
 - [Newsletter #39: URI dispatch and NIP-19 semantics](/en/newsletters/2026-09-09-newsletter/#uri-dispatch-and-nip-19-semantics)
 - [Newsletter #1: NIP Deep Dive](/en/newsletters/2025-12-17-newsletter/#nip-19-bech32-encoded-identifiers)

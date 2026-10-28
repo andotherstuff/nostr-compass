@@ -59,6 +59,7 @@ Most major clients support NIP-05 verification:
 - [Cordn repository](https://github.com/Cordn-msg/cordn-web) - Android onboarding and NIP-05 profile links
 
 **Mentioned in:**
+- [Newsletter #46: Emanator](/en/newsletters/2026-10-28-newsletter/#emanator)
 - [Newsletter #45](/en/newsletters/2026-10-21-newsletter/#zeus)
 - [Newsletter #43: NIP-05 and NIP-24](/en/newsletters/2026-10-07-newsletter/#nip-deep-dive-nip-05-and-nip-24)
 - [Newsletter #43](/en/newsletters/2026-10-07-newsletter/#new-projects)

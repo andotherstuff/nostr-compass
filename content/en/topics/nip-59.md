@@ -45,6 +45,7 @@ Relays may choose not to store wrapped events for long because they are not publ
 - [PR #2399](https://github.com/nostr-protocol/nips/pull/2399) - proposal to reject standalone seals
 
 **Mentioned in:**
+- [Newsletter #46: October 2025: Collaboration Updates and Private-Message Metadata](/en/newsletters/2026-10-28-newsletter/#october-2025-collaboration-updates-and-private-message-metadata)
 - [Newsletter #45](/en/newsletters/2026-10-21-newsletter/#nomisma)
 - [Newsletter #44](/en/newsletters/2026-10-14-newsletter/#mdk)
 - [Newsletter #43](/en/newsletters/2026-10-07-newsletter/#tagged-releases)

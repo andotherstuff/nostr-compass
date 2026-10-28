@@ -104,6 +104,7 @@ NIP-34 splits discovery from transport. The repository data can still live on or
 - [GitWorkshop July 27 release](https://primal.net/e/869e01f9a74d98f468a66f3b83865d198a82cc718c1db36324398b1b88a17c60) - maintainer coordination and independent repository synchronization
 
 **Mentioned in:**
+- [Newsletter #46: napplet-soy](/en/newsletters/2026-10-28-newsletter/#napplet-soy)
 - [Newsletter #45](/en/newsletters/2026-10-21-newsletter/#amethyst)
 - [Newsletter #43: soyLI](/en/newsletters/2026-10-07-newsletter/#soyli)
 - [Newsletter #43: New Projects](/en/newsletters/2026-10-07-newsletter/#new-projects)

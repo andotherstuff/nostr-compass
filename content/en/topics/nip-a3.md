@@ -28,6 +28,7 @@ The event declares destinations, not a completed payment or a Nostr zap. Clients
 - [RFC 8905: The payto URI Scheme](https://www.rfc-editor.org/rfc/rfc8905.html)
 
 **Mentioned in:**
+- [Newsletter #46: xmradar](/en/newsletters/2026-10-28-newsletter/#xmradar)
 - [Newsletter #39: NIP-A3 payment targets reach three clients](/en/newsletters/2026-09-09-newsletter/#nip-a3-payment-targets-reach-three-clients)
 
 - [Newsletter #40: NIP-A3 payment-type clarification merges](/en/newsletters/2026-09-16-newsletter/#nip-a3-clarifies-payment-type-ambiguity)

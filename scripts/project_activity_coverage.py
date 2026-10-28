@@ -16,6 +16,7 @@ import json
 import re
 from pathlib import Path
 from typing import Any
+from urllib.parse import urlsplit
 
 HARD_GATES = ("primary_evidence", "in_window_progress", "nostr_surface", "continuity_delta")
 SCORE_AXES = ("nostr_significance", "user_operator_impact", "novelty", "evidence_maturity", "explanatory_value")
@@ -63,6 +64,7 @@ def inventory(updates: dict[str, Any], updates_sha256: str) -> dict[str, Any]:
             title = str(pr.get("title") or "")
             prs.append({
                 "number": number,
+                "source_record_sha256": hashlib.sha256(json.dumps(pr, sort_keys=True, separators=(",", ":"), ensure_ascii=False).encode()).hexdigest(),
                 "title": title,
                 "url": url,
                 "merged_at": merged_at,
@@ -138,6 +140,33 @@ def validate(
         errors.append(f"untriaged merged-PR project: {repo}")
     for repo in sorted(set(actual) - set(expected)):
         errors.append(f"activity decision has no source project: {repo}")
+    # Alias folds preserve both raw inventory rows and their source hash binding.
+    # They only exempt citations already selected by the canonical included row.
+    folds: dict[str, set[str]] = {}
+    for repo, decision in actual.items():
+        target = decision.get("fold_into")
+        if target is None:
+            continue
+        canonical = actual.get(target) if isinstance(target, str) else None
+        alias_row, canonical_row = expected.get(repo), expected.get(target) if isinstance(target, str) else None
+        valid = (decision.get("verdict") == "skip" and target != repo
+                 and canonical is not None and canonical.get("verdict") == "include"
+                 and canonical.get("fold_into") is None and alias_row is not None and canonical_row is not None)
+        alias_prs = alias_row["prs"] if alias_row else []
+        canonical_prs = {pr["url"]: pr for pr in canonical_row["prs"]} if canonical_row else {}
+        for pr in alias_prs:
+            other = canonical_prs.get(pr["url"], {})
+            parsed = urlsplit(pr["url"])
+            # GH inventory keys omit the host; non-GH keys retain it.
+            identity = parsed.path.strip("/").split("/")[:2]
+            canonical_key = "/".join(identity) if parsed.netloc == "github.com" else parsed.netloc + "/" + "/".join(identity)
+            digest = pr.get("source_record_sha256")
+            valid = valid and canonical_key == target and isinstance(digest, str) and len(digest) == 64 and digest == other.get("source_record_sha256")
+        if not valid or not alias_prs:
+            errors.append(f"{repo}: alias fold needs exact duplicate source records in a canonical included project")
+        else:
+            selected = canonical.get("selected_pr_urls", [])
+            folds[repo] = set(selected) if isinstance(selected, list) and all(isinstance(url, str) for url in selected) else set()
     for repo in sorted(set(actual) & set(expected)):
         row, decision = expected[repo], actual[repo]
         urls = {pr["url"] for pr in row["prs"]}
@@ -185,7 +214,7 @@ def validate(
         else:
             if qualified or selected:
                 errors.append(f"{repo}: qualifying or selected PR activity was skipped")
-            if draft is not None and any(url in draft for url in urls):
+            if draft is not None and any(url in draft and url not in folds.get(repo, set()) for url in urls):
                 errors.append(f"{repo}: skipped PR activity is cited in the draft")
     return errors
 

@@ -31,6 +31,7 @@ A long-form event uses kind `30023` with a `d` tag as a unique identifier, allow
 - [NIP-23 specification](https://github.com/nostr-protocol/nips/blob/master/23.md)
 
 **Mentioned in:**
+- [Newsletter #46: xmradar](/en/newsletters/2026-10-28-newsletter/#xmradar)
 - [Newsletter #38: Voca 1.0 reads verified Nostr notes and subscriptions aloud on Android](/en/newsletters/2026-09-02-newsletter/#voca-10-reads-verified-nostr-notes-and-subscriptions-aloud-on-android)
 
 - [Newsletter #40: NIP-23 long-form content deep dive](/en/newsletters/2026-09-16-newsletter/#nip-23-long-form-content)

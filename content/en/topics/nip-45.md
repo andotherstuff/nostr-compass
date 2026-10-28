@@ -59,6 +59,7 @@ Follower counts, reaction counts, and reply counts are the main use cases. Witho
 - [nostream PR #522](https://github.com/Cameri/nostream/pull/522) - NIP-45 COUNT support
 
 **Mentioned in:**
+- [Newsletter #46: nosfry](/en/newsletters/2026-10-28-newsletter/#nosfry)
 - [Newsletter #9: NIP Deep Dive](/en/newsletters/2026-02-11-newsletter/#nip-deep-dive-nip-45-event-counting-and-hyperloglog)
 - [Newsletter #9: NIP Updates](/en/newsletters/2026-02-11-newsletter/#nip-updates)
 - [Newsletter #12: Five Years of Nostr Februaries](/en/newsletters/2026-03-04-newsletter/)

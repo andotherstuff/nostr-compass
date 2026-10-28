@@ -53,7 +53,8 @@ MDK landed [PR #261](https://github.com/marmot-protocol/mdk/pull/261) to compute
 - [Amethyst PR #2435](https://github.com/vitorpamplona/amethyst/pull/2435) - MIP-00 KeyPackage Relay List
 - [Amethyst PR #2488](https://github.com/vitorpamplona/amethyst/pull/2488) - Amy CLI
 
-**Mentioned in:** [Newsletter 45](/en/newsletters/2026-10-21-newsletter/#amethyst),
+**Mentioned in:**
+- [Newsletter #46: Marmot adopts multiple devices per account](/en/newsletters/2026-10-28-newsletter/#marmot-adopts-multiple-devices-per-account) [Newsletter 45](/en/newsletters/2026-10-21-newsletter/#amethyst),
 - [Newsletter #44](/en/newsletters/2026-10-14-newsletter/#mdk)
 - [Newsletter #1: News](/en/newsletters/2025-12-17-newsletter/#news)
 - [Newsletter #1: Releases](/en/newsletters/2025-12-17-newsletter/#releases)

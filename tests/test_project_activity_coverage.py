@@ -1,3 +1,4 @@
+import copy
 import hashlib
 import importlib.util
 import json
@@ -112,6 +113,73 @@ class ProjectActivityCoverageTests(unittest.TestCase):
         activity, decisions = self.fixture()
         draft = pr(741, "", "")["url"] + " " + pr(5, "", "", "example/boring")["url"]
         self.assertTrue(any("skipped PR activity is cited" in error for error in coverage.validate(activity, decisions, draft)))
+
+    def alias_fixture(self):
+        activity, decisions = self.fixture()
+        canonical = next(row for row in activity["projects"] if row["repo"] == "cameri/nostream")
+        alias = copy.deepcopy(canonical)
+        alias["repo"] = "old/alias"
+        activity["projects"].append(alias)
+        alias_decision = copy.deepcopy(next(row for row in decisions["projects"] if row["repo"] == "example/boring"))
+        alias_decision.update(repo="old/alias", reviewed_pr_urls=[pr["url"] for pr in alias["prs"]],
+                              primary_sources=[alias["prs"][0]["url"]], fold_into="cameri/nostream")
+        decisions["projects"].append(alias_decision)
+        return activity, decisions, pr(741, "", "")["url"]
+
+    def test_exact_alias_fold_preserves_inventory_and_hash_binding(self):
+        activity, decisions, draft = self.alias_fixture()
+        before = copy.deepcopy(activity)
+        self.assertEqual(coverage.validate(activity, decisions, draft), [])
+        self.assertEqual(activity, before)
+        decisions["updates_sha256"] = "changed"
+        self.assertTrue(any("not bound to the exact" in e for e in coverage.validate(activity, decisions, draft)))
+
+    def test_alias_fold_is_explicit_and_does_not_exempt_unselected_citation(self):
+        activity, decisions, draft = self.alias_fixture()
+        alias = decisions["projects"][-1]
+        del alias["fold_into"]
+        self.assertTrue(any("skipped PR activity is cited" in e for e in coverage.validate(activity, decisions, draft)))
+        alias["fold_into"] = "cameri/nostream"
+        draft += " " + pr(783, "", "")["url"]
+        self.assertTrue(any("skipped PR activity is cited" in e for e in coverage.validate(activity, decisions, draft)))
+
+    def test_alias_rejects_changed_source_missing_target_and_chains(self):
+        for mutation in ["changed_record", "missing_digest", "missing_target", "chain", "noncanonical", "target_skip", "incomplete", "self_cycle"]:
+            with self.subTest(mutation=mutation):
+                activity, decisions, draft = self.alias_fixture()
+                alias = decisions["projects"][-1]
+                target = decisions["projects"][0]
+                if mutation == "changed_record": activity["projects"][-1]["prs"][0]["source_record_sha256"] = "a" * 64
+                if mutation == "missing_digest": del activity["projects"][-1]["prs"][0]["source_record_sha256"]
+                if mutation == "incomplete": activity["projects"][-1]["prs"][0]["url"] += "-not-in-canonical"
+                if mutation == "self_cycle": alias["fold_into"] = "old/alias"
+                if mutation == "missing_target": alias["fold_into"] = "absent/repo"
+                if mutation == "chain": target["fold_into"] = "old/alias"
+                if mutation == "target_skip": target["verdict"] = "skip"
+                if mutation == "noncanonical":
+                    target["repo"] = "other/name"
+                    activity["projects"][0]["repo"] = "other/name"
+                    alias["fold_into"] = "other/name"
+                self.assertTrue(any("alias fold needs exact" in e for e in coverage.validate(activity, decisions, draft)))
+
+    def test_alias_does_not_bypass_canonical_source_and_branch_gates(self):
+        for mutation in ["gate", "branch"]:
+            with self.subTest(mutation=mutation):
+                activity, decisions, draft = self.alias_fixture()
+                canonical = decisions["projects"][0]
+                if mutation == "gate": canonical["hard_gate"]["in_window_progress"] = False
+                else: canonical["branch_checks"] = []
+                expected = ("cameri/nostream: included progress must pass all gates" if mutation == "gate"
+                            else "lacks live branch verification")
+                self.assertTrue(any(expected in error for error in coverage.validate(activity, decisions, draft)))
+
+    def test_source_digest_covers_full_record_not_only_inventory_fields(self):
+        one = {"projects": {"cameri/nostream": {"merged_prs": [pr(1, "same", "2026-10-01")]}}}
+        two = copy.deepcopy(one)
+        two["projects"]["cameri/nostream"]["merged_prs"][0]["body"] = "different material source"
+        first = coverage.inventory(one, "a")["projects"][0]["prs"][0]["source_record_sha256"]
+        second = coverage.inventory(two, "b")["projects"][0]["prs"][0]["source_record_sha256"]
+        self.assertNotEqual(first, second)
 
     def test_cli_template_refuses_overwrite_and_exact_source_change_fails(self):
         with tempfile.TemporaryDirectory() as td:

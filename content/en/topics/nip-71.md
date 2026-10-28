@@ -75,6 +75,7 @@ Kinds 21 and 22 still matter for applications that want an immutable publication
 - [PR #1669](https://github.com/nostr-protocol/nips/pull/1669) - Addressable video events update
 
 **Mentioned in:**
+- [Newsletter #46: October 2024: Media Alternatives and Portable Ecash](/en/newsletters/2026-10-28-newsletter/#october-2024-media-alternatives-and-portable-ecash)
 - [Newsletter #41: NIP Deep Dive](/en/newsletters/2026-09-23-newsletter/#nip-deep-dive-custom-emoji-and-video-events)
 - [Newsletter #5: NIP Updates](/en/newsletters/2026-01-13-newsletter/#nip-updates)
 - [Newsletter #12: NoorNote](/en/newsletters/2026-03-04-newsletter/)
