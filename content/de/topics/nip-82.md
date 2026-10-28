@@ -1,50 +1,48 @@
 ---
-title: "NIP-82: Software-Anwendungen"
+title: "Vorgeschlagener NIP-82 (nicht vergeben): Katalog für Softwareanwendungen"
 date: 2026-06-17
-draft: false
+lastmod: 2026-10-28
 translationOf: /en/topics/nip-82.md
-translationDate: 2026-07-01
+translationDate: 2026-10-28
+draft: false
 categories:
-  - Discovery
+  - Proposals
   - Apps
 ---
 
-NIP-82 definiert ein Software-Anwendungs-event, damit Nostr-Clients Anwendungen (Android-APKs, iOS-Apps, Web-Apps, Desktop-Binärdateien) als erstklassige Objekte in Feeds und Entdeckungsoberflächen darstellen können. Die Spezifikation ersetzt den älteren Ansatz, Apps über generische kind 1-Notizen oder [NIP-89](/de/topics/nip-89/)-Handler-Empfehlungen zu beschreiben, durch ein dediziertes, strukturiertes event, das Anwendungsmetadaten, Screenshots, Repository-Links und die Autorenidentität enthält.
+Der auf dieser Seite beschriebene Katalog für Softwareanwendungen ist ein Vorschlag, der derzeit geprüft wird. Er ist kein akzeptierter NIP. Er befindet sich in [nostr-protocol/nips Pull Request #2526](https://github.com/nostr-protocol/nips/pull/2526) mit dem Titel „Zapstore spec“. Zum Zeitpunkt der letzten Aktualisierung dieser Seite ist dieser Pull Request offen und nicht gemergt, und der offizielle master-Branch der NIPs enthält keine Datei `82.md`. „NIP-82“ ist die Bezeichnung, die der Vorschlag für sich selbst verwendet. Es ist keine offizielle NIP-Nummer. Event-kinds, Tags und Verhalten können sich vor einem etwaigen Merge ändern. Laut dem Pull Request löst er den früheren [Pull Request #1336](https://github.com/nostr-protocol/nips/pull/1336) ab.
 
-## Wie es funktioniert
+## Vorgeschlagene Event-kinds
 
-Eine NIP-82-Software-Anwendung ist ein einzelnes ersetzbares event, das durch den Autoren-pubkey und einen `d`-tag adressiert wird. Das event enthält:
+Der Entwurf unterteilt einen Softwarekatalog in mehrere Arten von Events:
 
-- `name`-, `description`-, `icon`-, `image`-tags für die Anzeige
-- `repository`- und `web`-tags für Quellcode- und Homepage-URLs
-- `platforms`-tag, das unterstützte Ziele auflistet (android, ios, web, linux, macos, windows)
-- `download`-tags für jede plattformspezifische Binärdatei oder Web-URL
-- `screenshots`-tags mit Bild-URLs für die Anwendungs-Screenshots
-- `t`-Themen-tags zur Kategorisierung
-- `version`-tag für die aktuelle veröffentlichte Version
+- **Kind 32267, Anwendung:** ein adressierbares Event, das eine App beschreibt.
+- **Kind 30063, Release:** ein adressierbares Event für eine Version dieser App. Es verweist auf die Assets dieser Version.
+- **Kind 3063, Asset:** ein reguläres Event, das eine herunterladbare Datei beschreibt.
+- **Kind 30267, Kuratierung:** eine adressierbare Liste, die ein Kurator veröffentlicht, um Apps zu gruppieren oder zu empfehlen.
+- **Kind 30509, Verknüpfung mit Signaturzertifikat:** ein adressierbares Event, das ein X.509-Zertifikat, etwa ein APK-Signaturzertifikat, mit dem Nostr-Schlüssel verknüpft, der Software veröffentlicht, damit Clients wissen, welche Zertifikate dieser Herausgeber kontrolliert. Sein `d`-Tag ist der SHA-256-Hash des DER-kodierten Zertifikats. Es trägt eine mit dem privaten Schlüssel des Zertifikats erstellte Signatur sowie ein Ablaufdatum als Unix-Zeitstempel und kann die Verknüpfung optional als widerrufen kennzeichnen.
+- **Kind 10067, Relay-Liste:** eine ersetzbare Liste von Relays, auf denen Katalog-Events zu finden sind.
 
-Ein Client, der einen NIP-82-Feed durchsucht, kann die Anwendungskarte anzeigen, auf das kanonische Repository verlinken und Screenshots zeigen, ohne auf das Scrapen eines Nostr-Langform-Beitrags oder eines Drittanbieter-App-Stores zurückgreifen zu müssen. Der Autoren-pubkey ist die Wahrheitsquelle für die Anwendung, sodass ein Client verifizieren kann, dass der Herausgeber mit der erwarteten Entwickleridentität übereinstimmt, bevor er einen Download-Link bewirbt.
+## Plattform, Integrität und Gültigkeit
 
-## Feed-Semantik
+Asset-Events tragen Plattform- und Laufzeitkennungen, sodass ein Client nur die Dateien anzeigen kann, die zu einem Gerät passen. Jedes Asset trägt außerdem einen Datei-Hash. Ein Client kann damit prüfen, ob die heruntergeladenen Bytes dem entsprechen, was der Herausgeber signiert hat. Für Android-Pakete enthält der Entwurf den Fingerabdruck des Signaturzertifikats. Ein Installer kann ihn mit dem Zertifikat einer bereits installierten App vergleichen, bevor er ein Update anbietet. Vor der Installation eines Android-Pakets SOLLTEN Clients das Event der kind 30509 anhand des Zertifikat-Hashes abrufen. Sie sollten dessen Zertifikatssignatur gegen das im APK eingebettete Zertifikat und gegen den Herausgeber des Assets verifizieren und prüfen, dass der Nachweis weder abgelaufen ist noch widerrufen wurde.
 
-NIP-82-events sind adressierbar, sodass jede Anwendung ein kanonisches ersetzbares event pro Autor hat. Ein Entwickler, der eine neue Version veröffentlicht, ersetzt das vorherige event an Ort und Stelle, und Abonnenten sehen das Update, ohne den event-Verlauf verwalten zu müssen. Clients, die ein Änderungsprotokoll wünschen, können das adressierbare event abonnieren und Versionswechsel als Aktivität auf der Anwendungsoberfläche darstellen.
+## Grenzen des Vertrauens
 
-Die Spezifikation ergänzt [NIP-89](/de/topics/nip-89/) (Application Handlers): Ein NIP-82-event beschreibt die Anwendung als Artefakt, während ein NIP-89-event beschreibt, dass die Anwendung bestimmte event-kinds verarbeiten kann. Clients können eines ohne das andere verwenden, aber das Paar bietet eine Entdeckungsoberfläche (NIP-82) und eine Delegationsoberfläche (NIP-89), die zusammenarbeiten.
+Eine gültige Signatur zeigt nur, dass ein bestimmter Schlüssel ein Event veröffentlicht hat. Sie beweist weder, dass der Schlüssel dem echten Entwickler gehört, noch dass die Software sicher ist oder dass der Liste eines Kurators vertraut werden kann. Der Vorschlag gibt keine Garantie hinsichtlich beliebiger Herausgeber. Clients und Nutzer müssen entscheiden, auf welche Schlüssel von Herausgebern und Kuratoren sie sich verlassen. Diese Seite behauptet weder ein Sicherheitsaudit noch Interoperabilität im Produktivbetrieb.
 
-## Implementierungen
+## Verhältnis zu NIP-89
 
-- [Amethyst v1.12.0](https://github.com/vitorpamplona/amethyst/releases/tag/v1.12.0) liefert einen dedizierten NIP-82-Software-Anwendungs-Feed mit Detailbildschirm, Autoreninformationen und Screenshots ([PR #3036](https://github.com/vitorpamplona/amethyst/pull/3036), [PR #3078](https://github.com/vitorpamplona/amethyst/pull/3078), [PR #3200](https://github.com/vitorpamplona/amethyst/pull/3200))
+Handler-Events nach [NIP-89](/de/topics/nip-89/) geben bekannt, welche Anwendungen welche Event-kinds verarbeiten können. Dieser Vorschlag beschreibt die Software-Artefakte und wo man sie bezieht, sodass beide getrennte Belange abdecken.
 
 ---
 
 **Primärquellen:**
-- [NIP-82-Spezifikation](https://github.com/nostr-protocol/nips/blob/master/82.md)
-- [Amethyst PR #3036](https://github.com/vitorpamplona/amethyst/pull/3036) - NIP-82-Software-Anwendungs-Unterstützung mit dediziertem Feed hinzugefügt
-- [Amethyst PR #3078](https://github.com/vitorpamplona/amethyst/pull/3078) - Dedizierten NIP-82-Software-App-Detailbildschirm hinzugefügt
-- [Amethyst PR #3200](https://github.com/vitorpamplona/amethyst/pull/3200) - NIP-82-Software-App-UI mit Autoreninformationen und Screenshots verbessert
+- [nostr-protocol/nips PR #2526: Zapstore spec](https://github.com/nostr-protocol/nips/pull/2526) (offen, nicht gemergt; löst [PR #1336](https://github.com/nostr-protocol/nips/pull/1336) ab)
 
 **Erwähnt in:**
-- [Newsletter #27: Amethyst v1.12.0 liefert Cashu-Wallets, nutzaps, einen CLINK-Treiber und Tor-Selbstheilung](/de/newsletters/2026-06-17-newsletter/#amethyst-v1120-ships-cashu-wallets-nutzaps-a-clink-driver-and-tor-self-heal)
+- [Newsletter #27: Berichterstattung zum Release von Amethyst v1.12.0 (historische Referenz)](/en/newsletters/2026-06-17-newsletter/#amethyst-v1120-ships-cashu-wallets-nutzaps-a-clink-driver-and-tor-self-heal)
+- [Newsletter #46: Katalog für Softwareanwendungen als NIP-82 vorgeschlagen](/de/newsletters/2026-10-28-newsletter/#software-application-catalog-proposed-as-nip-82)
 
 **Siehe auch:**
-- [NIP-89: Application Handlers](/de/topics/nip-89/)
+- [NIP-89: Anwendungs-Handler](/de/topics/nip-89/)

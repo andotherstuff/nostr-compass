@@ -1,50 +1,48 @@
 ---
-title: "NIP-82: Software-applicaties"
+title: "Voorgestelde NIP-82 (niet toegekend): catalogus van softwaretoepassingen"
 date: 2026-06-17
+lastmod: 2026-10-28
+translationOf: /en/topics/nip-82.md
+translationDate: 2026-10-28
 draft: false
 categories:
-  - Discovery
+  - Proposals
   - Apps
-translationOf: /en/topics/nip-82.md
-translationDate: 2026-07-01
 ---
 
-NIP-82 definieert een software-applicatie-event zodat Nostr-clients applicaties (Android APK's, iOS-apps, web-apps, desktop-binaries) kunnen weergeven als first-class objecten in feeds en discovery-oppervlakken. De specificatie vervangt de oudere aanpak waarbij apps werden beschreven via generieke kind 1-notes of [NIP-89](/nl/topics/nip-89/) handler-aanbevelingen door een specifiek, gestructureerd event dat applicatiemetadata, screenshots, repositorylinks en auteursidentiteit meedraagt.
+De catalogus van softwaretoepassingen die op deze pagina wordt beschreven, is een voorstel dat nog wordt beoordeeld. Een geaccepteerde NIP is het niet. Het voorstel staat in [pull request #2526 van nostr-protocol/nips](https://github.com/nostr-protocol/nips/pull/2526), met de titel „Zapstore spec”. Op het moment van de laatste update van deze pagina is die pull request open en niet gemerged, en bevat de officiële master-branch van de NIPs geen bestand `82.md`. „NIP-82” is het label dat het voorstel voor zichzelf gebruikt. Het is geen officieel NIP-nummer. Event-kinds, tags en gedrag kunnen vóór een eventuele merge nog veranderen. Volgens de pull request vervangt deze de eerdere [pull request #1336](https://github.com/nostr-protocol/nips/pull/1336).
 
-## Hoe het werkt
+## Voorgestelde event-kinds
 
-Een NIP-82 software-applicatie is een enkel vervangbaar event dat wordt geadresseerd door de auteurs-pubkey en een `d`-tag. Het event bevat:
+Het concept verdeelt een softwarecatalogus over verschillende soorten events:
 
-- `name`-, `description`-, `icon`- en `image`-tags voor weergave
-- `repository`- en `web`-tags voor bron- en homepage-URL's
-- Een `platforms`-tag die de ondersteunde targets opsomt (android, ios, web, linux, macos, windows)
-- `download`-tags voor elke platformspecifieke binary of web-URL
-- `screenshots`-tags die afbeeldings-URL's van de applicatie-screenshots bevatten
-- `t`-onderwerptags voor categorisatie
-- Een `version`-tag voor de huidige gepubliceerde versie
+- **Kind 32267, applicatie:** een adresseerbaar event dat een app beschrijft.
+- **Kind 30063, release:** een adresseerbaar event voor één versie van die app. Het verwijst naar de assets van die versie.
+- **Kind 3063, asset:** een gewoon event dat één downloadbaar bestand beschrijft.
+- **Kind 30267, curatie:** een adresseerbare lijst die een curator publiceert om apps te groeperen of aan te bevelen.
+- **Kind 30509, koppeling van ondertekeningscertificaat:** een adresseerbaar event dat een X.509-certificaat, zoals een APK-ondertekeningscertificaat, koppelt aan de Nostr-sleutel die software publiceert, zodat clients weten welke certificaten die publisher beheert. De tag `d` ervan is de SHA-256-hash van het DER-gecodeerde certificaat. Het event bevat een handtekening die met de privésleutel van het certificaat is gemaakt en een vervaltijd als Unix-tijdstempel, en kan de koppeling optioneel als ingetrokken markeren.
+- **Kind 10067, relaylijst:** een vervangbare lijst van relays waar catalogus-events te vinden zijn.
 
-Een client die door een NIP-82-feed bladert, kan de applicatiekaart tonen, linken naar de canonieke repository en screenshots naar voren brengen zonder terug te vallen op het scrapen van een Nostr long-form post of een externe app-store. De auteurs-pubkey is de bron van waarheid voor de applicatie, zodat een client kan verifiëren dat de uitgever overeenkomt met de verwachte ontwikkelaarsidentiteit voordat een downloadlink wordt gepromoot.
+## Platform, integriteit en geldigheid
 
-## Feed-semantiek
+Asset-events bevatten platform- en runtime-identificatoren, zodat een client alleen de bestanden kan tonen die bij een apparaat passen. Daarnaast bevat elk asset een bestandshash. Daarmee kan een client controleren of de gedownloade bytes overeenkomen met wat de publisher heeft ondertekend. Voor Android-pakketten neemt het concept de vingerafdruk van het ondertekeningscertificaat op. Een installer kan die vergelijken met het certificaat van een al geïnstalleerde app voordat hij een update aanbiedt. Voordat ze een Android-pakket installeren, horen clients (SHOULD) het event van kind 30509 op te halen aan de hand van de certificaathash. Ze horen de certificaathandtekening ervan te verifiëren tegen het in de APK ingebedde certificaat en tegen de publisher van het asset, en te controleren dat het bewijs niet verlopen of ingetrokken is.
 
-NIP-82-events zijn adresseerbaar, dus elke applicatie heeft één canoniek vervangbaar event per auteur. Een ontwikkelaar die een nieuwe versie publiceert, vervangt het vorige event ter plekke, en abonnees zien de update zonder event-geschiedenis te hoeven beheren. Clients die een changelog willen tonen, kunnen zich abonneren op het adresseerbare event en versie-updates weergeven als activiteit op het applicatie-oppervlak.
+## Grenzen van vertrouwen
 
-De specificatie sluit aan bij [NIP-89](/nl/topics/nip-89/) (Application Handlers): een NIP-82-event beschrijft de applicatie als een artefact, terwijl een NIP-89-event beschrijft dat de applicatie specifieke event-kinds kan verwerken. Clients kunnen het ene zonder het andere gebruiken, maar het paar biedt een discovery-oppervlak (NIP-82) en een delegatie-oppervlak (NIP-89) die samen werken.
+Een geldige handtekening toont alleen aan dat een bepaalde sleutel een event heeft gepubliceerd. Ze bewijst niet dat de sleutel van de echte ontwikkelaar is, dat de software veilig is of dat de lijst van een curator te vertrouwen is. Over willekeurige publishers geeft het voorstel geen enkele garantie. Op welke publisher- en curatorsleutels ze vertrouwen, moeten clients en gebruikers zelf beslissen. Deze pagina claimt geen beveiligingsaudit en geen interoperabiliteit in productie.
 
-## Implementaties
+## Verhouding tot NIP-89
 
-- [Amethyst v1.12.0](https://github.com/vitorpamplona/amethyst/releases/tag/v1.12.0) levert een speciale NIP-82 software-applicatiefeed met een detailscherm, auteursinformatie en screenshots ([PR #3036](https://github.com/vitorpamplona/amethyst/pull/3036), [PR #3078](https://github.com/vitorpamplona/amethyst/pull/3078), [PR #3200](https://github.com/vitorpamplona/amethyst/pull/3200))
+Handler-events uit [NIP-89](/nl/topics/nip-89/) maken bekend welke applicaties welke event-kinds kunnen afhandelen. Dit voorstel beschrijft de softwareartefacten en waar je ze kunt verkrijgen, dus de twee behandelen afzonderlijke kwesties.
 
 ---
 
 **Primaire bronnen:**
-- [NIP-82 Specificatie](https://github.com/nostr-protocol/nips/blob/master/82.md)
-- [Amethyst PR #3036](https://github.com/vitorpamplona/amethyst/pull/3036) - Ondersteuning voor NIP-82 software-applicaties toegevoegd met een speciale feed
-- [Amethyst PR #3078](https://github.com/vitorpamplona/amethyst/pull/3078) - Speciaal detailscherm voor NIP-82 software-apps toegevoegd
-- [Amethyst PR #3200](https://github.com/vitorpamplona/amethyst/pull/3200) - NIP-82 software-app-UI verbeterd met auteursinformatie en screenshots
+- [nostr-protocol/nips PR #2526: Zapstore spec](https://github.com/nostr-protocol/nips/pull/2526) (open, niet gemerged; vervangt [PR #1336](https://github.com/nostr-protocol/nips/pull/1336))
 
-**Genoemd in:**
-- [Newsletter #27: Amethyst v1.12.0 ships Cashu wallets, nutzaps, a CLINK driver, and Tor self-heal](/nl/newsletters/2026-06-17-newsletter/#amethyst-v1120-ships-cashu-wallets-nutzaps-a-clink-driver-and-tor-self-heal)
+**Vermeld in:**
+- [Nieuwsbrief #27: verslag van de release van Amethyst v1.12.0 (historische referentie)](/en/newsletters/2026-06-17-newsletter/#amethyst-v1120-ships-cashu-wallets-nutzaps-a-clink-driver-and-tor-self-heal)
+- [Nieuwsbrief #46: catalogus van softwaretoepassingen voorgesteld als NIP-82](/nl/newsletters/2026-10-28-newsletter/#software-application-catalog-proposed-as-nip-82)
 
 **Zie ook:**
-- [NIP-89: Application Handlers](/nl/topics/nip-89/)
+- [NIP-89: applicatiehandlers](/nl/topics/nip-89/)

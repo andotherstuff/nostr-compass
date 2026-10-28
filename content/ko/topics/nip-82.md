@@ -1,50 +1,48 @@
 ---
-title: "NIP-82: 소프트웨어 애플리케이션"
+title: "제안된 NIP-82(미할당): 소프트웨어 애플리케이션 카탈로그"
 date: 2026-06-17
-draft: false
+lastmod: 2026-10-28
 translationOf: /en/topics/nip-82.md
-translationDate: 2026-07-01
+translationDate: 2026-10-28
+draft: false
 categories:
-  - Discovery
+  - Proposals
   - Apps
 ---
 
-NIP-82는 Nostr 클라이언트가 애플리케이션 (Android APK, iOS 앱, 웹 앱, 데스크톱 바이너리)을 피드와 발견 표면에서 일급 객체로 렌더링할 수 있도록 소프트웨어 애플리케이션 이벤트를 정의한다. 이 spec은 일반 kind 1 노트나 [NIP-89](/ko/topics/nip-89/) 핸들러 추천을 통해 앱을 설명하는 이전 접근 방식을, 애플리케이션 메타데이터, 스크린샷, 저장소 링크 및 저자 신원을 담는 전용의 구조화된 이벤트로 대체한다.
+이 페이지에서 설명하는 소프트웨어 애플리케이션 카탈로그는 검토 중인 제안입니다. 승인된 NIP가 아닙니다. 이 제안은 "Zapstore spec"이라는 제목의 [nostr-protocol/nips 풀 리퀘스트 #2526](https://github.com/nostr-protocol/nips/pull/2526)에 있습니다. 이 페이지의 마지막 업데이트 시점 기준으로 해당 풀 리퀘스트는 열려 있고 병합되지 않았으며, 공식 NIPs master 브랜치에는 `82.md` 파일이 없습니다. "NIP-82"는 이 제안이 스스로 붙인 명칭입니다. 공식 NIP 번호가 아닙니다. 병합이 이루어지기 전에 event kind, tag, 동작이 바뀔 수 있습니다. 해당 풀 리퀘스트는 이전의 [풀 리퀘스트 #1336](https://github.com/nostr-protocol/nips/pull/1336)을 대체한다고 밝히고 있습니다.
 
-## 작동 방식
+## 제안된 event kind
 
-NIP-82 소프트웨어 애플리케이션은 저자 pubkey와 `d` tag로 주소가 지정되는 단일 대체 가능 이벤트이다. 이벤트는 다음을 담는다:
+초안은 소프트웨어 카탈로그를 여러 종류의 event로 나눕니다.
 
-- 표시용 `name`, `description`, `icon`, `image` tag
-- 소스 및 홈페이지 URL용 `repository` 및 `web` tag
-- 지원되는 대상 (android, ios, web, linux, macos, windows)을 열거하는 `platforms` tag
-- 각 플랫폼별 바이너리 또는 웹 URL용 `download` tag
-- 애플리케이션 스크린샷의 이미지 URL을 담는 `screenshots` tag
-- 분류용 `t` 토픽 tag
-- 현재 게시된 버전용 `version` tag
+- **Kind 32267, 애플리케이션:** 앱을 설명하는 addressable event입니다.
+- **Kind 30063, 릴리스:** 해당 앱의 한 버전에 대한 addressable event입니다. 그 버전의 에셋을 참조합니다.
+- **Kind 3063, 에셋:** 다운로드 가능한 파일 하나를 설명하는 일반(regular) event입니다.
+- **Kind 30267, 큐레이션:** 큐레이터가 앱을 묶거나 추천하기 위해 게시하는 addressable 목록입니다.
+- **Kind 30509, 서명 인증서 링크:** APK 서명 인증서 같은 X.509 인증서를 소프트웨어를 게시하는 Nostr 키에 연결하는 addressable event로, 클라이언트가 해당 게시자가 어떤 인증서를 통제하는지 알 수 있게 해 줍니다. 이 event의 `d` tag는 DER 인코딩된 인증서의 SHA-256 해시입니다. 인증서의 개인 키로 만든 서명과 Unix 타임스탬프 형식의 만료 시점을 담고 있으며, 선택적으로 링크를 폐기됨으로 표시할 수 있습니다.
+- **Kind 10067, relay 목록:** 카탈로그 event를 찾을 수 있는 relay들의 replaceable 목록입니다.
 
-NIP-82 피드를 탐색하는 클라이언트는 애플리케이션 카드를 표시하고, 정규 저장소로 링크하고, Nostr 장문 게시물이나 타사 앱 스토어를 스크래핑하는 것으로 대체하지 않고도 스크린샷을 표시할 수 있다. 저자 pubkey는 애플리케이션의 진실 소스이므로, 클라이언트는 다운로드 링크를 홍보하기 전에 게시자가 예상 개발자 신원과 일치하는지 확인할 수 있다.
+## 플랫폼, 무결성, 유효성
 
-## 피드 시맨틱
+에셋 event에는 플랫폼 및 런타임 식별자가 들어 있어, 클라이언트가 기기에 맞는 파일만 보여 줄 수 있습니다. 각 에셋에는 파일 해시도 포함됩니다. 클라이언트는 이 해시로 다운로드한 바이트가 게시자가 서명한 내용과 일치하는지 확인할 수 있습니다. Android 패키지의 경우 초안에 서명 인증서 지문이 포함됩니다. 설치 프로그램은 업데이트를 제안하기 전에 이 지문을 이미 설치된 앱의 인증서와 비교할 수 있습니다. Android 패키지를 설치하기 전에 클라이언트는 인증서 해시로 kind 30509 event를 가져와야 합니다(SHOULD). 또한 그 인증서 서명을 APK에 내장된 인증서 및 에셋의 게시자와 대조해 검증하고, 증명이 만료되거나 폐기되지 않았는지 확인해야 합니다.
 
-NIP-82 이벤트는 주소 지정 가능하므로, 각 애플리케이션에는 저자당 하나의 정규 대체 가능 이벤트가 있다. 새 버전을 게시하는 개발자는 이전 이벤트를 제자리에서 대체하고, 구독자는 이벤트 이력을 관리하지 않고도 업데이트를 본다. 변경 로그를 원하는 클라이언트는 주소 지정 가능 이벤트를 구독하고 버전 범프를 애플리케이션 표면의 활동으로 렌더링할 수 있다.
+## 신뢰의 한계
 
-이 spec은 [NIP-89](/ko/topics/nip-89/) (Application Handlers)와 결합한다: NIP-82 이벤트는 애플리케이션을 아티팩트로 설명하는 반면, NIP-89 이벤트는 해당 애플리케이션이 특정 event kind를 처리할 수 있음을 설명한다. 클라이언트는 다른 하나 없이 하나를 사용할 수 있지만, 이 쌍은 함께 작동하는 발견 표면 (NIP-82)과 위임 표면 (NIP-89)을 제공한다.
+유효한 서명이 보여 주는 것은 특정 키가 event를 게시했다는 사실뿐입니다. 그 키가 실제 개발자의 것이라거나, 소프트웨어가 안전하다거나, 큐레이터의 목록을 신뢰할 수 있다는 것까지 증명하지는 않습니다. 이 제안은 임의의 게시자에 대해 아무것도 보장하지 않습니다. 어떤 게시자 키와 큐레이터 키를 신뢰할지는 클라이언트와 사용자가 결정해야 합니다. 이 페이지는 어떠한 보안 감사나 프로덕션 환경에서의 상호 운용성도 주장하지 않습니다.
 
-## 구현
+## NIP-89와의 관계
 
-- [Amethyst v1.12.0](https://github.com/vitorpamplona/amethyst/releases/tag/v1.12.0)은 상세 화면, 저자 정보 및 스크린샷이 있는 전용 NIP-82 소프트웨어 애플리케이션 피드를 출시했다 ([PR #3036](https://github.com/vitorpamplona/amethyst/pull/3036), [PR #3078](https://github.com/vitorpamplona/amethyst/pull/3078), [PR #3200](https://github.com/vitorpamplona/amethyst/pull/3200))
+[NIP-89](/ko/topics/nip-89/) 핸들러 event는 어떤 애플리케이션이 어떤 event kind를 처리할 수 있는지 알립니다. 반면 이 제안은 소프트웨어 아티팩트와 그 입수처를 설명하므로, 두 사양은 서로 다른 관심사를 다룹니다.
 
 ---
 
-**주요 출처:**
-- [NIP-82 명세](https://github.com/nostr-protocol/nips/blob/master/82.md)
-- [Amethyst PR #3036](https://github.com/vitorpamplona/amethyst/pull/3036) - 전용 피드와 함께 NIP-82 소프트웨어 애플리케이션 지원 추가
-- [Amethyst PR #3078](https://github.com/vitorpamplona/amethyst/pull/3078) - 전용 NIP-82 소프트웨어 앱 상세 화면 추가
-- [Amethyst PR #3200](https://github.com/vitorpamplona/amethyst/pull/3200) - 저자 정보 및 스크린샷으로 NIP-82 소프트웨어 앱 UI 개선
+**1차 출처:**
+- [nostr-protocol/nips PR #2526: Zapstore spec](https://github.com/nostr-protocol/nips/pull/2526) (열림, 미병합; [PR #1336](https://github.com/nostr-protocol/nips/pull/1336)을 대체)
 
 **언급된 곳:**
-- [Newsletter #27: Amethyst v1.12.0 ships Cashu wallets, nutzaps, a CLINK driver, and Tor self-heal](/ko/newsletters/2026-06-17-newsletter/#amethyst-v1120-ships-cashu-wallets-nutzaps-a-clink-driver-and-tor-self-heal)
+- [뉴스레터 #27: Amethyst v1.12.0 릴리스 소개(과거 참고 자료)](/en/newsletters/2026-06-17-newsletter/#amethyst-v1120-ships-cashu-wallets-nutzaps-a-clink-driver-and-tor-self-heal)
+- [뉴스레터 #46: NIP-82로 제안된 소프트웨어 애플리케이션 카탈로그](/ko/newsletters/2026-10-28-newsletter/#software-application-catalog-proposed-as-nip-82)
 
-**참고:**
-- [NIP-89: Application Handlers](/ko/topics/nip-89/)
+**함께 보기:**
+- [NIP-89: 애플리케이션 핸들러](/ko/topics/nip-89/)
