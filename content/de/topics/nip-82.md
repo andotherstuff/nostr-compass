@@ -41,7 +41,7 @@ Handler-Events nach [NIP-89](/de/topics/nip-89/) geben bekannt, welche Anwendung
 - [nostr-protocol/nips PR #2526: Zapstore spec](https://github.com/nostr-protocol/nips/pull/2526) (offen, nicht gemergt; löst [PR #1336](https://github.com/nostr-protocol/nips/pull/1336) ab)
 
 **Erwähnt in:**
-- [Newsletter #27: Berichterstattung zum Release von Amethyst v1.12.0 (historische Referenz)](/de/newsletters/2026-06-17-newsletter/#amethyst-v1120-ships-cashu-wallets-nutzaps-a-clink-driver-and-tor-self-heal)
+- [Newsletter #27: Berichterstattung zum Release von Amethyst v1.12.0 (historische Referenz)](/en/newsletters/2026-06-17-newsletter/#amethyst-v1120-ships-cashu-wallets-nutzaps-a-clink-driver-and-tor-self-heal)
 - [Newsletter #46: Katalog für Softwareanwendungen als NIP-82 vorgeschlagen](/de/newsletters/2026-10-28-newsletter/#software-application-catalog-proposed-as-nip-82)
 
 **Siehe auch:**
