@@ -37,6 +37,7 @@ Additional classification can be added with NIP-32 `l` and `L` tags, which is us
 - [NIP-56 Specification](https://github.com/nostr-protocol/nips/blob/master/56.md)
 
 **Mentioned in:**
+- [Newsletter #47: Zap Cooking](/en/newsletters/2026-11-04-newsletter/#zap-cooking)
 - [Newsletter #46: nostream](/en/newsletters/2026-10-28-newsletter/#nostream) [Newsletter 45](/en/newsletters/2026-10-21-newsletter/#nostube),
 - [Newsletter #44](/en/newsletters/2026-10-14-newsletter/#mdk)
 - [Newsletter #10: Project Updates](/en/newsletters/2026-02-18-newsletter/#notedeck-android-app-store-prep)

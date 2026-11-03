@@ -20,3 +20,6 @@ The [current NIP-35 text](https://github.com/nostr-protocol/nips/blob/master/35.
 - [Newsletter #46: Magnetar](/en/newsletters/2026-10-28-newsletter/#magnetar)
 
 - [Newsletter 45](/en/newsletters/2026-10-21-newsletter/#short-history)
+
+**Mentioned in:**
+- [Newsletter #47: Torrent jobs gain a scoped file workflow](/en/newsletters/2026-11-04-newsletter/#torrent-jobs-gain-a-scoped-file-workflow)

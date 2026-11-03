@@ -23,6 +23,7 @@ The [project specification revision](https://github.com/block/buzz/pull/7254) de
 - [Buzz HTTP ingress implementation](https://github.com/block/buzz/pull/7264)
 
 **Mentioned in:**
+- [Newsletter #47: Buzz](/en/newsletters/2026-11-04-newsletter/#buzz)
 
 - [Newsletter #46 (2026-10-28): buzz](/en/newsletters/2026-10-28-newsletter/#buzz)
 - [Newsletter #45](/en/newsletters/2026-10-21-newsletter/#buzz)

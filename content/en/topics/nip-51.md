@@ -56,6 +56,7 @@ A [September 2026 correction](https://github.com/nostr-protocol/nips/pull/2417) 
 - [Kind-collision renumbering PR #2417](https://github.com/nostr-protocol/nips/pull/2417)
 
 **Mentioned in:**
+- [Newsletter #47: Imwald](/en/newsletters/2026-11-04-newsletter/#imwald)
 
 - [Newsletter #46 (2026-10-28): nip cd adds optional installed command lists](/en/newsletters/2026-10-28-newsletter/#nip-cd-adds-optional-installed-command-lists)
 - [Newsletter #45](/en/newsletters/2026-10-21-newsletter/#feather)

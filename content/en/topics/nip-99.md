@@ -65,6 +65,7 @@ That flexibility also explains why current marketplace projects favor it. The sp
 - [Initial classified-listing draft](https://github.com/nostr-protocol/nips/commit/451c06a3c572a13afe45c1d80616f8e6dd9bb1de)
 
 **Mentioned in:**
+- [Newsletter #47: Iris Market](/en/newsletters/2026-11-04-newsletter/#iris-market)
 
 - [Newsletter #46 (2026-10-28): conduit](/en/newsletters/2026-10-28-newsletter/#conduit)
 - [Newsletter #45](/en/newsletters/2026-10-21-newsletter/#zap-cooking)
