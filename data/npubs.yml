@@ -876,6 +876,281 @@ unresolved:
     sources:
     - https://github.com/napplet/evil
 
+  '@elisym/cli':
+    checked_at: '2026-09-30'
+    reason: Canonical primaryproject source/README has no bound project or maintainer npub. Public directory failed400. NIP50 name search, where applicable, returned unrelated results or timedout; no defensible monitored identity established. Preserve project untagged and out of outreach.
+    sources:
+    - https://raw.githubusercontent.com/elisymlabs/elisym/main/README.md
+  Matrix Nostr Appservice:
+    checked_at: 2026-10-28
+    reason: Current primary repository/owner/site did not positively bind a project or maintainer key. Actual npub.world read-only search plus signature-verified bounded NIP50 profile queries produced no defensible first-party role binding; similar-name/self-claimed profiles are not identity proof. Leave untagged and omit outreach; no assertion that identity does not exist.
+    sources:
+    - https://raw.githubusercontent.com/Haven-Organization/matrix-appservice-nostr/HEAD/README.md
+    - https://github.com/Haven-Organization
+    - https://npub.world/?/search
+    - https://search.nos.today
+    - https://relay.nostr.band
+  agora:
+    checked_at: 2026-10-28
+    reason: Canonical project README/owner primary examined for identity references; bounded npub.world and signed-profile NIP50 searches did not provide positive project-to-contact binding. No release author or same-name account substituted.
+    sources:
+    - https://github.com/maxgfr/agora
+  napplet/evil tests nested WebRTC realms:
+    checked_at: 2026-10-28
+    reason: Canonical project README/owner primary examined for identity references; bounded npub.world and signed-profile NIP50 searches did not provide positive project-to-contact binding. No release author or same-name account substituted.
+    sources:
+    - https://github.com/napplet/evil
+
+  Adresu:
+    checked_at: '2026-11-03'
+    reason: Exact project repository/readme and owner or source-reference evidence did not establish a defensible project or maintainer contact key. The bounded npub.world directory search completed, and the signature-verified NIP-50 search on search.nos.today returned 0 profile candidates; name or directory matches alone were not accepted as ownership proof. relay.nostr.band was unavailable during its bounded connection attempt. This is not proof that no identity exists. Keep untagged and omit outreach pending a primary-bound identity.
+    sources:
+    - https://raw.githubusercontent.com/lessucettes/adresu-plugin/0905668bbdc19250df06db976deda3b374600791/README.md
+    - https://github.com/lessucettes
+    - https://npub.world/?/search
+    - https://search.nos.today
+    - https://relay.nostr.band
+  Agent Nostr Relay:
+    checked_at: '2026-11-03'
+    reason: Exact project repository/readme and owner or source-reference evidence did not establish a defensible project or maintainer contact key. The bounded npub.world directory search completed, and the signature-verified NIP-50 search on search.nos.today returned 8 profile candidates; name or directory matches alone were not accepted as ownership proof. relay.nostr.band was unavailable during its bounded connection attempt. This is not proof that no identity exists. Keep untagged and omit outreach pending a primary-bound identity.
+    sources:
+    - https://raw.githubusercontent.com/wassname/agent-nostr-relay/cc9d7053f59f29695aa54f9c9ea440c5ecd3a0fd/README.md
+    - https://github.com/wassname
+    - https://npub.world/?/search
+    - https://search.nos.today
+    - https://relay.nostr.band
+  Birdline:
+    checked_at: '2026-11-03'
+    reason: Exact project repository/readme and owner or source-reference evidence did not establish a defensible project or maintainer contact key. The bounded npub.world directory search completed, and the signature-verified NIP-50 search on search.nos.today returned 0 profile candidates; name or directory matches alone were not accepted as ownership proof. relay.nostr.band was unavailable during its bounded connection attempt. This is not proof that no identity exists. Keep untagged and omit outreach pending a primary-bound identity.
+    sources:
+    - https://raw.githubusercontent.com/2three1y/birdline/e27190b5a7c919c359621ee72d579b9515a53b0f/README.md
+    - https://github.com/2three1y
+    - https://npub.world/?/search
+    - https://search.nos.today
+    - https://relay.nostr.band
+  BlueNostr:
+    checked_at: '2026-11-03'
+    reason: Exact project repository/readme and owner or source-reference evidence did not establish a defensible project or maintainer contact key. The bounded npub.world directory search completed, and the signature-verified NIP-50 search on search.nos.today returned 0 profile candidates; name or directory matches alone were not accepted as ownership proof. relay.nostr.band was unavailable during its bounded connection attempt. This is not proof that no identity exists. Keep untagged and omit outreach pending a primary-bound identity.
+    sources:
+    - https://raw.githubusercontent.com/littlebitstudios/bluenostr/72662c24dcb1ea5a97a23de54434b8b6803971fe/README.md
+    - https://github.com/littlebitstudios
+    - https://npub.world/?/search
+    - https://search.nos.today
+    - https://relay.nostr.band
+  CDK:
+    checked_at: '2026-11-03'
+    reason: Exact project repository/readme and owner or source-reference evidence did not establish a defensible project or maintainer contact key. The bounded npub.world directory search completed, and the signature-verified NIP-50 search on search.nos.today returned 20 profile candidates; name or directory matches alone were not accepted as ownership proof. relay.nostr.band was unavailable during its bounded connection attempt. This is not proof that no identity exists. Keep untagged and omit outreach pending a primary-bound identity.
+    sources:
+    - https://github.com/cashubtc
+    - https://raw.githubusercontent.com/cashubtc/cdk/HEAD/README.md
+    - https://npub.world/?/search
+    - https://search.nos.today
+    - https://relay.nostr.band
+  Cinderous:
+    checked_at: '2026-11-03'
+    reason: Exact project repository/readme and owner or source-reference evidence did not establish a defensible project or maintainer contact key. The bounded npub.world directory search completed, and the signature-verified NIP-50 search on search.nos.today returned 0 profile candidates; name or directory matches alone were not accepted as ownership proof. relay.nostr.band was unavailable during its bounded connection attempt. This is not proof that no identity exists. Keep untagged and omit outreach pending a primary-bound identity.
+    sources:
+    - https://raw.githubusercontent.com/VaalRL/Cinderous/abd3bd6a64044b33bc7d4a5fa4d668b496190aa4/README.md
+    - https://github.com/vaalrl
+    - https://npub.world/?/search
+    - https://search.nos.today
+    - https://relay.nostr.band
+  Coinos:
+    checked_at: '2026-11-03'
+    reason: Exact project repository/readme and owner or source-reference evidence did not establish a defensible project or maintainer contact key. The bounded npub.world directory search completed, and the signature-verified NIP-50 search on search.nos.today returned 20 profile candidates; name or directory matches alone were not accepted as ownership proof. relay.nostr.band was unavailable during its bounded connection attempt. Some primary reads were unavailable (530, 404); this is missing evidence, not proof that no identity exists. Keep untagged and omit outreach pending a primary-bound identity.
+    sources:
+    - https://git.coinos.io/coinosv3.git
+    - https://njump.me/nevent1qqs9kg4aezgt2cen252upv7k962jjve5x6z6munxyc7cp9rh96s9pjqpzscq6
+    - https://npub.world/?/search
+    - https://search.nos.today
+    - https://relay.nostr.band
+  DSH Friends:
+    checked_at: '2026-11-03'
+    reason: Exact project repository/readme and owner or source-reference evidence did not establish a defensible project or maintainer contact key. The bounded npub.world directory search completed, and the signature-verified NIP-50 search on search.nos.today returned 18 profile candidates; name or directory matches alone were not accepted as ownership proof. relay.nostr.band was unavailable during its bounded connection attempt. This is not proof that no identity exists. Keep untagged and omit outreach pending a primary-bound identity.
+    sources:
+    - https://raw.githubusercontent.com/techflag/dsh-friends/57fbecf58cdcc9f89d1954e0d34a2dd721194473/README.md
+    - https://github.com/techflag
+    - https://npub.world/?/search
+    - https://search.nos.today
+    - https://relay.nostr.band
+  EasyNostr:
+    checked_at: '2026-11-03'
+    reason: Exact project repository/readme and owner or source-reference evidence did not establish a defensible project or maintainer contact key. The bounded npub.world directory search completed, and the signature-verified NIP-50 search on search.nos.today returned 2 profile candidates; name or directory matches alone were not accepted as ownership proof. relay.nostr.band was unavailable during its bounded connection attempt. This is not proof that no identity exists. Keep untagged and omit outreach pending a primary-bound identity.
+    sources:
+    - https://raw.githubusercontent.com/2three1y/easynostr/1d29e51f80b6238efcfb1f8eca9e447cbd3e98fe/README.md
+    - https://github.com/2three1y
+    - https://npub.world/?/search
+    - https://search.nos.today
+    - https://relay.nostr.band
+  Negentropy:
+    checked_at: '2026-11-03'
+    reason: Exact project repository/readme and owner or source-reference evidence did not establish a defensible project or maintainer contact key. The bounded npub.world directory search completed, and the signature-verified NIP-50 search on search.nos.today returned 0 profile candidates; name or directory matches alone were not accepted as ownership proof. relay.nostr.band was unavailable during its bounded connection attempt. This is not proof that no identity exists. Keep untagged and omit outreach pending a primary-bound identity.
+    sources:
+    - https://github.com/hoytech
+    - https://raw.githubusercontent.com/hoytech/negentropy/HEAD/README.md
+    - https://npub.world/?/search
+    - https://search.nos.today
+    - https://relay.nostr.band
+  Obelisk:
+    checked_at: '2026-11-03'
+    reason: Exact project repository/readme and owner or source-reference evidence did not establish a defensible project or maintainer contact key. The bounded npub.world directory search completed, and the signature-verified NIP-50 search on search.nos.today returned 2 profile candidates; name or directory matches alone were not accepted as ownership proof. relay.nostr.band was unavailable during its bounded connection attempt. This is not proof that no identity exists. Keep untagged and omit outreach pending a primary-bound identity.
+    sources:
+    - https://github.com/obelisk-app
+    - https://raw.githubusercontent.com/obelisk-app/obelisk-relay/HEAD/README.md
+    - https://raw.githubusercontent.com/obelisk-app/obelisk-sky/HEAD/README.md
+    - https://raw.githubusercontent.com/obelisk-app/obelisk/HEAD/README.md
+    - https://npub.world/?/search
+    - https://search.nos.today
+    - https://relay.nostr.band
+  Ostrilo:
+    checked_at: '2026-11-03'
+    reason: Exact project repository/readme and owner or source-reference evidence did not establish a defensible project or maintainer contact key. The bounded npub.world directory search completed, and the signature-verified NIP-50 search on search.nos.today returned 0 profile candidates; name or directory matches alone were not accepted as ownership proof. relay.nostr.band was unavailable during its bounded connection attempt. This is not proof that no identity exists. Keep untagged and omit outreach pending a primary-bound identity.
+    sources:
+    - https://github.com/macro88
+    - https://raw.githubusercontent.com/macro88/ostrilo/HEAD/README.md
+    - https://npub.world/?/search
+    - https://search.nos.today
+    - https://relay.nostr.band
+  PQRelay:
+    checked_at: '2026-11-03'
+    reason: Exact project repository/readme and owner or source-reference evidence did not establish a defensible project or maintainer contact key. The bounded npub.world directory search completed, and the signature-verified NIP-50 search on search.nos.today returned 0 profile candidates; name or directory matches alone were not accepted as ownership proof. relay.nostr.band was unavailable during its bounded connection attempt. This is not proof that no identity exists. Keep untagged and omit outreach pending a primary-bound identity.
+    sources:
+    - https://raw.githubusercontent.com/trbouma/pqrelay/81abc22011a6bc3612afd365b2cd2d93b129e74a/README.md
+    - https://github.com/trbouma
+    - https://npub.world/?/search
+    - https://search.nos.today
+    - https://relay.nostr.band
+  Property:
+    checked_at: '2026-11-03'
+    reason: Exact project repository/readme and owner or source-reference evidence did not establish a defensible project or maintainer contact key. The bounded npub.world directory search completed, and the signature-verified NIP-50 search on search.nos.today returned 20 profile candidates; name or directory matches alone were not accepted as ownership proof. relay.nostr.band was unavailable during its bounded connection attempt. This is not proof that no identity exists. Keep untagged and omit outreach pending a primary-bound identity.
+    sources:
+    - https://raw.githubusercontent.com/coercaodobem/property/4865bd970b041f38d2b75179f2157ab20117b627/README.md
+    - https://github.com/coercaodobem
+    - https://npub.world/?/search
+    - https://search.nos.today
+    - https://relay.nostr.band
+  Quill:
+    checked_at: '2026-11-03'
+    reason: Exact project repository/readme and owner or source-reference evidence did not establish a defensible project or maintainer contact key. The bounded npub.world directory search completed, and the signature-verified NIP-50 search on search.nos.today returned 20 profile candidates; name or directory matches alone were not accepted as ownership proof. relay.nostr.band was unavailable during its bounded connection attempt. This is not proof that no identity exists. Keep untagged and omit outreach pending a primary-bound identity.
+    sources:
+    - https://raw.githubusercontent.com/rzazo24/hivescope-bunker/c14de7b4a04d34294be12e08de2081a3abd84404/README.md
+    - https://raw.githubusercontent.com/rzazo24/quill/18a9c29ce5ff8b9038c987cc6ec94b53c07b230d/README.md
+    - https://github.com/rzazo24
+    - https://npub.world/?/search
+    - https://search.nos.today
+    - https://relay.nostr.band
+  RoostrRelay:
+    checked_at: '2026-11-03'
+    reason: Exact project repository/readme and owner or source-reference evidence did not establish a defensible project or maintainer contact key. The bounded npub.world directory search completed, and the signature-verified NIP-50 search on search.nos.today returned 0 profile candidates; name or directory matches alone were not accepted as ownership proof. relay.nostr.band was unavailable during its bounded connection attempt. This is not proof that no identity exists. Keep untagged and omit outreach pending a primary-bound identity.
+    sources:
+    - https://raw.githubusercontent.com/Geep5/RoostrRelay/ffcaf7ad5e54bbb75c95ee1e9f12fef251c63663/README.md
+    - https://github.com/geep5
+    - https://npub.world/?/search
+    - https://search.nos.today
+    - https://relay.nostr.band
+  Satori:
+    checked_at: '2026-11-03'
+    reason: Exact project repository/readme and owner or source-reference evidence did not establish a defensible project or maintainer contact key. The bounded npub.world directory search completed, and the signature-verified NIP-50 search on search.nos.today returned 9 profile candidates; name or directory matches alone were not accepted as ownership proof. relay.nostr.band was unavailable during its bounded connection attempt. This is not proof that no identity exists. Keep untagged and omit outreach pending a primary-bound identity.
+    sources:
+    - https://raw.githubusercontent.com/Letdown2491/satori-desktop/68223574242b84e1b62fd2c727293be1c2bdadca/README.md
+    - https://github.com/letdown2491
+    - https://npub.world/?/search
+    - https://search.nos.today
+    - https://relay.nostr.band
+  Torii Teams:
+    checked_at: '2026-11-03'
+    reason: Exact project repository/readme and owner or source-reference evidence did not establish a defensible project or maintainer contact key. The bounded npub.world directory search completed, and the signature-verified NIP-50 search on search.nos.today returned 0 profile candidates; name or directory matches alone were not accepted as ownership proof. relay.nostr.band was unavailable during its bounded connection attempt. This is not proof that no identity exists. Keep untagged and omit outreach pending a primary-bound identity.
+    sources:
+    - https://raw.githubusercontent.com/ChiefmonkeyArt/torii-continuum/54d928804997ab62b3db46fcc99dd0367e0f9222/README.md
+    - https://raw.githubusercontent.com/ChiefmonkeyArt/torii-suite/40062d44da985a61eab8a46da34320676990bef8/README.md
+    - https://raw.githubusercontent.com/ChiefmonkeyArt/torii-teams/ffa7b9e55912aee08b607db3286aa6d49cf14dd0/README.md
+    - https://github.com/chiefmonkeyart
+    - https://npub.world/?/search
+    - https://search.nos.today
+    - https://relay.nostr.band
+  Vigilant Hydra:
+    checked_at: '2026-11-03'
+    reason: Exact project repository/readme and owner or source-reference evidence did not establish a defensible project or maintainer contact key. The bounded npub.world directory search completed, and the signature-verified NIP-50 search on search.nos.today returned 0 profile candidates; name or directory matches alone were not accepted as ownership proof. relay.nostr.band was unavailable during its bounded connection attempt. This is not proof that no identity exists. Keep untagged and omit outreach pending a primary-bound identity.
+    sources:
+    - https://raw.githubusercontent.com/Vigilant-CRS/Vigilant-Hydra/6661a4cff488bf0e071f350d3884796e1dcea669/README.md
+    - https://github.com/vigilant-crs
+    - https://npub.world/?/search
+    - https://search.nos.today
+    - https://relay.nostr.band
+  Wavestr:
+    checked_at: '2026-11-03'
+    reason: Exact project repository/readme and owner or source-reference evidence did not establish a defensible project or maintainer contact key. The bounded npub.world directory search completed, and the signature-verified NIP-50 search on search.nos.today returned 0 profile candidates; name or directory matches alone were not accepted as ownership proof. relay.nostr.band was unavailable during its bounded connection attempt. This is not proof that no identity exists. Keep untagged and omit outreach pending a primary-bound identity.
+    sources:
+    - https://raw.githubusercontent.com/oluengo/wavestr/9fca0c41acdbedee981fab1189466c1bfe889ea1/README.md
+    - https://github.com/oluengo
+    - https://npub.world/?/search
+    - https://search.nos.today
+    - https://relay.nostr.band
+  bitchat-desktop:
+    checked_at: '2026-11-03'
+    reason: Exact project repository/readme and owner or source-reference evidence did not establish a defensible project or maintainer contact key. The bounded npub.world directory search completed, and the signature-verified NIP-50 search on search.nos.today returned 0 profile candidates; name or directory matches alone were not accepted as ownership proof. relay.nostr.band was unavailable during its bounded connection attempt. This is not proof that no identity exists. Keep untagged and omit outreach pending a primary-bound identity.
+    sources:
+    - https://raw.githubusercontent.com/felixda9/bitchat-desktop/6ba8b8fea9627e1238dd3763d44cf897da0e7444/README.md
+    - https://github.com/felixda9
+    - https://npub.world/?/search
+    - https://search.nos.today
+    - https://relay.nostr.band
+  chatbit:
+    checked_at: '2026-11-03'
+    reason: Exact project repository/readme and owner or source-reference evidence did not establish a defensible project or maintainer contact key. The bounded npub.world directory search completed, and the signature-verified NIP-50 search on search.nos.today returned 0 profile candidates; name or directory matches alone were not accepted as ownership proof. relay.nostr.band was unavailable during its bounded connection attempt. This is not proof that no identity exists. Keep untagged and omit outreach pending a primary-bound identity.
+    sources:
+    - https://raw.githubusercontent.com/ledokter/chatbit/362cd959a46a45c8ca54ab12af44e062dc2a27e0/README.md
+    - https://github.com/ledokter
+    - https://npub.world/?/search
+    - https://search.nos.today
+    - https://relay.nostr.band
+  nesigner:
+    checked_at: '2026-11-03'
+    reason: Exact project repository/readme and owner or source-reference evidence did not establish a defensible project or maintainer contact key. The bounded npub.world directory search completed, and the signature-verified NIP-50 search on search.nos.today returned 0 profile candidates; name or directory matches alone were not accepted as ownership proof. relay.nostr.band was unavailable during its bounded connection attempt. This is not proof that no identity exists. Keep untagged and omit outreach pending a primary-bound identity.
+    sources:
+    - https://raw.githubusercontent.com/haorendashu/js_nesigner_sdk/81da4e6b50f6c0cb135bcc3b3c88337dd92a019f/README.md
+    - https://raw.githubusercontent.com/haorendashu/nesigner/1e1cd89c6b261a9669277fa881270150a22a43fe/README.md
+    - https://github.com/haorendashu
+    - https://npub.world/?/search
+    - https://search.nos.today
+    - https://relay.nostr.band
+  nostr-hermes-proxy:
+    checked_at: '2026-11-03'
+    reason: Exact project repository/readme and owner or source-reference evidence did not establish a defensible project or maintainer contact key. The bounded npub.world directory search completed, and the signature-verified NIP-50 search on search.nos.today returned 0 profile candidates; name or directory matches alone were not accepted as ownership proof. relay.nostr.band was unavailable during its bounded connection attempt. This is not proof that no identity exists. Keep untagged and omit outreach pending a primary-bound identity.
+    sources:
+    - https://raw.githubusercontent.com/unsaltedbutter-ai/nostr-hermes-proxy/afd930c1a96cad94ad3ece4622f51eac43eea92c/README.md
+    - https://github.com/unsaltedbutter-ai
+    - https://npub.world/?/search
+    - https://search.nos.today
+    - https://relay.nostr.band
+  nostr-verify:
+    checked_at: '2026-11-03'
+    reason: Exact project repository/readme and owner or source-reference evidence did not establish a defensible project or maintainer contact key. The bounded npub.world directory search completed, and the signature-verified NIP-50 search on search.nos.today returned 0 profile candidates; name or directory matches alone were not accepted as ownership proof. relay.nostr.band was unavailable during its bounded connection attempt. This is not proof that no identity exists. Keep untagged and omit outreach pending a primary-bound identity.
+    sources:
+    - https://raw.githubusercontent.com/VectorPrivacy/nostr-verify/af9672bfbcae18ee30c2d7646a54682d6c4f2e9c/README.md
+    - https://github.com/vectorprivacy
+    - https://npub.world/?/search
+    - https://search.nos.today
+    - https://relay.nostr.band
+  ptxttr:
+    checked_at: '2026-11-03'
+    reason: Exact project repository/readme and owner or source-reference evidence did not establish a defensible project or maintainer contact key. The bounded npub.world directory search completed, and the signature-verified NIP-50 search on search.nos.today returned 0 profile candidates; name or directory matches alone were not accepted as ownership proof. relay.nostr.band was unavailable during its bounded connection attempt. This is not proof that no identity exists. Keep untagged and omit outreach pending a primary-bound identity.
+    sources:
+    - https://raw.githubusercontent.com/MCMXMCM/ptxttr/0b3f6ba95b388849e25a6f6b20375a839d286a02/README.md
+    - https://github.com/mcmxmcm
+    - https://npub.world/?/search
+    - https://search.nos.today
+    - https://relay.nostr.band
+  whereAreYou:
+    checked_at: '2026-11-03'
+    reason: Exact project repository/readme and owner or source-reference evidence did not establish a defensible project or maintainer contact key. The bounded npub.world directory search completed, and the signature-verified NIP-50 search on search.nos.today returned 0 profile candidates; name or directory matches alone were not accepted as ownership proof. relay.nostr.band was unavailable during its bounded connection attempt. This is not proof that no identity exists. Keep untagged and omit outreach pending a primary-bound identity.
+    sources:
+    - https://raw.githubusercontent.com/Dzekdrix/whereAreYou/b36ec0684186cc1a668c9f7dabc86c94d9ec324a/README.md
+    - https://github.com/dzekdrix
+    - https://npub.world/?/search
+    - https://search.nos.today
+    - https://relay.nostr.band
+
 Nostr Compass: npub1wav4fae3gyfy3xj298kxj2mj8phavz7vavps34przq02j7w902qq902923
 
 # Added for Newsletter #21 publication
@@ -2968,3 +3243,163 @@ SatSigner:
   - https://github.com/satsigner/satsigner
   - https://satsigner.com
   - https://satsigner.com/.well-known/nostr.json?name=satsigner
+
+Cosign:
+  npub: npub175rnagjgxtvwvfrdytkqkkn4h062zf2cuwkx0jc8xc9nga895s8qgsef5g
+  identity_type: maintainer
+  person: sybenx
+  outreach: false
+  evidence:
+  - https://github.com/sybenx/cosign
+  - https://github.com/sybenx
+  mention_only: true
+Nostr Indexer Relay:
+  npub: npub1kg4sdvz3l4fr99n2jdz2vdxe2mpacva87hkdetv76ywacsfq5leqquw5te
+  identity_type: maintainer
+  person: Russell
+  outreach: true
+  evidence:
+  - https://github.com/nogringo/nostr-indexer-relay
+  - https://github.com/nogringo
+  mention_only: true
+nostr-doctor:
+  npub: npub1kg4sdvz3l4fr99n2jdz2vdxe2mpacva87hkdetv76ywacsfq5leqquw5te
+  identity_type: maintainer
+  person: Russell
+  outreach: true
+  evidence:
+  - https://github.com/nogringo/nostr-doctor
+  - https://github.com/nogringo
+  mention_only: true
+nostr-mail-client:
+  npub: npub1kg4sdvz3l4fr99n2jdz2vdxe2mpacva87hkdetv76ywacsfq5leqquw5te
+  identity_type: maintainer
+  person: nogringo
+  evidence:
+  - https://github.com/nogringo/nostr-mail-client
+
+Nostr Army Knife:
+  npub: npub180cvv07tjdrrgpa0j7j7tmnyl2yr6yr7l8j4s3evf6u64th6gkwsyjh6w6
+  mention_only: true
+  evidence:
+  - https://github.com/fiatjaf/nak
+
+Napshot:
+  npub: npub1jjuj5fsu3rmtzsycumkptjfma42y8qygxazlngpskf755hz4f7qspp2xx4
+  identity_type: project
+  outreach: false
+  checked_at: '2026-11-03'
+  evidence:
+  - https://raw.githubusercontent.com/napplet/napshot/01da45da22b4b1279631d3fd80440ad057ea9897/README.md
+
+Marble:
+  npub: npub175rnagjgxtvwvfrdytkqkkn4h062zf2cuwkx0jc8xc9nga895s8qgsef5g
+  identity_type: maintainer
+  person: sybenx
+  outreach: false
+  evidence:
+  - https://github.com/sybenx/cosign
+  - https://github.com/sybenx
+  - https://github.com/sybenx/marble
+  mention_only: true
+Verdana:
+  npub: npub180cvv07tjdrrgpa0j7j7tmnyl2yr6yr7l8j4s3evf6u64th6gkwsyjh6w6
+  mention_only: true
+  evidence:
+  - https://github.com/fiatjaf/verdana
+  - https://github.com/fiatjaf
+nostr-home-relays-provider:
+  npub: npub1kg4sdvz3l4fr99n2jdz2vdxe2mpacva87hkdetv76ywacsfq5leqquw5te
+  identity_type: maintainer
+  person: Russell
+  outreach: true
+  evidence:
+  - https://github.com/nogringo/nostr-indexer-relay
+  - https://github.com/nogringo
+  - https://github.com/nogringo/nostr-home-relays-provider
+  mention_only: true
+PosterFox:
+  npub: npub1fdtthaqujtjcd6yfy7kt0zpkadyl9vvypq00s5nztnmche74d0tqv6uwwr
+  identity_type: maintainer
+  person: verita84
+  mention_only: true
+  outreach: true
+  checked_at: '2026-11-03'
+  evidence:
+  - https://github.com/loblawbob873-svg/posterfox
+  - https://raw.githubusercontent.com/loblawbob873-svg/posterfox/HEAD/README.md
+  - https://poster.place/.well-known/nostr.json?name=verita84
+  - https://njump.me/f1c23d3bc458d762e775104c2e7f705297081c856495ef3c052d5af6b7502573
+PosterChan:
+  npub: npub1fdtthaqujtjcd6yfy7kt0zpkadyl9vvypq00s5nztnmche74d0tqv6uwwr
+  identity_type: maintainer
+  person: verita84
+  mention_only: true
+  outreach: true
+  checked_at: '2026-11-03'
+  evidence:
+  - https://github.com/loblawbob873-svg/posterchanai
+  - https://raw.githubusercontent.com/loblawbob873-svg/posterfox/HEAD/README.md
+  - https://poster.place/.well-known/nostr.json?name=verita84
+  - https://njump.me/f1c23d3bc458d762e775104c2e7f705297081c856495ef3c052d5af6b7502573
+Imwald:
+  npub: npub1l5sga6xg72phsz5422ykujprejwud075ggrr3z2hwyrfgr7eylqstegx9z
+  evidence:
+  - https://git.imwald.eu/silberengel/imwald-android
+  - https://njump.me/d07947ac9cb66feba12ffeaf877db41203aed87697f5ade93560eb07d481619f
+Mialuna:
+  npub: npub1vjxq75czca0nswp2f5kgtfyzhynuccdjs29q098rd3kv09k7s6nq39hh7v
+  identity_type: maintainer
+  outreach: true
+  evidence:
+  - https://github.com/Lwb89dev/outkast
+  - https://github.com/Lwb89dev
+  - https://github.com/Lwb89dev/mialuna
+  - https://njump.me/0d829ebf5170d41467cb655c47328d6efb1c8a325a46a60b45f7a6ca932e02ba
+  person: LWB
+  mention_only: true
+Ambulando:
+  npub: npub1llwrq3rtah3rg3r2dyfyht55ek7aa0ey7z47ujju407pzfp38shqa7zcvr
+  identity_type: project
+  outreach: false
+  checked_at: '2026-11-03'
+  evidence:
+  - https://github.com/humansinstitute/ambulando-android
+  - https://njump.me/b52b39c713fdaa4541a505fb439dab386e208cae1b83a90d04b5a5383d1db1fc
+nsite-template-filter:
+  npub: npub1f3978m4usqmwtxs6alrzv2fg6076qlh4yku74xh4qrudzqqw4u9qjw3kqw
+  identity_type: project
+  outreach: false
+  checked_at: '2026-11-03'
+  evidence:
+  - https://njump.me/bd7bb7931617b5757df696ee7473c2abe762dd8ba546a1accd3fca75daeb82f9
+Welcome-Concord-Bot:
+  npub: npub1cp7q2jvfe9ehyp9zyn7szzfdslpu4jex0y3uxx9qh6zdde6ush6s02nqrh
+  identity_type: project
+  outreach: false
+  checked_at: '2026-11-03'
+  evidence:
+  - https://njump.me/c1a169882ad535809c7450ab4b8834e470c0b42c1e482a6423106c6b91099417
+steroid:
+  npub: npub10r8xl2njyepcw2zwv3a6dyufj4e4ajx86hz6v4ehu4gnpupxxp7stjt2p8
+  identity_type: project
+  outreach: false
+  checked_at: '2026-11-03'
+  evidence:
+  - https://njump.me/5d55972ecba3d17be5c18808010000e93ae47a6899f934f92045245a1e458e52
+ngit-reader:
+  npub: npub18eectrgnhcmmp6e0ec6sp3scf4mvs8nh4vk9pxq5hhsuej9y7qrsrv9dm4
+  identity_type: project
+  outreach: false
+  checked_at: '2026-11-03'
+  evidence:
+  - https://njump.me/7221303347b1efca5267347abf825057c5c25cd00fe6372a4db859e67ac90cbc
+nostr_core_lib_rust:
+  npub: npub1f9z5ks7sa50fg7nqwc7l0eh5yxf9vwmeu86wa90l3fd0tantd0tskzpjx8
+  identity_type: maintainer
+  person: npub1f9z5ks7sa50fg7nqwc7l0eh5yxf9vwmeu86wa90l3fd0tantd0tskzpjx8
+  outreach: true
+  checked_at: '2026-11-03'
+  evidence:
+  - https://njump.me/84a29d16d613c78a0cd0e4041b443bcb78a963f873a77224c375a0f269580583
+  mention_only: true
