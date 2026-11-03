@@ -395,10 +395,10 @@ export function extractMentions(
  * 3. If no markdown link found, find the first bare-text mention
  *    (NOT in a `### ` header line, NOT inside `[...]()`) and inject after it
  * 4. Never inject in header lines
- * 5. Never inject inside link brackets
+ * 5. Insert after recognized inline-link spans, outside both label and destination
  * 6. Only inject once per npub (first occurrence wins)
  */
-function injectNpubMentions(
+export function injectNpubMentions(
   body: string,
   found: Array<{ name: string } & NpubEntry>
 ): string {
@@ -465,7 +465,7 @@ function injectNpubMentions(
       const bareMatch = barePattern.exec(line);
       if (!bareMatch) continue;
 
-      // Check if this match is inside markdown link brackets [...]
+      // Protect the whole Markdown link, including its destination.
       // Find all [...](url) spans in the line and see if our match overlaps
       const matchStart = bareMatch.index;
       const matchEnd = matchStart + bareMatch[0].length;
@@ -474,26 +474,19 @@ function injectNpubMentions(
       const linkSpans = /\[([^\]]*)\]\([^)]*\)/g;
       let span;
       while ((span = linkSpans.exec(line)) !== null) {
-        // The bracket content starts at span.index + 1 and ends at span.index + 1 + span[1].length
-        const bracketStart = span.index + 1;
-        const bracketEnd = bracketStart + span[1].length;
-        if (matchStart >= bracketStart && matchEnd <= bracketEnd) {
+        if (matchStart >= span.index && matchEnd <= span.index + span[0].length) {
           insideLink = true;
           break;
         }
       }
 
       if (insideLink) {
-        // The bare name is inside a link's bracket text. This means there IS
-        // a link containing the name but our Strategy 1 should have caught it.
-        // This can happen if the link pattern didn't match (e.g. case).
-        // Inject after the link containing it.
+        // The name can occur only in the URL, so Strategy 1 may not match it.
+        // Keep the destination intact and inject after the complete link.
         const linkSpans2 = /\[[^\]]*\]\([^)]*\)/g;
         let span2;
         while ((span2 = linkSpans2.exec(line)) !== null) {
-          const bracketStart = span2.index + 1;
-          const bracketEnd = bracketStart + (span2[0].indexOf("](") - 1);
-          if (matchStart >= bracketStart && matchEnd <= bracketStart + span2[0].indexOf("](")) {
+          if (matchStart >= span2.index && matchEnd <= span2.index + span2[0].length) {
             const insertPos = span2.index + span2[0].length;
             lines[i] =
               line.slice(0, insertPos) + npubTag + line.slice(insertPos);

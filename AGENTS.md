@@ -6,6 +6,8 @@ Weekly newsletter, podcast, and topic documentation with AI-powered workflows.
 
 The regular newsletter must stay compact. Apply the [compact writing contract](skills/_COMPASS/SKILL.md#compact-regular-newsletter) during selection, writing, assembly and review. Combine each project’s release and development progress in one news entry; preserve the same canonical edition for podcast prep and Logbook.
 
+Marmot project discovery must check the canonical [Awesome Marmot catalog](https://github.com/marmot-protocol/awesome-marmot) every cycle. Pin its revision and compare canonical repositories with the tracked registry and native-source discoveries. Treat listings as leads: verify Marmot implementation and an eligible in-window milestone from primary sources before selection. Preserve renamed repositories, distinct native clients, deduplication and UNKNOWN evidence; an older app with a similar name does not establish that a new implementation is already covered. Keep this check within the existing collection workflow.
+
 ---
 
 ## System Overview

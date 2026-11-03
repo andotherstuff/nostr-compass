@@ -42,6 +42,14 @@ Merged in napplet/evil, a [grandchild-frame WebRTC probe](https://github.com/nap
 
 ## Tagged Releases
 
+### Marmish
+
+Marmish is an experimental tool for running noninteractive remote commands over Marmot. The released legacy Python v0.1 and the unreleased Rust v0.2 are different programs. The [Marmish v0.1.0-experimental.2 release](https://github.com/Epiphytic/marmish/releases/tag/v0.1.0-experimental.2), which follows the [Marmish v0.1.0-experimental.1 release](https://github.com/Epiphytic/marmish/releases/tag/v0.1.0-experimental.1), preserves shell arguments verbatim. Separately, the [pinned Marmish README](https://github.com/Epiphytic/marmish/blob/540e39cf08aec38bec75d1cbdd36f162d0219f82/README.md) describes current source that rebuilds the tool as native Rust v0.2 on upstream MDK with embedded Arti. That work remains experimental without a released v0.2 binary, and the README defers Tor command support.
+
+### Third Ear
+
+Third Ear is a voice recorder and hands-free Marmot client for Android 12+ in an early 0.1 release series. In [Third Ear 0.1.0](https://github.com/jooray/third-ear/releases/tag/v0.1.0), the app uses its own identity to send voice notes and transcripts to groups. It also speaks replies aloud and offers optional on-device transcription. The [Third Ear 0.1.3](https://github.com/jooray/third-ear/releases/tag/v0.1.3) update adds a direct group composer for text and voice, with retry and a waveform player. A fix in [Third Ear 0.1.6](https://github.com/jooray/third-ear/releases/tag/v0.1.6) covers leaving a group as an admin, and a sole admin's group is removed only from the phone. [Third Ear 0.1.7](https://github.com/jooray/third-ear/releases/tag/v0.1.7) adds Android Auto recording as a media app plus playback of recent White Noise messages, and play events never start a recording. Sideloaded installs need the developer Unknown sources option enabled for Android Auto setup.
+
 ### Streets
 
 Streets, a column-based web client, released [v1.23.0](https://github.com/eyemono-moe/streets/releases/tag/v1.23.0) to stop reconnect storms against unreachable relays. Failures now carry over between one-shot sessions, and read subscriptions wait out any remaining backoff. User writes still open immediately. [v1.23.1](https://github.com/eyemono-moe/streets/releases/tag/v1.23.1) brings back link cards for people and posts. It also opens Streets URLs that carry [NIP-21](/en/topics/nip-21/) (`nostr:` URI scheme) links. A later [merged change separating the outbox relay budget](https://github.com/eyemono-moe/streets/pull/1238) reserves 30 outbox-selected relays apart from explicit and default connections, under a 60-connection cap. The change does not report its effect on memory and startup.
@@ -280,7 +288,7 @@ Feather is a Nostr reading client. [Feather 1.9.0](https://njump.me/nevent1qqs9l
 
 ### Nostrautica
 
-Nostrautica is a meetup app with group chat. [Nostrautica 0.17.0](https://njump.me/nevent1qqs87trln2k5n5yh3yvpwjf9sqgdsu8pyke4x7v4jga3tjp72ge59gcprpmhxue69uhhyetvv9uju7npwpehgmmjv5hxgetkqgsd4dkxqewy8xum47ctpu0ltgxxsfemeewpjkdyzk9ddfcg286s0dsmdvd6j) asks a device to rejoin a chat only after its removal is confirmed. A slow relay or an unreadable roster no longer causes needless remove-and-add cycles. Devices now wait 90 seconds for the coordinator before acting on their own, and pending groups show a re-syncing state. Renaming a device no longer removes it. These changes come from the publisher's signed release notes and do not by themselves establish interoperability.
+Nostrautica is a meetup and event app with Marmot group chat. Its Android 0.17.0 release, announced in [the publisher's signed Nostrautica 0.17.0 note](https://njump.me/nevent1qqs87trln2k5n5yh3yvpwjf9sqgdsu8pyke4x7v4jga3tjp72ge59gcprpmhxue69uhhyetvv9uju7npwpehgmmjv5hxgetkqgsd4dkxqewy8xum47ctpu0ltgxxsfemeewpjkdyzk9ddfcg286s0dsmdvd6j) and published as [the Nostrautica android-v0.17.0 GitHub release](https://github.com/jooray/nostrautica/releases/tag/android-v0.17.0), asks a device to rejoin a chat only after its removal is confirmed. A slow relay or an unreadable roster no longer causes needless remove-and-add cycles. Devices now wait 90 seconds for the coordinator before acting on their own, and pending groups show a re-syncing state. Renaming a device no longer removes it. These changes come from the publisher's signed release notes, which report no interoperability change, and we have not independently tested their deployment behavior.
 
 ### Imwald
 
@@ -315,6 +323,42 @@ ptxttr is a desktop fork of the Plain Text Nostr reader ptxt-nstr, described in 
 Wavestr is an Android client for Nostr livestreams and radio stations. It can now post in [NIP-53](/en/topics/nip-53/) (Live Activities) chat and play through Android Auto, as of the [0.10.0 source commit](https://github.com/oluengo/wavestr/commit/95745c5cf0bb932510b43f9666c637e023620aee). Later source adds sharing of station and folder favorites, and a beta build fixes chat typing with the on-screen keyboard. The [Wavestr README](https://github.com/oluengo/wavestr/blob/9fca0c41acdbedee981fab1189466c1bfe889ea1/README.md) separates the stable and beta channels. Desktop downloads are retired, though desktop builds still run in CI. Treat the newer features as source or beta changes until a stable release includes them.
 
 ## In Development
+
+### whitenoise-android
+
+White Noise for Android is a native Marmot private-group messenger, separate from the archived Flutter app. Merged source adds an [account-wide Files & media index](https://github.com/marmot-protocol/whitenoise-android/pull/3548) across chats with bounded pages and filters. Browsing its metadata stays local, though opening a file can request a download. Search matches only filenames because message-body search is not implemented. Local videos sent through the new upload path [have private metadata removed from the selected container](https://github.com/marmot-protocol/whitenoise-android/pull/3509) without re-encoding audio or video samples. Text sends reach native admission and the durable callback [without waiting for Markdown hydration](https://github.com/marmot-protocol/whitenoise-android/pull/3442), while ordering and cancellation boundaries remain in place.
+
+### whitenoise-ios
+
+White Noise for iPhone is a native Marmot private-group messenger, separate from the archived Flutter White Noise app. Merged source for [inbox-relay lookup recovery](https://github.com/marmot-protocol/whitenoise-ios/pull/1243) lets a failed lookup offer an explicit default replacement, which requires confirmation and a reviewable proposal. Its warning explains that existing relays may be replaced and that excluded relays will stop receiving invitations. When discovery succeeds, the sheet is dismissed and its findings are preserved, while thrown errors are still treated as failures.
+
+### whitenoise-linux
+
+White Noise for desktop is a cross-platform Marmot messenger, and a [merged commit adding local translation](https://github.com/marmot-protocol/whitenoise-linux/commit/5a82fe27bbed1c27eb252a179968d3cb87211eba) brings an opt-in feature to native Linux builds only. Message text and completed audio transcripts are translated by TranslateGemma 4B through the configured local backend, with language detection handled by local fastText. The model needs a download of about 2.5 GB on first use and afterwards works offline. Stored originals are kept, and session results clear when the user switches chat or account or changes language. Inputs that would exceed the token limit are refused without truncation. Enabling the feature requires accepting the Gemma terms and prohibited-use policy, and no performance or runtime validation is claimed.
+
+### whitenoise-mac
+
+White Noise for Mac is an early native SwiftUI Marmot messenger for Apple Silicon on macOS 15.6 or later, separate from the Linux desktop client. Its merged source adds [attachment forwarding](https://github.com/marmot-protocol/whitenoise-mac/pull/975), which sends attachments and their captions in source order through the destination's normal media send. Missing files are listed before sending with an explicit Forward Anyway or Cancel choice, though cancelling cannot retract a send already handed to core. Attachment-only messages can be forwarded, and captions survive when every attachment is unavailable.
+
+### Whistle
+
+Whistle is a mobile group location-sharing and chat app whose source is migrating toward an unreleased v2. Across [Whistle pull request 274](https://github.com/sjmcnamara/whistle/pull/274) and [Whistle pull request 273](https://github.com/sjmcnamara/whistle/pull/273), the Android source moves to MarmotKit to match iOS, gaining member-code invites and routing for inbound location and profile updates such as nicknames or avatars. Both platforms pin 0.11.0 and require fresh extraction of the native bundle. They also show a durable notice that history may be incomplete, which stays until the user explicitly dismisses it. The latest public release remains [v1.11.2](https://github.com/sjmcnamara/whistle/releases/tag/v1.11.2). Version 1 and v2 groups are wire-incompatible, and the database migration is forward-only. The cited pull request did not validate mixed 0.10.4 and 0.11 interoperability, and it also left QR camera scanning and notice rendering unvalidated.
+
+### nostrc libvault
+
+In nostrc, a set of Nostr libraries written in C, [the libvault single-file export commit](https://github.com/chebizarro/nostrc/commit/bc4b7108ab84744d0abe8514aaf6e0cac08c3530) adds kind 15 and [NIP-94](/en/topics/nip-94/) (File Metadata) file export. It reseals authenticated chunks as one AES-256-GCM blob under a fresh independent key, then uploads it through a signed Blossom PUT carrying the exact ciphertext hash. The function returns tags for the caller to wrap and publishes no Nostr event itself. Because plaintext and ciphertext stay resident together, a 64 MiB limit is enforced before any IO. This library code leaves the vault format unchanged and claims neither a shipped Groundhog feature nor Marmot conformance.
+
+### Wizard Messenger
+
+Wizard Messenger is the user-facing unified inbox for Wizard OS, combining Marmot chat with bridges to other messaging networks. Merged work adds [server-backed composer drafts and per-agent permission levels](https://github.com/humanitylabs-org/wizard-messenger/pull/26), which range from No access and Read-only up to Draft-only and Draft-and-send. Through [authorized-chat image access over MCP](https://github.com/humanitylabs-org/wizard-messenger/pull/48), the `messenger_get_attachment` tool serves images via the same Marmot or unified-media path, while wrong-chat references fail and non-image files generally return metadata. Images are capped at 1.5 MiB with a preview fallback. Matrix and Telegram history in the unified inbox is stored as plaintext on the local machine, and Telegram cloud chats sit outside Marmot. Any agent or model granted access receives decrypted content.
+
+### FreedomStack
+
+FreedomStack is a German-language web application with private MLS rooms and paid agent jobs, and it is in development. Since the merge of [FreedomStack PR #588 for paid room agents](https://github.com/3DAGI/freedom-app/pull/588), a repository page can commission a room agent under an explicit sats ceiling, and the user must confirm payment before the app posts the task and its repo tag. The task announcement for the private room is sent as an inner MLS event. It goes to a channel where both the requester and the agent may write. This is a merged source milestone, and this newsletter has not independently validated its wallet or agent safety.
+
+### Styx
+
+Styx is a pre-audit experimental Nostr SDK, and the work covered here is merged to its m3/integration branch, outside main or any launched app. [Styx PR #527](https://github.com/styx-secure/styx/pull/527) adds caller-port `publishKeyPackage` and `invite` operations to SDK 0.3, along with `acceptInvite`. Public KeyPackages use experimental kind 4743, while the kind 4744 Welcome rumor is wrapped in a NIP-59 kind 13 seal and kind 1059 gift wrap, with cryptography left to caller ports. In [Styx PR #529](https://github.com/styx-secure/styx/pull/529) and the [pinned Styx README](https://github.com/styx-secure/styx/blob/20c1c98b647560c630d58ae308e1a5cbd94fa389/README.md), the developers report two-machine tests of SDK delivery and receipts over public Nostr relays, along with outage tests. The project does not claim general Marmot conformance or production activation.
 
 ### agora
 

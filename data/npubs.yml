@@ -21,6 +21,76 @@ no_dm:
 # These remain visible to validation and workflow reporting, but never become
 # mentions or outreach recipients.
 unresolved:
+  Whistle:
+    checked_at: '2026-11-03'
+    reason: Retained exact primary repository/README and bounded owner/site research
+      did not establish a project or maintainer npub. Exact project npub.world search
+      and signed-profile NIP50 search yielded no defensible primary-bound identity;
+      same-name/unrelated directory results rejected. search.nos.today returned0 profiles;
+      relay.nostr.band failed and stays UNKNOWN. Site access failures stay UNKNOWN,
+      never evidence that no identity exists. Omit mention/outreach pending direct
+      primary proof.
+    sources:
+    - https://github.com/sjmcnamara
+    - https://github.com/sjmcnamara/whistle
+    - https://npub.world/?/search
+  Wizard Messenger:
+    checked_at: '2026-11-03'
+    reason: Retained exact primary repository/README and bounded owner/site research
+      did not establish a project or maintainer npub. Exact project npub.world search
+      and signed-profile NIP50 search yielded no defensible primary-bound identity;
+      same-name/unrelated directory results rejected. search.nos.today returned0 profiles;
+      relay.nostr.band failed and stays UNKNOWN. Site access failures stay UNKNOWN,
+      never evidence that no identity exists. Omit mention/outreach pending direct
+      primary proof.
+    sources:
+    - https://github.com/humanitylabs-org
+    - https://github.com/humanitylabs-org/wizard-messenger
+    - https://humanitylabs.org
+    - https://humanitylabs.co/
+    - https://npub.world/?/search
+  FreedomStack:
+    checked_at: '2026-11-03'
+    reason: Retained exact primary repository/README and bounded owner/site research
+      did not establish a project or maintainer npub. Exact project npub.world search
+      and signed-profile NIP50 search yielded no defensible primary-bound identity;
+      same-name/unrelated directory results rejected. search.nos.today returned0 profiles;
+      relay.nostr.band failed and stays UNKNOWN. Site access failures stay UNKNOWN,
+      never evidence that no identity exists. Omit mention/outreach pending direct
+      primary proof.
+    sources:
+    - https://github.com/3DAGI
+    - https://github.com/3DAGI/freedom-app
+    - https://npub.world/?/search
+  Marmish:
+    checked_at: '2026-11-03'
+    reason: Retained exact primary repository/README and bounded owner/site research
+      did not establish a project or maintainer npub. Exact project npub.world search
+      and signed-profile NIP50 search yielded no defensible primary-bound identity;
+      same-name/unrelated directory results rejected. search.nos.today returned0 profiles;
+      relay.nostr.band failed and stays UNKNOWN. Site access failures stay UNKNOWN,
+      never evidence that no identity exists. Omit mention/outreach pending direct
+      primary proof.
+    sources:
+    - https://github.com/Epiphytic
+    - https://github.com/Epiphytic/marmish
+    - https://epiphytic.org
+    - https://npub.world/?/search
+  Styx:
+    checked_at: '2026-11-03'
+    reason: Retained exact primary repository/README and bounded owner/site research
+      did not establish a project or maintainer npub. Exact project npub.world search
+      and signed-profile NIP50 search yielded no defensible primary-bound identity;
+      same-name/unrelated directory results rejected. search.nos.today returned0 profiles;
+      relay.nostr.band failed and stays UNKNOWN. Site access failures stay UNKNOWN,
+      never evidence that no identity exists. Omit mention/outreach pending direct
+      primary proof.
+    sources:
+    - https://github.com/styx-secure/styx
+    - https://github.com/styx-secure
+    - https://github.com/maverde73
+    - https://styxsecure.org
+    - https://npub.world/?/search
   Dark Wisp:
     checked_at: '2026-10-21'
     reason: Primary project/owner sources did not bind a defensible contact npub. Directory
@@ -3403,3 +3473,50 @@ nostr_core_lib_rust:
   evidence:
   - https://njump.me/84a29d16d613c78a0cd0e4041b443bcb78a963f873a77224c375a0f269580583
   mention_only: true
+
+# Additional primary-verified newsletter identities, 2026-11-03.
+whitenoise-android:
+  npub: npub1whtn0s68y3cs98zysa4nxrfzss5g5snhndv35tk5m2sudsr7ltms48r3ec
+  identity_type: project
+  outreach: true
+  evidence:
+  - https://github.com/marmot-protocol/whitenoise-android
+  - https://github.com/marmot-protocol/whitenoise-linux/blob/b537340b48ac8e34b1845e7de18cf18c527f0aa1/README.md
+whitenoise-ios:
+  npub: npub1whtn0s68y3cs98zysa4nxrfzss5g5snhndv35tk5m2sudsr7ltms48r3ec
+  identity_type: project
+  outreach: true
+  evidence:
+  - https://github.com/marmot-protocol/whitenoise-ios
+  - https://github.com/marmot-protocol/whitenoise-linux/blob/b537340b48ac8e34b1845e7de18cf18c527f0aa1/README.md
+whitenoise-linux:
+  npub: npub1whtn0s68y3cs98zysa4nxrfzss5g5snhndv35tk5m2sudsr7ltms48r3ec
+  identity_type: project
+  outreach: true
+  evidence:
+  - https://github.com/marmot-protocol/whitenoise-linux
+  - https://github.com/marmot-protocol/whitenoise-linux/blob/b537340b48ac8e34b1845e7de18cf18c527f0aa1/README.md
+whitenoise-mac:
+  npub: npub1whtn0s68y3cs98zysa4nxrfzss5g5snhndv35tk5m2sudsr7ltms48r3ec
+  identity_type: project
+  outreach: true
+  evidence:
+  - https://github.com/marmot-protocol/whitenoise-mac
+  - https://github.com/marmot-protocol/whitenoise-linux/blob/b537340b48ac8e34b1845e7de18cf18c527f0aa1/README.md
+nostrc libvault:
+  npub: npub1ehhfg09mr8z34wz85ek46a6rww4f7c7jsujxhdvmpqnl5hnrwsqq2szjqv
+  identity_type: maintainer
+  person: Biz
+  outreach: true
+  evidence:
+  - https://github.com/chebizarro
+  - https://github.com/chebizarro/nostrc
+Third Ear:
+  npub: npub1m2mvvpjugwdehtaskrcl7ksvdqnnhnjur9v6g9v266nss504q7mqvlr8p9
+  identity_type: maintainer
+  person: Juraj
+  outreach: true
+  evidence:
+  - https://github.com/jooray/third-ear/blob/e4f7e4358ea63a60dd13bb8e69428f9f6514ff37/README.md
+  - https://github.com/jooray
+  - https://juraj.bednar.io/showcase/#MED-05
