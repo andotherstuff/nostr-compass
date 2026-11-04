@@ -20,4 +20,3 @@ The [current NIP-35 text](https://github.com/nostr-protocol/nips/blob/master/35.
 - [Newsletter #46: Magnetar](/en/newsletters/2026-10-28-newsletter/#magnetar)
 
 - [Newsletter 45](/en/newsletters/2026-10-21-newsletter/#short-history)
-

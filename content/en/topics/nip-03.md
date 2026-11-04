@@ -34,4 +34,3 @@ An [October 11, 2023 commit](https://github.com/nostr-protocol/nips/commit/09ffb
 ## See Also
 
 - [NIP-01: Basic Protocol](/en/topics/nip-01/)
-

@@ -18,4 +18,3 @@ Primary source: the [NIP-88 text](https://github.com/nostr-protocol/nips/blob/ma
 ## Mentioned in
 
 - [Newsletter 45](/en/newsletters/2026-10-21-newsletter/#feather)
-
