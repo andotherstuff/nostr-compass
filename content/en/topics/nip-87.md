@@ -83,7 +83,6 @@ Cashu and Fedimint use different announcement kinds because they expose differen
 - [NIP-87 Specification](https://github.com/nostr-protocol/nips/blob/master/87.md)
 
 **Mentioned in:**
-- [Newsletter #47: MintRadar](/en/newsletters/2026-11-04-newsletter/#mintradar)
 - [Newsletter #4: Releases](/en/newsletters/2026-01-07-newsletter/#releases)
 - [Newsletter #7: Zeus](/en/newsletters/2026-01-28-newsletter/)
 

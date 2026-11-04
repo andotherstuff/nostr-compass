@@ -31,7 +31,7 @@ Another practical issue is references. Users and apps may still hold the deleted
 - [NIP-09 Specification](https://github.com/nostr-protocol/nips/blob/master/09.md)
 
 **Mentioned in:**
-- [Newsletter #47: Conduit](/en/newsletters/2026-11-04-newsletter/#conduit)
+- [Newsletter #47: Buzz atomic deletion changes](/en/newsletters/2026-11-04-newsletter/#buzz)
 - [Newsletter #46: nosfry](/en/newsletters/2026-10-28-newsletter/#nosfry)
 - [Newsletter #45](/en/newsletters/2026-10-21-newsletter/#marmot-multi-device-account-proposal)
 - [Newsletter #43](/en/newsletters/2026-10-07-newsletter/#in-development)

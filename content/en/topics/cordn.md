@@ -27,7 +27,6 @@ The change is merged protocol text and does not correspond to a client release.
 - [Cordn PR #12](https://github.com/Cordn-msg/cordn/pull/12) - Coordinator claim sets that converge across devices
 
 **Mentioned in:**
-- [Newsletter #47: Cordn makes coordinator retractions converge across devices](/en/newsletters/2026-11-04-newsletter/#cordn-makes-coordinator-retractions-converge-across-devices)
 
 **See also:**
 - [MLS (Message Layer Security)](/en/topics/mls/)

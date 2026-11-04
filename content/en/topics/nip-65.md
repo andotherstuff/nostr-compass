@@ -74,7 +74,6 @@ Mix general-purpose relays with any specialized relays you use. For instance, yo
 - [Nostrology relay observatory](https://dev.nostrolo.gy/relays) - Aggregated kind `10002` relay-list adoption and role counts
 
 **Mentioned in:**
-- [Newsletter #47: NosTube](/en/newsletters/2026-11-04-newsletter/#nostube)
 - [Newsletter #46: Linky](/en/newsletters/2026-10-28-newsletter/#linky)
 - [Newsletter #45](/en/newsletters/2026-10-21-newsletter/#nappletsoy)
 - [Newsletter #44](/en/newsletters/2026-10-14-newsletter/#ants)

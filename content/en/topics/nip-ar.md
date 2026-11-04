@@ -32,8 +32,6 @@ The [incremental HTTP recovery merge](https://github.com/block/buzz/commit/a5734
 - [Buzz incremental HTTP artifact recovery merge](https://github.com/block/buzz/commit/a57349b237c67c3983dd7a09af378977ccd1e3f9)
 
 **Mentioned in:**
-- [Newsletter #47: Buzz adopts complete artifact snapshots over WebSocket](/en/newsletters/2026-11-04-newsletter/#buzz-adopts-complete-artifact-snapshots-over-websocket)
-- [Newsletter #47: Buzz merges incremental recovery for saved artifact stores](/en/newsletters/2026-11-04-newsletter/#buzz-merges-incremental-recovery-for-saved-artifact-stores)
 - [Newsletter #46: Buzz NIP-AR sync subscriptions send a complete snapshot before live heads](/en/newsletters/2026-10-28-newsletter/#buzz-nip-ar-sync-subscriptions-send-a-complete-snapshot-before-live-heads)
 - [Newsletter #45](/en/newsletters/2026-10-21-newsletter/#buzz)
 - [Newsletter #42: Buzz channel artifacts](/en/newsletters/2026-09-30-newsletter/#buzz-extends-its-relays-channel-and-identity-controls)

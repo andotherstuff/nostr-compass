@@ -58,7 +58,6 @@ Forks and deference markers let authors acknowledge better versions without dele
 - [PR #2242: Switch from Asciidoc to Djot](https://github.com/nostr-protocol/nips/pull/2242)
 
 **Mentioned in:**
-- [Newsletter #47: Imwald](/en/newsletters/2026-11-04-newsletter/#imwald)
 - [Newsletter #3: NIP Updates](/en/newsletters/2025-12-31-newsletter/#nip-updates)
 - [Newsletter #12: Open PRs](/en/newsletters/2026-03-04-newsletter/#open-prs-and-project-updates)
 - [Newsletter #14: NIP Deep Dive](/en/newsletters/2026-03-18-newsletter/#nip-deep-dive-nip-54-wiki)

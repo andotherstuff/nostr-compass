@@ -83,7 +83,6 @@ Payments and shipping are also only partly standardized. A client can understand
 
 **Mentioned in:**
 
-- [Newsletter #47: Backyard Explorer](/en/newsletters/2026-11-04-newsletter/#backyard-explorer)
 
 - [Newsletter #7: January 2024 Protocol Hardening](/en/newsletters/2026-01-28-newsletter/#january-2024-protocol-hardening)
 - [Newsletter #31: NIP Deep Dive: NIP-99 and the Gamma Markets commerce extension](/en/newsletters/2026-07-15-newsletter/#nip-deep-dive-nip-99-and-the-gamma-markets-commerce-extension)

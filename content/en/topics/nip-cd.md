@@ -32,7 +32,6 @@ A user may maintain an optional kind 10992 list, following NIP-51, containing `a
 
 ## Mentioned in
 
-- [Newsletter #47: Paravel (Welshman)](/en/newsletters/2026-11-04-newsletter/#paravel-welshman)
 
 - [Newsletter #46: NIP-CD defines commands invoked as plain text](/en/newsletters/2026-10-28-newsletter/#nip-cd-defines-commands-invoked-as-plain-text) Newsletters
 

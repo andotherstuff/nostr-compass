@@ -74,7 +74,6 @@ NIP-30 custom emoji also work in kind 7 reaction events. A reaction with `conten
 - [PR #2247](https://github.com/nostr-protocol/nips/pull/2247) - Emoji set address in tags
 
 **Mentioned in:**
-- [Newsletter #47: Vector](/en/newsletters/2026-11-04-newsletter/#vector)
 - [Newsletter #41: NIP Deep Dive](/en/newsletters/2026-09-23-newsletter/#nip-deep-dive-custom-emoji-and-video-events)
 - [Newsletter #12: NoorNote v0.5.x](/en/newsletters/2026-03-04-newsletter/#noornote-v05x)
 - [Newsletter #12: NIP Updates](/en/newsletters/2026-03-04-newsletter/#nip-updates)

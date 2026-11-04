@@ -56,7 +56,6 @@ The format also carries a one-byte flag describing whether the key has ever been
 - [Formstr PR #434](https://github.com/formstr-hq/nostr-forms/pull/434) - Client-side signup flow using NIP-49
 
 **Mentioned in:**
-- [Newsletter #47: Monostr](/en/newsletters/2026-11-04-newsletter/#monostr)
 
 - [Newsletter #46 (2026-10-28): ndk](/en/newsletters/2026-10-28-newsletter/#ndk)
 - [Newsletter #13: Formstr](/en/newsletters/2026-03-11-newsletter/#formstr)

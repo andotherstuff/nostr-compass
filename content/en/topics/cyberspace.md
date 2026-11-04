@@ -38,6 +38,4 @@ These merges change the specification. They do not show which clients verify the
 - [Portable hop-proof golden vectors](https://github.com/arkin0x/cyberspace/commit/06c287332651f99b75e609b7b098e165993750fd)
 
 **Mentioned in:**
-- [Newsletter #47: Cyberspace adopts sampled residue proofs for movement](/en/newsletters/2026-11-04-newsletter/#cyberspace-adopts-sampled-residue-proofs-for-movement)
-- [Newsletter #47: Doors and chest looks enter the Cyberspace DECK](/en/newsletters/2026-11-04-newsletter/#doors-and-chest-looks-enter-the-cyberspace-deck)
 - [Newsletter #46](/en/newsletters/2026-10-28-newsletter/)

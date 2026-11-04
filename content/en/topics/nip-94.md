@@ -59,7 +59,6 @@ NIP-94 works across storage backends. A file can be uploaded through [NIP-96: HT
 - [NIP-94 Specification](https://github.com/nostr-protocol/nips/blob/master/94.md)
 
 **Mentioned in:**
-- [Newsletter #47: Nostter](/en/newsletters/2026-11-04-newsletter/#nostter)
 - [Newsletter #3: December Recap](/en/newsletters/2025-12-31-newsletter/#december-recap-five-years-of-nostr-decembers)
 - [Newsletter #14: NIP Deep Dive](/en/newsletters/2026-03-18-newsletter/#nip-deep-dive-nip-94-file-metadata)
 - [Newsletter #34: Napplet upload contract](/en/newsletters/2026-08-05-newsletter/#napplet-host-capabilities)

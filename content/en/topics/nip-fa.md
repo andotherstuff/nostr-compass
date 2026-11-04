@@ -26,5 +26,4 @@ Buzz merged a [NIP-FA draft for owner-authorized agent credentials](https://gith
 - [Newsletter #47: Buzz agent credentials](/en/newsletters/2026-11-04-newsletter/#buzz-defines-owner-authorized-agent-credential-routes)
 
 
-- [Newsletter #47: Buzz makes assertion lifetime issuer policy](/en/newsletters/2026-11-04-newsletter/#buzz-makes-assertion-lifetime-issuer-policy)
 - [Newsletter 45](/en/newsletters/2026-10-21-newsletter/#buzz)

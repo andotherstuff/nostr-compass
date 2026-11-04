@@ -93,7 +93,6 @@ The Nostr live-activity surface is intentionally thin: NIP-53 advertises the act
 - [NoorNote 1.3.0](https://github.com/77elements/noornote/releases/tag/v1.3.0) - live-activity cards across client surfaces
 
 **Mentioned in:**
-- [Newsletter #47: Wavestr](/en/newsletters/2026-11-04-newsletter/#wavestr)
 
 - [Newsletter #45: Dark Wisp](/en/newsletters/2026-10-21-newsletter/#dark-wisp)
 

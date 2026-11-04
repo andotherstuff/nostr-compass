@@ -80,7 +80,7 @@ Message history uses separate drafts. [History keys and history deliveries](http
 - [MDK heartbeat-based Welcome repair](https://github.com/marmot-protocol/mdk/pull/2936)
 
 **Mentioned in:**
-- [Newsletter #47: Marmot linked-device drafts](/en/newsletters/2026-11-04-newsletter/#marmot-merges-the-device-roster-and-device-tag-components)
+- [Newsletter #47: MDK heartbeat-based Welcome repair](/en/newsletters/2026-11-04-newsletter/#marmot-protocol-mdk)
 - [Newsletter #46: Marmot adopts multiple devices per account](/en/newsletters/2026-10-28-newsletter/#marmot-adopts-multiple-devices-per-account)
 - [Newsletter 45](/en/newsletters/2026-10-21-newsletter/#amethyst)
 - [Newsletter #44](/en/newsletters/2026-10-14-newsletter/#mdk)

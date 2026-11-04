@@ -30,7 +30,6 @@ NIP-25 is widely implemented by Nostr clients and libraries as part of ordinary 
 
 **Mentioned in:**
 
-- [Newsletter #47: Marble](/en/newsletters/2026-11-04-newsletter/#marble)
 
 - [Newsletter #46: eHagaki](/en/newsletters/2026-10-28-newsletter/#ehagaki)
 - [Newsletter #45](/en/newsletters/2026-10-21-newsletter/#pollerama)

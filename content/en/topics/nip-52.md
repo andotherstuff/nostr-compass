@@ -82,7 +82,6 @@ NIP-52 does more than describe a meeting. It separates event definition, calenda
 
 **Mentioned in:**
 
-- [Newsletter #47: Backyard Explorer](/en/newsletters/2026-11-04-newsletter/#backyard-explorer)
 
 - [Newsletter #7: Notedeck Calendar App Draft](/en/newsletters/2026-01-28-newsletter/#notedeck-progress-calendar-app-and-ux-polish)
 - [Newsletter #10: NIP Updates](/en/newsletters/2026-02-18-newsletter/#nip-updates)

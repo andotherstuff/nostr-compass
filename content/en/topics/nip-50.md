@@ -50,7 +50,6 @@ Structured filters work well when you already know the author, kind, or tag you 
 - [NIP-50 Specification](https://github.com/nostr-protocol/nips/blob/master/50.md)
 
 **Mentioned in:**
-- [Newsletter #47: Buzz](/en/newsletters/2026-11-04-newsletter/#buzz)
 - [Newsletter #46: Wisp identifier search](/en/newsletters/2026-10-28-newsletter/#wisp-identifier-search)
 - [Newsletter #44](/en/newsletters/2026-10-14-newsletter/#ants)
 - [Newsletter #43](/en/newsletters/2026-10-07-newsletter/#top-stories)

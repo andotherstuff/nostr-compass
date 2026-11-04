@@ -35,6 +35,3 @@ An [October 11, 2023 commit](https://github.com/nostr-protocol/nips/commit/09ffb
 
 - [NIP-01: Basic Protocol](/en/topics/nip-01/)
 
-**Mentioned in:**
-
-- [Newsletter #47: Drift](/en/newsletters/2026-11-04-newsletter/#drift)
