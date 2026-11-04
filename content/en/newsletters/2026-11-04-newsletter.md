@@ -6,7 +6,7 @@ draft: false
 type: newsletters
 ---
 
-This week [Amethyst](#amethyst) shipped inline napplets with fixes from an [embed security review](https://github.com/vitorpamplona/amethyst/pull/4710), [Napplets](#napplets---web-packages) tied applet identity to per-document ports, and [Marmot's mdk](#marmot-protocol-mdk) nightlies tightened group messaging. Elsewhere, relays, wallets, signing libraries and new apps changed, much of it in merged source that has not shipped.
+This week [Amethyst](/en/newsletters/2026-11-04-newsletter/#amethyst) shipped inline napplets with fixes from an [embed security review](https://github.com/vitorpamplona/amethyst/pull/4710), [Napplets](/en/newsletters/2026-11-04-newsletter/#napplets---web-packages) tied applet identity to per-document ports, and [Marmot's mdk](/en/newsletters/2026-11-04-newsletter/#marmot-protocol-mdk) nightlies tightened group messaging. Elsewhere, relays, wallets, signing libraries and new apps changed, much of it in merged source that has not shipped.
 
 ## Top Stories
 
