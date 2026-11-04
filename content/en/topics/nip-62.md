@@ -79,7 +79,7 @@ It also goes beyond [NIP-09](/en/topics/nip-09/). NIP-09 deletes individual even
 - [nostream PR #544](https://github.com/Cameri/nostream/pull/544)
 
 **Mentioned in:**
-- [Newsletter #47: Quartz library aligns deletion handling and Negentropy uploads](/en/newsletters/2026-11-04-newsletter/#quartz-library-aligns-deletion-handling-and-negentropy-uploads)
+- [Newsletter #47: Quartz](/en/newsletters/2026-11-04-newsletter/#quartz)
 - [Newsletter #46: nosfry](/en/newsletters/2026-10-28-newsletter/#nosfry)
 - [Newsletter #45](/en/newsletters/2026-10-21-newsletter/#nip-59-recipient-deleted-gift-wraps-proposal)
 - [Newsletter #5: Notable Code Changes](/en/newsletters/2026-01-13-newsletter/#rust-nostr-library)

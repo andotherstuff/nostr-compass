@@ -54,5 +54,8 @@ At commit [`9395544`](https://github.com/damus-io/notedeck/blob/93955445ae185392
 
 ## Mentioned in
 
+
+- [Newsletter #47: nostr-mail-client](/en/newsletters/2026-11-04-newsletter/#nostr-mail-client)
+
 - [Newsletter #45: NIP-37 and NIP-48](/en/newsletters/2026-10-21-newsletter/#nip-deep-dive-nip-37-and-nip-48)
 - [Newsletter #29: Notedeck](/en/newsletters/2026-07-01-newsletter/#notedeck-implements-nip-37-private-sync-relays-nip-52-calendar-and-nip-22-comments)

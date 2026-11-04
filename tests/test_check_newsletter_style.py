@@ -161,6 +161,81 @@ class NewsletterStyleTests(unittest.TestCase):
         )
         self.assertEqual([], findings)
 
+    def test_accepts_forward_reference_to_separately_headed_spec(self):
+        checker = load_module()
+        self.assertEqual([], checker.review("""## Protocol and Spec Work
+### Napplets request inference
+[Base contract](https://github.com/napplet/naps/pull/134) defines inference.
+Its [tool extension](https://github.com/napplet/naps/pull/138) is described below.
+### Model streams carry tool calls
+[Tool calls](https://github.com/napplet/naps/pull/138) extend inference.
+"""))
+
+    def test_accepts_reciprocal_references_with_url_suffixes(self):
+        checker = load_module()
+        self.assertEqual([], checker.review("""## Protocol and Spec Work
+### Model streams carry tool calls
+[Tool calls](https://github.com/napplet/naps/pull/138#discussion) extend
+the [base](https://github.com/NAPPLET/NAPS/pull/134?view=files).
+### Napplets request inference
+[Base contract](https://github.com/napplet/naps/pull/134) defines inference.
+The [extension](https://github.com/napplet/naps/pull/138) is separate.
+"""))
+
+    def test_generic_heading_cannot_own_cross_reference(self):
+        checker = load_module()
+        findings = checker.review("""## Protocol and Spec Work
+### Napplets request inference
+[Base](https://github.com/napplet/naps/pull/134) defines inference.
+[Tools](https://github.com/napplet/naps/pull/138) extend it.
+### NAPs
+[Tools](https://github.com/napplet/naps/pull/138) are specified.
+""")
+        self.assertCountEqual(
+            ["grouped_spec_changes", "generic_spec_heading"],
+            [finding.kind for finding in findings],
+        )
+
+    def test_secondary_link_elsewhere_does_not_own_change(self):
+        checker = load_module()
+        findings = checker.review("""## Protocol and Spec Work
+### Napplets request inference
+[Base](https://github.com/napplet/naps/pull/134) defines inference.
+[Tools](https://github.com/napplet/naps/pull/138) extend it.
+### Napplets bind replay
+[Replay](https://github.com/napplet/naps/pull/128) defines replay.
+[Tools](https://github.com/napplet/naps/pull/138) are also mentioned.
+""")
+        self.assertEqual(
+            ["grouped_spec_changes", "grouped_spec_changes"],
+            [finding.kind for finding in findings],
+        )
+
+    def test_cross_reference_does_not_hide_third_unheaded_change(self):
+        checker = load_module()
+        findings = checker.review("""## Protocol and Spec Work
+### Napplets request inference
+[Base](https://github.com/napplet/naps/pull/134) defines inference.
+[Tools](https://github.com/napplet/naps/pull/138) extend it.
+[Replay](https://github.com/napplet/naps/pull/128) is another change.
+### Model streams carry tool calls
+[Tools](https://github.com/napplet/naps/pull/138) are specified.
+""")
+        self.assertEqual(["grouped_spec_changes"], [f.kind for f in findings])
+        self.assertIn("2 changes", findings[0].detail)
+
+    def test_heading_outside_protocol_section_cannot_own_reference(self):
+        checker = load_module()
+        findings = checker.review("""## Protocol and Spec Work
+### Napplets request inference
+[Base](https://github.com/napplet/naps/pull/134) defines inference.
+[Tools](https://github.com/napplet/naps/pull/138) extend it.
+## NIP Deep Dive
+### Model streams carry tool calls
+[Tools](https://github.com/napplet/naps/pull/138) are explained here.
+""")
+        self.assertEqual(["grouped_spec_changes"], [f.kind for f in findings])
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -29,6 +29,9 @@ NIP-25 is widely implemented by Nostr clients and libraries as part of ordinary 
 - [Downvote follow-up](https://github.com/nostr-protocol/nips/commit/89bb08ba8683)
 
 **Mentioned in:**
+
+- [Newsletter #47: Marble](/en/newsletters/2026-11-04-newsletter/#marble)
+
 - [Newsletter #46: eHagaki](/en/newsletters/2026-10-28-newsletter/#ehagaki)
 - [Newsletter #45](/en/newsletters/2026-10-21-newsletter/#pollerama)
 - [Newsletter #33: Six Years of Nostr Julys](/en/newsletters/2026-07-29-newsletter/#six-years-of-nostr-julys)

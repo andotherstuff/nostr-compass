@@ -11,11 +11,19 @@ It defines a provider-neutral HTTP contract between a Nostr client and an enterp
 
 Primary source: the [NIP-FA specification](https://github.com/block/buzz/blob/main/docs/nips/NIP-FA.md) in the Buzz repository.
 
+## Agent credentials
+
+Buzz merged a [NIP-FA draft for owner-authorized agent credentials](https://github.com/block/buzz/pull/9015), defining grant, assertion and revocation routes for agents an owner has authorized through NIP-OA. A grant comes from an RFC 8693 token exchange that pairs the owner's session with a [NIP-98](/en/topics/nip-98/) proof from the agent. For an assertion, the agent presents the grant as a Bearer token alongside its own proof, and clients check the assertion's `iss` against the grant's issuer. Agent proofs are single-use and belong only to the grant and assertion routes. Revocation runs on the owner's session with no agent proof; it revokes the agent key and its grants and disconnects the agent. Adapter policy decides grant lifetime. Unsupported authorization conditions are refused, and a revoked key cannot re-enroll. NIP-FA is a Buzz specification, not an accepted NIP. The merge is in source only, with no claim of production activation, a released build or interoperability.
+
 ## Primary sources
 
 - [Buzz NIP-FA: Federated Identity Adapter](https://github.com/block/buzz/blob/main/docs/nips/NIP-FA.md)
 
+- [Owner-authorized agent credential routes](https://github.com/block/buzz/pull/9015)
+
 ## Mentioned in
+
+- [Newsletter #47: Buzz agent credentials](/en/newsletters/2026-11-04-newsletter/#buzz-defines-owner-authorized-agent-credential-routes)
 
 
 - [Newsletter #47: Buzz makes assertion lifetime issuer policy](/en/newsletters/2026-11-04-newsletter/#buzz-makes-assertion-lifetime-issuer-policy)

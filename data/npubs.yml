@@ -1221,6 +1221,129 @@ unresolved:
     - https://search.nos.today
     - https://relay.nostr.band
 
+  Pacto:
+    checked_at: '2026-11-04'
+    reason: Exact primary repository/readme and available owner or package-role evidence did not establish a defensible project or maintainer contact key. The bounded npub.world name search and signature-verified NIP-50 search did not supply a primary-bound role. Existing similarly named or same-owner identities were not inherited. Keep untagged and omit outreach pending primary project/maintainer binding; this is not evidence no identity exists.
+    sources:
+    - https://github.com/covenant-gov/pacto-app
+    - https://github.com/covenant-gov
+    - https://npub.world/?/search
+    - https://search.nos.today
+  Paravel (Welshman):
+    checked_at: '2026-11-04'
+    reason: Exact primary repository/readme and available owner or package-role evidence did not establish a defensible project or maintainer contact key. The bounded npub.world name search and signature-verified NIP-50 search did not supply a primary-bound role. Existing similarly named or same-owner identities were not inherited. Keep untagged and omit outreach pending primary project/maintainer binding; this is not evidence no identity exists.
+    sources:
+    - https://github.com/coracle-social/welshman
+    - https://github.com/coracle-social
+    - https://npub.world/?/search
+    - https://search.nos.today
+  Backyard Explorer:
+    checked_at: '2026-11-04'
+    reason: Exact primary repository/readme and available owner or package-role evidence did not establish a defensible project or maintainer contact key. The bounded npub.world name search and signature-verified NIP-50 search did not supply a primary-bound role. Existing similarly named or same-owner identities were not inherited. Keep untagged and omit outreach pending primary project/maintainer binding; this is not evidence no identity exists.
+    sources:
+    - https://github.com/hzrd149/backyard-explorer
+    - https://github.com/hzrd149
+    - https://npub.world/?/search
+    - https://search.nos.today
+  Chatastrophe:
+    checked_at: '2026-11-04'
+    reason: Exact primary repository/readme and available owner or package-role evidence did not establish a defensible project or maintainer contact key. The bounded npub.world name search and signature-verified NIP-50 search did not supply a primary-bound role. Existing similarly named or same-owner identities were not inherited. Keep untagged and omit outreach pending primary project/maintainer binding; this is not evidence no identity exists.
+    sources:
+    - https://github.com/dtonon/chatastrophe
+    - https://github.com/dtonon/chatastrophe/blob/044174a79c1b1f7f1b9a5a8c397cb394fca922bd/README.md
+    - https://github.com/dtonon
+    - https://npub.world/?/search
+    - https://search.nos.today
+  Drift:
+    checked_at: '2026-11-04'
+    reason: Exact primary repository/readme and available owner or package-role evidence did not establish a defensible project or maintainer contact key. The bounded npub.world name search and signature-verified NIP-50 search did not supply a primary-bound role. Existing similarly named or same-owner identities were not inherited. Keep untagged and omit outreach pending primary project/maintainer binding; this is not evidence no identity exists.
+    sources:
+    - https://github.com/EduardoFerr/drift
+    - https://github.com/EduardoFerr/drift/blob/09b98f2442f5234807673544bda0ae8ec1a9f369/README.md
+    - https://github.com/EduardoFerr
+    - https://npub.world/?/search
+    - https://search.nos.today
+  isoloir:
+    checked_at: '2026-11-04'
+    reason: Exact primary repository/readme and available owner or package-role evidence did not establish a defensible project or maintainer contact key. The bounded npub.world name search and signature-verified NIP-50 search did not supply a primary-bound role. Existing similarly named or same-owner identities were not inherited. Keep untagged and omit outreach pending primary project/maintainer binding; this is not evidence no identity exists.
+    sources:
+    - https://github.com/lanterne-labs/isoloir
+    - https://github.com/lanterne-labs/isoloir/blob/b1a0b2a882d63f42fa971f3da69fa76e2444ed6a/README.md
+    - https://github.com/lanterne-labs
+    - https://npub.world/?/search
+    - https://search.nos.today
+  nos2x-pro:
+    checked_at: '2026-11-04'
+    reason: Exact primary repository/readme and available owner or package-role evidence did not establish a defensible project or maintainer contact key. The bounded npub.world name search and signature-verified NIP-50 search did not supply a primary-bound role. Existing similarly named or same-owner identities were not inherited. Keep untagged and omit outreach pending primary project/maintainer binding; this is not evidence no identity exists.
+    sources:
+    - https://github.com/flox1an/nos2x-pro
+    - https://github.com/flox1an/nos2x-pro/blob/85b011fbfd695779b1f4ac7e5705a2ff4e419a15/README.md
+    - https://github.com/flox1an
+    - https://npub.world/?/search
+    - https://search.nos.today
+  nostr-worker-relay:
+    checked_at: '2026-11-04'
+    reason: Exact primary repository/readme and available owner or package-role evidence did not establish a defensible project or maintainer contact key. The bounded npub.world name search and signature-verified NIP-50 search did not supply a primary-bound role. Existing similarly named or same-owner identities were not inherited. Keep untagged and omit outreach pending primary project/maintainer binding; this is not evidence no identity exists.
+    sources:
+    - https://github.com/bgwastu/nostr-worker-relay
+    - https://github.com/bgwastu/nostr-worker-relay/blob/3b93add1320a638816788cc3c9cf74497b776cce/README.md
+    - https://github.com/bgwastu
+    - https://npub.world/?/search
+    - https://search.nos.today
+  Nostreddit:
+    checked_at: '2026-11-04'
+    reason: Exact primary repository/readme and available owner or package-role evidence did not establish a defensible project or maintainer contact key. The bounded npub.world name search and signature-verified NIP-50 search did not supply a primary-bound role. Existing similarly named or same-owner identities were not inherited. Keep untagged and omit outreach pending primary project/maintainer binding; this is not evidence no identity exists.
+    sources:
+    - https://github.com/mmalmi/nostreddit
+    - https://github.com/mmalmi
+    - https://npub.world/?/search
+    - https://search.nos.today
+  Struthio:
+    checked_at: '2026-11-04'
+    reason: Exact primary repository/readme and available owner or package-role evidence did not establish a defensible project or maintainer contact key. The bounded npub.world name search and signature-verified NIP-50 search did not supply a primary-bound role. Existing similarly named or same-owner identities were not inherited. Keep untagged and omit outreach pending primary project/maintainer binding; this is not evidence no identity exists.
+    sources:
+    - https://github.com/jawsh207/Struthio
+    - https://github.com/jawsh207/Struthio/blob/06da5b72264468e84ab5824dbe305834211c05a1/README.md
+    - https://github.com/jawsh207
+    - https://npub.world/?/search
+    - https://search.nos.today
+  Hubstr and Innis:
+    checked_at: '2026-11-04'
+    reason: Reuses existing researched-unresolved Hubstr Relay binding for the same primary repository; combined entry also covers johninnis nostr-core-ts and nostr-relay. No separately proven maintainer/project npub exists in retained primary sources. Do not infer a contact key from repository ownership. Keep untagged and omit outreach. Original Hubstr Relay uncertainty remains unchanged.
+    sources:
+    - https://github.com/johninnis/hubstr-relay
+    - https://github.com/johninnis/nostr-core-ts
+    - https://github.com/johninnis/nostr-relay
+    - https://github.com/johninnis
+
+  Paravel:
+    checked_at: '2026-11-04'
+    reason: Exact primary repository/readme and available owner or package-role evidence did not establish a defensible project or maintainer contact key. The bounded npub.world name search and signature-verified NIP-50 search did not supply a primary-bound role. Existing similarly named or same-owner identities were not inherited. Keep untagged and omit outreach pending primary project/maintainer binding; this is not evidence no identity exists.
+    sources:
+    - https://github.com/coracle-social/welshman
+    - https://github.com/coracle-social
+    - https://npub.world/?/search
+    - https://search.nos.today
+
+  Trikey:
+    checked_at: '2026-11-04'
+    reason: No monitored project or maintainer contact is verified from the canonical README/site, npub.world and signature-verified NIP-50 research. The authenticated release publisher establishes distribution authorship, not a monitored contact role. Keep untagged and omit outreach pending primary evidence; missing results do not establish that no identity exists.
+    sources:
+    - https://github.com/TheIcarusWings/trikey
+    - https://raw.githubusercontent.com/theicaruswings/trikey/HEAD/README.md
+    - https://trikey.app
+    - https://npub.world/?/search
+    - https://search.nos.today
+
+  Disgus:
+    checked_at: '2026-11-04'
+    reason: The canonical README identifies a maintainer NIP-05 address, but its exact well-known lookup failed TLS certificate verification. A matching public-directory candidate alone does not verify the contact key, and bounded signed-profile searches returned no matching evidence. Keep untagged and omit outreach pending primary verification; preserve the lookup uncertainty.
+    sources:
+    - https://github.com/carlitoplatanito/disgus
+    - https://carlitoplatanito.com/.well-known/nostr.json?name=_
+    - https://npub.world/?/search
+    - https://search.nos.today
+
 Nostr Compass: npub1wav4fae3gyfy3xj298kxj2mj8phavz7vavps34przq02j7w902qq902923
 
 # Added for Newsletter #21 publication
@@ -3520,3 +3643,13 @@ Third Ear:
   - https://github.com/jooray/third-ear/blob/e4f7e4358ea63a60dd13bb8e69428f9f6514ff37/README.md
   - https://github.com/jooray
   - https://juraj.bednar.io/showcase/#MED-05
+
+Self-sown:
+  npub: npub16dhgpql60vmd4mnydjut87vla23a38j689jssaqlqqlzrtqtd0kqex0nkq
+  identity_type: maintainer
+  person: calvadev
+  outreach: true
+  checked_at: '2026-11-04'
+  evidence:
+  - https://github.com/shopstr-eng/self-sown
+  - https://raw.githubusercontent.com/shopstr-eng/self-sown/HEAD/README.md

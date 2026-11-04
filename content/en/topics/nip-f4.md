@@ -70,6 +70,9 @@ The merged spec keeps several design questions for implementations to converge o
 - [Amethyst PR #3105](https://github.com/vitorpamplona/amethyst/pull/3105) - First major client implementation
 
 **Mentioned in:**
+
+- [Newsletter #47: NIP-F4 authored podcasts](/en/newsletters/2026-11-04-newsletter/#nip-f4-authored-podcasts)
+
 - [Newsletter #25: NIP Updates and Deep Dive](/en/newsletters/2026-06-03-newsletter/#nip-deep-dive-nip-f4-podcasts)
 - [Newsletter #27: Amethyst v1.12.0 ships Cashu wallets, nutzaps, a CLINK driver, and Tor self-heal](/en/newsletters/2026-06-17-newsletter/#amethyst-v1120-ships-cashu-wallets-nutzaps-a-clink-driver-and-tor-self-heal)
 
