@@ -60,6 +60,7 @@ Another useful distinction is scope. NIP-22 can anchor discussion to non-note re
 - [NIP-22 Specification](https://github.com/nostr-protocol/nips/blob/master/22.md)
 
 **Mentioned in:**
+- [Newsletter #47: Comment root and parent identifiers](/en/newsletters/2026-11-04-newsletter/#what-a-shared-identifier-does-not-prove)
 - [Newsletter #46: Zap Cooking guarded lists, signer fixes and passkey signup](/en/newsletters/2026-10-28-newsletter/#zap-cooking-guarded-lists-signer-fixes-and-passkey-signup)
 
 - [Newsletter #45: Snort](/en/newsletters/2026-10-21-newsletter/#snort)

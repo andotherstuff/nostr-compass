@@ -54,6 +54,7 @@ As of the current spec, identity claims live in dedicated kind 10011 events inst
 - [NIP-39 September 2026 proof update](https://github.com/nostr-protocol/nips/pull/2486)
 
 **Mentioned in:**
+- [Newsletter #47: What a shared identifier does not prove](/en/newsletters/2026-11-04-newsletter/#what-a-shared-identifier-does-not-prove)
 - [Newsletter #46: xmradar](/en/newsletters/2026-10-28-newsletter/#xmradar)
 - [Newsletter #9: NIP Updates](/en/newsletters/2026-02-11-newsletter/#nip-updates)
 - [Newsletter #12: Amethyst](/en/newsletters/2026-03-04-newsletter/#amethyst-nip-39-nip-c0-nip-66)

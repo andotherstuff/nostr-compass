@@ -90,29 +90,14 @@ def _review_spec_headings(markdown: str) -> list[Finding]:
     in_section = False
     heading: str | None = None
     heading_line = 0
-    pull_changes: set[str] = set()
-    commit_changes: set[str] = set()
+    changes: set[str] = set()
+    primary_change: str | None = None
+    sections: list[tuple[str, int, frozenset[str], str | None]] = []
 
     def finish_heading() -> None:
-        if heading is None or not (pull_changes or commit_changes):
+        if heading is None or not changes:
             return
-        if heading.casefold() in GENERIC_SPEC_HEADINGS:
-            findings.append(
-                Finding(
-                    heading_line,
-                    "generic_spec_heading",
-                    heading,
-                )
-            )
-        primary_changes = pull_changes | commit_changes
-        if len(primary_changes) > 1:
-            findings.append(
-                Finding(
-                    heading_line,
-                    "grouped_spec_changes",
-                    f"{heading}: {len(primary_changes)} changes",
-                )
-            )
+        sections.append((heading, heading_line, frozenset(changes), primary_change))
 
     for number, line in enumerate(markdown.splitlines(), 1):
         if line.strip() == SPEC_SECTION_HEADING:
@@ -127,8 +112,8 @@ def _review_spec_headings(markdown: str) -> list[Finding]:
             finish_heading()
             heading = line[4:].strip()
             heading_line = number
-            pull_changes = set()
-            commit_changes = set()
+            changes = set()
+            primary_change = None
             continue
         for match in GITHUB_CHANGE_URL_RE.finditer(line):
             repo = match.group(1).casefold()
@@ -143,13 +128,35 @@ def _review_spec_headings(markdown: str) -> list[Finding]:
                         change,
                     )
                 )
-            elif "/pull/" in change:
-                pull_changes.add(change)
             else:
-                commit_changes.add(change)
+                changes.add(change)
+                if primary_change is None:
+                    primary_change = change
     else:
         if in_section:
             finish_heading()
+
+    # Resolve references after parsing the whole section, including forward links.
+    # The first tracked change owns a descriptive heading; other links can cite
+    # related changes that already have their own heading.
+    owners: dict[str, set[int]] = {}
+    for title, line_number, _, primary in sections:
+        if primary is not None and title.casefold() not in GENERIC_SPEC_HEADINGS:
+            owners.setdefault(primary, set()).add(line_number)
+    for title, line_number, linked_changes, primary in sections:
+        if title.casefold() in GENERIC_SPEC_HEADINGS:
+            findings.append(Finding(line_number, "generic_spec_heading", title))
+        cross_references = {
+            change for change in linked_changes
+            if change != primary
+            and any(owner != line_number for owner in owners.get(change, set()))
+        }
+        primary_changes = linked_changes - cross_references
+        if len(primary_changes) > 1:
+            findings.append(Finding(
+                line_number, "grouped_spec_changes",
+                f"{title}: {len(primary_changes)} changes",
+            ))
     return findings
 
 

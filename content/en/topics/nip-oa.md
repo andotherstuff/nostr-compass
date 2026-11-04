@@ -28,4 +28,7 @@ An empty conditions string adds no constraints. Timestamp clauses constrain a fi
 
 **Mentioned in:**
 
+
+- [Newsletter #47: Buzz defines owner-authorized agent credential routes](/en/newsletters/2026-11-04-newsletter/#buzz-defines-owner-authorized-agent-credential-routes)
+
 - [Newsletter #46: Buzz](/en/newsletters/2026-10-28-newsletter/#buzz)

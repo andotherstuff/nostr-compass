@@ -27,5 +27,6 @@ An open pull request, #8639, proposes moving Buzz clients to a `buzz_v1` NIP-11 
 - [NIP-78](/en/topics/nip-78/)
 
 **Mentioned in:**
+- [Newsletter #47: Buzz](/en/newsletters/2026-11-04-newsletter/#buzz)
 
 - [Newsletter #46: Buzz](/en/newsletters/2026-10-28-newsletter/#buzz)

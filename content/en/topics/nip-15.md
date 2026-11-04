@@ -82,6 +82,8 @@ Payments and shipping are also only partly standardized. A client can understand
 - [NIP-15 Specification](https://github.com/nostr-protocol/nips/blob/master/15.md)
 
 **Mentioned in:**
+
+
 - [Newsletter #7: January 2024 Protocol Hardening](/en/newsletters/2026-01-28-newsletter/#january-2024-protocol-hardening)
 - [Newsletter #31: NIP Deep Dive: NIP-99 and the Gamma Markets commerce extension](/en/newsletters/2026-07-15-newsletter/#nip-deep-dive-nip-99-and-the-gamma-markets-commerce-extension)
 

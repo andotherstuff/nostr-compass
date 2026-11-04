@@ -1,5 +1,5 @@
 import { describe, expect, test } from "bun:test";
-import { extractMentions } from "../scripts/publish";
+import { extractMentions, injectNpubMentions } from "../scripts/publish";
 import type { NpubMap } from "../scripts/lib/npub-database";
 
 function project(npub: string) {
@@ -24,6 +24,36 @@ const npubs: NpubMap = {
   mill: project("npub1mill"),
   nail: project("npub1nail"),
 };
+
+describe("publish identity insertion", () => {
+  const identity = { name: "example", ...project("npub1synthetic") };
+
+  test("keeps a release URL intact when the maintainer name appears only in its destination", () => {
+    const url = "https://github.com/example/widgets/releases/tag/v1.2.0";
+    const body = `Widgets released [v1.2.0](${url}).`;
+    const result = injectNpubMentions(body, [{ ...identity, identity_type: "maintainer", person: "Example" }]);
+    expect(result).toBe(`Widgets released [v1.2.0](${url}) (maintainer Example: nostr:npub1synthetic).`);
+  });
+
+  test("inserts after a matching link label without changing its URL", () => {
+    const body = "Use [Example](https://example.test/releases).";
+    expect(injectNpubMentions(body, [identity])).toBe(`${body.slice(0, -1)} nostr:npub1synthetic.`);
+  });
+
+  test("keeps a visible bare mention ahead of an unchanged release link", () => {
+    const body = "Example released [v1.2.0](https://github.com/example/widgets/releases/tag/v1.2.0).";
+    expect(injectNpubMentions(body, [identity])).toBe(body.replace("Example released", "Example nostr:npub1synthetic released"));
+  });
+
+  test("deduplicates shared identity aliases while preserving both destinations", () => {
+    const body = "[v1](https://github.com/example/widgets/v1), [v2](https://example.test/widgets/v2).";
+    const result = injectNpubMentions(body, [identity, { ...identity, name: "widgets" }]);
+    expect([...result.matchAll(/\]\(([^)]+)\)/g)].map((match) => match[1])).toEqual([
+      "https://github.com/example/widgets/v1", "https://example.test/widgets/v2",
+    ]);
+    expect(result.split("nostr:npub1synthetic").length - 1).toBe(1);
+  });
+});
 
 describe("publish mention extraction", () => {
   test("treats only application-section H3 headings as projects", () => {
