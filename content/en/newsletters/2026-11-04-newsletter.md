@@ -974,7 +974,7 @@ An OPEN navigation revision [settles pending revisits by reported location](http
 
 ### Contact picking stays separate from address-book browsing
 
-A new OPEN NAP-CONTACTS proposal offers [read-only access to email endpoints and optional Nostr pubkeys](https://github.com/napplet/naps/pull/140). A trusted picker discloses only the selections the user explicitly confirms, while query and get calls need a separately granted browse authority. Handles and scoped cursors are not permission tokens, and email read or send grants do not cover contacts. Revoking access or switching users drops any choices not yet returned. A listed key or address neither proves identity nor grants permission to send, and no runtime implementation has been verified.
+A closed, unmerged NAP-CONTACTS proposal offers [read-only access to email endpoints and optional Nostr pubkeys](https://github.com/napplet/naps/pull/140). A trusted picker discloses only the selections the user explicitly confirms, while query and get calls need a separately granted browse authority. Handles and scoped cursors are not permission tokens, and email read or send grants do not cover contacts. Revoking access or switching users drops any choices not yet returned. A listed key or address neither proves identity nor grants permission to send, and no runtime implementation has been verified.
 
 ### Email readers and composers share scoped messages while the shell keeps credentials
 
