@@ -36,7 +36,7 @@ Sidecar 是一款用于发布笔记和网页高亮的浏览器扩展，在 [1.16
 
 ### Haps {#haps}
 
-Haps 以 Nostr 密钥发布和安装原生软件包。[Haps 0.1.25](https://github.com/mmalmi/haps/releases/tag/v0.1.25) 提供 macOS、Linux 和 Windows 安装包，附带通过校验和固定的 htree 辅助程序，以及覆盖所有归档文件的 SHA256SUMS 文件。0.1.24 的源码依据 Hashtree 规范草案[写入带版本的 Hashtree 引用](https://github.com/mmalmi/haps/commit/3dd051cefe9e506886a7f036267950282a179ee8)。Haps 0.1.23 及更早版本若没有旧版过渡目录，或未升级安装程序或 Cargo 构建，就无法读取新目录。
+Haps 以 Nostr 密钥发布和安装原生软件包。[Haps 0.1.25](https://github.com/mmalmi/haps/releases/tag/v0.1.25) 提供 macOS、Linux 和 Windows 安装包，附带通过校验和固定的 htree 辅助程序，以及覆盖所有归档文件的 SHA256SUMS 文件。0.1.24 的源码依据 Hashtree 规范草案[写入带版本的 Hashtree 引用](https://github.com/mmalmi/haps/commit/3dd051cefe9e506886a7f036267950282a179ee8)。Haps 0.1.23 及更早版本若既没有旧版过渡目录，也没有升级后的安装程序或 Cargo 构建，就无法读取新目录。
 
 ### Cosign {#cosign}
 
