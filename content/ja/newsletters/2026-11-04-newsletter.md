@@ -36,7 +36,7 @@ Cosignのしきい値署名を基盤とするベータ版クライアントMarbl
 
 ### Haps {#haps}
 
-Hapsは、Nostr鍵のもとでネイティブパッケージを公開・インストールするためのツールです。[Haps 0.1.25](https://github.com/mmalmi/haps/releases/tag/v0.1.25)では、macOS、Linux、Windows向けのバンドルが提供されます。バンドルには、チェックサムで固定されたhtreeヘルパーと、全アーカイブを対象とするSHA256SUMSファイルが含まれます。0.1.24のソースは、Hashtree仕様のドラフトに従って[バージョン付きのHashtree参照を書き込みます](https://github.com/mmalmi/haps/commit/3dd051cefe9e506886a7f036267950282a179ee8)。Haps 0.1.23以前では、レガシー移行用のカタログがないか、インストーラーやCargoビルドを更新しない限り、新しいカタログを読み取れません。
+Hapsは、Nostr鍵のもとでネイティブパッケージを公開・インストールするためのツールです。[Haps 0.1.25](https://github.com/mmalmi/haps/releases/tag/v0.1.25)では、macOS、Linux、Windows向けのバンドルが提供されます。バンドルには、チェックサムで固定されたhtreeヘルパーと、全アーカイブを対象とするSHA256SUMSファイルが含まれます。0.1.24のソースは、Hashtree仕様のドラフトに従って[バージョン付きのHashtree参照を書き込みます](https://github.com/mmalmi/haps/commit/3dd051cefe9e506886a7f036267950282a179ee8)。Haps 0.1.23以前では、レガシー移行用のカタログも、更新されたインストーラーまたはCargoビルドも利用できない場合、新しいカタログを読み取れません。
 
 ### Cosign {#cosign}
 
