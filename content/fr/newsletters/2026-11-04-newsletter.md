@@ -36,7 +36,7 @@ Sidecar, une extension de navigateur pour publier des notes et des surlignages w
 
 ### Haps {#haps}
 
-Haps publie et installe des paquets natifs sous des clés Nostr. [Haps 0.1.25](https://github.com/mmalmi/haps/releases/tag/v0.1.25) fournit des bundles macOS, Linux et Windows avec des assistants htree épinglés par somme de contrôle et un fichier SHA256SUMS couvrant toutes les archives. Le code source de la 0.1.24 [écrit des références Hashtree versionnées](https://github.com/mmalmi/haps/commit/3dd051cefe9e506886a7f036267950282a179ee8) selon le projet de spécification Hashtree. Haps 0.1.23 et les versions antérieures ne peuvent pas lire les nouveaux catalogues sans un catalogue de transition hérité, ou sans un installateur ou une compilation Cargo mis à niveau.
+Haps publie et installe des paquets natifs sous des clés Nostr. [Haps 0.1.25](https://github.com/mmalmi/haps/releases/tag/v0.1.25) fournit des bundles macOS, Linux et Windows avec des assistants htree épinglés par somme de contrôle et un fichier SHA256SUMS couvrant toutes les archives. Le code source de la 0.1.24 [écrit des références Hashtree versionnées](https://github.com/mmalmi/haps/commit/3dd051cefe9e506886a7f036267950282a179ee8) selon le projet de spécification Hashtree. Haps 0.1.23 et les versions antérieures ne peuvent pas lire les nouveaux catalogues si l'on ne dispose ni d'un catalogue de transition hérité, ni d'un installateur ou d'une compilation Cargo mis à niveau.
 
 ### Cosign {#cosign}
 
