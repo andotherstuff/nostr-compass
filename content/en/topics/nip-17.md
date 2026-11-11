@@ -77,6 +77,7 @@ NIP-17 also defines inbox relay lists for private messaging. Clients can publish
 - [Newsletter #37: nostr-tools binds gift-wrap rumors to their seals](/en/newsletters/2026-08-26-newsletter/#nostr-tools-binds-gift-wrap-rumors-to-their-seals)
 - [Newsletter #38: Divine Mobile](/en/newsletters/2026-09-02-newsletter/#divine-mobile-makes-wrapped-direct-message-deletion-and-signing-deterministic)
 - [Newsletter #42: Holoboard private messages](/en/newsletters/2026-09-30-newsletter/#holoboard-adds-nostr-promotion-commands-and-an-android-app)
+- [Newsletter #48: LNbits security release ships NIP-17 notifications](/en/newsletters/2026-11-11-newsletter/#lnbits)
 
 **See also:**
 - [NIP-04: Encrypted Direct Messages (Deprecated)](/en/topics/nip-04/)

@@ -1,0 +1,312 @@
+# Release digest — every tagged release in the window
+
+Window 2026-11-04 → 2026-11-10T15:05:00+00:00. 156 releases across 47 projects.
+
+**No coverage history available**, so never-covered flags are absent from this run. Rebuild it with `python3 scripts/build_coverage_history.py` and regenerate.
+
+Triage MUST record a decision for every project below. A release that is neither written up nor given a skip reason is a pipeline defect, not an editorial choice: that is how Nail v0.1.0 was lost from Newsletter #37.
+
+- **Kryfo** (`gnosiworks/kryfo`) — **POSSIBLE-FIRST-RELEASE** · substance: new-platform, app-store-listing, protocol-surface, new-component, data-integrity, messaging-feature, encryption, explicit-new-marker, documented-changes · Zapstore: `app.kryfo` v0.6.0
+  - `v0.6.0` 2026-11-08 — https://github.com/GnosiWorks/Kryfo/releases/tag/v0.6.0
+  - Triage decision: __________ (write up / skip + reason)
+- **Vector** (`VectorPrivacy/Vector`) — **POSSIBLE-FIRST-RELEASE** · substance: new-platform, app-store-listing, protocol-surface, new-component, messaging-feature, encryption, explicit-new-marker, documented-changes · Zapstore: `io.vectorapp` v0.5.1
+  - `v0.5.0` 2026-11-05 — https://github.com/VectorPrivacy/Vector/releases/tag/v0.5.0
+  - `v0.5.1` 2026-11-07 — https://github.com/VectorPrivacy/Vector/releases/tag/v0.5.1
+  - Triage decision: __________ (write up / skip + reason)
+- **better-auth-nostr** (`leon-wbr/better-auth-nostr`) — **POSSIBLE-FIRST-RELEASE** · substance: protocol-surface, data-integrity, documented-changes
+  - `v0.6.0` 2026-11-08 — https://github.com/leon-wbr/better-auth-nostr/releases/tag/v0.6.0
+  - 17 merged PRs in window
+  - Triage decision: __________ (write up / skip + reason)
+- **Cosign** (`sybenx/cosign`) — **POSSIBLE-FIRST-RELEASE** · substance: new-platform, protocol-surface, documented-changes
+  - `v0.12.10` 2026-11-05 — https://github.com/sybenx/cosign/releases/tag/v0.12.10
+  - Triage decision: __________ (write up / skip + reason)
+- **HERDR White Noise Remote** (`tidley/codr`) — **POSSIBLE-FIRST-RELEASE** · substance: new-platform, new-component, data-integrity, documented-changes
+  - `v0.11.1` 2026-11-05 — https://github.com/tidley/codr/releases/tag/v0.11.1
+  - 1 merged PRs in window
+  - Triage decision: __________ (write up / skip + reason)
+- **mostro-cli** (`MostroP2P/mostro-cli`) — **POSSIBLE-FIRST-RELEASE** · substance: new-platform, protocol-surface, new-component, messaging-feature, documented-changes
+  - `v0.17.0` 2026-11-07 — https://github.com/MostroP2P/mostro-cli/releases/tag/v0.17.0
+  - `v0.17.1` 2026-11-09 — https://github.com/MostroP2P/mostro-cli/releases/tag/v0.17.1
+  - 48 merged PRs in window
+  - Triage decision: __________ (write up / skip + reason)
+- **Routstrd** (`routstr/routstrd`) — **POSSIBLE-FIRST-RELEASE** · substance: new-platform, protocol-surface, new-component, data-integrity, documented-changes
+  - `v0.5.0` 2026-11-09 — https://github.com/Routstr/routstrd/releases/tag/v0.5.0
+  - 13 merged PRs in window
+  - Triage decision: __________ (write up / skip + reason)
+- **swift-nostr-client** (`yysskk/swift-nostr-client`) — **POSSIBLE-FIRST-RELEASE** · substance: protocol-surface, encryption, explicit-new-marker, documented-changes
+  - `0.10.0` 2026-11-05 — https://github.com/yysskk/swift-nostr/releases/tag/0.10.0
+  - 5 merged PRs in window
+  - Triage decision: __________ (write up / skip + reason)
+- **Infans** (`TurkeyNostr/infans`) — substance: new-platform, app-store-listing, protocol-surface, new-component, data-integrity, messaging-feature, explicit-new-marker, documented-changes · Zapstore: `com.turkbot.babytracker` v2.4.3
+  - `v2.5.0-rc1` 2026-11-07 — https://github.com/TurkeyNostr/infans/releases/tag/v2.5.0-rc1
+  - `v2.4.3` 2026-11-07 — https://github.com/TurkeyNostr/infans/releases/tag/v2.4.3
+  - `v2.4.2` 2026-11-07 — https://github.com/TurkeyNostr/infans/releases/tag/v2.4.2
+  - Triage decision: __________ (write up / skip + reason)
+- **ZapStore** (`zapstore/zapstore`) — substance: new-platform, app-store-listing, protocol-surface, new-component, messaging-feature, explicit-new-marker, documented-changes · Zapstore: `dev.zapstore.app` v2.0.4
+  - `2.0.3` 2026-11-07 — https://github.com/zapstore/zapstore/releases/tag/2.0.3
+  - `2.0.2` 2026-11-07 — https://github.com/zapstore/zapstore/releases/tag/2.0.2
+  - `2.0.4` 2026-11-08 — https://github.com/zapstore/zapstore/releases/tag/2.0.4
+  - Triage decision: __________ (write up / skip + reason)
+- **algia** (`mattn/algia`) — **POSSIBLE-FIRST-RELEASE** · substance: new-platform, first-release
+  - `v0.0.138` 2026-11-05 — https://github.com/mattn/algia/releases/tag/v0.0.138
+  - 1 merged PRs in window
+  - Triage decision: __________ (write up / skip + reason)
+- **Chama** (`jesuspirate/chama`) — substance: new-platform, new-component, data-integrity, documented-changes · Zapstore: `app.chama.market` v6.4.34
+  - `v6.4.34` 2026-11-10 — https://github.com/jesuspirate/chama/releases/tag/v6.4.34
+  - 7 merged PRs in window
+  - Triage decision: __________ (write up / skip + reason)
+- **Citrine** (`greenart7c3/Citrine`) — substance: new-platform, app-store-listing, protocol-surface, documented-changes · Zapstore: `com.greenart7c3.citrine` v3.2.2
+  - `v3.2.2` 2026-11-10 — https://github.com/greenart7c3/Citrine/releases/tag/v3.2.2
+  - Triage decision: __________ (write up / skip + reason)
+- **fips-ts** (`mmalmi/fips-ts`) — substance: new-component, data-integrity, documented-changes
+  - `runtime-v0.0.58` 2026-11-04 — https://github.com/mmalmi/fips-ts/releases/tag/runtime-v0.0.58
+  - `runtime-v0.0.59` 2026-11-06 — https://github.com/mmalmi/fips-ts/releases/tag/runtime-v0.0.59
+  - `runtime-v0.0.61` 2026-11-09 — https://github.com/mmalmi/fips-ts/releases/tag/runtime-v0.0.61
+  - `runtime-v0.0.60` 2026-11-09 — https://github.com/mmalmi/fips-ts/releases/tag/runtime-v0.0.60
+  - Triage decision: __________ (write up / skip + reason)
+- **Haps** (`mmalmi/haps`) — **POSSIBLE-FIRST-RELEASE** · substance: new-platform, documented-changes
+  - `v0.1.27` 2026-11-05 — https://github.com/mmalmi/haps/releases/tag/v0.1.27
+  - `v0.1.26` 2026-11-05 — https://github.com/mmalmi/haps/releases/tag/v0.1.26
+  - Triage decision: __________ (write up / skip + reason)
+- **Hashtree** (`mmalmi/hashtree`) — substance: new-platform, protocol-surface, new-component, messaging-feature, documented-changes
+  - `v0.3.1` 2026-11-04 — https://github.com/mmalmi/hashtree/releases/tag/v0.3.1
+  - `hashtree-ts-runtime-v0.5.32` 2026-11-04 — https://github.com/mmalmi/hashtree/releases/tag/hashtree-ts-runtime-v0.5.32
+  - `hashtree-ts-runtime-v0.5.38` 2026-11-05 — https://github.com/mmalmi/hashtree/releases/tag/hashtree-ts-runtime-v0.5.38
+  - `hashtree-ts-runtime-v0.5.35` 2026-11-05 — https://github.com/mmalmi/hashtree/releases/tag/hashtree-ts-runtime-v0.5.35
+  - `hashtree-ts-runtime-v0.5.34` 2026-11-05 — https://github.com/mmalmi/hashtree/releases/tag/hashtree-ts-runtime-v0.5.34
+  - `hashtree-ts-runtime-v0.5.33` 2026-11-05 — https://github.com/mmalmi/hashtree/releases/tag/hashtree-ts-runtime-v0.5.33
+  - `hashtree-ts-runtime-v0.5.41` 2026-11-06 — https://github.com/mmalmi/hashtree/releases/tag/hashtree-ts-runtime-v0.5.41
+  - `hashtree-ts-runtime-v0.5.40` 2026-11-06 — https://github.com/mmalmi/hashtree/releases/tag/hashtree-ts-runtime-v0.5.40
+  - `hashtree-ts-runtime-v0.5.39` 2026-11-06 — https://github.com/mmalmi/hashtree/releases/tag/hashtree-ts-runtime-v0.5.39
+  - Triage decision: __________ (write up / skip + reason)
+- **Keep** (`privkeyio/keep-android`) — substance: new-platform, app-store-listing, protocol-surface, security, new-component, data-integrity, messaging-feature, encryption, documented-changes · Zapstore: `io.privkey.keep` v1.4.0
+  - `v1.4.0` 2026-11-07 — https://github.com/privkeyio/keep-android/releases/tag/v1.4.0
+  - 28 merged PRs in window
+  - Triage decision: __________ (write up / skip + reason)
+- **Kithmoot** (`forgesworn/kithmoot`) — substance: new-platform, protocol-surface, new-component, data-integrity, messaging-feature, documented-changes
+  - `v0.1.126` 2026-11-04 — https://github.com/forgesworn/kithmoot/releases/tag/v0.1.126
+  - `v0.1.127` 2026-11-05 — https://github.com/forgesworn/kithmoot/releases/tag/v0.1.127
+  - `v0.1.132` 2026-11-06 — https://github.com/forgesworn/kithmoot/releases/tag/v0.1.132
+  - `v0.1.131` 2026-11-06 — https://github.com/forgesworn/kithmoot/releases/tag/v0.1.131
+  - `v0.1.130` 2026-11-06 — https://github.com/forgesworn/kithmoot/releases/tag/v0.1.130
+  - `v0.1.129` 2026-11-06 — https://github.com/forgesworn/kithmoot/releases/tag/v0.1.129
+  - `v0.1.128` 2026-11-06 — https://github.com/forgesworn/kithmoot/releases/tag/v0.1.128
+  - `v0.1.135` 2026-11-08 — https://github.com/forgesworn/kithmoot/releases/tag/v0.1.135
+  - `v0.1.134` 2026-11-08 — https://github.com/forgesworn/kithmoot/releases/tag/v0.1.134
+  - `v0.1.139` 2026-11-09 — https://github.com/forgesworn/kithmoot/releases/tag/v0.1.139
+  - `v0.1.138` 2026-11-09 — https://github.com/forgesworn/kithmoot/releases/tag/v0.1.138
+  - `v0.1.137` 2026-11-09 — https://github.com/forgesworn/kithmoot/releases/tag/v0.1.137
+  - `v0.1.136` 2026-11-09 — https://github.com/forgesworn/kithmoot/releases/tag/v0.1.136
+  - 50 merged PRs in window
+  - Triage decision: __________ (write up / skip + reason)
+- **Linky** (`linky-fit/linky`) — substance: new-platform, protocol-surface, data-integrity, documented-changes · Zapstore: `fit.linky.app` v26.11.2
+  - `linky-v26.11.1` 2026-11-05 — https://github.com/linky-fit/linky/releases/tag/linky-v26.11.1
+  - `linky-v26.11.2` 2026-11-07 — https://github.com/linky-fit/linky/releases/tag/linky-v26.11.2
+  - 31 merged PRs in window
+  - Triage decision: __________ (write up / skip + reason)
+- **Magnetar** (`awake-devel/magnetar`) — **POSSIBLE-FIRST-RELEASE** · substance: new-platform, documented-changes
+  - `v0.3.2-probepex1` 2026-11-09 — https://github.com/awake-devel/magnetar/releases/tag/v0.3.2-probepex1
+  - 2 merged PRs in window
+  - Triage decision: __________ (write up / skip + reason)
+- **Marble** (`sybenx/marble`) — substance: new-platform, app-store-listing, protocol-surface, data-integrity, messaging-feature, encryption, documented-changes
+  - `v0.12.28` 2026-11-04 — https://github.com/sybenx/marble/releases/tag/v0.12.28
+  - `v0.12.27` 2026-11-04 — https://github.com/sybenx/marble/releases/tag/v0.12.27
+  - `v0.12.26` 2026-11-04 — https://github.com/sybenx/marble/releases/tag/v0.12.26
+  - `v0.12.25` 2026-11-04 — https://github.com/sybenx/marble/releases/tag/v0.12.25
+  - `v0.12.24` 2026-11-04 — https://github.com/sybenx/marble/releases/tag/v0.12.24
+  - `v0.12.29` 2026-11-05 — https://github.com/sybenx/marble/releases/tag/v0.12.29
+  - Triage decision: __________ (write up / skip + reason)
+- **Marmot Protocol (mdk)** (`marmot-protocol/mdk`) — substance: new-platform, app-store-listing, protocol-surface, new-component, data-integrity, messaging-feature, documented-changes
+  - `wn-agent-v0.15.0-nightly.20261105` 2026-11-05 — https://github.com/marmot-protocol/mdk/releases/tag/wn-agent-v0.15.0-nightly.20261105
+  - `marmotkit-v0.15.0-nightly.20261105` 2026-11-05 — https://github.com/marmot-protocol/mdk/releases/tag/marmotkit-v0.15.0-nightly.20261105
+  - `marmotc-v0.15.0-nightly.20261105` 2026-11-05 — https://github.com/marmot-protocol/mdk/releases/tag/marmotc-v0.15.0-nightly.20261105
+  - `wn-agent-v0.15.0-nightly.20261106` 2026-11-06 — https://github.com/marmot-protocol/mdk/releases/tag/wn-agent-v0.15.0-nightly.20261106
+  - `marmotkit-v0.15.0-nightly.20261106` 2026-11-06 — https://github.com/marmot-protocol/mdk/releases/tag/marmotkit-v0.15.0-nightly.20261106
+  - `marmotc-v0.15.0-nightly.20261106` 2026-11-06 — https://github.com/marmot-protocol/mdk/releases/tag/marmotc-v0.15.0-nightly.20261106
+  - `wn-agent-v0.15.0-nightly.20261108` 2026-11-08 — https://github.com/marmot-protocol/mdk/releases/tag/wn-agent-v0.15.0-nightly.20261108
+  - `marmotkit-v0.15.0-nightly.20261108` 2026-11-08 — https://github.com/marmot-protocol/mdk/releases/tag/marmotkit-v0.15.0-nightly.20261108
+  - `marmotc-v0.15.0-nightly.20261108` 2026-11-08 — https://github.com/marmot-protocol/mdk/releases/tag/marmotc-v0.15.0-nightly.20261108
+  - `v0.15.0` 2026-11-09 — https://github.com/marmot-protocol/mdk/releases/tag/v0.15.0
+  - `marmotkit-v0.15.0` 2026-11-09 — https://github.com/marmot-protocol/mdk/releases/tag/marmotkit-v0.15.0
+  - `marmotc-v0.15.0` 2026-11-09 — https://github.com/marmot-protocol/mdk/releases/tag/marmotc-v0.15.0
+  - `wn-agent-v0.15.0-nightly.20261109` 2026-11-09 — https://github.com/marmot-protocol/mdk/releases/tag/wn-agent-v0.15.0-nightly.20261109
+  - `wn-agent-v0.15.0` 2026-11-09 — https://github.com/marmot-protocol/mdk/releases/tag/wn-agent-v0.15.0
+  - `marmotkit-v0.15.0-nightly.20261109` 2026-11-09 — https://github.com/marmot-protocol/mdk/releases/tag/marmotkit-v0.15.0-nightly.20261109
+  - `marmotc-v0.15.0-nightly.20261109` 2026-11-09 — https://github.com/marmot-protocol/mdk/releases/tag/marmotc-v0.15.0-nightly.20261109
+  - 203 merged PRs in window
+  - Triage decision: __________ (write up / skip + reason)
+- **Napplets - Web Packages** (`napplet/web`) — substance: protocol-surface, new-component, messaging-feature, documented-changes
+  - `@napplet/conformance@0.25.1` 2026-11-05 — https://github.com/napplet/web/releases/tag/%40napplet/conformance%400.25.1
+  - `@napplet/conformance-cli@0.6.1` 2026-11-05 — https://github.com/napplet/web/releases/tag/%40napplet/conformance-cli%400.6.1
+  - `@napplet/cli@0.14.3` 2026-11-09 — https://github.com/napplet/web/releases/tag/%40napplet/cli%400.14.3
+  - `@napplet/vite-plugin@0.17.0` 2026-11-10 — https://github.com/napplet/web/releases/tag/%40napplet/vite-plugin%400.17.0
+  - `@napplet/shim@0.38.0` 2026-11-10 — https://github.com/napplet/web/releases/tag/%40napplet/shim%400.38.0
+  - `@napplet/sdk@0.34.0` 2026-11-10 — https://github.com/napplet/web/releases/tag/%40napplet/sdk%400.34.0
+  - `@napplet/nap@0.39.0` 2026-11-10 — https://github.com/napplet/web/releases/tag/%40napplet/nap%400.39.0
+  - `@napplet/core@0.40.0` 2026-11-10 — https://github.com/napplet/web/releases/tag/%40napplet/core%400.40.0
+  - `@napplet/conformance@0.27.0` 2026-11-10 — https://github.com/napplet/web/releases/tag/%40napplet/conformance%400.27.0
+  - 7 merged PRs in window
+  - Triage decision: __________ (write up / skip + reason)
+- **NoorNote** (`77elements/noornote`) — substance: protocol-surface, messaging-feature, documented-changes · Zapstore: `com.noornote.app` v1.9.10
+  - `v1.9.9` 2026-11-04 — https://github.com/77elements/noornote/releases/tag/v1.9.9
+  - `v1.9.10` 2026-11-09 — https://github.com/77elements/noornote/releases/tag/v1.9.10
+  - 2 merged PRs in window
+  - Triage decision: __________ (write up / skip + reason)
+- **nostr-social-graph** (`mmalmi/nostr-social-graph`) — substance: new-platform, protocol-surface, new-component, data-integrity, messaging-feature, documented-changes
+  - `v3.1.0` 2026-11-04 — https://github.com/mmalmi/nostr-social-graph/releases/tag/v3.1.0
+  - `v4.0.3` 2026-11-05 — https://github.com/mmalmi/nostr-social-graph/releases/tag/v4.0.3
+  - `v4.0.2` 2026-11-05 — https://github.com/mmalmi/nostr-social-graph/releases/tag/v4.0.2
+  - `v4.0.1` 2026-11-05 — https://github.com/mmalmi/nostr-social-graph/releases/tag/v4.0.1
+  - `v4.0.0` 2026-11-05 — https://github.com/mmalmi/nostr-social-graph/releases/tag/v4.0.0
+  - `v3.1.2` 2026-11-05 — https://github.com/mmalmi/nostr-social-graph/releases/tag/v3.1.2
+  - `v3.1.1` 2026-11-05 — https://github.com/mmalmi/nostr-social-graph/releases/tag/v3.1.1
+  - `v4.0.4` 2026-11-06 — https://github.com/mmalmi/nostr-social-graph/releases/tag/v4.0.4
+  - Triage decision: __________ (write up / skip + reason)
+- **nostr-wot-extension** (`nostr-wot/nostr-wot-extension`) — **POSSIBLE-FIRST-RELEASE** · substance: new-component, documented-changes
+  - `v0.8.23` 2026-11-09 — https://github.com/nostr-wot/nostr-wot-extension/releases/tag/v0.8.23
+  - Triage decision: __________ (write up / skip + reason)
+- **NostrAppShell** (`git.nostrdev.com/stuff/NostrAppShell`) — substance: new-platform, protocol-surface, new-component, data-integrity, messaging-feature, documented-changes
+  - `v0.31.0` 2026-11-09 — https://git.nostrdev.com/stuff/pakstr/releases/tag/v0.31.0
+  - `v1.1.0` 2026-11-10 — https://git.nostrdev.com/stuff/pakstr/releases/tag/v1.1.0
+  - `v1.0.1` 2026-11-10 — https://git.nostrdev.com/stuff/pakstr/releases/tag/v1.0.1
+  - `v1.0.0` 2026-11-10 — https://git.nostrdev.com/stuff/pakstr/releases/tag/v1.0.0
+  - 5 merged PRs in window
+  - Triage decision: __________ (write up / skip + reason)
+- **nostream** (`Cameri/nostream`) — substance: new-platform, protocol-surface, new-component, messaging-feature, documented-changes
+  - `nostream@3.13.0` 2026-11-05 — https://github.com/cameri/nostream/releases/tag/nostream%403.13.0
+  - `nostream-website@1.3.5` 2026-11-05 — https://github.com/cameri/nostream/releases/tag/nostream-website%401.3.5
+  - `nostream@3.14.0` 2026-11-06 — https://github.com/cameri/nostream/releases/tag/nostream%403.14.0
+  - `nostream@3.15.1` 2026-11-07 — https://github.com/cameri/nostream/releases/tag/nostream%403.15.1
+  - `nostream@3.15.0` 2026-11-07 — https://github.com/cameri/nostream/releases/tag/nostream%403.15.0
+  - `nostream@3.15.2` 2026-11-08 — https://github.com/cameri/nostream/releases/tag/nostream%403.15.2
+  - 21 merged PRs in window
+  - Triage decision: __________ (write up / skip + reason)
+- **Nostrube** (`flox1an/nostube`) — substance: new-platform, new-component, documented-changes
+  - `v0.2.54` 2026-11-04 — https://github.com/flox1an/nostube/releases/tag/v0.2.54
+  - `v0.2.57` 2026-11-05 — https://github.com/flox1an/nostube/releases/tag/v0.2.57
+  - `v0.2.56` 2026-11-05 — https://github.com/flox1an/nostube/releases/tag/v0.2.56
+  - `v0.2.55` 2026-11-05 — https://github.com/flox1an/nostube/releases/tag/v0.2.55
+  - `v0.2.68` 2026-11-06 — https://github.com/flox1an/nostube/releases/tag/v0.2.68
+  - `v0.2.67` 2026-11-06 — https://github.com/flox1an/nostube/releases/tag/v0.2.67
+  - `v0.2.66` 2026-11-06 — https://github.com/flox1an/nostube/releases/tag/v0.2.66
+  - `v0.2.65` 2026-11-06 — https://github.com/flox1an/nostube/releases/tag/v0.2.65
+  - `v0.2.64` 2026-11-06 — https://github.com/flox1an/nostube/releases/tag/v0.2.64
+  - `v0.2.63` 2026-11-06 — https://github.com/flox1an/nostube/releases/tag/v0.2.63
+  - `v0.2.62` 2026-11-06 — https://github.com/flox1an/nostube/releases/tag/v0.2.62
+  - `v0.2.61` 2026-11-06 — https://github.com/flox1an/nostube/releases/tag/v0.2.61
+  - `v0.2.60` 2026-11-06 — https://github.com/flox1an/nostube/releases/tag/v0.2.60
+  - `v0.2.59` 2026-11-06 — https://github.com/flox1an/nostube/releases/tag/v0.2.59
+  - `v0.2.58` 2026-11-06 — https://github.com/flox1an/nostube/releases/tag/v0.2.58
+  - `v0.2.69` 2026-11-07 — https://github.com/flox1an/nostube/releases/tag/v0.2.69
+  - `v0.2.71` 2026-11-08 — https://github.com/flox1an/nostube/releases/tag/v0.2.71
+  - `v0.2.70` 2026-11-08 — https://github.com/flox1an/nostube/releases/tag/v0.2.70
+  - `v0.2.73` 2026-11-10 — https://github.com/flox1an/nostube/releases/tag/v0.2.73
+  - `v0.2.72` 2026-11-10 — https://github.com/flox1an/nostube/releases/tag/v0.2.72
+  - Triage decision: __________ (write up / skip + reason)
+- **pakstr** (`git.nostrdev.com/stuff/pakstr`) — substance: new-platform, protocol-surface, new-component, data-integrity, messaging-feature, documented-changes
+  - `v0.31.0` 2026-11-09 — https://git.nostrdev.com/stuff/pakstr/releases/tag/v0.31.0
+  - `v1.1.0` 2026-11-10 — https://git.nostrdev.com/stuff/pakstr/releases/tag/v1.1.0
+  - `v1.0.1` 2026-11-10 — https://git.nostrdev.com/stuff/pakstr/releases/tag/v1.0.1
+  - `v1.0.0` 2026-11-10 — https://git.nostrdev.com/stuff/pakstr/releases/tag/v1.0.0
+  - 5 merged PRs in window
+  - Triage decision: __________ (write up / skip + reason)
+- **XMRadar** (`KYC-rip/xmradar`) — substance: protocol-surface, new-component, messaging-feature, documented-changes
+  - `v0.6.13` 2026-11-05 — https://github.com/KYC-rip/xmradar/releases/tag/v0.6.13
+  - `v0.6.12` 2026-11-05 — https://github.com/KYC-rip/xmradar/releases/tag/v0.6.12
+  - `v0.6.11` 2026-11-05 — https://github.com/KYC-rip/xmradar/releases/tag/v0.6.11
+  - `v0.6.15` 2026-11-06 — https://github.com/KYC-rip/xmradar/releases/tag/v0.6.15
+  - `v0.6.14` 2026-11-06 — https://github.com/KYC-rip/xmradar/releases/tag/v0.6.14
+  - `v0.6.16` 2026-11-08 — https://github.com/KYC-rip/xmradar/releases/tag/v0.6.16
+  - Triage decision: __________ (write up / skip + reason)
+- **Alby Hub** (`getAlby/hub`) — substance: new-platform, app-store-listing, protocol-surface, data-integrity, documented-changes
+  - `v1.24.6` 2026-11-05 — https://github.com/getAlby/hub/releases/tag/v1.24.6
+  - 10 merged PRs in window
+  - Triage decision: __________ (write up / skip + reason)
+- **Amber** (`greenart7c3/amber`) — substance: new-platform, app-store-listing, protocol-surface, new-component, explicit-new-marker, documented-changes
+  - `v7.0.0-pre3` 2026-11-09 — https://github.com/greenart7c3/Amber/releases/tag/v7.0.0-pre3
+  - Triage decision: __________ (write up / skip + reason)
+- **Bitcoin-Safe** (`andreasgriffin/bitcoin-safe`) — substance: protocol-surface, new-component, documented-changes
+  - `2.3.0` 2026-11-10 — https://github.com/andreasgriffin/bitcoin-safe/releases/tag/2.3.0
+  - 26 merged PRs in window
+  - Triage decision: __________ (write up / skip + reason)
+- **diVine** (`divinevideo/divine-mobile`) — substance: new-platform, app-store-listing, protocol-surface, new-component, data-integrity, messaging-feature, documented-changes
+  - `1.0.28-beta.production.20fb7bc5998bc6d2929c9d6752f4f2b95e21f908` 2026-11-04 — https://github.com/divinevideo/divine-mobile/releases/tag/1.0.28-beta.production.20fb7bc5998bc6d2929c9d6752f4f2b95e21f908
+  - `1.0.28` 2026-11-08 — https://github.com/divinevideo/divine-mobile/releases/tag/1.0.28
+  - 112 merged PRs in window
+  - Triage decision: __________ (write up / skip + reason)
+- **LaWallet Android** (`lawalletio/android-wallet`) — substance: new-platform, messaging-feature, documented-changes
+  - `v1.3.1` 2026-11-05 — https://github.com/lawalletio/android-wallet/releases/tag/v1.3.1
+  - `v1.3.2` 2026-11-06 — https://github.com/lawalletio/android-wallet/releases/tag/v1.3.2
+  - 13 merged PRs in window
+  - Triage decision: __________ (write up / skip + reason)
+- **napplet.soy** (`zeSchlausKwab/napplet-soy`) — substance: protocol-surface, messaging-feature, documented-changes
+  - `soyli-v0.32.1` 2026-11-09 — https://github.com/soytec/napplet-soy/releases/tag/soyli-v0.32.1
+  - `soyli-v0.32.0` 2026-11-09 — https://github.com/soytec/napplet-soy/releases/tag/soyli-v0.32.0
+  - 14 merged PRs in window
+  - Triage decision: __________ (write up / skip + reason)
+- **Nostur** (`nostur-com/nostur-ios-public`) — substance: new-platform, messaging-feature, documented-changes
+  - `1.35.0` 2026-11-08 — https://github.com/nostur-com/nostur-ios-public/releases/tag/1.35.0
+  - Triage decision: __________ (write up / skip + reason)
+- **Sidecar** (`dmnyc/sidecar`) — substance: protocol-surface, new-component, data-integrity, explicit-new-marker, documented-changes
+  - `v1.17.0` 2026-11-09 — https://github.com/dmnyc/sidecar/releases/tag/v1.17.0
+  - 16 merged PRs in window
+  - Triage decision: __________ (write up / skip + reason)
+- **Monostr** (`schmidt1024/monostr`) — substance: protocol-surface, documented-changes
+  - `v0.33.0` 2026-11-05 — https://github.com/schmidt1024/monostr/releases/tag/v0.33.0
+  - `v0.32.0` 2026-11-05 — https://github.com/schmidt1024/monostr/releases/tag/v0.32.0
+  - `v0.33.1` 2026-11-06 — https://github.com/schmidt1024/monostr/releases/tag/v0.33.1
+  - `v0.34.0` 2026-11-09 — https://github.com/schmidt1024/monostr/releases/tag/v0.34.0
+  - `v0.35.0` 2026-11-10 — https://github.com/schmidt1024/monostr/releases/tag/v0.35.0
+  - Triage decision: __________ (write up / skip + reason)
+- **Nostr Army Knife (nak)** (`fiatjaf/nak`) — **POSSIBLE-FIRST-RELEASE** · substance: protocol-surface
+  - `v0.22.3` 2026-11-07 — https://github.com/fiatjaf/nak/releases/tag/v0.22.3 (empty release notes; audit the commit range instead)
+  - 7 merged PRs in window
+  - Triage decision: __________ (write up / skip + reason)
+- **iris-kit** (`mmalmi/iris-kit`) — substance: protocol-surface, documented-changes
+  - `runtime-v0.2.8` 2026-11-05 — https://github.com/mmalmi/iris-kit/releases/tag/runtime-v0.2.8
+  - Triage decision: __________ (write up / skip + reason)
+- **Lumen** (`nogringo/lumen`) — **POSSIBLE-FIRST-RELEASE** · Zapstore: `ovh.uid.lumen` v0.3.0
+  - `v0.3.0` 2026-11-09 — https://github.com/nogringo/lumen/releases/tag/v0.3.0
+  - Triage decision: __________ (write up / skip + reason)
+- **Manent** (`dtonon/manent`) — substance: new-platform, documented-changes
+  - `v3.1.0` 2026-11-09 — https://github.com/dtonon/manent/releases/tag/v3.1.0
+  - Triage decision: __________ (write up / skip + reason)
+- **nostr-pubsub** (`mmalmi/nostr-pubsub`) — substance: protocol-surface, documented-changes
+  - `nostr-pubsub-ts-v0.5.25` 2026-11-09 — https://github.com/mmalmi/nostr-pubsub/releases/tag/nostr-pubsub-ts-v0.5.25
+  - Triage decision: __________ (write up / skip + reason)
+- **Nail** (`formstr-hq/nail`) — **POSSIBLE-FIRST-RELEASE**
+  - `v0.4.1` 2026-11-05 — https://github.com/formstr-hq/nail/releases/tag/v0.4.1
+  - Triage decision: __________ (write up / skip + reason)
+- **Streets** (`eyemono-moe/streets`) — substance: documented-changes
+  - `v1.24.0` 2026-11-08 — https://github.com/eyemono-moe/streets/releases/tag/v1.24.0
+  - 2 merged PRs in window
+  - Triage decision: __________ (write up / skip + reason)
+
+## Zapstore releases with no GitHub release in window
+
+12 of 49 Zapstore apps shipped without a matching GitHub release, 5 of them tracked projects. A GitHub-only sweep cannot see these.
+
+- **Pollerama** `com.formstr.pollerama` 2.3.2 (2026-11-08) — tracked: Pollerama
+  - Triage decision: __________ (write up / skip + reason)
+- **Nymchat - Geohash Mesh Chat** `com.nym.bar` 3.75.545 (2026-11-07) — tracked: NYM
+  - Triage decision: __________ (write up / skip + reason)
+- **Imwald Android** `eu.imwald.android` 0.5.22 (2026-11-07) — tracked: Imwald Android
+  - Triage decision: __________ (write up / skip + reason)
+- **Deepmarks** `org.deepmarks.app` 2.2.21 (2026-11-08) — tracked: deepmarks
+  - Triage decision: __________ (write up / skip + reason)
+- **Flotilla** `social.flotilla` 1.15.1 (2026-11-09) — tracked: Flotilla
+  - Triage decision: __________ (write up / skip + reason)
+- **Trikey FOSS** `app.trikey.wallet.foss` 0.1.26-alpha (2026-11-10) — **NEW-APP**
+  - Triage decision: __________ (write up / skip + reason)
+- **Malachite** `com.greenart7c3.malachite` 0.1.1 (2026-11-06) — **NEW-APP**
+  - Triage decision: __________ (write up / skip + reason)
+- **Dark Wisp Enhanced** `com.isolabellart.darkwispenhanced` 1.0.5 (2026-11-10) — **NEW-APP**
+  - Triage decision: __________ (write up / skip + reason)
+- **coinos v3** `io.coinos.app` 1.14 (2026-11-07) — **NEW-APP**
+  - Triage decision: __________ (write up / skip + reason)
+- **Symudol** `io.diogel.symudol` 1.0.1 (2026-11-10) — **NEW-APP**
+  - Triage decision: __________ (write up / skip + reason)
+- **Outlink** `io.github.hsoc.outlink` 1.1.13 (2026-11-09) — **NEW-APP**
+  - Triage decision: __________ (write up / skip + reason)
+- **tendrl** `io.github.limina1.tendrl` 0.19.0 (2026-11-10) — **NEW-APP**
+  - Triage decision: __________ (write up / skip + reason)

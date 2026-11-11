@@ -1,29 +1,57 @@
 ## Protocol and Spec Work
 
-### Authenticated napplet endpoints
+### NIP-01 relays can tell clients how long to back off
 
-In the NAP specifications for napplet applications, [NAP-INC endpoint identifiers](https://github.com/napplet/naps/pull/104), merged October 9, replace bare handler names with authenticated identifiers. Equal names from different publishers no longer identify the same peer. The runtime still mediates communication, and root or snapshot manifests need no named `d` coordinate.
+A [merged NIP-01 change](https://github.com/nostr-protocol/nips/pull/2498) adds an optional last parameter to the `OK` and `CLOSED` relay messages in [NIP-01](/en/topics/nip-01/) (the base relay protocol). The parameter's meaning depends on the message prefix, and only `rate-limited` defines one: a positive integer of milliseconds, such as `"2500"`, that the client should wait before sending the same message type again. The value may be approximate, and its absence does not mean the client may retry at once. Its authors chose a delay over a timestamp to avoid clock skew.
 
-### Handler recommendations in invocation links
+### NIP-47 logout method proposed
 
-[The invocation-link recommendation](https://github.com/napplet/naps/pull/99), also merged October 9, allows an optional `#naddr` handler recommendation. A shell can offer discovery and installation, with ordinary resolution as a fallback. Saved preferences and shell policy take precedence. A recommended handler therefore supplies a discovery hint without replacing the user's existing choice or transferring installation authority to the link's sender.
+An open pull request adds a [`logout` method](https://github.com/nostr-protocol/nips/pull/2537) to [NIP-47](/en/topics/nip-47/), the Nostr Wallet Connect spec for controlling a wallet over Nostr. After a logout, the wallet must not honor further requests from that connection key and should answer them with an `UNAUTHORIZED` error. Clients should send it when the user disconnects. The stated motivation is limiting damage when a connection URL leaks.
 
-### Delivery acceptance and application work
+### Logout mirrored in the NWC specs repository
 
-[The intent advertisement and delivery changes](https://github.com/napplet/naps/pull/91) derive roles and intents from the same verified manifest, using publisher-safe identifiers. Delivery acceptance no longer depends on the source application staying alive. An `ok: true` response accepts responsibility for delivery; it does not mean the destination's application work has finished. Retry and restart behavior remains runtime policy under this merged specification change.
+The same author opened a matching [logout draft in the Nostr Wallet Connect specs](https://github.com/nostr-wallet-connect/nwc/pull/13). It goes further: the wallet must durably revoke the key before replying and reject any later request signed by it, including backdated ones. Every connection gets permission to call it, and wallets must list it among their advertised methods, so a client can tell whether disconnecting revokes the key.
 
-### Cyberspace action chains
+### Push registration for wallet notifications
 
-[Cyberspace's revised chain rules](https://github.com/arkin0x/cyberspace/pull/48) make a fork invalidate a signed action chain from its spawn and require clients to confirm the live head before signing another action. The Nostr-backed world adds [140 signed synthetic chains](https://github.com/arkin0x/cyberspace/pull/49) with normative verdicts for implementations. [Copy-credit rules](https://github.com/arkin0x/cyberspace/pull/47) use `q` references to the original object and notify its author for public remixes; sealed copies omit that notification. These are merged project specifications, with deployed verifier coverage unverified.
+A separate open NWC draft defines [`register_push` and `unregister_push`](https://github.com/nostr-wallet-connect/nwc/pull/15), letting a client hand the wallet service a Web Push endpoint, which UnifiedPush distributors can also serve. The service then delivers payment notifications directly, without holding push-provider credentials.
 
-### Relay persistence acknowledgements
+### Concord merges Roles, private channels and voice
 
-[The open persistence proposal](https://github.com/nostr-protocol/nips/pull/2496) introduces persisted acknowledgements, PROOF queries and optional signed kind 1797 relay attestations. A signature makes a storage claim attributable to a relay; it does not prove continued retention. Queries also disclose which events interest the client.
+Concord is a protocol for encrypted Nostr communities. Its [Channels, Roles and Voice](https://github.com/concord-protocol/concord/pull/25) proposal, covered in the October 21 issue ([Newsletter #45](/en/newsletters/2026-10-21-newsletter/)) while still open, has now merged. It adds Discord-style roles, including an `@everyone` role, ranked in order; channel categories; per-channel permissions; private channels encrypted to a channel key; peer-to-peer voice; timeouts; and raid lockdown. The author names Vector as the reference implementation.
 
-### Shared pins for Marmot groups
+### Concord joins authenticate the community root
 
-[Marmot's open pinning proposal](https://github.com/marmot-protocol/marmot/pull/434) defines authenticated shared state for up to 64 message references, with member and administrator permissions. Effective changes require an MLS Commit and epoch transition, and every resulting member leaf must support the feature. Pins do not copy message bodies or extend retention, so unavailable targets remain unresolved. The supplied fixtures assume authenticated state; they do not demonstrate cryptographic processing or convergence across clients.
+A [Concord proposal](https://github.com/concord-protocol/concord/pull/23) covered in the August 19 issue ([Newsletter #36](/en/newsletters/2026-08-19-newsletter/)) has now merged. A joining member must decrypt the community's founding metadata with the keys it received, and confirm it came from the owner, before saving the join. The author says Vector and Armada, another Concord client, already did this, so it was not a live vulnerability.
+
+### Marmot: moved devices keep trusting the old group until the first Commit
+
+[Marmot](/en/topics/marmot/), the end-to-end encrypted group messaging protocol built on MLS and Nostr, merged five device-group and departure changes between 4 and 9 November. A user's linked devices share an MLS group of their own, the device group. Under [the first change](https://github.com/marmot-protocol/marmot/pull/498), a device moving to a new device group keeps its original group trusted until its first authenticated Commit, the MLS message that changes membership or keys, is selected in the destination. A confirmed Welcome alone does not switch trust.
+
+### Marmot: reset a local device group without losing chats
+
+A device link can disappear from a device group's roster. The [fix](https://github.com/marmot-protocol/marmot/pull/499) is a user-controlled local reset followed by fresh code-confirmed pairing. Chats, account identity and shared-state authority survive. The reset discards this device's old continuity, so a mistaken reset can lose it.
+
+### Marmot: inactive sibling devices
+
+After 30 days of caught-up inactivity, a device [marks a sibling device `inactive`](https://github.com/marmot-protocol/marmot/pull/500). At 90 days, unless the user has turned on "keep while inactive", it removes the sibling with an ordinary removal Commit. By then the sibling's KeyPackages, the keys a device publishes so others can add it, have usually expired.
+
+### Marmot: last active admin cannot leave
+
+Under a [departure rule](https://github.com/marmot-protocol/marmot/pull/501), a leaving admin repeats its step-down while another admin remains. If it is the last active admin, the leave stays blocked in a `Leaving` state and generates nothing new. The user can cancel a blocked leave locally.
+
+### Marmot: admins step down before leaving
+
+A refused or lost step-down could stall a leave. A [follow-up](https://github.com/marmot-protocol/marmot/pull/502) puts a departing admin into `Leaving` once it durably records the leave, before step-down, and sends its SelfRemove once it is off the admin list. Clients must not accept a leave from the last active admin.
+
+### Marmot drafts one-shot agent decisions
+
+An open draft [specifies one-shot agent decisions](https://github.com/marmot-protocol/marmot/pull/503): a software agent in an encrypted group asks one question and gets one answer, as ordinary encrypted group messages. The agent posts a request with options, the answer is a separate message, and the runtime confirms it accepted that answer with a receipt.
+
+### NIP-D9 proposes events that resist deletion
+
+An open [NIP-D9 proposal](https://github.com/nostr-protocol/nips/pull/2531) lets an author mark a regular event with a `no_delete` tag, exempting it from that author's own [NIP-09](/en/topics/nip-09/) (deletion requests) and [NIP-62](/en/topics/nip-62/) (request to vanish) requests, even if the request arrives first. Expiration still applies, and replaceable kinds and profiles are not eligible. Supporters pointed to whistleblowers whose keys could be seized and used to erase their posts. Two commenters objected in the thread, one arguing that relays cannot act as a stateful database and the other asking about users who want everything deleted. It remains unmerged and contested.
 
 writer_model: direct-codex
 
-GATE: PASS (source-owner content review; full publication receipts are separate)
+GATE: PENDING REVIEW

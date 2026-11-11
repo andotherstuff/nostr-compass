@@ -1,0 +1,3211 @@
+{
+  "schema_version": 1,
+  "edition": 48,
+  "date": "2026-11-11",
+  "final": true,
+  "source_manifest_sha256": "3edc8157c63b496898c6cc42b48bcb19e5d2ce3b87433173d121b77f702856e0",
+  "source_pass_id": "compass48-20261110T150500Z",
+  "draft_sha256": "23b1ee6f9c286e23b7ec14d69735619e10c436b2d29ddea8dbe3a37e85f1f373",
+  "selection_policy": {
+    "minimum_score": 8,
+    "maximum_score": 10,
+    "require_no_zero_axis": true,
+    "fixed_item_cap": null,
+    "qualified_items_must_publish": true
+  },
+  "hard_gate_fields": [
+    "primary_evidence",
+    "in_window_progress",
+    "nostr_surface",
+    "continuity_delta"
+  ],
+  "score_axes": [
+    "nostr_significance",
+    "user_operator_impact",
+    "novelty",
+    "evidence_maturity",
+    "explanatory_value"
+  ],
+  "project_activity_decisions": {
+    "path": "data/newsletter_workspace/project_activity_decisions_2026-11-11.json",
+    "sha256": "32a2cf7134aa28b7c58e38e9aed063890acaf418c36f54b5853de5438926cb07"
+  },
+  "editorial_sources": [
+    {
+      "source_id": "editorial:top-stories:marmot-projects-at-bitcoin-seoul",
+      "collector_source_ids": [],
+      "editorial_provenance": {
+        "path": "data/newsletter_workspace/selection_review_2026-11-11.md",
+        "sha256": "b9230168ceb411da767f174ee53c3d8272d4d994781223b26621de015a0714cb",
+        "locator": "https://btcpp.dev/seoul"
+      }
+    },
+    {
+      "source_id": "editorial:tagged-releases:nostur",
+      "collector_source_ids": [],
+      "editorial_provenance": {
+        "path": "data/newsletter_workspace/selection_review_2026-11-11.md",
+        "sha256": "b9230168ceb411da767f174ee53c3d8272d4d994781223b26621de015a0714cb",
+        "locator": "https://github.com/nostur-com/nostur-ios-public/releases/tag/1.35.0"
+      }
+    },
+    {
+      "source_id": "editorial:tagged-releases:monostr",
+      "collector_source_ids": [],
+      "editorial_provenance": {
+        "path": "data/newsletter_workspace/selection_review_2026-11-11.md",
+        "sha256": "b9230168ceb411da767f174ee53c3d8272d4d994781223b26621de015a0714cb",
+        "locator": "https://github.com/schmidt1024/monostr/releases/tag/v0.34.0"
+      }
+    },
+    {
+      "source_id": "editorial:tagged-releases:chama",
+      "collector_source_ids": [],
+      "editorial_provenance": {
+        "path": "data/newsletter_workspace/selection_review_2026-11-11.md",
+        "sha256": "b9230168ceb411da767f174ee53c3d8272d4d994781223b26621de015a0714cb",
+        "locator": "https://github.com/jesuspirate/chama/releases/tag/v6.4.34"
+      }
+    },
+    {
+      "source_id": "editorial:tagged-releases:zapstore",
+      "collector_source_ids": [],
+      "editorial_provenance": {
+        "path": "data/newsletter_workspace/selection_review_2026-11-11.md",
+        "sha256": "b9230168ceb411da767f174ee53c3d8272d4d994781223b26621de015a0714cb",
+        "locator": "https://github.com/zapstore/zapstore/releases/tag/2.0.2"
+      }
+    },
+    {
+      "source_id": "editorial:tagged-releases:manent",
+      "collector_source_ids": [],
+      "editorial_provenance": {
+        "path": "data/newsletter_workspace/selection_review_2026-11-11.md",
+        "sha256": "b9230168ceb411da767f174ee53c3d8272d4d994781223b26621de015a0714cb",
+        "locator": "https://github.com/dtonon/manent/releases/tag/v3.1.0"
+      }
+    },
+    {
+      "source_id": "editorial:tagged-releases:streets",
+      "collector_source_ids": [],
+      "editorial_provenance": {
+        "path": "data/newsletter_workspace/selection_review_2026-11-11.md",
+        "sha256": "b9230168ceb411da767f174ee53c3d8272d4d994781223b26621de015a0714cb",
+        "locator": "https://github.com/eyemono-moe/streets/releases/tag/v1.24.0"
+      }
+    },
+    {
+      "source_id": "editorial:tagged-releases:noornote",
+      "collector_source_ids": [],
+      "editorial_provenance": {
+        "path": "data/newsletter_workspace/selection_review_2026-11-11.md",
+        "sha256": "b9230168ceb411da767f174ee53c3d8272d4d994781223b26621de015a0714cb",
+        "locator": "https://github.com/77elements/noornote/releases/tag/v1.9.10"
+      }
+    },
+    {
+      "source_id": "editorial:tagged-releases:infans",
+      "collector_source_ids": [],
+      "editorial_provenance": {
+        "path": "data/newsletter_workspace/selection_review_2026-11-11.md",
+        "sha256": "b9230168ceb411da767f174ee53c3d8272d4d994781223b26621de015a0714cb",
+        "locator": "https://github.com/TurkeyNostr/infans/releases/tag/v2.4.3"
+      }
+    },
+    {
+      "source_id": "editorial:tagged-releases:amber",
+      "collector_source_ids": [],
+      "editorial_provenance": {
+        "path": "data/newsletter_workspace/selection_review_2026-11-11.md",
+        "sha256": "b9230168ceb411da767f174ee53c3d8272d4d994781223b26621de015a0714cb",
+        "locator": "https://github.com/greenart7c3/Amber/releases/tag/v7.0.0-pre3"
+      }
+    },
+    {
+      "source_id": "editorial:tagged-releases:keep-android",
+      "collector_source_ids": [],
+      "editorial_provenance": {
+        "path": "data/newsletter_workspace/selection_review_2026-11-11.md",
+        "sha256": "b9230168ceb411da767f174ee53c3d8272d4d994781223b26621de015a0714cb",
+        "locator": "https://github.com/privkeyio/keep-android/releases/tag/v1.4.0"
+      }
+    },
+    {
+      "source_id": "editorial:tagged-releases:nostr-social-graph",
+      "collector_source_ids": [],
+      "editorial_provenance": {
+        "path": "data/newsletter_workspace/selection_review_2026-11-11.md",
+        "sha256": "b9230168ceb411da767f174ee53c3d8272d4d994781223b26621de015a0714cb",
+        "locator": "https://github.com/mmalmi/nostr-social-graph/releases/tag/v4.0.0"
+      }
+    },
+    {
+      "source_id": "editorial:tagged-releases:mdk",
+      "collector_source_ids": [],
+      "editorial_provenance": {
+        "path": "data/newsletter_workspace/selection_review_2026-11-11.md",
+        "sha256": "b9230168ceb411da767f174ee53c3d8272d4d994781223b26621de015a0714cb",
+        "locator": "https://github.com/marmot-protocol/mdk/releases/tag/v0.15.0"
+      }
+    },
+    {
+      "source_id": "editorial:tagged-releases:vector",
+      "collector_source_ids": [],
+      "editorial_provenance": {
+        "path": "data/newsletter_workspace/selection_review_2026-11-11.md",
+        "sha256": "b9230168ceb411da767f174ee53c3d8272d4d994781223b26621de015a0714cb",
+        "locator": "https://github.com/VectorPrivacy/Vector/releases/tag/v0.5.0"
+      }
+    },
+    {
+      "source_id": "editorial:in-development:route96",
+      "collector_source_ids": [],
+      "editorial_provenance": {
+        "path": "data/newsletter_workspace/selection_review_2026-11-11.md",
+        "sha256": "b9230168ceb411da767f174ee53c3d8272d4d994781223b26621de015a0714cb",
+        "locator": "https://github.com/v0l/route96/pull/106"
+      }
+    },
+    {
+      "source_id": "editorial:new-projects:splitnut",
+      "collector_source_ids": [],
+      "editorial_provenance": {
+        "path": "data/newsletter_workspace/selection_review_2026-11-11.md",
+        "sha256": "b9230168ceb411da767f174ee53c3d8272d4d994781223b26621de015a0714cb",
+        "locator": "https://github.com/rademenezbtc/splitnut"
+      }
+    },
+    {
+      "source_id": "editorial:new-projects:moranduba",
+      "collector_source_ids": [],
+      "editorial_provenance": {
+        "path": "data/newsletter_workspace/selection_review_2026-11-11.md",
+        "sha256": "b9230168ceb411da767f174ee53c3d8272d4d994781223b26621de015a0714cb",
+        "locator": "https://github.com/vzsoares/moranduba"
+      }
+    },
+    {
+      "source_id": "editorial:protocol-and-spec-work:nip-01-relays-can-tell-clients-how-long-to-back-off",
+      "collector_source_ids": [],
+      "editorial_provenance": {
+        "path": "data/newsletter_workspace/selection_review_2026-11-11.md",
+        "sha256": "b9230168ceb411da767f174ee53c3d8272d4d994781223b26621de015a0714cb",
+        "locator": "https://github.com/nostr-protocol/nips/pull/2498"
+      }
+    },
+    {
+      "source_id": "editorial:protocol-and-spec-work:nip-47-logout-method-proposed",
+      "collector_source_ids": [],
+      "editorial_provenance": {
+        "path": "data/newsletter_workspace/selection_review_2026-11-11.md",
+        "sha256": "b9230168ceb411da767f174ee53c3d8272d4d994781223b26621de015a0714cb",
+        "locator": "https://github.com/nostr-protocol/nips/pull/2537"
+      }
+    },
+    {
+      "source_id": "editorial:protocol-and-spec-work:logout-mirrored-in-the-nwc-specs-repository",
+      "collector_source_ids": [],
+      "editorial_provenance": {
+        "path": "data/newsletter_workspace/selection_review_2026-11-11.md",
+        "sha256": "b9230168ceb411da767f174ee53c3d8272d4d994781223b26621de015a0714cb",
+        "locator": "https://github.com/nostr-wallet-connect/nwc/pull/13"
+      }
+    },
+    {
+      "source_id": "editorial:protocol-and-spec-work:push-registration-for-wallet-notifications",
+      "collector_source_ids": [],
+      "editorial_provenance": {
+        "path": "data/newsletter_workspace/selection_review_2026-11-11.md",
+        "sha256": "b9230168ceb411da767f174ee53c3d8272d4d994781223b26621de015a0714cb",
+        "locator": "https://github.com/nostr-wallet-connect/nwc/pull/15"
+      }
+    },
+    {
+      "source_id": "editorial:protocol-and-spec-work:concord-merges-roles-private-channels-and-voice",
+      "collector_source_ids": [],
+      "editorial_provenance": {
+        "path": "data/newsletter_workspace/selection_review_2026-11-11.md",
+        "sha256": "b9230168ceb411da767f174ee53c3d8272d4d994781223b26621de015a0714cb",
+        "locator": "https://github.com/concord-protocol/concord/pull/25"
+      }
+    },
+    {
+      "source_id": "editorial:protocol-and-spec-work:concord-joins-authenticate-the-community-root",
+      "collector_source_ids": [],
+      "editorial_provenance": {
+        "path": "data/newsletter_workspace/selection_review_2026-11-11.md",
+        "sha256": "b9230168ceb411da767f174ee53c3d8272d4d994781223b26621de015a0714cb",
+        "locator": "https://github.com/concord-protocol/concord/pull/23"
+      }
+    },
+    {
+      "source_id": "editorial:protocol-and-spec-work:marmot-moved-devices-keep-trusting-the-old-group-until-the-first-commi",
+      "collector_source_ids": [],
+      "editorial_provenance": {
+        "path": "data/newsletter_workspace/selection_review_2026-11-11.md",
+        "sha256": "b9230168ceb411da767f174ee53c3d8272d4d994781223b26621de015a0714cb",
+        "locator": "https://github.com/marmot-protocol/marmot/pull/498"
+      }
+    },
+    {
+      "source_id": "editorial:protocol-and-spec-work:marmot-reset-a-local-device-group-without-losing-chats",
+      "collector_source_ids": [],
+      "editorial_provenance": {
+        "path": "data/newsletter_workspace/selection_review_2026-11-11.md",
+        "sha256": "b9230168ceb411da767f174ee53c3d8272d4d994781223b26621de015a0714cb",
+        "locator": "https://github.com/marmot-protocol/marmot/pull/499"
+      }
+    },
+    {
+      "source_id": "editorial:protocol-and-spec-work:marmot-inactive-sibling-devices",
+      "collector_source_ids": [],
+      "editorial_provenance": {
+        "path": "data/newsletter_workspace/selection_review_2026-11-11.md",
+        "sha256": "b9230168ceb411da767f174ee53c3d8272d4d994781223b26621de015a0714cb",
+        "locator": "https://github.com/marmot-protocol/marmot/pull/500"
+      }
+    },
+    {
+      "source_id": "editorial:protocol-and-spec-work:marmot-last-active-admin-cannot-leave",
+      "collector_source_ids": [],
+      "editorial_provenance": {
+        "path": "data/newsletter_workspace/selection_review_2026-11-11.md",
+        "sha256": "b9230168ceb411da767f174ee53c3d8272d4d994781223b26621de015a0714cb",
+        "locator": "https://github.com/marmot-protocol/marmot/pull/501"
+      }
+    },
+    {
+      "source_id": "editorial:protocol-and-spec-work:marmot-admins-step-down-before-leaving",
+      "collector_source_ids": [],
+      "editorial_provenance": {
+        "path": "data/newsletter_workspace/selection_review_2026-11-11.md",
+        "sha256": "b9230168ceb411da767f174ee53c3d8272d4d994781223b26621de015a0714cb",
+        "locator": "https://github.com/marmot-protocol/marmot/pull/502"
+      }
+    },
+    {
+      "source_id": "editorial:protocol-and-spec-work:marmot-drafts-one-shot-agent-decisions",
+      "collector_source_ids": [],
+      "editorial_provenance": {
+        "path": "data/newsletter_workspace/selection_review_2026-11-11.md",
+        "sha256": "b9230168ceb411da767f174ee53c3d8272d4d994781223b26621de015a0714cb",
+        "locator": "https://github.com/marmot-protocol/marmot/pull/503"
+      }
+    },
+    {
+      "source_id": "editorial:protocol-and-spec-work:nip-d9-proposes-events-that-resist-deletion",
+      "collector_source_ids": [],
+      "editorial_provenance": {
+        "path": "data/newsletter_workspace/selection_review_2026-11-11.md",
+        "sha256": "b9230168ceb411da767f174ee53c3d8272d4d994781223b26621de015a0714cb",
+        "locator": "https://github.com/nostr-protocol/nips/pull/2531"
+      }
+    },
+    {
+      "source_id": "editorial:deep-dive:nip-deep-dive-nip-88-polls",
+      "collector_source_ids": [],
+      "editorial_provenance": {
+        "path": "data/newsletter_workspace/selection_review_2026-11-11.md",
+        "sha256": "b9230168ceb411da767f174ee53c3d8272d4d994781223b26621de015a0714cb",
+        "locator": "https://github.com/nostr-protocol/nips/blob/master/88.md"
+      }
+    },
+    {
+      "source_id": "editorial:skip:kryfo-gnosiworks-kryfo-v0-6-0",
+      "collector_source_ids": [],
+      "editorial_provenance": {
+        "path": "data/newsletter_workspace/selection_review_2026-11-11.md",
+        "sha256": "b9230168ceb411da767f174ee53c3d8272d4d994781223b26621de015a0714cb",
+        "locator": "https://github.com/gnosiworks/kryfo"
+      }
+    },
+    {
+      "source_id": "editorial:skip:better-auth-nostr-leon-wbr-better-auth-nostr-v0-6-0",
+      "collector_source_ids": [],
+      "editorial_provenance": {
+        "path": "data/newsletter_workspace/selection_review_2026-11-11.md",
+        "sha256": "b9230168ceb411da767f174ee53c3d8272d4d994781223b26621de015a0714cb",
+        "locator": "https://github.com/leon-wbr/better-auth-nostr"
+      }
+    },
+    {
+      "source_id": "editorial:skip:cosign-sybenx-cosign-v0-12-10",
+      "collector_source_ids": [],
+      "editorial_provenance": {
+        "path": "data/newsletter_workspace/selection_review_2026-11-11.md",
+        "sha256": "b9230168ceb411da767f174ee53c3d8272d4d994781223b26621de015a0714cb",
+        "locator": "https://github.com/sybenx/cosign"
+      }
+    },
+    {
+      "source_id": "editorial:skip:herdr-white-noise-remote-tidley-codr-v0-11-1",
+      "collector_source_ids": [],
+      "editorial_provenance": {
+        "path": "data/newsletter_workspace/selection_review_2026-11-11.md",
+        "sha256": "b9230168ceb411da767f174ee53c3d8272d4d994781223b26621de015a0714cb",
+        "locator": "https://github.com/tidley/codr"
+      }
+    },
+    {
+      "source_id": "editorial:skip:mostro-cli-mostrop2p-mostro-cli-v0-17-0-v0-17-1",
+      "collector_source_ids": [],
+      "editorial_provenance": {
+        "path": "data/newsletter_workspace/selection_review_2026-11-11.md",
+        "sha256": "b9230168ceb411da767f174ee53c3d8272d4d994781223b26621de015a0714cb",
+        "locator": "https://github.com/MostroP2P/mostro-cli"
+      }
+    },
+    {
+      "source_id": "editorial:skip:routstrd-routstr-routstrd-v0-5-0",
+      "collector_source_ids": [],
+      "editorial_provenance": {
+        "path": "data/newsletter_workspace/selection_review_2026-11-11.md",
+        "sha256": "b9230168ceb411da767f174ee53c3d8272d4d994781223b26621de015a0714cb",
+        "locator": "https://github.com/routstr/routstrd"
+      }
+    },
+    {
+      "source_id": "editorial:skip:swift-nostr-client-yysskk-swift-nostr-client-0-10-0",
+      "collector_source_ids": [],
+      "editorial_provenance": {
+        "path": "data/newsletter_workspace/selection_review_2026-11-11.md",
+        "sha256": "b9230168ceb411da767f174ee53c3d8272d4d994781223b26621de015a0714cb",
+        "locator": "https://github.com/yysskk/swift-nostr-client"
+      }
+    },
+    {
+      "source_id": "editorial:skip:algia-mattn-algia-v0-0-138",
+      "collector_source_ids": [],
+      "editorial_provenance": {
+        "path": "data/newsletter_workspace/selection_review_2026-11-11.md",
+        "sha256": "b9230168ceb411da767f174ee53c3d8272d4d994781223b26621de015a0714cb",
+        "locator": "https://github.com/mattn/algia"
+      }
+    },
+    {
+      "source_id": "editorial:skip:citrine-greenart7c3-citrine-v3-2-2",
+      "collector_source_ids": [],
+      "editorial_provenance": {
+        "path": "data/newsletter_workspace/selection_review_2026-11-11.md",
+        "sha256": "b9230168ceb411da767f174ee53c3d8272d4d994781223b26621de015a0714cb",
+        "locator": "https://github.com/greenart7c3/Citrine"
+      }
+    },
+    {
+      "source_id": "editorial:skip:fips-ts-mmalmi-fips-ts-runtime-v0-0-58-0-0-61",
+      "collector_source_ids": [],
+      "editorial_provenance": {
+        "path": "data/newsletter_workspace/selection_review_2026-11-11.md",
+        "sha256": "b9230168ceb411da767f174ee53c3d8272d4d994781223b26621de015a0714cb",
+        "locator": "https://github.com/mmalmi/fips-ts"
+      }
+    },
+    {
+      "source_id": "editorial:skip:haps-mmalmi-haps-v0-1-26-27",
+      "collector_source_ids": [],
+      "editorial_provenance": {
+        "path": "data/newsletter_workspace/selection_review_2026-11-11.md",
+        "sha256": "b9230168ceb411da767f174ee53c3d8272d4d994781223b26621de015a0714cb",
+        "locator": "https://github.com/mmalmi/haps"
+      }
+    },
+    {
+      "source_id": "editorial:skip:hashtree-mmalmi-hashtree-runtime-releases",
+      "collector_source_ids": [],
+      "editorial_provenance": {
+        "path": "data/newsletter_workspace/selection_review_2026-11-11.md",
+        "sha256": "b9230168ceb411da767f174ee53c3d8272d4d994781223b26621de015a0714cb",
+        "locator": "https://github.com/mmalmi/hashtree"
+      }
+    },
+    {
+      "source_id": "editorial:skip:kithmoot-forgesworn-kithmoot-v0-1-126-0-1-139",
+      "collector_source_ids": [],
+      "editorial_provenance": {
+        "path": "data/newsletter_workspace/selection_review_2026-11-11.md",
+        "sha256": "b9230168ceb411da767f174ee53c3d8272d4d994781223b26621de015a0714cb",
+        "locator": "https://github.com/forgesworn/kithmoot"
+      }
+    },
+    {
+      "source_id": "editorial:skip:linky-linky-fit-linky-v26-11-1-2",
+      "collector_source_ids": [],
+      "editorial_provenance": {
+        "path": "data/newsletter_workspace/selection_review_2026-11-11.md",
+        "sha256": "b9230168ceb411da767f174ee53c3d8272d4d994781223b26621de015a0714cb",
+        "locator": "https://github.com/linky-fit/linky"
+      }
+    },
+    {
+      "source_id": "editorial:skip:magnetar-awake-devel-magnetar-v0-3-2-probepex1",
+      "collector_source_ids": [],
+      "editorial_provenance": {
+        "path": "data/newsletter_workspace/selection_review_2026-11-11.md",
+        "sha256": "b9230168ceb411da767f174ee53c3d8272d4d994781223b26621de015a0714cb",
+        "locator": "https://github.com/awake-devel/magnetar"
+      }
+    },
+    {
+      "source_id": "editorial:skip:marble-sybenx-marble-v0-12-24-0-12-29",
+      "collector_source_ids": [],
+      "editorial_provenance": {
+        "path": "data/newsletter_workspace/selection_review_2026-11-11.md",
+        "sha256": "b9230168ceb411da767f174ee53c3d8272d4d994781223b26621de015a0714cb",
+        "locator": "https://github.com/sybenx/marble"
+      }
+    },
+    {
+      "source_id": "editorial:skip:napplets-web-packages-napplet-web",
+      "collector_source_ids": [],
+      "editorial_provenance": {
+        "path": "data/newsletter_workspace/selection_review_2026-11-11.md",
+        "sha256": "b9230168ceb411da767f174ee53c3d8272d4d994781223b26621de015a0714cb",
+        "locator": "https://github.com/napplet/web"
+      }
+    },
+    {
+      "source_id": "editorial:skip:nostr-wot-extension-nostr-wot-nostr-wot-extension-v0-8-23",
+      "collector_source_ids": [],
+      "editorial_provenance": {
+        "path": "data/newsletter_workspace/selection_review_2026-11-11.md",
+        "sha256": "b9230168ceb411da767f174ee53c3d8272d4d994781223b26621de015a0714cb",
+        "locator": "https://github.com/nostr-wot/nostr-wot-extension"
+      }
+    },
+    {
+      "source_id": "editorial:skip:nostrappshell-git-nostrdev-com-stuff-nostrappshell-and-pakstr-git-nost",
+      "collector_source_ids": [],
+      "editorial_provenance": {
+        "path": "data/newsletter_workspace/selection_review_2026-11-11.md",
+        "sha256": "b9230168ceb411da767f174ee53c3d8272d4d994781223b26621de015a0714cb",
+        "locator": "https://git.nostrdev.com/stuff/NostrAppShell"
+      }
+    },
+    {
+      "source_id": "editorial:skip:nostream-cameri-nostream-3-13-0-3-15-1",
+      "collector_source_ids": [],
+      "editorial_provenance": {
+        "path": "data/newsletter_workspace/selection_review_2026-11-11.md",
+        "sha256": "b9230168ceb411da767f174ee53c3d8272d4d994781223b26621de015a0714cb",
+        "locator": "https://github.com/Cameri/nostream"
+      }
+    },
+    {
+      "source_id": "editorial:skip:nostrube-flox1an-nostube-v0-2-54-0-2-73",
+      "collector_source_ids": [],
+      "editorial_provenance": {
+        "path": "data/newsletter_workspace/selection_review_2026-11-11.md",
+        "sha256": "b9230168ceb411da767f174ee53c3d8272d4d994781223b26621de015a0714cb",
+        "locator": "https://github.com/flox1an/nostube"
+      }
+    },
+    {
+      "source_id": "editorial:skip:xmradar-kyc-rip-xmradar-v0-6-11-0-6-16",
+      "collector_source_ids": [],
+      "editorial_provenance": {
+        "path": "data/newsletter_workspace/selection_review_2026-11-11.md",
+        "sha256": "b9230168ceb411da767f174ee53c3d8272d4d994781223b26621de015a0714cb",
+        "locator": "https://github.com/KYC-rip/xmradar"
+      }
+    },
+    {
+      "source_id": "editorial:skip:alby-hub-getalby-hub-v1-24-6",
+      "collector_source_ids": [],
+      "editorial_provenance": {
+        "path": "data/newsletter_workspace/selection_review_2026-11-11.md",
+        "sha256": "b9230168ceb411da767f174ee53c3d8272d4d994781223b26621de015a0714cb",
+        "locator": "https://github.com/getAlby/hub"
+      }
+    },
+    {
+      "source_id": "editorial:skip:bitcoin-safe-andreasgriffin-bitcoin-safe-2-3-0",
+      "collector_source_ids": [],
+      "editorial_provenance": {
+        "path": "data/newsletter_workspace/selection_review_2026-11-11.md",
+        "sha256": "b9230168ceb411da767f174ee53c3d8272d4d994781223b26621de015a0714cb",
+        "locator": "https://github.com/andreasgriffin/bitcoin-safe"
+      }
+    },
+    {
+      "source_id": "editorial:skip:divine-divinevideo-divine-mobile-1-0-28",
+      "collector_source_ids": [],
+      "editorial_provenance": {
+        "path": "data/newsletter_workspace/selection_review_2026-11-11.md",
+        "sha256": "b9230168ceb411da767f174ee53c3d8272d4d994781223b26621de015a0714cb",
+        "locator": "https://github.com/divinevideo/divine-mobile"
+      }
+    },
+    {
+      "source_id": "editorial:skip:lawallet-android-lawalletio-android-wallet-v1-3-1-1-3-2",
+      "collector_source_ids": [],
+      "editorial_provenance": {
+        "path": "data/newsletter_workspace/selection_review_2026-11-11.md",
+        "sha256": "b9230168ceb411da767f174ee53c3d8272d4d994781223b26621de015a0714cb",
+        "locator": "https://github.com/lawalletio/android-wallet"
+      }
+    },
+    {
+      "source_id": "editorial:skip:napplet-soy-zeschlauskwab-napplet-soy-soyli-v0-32-0-0-32-1",
+      "collector_source_ids": [],
+      "editorial_provenance": {
+        "path": "data/newsletter_workspace/selection_review_2026-11-11.md",
+        "sha256": "b9230168ceb411da767f174ee53c3d8272d4d994781223b26621de015a0714cb",
+        "locator": "https://github.com/zeSchlausKwab/napplet-soy"
+      }
+    },
+    {
+      "source_id": "editorial:skip:sidecar-dmnyc-sidecar-v1-17-0",
+      "collector_source_ids": [],
+      "editorial_provenance": {
+        "path": "data/newsletter_workspace/selection_review_2026-11-11.md",
+        "sha256": "b9230168ceb411da767f174ee53c3d8272d4d994781223b26621de015a0714cb",
+        "locator": "https://github.com/dmnyc/sidecar"
+      }
+    },
+    {
+      "source_id": "editorial:skip:nostr-army-knife-nak-fiatjaf-nak-v0-22-3",
+      "collector_source_ids": [],
+      "editorial_provenance": {
+        "path": "data/newsletter_workspace/selection_review_2026-11-11.md",
+        "sha256": "b9230168ceb411da767f174ee53c3d8272d4d994781223b26621de015a0714cb",
+        "locator": "https://github.com/fiatjaf/nak"
+      }
+    },
+    {
+      "source_id": "editorial:skip:iris-kit-mmalmi-iris-kit-runtime-v0-2-8",
+      "collector_source_ids": [],
+      "editorial_provenance": {
+        "path": "data/newsletter_workspace/selection_review_2026-11-11.md",
+        "sha256": "b9230168ceb411da767f174ee53c3d8272d4d994781223b26621de015a0714cb",
+        "locator": "https://github.com/mmalmi/iris-kit"
+      }
+    },
+    {
+      "source_id": "editorial:skip:lumen-nogringo-lumen-v0-3-0",
+      "collector_source_ids": [],
+      "editorial_provenance": {
+        "path": "data/newsletter_workspace/selection_review_2026-11-11.md",
+        "sha256": "b9230168ceb411da767f174ee53c3d8272d4d994781223b26621de015a0714cb",
+        "locator": "https://github.com/nogringo/lumen"
+      }
+    },
+    {
+      "source_id": "editorial:skip:nostr-pubsub-mmalmi-nostr-pubsub-ts-v0-5-25",
+      "collector_source_ids": [],
+      "editorial_provenance": {
+        "path": "data/newsletter_workspace/selection_review_2026-11-11.md",
+        "sha256": "b9230168ceb411da767f174ee53c3d8272d4d994781223b26621de015a0714cb",
+        "locator": "https://github.com/mmalmi/nostr-pubsub"
+      }
+    },
+    {
+      "source_id": "editorial:skip:nail-formstr-hq-nail-v0-4-1",
+      "collector_source_ids": [],
+      "editorial_provenance": {
+        "path": "data/newsletter_workspace/selection_review_2026-11-11.md",
+        "sha256": "b9230168ceb411da767f174ee53c3d8272d4d994781223b26621de015a0714cb",
+        "locator": "https://github.com/formstr-hq/nail"
+      }
+    },
+    {
+      "source_id": "editorial:skip:pollerama-2-3-2",
+      "collector_source_ids": [],
+      "editorial_provenance": {
+        "path": "data/newsletter_workspace/selection_review_2026-11-11.md",
+        "sha256": "b9230168ceb411da767f174ee53c3d8272d4d994781223b26621de015a0714cb",
+        "locator": "https://zapstore.dev/apps"
+      }
+    },
+    {
+      "source_id": "editorial:skip:nymchat-3-75-545-nym",
+      "collector_source_ids": [],
+      "editorial_provenance": {
+        "path": "data/newsletter_workspace/selection_review_2026-11-11.md",
+        "sha256": "b9230168ceb411da767f174ee53c3d8272d4d994781223b26621de015a0714cb",
+        "locator": "https://zapstore.dev/apps"
+      }
+    },
+    {
+      "source_id": "editorial:skip:imwald-android-0-5-22",
+      "collector_source_ids": [],
+      "editorial_provenance": {
+        "path": "data/newsletter_workspace/selection_review_2026-11-11.md",
+        "sha256": "b9230168ceb411da767f174ee53c3d8272d4d994781223b26621de015a0714cb",
+        "locator": "https://zapstore.dev/apps"
+      }
+    },
+    {
+      "source_id": "editorial:skip:deepmarks-2-2-21",
+      "collector_source_ids": [],
+      "editorial_provenance": {
+        "path": "data/newsletter_workspace/selection_review_2026-11-11.md",
+        "sha256": "b9230168ceb411da767f174ee53c3d8272d4d994781223b26621de015a0714cb",
+        "locator": "https://zapstore.dev/apps"
+      }
+    },
+    {
+      "source_id": "editorial:skip:flotilla-1-15-1",
+      "collector_source_ids": [],
+      "editorial_provenance": {
+        "path": "data/newsletter_workspace/selection_review_2026-11-11.md",
+        "sha256": "b9230168ceb411da767f174ee53c3d8272d4d994781223b26621de015a0714cb",
+        "locator": "https://zapstore.dev/apps"
+      }
+    },
+    {
+      "source_id": "editorial:skip:trikey-foss-0-1-26-alpha",
+      "collector_source_ids": [],
+      "editorial_provenance": {
+        "path": "data/newsletter_workspace/selection_review_2026-11-11.md",
+        "sha256": "b9230168ceb411da767f174ee53c3d8272d4d994781223b26621de015a0714cb",
+        "locator": "https://zapstore.dev/apps"
+      }
+    },
+    {
+      "source_id": "editorial:skip:malachite-0-1-1",
+      "collector_source_ids": [],
+      "editorial_provenance": {
+        "path": "data/newsletter_workspace/selection_review_2026-11-11.md",
+        "sha256": "b9230168ceb411da767f174ee53c3d8272d4d994781223b26621de015a0714cb",
+        "locator": "https://zapstore.dev/apps"
+      }
+    },
+    {
+      "source_id": "editorial:skip:dark-wisp-enhanced-1-0-5",
+      "collector_source_ids": [],
+      "editorial_provenance": {
+        "path": "data/newsletter_workspace/selection_review_2026-11-11.md",
+        "sha256": "b9230168ceb411da767f174ee53c3d8272d4d994781223b26621de015a0714cb",
+        "locator": "https://zapstore.dev/apps"
+      }
+    },
+    {
+      "source_id": "editorial:skip:coinos-v3-1-14",
+      "collector_source_ids": [],
+      "editorial_provenance": {
+        "path": "data/newsletter_workspace/selection_review_2026-11-11.md",
+        "sha256": "b9230168ceb411da767f174ee53c3d8272d4d994781223b26621de015a0714cb",
+        "locator": "https://zapstore.dev/apps"
+      }
+    },
+    {
+      "source_id": "editorial:skip:symudol-1-0-1",
+      "collector_source_ids": [],
+      "editorial_provenance": {
+        "path": "data/newsletter_workspace/selection_review_2026-11-11.md",
+        "sha256": "b9230168ceb411da767f174ee53c3d8272d4d994781223b26621de015a0714cb",
+        "locator": "https://zapstore.dev/apps"
+      }
+    },
+    {
+      "source_id": "editorial:skip:outlink-1-1-13",
+      "collector_source_ids": [],
+      "editorial_provenance": {
+        "path": "data/newsletter_workspace/selection_review_2026-11-11.md",
+        "sha256": "b9230168ceb411da767f174ee53c3d8272d4d994781223b26621de015a0714cb",
+        "locator": "https://zapstore.dev/apps"
+      }
+    },
+    {
+      "source_id": "editorial:skip:tendrl-0-19-0",
+      "collector_source_ids": [],
+      "editorial_provenance": {
+        "path": "data/newsletter_workspace/selection_review_2026-11-11.md",
+        "sha256": "b9230168ceb411da767f174ee53c3d8272d4d994781223b26621de015a0714cb",
+        "locator": "https://zapstore.dev/apps"
+      }
+    },
+    {
+      "source_id": "editorial:skip:nip-34-1-patch-on-gitworkshop-dev-1-issue-on-whitenoise-linux",
+      "collector_source_ids": [],
+      "editorial_provenance": {
+        "path": "data/newsletter_workspace/selection_review_2026-11-11.md",
+        "sha256": "b9230168ceb411da767f174ee53c3d8272d4d994781223b26621de015a0714cb",
+        "locator": "https://zapstore.dev/apps"
+      }
+    },
+    {
+      "source_id": "editorial:tagged-releases:lnbits",
+      "collector_source_ids": [],
+      "editorial_provenance": {
+        "path": "data/newsletter_workspace/selection_review_2026-11-11.md",
+        "sha256": "b9230168ceb411da767f174ee53c3d8272d4d994781223b26621de015a0714cb",
+        "locator": "https://github.com/lnbits/lnbits/releases/tag/v1.7.0"
+      }
+    },
+    {
+      "source_id": "editorial:skip:publication-day-refresh-routine-releases",
+      "collector_source_ids": [],
+      "editorial_provenance": {
+        "path": "data/newsletter_workspace/selection_review_2026-11-11.md",
+        "sha256": "b9230168ceb411da767f174ee53c3d8272d4d994781223b26621de015a0714cb",
+        "locator": "https://github.com/forgesworn/kithmoot/releases/tag/v0.1.143"
+      }
+    }
+  ],
+  "source_expansion": [
+    {
+      "source_id": "editorial:top-stories:marmot-projects-at-bitcoin-seoul",
+      "candidate_ids": [
+        "top-stories:marmot-projects-at-bitcoin-seoul"
+      ]
+    },
+    {
+      "source_id": "editorial:tagged-releases:nostur",
+      "candidate_ids": [
+        "tagged-releases:nostur"
+      ]
+    },
+    {
+      "source_id": "editorial:tagged-releases:monostr",
+      "candidate_ids": [
+        "tagged-releases:monostr"
+      ]
+    },
+    {
+      "source_id": "editorial:tagged-releases:chama",
+      "candidate_ids": [
+        "tagged-releases:chama"
+      ]
+    },
+    {
+      "source_id": "editorial:tagged-releases:zapstore",
+      "candidate_ids": [
+        "tagged-releases:zapstore"
+      ]
+    },
+    {
+      "source_id": "editorial:tagged-releases:manent",
+      "candidate_ids": [
+        "tagged-releases:manent"
+      ]
+    },
+    {
+      "source_id": "editorial:tagged-releases:streets",
+      "candidate_ids": [
+        "tagged-releases:streets"
+      ]
+    },
+    {
+      "source_id": "editorial:tagged-releases:noornote",
+      "candidate_ids": [
+        "tagged-releases:noornote"
+      ]
+    },
+    {
+      "source_id": "editorial:tagged-releases:infans",
+      "candidate_ids": [
+        "tagged-releases:infans"
+      ]
+    },
+    {
+      "source_id": "editorial:tagged-releases:amber",
+      "candidate_ids": [
+        "tagged-releases:amber"
+      ]
+    },
+    {
+      "source_id": "editorial:tagged-releases:keep-android",
+      "candidate_ids": [
+        "tagged-releases:keep-android"
+      ]
+    },
+    {
+      "source_id": "editorial:tagged-releases:nostr-social-graph",
+      "candidate_ids": [
+        "tagged-releases:nostr-social-graph"
+      ]
+    },
+    {
+      "source_id": "editorial:tagged-releases:mdk",
+      "candidate_ids": [
+        "tagged-releases:mdk"
+      ]
+    },
+    {
+      "source_id": "editorial:tagged-releases:vector",
+      "candidate_ids": [
+        "tagged-releases:vector"
+      ]
+    },
+    {
+      "source_id": "editorial:in-development:route96",
+      "candidate_ids": [
+        "in-development:route96"
+      ]
+    },
+    {
+      "source_id": "editorial:new-projects:splitnut",
+      "candidate_ids": [
+        "new-projects:splitnut"
+      ]
+    },
+    {
+      "source_id": "editorial:new-projects:moranduba",
+      "candidate_ids": [
+        "new-projects:moranduba"
+      ]
+    },
+    {
+      "source_id": "editorial:protocol-and-spec-work:nip-01-relays-can-tell-clients-how-long-to-back-off",
+      "candidate_ids": [
+        "protocol-and-spec-work:nip-01-relays-can-tell-clients-how-long-to-back-off"
+      ]
+    },
+    {
+      "source_id": "editorial:protocol-and-spec-work:nip-47-logout-method-proposed",
+      "candidate_ids": [
+        "protocol-and-spec-work:nip-47-logout-method-proposed"
+      ]
+    },
+    {
+      "source_id": "editorial:protocol-and-spec-work:logout-mirrored-in-the-nwc-specs-repository",
+      "candidate_ids": [
+        "protocol-and-spec-work:logout-mirrored-in-the-nwc-specs-repository"
+      ]
+    },
+    {
+      "source_id": "editorial:protocol-and-spec-work:push-registration-for-wallet-notifications",
+      "candidate_ids": [
+        "protocol-and-spec-work:push-registration-for-wallet-notifications"
+      ]
+    },
+    {
+      "source_id": "editorial:protocol-and-spec-work:concord-merges-roles-private-channels-and-voice",
+      "candidate_ids": [
+        "protocol-and-spec-work:concord-merges-roles-private-channels-and-voice"
+      ]
+    },
+    {
+      "source_id": "editorial:protocol-and-spec-work:concord-joins-authenticate-the-community-root",
+      "candidate_ids": [
+        "protocol-and-spec-work:concord-joins-authenticate-the-community-root"
+      ]
+    },
+    {
+      "source_id": "editorial:protocol-and-spec-work:marmot-moved-devices-keep-trusting-the-old-group-until-the-first-commi",
+      "candidate_ids": [
+        "protocol-and-spec-work:marmot-moved-devices-keep-trusting-the-old-group-until-the-first-commi"
+      ]
+    },
+    {
+      "source_id": "editorial:protocol-and-spec-work:marmot-reset-a-local-device-group-without-losing-chats",
+      "candidate_ids": [
+        "protocol-and-spec-work:marmot-reset-a-local-device-group-without-losing-chats"
+      ]
+    },
+    {
+      "source_id": "editorial:protocol-and-spec-work:marmot-inactive-sibling-devices",
+      "candidate_ids": [
+        "protocol-and-spec-work:marmot-inactive-sibling-devices"
+      ]
+    },
+    {
+      "source_id": "editorial:protocol-and-spec-work:marmot-last-active-admin-cannot-leave",
+      "candidate_ids": [
+        "protocol-and-spec-work:marmot-last-active-admin-cannot-leave"
+      ]
+    },
+    {
+      "source_id": "editorial:protocol-and-spec-work:marmot-admins-step-down-before-leaving",
+      "candidate_ids": [
+        "protocol-and-spec-work:marmot-admins-step-down-before-leaving"
+      ]
+    },
+    {
+      "source_id": "editorial:protocol-and-spec-work:marmot-drafts-one-shot-agent-decisions",
+      "candidate_ids": [
+        "protocol-and-spec-work:marmot-drafts-one-shot-agent-decisions"
+      ]
+    },
+    {
+      "source_id": "editorial:protocol-and-spec-work:nip-d9-proposes-events-that-resist-deletion",
+      "candidate_ids": [
+        "protocol-and-spec-work:nip-d9-proposes-events-that-resist-deletion"
+      ]
+    },
+    {
+      "source_id": "editorial:deep-dive:nip-deep-dive-nip-88-polls",
+      "candidate_ids": [
+        "deep-dive:nip-deep-dive-nip-88-polls"
+      ]
+    },
+    {
+      "source_id": "editorial:skip:kryfo-gnosiworks-kryfo-v0-6-0",
+      "candidate_ids": [
+        "skip:kryfo-gnosiworks-kryfo-v0-6-0"
+      ]
+    },
+    {
+      "source_id": "editorial:skip:better-auth-nostr-leon-wbr-better-auth-nostr-v0-6-0",
+      "candidate_ids": [
+        "skip:better-auth-nostr-leon-wbr-better-auth-nostr-v0-6-0"
+      ]
+    },
+    {
+      "source_id": "editorial:skip:cosign-sybenx-cosign-v0-12-10",
+      "candidate_ids": [
+        "skip:cosign-sybenx-cosign-v0-12-10"
+      ]
+    },
+    {
+      "source_id": "editorial:skip:herdr-white-noise-remote-tidley-codr-v0-11-1",
+      "candidate_ids": [
+        "skip:herdr-white-noise-remote-tidley-codr-v0-11-1"
+      ]
+    },
+    {
+      "source_id": "editorial:skip:mostro-cli-mostrop2p-mostro-cli-v0-17-0-v0-17-1",
+      "candidate_ids": [
+        "skip:mostro-cli-mostrop2p-mostro-cli-v0-17-0-v0-17-1"
+      ]
+    },
+    {
+      "source_id": "editorial:skip:routstrd-routstr-routstrd-v0-5-0",
+      "candidate_ids": [
+        "skip:routstrd-routstr-routstrd-v0-5-0"
+      ]
+    },
+    {
+      "source_id": "editorial:skip:swift-nostr-client-yysskk-swift-nostr-client-0-10-0",
+      "candidate_ids": [
+        "skip:swift-nostr-client-yysskk-swift-nostr-client-0-10-0"
+      ]
+    },
+    {
+      "source_id": "editorial:skip:algia-mattn-algia-v0-0-138",
+      "candidate_ids": [
+        "skip:algia-mattn-algia-v0-0-138"
+      ]
+    },
+    {
+      "source_id": "editorial:skip:citrine-greenart7c3-citrine-v3-2-2",
+      "candidate_ids": [
+        "skip:citrine-greenart7c3-citrine-v3-2-2"
+      ]
+    },
+    {
+      "source_id": "editorial:skip:fips-ts-mmalmi-fips-ts-runtime-v0-0-58-0-0-61",
+      "candidate_ids": [
+        "skip:fips-ts-mmalmi-fips-ts-runtime-v0-0-58-0-0-61"
+      ]
+    },
+    {
+      "source_id": "editorial:skip:haps-mmalmi-haps-v0-1-26-27",
+      "candidate_ids": [
+        "skip:haps-mmalmi-haps-v0-1-26-27"
+      ]
+    },
+    {
+      "source_id": "editorial:skip:hashtree-mmalmi-hashtree-runtime-releases",
+      "candidate_ids": [
+        "skip:hashtree-mmalmi-hashtree-runtime-releases"
+      ]
+    },
+    {
+      "source_id": "editorial:skip:kithmoot-forgesworn-kithmoot-v0-1-126-0-1-139",
+      "candidate_ids": [
+        "skip:kithmoot-forgesworn-kithmoot-v0-1-126-0-1-139"
+      ]
+    },
+    {
+      "source_id": "editorial:skip:linky-linky-fit-linky-v26-11-1-2",
+      "candidate_ids": [
+        "skip:linky-linky-fit-linky-v26-11-1-2"
+      ]
+    },
+    {
+      "source_id": "editorial:skip:magnetar-awake-devel-magnetar-v0-3-2-probepex1",
+      "candidate_ids": [
+        "skip:magnetar-awake-devel-magnetar-v0-3-2-probepex1"
+      ]
+    },
+    {
+      "source_id": "editorial:skip:marble-sybenx-marble-v0-12-24-0-12-29",
+      "candidate_ids": [
+        "skip:marble-sybenx-marble-v0-12-24-0-12-29"
+      ]
+    },
+    {
+      "source_id": "editorial:skip:napplets-web-packages-napplet-web",
+      "candidate_ids": [
+        "skip:napplets-web-packages-napplet-web"
+      ]
+    },
+    {
+      "source_id": "editorial:skip:nostr-wot-extension-nostr-wot-nostr-wot-extension-v0-8-23",
+      "candidate_ids": [
+        "skip:nostr-wot-extension-nostr-wot-nostr-wot-extension-v0-8-23"
+      ]
+    },
+    {
+      "source_id": "editorial:skip:nostrappshell-git-nostrdev-com-stuff-nostrappshell-and-pakstr-git-nost",
+      "candidate_ids": [
+        "skip:nostrappshell-git-nostrdev-com-stuff-nostrappshell-and-pakstr-git-nost"
+      ]
+    },
+    {
+      "source_id": "editorial:skip:nostream-cameri-nostream-3-13-0-3-15-1",
+      "candidate_ids": [
+        "skip:nostream-cameri-nostream-3-13-0-3-15-1"
+      ]
+    },
+    {
+      "source_id": "editorial:skip:nostrube-flox1an-nostube-v0-2-54-0-2-73",
+      "candidate_ids": [
+        "skip:nostrube-flox1an-nostube-v0-2-54-0-2-73"
+      ]
+    },
+    {
+      "source_id": "editorial:skip:xmradar-kyc-rip-xmradar-v0-6-11-0-6-16",
+      "candidate_ids": [
+        "skip:xmradar-kyc-rip-xmradar-v0-6-11-0-6-16"
+      ]
+    },
+    {
+      "source_id": "editorial:skip:alby-hub-getalby-hub-v1-24-6",
+      "candidate_ids": [
+        "skip:alby-hub-getalby-hub-v1-24-6"
+      ]
+    },
+    {
+      "source_id": "editorial:skip:bitcoin-safe-andreasgriffin-bitcoin-safe-2-3-0",
+      "candidate_ids": [
+        "skip:bitcoin-safe-andreasgriffin-bitcoin-safe-2-3-0"
+      ]
+    },
+    {
+      "source_id": "editorial:skip:divine-divinevideo-divine-mobile-1-0-28",
+      "candidate_ids": [
+        "skip:divine-divinevideo-divine-mobile-1-0-28"
+      ]
+    },
+    {
+      "source_id": "editorial:skip:lawallet-android-lawalletio-android-wallet-v1-3-1-1-3-2",
+      "candidate_ids": [
+        "skip:lawallet-android-lawalletio-android-wallet-v1-3-1-1-3-2"
+      ]
+    },
+    {
+      "source_id": "editorial:skip:napplet-soy-zeschlauskwab-napplet-soy-soyli-v0-32-0-0-32-1",
+      "candidate_ids": [
+        "skip:napplet-soy-zeschlauskwab-napplet-soy-soyli-v0-32-0-0-32-1"
+      ]
+    },
+    {
+      "source_id": "editorial:skip:sidecar-dmnyc-sidecar-v1-17-0",
+      "candidate_ids": [
+        "skip:sidecar-dmnyc-sidecar-v1-17-0"
+      ]
+    },
+    {
+      "source_id": "editorial:skip:nostr-army-knife-nak-fiatjaf-nak-v0-22-3",
+      "candidate_ids": [
+        "skip:nostr-army-knife-nak-fiatjaf-nak-v0-22-3"
+      ]
+    },
+    {
+      "source_id": "editorial:skip:iris-kit-mmalmi-iris-kit-runtime-v0-2-8",
+      "candidate_ids": [
+        "skip:iris-kit-mmalmi-iris-kit-runtime-v0-2-8"
+      ]
+    },
+    {
+      "source_id": "editorial:skip:lumen-nogringo-lumen-v0-3-0",
+      "candidate_ids": [
+        "skip:lumen-nogringo-lumen-v0-3-0"
+      ]
+    },
+    {
+      "source_id": "editorial:skip:nostr-pubsub-mmalmi-nostr-pubsub-ts-v0-5-25",
+      "candidate_ids": [
+        "skip:nostr-pubsub-mmalmi-nostr-pubsub-ts-v0-5-25"
+      ]
+    },
+    {
+      "source_id": "editorial:skip:nail-formstr-hq-nail-v0-4-1",
+      "candidate_ids": [
+        "skip:nail-formstr-hq-nail-v0-4-1"
+      ]
+    },
+    {
+      "source_id": "editorial:skip:pollerama-2-3-2",
+      "candidate_ids": [
+        "skip:pollerama-2-3-2"
+      ]
+    },
+    {
+      "source_id": "editorial:skip:nymchat-3-75-545-nym",
+      "candidate_ids": [
+        "skip:nymchat-3-75-545-nym"
+      ]
+    },
+    {
+      "source_id": "editorial:skip:imwald-android-0-5-22",
+      "candidate_ids": [
+        "skip:imwald-android-0-5-22"
+      ]
+    },
+    {
+      "source_id": "editorial:skip:deepmarks-2-2-21",
+      "candidate_ids": [
+        "skip:deepmarks-2-2-21"
+      ]
+    },
+    {
+      "source_id": "editorial:skip:flotilla-1-15-1",
+      "candidate_ids": [
+        "skip:flotilla-1-15-1"
+      ]
+    },
+    {
+      "source_id": "editorial:skip:trikey-foss-0-1-26-alpha",
+      "candidate_ids": [
+        "skip:trikey-foss-0-1-26-alpha"
+      ]
+    },
+    {
+      "source_id": "editorial:skip:malachite-0-1-1",
+      "candidate_ids": [
+        "skip:malachite-0-1-1"
+      ]
+    },
+    {
+      "source_id": "editorial:skip:dark-wisp-enhanced-1-0-5",
+      "candidate_ids": [
+        "skip:dark-wisp-enhanced-1-0-5"
+      ]
+    },
+    {
+      "source_id": "editorial:skip:coinos-v3-1-14",
+      "candidate_ids": [
+        "skip:coinos-v3-1-14"
+      ]
+    },
+    {
+      "source_id": "editorial:skip:symudol-1-0-1",
+      "candidate_ids": [
+        "skip:symudol-1-0-1"
+      ]
+    },
+    {
+      "source_id": "editorial:skip:outlink-1-1-13",
+      "candidate_ids": [
+        "skip:outlink-1-1-13"
+      ]
+    },
+    {
+      "source_id": "editorial:skip:tendrl-0-19-0",
+      "candidate_ids": [
+        "skip:tendrl-0-19-0"
+      ]
+    },
+    {
+      "source_id": "editorial:skip:nip-34-1-patch-on-gitworkshop-dev-1-issue-on-whitenoise-linux",
+      "candidate_ids": [
+        "skip:nip-34-1-patch-on-gitworkshop-dev-1-issue-on-whitenoise-linux"
+      ]
+    },
+    {
+      "source_id": "editorial:tagged-releases:lnbits",
+      "candidate_ids": [
+        "tagged-releases:lnbits"
+      ]
+    },
+    {
+      "source_id": "editorial:skip:publication-day-refresh-routine-releases",
+      "candidate_ids": [
+        "skip:publication-day-refresh-routine-releases"
+      ]
+    }
+  ],
+  "candidates": [
+    {
+      "candidate_id": "top-stories:marmot-projects-at-bitcoin-seoul",
+      "name": "Marmot projects at bitcoin++ Seoul",
+      "hard_gate": {
+        "primary_evidence": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "continuity_delta": true
+      },
+      "scores": {
+        "nostr_significance": 2,
+        "user_operator_impact": 2,
+        "novelty": 2,
+        "evidence_maturity": 2,
+        "explanatory_value": 1
+      },
+      "score_total": 9,
+      "triage": "GREEN",
+      "final_disposition": "include",
+      "reason": "Top Stories: bitcoin++ Seoul, a privacy-themed Bitcoin developer conference held 5 and 6 November, ran a hackathon whose gallery lists 20 projects, several of them built on Marmot encrypted groups.",
+      "primary_sources": [
+        "https://btcpp.dev/seoul",
+        "https://btcpp.dev/seoul/hackathon",
+        "https://github.com/rademenezbtc/blackice",
+        "https://github.com/samthomson/mdk-squared",
+        "https://github.com/dongguri-jun/ilchon",
+        "https://github.com/ye0man/kimchi",
+        "https://github.com/shroominic/satsroadmarket",
+        "https://github.com/murdawkmedia/quiet-ledger",
+        "https://github.com/CypherCommons/shroud/pull/233",
+        "https://github.com/kkdao/kiss-bdk",
+        "https://github.com/marmot-protocol/awesome-marmot/compare/57d5bb868aa7...e0a960475372"
+      ],
+      "draft_sources": [
+        "https://btcpp.dev/seoul",
+        "https://btcpp.dev/seoul/hackathon",
+        "https://github.com/rademenezbtc/blackice",
+        "https://github.com/samthomson/mdk-squared",
+        "https://github.com/dongguri-jun/ilchon",
+        "https://github.com/ye0man/kimchi",
+        "https://github.com/shroominic/satsroadmarket",
+        "https://github.com/murdawkmedia/quiet-ledger",
+        "https://github.com/CypherCommons/shroud/pull/233",
+        "https://github.com/kkdao/kiss-bdk",
+        "https://github.com/marmot-protocol/awesome-marmot/compare/57d5bb868aa7...e0a960475372"
+      ]
+    },
+    {
+      "candidate_id": "tagged-releases:nostur",
+      "name": "Nostur",
+      "hard_gate": {
+        "primary_evidence": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "continuity_delta": true
+      },
+      "scores": {
+        "nostr_significance": 2,
+        "user_operator_impact": 2,
+        "novelty": 2,
+        "evidence_maturity": 2,
+        "explanatory_value": 1
+      },
+      "score_total": 9,
+      "triage": "GREEN",
+      "final_disposition": "include",
+      "reason": "Tagged Releases: Nostur, an iOS and macOS client, adds polls in 1.35.0.",
+      "primary_sources": [
+        "https://github.com/nostur-com/nostur-ios-public/releases/tag/1.35.0"
+      ],
+      "draft_sources": [
+        "https://github.com/nostur-com/nostur-ios-public/releases/tag/1.35.0"
+      ]
+    },
+    {
+      "candidate_id": "tagged-releases:monostr",
+      "name": "Monostr",
+      "hard_gate": {
+        "primary_evidence": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "continuity_delta": true
+      },
+      "scores": {
+        "nostr_significance": 2,
+        "user_operator_impact": 2,
+        "novelty": 2,
+        "evidence_maturity": 2,
+        "explanatory_value": 1
+      },
+      "score_total": 9,
+      "triage": "GREEN",
+      "final_disposition": "include",
+      "reason": "Tagged Releases: Monostr, a Nostr client built around Monero tips, builds in Tor in v0.34.0.",
+      "primary_sources": [
+        "https://github.com/schmidt1024/monostr/releases/tag/v0.34.0"
+      ],
+      "draft_sources": [
+        "https://github.com/schmidt1024/monostr/releases/tag/v0.34.0"
+      ]
+    },
+    {
+      "candidate_id": "tagged-releases:chama",
+      "name": "Chama",
+      "hard_gate": {
+        "primary_evidence": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "continuity_delta": true
+      },
+      "scores": {
+        "nostr_significance": 2,
+        "user_operator_impact": 2,
+        "novelty": 2,
+        "evidence_maturity": 2,
+        "explanatory_value": 1
+      },
+      "score_total": 9,
+      "triage": "GREEN",
+      "final_disposition": "include",
+      "reason": "Tagged Releases: Chama, a peer-to-peer bitcoin trading app with ecash escrow, closes the final open item from its security audit in v6.4.34.",
+      "primary_sources": [
+        "https://github.com/jesuspirate/chama/releases/tag/v6.4.34",
+        "https://github.com/jesuspirate/chama/pull/116"
+      ],
+      "draft_sources": [
+        "https://github.com/jesuspirate/chama/releases/tag/v6.4.34",
+        "https://github.com/jesuspirate/chama/pull/116"
+      ]
+    },
+    {
+      "candidate_id": "tagged-releases:zapstore",
+      "name": "Zapstore",
+      "hard_gate": {
+        "primary_evidence": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "continuity_delta": true
+      },
+      "scores": {
+        "nostr_significance": 2,
+        "user_operator_impact": 2,
+        "novelty": 2,
+        "evidence_maturity": 2,
+        "explanatory_value": 1
+      },
+      "score_total": 9,
+      "triage": "GREEN",
+      "final_disposition": "include",
+      "reason": "Tagged Releases: Zapstore, the Nostr-based Android app store, shipped 2.0.2 through 2.0.4 in three days.",
+      "primary_sources": [
+        "https://github.com/zapstore/zapstore/releases/tag/2.0.2",
+        "https://github.com/zapstore/zapstore/releases/tag/2.0.4"
+      ],
+      "draft_sources": [
+        "https://github.com/zapstore/zapstore/releases/tag/2.0.2",
+        "https://github.com/zapstore/zapstore/releases/tag/2.0.4"
+      ]
+    },
+    {
+      "candidate_id": "tagged-releases:manent",
+      "name": "Manent",
+      "hard_gate": {
+        "primary_evidence": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "continuity_delta": true
+      },
+      "scores": {
+        "nostr_significance": 2,
+        "user_operator_impact": 2,
+        "novelty": 2,
+        "evidence_maturity": 2,
+        "explanatory_value": 1
+      },
+      "score_total": 9,
+      "triage": "GREEN",
+      "final_disposition": "include",
+      "reason": "Tagged Releases: Manent, a private notes app that stores encrypted notes on Nostr relays, released v3.1.0.",
+      "primary_sources": [
+        "https://github.com/dtonon/manent/releases/tag/v3.1.0"
+      ],
+      "draft_sources": [
+        "https://github.com/dtonon/manent/releases/tag/v3.1.0"
+      ]
+    },
+    {
+      "candidate_id": "tagged-releases:streets",
+      "name": "Streets",
+      "hard_gate": {
+        "primary_evidence": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "continuity_delta": true
+      },
+      "scores": {
+        "nostr_significance": 2,
+        "user_operator_impact": 2,
+        "novelty": 2,
+        "evidence_maturity": 2,
+        "explanatory_value": 1
+      },
+      "score_total": 9,
+      "triage": "GREEN",
+      "final_disposition": "include",
+      "reason": "Tagged Releases: Streets, a Japanese web client, separates relay budgets in v1.24.0.",
+      "primary_sources": [
+        "https://github.com/eyemono-moe/streets/releases/tag/v1.24.0"
+      ],
+      "draft_sources": [
+        "https://github.com/eyemono-moe/streets/releases/tag/v1.24.0"
+      ]
+    },
+    {
+      "candidate_id": "tagged-releases:noornote",
+      "name": "NoorNote",
+      "hard_gate": {
+        "primary_evidence": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "continuity_delta": true
+      },
+      "scores": {
+        "nostr_significance": 2,
+        "user_operator_impact": 2,
+        "novelty": 2,
+        "evidence_maturity": 2,
+        "explanatory_value": 1
+      },
+      "score_total": 9,
+      "triage": "GREEN",
+      "final_disposition": "include",
+      "reason": "Tagged Releases: NoorNote, a desktop Nostr client, checks Lightning invoices before paying a zap in v1.9.10.",
+      "primary_sources": [
+        "https://github.com/77elements/noornote/releases/tag/v1.9.10",
+        "https://github.com/77elements/noornote/pull/8",
+        "https://github.com/77elements/noornote/pull/7"
+      ],
+      "draft_sources": [
+        "https://github.com/77elements/noornote/releases/tag/v1.9.10",
+        "https://github.com/77elements/noornote/pull/8",
+        "https://github.com/77elements/noornote/pull/7"
+      ]
+    },
+    {
+      "candidate_id": "tagged-releases:infans",
+      "name": "Infans",
+      "hard_gate": {
+        "primary_evidence": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "continuity_delta": true
+      },
+      "scores": {
+        "nostr_significance": 2,
+        "user_operator_impact": 2,
+        "novelty": 2,
+        "evidence_maturity": 2,
+        "explanatory_value": 1
+      },
+      "score_total": 9,
+      "triage": "GREEN",
+      "final_disposition": "include",
+      "reason": "Tagged Releases: Infans, an Android baby tracker that backs up and syncs between parents through encrypted Nostr events, fixes disappearing timers in v2.4.3.",
+      "primary_sources": [
+        "https://github.com/TurkeyNostr/infans/releases/tag/v2.4.3"
+      ],
+      "draft_sources": [
+        "https://github.com/TurkeyNostr/infans/releases/tag/v2.4.3"
+      ]
+    },
+    {
+      "candidate_id": "tagged-releases:amber",
+      "name": "Amber",
+      "hard_gate": {
+        "primary_evidence": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "continuity_delta": true
+      },
+      "scores": {
+        "nostr_significance": 2,
+        "user_operator_impact": 2,
+        "novelty": 2,
+        "evidence_maturity": 2,
+        "explanatory_value": 1
+      },
+      "score_total": 9,
+      "triage": "GREEN",
+      "final_disposition": "include",
+      "reason": "Tagged Releases: Amber, an Android app that holds Nostr keys and signs for other apps, adds a local relay in v7.0.0-pre3, a pre-release.",
+      "primary_sources": [
+        "https://github.com/greenart7c3/Amber/releases/tag/v7.0.0-pre3"
+      ],
+      "draft_sources": [
+        "https://github.com/greenart7c3/Amber/releases/tag/v7.0.0-pre3"
+      ]
+    },
+    {
+      "candidate_id": "tagged-releases:keep-android",
+      "name": "Keep Android",
+      "hard_gate": {
+        "primary_evidence": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "continuity_delta": true
+      },
+      "scores": {
+        "nostr_significance": 2,
+        "user_operator_impact": 2,
+        "novelty": 2,
+        "evidence_maturity": 2,
+        "explanatory_value": 1
+      },
+      "score_total": 9,
+      "triage": "GREEN",
+      "final_disposition": "include",
+      "reason": "Tagged Releases: Keep Android, a FROST threshold signer, fixes several leaks in v1.4.0.",
+      "primary_sources": [
+        "https://github.com/privkeyio/keep-android/releases/tag/v1.4.0"
+      ],
+      "draft_sources": [
+        "https://github.com/privkeyio/keep-android/releases/tag/v1.4.0"
+      ]
+    },
+    {
+      "candidate_id": "tagged-releases:nostr-social-graph",
+      "name": "nostr-social-graph",
+      "hard_gate": {
+        "primary_evidence": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "continuity_delta": true
+      },
+      "scores": {
+        "nostr_significance": 2,
+        "user_operator_impact": 2,
+        "novelty": 2,
+        "evidence_maturity": 2,
+        "explanatory_value": 1
+      },
+      "score_total": 9,
+      "triage": "GREEN",
+      "final_disposition": "include",
+      "reason": "Tagged Releases: nostr-social-graph, a library that builds follow and mute graphs for Web of Trust scoring, changes its snapshot format in v4.0.0, after Newsletter #45 covered 3.0.0.",
+      "primary_sources": [
+        "https://github.com/mmalmi/nostr-social-graph/releases/tag/v4.0.0",
+        "https://github.com/mmalmi/nostr-social-graph/releases/tag/v4.1.0"
+      ],
+      "draft_sources": [
+        "https://github.com/mmalmi/nostr-social-graph/releases/tag/v4.0.0",
+        "https://github.com/mmalmi/nostr-social-graph/releases/tag/v4.1.0"
+      ]
+    },
+    {
+      "candidate_id": "tagged-releases:mdk",
+      "name": "MDK",
+      "hard_gate": {
+        "primary_evidence": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "continuity_delta": true
+      },
+      "scores": {
+        "nostr_significance": 2,
+        "user_operator_impact": 2,
+        "novelty": 2,
+        "evidence_maturity": 2,
+        "explanatory_value": 1
+      },
+      "score_total": 9,
+      "triage": "GREEN",
+      "final_disposition": "include",
+      "reason": "Tagged Releases: MDK, the SDK and runtime for Marmot encrypted groups, released v0.15.0 together with MarmotKit bindings for iOS, macOS and Android.",
+      "primary_sources": [
+        "https://github.com/marmot-protocol/mdk/releases/tag/v0.15.0",
+        "https://github.com/marmot-protocol/mdk/releases/tag/marmotkit-v0.15.0",
+        "https://github.com/marmot-protocol/mdk/blob/v0.15.0/docs/release/0.15.0.md"
+      ],
+      "draft_sources": [
+        "https://github.com/marmot-protocol/mdk/releases/tag/v0.15.0",
+        "https://github.com/marmot-protocol/mdk/releases/tag/marmotkit-v0.15.0",
+        "https://github.com/marmot-protocol/mdk/blob/v0.15.0/docs/release/0.15.0.md"
+      ]
+    },
+    {
+      "candidate_id": "tagged-releases:vector",
+      "name": "Vector",
+      "hard_gate": {
+        "primary_evidence": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "continuity_delta": true
+      },
+      "scores": {
+        "nostr_significance": 2,
+        "user_operator_impact": 2,
+        "novelty": 2,
+        "evidence_maturity": 2,
+        "explanatory_value": 1
+      },
+      "score_total": 9,
+      "triage": "GREEN",
+      "final_disposition": "include",
+      "reason": "Tagged Releases: Vector, a private messenger built on Nostr, shipped v0.5.0 and v0.5.1.",
+      "primary_sources": [
+        "https://github.com/VectorPrivacy/Vector/releases/tag/v0.5.0",
+        "https://github.com/VectorPrivacy/Vector/releases/tag/v0.5.1"
+      ],
+      "draft_sources": [
+        "https://github.com/VectorPrivacy/Vector/releases/tag/v0.5.0",
+        "https://github.com/VectorPrivacy/Vector/releases/tag/v0.5.1"
+      ]
+    },
+    {
+      "candidate_id": "in-development:route96",
+      "name": "Route96",
+      "hard_gate": {
+        "primary_evidence": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "continuity_delta": true
+      },
+      "scores": {
+        "nostr_significance": 2,
+        "user_operator_impact": 2,
+        "novelty": 2,
+        "evidence_maturity": 2,
+        "explanatory_value": 1
+      },
+      "score_total": 9,
+      "triage": "GREEN",
+      "final_disposition": "include",
+      "reason": "In Development: Route96, a media server for Blossom (hash-addressed media storage) and NIP-96 (HTTP file storage) uploads, merged security fixes on 8 November that are not yet in a tagged release.",
+      "primary_sources": [
+        "https://github.com/v0l/route96/pull/106",
+        "https://github.com/v0l/route96/pull/109",
+        "https://github.com/v0l/route96/pull/102"
+      ],
+      "draft_sources": [
+        "https://github.com/v0l/route96/pull/106",
+        "https://github.com/v0l/route96/pull/109",
+        "https://github.com/v0l/route96/pull/102"
+      ]
+    },
+    {
+      "candidate_id": "new-projects:splitnut",
+      "name": "SplitNut",
+      "hard_gate": {
+        "primary_evidence": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "continuity_delta": true
+      },
+      "scores": {
+        "nostr_significance": 2,
+        "user_operator_impact": 2,
+        "novelty": 2,
+        "evidence_maturity": 2,
+        "explanatory_value": 1
+      },
+      "score_total": 9,
+      "triage": "GREEN",
+      "final_disposition": "include",
+      "reason": "New Projects: SplitNut, from BlackIce's author, runs a stock Cashu mint whose signing keys are split two-of-three across guardians who coordinate in a Marmot group.",
+      "primary_sources": [
+        "https://github.com/rademenezbtc/splitnut"
+      ],
+      "draft_sources": [
+        "https://github.com/rademenezbtc/splitnut"
+      ]
+    },
+    {
+      "candidate_id": "new-projects:moranduba",
+      "name": "Moranduba",
+      "hard_gate": {
+        "primary_evidence": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "continuity_delta": true
+      },
+      "scores": {
+        "nostr_significance": 2,
+        "user_operator_impact": 2,
+        "novelty": 2,
+        "evidence_maturity": 2,
+        "explanatory_value": 1
+      },
+      "score_total": 9,
+      "triage": "GREEN",
+      "final_disposition": "include",
+      "reason": "New Projects: Moranduba is a Flutter group chat with end-to-end encrypted video calls and screen sharing, built on Marmot.",
+      "primary_sources": [
+        "https://github.com/vzsoares/moranduba",
+        "https://github.com/vzsoares/moranduba/releases"
+      ],
+      "draft_sources": [
+        "https://github.com/vzsoares/moranduba",
+        "https://github.com/vzsoares/moranduba/releases"
+      ]
+    },
+    {
+      "candidate_id": "protocol-and-spec-work:nip-01-relays-can-tell-clients-how-long-to-back-off",
+      "name": "NIP-01 relays can tell clients how long to back off",
+      "hard_gate": {
+        "primary_evidence": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "continuity_delta": true
+      },
+      "scores": {
+        "nostr_significance": 2,
+        "user_operator_impact": 2,
+        "novelty": 2,
+        "evidence_maturity": 2,
+        "explanatory_value": 1
+      },
+      "score_total": 9,
+      "triage": "GREEN",
+      "final_disposition": "include",
+      "reason": "Protocol and Spec Work: A merged NIP-01 change adds an optional last parameter to the `OK` and `CLOSED` relay messages in NIP-01 (the base relay protocol).",
+      "primary_sources": [
+        "https://github.com/nostr-protocol/nips/pull/2498"
+      ],
+      "draft_sources": [
+        "https://github.com/nostr-protocol/nips/pull/2498"
+      ]
+    },
+    {
+      "candidate_id": "protocol-and-spec-work:nip-47-logout-method-proposed",
+      "name": "NIP-47 logout method proposed",
+      "hard_gate": {
+        "primary_evidence": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "continuity_delta": true
+      },
+      "scores": {
+        "nostr_significance": 2,
+        "user_operator_impact": 2,
+        "novelty": 2,
+        "evidence_maturity": 2,
+        "explanatory_value": 1
+      },
+      "score_total": 9,
+      "triage": "GREEN",
+      "final_disposition": "include",
+      "reason": "Protocol and Spec Work: An open pull request adds a `logout` method to NIP-47, the Nostr Wallet Connect spec for controlling a wallet over Nostr.",
+      "primary_sources": [
+        "https://github.com/nostr-protocol/nips/pull/2537"
+      ],
+      "draft_sources": [
+        "https://github.com/nostr-protocol/nips/pull/2537"
+      ]
+    },
+    {
+      "candidate_id": "protocol-and-spec-work:logout-mirrored-in-the-nwc-specs-repository",
+      "name": "Logout mirrored in the NWC specs repository",
+      "hard_gate": {
+        "primary_evidence": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "continuity_delta": true
+      },
+      "scores": {
+        "nostr_significance": 2,
+        "user_operator_impact": 2,
+        "novelty": 2,
+        "evidence_maturity": 2,
+        "explanatory_value": 1
+      },
+      "score_total": 9,
+      "triage": "GREEN",
+      "final_disposition": "include",
+      "reason": "Protocol and Spec Work: The same author opened a matching logout draft in the Nostr Wallet Connect specs.",
+      "primary_sources": [
+        "https://github.com/nostr-wallet-connect/nwc/pull/13"
+      ],
+      "draft_sources": [
+        "https://github.com/nostr-wallet-connect/nwc/pull/13"
+      ]
+    },
+    {
+      "candidate_id": "protocol-and-spec-work:push-registration-for-wallet-notifications",
+      "name": "Push registration for wallet notifications",
+      "hard_gate": {
+        "primary_evidence": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "continuity_delta": true
+      },
+      "scores": {
+        "nostr_significance": 2,
+        "user_operator_impact": 2,
+        "novelty": 2,
+        "evidence_maturity": 2,
+        "explanatory_value": 1
+      },
+      "score_total": 9,
+      "triage": "GREEN",
+      "final_disposition": "include",
+      "reason": "Protocol and Spec Work: A separate open NWC draft defines `register_push` and `unregister_push`, letting a client hand the wallet service a Web Push endpoint, which UnifiedPush distributors can also serve.",
+      "primary_sources": [
+        "https://github.com/nostr-wallet-connect/nwc/pull/15"
+      ],
+      "draft_sources": [
+        "https://github.com/nostr-wallet-connect/nwc/pull/15"
+      ]
+    },
+    {
+      "candidate_id": "protocol-and-spec-work:concord-merges-roles-private-channels-and-voice",
+      "name": "Concord merges Roles, private channels and voice",
+      "hard_gate": {
+        "primary_evidence": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "continuity_delta": true
+      },
+      "scores": {
+        "nostr_significance": 2,
+        "user_operator_impact": 2,
+        "novelty": 2,
+        "evidence_maturity": 2,
+        "explanatory_value": 1
+      },
+      "score_total": 9,
+      "triage": "GREEN",
+      "final_disposition": "include",
+      "reason": "Protocol and Spec Work: Concord is a protocol for encrypted Nostr communities.",
+      "primary_sources": [
+        "https://github.com/concord-protocol/concord/pull/25"
+      ],
+      "draft_sources": [
+        "https://github.com/concord-protocol/concord/pull/25"
+      ]
+    },
+    {
+      "candidate_id": "protocol-and-spec-work:concord-joins-authenticate-the-community-root",
+      "name": "Concord joins authenticate the community root",
+      "hard_gate": {
+        "primary_evidence": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "continuity_delta": true
+      },
+      "scores": {
+        "nostr_significance": 2,
+        "user_operator_impact": 2,
+        "novelty": 2,
+        "evidence_maturity": 2,
+        "explanatory_value": 1
+      },
+      "score_total": 9,
+      "triage": "GREEN",
+      "final_disposition": "include",
+      "reason": "Protocol and Spec Work: A Concord proposal covered in the August 19 issue (Newsletter #36) has now merged.",
+      "primary_sources": [
+        "https://github.com/concord-protocol/concord/pull/23"
+      ],
+      "draft_sources": [
+        "https://github.com/concord-protocol/concord/pull/23"
+      ]
+    },
+    {
+      "candidate_id": "protocol-and-spec-work:marmot-moved-devices-keep-trusting-the-old-group-until-the-first-commi",
+      "name": "Marmot: moved devices keep trusting the old group until the first Commit",
+      "hard_gate": {
+        "primary_evidence": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "continuity_delta": true
+      },
+      "scores": {
+        "nostr_significance": 2,
+        "user_operator_impact": 2,
+        "novelty": 2,
+        "evidence_maturity": 2,
+        "explanatory_value": 1
+      },
+      "score_total": 9,
+      "triage": "GREEN",
+      "final_disposition": "include",
+      "reason": "Protocol and Spec Work: Marmot, the end-to-end encrypted group messaging protocol built on MLS and Nostr, merged five device-group and departure changes between 4 and 9 November.",
+      "primary_sources": [
+        "https://github.com/marmot-protocol/marmot/pull/498"
+      ],
+      "draft_sources": [
+        "https://github.com/marmot-protocol/marmot/pull/498"
+      ]
+    },
+    {
+      "candidate_id": "protocol-and-spec-work:marmot-reset-a-local-device-group-without-losing-chats",
+      "name": "Marmot: reset a local device group without losing chats",
+      "hard_gate": {
+        "primary_evidence": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "continuity_delta": true
+      },
+      "scores": {
+        "nostr_significance": 2,
+        "user_operator_impact": 2,
+        "novelty": 2,
+        "evidence_maturity": 2,
+        "explanatory_value": 1
+      },
+      "score_total": 9,
+      "triage": "GREEN",
+      "final_disposition": "include",
+      "reason": "Protocol and Spec Work: A device link can disappear from a device group's roster.",
+      "primary_sources": [
+        "https://github.com/marmot-protocol/marmot/pull/499"
+      ],
+      "draft_sources": [
+        "https://github.com/marmot-protocol/marmot/pull/499"
+      ]
+    },
+    {
+      "candidate_id": "protocol-and-spec-work:marmot-inactive-sibling-devices",
+      "name": "Marmot: inactive sibling devices",
+      "hard_gate": {
+        "primary_evidence": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "continuity_delta": true
+      },
+      "scores": {
+        "nostr_significance": 2,
+        "user_operator_impact": 2,
+        "novelty": 2,
+        "evidence_maturity": 2,
+        "explanatory_value": 1
+      },
+      "score_total": 9,
+      "triage": "GREEN",
+      "final_disposition": "include",
+      "reason": "Protocol and Spec Work: After 30 days of caught-up inactivity, a device marks a sibling device `inactive`.",
+      "primary_sources": [
+        "https://github.com/marmot-protocol/marmot/pull/500"
+      ],
+      "draft_sources": [
+        "https://github.com/marmot-protocol/marmot/pull/500"
+      ]
+    },
+    {
+      "candidate_id": "protocol-and-spec-work:marmot-last-active-admin-cannot-leave",
+      "name": "Marmot: last active admin cannot leave",
+      "hard_gate": {
+        "primary_evidence": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "continuity_delta": true
+      },
+      "scores": {
+        "nostr_significance": 2,
+        "user_operator_impact": 2,
+        "novelty": 2,
+        "evidence_maturity": 2,
+        "explanatory_value": 1
+      },
+      "score_total": 9,
+      "triage": "GREEN",
+      "final_disposition": "include",
+      "reason": "Protocol and Spec Work: Under a departure rule, a leaving admin repeats its step-down while another admin remains.",
+      "primary_sources": [
+        "https://github.com/marmot-protocol/marmot/pull/501"
+      ],
+      "draft_sources": [
+        "https://github.com/marmot-protocol/marmot/pull/501"
+      ]
+    },
+    {
+      "candidate_id": "protocol-and-spec-work:marmot-admins-step-down-before-leaving",
+      "name": "Marmot: admins step down before leaving",
+      "hard_gate": {
+        "primary_evidence": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "continuity_delta": true
+      },
+      "scores": {
+        "nostr_significance": 2,
+        "user_operator_impact": 2,
+        "novelty": 2,
+        "evidence_maturity": 2,
+        "explanatory_value": 1
+      },
+      "score_total": 9,
+      "triage": "GREEN",
+      "final_disposition": "include",
+      "reason": "Protocol and Spec Work: A refused or lost step-down could stall a leave.",
+      "primary_sources": [
+        "https://github.com/marmot-protocol/marmot/pull/502"
+      ],
+      "draft_sources": [
+        "https://github.com/marmot-protocol/marmot/pull/502"
+      ]
+    },
+    {
+      "candidate_id": "protocol-and-spec-work:marmot-drafts-one-shot-agent-decisions",
+      "name": "Marmot drafts one-shot agent decisions",
+      "hard_gate": {
+        "primary_evidence": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "continuity_delta": true
+      },
+      "scores": {
+        "nostr_significance": 2,
+        "user_operator_impact": 2,
+        "novelty": 2,
+        "evidence_maturity": 2,
+        "explanatory_value": 1
+      },
+      "score_total": 9,
+      "triage": "GREEN",
+      "final_disposition": "include",
+      "reason": "Protocol and Spec Work: An open draft specifies one-shot agent decisions: a software agent in an encrypted group asks one question and gets one answer, as ordinary encrypted group messages.",
+      "primary_sources": [
+        "https://github.com/marmot-protocol/marmot/pull/503"
+      ],
+      "draft_sources": [
+        "https://github.com/marmot-protocol/marmot/pull/503"
+      ]
+    },
+    {
+      "candidate_id": "protocol-and-spec-work:nip-d9-proposes-events-that-resist-deletion",
+      "name": "NIP-D9 proposes events that resist deletion",
+      "hard_gate": {
+        "primary_evidence": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "continuity_delta": true
+      },
+      "scores": {
+        "nostr_significance": 2,
+        "user_operator_impact": 2,
+        "novelty": 2,
+        "evidence_maturity": 2,
+        "explanatory_value": 1
+      },
+      "score_total": 9,
+      "triage": "GREEN",
+      "final_disposition": "include",
+      "reason": "Protocol and Spec Work: An open NIP-D9 proposal lets an author mark a regular event with a `no_delete` tag, exempting it from that author's own NIP-09 (deletion requests) and NIP-62 (request to vanish) requests, even if the request arrives first.",
+      "primary_sources": [
+        "https://github.com/nostr-protocol/nips/pull/2531"
+      ],
+      "draft_sources": [
+        "https://github.com/nostr-protocol/nips/pull/2531"
+      ]
+    },
+    {
+      "candidate_id": "deep-dive:nip-deep-dive-nip-88-polls",
+      "name": "NIP Deep Dive: NIP-88 (Polls)",
+      "hard_gate": {
+        "primary_evidence": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "continuity_delta": true
+      },
+      "scores": {
+        "nostr_significance": 2,
+        "user_operator_impact": 2,
+        "novelty": 2,
+        "evidence_maturity": 2,
+        "explanatory_value": 1
+      },
+      "score_total": 9,
+      "triage": "GREEN",
+      "final_disposition": "include",
+      "reason": "NIP Deep Dive: NIP-88 (Polls): NIP-88: Polls lets anyone post a public poll that any client can count from events on ordinary relays, without a poll service.",
+      "primary_sources": [
+        "https://github.com/nostr-protocol/nips/blob/master/88.md",
+        "https://github.com/nostr-protocol/nips/pull/1346",
+        "https://github.com/nostr-protocol/nips/pull/1507",
+        "https://github.com/vitorpamplona/amethyst",
+        "https://github.com/barrydeen/wisp-ios/blob/914febaf597fc044a680ead632931009b21d641a/PollTallyRepository.swift#L268-L274",
+        "https://github.com/vitorpamplona/amethyst/blob/4fb29192d502542f714e1526ac229378617922fe/commons/src/commonMain/kotlin/com/vitorpamplona/amethyst/commons/model/nip88Polls/PollResponsesCache.kt#L169-L220",
+        "https://github.com/vitorpamplona/amethyst/blob/4fb29192d502542f714e1526ac229378617922fe/commons/src/commonMain/kotlin/com/vitorpamplona/amethyst/commons/model/nip88Polls/PollTallyPolicy.kt#L57-L63",
+        "https://github.com/vitorpamplona/amethyst/blob/4fb29192d502542f714e1526ac229378617922fe/commons/src/commonMain/kotlin/com/vitorpamplona/amethyst/commons/model/nip88Polls/PollTallyPolicy.kt#L77-L81",
+        "https://github.com/hzrd149/nostrudel/blob/25cb0e27af39eed10245680a7c28c4f0b49eb731/src/helpers/nostr/polls.ts#L21-L37",
+        "https://github.com/hzrd149/applesauce/blob/961979353a39dded606cd1a8eeedaf66c46b272c/packages/common/src/helpers/poll.ts#L86-L99",
+        "https://github.com/coracle-social/welshman/blob/aa655bd6aae025bcc082af08c65c76cbc80a6432/packages/domain/src/kinds/Poll.ts#L51-L79",
+        "https://github.com/coracle-social/coracle/blob/81581be7d1dec59e274dea2d65096ad5774c7eab/src/app/shared/NoteContentKind1068.svelte#L26-L31",
+        "https://github.com/barrydeen/wisp-ios/blob/914febaf597fc044a680ead632931009b21d641a/PollTallyRepository.swift#L206-L232",
+        "https://github.com/nostur-com/nostur-ios-public/releases/tag/1.35.0"
+      ],
+      "draft_sources": [
+        "https://github.com/nostr-protocol/nips/blob/master/88.md",
+        "https://github.com/nostr-protocol/nips/pull/1346",
+        "https://github.com/nostr-protocol/nips/pull/1507",
+        "https://github.com/vitorpamplona/amethyst",
+        "https://github.com/barrydeen/wisp-ios/blob/914febaf597fc044a680ead632931009b21d641a/PollTallyRepository.swift#L268-L274",
+        "https://github.com/vitorpamplona/amethyst/blob/4fb29192d502542f714e1526ac229378617922fe/commons/src/commonMain/kotlin/com/vitorpamplona/amethyst/commons/model/nip88Polls/PollResponsesCache.kt#L169-L220",
+        "https://github.com/vitorpamplona/amethyst/blob/4fb29192d502542f714e1526ac229378617922fe/commons/src/commonMain/kotlin/com/vitorpamplona/amethyst/commons/model/nip88Polls/PollTallyPolicy.kt#L57-L63",
+        "https://github.com/vitorpamplona/amethyst/blob/4fb29192d502542f714e1526ac229378617922fe/commons/src/commonMain/kotlin/com/vitorpamplona/amethyst/commons/model/nip88Polls/PollTallyPolicy.kt#L77-L81",
+        "https://github.com/hzrd149/nostrudel/blob/25cb0e27af39eed10245680a7c28c4f0b49eb731/src/helpers/nostr/polls.ts#L21-L37",
+        "https://github.com/hzrd149/applesauce/blob/961979353a39dded606cd1a8eeedaf66c46b272c/packages/common/src/helpers/poll.ts#L86-L99",
+        "https://github.com/coracle-social/welshman/blob/aa655bd6aae025bcc082af08c65c76cbc80a6432/packages/domain/src/kinds/Poll.ts#L51-L79",
+        "https://github.com/coracle-social/coracle/blob/81581be7d1dec59e274dea2d65096ad5774c7eab/src/app/shared/NoteContentKind1068.svelte#L26-L31",
+        "https://github.com/barrydeen/wisp-ios/blob/914febaf597fc044a680ead632931009b21d641a/PollTallyRepository.swift#L206-L232",
+        "https://github.com/nostur-com/nostur-ios-public/releases/tag/1.35.0"
+      ]
+    },
+    {
+      "candidate_id": "skip:kryfo-gnosiworks-kryfo-v0-6-0",
+      "name": "Kryfo (gnosiworks/kryfo) v0.6.0",
+      "hard_gate": {
+        "primary_evidence": true,
+        "in_window_progress": true,
+        "nostr_surface": false,
+        "continuity_delta": true
+      },
+      "scores": null,
+      "score_total": null,
+      "triage": "SKIP",
+      "final_disposition": "skip",
+      "reason": "Skipped in triage: notes state no Nostr surface.",
+      "primary_sources": [
+        "https://github.com/gnosiworks/kryfo"
+      ],
+      "draft_sources": []
+    },
+    {
+      "candidate_id": "skip:better-auth-nostr-leon-wbr-better-auth-nostr-v0-6-0",
+      "name": "better-auth-nostr (leon-wbr/better-auth-nostr) v0.6.0",
+      "hard_gate": {
+        "primary_evidence": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "continuity_delta": true
+      },
+      "scores": {
+        "nostr_significance": 1,
+        "user_operator_impact": 1,
+        "novelty": 1,
+        "evidence_maturity": 1,
+        "explanatory_value": 1
+      },
+      "score_total": 5,
+      "triage": "SKIP",
+      "final_disposition": "skip",
+      "reason": "Skipped in triage: login nonce storage fix only; narrow.",
+      "primary_sources": [
+        "https://github.com/leon-wbr/better-auth-nostr"
+      ],
+      "draft_sources": []
+    },
+    {
+      "candidate_id": "skip:cosign-sybenx-cosign-v0-12-10",
+      "name": "Cosign (sybenx/cosign) v0.12.10",
+      "hard_gate": {
+        "primary_evidence": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "continuity_delta": true
+      },
+      "scores": {
+        "nostr_significance": 1,
+        "user_operator_impact": 1,
+        "novelty": 1,
+        "evidence_maturity": 1,
+        "explanatory_value": 1
+      },
+      "score_total": 5,
+      "triage": "SKIP",
+      "final_disposition": "skip",
+      "reason": "Skipped in triage: ping cadence/infra.",
+      "primary_sources": [
+        "https://github.com/sybenx/cosign"
+      ],
+      "draft_sources": []
+    },
+    {
+      "candidate_id": "skip:herdr-white-noise-remote-tidley-codr-v0-11-1",
+      "name": "HERDR White Noise Remote (tidley/codr) v0.11.1",
+      "hard_gate": {
+        "primary_evidence": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "continuity_delta": true
+      },
+      "scores": {
+        "nostr_significance": 1,
+        "user_operator_impact": 1,
+        "novelty": 1,
+        "evidence_maturity": 1,
+        "explanatory_value": 1
+      },
+      "score_total": 5,
+      "triage": "SKIP",
+      "final_disposition": "skip",
+      "reason": "Skipped in triage: plugin UX only.",
+      "primary_sources": [
+        "https://github.com/tidley/codr"
+      ],
+      "draft_sources": []
+    },
+    {
+      "candidate_id": "skip:mostro-cli-mostrop2p-mostro-cli-v0-17-0-v0-17-1",
+      "name": "mostro-cli (MostroP2P/mostro-cli) v0.17.0/v0.17.1",
+      "hard_gate": {
+        "primary_evidence": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "continuity_delta": true
+      },
+      "scores": {
+        "nostr_significance": 1,
+        "user_operator_impact": 1,
+        "novelty": 1,
+        "evidence_maturity": 1,
+        "explanatory_value": 1
+      },
+      "score_total": 5,
+      "triage": "SKIP",
+      "final_disposition": "skip",
+      "reason": "Skipped in triage: commit-log CLI rewrite, no protocol change stated; no Mostro entry this week.",
+      "primary_sources": [
+        "https://github.com/MostroP2P/mostro-cli"
+      ],
+      "draft_sources": []
+    },
+    {
+      "candidate_id": "skip:routstrd-routstr-routstrd-v0-5-0",
+      "name": "Routstrd (routstr/routstrd) v0.5.0",
+      "hard_gate": {
+        "primary_evidence": true,
+        "in_window_progress": true,
+        "nostr_surface": false,
+        "continuity_delta": true
+      },
+      "scores": null,
+      "score_total": null,
+      "triage": "SKIP",
+      "final_disposition": "skip",
+      "reason": "Skipped in triage: AI proxy fixes, no Nostr surface.",
+      "primary_sources": [
+        "https://github.com/routstr/routstrd"
+      ],
+      "draft_sources": []
+    },
+    {
+      "candidate_id": "skip:swift-nostr-client-yysskk-swift-nostr-client-0-10-0",
+      "name": "swift-nostr-client (yysskk/swift-nostr-client) 0.10.0",
+      "hard_gate": {
+        "primary_evidence": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "continuity_delta": true
+      },
+      "scores": {
+        "nostr_significance": 1,
+        "user_operator_impact": 1,
+        "novelty": 1,
+        "evidence_maturity": 1,
+        "explanatory_value": 1
+      },
+      "score_total": 5,
+      "triage": "SKIP",
+      "final_disposition": "skip",
+      "reason": "Skipped in triage: API rename/consistency churn.",
+      "primary_sources": [
+        "https://github.com/yysskk/swift-nostr-client"
+      ],
+      "draft_sources": []
+    },
+    {
+      "candidate_id": "skip:algia-mattn-algia-v0-0-138",
+      "name": "algia (mattn/algia) v0.0.138",
+      "hard_gate": {
+        "primary_evidence": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "continuity_delta": true
+      },
+      "scores": {
+        "nostr_significance": 1,
+        "user_operator_impact": 1,
+        "novelty": 1,
+        "evidence_maturity": 1,
+        "explanatory_value": 1
+      },
+      "score_total": 5,
+      "triage": "SKIP",
+      "final_disposition": "skip",
+      "reason": "Skipped in triage: release tooling.",
+      "primary_sources": [
+        "https://github.com/mattn/algia"
+      ],
+      "draft_sources": []
+    },
+    {
+      "candidate_id": "skip:citrine-greenart7c3-citrine-v3-2-2",
+      "name": "Citrine (greenart7c3/Citrine) v3.2.2",
+      "hard_gate": {
+        "primary_evidence": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "continuity_delta": true
+      },
+      "scores": {
+        "nostr_significance": 1,
+        "user_operator_impact": 1,
+        "novelty": 1,
+        "evidence_maturity": 1,
+        "explanatory_value": 1
+      },
+      "score_total": 5,
+      "triage": "SKIP",
+      "final_disposition": "skip",
+      "reason": "Skipped in triage: reliability fixes (import speed, redial); below bar this week.",
+      "primary_sources": [
+        "https://github.com/greenart7c3/Citrine"
+      ],
+      "draft_sources": []
+    },
+    {
+      "candidate_id": "skip:fips-ts-mmalmi-fips-ts-runtime-v0-0-58-0-0-61",
+      "name": "fips-ts (mmalmi/fips-ts) runtime-v0.0.58–0.0.61",
+      "hard_gate": {
+        "primary_evidence": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "continuity_delta": true
+      },
+      "scores": {
+        "nostr_significance": 1,
+        "user_operator_impact": 1,
+        "novelty": 1,
+        "evidence_maturity": 1,
+        "explanatory_value": 1
+      },
+      "score_total": 5,
+      "triage": "SKIP",
+      "final_disposition": "skip",
+      "reason": "Skipped in triage: transport internals.",
+      "primary_sources": [
+        "https://github.com/mmalmi/fips-ts"
+      ],
+      "draft_sources": []
+    },
+    {
+      "candidate_id": "skip:haps-mmalmi-haps-v0-1-26-27",
+      "name": "Haps (mmalmi/haps) v0.1.26/27",
+      "hard_gate": {
+        "primary_evidence": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "continuity_delta": true
+      },
+      "scores": {
+        "nostr_significance": 1,
+        "user_operator_impact": 1,
+        "novelty": 1,
+        "evidence_maturity": 1,
+        "explanatory_value": 1
+      },
+      "score_total": 5,
+      "triage": "SKIP",
+      "final_disposition": "skip",
+      "reason": "Skipped in triage: packaging.",
+      "primary_sources": [
+        "https://github.com/mmalmi/haps"
+      ],
+      "draft_sources": []
+    },
+    {
+      "candidate_id": "skip:hashtree-mmalmi-hashtree-runtime-releases",
+      "name": "Hashtree (mmalmi/hashtree) runtime releases",
+      "hard_gate": {
+        "primary_evidence": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "continuity_delta": true
+      },
+      "scores": {
+        "nostr_significance": 1,
+        "user_operator_impact": 1,
+        "novelty": 1,
+        "evidence_maturity": 1,
+        "explanatory_value": 1
+      },
+      "score_total": 5,
+      "triage": "SKIP",
+      "final_disposition": "skip",
+      "reason": "Skipped in triage: relay default change only.",
+      "primary_sources": [
+        "https://github.com/mmalmi/hashtree"
+      ],
+      "draft_sources": []
+    },
+    {
+      "candidate_id": "skip:kithmoot-forgesworn-kithmoot-v0-1-126-0-1-139",
+      "name": "Kithmoot (forgesworn/kithmoot) v0.1.126–0.1.139",
+      "hard_gate": {
+        "primary_evidence": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "continuity_delta": true
+      },
+      "scores": {
+        "nostr_significance": 1,
+        "user_operator_impact": 1,
+        "novelty": 1,
+        "evidence_maturity": 1,
+        "explanatory_value": 1
+      },
+      "score_total": 5,
+      "triage": "SKIP",
+      "final_disposition": "skip",
+      "reason": "Skipped in triage: version cadence; private-node migration not documented in protocol terms.",
+      "primary_sources": [
+        "https://github.com/forgesworn/kithmoot"
+      ],
+      "draft_sources": []
+    },
+    {
+      "candidate_id": "skip:linky-linky-fit-linky-v26-11-1-2",
+      "name": "Linky (linky-fit/linky) v26.11.1/2",
+      "hard_gate": {
+        "primary_evidence": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "continuity_delta": true
+      },
+      "scores": {
+        "nostr_significance": 1,
+        "user_operator_impact": 1,
+        "novelty": 1,
+        "evidence_maturity": 1,
+        "explanatory_value": 1
+      },
+      "score_total": 5,
+      "triage": "SKIP",
+      "final_disposition": "skip",
+      "reason": "Skipped in triage: UI/listings.",
+      "primary_sources": [
+        "https://github.com/linky-fit/linky"
+      ],
+      "draft_sources": []
+    },
+    {
+      "candidate_id": "skip:magnetar-awake-devel-magnetar-v0-3-2-probepex1",
+      "name": "Magnetar (awake-devel/magnetar) v0.3.2-probepex1",
+      "hard_gate": {
+        "primary_evidence": true,
+        "in_window_progress": true,
+        "nostr_surface": false,
+        "continuity_delta": true
+      },
+      "scores": null,
+      "score_total": null,
+      "triage": "SKIP",
+      "final_disposition": "skip",
+      "reason": "Skipped in triage: BitTorrent PEX, no Nostr surface.",
+      "primary_sources": [
+        "https://github.com/awake-devel/magnetar"
+      ],
+      "draft_sources": []
+    },
+    {
+      "candidate_id": "skip:marble-sybenx-marble-v0-12-24-0-12-29",
+      "name": "Marble (sybenx/marble) v0.12.24–0.12.29",
+      "hard_gate": {
+        "primary_evidence": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "continuity_delta": true
+      },
+      "scores": {
+        "nostr_significance": 1,
+        "user_operator_impact": 1,
+        "novelty": 1,
+        "evidence_maturity": 1,
+        "explanatory_value": 1
+      },
+      "score_total": 5,
+      "triage": "SKIP",
+      "final_disposition": "skip",
+      "reason": "Skipped in triage: sync safety/UI patches, below bar.",
+      "primary_sources": [
+        "https://github.com/sybenx/marble"
+      ],
+      "draft_sources": []
+    },
+    {
+      "candidate_id": "skip:napplets-web-packages-napplet-web",
+      "name": "Napplets - Web Packages (napplet/web)",
+      "hard_gate": {
+        "primary_evidence": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "continuity_delta": true
+      },
+      "scores": {
+        "nostr_significance": 1,
+        "user_operator_impact": 1,
+        "novelty": 1,
+        "evidence_maturity": 1,
+        "explanatory_value": 1
+      },
+      "score_total": 5,
+      "triage": "SKIP",
+      "final_disposition": "skip",
+      "reason": "Skipped in triage: NAP-NAVIGATION draft support in packages; draft-only, no spec change in window.",
+      "primary_sources": [
+        "https://github.com/napplet/web"
+      ],
+      "draft_sources": []
+    },
+    {
+      "candidate_id": "skip:nostr-wot-extension-nostr-wot-nostr-wot-extension-v0-8-23",
+      "name": "nostr-wot-extension (nostr-wot/nostr-wot-extension) v0.8.23",
+      "hard_gate": {
+        "primary_evidence": true,
+        "in_window_progress": true,
+        "nostr_surface": false,
+        "continuity_delta": true
+      },
+      "scores": null,
+      "score_total": null,
+      "triage": "SKIP",
+      "final_disposition": "skip",
+      "reason": "Skipped in triage: unlock fix, not Nostr.",
+      "primary_sources": [
+        "https://github.com/nostr-wot/nostr-wot-extension"
+      ],
+      "draft_sources": []
+    },
+    {
+      "candidate_id": "skip:nostrappshell-git-nostrdev-com-stuff-nostrappshell-and-pakstr-git-nost",
+      "name": "NostrAppShell (git.nostrdev.com/stuff/NostrAppShell) and pakstr (git.nostrdev.com/stuff/pakstr) v1.0.0–1.1.0",
+      "hard_gate": {
+        "primary_evidence": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "continuity_delta": true
+      },
+      "scores": {
+        "nostr_significance": 1,
+        "user_operator_impact": 1,
+        "novelty": 1,
+        "evidence_maturity": 1,
+        "explanatory_value": 1
+      },
+      "score_total": 5,
+      "triage": "SKIP",
+      "final_disposition": "skip",
+      "reason": "Skipped in triage: Android bridge refactor and Amber request serialization; early-stage scaffold, same notes duplicated.",
+      "primary_sources": [
+        "https://git.nostrdev.com/stuff/NostrAppShell",
+        "https://git.nostrdev.com/stuff/pakstr"
+      ],
+      "draft_sources": []
+    },
+    {
+      "candidate_id": "skip:nostream-cameri-nostream-3-13-0-3-15-1",
+      "name": "nostream (Cameri/nostream) 3.13.0–3.15.1",
+      "hard_gate": {
+        "primary_evidence": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "continuity_delta": true
+      },
+      "scores": {
+        "nostr_significance": 1,
+        "user_operator_impact": 1,
+        "novelty": 1,
+        "evidence_maturity": 1,
+        "explanatory_value": 1
+      },
+      "score_total": 5,
+      "triage": "SKIP",
+      "final_disposition": "skip",
+      "reason": "Skipped in triage: operator rate limits/metrics and web headers.",
+      "primary_sources": [
+        "https://github.com/Cameri/nostream"
+      ],
+      "draft_sources": []
+    },
+    {
+      "candidate_id": "skip:nostrube-flox1an-nostube-v0-2-54-0-2-73",
+      "name": "Nostrube (flox1an/nostube) v0.2.54–0.2.73",
+      "hard_gate": {
+        "primary_evidence": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "continuity_delta": true
+      },
+      "scores": {
+        "nostr_significance": 1,
+        "user_operator_impact": 1,
+        "novelty": 1,
+        "evidence_maturity": 1,
+        "explanatory_value": 1
+      },
+      "score_total": 5,
+      "triage": "SKIP",
+      "final_disposition": "skip",
+      "reason": "Skipped in triage: installers only.",
+      "primary_sources": [
+        "https://github.com/flox1an/nostube"
+      ],
+      "draft_sources": []
+    },
+    {
+      "candidate_id": "skip:xmradar-kyc-rip-xmradar-v0-6-11-0-6-16",
+      "name": "XMRadar (KYC-rip/xmradar) v0.6.11–0.6.16",
+      "hard_gate": {
+        "primary_evidence": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "continuity_delta": true
+      },
+      "scores": {
+        "nostr_significance": 1,
+        "user_operator_impact": 1,
+        "novelty": 1,
+        "evidence_maturity": 1,
+        "explanatory_value": 1
+      },
+      "score_total": 5,
+      "triage": "SKIP",
+      "final_disposition": "skip",
+      "reason": "Skipped in triage: mostly non-Nostr; inbox relay item too thin.",
+      "primary_sources": [
+        "https://github.com/KYC-rip/xmradar"
+      ],
+      "draft_sources": []
+    },
+    {
+      "candidate_id": "skip:alby-hub-getalby-hub-v1-24-6",
+      "name": "Alby Hub (getAlby/hub) v1.24.6",
+      "hard_gate": {
+        "primary_evidence": true,
+        "in_window_progress": true,
+        "nostr_surface": false,
+        "continuity_delta": true
+      },
+      "scores": null,
+      "score_total": null,
+      "triage": "SKIP",
+      "final_disposition": "skip",
+      "reason": "Skipped in triage: Lightning/UX.",
+      "primary_sources": [
+        "https://github.com/getAlby/hub"
+      ],
+      "draft_sources": []
+    },
+    {
+      "candidate_id": "skip:bitcoin-safe-andreasgriffin-bitcoin-safe-2-3-0",
+      "name": "Bitcoin-Safe (andreasgriffin/bitcoin-safe) 2.3.0",
+      "hard_gate": {
+        "primary_evidence": true,
+        "in_window_progress": true,
+        "nostr_surface": false,
+        "continuity_delta": true
+      },
+      "scores": null,
+      "score_total": null,
+      "triage": "SKIP",
+      "final_disposition": "skip",
+      "reason": "Skipped in triage: Bitcoin-only.",
+      "primary_sources": [
+        "https://github.com/andreasgriffin/bitcoin-safe"
+      ],
+      "draft_sources": []
+    },
+    {
+      "candidate_id": "skip:divine-divinevideo-divine-mobile-1-0-28",
+      "name": "diVine (divinevideo/divine-mobile) 1.0.28",
+      "hard_gate": {
+        "primary_evidence": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "continuity_delta": true
+      },
+      "scores": {
+        "nostr_significance": 1,
+        "user_operator_impact": 1,
+        "novelty": 1,
+        "evidence_maturity": 1,
+        "explanatory_value": 1
+      },
+      "score_total": 5,
+      "triage": "SKIP",
+      "final_disposition": "skip",
+      "reason": "Skipped in triage: polls/DM fixes without stated kinds; consumer UI.",
+      "primary_sources": [
+        "https://github.com/divinevideo/divine-mobile"
+      ],
+      "draft_sources": []
+    },
+    {
+      "candidate_id": "skip:lawallet-android-lawalletio-android-wallet-v1-3-1-1-3-2",
+      "name": "LaWallet Android (lawalletio/android-wallet) v1.3.1/1.3.2",
+      "hard_gate": {
+        "primary_evidence": true,
+        "in_window_progress": true,
+        "nostr_surface": false,
+        "continuity_delta": true
+      },
+      "scores": null,
+      "score_total": null,
+      "triage": "SKIP",
+      "final_disposition": "skip",
+      "reason": "Skipped in triage: NFC/Lightning.",
+      "primary_sources": [
+        "https://github.com/lawalletio/android-wallet"
+      ],
+      "draft_sources": []
+    },
+    {
+      "candidate_id": "skip:napplet-soy-zeschlauskwab-napplet-soy-soyli-v0-32-0-0-32-1",
+      "name": "napplet.soy (zeSchlausKwab/napplet-soy) soyli-v0.32.0/0.32.1",
+      "hard_gate": {
+        "primary_evidence": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "continuity_delta": true
+      },
+      "scores": {
+        "nostr_significance": 1,
+        "user_operator_impact": 1,
+        "novelty": 1,
+        "evidence_maturity": 1,
+        "explanatory_value": 1
+      },
+      "score_total": 5,
+      "triage": "SKIP",
+      "final_disposition": "skip",
+      "reason": "Skipped in triage: narrow hello-port binding fix.",
+      "primary_sources": [
+        "https://github.com/zeSchlausKwab/napplet-soy"
+      ],
+      "draft_sources": []
+    },
+    {
+      "candidate_id": "skip:sidecar-dmnyc-sidecar-v1-17-0",
+      "name": "Sidecar (dmnyc/sidecar) v1.17.0",
+      "hard_gate": {
+        "primary_evidence": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "continuity_delta": true
+      },
+      "scores": {
+        "nostr_significance": 1,
+        "user_operator_impact": 1,
+        "novelty": 1,
+        "evidence_maturity": 1,
+        "explanatory_value": 1
+      },
+      "score_total": 5,
+      "triage": "SKIP",
+      "final_disposition": "skip",
+      "reason": "Skipped in triage: translations.",
+      "primary_sources": [
+        "https://github.com/dmnyc/sidecar"
+      ],
+      "draft_sources": []
+    },
+    {
+      "candidate_id": "skip:nostr-army-knife-nak-fiatjaf-nak-v0-22-3",
+      "name": "Nostr Army Knife (nak) (fiatjaf/nak) v0.22.3",
+      "hard_gate": {
+        "primary_evidence": false,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "continuity_delta": true
+      },
+      "scores": null,
+      "score_total": null,
+      "triage": "SKIP",
+      "final_disposition": "skip",
+      "reason": "Skipped in triage: empty notes.",
+      "primary_sources": [
+        "https://github.com/fiatjaf/nak"
+      ],
+      "draft_sources": []
+    },
+    {
+      "candidate_id": "skip:iris-kit-mmalmi-iris-kit-runtime-v0-2-8",
+      "name": "iris-kit (mmalmi/iris-kit) runtime-v0.2.8",
+      "hard_gate": {
+        "primary_evidence": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "continuity_delta": true
+      },
+      "scores": {
+        "nostr_significance": 1,
+        "user_operator_impact": 1,
+        "novelty": 1,
+        "evidence_maturity": 1,
+        "explanatory_value": 1
+      },
+      "score_total": 5,
+      "triage": "SKIP",
+      "final_disposition": "skip",
+      "reason": "Skipped in triage: relay default.",
+      "primary_sources": [
+        "https://github.com/mmalmi/iris-kit"
+      ],
+      "draft_sources": []
+    },
+    {
+      "candidate_id": "skip:lumen-nogringo-lumen-v0-3-0",
+      "name": "Lumen (nogringo/lumen) v0.3.0",
+      "hard_gate": {
+        "primary_evidence": false,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "continuity_delta": true
+      },
+      "scores": null,
+      "score_total": null,
+      "triage": "SKIP",
+      "final_disposition": "skip",
+      "reason": "Skipped in triage: bare changelog.",
+      "primary_sources": [
+        "https://github.com/nogringo/lumen"
+      ],
+      "draft_sources": []
+    },
+    {
+      "candidate_id": "skip:nostr-pubsub-mmalmi-nostr-pubsub-ts-v0-5-25",
+      "name": "nostr-pubsub (mmalmi/nostr-pubsub) ts-v0.5.25",
+      "hard_gate": {
+        "primary_evidence": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "continuity_delta": true
+      },
+      "scores": {
+        "nostr_significance": 1,
+        "user_operator_impact": 1,
+        "novelty": 1,
+        "evidence_maturity": 1,
+        "explanatory_value": 1
+      },
+      "score_total": 5,
+      "triage": "SKIP",
+      "final_disposition": "skip",
+      "reason": "Skipped in triage: receipt fix.",
+      "primary_sources": [
+        "https://github.com/mmalmi/nostr-pubsub"
+      ],
+      "draft_sources": []
+    },
+    {
+      "candidate_id": "skip:nail-formstr-hq-nail-v0-4-1",
+      "name": "Nail (formstr-hq/nail) v0.4.1",
+      "hard_gate": {
+        "primary_evidence": false,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "continuity_delta": true
+      },
+      "scores": null,
+      "score_total": null,
+      "triage": "SKIP",
+      "final_disposition": "skip",
+      "reason": "Skipped in triage: bare compare link.",
+      "primary_sources": [
+        "https://github.com/formstr-hq/nail"
+      ],
+      "draft_sources": []
+    },
+    {
+      "candidate_id": "skip:pollerama-2-3-2",
+      "name": "Pollerama 2.3.2",
+      "hard_gate": {
+        "primary_evidence": false,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "continuity_delta": true
+      },
+      "scores": null,
+      "score_total": null,
+      "triage": "SKIP",
+      "final_disposition": "skip",
+      "reason": "Skipped in triage: no notes; Zapstore-only patch.",
+      "primary_sources": [
+        "https://zapstore.dev/apps"
+      ],
+      "draft_sources": []
+    },
+    {
+      "candidate_id": "skip:nymchat-3-75-545-nym",
+      "name": "Nymchat 3.75.545 (NYM)",
+      "hard_gate": {
+        "primary_evidence": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "continuity_delta": true
+      },
+      "scores": {
+        "nostr_significance": 1,
+        "user_operator_impact": 1,
+        "novelty": 1,
+        "evidence_maturity": 1,
+        "explanatory_value": 1
+      },
+      "score_total": 5,
+      "triage": "SKIP",
+      "final_disposition": "skip",
+      "reason": "Skipped in triage: version cadence.",
+      "primary_sources": [
+        "https://zapstore.dev/apps"
+      ],
+      "draft_sources": []
+    },
+    {
+      "candidate_id": "skip:imwald-android-0-5-22",
+      "name": "Imwald Android 0.5.22",
+      "hard_gate": {
+        "primary_evidence": false,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "continuity_delta": true
+      },
+      "scores": null,
+      "score_total": null,
+      "triage": "SKIP",
+      "final_disposition": "skip",
+      "reason": "Skipped in triage: no notes.",
+      "primary_sources": [
+        "https://zapstore.dev/apps"
+      ],
+      "draft_sources": []
+    },
+    {
+      "candidate_id": "skip:deepmarks-2-2-21",
+      "name": "Deepmarks 2.2.21",
+      "hard_gate": {
+        "primary_evidence": false,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "continuity_delta": true
+      },
+      "scores": null,
+      "score_total": null,
+      "triage": "SKIP",
+      "final_disposition": "skip",
+      "reason": "Skipped in triage: no notes.",
+      "primary_sources": [
+        "https://zapstore.dev/apps"
+      ],
+      "draft_sources": []
+    },
+    {
+      "candidate_id": "skip:flotilla-1-15-1",
+      "name": "Flotilla 1.15.1",
+      "hard_gate": {
+        "primary_evidence": false,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "continuity_delta": true
+      },
+      "scores": null,
+      "score_total": null,
+      "triage": "SKIP",
+      "final_disposition": "skip",
+      "reason": "Skipped in triage: patch, no notes.",
+      "primary_sources": [
+        "https://zapstore.dev/apps"
+      ],
+      "draft_sources": []
+    },
+    {
+      "candidate_id": "skip:trikey-foss-0-1-26-alpha",
+      "name": "Trikey FOSS 0.1.26-alpha",
+      "hard_gate": {
+        "primary_evidence": false,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "continuity_delta": true
+      },
+      "scores": null,
+      "score_total": null,
+      "triage": "SKIP",
+      "final_disposition": "skip",
+      "reason": "Skipped in triage: NEW-APP, Nostr surface unverified.",
+      "primary_sources": [
+        "https://zapstore.dev/apps"
+      ],
+      "draft_sources": []
+    },
+    {
+      "candidate_id": "skip:malachite-0-1-1",
+      "name": "Malachite 0.1.1",
+      "hard_gate": {
+        "primary_evidence": false,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "continuity_delta": true
+      },
+      "scores": null,
+      "score_total": null,
+      "triage": "SKIP",
+      "final_disposition": "skip",
+      "reason": "Skipped in triage: NEW-APP, Nostr surface unverified this run.",
+      "primary_sources": [
+        "https://zapstore.dev/apps"
+      ],
+      "draft_sources": []
+    },
+    {
+      "candidate_id": "skip:dark-wisp-enhanced-1-0-5",
+      "name": "Dark Wisp Enhanced 1.0.5",
+      "hard_gate": {
+        "primary_evidence": false,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "continuity_delta": true
+      },
+      "scores": null,
+      "score_total": null,
+      "triage": "SKIP",
+      "final_disposition": "skip",
+      "reason": "Skipped in triage: NEW-APP, unverified.",
+      "primary_sources": [
+        "https://zapstore.dev/apps"
+      ],
+      "draft_sources": []
+    },
+    {
+      "candidate_id": "skip:coinos-v3-1-14",
+      "name": "coinos v3 1.14",
+      "hard_gate": {
+        "primary_evidence": true,
+        "in_window_progress": true,
+        "nostr_surface": false,
+        "continuity_delta": true
+      },
+      "scores": null,
+      "score_total": null,
+      "triage": "SKIP",
+      "final_disposition": "skip",
+      "reason": "Skipped in triage: NEW-APP, Lightning wallet; unverified Nostr surface.",
+      "primary_sources": [
+        "https://zapstore.dev/apps"
+      ],
+      "draft_sources": []
+    },
+    {
+      "candidate_id": "skip:symudol-1-0-1",
+      "name": "Symudol 1.0.1",
+      "hard_gate": {
+        "primary_evidence": false,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "continuity_delta": true
+      },
+      "scores": null,
+      "score_total": null,
+      "triage": "SKIP",
+      "final_disposition": "skip",
+      "reason": "Skipped in triage: NEW-APP, unverified.",
+      "primary_sources": [
+        "https://zapstore.dev/apps"
+      ],
+      "draft_sources": []
+    },
+    {
+      "candidate_id": "skip:outlink-1-1-13",
+      "name": "Outlink 1.1.13",
+      "hard_gate": {
+        "primary_evidence": false,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "continuity_delta": true
+      },
+      "scores": null,
+      "score_total": null,
+      "triage": "SKIP",
+      "final_disposition": "skip",
+      "reason": "Skipped in triage: NEW-APP, unverified.",
+      "primary_sources": [
+        "https://zapstore.dev/apps"
+      ],
+      "draft_sources": []
+    },
+    {
+      "candidate_id": "skip:tendrl-0-19-0",
+      "name": "tendrl 0.19.0",
+      "hard_gate": {
+        "primary_evidence": false,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "continuity_delta": true
+      },
+      "scores": null,
+      "score_total": null,
+      "triage": "SKIP",
+      "final_disposition": "skip",
+      "reason": "Skipped in triage: NEW-APP, unverified.",
+      "primary_sources": [
+        "https://zapstore.dev/apps"
+      ],
+      "draft_sources": []
+    },
+    {
+      "candidate_id": "skip:nip-34-1-patch-on-gitworkshop-dev-1-issue-on-whitenoise-linux",
+      "name": "NIP-34: 1 patch on gitworkshop.dev, 1 issue on Whitenoise Linux",
+      "hard_gate": {
+        "primary_evidence": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "continuity_delta": true
+      },
+      "scores": {
+        "nostr_significance": 1,
+        "user_operator_impact": 1,
+        "novelty": 1,
+        "evidence_maturity": 1,
+        "explanatory_value": 1
+      },
+      "score_total": 5,
+      "triage": "SKIP",
+      "final_disposition": "skip",
+      "reason": "Skipped in triage: routine single items.",
+      "primary_sources": [
+        "https://zapstore.dev/apps"
+      ],
+      "draft_sources": []
+    },
+    {
+      "candidate_id": "tagged-releases:lnbits",
+      "name": "LNbits",
+      "hard_gate": {
+        "primary_evidence": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "continuity_delta": true
+      },
+      "scores": {
+        "nostr_significance": 1,
+        "user_operator_impact": 2,
+        "novelty": 2,
+        "evidence_maturity": 2,
+        "explanatory_value": 2
+      },
+      "score_total": 9,
+      "triage": "GREEN",
+      "final_disposition": "include",
+      "reason": "Tagged Releases: LNbits v1.7.0 is a security release; every earlier version is affected and operators must upgrade and rotate keys, including NWC provider connections. Publication-day refresh item.",
+      "primary_sources": [
+        "https://github.com/lnbits/lnbits/releases/tag/v1.7.0",
+        "https://github.com/lnbits/lnbits/releases/tag/v1.7.1",
+        "https://news.lnbits.com/news/lnbits-1-7-0-security-update"
+      ],
+      "draft_sources": [
+        "https://github.com/lnbits/lnbits/releases/tag/v1.7.0",
+        "https://github.com/lnbits/lnbits/releases/tag/v1.7.1",
+        "https://news.lnbits.com/news/lnbits-1-7-0-security-update"
+      ]
+    },
+    {
+      "candidate_id": "skip:publication-day-refresh-routine-releases",
+      "name": "Publication-day refresh: routine release bumps",
+      "hard_gate": {
+        "primary_evidence": true,
+        "in_window_progress": true,
+        "nostr_surface": true,
+        "continuity_delta": true
+      },
+      "scores": {
+        "nostr_significance": 1,
+        "user_operator_impact": 1,
+        "novelty": 1,
+        "evidence_maturity": 1,
+        "explanatory_value": 1
+      },
+      "score_total": 5,
+      "triage": "SKIP",
+      "final_disposition": "skip",
+      "reason": "Skipped: routine version bumps after the pass cutoff without material Nostr change notes.",
+      "primary_sources": [
+        "https://github.com/forgesworn/kithmoot/releases/tag/v0.1.143"
+      ],
+      "draft_sources": []
+    }
+  ],
+  "review_note": "Includes are every draft entry; skips are every triage skip. Merged-PR activity skips live in the bound project-activity decisions file."
+}

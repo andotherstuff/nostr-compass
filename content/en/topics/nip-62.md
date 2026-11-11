@@ -79,6 +79,7 @@ It also goes beyond [NIP-09](/en/topics/nip-09/). NIP-09 deletes individual even
 - [nostream PR #544](https://github.com/Cameri/nostream/pull/544)
 
 **Mentioned in:**
+- [Newsletter #48: NIP-D9 deletion-resistant events](/en/newsletters/2026-11-11-newsletter/#nip-d9-proposes-events-that-resist-deletion)
 - [Newsletter #46: nosfry](/en/newsletters/2026-10-28-newsletter/#nosfry)
 - [Newsletter #45](/en/newsletters/2026-10-21-newsletter/#nip-59-recipient-deleted-gift-wraps-proposal)
 - [Newsletter #5: Notable Code Changes](/en/newsletters/2026-01-13-newsletter/#rust-nostr-library)

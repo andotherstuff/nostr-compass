@@ -44,6 +44,7 @@ That split lets clients implement the minimum needed for basic interoperability,
 - [Code Call 0.2.66](https://github.com/tidley/nostr-codex-phone/releases/tag/v0.2.66) - encrypted Blossom attachments for remote work sessions
 
 **Mentioned in:**
+- [Newsletter #48: Route96 security fixes](/en/newsletters/2026-11-11-newsletter/#route96)
 - [Newsletter #46: Ark payment header proposed for Blossom servers](/en/newsletters/2026-10-28-newsletter/#ark-payment-header-proposed-for-blossom-servers) [Newsletter 45](/en/newsletters/2026-10-21-newsletter/#nostube),
 - [Newsletter #44](/en/newsletters/2026-10-14-newsletter/#amethyst)
 - [Newsletter #43](/en/newsletters/2026-10-07-newsletter/#top-stories)

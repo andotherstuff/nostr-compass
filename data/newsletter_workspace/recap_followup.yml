@@ -4,7 +4,9 @@
   candidate_urls:
     - https://www.youtube.com/watch?v=9JMbrT5sNHU
   first_seen: 2026-08-12
-  last_checked: 2026-08-12
-  status: pending
-  reason: Recap supplied only a third-party video mention; canonical repository, project-controlled product surface, ownership, and a current material change remain unverified.
-  primary_sources: []
+  last_checked: 2026-11-10
+  status: promoted
+  reason: Canonical repository and project site verified; Obelisk is listed in data/projects.yml (website entry; repository not yet tracked there). In-window activity (2026-11-04 to 2026-11-10) was routine UI fixes, so no separate item was selected for issue 48.
+  primary_sources:
+    - https://github.com/obelisk-app/obelisk
+    - https://obelisk.ar

@@ -46,6 +46,7 @@ The `switch_relays` method exists so the signer can move the session to a differ
 - [swift-nostr 0.7.0](https://github.com/yysskk/swift-nostr/releases/tag/0.7.0) - remote signer API coverage
 
 **Mentioned in:**
+- [Newsletter #48: Amber local relay for on-phone bunker clients](/en/newsletters/2026-11-11-newsletter/#amber)
 - [Newsletter #47: swift-nostr-client remote signer handshakes](/en/newsletters/2026-11-04-newsletter/#swift-nostr-client)
 - [Newsletter #46: Amethyst](/en/newsletters/2026-10-28-newsletter/#amethyst)
 - [Newsletter #45](/en/newsletters/2026-10-21-newsletter/#my-signet)

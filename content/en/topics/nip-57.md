@@ -67,6 +67,7 @@ Zap splits, defined in an appendix to the NIP, let a recipient publish a kind `0
 - [Earthly 0.0.9](https://github.com/zeSchlausKwab/earthly/releases/tag/v0.0.9) - Client implementation fixes
 
 **Mentioned in:**
+- [Newsletter #48: NoorNote zap invoice checks](/en/newsletters/2026-11-11-newsletter/#noornote)
 
 
 - [Newsletter #46: WhatZaps](/en/newsletters/2026-10-28-newsletter/#whatzaps) [Newsletter 45](/en/newsletters/2026-10-21-newsletter/#feather),
