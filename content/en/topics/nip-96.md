@@ -42,6 +42,7 @@ Kind 10096 server preference events remain useful while clients still support NI
 - [PR #2047: Mark NIP-96 as Unrecommended](https://github.com/nostr-protocol/nips/pull/2047)
 
 **Mentioned in:**
+- [Newsletter #48: Route96 security fixes](/en/newsletters/2026-11-11-newsletter/#route96)
 - [Newsletter #46: eHagaki](/en/newsletters/2026-10-28-newsletter/#ehagaki)
 - [Newsletter #45](/en/newsletters/2026-10-21-newsletter/#nostrbuild)
 - [Newsletter #9: NIP Deep Dive](/en/newsletters/2026-02-11-newsletter/#nip-deep-dive-nip-96-http-file-storage-and-the-transition-to-blossom)

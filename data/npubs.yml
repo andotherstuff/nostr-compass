@@ -21,6 +21,54 @@ no_dm:
 # These remain visible to validation and workflow reporting, but never become
 # mentions or outreach recipients.
 unresolved:
+  BlackIce:
+    checked_at: '2026-11-11'
+    reason: Primary repository README (Marmot/Nostr usage, "exchange npubs") and GitHub owner
+      profile (rademenezbtc, "Bitcoin Wizard Cat", no website, no social accounts) state no
+      project or maintainer npub. No owner site or NIP-05 found. npub.world is a JS app and
+      returned no usable results; search.nos.today NIP-50 returned 0 profiles for BlackIce/Rademenez;
+      relay.nostr.band not queried. Network and directory gaps stay UNKNOWN. Omit mention/outreach
+      pending direct primary proof.
+    sources:
+    - https://github.com/rademenezbtc
+    - https://github.com/rademenezbtc/blackice
+    - https://btcpp.dev/seoul/hackathon
+    - https://npub.world/?/search
+    - https://search.nos.today
+  SplitNut:
+    checked_at: '2026-11-11'
+    reason: Same author as BlackIce (rademenezbtc). Repository README and owner profile contain
+      no npub, site or NIP-05. Directory and NIP-50 searches yielded nothing primary-bound;
+      npub.world unusable (JS app) and stays UNKNOWN. Omit mention/outreach.
+    sources:
+    - https://github.com/rademenezbtc
+    - https://github.com/rademenezbtc/splitnut
+    - https://npub.world/?/search
+    - https://search.nos.today
+  Moranduba:
+    checked_at: '2026-11-11'
+    reason: Primary repository README/files and owner profile (vzsoares, LinkedIn link only,
+      no social accounts) state no project or maintainer npub or NIP-05. NIP-50 search.nos.today
+      returned 0 profiles; npub.world unusable (JS app) and stays UNKNOWN. Omit mention/outreach
+      pending direct primary proof.
+    sources:
+    - https://github.com/vzsoares
+    - https://github.com/vzsoares/moranduba
+    - https://npub.world/?/search
+    - https://search.nos.today
+  iLCHON:
+    checked_at: '2026-11-11'
+    reason: Repository README documents the app's per-user generated keys only; owner profile
+      (dongguri-jun, Junwoo Lee) has no website or social accounts. ilchon.org homepage showed
+      no npub and /.well-known/nostr.json returned no names (the site served the SPA shell).
+      Directory/NIP-50 searches found nothing primary-bound; npub.world unusable and stays UNKNOWN.
+      Omit mention/outreach.
+    sources:
+    - https://github.com/dongguri-jun
+    - https://github.com/dongguri-jun/ilchon
+    - https://ilchon.org
+    - https://npub.world/?/search
+    - https://search.nos.today
   Whistle:
     checked_at: '2026-11-03'
     reason: Retained exact primary repository/README and bounded owner/site research
@@ -3653,3 +3701,32 @@ Self-sown:
   evidence:
   - https://github.com/shopstr-eng/self-sown
   - https://raw.githubusercontent.com/shopstr-eng/self-sown/HEAD/README.md
+Kimchi:
+  npub: npub1tjpq69qqle0yg05y7u29q02nfkljhv6jzs395lprtnryrn7ayjpsuyp45u
+  identity_type: maintainer
+  person: Jake (ye0man)
+  mention_only: true
+  evidence:
+  - https://github.com/ye0man
+  - https://api.github.com/users/ye0man/social_accounts
+  - https://github.com/ye0man/kimchi
+  checked_at: '2026-11-11'
+SatsRoadMarket:
+  npub: npub18gr2m5cflkzpn6jdfer4a8qdlavsn334m9mfhurjsge08grg82zq6hu9su
+  identity_type: maintainer
+  person: shroominic
+  mention_only: true
+  evidence:
+  - https://github.com/shroominic/satsroadmarket
+  - https://github.com/shroominic
+  - https://shroominic.com/
+  checked_at: '2026-11-11'
+Quiet Ledger:
+  npub: npub17j3f7cuhcvjqnf7d80x6rt9hmkkhdguwg4l2th0h4qnhqketr63s6xakwv
+  identity_type: maintainer
+  person: Murdawk Media
+  mention_only: true
+  evidence:
+  - https://github.com/murdawkmedia/quiet-ledger
+  - https://gitworkshop.dev/npub17j3f7cuhcvjqnf7d80x6rt9hmkkhdguwg4l2th0h4qnhqketr63s6xakwv/git.shakespeare.diy/quiet-ledger
+  checked_at: '2026-11-11'

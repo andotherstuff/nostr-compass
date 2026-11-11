@@ -1,0 +1,37 @@
+# ClaimCheck review: Nostr Compass #48 (2026-11-11)
+
+Reviewer: Reviewer 2 (ClaimCheck).
+Draft: content/en/newsletters/2026-11-11-newsletter.md (not edited). Sources: gh api / gh pr view / gh release view, btcpp.dev pages. rel-audit.md used only as a lead.
+
+## Fix list
+
+1. LINE 47 NoorNote paragraph: "refuses it if ... its description hash does not match the signed zap request" — FALSE for v1.9.10. Source: compare v1.9.9...v1.9.10, commit 48e65f7 (2026-11-09) "Hotfix: restore zapping by downgrading invoice description-hash check to warn-only". The v1.9.10 notes say the check "was too strict". PRs #7/#8 are in the range (merged 6 Nov), but the hash check now only warns. Correction: say the app refuses invoices asking for more than the requested amount (verify the amount check is still enforcing) and non-https callbacks, and that v1.9.10 relaxed the description-hash check to a warning after it broke many zaps. Drop "refuses ... hash does not match", and re-point the PR #8 link text accordingly.
+2. LINE 97 (NIP-47 logout): "the wallet must durably revoke the connection key before replying, then reject any later request signed by that key, including backdated ones" attributed to nips PR #2537 — overclaim/misattribution. #2537 (open) says only that the wallet MUST NOT honor further requests after responding, SHOULD answer UNAUTHORIZED, and clients SHOULD send it on logout. The durable-revoke-before-reply and any-created_at wording is from nwc PR #13 (open). Correction: attribute durable revoke and backdated rejection to nwc#13 only, or describe #2537 as "revoke the connection and refuse later requests".
+3. LINE 105 (nwc #15 register_push): "Web Push or UnifiedPush endpoint ... without an app-specific bridge server" — stronger than source. PR describes one transport, Web Push (RFC 8030/8291/8292), reaching UnifiedPush distributors; FCM/APNs still need developer-run gateways. Soften to "a Web Push endpoint, which UnifiedPush distributors can serve".
+4. LINE 117 (Marmot): "five experimental device-group changes in five days" — merges #498-#502 span 4 to 9 Nov (six calendar days) and only #498 calls itself experimental. Use "in six days" and drop "experimental" unless sourced for #499-#502.
+5. LINE 141 (NIP-D9 #2531): "It has no maintainer approval" — not verifiable. Only review is an APPROVE from dannym-arx (maintainer status unchecked). Correction: "it is unmerged and contested" or confirm maintainer status first. Roles of staab/vitorpamplona as "client developers" are unsourced; drop or cite.
+6. LINE 23 Nostur paragraph: "Votes are NIP-88 kind 1018 responses counted only up to the poll's end time" — not in the 1.35.0 release notes (they say only polls, filters, local storage). Needs a source (code/commit) or remove the end-time claim; "kind 1018" likewise unsourced from the release.
+7. LINE 13 Top Story: "about half of them using Marmot" — the gallery (btcpp.dev/seoul/hackathon/projects) lists 20 projects (count verified) but only about 8 carry a Marmot tag (40%). Use "eight of them" or "several". "Most pin marmot-ts 0.9.0" and "White Noise rejects mdk squared's KeyPackages" were not independently re-verified; cite or hedge.
+8. Chama paragraph (Tagged Releases): "Until then the funder can take the sats back" — ambiguous; release says until the other side accepts the funding (and again if the deadline passes). Rewrite "Until the counterparty accepts".
+9. Unverified items (add source or hedge): relay recovery of the example poll from wss://nos.lol (needs a relay query); Vector v0.5.0/v0.5.1 DM-deletion and DM-relay fallback wording (only the Concord v1 deletion was matched in the notes); Route96 security PR #102/#103/#106/#108/#109 titles verified, merged 8 Nov, and not in a tag (latest tag v0.7.0, 2026-04-10).
+
+## Verified claims (verdict OK)
+
+- bitcoin++ Seoul awards: BlackIce 1st + Best Use of the Marmot Protocol, mdk squared Honorable Mention, iLCHON Best Beginner Hack, 20 projects in gallery — https://btcpp.dev/seoul/hackathon/projects . Shroud PR #233 open — https://github.com/CypherCommons/shroud/pull/233 . awesome-marmot PR #25 merged 2026-11-10.
+- nips #2498 merged 2026-11-05; content matches (retry-after in ms, optional, absence not "retry now") — https://github.com/nostr-protocol/nips/pull/2498
+- nwc #13 and #15 open and described correctly aside from items 2-3; nips #2537 open — https://github.com/nostr-protocol/nips/pull/2537
+- concord #25 and #23 merged 2026-11-09; marmot #498-#502 merged 4-9 Nov, #503 open (draft kind-9 structured interactions, "does not authorize implementation") — https://github.com/marmot-protocol/marmot/pull/503 . "up to four options" not confirmed.
+- NIP-D9 #2531 open, tag/exemption details match.
+- NIP files exist: 01, 09, 13, 40, 46, 47, 55, 57, 62, 65, 69, 77, 88, 96. D9 is open PR only, linked. NIP-17/44 not cited as new claims.
+- Releases matched to notes: Nostur 1.35.0 (polls, search, WoT filter, local storage, in-app browser); Monostr v0.34.0 (Tor off by default, onion relays, links); Chama v6.4.34 (audit #43 last item, from Dec 1 2026, 6.4.34+ rule); Zapstore 2.0.2 (6 Nov) to 2.0.4 (8 Nov), labels and Vertex fallback; Manent v3.1.0 (60%, WAV, deb/rpm); Streets v1.24.0 (30 outbox, 60 total); Infans v2.4.3 (60 s skew); Amber v7.0.0-pre3 (pre-release, 127.0.0.1:7777, off by default, desktop relay auth); Keep Android v1.4.0 (100 list, NIP-55 co-sign, proxy, DNS); nostr-social-graph v4.0.0 (~35KB/500 authors, default no connections); MDK v0.15.0 (20 KeyPackages / 30 days, 0.14 cannot be invited, no downgrade) and marmotkit-v0.15.0 tag; Vector v0.5.0 Concord v1 deletion.
+- NIP-88 deep dive: PR #1346 merged 2024-09-17, removed same day after renumber to 88, reinstated by #1507 merged 2025-01-14, later commits editorial (2025-04-23, 2025-12-30). Spec statements (largest timestamp, first response tag, first tag per ID, until in example query, backdated/kind 5 advice, PoW as curation) match 88.md.
+- Example events: kind 1068 id 000006187b...0d0f and kind 1018 id b5721199...2ad1 recompute correctly under NIP-01; both BIP-340 signatures verify; 21 leading zero bits; nonce target 20; endsAt 1794808500 = 2026-11-16T05:55:00Z; response 156 s after poll.
+- Client source pins (Amethyst, noStrudel/applesauce, Coracle/welshman, Wisp) not re-read line by line in this pass; draft labels them as source reading.
+
+GATE: FAIL
+
+## Re-review addendum (draft SHA-256 `5a4a669a42e74783ca91b87c839a0fc47297230a3ebb68bfe4831bb0831ad42d`)
+
+Every original finding was rechecked against primary sources and is resolved: NoorNote v1.9.10 (PRs 7 and 8 plus the warn-only description-hash hotfix), NIP-47 logout scope (nips#2537 versus nwc#13), Marmot #498–#502 merge dates with #503 still an open draft, NIP-D9 status, Nostur poll storage, the Seoul project count, and Chama escrow timing. The previously unverified Vector v0.5.0/v0.5.1, Keep Android v1.4.0, Amber v7.0.0-pre3, NIP-88 curation and Concord #23/#25 statements match their release notes and PRs. Three wording nits were applied after the re-review: nwc#15 now says the service delivers notifications without holding push-provider credentials, #503 says "ordinary encrypted group messages" instead of naming a kind, and the hackathon caveat links the catalog change directly. Remaining non-blocking caveat: the marmot-ts 0.9.0 dependency and White Noise KeyPackage statements rest on the linked Awesome Marmot catalog change, not on each repository.
+
+GATE: PASS

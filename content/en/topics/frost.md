@@ -46,6 +46,7 @@ FROST is specified in [RFC 9591](https://datatracker.ietf.org/doc/rfc9591/), pub
 - [Zcash Foundation Rust Implementation](https://github.com/ZcashFoundation/frost)
 
 **Mentioned in:**
+- [Newsletter #48: Keep Android bunker and signer fixes](/en/newsletters/2026-11-11-newsletter/#keep-android)
 - [Newsletter #44](/en/newsletters/2026-10-14-newsletter/#keep-android)
 - [Newsletter #3: NIPs Repository](/en/newsletters/2025-12-31-newsletter/#nips-repository)
 - [Newsletter #8](/en/newsletters/2026-02-04-newsletter/)
