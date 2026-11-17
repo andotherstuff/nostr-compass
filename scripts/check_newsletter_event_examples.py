@@ -22,7 +22,7 @@ from pathlib import Path
 
 FENCE = re.compile(r"```json\s*\n(.*?)```", re.DOTALL)
 H2 = re.compile(r"^## (?!#)", re.MULTILINE)
-DEEP_DIVE = re.compile(r"^## NIP Deep Dive\b", re.MULTILINE)
+DEEP_DIVE = re.compile(r"^## NIP Deep Dive\b", re.MULTILINE | re.IGNORECASE)
 NIP_MENTION = re.compile(r"\bNIP-(\d+)\b", re.IGNORECASE)
 HEX64 = re.compile(r"^[0-9a-f]{64}$")
 HEX128 = re.compile(r"^[0-9a-f]{128}$")

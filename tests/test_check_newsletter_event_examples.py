@@ -29,6 +29,10 @@ def check(markdown: str):
 
 
 class EventGateTests(unittest.TestCase):
+    def test_sentence_case_deep_dive_still_requires_a_signed_event(self):
+        problems = check("## NIP deep dive: Public goals\n\n### Zap goals\n\nNIP-75 mechanics.\n")
+        self.assertTrue(any("requires at least one complete" in problem for problem in problems))
+
     def test_nip21_only_does_not_require_event(self):
         self.assertEqual(check("## NIP Deep Dive: Links\n\n### URI links (NIP-21)\n\nMechanics.\n"), [])
 
