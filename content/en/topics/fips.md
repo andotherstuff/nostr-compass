@@ -37,6 +37,7 @@ The Rust implementation includes UDP transport and bloom-filter-based discovery.
 - [fips-pub-domains 0.2.1 release](https://github.com/fr34aky/fips-pub-domains/releases/tag/v0.2.1)
 
 **Mentioned in:**
+- [Newsletter #49](/en/newsletters/2026-11-18-newsletter/#humansinstitute-ambulando-android)
 - [Newsletter #11: FIPS News](/en/newsletters/2026-02-25-newsletter/#fips-nostr-native-mesh-networking)
 - [Newsletter #12](/en/newsletters/2026-03-04-newsletter/)
 - [Newsletter #32: News](/en/newsletters/2026-07-22-newsletter/#the-iris-projects-ship-a-pubsub-library-a-browser-fips-runtime-and-a-social-graph-20-in-one-week)

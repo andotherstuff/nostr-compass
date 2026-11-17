@@ -22,4 +22,5 @@ The model lets an application publish without holding the account's primary sign
 - [September 2022 delegated-signing text](https://github.com/nostr-protocol/nips/commit/b62aa418d)
 
 **Mentioned in:**
+- [Newsletter #49](/en/newsletters/2026-11-18-newsletter/#mattn-algia)
 - [Newsletter #42: September 2022](/en/newsletters/2026-09-30-newsletter/#september-2022-chat-and-delegated-actions-enter-the-specifications)

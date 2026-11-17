@@ -16,6 +16,7 @@ Primary source: the [NIP-88 text](https://github.com/nostr-protocol/nips/blob/ma
 - [NIP-88: Polls](https://github.com/nostr-protocol/nips/blob/master/88.md)
 
 ## Mentioned in
+- [Newsletter #49](/en/newsletters/2026-11-18-newsletter/#schmidt1024-monostr)
 
 - [Newsletter 45](/en/newsletters/2026-10-21-newsletter/#feather)
 - [Newsletter 48](/en/newsletters/2026-11-11-newsletter/#nip-deep-dive-nip-88-polls)

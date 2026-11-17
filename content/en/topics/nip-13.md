@@ -56,6 +56,7 @@ PoW also shifts spam resistance from account identity to compute availability. T
 - [NIP-13 Specification](https://github.com/nostr-protocol/nips/blob/master/13.md)
 
 **Mentioned in:**
+- [Newsletter #49](/en/newsletters/2026-11-18-newsletter/#mattn-ocaml-nostr-relay)
 - [Newsletter #48: proof of work on an example poll](/en/newsletters/2026-11-11-newsletter/#a-poll-and-a-vote)
 - [Newsletter #7: News](/en/newsletters/2026-01-28-newsletter/#news)
 - [Newsletter #12: News](/en/newsletters/2026-03-04-newsletter/#news)

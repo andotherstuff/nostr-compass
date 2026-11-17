@@ -88,6 +88,7 @@ That is why the recommendation flow starts with people you follow. Socially filt
 - [NIP-89 Specification](https://github.com/nostr-protocol/nips/blob/master/89.md)
 
 **Mentioned in:**
+- [Newsletter #49](/en/newsletters/2026-11-18-newsletter/#haven-organization-matrix-appservice-nostr)
 - [Newsletter #47: What an alt tag carries](/en/newsletters/2026-11-04-newsletter/#what-an-alt-tag-carries)
 - [Newsletter #46: CustID](/en/newsletters/2026-10-28-newsletter/#custid)
 - [Newsletter #45](/en/newsletters/2026-10-21-newsletter/#zap-cooking)

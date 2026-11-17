@@ -49,6 +49,7 @@ Clients differ in how they consume labels. Some treat labels from followed users
 - [NIP-32 Specification](https://github.com/nostr-protocol/nips/blob/master/32.md) - Labeling standard
 
 **Mentioned in:**
+- [Newsletter #49](/en/newsletters/2026-11-18-newsletter/#nostr-protocol-nips-2548)
 
 - [Newsletter #46 (2026-10-28): bray](/en/newsletters/2026-10-28-newsletter/#bray)
 - [Newsletter #6: NIP Updates](/en/newsletters/2026-01-21-newsletter/#nip-updates)

@@ -22,6 +22,7 @@ The [September 2022 specification change](https://github.com/nostr-protocol/nips
 - [September 2022 public-chat change](https://github.com/nostr-protocol/nips/commit/3423a6dfb)
 
 **Mentioned in:**
+- [Newsletter #49](/en/newsletters/2026-11-18-newsletter/#covenant-gov-pacto-app)
 - [Newsletter #42: September 2022](/en/newsletters/2026-09-30-newsletter/#september-2022-chat-and-delegated-actions-enter-the-specifications)
 
 **See also:**
