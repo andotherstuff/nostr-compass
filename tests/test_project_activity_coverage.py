@@ -102,6 +102,57 @@ class ProjectActivityCoverageTests(unittest.TestCase):
         draft = pr(741, "", "")["url"]
         self.assertTrue(any("lacks default-branch integration" in error for error in coverage.validate(activity, decisions, draft)))
 
+    def development_fixture(self, status="development"):
+        activity, decisions = self.fixture()
+        project = next(row for row in activity["projects"] if row["repo"] == "cameri/nostream")
+        project["prs"][0]["base_ref"] = "dev"
+        decision = next(row for row in decisions["projects"] if row["repo"] == "cameri/nostream")
+        branch = decision["branch_checks"][0]
+        branch.update(base_ref="dev", default_branch="master", development_status=status)
+        draft = f"[Relay work]({branch['url']}) is {status} on `dev`, not yet integrated into `master`."
+        return activity, decisions, branch, draft
+
+    def test_explicit_development_and_proposal_milestones(self):
+        for status in ("development", "proposal"):
+            with self.subTest(status=status):
+                activity, decisions, _, draft = self.development_fixture(status)
+                self.assertEqual(coverage.validate(activity, decisions, draft), [])
+
+    def test_development_citation_must_match_the_complete_pr_url(self):
+        activity, decisions, branch, draft = self.development_fixture()
+        draft = draft.replace(branch["url"], branch["url"] + "0")
+        self.assertTrue(any("lacks default-branch integration" in error
+                            for error in coverage.validate(activity, decisions, draft)))
+
+    def test_development_exception_requires_bound_source_and_draft_framing(self):
+        for change in ("no_draft", "no_qualifier", "other_paragraph", "wrong_status",
+                       "missing_status", "missing_source", "wrong_source", "missing_default",
+                       "wrong_default", "missing_collector_base", "mismatched_base"):
+            with self.subTest(change=change):
+                activity, decisions, branch, draft = self.development_fixture()
+                if change == "no_draft":
+                    draft = None
+                elif change == "no_qualifier":
+                    draft = f"[Relay work]({branch['url']}) shipped."
+                elif change == "other_paragraph":
+                    draft = draft.replace(" is ", "\n\nThis is ")
+                elif change == "wrong_status":
+                    branch["development_status"] = "released"
+                elif change == "missing_status":
+                    branch.pop("development_status")
+                elif change == "missing_source":
+                    branch.pop("source_url")
+                elif change == "wrong_source":
+                    branch["source_url"] = "https://github.com/cameri/nostream/pull/999"
+                elif change == "wrong_default":
+                    branch["default_branch"] = "main"
+                elif change == "missing_default":
+                    branch.pop("default_branch")
+                else:
+                    project = next(row for row in activity["projects"] if row["repo"] == "cameri/nostream")
+                    project["prs"][0]["base_ref"] = None if change == "missing_collector_base" else "feature"
+                self.assertTrue(coverage.validate(activity, decisions, draft))
+
     def test_collector_base_branch_must_match_live_branch_check(self):
         activity, decisions = self.fixture()
         row = next(row for row in decisions["projects"] if row["repo"] == "cameri/nostream")

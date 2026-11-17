@@ -298,7 +298,9 @@ class GitHubClient:
             endpoint = parts.path.lstrip("/") + ("?" + parts.query if parts.query else "")
         else:
             endpoint = endpoint.lstrip("/")
-        if not endpoint.startswith("repos/") or ".." in endpoint.split("?")[0].split("/"):
+        # GitHub pagination Link headers may name a repository by numeric ID
+        # (repositories/<id>/...) even when the first page used repos/<owner>/<name>.
+        if not re.match(r"(repos/|repositories/[0-9]+/)", endpoint) or ".." in endpoint.split("?")[0].split("/"):
             raise RuntimeError("invalid Compass GitHub endpoint")
         async with self.semaphore:
             if self._quota_stop:
