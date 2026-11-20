@@ -13,7 +13,7 @@ Merged [#106](https://github.com/napplet/naps/pull/106) on `master` combines two
 - [napplet/naps PR #106](https://github.com/napplet/naps/pull/106)
 
 **Mentioned in:**
-- [Newsletter #49](/en/newsletters/2026-11-18-newsletter/#napplet-naps-106)
+- [Newsletter #49](/en/newsletters/2026-11-18-newsletter/#origami74-myco)
 
 **See also:**
 - [NIP-89: Recommended application handlers](/en/topics/nip-89/)

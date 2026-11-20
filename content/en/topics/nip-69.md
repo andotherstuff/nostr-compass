@@ -108,7 +108,7 @@ The order proposal that became NIP-69 was added as `xx.md` on 2024-06-27 in comm
 - [Newsletter #1: Releases](/en/newsletters/2025-12-17-newsletter/#releases)
 - [Newsletter #2: News](/en/newsletters/2025-12-24-newsletter/#news)
 - [Newsletter #41: Stable order creation time](/en/newsletters/2026-09-23-newsletter/#nip-69-proposes-a-stable-creation-time-for-trading-orders)
-- [Newsletter #49: NIP Deep Dive on public goals and peer-to-peer orders](/en/newsletters/2026-11-18-newsletter/#nip-deep-dive-public-goals-and-peer-to-peer-orders)
+- [Newsletter #49: NIP Deep Dive on public goals and peer-to-peer orders](/en/newsletters/2026-11-18-newsletter/#nostr-protocol-nips-2541)
 
 **See also:**
 - [NIP-40: Expiration Timestamp](/en/topics/nip-40/)

@@ -36,6 +36,7 @@ The revision makes bootstrap privacy a conformance requirement because the brows
 - [Myco v0.7.0](https://github.com/Origami74/myco/releases/tag/v0.7.0) - Sandboxed napplet runtime and permission model
 
 **Mentioned in:**
+- [Newsletter #49](/en/newsletters/2026-11-18-newsletter/#soytec-napplet-soy)
 - [Newsletter #46 (2026-10-28): amethyst](/en/newsletters/2026-10-28-newsletter/#amethyst)
 - [Newsletter 45](/en/newsletters/2026-10-21-newsletter/#kehto---web-runtime)
 - [Newsletter #44](/en/newsletters/2026-10-14-newsletter/#soyli)

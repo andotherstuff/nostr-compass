@@ -53,7 +53,7 @@ The spec also requires the wallet private key to stay separate from the user's N
 - [NIP-60 Specification](https://github.com/nostr-protocol/nips/blob/master/60.md)
 
 **Mentioned in:**
-- [Newsletter #49](/en/newsletters/2026-11-18-newsletter/#hussman256-nutjar)
+- [Newsletter #49](/en/newsletters/2026-11-18-newsletter/#soytec-napplet-soy)
 - [Newsletter #46: napplet-soy](/en/newsletters/2026-10-28-newsletter/#napplet-soy)
 - [Newsletter #3: December Recap](/en/newsletters/2025-12-31-newsletter/#december-recap-five-years-of-nostr-decembers)
 - [Newsletter #11: NIP Deep Dive](/en/newsletters/2026-02-25-newsletter/#nip-deep-dive-nip-60-cashu-wallet)

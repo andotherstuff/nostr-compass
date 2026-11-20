@@ -17,7 +17,7 @@ The claim process lowers the chance of duplicate runs. The proposal does not gua
 - [nostr-protocol/nips#2546](https://github.com/nostr-protocol/nips/pull/2546)
 
 **Mentioned in:**
-- [Newsletter #49 (2026-11-18)](/en/newsletters/2026-11-18-newsletter/#nostr-protocol-nips-2546)
+- [Newsletter #49 (2026-11-18)](/en/newsletters/2026-11-18-newsletter/#vitorpamplona-quartz)
 
 **See also:**
 - [NIP-65: Relay List Metadata](/en/topics/nip-65/)

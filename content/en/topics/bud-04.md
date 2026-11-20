@@ -14,7 +14,7 @@ A [merged specification change](https://github.com/hzrd149/blossom/commit/4c467f
 - [Blossom commit 4c467fe: SSRF guidance for mirroring](https://github.com/hzrd149/blossom/commit/4c467fe8d483ad0c3dda784707dfee4436793650)
 
 **Mentioned in:**
-- [Newsletter #49](/en/newsletters/2026-11-18-newsletter/#hzrd149-blossom-4c467fe8d483)
+- [Newsletter #49](/en/newsletters/2026-11-18-newsletter/#flox1an-nostube)
 
 **See also:**
 - [Blossom](/en/topics/blossom/)

@@ -14,7 +14,7 @@ The ContextVM SDK carries MCP traffic over Nostr. Its open proposal [#120](https
 - [ContextVM SDK PR #120: CEP-8 conformance and failure qualification](https://github.com/ContextVM/sdk/pull/120)
 
 **Mentioned in:**
-- [Newsletter #49](/en/newsletters/2026-11-18-newsletter/#contextvm-sdk)
+- [Newsletter #49](/en/newsletters/2026-11-18-newsletter/#forgesworn-bray)
 
 **See also:**
 - [NAP-WEBMCP](/en/topics/nap-webmcp/)

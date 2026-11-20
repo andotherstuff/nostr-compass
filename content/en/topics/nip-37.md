@@ -53,6 +53,7 @@ At commit [`9395544`](https://github.com/damus-io/notedeck/blob/93955445ae185392
 - [NIP-37 specification](https://github.com/nostr-protocol/nips/blob/master/37.md)
 
 ## Mentioned in
+- [Newsletter #49](/en/newsletters/2026-11-18-newsletter/#dmnyc-sidecar)
 
 
 

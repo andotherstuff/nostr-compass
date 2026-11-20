@@ -39,6 +39,7 @@ A valid signature only shows that a particular key published an event. It does n
 - [nostr-protocol/nips PR #2526: Zapstore spec](https://github.com/nostr-protocol/nips/pull/2526) (open, unmerged; supersedes [PR #1336](https://github.com/nostr-protocol/nips/pull/1336))
 
 **Mentioned in:**
+- [Newsletter #49](/en/newsletters/2026-11-18-newsletter/#arbadacarbayk-gittr)
 - [Newsletter #27: Amethyst v1.12.0 release coverage (historical reference)](/en/newsletters/2026-06-17-newsletter/#amethyst-v1120-ships-cashu-wallets-nutzaps-a-clink-driver-and-tor-self-heal)
 - [Newsletter #46: Software application catalog proposed as NIP-82](/en/newsletters/2026-10-28-newsletter/#software-application-catalog-proposed-as-nip-82)
 
