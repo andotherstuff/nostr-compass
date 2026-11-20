@@ -31,6 +31,7 @@ The retrieval guidance is also practical: when a client extracts a blob hash fro
 - [Blossom Repository](https://github.com/hzrd149/blossom)
 
 **Mentioned in:**
+- [Newsletter #49](/en/newsletters/2026-11-18-newsletter/#humansinstitute-canopy)
 - [Newsletter #1: News](/en/newsletters/2025-12-17-newsletter/#news)
 
 **See also:**

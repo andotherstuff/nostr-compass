@@ -40,6 +40,7 @@ The optional `sz` field adds a concrete integrity check beyond the hash. Clients
 - [Blossom Repository](https://github.com/hzrd149/blossom)
 
 **Mentioned in:**
+- [Newsletter #49](/en/newsletters/2026-11-18-newsletter/#barrydeen-wisp)
 - [Newsletter #1: News](/en/newsletters/2025-12-17-newsletter/#news)
 
 **See also:**

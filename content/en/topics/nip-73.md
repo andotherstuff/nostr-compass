@@ -80,6 +80,7 @@ Amethyst's [DisplayExternalId.kt at commit 553f761](https://github.com/vitorpamp
 - [Amethyst DisplayExternalId.kt at commit 553f761](https://github.com/vitorpamplona/amethyst/blob/553f761f22c15e946730d3e76be9487519ebab64/commonsUI/src/commonMain/kotlin/com/vitorpamplona/amethyst/commons/ui/note/nip22Comments/DisplayExternalId.kt)
 
 **Mentioned in:**
+- [Newsletter #49](/en/newsletters/2026-11-18-newsletter/#nostr-protocol-nips-2224)
 - [Newsletter #47: NIP Deep Dive](/en/newsletters/2026-11-04-newsletter/#nip-deep-dive-nip-31-and-nip-73)
 - [Newsletter #45](/en/newsletters/2026-10-21-newsletter/#feather)
 - [Newsletter #43](/en/newsletters/2026-10-07-newsletter/#protocol-and-spec-work)

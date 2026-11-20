@@ -22,6 +22,7 @@ HEADING_RE = re.compile(r"^###\s+(.+)$", re.MULTILINE)
 LINK_LABEL_RE = re.compile(r"\[([^\]]+)\]\([^\)]+\)")
 PRIMARY_URL_RE = re.compile(
     r"(?:https?://[^\s)]+/(?:releases(?:/tag)?|pulls?|commit|merge_requests|-/commit)(?:/[^\s)]*)?"
+    r"|https?://gitworkshop\.dev/[^\s)?]+\?commit=[0-9a-f]{40}(?=[&#\s)]|$)"
     r"|https?://primal\.net/e/[0-9a-f]+"
     r"|https?://(?:www\.)?njump\.me/(?:[0-9a-f]{64}|n(?:event|addr)1[0-9a-z]+))"
 )

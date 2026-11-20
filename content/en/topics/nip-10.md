@@ -72,6 +72,7 @@ Sort results by `created_at` and use `reply` markers to build the tree structure
 - [NIP-10 Specification](https://github.com/nostr-protocol/nips/blob/master/10.md)
 
 **Mentioned in:**
+- [Newsletter #49](/en/newsletters/2026-11-18-newsletter/#soapbox-pub-ditto)
 
 
 - [Newsletter #2: NIP Deep Dive](/en/newsletters/2025-12-24-newsletter/#nip-10-text-note-threading)

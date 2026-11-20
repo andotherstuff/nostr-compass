@@ -47,6 +47,7 @@ Legacy clients and signers still expose NIP-04 encrypt/decrypt methods because o
 - [NIP-04 Specification](https://github.com/nostr-protocol/nips/blob/master/04.md)
 
 **Mentioned in:**
+- [Newsletter #49](/en/newsletters/2026-11-18-newsletter/#dmnyc-sidecar)
 - [Newsletter #47: diVine DM history requery](/en/newsletters/2026-11-04-newsletter/#divine)
 - [Newsletter #46: LNbits](/en/newsletters/2026-10-28-newsletter/#lnbits)
 - [Newsletter #45](/en/newsletters/2026-10-21-newsletter/#divine)

@@ -100,7 +100,7 @@ def _review_spec_headings(markdown: str) -> list[Finding]:
         sections.append((heading, heading_line, frozenset(changes), primary_change))
 
     for number, line in enumerate(markdown.splitlines(), 1):
-        if line.strip() == SPEC_SECTION_HEADING:
+        if line.strip().casefold() == SPEC_SECTION_HEADING.casefold():
             in_section = True
             continue
         if not in_section:

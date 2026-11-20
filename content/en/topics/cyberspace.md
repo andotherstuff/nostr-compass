@@ -38,4 +38,5 @@ These merges change the specification. They do not show which clients verify the
 - [Portable hop-proof golden vectors](https://github.com/arkin0x/cyberspace/commit/06c287332651f99b75e609b7b098e165993750fd)
 
 **Mentioned in:**
+- [Newsletter #49](/en/newsletters/2026-11-18-newsletter/#arkin0x-cyberspace-111)
 - [Newsletter #46](/en/newsletters/2026-10-28-newsletter/)

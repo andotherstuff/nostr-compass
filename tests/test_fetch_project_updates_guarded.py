@@ -33,7 +33,10 @@ if os.environ.get("DEFER") == "1":
 print("HTTP/2 200 OK")
 print("X-RateLimit-Remaining: 3500")
 if "page=2" not in sys.argv[2]:
-    print('Link: <https://api.github.com/repos/a/b/releases?per_page=1&page=2>; rel="next"')
+    if sys.argv[2].startswith("repos/n/"):
+        print('Link: <https://api.github.com/repositories/587850619/pulls?per_page=1&page=2>; rel="next"')
+    else:
+        print('Link: <https://api.github.com/repos/a/b/releases?per_page=1&page=2>; rel="next"')
 print()
 print('[{"id":2}]' if "page=2" in sys.argv[2] else '[{"id":1}]')
 """)
@@ -54,6 +57,19 @@ print('[{"id":2}]' if "page=2" in sys.argv[2] else '[{"id":1}]')
         self.assertEqual(2, len(calls))
         self.assertTrue(all(item["bulk"] == "1" for item in calls))
         self.assertTrue(all(item["args"][-1] == "--include" for item in calls))
+
+    def test_pagination_accepts_numeric_repository_next_links(self):
+        async def run():
+            async with mod.GitHubClient("") as client:
+                rows = await client.get_paginated("repos/n/b/pulls?per_page=1")
+                self.assertEqual([{"id":1},{"id":2}], rows)
+                with self.assertRaises(RuntimeError):
+                    await client.get("repositories/1/../../user")
+                with self.assertRaises(RuntimeError):
+                    await client.get("repositories/abc/pulls")
+        asyncio.run(run())
+        calls = [json.loads(line) for line in self.calls.read_text().splitlines()]
+        self.assertEqual("repositories/587850619/pulls?per_page=1&page=2", calls[1]["args"][1])
 
     def test_quota_deferral_is_latched_without_raw_fallback_or_retries(self):
         async def run():

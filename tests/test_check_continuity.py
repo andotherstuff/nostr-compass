@@ -16,6 +16,21 @@ def load_module():
 
 
 class ContinuityCheckTests(unittest.TestCase):
+    def test_accepts_immutable_gitworkshop_commit_query(self):
+        checker = load_module()
+        url = "https://gitworkshop.dev/npub1example/relay.ngit.dev/example?commit=" + "a" * 40
+        previous = "### Example\n\nAn older release.\n"
+        current = f"### Example\n\nNew [source]({url}) changes delivery.\n"
+        self.assertEqual([], checker.review_history(current, [previous]))
+        self.assertTrue(checker.repeated_sources(current, {url}))
+
+    def test_rejects_unpinned_gitworkshop_queries(self):
+        checker = load_module()
+        base = "https://gitworkshop.dev/npub1example/relay.ngit.dev/example?commit="
+        for value in ("main", "a" * 39, "a" * 41, "g" * 40):
+            with self.subTest(value=value):
+                self.assertFalse(checker.has_new_primary_source(f"[source]({base}{value})"))
+
     def test_flags_repeated_project_header_without_new_primary_source(self):
         checker = load_module()
         previous = """### [Nostrord](https://github.com/nostrord/nostrord) v2.2.0\n\n[Release](https://github.com/nostrord/nostrord/releases/tag/v2.2.0) adds direct-message controls.\n"""

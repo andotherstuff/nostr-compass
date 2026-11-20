@@ -208,7 +208,22 @@ def validate(
                 elif next((pr.get("base_ref") for pr in row["prs"] if pr["url"] == url), None) not in (None, branch["base_ref"]):
                     errors.append(f"{repo}: selected PR {url} has a branch mismatch with the project collector")
                 elif branch["base_ref"] != branch["default_branch"] and not str(branch.get("integration_url") or "").startswith("https://"):
-                    errors.append(f"{repo}: feature-branch PR {url} lacks default-branch integration evidence")
+                    # A reviewable milestone may precede default-branch integration.
+                    # Require the source collector to confirm the branch and bind
+                    # the explicit limitation to this PR in the same draft paragraph.
+                    status = branch.get("development_status")
+                    qualifier = f"{status} on `{branch['base_ref']}`, not yet integrated into `{branch['default_branch']}`"
+                    development = (
+                        status in ("development", "proposal")
+                        and next((pr.get("base_ref") for pr in row["prs"] if pr["url"] == url), None) == branch["base_ref"]
+                        and draft is not None
+                        and any(
+                            url in re.findall(r"https://[^\s<>()\[\]`]+", paragraph) and qualifier in paragraph
+                            for paragraph in re.split(r"\n\s*\n", draft)
+                        )
+                    )
+                    if not development:
+                        errors.append(f"{repo}: feature-branch PR {url} lacks default-branch integration evidence or explicit sourced development/proposal framing")
                 if draft is not None and url not in draft:
                     errors.append(f"{repo}: selected PR {url} is missing from the draft")
         else:

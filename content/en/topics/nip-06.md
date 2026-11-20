@@ -29,5 +29,6 @@ An [October 12, 2023 commit](https://github.com/nostr-protocol/nips/commit/202e1
 - [Commit adding NIP-06 test vectors (October 12, 2023)](https://github.com/nostr-protocol/nips/commit/202e18f2b256646148805880ed58731c1c8b2b9b)
 
 **Mentioned in:**
+- [Newsletter #49](/en/newsletters/2026-11-18-newsletter/#trustroots-nostroots)
 
 - [Newsletter #46](/en/newsletters/2026-10-28-newsletter/#october-2023-events-carry-evidence-and-requests-for-work)

@@ -16,6 +16,15 @@ def load_module():
 
 
 class NewsletterStyleTests(unittest.TestCase):
+    def test_sentence_case_section_still_rejects_grouped_spec_changes(self):
+        checker = load_module()
+        findings = checker.review(
+            "## Protocol and spec work\n\n### Distinct changes\n\n"
+            "[First](https://github.com/nostr-protocol/nips/pull/2462) adds commands.\n\n"
+            "[Second](https://github.com/nostr-protocol/nips/pull/2463) clarifies payments.\n"
+        )
+        self.assertEqual(["grouped_spec_changes"], [finding.kind for finding in findings])
+
     def test_flags_banned_join_section_detail(self):
         checker = load_module()
         findings = checker.review("Mafrend and Hanami join Shipping This Week with Android releases.")
