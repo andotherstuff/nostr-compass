@@ -46,6 +46,8 @@ The `switch_relays` method exists so the signer can move the session to a differ
 - [swift-nostr 0.7.0](https://github.com/yysskk/swift-nostr/releases/tag/0.7.0) - remote signer API coverage
 
 **Mentioned in:**
+- [Newsletter #50: Amber shares relay subscriptions](/en/newsletters/2026-11-25-newsletter/#greenart7c3-amber)
+- [Newsletter #50: zsp-nsd bridges a USB signer over localhost](/en/newsletters/2026-11-25-newsletter/#zsp-nsd)
 - [Newsletter #49](/en/newsletters/2026-11-18-newsletter/#marmot-protocol-whitenoise)
 - [Newsletter #48: Amber local relay for on-phone bunker clients](/en/newsletters/2026-11-11-newsletter/#amber)
 - [Newsletter #47: swift-nostr-client remote signer handshakes](/en/newsletters/2026-11-04-newsletter/#swift-nostr-client)

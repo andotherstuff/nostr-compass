@@ -45,6 +45,8 @@ Another practical issue is references. Users and apps may still hold the deleted
 - [Newsletter #37: August 2021](/en/newsletters/2026-08-26-newsletter/#august-2021)
 - [Newsletter #38: Divine Mobile](/en/newsletters/2026-09-02-newsletter/#divine-mobile-makes-wrapped-direct-message-deletion-and-signing-deterministic)
 
+- [Newsletter #50: Shopstr uses the target event kind when requesting deletions](/en/newsletters/2026-11-25-newsletter/#shopstr-eng-shopstr)
+
 **See also:**
 - [NIP-01: Basic Protocol](/en/topics/nip-01/)
 - [NIP-60: Cashu Wallet](/en/topics/nip-60/)

@@ -68,6 +68,10 @@ Combined with [NIP-11](/en/topics/nip-11/) metadata, clients can discover whethe
 - [Newsletter #38: NIP Updates](/en/newsletters/2026-09-02-newsletter/#nostr-implementation-possibilities)
 - [Newsletter #42: September 2025 relay authentication](/en/newsletters/2026-09-30-newsletter/#september-2025-access-controls-and-payment-context-become-more-precise)
 
+- [Newsletter #50: Mail by Form* waits for relay authentication](/en/newsletters/2026-11-25-newsletter/#formstr-hq-nail)
+
+- [Newsletter #50: Trustroots and Nostroots authenticate a service identity](/en/newsletters/2026-11-25-newsletter/#trustroots-nostroots)
+
 **See also:**
 - [NIP-11: Relay Information Document](/en/topics/nip-11/)
 - [NIP-50: Search Capability](/en/topics/nip-50/)

@@ -80,6 +80,7 @@ Message history uses separate drafts. [History keys and history deliveries](http
 - [MDK heartbeat-based Welcome repair](https://github.com/marmot-protocol/mdk/pull/2936)
 
 **Mentioned in:**
+- [Newsletter #50: Marmot KMP tests app events against White Noise](/en/newsletters/2026-11-25-newsletter/#vitorpamplona-marmot-kmp)
 - [Newsletter #49](/en/newsletters/2026-11-18-newsletter/#marmot-protocol-whitenoise)
 - [Newsletter #48: Marmot projects at bitcoin++ Seoul](/en/newsletters/2026-11-11-newsletter/#marmot-projects-at-bitcoin-seoul)
 - [Newsletter #47: MDK heartbeat-based Welcome repair](/en/newsletters/2026-11-04-newsletter/#marmot-protocol-mdk)

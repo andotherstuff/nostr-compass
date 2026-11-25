@@ -71,5 +71,7 @@ NIP-92 is inline metadata, not a separate media object format. If a client needs
 - [Newsletter #40: NIP-92 media attachments deep dive](/en/newsletters/2026-09-16-newsletter/#nip-92-media-attachments-metadata)
 - [Newsletter #42: Zap Cooking media tags](/en/newsletters/2026-09-30-newsletter/#zap-cooking-changes-how-account-history-can-be-recovered)
 
+- [Newsletter #50: Notedeck Headway encrypts attachment metadata on shared boards](/en/newsletters/2026-11-25-newsletter/#damus-io-notedeck)
+
 **See also:**
 - [NIP-94: File Metadata](/en/topics/nip-94/)

@@ -41,6 +41,8 @@ NIP-85 extends beyond people and posts. Kind 30385 lets providers score NIP-73 e
 - [PR #2223](https://github.com/nostr-protocol/nips/pull/2223) - Service provider discoverability guidance
 
 **Mentioned in:**
+- [Newsletter #50: Quartz pages hourly score updates](/en/newsletters/2026-11-25-newsletter/#vitorpamplona-quartz)
+- [Newsletter #50: wot-follows shows remote and local trust scores](/en/newsletters/2026-11-25-newsletter/#wot-follows)
 - [Newsletter #44](/en/newsletters/2026-10-14-newsletter/#amethyst)
 - [Newsletter #10: NIP-85 Deep Dive](/en/newsletters/2026-02-18-newsletter/#nip-deep-dive-nip-85-trusted-assertions)
 - [Newsletter #11: NIP-85 Service Provider Discoverability](/en/newsletters/2026-02-25-newsletter/#nip-updates)

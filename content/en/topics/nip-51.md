@@ -70,6 +70,8 @@ A [September 2026 correction](https://github.com/nostr-protocol/nips/pull/2417) 
 - [Newsletter #36: Nostter adds bookmark lists, profile badges, and Blossom uploads](/en/newsletters/2026-08-19-newsletter/#nostter-adds-bookmark-lists-profile-badges-and-blossom-uploads)
 - [Newsletter #42: follow-set kind correction](/en/newsletters/2026-09-30-newsletter/#nip-51-moves-favorite-follow-sets-to-an-unused-event-kind)
 
+- [Newsletter #50: Edufeed curates worksheets in sets](/en/newsletters/2026-11-25-newsletter/#edufeed-worksheet-editor)
+
 **See also:**
 - [NIP-02: Follow List](/en/topics/nip-02/)
 

@@ -52,5 +52,7 @@ Expiration is a retention hint, not a revocation system. It helps align relay be
 - [Newsletter #38: Mostro](/en/newsletters/2026-09-02-newsletter/#mostro-validates-signed-orders-before-expensive-work-and-preserves-order-audit-events)
 - [Newsletter #42: Road-event proposal](/en/newsletters/2026-09-30-newsletter/#road-event-reports-seek-a-shared-nostr-format)
 
+- [Newsletter #50: Algia adds expiry to posts and replies](/en/newsletters/2026-11-25-newsletter/#mattn-algia)
+
 **See also:**
 - [NIP-01: Basic Protocol](/en/topics/nip-01/)

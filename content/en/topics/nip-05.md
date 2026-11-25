@@ -72,6 +72,8 @@ Most major clients support NIP-05 verification:
 - [Newsletter #36: Nostter adds bookmark lists, profile badges, and Blossom uploads](/en/newsletters/2026-08-19-newsletter/#nostter-adds-bookmark-lists-profile-badges-and-blossom-uploads)
 - [Newsletter #37: NoorNote v1.3.6: profile statuses and classified listings](/en/newsletters/2026-08-26-newsletter/#noornote-v136-profile-statuses-and-classified-listings)
 
+- [Newsletter #50: Trustroots and Nostroots authenticate a service identity](/en/newsletters/2026-11-25-newsletter/#trustroots-nostroots)
+
 **See also:**
 - [NIP-01: Basic Protocol](/en/topics/nip-01/)
 - [NIP-65: Relay List Metadata](/en/topics/nip-65/)

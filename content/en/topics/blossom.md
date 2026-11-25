@@ -44,6 +44,7 @@ That split lets clients implement the minimum needed for basic interoperability,
 - [Code Call 0.2.66](https://github.com/tidley/nostr-codex-phone/releases/tag/v0.2.66) - encrypted Blossom attachments for remote work sessions
 
 **Mentioned in:**
+- [Newsletter #50: Blossom upload and mirroring methods](/en/newsletters/2026-11-25-newsletter/#hzrd149-blossom-100)
 - [Newsletter #49](/en/newsletters/2026-11-18-newsletter/#flox1an-nostube)
 - [Newsletter #48: Route96 security fixes](/en/newsletters/2026-11-11-newsletter/#route96)
 - [Newsletter #46: Ark payment header proposed for Blossom servers](/en/newsletters/2026-10-28-newsletter/#ark-payment-header-proposed-for-blossom-servers) [Newsletter 45](/en/newsletters/2026-10-21-newsletter/#nostube),
@@ -57,6 +58,8 @@ That split lets clients implement the minimum needed for basic interoperability,
 - [Newsletter #36: Morganite 0.0.4: verifying a blob before it is cached](/en/newsletters/2026-08-19-newsletter/#morganite-004-verifying-a-blob-before-it-is-cached)
 - [Newsletter #37: Postr launches as a small Android composer](/en/newsletters/2026-08-26-newsletter/#postr-launches-as-a-small-android-composer)
 - [Newsletter #42: Hubstr media origin](/en/newsletters/2026-09-30-newsletter/#hubstr-blossom-opens-a-personal-media-origin)
+
+- [Newsletter #50: Notedeck Headway uploads encrypted screenshots](/en/newsletters/2026-11-25-newsletter/#damus-io-notedeck)
 
 **See also:**
 - [BUD-03: User Server List](/en/topics/bud-03/)

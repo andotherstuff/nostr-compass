@@ -38,6 +38,7 @@ This is especially useful for:
 - [Amethyst PR #3747](https://github.com/vitorpamplona/amethyst/pull/3747) - closes a refusal-stalled reconciliation path
 
 **Mentioned in:**
+- [Newsletter #50: Quartz splits weekly score reconciliation by event count](/en/newsletters/2026-11-25-newsletter/#vitorpamplona-quartz)
 - [Newsletter #49](/en/newsletters/2026-11-18-newsletter/#cameri-nostream)
 - [Newsletter #48: nostr-social-graph bounded catch-up](/en/newsletters/2026-11-11-newsletter/#nostr-social-graph)
 - [Newsletter #47: nostream outbound peer sync](/en/newsletters/2026-11-04-newsletter/#nostream)
