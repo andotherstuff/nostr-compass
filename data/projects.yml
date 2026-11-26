@@ -47,7 +47,7 @@ social_clients:
     priority: medium
 
   - name: Marble
-    description: Nostr client using Cosign threshold signing
+    description: Android Nostr client and signer with search, a reader and notes that sync across devices
     platforms:
     - android
     - web
@@ -55,7 +55,8 @@ social_clients:
     maintainer: sybenx
     status: beta
     priority: medium
-    notes: Uses the Cosign beta protocol; app and library share one newsletter story.
+    notes: Signs with Keykin since 0.13 (Cosign is retired). Signs for sites and other apps
+      on the phone; Marble Web at marble.syb.lol.
 
   - name: Hibiki
     description: Nostr feed client prototype
@@ -3867,16 +3868,19 @@ signers:
     priority: medium
     notes: Source provides Nostr event signing workflows.
 
-  - name: Cosign
-    description: Threshold signing library and Marble beta
+  - name: Keykin
+    description: One Nostr account across your devices and your own box; sign in on any computer with a password
     platforms:
     - android
     - web
-    repo: https://github.com/sybenx/cosign
+    - server
+    repo: https://github.com/sybenx/keykin
     maintainer: sybenx
     status: beta
     priority: medium
-    notes: FROST shares split signing authority across devices, server and recovery material.
+    notes: FROST key in pieces (any two sign) across phone, computer and an always-on box;
+      NIP-46 bunker, NIP-55 on Android, NIP-07 extension. Replaces the retired Cosign
+      (sybenx/cosign, archived). Marble is its Android app.
 
   - name: QRST Signer
     description: Android QR-based Nostr key transfer using the draft QRST protocol
@@ -4286,6 +4290,28 @@ relays:
     priority: medium
     notes: Native NIP-01 service; later development adds COUNT, authentication and protected
       events.
+
+  - name: bothy
+    description: Personal Nostr relay that runs free on Cloudflare Workers, with members, invites and push
+    platforms:
+    - server
+    repo: https://github.com/sybenx/bothy
+    maintainer: sybenx
+    status: beta
+    priority: medium
+    notes: Durable Object storage; NIP-42 auth, NIP-86 management, gift-wrap inboxes for
+      members with web and FCM push.
+
+  - name: Keykin Storage
+    description: Blossom server for a Keykin box, for your account and friends you add, with quotas
+    platforms:
+    - server
+    repo: https://github.com/sybenx/keykin-storage
+    maintainer: sybenx
+    status: beta
+    priority: medium
+    notes: Resumable uploads in pieces, a 30-day bin, and accounts that can follow a
+      bothy home's member list.
 
   - name: Ditto Blossom
     description: Rust Blossom blob server with LMDB indexing and preservation administration
